@@ -730,6 +730,7 @@ function actEstudio(datos){
 
 function registrar(){
 
+
 //Datos personales
 var gstNombr = document.getElementById('gstNombr').value;
 var gstApell = document.getElementById('gstApell').value;
@@ -758,10 +759,10 @@ var gstExTel = document.getElementById('gstExTel').value;
 var gstNmpld = document.getElementById('gstNmpld').value;
 var gstIdpst = document.getElementById('gstIdpst').value;
 
-var gstAreID = document.getElementById('gstSigID').value;
-var gstPstID = document.getElementById('gstSigID').value;
-var gstSpcID = document.getElementById('gstSigID').value;
-var gstSigID = document.getElementById('gstSigID').value;
+var gstAreID = document.getElementById('gstAreID').value;
+var gstPstID = document.getElementById('gstPstID').value;
+var gstSpcID = document.getElementById('gstSpcID').value;
+var gstSigID = 0;
 
 var gstCargo = document.getElementById('gstCargo').value;
 var gstIDCat = document.getElementById('gstIDCat').value;
@@ -778,9 +779,9 @@ var gstIDuni = document.getElementById('gstIDuni').value;
 
 datos = 'gstNombr='+gstNombr+'&gstApell='+gstApell+'&gstLunac='+gstLunac+'&gstFenac='+gstFenac+'&gstStcvl='+gstStcvl+'&gstCurp='+gstCurp+'&gstRfc='+gstRfc+'&gstNpspr='+gstNpspr+'&gstPsvig='+gstPsvig+'&gstVisa='+gstVisa+'&gstVignt='+gstVignt+'&gstNucrt='+gstNucrt+'&gstCalle='+gstCalle+'&gstNumro='+gstNumro+'&gstClnia='+gstClnia+'&gstCpstl='+gstCpstl+'&gstCiuda='+gstCiuda+'&gstStado='+gstStado+'&gstCasa='+gstCasa+'&gstClulr='+gstClulr+'&gstExTel='+gstExTel+'&gstNmpld='+gstNmpld+'&gstIdpst='+gstIdpst+'&gstAreID='+gstAreID+'&gstPstID='+gstPstID+'&gstSpcID='+gstSpcID+'&gstSigID='+gstSigID+'&gstCargo='+gstCargo+'&gstIDCat='+gstIDCat+'&gstIDSub='+gstIDSub+'&gstCorro='+gstCorro+'&gstCinst='+gstCinst+'&gstFeing='+gstFeing+'&gstIDara='+gstIDara+'&gstAcReg='+gstAcReg+'&gstIDuni='+gstIDuni+'&opcion=registrar';
   
- // alert(datos);
+  //alert(datos);
 
- if(gstNombr=='' || gstApell=='' || gstLunac=='' || gstFenac=='' || gstStcvl=='' || gstCurp =='' || gstRfc  =='' || gstNpspr=='' || gstPsvig=='' || gstVisa =='' || gstVignt=='' || gstNucrt=='' || gstCalle=='' || gstNumro=='' || gstClnia=='' || gstCpstl=='' || gstCiuda=='' || gstStado=='' || gstCasa=='' || gstClulr=='' || gstExTel=='' || gstNmpld=='' || gstIdpst=='' || gstAreID=='' || gstPstID=='' || gstSpcID=='' || gstSigID=='' || gstCargo=='' || gstIDCat=='' || gstIDSub=='' || gstCorro=='' || gstIDara=='' || gstAcReg=='' || gstIDuni=='' || gstCinst=='' || gstFeing==''){
+ if(gstNombr=='' || gstApell=='' || gstLunac=='' || gstFenac=='' || gstStcvl=='' || gstCurp =='' || gstRfc  =='' || gstNpspr=='' || gstPsvig=='' || gstVisa =='' || gstVignt=='' || gstNucrt=='' || gstCalle=='' || gstNumro=='' || gstClnia=='' || gstCpstl=='' || gstCiuda=='' || gstStado=='' || gstCasa=='' || gstClulr=='' || gstExTel=='' || gstNmpld=='' || gstIdpst=='' || gstAreID=='' || gstPstID=='' || gstSpcID=='' || gstCargo=='' || gstIDCat=='' || gstIDSub=='' || gstCorro=='' || gstIDara=='' || gstAcReg=='' || gstIDuni=='' || gstCinst=='' || gstFeing==''){
 
 		$('#empty').toggle('toggle');
 		setTimeout(function(){
