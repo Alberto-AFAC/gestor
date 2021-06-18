@@ -1,7 +1,7 @@
 <?php include ("../../conexion/conexion.php");
 
     
-      $sql = "SELECT gstIdpst,gstCodig,gstNivel FROM puesto WHERE estado = 0";
+      $sql = "SELECT gstIdpst,gstCodig,gstNivel FROM codigo WHERE estado = 0";
       $puesto = mysqli_query($conexion,$sql);
     ?>
 

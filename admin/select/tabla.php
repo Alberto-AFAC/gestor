@@ -1,22 +1,22 @@
 
 <?php session_start();
 
-  require_once "../../conexion/conexion.php";
+require_once "../../conexion/conexion.php";
 
-        if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
+      if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
-          if($_SESSION['consulta'] > 0){
-            $Idpst=$_SESSION['consulta'];
-            $sql="SELECT gstIdpst,gstNivel, gstAreat,gstPusto,gstGnric,gstSpcil,gstSoaci FROM puesto WHERE gstIdpst='$Idpst' ORDER BY gstIdpst DESC ";
-          }
+        if($_SESSION['consulta'] > 0){
+          $Idpst=$_SESSION['consulta'];
+          $sql="SELECT gstIdpst,gstNivel,gstGnric FROM codigo WHERE gstIdpst='$Idpst' ORDER BY gstIdpst DESC ";
+        }
 
-        $result=mysqli_query($conexion,$sql);
-        $ver=mysqli_fetch_row($result);
+      $result=mysqli_query($conexion,$sql);
+      $ver=mysqli_fetch_row($result);
 ?>
 <style type="text/css">
 
 /*.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
-  background: white;
+background: white;
 }*/
 </style>      
 
@@ -33,7 +33,7 @@
 
 <div class="col-sm-4">
 <label>NOMBRE DEL PUESTO (GENERICO)</label>
-<input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[4];?>" >
+<input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[2];?>" >
 </div>                  
 
 <!--<div class="col-sm-4">
@@ -46,7 +46,7 @@
 <input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[6];?>" >
 </div>                          
 -->
-                
+              
 <?php   }else{   ?>
 
 

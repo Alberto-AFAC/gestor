@@ -58,17 +58,20 @@ include('header.php');
 $sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0";
 $cat = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
+$sql = "SELECT gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
 $sub1 = mysqli_query($conexion,$sql);
 
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $are = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
+$sql = "SELECT gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
 $uni = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
+$sql = "SELECT gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
 $ejec = mysqli_query($conexion,$sql);
+
+$sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
+$psto = mysqli_query($conexion,$sql);
 ?>
     <section class="content">
 
@@ -323,16 +326,20 @@ $ejec = mysqli_query($conexion,$sql);
           </div>
 
            <div class="form-group">
-          <div class="col-sm-4">
+          <div class="col-sm-5">
           <label>NOMBRE DEL PUESTO</label>
-          <select type="text" class="form-control" name="gstPstID" id="gstPstID">
-          <option value="0">SELECCIONA EL ÁREA</option>
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
+          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
+          <option value="0">SELECCIONA EL PUESTO</option>
+          <?php while($pust = mysqli_fetch_row($psto)):?>                      
+          <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
+          <?php endwhile; ?>
+          </select>
           </div> 
 
-          <div class="col-sm-4">
+          <div id="oaci"></div>
+          <div id="siglas"></div>           
+
+          <!--<div class="col-sm-4">
           <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
           <select type="text" class="form-control" name="gstSpcID" id="gstSpcID">
           <option value="0">SELECCIONA EL ÁREA</option>
@@ -348,7 +355,9 @@ $ejec = mysqli_query($conexion,$sql);
           <option value="1">---</option>
           <option value="2">---</option>
           </select> 
-          </div>                          
+          </div>-->                          
+
+
           </div>
 
             <input type="hidden" id="gstCargo" name="gstCargo" value="0">
@@ -525,8 +534,11 @@ $ejec = mysqli_query($conexion,$sql);
 $(document).ready(function(){
 $('#gstAreID').select2();
 $('#gstIDara').select2();
+$('#gstPstID').select2();
 $('#buscador').load('select/buscar.php');
 $('#select1').load('select/tabla.php');
+$('#oaci').load('select/oaci.php');
+$('#siglas').load('select/siglas.php');
 });
 
 </script>
