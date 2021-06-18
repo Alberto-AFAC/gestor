@@ -1,0 +1,265 @@
+
+function conCurso(){
+    $.ajax({
+    url:'../php/conCurso.php',
+    type:'POST'
+    }).done(function(resp){
+        obj = JSON.parse(resp);
+        var res = obj.data;  
+        var x = 0;
+
+            var hoy = new Date();
+            var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
+
+
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curInst" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> TÍTULO</th><th><i></i> TIPO</th><th><i></i> PERFIL</th><th><i></i> DURACIÓN</th><th><i></i> DOCUMENTO</th><th><i></i> VIGENCIA </th><th><i></i> TEMARIO</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
+            for(i=0; i<res.length;i++){
+            x++;
+            var f1 = new Date(hoy.getFullYear(),(hoy.getMonth()+1),hoy.getDate());
+            fvigd = obj.data[i].gstFalta.substring(8,10);
+            fvigm = obj.data[i].gstFalta.substring(5,7);
+            fvigy = obj.data[i].gstFalta.substring(0,4);
+            var f2 = new Date(fvigy,fvigm,fvigd);
+
+            datos = obj.data[i].gstIdlsc+'*'+obj.data[i].gstTitlo+'*'+obj.data[i].gstTipo+'*'+obj.data[i].gstPrfil+'*'+obj.data[i].gstCntnc+'*'+obj.data[i].gstDrcin+'*'+obj.data[i].gstVignc+'*'+obj.data[i].gstObjtv+'*'+obj.data[i].gstTmrio;
+
+
+// if(f2 <= f1){
+            html +="<tr><td>"+x+"</td><td>"+obj.data[i].gstTitlo+"</td><td>"+obj.data[i].gstTipo+"</td><td>"+obj.data[i].gstPrfil+"</td><td>"+obj.data[i].gstDrcin+"</td><td>"+obj.data[i].gstCntnc+"</td><td>"+obj.data[i].gstVignc+"</td><td><a href='"+obj.data[i].gstTmrio+"' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a></td><td> <a href='#' onclick='dato("+'"'+datos+'"'+")' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar("+'"'+datos+'"'+")' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+ //}else{
+   //         html +="<tr><td>"+x+"</td><td>"+obj.data[i].gstTitlo+"</td><td>"+obj.data[i].gstTipo+"</td><td>"+obj.data[i].gstVignc+"</td><td>"+obj.data[i].gstPrfil+"</td><td>"+obj.data[i].gstObjtv+"</td><td>"+obj.data[i].gstDrcin+"</td><td>"+obj.data[i].gstCntnc+"</td><td><a href='"+obj.data[i].gstTmrio+"' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a></td><td> <a href='#' onclick='dato("+'"'+datos+'"'+")' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%; font-size: 25px;'><i class='fa ion-compose text-info'></i></a></td></tr>";
+ //}
+        } 
+        html +='</tbody></table></div></div></div>';
+        $("#curInsts").html(html);  
+    })  
+}
+ 
+function dato(datos){
+
+  var d=datos.split("*");
+
+$("#modalVal #AgstIdlsc").val(d[0]);	
+$("#modalVal #AgstTitlo").val(d[1]);
+$("#modalVal #AgstTipo").val(d[2]);
+$("#modalVal #AgstPrfil").val(d[3]);
+$("#modalVal #AgstCntnc").val(d[4]);
+
+Ahr = d[5].substr(0,2);
+Amin = d[5].substr(3,2);
+Atmp = d[5].substr(6,4);
+
+$("#modalVal #Ahr").val(Ahr);
+$("#modalVal #Amin").val(Amin);
+$("#modalVal #Atmp").val(Atmp);
+
+$("#modalVal #AgstVignc").val(d[6]);
+$("#modalVal #AgstObjtv").val(d[7]);
+$("#modalVal #AgstTmrio").val(d[8]);
+
+}
+
+function regCurso(){
+
+var paqueteDeDatos = new FormData();
+paqueteDeDatos.append('gstTmrio', $('#gstTmrio')[0].files[0]);
+//paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
+paqueteDeDatos.append('gstTitlo', $('#gstTitlo').prop('value'));
+paqueteDeDatos.append('gstTipo', $('#gstTipo').prop('value'));
+paqueteDeDatos.append('gstVignc', $('#gstVignc').prop('value'));
+paqueteDeDatos.append('gstPrfil', $('#gstPrfil').prop('value'));
+paqueteDeDatos.append('gstObjtv', $('#gstObjtv').prop('value'));
+
+paqueteDeDatos.append('hr', $('#hr').prop('value'));
+paqueteDeDatos.append('min', $('#min').prop('value'));
+paqueteDeDatos.append('tmp', $('#tmp').prop('value'));
+
+//paqueteDeDatos.append('gstDrcin', $('#gstDrcin').prop('value'));
+paqueteDeDatos.append('gstCntnc', $('#gstCntnc').prop('value'));
+
+     $.ajax({
+                url:'../php/docCursos.php',
+                data:paqueteDeDatos,
+                type: "POST",
+                contentType: false,
+                processData: false,
+                success:
+                    function (r) {
+                       // alert(r);
+                    console.log(r);
+                    if(r==8){
+					$('#vacio').toggle('toggle');
+					setTimeout(function(){
+					$('#vacio').toggle('toggle');
+					},4000);
+						   
+                    }else if(r==0){      
+                    $('#exito').toggle('toggle');
+                    setTimeout(function(){
+                    $('#exito').toggle('toggle');
+                    },4000);
+                    conCurso('');
+                    }else if(r==1){      
+                    $('#falla').toggle('toggle');
+                    setTimeout(function(){
+                    $('#falla').toggle('toggle');
+                    },4000);}
+
+                    else if(r==2){      
+                    $('#error').toggle('toggle');
+                    setTimeout(function(){
+                    $('#error').toggle('toggle');
+                    },4000);}
+
+                    else if(r==3){      
+                    $('#renom').toggle('toggle');
+                    setTimeout(function(){
+                    $('#renom').toggle('toggle');
+                    },4000);}
+
+                    else if(r==4){      
+                    $('#forn').toggle('toggle');
+                    setTimeout(function(){
+                    $('#forn').toggle('toggle');
+                    },4000);}
+
+                    else if(r==6){      
+                    $('#adjunta').toggle('toggle');
+                    setTimeout(function(){
+                    $('#adjunta').toggle('toggle');
+                    },4000);}
+
+                    else if(r==7){      
+                    $('#repetido').toggle('toggle');
+                    setTimeout(function(){
+                    $('#repetido').toggle('toggle');
+                    },4000);}                
+                }
+            });
+
+ //}
+}
+
+
+function actCurso(){
+
+var paqueteDeDatos = new FormData();
+paqueteDeDatos.append('AgstTmrio', $('#AgstTmrio')[0].files[0]);
+//paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
+paqueteDeDatos.append('AgstTitlo', $('#AgstTitlo').prop('value'));
+paqueteDeDatos.append('AgstTipo', $('#AgstTipo').prop('value'));
+paqueteDeDatos.append('AgstVignc', $('#AgstVignc').prop('value'));
+paqueteDeDatos.append('AgstPrfil', $('#AgstPrfil').prop('value'));
+paqueteDeDatos.append('AgstObjtv', $('#AgstObjtv').prop('value'));
+paqueteDeDatos.append('Ahr', $('#Ahr').prop('value'));
+paqueteDeDatos.append('Amin', $('#Amin').prop('value'));
+paqueteDeDatos.append('Atmp', $('#Atmp').prop('value'));
+paqueteDeDatos.append('AgstCntnc', $('#AgstCntnc').prop('value'));
+paqueteDeDatos.append('AgstIdlsc', $('#AgstIdlsc').prop('value'));
+
+     $.ajax({
+                url:'../php/actCursos.php',
+                data:paqueteDeDatos,
+                type: "POST",
+                contentType: false,
+                processData: false,
+                success:
+                    function (r) {
+                       // alert(r);
+                    console.log(r);
+                    if(r==8){
+                    $('#avacio').toggle('toggle');
+                    setTimeout(function(){
+                    $('#avacio').toggle('toggle');
+                    },4000);
+                           
+                    }else if(r==0){      
+                    $('#aexito').toggle('toggle');
+                    setTimeout(function(){
+                    $('#aexito').toggle('toggle');
+                    },4000);
+                    conCurso('');
+                    }else if(r==1){      
+                    $('#afalla').toggle('toggle');
+                    setTimeout(function(){
+                    $('#afalla').toggle('toggle');
+                    },4000);}
+
+                    else if(r==2){      
+                    $('#aerror').toggle('toggle');
+                    setTimeout(function(){
+                    $('#aerror').toggle('toggle');
+                    },4000);}
+
+                    else if(r==3){      
+                    $('#arenom').toggle('toggle');
+                    setTimeout(function(){
+                    $('#arenom').toggle('toggle');
+                    },4000);}
+
+                    else if(r==4){      
+                    $('#aforn').toggle('toggle');
+                    setTimeout(function(){
+                    $('#aforn').toggle('toggle');
+                    },4000);}
+
+                    else if(r==6){      
+                    $('#aadjunta').toggle('toggle');
+                    setTimeout(function(){
+                    $('#aadjunta').toggle('toggle');
+                    },4000);}
+
+                    else if(r==7){      
+                    $('#arepetido').toggle('toggle');
+                    setTimeout(function(){
+                    $('#arepetido').toggle('toggle');
+                    },4000);}                
+                }
+            });
+
+}
+
+function eliminar(datos){
+
+  var d=datos.split("*");
+
+
+$("#modal-eliminar #EgstIdlsc").val(d[0]);    
+$("#modal-eliminar #EgstTitlo").val(d[1]);
+
+}
+
+function eliCurso(){
+
+var EgstIdlsc = document.getElementById('EgstIdlsc').value;
+
+//alert(EgstIdlsc);
+ if(EgstIdlsc==''){
+
+        $('#empty').toggle('toggle');
+        setTimeout(function(){
+        $('#empty').toggle('toggle');
+        },2000); 
+
+        return;
+    }else{
+        $.ajax({
+        url:'../php/regCurso.php',
+        type:'POST',
+        data:'EgstIdlsc='+EgstIdlsc+'&opcion=eliCurso' 
+        }).done(function(respuesta){
+        if (respuesta==0) {
+        $('#succe').toggle('toggle');
+        setTimeout(function(){
+        $('#succe').toggle('toggle');
+         location.href='./';
+        },2000);
+        }else{
+        $('#danger').toggle('toggle');
+        setTimeout(function(){
+        $('#danger').toggle('toggle');
+        },2000);
+        }                    
+        }); 
+    }
+}

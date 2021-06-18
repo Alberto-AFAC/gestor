@@ -1,0 +1,46 @@
+    
+
+    <!--<link rel="stylesheet" type="text/css" href="../datas/bootstrap.css">-->
+    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <script type="text/javascript" async="" src="../datas/ga.js"></script><script type="text/javascript" src="../datas/site.js"></script>
+    <script type="text/javascript" src="../datas/dynamic.php" async=""></script>
+    <script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
+    <script type="text/javascript" language="javascript" src="../datas/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="../datas/dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
+    <!--<script src="http://momentjs.com/downloads/moment.min.js"></script>--> 
+    <script type="text/javascript" src="../js/datos.js"></script>
+    <script type="text/javascript" class="init">
+        insPctr();
+    $(document).ready(function() {
+    $('#cnslt').DataTable({
+        language:{
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior",
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    },
+    }
+    });
+    } );
+    </script>
+    <br>
+<div id="conslts"></div>
+

@@ -1,0 +1,81 @@
+.logo-lg{
+	font-size: 15px;
+}
+/*Ocultar contenedores area*/
+#Fregist{
+display: none;
+}
+#det1{
+display: none;
+}
+#det2{
+display: none;
+}
+#edt1{
+	display: none;
+}
+.row > .col-lg-12 > img{
+float: right; 
+width: 90px;
+margin-top: 0.8em
+}
+.padding{
+    padding: 0;
+}
+.error,.exito,.aviso{
+margin:0;
+color:black;
+width: 40%; 
+float: right;
+padding: 0.4em 0;
+display: none;
+}
+.adjuto{
+margin:0;
+width: 40%; 
+float: right;
+padding: 0.4em 0;
+display: none;
+}
+/*Apartado de reportes*/
+#div1 > input,#div2 > input{
+	cursor: pointer;
+}
+.reporte{
+background: white;
+color: black;
+width: 100%;
+float: right;
+border: 2px solid green;
+padding: 1em 0em;
+text-align: center;
+display: none;
+}
+/*estilos imagen*/
+.imgafac{
+float: right; 
+width: 90px;
+margin-top: 0.8em
+}
+/*tmaño dé panel*/
+
+.width{
+	width: 900px;
+	margin-top:4em;
+}
+/*ocultar borde de input*/
+.transparent
+{
+	border: 1px solid white;
+	background: white;
+}
+.disabled{
+	background: white;	
+}
+.datas{
+font-size: 12px; 
+text-align: center; 
+border: transparent; 
+width: 100%; 
+}
+
