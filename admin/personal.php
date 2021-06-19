@@ -325,24 +325,23 @@ $psto = mysqli_query($conexion,$sql);
           <div id="select1"></div> 
           </div>
 
-           <div class="form-group">
-          <div class="col-sm-5">
-          <label>NOMBRE DEL PUESTO</label>
-          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
-          <option value="0">SELECCIONA EL PUESTO</option>
-          <?php while($pust = mysqli_fetch_row($psto)):?>                      
-          <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
-          <?php endwhile; ?>
-          </select>
-          </div> 
+         <div class="form-group">
+            <div class="col-sm-5">
+               <label>NOMBRE DEL PUESTO</label>
+               <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
+               <option value="0">SELECCIONA EL PUESTO</option>
+               <?php while($pust = mysqli_fetch_row($psto)):?>                      
+               <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
+               <?php endwhile; ?>
+               </select>
+            </div> 
 
-          <div id="oaci"></div>
-          <div id="siglas"></div>                                
-          </div>
+            <div id="oaci"></div>
+            <div id="siglas"></div>                                
+         </div>
 
             <input type="hidden" id="gstCargo" name="gstCargo" value="0">
                  <div class="form-group">
-
                     <div class="col-sm-offset-0 col-sm-12">
                         <label style="color: white">.</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
@@ -352,8 +351,7 @@ $psto = mysqli_query($conexion,$sql);
                          <?php endwhile; ?>
                        </select>
                     </div>                  
-
-                </div>
+                  </div>
          
            <input type="hidden" class="form-control" id="gstIDCat" name="gstIDCat" value="0">
            <input type="hidden" class="form-control" id="gstIDSub" name="gstIDSub" value="0">                   

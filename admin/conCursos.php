@@ -45,31 +45,101 @@
     <section class="content">
 
       <div class="row">
-    
-        <!-- /.col -->
-        <div class="col-md-12">
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">CURSO</a></li>
-              <!--<li><a href="#timeline" data-toggle="tab">CURSOS RECIENTES</a></li>-->
-              <!--<li><a href="#settings" data-toggle="tab">CONSULTA DE CURSOS </a></li>-->
-            </ul>
-            <div class="tab-content">
-              <div class="active tab-pane" id="activity">
-                <!-- Post -->
-                <div class="post">
 
-                  <form class="form-horizontal" action="" method="POST">
+      
+
+      <section class="content" id="lista">
+      <div class="row">
+        <div class="col-xs-12">
+        
+          <div class="box">
+            <div class="box-header">
+            <div class="col-sm-3">
+                    <div class="input-group">
+                      <H4>
+                          <!-- <i class="fa ion-android-plane"></i> -->
+                      <label>CONSULTA DE CURSOS </label></H4>
+                    </div>
+            </div>
+
+            </div>
+            <!-- /INDICADORES -->
+
+
+
+            <!-- /FIN DE INDICADORES -->
+            <div class="box-body">
+            <?php include('../html/conCurso.html');?>
+
+            </div>
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+
+      <form class="form-horizontal" action="" method="POST"  >
+      <div class="modal fade" id="modal-eliminar">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">ELIMINAR CURSO </h4>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
+               <div class="form-group">
+                <div class="col-sm-12">
+                  <p> CONFIRME ACEPTAR, PARA ELIMINAR: <input type="text" name="EgstTitlo" id="EgstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
+                </div>
+                  <br>
+                  <div class="col-sm-5">
+                  <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
+                  </div>
+
+                    <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
+                    <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
+                    <b><p class="alert alert-warning text-center padding aviso" id="empty">Elija curso para eliminar </p></b>
+                    </div>
+                  </div>
+                </div>    
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+</form>
+
+    </section>
+
+
+
+    <form class="form-horizontal" action="" method="POST"  >
+<div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: black"  aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" id="exampleModalLabel">EDITAR CURSO </h4>  
+</div>
+
+<input type="hidden" class="form-control" id="AgstIdlsc" name="AgstIdlsc">
+<div class="modal-body">
+
                   <div class="form-group">
                     <div class="col-sm-4">
-                    <label>NOMBRE DEL CURSO</label>
-                    <input type="text" onkeyup="mayus(this);" class="form-control" id="gstTitlo" name="gstTitlo">
+                    <label>NOMBRE</label>
+                    <input type="text" onkeyup="mayus(this);" class="form-control" id="AgstTitlo" name="AgstTitlo">
                     </div>
 
                      <div class="col-sm-4">
-                      <label>TIPO DE CURSO</label>
-                      <select type="text" class="form-control" id="gstTipo" name="gstTipo">
-                        <option value="0">ELEGIR UNA OPCIÓN</option>
+                      <label>TIPO</label>
+                      <select type="text" class="form-control" id="AgstTipo" name="AgstTipo">
                         <option value="INDUCCIÓN">INDUCCIÓN</option>
                         <option value="BÁSICOS">BÁSICOS</option>
                         <option value="TRANSVERSALES">TRANSVERSALES</option>
@@ -81,8 +151,7 @@
 
                   <div class="col-sm-4">
                     <label>PERFIL A QUIEN VA DIRIGIDO</label>                   
-                      <select type="text" class="form-control" id="gstPrfil" name="gstPrfil">
-                        <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
+                      <select type="text" class="form-control" id="AgstPrfil" name="AgstPrfil">
                         <option value="IVA-L.l">IVA-L</option>
                         <option value="IVA-O">IVA-O</option>
                         <option value="IVA-NA">IVA-NA</option>
@@ -100,8 +169,7 @@
                      <div class="col-sm-4">
                       <label>DOCUMENTO QUE EMITE</label>
                       <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
-                      <select type="text" class="form-control" id="gstCntnc" name="gstCntnc">
-                        <option value="0">ELEGIR UNA OPCIÓN</option>
+                      <select type="text" class="form-control" id="AgstCntnc" name="AgstCntnc">
                         <option value="DIPLOMA">DIPLOMA</option>
                         <option value="CONSTANCIA">CONSTANCIA</option>
                         <option value="CERTIFICADO">CERTIFICADO</option>
@@ -109,10 +177,10 @@
                       </div>
 
 
-                     <div class="col-sm-1" style="padding-right: 0;">
+                     <div class="col-sm-1" style="padding-right: 0; width: 79px;">
                      <label>DURACION</label> 
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                      <select  class="form-control" id="hr" name="hr">
+                      <select  class="form-control" id="Ahr" name="Ahr">
                         <option value="00">00</option>
                       <?php for($h=1; $h<=24; $h++){
                          if($h<10){ ?>
@@ -126,7 +194,7 @@
                       <div class="col-sm-1" style="padding: 0;">
                <label style="color: white">.</label>
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                      <select  class="form-control" id="min" name="min">
+                      <select  class="form-control" id="Amin" name="Amin">
                         <option value="00">00</option>
                       <?php for($m=1; $m<=59; $m++){
 
@@ -139,16 +207,15 @@
                     </div>
                     <div class="col-sm-1" style="padding: 0;">
                <label style="color: white">.</label>
-                      <select  class="form-control" id="tmp" name="tmp">
+                      <select  class="form-control" id="Atmp" name="Atmp">
                         <option value="HRS.">HRS.</option>
                         <option value="MIN.">MIN.</option>
                       </select>
                     </div>
 
-                <div class="col-sm-offset-1 col-sm-4">
+                <div class="col-sm-offset-1 col-sm-3">
                          <label>PERIODO DE VIGENCIA</label>                         
-                            <select type="text" class="form-control" id="gstVignc" name="gstVignc">
-                            <option value="0">SELECCIONE VIGENCIA</option>
+                            <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
                             <option value="RECURRENTE">RECURRENTE</option>
                             <option value="NO APLICA">UNICA VEZ</option>
                             <option value="1 AÑO">1 AÑO</option>
@@ -159,94 +226,62 @@
                             <option value="6 AÑOS">6 AÑOS</option>
                             </select>
                       </div>
-
-                      
                       </div>
-                      <div class="form-group">
-                  
-
-                     <div class="col-sm-4">
-                      <label>PROVEEDOR DEL CURSO</label>
-                      <select type="text" class="form-control" id="gstTipo" name="gstTipo">
-                        <option value="0">ELEGIR UNA OPCIÓN</option>
-                        <option value="INDUCCIÓN">INTERNO</option>
-                        <option value="BÁSICOS">EXTERNO</option>
-                      </select>
-                      </div>
-
-                  <div class="col-sm-4">
-                    <label>CENTRO DE INSTRUCCIÓN</label>                   
-                      <select type="text" class="form-control" id="gstPrfil" name="gstPrfil">
-                        <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
-                        <option value="IVA-L.l">EN EL EXTRANJERO</option>
-                      </select>
-                    </div>
-
-                  </div>
-    
                   <div class="form-group">
                     <div class="col-sm-12">
                     <label>OBJETIVO</label>
-                    <textarea name="gstObjtv" id="gstObjtv"  placeholder="Escribir el Objetivo" onkeyup="mayus(this);" class="form-control" rows="5" cols="50"></textarea>
+                    <textarea name="AgstObjtv" id="AgstObjtv"  placeholder="Escribir el Objetivo" onkeyup="mayus(this);" class="form-control" rows="5" cols="50"></textarea>
                     </div>
                   </div>
                  <div class="form-group">
                      <div class="col-sm-4">
                       <label>TEMARIO</label>
 
-                   <input type="file" id="gstTmrio" name="gstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
+                   <input type="file" id="AgstTmrio" name="AgstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
 
 
                       </div>
-                  </div>   
-         
-              <div class="form-group"><br>
-                    <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-primary" onclick="regCurso();">ACEPTAR </button>
-                    </div>
-                    <b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar curso o al adjuntar archivo</p></b>
+                  </div>  
 
-                    <b><p class="alert alert-success text-center padding exito" id="exito">¡Se registro curso y archivo con éxito!</p></b>
+<div class="form-group"><br>
+<div class="col-sm-offset-0 col-sm-5">
+<button type="button" id="button" class="btn btn-primary" onclick="actCurso();">ACEPTAR </button>
+</div>
+             <b><p class="alert alert-danger text-center padding error" id="afalla">Error al registrar curso o al adjuntar archivo</p></b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
+                    <b><p class="alert alert-success text-center padding exito" id="aexito">¡Se registro curso y archivo con éxito!</p></b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="repetido">¡El curso ya está registrado!</p></b>
+                    <b><p class="alert alert-warning text-center padding aviso" id="avacio">Es necesario agregar los datos que se solicitan </p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="renom">
+                    <b><p class="alert alert-warning text-center padding aviso" id="arepetido">¡El curso ya está registrado!</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="arenom">
                     Renombre su archivo</p></b>
 
-                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta">
+                    <b><p class="alert alert-warning text-center padding adjuto" id="aadjunta">
                     Debes adjuntar archivo</p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="error">
+                    <b><p class="alert alert-danger text-center padding adjuto" id="aerror">
                     Ocurrio un error</p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="forn">
+                    <b><p class="alert alert-danger text-center padding adjuto" id="aforn">
                     Formato no valido</p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="max">
+                    <b><p class="alert alert-danger text-center padding adjuto" id="amax">
                     Supera el limite permitido</p></b>
 
-              </div>
 
-                </form>
-            
-                </div>
-                <!-- /.post -->
-
-                <!-- Post -->
-               
-                <!-- /.post -->
-
-                <!-- Post -->
- 
-                <!-- /.post -->
-              </div>
-              <!-- /.tab-pane 2do panel-->
-              <div class="tab-pane" id="timeline">
-                <!-- The timeline -->
-               
 </div>
+</div>
+</div>
+</div>
+</form>
+
+
+
+
+
+
 
 
     <!-- /.tab-pane -->
@@ -263,7 +298,8 @@
     <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
   </footer>
 
-  <?php include('panel.html');?>
+  <!-- Control Sidebar -->
+<?php include('panel.html');?>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -281,7 +317,6 @@
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../js/gesInstr.js"></script>
 <script src="../js/global.js"></script>
 </body>
 </html>

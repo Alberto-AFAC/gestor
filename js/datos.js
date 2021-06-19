@@ -101,7 +101,7 @@ function closeDtlls(){
     document.getElementById('gstAreID').disabled=true;//ID área
     document.getElementById('gstPstID').disabled=true;//ID puesto
     document.getElementById('gstSpcID').disabled=true;//ID especialidad
-    document.getElementById('gstSigID').disabled=true;//ID siglas
+   // document.getElementById('gstSigID').disabled=true;//ID siglas
 
     document.getElementById('gstIDCat').disabled=true;
     document.getElementById('gstIDSub').disabled=true;
@@ -460,10 +460,11 @@ type:'POST'
         $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
 
         $("#Pusto #gstAreID").val(obj.data[i].gstAreID);//ID área
+
 //        alert(obj.data[i].gstAreID);
         $("#Pusto #gstPstID").val(obj.data[i].gstPstID);//ID puesto
         $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID);//ID especialidad
-        $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+      //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
          }
        } 
@@ -698,9 +699,6 @@ function resultado(result){
         html +='</tbody></table></div>';
         $("#rsltad").html(html);  
     })
-
-
-
 }
 
 
@@ -880,11 +878,17 @@ function actPuesto(){
     var gstCinst = document.getElementById('gstCinst').value;
     var gstFeing = document.getElementById('gstFeing').value;
     var gstIDuni = document.getElementById('gstIDuni').value;
-    var gstIDSub = 7;
-           datos = 'pstIdper='+pstIdper+'&gstNmpld='+gstNmpld+'&gstIdpst='+gstIdpst+'&gstCargo='+gstCargo+'&gstIDCat='+gstIDCat+'&gstIDSub='+gstIDSub+'&gstCorro='+gstCorro+'&gstCinst='+gstCinst+'&gstFeing='+gstFeing+'&gstIDuni='+gstIDuni+'&opcion=actPrsnls';
+    var gstIDSub = 0;
 
-//alert(datos);
-     if(pstIdper=='' || gstNmpld=='' || gstIdpst=='' || gstCargo=='' || gstIDCat=='' || gstIDSub=='' || gstCorro=='' || gstCinst=='' || gstFeing=='' || gstIDuni==''){
+    var gstIDara = document.getElementById('gstIDara').value;//ID area
+    var gstAreID = document.getElementById('gstAreID').value;//ID directivas
+    var gstPstID = document.getElementById('gstPstID').value;//ID puesto
+    var gstSpcID = document.getElementById('gstSpcID').value;//ID especialidad
+
+
+        datos = 'pstIdper='+pstIdper+'&gstNmpld='+gstNmpld+'&gstIdpst='+gstIdpst+'&gstCargo='+gstCargo+'&gstIDCat='+gstIDCat+'&gstIDSub='+gstIDSub+'&gstAreID='+gstAreID+'&gstPstID='+gstPstID+'&gstSpcID='+gstSpcID+'&gstIDara='+gstIDara+'&gstCorro='+gstCorro+'&gstCinst='+gstCinst+'&gstFeing='+gstFeing+'&gstIDuni='+gstIDuni+'&opcion=actPrsnls';
+
+     if(pstIdper=='' || gstNmpld=='' || gstIdpst=='' || gstCargo=='' || gstIDCat=='' || gstCorro=='' || gstCinst=='' || gstFeing=='' || gstIDuni==''){
 
         $('#empty1').toggle('toggle');
         setTimeout(function(){
@@ -957,7 +961,7 @@ function openEdit(){
     document.getElementById('gstAreID').disabled=false;//ID área
     document.getElementById('gstPstID').disabled=false;//ID puesto
     document.getElementById('gstSpcID').disabled=false;//ID especialidad
-    document.getElementById('gstSigID').disabled=false;//ID siglas
+    //document.getElementById('gstSigID').disabled=false;//ID siglas
     document.getElementById('gstIDara').disabled=false;//ID del área
 
 //.../Habilita los campos FIN
