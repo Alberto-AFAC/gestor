@@ -252,8 +252,8 @@ var EgstIdlsc = document.getElementById('EgstIdlsc').value;
         $('#succe').toggle('toggle');
         setTimeout(function(){
         $('#succe').toggle('toggle');
-         location.href='./';
-        },2000);
+         location.href='conCursos.php';
+        },1500);
         }else{
         $('#danger').toggle('toggle');
         setTimeout(function(){

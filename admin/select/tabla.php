@@ -23,29 +23,13 @@ background: white;
 <div class="col-sm-4">
 <label>ID PUESTO (NIVEL TABULAR)</label>
 <input disabled="" type="text" onkeyup="mayus(this);" class="form-control disabled" value="<?php echo $ver[1];?>" >
-</div>
-<!--
-
-<div class="col-sm-4">
-<label>NOMBRE DEL PUESTO</label>
-<input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[3];?>" >
-</div>    -->                                          
+</div>                                         
 
 <div class="col-sm-4">
 <label>NOMBRE DEL PUESTO (GENERICO)</label>
 <input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[2];?>" >
 </div>                  
 
-<!--<div class="col-sm-4">
-<label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
-<input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[5];?>" >
-</div>-
-
-<div class="col-sm-4">
-<label>SIGLAS OACI</label>
-<input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[6];?>" >
-</div>                          
--->
               
 <?php   }else{   ?>
 

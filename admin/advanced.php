@@ -11,12 +11,6 @@
   <!-- Select2 -->
   <link rel="stylesheet" href="../bower_components/select2/dist/css/select2.min.css">
 
-<style type="text/css">
-  .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
-    list-style: none;
-    color: #000;
-}
-</style>
 
   <!-- Theme style -->
   <!-- AdminLTE Skins. Choose a skin from the css/skins

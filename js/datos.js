@@ -48,7 +48,7 @@ function insPctr() {
                 if (obj.data[i].gstEvalu == 'NO') {
                     html += "<tr><td>" + obj.data[i].gstNmpld + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Por evaluación' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a></td></tr>";
                 } else if (obj.data[i].gstEvalu == 'SI') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td><a type='button' title='Evaluado' onclick='resultado(" + '"' + result + '"' + ")' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a></td></tr>";
+                    html += "<tr><td>" + obj.data[i].gstNmpld + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td><a type='button' title='Evaluado' onclick='resultado(" + '"' + result + '"' + ")' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a></td></tr>";
                 }
 
 
@@ -102,7 +102,7 @@ function closeDtlls() {
     document.getElementById('gstAreID').disabled = true; //ID área
     document.getElementById('gstPstID').disabled = true; //ID puesto
     document.getElementById('gstSpcID').disabled = true; //ID especialidad
-    document.getElementById('gstSigID').disabled = true; //ID siglas
+    // document.getElementById('gstSigID').disabled=true;//ID siglas
 
     document.getElementById('gstIDCat').disabled = true;
     document.getElementById('gstIDSub').disabled = true;
@@ -456,10 +456,11 @@ function inspector(gstIdper) {
                 $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
 
                 $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+
                 //        alert(obj.data[i].gstAreID);
                 $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                 $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
-                $("#Pusto #gstSigID").val(obj.data[i].gstSigID); //ID siglas
+                //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
             }
         }
@@ -840,6 +841,7 @@ function actEstudio(datos) {
 
 function registrar() {
 
+
     //Datos personales
     var gstNombr = document.getElementById('gstNombr').value;
     var gstApell = document.getElementById('gstApell').value;
@@ -868,10 +870,10 @@ function registrar() {
     var gstNmpld = document.getElementById('gstNmpld').value;
     var gstIdpst = document.getElementById('gstIdpst').value;
 
-    var gstAreID = document.getElementById('gstSigID').value;
-    var gstPstID = document.getElementById('gstSigID').value;
-    var gstSpcID = document.getElementById('gstSigID').value;
-    var gstSigID = document.getElementById('gstSigID').value;
+    var gstAreID = document.getElementById('gstAreID').value;
+    var gstPstID = document.getElementById('gstPstID').value;
+    var gstSpcID = document.getElementById('gstSpcID').value;
+    var gstSigID = 0;
 
     var gstCargo = document.getElementById('gstCargo').value;
     var gstIDCat = document.getElementById('gstIDCat').value;
@@ -888,9 +890,9 @@ function registrar() {
 
     datos = 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstNucrt=' + gstNucrt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstSigID=' + gstSigID + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDara=' + gstIDara + '&gstAcReg=' + gstAcReg + '&gstIDuni=' + gstIDuni + '&opcion=registrar';
 
-    // alert(datos);
+    //alert(datos);
 
-    if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstNpspr == '' || gstPsvig == '' || gstVisa == '' || gstVignt == '' || gstNucrt == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '' || gstNmpld == '' || gstIdpst == '' || gstAreID == '' || gstPstID == '' || gstSpcID == '' || gstSigID == '' || gstCargo == '' || gstIDCat == '' || gstIDSub == '' || gstCorro == '' || gstIDara == '' || gstAcReg == '' || gstIDuni == '' || gstCinst == '' || gstFeing == '') {
+    if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstNpspr == '' || gstPsvig == '' || gstVisa == '' || gstVignt == '' || gstNucrt == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '' || gstNmpld == '' || gstIdpst == '' || gstAreID == '' || gstPstID == '' || gstSpcID == '' || gstCargo == '' || gstIDCat == '' || gstIDSub == '' || gstCorro == '' || gstIDara == '' || gstAcReg == '' || gstIDuni == '' || gstCinst == '' || gstFeing == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -989,11 +991,17 @@ function actPuesto() {
     var gstCinst = document.getElementById('gstCinst').value;
     var gstFeing = document.getElementById('gstFeing').value;
     var gstIDuni = document.getElementById('gstIDuni').value;
-    var gstIDSub = 7;
-    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&opcion=actPrsnls';
+    var gstIDSub = 0;
 
-    //alert(datos);
-    if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstIDSub == '' || gstCorro == '' || gstCinst == '' || gstFeing == '' || gstIDuni == '') {
+    var gstIDara = document.getElementById('gstIDara').value; //ID area
+    var gstAreID = document.getElementById('gstAreID').value; //ID directivas
+    var gstPstID = document.getElementById('gstPstID').value; //ID puesto
+    var gstSpcID = document.getElementById('gstSpcID').value; //ID especialidad
+
+
+    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&opcion=actPrsnls';
+
+    if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstCorro == '' || gstCinst == '' || gstFeing == '' || gstIDuni == '') {
 
         $('#empty1').toggle('toggle');
         setTimeout(function() {
@@ -1066,7 +1074,7 @@ function openEdit() {
     document.getElementById('gstAreID').disabled = false; //ID área
     document.getElementById('gstPstID').disabled = false; //ID puesto
     document.getElementById('gstSpcID').disabled = false; //ID especialidad
-    document.getElementById('gstSigID').disabled = false; //ID siglas
+    //document.getElementById('gstSigID').disabled=false;//ID siglas
     document.getElementById('gstIDara').disabled = false; //ID del área
 
     //.../Habilita los campos FIN

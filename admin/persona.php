@@ -152,9 +152,9 @@ include('header.php');
                     </div>
 
                    <div class="col-sm-offset-0 col-sm-6">
-                        <label>AEROPUERTOS </label>
+                        <label>UBICACIÓN </label>
                         <select style="width: 100%" class="form-control" class="selectpicker" type="text" data-live-search="true">
-                         <option value="">SELECCIONAR AEROPUERTOS </option> 
+                         <option value="">SELECCIONAR UBICACIÓN  </option> 
                          <?php while($Aiduni = mysqli_fetch_row($Auni)):?>                      
                           <option value="<?php echo $Aiduni[0]?>"><?php echo $Aiduni[1].' > '.$Aiduni[2].' REGIÓN: '.$Aiduni[4]?></option>
                          <?php endwhile; ?>

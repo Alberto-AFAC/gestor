@@ -12,6 +12,8 @@ $are = mysqli_query($conexion,$sql);
 $sql = "SELECT  gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
 $uni = mysqli_query($conexion,$sql);
 
+$sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
+$psto = mysqli_query($conexion,$sql);
 
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
@@ -339,41 +341,33 @@ $uni = mysqli_query($conexion,$sql);
                 </div>
  
           <div class="form-group">
-          <div class="col-sm-4">
-          <label>CODIGO PRESUPUESTAL</label>
-          <div id="actualiza"></div>                               
+            <div class="col-sm-4">
+            <label>CODIGO PRESUPUESTAL</label>
+            <div id="actualiza"></div>                               
+            </div>
+            <div id="select1"></div> 
           </div>
-          <div id="select1"></div> 
-          </div>
+
+
+<!-- <div class="form-group">
+
+<div id="oaci"></div>
+<div id="siglas"></div>                                
+</div> -->
 
 
            <div class="form-group">
-          <div class="col-sm-4">
+          <div class="col-sm-5">
           <label>NOMBRE DEL PUESTO</label>
-          <select type="text" class="form-control" name="gstPstID" id="gstPstID" disabled="">
-       
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
+          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="">
+          <?php while($pust = mysqli_fetch_row($psto)):?>                      
+          <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
+          <?php endwhile; ?>
+          </select>
           </div> 
 
-          <div class="col-sm-4">
-          <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
-          <select type="text" class="form-control" name="gstSpcID" id="gstSpcID" disabled="">
-  
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
-          </div>
-
-          <div class="col-sm-4">
-          <label>SIGLAS OACI</label>
-          <select type="text" class="form-control" name="gstSigID" id="gstSigID" disabled="">
-   
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
-          </div>                          
+          <div id="actoaci"></div>
+          <div id="siglas"></div>
           </div>
 
                <div class="form-group">
@@ -415,10 +409,20 @@ $uni = mysqli_query($conexion,$sql);
                     <div class="col-sm-4">
                        <label>FECHA INGRESO A LA AFAC</label>
                        <input disabled=""  type="date" class="form-control" id="gstFeing" name="gstFeing">
-                    </div>
-            
+                    </div>            
                 </div>
-            
+
+                 <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label style="color: white">.</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true" disabled="">
+                         <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
+                         <?php while($rea = mysqli_fetch_row($are)):?>                      
+                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
+                         <?php endwhile; ?>
+                       </select>
+                    </div>                  
+                  </div>            
           
                 <div class="form-group">
                   <div class="col-sm-offset-0 col-sm-6">

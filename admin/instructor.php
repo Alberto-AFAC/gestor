@@ -44,7 +44,7 @@ include('header.php');
 <div class="content-wrapper" >
 <!-- Content Header (Page header) -->
 
-<?php include('inspector.php');?>
+<?php //include('inspector.php');?>
 
     <section class="content" id="lista">
       <div class="row">
@@ -52,7 +52,7 @@ include('header.php');
         
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">INSTRUCTORES</h3>
+              <h3 class="box-title">INSTRUCTORES Y COORDINADORES</h3>
              <div class="pull-right">
               
                   <div class="btn-group">
