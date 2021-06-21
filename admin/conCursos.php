@@ -40,26 +40,25 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
+    <section class="content-header">
+      <h1>
+      CONSULTA DE CURSOS
+      </h1>
+    </section>
 
-    <!-- Main content -->
-    <section class="content">
-
-      <div class="row">
-
-      
-
-      <section class="content" id="lista">
+    <section class="content" id="lista">
       <div class="row">
         <div class="col-xs-12">
         
           <div class="box">
             <div class="box-header">
-            <div class="col-sm-3">
-                    <div class="input-group">
-                      <H4>
-                          <!-- <i class="fa ion-android-plane"></i> -->
-                      <label>CONSULTA DE CURSOS </label></H4>
-                    </div>
+            
+
+            <div class="pull-right">
+                  <div class="btn-group">
+                    <a type="button" href="conCursos.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
+                  </div>
+                  <!-- /.btn-group -->
             </div>
 
             </div>
@@ -117,8 +116,9 @@
     </section>
 
 
+      <div class="row">
 
-    <form class="form-horizontal" action="" method="POST"  >
+      <form class="form-horizontal" action="" method="POST"  >
 <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
 <div class="modal-content">
@@ -279,15 +279,6 @@
 
 
 
-
-
-
-
-
-    <!-- /.tab-pane -->
-      <!-- /.row -->
-
-    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

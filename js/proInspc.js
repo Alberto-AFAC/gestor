@@ -44,7 +44,6 @@ idInsptr.push($(this).val());
 
 
   // var idcord = document.getElementById('idcord').value;
-
     
 var id_mstr = document.getElementById('id_mstr').value;
 var hcurso = document.getElementById('hcurso').value;
@@ -60,6 +59,7 @@ var modalidad = document.getElementById('modalidad').value;
 
  datos = idinsps+'*'+id_mstr+'*'+hcurso+'*'+fcurso+'*'+idinst+'*'+sede+'*'+link+'*'+fechaf;
 
+ alert(datos);
  
 if(idcord== '' || idinsps =='' || id_mstr =='' || hcurso =='' || fcurso =='' || idinst =='' || sede =='' || modalidad=='' || link =='' || fechaf==''){
 

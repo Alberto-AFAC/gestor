@@ -128,7 +128,7 @@ include('header.php');
           <?php endwhile; ?>
       </select>
     </div>
-    <?php include('advanced.php');?>
+    <?php //include('advanced.php');?>
 
     <div class="col-sm-4">
     <label>INSTRUCTOR</label>

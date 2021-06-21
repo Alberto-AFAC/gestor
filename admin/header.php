@@ -187,7 +187,7 @@
         <!--  -->
         <!-- -->
         <li>
-          <a href="calendar.php">
+          <a href="calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>

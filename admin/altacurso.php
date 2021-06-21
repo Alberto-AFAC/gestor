@@ -40,20 +40,18 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
+    <section class="content-header">
+      <h1>
+      REGISTRAR CURSO
+      </h1>
+    </section>
 
     <!-- Main content -->
     <section class="content">
-
-      <div class="row">
-    
+      <div class="row">    
         <!-- /.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">CURSO</a></li>
-              <!--<li><a href="#timeline" data-toggle="tab">CURSOS RECIENTES</a></li>-->
-              <!--<li><a href="#settings" data-toggle="tab">CONSULTA DE CURSOS </a></li>-->
-            </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
                 <!-- Post -->
@@ -79,8 +77,8 @@
                       </select>
                       </div>
 
-                  <div class="col-sm-4">
-                    <label>PERFIL A QUIEN VA DIRIGIDO</label>                   
+<!--                   <div class="col-sm-4">
+                 
                       <select type="text" class="form-control" id="gstPrfil" name="gstPrfil">
                         <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
                         <option value="IVA-L.l">IVA-L</option>
@@ -92,7 +90,25 @@
                         <option value="AFAC">AFAC</option>
                         <option value="CIAAC">CIAAC</option>
                       </select>
-                    </div>
+                    </div> -->
+
+<link rel="stylesheet" type="text/css" href="advanced.php">
+
+                <div class="col-md-4">
+                <label>PERFIL A QUIEN VA DIRIGIDO</label>  
+                <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
+                <option value="IVA-L.l">IVA-L</option>
+                <option value="IVA-O">IVA-O</option>
+                <option value="IVA-NA">IVA-NA</option>
+                <option value="IVA-AE">IVA-AE</option>
+                <option value="IVA-SMS/SSP">IVA-SMS/SSP</option>
+                <option value="IVA- AVSEC">IVA- AVSEC</option>
+                <option value="AFAC">AFAC</option>
+                <option value="CIAAC">CIAAC</option>
+                </select>
+                </div>
+              
 
                   </div>
                   <div class="form-group">
@@ -285,3 +301,11 @@
 <script src="../js/global.js"></script>
 </body>
 </html>
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function(){
+$('#gstPrfil').select2();
+
+}); 
+</script>
+<script src="../js/select2.js"></script> 
