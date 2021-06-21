@@ -5,24 +5,7 @@ $opcion = $_POST["opcion"];
 $informacion = [];
 
 if($opcion === 'procurso'){
-	$to = "jmondragonescamilla@gmail.com";
-$subject = "NUEVO CURSO PROGRAMADO";
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$message = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
-<tr><td style='text-align: center; font-size: 18px;'>JORGE ALBERTO MONDRAGÓN ESCAMILLA</td></tr>
-<tr><td style='text-align: center; font-size: 18px;'>TIPO: BASICO</td></tr>
-<tr><td style='text-align: center; font-size: 18px;'>FECHA INICIO: 01/08/2020</td></tr>
-<tr><td style='text-align: center; font-size: 18px;'>HORA: 16:00 HRS</td></tr>
-<tr><td style='text-align: center; font-size: 18px;'>COORDINADOR: JUAN VELAZQUES</td></tr>
-<tr><td style='text-align: center; font-size: 18px;'>SEDE DEL CURSO: AGENCIA FEDERAL DE AVIACIÓN CIVIL</td></tr>
-<tr><td style='text-align: center; font-size: 18px;'>MODALIDAD: PRESENCIAL</td></tr>
-<hr><center>
-<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
-</center><hr>
-</table>";
-mail($to, $subject, $message, $headers);
+	
 
 //$idcord = $_POST['idcord'];
 
@@ -34,7 +17,6 @@ $idinst = $_POST['idinst'];
 $sede = $_POST['sede'];
 $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
-
 //proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$link, $conexion);
 
 $id = $_POST['idinsps'];
@@ -45,8 +27,6 @@ foreach ($valor as $idinsps) {
 	if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
 		{	echo "0";	}else{	echo "1";	}
 	}
-
-
 }else if($opcion === 'actualizar'){
 
 	 $idinsps = $_POST['idinsps'];		
@@ -56,7 +36,26 @@ foreach ($valor as $idinsps) {
 	 $idarea = $_POST['id_area'];
 	 $puesto = $_POST['puesto'];
 	 $unidad = $_POST['unidad'];
-
+		
+	 $to = "jmondragonescamilla@gmail.com";
+	 $subject = "NUEVO CURSO PROGRAMADO";
+	 $headers = "MIME-Version: 1.0" . "\r\n";
+	 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+	 $message = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
+	 <tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
+	 <tr><td style='text-align: center; font-size: 18px;'></td></tr>
+	 <tr><td style='text-align: center; font-size: 18px;'>TIPO: BASICO</td></tr>
+	 <tr><td style='text-align: center; font-size: 18px;'>FECHA INICIO: </td></tr>
+	 <tr><td style='text-align: center; font-size: 18px;'>HORA: </td></tr>
+	 <tr><td style='text-align: center; font-size: 18px;'>COORDINADOR: </td></tr>
+	 <tr><td style='text-align: center; font-size: 18px;'>SEDE DEL CURSO: </td></tr>
+	 <tr><td style='text-align: center; font-size: 18px;'>MODALIDAD: </td></tr>
+	 <tr><td><button></button></td></tr>
+	 <hr><center>
+	 <font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
+	 </center><hr>
+	 </table>";
+	 mail($to, $subject, $message, $headers);
 
 	if(actualizar($idinsps, $nombre, $apellidos, $correo, $idarea, $puesto,$unidad, $conexion)){
 		echo "0";
@@ -92,13 +91,36 @@ function proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modal
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
-				}else{
+				}
+				else{
 					return false;
 				}
+					
+	$to = "jmondragonescamilla@gmail.com";
+	$subject = "NUEVO CURSO PROGRAMADO";
+	$headers = "MIME-Version: 1.0" . "\r\n";
+	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+	$message = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
+	<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
+	<tr><td style='text-align: center; font-size: 18px;'></td></tr>
+	<tr><td style='text-align: center; font-size: 18px;'>TIPO: BASICO</td></tr>
+	<tr><td style='text-align: center; font-size: 18px;'>FECHA INICIO: </td></tr>
+	<tr><td style='text-align: center; font-size: 18px;'>HORA: </td></tr>
+	<tr><td style='text-align: center; font-size: 18px;'>COORDINADOR: </td></tr>
+	<tr><td style='text-align: center; font-size: 18px;'>SEDE DEL CURSO: </td></tr>
+	<tr><td style='text-align: center; font-size: 18px;'>MODALIDAD: </td></tr>
+	<tr><td><button></button></td></tr>
+	<hr><center>
+	<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
+	</center><hr>
+	</table>";
+	mail($to, $subject, $message, $headers);
+
 				$this->conexion->cerrar();
 		}else{
 
 		}
+		
 	}
 
 function actualizar($idinsp, $nombre, $apellidos, $correo, $idarea, $puesto,$unidad, $conexion){
