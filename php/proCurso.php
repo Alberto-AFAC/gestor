@@ -19,7 +19,8 @@ $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
 //proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$link, $conexion);
 
-$id = $_POST['idinsps'];
+$id = $_POST['idinsps'].','.$idinst;
+
 $valor = explode(",", $id);
 
 foreach ($valor as $idinsps) {
@@ -30,30 +31,12 @@ foreach ($valor as $idinsps) {
 		}else{	
 			echo "1";	
 		}
-	// function enviarEmail(){
-	// 	$to = "jmondragonescamilla@gmail.com";
-	// 	$subject = "NUEVO CURSO PROGRAMADO";
-	// 	$headers = "MIME-Version: 1.0" . "\r\n";
-	// 	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-	// 	$message = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-	// 	<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
-	// 	<tr><td style='text-align: center; font-size: 18px;'></td></tr>
-	// 	<tr><td style='text-align: center; font-size: 18px;'>TIPO: BASICO</td></tr>
-	// 	<tr><td style='text-align: center; font-size: 18px;'>FECHA INICIO: ".$fcurso."</td></tr>
-	// 	<tr><td style='text-align: center; font-size: 18px;'>HORA: ".$hcurso."</td></tr>
-	// 	<tr><td style='text-align: center; font-size: 18px;'>COORDINADOR: </td></tr>
-	// 	<tr><td style='text-align: center; font-size: 18px;'>SEDE DEL CURSO: ".$sede."</td></tr>
-	// 	<tr><td style='text-align: center; font-size: 18px;'>MODALIDAD: ".$modalidad."</td></tr>
-	// 	<tr><td><button></button></td></tr>
-	// 	<hr><center>
-	// 	<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
-	// 	</center><hr>
-	// 	</table>";
-	// 	mail($to, $subject, $message, $headers);
-
-
-	// }
-
+		if(enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
+		{ 
+			echo "0";	
+		}else{	
+			echo "1";	
+		}
 	}
 }else if($opcion === 'actualizar'){
 
@@ -105,27 +88,6 @@ function proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modal
 				else{
 					return false;
 				}
-					
-	$to = "jmondragonescamilla@gmail.com";
-	$subject = "NUEVO CURSO PROGRAMADO";
-	$headers = "MIME-Version: 1.0" . "\r\n";
-	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-	$message = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-	<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
-	<tr><td style='text-align: center; font-size: 18px;'></td></tr>
-	<tr><td style='text-align: center; font-size: 18px;'>TIPO: BASICO</td></tr>
-	<tr><td style='text-align: center; font-size: 18px;'>FECHA INICIO: </td></tr>
-	<tr><td style='text-align: center; font-size: 18px;'>HORA: </td></tr>
-	<tr><td style='text-align: center; font-size: 18px;'>COORDINADOR: </td></tr>
-	<tr><td style='text-align: center; font-size: 18px;'>SEDE DEL CURSO: </td></tr>
-	<tr><td style='text-align: center; font-size: 18px;'>MODALIDAD: </td></tr>
-	<tr><td><button></button></td></tr>
-	<hr><center>
-	<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
-	</center><hr>
-	</table>";
-	mail($to, $subject, $message, $headers);
-
 				$this->conexion->cerrar();
 		}else{
 
@@ -147,17 +109,45 @@ function actualizar($idinsp, $nombre, $apellidos, $correo, $idarea, $puesto,$uni
 	cerrar($conexion);
 }
 
-/*function eliminar($id_categoria,$conexion){
+function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
 
-	$query = "UPDATE categoria SET estado = 0 WHERE id_categoria = '$id_categoria'";
-	$resultado = mysqli_query($conexion,$query);
-	verificar_resultado($resultado); 
-	cerrar($conexion);
-}*/
+		$query = "SELECT gstNombr,gstApell,gstCinst, gstCorro, gstTipo, modalidad, gstCargo FROM personal INNER JOIN cursos	ON cursos.idinsp = personal.gstIdper
+					INNER JOIN listacursos ON cursos.idmstr = listacursos.gstIdlsc WHERE personal.gstIdper = $idinsps AND cursos.estado = 0";
+		$resultado= mysqli_query($conexion,$query);
+		$fila = mysqli_fetch_assoc($resultado);
 
-
-
-
+		$nombre = $fila['gstNombr'];
+		$correo = $fila['gstCorro'];
+		$link = $fila['link'];
+		$modalidad = $fila['modalidad'];	
+		$tipoCurso = $fila['gstTipo'];	
+		$cargo = $fila['gstCargo'];
+		$to = "jmondragonescamilla@gmail.com";
+		// $to = ($correo);
+		$subject = "NUEVO CURSO PROGRAMADO";
+		$headers = "MIME-Version: 1.0" . "\r\n";
+		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+		$message = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
+		<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$idinsps."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Nombre del participante: ".$nombre."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Tipo: ".$tipoCurso."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: ".$fcurso."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$hcurso."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Cargo: ".$cargo."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$sede."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$modalidad."</td></tr>
+		<hr><center>
+		<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
+		</center><hr>
+		</table>";
+		mail($to, $subject, $message, $headers);
+		$envio = mail($to, $subject, $message, $headers);
+		if ($envio == true){ 
+			return true;		
+		}else{	
+			return false;	}
+}
 function cerrar($conexion){
 
 	mysqli_close($conexion);
