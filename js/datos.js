@@ -1136,7 +1136,7 @@ function cerrarEdit(){
     //document.getElementById('gstSigID').disabled=true;//ID siglas
     document.getElementById('gstIDara').disabled=true;//ID del área
 
-//.../Habilita los campos FIN
+//.../Inhabilita los campos FIN
 }
 
 function asignar(){
