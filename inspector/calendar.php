@@ -396,9 +396,22 @@ include('header.php');
       header    : {
         left  : 'prev,next today',
         center: 'title',
-        right : 'month,agendaWeek,agendaDay'
+        right : 'year,month,agendaWeek,agendaDay'
       },
+
+
       buttonText: {
+
+timezone: 'local',
+    height: "auto",
+    selectable: true,
+    dragabble: true,
+    defaultView: 'year',
+    yearColumns: 3,
+      durationEditable: true,
+    bootstrap: false,
+
+    
         today: 'hoy',
         month: 'mes',
         week : 'semana',
