@@ -1034,37 +1034,44 @@ function actPuesto() {
 }
 
 
-function openEdit() {
-    $("#buton").toggle(100);
+function openEdit(){
+   // alert("prueba2!"); 
+	$("#buton").toggle(100);
     $("#butons").toggle(100);
-    //Habilita los campos INICIO
-    document.getElementById('gstNombr').disabled = false; // NOMBRE
-    document.getElementById('gstApell').disabled = false; // APELLIDO
-    document.getElementById('gstLunac').disabled = false; // LUGAR DE NACIMIENTO
-    document.getElementById('gstFenac').disabled = false; // FECHA DE NACIMIENTO
-    document.getElementById('gstStcvl').disabled = false; // ESTADO CIVIL
-    document.getElementById('gstCurp').disabled = false; //CURP
-    document.getElementById('gstRfc').disabled = false; //RFC
-    document.getElementById('gstNpspr').disabled = false; // NUMERO DE PASAPORTE
-    document.getElementById('gstPsvig').disabled = false; // VIGENCIA DEL PASAPORTE
-    document.getElementById('gstVisa').disabled = false; // PAIS DE LA VISA
-    document.getElementById('gstVignt').disabled = false; // VISA VIGENCIA
-    document.getElementById('gstNucrt').disabled = false; // NUMERO DE CARTLLA
-    document.getElementById('gstCalle').disabled = false; // CALLE
-    document.getElementById('gstNumro').disabled = false; // NUMERO DE DOMICILIO
-    document.getElementById('gstClnia').disabled = false; // COLONIA
-    document.getElementById('gstCpstl').disabled = false; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled = false; // CUIDAD
-    document.getElementById('gstCasa').disabled = false; // NUM. DE CASA
-    document.getElementById('gstClulr').disabled = false; // NUM. DE CELULAR
-    document.getElementById('gstExTel').disabled = false; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled = false; // CUIDAD
+    
+   div =  document.getElementById('cerrar1');
+   div.style.display = '';
 
-    //------ DATOS DEL PUESTO
-    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
-    document.getElementById('gstIdpst').disabled = false; // NUM. DE EMPLEADO
-    document.getElementById('gstCargo').disabled = false;
-    document.getElementById('gstIDCat').disabled = false;
+   div =  document.getElementById('cerrar');
+   div.style.display = 'none';
+//Habilita los campos INICIO
+    document.getElementById('gstNombr').disabled=false; // NOMBRE
+    document.getElementById('gstApell').disabled=false; // APELLIDO
+    document.getElementById('gstLunac').disabled=false; // LUGAR DE NACIMIENTO
+    document.getElementById('gstFenac').disabled=false; // FECHA DE NACIMIENTO
+    document.getElementById('gstStcvl').disabled=false; // ESTADO CIVIL
+    document.getElementById('gstCurp').disabled=false; //CURP
+    document.getElementById('gstRfc').disabled=false; //RFC
+    document.getElementById('gstNpspr').disabled=false; // NUMERO DE PASAPORTE
+    document.getElementById('gstPsvig').disabled=false; // VIGENCIA DEL PASAPORTE
+    document.getElementById('gstVisa').disabled=false; // PAIS DE LA VISA
+    document.getElementById('gstVignt').disabled=false; // VISA VIGENCIA
+    document.getElementById('gstNucrt').disabled=false; // NUMERO DE CARTLLA
+    document.getElementById('gstCalle').disabled=false; // CALLE
+    document.getElementById('gstNumro').disabled=false; // NUMERO DE DOMICILIO
+    document.getElementById('gstClnia').disabled=false; // COLONIA
+    document.getElementById('gstCpstl').disabled=false; // CODIGO POSTAL
+    document.getElementById('gstStado').disabled=false; // CUIDAD
+    document.getElementById('gstCasa').disabled=false; // NUM. DE CASA
+    document.getElementById('gstClulr').disabled=false; // NUM. DE CELULAR
+    document.getElementById('gstExTel').disabled=false; // NUM. DE EXTENCION
+    document.getElementById('gstCiuda').disabled=false; // CUIDAD
+
+//------ DATOS DEL PUESTO
+    document.getElementById('gstNmpld').disabled=false; // NUM. DE EMPLEADO
+    document.getElementById('gstIdpst').disabled=false; // NUM. DE EMPLEADO
+    document.getElementById('gstCargo').disabled=false;
+    document.getElementById('gstIDCat').disabled=false;
     //document.getElementById('gstIDSub').disabled=false;
     document.getElementById('gstCorro').disabled = false;
     document.getElementById('gstCinst').disabled = false;
@@ -1080,7 +1087,59 @@ function openEdit() {
     //.../Habilita los campos FIN
 }
 
-function asignar() {
+//CIERRA LAS HABILITACIONES DE LA EDICIÓN EN PERFIL DE INSTRUCTOR
+function cerrarEdit(){
+   // alert("CERRAR!"); 
+	$("#buton").toggle();
+    $("#butons").toggle();
+   div =  document.getElementById('cerrar1');
+   div.style.display = 'none';
+   div =  document.getElementById('cerrar');
+   div.style.display = '';
+//Inhabilita los campos INICIO
+    document.getElementById('gstNombr').disabled=true; // NOMBRE
+    document.getElementById('gstApell').disabled=true; // APELLIDO
+    document.getElementById('gstLunac').disabled=true; // LUGAR DE NACIMIENTO
+    document.getElementById('gstFenac').disabled=true; // FECHA DE NACIMIENTO
+    document.getElementById('gstStcvl').disabled=true; // ESTADO CIVIL
+    document.getElementById('gstCurp').disabled=true; //CURP
+    document.getElementById('gstRfc').disabled=true; //RFC
+    document.getElementById('gstNpspr').disabled=true; // NUMERO DE PASAPORTE
+    document.getElementById('gstPsvig').disabled=true; // VIGENCIA DEL PASAPORTE
+    document.getElementById('gstVisa').disabled=true; // PAIS DE LA VISA
+    document.getElementById('gstVignt').disabled=true; // VISA VIGENCIA
+    document.getElementById('gstNucrt').disabled=true; // NUMERO DE CARTLLA
+    document.getElementById('gstCalle').disabled=true; // CALLE
+    document.getElementById('gstNumro').disabled=true; // NUMERO DE DOMICILIO
+    document.getElementById('gstClnia').disabled=true; // COLONIA
+    document.getElementById('gstCpstl').disabled=true; // CODIGO POSTAL
+    document.getElementById('gstStado').disabled=true; // CUIDAD
+    document.getElementById('gstCasa').disabled=true; // NUM. DE CASA
+    document.getElementById('gstClulr').disabled=true; // NUM. DE CELULAR
+    document.getElementById('gstExTel').disabled=true; // NUM. DE EXTENCION
+    document.getElementById('gstCiuda').disabled=true; // CUIDAD
+
+//------ DATOS DEL PUESTO
+    document.getElementById('gstNmpld').disabled=true; // NUM. DE EMPLEADO
+    document.getElementById('gstIdpst').disabled=true; // NUM. DE EMPLEADO
+    document.getElementById('gstCargo').disabled=true;
+    document.getElementById('gstIDCat').disabled=true;
+    //document.getElementById('gstIDSub').disabled=true;
+    document.getElementById('gstCorro').disabled=true;
+    document.getElementById('gstCinst').disabled=true;
+    document.getElementById('gstFeing').disabled=true;
+    document.getElementById('gstIDuni').disabled=true;
+    
+    document.getElementById('gstAreID').disabled=true;//ID área
+    document.getElementById('gstPstID').disabled=true;//ID puesto
+    document.getElementById('gstSpcID').disabled=true;//ID especialidad
+    //document.getElementById('gstSigID').disabled=true;//ID siglas
+    document.getElementById('gstIDara').disabled=true;//ID del área
+
+//.../Habilita los campos FIN
+}
+
+function asignar(){
     var gstIdper = document.getElementById('gstIdper').value;
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
