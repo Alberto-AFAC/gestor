@@ -119,8 +119,8 @@ function closeDtlls() {
 //muestra ventana estudios
 function estudio(gstIdper) {
 
- //   var d=gstIdper.split("*");
-         gstIdper;
+    //   var d=gstIdper.split("*");
+    gstIdper;
     $("#Forstd #gstIDper").val(gstIdper);
 }
 
@@ -310,7 +310,7 @@ function actProfsn() {
 
 function profesion(gstIdper) {
 
-    $("#Forpro #AgstIDper").val(gstIdper); 
+    $("#Forpro #AgstIDper").val(gstIdper);
 }
 
 function actPrfsn(datos) {
@@ -392,96 +392,31 @@ function mosEtdio() {
 }
 
 
-function asignacion(gstIdper){
+function asignacion(gstIdper) {
 
-$.ajax({
-url:'../php/conPerson.php',
-type:'POST'
-}).done(function(resp){
-    obj = JSON.parse(resp);
-    var res = obj.data;  
+    $.ajax({
+        url: '../php/conPerson.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
 
-        for(i=0; i<res.length;i++){
+        for (i = 0; i < res.length; i++) {
 
-            if(obj.data[i].gstIdper == gstIdper){
-                
-       // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-        $("#Dtall #gstIdper").val(obj.data[i].gstIdper);        
-        $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-        $("#Dtall #gstApell").val(obj.data[i].gstApell);   
-         }
-       } 
-  })  
+            if (obj.data[i].gstIdper == gstIdper) {
+
+                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
+                $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
+                $("#Dtall #gstApell").val(obj.data[i].gstApell);
+            }
+        }
+    })
 
 }
 
 
-function perfil(gstIdper){
-
-$.ajax({
-url:'../php/conPerson.php',
-type:'POST'
-}).done(function(resp){
-    obj = JSON.parse(resp);
-    var res = obj.data;  
-
-        for(i=0; i<res.length;i++){
-
-            if(obj.data[i].gstIdper == gstIdper){
-                
-       // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-        $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
-        $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell);
-        $("#nombrecompleto").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell);
-        $("#cargopersonal").val(obj.data[i].gstCargo);     
-        $("#Dtall #gstIdper").val(obj.data[i].gstIdper);        
-        $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-        $("#Dtall #gstApell").val(obj.data[i].gstApell);       
-        $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-        $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
-        $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
-        $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
-        $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
-        $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
-        $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
-        $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
-        $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-        $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
-        $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
-        $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
-        $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
-        $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
-        $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
-        $("#Dtall #gstStado").val(obj.data[i].gstStado);
-        $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
-        $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
-        $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
-        $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
-        $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-        $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-        $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
-        $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
-        $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-        $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-        $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
-        $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-        $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-
-        $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
-        $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
-        $("#Pusto #gstAreID").val(obj.data[i].gstAreID);//ID área
-
-//        alert(obj.data[i].gstAreID);
-
-        $("#Pusto #gstPstID").val(obj.data[i].gstPstID);//ID puesto
-        $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID);//ID especialidad
-      //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
-         }
-       } 
-  })  
+function perfil(gstIdper) {
 
     $.ajax({
         url: '../php/conPerson.php',
@@ -531,7 +466,72 @@ type:'POST'
                 $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
                 $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
                 $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-               
+                $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
+
+                $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+                $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
+
+                $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+
+                //        alert(obj.data[i].gstAreID);
+
+                $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
+                $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+
+            }
+        }
+    })
+
+    $.ajax({
+        url: '../php/conPerson.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (i = 0; i < res.length; i++) {
+
+            if (obj.data[i].gstIdper == gstIdper) {
+
+                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
+                $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                $("#cargopersonal").val(obj.data[i].gstCargo);
+                $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
+                $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
+                $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
+                $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
+                $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
+                $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
+                $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
+                $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
+                $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
+                $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+                $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
+                $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
+                $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
+                $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
+                $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
+                $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
+                $("#Dtall #gstStado").val(obj.data[i].gstStado);
+                $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
+                $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
+                $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
+
+                $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
+                $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
+                $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
+                $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
+                $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
+                $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
+                $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
+                $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
+                $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
+
 
                 $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
 
@@ -656,80 +656,15 @@ type:'POST'
 }
 
 
-function inspector(gstIdper){
+function inspector(gstIdper) {
 
-    var d=gstIdper.split("*");
+    var d = gstIdper.split("*");
     gstIdper = d[0];
     gstIDCat = d[1];
     gstEvalu = d[2];
 
 
-    if(gstEvalu=='NO'){ $("#ocultar").hide(); }else{ $("#ocultar").show(); }
-
-$.ajax({
-url:'../php/conPerson.php',
-type:'POST'
-}).done(function(resp){
-    obj = JSON.parse(resp);
-    var res = obj.data;  
-
-        for(i=0; i<res.length;i++){
-
-            if(obj.data[i].gstIdper == gstIdper){
-                
-       // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-        $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
-        $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell);
-        $("#nombrecompleto").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell);
-        $("#cargopersonal").val(obj.data[i].gstCargo);     
-        $("#Dtall #gstIdper").val(obj.data[i].gstIdper);    	
-        $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-        $("#Dtall #gstApell").val(obj.data[i].gstApell);       
-        $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-        $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
-        $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
-        $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
-        $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
-        $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
-        $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
-        $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
-        $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-        $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
-        $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
-        $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
-        $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
-        $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
-        $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
-        $("#Dtall #gstStado").val(obj.data[i].gstStado);
-        $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
-        $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
-        $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
-        $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
-        $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-        $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-        $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
-        $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
-        $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-        $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-        $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
-        $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-        $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-
-        $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
-        $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
-        $("#Pusto #gstAreID").val(obj.data[i].gstAreID);//ID área
-
-//        alert(obj.data[i].gstAreID);
-
-        $("#Pusto #gstPstID").val(obj.data[i].gstPstID);//ID puesto
-        $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID);//ID especialidad
-      //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
-         }
-       } 
-  })  
+    if (gstEvalu == 'NO') { $("#ocultar").hide(); } else { $("#ocultar").show(); }
 
     $.ajax({
         url: '../php/conPerson.php',
@@ -779,7 +714,72 @@ type:'POST'
                 $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
                 $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
                 $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-               
+                $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
+
+                $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+                $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
+
+                $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+
+                //        alert(obj.data[i].gstAreID);
+
+                $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
+                $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+
+            }
+        }
+    })
+
+    $.ajax({
+        url: '../php/conPerson.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (i = 0; i < res.length; i++) {
+
+            if (obj.data[i].gstIdper == gstIdper) {
+
+                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
+                $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                $("#cargopersonal").val(obj.data[i].gstCargo);
+                $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
+                $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
+                $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
+                $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
+                $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
+                $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
+                $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
+                $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
+                $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
+                $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+                $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
+                $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
+                $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
+                $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
+                $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
+                $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
+                $("#Dtall #gstStado").val(obj.data[i].gstStado);
+                $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
+                $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
+                $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
+
+                $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
+                $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
+                $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
+                $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
+                $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
+                $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
+                $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
+                $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
+                $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
+
 
                 $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
 
@@ -1024,118 +1024,118 @@ function resultado(result) {
             }
             // var logo = new Image();
             // logo.src = '../dist/img/AFACPDF.png';
-            var pdf = new jsPDF("p", "mm", "a4");
+            // var pdf = new jsPDF("p", "mm", "a4");
 
 
-            // pdf.addImage(logo, 'PNG', 100, 110, 15, 20);
+            // // pdf.addImage(logo, 'PNG', 100, 110, 15, 20);
 
-            /* INICIO DE PDF*/
+            // /* INICIO DE PDF*/
 
-            /* OBTENER FECHA DE IMPRESIÓN*/
-            var currentDate = new Date().toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric'
-            });
-
-            var fecha = "Fecha de impresión : " + currentDate;
-            pdf.setFontSize(9);
-            pdf.text(15, 290, fecha);
-
-            /* OBTENER FECHA DE IMPRESIÓN*/
-
-            /* TITULOS DEL DOCUMENTO*/
-            pdf.setFontSize(12)
-            pdf.setFontType('bold')
-            pdf.text(96, 20, 'Apéndice E')
-            pdf.text(73, 26, 'Cédula de Evaluación de Capacidades')
-
-            // NUMERO DE OFICIO
-            pdf.setFontSize(9)
-            pdf.addFont('Montserrat', 'sans-serif');
-            pdf.setFont('Arial')
-            pdf.text(150, 37, 'Folio/Oficio No.' + gstIdper + '')
-                //AFAC EVALUA A:
-            pdf.text(66, 45, 'La Agencia Federal de Aviación Civil, identifica y evalúa a:')
-
-            //DATOS DEL CURSO
-            pdf.setFontSize(7)
-            pdf.setFontType('normal')
-            pdf.setTextColor(182, 182, 182);
-            pdf.text(38, 58, 'Apellido Paterno')
-            pdf.text(100, 58, 'Apellido Materno')
-            pdf.text(160, 58, 'Nombres(s): ' + d[1] + '')
-
-            //ESPECIALIDADES
-            pdf.setFontSize(10)
-            pdf.setFontType('normal')
-            pdf.setTextColor(0, 0, 0);
-            pdf.text(30, 70, 'Especialidad: ' + obj.data[E].gstIDCat + '')
-            pdf.text(32, 75, 'Escolaridad:')
-            pdf.text(32, 80, 'Licencia No.')
-            pdf.text(30, 85, 'Horas de vuelo:')
-            pdf.text(90, 70, 'Adscripción:')
-            pdf.text(155, 70, 'Area:')
-            pdf.text(155, 75, 'Formato PTA:')
-            pdf.text(155, 80, 'Vigencia:')
-            pdf.text(155, 85, 'Años de experiencia:')
-
-            //PERFIL DE INSPECTOR
-            pdf.setFontSize(10)
-            pdf.setFontType('normal')
-            pdf.setTextColor(0, 0, 0);
-            pdf.text(25, 110, 'Perfil del Inspector PEL')
-            pdf.text(25, 116, 'Con fundamento en la CP AV 13-10/R8 que establece perfil, funciones, responsabilidades y política de')
-            pdf.text(25, 120, 'capacitación del inspector verificador aeronáutico, inspectores investigadores de accidentes e inspectores de ')
-            pdf.text(25, 124, 'busqueda y salvamentos adscritos a la Agencia Federal de Aviación Civil, y de conformidad con lo indicado en el')
-            pdf.text(25, 128, 'numeral 2.2. El Inspector Verificador Aeronáutico de Licencias (IVA-L) deberá contar con la siguiente experiencia')
-            pdf.text(25, 132, 'profesional.')
-
-            pdf.setFontSize(10)
-            pdf.text(25, 140, '1.-')
-            pdf.text(25, 150, '2.-')
-            pdf.text(25, 160, '3.-')
-            pdf.text(25, 170, '4.-')
-
-
-            /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
-            // var columns = ["CUMPLE", "NO CUMPLE"];
-            // var rows = ['SI'];
-            // ['NO'];
-            // /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
-
-
-            // pdf.autoTable(columns, rows, {
-            //     headerStyles: {
-            //         fillColor: [2500, 0, 0]
-            //     },
-            //     styles: {
-            //         overflow: 'linebreak',
-            //         fontSize: 9,
-
-            //     },
-
-
-            //     margin: {
-            //         top: 140
-            //     },
-            //     pageBreak: 'auto',
-            //     beforePageConten: function(data) {
-            //         pdf.text("Header", 120, 120);
-            //     }
-
+            // /* OBTENER FECHA DE IMPRESIÓN*/
+            // var currentDate = new Date().toLocaleDateString('en-GB', {
+            //     day: 'numeric',
+            //     month: 'short',
+            //     year: 'numeric'
             // });
-            /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-            const pageCount = pdf.internal.getNumberOfPages();
-            for (var i = 1; i <= pageCount; i++) {
-                pdf.setFontSize(8)
-                pdf.setPage(i);
-                pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-                    "right");
-            }
-            /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
 
-            window.open(pdf.output('bloburl'))
+            // var fecha = "Fecha de impresión : " + currentDate;
+            // pdf.setFontSize(9);
+            // pdf.text(15, 290, fecha);
+
+            // /* OBTENER FECHA DE IMPRESIÓN*/
+
+            // /* TITULOS DEL DOCUMENTO*/
+            // pdf.setFontSize(12)
+            // pdf.setFontType('bold')
+            // pdf.text(96, 20, 'Apéndice E')
+            // pdf.text(73, 26, 'Cédula de Evaluación de Capacidades')
+
+            // // NUMERO DE OFICIO
+            // pdf.setFontSize(9)
+            // pdf.addFont('Montserrat', 'sans-serif');
+            // pdf.setFont('Arial')
+            // pdf.text(150, 37, 'Folio/Oficio No.' + gstIdper + '')
+            //     //AFAC EVALUA A:
+            // pdf.text(66, 45, 'La Agencia Federal de Aviación Civil, identifica y evalúa a:')
+
+            // //DATOS DEL CURSO
+            // pdf.setFontSize(7)
+            // pdf.setFontType('normal')
+            // pdf.setTextColor(182, 182, 182);
+            // pdf.text(38, 58, 'Apellido Paterno')
+            // pdf.text(100, 58, 'Apellido Materno')
+            // pdf.text(160, 58, 'Nombres(s): ' + d[1] + '')
+
+            // //ESPECIALIDADES
+            // pdf.setFontSize(10)
+            // pdf.setFontType('normal')
+            // pdf.setTextColor(0, 0, 0);
+            // pdf.text(30, 70, 'Especialidad: ' + obj.data[E].gstIDCat + '')
+            // pdf.text(32, 75, 'Escolaridad:')
+            // pdf.text(32, 80, 'Licencia No.')
+            // pdf.text(30, 85, 'Horas de vuelo:')
+            // pdf.text(90, 70, 'Adscripción:')
+            // pdf.text(155, 70, 'Area:')
+            // pdf.text(155, 75, 'Formato PTA:')
+            // pdf.text(155, 80, 'Vigencia:')
+            // pdf.text(155, 85, 'Años de experiencia:')
+
+            // //PERFIL DE INSPECTOR
+            // pdf.setFontSize(10)
+            // pdf.setFontType('normal')
+            // pdf.setTextColor(0, 0, 0);
+            // pdf.text(25, 110, 'Perfil del Inspector PEL')
+            // pdf.text(25, 116, 'Con fundamento en la CP AV 13-10/R8 que establece perfil, funciones, responsabilidades y política de')
+            // pdf.text(25, 120, 'capacitación del inspector verificador aeronáutico, inspectores investigadores de accidentes e inspectores de ')
+            // pdf.text(25, 124, 'busqueda y salvamentos adscritos a la Agencia Federal de Aviación Civil, y de conformidad con lo indicado en el')
+            // pdf.text(25, 128, 'numeral 2.2. El Inspector Verificador Aeronáutico de Licencias (IVA-L) deberá contar con la siguiente experiencia')
+            // pdf.text(25, 132, 'profesional.')
+
+            // pdf.setFontSize(10)
+            // pdf.text(25, 140, '1.-')
+            // pdf.text(25, 150, '2.-')
+            // pdf.text(25, 160, '3.-')
+            // pdf.text(25, 170, '4.-')
+
+
+            // /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
+            // // var columns = ["CUMPLE", "NO CUMPLE"];
+            // // var rows = ['SI'];
+            // // ['NO'];
+            // // /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
+
+
+            // // pdf.autoTable(columns, rows, {
+            // //     headerStyles: {
+            // //         fillColor: [2500, 0, 0]
+            // //     },
+            // //     styles: {
+            // //         overflow: 'linebreak',
+            // //         fontSize: 9,
+
+            // //     },
+
+
+            // //     margin: {
+            // //         top: 140
+            // //     },
+            // //     pageBreak: 'auto',
+            // //     beforePageConten: function(data) {
+            // //         pdf.text("Header", 120, 120);
+            // //     }
+
+            // // });
+            // /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+            // const pageCount = pdf.internal.getNumberOfPages();
+            // for (var i = 1; i <= pageCount; i++) {
+            //     pdf.setFontSize(8)
+            //     pdf.setPage(i);
+            //     pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+            //         "right");
+            // }
+            // /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+
+            // window.open(pdf.output('bloburl'))
         }
         html += '</tbody></table></div>';
         $("#rsltad").html(html);
@@ -1277,7 +1277,7 @@ function actDatos() {
     var gstCasa = document.getElementById('gstCasa').value; // NUM. DE CASA
     var gstClulr = document.getElementById('gstClulr').value; // NUM. DE CELULAR
     var gstExTel = document.getElementById('gstExTel').value; // NUM. DE EXTENCION
-    
+
     datos = 'gstIdper=' + gstIdper + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstNucrt=' + gstNucrt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&opcion=actualizar'
 
     if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstNpspr == '' || gstPsvig == '' || gstVisa == '' || gstVignt == '' || gstNucrt == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '') {
@@ -1329,11 +1329,11 @@ function actPuesto() {
     var gstPstID = document.getElementById('gstPstID').value; //ID puesto
     var gstSpcID = document.getElementById('gstSpcID').value; //ID especialidad
     var gstAcReg = document.getElementById('gstAcReg').value;
-    
 
-    datos = 'pstIdper='+pstIdper+'&gstNmpld='+gstNmpld+'&gstIdpst='+gstIdpst+'&gstCargo='+gstCargo+'&gstIDCat='+gstIDCat+'&gstIDSub='+gstIDSub+'&gstAreID='+gstAreID+'&gstPstID='+gstPstID+'&gstSpcID='+gstSpcID+'&gstIDara='+gstIDara+'&gstCorro='+gstCorro+'&gstCinst='+gstCinst+'&gstFeing='+gstFeing+'&gstIDuni='+gstIDuni+'&gstAcReg='+gstAcReg+'&opcion=actPrsnls';
 
-    if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstCorro == '' || gstCinst == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni=='') {
+    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&opcion=actPrsnls';
+
+    if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstCorro == '' || gstCinst == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni == '') {
 
         $('#empty1').toggle('toggle');
         setTimeout(function() {
@@ -1366,47 +1366,47 @@ function actPuesto() {
 }
 
 
-function openEdit(){
-   // alert("prueba2!"); 
-	$("#buton").toggle(100);
+function openEdit() {
+    // alert("prueba2!"); 
+    $("#buton").toggle(100);
     $("#butons").toggle(100);
-   div =  document.getElementById('cerrar1');
-   div.style.display = '';
-   div =  document.getElementById('cerrar');
-   div.style.display = 'none';
-//Habilita los campos INICIO
-    document.getElementById('gstNombr').disabled=false; // NOMBRE
-    document.getElementById('gstApell').disabled=false; // APELLIDO
-    document.getElementById('gstLunac').disabled=false; // LUGAR DE NACIMIENTO
-    document.getElementById('gstFenac').disabled=false; // FECHA DE NACIMIENTO
-    document.getElementById('gstStcvl').disabled=false; // ESTADO CIVIL
-    document.getElementById('gstCurp').disabled=false; //CURP
-    document.getElementById('gstRfc').disabled=false; //RFC
-    document.getElementById('gstNpspr').disabled=false; // NUMERO DE PASAPORTE
-    document.getElementById('gstPsvig').disabled=false; // VIGENCIA DEL PASAPORTE
-    document.getElementById('gstVisa').disabled=false; // PAIS DE LA VISA
-    document.getElementById('gstVignt').disabled=false; // VISA VIGENCIA
-    document.getElementById('gstNucrt').disabled=false; // NUMERO DE CARTLLA
-    document.getElementById('gstCalle').disabled=false; // CALLE
-    document.getElementById('gstNumro').disabled=false; // NUMERO DE DOMICILIO
-    document.getElementById('gstClnia').disabled=false; // COLONIA
-    document.getElementById('gstCpstl').disabled=false; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled=false; // CUIDAD
-    document.getElementById('gstCasa').disabled=false; // NUM. DE CASA
-    document.getElementById('gstClulr').disabled=false; // NUM. DE CELULAR
-    document.getElementById('gstExTel').disabled=false; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled=false; // CUIDAD
+    div = document.getElementById('cerrar1');
+    div.style.display = '';
+    div = document.getElementById('cerrar');
+    div.style.display = 'none';
+    //Habilita los campos INICIO
+    document.getElementById('gstNombr').disabled = false; // NOMBRE
+    document.getElementById('gstApell').disabled = false; // APELLIDO
+    document.getElementById('gstLunac').disabled = false; // LUGAR DE NACIMIENTO
+    document.getElementById('gstFenac').disabled = false; // FECHA DE NACIMIENTO
+    document.getElementById('gstStcvl').disabled = false; // ESTADO CIVIL
+    document.getElementById('gstCurp').disabled = false; //CURP
+    document.getElementById('gstRfc').disabled = false; //RFC
+    document.getElementById('gstNpspr').disabled = false; // NUMERO DE PASAPORTE
+    document.getElementById('gstPsvig').disabled = false; // VIGENCIA DEL PASAPORTE
+    document.getElementById('gstVisa').disabled = false; // PAIS DE LA VISA
+    document.getElementById('gstVignt').disabled = false; // VISA VIGENCIA
+    document.getElementById('gstNucrt').disabled = false; // NUMERO DE CARTLLA
+    document.getElementById('gstCalle').disabled = false; // CALLE
+    document.getElementById('gstNumro').disabled = false; // NUMERO DE DOMICILIO
+    document.getElementById('gstClnia').disabled = false; // COLONIA
+    document.getElementById('gstCpstl').disabled = false; // CODIGO POSTAL
+    document.getElementById('gstStado').disabled = false; // CUIDAD
+    document.getElementById('gstCasa').disabled = false; // NUM. DE CASA
+    document.getElementById('gstClulr').disabled = false; // NUM. DE CELULAR
+    document.getElementById('gstExTel').disabled = false; // NUM. DE EXTENCION
+    document.getElementById('gstCiuda').disabled = false; // CUIDAD
 
-//------ DATOS DEL PUESTO
-    document.getElementById('gstNmpld').disabled=false; // NUM. DE EMPLEADO
-    document.getElementById('gstIdpst').disabled=false; // NUM. DE EMPLEADO
-    document.getElementById('gstCargo').disabled=false;
-    document.getElementById('gstIDCat').disabled=false;
+    //------ DATOS DEL PUESTO
+    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
+    document.getElementById('gstIdpst').disabled = false; // NUM. DE EMPLEADO
+    document.getElementById('gstCargo').disabled = false;
+    document.getElementById('gstIDCat').disabled = false;
     //document.getElementById('gstIDSub').disabled=false;
     document.getElementById('gstCorro').disabled = false;
     document.getElementById('gstCinst').disabled = false;
     document.getElementById('gstFeing').disabled = false;
-   // document.getElementById('gstIDuni').disabled = false;
+    // document.getElementById('gstIDuni').disabled = false;
 
     document.getElementById('gstAreID').disabled = false; //ID área
     document.getElementById('gstPstID').disabled = false; //ID puesto
@@ -1419,58 +1419,58 @@ function openEdit(){
 }
 
 //CIERRA LAS HABILITACIONES DE LA EDICIÓN EN PERFIL DE INSTRUCTOR
-function cerrarEdit(){
-   // alert("CERRAR!"); 
-	$("#buton").toggle();
+function cerrarEdit() {
+    // alert("CERRAR!"); 
+    $("#buton").toggle();
     $("#butons").toggle();
-   div =  document.getElementById('cerrar1');
-   div.style.display = 'none';
-   div =  document.getElementById('cerrar');
-   div.style.display = '';
-//Inhabilita los campos INICIO
-    document.getElementById('gstNombr').disabled=true; // NOMBRE
-    document.getElementById('gstApell').disabled=true; // APELLIDO
-    document.getElementById('gstLunac').disabled=true; // LUGAR DE NACIMIENTO
-    document.getElementById('gstFenac').disabled=true; // FECHA DE NACIMIENTO
-    document.getElementById('gstStcvl').disabled=true; // ESTADO CIVIL
-    document.getElementById('gstCurp').disabled=true; //CURP
-    document.getElementById('gstRfc').disabled=true; //RFC
-    document.getElementById('gstNpspr').disabled=true; // NUMERO DE PASAPORTE
-    document.getElementById('gstPsvig').disabled=true; // VIGENCIA DEL PASAPORTE
-    document.getElementById('gstVisa').disabled=true; // PAIS DE LA VISA
-    document.getElementById('gstVignt').disabled=true; // VISA VIGENCIA
-    document.getElementById('gstNucrt').disabled=true; // NUMERO DE CARTLLA
-    document.getElementById('gstCalle').disabled=true; // CALLE
-    document.getElementById('gstNumro').disabled=true; // NUMERO DE DOMICILIO
-    document.getElementById('gstClnia').disabled=true; // COLONIA
-    document.getElementById('gstCpstl').disabled=true; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled=true; // CUIDAD
-    document.getElementById('gstCasa').disabled=true; // NUM. DE CASA
-    document.getElementById('gstClulr').disabled=true; // NUM. DE CELULAR
-    document.getElementById('gstExTel').disabled=true; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled=true; // CUIDAD
+    div = document.getElementById('cerrar1');
+    div.style.display = 'none';
+    div = document.getElementById('cerrar');
+    div.style.display = '';
+    //Inhabilita los campos INICIO
+    document.getElementById('gstNombr').disabled = true; // NOMBRE
+    document.getElementById('gstApell').disabled = true; // APELLIDO
+    document.getElementById('gstLunac').disabled = true; // LUGAR DE NACIMIENTO
+    document.getElementById('gstFenac').disabled = true; // FECHA DE NACIMIENTO
+    document.getElementById('gstStcvl').disabled = true; // ESTADO CIVIL
+    document.getElementById('gstCurp').disabled = true; //CURP
+    document.getElementById('gstRfc').disabled = true; //RFC
+    document.getElementById('gstNpspr').disabled = true; // NUMERO DE PASAPORTE
+    document.getElementById('gstPsvig').disabled = true; // VIGENCIA DEL PASAPORTE
+    document.getElementById('gstVisa').disabled = true; // PAIS DE LA VISA
+    document.getElementById('gstVignt').disabled = true; // VISA VIGENCIA
+    document.getElementById('gstNucrt').disabled = true; // NUMERO DE CARTLLA
+    document.getElementById('gstCalle').disabled = true; // CALLE
+    document.getElementById('gstNumro').disabled = true; // NUMERO DE DOMICILIO
+    document.getElementById('gstClnia').disabled = true; // COLONIA
+    document.getElementById('gstCpstl').disabled = true; // CODIGO POSTAL
+    document.getElementById('gstStado').disabled = true; // CUIDAD
+    document.getElementById('gstCasa').disabled = true; // NUM. DE CASA
+    document.getElementById('gstClulr').disabled = true; // NUM. DE CELULAR
+    document.getElementById('gstExTel').disabled = true; // NUM. DE EXTENCION
+    document.getElementById('gstCiuda').disabled = true; // CUIDAD
 
-//------ DATOS DEL PUESTO
-    document.getElementById('gstNmpld').disabled=true; // NUM. DE EMPLEADO
-    document.getElementById('gstIdpst').disabled=true; // NUM. DE EMPLEADO
-    document.getElementById('gstCargo').disabled=true;
-    document.getElementById('gstIDCat').disabled=true;
+    //------ DATOS DEL PUESTO
+    document.getElementById('gstNmpld').disabled = true; // NUM. DE EMPLEADO
+    document.getElementById('gstIdpst').disabled = true; // NUM. DE EMPLEADO
+    document.getElementById('gstCargo').disabled = true;
+    document.getElementById('gstIDCat').disabled = true;
     //document.getElementById('gstIDSub').disabled=true;
-    document.getElementById('gstCorro').disabled=true;
-    document.getElementById('gstCinst').disabled=true;
-    document.getElementById('gstFeing').disabled=true;
-    
-    document.getElementById('gstAreID').disabled=true;//ID área
-    document.getElementById('gstPstID').disabled=true;//ID puesto
-    document.getElementById('gstSpcID').disabled=true;//ID especialidad
+    document.getElementById('gstCorro').disabled = true;
+    document.getElementById('gstCinst').disabled = true;
+    document.getElementById('gstFeing').disabled = true;
+
+    document.getElementById('gstAreID').disabled = true; //ID área
+    document.getElementById('gstPstID').disabled = true; //ID puesto
+    document.getElementById('gstSpcID').disabled = true; //ID especialidad
     //document.getElementById('gstSigID').disabled=true;//ID siglas
-    document.getElementById('gstIDara').disabled=true;//ID del área
+    document.getElementById('gstIDara').disabled = true; //ID del área
     document.getElementById('gstAcReg').disabled = true;
     document.getElementById('gstIDuni').disabled = true;
-//.../Habilita los campos FIN
+    //.../Habilita los campos FIN
 }
 
-function asignar(){
+function asignar() {
     var gstIdper = document.getElementById('gstIdper').value;
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
@@ -1478,11 +1478,11 @@ function asignar(){
     var AgstIDuni = document.getElementById('gstIDuni').value;
     var AgstAcReg = document.getElementById('AgstAcReg').value;
 
-    datas = 'gstIdper='+gstIdper+'&AgstCargo='+AgstCargo+'&AgstIDCat='+AgstIDCat+'&AgstIDuni='+AgstIDuni+'&AgstAcReg='+AgstAcReg+'&opcion=asignar';
+    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&opcion=asignar';
 
     //alert(datas);
 
-   if(AgstCargo == '' || AgstIDCat == '' || AgstAcReg == '' || AgstIDuni==''){
+    if (AgstCargo == '' || AgstIDCat == '' || AgstAcReg == '' || AgstIDuni == '') {
 
         $('#empty2').toggle('toggle');
         setTimeout(function() {
