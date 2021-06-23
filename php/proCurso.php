@@ -111,7 +111,7 @@ function actualizar($idinsp, $nombre, $apellidos, $correo, $idarea, $puesto,$uni
 
 function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
 
-		$query = "SELECT gstNombr,gstApell,gstCinst, gstCorro, gstTipo, modalidad, gstCargo FROM personal INNER JOIN cursos	ON cursos.idinsp = personal.gstIdper
+		$query = "SELECT gstNombr,gstApell,gstCinst, gstCorro, gstTipo, modalidad, gstCargo, fcurso FROM personal INNER JOIN cursos	ON cursos.idinsp = personal.gstIdper
 					INNER JOIN listacursos ON cursos.idmstr = listacursos.gstIdlsc WHERE personal.gstIdper = $idinsps AND cursos.estado = 0";
 		$resultado= mysqli_query($conexion,$query);
 		$fila = mysqli_fetch_assoc($resultado);
@@ -122,6 +122,9 @@ function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$m
 		$modalidad = $fila['modalidad'];	
 		$tipoCurso = $fila['gstTipo'];	
 		$cargo = $fila['gstCargo'];
+		$apellido = $fila['gstApell'];
+		$fcurso   = date("d-m-Y");
+
 		$to = "jmondragonescamilla@gmail.com";
 		// $to = ($correo);
 		$subject = "NUEVO CURSO PROGRAMADO";
@@ -130,10 +133,10 @@ function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$m
 		$message = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
 		<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
 		<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$idinsps."</td></tr>
-		<tr><td style='text-align: center; font-size: 15px;'>Nombre del participante: ".$nombre."</td></tr>
-		<tr><td style='text-align: center; font-size: 15px;'>Tipo: ".$tipoCurso."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Nombre del participante: ".$nombre." ".$apellido."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Tipo de curso: ".$tipoCurso."</td></tr>
 		<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: ".$fcurso."</td></tr>
-		<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$hcurso."</td></tr>
+		<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$hcurso." Hrs</td></tr>
 		<tr><td style='text-align: center; font-size: 15px;'>Cargo: ".$cargo."</td></tr>
 		<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$sede."</td></tr>
 		<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$modalidad."</td></tr>
