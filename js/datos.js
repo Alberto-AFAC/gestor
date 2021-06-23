@@ -1298,10 +1298,8 @@ function openEdit(){
    // alert("prueba2!"); 
 	$("#buton").toggle(100);
     $("#butons").toggle(100);
-    
    div =  document.getElementById('cerrar1');
    div.style.display = '';
-
    div =  document.getElementById('cerrar');
    div.style.display = 'none';
 //Habilita los campos INICIO
