@@ -166,9 +166,11 @@
               </div>
               <div class="modal-body">
               <div style="text-align: right">
-              <img onclick="resultado()" src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png" class="img-fluid swing" width="46px" alt="Crear-PDF">
+              <img onclick="pdf()" src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png" class="img-fluid swing" width="46px" alt="Crear-PDF">
               </div>
               <form id="Result">
+
+<input type="hidden" class="form-control" id="pdfIdper" name="pdfIdper" disabled="">
               <div class="row">  
               <div class="form-group">
                   <div class="col-sm-5">
