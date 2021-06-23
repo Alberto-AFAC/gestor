@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!--GENERATE PDF-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
   <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
@@ -27,27 +30,27 @@
 
 <?php
 
-$sql = "SELECT gstIdpais,gstPais FROM pais WHERE estado = 0";
-$pais = mysqli_query($conexion,$sql);
+      $sql = "SELECT gstIdpais,gstPais FROM pais WHERE estado = 0";
+      $pais = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdpais,gstPais FROM pais WHERE estado = 0";
-$paises = mysqli_query($conexion,$sql);
+      $sql = "SELECT gstIdpais,gstPais FROM pais WHERE estado = 0";
+      $paises = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdcat,gstCatgr, gstCsigl FROM categorias WHERE estado = 0";
-$categ = mysqli_query($conexion,$sql);
+      $sql = "SELECT gstIdcat,gstCatgr, gstCsigl FROM categorias WHERE estado = 0";
+      $categ = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdcat,gstCatgr, gstCsigl FROM categorias WHERE estado = 0";
-$categs = mysqli_query($conexion,$sql);
+      $sql = "SELECT gstIdcat,gstCatgr, gstCsigl FROM categorias WHERE estado = 0";
+      $categs = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
-$ejec = mysqli_query($conexion,$sql);
+      $sql = "SELECT  gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
+      $ejec = mysqli_query($conexion,$sql);
 
 ?>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+    <div class="wrapper">
 
 <?php
-include('header.php');
+    include('header.php');
 ?>
 
  
@@ -162,6 +165,9 @@ include('header.php');
                 <h4 class="modal-title">RESULTADO</h4>
               </div>
               <div class="modal-body">
+              <div style="text-align: right">
+              <img onclick="resultado()" src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png" class="img-fluid swing" width="46px" alt="Crear-PDF">
+              </div>
               <form id="Result">
               <div class="row">  
               <div class="form-group">
