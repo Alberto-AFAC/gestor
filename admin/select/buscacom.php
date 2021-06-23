@@ -23,7 +23,7 @@
 					data:'valor=' + $('#AgstAcReg').val(),
 					url:'session/',
 					success:function(r){
-						$('#select2').load('select/tablacom.php');
+						$('#select3').load('select/tablacom.php');
 					}
 				});
 			});

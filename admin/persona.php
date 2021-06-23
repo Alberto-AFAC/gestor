@@ -40,8 +40,8 @@ $Acat = mysqli_query($conexion,$sql);
 $sql = "SELECT  gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
 $Asub1 = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdCom,gstRgion,gstNombr FROM comandancia WHERE estado = 0";
-$Auni = mysqli_query($conexion,$sql);
+// $sql = "SELECT  gstIdCom,gstRgion,gstNombr FROM comandancia WHERE estado = 0";
+// $Auni = mysqli_query($conexion,$sql);
 
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
@@ -114,12 +114,12 @@ include('header.php');
 <div class="form-group">
 <div class="col-sm-4">
 <label>NOMBRE(S)</label>
-<input type="text"onkeyup="mayus(this);"class="form-control disabled" id="gstNombr" value="<?php echo $data['gstNombr'];?>" disabled="">
+<input type="text"onkeyup="mayus(this);"class="form-control disabled" id="gstNombr" disabled="">
 </div>
 
 <div class="col-sm-4">
 <label>APELLIDO(S)</label>
-<input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstApell" value="<?php echo $data['gstApell'];?>" disabled="">
+<input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstApell" disabled="">
 </div>
 
 <div class="col-sm-4">
@@ -152,11 +152,11 @@ include('header.php');
 <div class="form-group">
 <div class="col-sm-4">
 <label>SELECCIONE COMANDANCIA</label>
-<div id="comandancia"></div>                            
+<div id="comandan"></div>                            
 </div>
 <div class="col-sm-8">
 <label>SELECCIONE AEROPUERTOS</label>
-<div id="select2"></div> 
+<div id="select3"></div> 
 </div>
 </div>
 
@@ -218,19 +218,14 @@ include('header.php');
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function(){
-/*$('#gstIDara').select2();
-$('#gstIDCat').select2();
-$('#gstIDSub').select2();
-$('#gstIDuni').select2();*/
 $('#gstAreID').select2(); 
-
+$('#gstPstID').select2();
 $('#gstIDpai').select2();
 $('#AgstIDpai').select2();
 $('#AgstIDCat').select2();
-//$('#AgstIDSub').select2();
 $('#AgstIDuni').select2();
-$('#comandancia').load('select/buscacom.php');
-$('#select2').load('select/tablacom.php');
+ $('#comandan').load('select/buscacom.php');
+ $('#select3').load('select/tablacom.php');
 }); 
 </script>
 <script src="../js/select2.js"></script> 
