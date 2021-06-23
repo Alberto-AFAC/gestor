@@ -69,6 +69,9 @@ include('header.php');
 </div> 
 </div>
 </div>
+<div class="col-sm-offset-1 col-md-1">
+
+</div>
 
 <div class="col-sm-offset-1 col-md-10">
 <div class="box box-solid">              <!-- THE CALENDAR -->
@@ -88,13 +91,14 @@ include('header.php');
   </div>
   <!-- /.content-wrapper -->
 
+  <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Version</b> 1.1
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
   </footer>
+
 
 
   <!-- /.control-sidebar -->
@@ -123,6 +127,10 @@ include('header.php');
 <script src="../../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- Page specific script -->
 <script>
+
+ 
+
+
   // $(function () {
 
   //   /* initialize the external events
