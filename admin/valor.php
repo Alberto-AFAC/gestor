@@ -311,18 +311,13 @@ $psto = mysqli_query($conexion,$sql);
 <!--------------------DATOS DEL PUESTO------------------------------->              
            <div class="tab-pane" id="puesto">
 
-            <form id="Pusto" class="form-horizontal" action="" method="POST" >
+           <form id="Pusto" class="form-horizontal" action="" method="POST" >
               <input type="hidden" name="pstIdper" id="pstIdper">
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label>NÚMERO DE EMPLEADO</label>
                        <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
                     </div>
-
-                    <!--<div class="col-sm-4">
-                       <label>ID PUESTO (NIVEL TABULAR)</label>
-                       <input type="text" disabled="" style="text-transform:uppercase;" class="form-control" id="gstIdpst" name="gstIdpst">
-                    </div>-->
 
                     <div class="col-sm-5">
                    <label>DIRECCIÓN EJECUTIVA </label>         
@@ -362,7 +357,7 @@ $psto = mysqli_query($conexion,$sql);
            <div class="form-group">
           <div class="col-sm-5">
           <label>NOMBRE DEL PUESTO</label>
-          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="">
+          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
           <?php while($pust = mysqli_fetch_row($psto)):?>                      
           <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
           <?php endwhile; ?>
@@ -383,14 +378,6 @@ $psto = mysqli_query($conexion,$sql);
                        </select>
                     </div>
                                          
-<!--                     <div class="col-sm-6">
-                       <label>SUB CATEGORIA</label>
-                       <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
-                         <?php while($idsub1 = mysqli_fetch_row($sub1)):?>                      
-                         <option value="<?php echo $idsub1[0]?>"><?php echo $idsub1[1];?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div> -->
                   </div>
 
                   <div class="form-group">
@@ -417,7 +404,7 @@ $psto = mysqli_query($conexion,$sql);
 
                  <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-12">
-                        <label style="color: white">.</label>
+                        <label>ÁREA ADSCRIPCIÓN</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true" disabled="">
                          <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
                          <?php while($rea = mysqli_fetch_row($are)):?>                      
@@ -427,27 +414,20 @@ $psto = mysqli_query($conexion,$sql);
                     </div>                  
                   </div>            
           
-                <div class="form-group">
-                  <div class="col-sm-offset-0 col-sm-6">
-                         <label>COMANDANCIA </label>
-                        <select disabled=""  style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstIDuni" name="gstIDuni"type="text" data-live-search="true">
-                         <?php while($iduni = mysqli_fetch_row($uni)):?>                      
-                         <option value="<?php echo $iduni[0]?>"><?php echo $iduni[1].' > '.$iduni[2]?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>
 
 
-                   <div class="col-sm-offset-0 col-sm-6">
-                        <label>AEROPUERTOS </label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" type="text" data-live-search="true">
-                         <option value="">SELECCIONAR AEROPUERTOS </option> 
-                         <?php //while($Aiduni = mysqli_fetch_row($Auni)):?>                      
-                          <option value="<?php //echo $Aiduni[0]?>"><?php //echo $Aiduni[1].' > '.$Aiduni[2].' REGIÓN: '.$Aiduni[4]?></option>
-                         <?php //endwhile; ?>
-                       </select>
-                    </div>
-                </div>
+<div class="form-group">
+<div class="col-sm-4">
+<label>SELECCIONE COMANDANCIA</label>
+<div id="comandancia"></div>                            
+</div>
+<div class="col-sm-8">
+<label>SELECCIONE AEROPUERTOS</label>
+<div id="select2"></div> 
+</div>
+</div>
+
+
 
 
 
@@ -466,8 +446,9 @@ $psto = mysqli_query($conexion,$sql);
               
               </form>  
 
-      
-              </div>
+
+           </div>
+
              <div class="tab-pane" id="estudios">
                       
 

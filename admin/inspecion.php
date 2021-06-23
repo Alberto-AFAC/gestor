@@ -245,7 +245,7 @@ $(document).ready(function(){
 $('#gstIDara').select2();
 $('#gstIDCat').select2();
 //$('#gstIDSub').select2();
-$('#gstIDuni').select2();
+//$('#gstIDuni').select2();
 $('#gstAreID').select2();
 $('#gstPstID').select2();
 $('#gstIDpai').select2();
@@ -254,6 +254,8 @@ $('#actualiza').load('select/actualiza.php');
 $('#select1').load('select/tabla.php');
 $('#actoaci').load('select/actoaci.php');
 $('#siglas').load('select/siglas.php');  
+$('#comandancia').load('select/actbuscacom.php');
+$('#select2').load('select/acttablacom.php');
 }); 
 </script>
 <script src="../js/select2.js"></script> 

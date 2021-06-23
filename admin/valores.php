@@ -121,6 +121,8 @@ $psto = mysqli_query($conexion,$sql);
           </button>
           </div>  
        </div>
+
+
        </div>
        </div>
        </div>
@@ -139,13 +141,15 @@ $psto = mysqli_query($conexion,$sql);
 
 <div class="box-tools pull-right">
 <button type="button" class="btn btn-box-tool" data-widget="collapse">
-<a href='javascript:openEdit()' style="font-size: 18px"> <i class="fa fa-edit"></i> </a>
+<a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
+</button>
+<button type="button"  id="cerrar" class="btn btn-box-tool" data-widget="collapse">
+<a href='javascript:cerrarEdit()'  id="cerrar1" style="display:none; font-size: 22px"> <i class="fa fa-times"></i> </a>
 </button>
 <!--<button type="button" class="btn btn-box-tool" data-widget="remove">
 <a onclick="location.href='./'"><i class='fa fa-times'></i></a>
 </button>-->
 </div>
-
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
               <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
@@ -323,19 +327,13 @@ $psto = mysqli_query($conexion,$sql);
 
 <!--------------------DATOS DEL PUESTO------------------------------->              
            <div class="tab-pane" id="puesto">
-
-            <form id="Pusto" class="form-horizontal" action="" method="POST" >
+           <form id="Pusto" class="form-horizontal" action="" method="POST" >
               <input type="hidden" name="pstIdper" id="pstIdper">
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label>NÚMERO DE EMPLEADO</label>
                        <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
                     </div>
-
-                    <!--<div class="col-sm-4">
-                       <label>ID PUESTO (NIVEL TABULAR)</label>
-                       <input type="text" disabled="" style="text-transform:uppercase;" class="form-control" id="gstIdpst" name="gstIdpst">
-                    </div>-->
 
                     <div class="col-sm-5">
                    <label>DIRECCIÓN EJECUTIVA </label>         
@@ -375,7 +373,7 @@ $psto = mysqli_query($conexion,$sql);
            <div class="form-group">
           <div class="col-sm-5">
           <label>NOMBRE DEL PUESTO</label>
-          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="">
+          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
           <?php while($pust = mysqli_fetch_row($psto)):?>                      
           <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
           <?php endwhile; ?>
@@ -396,14 +394,6 @@ $psto = mysqli_query($conexion,$sql);
                        </select>
                     </div>
                                          
-<!--                     <div class="col-sm-6">
-                       <label>SUB CATEGORIA</label>
-                       <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
-                         <?php while($idsub1 = mysqli_fetch_row($sub1)):?>                      
-                         <option value="<?php echo $idsub1[0]?>"><?php echo $idsub1[1];?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div> -->
                   </div>
 
                   <div class="form-group">
@@ -440,10 +430,25 @@ $psto = mysqli_query($conexion,$sql);
                     </div>                  
                   </div>            
           
-                <div class="form-group">
-  
 
-                </div>
+
+<div class="form-group">
+<div class="col-sm-4">
+<label>SELECCIONE COMANDANCIA</label>
+<div id="comandancia"></div>                            
+</div>
+<div class="col-sm-8">
+<label>SELECCIONE AEROPUERTOS</label>
+<div id="select2"></div> 
+</div>
+</div>
+
+
+
+
+
+
+
                   
                     <div class="form-group" id="butons" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
@@ -455,10 +460,12 @@ $psto = mysqli_query($conexion,$sql);
                     <b><p class="alert alert-warning text-center padding aviso" id="empty1">Es necesario agregar los datos que se solicitan </p></b>
                     </div>
               
-              </form>  
+              </form> 
+            
+            </div>
 
-      
-              </div>
+<!----------------------DATOS ESTUDIOS---------------------------->
+
              <div class="tab-pane" id="estudios">
                       
 
@@ -529,4 +536,24 @@ $psto = mysqli_query($conexion,$sql);
           <!-- /.nav-tabs-custom -->
         </div>
 
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function(){
+$('#gstIDara').select2();
+$('#gstIDCat').select2();
+//$('#gstIDSub').select2();
+$('#gstIDuni').select2();
+$('#gstAreID').select2();
+$('#AgstPstID').select2();
+$('#gstIDpai').select2();
+$('#AgstIDpai').select2();
+$('#actualiza').load('select/actualiza.php');
+$('#select1').load('select/tabla.php');
+$('#actoaci').load('select/actoaci.php');
+$('#siglas').load('select/siglas.php'); 
+$('#comandancia').load('select/actbuscacom.php');
+$('#select2').load('select/acttablacom.php');
+}); 
+</script>
+<script src="../js/select2.js"></script> 
 

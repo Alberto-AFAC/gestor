@@ -9,20 +9,25 @@ require_once "../../conexion/conexion.php";
           $gstIDcom=$_SESSION['consulta'];
          
 
-          $sql="SELECT gstIdAir,gstCSigl,gstUnid1,gstUnid2,gstRgion FROM aeropuertos WHERE gstIDcom='$gstIDcom' ORDER BY gstIdAir DESC ";
+          $sql="SELECT gstIdAir,gstCSigl,gstUnid1,gstUnid2,gstRgion FROM aeropuertos";
         }
 
     
       $result=mysqli_query($conexion,$sql);
 	?>
-	<select  id="gstIDuni" class="form-control" class="selectpicker" name="gstIDuni" type="text" data-live-search="true" style="width: 100%" >
-			<option value="0">AEROPUERTOS </option> 
+	<select  id="gstIDuni" class="form-control" class="selectpicker" name="gstIDuni" type="text" data-live-search="true" style="width: 100%" disabled="">
 			<?php while($valor = mysqli_fetch_row($result)):?>                      
 			<option value="<?php echo $valor[0]?>"><?php echo $valor[1].' > '.$valor[2]?></option>
 			<?php endwhile; ?>
 
 			</select>
               
-<?php   }else{   ?>
+<?php   }else{  
+
+
+
+ ?>
+
+              
 
 <?php } ?>
