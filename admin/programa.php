@@ -201,7 +201,11 @@ include('header.php');
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
 <button type="button" id="button" class="btn btn-info" onclick="proCurso();">PROGRAMAR</button>
-
+<div id="overlay">
+  <div class="cv-spinner">
+    <span class="spinner"></span>
+  </div>
+</div>
 <button type="button" id="vaciar" class="btn btn-default" onclick="location.href='programa.php'" style="display: none;">VACIAR</button>
 </div>
 
@@ -248,6 +252,13 @@ include('header.php');
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+<button id="submit">Prueba</button>
+
+<div id="overlay">
+  <div class="cv-spinner">
+    <span class="spinner"></span>
+  </div>
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -278,3 +289,24 @@ $("#idcord").select2();
 }); 
 </script>
 <script src="../js/select2.js"></script> 
+
+<script>
+	jQuery(function($){
+  $(document).ajaxSend(function() {
+    $("#overlay").fadeIn(1000);　
+  });
+		
+  $('#button').click(function(){
+    $.ajax({
+      type: 'GET',
+      success: function(proCurso){
+  
+      }
+    }).done(function() {
+      setTimeout(function(){
+        $("#overlay").fadeOut(1000);
+      },1000);
+    });
+  });	
+});
+</script>
