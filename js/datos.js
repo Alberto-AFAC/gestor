@@ -117,11 +117,11 @@ function closeDtlls() {
 
 }
 
-function pdf(){
+function pdf() {
 
-var pdfIdper = document.getElementById('pdfIdper').value;
+    var pdfIdper = document.getElementById('pdfIdper').value;
 
- $.ajax({
+    $.ajax({
         url: '../php/conPerson.php',
         type: 'POST'
     }).done(function(resp) {
@@ -133,129 +133,131 @@ var pdfIdper = document.getElementById('pdfIdper').value;
         for (i = 0; i < res.length; i++) {
             x++;
 
-            if (obj.data[i].gstIdper ==  pdfIdper) {
+            if (obj.data[i].gstIdper == pdfIdper) {
 
-                    valor = obj.data[i].gstIdper;
+                valor = obj.data[i].gstIdper;
+                cargo = obj.data[i].gstCargo;
+                nombre = obj.data[i].gstNombr;
 
             }
 
-        }               
+        }
 
 
-            var logo = new Image();
-            logo.src = '../dist/img/AFAC.png';
-            var pdf = new jsPDF("p", "mm", "a4");
+        var logo = new Image();
+        logo.src = '../dist/img/ApéndiceE2-1.png';
+        var pdf = new jsPDF("p", "mm", "a4");
 
 
-            pdf.addImage(logo, 'PNG', 100, 110, 15, 20);
+        pdf.addImage(logo, 'PNG', 0, 0, 210, 297);
 
-            /* INICIO DE PDF*/
+        /* INICIO DE PDF*/
 
-            /* OBTENER FECHA DE IMPRESIÓN*/
-            var currentDate = new Date().toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric'
-            });
+        /* OBTENER FECHA DE IMPRESIÓN*/
+        var currentDate = new Date().toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        });
 
-            var fecha = "Fecha de impresión : " + currentDate;
-            pdf.setFontSize(9);
-            pdf.text(15, 290, fecha);
+        var fecha = "Fecha de impresión : " + currentDate;
+        pdf.setFontSize(9);
+        pdf.text(15, 290, fecha);
 
-            /* OBTENER FECHA DE IMPRESIÓN*/
+        // /* OBTENER FECHA DE IMPRESIÓN*/
 
-            /* TITULOS DEL DOCUMENTO*/
-            pdf.setFontSize(12)
-            pdf.setFontType('bold')
-            pdf.text(96, 20, 'Apéndice E')
-            pdf.text(73, 26, 'Cédula de Evaluación de Capacidades')
+        // /* TITULOS DEL DOCUMENTO*/
+        // pdf.setFontSize(12)
+        // pdf.setFontType('bold')
+        // pdf.text(96, 20, 'Apéndice E')
+        // pdf.text(73, 26, 'Cédula de Evaluación de Capacidades')
 
-            // NUMERO DE OFICIO
-            pdf.setFontSize(9)
-            pdf.addFont('Montserrat', 'sans-serif');
-            pdf.setFont('Arial')
-            pdf.text(150, 37, 'Folio/Oficio No.' + valor + '')
-                //AFAC EVALUA A:
-            pdf.text(66, 45, 'La Agencia Federal de Aviación Civil, identifica y evalúa a:')
-
-            //DATOS DEL CURSO
-            pdf.setFontSize(7)
-            pdf.setFontType('normal')
-            pdf.setTextColor(182, 182, 182);
-            pdf.text(38, 58, 'Apellido Paterno')
-            pdf.text(100, 58, 'Apellido Materno')
-            pdf.text(160, 58, 'Nombres(s): ')
-
-            //ESPECIALIDADES
-            pdf.setFontSize(10)
-            pdf.setFontType('normal')
-            pdf.setTextColor(0, 0, 0);
-            pdf.text(30, 70, 'Especialidad: ')
-            pdf.text(32, 75, 'Escolaridad:')
-            pdf.text(32, 80, 'Licencia No.')
-            pdf.text(30, 85, 'Horas de vuelo:')
-            pdf.text(90, 70, 'Adscripción:')
-            pdf.text(155, 70, 'Area:')
-            pdf.text(155, 75, 'Formato PTA:')
-            pdf.text(155, 80, 'Vigencia:')
-            pdf.text(155, 85, 'Años de experiencia:')
-
-            //PERFIL DE INSPECTOR
-            pdf.setFontSize(10)
-            pdf.setFontType('normal')
-            pdf.setTextColor(0, 0, 0);
-            pdf.text(25, 110, 'Perfil del Inspector PEL')
-            pdf.text(25, 116, 'Con fundamento en la CP AV 13-10/R8 que establece perfil, funciones, responsabilidades y política de')
-            pdf.text(25, 120, 'capacitación del inspector verificador aeronáutico, inspectores investigadores de accidentes e inspectores de ')
-            pdf.text(25, 124, 'busqueda y salvamentos adscritos a la Agencia Federal de Aviación Civil, y de conformidad con lo indicado en el')
-            pdf.text(25, 128, 'numeral 2.2. El Inspector Verificador Aeronáutico de Licencias (IVA-L) deberá contar con la siguiente experiencia')
-            pdf.text(25, 132, 'profesional.')
-
-            pdf.setFontSize(10)
-            pdf.text(25, 140, '1.-')
-            pdf.text(25, 150, '2.-')
-            pdf.text(25, 160, '3.-')
-            pdf.text(25, 170, '4.-')
+        // // NUMERO DE OFICIO
+        // pdf.setFontSize(9)
+        // pdf.addFont('Montserrat', 'sans-serif');
+        // pdf.setFont('Arial')
+        // pdf.text(175, 44, '' + valor + '');
+        //     //AFAC EVALUA A:
 
 
-            /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
-            // var columns = ["CUMPLE", "NO CUMPLE"];
-            // var rows = ['SI'];
-            // ['NO'];
-            // /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
+        // //DATOS DEL CURSO
+        // pdf.setFontSize(7)
+        // pdf.setFontType('normal')
+        // pdf.setTextColor(182, 182, 182);
+        // pdf.text(38, 58, 'Apellido Paterno')
+        // pdf.text(100, 58, 'Apellido Materno')
+        // pdf.text(160, 58, 'Nombres(s):' + nombre + '')
+
+        // //ESPECIALIDADES
+        // pdf.setFontSize(10)
+        // pdf.setFontType('normal')
+        // pdf.setTextColor(0, 0, 0);
+        // pdf.text(30, 70, 'Especialidad:' + cargo + '')
+        // pdf.text(32, 75, 'Escolaridad:')
+        // pdf.text(32, 80, 'Licencia No.')
+        // pdf.text(30, 85, 'Horas de vuelo:')
+        // pdf.text(90, 70, 'Adscripción:')
+        // pdf.text(155, 70, 'Area:')
+        // pdf.text(155, 75, 'Formato PTA:')
+        // pdf.text(155, 80, 'Vigencia:')
+        // pdf.text(155, 85, 'Años de experiencia:')
+
+        // //PERFIL DE INSPECTOR
+        // pdf.setFontSize(10)
+        // pdf.setFontType('normal')
+        // pdf.setTextColor(0, 0, 0);
+        // pdf.text(25, 110, 'Perfil del Inspector PEL')
+        // pdf.text(25, 116, 'Con fundamento en la CP AV 13-10/R8 que establece perfil, funciones, responsabilidades y política de')
+        // pdf.text(25, 120, 'capacitación del inspector verificador aeronáutico, inspectores investigadores de accidentes e inspectores de ')
+        // pdf.text(25, 124, 'busqueda y salvamentos adscritos a la Agencia Federal de Aviación Civil, y de conformidad con lo indicado en el')
+        // pdf.text(25, 128, 'numeral 2.2. El Inspector Verificador Aeronáutico de Licencias (IVA-L) deberá contar con la siguiente experiencia')
+        // pdf.text(25, 132, 'profesional.')
+
+        // pdf.setFontSize(10)
+        // pdf.text(25, 140, '1.-')
+        // pdf.text(25, 150, '2.-')
+        // pdf.text(25, 160, '3.-')
+        // pdf.text(25, 170, '4.-')
 
 
-            // pdf.autoTable(columns, rows, {
-            //     headerStyles: {
-            //         fillColor: [2500, 0, 0]
-            //     },
-            //     styles: {
-            //         overflow: 'linebreak',
-            //         fontSize: 9,
-
-            //     },
+        /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
+        // var columns = ["CUMPLE", "NO CUMPLE"];
+        // var rows = ['SI'];
+        // ['NO'];
+        // /* AGREGAR INFORMACIÓN A LA TABLA MEDIANTE UN ARREGLO*/
 
 
-            //     margin: {
-            //         top: 140
-            //     },
-            //     pageBreak: 'auto',
-            //     beforePageConten: function(data) {
-            //         pdf.text("Header", 120, 120);
-            //     }
+        // pdf.autoTable(columns, rows, {
+        //     headerStyles: {
+        //         fillColor: [2500, 0, 0]
+        //     },
+        //     styles: {
+        //         overflow: 'linebreak',
+        //         fontSize: 9,
 
-            // });
-            /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-            const pageCount = pdf.internal.getNumberOfPages();
-            for (var i = 1; i <= pageCount; i++) {
-                pdf.setFontSize(8)
-                pdf.setPage(i);
-                pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-                    "right");
-            }
-            /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+        //     },
 
-            window.open(pdf.output('bloburl'))
+
+        //     margin: {
+        //         top: 140
+        //     },
+        //     pageBreak: 'auto',
+        //     beforePageConten: function(data) {
+        //         pdf.text("Header", 120, 120);
+        //     }
+
+        // });
+        /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+        const pageCount = pdf.internal.getNumberOfPages();
+        for (var i = 1; i <= pageCount; i++) {
+            pdf.setFontSize(8)
+            pdf.setPage(i);
+            pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+                "right");
+        }
+        /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+
+        window.open(pdf.output('bloburl'))
 
 
 

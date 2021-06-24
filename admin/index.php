@@ -145,7 +145,7 @@ include('header.php');
 
             <div class="info-box-content">
               <span class="info-box-text">TOTAL DE CURSOS</span>
-              <span class="info-box-text">Completados</span>
+              <span class="info-box-text">Acreditados</span>
               <span class="info-box-number">50</span>
 
               <div class="progress">
@@ -166,7 +166,7 @@ include('header.php');
 
             <div class="info-box-content">
               <span class="info-box-text">TOTAL DE CURSOS</span>
-              <span class="info-box-text">Por completar</span>
+              <span class="info-box-text">POR ACREDITAR</span>
               <span class="info-box-number">23</span>
               <span class="progress-description"> 
               <div class="progress">
