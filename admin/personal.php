@@ -319,7 +319,7 @@ $psto = mysqli_query($conexion,$sql);
 
           <div class="form-group">
           <div class="col-sm-4">
-          <label>CODIGO PRESUPUESTAL</label>
+          <label>CÓDIGO PRESUPUESTAL</label>
           <div id="buscador"></div>                            
           </div>
           <div id="select1"></div> 
