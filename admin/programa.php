@@ -185,7 +185,7 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-4">
-<label>PARTICPANTES DEL CURSO</label>
+<label>PARTICIPANTES DEL CURSO</label>
 
 </div>                     
 </div>   

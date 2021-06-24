@@ -126,7 +126,7 @@
 
 
                      <div class="col-sm-1" style="padding-right: 0;">
-                     <label>DURACION</label> 
+                     <label>DURACIÓN</label> 
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                       <select  class="form-control" id="hr" name="hr">
                         <option value="00">00</option>
