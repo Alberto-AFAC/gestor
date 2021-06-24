@@ -255,7 +255,7 @@ $psto = mysqli_query($conexion,$sql);
 
                   <div class="form-group">
                       <div class="col-sm-4">
-                         <label>CODIGO POSTAL</label>
+                         <label>CÓDIGO POSTAL</label>
                          <input type="number" disabled="" style="text-transform:uppercase;" class="form-control" id="gstCpstl" name="gstCpstl">
                       </div>
                      
@@ -356,7 +356,7 @@ $psto = mysqli_query($conexion,$sql);
  
           <div class="form-group">
             <div class="col-sm-4">
-            <label>CODIGO PRESUPUESTAL</label>
+            <label>CÓDIGO PRESUPUESTAL</label>
             <div id="actualiza"></div>                               
             </div>
             <div id="select1"></div> 
