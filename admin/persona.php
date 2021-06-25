@@ -25,7 +25,6 @@
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-
 </head>
 
 <?php
@@ -86,7 +85,7 @@ include('header.php');
 </div>
 </div> -->
 <div class="box-body">
-<table style="width: 100%;" id="data-table-reportes" class="table table-striped table-hover"></table>
+<table id="data-table-reportes" class="table table-striped table-hover"></table>
 </div>
 </div>
 </div>
@@ -240,14 +239,14 @@ var dataSet = [
 $query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
-while($data = mysqli_fetch_array($resultado)){ 
+      while($data = mysqli_fetch_array($resultado)){ 
 
-$gstIdper = $data['gstIdper'];
-?>
+      $gstIdper = $data['gstIdper'];
+      ?>
 
 //console.log('<?php echo $gstIdper ?>');
 
-["<?php echo  $data['gstNombr'];?>","<?php echo $data['gstApell']?>",
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCargo']?>",
 
 "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
 
@@ -261,21 +260,21 @@ $gstIdper = $data['gstIdper'];
 ];
 
 var tableGenerarReporte = $('#data-table-reportes').DataTable({
-  responsive: true,
-
-
-"language": {
-"searchPlaceholder": "Buscar datos...",
-"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-},
-data: dataSet,
-columns: [
-
-{title: "NOMBRE(S)"},
-{title: "APELLIDO(S)"},
-{title: "ACCIÓN"}
-],
-});
+    "language": {
+    "searchPlaceholder": "Buscar datos...",
+    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [
+    {title: "ID"},
+    {title: "NOMBRE(S)"},
+    {title: "APELLIDO(S)"},
+    {title: "CARGO"},
+    {title: "ACCIÓN"}
+    ],
+    });
 
 </script>
 
