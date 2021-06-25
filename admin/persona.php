@@ -25,6 +25,7 @@
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
 </head>
 
 <?php
@@ -85,7 +86,7 @@ include('header.php');
 </div>
 </div> -->
 <div class="box-body">
-<table id="data-table-reportes" class="table table-striped table-hover"></table>
+<table style="width: 100%;" id="data-table-reportes" class="table table-striped table-hover"></table>
 </div>
 </div>
 </div>
@@ -260,6 +261,7 @@ $gstIdper = $data['gstIdper'];
 ];
 
 var tableGenerarReporte = $('#data-table-reportes').DataTable({
+  responsive: true,
 
 
 "language": {

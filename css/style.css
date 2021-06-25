@@ -145,3 +145,10 @@
 .is-hide {
     display: none;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: none;
+    color: black!important;
+    border: none;
+    /*change the hover text color*/
+}
