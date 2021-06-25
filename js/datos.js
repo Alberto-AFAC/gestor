@@ -145,11 +145,11 @@ function pdf() {
 
 
         var logo = new Image();
-        logo.src = '../dist/img/ApéndiceE2-1.png';
+        logo.src = '../dist/img/ApéndiceE2-1-min.png';
         var pdf = new jsPDF("p", "mm", "a4");
 
 
-        pdf.addImage(logo, 'PNG', 0, 0, 210, 297);
+        pdf.addImage(logo, 'PNG', 0, 0, 210, 280);
 
         /* INICIO DE PDF*/
 

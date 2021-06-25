@@ -252,13 +252,8 @@ include('header.php');
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-<button id="submit">Prueba</button>
 
-<div id="overlay">
-  <div class="cv-spinner">
-    <span class="spinner"></span>
-  </div>
-</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -293,7 +288,7 @@ $("#idcord").select2();
 <script>
 	jQuery(function($){
   $(document).ajaxSend(function() {
-    $("#overlay").fadeIn(1000);　
+    $("#overlay").fadeIn(3000);　
   });
 		
   $('#button').click(function(){
@@ -304,8 +299,8 @@ $("#idcord").select2();
       }
     }).done(function() {
       setTimeout(function(){
-        $("#overlay").fadeOut(1000);
-      },1000);
+        $("#overlay").fadeOut(3000);
+      },3000);
     });
   });	
 });
