@@ -8,6 +8,7 @@ $instructor = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
 $inspector = mysqli_query($conexion,$sql);
+
 ?>
 <html>
 <head>
@@ -182,7 +183,6 @@ include('header.php');
                   <div class="col-sm-5">
                   <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
                   </div>
-
                     <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
                     <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
                     <b><p class="alert alert-warning text-center padding aviso" id="empty">Elija curso para eliminar </p></b>
@@ -196,6 +196,74 @@ include('header.php');
           <!-- /.modal-dialog -->
         </div>
 </form>
+    </section>
+    <form class="form-horizontal" action="" method="POST" id="avaluacion" >
+    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal fade" id="modal-evaluar">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrareval()">
+                  <span aria-hidden="true">&times;</span></button>
+                <p><h4 class="modal-title">EVALUACIÓN DE RESULTADOS</h4></p>
+                <input type="text" disabled="" style="text-transform:uppercase;" class="form-control" id="evaNombr" name="evaNombr">
+              </div>
+              <div class="modal-body">
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                           <label>Curso</label>
+                           <input type="text" name="idperon" id="idperon" style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                        </div>
+                        <div class="col-sm-12">
+                             <label>Fecha de la evaluación</label>
+                             <input type="date" style="text-transform:uppercase;" class="form-control disabled" id='fechaev'>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-sm-4">
+                             <label>Puntuación obtenida</label>
+                             <input type="number" name="cantidad" min="1" max="10" style="text-transform:uppercase;" class="form-control disabled;" id='validoev'  onchange="cambiartexto()">
+                          </div>
+                          <div class="col-sm-4">
+                    
+                          </div>
+                          <span class='label label-success' style= "font-size:25px; display:none"  id='SIe'>APROBADO</span>
+                              <span class='label label-danger' style= "font-size:25px; display:none" id='NOE'>REPROBADO</span>
+                              <span class='label label-primary' style= "font-size:25px;" id='PE'>PENDIENTE</span>
+                      </div>
+                     
+                      <div class="form-group">
+                           <div class="col-sm-2">
+                              
+                           </div>
+                      </div>
+                     
+                      <div class="form-group">
+                           <div class="col-sm-12">
+                           <textarea class="col-sm-12"  name="comentarios" id="comeneva" rows="4" cols="10" onkeyup="mayus(this);" style= "font-size: 14px; border-radius: 5px;" placeholder ="Comentarios Adicionales"></textarea>
+                           </div>
+                      </div>
+                
+                       <div class="form-group">
+                           <div class="col-sm-5">
+                             <button type="button" class="btn btn-primary">ACEPTAR</button>
+                           </div>
+                             <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
+                               <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
+                                  <b><p class="alert alert-warning text-center padding aviso" id="empty">Coloque la calificación</p></b>
+                        </div>
+                  </div>
+                </div>    
+              </div>
+            </div>
+            <!-- /.modal-content -->
+      
+          <!-- /.modal-dialog -->
+      
+        
+
+</form>
+
     </section>
     <!-- /.content -->
   </div>

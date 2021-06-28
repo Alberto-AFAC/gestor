@@ -80,14 +80,20 @@ function curso(cursos) {
             day = obj.data[i].fechaf.substring(8, 10);
             Finaliza = day + '/' + month + '/' + year;
 
-            //cursos = obj.data[i].gstIdlsc+"*"+obj.data[i].gstTitlo+"*"+obj.data[i].gstTipo+"*"+obj.data[i].gstPrfil+"*"+obj.data[i].gstCntnc+"*"+obj.data[i].gstDrcin+"*"+obj.data[i].gstVignc+"*"+obj.data[i].gstObjtv+"*"+obj.data[i].hcurso+"*"+obj.data[i].fcurso+"*"+obj.data[i].fechaf+"*"+obj.data[i].idinst+"*"+obj.data[i].sede+"*"+obj.data[i].link;
+            cursos = obj.data[i].gstIdlsc+"*"+obj.data[i].gstTitlo+"*"+obj.data[i].gstTipo+"*"+obj.data[i].gstPrfil+"*"+obj.data[i].gstCntnc+"*"+obj.data[i].gstDrcin+"*"+obj.data[i].gstVignc+"*"+obj.data[i].gstObjtv+"*"+obj.data[i].hcurso+"*"+obj.data[i].fcurso+"*"+obj.data[i].fechaf+"*"+obj.data[i].idinst+"*"+obj.data[i].sede+"*"+obj.data[i].link+"*"+ obj.data[i].gstNombr;
             if (obj.data[i].idmstr == gstIdlsc && obj.data[i].proceso == 'PENDIENTE') {
 
                 if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'>POR CONFIRMAR</a><a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
-                }
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:23px;'></i></a><a type='button' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-alert' style='font-size:23px;'></i></a><a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:23px;'></i></a></td></tr>";
+                    //validación 
+                
+
+
+            } else {}
+
+                    //ISPECTOR
                 if (obj.data[i].gstCargo == 'INSTRUCTOR') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>INSTRUCTOR</a><a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>INSTRUCTOR</a><a type='button' onclick='eliminar("     + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                 }
 
             } //else if(obj.data[i].idmstr==gstIdlsc && obj.data[i].proceso=='CONFIRMADO'){
@@ -195,6 +201,27 @@ function eliminar(cursos) {
 
 }
 
+function evaluarins(cursos) { //EVALUACIÓN DEL CURSO
+    var d = cursos.split("*");
+    alert(d[11]);
+    $("#avaluacion #evaNombr").val(d[14]);
+    $("#avaluacion #idperon").val(d[1]);
+
+}
+
+//ACTUALIZACIÓN DE LA EVALUACIÓN 
+function actevaluación(){
+
+        if (validoev==''){
+            $('#empty').toggle('toggle');
+              setTimeout(function(){
+              $('#empty').toggle('toggle');
+              },2000); 
+              return;
+      
+            }
+}
+
 function eliCurso() {
 
     var EgstIdlsc = document.getElementById('EgstIdlsc').value;
@@ -229,3 +256,39 @@ function eliCurso() {
         });
     }
 }
+
+function cambiartexto() {
+    costOfTicket=document.getElementById("NOE"); 
+    selectedStand = document.getElementById("SIe");
+    pendiente = document.getElementById("PE");
+    valor2 = document.getElementById('validoev').value;
+       if(valor2 >= 80){
+         selectedStand.style.display = '';
+         costOfTicket.style.display = 'none';
+         pendiente.style.display = 'none';
+       }
+       else if(valor2 < 80){
+         costOfTicket.style.display = '';
+         selectedStand.style.display = 'none';
+         pendiente.style.display = 'none';
+        }
+        else if(valor2 < 0 ){
+          pendiente.style.display = '';
+         costOfTicket.style.display = 'none';
+         selectedStand.style.display = 'none';
+         
+        }
+ }
+ //cerrar la evaluación
+ function cerrareval() {
+    reprobado=document.getElementById("NOE"); 
+    aprobado = document.getElementById("SIe");
+    pendiente = document.getElementById("PE");
+    pendiente.style.display = '';
+    costOfTicket.style.display = 'none';
+    selectedStand.style.display = 'none';
+    document.getElementById('validoev').value = "" ;
+    document.getElementById('fechaev').reset();
+}
+
+
