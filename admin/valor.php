@@ -124,7 +124,7 @@ $psto = mysqli_query($conexion,$sql);
 <div class="box-tools pull-right">
 <button type="button" class="btn btn-box-tool" data-widget="collapse">
 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
-<a href='javascript:cerrarEdit()'  id="cerrar1" style="display:none; font-size: 22px"> <i class="fa fa-times"></i> </a>
+<a href='javascript:cerrarEdit()'  id="cerrar1" style="display:none; font-size: 22px"> <i class="fa fa-ban"></i> </a>
 </button>
 <!-- <button type="button" class="btn btn-box-tool" data-widget="remove">
 <a onclick="location.href='./'"><i class='fa fa-times'></i></a>
@@ -238,7 +238,7 @@ $psto = mysqli_query($conexion,$sql);
 
                   <div class="form-group">
                       <div class="col-sm-4">
-                         <label>CODIGO POSTAL</label>
+                         <label>CÓDIGO POSTAL</label>
                          <input type="number" disabled="" style="text-transform:uppercase;" class="form-control" id="gstCpstl" name="gstCpstl">
                       </div>
                      
@@ -340,7 +340,7 @@ $psto = mysqli_query($conexion,$sql);
  
           <div class="form-group">
             <div class="col-sm-4">
-            <label>CODIGO PRESUPUESTAL</label>
+            <label>CÓDIGO PRESUPUESTAL</label>
             <div id="actualiza"></div>                               
             </div>
             <div id="select1"></div> 

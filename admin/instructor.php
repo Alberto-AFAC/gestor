@@ -14,7 +14,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -64,7 +64,7 @@ include('header.php');
            
 
             <div class="box-body">
-            <?php include('../html/conInstr.html');?>
+            <table style="width: 100%;" id="data-table-instructores" class="table table-striped table-hover"></table>
             </div>
           </div>
           <!-- /.box -->
@@ -96,11 +96,14 @@ include('header.php');
 
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
 <!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -120,3 +123,48 @@ $('#id_area').select2();
 }); 
 </script>
 <script src="../js/select2.js"></script> 
+<script type="text/javascript">
+
+var dataSet = [
+<?php 
+$query = "SELECT * FROM personal 
+INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+WHERE personal.estado = 0 AND gstCargo = 'INSPECTOR' OR gstCargo = 'COORDINADOR'  ORDER BY gstIdper DESC";
+$resultado = mysqli_query($conexion, $query);
+
+while($data = mysqli_fetch_array($resultado)){ 
+
+$gstIdper = $data['gstIdper'];
+?>
+
+//console.log('<?php echo $gstIdper ?>');
+
+["<?php echo  $data['gstNmpld'];?>","<?php echo $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstCargo']?>",
+"<a type='button' title='Perfil' onclick='inspector(<?php echo $gstIdper?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"
+],
+
+
+<?php } ?>
+];
+
+var tableGenerarReporte = $('#data-table-instructores').DataTable({
+  responsive: true,
+
+
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+
+{title: "ID"},
+{title: "NOMBRES(S)"},
+{title: "APELLIDO(S)"},
+{title: "CATEGORIA"},
+{title: "CARGO"},
+{title: "ACCIÓN"}
+],
+});
+
+</script>
