@@ -131,12 +131,14 @@ $psto = mysqli_query($conexion,$sql);
 </button> -->
 </div>
 
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs" style="font-size: 11px;">
               <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
               <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
               <li><a href="#estudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
               <li><a href="#experiencia" data-toggle="tab">EXPERIENCIA PROFESIONAL</a></li>  
-              <li><a href="#curso" data-toggle="tab" id="ocultar">CURSOS</a></li>            
+              <li><a href="#obligatorio" data-toggle="tab" id="ocultar1">CURSOS OBLIGATORIOS </a></li>
+              <li><a href="#curso" data-toggle="tab" id="ocultar2">CURSOS PROGRAMADOS</a></li>
+                          
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
@@ -447,68 +449,81 @@ $psto = mysqli_query($conexion,$sql);
 
            </div>
 
-             <div class="tab-pane" id="estudios">
-                      
+<div class="tab-pane" id="estudios">
+<form class="form-horizontal">
+<div class="form-group">
+<div class="col-sm-4">
+<H4>
+<label>ULTIMO GRADO DE ESTUDIOS </label></H4>
+</div>
+</div>
+<div id="studios"></div>
+</form>   
+</div>
+<div class="tab-pane" id="experiencia">
+<form class="form-horizontal">
+<div id="profsions"></div>             
+</form> 
+</div>
 
-            <form class="form-horizontal">
-              
-              <div class="form-group">
-                <div class="col-sm-4">
-                    <H4>
-                     <label>ULTIMO GRADO DE ESTUDIOS </label></H4>
-                </div>
-              </div>
-              <div id="studios"></div>
-            </form>   
-              </div>
-             <div class="tab-pane" id="experiencia">
-              <form class="form-horizontal">
-              <div id="profsions"></div>             
-              </form> 
-              </div>
+<!------------------------------------------->
 
-              <div class="tab-pane" id="curso">
 
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-        
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Cursos</h3>
-            </div>
-        <div class="form-group">
-            
-        <div class="col-sm-2">
-            <input type="radio" id="finalizado" name="finalizado" value="finalizado">
-            <label for="finalizado">FINALIZADO</label><br>
-            </div>
-
-            <div class="col-sm-2">
-              <input type="radio" id="programados" name="programados" value="programados">
-              <label for="programados">PROGRAMADOS</label><br>
-              </div>
-
-               <div class="col-sm-2">
-                  <input type="radio" id="cancelados" name="cancelados" value="cancelados">
-                  <label for="cancelados">CANCELADOS</label><br>
-              </div>
-
-        </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-            	<?php include('../html/gesCurso.html');?>
-
-            </div>
-            <!-- /.box-body -->
+<div class="tab-pane" id="obligatorio">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Cursos obligatorios</h3>
           </div>
-          <!-- /.box -->
+  
+          <div class="box-body">
+            <div id="obligados"></div>
+             <?php// include('../html/gesCurso.html');?> 
+          </div>
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-    </section>
-              </div>
+    </div>
+  </section>
+</div>  
+
+
+
+
+<!-------------------------------------------->
+            
+
+<div class="tab-pane" id="curso">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Cursos programados</h3>
+          </div>
+                <div class="form-group">
+                <div class="col-sm-2">
+                <input type="radio" id="finalizado" name="finalizado" value="finalizado">
+                <label for="finalizado">FINALIZADO</label><br>
+                </div>
+                <div class="col-sm-2">
+                <input type="radio" id="programados" name="programados" value="programados">
+                <label for="programados">PROGRAMADOS</label><br>
+                </div>
+                <div class="col-sm-2">
+                <input type="radio" id="cancelados" name="cancelados" value="cancelados">
+                <label for="cancelados">CANCELADOS</label><br>
+                </div>
+                </div>
+          <div class="box-body">
+            <?php include('../html/gesCurso.html');?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
               <!-- /.tab-pane -->
               <!-- /.tab-pane -->
             </div>

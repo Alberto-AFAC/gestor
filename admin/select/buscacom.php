@@ -8,7 +8,7 @@
 			<select  id="AgstAcReg" class="form-control" class="selectpicker" name="AgstAcReg" type="text" data-live-search="true" style="width: 100%" >
 			<option value="0">COMANDANCIA </option> 
 			<?php while($idcoman = mysqli_fetch_row($coman)):?>                      
-			<option value="<?php echo $idcoman[0]?>"><?php echo $idcoman[1].' > '.$idcoman[2]?></option>
+			<option value="<?php echo $idcoman[0]?>"><?php echo $idcoman[2]?></option>
 			<?php endwhile; ?>
 
 			</select>

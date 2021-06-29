@@ -51,19 +51,19 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png" alt="User profile picture">
 
-              <h3 class="profile-username text-center"><?php echo $datos[0]?></h3>
+              <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
 
-              <p class="text-muted text-center"><?php echo $datos[2] ?></p>
+              <p class="text-muted text-center"><?php echo $datos[3]?></p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Cursos programados</b> <a class="pull-right">20</a>
+                  <b>Cursos programados</b> <a class="pull-right"><div id="programados"></div></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Cursos Completados</b> <a class="pull-right">30</a>
+                  <b>Cursos Completados</b> <a class="pull-right"><div id="completos"></div></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Cursos cancelados</b> <a class="pull-right">13,287</a>
+                  <b>Cursos cancelados</b> <a class="pull-right"><div id="cancelados"></div></a>
                 </li>
               </ul>
       
@@ -79,27 +79,21 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <a href="#">
               <strong><i class="fa fa-book margin-r-5"></i>Educación</strong>  
-              <a href="#" class="btn ion-edit"><b></b></a>
+              </a>
               <p class="text-muted">
-                Instituto politecnico Nacional
+                <?php echo $datos[4];?>
               </p>
 
               <hr>
-
-              <strong><i class="fa fa-map-marker margin-r-5"></i> Localización</strong>
-
-              <p class="text-muted">Departamento de Sistemas</p>
-
-              <hr>
+              <a href="#">
               <strong><i class="ion-briefcase margin-r-5"></i>Experiencia Laboral</strong>
-              <a href="#" class="btn ion-edit"><b></b></a>
+              </a>
 
-              <p class="text-muted">SCT desde el 2020 a la fecha </p>
-              <p class="text-muted">litoflex SA de CV </p>
-
-              <hr>
-              <strong><i class="fa fa-pencil margin-r-5"></i>Habilidades</strong>
+              <p class="text-muted"><?php echo $datos[5]; ?></p>
+             
+<!--               <strong><i class="fa fa-pencil margin-r-5"></i>Habilidades</strong>
               <a href="#" class="btn ion-edit"><b></b></a>
               <p>
                 <span class="label label-danger">ingles</span>
@@ -107,14 +101,11 @@
                 <span class="label label-info">Javascript</span>
                 <span class="label label-warning">PHP</span>
                 <span class="label label-primary">Node.js</span>
-              </p>
+              </p> -->
 
               <hr>
 
-              <strong><i class="fa fa-file-text-o margin-r-5"></i>Notas</strong>
-              <a href="#" class="btn ion-edit"><b></b></a>
-
-              <p>Agregar información</p>
+        
             </div>
             <!-- /.box-body -->
           </div>
@@ -123,13 +114,87 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="nav-tabs-custom">
+
             <ul class="nav nav-tabs">
-             <li  class="active"><a href="#timeline" data-toggle="tab">Cursos programados</a></li>
-              <li><a href="#activity" data-toggle="tab">Cursos completados</a></li>
-              
+              <li class="active"><a href="#activity" data-toggle="tab">Cursos en proceso </a></li>
+              <li><a href="#curComplet" data-toggle="tab">Cursos programados</a></li>              
+              <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
               <li><a href="#settings" data-toggle="tab">Cursos cancelados</a></li>
             </ul>
-            <!-- /.tab-content -->
+          <div class="tab-content">
+              <div class="active tab-pane" id="activity">
+                <!-- Post -->
+
+<div class="post">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+</div>
+<div class="box-body">
+<table style="width: 100%;" id="data-table-confirmar" class="table display table-striped table-bordered"></table>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+              </div>
+       
+<div class="tab-pane" id="curComplet">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+</div>
+<div class="box-body">
+<table style="width: 100%;" id="data-table-programado" class="table display table-striped table-bordered"></table>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<div class="tab-pane" id="timeline">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+</div>
+<div class="box-body">
+<table style="width: 100%;" id="data-table-completo" class="table display table-striped table-bordered"></table>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+              <!-- /.tab-pane -->
+
+<div class="tab-pane" id="settings">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+</div>
+<div class="box-body">
+<table style="width: 100%;" id="data-table-cancelado" class="table display table-striped table-bordered"></table>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<?php include('modal.php');?>
+              <!-- /.tab-pane -->
+            </div>
           </div>
           <!-- /.nav-tabs-custom -->
         </div>
@@ -168,5 +233,187 @@
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+  <script type="text/javascript" src="../js/cursos.js"></script>
 </body>
 </html>
+
+<?php echo $datos[0];?>
+
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+<script type="text/javascript">
+
+var dataSet = [
+<?php 
+$query = "
+SELECT * FROM cursos 
+INNER JOIN listacursos ON idmstr = gstIdlsc
+WHERE idinsp = $datos[0] AND evaluacion = '0' AND cursos.estado = 0 ORDER BY id_curso DESC";
+$resultado = mysqli_query($conexion, $query);
+
+while($data = mysqli_fetch_array($resultado)){ 
+
+$id_curso = $data['id_curso'];
+
+ $fcurso = $data['fcurso'] = date("d-m-Y");
+ $fechaf = $data['fechaf'] = date("d-m-Y");
+?>
+
+//console.log('<?php echo $id_curso ?>');
+
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
+
+"<a type='button' title='Confirmar asistencia' onclick='confirmar(<?php echo $id_curso ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>CONFIRMAR </a>"
+
+//"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
+
+],
+<?php } ?>
+]
+
+var tableGenerarReporte = $('#data-table-confirmar').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ACCIÓN"}
+],
+});
+
+
+var dataSet = [
+<?php 
+$query = "
+SELECT * FROM cursos 
+INNER JOIN listacursos ON idmstr = gstIdlsc
+WHERE idinsp = $datos[0] AND evaluacion = '0' AND cursos.estado = 0 || idinsp = $datos[0] AND evaluacion = 'CONFIRMADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+$resultado = mysqli_query($conexion, $query);
+
+while($data = mysqli_fetch_array($resultado)){ 
+
+$id_curso = $data['id_curso'];
+
+ $fcurso = $data['fcurso'] = date("d-m-Y");
+ $fechaf = $data['fechaf'] = date("d-m-Y");
+
+if($data['evaluacion']=='0'){
+$valor='POR CONFIRMAR';
+}else{
+ $valor=$data['evaluacion']; 
+}
+
+?>
+
+//console.log('<?php echo $id_curso ?>');
+
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
+
+// "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-asignar'><?php echo $valor?> </a>"
+
+"<?php echo $valor?>"
+
+
+
+],
+<?php } ?>
+]
+
+var tableGenerarReporte = $('#data-table-programado').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ACCIÓN"}
+],
+});
+
+
+var dataSet = [
+<?php 
+$query = "
+SELECT * FROM cursos 
+INNER JOIN listacursos ON idmstr = gstIdlsc
+WHERE idinsp = $datos[0] AND evaluacion = 'FINALIZADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+$resultado = mysqli_query($conexion, $query);
+
+while($data = mysqli_fetch_array($resultado)){ 
+
+$id_curso = $data['id_curso'];
+
+ $fcurso = $data['fcurso'] = date("d-m-Y");
+ $fechaf = $data['fechaf'] = date("d-m-Y");
+?>
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
+
+"<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-success' data-toggle='modal' data-target='#modal-asignar'>FINALIZADO </a>"
+],
+<?php } ?>
+];
+var tableGenerarReporte = $('#data-table-completo').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ACCIÓN"}
+],
+});
+
+var dataSet = [
+<?php 
+$query = "
+SELECT * FROM cursos 
+INNER JOIN listacursos ON idmstr = gstIdlsc
+WHERE idinsp = $datos[0] AND evaluacion = 'CANCELADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+$resultado = mysqli_query($conexion, $query);
+
+while($data = mysqli_fetch_array($resultado)){ 
+
+$id_curso = $data['id_curso'];
+
+ $fcurso = $data['fcurso'] = date("d-m-Y");
+ $fechaf = $data['fechaf'] = date("d-m-Y");
+?>
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
+
+"<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
+],
+<?php } ?>
+];
+var tableGenerarReporte = $('#data-table-cancelado').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ACCIÓN"}
+],
+});
+</script>

@@ -812,7 +812,14 @@ function inspector(gstIdper) {
     gstEvalu = d[2];
 
 
-    if (gstEvalu == 'NO') { $("#ocultar").hide(); } else { $("#ocultar").show(); }
+    if (gstEvalu == 'NO') { 
+        $("#ocultar1").hide(); 
+        $("#ocultar2").hide(); 
+    } else { 
+        $("#ocultar1").show(); 
+        $("#ocultar2").show(); 
+    }
+
 
     $.ajax({
         url: '../php/conPerson.php',
@@ -927,8 +934,6 @@ function inspector(gstIdper) {
                 $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
                 $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
                 $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-
-
                 $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
 
                 $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
@@ -941,9 +946,65 @@ function inspector(gstIdper) {
                 $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                 //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
+                IDcat=obj.data[i].gstIDCat;
+
             }
         }
     })
+
+
+    $.ajax({
+        url: '../php/gesCurso.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+    for (c = 0; c < res.length; c++) {
+            if (obj.data[c].idinsp == gstIdper) {
+
+                idcurso = obj.data[c].idmstr;
+                proceso = obj.data[c].proceso;
+
+            }else{
+
+            }
+        }
+   
+    })
+
+
+    $.ajax({
+        url: '../php/lisOblig.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
+        for (o = 0; o < res.length; o++) {
+            if (obj.data[o].gstIcatg == gstIDCat) {
+
+  
+                if (obj.data[o].gstIDlsc == idcurso && proceso=='PENDIENTE' ) {
+
+                    html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>EN PROCESO</td> </tr>";
+                } else 
+                if(obj.data[o].gstIDlsc == idcurso && proceso=='FINALIZADO'){
+                    html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>FINALIZADO</td> </tr>";
+                }else{
+                    html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>PENDIENTE</td></tr>";
+                }
+                             }
+        }
+        html += '</tbody></table></div></div></div>';
+        $("#obligados").html(html);
+    })
+
+
 
     $.ajax({
         url: '../php/gesCurso.php',
@@ -954,7 +1015,7 @@ function inspector(gstIdper) {
         var x = 0;
 
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>OBSERVACIONES</th><th><i></i>EVALUACIÓN</th></tr></thead><tbody>';
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th></tr></thead><tbody>';
         for (ii = 0; ii < res.length; ii++) {
             x++;
             if (obj.data[ii].idinsp == gstIdper) {
@@ -965,9 +1026,15 @@ function inspector(gstIdper) {
                     day = obj.data[ii].fcurso.substring(8, 10);
                     Finicio = day + '/' + month + '/' + year;
 
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].observ + "</td><td>PENDIENTE</td> </tr>";
+
+                    year = obj.data[ii].fechaf.substring(0, 4);
+                    month = obj.data[ii].fechaf.substring(5, 7);
+                    day = obj.data[ii].fechaf.substring(8, 10);
+                    Final = day + '/' + month + '/' + year;
+
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='confirmar()' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>"+obj.data[ii].proceso+"</a></td> </tr>";
                 } else if (obj.data[ii].evaluacion == '50') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].observ + "</td><td>EN PROCESO</td> </tr>";
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td>EN PROCESO</td> </tr>";
                 } else {}
             }
         }

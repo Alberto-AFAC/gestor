@@ -20,7 +20,22 @@
     })          
 //}
 
-
+$(document).ready(function() {
+    $("input[type=radio]").click(function(event){
+        var valor = $(event.target).val();
+        if(valor =="si"){
+            $("#seecioncat").show();
+            $("#selecurso").hide();
+            $("#partici").show();
+            limpiar_datos();
+        } else if (valor == "no") {
+            $("#seecioncat").hide();
+            $("#selecurso").show();
+            $("#partici").hide();
+            limpiar_datos();
+        } 
+    });
+}); 
 
 function proCurso(){
 
@@ -46,6 +61,8 @@ idInsptr.push($(this).val());
   // var idcord = document.getElementById('idcord').value;
     
 var id_mstr = document.getElementById('id_mstr').value;
+
+
 var hcurso = document.getElementById('hcurso').value;
 var fcurso = document.getElementById('fcurso').value;
 //Solo ID coordinadores 
@@ -100,6 +117,9 @@ if(idcord== '' || idinsps =='' || id_mstr =='' || hcurso =='' || fcurso =='' || 
 
 }
 
+var limpiar_datos = function(){
+$("#id_mstr").val("");
+}   
 
 
 function actualizar(){

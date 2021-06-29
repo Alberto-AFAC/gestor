@@ -61,13 +61,27 @@ $("#modalVal #AgstTmrio").val(d[8]);
 
 function regCurso(){
 
+    var tPrfil = ''
+
+    var selectObject =document.getElementById("gstPrfil");
+
+    for (var i = 0; i < selectObject.options.length; i++) {
+        if(selectObject.options[i].selected ==true){                         
+
+          tPrfil += ','+selectObject.options[i].value; 
+                        
+        }
+      }
+
+       gstPrfiles = tPrfil.substr(1)
+
 var paqueteDeDatos = new FormData();
 paqueteDeDatos.append('gstTmrio', $('#gstTmrio')[0].files[0]);
 //paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
 paqueteDeDatos.append('gstTitlo', $('#gstTitlo').prop('value'));
 paqueteDeDatos.append('gstTipo', $('#gstTipo').prop('value'));
 paqueteDeDatos.append('gstVignc', $('#gstVignc').prop('value'));
-paqueteDeDatos.append('gstPrfil', $('#gstPrfil').prop('value'));
+paqueteDeDatos.append('gstPrfil', gstPrfiles);
 paqueteDeDatos.append('gstObjtv', $('#gstObjtv').prop('value'));
 
 paqueteDeDatos.append('hr', $('#hr').prop('value'));

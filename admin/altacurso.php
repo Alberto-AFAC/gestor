@@ -183,7 +183,7 @@
 
                      <div class="col-sm-4">
                       <label>PROVEEDOR DEL CURSO</label>
-                      <select type="text" class="form-control" id="gstTipo" name="gstTipo">
+                      <select type="text" class="form-control" id="gstProvd" name="gstProvd">
                         <option value="0">ELEGIR UNA OPCIÓN</option>
                         <option value="INDUCCIÓN">INTERNO</option>
                         <option value="BÁSICOS">EXTERNO</option>
@@ -192,13 +192,13 @@
 
                   <div class="col-sm-4">
                     <label>CENTRO DE INSTRUCCIÓN</label>                   
-                      <select type="text" class="form-control" id="gstPrfil" name="gstPrfil">
+                      <select type="text" class="form-control" id="gstCntro" name="gstCntro">
                         <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
                         <option value="IVA-L.l">EN EL EXTRANJERO</option>
                       </select>
                     </div>
 
-                  </div>
+                  </div> 
     
                   <div class="form-group">
                     <div class="col-sm-12">

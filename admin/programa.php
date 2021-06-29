@@ -1,4 +1,8 @@
-<!DOCTYPE html><?php include ("../conexion/conexion.php");
+<!DOCTYPE html><?php 
+
+session_start();
+
+include ("../conexion/conexion.php");
 
 $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
 $curso = mysqli_query($conexion,$sql);
@@ -8,6 +12,8 @@ $instructor  = mysqli_query($conexion,$sql);
 
 $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR ' AND estado = 0";
 $cordinador  = mysqli_query($conexion,$sql);
+
+unset($_SESSION['consulta']);
 
 ?>
 <html>
@@ -74,7 +80,25 @@ include('header.php');
 <form class="form-horizontal">
 
 
-<div class="form-group">
+<strong>ASIGNAR CURSOS OBLIGATORIOS: <label for="SI"> SI </label> <input name="seccat" type="radio" value="si" id="SI" /> <label for="NO"> NO </label> <input name="seccat" type="radio" value="no" id="NO" />
+</strong>
+
+<div class="form-group" id="seecioncat" style="display: none;">
+<div class="col-sm-4">
+<label>SELECCIONE CATEGORÍA</label>
+<div id="categoria"></div>                            
+</div>
+<div class="col-sm-8">
+<label>SELECCIONE CURSO</label>
+<div id="selecat"></div> 
+</div>
+</div>
+
+<div id="partici"></div> 
+
+
+
+<div class="form-group" id="selecurso">
 <div class="col-sm-offset-0 col-sm-12">
 <label style="color: white">.</label>
 <select style="width: 100%" class="form-control" class="selectpicker" name="id_mstr" id="id_mstr" type="text" data-live-search="true">
@@ -106,17 +130,6 @@ include('header.php');
 </div>
 
 <div class="form-group">
-
-        <!---se muestra dato del instructor al logearse-->
-        <!--<div class="col-sm-4">
-        <label style="color: white">INSTRUCTOR</label>
-        <select type="text" class="form-control" >
-        <option value="null">ELEGIR </option>
-        <option value="instructor1">PRUEBA1</option>
-        </select>
-        </div>-->
-
-<!--<input type='checkbox'  id='id_insp' value='"+obj.data[i].gstIdper+"' />   -->
 
     
     <div class="col-sm-4">
@@ -275,6 +288,9 @@ $(document).ready(function(){
 $('#id_mstr').select2();
 $('#idinst').select2();
 $("#idcord").select2();
+ $('#categoria').load('select/buscateg.php');
+ $('#selecat').load('select/tablacateg.php');
+ $('#partici').load('select/tablaoblig.php')
 }); 
 </script>
 <script src="../js/select2.js"></script> 
