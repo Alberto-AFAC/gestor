@@ -147,8 +147,6 @@ function pdf() {
         var logo = new Image();
         logo.src = '../dist/img/ApéndiceE2-1-min.png';
         var pdf = new jsPDF("p", "mm", "a4");
-
-
         pdf.addImage(logo, 'PNG', 0, 0, 210, 280);
 
         /* INICIO DE PDF*/
@@ -163,6 +161,7 @@ function pdf() {
         var fecha = "Fecha de impresión : " + currentDate;
         pdf.setFontSize(9);
         pdf.text(15, 290, fecha);
+      
 
         // /* OBTENER FECHA DE IMPRESIÓN*/
 
@@ -259,7 +258,7 @@ function pdf() {
 
         window.open(pdf.output('bloburl'))
 
-
+     
 
 
     })

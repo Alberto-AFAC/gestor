@@ -3,6 +3,7 @@
 	session_start();
 	
 	$query = "SELECT * FROM cursos 
+			  INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
 			  INNER JOIN personal ON idinsp = gstIdper 
 			  INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
 			  WHERE cursos.estado=0";
