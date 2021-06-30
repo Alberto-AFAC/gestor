@@ -5,14 +5,20 @@
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span></button>
+<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span></button> -->
+
+
+<button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
 <h4 class="modal-title">CONFIRMAR ASISTENCIA</h4>
 </div>
 
 <div class="modal-body">
 <form id="Confirma" class="form-horizontal" action="" method="POST" >
 <input type="hidden" name="id_curso" id="id_curso">
+<input type="hidden" name="idinsp" id="idinsp">
 <table class="table table-bordered">
 <tr>
 <th>CURSO</th>
@@ -46,12 +52,40 @@
 
 <table class="table table-bordered">
 <tr>
-<th>CONFIRMAR ASISTENCIA: <label for="SI"> SI </label> <input name="rptEvalu" type="radio" value="si" id="SI" /> <label for="NO"> NO </label> <input name="rptEvalu" type="radio" value="no" id="NO" />
+<th>
+
+<div class="col-sm-offset-0 col-sm-6">
+	CONFIRMAR ASISTENCIA: <label for="SI"> SI </label> <input name="Opc" id="Opc" type="radio" value="SI" id="SI" /> <label for="NO"> NO </label> <input name="Opc" id="Opc" type="radio" value="NO" id="NO" />
+<!-- 	<input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
+</div>
+<div class="col-sm-offset-0 col-sm-6">
+
+<p id="asiste" style="display: none;">
+<input type="hidden" id="conf" name="conf" >	
+</p>
+<p id="noasis" style="display:none;">
+<select style="width: 100%" class="form-control" class="selectpicker" type="text" data-live-search="true" id="confir" name="confir" onChange="justificacion()">
+<option value="0">SELECCIONE OPCIÓN  </option>
+<option value="TRABAJO">TRABAJO</option>
+<option value="ENFERMEDAD">ENFERMEDAD</option>
+<option value="OTROS">OTROS</option>
+</select>
+</p>
+</div>
+
 </th>
 </tr>
-<tr>
-<td><textarea style="font-size: 15px;display:none;" id="obser" name="obser" class="form-control is-invalid" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea></td>
-</tr>
+
+<th>
+<div class="form-group">
+<div class="col-sm-12">
+<input id="archivo" type="file" name="archivo" style="display: none; width: 410px;" required accept=".pdf,.doc" class="input-file" size="1450"> 
+
+<textarea style="display: none; font-size: 15px;" id="obser" name="obser" class="form-control is-invalid" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea>	
+</div>
+</div> 
+</th>
+
 </table>
 
 
@@ -79,11 +113,26 @@
 <div class="col-sm-offset-0 col-sm-5">
 <button type="button" id="button" class="btn btn-info" onclick="confirma();">ACEPTAR</button>
 </div>
-<b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
+   <b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos</p></b>
 
-<b><p class="alert alert-success text-center padding exito" id="succe2">¡Se asignó con éxito!</p></b>
+    <b><p class="alert alert-success text-center padding exito" id="exito">¡Se registraron los datos con éxito!</p></b>
 
-<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b>
+    <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
+
+    <b><p class="alert alert-danger text-center padding adjuto" id="renom">
+    Renombre su archivo</p></b>
+
+    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta">
+    Debes adjuntar archivo</p></b>
+
+    <b><p class="alert alert-danger text-center padding adjuto" id="error">
+    Ocurrio un error</p></b>
+
+    <b><p class="alert alert-danger text-center padding adjuto" id="forn">
+    Formato no valido</p></b>
+
+    <b><p class="alert alert-danger text-center padding adjuto" id="max">
+    Supera el limite permitido</p></b>
 </div>
 </form>    
 </div>

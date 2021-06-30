@@ -4,27 +4,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>PERSONAL</title>
-  <!-- Tell the browser to be responsive to screen width -->
+
+  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <!-- DataTables -->
-  <!-- <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
-  <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 </head>
 
 <?php
@@ -66,7 +59,7 @@ include('header.php');
 
 <!-- Content Header (Page header) -->
 <section class="content" id="lista">
-<div class="row">
+<!-- <div class="row">
 <div class="col-xs-12">
 <div class="box">
 <div class="box-header">
@@ -77,19 +70,50 @@ include('header.php');
 </div>
 </div>
 </div>
-<!-- <div class="row">
+<div class="row">
 <div class="box-body">
 <div class="table-responsive col-sm">
 <table id="data-table-reportes" class="table table-striped table-hover"></table>
 </div>
 </div>
-</div> -->
+</div>
 <div class="box-body">
 <table id="data-table-reportes" class="table table-striped table-hover"></table>
 </div>
 </div>
 </div>
 </div>
+ -->
+
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+
+
+<h3 class="box-title">PERSONAL</h3>
+<div class="pull-right">
+<div class="btn-group">
+<a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
+</div>
+</div>
+
+
+</div>
+<div class="box-body">
+  <div id="refresh">
+<table style="width: 100%;" id="data-table-reportes" class="table display table-striped table-bordered"></table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
 </section>
 </div>
 

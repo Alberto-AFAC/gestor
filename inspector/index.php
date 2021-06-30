@@ -4,29 +4,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 2 | User Profile</title>
-  <!-- Tell the browser to be responsive to screen width -->
+
+  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -133,7 +120,9 @@
 <div class="box-header">
 </div>
 <div class="box-body">
+  <div id="refresh">
 <table style="width: 100%;" id="data-table-confirmar" class="table display table-striped table-bordered"></table>
+</div>
 </div>
 </div>
 </div>
@@ -223,24 +212,19 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-  <script type="text/javascript" src="../js/cursos.js"></script>
+<script type="text/javascript" src="../js/cursos.js"></script>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
 </body>
 </html>
 
 <?php echo $datos[0];?>
 
-<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
 <script type="text/javascript">
 
@@ -249,7 +233,7 @@ var dataSet = [
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND evaluacion = '0' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -294,7 +278,7 @@ var dataSet = [
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND evaluacion = '0' AND cursos.estado = 0 || idinsp = $datos[0] AND evaluacion = 'CONFIRMADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'PENDIENTE' AND cursos.estado = 0 || idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -304,10 +288,12 @@ $id_curso = $data['id_curso'];
  $fcurso = $data['fcurso'] = date("d-m-Y");
  $fechaf = $data['fechaf'] = date("d-m-Y");
 
-if($data['evaluacion']=='0'){
+if($data['confirmar']=='CONFIRMAR'){
 $valor='POR CONFIRMAR';
+}else if($data['confirmar']=='CONFIRMADO'){
+ $valor=$data['confirmar']; 
 }else{
- $valor=$data['evaluacion']; 
+ $valor='DECLINADO';  
 }
 
 ?>
@@ -348,7 +334,7 @@ var dataSet = [
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND evaluacion = 'FINALIZADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -385,7 +371,7 @@ var dataSet = [
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND evaluacion = 'CANCELADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'CANCELADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
