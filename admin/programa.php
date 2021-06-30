@@ -302,22 +302,22 @@ $("#idcord").select2();
 <script src="../js/select2.js"></script> 
 
 <script>
-	jQuery(function($){
-  $(document).ajaxSend(function() {
-    $("#overlay").fadeIn(3000);　
-  });
+// 	jQuery(function($){
+//   $(document).ajaxSend(function() {
+//     $("#overlay").fadeIn(3000);　
+//   });
 		
-  $('#button').click(function(){
-    $.ajax({
-      type: 'GET',
-      success: function(proCurso){
+//   $('#button').click(function(){
+//     $.ajax({
+//       type: 'GET',
+//       success: function(proCurso){
   
-      }
-    }).done(function() {
-      setTimeout(function(){
-        $("#overlay").fadeOut(3000);
-      },3000);
-    });
-  });	
-});
+//       }
+//     }).done(function() {
+//       setTimeout(function(){
+//         $("#overlay").fadeOut(3000);
+//       },3000);
+//     });
+//   });	
+// });
 </script>
