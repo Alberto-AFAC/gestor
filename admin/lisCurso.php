@@ -206,10 +206,15 @@ include('header.php');
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrareval()">
                   <span aria-hidden="true">&times;</span></button>
                 <p><h4 class="modal-title">EVALUACIÓN DE RESULTADOS</h4></p>
-                <input type="text" disabled="" style="text-transform:uppercase;" class="form-control" id="evaNombr" name="evaNombr">
+                <label>Participante</label>
+                <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt" class="form-control" id="evaNombr" name="evaNombr">
               </div>
               <div class="modal-body">
                       <div class="form-group">
+                      <div class="col-sm-4">
+                           <label>ID del Curso</label>
+                           <input type="text" name="idfolio" id="idfolio" style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                        </div>
                         <div class="col-sm-12">
                            <label>Curso</label>
                            <input type="text" name="idperon" id="idperon" style="text-transform:uppercase;" class="form-control disabled" disabled="">
@@ -246,12 +251,13 @@ include('header.php');
                 
                        <div class="form-group">
                            <div class="col-sm-5">
-                             <button type="button" class="btn btn-primary">ACEPTAR</button>
+                             <button type="button" class="btn btn-primary" onclick="cerrareval()">ACEPTAR</button>
                            </div>
-                             <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
-                               <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
-                                  <b><p class="alert alert-warning text-center padding aviso" id="empty">Coloque la calificación</p></b>
-                        </div>
+                             <b><p class="alert alert-warning text-center padding error" id="dangerev">Error al Evaluar/p></b>
+                               <b><p class="alert alert-success text-center padding exito" id="succeev">¡Se Evaluo con exito!</p></b>
+                                  <b><p class="alert alert-warning text-center padding aviso" id="emptyev">Falto Ingresar la Puntuación!</p></b>
+                                      <b><p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto Ingresar la Fecha!</p></b>
+                           </div>
                   </div>
                 </div>    
               </div>
