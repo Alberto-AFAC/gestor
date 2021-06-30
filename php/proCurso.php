@@ -33,12 +33,12 @@ foreach ($valor as $idinsps) {
 		}else{	
 			echo "1";	
 		}
-// 		if(enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
-// 		{ 
-// //			echo "0";	
-// 		}else{	
-// //			echo "1";	
-// 		}
+//		if(enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
+	//	{ 
+//			echo "0";	
+	//	}else{	
+//			echo "1";	
+	//	}
 	}
 }else if($opcion === 'actualizar'){
 
@@ -92,7 +92,7 @@ function proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modal
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,0);";
+			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
