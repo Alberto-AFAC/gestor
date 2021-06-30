@@ -132,10 +132,10 @@ function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$m
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = "ssl";
+		$mail->SMTPSecure = "tls";
 		$mail->CharSet = "Content-Type: text/html; charset=utf-8";
 		$mail->Host = "smtp.gmail.com";
-		$mail->Port = 465;
+		$mail->Port = 587;
 		$mail->Username ='jmondragonescamilla@gmail.com';
 		$mail->Password = 'ELVIS_wolf97';
 
