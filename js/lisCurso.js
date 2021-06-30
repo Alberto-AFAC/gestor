@@ -80,21 +80,20 @@ function curso(cursos) {
             day = obj.data[i].fechaf.substring(8, 10);
             Finaliza = day + '/' + month + '/' + year;
 
-            cursos = obj.data[i].gstIdlsc+"*"+obj.data[i].gstTitlo+"*"+obj.data[i].gstTipo+"*"+obj.data[i].gstPrfil+"*"+obj.data[i].gstCntnc+"*"+obj.data[i].gstDrcin+"*"+obj.data[i].gstVignc+"*"+obj.data[i].gstObjtv+"*"+obj.data[i].hcurso+"*"+obj.data[i].fcurso+"*"+obj.data[i].fechaf+"*"+obj.data[i].idinst+"*"+obj.data[i].sede+"*"+obj.data[i].link+"*"+ obj.data[i].gstNombr+"*"+ obj.data[i].gstApell+"*"+ obj.data[i].idmstr;
+            cursos = obj.data[i].gstIdlsc+"*"+obj.data[i].gstTitlo+"*"+obj.data[i].gstTipo+"*"+obj.data[i].gstPrfil+"*"+obj.data[i].gstCntnc+"*"+obj.data[i].gstDrcin+"*"+obj.data[i].gstVignc+"*"+obj.data[i].gstObjtv+"*"+obj.data[i].hcurso+"*"+obj.data[i].fcurso+"*"+obj.data[i].fechaf+"*"+obj.data[i].idinst+"*"+obj.data[i].sede+"*"+obj.data[i].link+"*"+ obj.data[i].gstNombr+"*"+ obj.data[i].gstApell+"*"+ obj.data[i].idmstr+"*"+ obj.data[i].evaluacion+"*"+ obj.data[i].idinsp;
             if (obj.data[i].idmstr == gstIdlsc && obj.data[i].proceso == 'PENDIENTE') {
 
                 if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:23px;'></i></a><a type='button' title='Evaluación' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:23px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:23px;'></i></a></td></tr>";
                     //validación 
                 
-
-
             } else {}
 
                     //ISPECTOR
                 if (obj.data[i].gstCargo == 'INSTRUCTOR') {
                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>INSTRUCTOR</a><a type='button' onclick='eliminar("     + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                 }
+            
 
             } //else if(obj.data[i].idmstr==gstIdlsc && obj.data[i].proceso=='CONFIRMADO'){
             //           html +="<tr><td>"+obj.data[i].idmstr+"</td><td>"+obj.data[i].gstNombr+"</td><td>"+obj.data[i].gstApell+"</td><td>"+obj.data[i].gstCatgr+"</td><td> <a type='button' onclick='agregar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'>"+obj.data[i].proceso+"</a><a type='button' onclick='eliminar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>"; 
@@ -133,7 +132,7 @@ function agrPart(cursos) {
     $("#Prtcpnt #idcord").val(d[11]);
     $("#Prtcpnt #sede").val(d[12]);
     $("#Prtcpnt #linke").val(d[13]);
-    $("#Prtcpnt #modalidad").val(d[14]);
+    $("#Prtcpnt #modalidad").val(d[1]);
 
 }
 
@@ -267,9 +266,29 @@ function cambiartexto() {
     $("#avaluacion #evaNombr").val(d[14]+" "+d[15]); //NOMBRE COMPLETO
     $("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
     $("#avaluacion #idfolio").val(d[16]); //ID DEL CURSO
+    $("#avaluacion #validoev").val(d[17]); //EVALUACIÓN
+    $("#avaluacion #idinsev").val(d[18]); //EVALUACIÓN
+    valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
+    costOfTicket=document.getElementById("NOE"); 
+    selectedStand = document.getElementById("SIe");
+    pendiente = document.getElementById("PE");
 
+    if(valor2 >= 80){ //APROBADO
+        selectedStand.style.display = ''; 
+        costOfTicket.style.display = 'none';
+        pendiente.style.display = 'none';
+      }
+      else if(valor2 < 80 ){ //REPROBADO
+        costOfTicket.style.display = '';
+        selectedStand.style.display = 'none';
+        pendiente.style.display = 'none';
+       }else{
+       pendiente.style.display = '';
+       costOfTicket.style.display = 'none';
+       selectedStand.style.display = 'none';
+        
+       }
 }
-
 
  //ACTUALIZACIÓN DE LA EVALUACIÓN  Y ACEPTAR
  function cerrareval() {
@@ -281,7 +300,12 @@ function cambiartexto() {
     var validoev = document.getElementById ("validoev").value;
     var fechaev = document.getElementById ("fechaev").value;
     var pendiente = document.getElementById("PE");
-    datos = 'gstIdper='+gstIdper+'&gstNombr='+gstNombr+'&gstApell='+gstApell+'&gstLunac='+gstLunac+'&gstFenac='+gstFenac+'&gstStcvl='+gstStcvl+'&gstCurp='+gstCurp+'&gstRfc='+gstRfc+'&gstNpspr='+gstNpspr+'&gstPsvig='+gstPsvig+'&gstVisa='+gstVisa+'&gstVignt='+gstVignt+'&gstNucrt='+gstNucrt+'&gstCalle='+gstCalle+'&gstNumro='+gstNumro+'&gstClnia='+gstClnia+'&gstCpstl='+gstCpstl+'&gstCiuda='+gstCiuda+'&gstStado='+gstStado+'&gstCasa='+gstCasa+'&gstClulr='+gstClulr+'&gstExTel='+gstExTel+'&opcion=actualizar'
+    idinsp = document.getElementById('idinsev').value;
+
+    datos ='idinsp=' + idinsp +'&evaluacion='+valor2+'&opcion=actualizarevalu'
+
+    alert(datos);
+
     if (validoev == '') {
         pendiente.style.display = '';
         costOfTicket.style.display = 'none';
@@ -305,7 +329,9 @@ function cambiartexto() {
             type:'POST',
             data: datos
             }).done(function(respuesta){
-            if (respuesta==0) {
+            
+            alert(respuesta);
+                if (respuesta==0) {
             $('#succeev').toggle('toggle');
             setTimeout(function(){
             $('#succeev').toggle('toggle');
@@ -319,8 +345,6 @@ function cambiartexto() {
             }); 
      }
     }
-
-   
 
 //fecha actual  evaluación 
 window.onload = function(){
