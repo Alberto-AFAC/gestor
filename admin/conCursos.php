@@ -92,7 +92,7 @@
                 <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
                <div class="form-group">
                 <div class="col-sm-12">
-                  <p> CONFIRME ACEPTAR, PARA ELIMINAR: <input type="text" name="EgstTitlo" id="EgstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
+                  <p> CONFIRME ACEPTAR, PARA ddELIMINAR: <input type="text" name="EgstTitlo" id="EgstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
                 </div>
                   <br>
                   <div class="col-sm-5">
@@ -115,6 +115,43 @@
 
     </section>
 
+  
+    <form class="form-horizontal" action="" method="POST"  >
+      <div class="modal fade" id="modal-evaluar">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">EVALUACIÓN</h4>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" name="evgstIdlsc" id="evgstIdlsc">
+               <div class="form-group">
+                <div class="col-sm-12">
+                  <p> CONFIRME ACEPTAR, PARA EVALUAR <input type="text" name="evgstTitlo" id="evgstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
+                </div>
+                  <br>
+                  <div class="col-sm-5">
+                  <button type="button" class="btn btn-primary">ACEPTAR</button>
+                  </div>
+
+                    <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
+                    <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
+                    <b><p class="alert alert-warning text-center padding aviso" id="empty">Elija curso para eliminar </p></b>
+                    </div>
+                  </div>
+                </div>    
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        </div>
+</form>
+
+    </section>
 
       <div class="row">
 

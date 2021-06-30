@@ -8,14 +8,13 @@ $instructor = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
 $inspector = mysqli_query($conexion,$sql);
-
 ?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Gestor inspectores |Alta Curso</title>
+  <title>Gestor inspectores |Nivel de Calidad</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -58,7 +57,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-          CURSOS PROGRAMADOS     
+          NIVEL DE SÁTISFACCIÓN     
       </h1>
     </section>
     <!-- Main content -->
@@ -74,89 +73,12 @@ include('header.php');
 <div class="tab-content">
 
        
-<div class="box-body" id="listCurso">
-<?php include('../html/lisCurso.html');?>
+<div class="box-body" id="">
+
 
  <!-- Datatables -->
 
-</div>
-<section class="content">
-<div class="row">
-  
-<?php include('viscurso.php');?>
 
-</div>
-
-            </div>
-            <div id='lstacurs'></div>
-           
-     <div class="modal fade" id="modal-participnt">
-          <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" onclick="location.href='lisCurso.php'" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
-              </div>
-              <div class="modal-body">
-          <form class="form-horizontal" id="Prtcpnt">
-
-            <input type="hidden" class="form-control" id="gstIdlsc" name="gstIdlsc">
-        
-            <div class="form-group">
-                  <div class="col-sm-6">
-                    <label>TÍTULO</label>
-                      <input type="text" onkeyup="mayus(this);" class="form-control" id="gstTitlo" name="gstTitlo" disabled="">
-                  </div>
-
-                  <div class="col-sm-3">
-                       <label>INICIO</label>
-                       <input type="date" onkeyup="mayus(this);" class="form-control" id="finicio" name="finicio" disabled="">
-                  </div>
-                     <div class="col-sm-3">
-                       <label>DURACIÓN</label>
-                       <input type="text" onkeyup="mayus(this);" class="form-control" id="gstDrcin" name="gstDrcin" disabled="">
-                  </div>
-            </div>
-
-            <div class="form-group">
-  
-   <div class="col-sm-12">
-    <label>PARTICIPANTE</label>
-      <select class="form-control" id="idinsp" name="idinsp" style="width: 100%;">
-          <option value="">ELIJA PARTICIPANTE PARA ASISTIR AL CURSO </option> 
-          <?php while($inspectors = mysqli_fetch_row($inspector)):?>
-          <option value="<?php echo $inspectors[0]?>"><?php echo $inspectors[1].' '.$inspectors[2].' ('.$inspectors[3].')'?></option>
-          <?php endwhile; ?>
-      </select>
-    </div>
-            </div>
-
-              <input type="hidden" name="hrcurs" id="hrcurs">
-              <input type="hidden" name="finalf" id="finalf">
-              <input type="hidden" name="idcord" id="idcord">
-              <input type="hidden" name="sede" id="sede">
-              <input type="hidden" name="linke" id="linke">
-              <input type="hidden" name="modalidad" id="modalidad">
-
-                <div class="form-group">
-                <div class="col-sm-5">
-
-                <button type="button" id="button" class="btn btn-info" onclick="agrPartc();">ACEPTAR</button>
-
-                </div>              
-                <b><p class="alert alert-info text-center padding error" id="danger">El participante ya está agregado </p></b>
-
-                <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregó el participante con éxito!</p></b>
-
-                <b><p class="alert alert-warning text-center padding aviso" id="empty">Elija participante  </p></b>
-                </div>
-              </form>   
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
             <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->
@@ -164,105 +86,6 @@ include('header.php');
         <!-- /.col -->
       </div>
       <!-- /.row -->
-      <form class="form-horizontal" action="" method="POST"  >
-      <div class="modal fade" id="modal-eliminar">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">ELIMINAR CURSO </h4>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" name="gstIdlsc" id="gstIdlsc">
-               <div class="form-group">
-                <div class="col-sm-12">
-                  <p> CONFIRME ACEPTAR, PARA ELIMINAR: <input type="text" name="gstTitlo" id="gstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
-                </div>
-                  <br>
-                  <div class="col-sm-5">
-                  <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
-                  </div>
-                    <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
-                    <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
-                    <b><p class="alert alert-warning text-center padding aviso" id="empty">Elija curso para eliminar </p></b>
-                    </div>
-                  </div>
-                </div>    
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-</form>
-    </section>
-    <form class="form-horizontal" action="" method="POST" id="avaluacion" >
-    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-      <div class="modal fade" id="modal-evaluar">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrareval()">
-                  <span aria-hidden="true">&times;</span></button>
-                <p><h4 class="modal-title">EVALUACIÓN DE RESULTADOS</h4></p>
-                <input type="text" disabled="" style="text-transform:uppercase;" class="form-control" id="evaNombr" name="evaNombr">
-              </div>
-              <div class="modal-body">
-                      <div class="form-group">
-                        <div class="col-sm-12">
-                           <label>Curso</label>
-                           <input type="text" name="idperon" id="idperon" style="text-transform:uppercase;" class="form-control disabled" disabled="">
-                        </div>
-                        <div class="col-sm-12">
-                             <label>Fecha de la evaluación</label>
-                             <input type="date" style="text-transform:uppercase;" class="form-control disabled" id='fechaev'>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                          <div class="col-sm-4">
-                             <label>Puntuación obtenida</label>
-                             <input type="number" name="cantidad" min="1" max="10" style="text-transform:uppercase;" class="form-control disabled;" id='validoev'  onchange="cambiartexto()">
-                          </div>
-                          <div class="col-sm-4">
-                    
-                          </div>
-                          <span class='label label-success' style= "font-size:25px; display:none"  id='SIe'>APROBADO</span>
-                              <span class='label label-danger' style= "font-size:25px; display:none" id='NOE'>REPROBADO</span>
-                              <span class='label label-primary' style= "font-size:25px;" id='PE'>PENDIENTE</span>
-                      </div>
-                     
-                      <div class="form-group">
-                           <div class="col-sm-2">
-                              
-                           </div>
-                      </div>
-                     
-                      <div class="form-group">
-                           <div class="col-sm-12">
-                           <textarea class="col-sm-12"  name="comentarios" id="comeneva" rows="4" cols="10" onkeyup="mayus(this);" style= "font-size: 14px; border-radius: 5px;" placeholder ="Comentarios Adicionales"></textarea>
-                           </div>
-                      </div>
-                
-                       <div class="form-group">
-                           <div class="col-sm-5">
-                             <button type="button" class="btn btn-primary">ACEPTAR</button>
-                           </div>
-                             <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
-                               <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
-                                  <b><p class="alert alert-warning text-center padding aviso" id="empty">Coloque la calificación</p></b>
-                        </div>
-                  </div>
-                </div>    
-              </div>
-            </div>
-            <!-- /.modal-content -->
-      
-          <!-- /.modal-dialog -->
-      
-        
-
-</form>
 
     </section>
     <!-- /.content -->
