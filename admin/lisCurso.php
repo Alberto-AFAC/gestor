@@ -203,39 +203,47 @@ include('header.php');
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
-                  <span aria-hidden="true">&times;</span></button>
-                <p><h4 class="modal-title">EVALUACIÓN DE RESULTADOS</h4></p>
+                <button type="button" class="close" style="font-size: 22px" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                <p><h4 class="modal-title" style="text-align:Center;" >EVALUACIÓN DE RESULTADOS</h4></p>
                 <label>Participante</label>
                 <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt; display:none" class="form-control " id="idinsev" name="evaNombr">
                 <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt" class="form-control" id="evaNombr" name="evaNombr">
               </div>
               <div class="modal-body">
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                  <a href='javascript:openEditeva()' id="abrirev" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
+                  <a href='javascript:cerrarEditeva()'  id="cerrareval" style="display:none; font-size: 22px"> <i class="fa fa-ban"></i> </a>
+                  </button>
+                  </div>
                       <div class="form-group">
                       <div class="col-sm-4">
-                           <label>ID del Curso</label>
-                           <input type="text" name="idfolio" id="idfolio" style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                           <label>FOLIO:</label>
+                           <input type="text" name="id_curso" id="id_curso" style="text-transform:uppercase;" class="form-control disabled" disabled="">
                         </div>
                         <div class="col-sm-12">
-                           <label>Curso</label>
+                           <label>CURSO:</label>
                            <input type="text" name="idperon" id="idperon" style="text-transform:uppercase;" class="form-control disabled" disabled="">
                         </div>
                         <div class="col-sm-12">
-                             <label>Fecha de la evaluación</label>
-                             <input type="date" style="text-transform:uppercase;" class="form-control disabled" id='fechaev'>
+                             <label>FECHA DE LA EVALUACIÓN:</label>
+                             <input type="date" style="text-transform:uppercase;" class="form-control disabled" disabled="" id='fechaev'>
+                             
                         </div>
                       </div>
                       <div class="form-group">
-                          <div class="col-sm-4">
-                             <label>Puntuación obtenida</label>
-                             <input type="number" name="cantidad" min="1" max="10" style="text-transform:uppercase;" class="form-control disabled;" id='validoev'  onchange="cambiartexto()">
+                          <div class="col-sm-5">
+                             <label>PUNTUACIÓN OBTENIDA</label>
+                             <input type="number" title="el numero no debe ser superior a 100" name="cantidad" min="1" max="100" style="text-transform:uppercase;" class="form-control disabled" disabled="" id='validoev'  onchange="cambiartexto()">
+                             <!-- <input type="text" style="text-transform:uppercase; font-size: 14pt; display:"  class="form-control disabled" disabled="" id='resuleval'> TEXTO ESTATUS -->
                           </div>
                           <div class="col-sm-4">
-                    
+              
                           </div>
-                          <span class='label label-success' style= "font-size:25px; display:none"  id='SIe'>APROBADO</span>
-                              <span class='label label-danger' style= "font-size:25px; display:none" id='NOE'>REPROBADO</span>
-                              <span class='label label-primary' style= "font-size:25px;" id='PE'>PENDIENTE</span>
+                          <span class='label label-success' style= "font-size:18px; display:none"  id='SIe'>APROBADO</span>
+                              <span class='label label-danger' style= "font-size:18px; display:none" id='NOE'>REPROBADO</span>
+                              <span class='label label-primary' style= "font-size:18px;" id='PE'>PENDIENTE</span>
                       </div>
                      
                       <div class="form-group">
@@ -246,7 +254,7 @@ include('header.php');
                      
                       <div class="form-group">
                            <div class="col-sm-12">
-                           <textarea class="col-sm-12"  name="comentarios" id="comeneva" rows="4" cols="10" onkeyup="mayus(this);" style= "font-size: 14px; border-radius: 5px;" placeholder ="Comentarios Adicionales"></textarea>
+                           <textarea class="col-sm-12"  name="comentarios" id="comeneva" rows="4" cols="10" onkeyup="mayus(this);" style= "font-size: 14px; border-radius: 5px;" placeholder ="Comentarios Adicionales" disabled=""></textarea>
                            </div>
                       </div>
                 
