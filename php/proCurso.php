@@ -18,6 +18,7 @@ $idinst = $_POST['idinst'];
 $sede = $_POST['sede'];
 $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
+
 //proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$link, $conexion);
 
 $id = $_POST['idinsps'].','.$idinst;
@@ -73,8 +74,19 @@ $idinsps= $_POST['idinsp'];
 if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
 		{	echo "0";	}else{	echo "1";	}
 
-}
+//ACTUALIZAR EVALUACIÓN
+}else if($opcion === 'actualizarevalu'){ 
 
+	$evaluacion = $_POST['evaluacion'];
+	$idinsp = $_POST['idinsp'];	
+	$id_curso = $_POST['id_curso'];	
+
+	if(actualizarevalu($idinsp, $id_curso, $evaluacion, $conexion)){	
+		echo "0";	
+	}else{	
+		echo "1";	}
+}
+//FIN ACTUALIZAR EVALUACIÓN
 
 function proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
 
@@ -111,8 +123,22 @@ function actualizar($idinsp, $nombre, $apellidos, $correo, $idarea, $puesto,$uni
 		}
 	cerrar($conexion);
 }
+//actualia evaluación el curso
 
-function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
+function actualizarevalu($idinsp, $id_curso, $evaluacion, $conexion){
+
+	$query="UPDATE cursos SET evaluacion = '$evaluacion' WHERE idinsp='$idinsp' AND id_curso='$id_curso'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
+	}
+
+// fin actualia evaluación el curso
+
+/*function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
 
 		$query = "SELECT gstNombr,gstApell,gstCinst, gstCorro, gstTipo, modalidad, gstCargo, link, fcurso FROM personal INNER JOIN cursos	ON cursos.idinsp = personal.gstIdper
 					INNER JOIN listacursos ON cursos.idmstr = listacursos.gstIdlsc WHERE personal.gstIdper = $idinsps AND cursos.estado = 0";
@@ -132,13 +158,12 @@ function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$m
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->SMTPAuth = true;
-		$mail->IsHTML(true);
 		$mail->SMTPSecure = "tls";
 		$mail->CharSet = "Content-Type: text/html; charset=utf-8";
 		$mail->Host = "smtp.gmail.com";
 		$mail->Port = 587;
 		$mail->Username ='jmondragonescamilla@gmail.com';
-		$mail->Password = 'ELVIS_wolf97';
+		$mail->Password = 'ELVIS_wolf97;f
 
 		$mail->AddAddress('jmondragonescamilla@gmail.com');
 		$mail->Subject = "NUEVO CURSO PROGRAMADO";
@@ -164,6 +189,6 @@ function cerrar($conexion){
 	mysqli_close($conexion);
 
 }
-?>
+?> */
 
 
