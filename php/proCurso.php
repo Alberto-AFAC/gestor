@@ -163,7 +163,7 @@ function actualizarevalu($idinsp, $id_curso, $evaluacion, $conexion){
 		$mail->Host = "smtp.gmail.com";
 		$mail->Port = 587;
 		$mail->Username ='jmondragonescamilla@gmail.com';
-		$mail->Password = 'ELVIS_wolf97;
+		$mail->Password = 'ELVIS_wolf97;f
 
 		$mail->AddAddress('jmondragonescamilla@gmail.com');
 		$mail->Subject = "NUEVO CURSO PROGRAMADO";
