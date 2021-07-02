@@ -32,6 +32,7 @@ $inspector = mysqli_query($conexion,$sql);
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="../dist/css/skins/card.css">
   
+  
   <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
   
 
@@ -72,24 +73,21 @@ include('header.php');
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
 </ul>-->
 <div class="tab-content">
-
-       
+      
 <div class="box-body" id="listCurso">
 <?php include('../html/lisCurso.html');?>
 
  <!-- Datatables -->
-
 </div>
-<section class="content">
+
+<section class="content" id="viscurso">
 <div class="row">
   
 <?php include('viscurso.php');?>
 
 </div>
-
             </div>
             <div id='lstacurs'></div>
-           
      <div class="modal fade" id="modal-participnt">
           <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -197,6 +195,7 @@ include('header.php');
         </div>
 </form>
     </section>
+    <!-- inicia la evaluación curso -->
     <form class="form-horizontal" action="" method="POST" id="avaluacion" >
     <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal fade" id="modal-evaluar">
@@ -206,7 +205,7 @@ include('header.php');
                 <button type="button" class="close" style="font-size: 22px" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
                 <p><h4 class="modal-title" style="text-align:Center;" >EVALUACIÓN DE RESULTADOS</h4></p>
-                <label>Participante</label>
+                <label>PARTICIPANTE</label>
                 <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt; display:none" class="form-control " id="idinsev" name="evaNombr">
                 <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt" class="form-control" id="evaNombr" name="evaNombr">
               </div>
@@ -218,7 +217,7 @@ include('header.php');
                   </button>
                   </div>
                       <div class="form-group">
-                      <div class="col-sm-4">
+                      <div class="col-sm-2">
                            <label>FOLIO:</label>
                            <input type="text" name="id_curso" id="id_curso" style="text-transform:uppercase;" class="form-control disabled" disabled="">
                         </div>
@@ -231,28 +230,26 @@ include('header.php');
                              <input type="date" style="text-transform:uppercase;" class="form-control disabled" disabled="" id='fechaev'>
                              
                         </div>
-                      </div>
-                      <div class="form-group">
-                          <div class="col-sm-5">
-                             <label>PUNTUACIÓN OBTENIDA</label>
-                             <input type="number" title="el numero no debe ser superior a 100" name="cantidad" min="1" max="100" style="text-transform:uppercase;" class="form-control disabled" disabled="" id='validoev'  onchange="cambiartexto()">
-                             <!-- <input type="text" style="text-transform:uppercase; font-size: 14pt; display:"  class="form-control disabled" disabled="" id='resuleval'> TEXTO ESTATUS -->
-                          </div>
-                          <div class="col-sm-4">
+                
+                      <div class="col-sm-12" >
+                      <table class="content-table" >
+    <thead>
+      <tr>
+        <th>RESULTADOS</th>
+        <th>ESTATUS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="number" title="el numero no debe ser superior a 100" name="cantidad" min="1" max="100" style="text-transform:uppercase;" class="form-control disabled" disabled="" id='validoev'  onchange="cambiartexto()"></td>
+        <td><span class='label label-primary' style= "font-size:18px;" id='PE'>PENDIENTE</span><span class='label label-success' style= "font-size:18px; display:none"  id='SIe'>APROBADO</span><span class='label label-danger' style= "font-size:18px; display:none" id='NOE'>REPROBADO</span></td>
+
+      </tr>
+    </tbody>
+  </table>
               
                           </div>
-                          <span class='label label-success' style= "font-size:18px; display:none"  id='SIe'>APROBADO</span>
-                              <span class='label label-danger' style= "font-size:18px; display:none" id='NOE'>REPROBADO</span>
-                              <span class='label label-primary' style= "font-size:18px;" id='PE'>PENDIENTE</span>
-                      </div>
-                     
-                      <div class="form-group">
-                           <div class="col-sm-2">
-                              
-                           </div>
-                      </div>
-                     
-                      <div class="form-group">
+                          
                            <div class="col-sm-12">
                            <textarea class="col-sm-12"  name="comentarios" id="comeneva" rows="4" cols="10" onkeyup="mayus(this);" style= "font-size: 14px; border-radius: 5px;" placeholder ="Comentarios Adicionales" disabled=""></textarea>
                            </div>
