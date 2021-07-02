@@ -41,12 +41,12 @@ function curpValida(curp) {
 }
 
 //--------------------------------codigo postal--------------------------------
-var input=  document.getElementById('gstCpstl');
+/*var input=  document.getElementById('gstCpstl');
 input.addEventListener('input',function(){
   if (this.value.length > 5) 
      this.value = this.value.slice(0,5); 
      
-})
+})*/
 //-------------------------------------------RFC------------------------------------------------
 //Función para validar un RFC
 // Devuelve el RFC sin espacios ni guiones si es correcto

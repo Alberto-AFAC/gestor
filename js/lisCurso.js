@@ -90,16 +90,15 @@ function curso(cursos) {
                 if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
 
                     if (obj.data[i].evaluacion <= 0) { 
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:20px;'></i></a><a type='button' title='Evaluación' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:20px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:20px;'></i></a></td></tr>";
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                     }
                      if (((obj.data[i].evaluacion)>= 80)&&((obj.data[i].evaluacion)<=100)) { 
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:20px;'></i></a><a type='button' title='Evaluación' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:20px;'></i></a><a type='button' title='Descargar Certificado' onclick='' class='btn btn-default' data-toggle='modal' data-target=''><i class='fa fa fa-download text-blue' style='font-size:20px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:20 px;'></i></a></td></tr>";
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                     }
                     if (((obj.data[i].evaluacion)< 80)&&((obj.data[i].evaluacion)>=1)) { 
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:20px;'></i></a><a type='button' title='Evaluación' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:20px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:20 px;'></i></a></td></tr>";
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                     }
             
-
             } else {}
 
                     //ISPECTOR
@@ -213,7 +212,6 @@ function eliminar(cursos) {
 }
 
 
-
 function eliCurso() {
 
     var EgstIdlsc = document.getElementById('EgstIdlsc').value;
@@ -248,7 +246,7 @@ function eliCurso() {
         });
     }
 }
-//RESULTADO DE LA EVALUACIÓN
+//RESULTADO DE LA EVALUACIÓN INSPECTOR
 function cambiartexto() {
     costOfTicket=document.getElementById("NOE"); 
     selectedStand = document.getElementById("SIe");
@@ -273,7 +271,7 @@ function cambiartexto() {
 
        }
  }
-//MOSTRAR LOS DATOS EN EVLACIÓN DEL CURSO
+//MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
  function evaluarins(cursos) { 
     var d = cursos.split("*");
     //alert(d[11]);
@@ -310,7 +308,7 @@ function cambiartexto() {
        }
 }
 
- //ACTUALIZACIÓN DE LA EVALUACIÓN  Y ACEPTAR
+ //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
  function cerrareval() {
     costOfTicket=document.getElementById("NOE"); 
     selectedStand = document.getElementById("SIe");
@@ -362,9 +360,10 @@ function cambiartexto() {
             setTimeout(function(){
             $('#dangerev').toggle('toggle');
             },2000);
-            }                    
+            }  
+                         
             }); 
-    //inhanilita los campos INICIO
+    //inhanilita los campos EVALUACIÓN INSPECTOR
       div1 = document.getElementById('abrirev');
       div1.style.display = '';
       div1 = document.getElementById('cerrareval');
@@ -372,11 +371,12 @@ function cambiartexto() {
       document.getElementById('fechaev').disabled = true; // FECHA
       document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
       document.getElementById('comeneva').disabled = true; // COMENTARIOS 
-         
+      document.getElementById("lstcurs").innerHTML = "1"   
+
      }
     }
 
-//fecha actual  evaluación 
+//fecha actual  EVALUACIÓN INSPECTOR
 window.onload = function(){
     var fecha = new Date(); //Fecha actual
     var mes = fecha.getMonth()+1; //obteniendo mes
@@ -389,7 +389,7 @@ window.onload = function(){
     document.getElementById('fechaev').value=ano+"-"+mes+"-"+dia;
   }
 
-  //ABRIR EDICIÓN DE EVALUACIÓN
+  //ABRIR EDICIÓN DE EVALUACIÓN INSPECTOR
   function openEditeva() {
         // alert("prueba2!"); 
     div = document.getElementById('cerrareval');
@@ -401,15 +401,23 @@ window.onload = function(){
     document.getElementById('validoev').disabled = false; // PUNTUACIÓN OBTENIDA
     document.getElementById('comeneva').disabled = false; // COMENTARIOS 
   }
-  //CERRAR EDICIÓN DE EVALUACIÓN
+  //CERRAR EDICIÓN DE EVALUACIÓN INSPECTOR
   function cerrarEditeva() {
     // alert("prueba2!"); 
     div1 = document.getElementById('abrirev');
     div1.style.display = '';
     div1 = document.getElementById('cerrareval');
     div1.style.display = 'none';
- //inhanilita los campos INICIO
+ //inhanilita los campos EVALUACIÓN INSPECTOR
     document.getElementById('fechaev').disabled = true; // FECHA
     document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
     document.getElementById('comeneva').disabled = true; // COMENTARIOS 
+}
+
+//EVALUACIÓN CURSO
+function evalucurs(cursos) { 
+    var d = cursos.split("*");
+    //alert(d[11]);
+    $("#nomcursoen").val(d[1]); //NOMBRE DEL CURSO
+    $("#idcursoen").val(d[19]); //ID DEL CURSO
 }
