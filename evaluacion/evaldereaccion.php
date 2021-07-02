@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Gestor inspectores | Alta de persona</title>
+  <title>Gestor inspectores | Evaluación</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -59,10 +59,6 @@ include('header.php');
     </section>
 <section class="content">
 <div class="row">
-
-<?php
- 
-?>
 <!-- <img src="../dist/img/AFAC2.png" alt="Descripción de la imagen"> -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
