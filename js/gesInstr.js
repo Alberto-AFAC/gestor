@@ -35,28 +35,46 @@ function conCurso(){
     })  
 }
  
-function dato(datos){
+function dato(gstIdlsc){
 
-  var d=datos.split("*");
+    $.ajax({
+    url:'../php/conCurso.php',
+    type:'POST'
+    }).done(function(resp){
+        obj = JSON.parse(resp);
+        var res = obj.data;  
+        var x = 0;
 
-$("#modalVal #AgstIdlsc").val(d[0]);	
-$("#modalVal #AgstTitlo").val(d[1]);
-$("#modalVal #AgstTipo").val(d[2]);
-$("#modalVal #AgstPrfil").val(d[3]);
-$("#modalVal #AgstCntnc").val(d[4]);
+            for(i=0; i<res.length;i++){
+        if(obj.data[i].gstIdlsc == gstIdlsc){
 
-Ahr = d[5].substr(0,2);
-Amin = d[5].substr(3,2);
-Atmp = d[5].substr(6,4);
+                datos = obj.data[i].gstIdlsc+'*'+obj.data[i].gstTitlo+'*'+obj.data[i].gstTipo+'*'+obj.data[i].gstPrfil+'*'+obj.data[i].gstCntnc+'*'+obj.data[i].gstDrcin+'*'+obj.data[i].gstVignc+'*'+obj.data[i].gstObjtv+'*'+obj.data[i].gstTmrio;
 
-$("#modalVal #Ahr").val(Ahr);
-$("#modalVal #Amin").val(Amin);
-$("#modalVal #Atmp").val(Atmp);
+                  var d=datos.split("*");
 
-$("#modalVal #AgstVignc").val(d[6]);
-$("#modalVal #AgstObjtv").val(d[7]);
-$("#modalVal #AgstTmrio").val(d[8]);
+                $("#modalVal #AgstIdlsc").val(d[0]); 
+                $("#modalVal #AgstTitlo").val(d[1]);
+                $("#modalVal #AgstTipo").val(d[2]);
+                $("#gstPrfil").html(d[3]);
+                $("#modalVal #AgstCntnc").val(d[4]);
 
+                Ahr = d[5].substr(0,2);
+                Amin = d[5].substr(3,2);
+                Atmp = d[5].substr(6,4);
+
+                $("#modalVal #Ahr").val(Ahr);
+                $("#modalVal #Amin").val(Amin);
+                $("#modalVal #Atmp").val(Atmp);
+
+                $("#modalVal #AgstVignc").val(d[6]);
+                $("#modalVal #AgstObjtv").val(d[7]);
+                $("#modalVal #AgstTmrio").val(d[8]);
+                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
+                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+
+            }
+        } 
+    })  
 }
 
 function regCurso(){
@@ -73,7 +91,7 @@ function regCurso(){
         }
       }
 
-       gstPrfiles = tPrfil.substr(1)
+       gstPrfiles = tPrfil.substr(1);
 
 var paqueteDeDatos = new FormData();
 paqueteDeDatos.append('gstTmrio', $('#gstTmrio')[0].files[0]);
@@ -87,9 +105,10 @@ paqueteDeDatos.append('gstObjtv', $('#gstObjtv').prop('value'));
 paqueteDeDatos.append('hr', $('#hr').prop('value'));
 paqueteDeDatos.append('min', $('#min').prop('value'));
 paqueteDeDatos.append('tmp', $('#tmp').prop('value'));
-
-//paqueteDeDatos.append('gstDrcin', $('#gstDrcin').prop('value'));
 paqueteDeDatos.append('gstCntnc', $('#gstCntnc').prop('value'));
+
+paqueteDeDatos.append('gstProvd', $('#gstProvd').prop('value'));
+paqueteDeDatos.append('gstCntro', $('#gstCntro').prop('value'));
 
      $.ajax({
                 url:'../php/docCursos.php',
@@ -157,19 +176,37 @@ paqueteDeDatos.append('gstCntnc', $('#gstCntnc').prop('value'));
 
 function actCurso(){
 
+    var tPrfil = ''
+
+    var selectObject =document.getElementById("AgstPrfil");
+
+    for (var i = 0; i < selectObject.options.length; i++) {
+        if(selectObject.options[i].selected ==true){                         
+
+          tPrfil += ','+selectObject.options[i].value; 
+                        
+        }
+      }
+
+       gstPrfiles = tPrfil.substr(1);
+
+
 var paqueteDeDatos = new FormData();
 paqueteDeDatos.append('AgstTmrio', $('#AgstTmrio')[0].files[0]);
 //paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
 paqueteDeDatos.append('AgstTitlo', $('#AgstTitlo').prop('value'));
 paqueteDeDatos.append('AgstTipo', $('#AgstTipo').prop('value'));
 paqueteDeDatos.append('AgstVignc', $('#AgstVignc').prop('value'));
-paqueteDeDatos.append('AgstPrfil', $('#AgstPrfil').prop('value'));
+paqueteDeDatos.append('AgstPrfil', gstPrfiles);
 paqueteDeDatos.append('AgstObjtv', $('#AgstObjtv').prop('value'));
 paqueteDeDatos.append('Ahr', $('#Ahr').prop('value'));
 paqueteDeDatos.append('Amin', $('#Amin').prop('value'));
 paqueteDeDatos.append('Atmp', $('#Atmp').prop('value'));
 paqueteDeDatos.append('AgstCntnc', $('#AgstCntnc').prop('value'));
 paqueteDeDatos.append('AgstIdlsc', $('#AgstIdlsc').prop('value'));
+
+paqueteDeDatos.append('AgstProvd', $('#AgstProvd').prop('value'));
+paqueteDeDatos.append('AgstCntro', $('#AgstCntro').prop('value'));
 
      $.ajax({
                 url:'../php/actCursos.php',
@@ -233,13 +270,14 @@ paqueteDeDatos.append('AgstIdlsc', $('#AgstIdlsc').prop('value'));
 
 }
 
-function eliminar(datos){
+function eliminar(gstIdlsc){
 
-  var d=datos.split("*");
+//alert(gstIdlsc);
+//  var d=datos.split("*");
 
 
-$("#modal-eliminar #EgstIdlsc").val(d[0]);    
-$("#modal-eliminar #EgstTitlo").val(d[1]);
+$("#modal-eliminar #EgstIdlsc").val(gstIdlsc);    
+//$("#modal-eliminar #EgstTitlo").val(d[1]);
 
 }
 
@@ -247,6 +285,7 @@ function eliCurso(){
 
 var EgstIdlsc = document.getElementById('EgstIdlsc').value;
 
+//alert(EgstIdlsc);
 //alert(EgstIdlsc);
  if(EgstIdlsc==''){
 

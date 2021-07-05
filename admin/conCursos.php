@@ -1,56 +1,54 @@
-<!DOCTYPE html>
+<!DOCTYPE html><?php include ("../conexion/conexion.php");
+
+      $sql = "SELECT gstIdcat, gstCsigl FROM categorias WHERE estado = 0";
+      $categs = mysqli_query($conexion,$sql);
+
+?>
+
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GESTOR DE INSPECTORES |ALTA CURSO</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <title>Gestor inspectores |Alta Curso</title>
 
-  <!-- Google Font -->
+  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+<link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-
-  <!-- Left side column. contains the logo and sidebar -->
+ 
 <?php include('header.php');?>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
-    <section class="content-header">
+  <section class="content-header">
       <h1>
       CONSULTA DE CURSOS
       </h1>
     </section>
-
-    <section class="content" id="lista">
-      <div class="row">
-        <div class="col-xs-12">
-        
-          <div class="box">
+    <!-- Main content -->
+<section class="content">
+<div class="row">
+<!-- /.col -->
+<div class="col-md-12">
+        <div class="box">
             <div class="box-header">
             
 
@@ -68,31 +66,30 @@
 
             <!-- /FIN DE INDICADORES -->
             <div class="box-body">
-            <?php include('../html/conCurso.html');?>
-
+             <?php //include('../html/conCurso.html');?> 
+  <table style="width: 100%;" id="data-table-concurso" class="table display table-striped table-bordered"></table>
             </div>
           </div>
-          <!-- /.box -->
+          <!-- /.nav-tabs-custom -->
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
 
-
-      <form class="form-horizontal" action="" method="POST"  >
+   <form class="form-horizontal" action="" method="POST"  >
       <div class="modal fade" id="modal-eliminar">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">ELIMINAR CURSO </h4>
+                <h4 class="modal-title">ELIMINAR CURSO DE CATALOGO </h4>
               </div>
               <div class="modal-body">
                 <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
                <div class="form-group">
                 <div class="col-sm-12">
-                  <p> CONFIRME ACEPTAR, PARA ddELIMINAR: <input type="text" name="EgstTitlo" id="EgstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
+                  <p> ¿ESTÁS SEGURO DE ELIMINAR ESTE CURSO? <input type="text" name="EgstTitlo" id="EgstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
                 </div>
                   <br>
                   <div class="col-sm-5">
@@ -107,16 +104,14 @@
                 </div>    
               </div>
             </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-</form>
+      </form>
 
-    </section>
 
-  
-    <form class="form-horizontal" action="" method="POST"  >
+
+
+
+
+   <form class="form-horizontal" action="" method="POST"  >
       <div class="modal fade" id="modal-evaluar">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -144,16 +139,9 @@
                 </div>    
               </div>
             </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        </div>
-</form>
+      </form>
 
-    </section>
 
-      <div class="row">
 
       <form class="form-horizontal" action="" method="POST"  >
 <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -186,19 +174,25 @@
                       </select>
                       </div>
 
-                  <div class="col-sm-4">
-                    <label>PERFIL A QUIEN VA DIRIGIDO</label>                   
-                      <select type="text" class="form-control" id="AgstPrfil" name="AgstPrfil">
-                        <option value="IVA-L.l">IVA-L</option>
-                        <option value="IVA-O">IVA-O</option>
-                        <option value="IVA-NA">IVA-NA</option>
-                        <option value="IVA-AE">IVA-AE</option>
-                        <option value="IVA-SMS/SSP">IVA-SMS/SSP</option>
-                        <option value="IVA- AVSEC">IVA- AVSEC</option>
-                        <option value="AFAC">AFAC</option>
-                        <option value="CIAAC">CIAAC</option>
-                      </select>
-                    </div>
+                <link rel="stylesheet" type="text/css" href="advanced.php">
+
+                <p>PERFIL A QUIEN VA DIRIGIDO - SELECCIONE</p>
+                <div class="col-md-2">
+                <p id="gstPrfil"></p>   
+                </div>
+
+                <link rel="stylesheet" type="text/css" href="advanced.php">
+                <div class="col-md-2">
+                <select multiple="multiple" data-placeholder="SELECCIONE"
+                style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="AgstPrfil" name="AgstPrfil[]">
+
+                <?php while($cat = mysqli_fetch_row($categs)):?>                      
+                <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                <?php endwhile; ?>                
+                </select>
+                </div>
+
+
 
                   </div>
                   <div class="form-group">
@@ -264,6 +258,24 @@
                             </select>
                       </div>
                       </div>
+
+                      <div class="form-group">                  
+                     <div class="col-sm-4">
+                      <label>PROVEEDOR DEL CURSO</label>
+                      <select type="text" class="form-control" id="AgstProvd" name="AgstProvd">
+                        <option value="INTERNO">INTERNO</option>
+                        <option value="EXTERNO">EXTERNO</option>
+                      </select>
+                      </div>
+
+                  <div class="col-sm-4">
+                    <label>CENTRO DE INSTRUCCIÓN</label>                   
+                      <select type="text" class="form-control" id="AgstCntro" name="AgstCntro">
+                        <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
+                      </select>
+                    </div>
+                  </div> 
+
                   <div class="form-group">
                     <div class="col-sm-12">
                     <label>OBJETIVO</label>
@@ -284,9 +296,9 @@
 <div class="col-sm-offset-0 col-sm-5">
 <button type="button" id="button" class="btn btn-primary" onclick="actCurso();">ACEPTAR </button>
 </div>
-             <b><p class="alert alert-danger text-center padding error" id="afalla">Error al registrar curso o al adjuntar archivo</p></b>
+             <b><p class="alert alert-danger text-center padding error" id="afalla">Error al actualizar curso o al adjuntar archivo</p></b>
 
-                    <b><p class="alert alert-success text-center padding exito" id="aexito">¡Se registro curso y archivo con éxito!</p></b>
+                    <b><p class="alert alert-success text-center padding exito" id="aexito">¡Se actualizo curso y archivo con éxito!</p></b>
 
                     <b><p class="alert alert-warning text-center padding aviso" id="avacio">Es necesario agregar los datos que se solicitan </p></b>
 
@@ -314,10 +326,10 @@
 </div>
 </form>
 
-
-
+    </section>
     <!-- /.content -->
   </div>
+  
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -331,6 +343,13 @@
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+
+
+<!-- ./wrapper -->
+</body>
+<!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -345,6 +364,62 @@
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- page script -->
 <script src="../js/global.js"></script>
-</body>
+<script src="../js/datos.js"></script>
+<script src="../js/gesInstr.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function(){
+$('#AgstPrfil').select2();
+
+}); 
+</script>
+<script src="../js/select2.js"></script> 
 </html>
+<script type="text/javascript">
+
+var dataSet = [
+<?php 
+$query = "SELECT * FROM listacursos 
+          WHERE estado = 0
+          ORDER BY gstIdlsc DESC";
+$resultado = mysqli_query($conexion, $query);
+  $n=0;
+      while($data = mysqli_fetch_array($resultado)){ 
+$n++;
+
+$gstIdlsc = $data['gstIdlsc'];
+//print_r($data['gstTitlo']);
+//,"<?php //echo  $data['gstTitlo']
+      ?>
+
+["<?php echo  $n?>",'<?php echo  $data['gstTitlo']?>',"<?php echo $data['gstTipo']?>","<?php echo $data['gstPrfil']?>","<?php echo $data['gstDrcin']?>","<?php echo $data['gstCntnc']?>","<?php echo $data['gstVignc']?>","<?php echo "<a href='{$data['gstTmrio']}' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a> " ?>","<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"],
+
+
+<?php } ?>
+];
+
+var tableGenerarReporte = $('#data-table-concurso').DataTable({
+    "language": {
+    "searchPlaceholder": "Buscar datos...",
+    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [
+    {title: "ID"},
+    {title: "TÍTULO"},
+    {title: "TIPO"},
+    {title: "PERFIL"},
+    {title: "DURACIÓN"},
+    {title: "DOCUMENTO"},
+    {title: "VIGENCIA"},
+    {title: "TEMARIO"},
+    {title: "ACCIÓN"}
+
+    ],
+    });
+</script>

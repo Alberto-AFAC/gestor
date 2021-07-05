@@ -2,7 +2,7 @@
 include("../conexion/conexion.php");
 ini_set('date.timezone','America/Mexico_City');
 
-if($_POST['AgstIdlsc']=='' || $_POST['AgstTitlo']==''|| $_POST['AgstTipo']==''|| $_POST['AgstVignc']==''|| $_POST['AgstPrfil']==''|| $_POST['AgstObjtv']==''|| $_POST['Ahr']==''|| $_POST['Amin']==''|| $_POST['Atmp']==''|| $_POST['AgstCntnc']==''){
+if($_POST['AgstProvd']=='' || $_POST['AgstCntro']=='' || $_POST['AgstIdlsc']=='' || $_POST['AgstTitlo']==''|| $_POST['AgstTipo']==''|| $_POST['AgstVignc']==''|| $_POST['AgstObjtv']==''|| $_POST['Ahr']==''|| $_POST['Amin']==''|| $_POST['Atmp']==''|| $_POST['AgstCntnc']==''){
 
 	echo "8";
 }else{
@@ -49,7 +49,7 @@ if(move_uploaded_file($rutaTemporal, $AgstTmrio)){
 
 //$gstFalta = date('Y').'/'.date('m').'/'.date('d');	
 //$Hfinal=date('H:i:s');
-		
+
 if(actCursos($AgstIdlsc,$AgstTitlo,$AgstTipo,$AgstVignc,$AgstPrfil,$AgstTmrio,$AgstDrcin,$AgstCntnc,$AgstObjtv,$conexion))
 		{	echo "0";	}else{	echo "1";	}
 
@@ -62,7 +62,15 @@ if(actCursos($AgstIdlsc,$AgstTitlo,$AgstTipo,$AgstVignc,$AgstPrfil,$AgstTmrio,$A
 }
 
 function actCursos($AgstIdlsc,$AgstTitlo,$AgstTipo,$AgstVignc,$AgstPrfil,$AgstTmrio,$AgstDrcin,$AgstCntnc,$AgstObjtv,$conexion){
-	$query="UPDATE listacursos SET gstTitlo = '$AgstTitlo',gstTipo='$AgstTipo',gstVignc='$AgstVignc',gstPrfil='$AgstPrfil',gstTmrio='$AgstTmrio',gstDrcin='$AgstDrcin',gstCntnc='$AgstCntnc',gstObjtv='$AgstObjtv' WHERE gstIdlsc='$AgstIdlsc'";
+
+if($AgstPrfil==''){
+$query="UPDATE listacursos SET gstTitlo = '$AgstTitlo',gstTipo='$AgstTipo',gstVignc='$AgstVignc',gstTmrio='$AgstTmrio',gstDrcin='$AgstDrcin',gstCntnc='$AgstCntnc',gstObjtv='$AgstObjtv' WHERE gstIdlsc='$AgstIdlsc'";
+}else{
+$query="UPDATE listacursos SET gstTitlo = '$AgstTitlo',gstTipo='$AgstTipo',gstVignc='$AgstVignc',gstPrfil='$AgstPrfil',gstTmrio='$AgstTmrio',gstDrcin='$AgstDrcin',gstCntnc='$AgstCntnc',gstObjtv='$AgstObjtv' WHERE gstIdlsc='$AgstIdlsc'";	
+}
+	
+
+
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

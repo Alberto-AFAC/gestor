@@ -59,31 +59,6 @@ include('header.php');
 
 <!-- Content Header (Page header) -->
 <section class="content" id="lista">
-<!-- <div class="row">
-<div class="col-xs-12">
-<div class="box">
-<div class="box-header">
-<h3 class="box-title">PERSONAL</h3>
-<div class="pull-right">
-<div class="btn-group">
-<a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="box-body">
-<div class="table-responsive col-sm">
-<table id="data-table-reportes" class="table table-striped table-hover"></table>
-</div>
-</div>
-</div>
-<div class="box-body">
-<table id="data-table-reportes" class="table table-striped table-hover"></table>
-</div>
-</div>
-</div>
-</div>
- -->
 
 <div class="row">
 <div class="col-xs-12">
@@ -108,14 +83,8 @@ include('header.php');
 </div>
 </div>
 </div>
-
-
-
-
-
-
 </section>
-</div>
+
 
 
 
@@ -150,10 +119,13 @@ include('header.php');
 <label>CARGO</label>
 <select type="text" class="form-control" id="AgstCargo" name="AgstCargo">
 <option value="">SELECCIONA EL CARGO</option>
+<option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+<option value="COORDINADOR">COORDINADOR</option>
 <option value="DIRECTOR">DIRECTOR</option>
 <option value="INSPECTOR">INSPECTOR</option>
 <option value="INSTRUCTOR">INSTRUCTOR</option>
-<option value="COORDINADOR">COORDINADOR</option>
+
+
 </select>
 </div>
 </div>
@@ -169,7 +141,7 @@ include('header.php');
 </select>
 </div>
 
-<input type="hidden" name="AgstIDSub" id="AgstIDSub" value="1">
+<!-- <input type="hidden" name="AgstIDSub" id="AgstIDSub" value="1"> -->
 
 </div>
 
@@ -214,9 +186,14 @@ include('header.php');
 <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
 </footer>
 
-<?php include('panel.html');?>
+ <?php include('panel.html');?>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+
+
 </div>
-<!-- ./wrapper -->
 
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -260,7 +237,7 @@ $('#AgstIDuni').select2();
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
+$query = "SELECT * FROM personal WHERE gstIDCat  = 0 AND estado = 0 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 

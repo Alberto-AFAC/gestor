@@ -1,63 +1,3 @@
-function conPrsnl() {
-    //destroy:true,
-    $.ajax({
-        url: '../php/conPerson.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="prsnl" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width:5%;"><i class="fa fa-sort-numeric-asc"></i>N°</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th style="width:20%" ><i></i>ACCIÓN</th></tr></thead><tbody>';
-        for (i = 0; i < res.length; i++) {
-            x++;
-
-            gstIdper = obj.data[i].gstIdper + '*' + obj.data[i].gstIDCat;
-
-
-            if (obj.data[i].gstIDCat == '0' && obj.data[i].gstIDSub == '0') {
-                html += "<tr><td>" + obj.data[i].gstNmpld + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td> <a type='button' title='Evaluación' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a> <a type='button' title='Agregar estudios' onclick='estudio(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a></td></tr>";
-            }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#prsnls").html(html);
-    })
-}
-
-
-function insPctr() {
-    //destroy:true,
-    $.ajax({
-        url: '../php/consulta.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cnslt" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i> CATEGORÍA</th><th style="width:160px" ><i></i>ACCIÓN</th></tr></thead><tbody>';
-        for (i = 0; i < res.length; i++) {
-            x++;
-
-            gstIdper = obj.data[i].gstIdper + '*' + obj.data[i].gstIDCat + '*' + obj.data[i].gstEvalu;
-            result = obj.data[i].gstIdper + '*' + obj.data[i].gstNombr + '*' + obj.data[i].gstIDCat;
-            if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
-
-                if (obj.data[i].gstEvalu == 'NO') {
-                    html += "<tr><td>" + obj.data[i].gstNmpld + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Por evaluación' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a></td></tr>";
-                } else if (obj.data[i].gstEvalu == 'SI') {
-                    html += "<tr><td>" + obj.data[i].gstNmpld + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td><a type='button' title='Evaluado' onclick='resultado(" + '"' + result + '"' + ")' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector(" + '"' + gstIdper + '"' + ")' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(" + '"' + gstIdper + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a></td></tr>";
-                }
-
-
-            } else {}
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#conslts").html(html);
-    })
-}
 
 
 function openDtlls() {
@@ -119,7 +59,9 @@ function closeDtlls() {
 
 function pdf() {
 
-    var pdfIdper = document.getElementById('pdfIdper').value;
+
+    var pdfIdper = document.getElementById('pdfIdper').value;    
+
 
     $.ajax({
         url: '../php/conPerson.php',
@@ -176,9 +118,6 @@ function pdf() {
         /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
 
         window.open(pdf.output('bloburl'))
-
-     
-
 
     })
 }
@@ -482,138 +421,574 @@ function asignacion(gstIdper) {
 }
 
 
-function perfil(gstIdper) {
+ function perfil(gstIdper) {
 
-    $.ajax({
+ $.ajax({
         url: '../php/conPerson.php',
         type: 'POST'
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
+        var x = 0;
 
-        for (i = 0; i < res.length; i++) {
+    for (p = 0; p < res.length; p++) {
+            if (obj.data[p].gstIdper == gstIdper) {
 
-            if (obj.data[i].gstIdper == gstIdper) {
 
-                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-                $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
-                $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#cargopersonal").val(obj.data[i].gstCargo);
-                $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
-                $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-                $("#Dtall #gstApell").val(obj.data[i].gstApell);
-                $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-                $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
-                $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
-                $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
-                $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
-                $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
-                $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
-                $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
-                $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-                $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
-                $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
-                $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
-                $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
-                $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
-                $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
-                $("#Dtall #gstStado").val(obj.data[i].gstStado);
-                $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
-                $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
-                $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
+                personal = obj.data[p].gstIdper + '*' + obj.data[p].gstIDCat + '*' + obj.data[p].gstEvalu +'*'+ obj.data[p].gstCatgr;
 
-                $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
-                $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-                $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-                $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
-                $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
-                $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-                $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-                $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
-                $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-                $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-
-                $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
-                $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
-                $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
-
-                //        alert(obj.data[i].gstAreID);
-
-                $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
-                $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
-                //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+                var d = personal.split("*");
+                gstIdper = d[0];
+                gstIDCat = d[1];
+                gstEvalu = d[2];
+                gstCatgr = d[3];
+             
+                if (gstEvalu == 'NO') { 
+                    $("#ocultar1").hide(); 
+                    $("#ocultar2").hide(); 
+                } else { 
+                    $("#ocultar1").show(); 
+                    $("#ocultar2").show(); 
+                }
+            
+            
+                $.ajax({
+                    url: '../php/conPerson.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+            
+                    for (i = 0; i < res.length; i++) {
+            
+                        if (obj.data[i].gstIdper == gstIdper) {
+            
+                            // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                            $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
+                            $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#cargopersonal").val(obj.data[i].gstCargo);
+                            $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
+                            $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
+                            $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                            $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
+                            $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                            $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
+                            $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
+                            $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
+                            $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
+                            $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
+                            $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
+                            $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+                            $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
+                            $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
+                            $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
+                            $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
+                            $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
+                            $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
+                            $("#Dtall #gstStado").val(obj.data[i].gstStado);
+                            $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
+                            $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
+                            $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
+            
+                            $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
+                            $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
+                            $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
+                            $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
+                            $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
+                            $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
+                            $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
+                            $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
+                            $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
+                            $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
+            
+                            $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+                            $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
+            
+                            $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+            
+                            //        alert(obj.data[i].gstAreID);
+            
+                            $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
+                            $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                            //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+            
+                        }
+                    }
+                })
+            
+                $.ajax({
+                    url: '../php/conPerson.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+            
+                    for (i = 0; i < res.length; i++) {
+            
+                        if (obj.data[i].gstIdper == gstIdper) {
+            
+                            // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                            $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
+                            $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#cargopersonal").val(obj.data[i].gstCargo);
+                            $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
+                            $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
+                            $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                            $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
+                            $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                            $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
+                            $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
+                            $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
+                            $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
+                            $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
+                            $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
+                            $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+                            $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
+                            $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
+                            $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
+                            $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
+                            $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
+                            $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
+                            $("#Dtall #gstStado").val(obj.data[i].gstStado);
+                            $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
+                            $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
+                            $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
+            
+                            $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
+                            $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
+                            $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
+                            $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
+                            $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
+                            $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
+                            $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
+                            $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
+                            $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
+                            $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+            
+                            $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
+                            $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
+            
+                            $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+            
+                            //        alert(obj.data[i].gstAreID);
+                            $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
+                            $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                            //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+            
+                        }
+                    }
+                })
+                        
+                $.ajax({
+                    url: '../php/gesCurso.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 0;
+            
+            
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th></tr></thead><tbody>';
+                    for (ii = 0; ii < res.length; ii++) {
+                        x++;
+                        if (obj.data[ii].idinsp == gstIdper) {
+                            if (obj.data[ii].evaluacion == '0') {
+                                
+                                year = obj.data[ii].fcurso.substring(0, 4);
+                                month = obj.data[ii].fcurso.substring(5, 7);
+                                day = obj.data[ii].fcurso.substring(8, 10);
+                                Finicio = day + '/' + month + '/' + year;
+            
+                                year = obj.data[ii].fechaf.substring(0, 4);
+                                month = obj.data[ii].fechaf.substring(5, 7);
+                                day = obj.data[ii].fechaf.substring(8, 10);
+                                Final = day + '/' + month + '/' + year;
+            
+                                idlista = obj.data[ii].idmstr;
+            
+                                html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='confirmar()' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>"+obj.data[ii].proceso+"</a></td> </tr>";
+                            } else if (obj.data[ii].evaluacion == '50') {
+                                html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td>EN PROCESO</td> </tr>";
+                            } else {}
+                        }
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#cursos").html(html);
+                })
+                
+            
+                $.ajax({
+                    url: '../php/conEstudios.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+            
+            
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>CIUDAD</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+                    for (H = 0; H < res.length; H++) {
+                        x++;
+            
+                        if (obj.data[H].gstIDper == gstIdper) {
+            
+                            datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
+            
+                            html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                        }
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#studios").html(html);
+                })
+            
+                $.ajax({
+                    url: '../php/conProfesion.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+            
+            
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
+                    for (P = 0; P < res.length; P++) {
+                        x++;
+                        datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
+            
+                        if (obj.data[P].gstIDper == gstIdper) {
+            
+                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + obj.data[P].gstFntra + "</td><td> " + obj.data[P].gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                        }
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#profsions").html(html);
+                })
+            
+                $.ajax({
+                    url: '../php/conEvalu.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+            
+            
+                    // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+                    html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+                    for (E = 0; E < res.length; E++) {
+                        x++;
+            
+                        //if(obj.data[E].gstCatga == gstIDCat){
+            
+                        //if(obj.data[E].gstOrden==1){    
+                        html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><input style='width: 100%' text='number' id='actual' name='actual[]'value='SI' ></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
+                        //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
+                        // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
+                        //}
+                        //}
+                    }
+                    html += '</tbody></table></div>';
+                    $("#evlacns").html(html);
+                })
 
             }
         }
     })
 
+ }
+
+//////////////DATOS DEL PERSONAL//////////// 
+
+function inspector(gstIdper){
     $.ajax({
-        url: '../php/conPerson.php',
+        url: '../php/consulta.php',
         type: 'POST'
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
+        var x = 0;
 
-        for (i = 0; i < res.length; i++) {
-
-            if (obj.data[i].gstIdper == gstIdper) {
-
-                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-                $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
-                $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#cargopersonal").val(obj.data[i].gstCargo);
-                $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
-                $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-                $("#Dtall #gstApell").val(obj.data[i].gstApell);
-                $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-                $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
-                $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
-                $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
-                $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
-                $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
-                $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
-                $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
-                $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-                $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
-                $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
-                $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
-                $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
-                $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
-                $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
-                $("#Dtall #gstStado").val(obj.data[i].gstStado);
-                $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
-                $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
-                $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
-                $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
-                $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-                $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-                $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
-                $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
-                $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-                $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-                $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
-                $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
+    for (p = 0; p < res.length; p++) {
+            if (obj.data[p].gstIdper == gstIdper) {
 
 
-                $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+                personal = obj.data[p].gstIdper + '*' + obj.data[p].gstIDCat + '*' + obj.data[p].gstEvalu +'*'+ obj.data[p].gstCatgr;
 
-                $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-                $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
-                $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
-
-                //        alert(obj.data[i].gstAreID);
-                $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
-                $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
-                //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+                var d = personal.split("*");
+                gstIdper = d[0];
+                gstIDCat = d[1];
+                gstEvalu = d[2];
+                gstCatgr = d[3];
+            
+                consultaCurso(+gstIdper+'*'+gstIDCat);
+ 
+                if (gstEvalu == 'NO') { 
+                    $("#ocultar1").hide(); 
+                    $("#ocultar2").hide(); 
+                } else { 
+                    $("#ocultar1").show(); 
+                    $("#ocultar2").show(); 
+                }
+            
+            
+                $.ajax({
+                    url: '../php/conPerson.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+            
+                    for (i = 0; i < res.length; i++) {
+            
+                        if (obj.data[i].gstIdper == gstIdper) {
+            
+                            // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                            $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
+                            $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#cargopersonal").val(obj.data[i].gstCargo);
+                            $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
+                            $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
+                            $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                            $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
+                            $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                            $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
+                            $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
+                            $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
+                            $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
+                            $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
+                            $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
+                            $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+                            $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
+                            $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
+                            $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
+                            $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
+                            $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
+                            $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
+                            $("#Dtall #gstStado").val(obj.data[i].gstStado);
+                            $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
+                            $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
+                            $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
+            
+                            $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
+                            $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
+                            $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
+                            $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
+                            $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
+                            $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
+                            $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
+                            $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
+                            $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
+                            $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
+            
+                            $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+                            $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
+            
+                            $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+            
+                            //        alert(obj.data[i].gstAreID);
+            
+                            $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
+                            $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                            //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+            
+                        }
+                    }
+                })
+            
+                $.ajax({
+                    url: '../php/conPerson.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+            
+                    for (i = 0; i < res.length; i++) {
+            
+                        if (obj.data[i].gstIdper == gstIdper) {
+            
+                            // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                            $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
+                            $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#cargopersonal").val(obj.data[i].gstCargo);
+                            $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
+                            $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
+                            $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                            $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
+                            $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                            $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
+                            $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
+                            $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
+                            $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
+                            $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
+                            $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
+                            $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+                            $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
+                            $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
+                            $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
+                            $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
+                            $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
+                            $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
+                            $("#Dtall #gstStado").val(obj.data[i].gstStado);
+                            $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
+                            $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
+                            $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
+            
+                            $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
+                            $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
+                            $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
+                            $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
+                            $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
+                            $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
+                            $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
+                            $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
+                            $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
+                            $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+            
+                            $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
+                            $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
+            
+                            $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+            
+                            //        alert(obj.data[i].gstAreID);
+                            $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
+                            $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                            //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+            
+                        }
+                    }
+                })
+            
+            
+                $.ajax({
+                    url: '../php/gesCurso.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 0;
+            
+            
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th></tr></thead><tbody>';
+                    for (ii = 0; ii < res.length; ii++) {
+                        x++;
+                        if (obj.data[ii].idinsp == gstIdper) {
+                            if (obj.data[ii].evaluacion == '0') {
+                                
+                                year = obj.data[ii].fcurso.substring(0, 4);
+                                month = obj.data[ii].fcurso.substring(5, 7);
+                                day = obj.data[ii].fcurso.substring(8, 10);
+                                Finicio = day + '/' + month + '/' + year;
+            
+                                year = obj.data[ii].fechaf.substring(0, 4);
+                                month = obj.data[ii].fechaf.substring(5, 7);
+                                day = obj.data[ii].fechaf.substring(8, 10);
+                                Final = day + '/' + month + '/' + year;
+            
+                                idlista = obj.data[ii].idmstr;
+            
+                                html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='confirmar()' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>"+obj.data[ii].proceso+"</a></td> </tr>";
+                            } else if (obj.data[ii].evaluacion == '50') {
+                                html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td>EN PROCESO</td> </tr>";
+                            } else {}
+                        }
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#cursos").html(html);
+                })
+                
+            
+                $.ajax({
+                    url: '../php/conEstudios.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+            
+            
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>CIUDAD</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+                    for (H = 0; H < res.length; H++) {
+                        x++;
+            
+                        if (obj.data[H].gstIDper == gstIdper) {
+            
+                            datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
+            
+                            html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                        }
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#studios").html(html);
+                })
+            
+                $.ajax({
+                    url: '../php/conProfesion.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+            
+            
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
+                    for (P = 0; P < res.length; P++) {
+                        x++;
+                        datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
+            
+                        if (obj.data[P].gstIDper == gstIdper) {
+            
+                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + obj.data[P].gstFntra + "</td><td> " + obj.data[P].gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                        }
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#profsions").html(html);
+                })
+            
+                $.ajax({
+                    url: '../php/conEvalu.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+            
+            
+                    // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+                    html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+                    for (E = 0; E < res.length; E++) {
+                        x++;
+            
+                        //if(obj.data[E].gstCatga == gstIDCat){
+            
+                        //if(obj.data[E].gstOrden==1){    
+                        html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><input style='width: 100%' text='number' id='actual' name='actual[]'value='SI' ></td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
+                        //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
+                        // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
+                        //}<td><input id='comntr' name='comntr[]'> </td>
+                        //}
+                    }
+                    html += '</tbody></table></div>';
+                    $("#evlacns").html(html);
+                })
 
             }
         }
     })
+    
+}
+///////////DATOS PERSONAL FINAL DE CONSULTA/////////////
+
+function consultaCurso(gst){
+
+
+    var d = gst.split("*");
+
+         gstIdper = d[0];
+         gstCateg = d[1];
 
     $.ajax({
         url: '../php/gesCurso.php',
@@ -622,418 +997,68 @@ function perfil(gstIdper) {
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
+        for (c = 0; c < res.length; c++) {        
+        if (obj.data[c].idinsp == gstIdper) {
+
+        listcur = obj.data[c].idmstr;
+        proceso = obj.data[c].proceso;
+        idinsp = obj.data[c].idinsp;
 
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>OBSERVACIONES</th><th><i></i>EVALUACIÓN</th></tr></thead><tbody>';
-        for (ii = 0; ii < res.length; ii++) {
-            x++;
-            if (obj.data[ii].idinsp == gstIdper) {
-                if (obj.data[ii].evaluacion == '0') {
-
-                    year = obj.data[ii].fcurso.substring(0, 4);
-                    month = obj.data[ii].fcurso.substring(5, 7);
-                    day = obj.data[ii].fcurso.substring(8, 10);
-                    Finicio = day + '/' + month + '/' + year;
-
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].observ + "</td><td>PENDIENTE</td> </tr>";
-                } else if (obj.data[ii].evaluacion == '50') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].observ + "</td><td>EN PROCESO</td> </tr>";
-                } else {}
             }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#cursos").html(html);
+        } 
     })
+                                        
+             
 
-    $.ajax({
-        url: '../php/conEstudios.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 1;
+//        alert(proceso);
 
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>CIUDAD</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
-        for (H = 0; H < res.length; H++) {
-            x++;
-
-            if (obj.data[H].gstIDper == gstIdper) {
-
-                datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
-
-                html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-            }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#studios").html(html);
-    })
-
-    $.ajax({
-        url: '../php/conProfesion.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 1;
+                $.ajax({
+                    url: '../php/lisOblig.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 0;    
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
+                    for (o = 0; o < res.length; o++) {
 
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
-        for (P = 0; P < res.length; P++) {
-            x++;
-            datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
+ // if(obj.data[o].gstIcatg == gstCateg){         
+ //     html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>PENDIENTE</td> </tr>";                                                                         
+ //    }                     
 
-            if (obj.data[P].gstIDper == gstIdper) {
+ 
+if (obj.data[o].gstIDlsc == listcur && proceso=='PENDIENTE' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) 
+{
+html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>EN PROCESO</td> </tr>";
+}else 
+   if(obj.data[o].gstIDlsc == listcur && proceso=='FINALIZADO' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper){
+       html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>FINALIZADO</td> </tr>";
+}else 
 
-                html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + obj.data[P].gstFntra + "</td><td> " + obj.data[P].gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-            }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#profsions").html(html);
-    })
-
-    $.ajax({
-        url: '../php/conEvalu.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 1;
-
-
-        // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-        html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-        for (E = 0; E < res.length; E++) {
-            x++;
-
-            //if(obj.data[E].gstCatga == gstIDCat){
-
-            //if(obj.data[E].gstOrden==1){    
-            html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><input style='width: 100%' text='number' id='actual' name='actual[]'value='SI' ></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
-            //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-            // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-            //}
-            //}
-        }
-        html += '</tbody></table></div>';
-        $("#evlacns").html(html);
-    })
+if(obj.data[o].gstIcatg == gstCateg){
+html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>PENDIENTE</td> </tr>";
 
 }
 
 
-function inspector(gstIdper) {
-
-    var d = gstIdper.split("*");
-    gstIdper = d[0];
-    gstIDCat = d[1];
-    gstEvalu = d[2];
-
-
-    if (gstEvalu == 'NO') { 
-        $("#ocultar1").hide(); 
-        $("#ocultar2").hide(); 
-    } else { 
-        $("#ocultar1").show(); 
-        $("#ocultar2").show(); 
-    }
-
-
-    $.ajax({
-        url: '../php/conPerson.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-
-        for (i = 0; i < res.length; i++) {
-
-            if (obj.data[i].gstIdper == gstIdper) {
-
-                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-                $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
-                $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#cargopersonal").val(obj.data[i].gstCargo);
-                $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
-                $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-                $("#Dtall #gstApell").val(obj.data[i].gstApell);
-                $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-                $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
-                $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
-                $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
-                $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
-                $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
-                $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
-                $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
-                $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-                $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
-                $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
-                $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
-                $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
-                $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
-                $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
-                $("#Dtall #gstStado").val(obj.data[i].gstStado);
-                $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
-                $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
-                $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
-                $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
-                $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-                $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-                $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
-                $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
-                $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-                $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-                $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
-                $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-                $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-
-                $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
-                $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
-                $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
-
-                //        alert(obj.data[i].gstAreID);
-
-                $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
-                $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
-                //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
-            }
-        }
-    })
-
-    $.ajax({
-        url: '../php/conPerson.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-
-        for (i = 0; i < res.length; i++) {
-
-            if (obj.data[i].gstIdper == gstIdper) {
-
-                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-                $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
-                $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                $("#cargopersonal").val(obj.data[i].gstCargo);
-                $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
-                $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-                $("#Dtall #gstApell").val(obj.data[i].gstApell);
-                $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-                $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
-                $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
-                $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
-                $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
-                $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
-                $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
-                $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
-                $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-                $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
-                $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
-                $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
-                $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
-                $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
-                $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
-                $("#Dtall #gstStado").val(obj.data[i].gstStado);
-                $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
-                $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
-                $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
-                $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
-                $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-                $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-                $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
-                $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
-                $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-                $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-                $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
-                $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-                $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
-
-                $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-                $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
-                $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
-
-                //        alert(obj.data[i].gstAreID);
-                $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
-                $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
-                //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
-                IDcat=obj.data[i].gstIDCat;
-
-            }
-        }
-    })
-
-
-    $.ajax({
-        url: '../php/gesCurso.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-    for (c = 0; c < res.length; c++) {
-            if (obj.data[c].idinsp == gstIdper) {
-
-                idcurso = obj.data[c].idmstr;
-                proceso = obj.data[c].proceso;
-
-            }else{
-
-            }
-        }
-   
-    })
-
-
-    $.ajax({
-        url: '../php/lisOblig.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
-        for (o = 0; o < res.length; o++) {
-            if (obj.data[o].gstIcatg == gstIDCat) {
-
-  
-                if (obj.data[o].gstIDlsc == idcurso && proceso=='PENDIENTE' ) {
-
-                    html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>EN PROCESO</td> </tr>";
-                } else 
-                if(obj.data[o].gstIDlsc == idcurso && proceso=='FINALIZADO'){
-                    html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>FINALIZADO</td> </tr>";
-                }else{
-                    html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>PENDIENTE</td></tr>";
+                    
+                           //   if (obj.data[o].gstIDlsc == listcur && proceso=='PENDIENTE' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) {
+                           //       html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>EN PROCESO</td> </tr>";
+                           //   } else 
+                           //   if(obj.data[o].gstIDlsc == listcur && proceso=='FINALIZADO' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper){
+                           //       html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>FINALIZADO</td> </tr>";
+                           //   }else if(obj.data[o].gstIDlsc == listcur && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper){
+                           //      html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstDrcin +"</td><td>PENDIENTE</td></tr>";
+                           // }
+                    
                 }
-                             }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#obligados").html(html);
-    })
-
-
-
-    $.ajax({
-        url: '../php/gesCurso.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th></tr></thead><tbody>';
-        for (ii = 0; ii < res.length; ii++) {
-            x++;
-            if (obj.data[ii].idinsp == gstIdper) {
-                if (obj.data[ii].evaluacion == '0') {
-
-                    year = obj.data[ii].fcurso.substring(0, 4);
-                    month = obj.data[ii].fcurso.substring(5, 7);
-                    day = obj.data[ii].fcurso.substring(8, 10);
-                    Finicio = day + '/' + month + '/' + year;
-
-
-                    year = obj.data[ii].fechaf.substring(0, 4);
-                    month = obj.data[ii].fechaf.substring(5, 7);
-                    day = obj.data[ii].fechaf.substring(8, 10);
-                    Final = day + '/' + month + '/' + year;
-
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='confirmar()' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>"+obj.data[ii].proceso+"</a></td> </tr>";
-                } else if (obj.data[ii].evaluacion == '50') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>"+ obj.data[ii].hcurso+"</td><td>" + Final + "</td><td>EN PROCESO</td> </tr>";
-                } else {}
-            }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#cursos").html(html);
-    })
-
-    $.ajax({
-        url: '../php/conEstudios.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 1;
-
-
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>CIUDAD</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
-        for (H = 0; H < res.length; H++) {
-            x++;
-
-            if (obj.data[H].gstIDper == gstIdper) {
-
-                datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
-
-                html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-            }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#studios").html(html);
-    })
-
-    $.ajax({
-        url: '../php/conProfesion.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 1;
-
-
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
-        for (P = 0; P < res.length; P++) {
-            x++;
-            datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
-
-            if (obj.data[P].gstIDper == gstIdper) {
-
-                html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + obj.data[P].gstFntra + "</td><td> " + obj.data[P].gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-            }
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#profsions").html(html);
-    })
-
-    $.ajax({
-        url: '../php/conEvalu.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 1;
-
-
-        // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-        html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-        for (E = 0; E < res.length; E++) {
-            x++;
-
-            //if(obj.data[E].gstCatga == gstIDCat){
-
-            //if(obj.data[E].gstOrden==1){    
-            html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><input style='width: 100%' text='number' id='actual' name='actual[]'value='SI' ></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
-            //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-            // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-            //}
-            //}
-        }
-        html += '</tbody></table></div>';
-        $("#evlacns").html(html);
-    })
-
+                    html += '</tbody></table></div></div></div>';
+                    $("#obligados").html(html);
+                })            
+    
 }
 
 function seleccionado() {
@@ -1074,16 +1099,14 @@ function evaluar() {
         actual.push($(this).val());
     });
 
-    var comntr = new Array();
-    $("input[name='comntr[]']:text").each(function() {
-        comntr.push($(this).val());
-    });
+
+    comntr = document.getElementById('comntr').value;
 
 
     datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actual + '&comntr=' + comntr + '&opcion=evaluar';
 
 
-    if (gstInspr == ',,,' || gstIdprm == ',,,' || actual == ',,,' || comntr == ',,,' || comntr == ',,,') {
+    if (gstInspr == ',,,' || gstIdprm == ',,,' || actual == ',,,' || comntr == '' || comntr == ',,,') {
 
         $('#empty0').toggle('toggle');
         setTimeout(function() {
@@ -1120,15 +1143,6 @@ function evaluar() {
 
 function resultado(result) {
 
-    var d = result.split("*");
-
-    gstIdper = d[0];
-
-    $("#Result #pdfIdper").val(d[0]);
-    $("#Result #evalu_nombre").val(d[1]);
-    $("#Result #evalu_categr").val(d[2]);
-
-
     $.ajax({
         url: '../php/conResult.php',
         type: 'POST'
@@ -1137,35 +1151,51 @@ function resultado(result) {
         var res = obj.data;
         var x = 1;
 
-
-        // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-        html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>ESTADO</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+        html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>ESTADO</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
         for (E = 0; E < res.length; E++) {
             x++;
 
-            if (obj.data[E].gstIDins == gstIdper) {
-
-                //if(obj.data[E].gstOrden==1){    
+            if (obj.data[E].gstIDins == result) {
 
                 if (obj.data[E].gstCmpli == 'NO') {
-                    html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><span class='label label-danger'>NO CUMPLE</span></td><td>" + obj.data[E].gstComen + "</td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
+                    html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><span class='label label-danger'>NO CUMPLE</span></td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
                 } else if (obj.data[E].gstCmpli == 'SI') {
-                    html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><span class='label label-success'>CUMPLIO</span></td><td>" + obj.data[E].gstComen + "</td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
+                    html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><span class='label label-success'>CUMPLIO</span></td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
                 }
-                //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-                // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-                //}
             }
-
         }
         html += '</tbody></table></div>';
         $("#rsltad").html(html);
-
-
     })
 
-}
+    id = result;
 
+    $.ajax({
+        url: '../php/consulta.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+    for (r = 0; r < res.length; r++) {
+            if (obj.data[r].gstIdper == id) {
+
+
+                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat +'*'+ obj.data[r].gstCatgr+'*'+obj.data[r].gstComnt;
+                var d = result.split("*");
+   
+     $("#Result #pdfIdper").val(d[0]);
+    $("#Result #evalu_nombre").val(d[1]);
+     $("#Result #evalu_categr").val(d[2]);
+     $("#Result #gstComnt").val(d[4]);
+
+
+}
+}
+})    
+  
+}
 
 
 function actEstudio(datos) {
@@ -1501,7 +1531,7 @@ function asignar() {
 
     datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&opcion=asignar';
 
-    //alert(datas);
+    alert(datas);
 
     if (AgstCargo == '' || AgstIDCat == '' || AgstAcReg == '' || AgstIDuni == '') {
 
@@ -1511,7 +1541,7 @@ function asignar() {
         }, 2000);
 
         return;
-    } else {
+     } else {
         $.ajax({
             url: '../php/agrEvalu.php',
             type: 'POST',
