@@ -26,9 +26,7 @@ $id = $_POST['idinsps'].','.$idinst;
 $valor = explode(",", $id);
 
 foreach ($valor as $idinsps) {
-
-	enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion);
-
+	
 	if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
 		{ 
 			echo "0";	

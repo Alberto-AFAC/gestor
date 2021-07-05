@@ -108,13 +108,11 @@ $psto = mysqli_query($conexion,$sql);
        </div>
        </div>
        </div>
-       </div>
-          <!-- /.widget-user -->
-        
+       </div>        
         
 <!-- /FIN DE NUEVO DISEÑO -->
 
-           <!-- DISEÑO ANTIGUO/.col -->
+<!-- DISEÑO ANTIGUO/.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
 
@@ -131,7 +129,7 @@ $psto = mysqli_query($conexion,$sql);
 </button> -->
 </div>
 
-            <ul class="nav nav-tabs" style="font-size: 11px;">
+            <ul class="nav nav-tabs" style="font-size: 14px;">
               <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
               <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
               <li><a href="#estudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
@@ -480,7 +478,7 @@ $psto = mysqli_query($conexion,$sql);
   
           <div class="box-body">
             <div id="obligados"></div>
-             <?php// include('../html/gesCurso.html');?> 
+      
           </div>
         </div>
       </div>

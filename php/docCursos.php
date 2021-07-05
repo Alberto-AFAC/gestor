@@ -2,7 +2,8 @@
 include("../conexion/conexion.php");
 ini_set('date.timezone','America/Mexico_City');
 
-if($_POST['gstTitlo']==''|| $_POST['gstTipo']==''|| $_POST['gstVignc']==''|| $_POST['gstPrfil']==''|| $_POST['gstObjtv']==''|| $_POST['hr']==''|| $_POST['min']==''|| $_POST['tmp']==''|| $_POST['gstCntnc']==''){
+
+if($_POST['gstProvd']=='' || $_POST['gstCntro']=='' || $_POST['gstTitlo']==''|| $_POST['gstTipo']==''|| $_POST['gstVignc']==''|| $_POST['gstPrfil']==''|| $_POST['gstObjtv']==''|| $_POST['hr']==''|| $_POST['min']==''|| $_POST['tmp']==''|| $_POST['gstCntnc']==''){
 
 	echo "8";
 }else{
@@ -13,7 +14,8 @@ if(comprobar($gstTitlo,$conexion)){
 
 if(!empty($_FILES['gstTmrio']['size'])){
 
-
+$gstProvd = $_POST['gstProvd'];
+$gstCntro = $_POST['gstCntro'];
 $gstTipo= $_POST['gstTipo'];
 $gstVignc = $_POST['gstVignc'];
 $gstPrfil = $_POST['gstPrfil'];
@@ -50,7 +52,8 @@ if(move_uploaded_file($rutaTemporal, $gstTmrio)){
 $gstFalta = date('Y').'/'.date('m').'/'.date('d');	
 //$Hfinal=date('H:i:s');
 		
-if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$conexion))
+if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd
+,$gstCntro,$conexion))
 		{	echo "0";	}else{	echo "1";	}
 
 }else{ echo "2"; }
@@ -72,8 +75,9 @@ function comprobar($gstTitlo,$conexion){
 		$this->conexion->cerrar();	
 	}
 
-function cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$conexion){
-	$query="INSERT INTO listacursos VALUES(0,'$gstTitlo','$gstTipo','$gstVignc','$gstPrfil','$gstTmrio','$gstDrcin','$gstCntnc','$gstObjtv','$gstFalta',0,0,0);";
+function cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd,
+$gstCntro,$conexion){
+	$query="INSERT INTO listacursos VALUES(0,'$gstTitlo','$gstTipo','$gstVignc','$gstPrfil','$gstTmrio','$gstDrcin','$gstCntnc','$gstObjtv','$gstFalta','$gstProvd','$gstCntro',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

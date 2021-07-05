@@ -1,3 +1,10 @@
+<?php 
+include ("../conexion/conexion.php");
+
+      $sql = "SELECT gstIdcat, gstCsigl FROM categorias WHERE estado = 0";
+      $categs = mysqli_query($conexion,$sql);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,39 +84,18 @@
                       </select>
                       </div>
 
-<!--                   <div class="col-sm-4">
-                 
-                      <select type="text" class="form-control" id="gstPrfil" name="gstPrfil">
-                        <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
-                        <option value="IVA-L.l">IVA-L</option>
-                        <option value="IVA-O">IVA-O</option>
-                        <option value="IVA-NA">IVA-NA</option>
-                        <option value="IVA-AE">IVA-AE</option>
-                        <option value="IVA-SMS/SSP">IVA-SMS/SSP</option>
-                        <option value="IVA- AVSEC">IVA- AVSEC</option>
-                        <option value="AFAC">AFAC</option>
-                        <option value="CIAAC">CIAAC</option>
-                      </select>
-                    </div> -->
-
-<link rel="stylesheet" type="text/css" href="advanced.php">
+                <link rel="stylesheet" type="text/css" href="advanced.php">
 
                 <div class="col-md-4">
                 <label>PERFIL A QUIEN VA DIRIGIDO</label>  
                 <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                 style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
-                <option value="IVA-L.l">IVA-L</option>
-                <option value="IVA-O">IVA-O</option>
-                <option value="IVA-NA">IVA-NA</option>
-                <option value="IVA-AE">IVA-AE</option>
-                <option value="IVA-SMS/SSP">IVA-SMS/SSP</option>
-                <option value="IVA- AVSEC">IVA- AVSEC</option>
-                <option value="AFAC">AFAC</option>
-                <option value="CIAAC">CIAAC</option>
+                <?php while($cat = mysqli_fetch_row($categs)):?>                      
+                <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                <?php endwhile; ?>                
                 </select>
                 </div>
               
-
                   </div>
                   <div class="form-group">
   
@@ -178,15 +164,13 @@
 
                       
                       </div>
-                      <div class="form-group">
-                  
-
+                      <div class="form-group">                  
                      <div class="col-sm-4">
                       <label>PROVEEDOR DEL CURSO</label>
                       <select type="text" class="form-control" id="gstProvd" name="gstProvd">
                         <option value="0">ELEGIR UNA OPCIÓN</option>
-                        <option value="INDUCCIÓN">INTERNO</option>
-                        <option value="BÁSICOS">EXTERNO</option>
+                        <option value="INTERNO">INTERNO</option>
+                        <option value="EXTERNO">EXTERNO</option>
                       </select>
                       </div>
 
@@ -194,10 +178,9 @@
                     <label>CENTRO DE INSTRUCCIÓN</label>                   
                       <select type="text" class="form-control" id="gstCntro" name="gstCntro">
                         <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
-                        <option value="IVA-L.l">EN EL EXTRANJERO</option>
+                        <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
                       </select>
                     </div>
-
                   </div> 
     
                   <div class="form-group">

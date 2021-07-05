@@ -24,5 +24,5 @@ require_once "../../conexion/conexion.php";
 			</select>
               
 <?php   }else{   ?>
-
+<input type="hidden" name="gstIDuni" id="gstIDuni">
 <?php } ?>

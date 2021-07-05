@@ -4,25 +4,23 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Data Tables</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <!--GENERATE PDF-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <title>Gestor</title>
+
+  <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script> -->
+  <!--   <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
   <!-- Theme style -->
+
+  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   
@@ -87,7 +85,8 @@
 
             <!-- /FIN DE INDICADORES -->
             <div class="box-body">
-            <?php include('../html/consultar.html');?>
+            <?php //include('../html/consultar.html');?>
+  <table style="width: 100%;" id="data-table-inspectores" class="table display table-striped table-bordered"></table>
             </div>
           </div>
           <!-- /.box -->
@@ -138,6 +137,14 @@
               </div>
 
               <div id="evlacns"></div>
+             
+                 <div class="form-group">
+                    <div class="col-sm-12">
+                    <label>COMENTARIOS</label>
+                    <textarea name="comntr" id="comntr" onkeyup="mayus(this);" class="form-control" rows="2" cols="50"></textarea>
+                    </div>
+                  </div>
+                 <div class="form-group"></div>
 
             <div class="form-group" id="buton">
               <div class="col-sm-7">
@@ -190,6 +197,13 @@
 
               <div id="rsltad"></div>
 
+                 <div class="form-group">
+                    <div class="col-sm-12">
+                    <label>COMENTARIOS</label>
+                    <textarea name="gstComnt" id="gstComnt" onkeyup="mayus(this);" class="form-control" rows="2" cols="50"></textarea>
+                    </div>
+                  </div>
+
              </div>
               </form>  
             </div>
@@ -238,6 +252,8 @@
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
 <script src="../js/global.js"></script>
+<script src="../js/datos.js"></script>
+
 
 </body>
 </html>
@@ -262,5 +278,56 @@ $('#select2').load('select/acttablacom.php');
 </script>
 <script src="../js/select2.js"></script> 
 
+<script type="text/javascript">
+
+var dataSet = [
+<?php 
+$query = "SELECT * FROM personal 
+          INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
+$resultado = mysqli_query($conexion, $query);
+
+      while($data = mysqli_fetch_array($resultado)){ 
+
+      $gstIdper = $data['gstIdper'];
+      $result = $data['gstIdper'];
 
 
+      ?>
+
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php
+
+
+                if($data['gstEvalu'] == 'NO'){
+                
+                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
+
+                echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
+
+                    }else if($data['gstEvalu'] == 'SI') {
+                echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
+
+                    }?>"],
+
+
+<?php } ?>
+];
+
+var tableGenerarReporte = $('#data-table-inspectores').DataTable({
+    "language": {
+    "searchPlaceholder": "Buscar datos...",
+    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [
+    {title: "ID"},
+    {title: "NOMBRE(S)"},
+    {title: "APELLIDO(S)"},
+    {title: "CATEGORÍA"},
+    {title: "ACCIÓN"}
+    ],
+    });
+
+</script>
