@@ -1548,7 +1548,7 @@ function asignar() {
 
     datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&opcion=asignar';
 
-    alert(datas);
+    //alert(datas);
 
     if (AgstCargo == '' || AgstIDCat == '' || AgstAcReg == '' || AgstIDuni == '') {
 
