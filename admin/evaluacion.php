@@ -194,7 +194,7 @@
                 <tr>
                   <td>EXPERIENCIA CON LA GESTIÓN U OPERACIÓN DE AÉRONAVES COMERCIALES</td>
                   <td>SI</td>
-                  <td>SI</td>
+                  <td>SI</td> 
                   <td><span class="label label-success">CUMPLIO</span></td>
                   <td></td>
                   <td></td>

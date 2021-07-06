@@ -517,15 +517,15 @@ $psto = mysqli_query($conexion,$sql);
           </div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                <input type="radio" id="finalizado" name="finalizado" value="finalizado">
+                <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
                 <label for="finalizado">FINALIZADO</label><br>
                 </div>
                 <div class="col-sm-2">
-                <input type="radio" id="programados" name="programados" value="programados">
+                <input type="radio" id="programados" name="cursinfoinsp" value="programados">
                 <label for="programados">PROGRAMADOS</label><br>
                 </div>
                 <div class="col-sm-2">
-                <input type="radio" id="cancelados" name="cancelados" value="cancelados">
+                <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
                 <label for="cancelados">CANCELADOS</label><br>
                 </div>
                 </div>
