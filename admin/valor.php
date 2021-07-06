@@ -47,6 +47,8 @@ $psto = mysqli_query($conexion,$sql);
                   </div>
                   <div class="col-sm-4">
                      <div class="description-block">
+                     <span class="description-text"></span>
+                     <h3><input type="text" style="font-size: 18px;  background:transparent" name="insparea" id="insparea" class="datas" disabled=""></h3>
                      </div>
                   <!-- /.description-block -->
                   </div>
@@ -365,17 +367,27 @@ $psto = mysqli_query($conexion,$sql);
           <div id="actoaci"></div>
           <div id="siglas"></div>
           </div>
-
                <div class="form-group">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <label>CATEGORIA</label>
                         <select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="gstIDCat" id="gstIDCat" type="text" data-live-search="true">
-                         <?php while($idcat = mysqli_fetch_row($cat)):?>                      
-                         <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
+                            <?php while($idcat = mysqli_fetch_row($cat)):?>                      
+                            <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
+                            <?php endwhile; ?>
+                       </select>
+                    </div>
+                   
+                    <div class="col-sm-6">
+                       <label>SUB CATEGORIA</label>
+                       <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
+                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
+                         <option value="0">NO APLICA</option>
+                         <?php while($idsub1 = mysqli_fetch_row($sub1)):?>                      
+                         <option value="<?php echo $idsub1[0]?>"><?php echo $idsub1[1];?></option>
                          <?php endwhile; ?>
                        </select>
                     </div>
-                                         
+                      
                   </div>
 
                   <div class="form-group">
@@ -411,9 +423,6 @@ $psto = mysqli_query($conexion,$sql);
                        </select>
                     </div>                  
                   </div>            
-          
-
-
 <div class="form-group">
 <div class="col-sm-4">
 <label>SELECCIONE COMANDANCIA</label>
@@ -423,15 +432,7 @@ $psto = mysqli_query($conexion,$sql);
 <label>SELECCIONE AEROPUERTOS</label>
 <div id="select2"></div> 
 </div>
-</div>
-
-
-
-
-
-
-
-                  
+</div>                
                     <div class="form-group" id="butons" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-info btn-lg" onclick="actPuesto();">ACEPTAR</button>
@@ -441,12 +442,8 @@ $psto = mysqli_query($conexion,$sql);
 
                     <b><p class="alert alert-warning text-center padding aviso" id="empty1">Es necesario agregar los datos que se solicitan </p></b>
                     </div>
-              
               </form>  
-
-
            </div>
-
 <div class="tab-pane" id="estudios">
 <form class="form-horizontal">
 <div class="form-group">
@@ -463,10 +460,7 @@ $psto = mysqli_query($conexion,$sql);
 <div id="profsions"></div>             
 </form> 
 </div>
-
 <!------------------------------------------->
-
-
 <div class="tab-pane" id="obligatorio">
   <section class="content">
     <div class="row">
@@ -485,13 +479,7 @@ $psto = mysqli_query($conexion,$sql);
     </div>
   </section>
 </div>  
-
-
-
-
 <!-------------------------------------------->
-            
-
 <div class="tab-pane" id="curso">
   <section class="content">
     <div class="row">
@@ -502,15 +490,15 @@ $psto = mysqli_query($conexion,$sql);
           </div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                <input type="radio" id="finalizado" name="finalizado" value="finalizado">
+                <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
                 <label for="finalizado">FINALIZADO</label><br>
                 </div>
                 <div class="col-sm-2">
-                <input type="radio" id="programados" name="programados" value="programados">
+                <input type="radio" id="programados" name="cursinfoinsp" value="programados">
                 <label for="programados">PROGRAMADOS</label><br>
                 </div>
                 <div class="col-sm-2">
-                <input type="radio" id="cancelados" name="cancelados" value="cancelados">
+                <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
                 <label for="cancelados">CANCELADOS</label><br>
                 </div>
                 </div>

@@ -116,7 +116,7 @@ include('header.php');
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <label>CATEGORIA</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDCat" id="AgstIDCat" type="text" data-live-search="true"  onchange="seleccionado()">
                          <option value="">SELECCIONA LA CATEGORÍA</option>
@@ -128,7 +128,7 @@ include('header.php');
 
                     <input type="hidden" name="AgstIDSub" id="AgstIDSub" value="1">
                                          
-      <!--             <div class="col-sm-6">
+      <!            <div class="col-sm-6">
                        <label>SUB CATEGORIA</label>
                        <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDSub" id="AgstIDSub" type="text" data-live-search="true">
                          <option value="">SELECCIONA LA SUB CATEGORÍA</option>
@@ -137,7 +137,7 @@ include('header.php');
                          <option value="<?php echo $Aidsub1[0]?>"><?php echo $Aidsub1[1];?></option>
                          <?php endwhile; ?>
                        </select>
-                    </div> -->
+                    </div> 
                 </div>
 
                 <div class="form-group">

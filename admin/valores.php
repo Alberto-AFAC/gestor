@@ -111,8 +111,6 @@ $psto = mysqli_query($conexion,$sql);
               <!-- /.progress-group -->
               <!-- /.progress-group -->
 </div>
-
-        
         <div class="box-header">
           <h1 class="box-title"></h1>
           <div class="box-tools pull-right">
@@ -124,16 +122,11 @@ $psto = mysqli_query($conexion,$sql);
        </div>
        </div>
        </div>
-       </div>
-        
-        
+       </div>       
 <!-- DISEÑO ANTIGUO/.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
-
            <!-- DISEÑO ANTIGUO/.col -->
-
-
 <div class="box-tools pull-right">
 <button type="button" class="btn btn-box-tool" data-widget="collapse">
 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
@@ -143,15 +136,13 @@ $psto = mysqli_query($conexion,$sql);
 <a onclick="location.href='./'"><i class='fa fa-times'></i></a>
 </button> -->
 </div>
-
             <ul class="nav nav-tabs" style="font-size: 14px;">
               <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
               <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
               <li><a href="#estudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
               <li><a href="#experiencia" data-toggle="tab">EXPERIENCIA PROFESIONAL</a></li>  
               <li><a href="#obligatorio" data-toggle="tab" id="ocultar1">CURSOS OBLIGATORIOS </a></li>
-              <li><a href="#curso" data-toggle="tab" id="ocultar2">CURSOS PROGRAMADOS</a></li>
-                          
+              <li><a href="#curso" data-toggle="tab" id="ocultar2">CURSOS PROGRAMADOS</a></li>         
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
@@ -173,7 +164,6 @@ $psto = mysqli_query($conexion,$sql);
                         <input type="text" disabled="" style="text-transform:uppercase;" class="form-control" id="gstLunac" name="gstLunac">
                       </div>
                   </div>
-
                   <div class="form-group">
                       <div class="col-sm-4">
                         <label>FECHA DE NACIMIENTO</label>
@@ -192,7 +182,6 @@ $psto = mysqli_query($conexion,$sql);
                           <input type="tex" disabled="" style="text-transform:uppercase;" class="form-control" id="gstCurp" name="gstCurp">
                       </div>
                   </div>
-
                   <div class="form-group">
                       <div class="col-sm-4">
                          <label>RFC</label>
@@ -209,7 +198,6 @@ $psto = mysqli_query($conexion,$sql);
                         <input type="date" disabled="" class="form-control" id="gstPsvig" name="gstPsvig">
                       </div>
                   </div>
-
                   <div class="form-group">
                     <div class="col-sm-4">
                        <label>VISA PAIS</label>
@@ -224,7 +212,6 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="text" disabled=""  style="text-transform:uppercase" class="form-control" id="gstNucrt" name="gstNucrt">
                     </div>
                   </div>
-
                   <div class="form-group">
                     <div class="col-sm-4">
                       <div class="input-group">
@@ -233,7 +220,6 @@ $psto = mysqli_query($conexion,$sql);
                       </div>
                     </div>
                 </div>
-
                   <div class="form-group">
                       <div class="col-sm-4">
                         <label>CALLE</label>
@@ -248,7 +234,6 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="text" disabled="" style="text-transform:uppercase" class="form-control" id="gstClnia" name="gstClnia">
                     </div>
                   </div>
-
                   <div class="form-group">
                       <div class="col-sm-4">
                          <label>CÓDIGO POSTAL</label>
@@ -305,8 +290,6 @@ $psto = mysqli_query($conexion,$sql);
                         </div>
                     </div>
                 </div>
-
-
                     <div class="form-group" id="buton" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-info btn-lg" onclick="actDatos();">ACEPTAR</button>
@@ -320,10 +303,8 @@ $psto = mysqli_query($conexion,$sql);
                     </form>  
                   </div>
               </div>
-
 <!--------------------DATOS DEL PUESTO------------------------------->              
            <div class="tab-pane" id="puesto">
-
            <form id="Pusto" class="form-horizontal" action="" method="POST" >
               <input type="hidden" name="pstIdper" id="pstIdper">
                 <div class="form-group">
@@ -331,7 +312,6 @@ $psto = mysqli_query($conexion,$sql);
                        <label>NÚMERO DE EMPLEADO</label>
                        <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
                     </div>
-
                     <div class="col-sm-5">
                    <label>DIRECCIÓN EJECUTIVA </label>         
                       <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
@@ -340,17 +320,14 @@ $psto = mysqli_query($conexion,$sql);
                       <?php endwhile; ?>
                       </select>
                     </div>
-
                     <div class="col-sm-3">
                     <label>CARGO</label>
-                    <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
-                        
+                    <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo"> 
                          <option value="INSPECTOR">INSPECTOR</option>
                          <option value="INSTRUCTOR">INSTRUCTOR</option>
                       </select>
                     </div>
                 </div>
- 
           <div class="form-group">
             <div class="col-sm-4">
             <label>CÓDIGO PRESUPUESTAL</label>
@@ -359,13 +336,11 @@ $psto = mysqli_query($conexion,$sql);
             <div id="select1"></div> 
           </div>
 
-
 <!-- <div class="form-group">
 
 <div id="oaci"></div>
 <div id="siglas"></div>                                
 </div> -->
-
 
            <div class="form-group">
           <div class="col-sm-5">
@@ -376,11 +351,9 @@ $psto = mysqli_query($conexion,$sql);
           <?php endwhile; ?>
           </select>
           </div> 
-
           <div id="actoaci"></div>
           <div id="siglas"></div>
           </div>
-
                <div class="form-group">
                     <div class="col-sm-12">
                         <label>CATEGORIA</label>
@@ -389,10 +362,8 @@ $psto = mysqli_query($conexion,$sql);
                          <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
                          <?php endwhile; ?>
                        </select>
-                    </div>
-                                         
+                    </div>                        
                   </div>
-
                   <div class="form-group">
                     <div class="col-sm-4">
                          <label>CORREO PERSONAL</label>
@@ -414,7 +385,6 @@ $psto = mysqli_query($conexion,$sql);
                        <input disabled=""  type="date" class="form-control" id="gstFeing" name="gstFeing">
                     </div>            
                 </div>
-
                  <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-12">
                         <label>ÁREA ADSCRIPCIÓN</label>
@@ -426,9 +396,6 @@ $psto = mysqli_query($conexion,$sql);
                        </select>
                     </div>                  
                   </div>            
-          
-
-
 <div class="form-group">
 <div class="col-sm-4">
 <label>SELECCIONE COMANDANCIA</label>
@@ -438,15 +405,7 @@ $psto = mysqli_query($conexion,$sql);
 <label>SELECCIONE AEROPUERTOS</label>
 <div id="select2"></div> 
 </div>
-</div>
-
-
-
-
-
-
-
-                  
+</div>                  
                     <div class="form-group" id="butons" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-info btn-lg" onclick="actPuesto();">ACEPTAR</button>
@@ -456,12 +415,8 @@ $psto = mysqli_query($conexion,$sql);
 
                     <b><p class="alert alert-warning text-center padding aviso" id="empty1">Es necesario agregar los datos que se solicitan </p></b>
                     </div>
-              
               </form>  
-
-
            </div>
-
 <div class="tab-pane" id="estudios">
 <form class="form-horizontal">
 <div class="form-group">
@@ -478,10 +433,7 @@ $psto = mysqli_query($conexion,$sql);
 <div id="profsions"></div>             
 </form> 
 </div>
-
 <!------------------------------------------->
-
-
 <div class="tab-pane" id="obligatorio">
   <section class="content">
     <div class="row">
@@ -490,23 +442,15 @@ $psto = mysqli_query($conexion,$sql);
           <div class="box-header">
             <h3 class="box-title">Cursos obligatorios</h3>
           </div>
-  
           <div class="box-body">
             <div id="obligados"></div>
-      
           </div>
         </div>
       </div>
     </div>
   </section>
 </div>  
-
-
-
-
-<!-------------------------------------------->
-            
-
+<!---------------------------------------------------------------------------------------------------------------->          
 <div class="tab-pane" id="curso">
   <section class="content">
     <div class="row">
@@ -517,15 +461,15 @@ $psto = mysqli_query($conexion,$sql);
           </div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                <input type="radio" id="finalizado" name="finalizado" value="finalizado">
+                <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
                 <label for="finalizado">FINALIZADO</label><br>
                 </div>
                 <div class="col-sm-2">
-                <input type="radio" id="programados" name="programados" value="programados">
+                <input type="radio" id="programados" name="cursinfoinsp" value="programados">
                 <label for="programados">PROGRAMADOS</label><br>
                 </div>
                 <div class="col-sm-2">
-                <input type="radio" id="cancelados" name="cancelados" value="cancelados">
+                <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
                 <label for="cancelados">CANCELADOS</label><br>
                 </div>
                 </div>
@@ -544,7 +488,6 @@ $psto = mysqli_query($conexion,$sql);
           </div>
           <!-- /.nav-tabs-custom -->
         </div>
-
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function(){
@@ -565,4 +508,3 @@ $('#select2').load('select/acttablacom.php');
 }); 
 </script>
 <script src="../js/select2.js"></script> 
-
