@@ -43,7 +43,7 @@ function closeDtlls() {
     document.getElementById('gstPstID').disabled = true; //ID puesto
     document.getElementById('gstSpcID').disabled = true; //ID especialidad
     // document.getElementById('gstSigID').disabled=true;//ID siglas
-
+    
     document.getElementById('gstIDCat').disabled = true;
     document.getElementById('gstIDSub').disabled = true;
     document.getElementById('gstCorro').disabled = true;
@@ -472,7 +472,7 @@ function asignacion(gstIdper) {
                             $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                             $("#Dtall #gstApell").val(obj.data[i].gstApell);
                             $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-                            $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                            $("#Dtall #gstFenac").val(obj.data[i].gstFenaSc);
                             $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
                             $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
                             $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
@@ -682,7 +682,7 @@ function asignacion(gstIdper) {
             
                         //if(obj.data[E].gstCatga == gstIDCat){
             
-                        //if(obj.data[E].gstOrden==1){    
+                        //if(obj.data[E].gstOrden==1){   AQUI 
                         html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><input style='width: 100%' text='number' id='actual' name='actual[]'value='SI' ></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
                         //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
                         // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
@@ -958,14 +958,14 @@ function inspector(gstIdper){
             
             
                     // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-                    html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+                    html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CUMPLE</th><th style="width:1%;"><i></i>SI</th><th style="width:1%"><i></i>NO</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
                     for (E = 0; E < res.length; E++) {
                         x++;
             
                         //if(obj.data[E].gstCatga == gstIDCat){
             
                         //if(obj.data[E].gstOrden==1){    
-                        html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td><input style='width: 100%' text='number' id='actual' name='actual[]'value='SI' ></td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
+                        html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
                         //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
                         // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
                         //}<td><input id='comntr' name='comntr[]'> </td>
@@ -1094,19 +1094,25 @@ function evaluar() {
     $("input[name='gstIdprm[]']:hidden").each(function() {
         gstIdprm.push($(this).val());
     });
-    var actual = new Array();
-    $("input[name='actual[]']:text").each(function() {
-        actual.push($(this).val());
-    });
+       
+        var actual = '';    
+        $('#evlacn input[type=checkbox]').each(function(){
+            if (this.checked) {
+                actual += ','+$(this).val();
+            }
+        }); 
 
+               actuals = actual.substr(1);
 
     comntr = document.getElementById('comntr').value;
 
+    datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actuals + '&comntr=' + comntr + '&opcion=evaluar';
 
-    datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actual + '&comntr=' + comntr + '&opcion=evaluar';
+
+if(actual.length >= '12' && '12' >= actual.length){
 
 
-    if (gstInspr == ',,,' || gstIdprm == ',,,' || actual == ',,,' || comntr == '' || comntr == ',,,') {
+    if (gstInspr == ',,,' || gstIdprm == ',,,' || comntr == '' || comntr == ',,,') {
 
         $('#empty0').toggle('toggle');
         setTimeout(function() {
@@ -1138,6 +1144,17 @@ function evaluar() {
             }
         });
     }
+}else{
+
+        $('#empty0').toggle('toggle');
+        setTimeout(function() {
+            $('#empty0').toggle('toggle');
+        }, 2000);
+
+        return;
+
+}
+
 }
 
 
@@ -1453,7 +1470,7 @@ function openEdit() {
     document.getElementById('gstIdpst').disabled = false; // NUM. DE EMPLEADO
     document.getElementById('gstCargo').disabled = false;
     document.getElementById('gstIDCat').disabled = false;
-    //document.getElementById('gstIDSub').disabled=false;
+    document.getElementById('gstIDSub').disabled=false; //SUBCATEGORIA
     document.getElementById('gstCorro').disabled = false;
     document.getElementById('gstCinst').disabled = false;
     document.getElementById('gstFeing').disabled = false;
@@ -1506,7 +1523,7 @@ function cerrarEdit() {
     document.getElementById('gstIdpst').disabled = true; // NUM. DE EMPLEADO
     document.getElementById('gstCargo').disabled = true;
     document.getElementById('gstIDCat').disabled = true;
-    //document.getElementById('gstIDSub').disabled=true;
+    document.getElementById('gstIDSub').disabled=true; //SUBCATEGORIA
     document.getElementById('gstCorro').disabled = true;
     document.getElementById('gstCinst').disabled = true;
     document.getElementById('gstFeing').disabled = true;
@@ -1525,15 +1542,15 @@ function asignar() {
     var gstIdper = document.getElementById('gstIdper').value;
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
-    //var AgstIDSub = document.getElementById('AgstIDSub').value;
+    var AgstIDSub = document.getElementById('AgstIDSub').value;
     var AgstIDuni = document.getElementById('gstIDuni').value;
     var AgstAcReg = document.getElementById('AgstAcReg').value;
 
-    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&opcion=asignar';
+    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat +'&AgstIDSub=' + AgstIDSub +'&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&opcion=asignar';
 
     alert(datas);
 
-    if (AgstCargo == '' || AgstIDCat == '' || AgstAcReg == '' || AgstIDuni == '') {
+    if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstIDuni == '') {
 
         $('#empty2').toggle('toggle');
         setTimeout(function() {

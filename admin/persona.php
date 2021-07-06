@@ -61,19 +61,16 @@ include('header.php');
 <section class="content" id="lista">
 
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-<div class="box-header">
+   <div class="col-xs-12">
+     <div class="box">
+       <div class="box-header">
 
-
-<h3 class="box-title">PERSONAL</h3>
-<div class="pull-right">
-<div class="btn-group">
-<a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
-</div>
-</div>
-
-
+         <h3 class="box-title">PERSONAL</h3>
+             <div class="pull-right">
+               <div class="btn-group">
+               <a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
+               </div>
+             </div>
 </div>
 <div class="box-body">
   <div id="refresh">
@@ -131,7 +128,7 @@ include('header.php');
 </div>
 
 <div class="form-group">
-<div class="col-sm-12">
+<div class="col-sm-6">
 <label>CATEGORIA</label>
 <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDCat" id="AgstIDCat" type="text" data-live-search="true"  onchange="seleccionado()">
 <option value="">SELECCIONA LA CATEGORÍA</option>
@@ -140,6 +137,17 @@ include('header.php');
 <?php endwhile; ?>
 </select>
 </div>
+<div class="col-sm-6">
+                       <label>SUB CATEGORIA</label>
+                       <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDSub" id="AgstIDSub" type="text" data-live-search="true">
+                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
+                         <option value="0">NO APLICA</option>
+                         <?php while($Aidsub1 = mysqli_fetch_row($Asub1)):?>                      
+                         <option value="<?php echo $Aidsub1[0]?>"><?php echo $Aidsub1[1];?></option>
+                         <?php endwhile; ?>
+                       </select>
+                    </div>
+                
 
 <!-- <input type="hidden" name="AgstIDSub" id="AgstIDSub" value="1"> -->
 
@@ -155,6 +163,18 @@ include('header.php');
 <div id="select3"></div> 
 </div>
 </div>
+<div class="form-group">
+                   <div class="col-sm-offset-0 col-sm-12">
+                        <label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
+                         <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
+                         <option value="CIAAC">CIAAC</option> 
+                         <option value="FLORES">LAS FLORES</option> 
+                         <option value="ANGAR8">ANGAR 8</option> 
+                         <option value="LICENCIA">LICENCIAS</option>
+                       </select>
+                    </div>
+                </div>
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">

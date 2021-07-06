@@ -9,10 +9,11 @@ if($opcion === 'asignar'){
   $gstIdper = $_POST['gstIdper'];  
   $AgstCargo = $_POST['AgstCargo'];
   $AgstIDCat = $_POST['AgstIDCat'];
+  $AgstIDSub = $_POST['AgstIDSub']; //SUBCATEGORIA
   $AgstAcReg = $_POST['AgstAcReg'];
   $AgstIDuni = $_POST['AgstIDuni'];
 
-	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstAcReg,$AgstIDuni,$conexion)){
+	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$conexion)){
 		echo "0";
 	}else{
 		echo "1";
@@ -68,11 +69,12 @@ function proEvalue($gstInspr,$gstIDprm,$gstActul,$comntr,$conexion){
 		}
 	}
 
-function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstAcReg,$AgstIDuni,$conexion){
+function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$conexion){
 
 	$query = "UPDATE personal SET 
 	gstCargo='$AgstCargo',
 	gstIDCat='$AgstIDCat',
+	gstIDSub='$AgstIDSub',
 	gstAcReg='$AgstAcReg',
 	gstIDuni='$AgstIDuni',
 	gstEvalu='NO'

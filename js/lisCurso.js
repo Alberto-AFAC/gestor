@@ -370,11 +370,12 @@ function cerrareval() {
         div1.style.display = 'none';
         document.getElementById('fechaev').disabled = true; // FECHA
         document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
-        document.getElementById('comeneva').disabled = true; // COMENTARIOS 
-        document.getElementById("lstcurs").innerHTML = "1"
+        document.getElementById('comeneva').disabled = true; // COMENTARIOS  
+
 
     }
 }
+
 
 //fecha actual  EVALUACIÓN INSPECTOR
 window.onload = function() {
