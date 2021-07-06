@@ -11,15 +11,14 @@
   <!--   <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
   <!-- Theme style -->
 
-  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<!--   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet"> -->
+  <!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
@@ -138,15 +137,16 @@
 
               <div id="evlacns"></div>
              
-                 <div class="form-group">
-                    <div class="col-sm-12">
+                 <div class="form-group" >
+                    <div class="col-sm-12" style=" margin-bottom: 1em">
                     <label>COMENTARIOS</label>
                     <textarea name="comntr" id="comntr" onkeyup="mayus(this);" class="form-control" rows="2" cols="50"></textarea>
                     </div>
                   </div>
-                 <div class="form-group"></div>
 
-            <div class="form-group" id="buton">
+ 
+
+            <div class="form-group">
               <div class="col-sm-7">
               <button type="button" id="button" class="btn btn-info" onclick="evaluar();">ACEPTAR</button>
               </div>
