@@ -887,13 +887,10 @@ include('header.php');
       <tr>
         <td><input type="number" title="el numero no debe ser superior a 100" name="cantidad" min="1" max="100" style="text-transform:uppercase;" class="form-control disabled" disabled="" id='validoev'  onchange="cambiartexto()"></td>
         <td><span class='label label-primary' style= "font-size:18px;" id='PE'>PENDIENTE</span><span class='label label-success' style= "font-size:18px; display:none"  id='SIe'>APROBADO</span><span class='label label-danger' style= "font-size:18px; display:none" id='NOE'>REPROBADO</span></td>
-
       </tr>
     </tbody>
   </table>
-              
-                          </div>
-                          
+                          </div>  
                            <div class="col-sm-12">
                            <textarea class="col-sm-12"  name="comentarios" id="comeneva" rows="4" cols="10" onkeyup="mayus(this);" style= "font-size: 14px; border-radius: 5px;" placeholder ="Comentarios Adicionales" disabled=""></textarea>
                            </div>
@@ -913,11 +910,7 @@ include('header.php');
               </div>
             </div>
             <!-- /.modal-content -->
-      
           <!-- /.modal-dialog -->
-      
-        
-
 </form>
 
     </section>
