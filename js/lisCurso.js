@@ -6,7 +6,7 @@ function lisCurso() {
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
-       
+
 
 
         html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> TÍTULO</th><th><i></i> TIPO</th><th><i></i> INICIO</th><th><i></i> DURACIÓN</th><th><i></i> FINAL</th><th><i></i> PARTICIPANTES</th><th style="width:13%"><i></i> ACCIÓN</th></tr></thead><tfoot><tr></tr></tfoot><tbody>';
@@ -31,8 +31,8 @@ function lisCurso() {
         $("#lstacurs").html(html);
     })
 
-       
-     
+
+
 }
 
 
@@ -84,28 +84,28 @@ function curso(cursos) {
             day = obj.data[i].fechaf.substring(8, 10);
             Finaliza = day + '/' + month + '/' + year;
 
-            cursos = obj.data[i].gstIdlsc+"*"+obj.data[i].gstTitlo+"*"+obj.data[i].gstTipo+"*"+obj.data[i].gstPrfil+"*"+obj.data[i].gstCntnc+"*"+obj.data[i].gstDrcin+"*"+obj.data[i].gstVignc+"*"+obj.data[i].gstObjtv+"*"+obj.data[i].hcurso+"*"+obj.data[i].fcurso+"*"+obj.data[i].fechaf+"*"+obj.data[i].idinst+"*"+obj.data[i].sede+"*"+obj.data[i].link+"*"+ obj.data[i].gstNombr+"*"+ obj.data[i].gstApell+"*"+ obj.data[i].idmstr+"*"+ obj.data[i].evaluacion+"*"+ obj.data[i].idinsp+"*"+ obj.data[i].id_curso;
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso;
             if (obj.data[i].idmstr == gstIdlsc && obj.data[i].proceso == 'PENDIENTE') {
 
                 if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
 
-                    if (obj.data[i].evaluacion <= 0) { 
+                    if (obj.data[i].evaluacion <= 0) {
                         html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                     }
-                     if (((obj.data[i].evaluacion)>= 80)&&((obj.data[i].evaluacion)<=100)) { 
+                    if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
                         html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                     }
-                    if (((obj.data[i].evaluacion)< 80)&&((obj.data[i].evaluacion)>=1)) { 
+                    if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
                         html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                     }
-            
-            } else {}
 
-                    //ISPECTOR
+                } else {}
+
+                //ISPECTOR
                 if (obj.data[i].gstCargo == 'INSTRUCTOR') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>INSTRUCTOR</a><a type='button' onclick='eliminar("     + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>INSTRUCTOR</a><a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                 }
-            
+
             } //else if(obj.data[i].idmstr==gstIdlsc && obj.data[i].proceso=='CONFIRMADO'){
             //           html +="<tr><td>"+obj.data[i].idmstr+"</td><td>"+obj.data[i].gstNombr+"</td><td>"+obj.data[i].gstApell+"</td><td>"+obj.data[i].gstCatgr+"</td><td> <a type='button' onclick='agregar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'>"+obj.data[i].proceso+"</a><a type='button' onclick='eliminar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>"; 
             //
@@ -248,150 +248,150 @@ function eliCurso() {
 }
 //RESULTADO DE LA EVALUACIÓN INSPECTOR
 function cambiartexto() {
-    costOfTicket=document.getElementById("NOE"); 
+    costOfTicket = document.getElementById("NOE");
     selectedStand = document.getElementById("SIe");
     pendiente = document.getElementById("PE");
 
     valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-    if (((valor2)>= 80)&&((valor2)<=100)){
-        selectedStand.style.display = '';  
+    if (((valor2) >= 80) && ((valor2) <= 100)) {
+        selectedStand.style.display = '';
         costOfTicket.style.display = 'none';
         pendiente.style.display = 'none';
-      }
-     if(((valor2)< 80)&&((valor2)>=1)){ //REPROBADO 
+    }
+    if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
         costOfTicket.style.display = '';
         selectedStand.style.display = 'none';
         pendiente.style.display = 'none';
 
-     }
-     if(valor2<=0){ //PENDIENTE 
+    }
+    if (valor2 <= 0) { //PENDIENTE 
         pendiente.style.display = '';
         costOfTicket.style.display = 'none';
         selectedStand.style.display = 'none';
 
-       }
- }
+    }
+}
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
- function evaluarins(cursos) { 
+function evaluarins(cursos) {
     var d = cursos.split("*");
     //alert(d[11]);
-    $("#avaluacion #evaNombr").val(d[14]+" "+d[15]); //NOMBRE COMPLETO
+    $("#avaluacion #evaNombr").val(d[14] + " " + d[15]); //NOMBRE COMPLETO
     $("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
     $("#avaluacion #id_curso").val(d[19]); //ID DEL CURSO
     $("#avaluacion #validoev").val(d[17]); //EVALUACIÓN
     $("#avaluacion #idinsev").val(d[18]); //EVALUACIÓN
 
     valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-    costOfTicket=document.getElementById("NOE"); 
+    costOfTicket = document.getElementById("NOE");
     selectedStand = document.getElementById("SIe");
     pendiente = document.getElementById("PE");
-  //  statusev = document.getElementById("resuleval"); //resultado texto
+    //  statusev = document.getElementById("resuleval"); //resultado texto
     //if(valor2 >= 80){ //APROBADO
-    if (((valor2)>= 80)&&((valor2)<=100)){
-        selectedStand.style.display = '';  
+    if (((valor2) >= 80) && ((valor2) <= 100)) {
+        selectedStand.style.display = '';
         costOfTicket.style.display = 'none';
         pendiente.style.display = 'none';
-   //     statusev.value = "APROBADO"
-      }
+        //     statusev.value = "APROBADO"
+    }
 
-     if(((valor2)< 80)&&((valor2)>=1)){ //REPROBADO 
+    if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
         costOfTicket.style.display = '';
         selectedStand.style.display = 'none';
         pendiente.style.display = 'none';
-      //  statusev.value = "REPROBADO"
-     }
-     if(valor2<=0){ //PENDIENTE 
+        //  statusev.value = "REPROBADO"
+    }
+    if (valor2 <= 0) { //PENDIENTE 
         pendiente.style.display = '';
         costOfTicket.style.display = 'none';
         selectedStand.style.display = 'none';
-    //    statusev.value = "PENDIENTE"
-       }
+        //    statusev.value = "PENDIENTE"
+    }
 }
 
- //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
- function cerrareval() {
-    costOfTicket=document.getElementById("NOE"); 
+//ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
+function cerrareval() {
+    costOfTicket = document.getElementById("NOE");
     selectedStand = document.getElementById("SIe");
     pendiente = document.getElementById("PE");
     valor2 = document.getElementById('validoev').value;
-        // validación de curso
-    var validoev = document.getElementById ("validoev").value;
-    var fechaev = document.getElementById ("fechaev").value;
+    // validación de curso
+    var validoev = document.getElementById("validoev").value;
+    var fechaev = document.getElementById("fechaev").value;
     var pendiente = document.getElementById("PE");
     idinsp = document.getElementById('idinsev').value;
     id_curso = document.getElementById('id_curso').value;
 
-    datos ='idinsp=' + idinsp +'&id_curso=' + id_curso +'&evaluacion='+valor2+'&opcion=actualizarevalu'
+    datos = 'idinsp=' + idinsp + '&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
 
- //   alert(datos);
+    //   alert(datos);
 
     if (validoev == '') {
         pendiente.style.display = '';
         costOfTicket.style.display = 'none';
         selectedStand.style.display = 'none';
         $('#emptyev').toggle('toggle');
-        setTimeout(function(){
-        $('#emptyev').toggle('toggle');
-        },2000);   
-        return;    
+        setTimeout(function() {
+            $('#emptyev').toggle('toggle');
+        }, 2000);
+        return;
     }
     if (fechaev == '') {
         $('#emptyev1').toggle('toggle');
-        setTimeout(function(){
-        $('#emptyev1').toggle('toggle');
-        },2000);   
-        return;    
+        setTimeout(function() {
+            $('#emptyev1').toggle('toggle');
+        }, 2000);
+        return;
 
-    }else{
+    } else {
         $.ajax({
-            url:'../php/proCurso.php',
-            type:'POST',
+            url: '../php/proCurso.php',
+            type: 'POST',
             data: datos
-            }).done(function(respuesta){
-            
-           // alert(respuesta);
-                if (respuesta==0) {
-            $('#succeev').toggle('toggle');
-            setTimeout(function(){
-            $('#succeev').toggle('toggle');
-            },2000);
-            }else{
-            $('#dangerev').toggle('toggle');
-            setTimeout(function(){
-            $('#dangerev').toggle('toggle');
-            },2000);
-            }  
-                         
-            }); 
-    //inhanilita los campos EVALUACIÓN INSPECTOR
-      div1 = document.getElementById('abrirev');
-      div1.style.display = '';
-      div1 = document.getElementById('cerrareval');
-      div1.style.display = 'none';
-      document.getElementById('fechaev').disabled = true; // FECHA
-      document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
-      document.getElementById('comeneva').disabled = true; // COMENTARIOS 
-      document.getElementById("lstcurs").innerHTML = "1"   
+        }).done(function(respuesta) {
 
-     }
+            // alert(respuesta);
+            if (respuesta == 0) {
+                $('#succeev').toggle('toggle');
+                setTimeout(function() {
+                    $('#succeev').toggle('toggle');
+                }, 2000);
+            } else {
+                $('#dangerev').toggle('toggle');
+                setTimeout(function() {
+                    $('#dangerev').toggle('toggle');
+                }, 2000);
+            }
+
+        });
+        //inhanilita los campos EVALUACIÓN INSPECTOR
+        div1 = document.getElementById('abrirev');
+        div1.style.display = '';
+        div1 = document.getElementById('cerrareval');
+        div1.style.display = 'none';
+        document.getElementById('fechaev').disabled = true; // FECHA
+        document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
+        document.getElementById('comeneva').disabled = true; // COMENTARIOS 
+        document.getElementById("lstcurs").innerHTML = "1"
+
     }
+}
 
 //fecha actual  EVALUACIÓN INSPECTOR
-window.onload = function(){
+window.onload = function() {
     var fecha = new Date(); //Fecha actual
-    var mes = fecha.getMonth()+1; //obteniendo mes
+    var mes = fecha.getMonth() + 1; //obteniendo mes
     var dia = fecha.getDate(); //obteniendo dia
     var ano = fecha.getFullYear(); //obteniendo año
-    if(dia<10)
-      dia='0'+dia; //agrega cero si el menor de 10
-    if(mes<10)
-      mes='0'+mes //agrega cero si el menor de 10
-    document.getElementById('fechaev').value=ano+"-"+mes+"-"+dia;
-  }
+    if (dia < 10)
+        dia = '0' + dia; //agrega cero si el menor de 10
+    if (mes < 10)
+        mes = '0' + mes //agrega cero si el menor de 10
+    document.getElementById('fechaev').value = ano + "-" + mes + "-" + dia;
+}
 
-  //ABRIR EDICIÓN DE EVALUACIÓN INSPECTOR
-  function openEditeva() {
-        // alert("prueba2!"); 
+//ABRIR EDICIÓN DE EVALUACIÓN INSPECTOR
+function openEditeva() {
+    // alert("prueba2!"); 
     div = document.getElementById('cerrareval');
     div.style.display = '';
     div = document.getElementById('abrirev');
@@ -400,22 +400,22 @@ window.onload = function(){
     document.getElementById('fechaev').disabled = false; // FECHA
     document.getElementById('validoev').disabled = false; // PUNTUACIÓN OBTENIDA
     document.getElementById('comeneva').disabled = false; // COMENTARIOS 
-  }
-  //CERRAR EDICIÓN DE EVALUACIÓN INSPECTOR
-  function cerrarEditeva() {
+}
+//CERRAR EDICIÓN DE EVALUACIÓN INSPECTOR
+function cerrarEditeva() {
     // alert("prueba2!"); 
     div1 = document.getElementById('abrirev');
     div1.style.display = '';
     div1 = document.getElementById('cerrareval');
     div1.style.display = 'none';
- //inhanilita los campos EVALUACIÓN INSPECTOR
+    //inhanilita los campos EVALUACIÓN INSPECTOR
     document.getElementById('fechaev').disabled = true; // FECHA
     document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
     document.getElementById('comeneva').disabled = true; // COMENTARIOS 
 }
 
 //EVALUACIÓN CURSO
-function evalucurs(cursos) { 
+function evalucurs(cursos) {
     var d = cursos.split("*");
     //alert(d[11]);
     $("#nomcursoen").val(d[1]); //NOMBRE DEL CURSO
