@@ -259,7 +259,7 @@ var dataSet = [
 //mostra personal asigando por dirección ajecutiva
 $Direje= $datos[0];
 
-$query = "SELECT * FROM personal WHERE gstCargo = '0' AND gstAreID  = $Direje AND estado = 0 ORDER BY gstCargo DESC";
+$query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstAreID  = $Direje AND estado = 0 ORDER BY gstCargo DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 

@@ -340,7 +340,7 @@ $psto = mysqli_query($conexion,$sql);
             <div id="siglas"></div>                                
          </div>
 
-            <input type="hidden" id="gstCargo" name="gstCargo" value="0">
+            <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
                  <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-12">
                         <label style="color: white">.</label>
