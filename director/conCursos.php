@@ -395,7 +395,7 @@ $gstIdlsc = $data['gstIdlsc'];
 //,"<?php //echo  $data['gstTitlo']
       ?>
 
-["<?php echo  $n?>",'<?php echo  $data['gstTitlo']?>',"<?php echo $data['gstTipo']?>","<?php echo $data['gstPrfil']?>","<?php echo $data['gstDrcin']?>","<?php echo $data['gstCntnc']?>","<?php echo $data['gstVignc']?>","<?php echo "<a href='{$data['gstTmrio']}' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a> " ?>","<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"],
+["<?php echo  $n?>",'<?php echo  $data['gstTitlo']?>',"<?php echo $data['gstTipo']?>","<?php echo $data['gstPrfil']?>","<?php echo $data['gstDrcin']?>","<?php echo $data['gstCntnc']?>","<?php echo $data['gstVignc']?>","<?php echo "<a href='{$data['gstTmrio']}' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a> " ?>"],
 
 
 <?php } ?>
@@ -417,8 +417,7 @@ var tableGenerarReporte = $('#data-table-concurso').DataTable({
     {title: "DURACIÓN"},
     {title: "DOCUMENTO"},
     {title: "VIGENCIA"},
-    {title: "TEMARIO"},
-    {title: "ACCIÓN"}
+    {title: "TEMARIO"}
 
     ],
     });

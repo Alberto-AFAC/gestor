@@ -168,9 +168,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+           <li><a href="nuevoingreso.php"><i class="fa ion-document-text"></i> Lista nuevo ingreso</a></li>            
+            
             <li><a href="inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="instructor.php"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+    
+           <li><a href="personal.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -184,7 +186,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <!-- <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li> -->
             <li><a href="conCursos.php"><i class="fa fa-search"></i> Consulta de cursos</a></li>
             
             <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>

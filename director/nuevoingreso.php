@@ -65,7 +65,7 @@ include('header.php');
      <div class="box">
        <div class="box-header">
 
-         <h3 class="box-title">PERSONAL</h3>
+         <h3 class="box-title">NUEVO INGRESO</h3>
              <div class="pull-right">
                <div class="btn-group">
                <a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
