@@ -12,6 +12,8 @@ $are = mysqli_query($conexion,$sql);
 $sql = "SELECT  gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
 $uni = mysqli_query($conexion,$sql);
 
+$sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
+$psto = mysqli_query($conexion,$sql);
 
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
@@ -45,6 +47,8 @@ $uni = mysqli_query($conexion,$sql);
                   </div>
                   <div class="col-sm-4">
                      <div class="description-block">
+                     <span class="description-text"></span>
+                     <h3><input type="text" style="font-size: 18px;  background:transparent" name="insparea" id="insparea" class="datas" disabled=""></h3>
                      </div>
                   <!-- /.description-block -->
                   </div>
@@ -99,20 +103,18 @@ $uni = mysqli_query($conexion,$sql);
           <h1 class="box-title"></h1>
           <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="remove">
-          <a href='javascript:closeDtlls()'><i class='fa fa-times'></i></a>
+          <a href='javascript:closeDtlls()' style="font-size: 22px"><i class='fa fa-times'></i></a>
           </button>
           </div>  
        </div>
        </div>
        </div>
        </div>
-       </div>
-          <!-- /.widget-user -->
-        
+       </div>        
         
 <!-- /FIN DE NUEVO DISEÑO -->
 
-           <!-- DISEÑO ANTIGUO/.col -->
+<!-- DISEÑO ANTIGUO/.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
 
@@ -121,19 +123,22 @@ $uni = mysqli_query($conexion,$sql);
 
 <div class="box-tools pull-right">
 <button type="button" class="btn btn-box-tool" data-widget="collapse">
-<a href='javascript:openEdit()' style="font-size: 18px"> <i class="fa fa-edit"></i> </a>
+<a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
+<a href='javascript:cerrarEdit()'  id="cerrar1" style="display:none; font-size: 22px"> <i class="fa fa-ban"></i> </a>
 </button>
-<!--<button type="button" class="btn btn-box-tool" data-widget="remove">
+<!-- <button type="button" class="btn btn-box-tool" data-widget="remove">
 <a onclick="location.href='./'"><i class='fa fa-times'></i></a>
-</button>-->
+</button> -->
 </div>
 
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs" style="font-size: 14px;">
               <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
               <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
               <li><a href="#estudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
               <li><a href="#experiencia" data-toggle="tab">EXPERIENCIA PROFESIONAL</a></li>  
-              <li><a href="#curso" data-toggle="tab" id="ocultar">CURSOS</a></li>            
+              <li><a href="#obligatorio" data-toggle="tab" id="ocultar1">CURSOS OBLIGATORIOS </a></li>
+              <li><a href="#curso" data-toggle="tab" id="ocultar2">CURSOS PROGRAMADOS</a></li>
+                          
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
@@ -233,7 +238,7 @@ $uni = mysqli_query($conexion,$sql);
 
                   <div class="form-group">
                       <div class="col-sm-4">
-                         <label>CODIGO POSTAL</label>
+                         <label>CÓDIGO POSTAL</label>
                          <input type="number" disabled="" style="text-transform:uppercase;" class="form-control" id="gstCpstl" name="gstCpstl">
                       </div>
                      
@@ -306,18 +311,13 @@ $uni = mysqli_query($conexion,$sql);
 <!--------------------DATOS DEL PUESTO------------------------------->              
            <div class="tab-pane" id="puesto">
 
-            <form id="Pusto" class="form-horizontal" action="" method="POST" >
+           <form id="Pusto" class="form-horizontal" action="" method="POST" >
               <input type="hidden" name="pstIdper" id="pstIdper">
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label>NÚMERO DE EMPLEADO</label>
                        <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
                     </div>
-
-                    <!--<div class="col-sm-4">
-                       <label>ID PUESTO (NIVEL TABULAR)</label>
-                       <input type="text" disabled="" style="text-transform:uppercase;" class="form-control" id="gstIdpst" name="gstIdpst">
-                    </div>-->
 
                     <div class="col-sm-5">
                    <label>DIRECCIÓN EJECUTIVA </label>         
@@ -339,61 +339,55 @@ $uni = mysqli_query($conexion,$sql);
                 </div>
  
           <div class="form-group">
-          <div class="col-sm-4">
-          <label>CODIGO PRESUPUESTAL</label>
-          <div id="actualiza"></div>                               
+            <div class="col-sm-4">
+            <label>CÓDIGO PRESUPUESTAL</label>
+            <div id="actualiza"></div>                               
+            </div>
+            <div id="select1"></div> 
           </div>
-          <div id="select1"></div> 
-          </div>
+
+
+<!-- <div class="form-group">
+
+<div id="oaci"></div>
+<div id="siglas"></div>                                
+</div> -->
 
 
            <div class="form-group">
-          <div class="col-sm-4">
+          <div class="col-sm-5">
           <label>NOMBRE DEL PUESTO</label>
-          <select type="text" class="form-control" name="gstPstID" id="gstPstID" disabled="">
-       
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
+          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
+          <?php while($pust = mysqli_fetch_row($psto)):?>                      
+          <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
+          <?php endwhile; ?>
+          </select>
           </div> 
 
-          <div class="col-sm-4">
-          <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
-          <select type="text" class="form-control" name="gstSpcID" id="gstSpcID" disabled="">
-  
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
+          <div id="actoaci"></div>
+          <div id="siglas"></div>
           </div>
-
-          <div class="col-sm-4">
-          <label>SIGLAS OACI</label>
-          <select type="text" class="form-control" name="gstSigID" id="gstSigID" disabled="">
-   
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
-          </div>                          
-          </div>
-
                <div class="form-group">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <label>CATEGORIA</label>
                         <select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="gstIDCat" id="gstIDCat" type="text" data-live-search="true">
-                         <?php while($idcat = mysqli_fetch_row($cat)):?>                      
-                         <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
-                         <?php endwhile; ?>
+                            <?php while($idcat = mysqli_fetch_row($cat)):?>                      
+                            <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
+                            <?php endwhile; ?>
                        </select>
                     </div>
-                                         
-<!--                     <div class="col-sm-6">
+                   
+                    <div class="col-sm-6">
                        <label>SUB CATEGORIA</label>
                        <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
+                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
+                         <option value="0">NO APLICA</option>
                          <?php while($idsub1 = mysqli_fetch_row($sub1)):?>                      
                          <option value="<?php echo $idsub1[0]?>"><?php echo $idsub1[1];?></option>
                          <?php endwhile; ?>
                        </select>
-                    </div> -->
+                    </div>
+                      
                   </div>
 
                   <div class="form-group">
@@ -415,38 +409,30 @@ $uni = mysqli_query($conexion,$sql);
                     <div class="col-sm-4">
                        <label>FECHA INGRESO A LA AFAC</label>
                        <input disabled=""  type="date" class="form-control" id="gstFeing" name="gstFeing">
-                    </div>
-            
+                    </div>            
                 </div>
-            
-          
-                <div class="form-group">
-                  <div class="col-sm-offset-0 col-sm-6">
-                         <label>COMANDANCIA </label>
-                        <select disabled=""  style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstIDuni" name="gstIDuni"type="text" data-live-search="true">
-                         <?php while($iduni = mysqli_fetch_row($uni)):?>                      
-                         <option value="<?php echo $iduni[0]?>"><?php echo $iduni[1].' > '.$iduni[2]?></option>
+
+                 <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label>ÁREA ADSCRIPCIÓN</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true" disabled="">
+                         <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
+                         <?php while($rea = mysqli_fetch_row($are)):?>                      
+                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
                          <?php endwhile; ?>
                        </select>
-                    </div>
-
-
-                   <div class="col-sm-offset-0 col-sm-6">
-                        <label>AEROPUERTOS </label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" type="text" data-live-search="true">
-                         <option value="">SELECCIONAR AEROPUERTOS </option> 
-                         <?php //while($Aiduni = mysqli_fetch_row($Auni)):?>                      
-                          <option value="<?php //echo $Aiduni[0]?>"><?php //echo $Aiduni[1].' > '.$Aiduni[2].' REGIÓN: '.$Aiduni[4]?></option>
-                         <?php //endwhile; ?>
-                       </select>
-                    </div>
-                </div>
-
-
-
-
-
-                  
+                    </div>                  
+                  </div>            
+<div class="form-group">
+<div class="col-sm-4">
+<label>SELECCIONE COMANDANCIA</label>
+<div id="comandancia"></div>                            
+</div>
+<div class="col-sm-8">
+<label>SELECCIONE AEROPUERTOS</label>
+<div id="select2"></div> 
+</div>
+</div>                
                     <div class="form-group" id="butons" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-info btn-lg" onclick="actPuesto();">ACEPTAR</button>
@@ -456,73 +442,74 @@ $uni = mysqli_query($conexion,$sql);
 
                     <b><p class="alert alert-warning text-center padding aviso" id="empty1">Es necesario agregar los datos que se solicitan </p></b>
                     </div>
-              
               </form>  
-
-      
-              </div>
-             <div class="tab-pane" id="estudios">
-                      
-
-            <form class="form-horizontal">
-              
-              <div class="form-group">
-                <div class="col-sm-4">
-                    <H4>
-                     <label>ULTIMO GRADO DE ESTUDIOS </label></H4>
-                </div>
-              </div>
-              <div id="studios"></div>
-            </form>   
-              </div>
-             <div class="tab-pane" id="experiencia">
-              <form class="form-horizontal">
-              <div id="profsions"></div>             
-              </form> 
-              </div>
-
-              <div class="tab-pane" id="curso">
-
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-        
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Cursos</h3>
-            </div>
-        <div class="form-group">
-            
-        <div class="col-sm-2">
-            <input type="radio" id="finalizado" name="finalizado" value="finalizado">
-            <label for="finalizado">FINALIZADO</label><br>
-            </div>
-
-            <div class="col-sm-2">
-              <input type="radio" id="programados" name="programados" value="programados">
-              <label for="programados">PROGRAMADOS</label><br>
-              </div>
-
-               <div class="col-sm-2">
-                  <input type="radio" id="cancelados" name="cancelados" value="cancelados">
-                  <label for="cancelados">CANCELADOS</label><br>
-              </div>
-
-        </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-            	<?php include('../html/gesCurso.html');?>
-
-            </div>
-            <!-- /.box-body -->
+           </div>
+<div class="tab-pane" id="estudios">
+<form class="form-horizontal">
+<div class="form-group">
+<div class="col-sm-4">
+<H4>
+<label>ULTIMO GRADO DE ESTUDIOS </label></H4>
+</div>
+</div>
+<div id="studios"></div>
+</form>   
+</div>
+<div class="tab-pane" id="experiencia">
+<form class="form-horizontal">
+<div id="profsions"></div>             
+</form> 
+</div>
+<!------------------------------------------->
+<div class="tab-pane" id="obligatorio">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Cursos obligatorios</h3>
           </div>
-          <!-- /.box -->
+  
+          <div class="box-body">
+            <div id="obligados"></div>
+      
+          </div>
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-    </section>
-              </div>
+    </div>
+  </section>
+</div>  
+<!-------------------------------------------->
+<div class="tab-pane" id="curso">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Cursos programados</h3>
+          </div>
+                <div class="form-group">
+                <div class="col-sm-2">
+                <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
+                <label for="finalizado">FINALIZADO</label><br>
+                </div>
+                <div class="col-sm-2">
+                <input type="radio" id="programados" name="cursinfoinsp" value="programados">
+                <label for="programados">PROGRAMADOS</label><br>
+                </div>
+                <div class="col-sm-2">
+                <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
+                <label for="cancelados">CANCELADOS</label><br>
+                </div>
+                </div>
+          <div class="box-body">
+            <?php include('../html/gesCurso.html');?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
               <!-- /.tab-pane -->
               <!-- /.tab-pane -->
             </div>
