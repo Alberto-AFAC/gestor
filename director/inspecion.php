@@ -304,10 +304,8 @@ $resultado = mysqli_query($conexion, $query);
 
     echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";?>"],
 
-
 <?php 
-
-                    }else if($data['gstEvalu'] == 'SI' && $data['gstCargo']!='DIRECTOR') { 
+}else if($data['gstEvalu'] == 'SI' && $data['gstCargo']!='DIRECTOR') { 
   ?>
 
   ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php
