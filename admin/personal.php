@@ -261,11 +261,10 @@ $psto = mysqli_query($conexion,$sql);
                    <div class="form-group">
                     <div class="col-sm-10">
                         <div class="col-sm-offset-0 col-sm-2">
-                                 <button type="button" class="btn btn-block btn-primary"  ><span class="fa fa-share"></span> <a style="color: #fff;" href="#timeline" data-toggle="tab">SIGUIENTE</a></button>
+                                 <button type="button"  class="btn btn-block btn-primary"  ><span class="fa fa-share"></span> <a style="color: #fff;" href="#timeline" data-toggle="tab">SIGUIENTE</a></button>
                         </div>
                         </div>
                         </div>
-                    
                 </form>
 
               </script>
