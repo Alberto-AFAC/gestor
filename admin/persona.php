@@ -118,7 +118,6 @@ include('header.php');
 <option value="">SELECCIONA EL CARGO</option>
 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
 <option value="COORDINADOR">COORDINADOR</option>
-<option value="DIRECTOR">DIRECTOR</option>
 <option value="INSPECTOR">INSPECTOR</option>
 <option value="INSTRUCTOR">INSTRUCTOR</option>
 
@@ -128,7 +127,7 @@ include('header.php');
 </div>
 
 <div class="form-group">
-<div class="col-sm-6">
+<div class="col-sm-12">
 <label>CATEGORIA</label>
 <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDCat" id="AgstIDCat" type="text" data-live-search="true"  onchange="seleccionado()">
 <option value="">SELECCIONA LA CATEGORÍA</option>
@@ -137,7 +136,9 @@ include('header.php');
 <?php endwhile; ?>
 </select>
 </div>
-<div class="col-sm-6">
+</div>
+<div class="form-group">
+<div class="col-sm-12">
                        <label>SUB CATEGORIA</label>
                        <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDSub" id="AgstIDSub" type="text" data-live-search="true">
                          <option value="">SELECCIONA LA SUB CATEGORÍA</option>
