@@ -1,3 +1,10 @@
+<?php 
+include ("../conexion/conexion.php");
+
+      $sql = "SELECT gstIdcat, gstCsigl FROM categorias WHERE estado = 0";
+      $categs = mysqli_query($conexion,$sql);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,21 +47,18 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
+    <section class="content-header">
+      <h1>
+      REGISTRAR CURSO
+      </h1>
+    </section>
 
     <!-- Main content -->
     <section class="content">
-
-      <div class="row">
-    
+      <div class="row">    
         <!-- /.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">CURSO</a></li>
-              <li><a href="#timeline" data-toggle="tab">CONSULTA DE CURSOS</a></li>
-              <!--<li><a href="#timeline" data-toggle="tab">CURSOS RECIENTES</a></li>-->
-              <!--<li><a href="#settings" data-toggle="tab">CONSULTA DE CURSOS </a></li>-->
-            </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
                 <!-- Post -->
@@ -80,21 +84,18 @@
                       </select>
                       </div>
 
-                  <div class="col-sm-4">
-                    <label>PERFIL A QUIEN VA DIRIGIDO</label>                   
-                      <select type="text" class="form-control" id="gstPrfil" name="gstPrfil">
-                        <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
-                        <option value="IVA-L.l">IVA-L</option>
-                        <option value="IVA-O">IVA-O</option>
-                        <option value="IVA-NA">IVA-NA</option>
-                        <option value="IVA-AE">IVA-AE</option>
-                        <option value="IVA-SMS/SSP">IVA-SMS/SSP</option>
-                        <option value="IVA- AVSEC">IVA- AVSEC</option>
-                        <option value="AFAC">AFAC</option>
-                        <option value="CIAAC">CIAAC</option>
-                      </select>
-                    </div>
+                <link rel="stylesheet" type="text/css" href="advanced.php">
 
+                <div class="col-md-4">
+                <label>PERFIL A QUIEN VA DIRIGIDO</label>  
+                <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
+                <?php while($cat = mysqli_fetch_row($categs)):?>                      
+                <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                <?php endwhile; ?>                
+                </select>
+                </div>
+              
                   </div>
                   <div class="form-group">
   
@@ -111,7 +112,7 @@
 
 
                      <div class="col-sm-1" style="padding-right: 0;">
-                     <label>DURACION</label> 
+                     <label>DURACIÓN</label> 
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                       <select  class="form-control" id="hr" name="hr">
                         <option value="00">00</option>
@@ -163,27 +164,24 @@
 
                       
                       </div>
-                      <div class="form-group">
-                  
-
+                      <div class="form-group">                  
                      <div class="col-sm-4">
                       <label>PROVEEDOR DEL CURSO</label>
-                      <select type="text" class="form-control" id="gstTipo" name="gstTipo">
+                      <select type="text" class="form-control" id="gstProvd" name="gstProvd">
                         <option value="0">ELEGIR UNA OPCIÓN</option>
-                        <option value="INDUCCIÓN">INTERNO</option>
-                        <option value="BÁSICOS">EXTERNO</option>
+                        <option value="INTERNO">INTERNO</option>
+                        <option value="EXTERNO">EXTERNO</option>
                       </select>
                       </div>
 
                   <div class="col-sm-4">
                     <label>CENTRO DE INSTRUCCIÓN</label>                   
-                      <select type="text" class="form-control" id="gstPrfil" name="gstPrfil">
+                      <select type="text" class="form-control" id="gstCntro" name="gstCntro">
                         <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
-                        <option value="IVA-L.l">EN EL EXTRANJERO</option>
+                        <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
                       </select>
                     </div>
-
-                  </div>
+                  </div> 
     
                   <div class="form-group">
                     <div class="col-sm-12">
@@ -240,238 +238,16 @@
                 <!-- /.post -->
 
                 <!-- Post -->
-                <div class="post">
-       
-                  <!-- /.user-block -->
-                 
-                  <!-- /.row -->
-
-                  <ul class="list-inline">
-  
-                  </ul>
-
-             
-                </div>
+ 
                 <!-- /.post -->
               </div>
               <!-- /.tab-pane 2do panel-->
               <div class="tab-pane" id="timeline">
                 <!-- The timeline -->
                
-
-   
-      <div class="row">
-        <div class="col-xs-12">
-        
-          <div class="box">
-            
-            <div class="box-body">
-            <?php include('../html/conCurso.html');?>
-            </div>
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    
-
-
-
-<form class="form-horizontal" action="" method="POST"  >
-<div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: black"  aria-hidden="true">&times;</span>
-</button>
-<h4 class="modal-title" id="exampleModalLabel">EDITAR CURSO </h4>  
-</div>
-
-<input type="hidden" class="form-control" id="AgstIdlsc" name="AgstIdlsc">
-<div class="modal-body">
-
-                  <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>NOMBRE</label>
-                    <input type="text" onkeyup="mayus(this);" class="form-control" id="AgstTitlo" name="AgstTitlo">
-                    </div>
-
-                     <div class="col-sm-4">
-                      <label>TIPO</label>
-                      <select type="text" class="form-control" id="AgstTipo" name="AgstTipo">
-                        <option value="INDUCCIÓN">INDUCCIÓN</option>
-                        <option value="BÁSICOS">BÁSICOS</option>
-                        <option value="TRANSVERSALES">TRANSVERSALES</option>
-                        <option value="RECURRENTES">RECURRENTES</option>
-                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
-                        <option value="OJT">OJT</option>
-                      </select>
-                      </div>
-
-                  <div class="col-sm-4">
-                    <label>PERFIL A QUIEN VA DIRIGIDO</label>                   
-                      <select type="text" class="form-control" id="AgstPrfil" name="AgstPrfil">
-                        <option value="IVA-L.l">IVA-L</option>
-                        <option value="IVA-O">IVA-O</option>
-                        <option value="IVA-NA">IVA-NA</option>
-                        <option value="IVA-AE">IVA-AE</option>
-                        <option value="IVA-SMS/SSP">IVA-SMS/SSP</option>
-                        <option value="IVA- AVSEC">IVA- AVSEC</option>
-                        <option value="AFAC">AFAC</option>
-                        <option value="CIAAC">CIAAC</option>
-                      </select>
-                    </div>
-
-                  </div>
-                  <div class="form-group">
-  
-                     <div class="col-sm-4">
-                      <label>DOCUMENTO QUE EMITE</label>
-                      <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
-                      <select type="text" class="form-control" id="AgstCntnc" name="AgstCntnc">
-                        <option value="DIPLOMA">DIPLOMA</option>
-                        <option value="CONSTANCIA">CONSTANCIA</option>
-                        <option value="CERTIFICADO">CERTIFICADO</option>
-                      </select>
-                      </div>
-
-
-                     <div class="col-sm-1" style="padding-right: 0; width: 79px;">
-                     <label>DURACION</label> 
-                      <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                      <select  class="form-control" id="Ahr" name="Ahr">
-                        <option value="00">00</option>
-                      <?php for($h=1; $h<=24; $h++){
-                         if($h<10){ ?>
-                       <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
-                        <?php }else{ ?>
-                        <option value="<?php echo $h?>"><?php echo $h?></option>
-                      <?php } }?>
-                </select>
-                    </div>
-
-                      <div class="col-sm-1" style="padding: 0;">
-               <label style="color: white">.</label>
-                      <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                      <select  class="form-control" id="Amin" name="Amin">
-                        <option value="00">00</option>
-                      <?php for($m=1; $m<=59; $m++){
-
-                        if($m<10){?>
-                        <option value="<?php echo '0'.$m?>"><?php echo '0'.$m?></option>
-                        <?php }else{ ?>
-                        <option value="<?php echo $m?>"><?php echo $m?></option>
-                      <?php } }?>
-                </select>
-                    </div>
-                    <div class="col-sm-1" style="padding: 0;">
-               <label style="color: white">.</label>
-                      <select  class="form-control" id="Atmp" name="Atmp">
-                        <option value="HRS.">HRS.</option>
-                        <option value="MIN.">MIN.</option>
-                      </select>
-                    </div>
-
-                <div class="col-sm-offset-1 col-sm-3">
-                         <label>PERIODO DE VIGENCIA</label>                         
-                            <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
-                            <option value="RECURRENTE">RECURRENTE</option>
-                            <option value="NO APLICA">UNICA VEZ</option>
-                            <option value="1 AÑO">1 AÑO</option>
-                            <option value="2 AÑOS">2 AÑOS</option>
-                            <option value="3 AÑOS">3 AÑOS</option>
-                            <option value="4 AÑOS">4 AÑOS</option>
-                            <option value="5 AÑOS">5 AÑOS</option>
-                            <option value="6 AÑOS">6 AÑOS</option>
-                            </select>
-                      </div>
-                      </div>
-                  <div class="form-group">
-                    <div class="col-sm-12">
-                    <label>OBJETIVO</label>
-                    <textarea name="AgstObjtv" id="AgstObjtv"  placeholder="Escribir el Objetivo" onkeyup="mayus(this);" class="form-control" rows="5" cols="50"></textarea>
-                    </div>
-                  </div>
-                 <div class="form-group">
-                     <div class="col-sm-4">
-                      <label>TEMARIO</label>
-
-                   <input type="file" id="AgstTmrio" name="AgstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
-
-
-                      </div>
-                  </div>  
-
-<div class="form-group"><br>
-<div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" class="btn btn-primary" onclick="actCurso();">ACEPTAR </button>
-</div>
-             <b><p class="alert alert-danger text-center padding error" id="afalla">Error al registrar curso o al adjuntar archivo</p></b>
-
-                    <b><p class="alert alert-success text-center padding exito" id="aexito">¡Se registro curso y archivo con éxito!</p></b>
-
-                    <b><p class="alert alert-warning text-center padding aviso" id="avacio">Es necesario agregar los datos que se solicitan </p></b>
-
-                    <b><p class="alert alert-warning text-center padding aviso" id="arepetido">¡El curso ya está registrado!</p></b>
-
-                    <b><p class="alert alert-danger text-center padding adjuto" id="arenom">
-                    Renombre su archivo</p></b>
-
-                    <b><p class="alert alert-warning text-center padding adjuto" id="aadjunta">
-                    Debes adjuntar archivo</p></b>
-
-                    <b><p class="alert alert-danger text-center padding adjuto" id="aerror">
-                    Ocurrio un error</p></b>
-
-                    <b><p class="alert alert-danger text-center padding adjuto" id="aforn">
-                    Formato no valido</p></b>
-
-                    <b><p class="alert alert-danger text-center padding adjuto" id="amax">
-                    Supera el limite permitido</p></b>
-
-
-</div>
-</div>
-</div>
-</div>
-</form>
 </div>
 
 
-<form class="form-horizontal" action="" method="POST"  >
-      <div class="modal fade" id="modal-eliminar">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">ELIMINAR CURSO </h4>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
-               <div class="form-group">
-                <div class="col-sm-12">
-                  <p> CONFIRME ACEPTAR, PARA ELIMINAR: <input type="text" name="EgstTitlo" id="EgstTitlo" class="form-control disabled" disabled="" style="background: white;border: 1px solid white;"></p>
-                </div>
-                  <br>
-                  <div class="col-sm-5">
-                  <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
-                  </div>
-
-                    <b><p class="alert alert-warning text-center padding error" id="danger">Error al eliminar curso</p></b>
-                    <b><p class="alert alert-success text-center padding exito" id="succe">¡Se elimino curso con éxito !</p></b>
-                    <b><p class="alert alert-warning text-center padding aviso" id="empty">Elija curso para eliminar </p></b>
-                    </div>
-                  </div>
-                </div>    
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-</form>
     <!-- /.tab-pane -->
       <!-- /.row -->
 
@@ -486,195 +262,7 @@
     <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
   </footer>
 
-  <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <!--<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>-->
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-user bg-yellow"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                <p>New phone +1(800)555-1234</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                <p>nora@example.com</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                <p>Execution time 5 seconds</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="label label-danger pull-right">70%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Update Resume
-                <span class="label label-success pull-right">95%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Laravel Integration
-                <span class="label label-warning pull-right">50%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Back End Framework
-                <span class="label label-primary pull-right">68%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Allow mail redirect
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Other sets of options are available
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Expose author name in posts
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Allow the user to show his name in blog posts
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Show me as online
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Turn off notifications
-              <input type="checkbox" class="pull-right">
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Delete chat history
-              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-            </label>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
+  <?php include('panel.html');?>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -692,6 +280,15 @@
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<script src="../js/gesInstr.js"></script>
 <script src="../js/global.js"></script>
 </body>
 </html>
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function(){
+$('#gstPrfil').select2();
+
+}); 
+</script>
+<script src="../js/select2.js"></script> 
