@@ -12,7 +12,7 @@
         }
    $id = $_SESSION['usuario']['id_usu'];
       $sql = 
-       "SELECT gstAreID,gstNombr,gstApell FROM personal 
+       "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
       INNER JOIN accesos ON id_usu = gstIdper
       WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
 
@@ -92,7 +92,7 @@
          <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
+              <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
             </a>
             <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
               <!-- User image -->
@@ -186,7 +186,7 @@
           <ul class="treeview-menu">
             <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
             <li><a href="conCursos.php"><i class="fa fa-search"></i> Consulta de cursos</a></li>
-            <li><a href="programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
+            
             <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>

@@ -136,7 +136,10 @@
               </div>
 
               <div id="evlacns"></div>
+
              
+                <input type="hidden" id='evla' name='evla' value='<?php echo $datos[0];?>'> 
+
                  <div class="form-group" >
                     <div class="col-sm-12" style=" margin-bottom: 1em">
                     <label>COMENTARIOS</label>
@@ -284,7 +287,7 @@ $('#select2').load('select/acttablacom.php');
 var dataSet = [
 <?php 
 
- $Direje= $datos[0];
+ $Direje= $datos[1];
 
 $query = "SELECT * FROM personal 
           INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
@@ -311,13 +314,6 @@ $resultado = mysqli_query($conexion, $query);
   ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php
   echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";
   ?>"],
-
-<?php }else{ ?>
-
-  ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php
-  echo "<a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";
-  ?>"],
-
 
 <?php }
 

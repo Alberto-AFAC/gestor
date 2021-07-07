@@ -18,19 +18,14 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
+<!--           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
             </a>
-
- <!-- LOGO DE LA AFAC-->
-
-
             <ul class="dropdown-menu">
               <li class="header">You have 10 notifications</li>
               <li>
-                <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
                     <a href="#">
@@ -62,11 +57,11 @@
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
-          </li>
+          </li> -->
           <!-- Tasks: style can be found in dropdown.less -->
 
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+      <!--     <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/perfil.png" class="user-image" alt="User Image">
               <span class="hidden-xs">Agel Canseco</span>
@@ -92,7 +87,7 @@
                 </div>
               </li>
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <!-- <li class="user-footer">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
@@ -101,7 +96,7 @@
                 </div>
               </li>
             </ul>
-          </li>
+          </li>  -->
           <!-- Control Sidebar Toggle Button -->
           <li>
              <img href="#" data-toggle="control-sidebar" src="../../dist/img/AFAC.png" ALIGN=RIGHT class="img" alt="User Image" style="cursor: pointer;padding-right:  0.5em;">
@@ -161,7 +156,6 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../personal.php"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
             <li><a href="../persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
             <li><a href="../inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
             <li><a href="../instructor.php"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
@@ -180,7 +174,7 @@
           <ul class="treeview-menu">
             <li><a href="../altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
             <li><a href="../conCursos.php"><i class="fa fa-search"></i> Consulta de cursos</a></li>
-            <li><a href="../programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
+
             <li><a href="../lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
           </ul>
         </li>
