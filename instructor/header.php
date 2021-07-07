@@ -4,7 +4,7 @@ include ("../conexion/conexion.php"); session_start();
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "inspector"){
+        if($_SESSION['usuario']['privilegios'] != "instructor"){
             //y se redirecciona al directorio que le corresponde
             header("Location: ../");
             }

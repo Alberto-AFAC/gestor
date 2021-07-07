@@ -20,6 +20,8 @@ jQuery(document).on('submit','#formtec',function(event){
 	   	 	location.href = 'inspector/';
 	   	 }else if(respuesta.tipo == 'director'){ //*redireccion al manejador si el .tipo es manejador
 	   	 	location.href = 'director/';
+	   	 }else if(respuesta.tipo == 'instructor'){
+	   	 	location.href = 'instructor/';
 	   	 }
 
 	   }else{	//*si no se encuentra datos, mecionar que no hay cooincidencia en la base de datos
