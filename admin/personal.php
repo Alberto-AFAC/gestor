@@ -129,6 +129,7 @@ $psto = mysqli_query($conexion,$sql);
                           <option value="">ESTADO CIVIL</option>
                          <option value="CASADO">CASADO</option>
                          <option value="SOLTERO">SOLTERO</option>
+                         <option value="SOLTERO">OTROS</option>
                       </select>
                     </div>
 
