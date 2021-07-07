@@ -304,7 +304,8 @@ $psto = mysqli_query($conexion,$sql);
                   </div>
               </div>
 <!--------------------DATOS DEL PUESTO------------------------------->              
-           <div class="tab-pane" id="puesto">
+                <div class="tab-pane" id="puesto">
+
            <form id="Pusto" class="form-horizontal" action="" method="POST" >
               <input type="hidden" name="pstIdper" id="pstIdper">
                 <div class="form-group">
@@ -312,6 +313,7 @@ $psto = mysqli_query($conexion,$sql);
                        <label>NÚMERO DE EMPLEADO</label>
                        <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
                     </div>
+
                     <div class="col-sm-5">
                    <label>DIRECCIÓN EJECUTIVA </label>         
                       <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
@@ -320,14 +322,17 @@ $psto = mysqli_query($conexion,$sql);
                       <?php endwhile; ?>
                       </select>
                     </div>
+
                     <div class="col-sm-3">
                     <label>CARGO</label>
-                    <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo"> 
+                    <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
+                        
                          <option value="INSPECTOR">INSPECTOR</option>
                          <option value="INSTRUCTOR">INSTRUCTOR</option>
                       </select>
                     </div>
                 </div>
+ 
           <div class="form-group">
             <div class="col-sm-4">
             <label>CÓDIGO PRESUPUESTAL</label>
@@ -336,11 +341,13 @@ $psto = mysqli_query($conexion,$sql);
             <div id="select1"></div> 
           </div>
 
+
 <!-- <div class="form-group">
 
 <div id="oaci"></div>
 <div id="siglas"></div>                                
 </div> -->
+
 
            <div class="form-group">
           <div class="col-sm-5">
@@ -351,19 +358,33 @@ $psto = mysqli_query($conexion,$sql);
           <?php endwhile; ?>
           </select>
           </div> 
+
           <div id="actoaci"></div>
           <div id="siglas"></div>
           </div>
                <div class="form-group">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <label>CATEGORIA</label>
                         <select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="gstIDCat" id="gstIDCat" type="text" data-live-search="true">
-                         <?php while($idcat = mysqli_fetch_row($cat)):?>                      
-                         <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
+                            <?php while($idcat = mysqli_fetch_row($cat)):?>                      
+                            <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
+                            <?php endwhile; ?>
+                       </select>
+                    </div>
+                   
+                    <div class="col-sm-6">
+                       <label>SUB CATEGORIA</label>
+                       <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
+                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
+                         <option value="0">NO APLICA</option>
+                         <?php while($idsub1 = mysqli_fetch_row($sub1)):?>                      
+                         <option value="<?php echo $idsub1[0]?>"><?php echo $idsub1[1];?></option>
                          <?php endwhile; ?>
                        </select>
-                    </div>                        
+                    </div>
+                      
                   </div>
+
                   <div class="form-group">
                     <div class="col-sm-4">
                          <label>CORREO PERSONAL</label>
@@ -385,6 +406,7 @@ $psto = mysqli_query($conexion,$sql);
                        <input disabled=""  type="date" class="form-control" id="gstFeing" name="gstFeing">
                     </div>            
                 </div>
+
                  <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-12">
                         <label>ÁREA ADSCRIPCIÓN</label>
@@ -405,7 +427,7 @@ $psto = mysqli_query($conexion,$sql);
 <label>SELECCIONE AEROPUERTOS</label>
 <div id="select2"></div> 
 </div>
-</div>                  
+</div>                
                     <div class="form-group" id="butons" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-info btn-lg" onclick="actPuesto();">ACEPTAR</button>

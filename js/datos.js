@@ -1306,7 +1306,8 @@ function registrar() {
             data: datos
         }).done(function(respuesta) {
             if (respuesta == 0) {
-                //alert(respuesta);
+                alert(respuesta);
+                console.log(respuesta);
                 $('#succe').toggle('toggle');
                 setTimeout(function() {
                     $('#succe').toggle('toggle');
@@ -1470,7 +1471,7 @@ function openEdit() {
     document.getElementById('gstIdpst').disabled = false; // NUM. DE EMPLEADO
     document.getElementById('gstCargo').disabled = false;
     document.getElementById('gstIDCat').disabled = false;
-    document.getElementById('gstIDSub').disabled=false; //SUBCATEGORIA
+    document.getElementById('gstIDSub').disabled = false; //SUBCATEGORIA
     document.getElementById('gstCorro').disabled = false;
     document.getElementById('gstCinst').disabled = false;
     document.getElementById('gstFeing').disabled = false;

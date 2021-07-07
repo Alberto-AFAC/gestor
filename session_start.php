@@ -6,11 +6,16 @@ session_start();
 	if(isset($_SESSION['usuario'])){
 		//si eta logeado con admnistrador lo redireccionara a su direcctorio que le corresponde 
 		if($_SESSION['usuario']['privilegios'] == "admin")
-		{	header('Location: administrador');
+		{	header('Location: admin');
 		//si eta logeado con usuario lo redireccionara a su direcctorio que le corresponde 
 		}else if($_SESSION['usuario']['privilegios'] == "inspector")
 		{	header('Location: inspector');
 		//si eta logeado con manejador lo redireccionara a su direcctorio que le corresponde 
+		}else if($_SESSION['usuario']['privilegios'] == "instructor")
+		{header('Location: instructor');
+		}else if($_SESSION['usuario']['privilegios'] == "director")
+		{header('Location: director');
+		
 		}
 	}
 ?>

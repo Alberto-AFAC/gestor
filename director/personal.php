@@ -58,17 +58,20 @@ include('header.php');
 $sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0";
 $cat = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
+$sql = "SELECT gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
 $sub1 = mysqli_query($conexion,$sql);
 
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $are = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
+$sql = "SELECT gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
 $uni = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
+$sql = "SELECT gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
 $ejec = mysqli_query($conexion,$sql);
+
+$sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
+$psto = mysqli_query($conexion,$sql);
 ?>
     <section class="content">
 
@@ -316,44 +319,29 @@ $ejec = mysqli_query($conexion,$sql);
 
           <div class="form-group">
           <div class="col-sm-4">
-          <label>CODIGO PRESUPUESTAL</label>
+          <label>CÓDIGO PRESUPUESTAL</label>
           <div id="buscador"></div>                            
           </div>
           <div id="select1"></div> 
           </div>
 
-           <div class="form-group">
-          <div class="col-sm-4">
-          <label>NOMBRE DEL PUESTO</label>
-          <select type="text" class="form-control" name="gstPstID" id="gstPstID">
-          <option value="0">SELECCIONA EL ÁREA</option>
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
-          </div> 
+         <div class="form-group">
+            <div class="col-sm-5">
+               <label>NOMBRE DEL PUESTO</label>
+               <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
+               <option value="0">SELECCIONA EL PUESTO</option>
+               <?php while($pust = mysqli_fetch_row($psto)):?>                      
+               <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
+               <?php endwhile; ?>
+               </select>
+            </div> 
 
-          <div class="col-sm-4">
-          <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
-          <select type="text" class="form-control" name="gstSpcID" id="gstSpcID">
-          <option value="0">SELECCIONA EL ÁREA</option>
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
-          </div>
-
-          <div class="col-sm-4">
-          <label>SIGLAS OACI</label>
-          <select type="text" class="form-control" name="gstSigID" id="gstSigID">
-          <option value="0">SELECCIONA EL ÁREA</option>
-          <option value="1">---</option>
-          <option value="2">---</option>
-          </select> 
-          </div>                          
-          </div>
+            <div id="oaci"></div>
+            <div id="siglas"></div>                                
+         </div>
 
             <input type="hidden" id="gstCargo" name="gstCargo" value="0">
                  <div class="form-group">
-
                     <div class="col-sm-offset-0 col-sm-12">
                         <label style="color: white">.</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
@@ -363,8 +351,7 @@ $ejec = mysqli_query($conexion,$sql);
                          <?php endwhile; ?>
                        </select>
                     </div>                  
-
-                </div>
+                  </div>
          
            <input type="hidden" class="form-control" id="gstIDCat" name="gstIDCat" value="0">
            <input type="hidden" class="form-control" id="gstIDSub" name="gstIDSub" value="0">                   
@@ -450,74 +437,6 @@ $ejec = mysqli_query($conexion,$sql);
 <script src="../../plugins/input-mask/jquery.inputmask.phone.extensions.js"></script>
 <script src="../../js/valida.js"></script>
  
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
-
-    //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    })
-
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass   : 'iradio_minimal-red'
-    })
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    })
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    //Timepicker
-    $('.timepicker').timepicker({
-      showInputs: false
-    })
-  
-  })
-</script>
 </body>
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
@@ -525,8 +444,11 @@ $ejec = mysqli_query($conexion,$sql);
 $(document).ready(function(){
 $('#gstAreID').select2();
 $('#gstIDara').select2();
+$('#gstPstID').select2();
 $('#buscador').load('select/buscar.php');
 $('#select1').load('select/tabla.php');
+$('#oaci').load('select/oaci.php');
+$('#siglas').load('select/siglas.php');
 });
 
 </script>

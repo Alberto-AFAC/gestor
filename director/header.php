@@ -2,7 +2,7 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "inspector"){
+        if($_SESSION['usuario']['privilegios'] != "director"){
             //y se redirecciona al directorio que le corresponde
             header("Location: ../");
             }
@@ -10,16 +10,22 @@
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
             header('Location: ../');
         }
-      $id = $_SESSION['usuario']['id_usu'];
-      $sql = "SELECT gstNombr,gstApell,gstCargo FROM personal WHERE gstIdper = '".$id."' && estado = 0";
+   $id = $_SESSION['usuario']['id_usu'];
+      $sql = 
+       "SELECT gstAreID,gstNombr,gstApell FROM personal 
+      INNER JOIN accesos ON id_usu = gstIdper
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
+
       $persona = mysqli_query($conexion,$sql);
       $datos = mysqli_fetch_row($persona);
+
+
 
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="./" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>DI</span>
       <!-- logo for regular state and mobile devices -->
@@ -39,70 +45,65 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning"><div id="noti"></div></span>
             </a>
 
  <!-- LOGO DE LA AFAC-->
 
 
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header"><div id="notif"></div></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li>
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
+                      <div id="confirmar"></div>
                     </a>
                   </li>
-                  <li>
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-user text-red"></i> You changed your username
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <!-- - -->
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
 
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $datos[0]?></span>
+              <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
             </a>
-            <ul class="dropdown-menu" style="width: 100px;min-width: 5px; background: transparent;">
+            <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
               <!-- User image -->
      
               <!-- Menu Body -->
    
               <!-- Menu Footer-->
        
-
+            
                 <div class="pull-right">
-                  <li><a href="#" class="btn btn-primary btn-flat">Cambiar contraseña </a></li>
-                  <li><a href="../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar sesión</a></li>
-
-
-                  
+                  <a href="../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar sesión</a>
 
                 </div>
             
@@ -121,7 +122,15 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-   
+<!--       <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../dist/img/perfil.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Angel Canseco</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
+        </div>
+      </div> -->
       <!-- search form -->
  
       <!-- /.search form -->
@@ -161,18 +170,36 @@
           <ul class="treeview-menu">
             <li><a href="persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
             <li><a href="inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+            <li><a href="instructor.php"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa ion-easel"></i>
+            <span>Cursos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <li><a href="conCursos.php"><i class="fa fa-search"></i> Consulta de cursos</a></li>
+            <li><a href="programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
+            <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
+            <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
           </ul>
         </li>
         <!--  -->
         <!-- -->
         <li>
-          <a href="../instructor/calendar.php">
+          <a href="calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
+              <small class="label pull-right bg-red"></small>
+              <small class="label pull-right bg-blue"></small>
             </span>
           </a>
         </li>
