@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | User Profile</title>
+  <title>Gestor de Inspectores</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,7 +17,16 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="../bower_components/morris.js/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,124 +41,179 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <?php
-  include('header.php');
-  ?>
+<?php
+include('header.php');
+?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Panel de Control</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa ion-android-home"></i> Inicio</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+    
 
     <!-- Main content -->
     <section class="content">
-
+      <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-md-3">
+      <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-blue">
+            <div class="inner">
+              <h3><div id="persona"></div></h3>
 
-          <!-- Profile Image -->
-          <div class="box box-primary">
-            <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png" alt="User profile picture">
+              <p>Total personal AFAC</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-people"></i>
+            </div>
+            <a href="persona.php"  class="small-box-footer">Mas information  <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><div id="inspectores"></div></h3>
 
-              <h3 class="profile-username text-center"><?php echo $datos[0]?></h3>
+              <p>Total de inspectores</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-person"></i>
+            </div>
+            <a href="inspecion.php" class="small-box-footer">Mas information <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-blue">
+            <div class="inner">
+              <h3><div id="instructor"></div></h3>
 
-              <p class="text-muted text-center"><?php echo $datos[2] ?></p>
-
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Cursos Completados</b> <a class="pull-right">20</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Cursos programados</b> <a class="pull-right">30</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Cursos cancelados</b> <a class="pull-right">13,287</a>
-                </li>
-              </ul>
+              <p>Total de instructores</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-person"></i>
+            </div>
+            <a href="instructor.php" class="small-box-footer">Mas information <i class="fa fa-arrow-circle-right"></i></a>
+            
+          </div>
+        </div>
+        </div>
+    <!-- =========================================================== -->
+    <!--Fecha se ubica en apartado de status.js-->
+ <H4><div id="fecha"></div></H4>
+    <div class="row">
       
+      
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
+            
+
+            <div class="info-box-content">
+              <span class="info-box-text">TOTAL DE CURSOS</span>
+              <span class="info-box-text">PROGRAMADOS</span>
+              <span class="info-box-number">191</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+                  <span class="progress-description">
+
+                    <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+                  </span>
+                  
             </div>
-            <!-- /.box-body -->
+            <!-- /.info-box-content -->
           </div>
-          <!-- /.box -->
-
-          <!-- About Me Box -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Competencia</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i>Educación</strong>  
-              <a href="#" class="btn ion-edit"><b></b></a>
-              <p class="text-muted">
-                Instituto politecnico Nacional
-              </p>
-
-              <hr>
-
-              <strong><i class="fa fa-map-marker margin-r-5"></i> Localización</strong>
-
-              <p class="text-muted">Departamento de Sistemas</p>
-
-              <hr>
-              <strong><i class="ion-briefcase margin-r-5"></i>Experiencia Laboral</strong>
-              <a href="#" class="btn ion-edit"><b></b></a>
-
-              <p class="text-muted">SCT desde el 2020 a la fecha </p>
-              <p class="text-muted">litoflex SA de CV </p>
-
-              <hr>
-              <strong><i class="fa fa-pencil margin-r-5"></i>Habilidades</strong>
-              <a href="#" class="btn ion-edit"><b></b></a>
-              <p>
-                <span class="label label-danger">ingles</span>
-                <span class="label label-success">Codigos</span>
-                <span class="label label-info">Javascript</span>
-                <span class="label label-warning">PHP</span>
-                <span class="label label-primary">Node.js</span>
-              </p>
-
-              <hr>
-
-              <strong><i class="fa fa-file-text-o margin-r-5"></i>Notas</strong>
-              <a href="#" class="btn ion-edit"><b></b></a>
-
-              <p>Agregar información</p>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+          <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-9">
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">Cursos completados</a></li>
-              <li><a href="#timeline" data-toggle="tab">Cursos programados</a></li>
-              <li><a href="#settings" data-toggle="tab">Cursos cancelados</a></li>
-            </ul>
-            <!-- /.tab-content -->
+        
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">TOTAL DE CURSOS</span>
+              <span class="info-box-text">Acreditados</span>
+              <span class="info-box-number">50</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+                  <span class="progress-description">
+                    <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
           </div>
-          <!-- /.nav-tabs-custom -->
+          <!-- /.info-box -->
         </div>
         <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-yellow">
+            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
 
+            <div class="info-box-content">
+              <span class="info-box-text">TOTAL DE CURSOS</span>
+              <span class="info-box-text">POR ACREDITAR</span>
+              <span class="info-box-number">23</span>
+              <span class="progress-description"> 
+              <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+
+                    <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+                  
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-text">TOTAL DE CURSOS</span>
+              <span class="info-box-text">Por vencer</span>
+              <span class="info-box-number">10</span> 
+              <span class="progress-description">
+              <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+                  <span class="progress-description">
+                  <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+            <!-- /.info-box-content -->
+        
     </section>
+    
     <!-- /.content -->
   </div>
+
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.1
     </div>
-    <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
-
+    <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
   </footer>
 
   <!-- Control Sidebar -->
-<?php include('../admin/panel.html');?>
+<?php include('panel.html');?>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -159,13 +223,45 @@
 
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="../bower_components/raphael/raphael.min.js"></script>
+<script src="../bower_components/morris.js/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../bower_components/moment/min/moment.min.js"></script>
+<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<script src="../js/status.js"></script>
 </body>
 </html>
+
+ 
+
+
