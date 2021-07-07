@@ -1,4 +1,6 @@
-<?php include ("../conexion/conexion.php"); session_start();
+<?php
+
+include ("../conexion/conexion.php"); session_start();
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
@@ -11,32 +13,13 @@
             header('Location: ../');
         }
       $id = $_SESSION['usuario']['id_usu'];
-      $sql = 
-     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo,gstInstt,gstMpres FROM personal 
-      INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
-      INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
-      ";
-
+      $sql = "SELECT gstNombr,gstApell,gstCargo FROM personal WHERE gstIdper = '".$id."' && estado = 0";
       $persona = mysqli_query($conexion,$sql);
       $datos = mysqli_fetch_row($persona);
 
-  
-  if (!empty($datos[1]) || !empty($datos[2]) || !empty($datos[3]) || !empty($datos[4]) || !empty($datos[5])) {
-      $datos[1];
-      $datos[2];
-      $datos[3];
-      $datos[4];
-      $datos[5];
-  }else{
-      $datos[1]="Sus trámites están en proceso";
-      $datos[2]="";
-      $datos[3]="";
-      $datos[4]="";
-      $datos[5]="";
 
-  }
 ?>
+
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
     <!-- Logo -->
@@ -60,45 +43,46 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning"><div id="noti"></div></span>
+              <span class="label label-warning">10</span>
             </a>
 
  <!-- LOGO DE LA AFAC-->
 
 
             <ul class="dropdown-menu">
-              <li class="header"><div id="notif"></div></li>
+              <li class="header">You have 10 notifications</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-<!--                   <li>
+                  <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
-                  </li> -->
+                  </li>
                   <li>
                     <a href="#">
-                      <div id="confirmar"></div>
+                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                      page and may cause design problems
                     </a>
                   </li>
-<!--                   <li>
+                  <li>
                     <a href="#">
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
-                  </li> -->
-<!--                   <li>
+                  </li>
+                  <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
                     </a>
-                  </li> -->
-<!--                   <li>
+                  </li>
+                  <li>
                     <a href="#">
                       <i class="fa fa-user text-red"></i> You changed your username
                     </a>
-                  </li> -->
+                  </li>
                 </ul>
               </li>
-              <!-- - -->
+              <li class="footer"><a href="#">View all</a></li>
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
@@ -107,21 +91,42 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $datos[1]?></span>
+              <span class="hidden-xs">Agel Canseco</span>
             </a>
-            <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
+            <ul class="dropdown-menu">
               <!-- User image -->
-     
-              <!-- Menu Body -->
-   
-              <!-- Menu Footer-->
-       
-            
-                <div class="pull-right">
-                  <a href="../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar sesión</a>
+              <li class="user-header">
+                <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
 
+                <p>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
                 </div>
-            
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
@@ -137,7 +142,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-   
+
       <!-- search form -->
  
       <!-- /.search form -->
@@ -166,10 +171,31 @@
         </li>        
         <!-- -->
         <!----> 
+        <li>
+          <a href="../admin/inspecion.php">
+            <i class="ion-ios-person"></i>
+            <span>Inspectores </span>
+          </a>
+
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa ion-easel"></i>
+            <span>Cursos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../instructor"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <li><a href="../instructor/programa.php"><i class="fa ion-compose"></i>Programación del Curso</a></li>
+            <li><a href="../instructor/lisCurso.php"><i class="fa ion-compose"></i>Cursos Programados</a></li>
+          </ul>
+        </li>
         <!--  -->
         <!-- -->
         <li>
-          <a href="calendar/calendar.php">
+          <a href="../instructor/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
