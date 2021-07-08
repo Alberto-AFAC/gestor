@@ -61,3 +61,35 @@ $('#select3').load('select/tablacom.php');
 </script>
 <script src="../js/select2.js"></script> 
 <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+
+
+<?php
+include ("../conexion/conexion.php");
+
+
+
+$idcat = '1,7,9';
+
+$valor = explode(",", $idcat);
+
+foreach ($valor as $id) {
+		echo $id;
+		echo '<br>';	
+
+
+
+$sql = "SELECT gstIdper, gstNombr,gstApell,gstIDCat FROM personal WHERE gstIDCat = $id AND estado = 0";
+$person = mysqli_query($conexion,$sql);
+
+while ($per = mysqli_fetch_row($person)) {
+		// if($per[3]!=0){
+		 echo $per[1];
+		 echo '<br>';
+		// }		
+}
+
+	}
+
+
+?>

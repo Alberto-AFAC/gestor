@@ -36,7 +36,9 @@
 		$lista = mysqli_fetch_row($res);
 
 		$lista[1];
-		?><input type="hidden" name="id_mstr" id="id_mstr" value="<?php echo $lista[0]?>">
+		?>
+
+<input type="hidden" name="id_mstr" id="id_mstr" value="<?php echo $lista[0]?>">
 
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <div id="scroll" style="width: 100%; height: 150px; overflow: scroll;">
@@ -82,23 +84,7 @@
 					<td><b>SIN ASIGNAR </b></td>
 				</tr>
 
-<?php	}else{ ?>
-
-
-				<tr>
-
-					<td style="width: 5%;">
-					<p style="padding: 0;color:green; text-align: center;">&#x2714;</p>
-					</td>					
-					<td><?php echo $valor[1]?></td>
-					<td><?php echo $valor[2]?></td>
-					<td><?php echo $valor[3]?></td>
-					<td><b>ASIGNADO </b></td>
-				</tr>
-
-
-
-<?php }
+<?php	}
 
 		}
 ?>
