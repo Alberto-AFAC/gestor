@@ -160,7 +160,7 @@ $datos[1]="Sus trámites están en proceso";
           </a>
           <ul class="treeview-menu">
             <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-            <li><a href="conCursos.php"><i class="fa fa-search"></i> Consulta de cursos</a></li>
+            <li><a href="conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
             <li><a href="programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
             <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->

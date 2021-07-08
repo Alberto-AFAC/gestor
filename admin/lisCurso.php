@@ -224,36 +224,38 @@ include('header.php');
     </div>
     </form>
 
-    <!-- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
-    <form class="form-horizontal" action="" method="POST">
+  <!-- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
+  <form class="form-horizontal" action="" method="POST">
         <div class="modal fade" id="modal-evalcurso">
             <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h3><i class="fa fa-question-circle" style="color:#08308A"></i>
+                        <h1><i class="fa fa-question-circle" style="color:#08308A"></i>
                             EVALUACIÓN DE REACCIÓN
-                        </h3>
-                        <section class="content">
-                            <div class="row">
-                                <!-- <img src="../dist/img/AFAC2.png" alt="Descripción de la imagen"> -->
-                                <div class="col-md-12">
-                                    
-                                        <div class="box-header with-border">
+                        </h1>
+                        <br>
                         <b>
-                            <label1 style="font-size: 13px">EL OBJETIVO DE ESTA EVALUACIÓN, ES CONOCER LA OPINIÓN ACERCA
+                            <label1 style="font-size: 14px">EL OBJETIVO DE ESTA EVALUACIÓN, ES CONOCER LA OPINIÓN ACERCA
                                 DE LA EFICACIA DEL CURSO Y SU DESARROLLO, LO QUE PERMITE ESTABLECER ACCIONES DE MEJORA
                                 CONTINUA HACIA LA CAPACITACIÓN.</label1>
                         </b>
                         <br>
+                        <section class="content">
+                            <div class="row">
+                                <!-- <img src="../dist/img/AFAC2.png" alt="Descripción de la imagen"> -->
+                                <div class="col-md-12">
+                                    <div class="nav-tabs-custom">
+                                        <div class="box-header with-border">
                                             <form action="" class="formulario1">
+                                                <div class="radio">
                                                     <div class="form-group ">
                                                         <div class="col-sm-8">
                                                             <label style="font-size:16px">ID DEL CURSO:</label>
                                                         </div>
                                                         <div class="col-sm-8">
-                                                            <input class="col-sm-2 cursoinputs" type="text" name="idcursoen"
+                                                            <input class="col-sm-2" type="text" name="idcursoen"
                                                                 id="idcursoen"
                                                                 style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
                                                                 disabled="">
@@ -262,7 +264,7 @@ include('header.php');
                                                             <label style="font-size:16px">NOMBRE DEL CURSO:</label>
                                                         </div>
                                                         <div class="col-sm-12">
-                                                            <input class="col-sm-12 cursoinputs" type="text" name="nomcursoen"
+                                                            <input class="col-sm-12" type="text" name="nomcursoen"
                                                                 id="nomcursoen"
                                                                 style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
                                                                 disabled="">
@@ -272,11 +274,14 @@ include('header.php');
                                             </form>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
                             <div class="box box-primary">
+                                <div class="box-header with-border">
                                     <form name="form1" action="" class="formulario1">
                                         <div class="radio">
                                             <div class="box-header with-border">
-                                                <h3 class="box-title">1- SE ESPECIFICÓ LOS OBJETIVOS AL INICIO DEL CURSO,
+                                                <h3 class="box-title">SE ESPECIFICÓ LOS OBJETIVOS AL INICIO DEL CURSO,
                                                     EN FORMA CLARA Y COMPRENSIBLE? </h3>
                                             </div>
                                             <form class="form-horizontal">
@@ -308,16 +313,18 @@ include('header.php');
                                                             <label for="r4">EXCELENTE</label>
                                                         </div>
                                                     </div>
-                                            
-                                                </div>
                                             </form>
+                                        </div>
+                                </div>
                             </div>
+                    </div>
 
                     <div class="box box-primary">
+                        <div class="box-header with-border">
                             <form name="form2" action="" class="formulario1">
                                 <div class="radio">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">2- SE EXPLICÓ EL MODO DE EVALUACIÓN AL INICIO DEL CURSO?</h3>
+                                        <h3 class="box-title">SE EXPLICÓ EL MODO DE EVALUACIÓN AL INICIO DEL CURSO?</h3>
                                     </div>
                                     <form class="form-horizontal">
                                         <div class="box-body">
@@ -344,15 +351,18 @@ include('header.php');
                                                     <input type="radio" name="preg2" value="EXCELENTE" id="r8">
                                                     <label for="r8">EXCELENTE</label>
                                                 </div>
-                                            </div> 
+                                            </div>
+                                    </form>
                                 </div>
-                            </form>
+                        </div>
                     </div>
+                </div>
                 <div class="box box-primary">
+                    <div class="box-header with-border">
                         <form name="form3" action="" class="formulario1">
                             <div class="radio">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">3- EL INSTRUCTOR/A CONTESTÓ LAS DUDAS EN TIEMPO Y FORMA?</h3>
+                                    <h3 class="box-title">EL INSTRUCTOR/A CONTESTÓ LAS DUDAS EN TIEMPO Y FORMA?</h3>
                                 </div>
                                 <form class="form-horizontal">
                                     <div class="box-body">
@@ -380,16 +390,17 @@ include('header.php');
                                                 <label for="r12">EXCELENTE</label>
                                             </div>
                                         </div>
-                                
+                                </form>
                             </div>
-                            </form>
                     </div>
-                
+                </div>
+            </div>
             <div class="box box-primary">
+                <div class="box-header with-border">
                     <form name="form4" action="" class="formulario1">
                         <div class="radio">
                             <div class="box-header with-border">
-                                <h3 class="box-title">4- LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE
+                                <h3 class="box-title">LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE
                                     TRABAJO?</h3>
                             </div>
                             <form class="form-horizontal">
@@ -418,9 +429,11 @@ include('header.php');
                                             <label for="r16">EXCELENTE</label>
                                         </div>
                                     </div>
-                                </div>
-                            </form>                     
+                            </form>
+                        </div>
                 </div>
+            </div>
+        </div>
         <div class="box box-primary">
             <div class="box-header with-border">
                 <form name="form5" action="" class="formulario1">
@@ -1047,7 +1060,6 @@ include('header.php');
                   </div>
                 </div>    
               </div>
-            </div>
             <!-- /.modal-content -->
           <!-- /.modal-dialog -->
 </form>

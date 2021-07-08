@@ -295,7 +295,7 @@ $resultado = mysqli_query($conexion, $query);
 
       ?>
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstFeing']?>","<?php
 
 
                 if($data['gstEvalu'] == 'NO'){
@@ -318,6 +318,7 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+    "order": [[4,'asc']],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -326,6 +327,7 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     {title: "NOMBRE(S)"},
     {title: "APELLIDO(S)"},
     {title: "CATEGORÍA"},
+    {title: "FECHA DE INGRESO"},
     {title: "ACCIÓN"}
     ],
     });
