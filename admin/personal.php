@@ -393,7 +393,6 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
                 </form>            
 
-
 </section>  
   </div>
   <footer class="main-footer">

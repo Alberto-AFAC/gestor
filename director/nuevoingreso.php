@@ -118,7 +118,6 @@ include('header.php');
 <option value="">SELECCIONA EL CARGO</option>
 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
 <option value="COORDINADOR">COORDINADOR</option>
-<option value="DIRECTOR">DIRECTOR</option>
 <option value="INSPECTOR">INSPECTOR</option>
 <option value="INSTRUCTOR">INSTRUCTOR</option>
 
