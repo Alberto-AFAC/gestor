@@ -25,7 +25,7 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
     <!-- Logo -->
-    <a href="./" class="logo">
+    <a href="director.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>DI</span>
       <!-- logo for regular state and mobile devices -->
@@ -151,7 +151,7 @@
         </li>-->
 
         <li class="active">
-          <a href="./">
+          <a href="director.php">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
