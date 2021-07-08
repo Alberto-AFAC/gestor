@@ -212,9 +212,6 @@
       </div>
     </div>
 
-
-    <?php include('agrStdPro.php'); ?>
- 
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

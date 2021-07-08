@@ -27,15 +27,6 @@ $pais = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdpais,gstPais FROM pais WHERE estado = 0";
 $paises = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0";
-$Acat = mysqli_query($conexion,$sql);
-
-$sql = "SELECT  gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
-$Asub1 = mysqli_query($conexion,$sql);
-
-// $sql = "SELECT  gstIdCom,gstRgion,gstNombr FROM comandancia WHERE estado = 0";
-// $Auni = mysqli_query($conexion,$sql);
-
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
 }
@@ -128,30 +119,16 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-12">
-<label>CATEGORIA</label>
-<select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDCat" id="AgstIDCat" type="text" data-live-search="true"  onchange="seleccionado()">
-<option value="">SELECCIONA LA CATEGORÍA</option>
-<?php while($Aidcat = mysqli_fetch_row($Acat)):?>                      
-<option value="<?php echo $Aidcat[0]?>"><?php echo $Aidcat[1];?></option>
-<?php endwhile; ?>
-</select>
+<label>CATEGORÍA</label>
+<div id="categoria"></div>
 </div>
 </div>
+
 <div class="form-group">
 <div class="col-sm-12">
-                       <label>SUB CATEGORIA</label>
-                       <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDSub" id="AgstIDSub" type="text" data-live-search="true">
-                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
-                         <option value="0">NO APLICA</option>
-                         <?php while($Aidsub1 = mysqli_fetch_row($Asub1)):?>                      
-                         <option value="<?php echo $Aidsub1[0]?>"><?php echo $Aidsub1[1];?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>
-                
-
-<!-- <input type="hidden" name="AgstIDSub" id="AgstIDSub" value="1"> -->
-
+<label>SUB CATEGORÍA</label>
+<div id="subcategoria"></div>
+</div>
 </div>
 
 <div class="form-group">
@@ -164,18 +141,21 @@ include('header.php');
 <div id="select3"></div> 
 </div>
 </div>
+
+
+
 <div class="form-group">
-                   <div class="col-sm-offset-0 col-sm-12">
-                        <label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
-                         <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
-                         <option value="CIAAC">CIAAC</option> 
-                         <option value="FLORES">LAS FLORES</option> 
-                         <option value="ANGAR8">ANGAR 8</option> 
-                         <option value="LICENCIA">LICENCIAS</option>
-                       </select>
-                    </div>
-                </div>
+<div class="col-sm-offset-0 col-sm-12">
+<label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label>
+<select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
+<option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
+<option value="CIAAC">CIAAC</option> 
+<option value="FLORES">LAS FLORES</option> 
+<option value="ANGAR8">ANGAR 8</option> 
+<option value="LICENCIA">LICENCIAS</option>
+</select>
+</div>
+</div>
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
@@ -246,8 +226,11 @@ $('#gstIDpai').select2();
 $('#AgstIDpai').select2();
 $('#AgstIDCat').select2();
 $('#AgstIDuni').select2();
+$('#AgstIDSub').select2();
  $('#comandan').load('select/buscacom.php');
  $('#select3').load('select/tablacom.php');
+ $('#categoria').load('select/buscatego.php');
+ $('#subcategoria').load('select/tabsubcat.php');
 }); 
 </script>
 <script src="../js/select2.js"></script> 
