@@ -19,7 +19,7 @@
             <div class="box-body" style="display: none;">
                 <div class="row">
                   
-        <div class="zoom col-lg-4 col-md-6">
+        <div class="zoom col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="zoom col-lg-4 col-md-6">
+        <div class="zoom col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="zoom col-lg-4 col-md-6">
+        <div class="zoom col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="zoom col-lg-4 col-md-6">
+        <div class="zoom col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="zoom col-lg-4 col-md-6">
+        <div class="zoom col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
