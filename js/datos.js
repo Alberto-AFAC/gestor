@@ -1286,7 +1286,7 @@ function registrar() {
             data: datos
         }).done(function(respuesta) {
             if (respuesta == 0) {
-                alert(respuesta);
+                //alert(respuesta);
                 console.log(respuesta);
                 $('#succe').toggle('toggle');
                 setTimeout(function() {
