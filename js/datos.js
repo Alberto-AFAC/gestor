@@ -1070,11 +1070,11 @@ function evaluar() {
     });
 
     var actual = '';
-    // $('#evlacn input[type=checkbox]').each(function() {
-    //     if (this.checked) {
-    //         actual += ',' + $(this).val();
-    //     }
-    // });
+    $('#evlacn input[type=checkbox]').each(function() {
+        if (this.checked) {
+            actual += ',' + $(this).val();
+        }
+    });
 
     $("input:checkbox").prop('checked', $(this).prop("checked"));
 
