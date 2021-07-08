@@ -1060,7 +1060,6 @@ include('header.php');
                   </div>
                 </div>    
               </div>
-
             <!-- /.modal-content -->
           <!-- /.modal-dialog -->
 </form>
