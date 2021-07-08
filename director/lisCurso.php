@@ -27,6 +27,7 @@ $inspector = mysqli_query($conexion,$sql);
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -994,7 +995,6 @@ include('header.php');
                                         disabled="" id='fechaev'>
 
                                 </div>
-
                                 <div class="col-sm-12">
                                     <table class="content-table">
                                         <thead>
@@ -1053,36 +1053,10 @@ include('header.php');
                             </div>
                         </div>
                 
-                      <div class="col-sm-12" >
-                      <table class="content-table" >
-    <thead>
-      <tr>
-        <th>RESULTADOS</th>
-        <th>ESTATUS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="number" title="el numero no debe ser superior a 100" name="cantidad" min="1" max="100" style="text-transform:uppercase;" class="form-control disabled" disabled="" id='validoev'  onchange="cambiartexto()"></td>
-        <td><span class='label label-primary' style= "font-size:18px;" id='PE'>PENDIENTE</span><span class='label label-success' style= "font-size:18px; display:none"  id='SIe'>APROBADO</span><span class='label label-danger' style= "font-size:18px; display:none" id='NOE'>REPROBADO</span></td>
-      </tr>
-    </tbody>
-  </table>
-                          </div>  
-                           <div class="col-sm-12">
-                           <textarea class="col-sm-12"  name="comentarios" id="comeneva" rows="4" cols="10" onkeyup="mayus(this);" style= "font-size: 14px; border-radius: 5px;" placeholder ="Comentarios Adicionales" disabled=""></textarea>
-                           </div>
-                      </div>
+                      
+                          
                 
-                       <div class="form-group">
-                           <div class="col-sm-5">
-                             <button type="button" class="btn btn-primary" onclick="cerrareval()">ACEPTAR</button>
-                           </div>
-                             <b><p class="alert alert-warning text-center padding error" id="dangerev">Error al Evaluar!!</b>
-                               <b><p class="alert alert-success text-center padding exito" id="succeev">¡Se Evaluo con exito!</p></b>
-                                  <b><p class="alert alert-warning text-center padding aviso" id="emptyev">Falto Ingresar la Puntuación!</p></b>
-                                      <b><p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto Ingresar la Fecha!</p></b>
-                           </div>
+                       
                   </div>
                 </div>    
               </div>
