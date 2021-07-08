@@ -80,36 +80,16 @@ include('header.php');
 <form class="form-horizontal">
 
 
-<strong>ASIGNAR CURSOS OBLIGATORIOS: <label for="SI"> SI </label> <input name="seccat" type="radio" value="si" id="SI" /> <label for="NO"> NO </label> <input name="seccat" type="radio" value="no" id="NO" />
-</strong>
-
-<div class="form-group" id="seecioncat" style="display: none;">
-<div class="col-sm-4">
-<label>SELECCIONE CATEGORÍA</label>
-<div id="categoria"></div>                            
-</div>
-<div class="col-sm-8">
+<div class="form-group">
+<div class="col-sm-12">
 <label>SELECCIONE CURSO</label>
-<div id="selecat"></div> 
+<div id="selcurso"></div>                            
 </div>
 </div>
 
-<div id="partici"></div> 
 
+<!-- <div id="partici"></div>  -->
 
-
-<div class="form-group" id="selecurso">
-<div class="col-sm-offset-0 col-sm-12">
-<label style="color: white">.</label>
-<select style="width: 100%" class="form-control" class="selectpicker" name="id_mstr" id="id_mstr" type="text" data-live-search="true">
-<option value="0">SELECCIONE CURSO</option> 
-<?php while($cursos = mysqli_fetch_row($curso)):?>
-
-<option value="<?php echo $cursos[0]?>"><?php echo $cursos[1]?></option>
-<?php endwhile; ?>
-</select>
-</div>
-</div>
 
 <div class="form-group">
 <div class="col-sm-4">
@@ -203,11 +183,16 @@ include('header.php');
 </div>                     
 </div>   
 
-<div id="scroll" style="width: 100%; height: 300px; overflow: scroll;">
-<div class="box-body">
-<?php include('../html/proInspc.html');?>
+
+<div id="tabcurso"></div> 
+
+
+<!-- <div class="form-group">
+<div class="col-sm-12">
+
 </div>
-</div>
+</div> -->
+
 <br>
 
 
@@ -284,6 +269,7 @@ include('header.php');
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<script src="../js/proInspc.js"></script>
 <!-- page script -->
 
 </body>
@@ -291,12 +277,12 @@ include('header.php');
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function(){
-$('#id_mstr').select2();
+//$('#id_mstr').select2();
 $('#idinst').select2();
 $("#idcord").select2();
- $('#categoria').load('select/buscateg.php');
- $('#selecat').load('select/tablacateg.php');
- $('#partici').load('select/tablaoblig.php')
+ $('#selcurso').load('select/buscateg.php');
+ $('#tabcurso').load('select/tablacateg.php');
+ //$('#partici').load('select/tablaoblig.php')
 }); 
 </script>
 <script src="../js/select2.js"></script> 

@@ -20,22 +20,22 @@
     })          
 //}
 
-$(document).ready(function() {
-    $("input[type=radio]").click(function(event){
-        var valor = $(event.target).val();
-        if(valor =="si"){
-            $("#seecioncat").show();
-            $("#selecurso").hide();
-            $("#partici").show();
-            limpiar_datos();
-        } else if (valor == "no") {
-            $("#seecioncat").hide();
-            $("#selecurso").show();
-            $("#partici").hide();
-            limpiar_datos();
-        } 
-    });
-}); 
+// $(document).ready(function() {
+//     $("input[type=radio]").click(function(event){
+//         var valor = $(event.target).val();
+//         if(valor =="si"){
+//             $("#seecioncat").show();
+//             $("#selecurso").hide();
+//             $("#partici").show();
+//             limpiar_datos();
+//         } else if (valor == "no") {
+//             $("#seecioncat").hide();
+//             $("#selecurso").show();
+//             $("#partici").hide();
+//             limpiar_datos();
+//         } 
+//     });
+// }); 
 
 function proCurso(){
 
