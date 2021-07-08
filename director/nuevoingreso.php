@@ -118,7 +118,6 @@ include('header.php');
 <option value="">SELECCIONA EL CARGO</option>
 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
 <option value="COORDINADOR">COORDINADOR</option>
-<option value="DIRECTOR">DIRECTOR</option>
 <option value="INSPECTOR">INSPECTOR</option>
 <option value="INSTRUCTOR">INSTRUCTOR</option>
 
@@ -128,29 +127,17 @@ include('header.php');
 </div>
 
 <div class="form-group">
-<div class="col-sm-6">
-<label>CATEGORIA</label>
-<select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDCat" id="AgstIDCat" type="text" data-live-search="true"  onchange="seleccionado()">
-<option value="">SELECCIONA LA CATEGORÍA</option>
-<?php while($Aidcat = mysqli_fetch_row($Acat)):?>                      
-<option value="<?php echo $Aidcat[0]?>"><?php echo $Aidcat[1];?></option>
-<?php endwhile; ?>
-</select>
+<div class="col-sm-12">
+<label>CATEGORÍA</label>
+<div id="categoria"></div>
 </div>
-<div class="col-sm-6">
-                       <label>SUB CATEGORIA</label>
-                       <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDSub" id="AgstIDSub" type="text" data-live-search="true">
-                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
-                         <option value="0">NO APLICA</option>
-                         <?php while($Aidsub1 = mysqli_fetch_row($Asub1)):?>                      
-                         <option value="<?php echo $Aidsub1[0]?>"><?php echo $Aidsub1[1];?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>
-                
+</div>
 
-<!-- <input type="hidden" name="AgstIDSub" id="AgstIDSub" value="1"> -->
-
+<div class="form-group">
+<div class="col-sm-12">
+<label>SUB CATEGORÍA</label>
+<div id="subcategoria"></div>
+</div>
 </div>
 
 <div class="form-group">
@@ -163,18 +150,21 @@ include('header.php');
 <div id="select3"></div> 
 </div>
 </div>
+
+
+
 <div class="form-group">
-                   <div class="col-sm-offset-0 col-sm-12">
-                        <label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
-                         <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
-                         <option value="CIAAC">CIAAC</option> 
-                         <option value="FLORES">LAS FLORES</option> 
-                         <option value="ANGAR8">ANGAR 8</option> 
-                         <option value="LICENCIA">LICENCIAS</option>
-                       </select>
-                    </div>
-                </div>
+<div class="col-sm-offset-0 col-sm-12">
+<label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label>
+<select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
+<option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
+<option value="CIAAC">CIAAC</option> 
+<option value="FLORES">LAS FLORES</option> 
+<option value="ANGAR8">ANGAR 8</option> 
+<option value="LICENCIA">LICENCIAS</option>
+</select>
+</div>
+</div>
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
@@ -186,7 +176,9 @@ include('header.php');
 
 <b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b>
 </div>
-</form>    
+</form>     
+
+ 
 </div>
 </div>
 </div>
@@ -245,8 +237,11 @@ $('#gstIDpai').select2();
 $('#AgstIDpai').select2();
 $('#AgstIDCat').select2();
 $('#AgstIDuni').select2();
+$('#AgstIDSub').select2();
  $('#comandan').load('select/buscacom.php');
  $('#select3').load('select/tablacom.php');
+ $('#categoria').load('select/buscatego.php');
+ $('#subcategoria').load('select/tabsubcat.php');
 }); 
 </script>
 <script src="../js/select2.js"></script> 
