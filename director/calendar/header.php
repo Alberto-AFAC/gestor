@@ -139,7 +139,7 @@
         </li>-->
 
         <li class="active">
-          <a href="../">
+          <a href="../director.php">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
