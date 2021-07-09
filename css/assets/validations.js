@@ -76,7 +76,7 @@ $('document').ready(function()
 		 // valid email pattern
 		 var eregex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		 
-		 $.validator.addMethod("validemail", function( value, element ) {
+		 $.validator.addMethod("correo", function( value, element ) {
 		     return this.optional( element ) || eregex.test( value );
 		 });
 		 
@@ -84,20 +84,20 @@ $('document').ready(function()
 					
 		  rules:
 		  {
-				usua: {
+				correo: {
 				required: true,
-				validnumer: true,
-				minlength: 7
+				validnumer: false,
+				minlength: 15
 				},
 
 		   },
 		   messages:
 		   {
 
-				usua: {
-					required: "Favor de ingresar su número",
+				correo: {
+					required: "Favor de ingresar su correo",
 					validnumer: "Utilice formato solicitado",
-					minlength: "Su número es demasiado corto"
+					minlength: "Su correo es demasiado corto"
 					  }
 
 		   },
