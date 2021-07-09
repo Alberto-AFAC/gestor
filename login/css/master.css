@@ -43,7 +43,7 @@ main {
 .caja__trasera div button {
     display: inline-block;
     background: white;
-    padding: 10px 45px;
+    padding: 10px 40px;
     color: #0e3a5d;
     border: 0 none;
     font-size: 18px;
@@ -106,12 +106,10 @@ main {
 }
 .formulario__registro{
     display: none; /*no aparece le formulario registro*/
-    height: 500px;
+    height: 370px;
     margin-left: 3em;
 }
-.formulario__tecnico{
-    
-}
+
 /*trabjando en el responsive design*/
 @media scree and (max-width:850px){
 main{
