@@ -390,7 +390,6 @@ $psto = mysqli_query($conexion,$sql);
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                 <div class="col-sm-12">
                    <label>DIRECCIÓN EJECUTIVA </label>         
@@ -401,31 +400,33 @@ $psto = mysqli_query($conexion,$sql);
                       </select>
                     </div>          
                 </div>
-        
+                <div class="form-group">
+                <div class="col-sm-12">
+                   <label>DIRECCIÓN </label>         
+                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección" disabled="" id="gstdirección" type="text" data-live-search="true" >                   
+                      <option value="">SELECCIONE LA DIRECCIÓN</option> 
+                      </select>
+                    </div>          
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-12">
                         <label>SUBDIRECCIÓN</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion" id="gstsundireccion" type="text" data-live-search="true" disabled="">
-                         <option value="">SELECCIONE LA SUBDIRECCIÓN</option> 
-                         <?php while($rea = mysqli_fetch_row($are)):?>                      
-                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                         <?php endwhile; ?>
+                         <option value="">SELECCIONE LA SUBDIRECCIÓN</option>                       
                        </select>
                     </div>                  
                   </div>     
-
                   <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-12">
                         <label>DEPARTAMENTO</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true" disabled="">
-                         <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
+                         <option value="">SELECCIONE EL DEPARTAMENTO</option> 
                          <?php while($rea = mysqli_fetch_row($are)):?>                      
                          <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
                          <?php endwhile; ?>
                        </select>
                     </div>                  
                   </div>   
-
                   <div class="form-group">
                     <div class="col-sm-4">
                         <div class="input-group">
