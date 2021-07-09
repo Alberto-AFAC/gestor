@@ -314,14 +314,10 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
                     </div>
 
-                    <div class="col-sm-5">
-                   <label>DIRECCIÓN EJECUTIVA </label>         
-                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
-                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
-                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
-                      <?php endwhile; ?>
-                      </select>
-                    </div>
+                   
+                   fecha de ingreso a la afac
+
+
 
                     <div class="col-sm-3">
                     <label>CARGO</label>
@@ -400,7 +396,14 @@ $psto = mysqli_query($conexion,$sql);
                             <input disabled=""  type="email" class="form-control" placeholder="Correo" id="gstCinst" name="gstCinst">
                           </div>
                     </div>
-
+                    <div class="col-sm-5">
+                   <label>DIRECCIÓN EJECUTIVA</label>         
+                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
+                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
+                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+                      <?php endwhile; ?>
+                      </select>
+                    </div>
                     <div class="col-sm-4">
                        <label>FECHA INGRESO A LA AFAC</label>
                        <input disabled=""  type="date" class="form-control" id="gstFeing" name="gstFeing">
