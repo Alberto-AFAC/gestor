@@ -81,7 +81,6 @@
                      <label>CARGO</label>
                       <select type="text" class="form-control" id="gstCargo" name="gstCargo">
                          <option value="">SELECCIONA EL CARGO</option>
-                         <option value="INSTRUCTOR">DIRECTOR</option>
                          <option value="INSPECTOR">INSPECTOR</option>
                          <option value="INSTRUCTOR">INSTRUCTOR</option>
                          <option value="COORDINADOR">COORDINADOR</option>

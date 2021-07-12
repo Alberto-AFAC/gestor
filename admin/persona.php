@@ -116,7 +116,59 @@ include('header.php');
 </select>
 </div>
 </div>
-
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i class="fa fa-dot-circle-o"></i><label> INFORMACIÓN DE ADSCRIPCIÓN </label>
+                          </H4>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                <div class="col-sm-12">
+                   <label>DIRECCIÓN EJECUTIVA </label>         
+                      <select style="width: 100%" class="form-control" class="selectpicker"  disabled="" name="gstAreID"  id="gstAreID" type="text" data-live-search="true" >
+                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
+                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+                      <?php endwhile; ?>
+                      </select>
+                    </div>          
+                </div>
+                <div class="form-group">
+                <div class="col-sm-12">
+                   <label>DIRECCIÓN </label>         
+                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección"  id="gstdirección" type="text" data-live-search="true" >                   
+                      <option value="">SELECCIONE LA DIRECCIÓN</option> 
+                      </select>
+                    </div>          
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label>SUBDIRECCIÓN</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion" id="gstsundireccion" type="text" data-live-search="true" >
+                         <option value="">SELECCIONE LA SUBDIRECCIÓN</option>                       
+                       </select>
+                    </div>                  
+                  </div>     
+                  <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label>DEPARTAMENTO</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
+                         <option value="">SELECCIONE EL DEPARTAMENTO</option> 
+                         <?php while($rea = mysqli_fetch_row($are)):?>                      
+                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
+                         <?php endwhile; ?>
+                       </select>
+                    </div>                  
+                  </div>   
+<div class="form-group">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i class="fa   fa-suitcase"></i>
+                          <label> FUNCIÓN DEL EMPLEADO </label></H4>
+                        </div>
+                    </div>
+                </div>
 <div class="form-group">
 <div class="col-sm-12">
 <label>CATEGORÍA</label>
