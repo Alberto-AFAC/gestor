@@ -983,7 +983,7 @@ function consultaCurso(gst) {
         // }
 
 
-      if(obj==0){
+ //     if(obj==0){
     $.ajax({
         url: '../php/lisOblig.php',
         type: 'POST'
@@ -1006,49 +1006,47 @@ function consultaCurso(gst) {
         $("#obligados").html(html);
     })
 
-      }else{
+//      }else{
 
-        var x = 0;
-        for (c = 0; c < res.length; c++) {             
+//         var x = 0;
+//         for (c = 0; c < res.length; c++) {             
 
-            if (obj.data[c].idinsp == gstIdper) {
+//             if (obj.data[c].idinsp == gstIdper) {
 
-                listcur = obj.data[c].idmstr;
-                proceso = obj.data[c].proceso;
-                idinsp = obj.data[c].idinsp;
+//                 listcur = obj.data[c].idmstr;
+//                 proceso = obj.data[c].proceso;
+//                 idinsp = obj.data[c].idinsp;
 
-            }
-        }
-$.ajax({
-        url: '../php/lisOblig.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
-        for (o = 0; o < res.length; o++) {
+//             }
+//         }
+// $.ajax({
+//         url: '../php/lisOblig.php',
+//         type: 'POST'
+//     }).done(function(resp) {
+//         obj = JSON.parse(resp);
+//         var res = obj.data;
+//         var x = 0;
+//         html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
+//         for (o = 0; o < res.length; o++) {
         
         
-            if (obj.data[o].gstIDlsc == listcur && proceso == 'PENDIENTE' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) 
-            {
-                html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>EN PROCESO</td> </tr>";
-            }else 
-            if (obj.data[o].gstIDlsc == listcur && proceso == 'FINALIZADO' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) 
-            {
-                html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>FINALIZADO</td> </tr>";
-            }else   
-            if (obj.data[o].gstIcatg == gstCateg) {
-                        html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>PENDIENTE</td> </tr>";
-                    }
-      
+//             if (obj.data[o].gstIDlsc == listcur && proceso == 'PENDIENTE' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) 
+//             {
+//                 html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>EN PROCESO</td> </tr>";
+//             }else 
+//             if (obj.data[o].gstIDlsc == listcur && proceso == 'FINALIZADO' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) 
+//             {
+//                 html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>FINALIZADO</td> </tr>";
+//             }else   
+//             if (obj.data[o].gstIcatg == gstCateg) {
+//                         html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>PENDIENTE</td> </tr>";
+//                     }
+//         }
+//         html += '</tbody></table></div></div></div>';
+//         $("#obligados").html(html);
+//     })
 
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#obligados").html(html);
-    })
-
-    }
+//    }
 
     })
 

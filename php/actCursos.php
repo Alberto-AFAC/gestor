@@ -2,7 +2,7 @@
 include("../conexion/conexion.php");
 ini_set('date.timezone','America/Mexico_City');
 
-if($_POST['AgstProvd']=='' || $_POST['AgstCntro']=='' || $_POST['AgstIdlsc']=='' || $_POST['AgstTitlo']==''|| $_POST['AgstTipo']==''|| $_POST['AgstVignc']==''|| $_POST['AgstObjtv']==''|| $_POST['Ahr']==''|| $_POST['Amin']==''|| $_POST['Atmp']==''|| $_POST['AgstCntnc']==''){
+if($_POST['AgstProvd']=='' || $_POST['AgstCntro']=='' || $_POST['AgstIdlsc']=='' || $_POST['AgstTitlo']==''|| $_POST['AgstTipo']==''|| $_POST['AgstVignc']==''|| $_POST['AgstObjtv']==''|| $_POST['Ahr']==''|| $_POST['Atmp1']==''|| $_POST['Amin']==''|| $_POST['Atmp2']==''|| $_POST['AgstCntnc']==''){
 
 	echo "8";
 }else{
@@ -18,7 +18,7 @@ $AgstTipo = $_POST['AgstTipo'];
 $AgstVignc = $_POST['AgstVignc'];
 $AgstPrfil = $_POST['AgstPrfil'];
 $AgstObjtv = $_POST['AgstObjtv'];
-$AgstDrcin = $_POST['Ahr'].':'.$_POST['Amin'].' '.$_POST['Atmp'];
+$AgstDrcin = $_POST['Ahr'].' '.$_POST['Atmp1'].' '.$_POST['Amin'].' '.$_POST['Atmp2'];
 $AgstCntnc = $_POST['AgstCntnc'];
 
 //$formatos= array('.jpg', '.png', '.doc', '.xlsx','.docx','.msi','.pdf', '.zip', '.rar', '.JPG','.txt','.jpeg');

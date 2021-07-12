@@ -135,11 +135,7 @@ include('header.php');
 
     <div class="col-sm-4">
     <label>SEDE DEL CURSO</label>
-      <select type="text" class="form-control" id="sede" name="sede">
-         <option value="0">ELEGIR SEDE</option>     
-         <option value="AGENCIA FEDERAL DE AVIACIÓN CIVIL">AGENCIA FEDERAL DE AVIACIÓN CIVIL</option>
-         <option value="CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL">CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL</option>
-      </select>
+    <input type="text" class="form-control" id="sede" name="sede">
     </div>
 </div>
 
@@ -149,10 +145,8 @@ include('header.php');
       <select type="text" class="form-control" id="modalidad" name="modalidad">
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
-          <option value="PRESENCIAL">MIXTA</option>
-          <option value="PRESENCIAL">PRESENCIAL</option>
-          <option value="PRESENCIAL">SEMIPRESENCIAL</option>
-          
+          <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
+          <option value="AUTOGESTIVO">AUTOGESTIVO</option>          
       </select>
     </div>
     <div class="col-sm-4">
