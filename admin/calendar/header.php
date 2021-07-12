@@ -195,7 +195,7 @@
             </span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="gantt.php">
             <i class="fa fa-calendar"></i> <span>Bitacora cursos</span>
             <span class="pull-right-container">
@@ -203,7 +203,7 @@
               <small class="label pull-right bg-blue"></small>
             </span>
           </a>
-        </li>
+        </li> -->
         <!--  -->
         
         <!--  -->
