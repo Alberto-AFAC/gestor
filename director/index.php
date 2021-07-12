@@ -136,9 +136,9 @@
             </li>
             <li class="layer" data-depth="0.20">
                 <div class="title">
-                    <h2>
+                    <h3 style="color: black; font-size: 24px;">
                         AGENCIA FEDERAL DE AVIACIÓN CIVIL
-                    </h2>
+                    </h3>
                     <span class="line"></span>
                 </div>
             </li>
@@ -156,7 +156,7 @@
                             <div class="content">
                                 <h3>GESTOR DE INSPECTORES</h3>
                                 <img class="img-servicios" src="images/piloto.svg" width="75%;" alt="piloto"><br><br>
-                                <a href="www.google.com">Iniciar</a>
+                                <a href="director.php">Iniciar</a>
                             </div>
                         </div>
                         <div class="card">
@@ -178,34 +178,34 @@
                     </div>
                 </div>
             </li>
-            <li class="layer" data-depth="0.40">
+          <li  data-depth="0.40">
                 <div class="depth-1 flake1">
-                    <img alt="flake" src="images/flakes/depth1/flakes1.png">
+                    <img style="z-index: -9999;" alt="flake" src="images/flakes/depth1/flakes1.png">
                 </div>
 
-                <div class="depth-1 flake2">
+                  <div class="depth-1 flake2">
                     <img alt="flake" src="images/flakes/depth1/flakes2.png">
                 </div>
 
-                <div class="depth-1 flake3">
+             <div class="depth-1 flake3">
                     <img alt="flake" src="images/flakes/depth1/flakes3.png">
                 </div>
 
-                <div class="depth-1 flake4">
+                 <div class="depth-1 flake4">
                     <img alt="flake" src="images/flakes/depth1/flakes4.png">
                 </div>
-            </li>
+            </li> 
 
-            <li class="layer" data-depth="0.50">
-                <div class="depth-2 flake1">
+            <li class="" data-depth="0.50">
+                <!-- <div class="depth-2 flake1">
                     <img alt="flake" src="images/flakes/depth2/flakes1.png">
-                </div>
+                </div> -->
 
                 <div class="depth-2 flake2">
                     <img alt="flake" src="images/flakes/depth2/flakes2.png">
                 </div>
             </li>
-
+ <!--  
             <li class="layer" data-depth="0.60">
                 <div class="depth-3 flake1">
                     <img alt="flake" src="images/flakes/depth3/flakes1.png">
@@ -222,15 +222,15 @@
                 <div class="depth-3 flake4">
                     <img alt="flake" src="images/flakes/depth3/flakes4.png">
                 </div>
-            </li>
+            </li> 
 
-            <li class="layer" data-depth="0.80">
+             <li class="layer" data-depth="0.80">
                 <div class="depth-4">
                     <img alt="flake" src="images/flakes/depth4/flakes.png">
                 </div>
-            </li>
+            </li>  -->
 
-            <li class="layer" data-depth="1.00">
+            <li class="" data-depth="1.00">
                 <div class="depth-5">
                     <img alt="flake" src="images/flakes/depth5/flakes.png">
                 </div>
@@ -239,11 +239,6 @@
     </div>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        function probar(){
-            alert('funciono?');
-        }
-        </script>
 </body>
 
 </html>
