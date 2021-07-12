@@ -288,10 +288,27 @@ $psto = mysqli_query($conexion,$sql);
                                <i class="fa fa-phone"></i>
                           </div>
                           <input disabled="" type="text" class="form-control"
-                         data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask id="gstExTel" name="gstExTel">
+                         data-inputmask="' ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask id="gstExTel" name="gstExTel">
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="col-sm-6">
+                         <label>CORREO PERSONAL</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input disabled=""  type="email" class="form-control" placeholder="Correo" id="gstCorro" name="gstCorro">
+                          </div>
+                    </div>
+                    <div class="col-sm-6">
+                         <label>CORREO INSTITUCIONAL</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input disabled=""  type="email" class="form-control" placeholder="Correo" id="gstCinst" name="gstCinst">
+                          </div>
+                    </div>          
+                </div>
+
 
 
                     <div class="form-group" id="buton" style="display: none;"><br>
@@ -308,43 +325,57 @@ $psto = mysqli_query($conexion,$sql);
                   </div>
               </div>
 
-<!--------------------DATOS DEL PUESTO------------------------------->              
-           <div class="tab-pane" id="puesto">
+<!--------------------DATOS DEL PUESTO------------------------------->      
+        
+<div class="tab-pane" id="puesto">
 
-           <form id="Pusto" class="form-horizontal" action="" method="POST" >
-              <input type="hidden" name="pstIdper" id="pstIdper">
-                <div class="form-group">
-                    <div class="col-sm-4">
-                       <label>NÚMERO DE EMPLEADO</label>
-                       <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
-                    </div>
+           
 
-                    <div class="col-sm-5">
-                   <label>DIRECCIÓN EJECUTIVA </label>         
-                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
-                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
-                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
-                      <?php endwhile; ?>
-                      </select>
-                    </div>
+<form id="Pusto" class="form-horizontal" action="" method="POST" >
+   <input type="hidden" name="pstIdper" id="pstIdper">
+     <div class="form-group">
+         <div class="col-sm-4">
+            <label>NÚMERO DE EMPLEADO</label>
+            <input type="number" disabled="" class="form-control" id="gstNmpld" name="gstNmpld">
+         </div>
 
-                    <div class="col-sm-3">
-                    <label>CARGO</label>
-                    <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
-                        
-                         <option value="INSPECTOR">INSPECTOR</option>
-                         <option value="INSTRUCTOR">INSTRUCTOR</option>
-                      </select>
-                    </div>
-                </div>
- 
-          <div class="form-group">
-            <div class="col-sm-4">
-            <label>CÓDIGO PRESUPUESTAL</label>
-            <div id="actualiza"></div>                               
-            </div>
-            <div id="select1"></div> 
-          </div>
+         <div class="col-sm-4">
+            <label>FECHA INGRESO A LA AFAC</label>
+            <input disabled=""  type="date" class="form-control" id="gstFeing" name="gstFeing">
+         </div>  
+
+
+         <div class="col-sm-4">
+         <label>CARGO</label>
+         <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
+             
+              <option value="INSPECTOR">INSPECTOR</option>
+              <option value="INSTRUCTOR">INSTRUCTOR</option>
+           </select>
+         </div>
+     </div>
+
+<div class="form-group">
+ <div class="col-sm-4">
+ <label>CÓDIGO PRESUPUESTAL</label>
+ <div id="actualiza"></div>                               
+ </div>
+ <div id="select1"></div> 
+</div>
+
+<div class="form-group">
+<div class="col-sm-5">
+<label>NOMBRE DEL PUESTO</label>
+<select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
+<?php while($pust = mysqli_fetch_row($psto)):?>                      
+<option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
+<?php endwhile; ?>
+</select>
+</div> 
+
+<div id="actoaci"></div>
+<div id="siglas"></div>
+</div>
 
 
 <!-- <div class="form-group">
@@ -352,77 +383,105 @@ $psto = mysqli_query($conexion,$sql);
 <div id="oaci"></div>
 <div id="siglas"></div>                                
 </div> -->
+     <div class="form-group">
+         <div class="col-sm-4">
+             <div class="input-group">
+               <H4><i class="fa   fa-dot-circle-o"></i>
+               <label> INFORMACIÓN DE ADSCRIPCIÓN </label></H4>
+             </div>
+         </div>
+     </div>
+     <div class="form-group">
+     <div class="col-sm-12">
+        <label>DIRECCIÓN EJECUTIVA </label>         
+           <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
+           <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
+           <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+           <?php endwhile; ?>
+           </select>
+         </div>          
+     </div>
+     <div class="form-group">
+     <div class="col-sm-12">
+        <label>DIRECCIÓN </label>         
+           <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección" disabled="" id="gstdirección" type="text" data-live-search="true" >                   
+           <option value="">SELECCIONE LA DIRECCIÓN</option> 
+           </select>
+         </div>          
+     </div>
+     <div class="form-group">
+         <div class="col-sm-offset-0 col-sm-12">
+             <label>SUBDIRECCIÓN</label>
+             <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion" id="gstsundireccion" type="text" data-live-search="true" disabled="">
+              <option value="">SELECCIONE LA SUBDIRECCIÓN</option>                       
+            </select>
+         </div>                  
+       </div>     
+       <div class="form-group">
+         <div class="col-sm-offset-0 col-sm-12">
+             <label>DEPARTAMENTO</label>
+             <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true" disabled="">
+              <option value="">SELECCIONE EL DEPARTAMENTO</option> 
+              <?php while($rea = mysqli_fetch_row($are)):?>                      
+              <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
+              <?php endwhile; ?>
+            </select>
+         </div>                  
+       </div>   
+       <div class="form-group">
+         <div class="col-sm-4">
+             <div class="input-group">
+               <H4><i class="fa   fa-suitcase"></i>
+               <label> FUNCIÓN DEL EMPLEADO </label></H4>
+             </div>
+         </div>
+     </div>
+     <div class="form-group">
+     <div class="col-sm-4">
+         <label>CARGO</label>
+         <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
+             
+              <option value="INSPECTOR">INSPECTOR</option>
+              <option value="INSTRUCTOR">INSTRUCTOR</option>
+           </select>
+         </div>
+     </div>
 
 
-           <div class="form-group">
-          <div class="col-sm-5">
-          <label>NOMBRE DEL PUESTO</label>
-          <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
-          <?php while($pust = mysqli_fetch_row($psto)):?>                      
-          <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
-          <?php endwhile; ?>
-          </select>
-          </div> 
 
-          <div id="actoaci"></div>
-          <div id="siglas"></div>
-          </div>
-               <div class="form-group">
-                    <div class="col-sm-6">
-                        <label>CATEGORIA</label>
-                        <select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="gstIDCat" id="gstIDCat" type="text" data-live-search="true">
-                            <?php while($idcat = mysqli_fetch_row($cat)):?>                      
-                            <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
-                            <?php endwhile; ?>
-                       </select>
-                    </div>
-                   
-                    <div class="col-sm-6">
-                       <label>SUB CATEGORIA</label>
-                       <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
-                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
-                         <option value="0">NO APLICA</option>
-                         <?php while($idsub1 = mysqli_fetch_row($sub1)):?>                      
-                         <option value="<?php echo $idsub1[0]?>"><?php echo $idsub1[1];?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>
-                      
-                  </div>
+    <div class="form-group">
+         <div class="col-sm-6">
+             <label>CATEGORIA</label>
+             <select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="gstIDCat" id="gstIDCat" type="text" data-live-search="true">
+                 <?php while($idcat = mysqli_fetch_row($cat)):?>                      
+                 <option value="<?php echo $idcat[0]?>"><?php echo $idcat[1];?></option>
+                 <?php endwhile; ?>
+            </select>
+         </div>
+        
+         <div class="col-sm-6">
+            <label>SUB CATEGORIA</label>
+            <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
+              <option value="">SELECCIONA LA SUB CATEGORÍA</option>
+              <option value="0">NO APLICA</option>
+              <?php while($idsub1 = mysqli_fetch_row($sub1)):?>                      
+              <option value="<?php echo $idsub1[0]?>"><?php echo $idsub1[1];?></option>
+              <?php endwhile; ?>
+            </select>
+         </div>
+           
+       </div>
+       <div class="form-group">
+     <div class="col-sm-12">
+        <label>ESPECIALIDAD</label>         
+           <select style="width: 100%" class="form-control" class="selectpicker" name="gstespecialidad" disabled="" id="gstespecialidad" type="text" data-live-search="true" >
+           <option value="">SELECCIONA LA ESPECIALIDAD</option>
+           </select>
+         </div>          
+     </div>
 
-                  <div class="form-group">
-                    <div class="col-sm-4">
-                         <label>CORREO PERSONAL</label>
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            <input disabled=""  type="email" class="form-control" placeholder="Correo" id="gstCorro" name="gstCorro">
-                          </div>
-                    </div>
-                    <div class="col-sm-4">
-                         <label>CORREO INSTITUCIONAL</label>
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            <input disabled=""  type="email" class="form-control" placeholder="Correo" id="gstCinst" name="gstCinst">
-                          </div>
-                    </div>
 
-                    <div class="col-sm-4">
-                       <label>FECHA INGRESO A LA AFAC</label>
-                       <input disabled=""  type="date" class="form-control" id="gstFeing" name="gstFeing">
-                    </div>            
-                </div>
-
-                 <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-12">
-                        <label>ÁREA ADSCRIPCIÓN</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true" disabled="">
-                         <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
-                         <?php while($rea = mysqli_fetch_row($are)):?>                      
-                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>                  
-                  </div>            
+       
 <div class="form-group">
 <div class="col-sm-4">
 <label>SELECCIONE COMANDANCIA</label>
@@ -432,7 +491,7 @@ $psto = mysqli_query($conexion,$sql);
 <label>SELECCIONE AEROPUERTOS</label>
 <div id="select2"></div> 
 </div>
-</div>                
+</div>                                
                     <div class="form-group" id="butons" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-info btn-lg" onclick="actPuesto();">ACEPTAR</button>
