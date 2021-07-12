@@ -85,60 +85,106 @@ while($data=mysqli_fetch_array($resultado)){
                     <label>CARGO</label>
                     <select type="text" class="form-control" id="AgstCargo" name="AgstCargo">
                          <option value="">SELECCIONA EL CARGO</option>
-                         <option value="DIRECTOR">DIRECTOR</option>
-                         <option value="INSPECTOR">INSPECTOR</option>
-                         <option value="INSTRUCTOR">INSTRUCTOR</option>
-                         <option value="COORDINADOR">COORDINADOR</option>
+                         <option value="DIRECTOR">ADMINISTRATIVO</option>
+                         <option value="INSPECTOR">COORDINADOR</option>
+                         <option value="INSTRUCTOR">INSPECTOR</option>
+                         <option value="COORDINADOR">INSTRUCTOR</option>
                       </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-12">
-                        <label>CATEGORIA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDCat" id="AgstIDCat" type="text" data-live-search="true"  onchange="seleccionado()">
-                         <option value="">SELECCIONA LA CATEGORÍA</option>
-                         <?php while($Aidcat = mysqli_fetch_row($Acat)):?>                      
-                         <option value="<?php echo $Aidcat[0]?>"><?php echo $Aidcat[1];?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>
-
-                    <input type="hidden" name="AgstIDSub" id="AgstIDSub" value="1">
-                                         
-                  <div class="col-sm-6">
-                       <label>SUB CATEGORIA</label>
-                       <select style="width: 100%" class="form-control" class="selectpicker" name="AgstIDSub" id="AgstIDSub" type="text" data-live-search="true">
-                         <option value="">SELECCIONA LA SUB CATEGORÍA</option>
-                         <option value="0">NO APLICA</option>
-                         <?php while($Aidsub1 = mysqli_fetch_row($Asub1)):?>                      
-                         <option value="<?php echo $Aidsub1[0]?>"><?php echo $Aidsub1[1];?></option>
-                         <?php endwhile; ?>
-                       </select>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i class="fa fa-dot-circle-o"></i><label> INFORMACIÓN DE ADSCRIPCIÓN </label>
+                          </H4>
+                        </div>
                     </div>
                 </div>
-
                 <div class="form-group">
-                   <div class="col-sm-offset-0 col-sm-6">
-                        <label>COMANDANCIA </label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" type="text" id="AgstIDuni" name="AgstIDuni" data-live-search="true">
-                         <option value="">SELECCIONAR COMANDANCIA</option> 
-                         <?php while($Aiduni = mysqli_fetch_row($Auni)):?>                      
-                          <option value="<?php echo $Aiduni[0]?>"><?php echo $Aiduni[1].' > '.$Aiduni[2].' REGIÓN: '.$Aiduni[4]?></option>
+                <div class="col-sm-12">
+                   <label>DIRECCIÓN EJECUTIVA </label>         
+                      <select style="width: 100%" class="form-control" class="selectpicker"  disabled="" name="gstAreID"  id="gstAreID" type="text" data-live-search="true" >
+                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
+                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+                      <?php endwhile; ?>
+                      </select>
+                    </div>          
+                </div>
+                <div class="form-group">
+                <div class="col-sm-12">
+                   <label>DIRECCIÓN </label>         
+                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección"  id="gstdirección" type="text" data-live-search="true" >                   
+                      <option value="">SELECCIONE LA DIRECCIÓN</option> 
+                      </select>
+                    </div>          
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label>SUBDIRECCIÓN</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion" id="gstsundireccion" type="text" data-live-search="true" >
+                         <option value="">SELECCIONE LA SUBDIRECCIÓN</option>                       
+                       </select>
+                    </div>                  
+                  </div>     
+                  <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label>DEPARTAMENTO</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
+                         <option value="">SELECCIONE EL DEPARTAMENTO</option> 
+                         <?php while($rea = mysqli_fetch_row($are)):?>                      
+                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
                          <?php endwhile; ?>
                        </select>
-                    </div>
-
-                   <div class="col-sm-offset-0 col-sm-6">
-                        <label>UBICACIÓN </label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" type="text" data-live-search="true">
-                         <option value="">SELECCIONAR UBICACIÓN  </option> 
-                         <?php while($Aiduni = mysqli_fetch_row($Auni)):?>                      
-                          <option value="<?php echo $Aiduni[0]?>"><?php echo $Aiduni[1].' > '.$Aiduni[2].' REGIÓN: '.$Aiduni[4]?></option>
-                         <?php endwhile; ?>
-                       </select>
+                    </div>                  
+                  </div>   
+<div class="form-group">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i class="fa   fa-suitcase"></i>
+                          <label> FUNCIÓN DEL EMPLEADO </label></H4>
+                        </div>
                     </div>
                 </div>
+<div class="form-group">
+<div class="col-sm-12">
+<label>CATEGORÍA</label>
+<div id="categoria"></div>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-sm-12">
+<label>SUB CATEGORÍA</label>
+<div id="subcategoria"></div>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-sm-4">
+<label>SELECCIONE COMANDANCIA</label>
+<div id="comandan"></div>                            
+</div>
+<div class="col-sm-8">
+<label>SELECCIONE AEROPUERTOS</label>
+<div id="select3"></div> 
+</div>
+</div>
+
+
+
+<div class="form-group">
+<div class="col-sm-offset-0 col-sm-12">
+<label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label>
+<select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
+<option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
+<option value="CIAAC">CIAAC</option> 
+<option value="FLORES">LAS FLORES</option> 
+<option value="ANGAR8">ANGAR 8</option> 
+<option value="LICENCIA">LICENCIAS</option>
+</select>
+</div>
+</div>
                   
                 <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
