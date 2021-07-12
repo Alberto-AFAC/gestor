@@ -59,12 +59,11 @@ function dato(gstIdlsc){
                 $("#modalVal #AgstCntnc").val(d[4]);
 
                 Ahr = d[5].substr(0,2);
-                Amin = d[5].substr(3,2);
-                Atmp = d[5].substr(6,4);
+                Amin = d[5].substr(8,2);
+//                Atmp = d[5].substr(6,4);
 
                 $("#modalVal #Ahr").val(Ahr);
                 $("#modalVal #Amin").val(Amin);
-                $("#modalVal #Atmp").val(Atmp);
 
                 $("#modalVal #AgstVignc").val(d[6]);
                 $("#modalVal #AgstObjtv").val(d[7]);
@@ -103,8 +102,9 @@ paqueteDeDatos.append('gstPrfil', gstPrfiles);
 paqueteDeDatos.append('gstObjtv', $('#gstObjtv').prop('value'));
 
 paqueteDeDatos.append('hr', $('#hr').prop('value'));
+paqueteDeDatos.append('tmp1', $('#tmp1').prop('value'));
 paqueteDeDatos.append('min', $('#min').prop('value'));
-paqueteDeDatos.append('tmp', $('#tmp').prop('value'));
+paqueteDeDatos.append('tmp2', $('#tmp2').prop('value'));
 paqueteDeDatos.append('gstCntnc', $('#gstCntnc').prop('value'));
 
 paqueteDeDatos.append('gstProvd', $('#gstProvd').prop('value'));
@@ -200,8 +200,9 @@ paqueteDeDatos.append('AgstVignc', $('#AgstVignc').prop('value'));
 paqueteDeDatos.append('AgstPrfil', gstPrfiles);
 paqueteDeDatos.append('AgstObjtv', $('#AgstObjtv').prop('value'));
 paqueteDeDatos.append('Ahr', $('#Ahr').prop('value'));
+paqueteDeDatos.append('Atmp1', $('#Atmp1').prop('value'));
 paqueteDeDatos.append('Amin', $('#Amin').prop('value'));
-paqueteDeDatos.append('Atmp', $('#Atmp').prop('value'));
+paqueteDeDatos.append('Atmp2', $('#Atmp2').prop('value'));
 paqueteDeDatos.append('AgstCntnc', $('#AgstCntnc').prop('value'));
 paqueteDeDatos.append('AgstIdlsc', $('#AgstIdlsc').prop('value'));
 

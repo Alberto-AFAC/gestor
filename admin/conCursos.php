@@ -163,10 +163,10 @@
                     </div>
 
                      <div class="col-sm-4">
-                      <label>TIPO</label>
+                      <label>TIPO DE CAPACITACIÓN</label>
                       <select type="text" class="form-control" id="AgstTipo" name="AgstTipo">
                         <option value="INDUCCIÓN">INDUCCIÓN</option>
-                        <option value="BÁSICOS">BÁSICOS</option>
+                        <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
                         <option value="TRANSVERSALES">TRANSVERSALES</option>
                         <option value="RECURRENTES">RECURRENTES</option>
                         <option value="ESPECÍFICOS">ESPECÍFICOS</option>
@@ -221,7 +221,10 @@
                       <?php } }?>
                 </select>
                     </div>
-
+                    <div class="col-sm-1" style="padding: 0;">
+                      <label style="color: white">.</label>
+                      <input type="text" class="form-control" id="Atmp1" name="Atmp1" value="HRS.">
+                    </div>
                       <div class="col-sm-1" style="padding: 0;">
                <label style="color: white">.</label>
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
@@ -237,14 +240,13 @@
                 </select>
                     </div>
                     <div class="col-sm-1" style="padding: 0;">
-               <label style="color: white">.</label>
-                      <select  class="form-control" id="Atmp" name="Atmp">
-                        <option value="HRS.">HRS.</option>
-                        <option value="MIN.">MIN.</option>
-                      </select>
+                      <label style="color: white">.</label>
+                      <input type="text" class="form-control" id="Atmp2" name="Atmp2" value="MIN.">
+  
                     </div>
 
-                <div class="col-sm-offset-1 col-sm-3">
+
+                <div class="col-sm-offset-0 col-sm-3">
                          <label>PERIODO DE VIGENCIA</label>                         
                             <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
                             <option value="RECURRENTE">RECURRENTE</option>
@@ -261,10 +263,11 @@
 
                       <div class="form-group">                  
                      <div class="col-sm-4">
-                      <label>PROVEEDOR DEL CURSO</label>
+                      <label>TIPO DE CURSO</label>
                       <select type="text" class="form-control" id="AgstProvd" name="AgstProvd">
-                        <option value="INTERNO">INTERNO</option>
-                        <option value="EXTERNO">EXTERNO</option>
+                         <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
+                        <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
+                        <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
                       </select>
                       </div>
 

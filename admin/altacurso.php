@@ -72,14 +72,14 @@ include ("../conexion/conexion.php");
                     </div>
 
                      <div class="col-sm-4">
-                      <label>TIPO DE CURSO</label>
+                      <label>TIPO DE CAPACITACIÓN</label>
                       <select type="text" class="form-control" id="gstTipo" name="gstTipo">
                         <option value="0">ELEGIR UNA OPCIÓN</option>
                         <option value="INDUCCIÓN">INDUCCIÓN</option>
-                        <option value="BÁSICOS">BÁSICOS</option>
-                        <option value="TRANSVERSALES">TRANSVERSALES</option>
-                        <option value="RECURRENTES">RECURRENTES</option>
-                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                        <option value="BÁSICOS">BÁSICO/INICIAL</option>
+                        <option value="TRANSVERSALES">TRANSVERSALE</option>
+                        <option value="RECURRENTES">RECURRENTE</option>
+                        <option value="ESPECÍFICOS">ESPECÍFICO</option>
                         <option value="OJT">OJT</option>
                       </select>
                       </div>
@@ -125,6 +125,11 @@ include ("../conexion/conexion.php");
                 </select>
                     </div>
 
+                    <div class="col-sm-1" style="padding: 0;">
+                      <label style="color: white">.</label>
+                      <input type="text" class="form-control" id="tmp1" name="tmp1" value="HRS.">
+                    </div>
+
                       <div class="col-sm-1" style="padding: 0;">
                <label style="color: white">.</label>
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
@@ -140,14 +145,14 @@ include ("../conexion/conexion.php");
                 </select>
                     </div>
                     <div class="col-sm-1" style="padding: 0;">
-               <label style="color: white">.</label>
-                      <select  class="form-control" id="tmp" name="tmp">
-                        <option value="HRS.">HRS.</option>
-                        <option value="MIN.">MIN.</option>
-                      </select>
+                      <label style="color: white">.</label>
+                      <input type="text" class="form-control" id="tmp2" name="tmp2" value="MIN.">
+  
                     </div>
 
-                <div class="col-sm-offset-1 col-sm-4">
+
+
+                <div class="col-sm-offset-0 col-sm-4">
                          <label>PERIODO DE VIGENCIA</label>                         
                             <select type="text" class="form-control" id="gstVignc" name="gstVignc">
                             <option value="0">SELECCIONE VIGENCIA</option>
@@ -166,11 +171,12 @@ include ("../conexion/conexion.php");
                       </div>
                       <div class="form-group">                  
                      <div class="col-sm-4">
-                      <label>PROVEEDOR DEL CURSO</label>
+                      <label>TIPO DE CURSO</label>
                       <select type="text" class="form-control" id="gstProvd" name="gstProvd">
                         <option value="0">ELEGIR UNA OPCIÓN</option>
-                        <option value="INTERNO">INTERNO</option>
-                        <option value="EXTERNO">EXTERNO</option>
+                        <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
+                        <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
+                        <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
                       </select>
                       </div>
 

@@ -3,7 +3,7 @@ include("../conexion/conexion.php");
 ini_set('date.timezone','America/Mexico_City');
 
 
-if($_POST['gstProvd']=='' || $_POST['gstCntro']=='' || $_POST['gstTitlo']==''|| $_POST['gstTipo']==''|| $_POST['gstVignc']==''|| $_POST['gstPrfil']==''|| $_POST['gstObjtv']==''|| $_POST['hr']==''|| $_POST['min']==''|| $_POST['tmp']==''|| $_POST['gstCntnc']==''){
+if($_POST['gstProvd']=='' || $_POST['gstCntro']=='' || $_POST['gstTitlo']==''|| $_POST['gstTipo']==''|| $_POST['gstVignc']==''|| $_POST['gstPrfil']==''|| $_POST['gstObjtv']==''|| $_POST['hr']=='' || $_POST['tmp1']=='' || $_POST['min']==''|| $_POST['tmp2']==''|| $_POST['gstCntnc']==''){
 
 	echo "8";
 }else{
@@ -20,7 +20,7 @@ $gstTipo= $_POST['gstTipo'];
 $gstVignc = $_POST['gstVignc'];
 $gstPrfil = $_POST['gstPrfil'];
 $gstObjtv = $_POST['gstObjtv'];
-$gstDrcin = $_POST['hr'].':'.$_POST['min'].' '.$_POST['tmp'];
+$gstDrcin = $_POST['hr'].' '.$_POST['tmp1'].' '.$_POST['min'].' '.$_POST['tmp2'];
 $gstCntnc = $_POST['gstCntnc'];
 
 //$formatos= array('.jpg', '.png', '.doc', '.xlsx','.docx','.msi','.pdf', '.zip', '.rar', '.JPG','.txt','.jpeg');
