@@ -282,9 +282,11 @@ $('#select2').load('select/acttablacom.php');
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal 
+$query = "SELECT *,
+  DATE_FORMAT(gstFeing, '%d/%m/%Y') AS gstFeing
+ FROM personal 
           INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
+          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
