@@ -259,6 +259,7 @@ include('header.php');
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <script src="../js/status.js"></script>
+<script type="text/javascript" src="../js/director.js"></script>
 </body>
 </html>
 
