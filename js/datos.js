@@ -1084,7 +1084,7 @@ function evaluar() {
     //evla = document.getElementById('evla').value;
 
     datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actuals + '&comntr=' + comntr + '&opcion=evaluar';
-    alert(datos);
+    //alert(datos);
 
     if (actual.length >= '12' && '12' >= actual.length) {
 
