@@ -282,14 +282,16 @@ $('#select2').load('select/acttablacom.php');
 
 var dataSet = [
 <?php 
-$query = "SELECT *,
-  DATE_FORMAT(gstFeing, '%d/%m/%Y') AS gstFeing
- FROM personal 
+$query = "SELECT * FROM personal 
           INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0";
+          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
+        $fechaActual = date_create(date('Y-m-d')); 
+		    $FechaIngreso = date_create($data['gstFeing']); 
+		    $interval = date_diff($FechaIngreso, $fechaActual,false);  
+		    $antiguedad = intval($interval->format('%R%a')); 
 
       $gstIdper = $data['gstIdper'];
       $result = $data['gstIdper'];
@@ -297,7 +299,13 @@ $resultado = mysqli_query($conexion, $query);
 
       ?>
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstFeing']?>","<?php
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstFeing']?>","<?php 
+							if($antiguedad <=30){
+								echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
+							}else {
+								echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
+							}
+							?>","<?php
 
 
                 if($data['gstEvalu'] == 'NO'){
@@ -320,7 +328,7 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
-    "order": [[4,'desc']],
+    "order": [[5,'asc']],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -330,6 +338,7 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     {title: "APELLIDO(S)"},
     {title: "CATEGORÍA"},
     {title: "FECHA DE INGRESO"},
+    {title: "DETALLES"},
     {title: "ACCIÓN"}
     ],
     });
