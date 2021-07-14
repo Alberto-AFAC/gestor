@@ -1081,15 +1081,15 @@ function evaluar() {
     actuals = actual.substr(1);
 
     comntr = document.getElementById('comntr').value;
-    evla = document.getElementById('evla').value;
+    //evla = document.getElementById('evla').value;
 
     datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actuals + '&comntr=' + comntr + '&opcion=evaluar';
-//    alert(datos);
+    alert(datos);
 
     if (actual.length >= '12' && '12' >= actual.length) {
 
 
-        if (gstInspr == ',,,' || gstIdprm == ',,,' || comntr == '' || comntr == ',,,') {
+        if (gstInspr == ',,,' || gstIdprm == ',,,') {
 
             $('#empty0').toggle('toggle');
             setTimeout(function() {
