@@ -22,7 +22,11 @@ jQuery(document).on('submit','#formtec',function(event){
 	   	 	location.href = 'director/';
 	   	 }else if(respuesta.tipo == 'instructor'){
 	   	 	location.href = 'instructor/';
+	   	 }else if(respuesta.tipo == 'humanos'){
+	   	 	location.href = 'humanos/';
 	   	 }
+
+
 
 	   }else{	//*si no se encuentra datos, mecionar que no hay cooincidencia en la base de datos
 	   	$('.errortec').fadeIn('slow');//*se mostrara div con classe .error que esta en el formulario haciendo referencia 
