@@ -1,8 +1,4 @@
-<!DOCTYPE html><?php 
-include ("../conexion/conexion.php");
-session_start(); 
-unset($_SESSION['consulta']);
-?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -257,7 +253,24 @@ $psto = mysqli_query($conexion,$sql);
                          data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask id="gstExTel" name="gstExTel">
                         </div>
                     </div>
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                         <label>CORREO PERSONAL</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" placeholder="Correo" id="gstCorro" name="gstCorro">
+                          </div>
+                    </div>
+                    <div class="col-sm-4">
+                         <label>CORREO INSTITUCIONAL</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" placeholder="Correo" id="gstCinst" name="gstCinst">
+                          </div>
+                    </div>
                     
+      
                    <br> <br> <br> <br> 
                    <div class="form-group">
                     <div class="col-sm-10">
@@ -302,22 +315,16 @@ $psto = mysqli_query($conexion,$sql);
                        <label>NÚMERO DE EMPLEADO</label>
                        <input type="number" class="form-control" id="gstNmpld" name="gstNmpld">
                     </div>
-                    <div class="col-sm-5">
-                   <label>DIRECCIÓN EJECUTIVA </label>         
-                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" id="gstAreID" type="text" data-live-search="true">
-                      <option value="0">SELECCIONA EL ÁREA</option>
-                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
-                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
-                      <?php endwhile; ?>
-                      </select>
-                    </div>
                     <div class="col-sm-3">
                        <label>FECHA INGRESO A LA AFAC</label>
                        <input type="date" class="form-control" id="gstFeing" name="gstFeing">
-                    </div>                        
-                </div>
-
-          <div class="form-group">
+                    </div>  
+                    <div class="col-sm-5">
+                    <label>ESTATUS ALTA PERSONAL</label>
+                    <input type="text" class="form-control" id="siglasoaci" name="siglasoaci">
+                    </div>  
+                    </div>
+                    <div class="form-group">
           <div class="col-sm-4">
           <label>CÓDIGO PRESUPUESTAL</label>
           <div id="buscador"></div>                            
@@ -339,10 +346,29 @@ $psto = mysqli_query($conexion,$sql);
             <div id="oaci"></div>
             <div id="siglas"></div>                                
          </div>
+                    <div class="form-group">
+                      <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i class="fa fa-dot-circle-o"></i>
+                          <label>INFORMACIÓN DE ADSCRIPCIÓN</label></H4>
+                        </div>
+                      </div>
+                </div>
 
-            <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
-                 <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-12">
+                    <div class="form-group">
+
+                    <div class="col-sm-6">
+                   <label>DIRECCIÓN EJECUTIVA </label>         
+                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" id="gstAreID" type="text" data-live-search="true">
+                      <option value="0">SELECCIONA EL ÁREA</option>
+                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
+                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+                      <?php endwhile; ?>
+                      </select>
+                    </div>
+                  <div class="col-sm-6">
+                  <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
+                    <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
                         <label style="color: white">.</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
                          <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
@@ -351,7 +377,10 @@ $psto = mysqli_query($conexion,$sql);
                          <?php endwhile; ?>
                        </select>
                     </div>                  
-                  </div>
+                  </div>    
+         
+
+            
          
            <input type="hidden" class="form-control" id="gstIDCat" name="gstIDCat" value="0">
            <input type="hidden" class="form-control" id="gstIDSub" name="gstIDSub" value="0">                   
@@ -359,26 +388,9 @@ $psto = mysqli_query($conexion,$sql);
            <input type="hidden" class="form-control" id="gstIDuni" name="gstIDuni" value="0">
 
                 <div class="form-group">
-                    <div class="col-sm-4">
-                         <label>CORREO PERSONAL</label>
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            <input type="email" class="form-control" placeholder="Correo" id="gstCorro" name="gstCorro">
-                          </div>
-                    </div>
-                    <div class="col-sm-4">
-                         <label>CORREO INSTITUCIONAL</label>
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            <input type="email" class="form-control" placeholder="Correo" id="gstCinst" name="gstCinst">
-                          </div>
-                    </div>
                     
 
-                    <div class="col-sm-4">
-                    <label>ESTATUS ALTA PERSONAL</label>
-                    <input type="text" class="form-control" id="siglasoaci" name="siglasoaci">
-                    </div>
+                    
             
                 </div>
                 <div class="form-group"><br>

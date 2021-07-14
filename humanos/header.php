@@ -19,14 +19,15 @@
       $persona = mysqli_query($conexion,$sql);
       $datos = mysqli_fetch_row($persona);
 
-
+//session_start(); 
+unset($_SESSION['consulta']);
 
 ?>
 
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <header class="main-header">
+<header class="main-header">
     <!-- Logo -->
-    <a href="./" class="logo">
+    <a href="director.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>DI</span>
       <!-- logo for regular state and mobile devices -->
@@ -46,85 +47,68 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning"><div id="noti"></div></span>
             </a>
 
  <!-- LOGO DE LA AFAC-->
 
 
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header"><div id="notif"></div></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li>
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
+                      <div id="confirmar"></div>
                     </a>
                   </li>
-                  <li>
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-user text-red"></i> You changed your username
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <!-- - -->
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
 
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Agel Canseco</span>
+              <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
             </a>
-            <ul class="dropdown-menu">
-              <li class="user-header">
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-              </li>
+            <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
+              <!-- User image -->
+     
+              <!-- Menu Body -->
+   
               <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
+       
+            
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar sesión</a>
+
                 </div>
-              </li>
+            
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
@@ -188,29 +172,12 @@
           <ul class="treeview-menu">
             <li><a href="personal.php"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
             <li><a href="persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
-            <li><a href="inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="instructor.php"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+          
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa ion-easel"></i>
-            <span>Cursos</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-            <li><a href="conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
-            <li><a href="programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
-            <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
-            <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
-            <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
-          </ul>
-        </li>
+
         <!--  -->
         <!-- -->
         <li>
