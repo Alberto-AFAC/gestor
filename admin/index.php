@@ -213,16 +213,14 @@ include('header.php');
                                         <a link rel="stylesheet" href="lisCurso.php" style="color:white"
                                             class="small-box-footer">information <i
                                                 class="fa fa-arrow-circle-right"></i></a>
+
+
                             </div>
-
-                            <!-- /.info-box-content -->
-
             </section>
-          <br><br>
-            <div id="container" style="width: 98%; height: 400px;"></div>
-
-            <br>
-            <!-- /.content -->
+            <div class="container">
+                  <!-- /.content -->   <h3>Gantt Cursos Programados</h3>
+                  <div id="container" style="width: 96%; height: 400px;"></div><br><br>
+</div>
         </div>
 
 
@@ -334,10 +332,10 @@ include('header.php');
                             fill.color = '#3C8DBC';
                             break;
                         case 'maintenance':
-                            fill.color = 'orange';
+                            fill.color = '#003D7E';
                             break;
                         case 'offline':
-                            fill.color = 'red';
+                            fill.color = '#FF990F';
                             break;
                         default:
                     }
@@ -406,8 +404,8 @@ include('header.php');
 
                 // zoom chart to specified date
                 chart.zoomTo(
-                    Date.UTC(2008, 0, 31, 1, 36),
-                    Date.UTC(2008, 1, 15, 10, 3)
+                    Date.UTC(2021, 0, 31, 1, 36),
+                    Date.UTC(2021, 1, 15, 10, 3)
                 );
             }
         );
@@ -416,13 +414,13 @@ include('header.php');
     function labelTextSettingsOverrider(label, item) {
         switch (item.get('status')) {
             case 'online':
-                label.fontColor('blue').fontWeight('bold');
+                label.fontColor('#3C8DBC').fontWeight('bold');
                 break;
             case 'maintenance':
-                label.fontColor('orange').fontWeight('bold');
+                label.fontColor('#003D7E').fontWeight('bold');
                 break;
             case 'offline':
-                label.fontColor('red').fontWeight('bold');
+                label.fontColor('#FF990F').fontWeight('bold');
                 break;
             default:
         }
