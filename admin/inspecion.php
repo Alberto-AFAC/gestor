@@ -318,7 +318,7 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
-    "order": [[4,'asc']],
+    "order": [[4,'desc']],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
