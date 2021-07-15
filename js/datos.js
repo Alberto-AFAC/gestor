@@ -412,6 +412,7 @@ function asignacion(gstIdper) {
                 $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                 $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                 $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                $("#Dtall #gstAreIDasig").val(obj.data[i].gstAreID);  // muestra la dirección
             }
         }
     })
@@ -1525,6 +1526,7 @@ function asignar() {
     var AgstIDuni = document.getElementById('gstIDuni').value;
     var AgstAcReg = document.getElementById('AgstAcReg').value;
 
+
     datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&opcion=asignar';
 
     //alert(datas);
@@ -1560,4 +1562,21 @@ function asignar() {
             }
         });
     }
+}
+
+//.....VISTA DE ELEMENTOS DE ASIGNACIÓN DEL PUESTO AL ELEGIR EL CARGO DE INSPECTOR
+function asiginspec() {
+//alert(d[11]);
+var cargo = document.getElementById('AgstCargo').value; //select cargo
+var datosasig = document.getElementById("funcionemp") //caja de elementos
+//alert(cargo);
+var combo = document.getElementById("AgstCargo");
+var selected = combo.options[combo.selectedIndex].text
+//alert(selected);
+if (selected == "INSPECTOR") {
+    datosasig.style.display = '';
+} else {
+    datosasig.style.display = 'none';
+}
+
 }
