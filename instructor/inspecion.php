@@ -285,6 +285,10 @@ $query = "SELECT * FROM personal
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
+        $fechaActual = date_create(date('Y-m-d')); 
+		    $FechaIngreso = date_create($data['gstFeing']); 
+		    $interval = date_diff($FechaIngreso, $fechaActual,false);  
+		    $antiguedad = intval($interval->format('%R%a')); 
 
       $gstIdper = $data['gstIdper'];
       $result = $data['gstIdper'];
@@ -292,7 +296,11 @@ $resultado = mysqli_query($conexion, $query);
 
       ?>
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php 	if($antiguedad <=30){
+								echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
+							}else {
+								echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
+							}?>","<?php
 
 
                 if($data['gstEvalu'] == 'NO'){
@@ -323,6 +331,7 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     {title: "NOMBRE(S)"},
     {title: "APELLIDO(S)"},
     {title: "CATEGORÍA"},
+    {title: "DETALLES"},
     {title: "ACCIÓN"}
     ],
     });
