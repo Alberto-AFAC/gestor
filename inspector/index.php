@@ -68,7 +68,7 @@
               <strong><i class="fa fa-book margin-r-5"></i>Educación</strong>  
               </a>
               <p class="text-muted">
-                <?php echo $datos[4];?>
+                <?php echo $dato[4];?>
               </p>
 
               <hr>
@@ -76,7 +76,7 @@
               <strong><i class="ion-briefcase margin-r-5"></i>Experiencia Laboral</strong>
               </a>
 
-              <p class="text-muted"><?php echo $datos[5]; ?></p>
+              <p class="text-muted"><?php echo $dato[5]; ?></p>
              
 <!--               <strong><i class="fa fa-pencil margin-r-5"></i>Habilidades</strong>
               <a href="#" class="btn ion-edit"><b></b></a>
