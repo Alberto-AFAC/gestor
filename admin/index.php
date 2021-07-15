@@ -293,7 +293,7 @@ include('header.php');
         // The data used in this sample can be obtained from the CDN
         // https://cdn.anychart.com/samples/gantt-charts/server-status-list/data.json
         anychart.data.loadJsonFile(
-            'https://cdn.anychart.com/samples/gantt-charts/server-status-list/_data.json',
+            'https://localhost/gestor/php/lisCursoGanntt.php', 
             function(data) {
                 // create data tree on our data
                 var treeData = anychart.data.tree(data, 'as-table');
@@ -357,44 +357,45 @@ include('header.php');
                     .labelsOverrider(labelTextSettingsOverrider)
                     .labels()
                     .format(function() {
-                        return this.name;
+                        return this.item.get('gstTitlo') || '';
+
                     });
 
                 // set first column settings
                 var secondColumn = dataGrid.column(2);
                 secondColumn.labels().hAlign('right');
                 secondColumn
-                    .title('Tipo')
+                    .title('Fecha Inicio')
                     .width(60)
                     .labelsOverrider(labelTextSettingsOverrider)
                     .labels()
                     .format(function() {
-                        return this.item.get('online') || '';
+                        return this.item.get('fcurso') || '';
                     });
 
                 // set first column settings
                 var thirdColumn = dataGrid.column(3);
                 thirdColumn.labels().hAlign('right');
                 thirdColumn
-                    .title('Modalidad')
+                    .title('Fecha final')
                     .width(60)
                     .labelsOverrider(labelTextSettingsOverrider)
                     .labels()
                     .format(function() {
-                        return this.item.get('maintenance') || '';
+                        return this.item.get('fechaf') || '';
                     });
 
-                // set first column settings
-                var fourthColumn = dataGrid.column(4);
-                fourthColumn.labels().hAlign('right');
-                fourthColumn
-                    .title('Proceso')
-                    .width(60)
-                    .labelsOverrider(labelTextSettingsOverrider)
-                    .labels()
-                    .format(function() {
-                        return this.item.get('offline') || '';
-                    });
+                // // set first column settings
+                // var fourthColumn = dataGrid.column(4);
+                // fourthColumn.labels().hAlign('right');
+                // fourthColumn
+                //     .title('Proceso')
+                //     .width(60)
+                //     .labelsOverrider(labelTextSettingsOverrider)
+                //     .labels()
+                //     .format(function() {
+                //         return this.item.get('offline') || '';
+                //     });
 
                 // set container id for the chart
                 chart.container('container');
