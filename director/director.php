@@ -37,7 +37,6 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <script type="text/javascript" src="../js/director.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -260,7 +259,7 @@ include('header.php');
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <script src="../js/status.js"></script>
-
+<script type="text/javascript" src="../js/director.js"></script>
 </body>
 </html>
 
