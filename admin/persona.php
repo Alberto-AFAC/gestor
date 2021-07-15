@@ -125,7 +125,8 @@ include('header.php');
                       <div class="col-sm-12">
                         <label>DIRECCIÓN EJECUTIVA </label>         
                         <input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstAreIDasig" disabled="">
-                      </div>          
+                      </div>  
+          
                     </div>
                     <div class="form-group">
                           <div class="col-sm-12">
