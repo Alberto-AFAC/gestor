@@ -79,79 +79,68 @@ include('header.php');
 </div>
 
 
-<div class="modal fade" id='modal-asignar'>
-<div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title">ASIGANCIÓN DEL PUESTO</h4>
-</div>
+  <div class="modal fade" id='modal-asignar'>
+    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">ASIGANCIÓN DEL PUESTO</h4>
+          </div>
 
-<div class="modal-body">
-<form id="Dtall" class="form-horizontal" action="" method="POST" >
-<input type="hidden" name="gstIdper" id="gstIdper">
-<div class="form-group">
-<div class="col-sm-4">
-<label>NOMBRE(S)</label>
-<input type="text"onkeyup="mayus(this);"class="form-control disabled" id="gstNombr" disabled="">
-</div>
-
-<div class="col-sm-4">
-<label>APELLIDO(S)</label>
-<input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstApell" disabled="">
-</div>
-
-<div class="col-sm-4">
-<label>CARGO</label>
-<select type="text" class="form-control" id="AgstCargo" name="AgstCargo">
-<option value="">SELECCIONA EL CARGO</option>
-<option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-<option value="COORDINADOR">COORDINADOR</option>
-<option value="INSPECTOR">INSPECTOR</option>
-<option value="INSTRUCTOR">INSTRUCTOR</option>
-
-
-</select>
-</div>
-</div>
-                <div class="form-group">
-                    <div class="col-sm-4">
+          <div class="modal-body">
+              <form id="Dtall" class="form-horizontal" action="" method="POST" >
+                <input type="hidden" name="gstIdper" id="gstIdper">
+                
+                    <div class="form-group">
+                      <div class="col-sm-4">
+                        <label>NOMBRE(S)</label>
+                        <input type="text"onkeyup="mayus(this);"class="form-control disabled" id="gstNombr" disabled="">
+                      </div>
+                      <div class="col-sm-4">
+                        <label>APELLIDO(S)</label>
+                        <input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstApell" disabled="">
+                      </div>
+                      <div class="col-sm-4">
+                        <label>CARGO</label>
+                        <select type="text" class="form-control" id="AgstCargo" name="AgstCargo"  onchange="asiginspec()">
+                          <option value="">SELECCIONA EL CARGO</option>
+                          <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+                          <option value="COORDINADOR">COORDINADOR</option>
+                          <option value="INSPECTOR">INSPECTOR</option>
+                          <option value="INSTRUCTOR">INSTRUCTOR</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-4">
                         <div class="input-group">
                           <H4><i class="fa fa-dot-circle-o"></i><label> INFORMACIÓN DE ADSCRIPCIÓN </label>
                           </H4>
                         </div>
+                      </div>
                     </div>
-                </div>
-                <div class="form-group">
-                <div class="col-sm-12">
-                   <label>DIRECCIÓN EJECUTIVA </label>         
-                      <select style="width: 100%" class="form-control" class="selectpicker"  disabled="" name="gstAreID"  id="gstAreID" type="text" data-live-search="true" >
-                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
-                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
-                      <?php endwhile; ?>
-                      </select>
-                    </div>          
-                </div>
-                <div class="form-group">
-                <div class="col-sm-12">
-                   <label>DIRECCIÓN </label>         
-                      <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección"  id="gstdirección" type="text" data-live-search="true" >                   
-                      <option value="">SELECCIONE LA DIRECCIÓN</option> 
-                      </select>
-                    </div>          
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-12">
-                        <label>SUBDIRECCIÓN</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion" id="gstsundireccion" type="text" data-live-search="true" >
-                         <option value="">SELECCIONE LA SUBDIRECCIÓN</option>                       
-                       </select>
-                    </div>                  
-                  </div>     
-                  <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-12">
+                    <div class="form-group"  >
+                      <div class="col-sm-12">
+                        <label>DIRECCIÓN EJECUTIVA </label>         
+                        <input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstAreIDasig" disabled="">
+                      </div>          
+                    </div>
+                    <div class="form-group">
+                          <div class="col-sm-12">
+                            <label>DIRECCIÓN A</label>
+                          <div id="categoria"></div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <label>SUB DIRECCIÓN A</label>
+                            <div id="subcategoria"></div>
+                          </div>
+                        </div>
+                    <div class="form-group">
+                     <div class="col-sm-offset-0 col-sm-12">
                         <label>DEPARTAMENTO</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
                          <option value="">SELECCIONE EL DEPARTAMENTO</option> 
@@ -160,72 +149,70 @@ include('header.php');
                          <?php endwhile; ?>
                        </select>
                     </div>                  
-                  </div>   
-<div class="form-group">
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                          <H4><i class="fa   fa-suitcase"></i>
-                          <label> FUNCIÓN DEL EMPLEADO </label></H4>
+                </div>   
+<!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
+                  <div class="box" id="funcionemp" style="display: none" >
+                        <div class="form-group">
+                          <div class="col-sm-4" >
+                            <div class="input-group">
+                              <H4><i class="fa   fa-suitcase"></i>
+                              <label> FUNCIÓN DEL EMPLEADO </label></H4>
+                            </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-<div class="form-group">
-<div class="col-sm-12">
-<label>CATEGORÍA</label>
-<div id="categoria"></div>
-</div>
-</div>
+                        <!-- multiselec -->
+                        <div class="form-group">
+                        <div class="col-md-12">
+                          <label>ESPECIALIDADES</label>  
+                            <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                              style="width:100%;color:#000;" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
+                              <?php while($cat = mysqli_fetch_row($categs)):?>                      
+                               <option  value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                              <?php endwhile; ?>                
+                            </select>
+                        </div>
+                        </div>
+                        <!-- multiselec -->
+                        <div class="form-group">
+                          <div class="col-sm-4">
+                            <label>SELECCIONE COMANDANCIA</label>
+                         <div id="comandan"></div>                            
+                        </div>
+                          <div class="col-sm-8">
+                            <label>SELECCIONE AEROPUERTOS</label>
+                              <div id="select3"></div> 
+                              </div>
+                          </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-0 col-sm-12">
+                            <label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label> 
+                              <select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
+                                 <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
+                                 <option value="CIAAC">CIAAC</option> 
+                                 <option value="FLORES">LAS FLORES</option> 
+                                 <option value="ANGAR8">ANGAR 8</option> 
+                                 <option value="LICENCIA">LICENCIAS</option>
+                              </select>
+                          </div>
+                        </div>
+                  </div>
+<!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
+                        <div class="form-group"><br>
+                          <div class="col-sm-offset-0 col-sm-5">
+                            <button type="button" id="button" class="btn btn-info" onclick="asignar();">ACEPTAR</button>
+                          </div>
+                             <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
 
-<div class="form-group">
-<div class="col-sm-12">
-<label>SUB CATEGORÍA</label>
-<div id="subcategoria"></div>
-</div>
-</div>
+                             <b><p class="alert alert-success text-center padding exito" id="succe2">¡Se asignó con éxito!</p></b>
 
-<div class="form-group">
-<div class="col-sm-4">
-<label>SELECCIONE COMANDANCIA</label>
-<div id="comandan"></div>                            
-</div>
-<div class="col-sm-8">
-<label>SELECCIONE AEROPUERTOS</label>
-<div id="select3"></div> 
-</div>
-</div>
-
-
-
-<div class="form-group">
-<div class="col-sm-offset-0 col-sm-12">
-<label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label>
-<select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
-<option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
-<option value="CIAAC">CIAAC</option> 
-<option value="FLORES">LAS FLORES</option> 
-<option value="ANGAR8">ANGAR 8</option> 
-<option value="LICENCIA">LICENCIAS</option>
-</select>
-</div>
-</div>
-
-<div class="form-group"><br>
-<div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" class="btn btn-info" onclick="asignar();">ACEPTAR</button>
-</div>
-<b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
-
-<b><p class="alert alert-success text-center padding exito" id="succe2">¡Se asignó con éxito!</p></b>
-
-<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b>
-</div>
-</form>    
-</div>
-</div>
-</div>
-</div>
-</div>
-
+                             <b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b>
+                          </div>
+              </form>    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <?php include('agrStdPro.php');?>
 
@@ -335,3 +322,11 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
 
 </script>
 
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function(){
+$('#gstPrfil').select2();
+
+}); 
+</script>
+<script src="../js/select2.js"></script> 
