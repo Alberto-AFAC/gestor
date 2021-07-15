@@ -130,14 +130,22 @@ include('header.php');
                     </div>
                     <div class="form-group">
                           <div class="col-sm-12">
-                            <label>DIRECCIÓN A</label>
-                          <div id="categoria"></div>
+                            <label>DIRECCIÓN</label>
+                            <select type="text" class="form-control" id="gsdireccion" name="gsdireccion">
+                                <option value="value1">Value 1</option>
+                                <option value="value2" selected>Value 2</option>
+                                <option value="value3">Value 3</option>
+                            </select>
                         </div>
                         </div>
-                        <div class="form-group">
+                    <div class="form-group">
                           <div class="col-sm-12">
-                            <label>SUB DIRECCIÓN A</label>
-                            <div id="subcategoria"></div>
+                            <label>SUB DIRECCIÓN</label>
+                            <select type="text" class="form-control" id="gssubdireccion" name="gssubdireccion">
+                                <option value="value1">Value 1</option>
+                                <option value="value2" selected>Value 2</option>
+                                <option value="value3">Value 3</option>
+                            </select>
                           </div>
                         </div>
                     <div class="form-group">
@@ -161,6 +169,18 @@ include('header.php');
                               <label> FUNCIÓN DEL EMPLEADO </label></H4>
                             </div>
                           </div>
+                        </div>
+                        <div class="form-group" style="display: none">
+                          <div class="col-sm-12">
+                            <label>ESPECIALIDAD PRINCIPAL B</label>
+                            <div  id="subcategoria"></div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <label>ESPECIALIDAD PRINCIPAL</label>
+                          <div id="categoria"></div>
+                        </div>
                         </div>
                         <!-- multiselec -->
                         <div class="form-group">
