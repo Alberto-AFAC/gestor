@@ -407,12 +407,11 @@ function asignacion(gstIdper) {
         for (i = 0; i < res.length; i++) {
 
             if (obj.data[i].gstIdper == gstIdper) {
-
                 // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
                 $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                 $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                 $("#Dtall #gstApell").val(obj.data[i].gstApell);
-                $("#Dtall #gstAreIDasig").val(obj.data[i].gstAreID);  // muestra la dirección
+                $("#Dtall #gstAreIDasig").val(obj.data[i].gstAreID); //ID área
             }
         }
     })

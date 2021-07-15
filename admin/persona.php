@@ -144,6 +144,7 @@ include('header.php');
                         <label>DEPARTAMENTO</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
                          <option value="">SELECCIONE EL DEPARTAMENTO</option> 
+                         <option value="">DEPARTAMENTO DE INSPECCIÓN</option>
                          <?php while($rea = mysqli_fetch_row($are)):?>                      
                          <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
                          <?php endwhile; ?>
