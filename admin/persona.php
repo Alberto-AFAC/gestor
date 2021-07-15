@@ -132,9 +132,9 @@ include('header.php');
                           <div class="col-sm-12">
                             <label>DIRECCIÓN</label>
                             <select type="text" class="form-control" id="gsdireccion" name="gsdireccion">
-                                <option value="value1">Value 1</option>
-                                <option value="value2" selected>Value 2</option>
-                                <option value="value3">Value 3</option>
+                                <option value="value1">SELECCIONA LA DIRECCIÓN</option>
+                                <option value="value2">DIRECCIÓN DE SEGURIDAD AÉREA</option>
+                                <option value="value3">DIRECCIÓN DE VERIFICACIÓN AEROPORTUARIA</option>
                             </select>
                         </div>
                         </div>
@@ -142,9 +142,9 @@ include('header.php');
                           <div class="col-sm-12">
                             <label>SUB DIRECCIÓN</label>
                             <select type="text" class="form-control" id="gssubdireccion" name="gssubdireccion">
-                                <option value="value1">Value 1</option>
-                                <option value="value2" selected>Value 2</option>
-                                <option value="value3">Value 3</option>
+                                <option value="value1">SELECCIONA LA SUB DIRECCIÓN</option>
+                                <option value="value2">SUBDIRECCIÓN DE SEGURIDAD AÉREA</option>
+                                <option value="value3">SUBDIRECCIÓN DE NORMAS</option>
                             </select>
                           </div>
                         </div>
