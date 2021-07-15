@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Gestor de Inspectores|Perfil Inspector</title>
-
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
