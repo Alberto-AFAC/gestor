@@ -128,52 +128,17 @@ include('header.php');
                       </div>          
                     </div>
                     <div class="form-group">
-                      <div class="col-sm-12">
-                        <label>DIRECCIÓN </label>         
-                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección"  id="gstdirección" type="text" data-live-search="true" >                   
-                          <option value="">SELECCIONE LA DIRECCIÓN</option> 
-                          <option value="">DIRECCIÓN DE SEGURIDAD AÉREA</option> 
-                          <option value="">DIRECCIÓN DE VERIFICACIÓN AEROPORTUARIA</option> 
-                          <option value="">DIRECCIÓN DE SEGURIDAD DE LA AVIACIÓN CIVIL</option> 
-                          <option value="">DIRECCIÓN DE AEROPUERTOS</option> 
-                          <option value="">DIRECCIÓN DE CERTIFICACIÓN DE LICENCIAS</option> 
-                          <option value="">COMANDANCIA GENERAL DEL AICM</option> 
-                          <option value="">COMANDANCIA DE AEROPUERTO</option> 
-                          <option value="">COMANDANCIA REGIONAL I, II, III, IV, V Y VI</option> 
-                          <option value="">DIRECCIÓN DE AVIACIÓN</option> 
-                          <option value="">DIRECCIÓN DE INGENIERÍA, NORMAS Y CERTIFICACIÓN</option> 
-                          <option value="">DIRECCIÓN DE TARIFAS</option> 
-                        </select>
-                      </div>          
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-0 col-sm-12">
-                        <label>SUBDIRECCIÓN</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion" id="gstsundireccion" type="text" data-live-search="true" >
-                          <option value="">SELECCIONE LA SUBDIRECCIÓN</option>   
-                          <option value="">SUBDIRECCIÓN DE SEGURIDAD AÉREA</option>     
-                          <option value="">SUBDIRECCIÓN DE NORMAS</option>      
-                          <option value="">SUBDIRECCIÓN DE CERTIFICACIÓN DE LICENCIAS</option>
-                          <option value="">SUBDIRECCIÓN DE CERTIFICACIÓN SMS</option>
-                          <option value="">SUBDIRECCIÓN DE VIGILANCIA SMS</option>
-                          <option value="">SUBDIRECCIÓN SSP</option>
-                          <option value="">SUBDIRECCIÓN DE SOPORTE OPERATIVO</option>
-                          <option value="">SUBDIRECCIÓN "A, B, C, D" DE VERIFICACIÓN AEROPORTUARIA</option>
-                          <option value="">SUBDIRECCIÓN DE AEROPUERTOS Y SERVICIOS</option>
-                          <option value="">SUBDIRECCIÓN DE INFRAESTRUCTURA</option>
-                          <option value="">SUBDIRECCIÓN DE EVALUACIÓN DE PROGRAMAS MAESTROS DE DESARROLLO</option>
-                          <option value="">SUBDIRECCIÓN DE LICENCIAS FORÁNEAS</option>
-                          <option value="">SUBDIRECCIÓN DE ESCUELAS</option>
-                          <option value="">SUBDIRECCIÓN DE EXÁMENES</option>
-                          <option value="">SUBDIRECCIÓN DE AVIACIÓN</option>
-                          <option value="">SUBDIRECCIÓN DE AERONAVEGABILIDAD</option>
-                          <option value="">SUBDIRECCIÓN DE CERTIFICACIÓN DE AERONAVES, MOTORES Y HÉLICE</option>
-                          <option value="">SUBDIRECCIÓN DE INGENIERÍA DE CERTIFICACIÓN</option>
-                          <option value="">SUBDIRECCIÓN DE INGENIERÍA DE NORMAS</option>
-                          <option value="">SUBDIRECCIÓN DE AVIACIÓN GENERAL</option>
-                        </select>
-                      </div>                  
-                    </div>     
+                          <div class="col-sm-12">
+                            <label>DIRECCIÓN A</label>
+                          <div id="categoria"></div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <label>SUB DIRECCIÓN A</label>
+                            <div id="subcategoria"></div>
+                          </div>
+                        </div>
                     <div class="form-group">
                      <div class="col-sm-offset-0 col-sm-12">
                         <label>DEPARTAMENTO</label>
@@ -195,18 +160,19 @@ include('header.php');
                             </div>
                           </div>
                         </div>
+                        <!-- multiselec -->
                         <div class="form-group">
-                          <div class="col-sm-12">
-                            <label>CATEGORÍA</label>
-                          <div id="categoria"></div>
+                        <div class="col-md-12">
+                          <label>ESPECIALIDADES</label>  
+                            <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                              style="width:100%;color:#000;" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
+                              <?php while($cat = mysqli_fetch_row($categs)):?>                      
+                               <option  value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                              <?php endwhile; ?>                
+                            </select>
                         </div>
                         </div>
-                        <div class="form-group">
-                          <div class="col-sm-12">
-                            <label>SUB CATEGORÍA</label>
-                            <div id="subcategoria"></div>
-                          </div>
-                        </div>
+                        <!-- multiselec -->
                         <div class="form-group">
                           <div class="col-sm-4">
                             <label>SELECCIONE COMANDANCIA</label>
@@ -356,3 +322,11 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
 
 </script>
 
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function(){
+$('#gstPrfil').select2();
+
+}); 
+</script>
+<script src="../js/select2.js"></script> 
