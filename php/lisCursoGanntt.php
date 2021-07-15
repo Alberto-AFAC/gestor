@@ -11,7 +11,16 @@ header('Content-Type: application/json');
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
 
-			$arreglo[] = $data; 
+
+	$gstTitlo = $data['gstTitlo'];
+
+	//$start = strtotime($data['fcurso'].''.$data['hcurso']) * 1000;
+
+//			$arreglo[] = $data; 
+			 $arreglo[] = array('gstTitlo'=> $gstTitlo, 'stroke'=> 'none','file'=>'orange', 'start' => '1201795200000', 'end' => '1201934640000','maintenance'=>'20%');
+	
+
+
 		}
 		if(isset($arreglo)&&!empty($arreglo)){
 
@@ -25,5 +34,4 @@ header('Content-Type: application/json');
 		mysqli_close($conexion);
 
 ?>
-
 
