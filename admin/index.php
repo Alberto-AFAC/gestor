@@ -361,28 +361,28 @@ include('header.php');
                     });
 
                 // set first column settings
-                var secondColumn = dataGrid.column(2);
-                secondColumn.labels().hAlign('right');
-                secondColumn
-                    .title('Fecha inicio')
-                    .width(60)
-                    .labelsOverrider(labelTextSettingsOverrider)
-                    .labels()
-                    .format(function() {
-                        return this.item.get('online') || '';
-                    });
+                // var secondColumn = dataGrid.column(2);
+                // secondColumn.labels().hAlign('right');
+                // secondColumn
+                //     .title('Fecha inicio')
+                //     .width(60)
+                //     .labelsOverrider(labelTextSettingsOverrider)
+                //     .labels()
+                //     .format(function() {
+                //         return this.item.get('online') || '';
+                //     });
 
                 // set first column settings
-                var thirdColumn = dataGrid.column(3);
-                thirdColumn.labels().hAlign('right');
-                thirdColumn
-                    .title('Fecha Termino')
-                    .width(60)
-                    .labelsOverrider(labelTextSettingsOverrider)
-                    .labels()
-                    .format(function() {
-                        return this.item.get('maintenance') || '';
-                    });
+                // var thirdColumn = dataGrid.column(3);
+                // thirdColumn.labels().hAlign('right');
+                // thirdColumn
+                //     .title('Fecha Termino')
+                //     .width(60)
+                //     .labelsOverrider(labelTextSettingsOverrider)
+                //     .labels()
+                //     .format(function() {
+                //         return this.item.get('maintenance') || '';
+                //     });
 
                 // set first column settings
                 // var fourthColumn = dataGrid.column(4);
