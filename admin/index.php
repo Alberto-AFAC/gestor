@@ -293,7 +293,7 @@ include('header.php');
         // The data used in this sample can be obtained from the CDN
         // https://cdn.anychart.com/samples/gantt-charts/server-status-list/data.json
         anychart.data.loadJsonFile(
-            'https://localhost/gestor/php/lisCursoGanntt.php', 
+            'js/datos.json',
             function(data) {
                 // create data tree on our data
                 var treeData = anychart.data.tree(data, 'as-table');
@@ -357,35 +357,34 @@ include('header.php');
                     .labelsOverrider(labelTextSettingsOverrider)
                     .labels()
                     .format(function() {
-                        return this.item.get('gstTitlo') || '';
-
+                        return this.name;
                     });
 
                 // set first column settings
                 var secondColumn = dataGrid.column(2);
                 secondColumn.labels().hAlign('right');
                 secondColumn
-                    .title('Fecha Inicio')
+                    .title('Fecha inicio')
                     .width(60)
                     .labelsOverrider(labelTextSettingsOverrider)
                     .labels()
                     .format(function() {
-                        return this.item.get('fcurso') || '';
+                        return this.item.get('online') || '';
                     });
 
                 // set first column settings
                 var thirdColumn = dataGrid.column(3);
                 thirdColumn.labels().hAlign('right');
                 thirdColumn
-                    .title('Fecha final')
+                    .title('Fecha Termino')
                     .width(60)
                     .labelsOverrider(labelTextSettingsOverrider)
                     .labels()
                     .format(function() {
-                        return this.item.get('fechaf') || '';
+                        return this.item.get('maintenance') || '';
                     });
 
-                // // set first column settings
+                // set first column settings
                 // var fourthColumn = dataGrid.column(4);
                 // fourthColumn.labels().hAlign('right');
                 // fourthColumn
