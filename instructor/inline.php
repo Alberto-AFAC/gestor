@@ -84,7 +84,7 @@
         <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">IVA DE OPERACIONES</span>
-                    <span class="progress-number"><b><?php echo $row['AERODROMOS'] ?></b>/<?php echo $row['OPERACIONES'] ?></span>
+                    <span class="progress-number"><b><?php echo $row['OPERACIONES'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
                   <div class="progress sm">
                         <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['OPERACIONESP'] ?>%"></div>
                         </div>
