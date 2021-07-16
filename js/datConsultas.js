@@ -627,13 +627,9 @@ $.ajax({
 function resultado(result){
 
  var d=result.split("*");
-
     gstIdper = d[0];
-
     $("#Result #evalu_nombre").val(d[1]);
     $("#Result #evalu_categr").val(d[2]);
-
-
   $.ajax({
     url:'../php/conResult.php',
     type:'POST'
@@ -641,17 +637,12 @@ function resultado(result){
         obj = JSON.parse(resp);
         var res = obj.data;  
         var x = 1;
-
-
            // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
             html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>ESTADO</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
             for(E=0; E<res.length;E++){
             x++;
-
             if(obj.data[E].gstIDins == gstIdper){
-
                 //if(obj.data[E].gstOrden==1){    
-
                 if(obj.data[E].gstCmpli== 'NO'){    
                 html +="<input type='hidden' name='gstInspr[]' id='gstInspr' value='"+gstIdper+"'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td><span class='label label-danger'>NO CUMPLE</span></td><td>"+obj.data[E].gstComen+"</td><td><input id='eval' name='eval[]' value='1'> </td></tr>";
                    }else if(obj.data[E].gstCmpli== 'SI'){
@@ -665,9 +656,6 @@ function resultado(result){
         html +='</tbody></table></div>';
         $("#rsltad").html(html);  
     })
-
-
-
 }
 
 

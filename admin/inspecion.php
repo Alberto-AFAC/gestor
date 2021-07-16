@@ -82,7 +82,7 @@
     <section class="content">
 
 <!-- row -->
-  <?php include('inline.html'); ?>
+  <?php include('inline.php'); ?> <!-- aquii le dddddddddddddddddddddddddddddddddcambiaste-->
 
             <!-- /FIN DE INDICADORES -->
             <div class="box-body">

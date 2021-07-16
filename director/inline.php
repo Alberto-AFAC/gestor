@@ -1,5 +1,4 @@
-
-
+<?php include ("../conexion/conexion.php");?>
 <div class="row">
   <div class="col-xs-12">
     <!-- jQuery Knob -->
@@ -18,69 +17,83 @@
       <!-- /.box-header -->
       <div class="box-body" style="display: none;">
         <div class="row">
+        <?php 
+                                $query ="SELECT
+                                'total',
+                                COUNT( CASE WHEN gstIDCat = '1' THEN 1 END ) AS IVALICENCIAS,
+                                COUNT( CASE WHEN gstIDCat = '6' THEN 1 END ) AS IVANAVEGACIONA,
+                                COUNT( CASE WHEN gstIDCat = '8' THEN 1 END ) AS SISOPERA,
+                                COUNT( CASE WHEN gstIDCat = '7' THEN 1 END ) AS AERODROMOS,
+                                COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) AS OPERACIONES,
+                                COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS INSPECTOR,
+                                COUNT( CASE WHEN gstIDCat = '1' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS IVALICENCIASP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '6' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS IVANAVEGACIONAP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '8' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS SISOPERAP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '7' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS AERODROMOSP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS OPERACIONESP /*PORCENTAJE*/
+                            FROM
+                                personal";
+                                $resultado = mysqli_query($conexion, $query);
+                                $row = mysqli_fetch_assoc($resultado);
+                                ?>
 
-
+<div  class="col-sm-offset-1 col-md-10">
+            <div class="progress-group">
+                    <span class="progress-text">IVA DE LICENCIAS</span>
+                    <span class="progress-number"><b><?php echo $row['IVALICENCIAS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
+                  <div class="progress sm">
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVALICENCIASP'] ?>%"></div>
+                        </div>
+                  </div>
+            </div>  
         <div  class="col-sm-offset-1 col-md-10">
-    <div class="progress-group">
-            <span class="progress-text">IVA DE LICENCIAS</span>
-            <span class="progress-number"><b>200</b>/400</span>
-          <div class="progress sm">
-                <div class="progress-bar progress-bar-blue" style="width: 50%"></div>
-                </div>
-          </div>
-    </div>  
-          <!-- ./col -->
-          <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">IVA DE NAVEGACIÓN AÉREA</span>
-                    <span class="progress-number"><b>310</b>/400</span>
+                    <span class="progress-number"><b><?php echo $row['IVANAVEGACIONA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
                   <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: 77%"></div>
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVANAVEGACIONAP'] ?>%"></div>
                         </div>
                   </div>
             </div>  
-          <!-- ./col -->
-          <div  class="col-sm-offset-1 col-md-10">
+        <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</span>
-                    <span class="progress-number"><b>220</b>/400</span>
+                    <span class="progress-number"><b><?php echo $row['SISOPERA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
                   <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: 55%"></div>
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['SISOPERAP'] ?>%"></div>
                         </div>
                   </div>
             </div>  
-          <!-- ./col -->
-
-          <!-- ./col -->
-          <div  class="col-sm-offset-1 col-md-10">
+            
+        <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">IVA DE AERÓDROMOS</span>
-                    <span class="progress-number"><b>20</b>/400</span>
+                    <span class="progress-number"><b><?php echo $row['AERODROMOS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
                   <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: 5%"></div>
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['AERODROMOSP'] ?>%"></div>
                         </div>
                   </div>
             </div>  
-          <!-- ./col -->
-          <div  class="col-sm-offset-1 col-md-10">
+        <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">IVA DE OPERACIONES</span>
-                    <span class="progress-number"><b>350</b>/400</span>
+                    <span class="progress-number"><b><?php echo $row['OPERACIONES'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
                   <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: 87%"></div>
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['OPERACIONESP'] ?>%"></div>
                         </div>
                   </div>
             </div>  
-          <!-- ./col -->
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <!-- /.col -->
-</div>
+        
 
 <!-- ./wrapper -->
 
