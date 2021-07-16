@@ -19,13 +19,10 @@
             <div class="box-body" style="display: none;">
                 <div class="row">
                   
-        <div class="zoom col-lg-3 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <img src="../dist/img/licencia.svg" width="60px" alt="IVA-LICENCIAS" class="img-fluid">
-                        </div>
+           
+                
+                    
+                        
                         <?php 
                                 $query ="SELECT
                                 'total',
@@ -33,82 +30,66 @@
                                 COUNT( CASE WHEN gstIDCat = '6' THEN 1 END ) AS IVANAVEGACIONA,
                                 COUNT( CASE WHEN gstIDCat = '8' THEN 1 END ) AS SISOPERA,
                                 COUNT( CASE WHEN gstIDCat = '7' THEN 1 END ) AS AERODROMOS,
-                                COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) AS OPERACIONES
-                                
+                                COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) AS OPERACIONES,
+                                COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS INSPECTOR,
+                                COUNT( CASE WHEN gstIDCat = '1' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS IVALICENCIASP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '6' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS IVANAVEGACIONAP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '8' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS SISOPERAP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '7' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS AERODROMOSP, /*PORCENTAJE*/
+                                COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) * 100 / COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS OPERACIONESP /*PORCENTAJE*/
                             FROM
                                 personal";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
                                 ?>
-                        <div class="col-xs-9 text-right text-primary">
-                            <div class="huge"><?php echo $row['IVALICENCIAS'] ?></div>
-                            <div>IVA DE LICENCIAS</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="zoom col-lg-3 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                        <img src="../dist/img/avion.svg" width="60px" alt="IVA-LICENCIAS" class="img-fluid">
-                        </div>
-                        <div class="col-xs-9 text-right text-primary">
-                            <div class="huge"><?php echo $row['IVANAVEGACIONA'] ?></div>
-                            <div>IVA DE NAVEGACIÓN AÉREA</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="zoom col-lg-3 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                        <img src="../dist/img/gestion.svg" width="60px" alt="IVA-LICENCIAS" class="img-fluid">
-                        </div>
-                        <div class="col-xs-9 text-right text-primary">
-                            <div class="huge"><?php echo $row['SISOPERA'] ?></div>
-                            <div>IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        
 
-        <div class="zoom col-lg-3 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                        <img src="../dist/img/aerodromo.svg" width="60px" alt="IVA-LICENCIAS" class="img-fluid">
+        <div  class="col-sm-offset-1 col-md-10">
+            <div class="progress-group">
+                    <span class="progress-text">IVA DE LICENCIAS</span>
+                    <span class="progress-number"><b><?php echo $row['IVALICENCIAS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
+                  <div class="progress sm">
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVALICENCIASP'] ?>%"></div>
                         </div>
-                        <div class="col-xs-9 text-right text-primary">
-                            <div class="huge"><?php echo $row['AERODROMOS'] ?></div>
-                            <div>IVA DE AERÓDROMOS</div>
+                  </div>
+            </div>  
+        <div  class="col-sm-offset-1 col-md-10">
+            <div class="progress-group">
+                    <span class="progress-text">IVA DE NAVEGACIÓN AÉREA</span>
+                    <span class="progress-number"><b><?php echo $row['IVANAVEGACIONA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
+                  <div class="progress sm">
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVANAVEGACIONAP'] ?>%"></div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="zoom col-lg-3 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                        <img src="../dist/img/operaciones.svg" width="60px" alt="IVA-LICENCIAS" class="img-fluid">
+                  </div>
+            </div>  
+        <div  class="col-sm-offset-1 col-md-10">
+            <div class="progress-group">
+                    <span class="progress-text">IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</span>
+                    <span class="progress-number"><b><?php echo $row['SISOPERA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
+                  <div class="progress sm">
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['SISOPERAP'] ?>%"></div>
                         </div>
-                        <div class="col-xs-9 text-right text-primary">
-                            <div class="huge"><?php echo $row['OPERACIONES'] ?></div>
-                            <div>IVA DE OPERACIONES</div>
+                  </div>
+            </div>  
+            
+        <div  class="col-sm-offset-1 col-md-10">
+            <div class="progress-group">
+                    <span class="progress-text">IVA DE AERÓDROMOS</span>
+                    <span class="progress-number"><b><?php echo $row['AERODROMOS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
+                  <div class="progress sm">
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['AERODROMOSP'] ?>%"></div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                  </div>
+            </div>  
+        <div  class="col-sm-offset-1 col-md-10">
+            <div class="progress-group">
+                    <span class="progress-text">IVA DE OPERACIONES</span>
+                    <span class="progress-number"><b><?php echo $row['AERODROMOS'] ?></b>/<?php echo $row['OPERACIONES'] ?></span>
+                  <div class="progress sm">
+                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['OPERACIONESP'] ?>%"></div>
+                        </div>
+                  </div>
+            </div>  
         <!-- <div class="row">
                     <div class="col-sm-offset-1 col-md-2 text-center">
                         <input type="text" class="knob" value="20" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
