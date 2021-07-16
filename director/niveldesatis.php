@@ -57,7 +57,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-          NIVEL DE SÁTISFACCIÓN     
+          NIVEL DE CALIDAD    
       </h1>
     </section>
     <!-- Main content -->
