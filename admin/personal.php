@@ -5,6 +5,7 @@ unset($_SESSION['consulta']);
 ?>
 <html>
 <head>
+<link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Gestor inspectores | Alta de persona</title>
