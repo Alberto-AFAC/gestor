@@ -466,7 +466,7 @@ include('header.php');
     var data = [
       {
         id: '1',
-        name: 'Basicos',
+        name: 'Inducción',
         actualStart: '2019-07-01',
         actualEnd: '2019-08-03',
         children: [
@@ -534,7 +534,301 @@ include('header.php');
           },
           {
             id: '1.3',
-            name: 'Autodigestivo',
+            name: 'Autogestivo',
+            actualStart: '2019-07-10',
+            actualEnd: '2019-07-14',
+            children: [
+              {
+                id: '1.3.1',
+                name: 'Básico Inspector de Exámenes',
+                actualStart: '2019-07-10',
+                actualEnd: '2019-07-13'
+              },
+              {
+                id: '1.3.2',
+                name: 'Básico de Operaciones Tierra',
+                actualStart: '2019-07-14',
+                milestone: {
+                  enabled: true,
+                  markerType: 'diamond',
+                  fill: '#ffd54f',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          
+          
+          
+        ]
+      },
+      {
+        id: '1',
+        name: 'Básico/inicial',
+        actualStart: '2019-07-01',
+        actualEnd: '2019-08-03',
+        children: [
+          {
+            id: '1.1',
+            name: 'A Distancia',
+            actualStart: '2019-07-01',
+            actualEnd: '2019-07-06',
+            children: [
+              {
+                id: '1.1.1',
+                name: 'Legislación Aeronáutica Internacional',
+                actualStart: '2019-07-01',
+                actualEnd: '2019-07-03'
+              },
+              {
+                id: '1.1.2',
+                name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
+                actualStart: '2019-07-05',
+                actualEnd: '2019-07-05',
+                milestone: {
+                  enabled: true,
+                  markerType: 'pentagon',
+                  fill: '#64b5f6',
+                  stroke: '#666'
+                }
+              },
+              {
+                id: '1.1.3',
+                name: 'Inducción a la AFAC',
+                actualStart: '2019-07-06',
+                milestone: {
+                  enabled: true,
+                  markerType: 'pentagon',
+                  fill: '#64b5f6',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          {
+            id: '1.2',
+            name: 'Mixta (Semipresencial)',
+            actualStart: '2019-07-07',
+            actualEnd: '2019-07-11',
+            children: [
+              {
+                id: '1.2.1',
+                name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
+                actualStart: '2019-07-07',
+                actualEnd: '2019-07-10'
+              },
+              {
+                id: '1.2.2',
+                name: 'Legislación Aeronáutica Nacional',
+                actualStart: '2019-07-11',
+                milestone: {
+                  enabled: true,
+                  markerType: 'diamond',
+                  fill: '#ffd54f',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          {
+            id: '1.3',
+            name: 'Autogestivo',
+            actualStart: '2019-07-10',
+            actualEnd: '2019-07-14',
+            children: [
+              {
+                id: '1.3.1',
+                name: 'Básico Inspector de Exámenes',
+                actualStart: '2019-07-10',
+                actualEnd: '2019-07-13'
+              },
+              {
+                id: '1.3.2',
+                name: 'Básico de Operaciones Tierra',
+                actualStart: '2019-07-14',
+                milestone: {
+                  enabled: true,
+                  markerType: 'diamond',
+                  fill: '#ffd54f',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          
+          
+          
+        ]
+      },
+      {
+        id: '1',
+        name: 'Transversales',
+        actualStart: '2019-07-01',
+        actualEnd: '2019-08-03',
+        children: [
+          {
+            id: '1.1',
+            name: 'A Distancia',
+            actualStart: '2019-07-01',
+            actualEnd: '2019-07-06',
+            children: [
+              {
+                id: '1.1.1',
+                name: 'Legislación Aeronáutica Internacional',
+                actualStart: '2019-07-01',
+                actualEnd: '2019-07-03'
+              },
+              {
+                id: '1.1.2',
+                name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
+                actualStart: '2019-07-05',
+                actualEnd: '2019-07-05',
+                milestone: {
+                  enabled: true,
+                  markerType: 'pentagon',
+                  fill: '#64b5f6',
+                  stroke: '#666'
+                }
+              },
+              {
+                id: '1.1.3',
+                name: 'Inducción a la AFAC',
+                actualStart: '2019-07-06',
+                milestone: {
+                  enabled: true,
+                  markerType: 'pentagon',
+                  fill: '#64b5f6',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          {
+            id: '1.2',
+            name: 'Mixta (Semipresencial)',
+            actualStart: '2019-07-07',
+            actualEnd: '2019-07-11',
+            children: [
+              {
+                id: '1.2.1',
+                name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
+                actualStart: '2019-07-07',
+                actualEnd: '2019-07-10'
+              },
+              {
+                id: '1.2.2',
+                name: 'Legislación Aeronáutica Nacional',
+                actualStart: '2019-07-11',
+                milestone: {
+                  enabled: true,
+                  markerType: 'diamond',
+                  fill: '#ffd54f',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          {
+            id: '1.3',
+            name: 'Autogestivo',
+            actualStart: '2019-07-10',
+            actualEnd: '2019-07-14',
+            children: [
+              {
+                id: '1.3.1',
+                name: 'Básico Inspector de Exámenes',
+                actualStart: '2019-07-10',
+                actualEnd: '2019-07-13'
+              },
+              {
+                id: '1.3.2',
+                name: 'Básico de Operaciones Tierra',
+                actualStart: '2019-07-14',
+                milestone: {
+                  enabled: true,
+                  markerType: 'diamond',
+                  fill: '#ffd54f',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          
+          
+          
+        ]
+      },
+      {
+        id: '1',
+        name: 'Recurrentes',
+        actualStart: '2019-07-01',
+        actualEnd: '2019-08-03',
+        children: [
+          {
+            id: '1.1',
+            name: 'A Distancia',
+            actualStart: '2019-07-01',
+            actualEnd: '2019-07-06',
+            children: [
+              {
+                id: '1.1.1',
+                name: 'Legislación Aeronáutica Internacional',
+                actualStart: '2019-07-01',
+                actualEnd: '2019-07-03'
+              },
+              {
+                id: '1.1.2',
+                name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
+                actualStart: '2019-07-05',
+                actualEnd: '2019-07-05',
+                milestone: {
+                  enabled: true,
+                  markerType: 'pentagon',
+                  fill: '#64b5f6',
+                  stroke: '#666'
+                }
+              },
+              {
+                id: '1.1.3',
+                name: 'Inducción a la AFAC',
+                actualStart: '2019-07-06',
+                milestone: {
+                  enabled: true,
+                  markerType: 'pentagon',
+                  fill: '#64b5f6',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          {
+            id: '1.2',
+            name: 'Mixta (Semipresencial)',
+            actualStart: '2019-07-07',
+            actualEnd: '2019-07-11',
+            children: [
+              {
+                id: '1.2.1',
+                name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
+                actualStart: '2019-07-07',
+                actualEnd: '2019-07-10'
+              },
+              {
+                id: '1.2.2',
+                name: 'Legislación Aeronáutica Nacional',
+                actualStart: '2019-07-11',
+                milestone: {
+                  enabled: true,
+                  markerType: 'diamond',
+                  fill: '#ffd54f',
+                  stroke: '#666'
+                }
+              }
+            ]
+          },
+          {
+            id: '1.3',
+            name: 'Autogestivo',
             actualStart: '2019-07-10',
             actualEnd: '2019-07-14',
             children: [
