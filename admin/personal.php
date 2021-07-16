@@ -234,20 +234,18 @@ $psto = mysqli_query($conexion,$sql);
                           <div class="input-group-addon">
                              <i class="fa fa-phone"></i>
                           </div>
-                          <input type="tel" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask id="gstCasa" name="gstCasa">
+                          <input type="text" class="form-control" id="gstCasa" name="gstCasa" placeholder="(55) 5555-5555">
                        </div>     
                     </div> 
-
                     <div class="col-sm-4">
                        <label>CELULAR</label>
                        <div class="input-group">
                           <div class="input-group-addon">
                              <i class="fa fa-phone"></i>
                           </div>
-                          <input type="tel" class="form-control" data-inputmask='"mask": "(99) 999-9999"'  data-mask id="gstClulr" name="gstClulr">
+                          <input type="text" class="form-control" id="gstClulr" name="gstClulr" placeholder="(52) 55-5555-5555">
                        </div>     
                     </div>
-
                     <div class="col-sm-4">
                         <label>EXTENSION Ó NÚMERO TELEFONICO</label>
                         <div class="input-group">
@@ -259,15 +257,17 @@ $psto = mysqli_query($conexion,$sql);
                         </div>
                     </div>
                     </div>
+                   
                     <div class="form-group">
-                    <div class="col-sm-4">
-                         <label>CORREO PERSONAL</label>
+                    <div class="col-sm-4 text-container">
+                         <label>CORREO PERSONAL </label>
                           <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                             <input type="email" class="form-control" placeholder="Correo" id="gstCorro" name="gstCorro">
                           </div>
+                          <span id="emailOK" class="clearBtn"></span>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 ">
                          <label>CORREO INSTITUCIONAL</label>
                           <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -276,7 +276,7 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
                     
       
-                   <br> <br> <br> <br> 
+                   <br> <br> <br> <br> <br>  
                    <div class="form-group">
                     <div class="col-sm-10">
                         <div class="col-sm-offset-0 col-sm-2">
@@ -450,7 +450,7 @@ $psto = mysqli_query($conexion,$sql);
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.phone.extensions.js"></script>
+
 <script src="../../js/valida.js"></script>
  
 </body>
