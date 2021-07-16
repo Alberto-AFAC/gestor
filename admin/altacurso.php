@@ -200,11 +200,8 @@ include ("../conexion/conexion.php");
                       <label>TEMARIO</label>
 
                    <input type="file" id="gstTmrio" name="gstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
-
-
                       </div>
                   </div>   
-         
               <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-primary" onclick="regCurso();">ACEPTAR </button>
@@ -249,14 +246,10 @@ include ("../conexion/conexion.php");
               </div>
               <!-- /.tab-pane 2do panel-->
               <div class="tab-pane" id="timeline">
-                <!-- The timeline -->
-               
+                <!-- The timeline -->       
 </div>
-
-
     <!-- /.tab-pane -->
       <!-- /.row -->
-
     </section>
     <!-- /.content -->
   </div>

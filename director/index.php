@@ -2,10 +2,12 @@
 <html lang="es-ES">
 
 <head>
+
     <meta charset="utf-8">
     <title>
         Dashboard
     </title>
+    
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="images/afac.png" rel="shortcut icon" type="image/png">
