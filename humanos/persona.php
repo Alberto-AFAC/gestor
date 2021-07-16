@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PERSONAL</title>
-
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <title>Gestor inspectores | Personal</title>
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

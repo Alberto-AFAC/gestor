@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Gestor de Inspectores</title>
   <!-- Tell the browser to be responsive to screen width -->

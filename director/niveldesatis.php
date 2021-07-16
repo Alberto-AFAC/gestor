@@ -13,8 +13,8 @@ $inspector = mysqli_query($conexion,$sql);
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <title>Gestor inspectores |Nivel de Calidad</title>
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <title>Gestor inspectores | Nivel de Calidad</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -57,7 +57,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-          NIVEL DE SÁTISFACCIÓN     
+          NIVEL DE CALIDAD    
       </h1>
     </section>
     <!-- Main content -->

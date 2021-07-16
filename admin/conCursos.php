@@ -9,10 +9,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Gestor inspectores |Alta Curso</title>
-
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <title>Gestor inspectores | Catálogo Cursos</title>
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">

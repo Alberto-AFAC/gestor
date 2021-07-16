@@ -10,7 +10,9 @@ include ("../conexion/conexion.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GESTOR DE INSPECTORES |ALTA CURSO</title>
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <title>Gestor inspectores | Alta Curso</title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -200,11 +202,8 @@ include ("../conexion/conexion.php");
                       <label>TEMARIO</label>
 
                    <input type="file" id="gstTmrio" name="gstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
-
-
                       </div>
                   </div>   
-         
               <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-primary" onclick="regCurso();">ACEPTAR </button>
@@ -249,14 +248,10 @@ include ("../conexion/conexion.php");
               </div>
               <!-- /.tab-pane 2do panel-->
               <div class="tab-pane" id="timeline">
-                <!-- The timeline -->
-               
+                <!-- The timeline -->       
 </div>
-
-
     <!-- /.tab-pane -->
       <!-- /.row -->
-
     </section>
     <!-- /.content -->
   </div>
