@@ -1,12 +1,27 @@
-<?php include ("../conexion/conexion.php"); 
+<?php include ("../conexion/conexion.php"); session_start();
+//si la variable ssesion existe realizara las siguiente evaluacion 
+    if (isset($_SESSION['usuario'])) {
+        //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
+        if($_SESSION['usuario']['privilegios'] != "instructor"){
+            //y se redirecciona al directorio que le corresponde
+            header("Location: ../");
+            }
+        }else{
+            //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
+            header('Location: ../');
+        }
+   $id = $_SESSION['usuario']['id_usu'];
+      $sql = 
+       "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
+      INNER JOIN accesos ON id_usu = gstIdper
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
 
-$datos[1]="Sus trámites están en proceso";
-      $datos[2]="";
-      $datos[3]="";
-      $datos[4]="";
-      $datos[5]="";
+      $persona = mysqli_query($conexion,$sql);
+      $datos = mysqli_fetch_row($persona);
 
-  
+//session_start(); 
+unset($_SESSION['consulta']);
+
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
@@ -78,7 +93,7 @@ $datos[1]="Sus trámites están en proceso";
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $datos[1]?></span>
+              <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
             </a>
             <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
               <!-- User image -->
