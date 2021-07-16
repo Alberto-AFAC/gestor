@@ -1,29 +1,23 @@
 <?php include ("../conexion/conexion.php");?>
 <div class="row">
-    <div class="col-xs-12">
-        <!-- jQuery Knob -->
-        <div class="box box-solid">
-            <div class="box-header">
-                <i class="fa fa-bar-chart-o"></i>
+  <div class="col-xs-12">
+    <!-- jQuery Knob -->
+    <div class="box box-solid">
+      <div class="box-header">
+        <i class="fa fa-bar-chart-o"></i>
 
-                <h3 class="box-title"></h3>
+        <h3 class="box-title"></h3>
 
-                <div class="box-tools pull-center">
-                    <button type="button" title="Indicadores" class="btn btn-default btn-sm" data-widget="collapse"><i
-                            class="fa fa-plus"></i>
-                    </button>
+        <div class="box-tools pull-center">
+          <button type="button" title="Indicadores" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
+          </button>
 
-                </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body" style="display: none;">
-                <div class="row">
-                  
-           
-                
-                    
-                        
-                        <?php 
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body" style="display: none;">
+        <div class="row">
+        <?php 
                                 $query ="SELECT
                                 'total',
                                 COUNT( CASE WHEN gstIDCat = '1' THEN 1 END ) AS IVALICENCIAS,
@@ -44,7 +38,7 @@
                                 ?>
                         
 
-        <div  class="col-sm-offset-1 col-md-10">
+                        <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">IVA DE LICENCIAS</span>
                     <span class="progress-number"><b><?php echo $row['IVALICENCIAS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
@@ -90,37 +84,15 @@
                         </div>
                   </div>
             </div>  
-        <!-- <div class="row">
-                    <div class="col-sm-offset-1 col-md-2 text-center">
-                        <input type="text" class="knob" value="20" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-                        <div class="knob-label">IVA DE LICENCIAS.</div>
-                    </div>
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="40" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-                        <div class="knob-label">IVA DE NAVEGACIÓN AÉREA</div>
-                    </div>
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="60" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-
-                        <div class="knob-label">IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</div>
-                    </div>
-
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="80" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-
-                        <div class="knob-label">IVA DE AERÓDROMOS</div>
-                    </div>
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="100" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-
-                        <div class="knob-label">IVA DE OPERACIONES</div>
-                    </div>
-                </div> -->
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.box-body -->
     </div>
-</div>
-<!-- /.box -->
-</div>
-<!-- /.col -->
+    <!-- /.box -->
+  </div>
+  <!-- /.col -->
 </div>
 
 <!-- ./wrapper -->
@@ -138,83 +110,80 @@
 <!-- Sparkline -->
 <!-- page script -->
 <script>
-$(".knob").knob({
-    /*change : function (value) {
-     //console.log("change : " + value);
-     },
-     release : function (value) {
-     console.log("release : " + value);
-     },
-     cancel : function () {
-     console.log("cancel : " + this.value);
-     },*/
-    draw: function() {
+
+
+    $(".knob").knob({
+      /*change : function (value) {
+       //console.log("change : " + value);
+       },
+       release : function (value) {
+       console.log("release : " + value);
+       },
+       cancel : function () {
+       console.log("cancel : " + this.value);
+       },*/
+      draw: function () {
 
         // "tron" case
         if (this.$.data('skin') == 'tron') {
 
-            var a = this.angle(this.cv) // Angle
-                ,
-                sa = this.startAngle // Previous start angle
-                ,
-                sat = this.startAngle // Start angle
-                ,
-                ea // Previous end angle
-                , eat = sat + a // End angle
-                ,
-                r = true;
+          var a = this.angle(this.cv)  // Angle
+              , sa = this.startAngle          // Previous start angle
+              , sat = this.startAngle         // Start angle
+              , ea                            // Previous end angle
+              , eat = sat + a                 // End angle
+              , r = true;
 
-            this.g.lineWidth = this.lineWidth;
+          this.g.lineWidth = this.lineWidth;
 
-            this.o.cursor &&
-                (sat = eat - 0.3) &&
-                (eat = eat + 0.3);
+          this.o.cursor
+          && (sat = eat - 0.3)
+          && (eat = eat + 0.3);
 
-            if (this.o.displayPrevious) {
-                ea = this.startAngle + this.angle(this.value);
-                this.o.cursor &&
-                    (sa = ea - 0.3) &&
-                    (ea = ea + 0.3);
-                this.g.beginPath();
-                this.g.strokeStyle = this.previousColor;
-                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
-                this.g.stroke();
-            }
-
+          if (this.o.displayPrevious) {
+            ea = this.startAngle + this.angle(this.value);
+            this.o.cursor
+            && (sa = ea - 0.3)
+            && (ea = ea + 0.3);
             this.g.beginPath();
-            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
-            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+            this.g.strokeStyle = this.previousColor;
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
             this.g.stroke();
+          }
 
-            this.g.lineWidth = 2;
-            this.g.beginPath();
-            this.g.strokeStyle = this.o.fgColor;
-            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 *
-                Math.PI, false);
-            this.g.stroke();
+          this.g.beginPath();
+          this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+          this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+          this.g.stroke();
 
-            return false;
+          this.g.lineWidth = 2;
+          this.g.beginPath();
+          this.g.strokeStyle = this.o.fgColor;
+          this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+          this.g.stroke();
+
+          return false;
         }
-    }
-});
-/* END JQUERY KNOB */
+      }
+    });
+    /* END JQUERY KNOB */
 
-//INITIALIZE SPARKLINE CHARTS
-$(".sparkline").each(function() {
-    var $this = $(this);
-    $this.sparkline('html', $this.data());
-});
+    //INITIALIZE SPARKLINE CHARTS
+    $(".sparkline").each(function () {
+      var $this = $(this);
+      $this.sparkline('html', $this.data());
+    });
 
+ 
 
+  /**
+   ** Draw the little mouse speed animated graph
+   ** This just attaches a handler to the mousemove event to see
+   ** (roughly) how far the mouse has moved
+   ** and then updates the display a couple of times a second via
+   ** setTimeout()
+   **/
 
-/**
- ** Draw the little mouse speed animated graph
- ** This just attaches a handler to the mousemove event to see
- ** (roughly) how far the mouse has moved
- ** and then updates the display a couple of times a second via
- ** setTimeout()
- **/
 </script>
 </body>
-
 </html>
