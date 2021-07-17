@@ -2,13 +2,19 @@ function validarInput(input) {
 	var curp = input.value.toUpperCase(),
     	resultado = document.getElementById("resultado"),
         valido = "No válido";
-        document.getElementById("resultado").style.color = "red"
-        
+        //document.getElementById("resultado").style.color = "red";
+        //document.getElementById("resultado1").style.display = ""
+        //document.getElementById("resultado").style.display = "none"
+        document.getElementById("labelinval").style.display = ""
+        document.getElementById("labelvalid").style.display = "none"
     if (curpValida(curp)) {
     	valido = "Válido";
         resultado.classList.add("ok");
-        document.getElementById("resultado").style.color = "green";
-    } else {
+       // document.getElementById("resultado").style.color = "green";
+        //document.getElementById("resultado").style.display = ""
+        //document.getElementById("resultado1").style.display = "none"
+        document.getElementById("labelvalid").style.display = ""
+        document.getElementById("labelinval").style.display = "none"
     	resultado.classList.remove("ok");
     }
         
@@ -47,21 +53,20 @@ input.addEventListener('input',function(){
      this.value = this.value.slice(0,5); 
      
 })*/
-//-------------------------------------------RFC------------------------------------------------
 //Función para validar un RFC
 // Devuelve el RFC sin espacios ni guiones si es correcto
 // Devuelve false si es inválido
 // (debe estar en mayúsculas, guiones y espacios intermedios opcionales)
 function rfcValido(rfc, aceptarGenerico = true) {
     const re       = /^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/;
-    var   validado = rfc.match(re);
+    var   validado1 = rfc.match(re);
 
-    if (!validado)  //Coincide con el formato general del regex?
+    if (!validado1)  //Coincide con el formato general del regex?
         return false;
 
     //Separar el dígito verificador del resto del RFC
-    const digitoVerificador = validado.pop(),
-          rfcSinDigito      = validado.slice(1).join(''),
+    const digitoVerificador = validado1.pop(),
+          rfcSinDigito      = validado1.slice(1).join(''),
           len               = rfcSinDigito.length,
 
     //Obtener el digito esperado
@@ -89,6 +94,31 @@ function rfcValido(rfc, aceptarGenerico = true) {
     return rfcSinDigito + digitoVerificador;
 }
 
+
+//Handler para el evento cuando cambia el input
+// -Lleva la RFC a mayúsculas para validarlo
+// -Elimina los espacios que pueda tener antes o después
+function validarInputRF(input) {
+    var rfc         = input.value.trim().toUpperCase(),
+        resultado1   = document.getElementById("resultado1"),
+        valido1;
+        
+    var rfcCorrecto = rfcValido(rfc);   // ⬅️ Acá se comprueba
+  
+    if (rfcCorrecto) {
+    	valido1 = "Válido";
+      resultado1.classList.add("ok");
+      document.getElementById("labelvalidrfc").style.display = ""
+      document.getElementById("labelinvarfc").style.display = "none"
+    } else {labelinvarfc
+    	valido1 = "No válido"
+    	resultado1.classList.remove("ok");
+        document.getElementById("labelvalidrfc").style.display = "none"
+        document.getElementById("labelinvarfc").style.display = ""
+    }
+        
+}
+
 //------------------------------------------------------------------------------------------------
 //mascara para telefono
 document.getElementById('gstCasa').addEventListener('input', function (e) {
@@ -100,18 +130,8 @@ document.getElementById('gstClulr').addEventListener('input', function (e) {
     var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,4})(\d{0,4})/);
     e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
   });
+  //valida telefono con extension
+ 
 
   //vaidar email
 
-  document.getElementById('gstCorro').addEventListener('input', function() {
-    campo = event.target;
-    valido = document.getElementById('emailOK');
-        
-    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    //Se muestra un texto a modo de ejemplo, luego va a ser un icono
-    if (emailRegex.test(campo.value)) {
-      valido.innerText = "válido";
-    } else {
-      valido.innerText = "incorrecto";
-    }
-});

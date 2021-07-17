@@ -123,3 +123,87 @@ height: 45px;
 
 }
 
+.labeldise{
+
+    
+    padding: 4px 0;
+    color: #666;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+}
+.label2{
+
+        display: block;
+        margin: 0 0 10px;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        font-weight: 500 bold;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      
+
+}
+
+.inputalta{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    color: rgb(0, 0, 0);
+    position: static;
+
+    height: 35px;
+    left: 0px;
+    top: 0px;
+    
+    /* Surface overlay */
+    
+    background: rgba(207, 206, 206, 0.116);
+    border-radius: 4px 4px 0px 0px;
+}
+.inputalta:focus {
+	border: 1px solid #0075FF;
+	outline: none;
+	box-shadow: 1px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.iconoInput {
+    color: #0ab142;
+    font-size: 22px;
+    position: absolute;
+    right: 25px;
+    
+    padding-top: 5px;}
+    .inputPadding {
+    padding-right: 40px;}
+
+.botonnet{
+    position: absolute;
+width: 135px;
+height: 35px;
+
+background: linear-gradient(180deg, #0F3F87 0%, #1E3058 100%);
+border-radius: 8px;
+}
+.titulo {
+   
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+
+    /* identical to box height */
+    color: #0C0033;
+    
+}
+
+.altaboton{
+  width: 160px;
+  height: 40px;
+  background: linear-gradient(180deg, #0F3F87 0%, #1E3058 100%);
+  border-radius: 8px;
+}
