@@ -93,15 +93,6 @@ $psto = mysqli_query($conexion,$sql);
                 <!-- Post -->
                 <div class="post">
         <form id="Dtall" class="form-horizontal" action="" method="POST" >
-            <!-- <div class="form-group">
-                <div class="col-sm-4">
-                    <div class="input-group">
-                       <H4><i class="fa  ion-android-person"></i>
-                       <label class="labeldise">DATOS</label></H4>
-                    </div>
-                </div>
-            </div> -->
-
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label class="label2">NOMBRE(S)</label>
@@ -214,7 +205,6 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="hidden" value="0" class="form-control" id="gstNucrt" name="gstNucrt">
                     </div> 
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-4">
                       <div class="input-group">
@@ -223,8 +213,6 @@ $psto = mysqli_query($conexion,$sql);
                       </div>
                     </div>
                 </div>
-                
-
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label class="label2">CALLE</label>
@@ -352,8 +340,6 @@ $psto = mysqli_query($conexion,$sql);
                             <input type="email" class="form-control inputalta" placeholder="correo@sct.gob.mx" id="gstCinst" name="gstCinst">
                           </div>
                     </div>
-                    
-      
                    <br> <br> <br> <br> 
                    <div class="form-group">
                     <div class="col-sm-10">
@@ -382,7 +368,7 @@ $psto = mysqli_query($conexion,$sql);
           </div>
           </div>
           
-<div class="tab-pane" id="timeline">
+      <div class="tab-pane" id="timeline">
                 <!-- The timeline -->
                 <form id="puesto" class="form-horizontal" action="" method="POST" >             
                 <div class="form-group">
@@ -481,9 +467,6 @@ $psto = mysqli_query($conexion,$sql);
 
                 </form>            
 </section>  
-
-
-
   </div>
   <!-- modal de se agrego usuario -->
   <div class="modal fade" id='modal-seagrego'>
