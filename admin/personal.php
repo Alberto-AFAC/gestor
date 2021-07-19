@@ -255,7 +255,43 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="col-sm-4">
                        <label class="label2">ESTADO</label>
-                       <input type="text" style="text-transform:uppercase" class="form-control inputalta" id="gstStado" name="gstStado">
+                       <select type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstStado" name="gstStado">
+                         <option value="">SELECCIONA EL ESTADO</option>
+                         <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+                         <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+                         <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+                         <option value="CAMPECHE">CAMPECHE</option>
+                         <option value="COAHUILA">COAHUILA</option>
+                         <option value="COLIMA">COLIMA</option>
+                         <option value="CHIAPAS">CHIAPAS</option>
+                         <option value="CHIHUAHUA">CHIHUAHUA</option>
+                         <option value="DISTRITO FEDERAL">CUIDAD DE MÉXICO</option>
+                         <option value="DURANGO">DURANGO</option>
+                         <option value="GUANAJUATO">GUANAJUATO</option>
+                         <option value="GUERRERO">GUERRERO</option>
+                         <option value="HIDALGO">HIDALGO</option>
+                         <option value="JALISCO">JALISCO</option>
+                         <option value="MÉXICO">MÉXICO</option>
+                         <option value="MICHOACÁN">MICHOACÁN</option>
+                         <option value="MORELOS">MORELOS</option>
+                         <option value="NAYARIT">NAYARIT</option>
+                         <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+                         <option value="OAXACA">OAXACA</option>
+                         <option value="PUEBLA">PUEBLA</option>
+                         <option value="QUERÉTARO">QUERÉTARO</option>
+                         <option value="QUINTANA ROO">QUINTANA ROO</option>
+                         <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+                         <option value="SINALOA">SINALOA</option>
+                         <option value="SONORA">SONORA</option>
+                         <option value="TABASCO">TABASCO</option>
+                         <option value="TAMAULIPAS">TAMAULIPAS</option>
+                         <option value="TLAXCALA">TLAXCALA</option>
+                         <option value="VERACRUZ">VERACRUZ</option>
+                         <option value="YUCATÁN">YUCATÁN</option>
+                         <option value="ZACATECAS">ZACATECAS</option>
+                         <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
+                         <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
+                     </select>
                     </div>
                 </div>
 
@@ -434,7 +470,7 @@ $psto = mysqli_query($conexion,$sql);
    
                 <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-2">
-                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton" onclick="registrar();">ACEPTAR</button>
+                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrar();">ACEPTAR</button>
                     </div>
                     <b><p class="alert alert-danger text-center padding error" id="danger">Los datos ya están agregados </p></b>
 
@@ -442,12 +478,30 @@ $psto = mysqli_query($conexion,$sql);
 
                     <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
                     </div>
+
                 </form>            
 </section>  
 
 
 
   </div>
+  <!-- modal de se agrego usuario -->
+  <div class="modal fade" id='modal-seagrego'>
+  <div class="modal1">
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/cheque.png">
+    </div>
+  </div>
+  <h1><strong>REGISTRADO</strong></h1>
+  <p class="points">+Registro exitoso!</p>
+  <hr>
+  <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-primary" onclick="location.href='personal.php'" >Agregar otro Registro</button>
+  <button type="button" id="cerrarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" onclick="location.href='persona.php'">Cerrar</button>
+</div>
+</div>
+  <!-- modal de se agrego usuario -->
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.2
