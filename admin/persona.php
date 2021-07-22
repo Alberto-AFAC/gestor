@@ -93,7 +93,7 @@ include('header.php');
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" style="font-size:19px; color: #000000; font-weight: bold;">ASIGANCIÓN DEL PUESTO</h4>
+                <h4 class="modal-title" style="font-size:19px; color: #000000;">ASIGANCIÓN DEL PUESTO</h4>
           </div>
 
           <div class="modal-body">
