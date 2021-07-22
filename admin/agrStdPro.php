@@ -5,7 +5,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" style="font-size:19px; color: #000000; font-weight: bold;">GRADOS DE ESTUDIOS</h4>
+                <h4 class="modal-title" style="font-size:19px; color: #000000;">GRADOS DE ESTUDIOS</h4>
               </div>
               <div class="modal-body">
           <form class="form-horizontal" id="Forstd">
@@ -167,7 +167,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" style="font-size:19px; color: #000000; font-weight: bold;">EXPERIENCIA PROFESIONAL</h4>
+                <h4 class="modal-title" style="font-size:19px; color: #000000;">EXPERIENCIA PROFESIONAL</h4>
               </div>
               <div class="modal-body" id="Forpro">
               <form class="form-horizontal">
