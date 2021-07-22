@@ -5,7 +5,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">GRADOS DE ESTUDIOS</h4>
+                <h4 class="modal-title" style="font-size:19px; color: #000000; font-weight: bold;">GRADOS DE ESTUDIOS</h4>
               </div>
               <div class="modal-body">
           <form class="form-horizontal" id="Forstd">
@@ -14,35 +14,35 @@
         
             <div class="form-group">
                   <div class="col-sm-6">
-                    <label>NOMBRE DE LA INSTITUCIÓN</label>
-                      <input type="text" onkeyup="mayus(this);" class="form-control" id="gstInstt" name="gstInstt">
+                    <label class="label2">NOMBRE DE LA INSTITUCIÓN</label>
+                      <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstInstt" name="gstInstt">
                   </div>
 
                   <div class="col-sm-6">
-                       <label>CIUDAD</label>
-                       <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCiudad" name="gstCiudad">
+                       <label class="label2">GRADO</label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstCiudad" name="gstCiudad">
                   </div>
             </div>
 
             <div class="form-group">
                   <div class="col-sm-6">
-                       <label>PERIODO</label>
-                       <input type="text" onkeyup="mayus(this);" class="form-control" id="gstPriod" name="gstPriod">
+                       <label class="label2">PERIODO</label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstPriod" name="gstPriod">
                   </div>
 
                   <div class="col-sm-6">
-                      <label>DOCUMENTO</label>
+                      <label class="label2">DOCUMENTO</label>
   <!--<input type="text" onkeyup="mayus(this);" class="form-control" id="gstDocmt" name="gstDocmt">-->
 
-                  <input id="gstDocmt" type="file" name="gstDocmt" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
+                  <input id="gstDocmt" type="file" name="gstDocmt" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
 
                   </div>
             </div>
                 <div class="form-group">
                 <div class="col-sm-5">
 
-                <button type="button" id="agrega" class="btn btn-info" onclick="agrStudio();">ACEPTAR</button>
-                  <button type="reset" id="vacia" onclick="mosEtdio();" class="btn btn-primary" style="display: none;">AÑADIR OTRO GRADO DE ESTUDIO</button>
+                <button type="button" id="agrega" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" onclick="agrStudio();">ACEPTAR</button>
+                  <button type="reset" id="vacia" onclick="mosEtdio();" class="btn btn-primary " style="display: none; background: #2F5D8C; border-radius: 6px;">AÑADIR OTRO GRADO DE ESTUDIO</button>
                 </div>
               
                    <b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos o al adjuntar archivo</p></b>

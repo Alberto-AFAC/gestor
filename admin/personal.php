@@ -50,7 +50,7 @@ include('header.php');
 <!-- Content Header (Page header) -->
 
    <section class="content-header">
-      <h1 class="titulo"> 
+      <h1> 
       <i class="fa  ion-android-person"></i>
             ALTA / PERSONAL   
       </h1>

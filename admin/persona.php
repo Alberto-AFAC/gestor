@@ -28,8 +28,15 @@ $pais = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdpais,gstPais FROM pais WHERE estado = 0";
 $paises = mysqli_query($conexion,$sql);
 
+$sql = "SELECT gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
+$ejec = mysqli_query($conexion,$sql);
+
+$sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+$are = mysqli_query($conexion,$sql);
+
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
+
 }
 ?>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -48,7 +55,6 @@ include('header.php');
 </div>
 <!-- /.row -->
 </section>  
-
 <!-- Content Header (Page header) -->
 <section class="content" id="lista">
 
@@ -57,7 +63,7 @@ include('header.php');
      <div class="box">
        <div class="box-header">
 
-         <h3 class="box-title">PERSONAL</h3>
+         <h3 class="box-title titulo">LISTA | PERSONAL</h3>
              <div class="pull-right">
                <div class="btn-group">
                <a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
@@ -87,7 +93,7 @@ include('header.php');
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">ASIGANCIÓN DEL PUESTO</h4>
+                <h4 class="modal-title" style="font-size:19px; color: #000000; font-weight: bold;">ASIGANCIÓN DEL PUESTO</h4>
           </div>
 
           <div class="modal-body">
@@ -96,16 +102,16 @@ include('header.php');
                 
                     <div class="form-group">
                       <div class="col-sm-4">
-                        <label>NOMBRE(S)</label>
-                        <input type="text"onkeyup="mayus(this);"class="form-control disabled" id="gstNombr" disabled="">
+                        <label class="label2">NOMBRE(S)</label>
+                        <input type="text"onkeyup="mayus(this);"class="form-control disabled inputalta" id="gstNombr" disabled="">
                       </div>
                       <div class="col-sm-4">
-                        <label>APELLIDO(S)</label>
-                        <input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstApell" disabled="">
+                        <label class="label2">APELLIDO(S)</label>
+                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstApell" disabled="">
                       </div>
                       <div class="col-sm-4">
-                        <label>CARGO</label>
-                        <select type="text" class="form-control" id="AgstCargo" name="AgstCargo"  onchange="asiginspec()">
+                        <label class="label2">CARGO</label>
+                        <select type="text" class="form-control inputalta" id="AgstCargo" name="AgstCargo"  onchange="asiginspec()">
                           <option value="">SELECCIONA EL CARGO</option>
                           <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
                           <option value="COORDINADOR">COORDINADOR</option>
@@ -122,27 +128,51 @@ include('header.php');
                         </div>
                       </div>
                     </div>
+                   
                     <div class="form-group"  >
                       <div class="col-sm-12">
-                        <label>DIRECCIÓN EJECUTIVA </label>         
-                        <input type="text" onkeyup="mayus(this);" class="form-control disabled" id="gstAreIDasig" disabled="">
+                        <label class="label2"></label>         
+                        <!-- <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstAreIDasig" disabled=""> -->
+                        <select type="text" class="form-control disabled inputalta" id="gstAreIDasig" name="gstAreIDasig" disabled="">
+                                <option value="1">DIRECCIÓN GENERAL DE LA AGENCIA FEDERAL DE AVIACIÓN CIVIL</option>
+                                <option value="2">DIRECCIÓN EJECUTIVA DE SEGURIDAD AÉREA</option>
+                                <option value="3">DIRECCIÓN EJECUTIVA DE AVIACIÓN</option>
+                                <option value="4">DIRECCIÓN EJECUTIVA DE TRANSPORTE Y CONTROL AERONÁUTICO</option>
+                                <option value="5">DIRECCIÓN EJECUTIVA TÉCNICA</option>
+                                <option value="6">DIRECCIÓN EJECUTIVA COMO REPRESENTANTE PERMANENTE EN EL EXTRANJERO ANTE LA OACI</option>
+                                <option value="7">DIRECCIÓN DE ADMINISTRACIÓN</option>
+                                <option value="8">DIRECCIÓN DE ANÁLISIS DE ACCIDENTES E INCIDENTES DE AVIACIÓN</option>
+                                <option value="9">DIRECCIÓN DEL CENTRO INTERNACIONAL DE ADIESTRAMIENTO EN AVIACIÓN CIVIL</option>
+                                <option value="10">DIRECCIÓN DE CONTROL</option>
+                                <option value="11">DIRECCIÓN DE DESARROLLO ESTRATÉGICO</option>
+                                <option value="12">UNIDAD DE GESTIÓN Y TRÁMITE</option>
+                                <option value="13">SUBDIRECCIÓN TÉCNICA Y OPERATIVA</option>
+                            </select>
                       </div>  
           
                     </div>
                     <div class="form-group">
                           <div class="col-sm-12">
-                            <label>DIRECCIÓN</label>
-                            <select type="text" class="form-control" id="gsdireccion" name="gsdireccion">
-                                <option value="value1">SELECCIONA LA DIRECCIÓN</option>
-                                <option value="value2">DIRECCIÓN DE SEGURIDAD AÉREA</option>
-                                <option value="value3">DIRECCIÓN DE VERIFICACIÓN AEROPORTUARIA</option>
+                            <label class="label2">DIRECCIÓN</label>
+                            <select type="text" class="form-control inputalta" id="gsdirec" name="gsdirec">
+                                <option value="value11">DIRECCIÓN DE SEGURIDAD AÉREA</option>
+                                <option value="value22">DIRECCIÓN DE VERIFICACIÓN AEROPORTUARIA</option>
+                                <option value="value33">DIRECCIÓN DE SEGURIDAD DE LA AVIACIÓN CIVIL</option>
+                                <option value="value33">DIRECCIÓN DE AEROPUERTOS</option>
+                                <option value="value33">DIRECCIÓN DE CERTIFICACIÓN DE LICENCIAS</option>
+                                <option value="value33">COMANDANCIA GENERAL DEL AICM</option>
+                                <option value="value33">COMANDANCIA DE AEROPUERTO</option>
+                                <option value="value33">COMANDANCIA REGIONAL I, II, III, IV, V Y VI</option>
+                                <option value="value33">DIRECCIÓN DE AVIACIÓN</option>
+                                <option value="value33">DIRECCIÓN DE INGENIERÍA, NORMAS Y CERTIFICACIÓN</option>
+                                <option value="value33">DIRECCIÓN DE TARIFAS</option>
                             </select>
                         </div>
                         </div>
                     <div class="form-group">
                           <div class="col-sm-12">
-                            <label>SUB DIRECCIÓN</label>
-                            <select type="text" class="form-control" id="gssubdireccion" name="gssubdireccion">
+                            <label class="label2">SUB DIRECCIÓN</label>
+                            <select type="text" class="form-control inputalta" id="gssubdireccion" name="gssubdireccion">
                                 <option value="value1">SELECCIONA LA SUB DIRECCIÓN</option>
                                 <option value="value2">SUBDIRECCIÓN DE SEGURIDAD AÉREA</option>
                                 <option value="value3">SUBDIRECCIÓN DE NORMAS</option>
@@ -151,13 +181,10 @@ include('header.php');
                         </div>
                     <div class="form-group">
                      <div class="col-sm-offset-0 col-sm-12">
-                        <label>DEPARTAMENTO</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
+                        <label class="label2">DEPARTAMENTO</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker inputalta" name="" id="" type="text" data-live-search="true">
                          <option value="">SELECCIONE EL DEPARTAMENTO</option> 
                          <option value="">DEPARTAMENTO DE INSPECCIÓN</option>
-                         <?php while($rea = mysqli_fetch_row($are)):?>                      
-                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                         <?php endwhile; ?>
                        </select>
                     </div>                  
                 </div>   
@@ -179,14 +206,14 @@ include('header.php');
                         </div>
                         <div class="form-group">
                           <div class="col-sm-12">
-                            <label>ESPECIALIDAD PRINCIPAL</label>
+                            <label class="label2">ESPECIALIDAD PRINCIPAL</label>
                           <div id="categoria"></div>
                         </div>
                         </div>
                         <!-- multiselec -->
                         <div class="form-group">
                         <div class="col-md-12">
-                          <label>ESPECIALIDADES</label>  
+                          <label class="label2">OTRAS ESPECIALIDADES</label>  
                             <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                               style="width:100%;color:#000;" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
                               <?php while($cat = mysqli_fetch_row($categs)):?>                      
@@ -198,17 +225,17 @@ include('header.php');
                         <!-- multiselec -->
                         <div class="form-group">
                           <div class="col-sm-4">
-                            <label>SELECCIONE COMANDANCIA</label>
+                            <label class="label2">SELECCIONE COMANDANCIA</label>
                          <div id="comandan"></div>                            
                         </div>
                           <div class="col-sm-8">
-                            <label>SELECCIONE AEROPUERTOS</label>
+                            <label class="label2">SELECCIONE AEROPUERTOS</label>
                               <div id="select3"></div> 
                               </div>
                           </div>
                         <div class="form-group">
                           <div class="col-sm-offset-0 col-sm-12">
-                            <label>UBICACIÓN CENTRAL EN ASIGNACIÓN</label> 
+                            <label class="label2">UBICACIÓN CENTRAL EN ASIGNACIÓN</label> 
                               <select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
                                  <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
                                  <option value="CIAAC">CIAAC</option> 
@@ -222,7 +249,7 @@ include('header.php');
 <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
                         <div class="form-group"><br>
                           <div class="col-sm-offset-0 col-sm-5">
-                            <button type="button" id="button" class="btn btn-info" onclick="asignar();">ACEPTAR</button>
+                            <button type="button" id="button" style="font-size:18px; width:120px; height:40px" class="btn btn-block btn-primary altaboton"  onclick="asignar();">ACEPTAR</button>
                           </div>
                              <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
 
@@ -349,7 +376,7 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
 <script type="text/javascript">
 $(document).ready(function(){
 $('#gstPrfil').select2();
-
+$('#gstAreID').select2();
 }); 
 </script>
 <script src="../js/select2.js"></script> 
