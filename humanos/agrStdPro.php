@@ -5,7 +5,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">GRADOS DE ESTUDIOS</h4>
+                <h4 class="modal-title" style="font-size:19px; color: #000000; font-weight: bold;">GRADOS DE ESTUDIOS</h4>
               </div>
               <div class="modal-body">
           <form class="form-horizontal" id="Forstd">
@@ -14,24 +14,24 @@
         
             <div class="form-group">
                   <div class="col-sm-6">
-                    <label>NOMBRE DE LA INSTITUCIÓN</label>
-                      <input type="text" onkeyup="mayus(this);" class="form-control" id="gstInstt" name="gstInstt">
+                    <label class="label2">NOMBRE DE LA INSTITUCIÓN</label>
+                      <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstInstt" name="gstInstt">
                   </div>
 
                   <div class="col-sm-6">
-                       <label>CIUDAD</label>
-                       <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCiudad" name="gstCiudad">
+                       <label class="label2">GRADO</label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstCiudad" name="gstCiudad">
                   </div>
             </div>
 
             <div class="form-group">
                   <div class="col-sm-6">
-                       <label>PERIODO</label>
-                       <input type="text" onkeyup="mayus(this);" class="form-control" id="gstPriod" name="gstPriod">
+                       <label class="label2">PERIODO</label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstPriod" name="gstPriod">
                   </div>
 
                   <div class="col-sm-6">
-                      <label>DOCUMENTO</label>
+                      <label class="label2">DOCUMENTO</label>
   <!--<input type="text" onkeyup="mayus(this);" class="form-control" id="gstDocmt" name="gstDocmt">-->
 
                   <input id="gstDocmt" type="file" name="gstDocmt" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
@@ -41,8 +41,8 @@
                 <div class="form-group">
                 <div class="col-sm-5">
 
-                <button type="button" id="agrega" class="btn btn-info" onclick="agrStudio();">ACEPTAR</button>
-                  <button type="reset" id="vacia" onclick="mosEtdio();" class="btn btn-primary" style="display: none;">AÑADIR OTRO GRADO DE ESTUDIO</button>
+                <button type="button" id="agrega" class="btn btn-info altaboton" onclick="agrStudio();">ACEPTAR</button>
+                  <button type="reset" id="vacia" onclick="mosEtdio();" class="btn btn-primary" style="display: none; background: #2F5D8C; border-radius: 6px;">AÑADIR OTRO GRADO DE ESTUDIO</button>
                 </div>
               
                    <b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos o al adjuntar archivo</p></b>
@@ -167,7 +167,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">EXPERIENCIA PROFESIONAL</h4>
+                <h4 class="modal-title" style="font-size:19px; color: #000000; font-weight: bold;">EXPERIENCIA PROFESIONAL</h4>
               </div>
               <div class="modal-body" id="Forpro">
               <form class="form-horizontal">
@@ -175,20 +175,20 @@
                   
               <div class="form-group">
                   <div class="col-sm-6">
-                    <label>PUESTO</label>
-                      <input type="text" onkeyup="mayus(this);" class="form-control" id="gstPusto" name="gstPusto">
+                    <label class="label2">PUESTO</label>
+                      <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstPusto" name="gstPusto">
                   </div>
 
                   <div class="col-sm-6">
-                       <label>EMPRESA</label>
-                       <input type="text" onkeyup="mayus(this);" class="form-control" id="gstMpres" name="gstMpres">
+                       <label class="label2">EMPRESA</label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstMpres" name="gstMpres">
                   </div>
               </div>
 
               <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-6">
-                      <label>PAIS</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDpai" name="gstIDpai" type="text" data-live-search="true">
+                      <label class="label2">PAIS</label>
+                        <select style="width: 100%" class="form-control inputalta" class="selectpicker inputalta" id="gstIDpai" name="gstIDpai" type="text" data-live-search="true">
                          <option value="1">SELECCIONA EL PAIS</option>
                          <?php while($idpais = mysqli_fetch_row($pais)):?>                      
                          <option value="<?php echo $idpais[0]?>"><?php echo $idpais[1]?></option>
@@ -197,32 +197,32 @@
                     </div>
 
                   <div class="col-sm-6">
-                      <label>CIUDAD</label>
-                      <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCidua" name="gstCidua">
+                      <label class="label2">CIUDAD</label>
+                      <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstCidua" name="gstCidua">
               
                   </div>
               </div>
               <div class="form-group">
                   <div class="col-sm-12">
-                     <label>ACTIVIDADES</label>
-                     <textarea name="gstActiv" id="gstActiv"  placeholder="BREVE DESCRIPCIÓN DE LAS FUNCIONES DESEMPEÑADAS" onkeyup="mayus(this);" class="form-control" rows="5" cols="50"></textarea>
+                     <label class="label2">ACTIVIDADES</label>
+                     <textarea name="gstActiv" id="gstActiv"  placeholder="BREVE DESCRIPCIÓN DE LAS FUNCIONES DESEMPEÑADAS" onkeyup="mayus(this);" class="form-control inputalta" rows="5" cols="50"></textarea>
                   </div>
               </div>
 
               <div class="form-group">
                   <div class="col-sm-6">
-                     <label>FECHA DE ENTRADA</label>
-                     <input type="date" class="form-control" id="gstFntra" name="gstFntra">
+                     <label class="label2">FECHA DE ENTRADA</label>
+                     <input type="date" class="form-control inputalta" id="gstFntra" name="gstFntra">
                   </div>
                   <div class="col-sm-6">
-                     <label>FECHA DE SALIDA</label>
-                     <input type="date" class="form-control" id="gstFslda" name="gstFslda">
+                     <label class="label2">FECHA DE SALIDA</label>
+                     <input type="date" class="form-control inputalta" id="gstFslda" name="gstFslda">
                   </div>  
               </div>
               <div class="form-group">
                   <div class="col-sm-5">
-                    <button type="button" id="agregar" class="btn btn-info" onclick="agrProfsn();">ACEPTAR</button>
-                    <button type="reset" id="vaciar" onclick="mostrar();" class="btn btn-primary" style="display: none;">AÑADIR OTRA EXPERIENCIA PROFESIONAL</button>
+                    <button type="button" id="agregar" class="btn btn-info altaboton" onclick="agrProfsn();">ACEPTAR</button>
+                    <button type="reset" id="vaciar" onclick="mostrar();" class="btn btn-primary" style="display: none; background: #2F5D8C; border-radius: 6px;">AÑADIR OTRA EXPERIENCIA PROFESIONAL</button>
                   </div>
                     <b><p class="alert alert-warning text-center padding error" id="danger3">Los datos ya están agregados </p></b>
                     <b><p class="alert alert-success text-center padding exito" id="succe3">¡Se agregaron los datos con éxito!</p></b>
