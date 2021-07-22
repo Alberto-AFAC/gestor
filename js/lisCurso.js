@@ -64,61 +64,109 @@ function curso(cursos) {
 
 
     $.ajax({
-        url: '../php/curLista.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-        html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i> CATEGORÍA</th><th style="width:18%"><i></i> ACCIÓN</th></tr></thead><tbody>';
-        for (i = 0; i < res.length; i++) {
-            x++;
+            url: '../php/curLista.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+            //TODO AQUI ES
+            html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i> CATEGORÍA</th><th style="width:18%"><i></i><span style="font-size: 13px; cursor: pointer;"class="badge badge-danger"" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span></th></tr></thead><tbody>';
+            for (i = 0; i < res.length; i++) {
+                x++;
 
-            year = obj.data[i].fcurso.substring(0, 4);
-            month = obj.data[i].fcurso.substring(5, 7);
-            day = obj.data[i].fcurso.substring(8, 10);
-            Finicio = day + '/' + month + '/' + year;
+                year = obj.data[i].fcurso.substring(0, 4);
+                month = obj.data[i].fcurso.substring(5, 7);
+                day = obj.data[i].fcurso.substring(8, 10);
+                Finicio = day + '/' + month + '/' + year;
 
-            year = obj.data[i].fechaf.substring(0, 4);
-            month = obj.data[i].fechaf.substring(5, 7);
-            day = obj.data[i].fechaf.substring(8, 10);
-            Finaliza = day + '/' + month + '/' + year;
+                year = obj.data[i].fechaf.substring(0, 4);
+                month = obj.data[i].fechaf.substring(5, 7);
+                day = obj.data[i].fechaf.substring(8, 10);
+                Finaliza = day + '/' + month + '/' + year;
 
-            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso;
-            if (obj.data[i].idmstr == gstIdlsc && obj.data[i].proceso == 'PENDIENTE') {
+                cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso;
+                if (obj.data[i].idmstr == gstIdlsc && obj.data[i].proceso == 'PENDIENTE') {
 
-                if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
+                    if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
 
-                    if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar== 'CONFIRMAR') {
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
-                      }else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar== 'CONFIRMADO'){
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";                        
+                        if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='AQUÍ ESTA ENRANDO'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn-sm btn btn-warning' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a> <a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn-sm btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a> <a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn-sm btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a> <a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
 
+
+                        } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+
+                        }
+                        if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+
+                    } else {}
+
+                    //ISPECTOR
+                    if (obj.data[i].gstCargo == 'INSTRUCTOR' || obj.data[i].gstCargo == 'COORDINADOR') {
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>" + obj.data[i].gstCargo + "</a> <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                     }
-                    if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
-                           html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
-                   }
-                    if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
-                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i></a><a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
-                          }
 
-                } else {}
+                } //else if(obj.data[i].idmstr==gstIdlsc && obj.data[i].proceso=='CONFIRMADO'){
+                //           html +="<tr><td>"+obj.data[i].idmstr+"</td><td>"+obj.data[i].gstNombr+"</td><td>"+obj.data[i].gstApell+"</td><td>"+obj.data[i].gstCatgr+"</td><td> <a type='button' onclick='agregar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'>"+obj.data[i].proceso+"</a><a type='button' onclick='eliminar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>"; 
+                //
+                //            }
+            }
+            html += '</tbody></table>';
+            $("#proCursos").html(html);
 
-                //ISPECTOR
-            if (obj.data[i].gstCargo == 'INSTRUCTOR' || obj.data[i].gstCargo == 'COORDINADOR') {
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>"+obj.data[i].gstCargo+"</a><a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
-                      }
-
-            } //else if(obj.data[i].idmstr==gstIdlsc && obj.data[i].proceso=='CONFIRMADO'){
-            //           html +="<tr><td>"+obj.data[i].idmstr+"</td><td>"+obj.data[i].gstNombr+"</td><td>"+obj.data[i].gstApell+"</td><td>"+obj.data[i].gstCatgr+"</td><td> <a type='button' onclick='agregar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-success' data-toggle='modal' data-target='#modal-agregar'>"+obj.data[i].proceso+"</a><a type='button' onclick='eliminar("+'"'+obj.data[i].id_curso+'"'+")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>"; 
-            //
-            //            }
-        }
-        html += '</tbody></table>';
-        $("#proCursos").html(html);
-    })
+        })
+        // alert(cursos);
 }
 
+function imprimir() {
+    // alert('soy el PDF');
+    var pdf = new jsPDF();
+    pdf.setFontSize(10)
+        // pdf.setFontType('bold')
+        // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
+        // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
+    pdf.setFontType('bold')
+    pdf.text(15, 20, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
+    pdf.text(15, 25, 'LISTA TECNICA DE PARTICIPANTES')
+
+    var columns = ["N", "NOMBRE", "CATEGORÍA", "FECHA"];
+    var data = [
+        [1, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
+        [2, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE OPERACIONES VUELO"],
+        [3, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO EN SMS-SSP"],
+        [4, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
+        [5, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
+        [6, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."]
+    ];
+    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+    const pageCount = pdf.internal.getNumberOfPages();
+    for (var i = 1; i <= pageCount; i++) {
+        pdf.setFontSize(8)
+        pdf.setPage(i);
+        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+            "right");
+    }
+    pdf.autoTable(columns, data, {
+        margin: {
+            top: 35,
+            bottom: 15
+        },
+        styles: {
+            overflow: 'linebreak',
+            fontSize: 8
+        },
+        showHeader: 'everyPage',
+        theme: 'grid'
+    });
+
+    window.open(pdf.output('bloburl'))
+}
 
 function openCurso() {
     $("#detCurso").toggle(250); //Muestra contenedor 
