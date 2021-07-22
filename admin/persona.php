@@ -63,7 +63,8 @@ include('header.php');
      <div class="box">
        <div class="box-header">
 
-         <h3 class="box-title titulo">LISTA | PERSONAL</h3>
+       <H4>
+                      <label style="font-size: 20px;">LISTA | PERSONAL</label></H4>
              <div class="pull-right">
                <div class="btn-group">
                <a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>

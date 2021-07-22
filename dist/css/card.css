@@ -190,9 +190,7 @@ background: linear-gradient(180deg, #0F3F87 0%, #1E3058 100%);
 border-radius: 8px;
 }
 .titulo {
-   
     font-style: normal;
-    font-weight: bold;
     font-size: 60px;
 
     /* identical to box height */
