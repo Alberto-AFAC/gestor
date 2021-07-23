@@ -857,10 +857,13 @@ function inspector(gstIdper) {
 
                         } else if (total >= 100000000) {
                             obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
+                        } else {
+                            obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
+
                         }
                         //
                         if (obj.data[ii].idinsp == gstIdper) {
-                            if (obj.data[ii].evaluacion == '0') {
+                            if (obj.data[ii].evaluacion >= '0') {
 
                                 year = obj.data[ii].fcurso.substring(0, 4);
                                 month = obj.data[ii].fcurso.substring(5, 7);
@@ -873,12 +876,13 @@ function inspector(gstIdper) {
                                 Final = day + '/' + month + '/' + year;
 
                                 idlista = obj.data[ii].idmstr;
-
                                 if (obj.data[ii].confirmar == 'CONFIRMAR') {
                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>" + obj.data[ii].proceso + "</a></td>" + obj.data[ii].status + "</tr>";
                                 } else if (obj.data[ii].confirmar == 'CONFIRMADO') {
                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-confirma'>CONFIRMADO</a></td> </tr>";
-                                } else {}
+                                } else if (obj.data[ii].evaluacion >= '0') {
+                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>" + obj.data[ii].proceso + "</a></td>" + obj.data[ii].status + "</tr>";
+                                }
                             }
                         }
 
