@@ -25,7 +25,7 @@ $.ajax({
             completos++;
         }
     }
-    console.log(gstCargo)
+
 
     $("#confirma").html(confirmar);
     $("#programados").html(programados);
@@ -33,7 +33,7 @@ $.ajax({
     $("#completos").html(completos);
     $("#noti").html(confirmar);
     document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirmar + ' notificaciones.</b>';
-    document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirmar + ' nuevos personal';
+    document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirmar + ' nuevo personal';
 
 
 });
