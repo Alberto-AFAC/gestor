@@ -126,48 +126,69 @@ function curso(cursos) {
 
 function imprimir() {
     // alert('soy el PDF');
-    var pdf = new jsPDF();
-    pdf.setFontSize(10)
-        // pdf.setFontType('bold')
-        // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
-        // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
-    pdf.setFontType('bold')
-    pdf.text(15, 20, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
-    pdf.text(15, 25, 'LISTA TECNICA DE PARTICIPANTES')
- 
-    pdf.text(15,30, 'TEMA:'+' '+document.getElementById('gstTitlo').value)
+    var gstTitlo = document.getElementById('gstTitlo').value;
+    $.ajax({
+        url: '../php/curLista.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
 
-    var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.","CORREO","FIRMA"];
-    var data = [
-        [1, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
-        [2, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE OPERACIONES VUELO"],
-        [3, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO EN SMS-SSP"],
-        [4, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
-        [5, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
-        [6, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."]
-    ];
-    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-    const pageCount = pdf.internal.getNumberOfPages();
-    for (var i = 1; i <= pageCount; i++) {
-        pdf.setFontSize(8)
-        pdf.setPage(i);
-        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-            "right");
-    }
-    pdf.autoTable(columns, data, {
-        margin: {
-            top: 35,
-            bottom: 15
-        },
-        styles: {
-            overflow: 'linebreak',
-            fontSize: 8
-        },
-        showHeader: 'everyPage',
-        theme: 'grid'
-    });
 
-    window.open(pdf.output('bloburl'))
+        for (i = 0; i < res.length; i++) {
+            x++;
+
+            if (obj.data[i].gstIdper == gstTitlo) {
+
+                valor = obj.data[i].gstIdper;
+                cargo = obj.data[i].gstCargo;
+                nombre = obj.data[i].gstNombr;
+            }
+        }
+        var pdf = new jsPDF("landscape");
+        pdf.setFontSize(10)
+            // pdf.setFontType('bold')
+            // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
+            // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
+        pdf.setFontType('bold')
+        pdf.text(15, 20, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
+        pdf.text(15, 25, 'LISTA TECNICA DE PARTICIPANTES')
+
+        pdf.text(15, 30, 'TEMA:' + ' ' + document.getElementById('gstTitlo').value)
+
+        var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
+        var data = [
+            [1, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
+            [2, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE OPERACIONES VUELO"],
+            [3, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO EN SMS-SSP"],
+            [4, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
+            [5, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
+            [6, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."]
+        ];
+        /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+        const pageCount = pdf.internal.getNumberOfPages();
+        for (var i = 1; i <= pageCount; i++) {
+            pdf.setFontSize(8)
+            pdf.setPage(i);
+            pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+                "right");
+        }
+        pdf.autoTable(columns, data, {
+            margin: {
+                top: 35,
+                bottom: 15
+            },
+            styles: {
+                overflow: 'linebreak',
+                fontSize: 8
+            },
+            showHeader: 'everyPage',
+            theme: 'grid'
+        });
+
+        window.open(pdf.output('bloburl'))
+    })
 }
 
 function openCurso() {
