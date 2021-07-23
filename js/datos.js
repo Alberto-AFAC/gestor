@@ -838,17 +838,25 @@ function inspector(gstIdper) {
                     var res = obj.data;
                     var x = 0;
 
+
                     //TODO AQUÍ ES LO QUE LLEVA
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
-
+                        var hoy = new Date();
+                        var termino = new Date(obj.data[ii].fcurso);
+                        var total = termino.setDate(termino.getDate() + obj.data[ii].gstVignc);
+                        // alert(total);
+                        // alert(total)
+                        // termino.setDate(today.getDate() + obj.data[ii].gstVignc);
+                        // alert(termino);
+                        // alert("Aquí va la fecha convertida" + fecha);
                         //FLUJO VIGENCIA DE CURSOS
-                        if (obj.data[ii].gstVignc >= "1 AÑO") {
-                            obj.data[ii].status = "<td class='badge' style='padding-bottom: 20px; color: white; background-color: green;'>VIGENTE<td>";
+                        if (total >= 365) {
+                            obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
 
-                        } else if (obj.data[ii].gstVignc == 3) {
-                            obj.data[ii].status = "<td class='badge' style='color: white; background-color: orange;'>POR VENCER<td>";
+                        } else if (total >= 100000000) {
+                            obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
                         }
                         //
                         if (obj.data[ii].idinsp == gstIdper) {
@@ -1000,15 +1008,15 @@ function consultaCurso(gst) {
             var res = obj.data;
             var x = 0;
 
-            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
             for (o = 0; o < res.length; o++) {
 
-                if (obj.data[o].gstDrcin >= "03:00 HRS.") {
-                    obj.data[o].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
+                // if (obj.data[o].gstDrcin >= "03:00 HRS.") {
+                //     obj.data[o].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
 
-                } else if (obj.data[o].gstDrcin == "03 HRS. 01 MIN.") {
-                    obj.data[o].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
-                }
+                // } else if (obj.data[o].gstDrcin == "03 HRS. 01 MIN.") {
+                //     obj.data[o].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
+                // }
 
                 if (obj.data[o].gstIcatg == gstCateg) {
                     html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>PENDIENTE</td>" + obj.data[o].status + "</tr>";
