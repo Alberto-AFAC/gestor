@@ -134,8 +134,10 @@ function imprimir() {
     pdf.setFontType('bold')
     pdf.text(15, 20, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
     pdf.text(15, 25, 'LISTA TECNICA DE PARTICIPANTES')
+ 
+    pdf.text(15,30, 'TEMA:'+' '+document.getElementById('gstTitlo').value)
 
-    var columns = ["N", "NOMBRE", "CATEGORÍA", "FECHA"];
+    var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.","CORREO","FIRMA"];
     var data = [
         [1, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
         [2, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE OPERACIONES VUELO"],
