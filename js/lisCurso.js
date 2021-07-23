@@ -135,7 +135,6 @@ function imprimir() {
         var res = obj.data;
         var x = 0;
 
-
         for (i = 0; i < res.length; i++) {
             x++;
 
@@ -151,11 +150,13 @@ function imprimir() {
             // pdf.setFontType('bold')
             // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
             // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
+            var logo = new Image();
+            logo.src = '../dist/img/AFACPDF.png';
+            pdf.addImage(logo, 'PNG', 120, 5, 40, 30);
         pdf.setFontType('bold')
-        pdf.text(15, 20, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
-        pdf.text(15, 25, 'LISTA TECNICA DE PARTICIPANTES')
+        pdf.text(15, 40, 'LISTA TECNICA DE PARTICIPANTES')
 
-        pdf.text(15, 30, 'TEMA:' + ' ' + document.getElementById('gstTitlo').value)
+        pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' + document.getElementById('gstTitlo').value)
 
         var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
         var data = [
@@ -176,15 +177,23 @@ function imprimir() {
         }
         pdf.autoTable(columns, data, {
             margin: {
-                top: 35,
+                top: 50,
                 bottom: 15
             },
             styles: {
+
                 overflow: 'linebreak',
                 fontSize: 8
             },
+            headStyles: {
+                fillColor: [0, 0, 0],
+                textColor: [0, 0, 0],
+                fontSize: 8,
+                padding: 0,
+            },
             showHeader: 'everyPage',
             theme: 'grid'
+            
         });
 
         window.open(pdf.output('bloburl'))
