@@ -157,7 +157,9 @@
   <div class="col-xs-12">
 
   <div class="box">
+  <br>
 
+<span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>IMPRIMIR LISTA</span>
   <div class="box-body">
   <div id="proCursos"></div>
   </div>
