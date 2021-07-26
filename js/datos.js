@@ -843,24 +843,42 @@ function inspector(gstIdper) {
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
-                        var hoy = new Date();
-                        var termino = new Date(obj.data[ii].fcurso);
-                        var total = termino.setDate(termino.getDate() + obj.data[ii].gstVignc);
-                        // alert(total);
+
+                        // var hoy = new Date();
+                        // var termino = new Date(obj.data[ii].fcurso);
+                        // var total = termino.setDate(termino.getDate() + obj.data[ii].gstVignc);
+                        //  alert(total);
                         // alert(total)
                         // termino.setDate(today.getDate() + obj.data[ii].gstVignc);
                         // alert(termino);
                         // alert("Aquí va la fecha convertida" + fecha);
                         //FLUJO VIGENCIA DE CURSOS
-                        if (total >= 365) {
-                            obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
+// if (total >= 365) {
+// obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
 
-                        } else if (total >= 100000000) {
-                            obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
-                        } else {
-                            obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
+// } else if (total >= 100000000) {
+// obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
+// } 
 
-                        }
+//fcurso = '2021-01-26';
+//alert(obj.data[ii].gstVignc);
+gstVignc = obj.data[ii].gstVignc * 12;
+vence = gstVignc - 6;
+var termino = new Date(obj.data[ii].fcurso);
+termino.setMonth(termino.getMonth() + vence);
+termino.setDate(termino.getDate() + 1);
+var hoy = new Date();
+var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
+var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
+//alert(factual);
+//alert(ftermino);
+if(factual >= ftermino){
+  obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
+}else{
+  obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
+}
+
+
                         //
                         if (obj.data[ii].idinsp == gstIdper) {
                             if (obj.data[ii].evaluacion >= '0') {

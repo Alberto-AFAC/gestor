@@ -93,3 +93,27 @@ while ($per = mysqli_fetch_row($person)) {
 
 
 ?>
+
+
+<script type="text/javascript">
+	
+
+
+fcurso = '2021/07/14';
+gstVignc = 1 * 12;
+vence = gstVignc - 6;
+var termino = new Date(fcurso);
+termino.setMonth(termino.getMonth() + vence);
+termino.setDate(termino.getDate() + 1);
+var hoy = new Date();
+var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
+var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
+alert(factual);
+alert(ftermino);
+if(factual >= ftermino){
+	alert('VIGENTE');
+}else if(factual <= ftermino){
+	alert('POR VENCER');
+}
+
+</script>
