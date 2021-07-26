@@ -29,10 +29,10 @@ $sql = "SELECT gstIdpais,gstPais FROM pais WHERE estado = 0";
 $paises = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
-$ejec = mysqli_query($conexion,$sql);
+$ejecut = mysqli_query($conexion,$sql);
 
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
-$are = mysqli_query($conexion,$sql);
+$direc = mysqli_query($conexion,$sql);
 
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
@@ -133,41 +133,27 @@ include('header.php');
                     <div class="form-group"  >
                       <div class="col-sm-12">
                         <label class="label2"></label>         
-                        <!-- <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstAreIDasig" disabled=""> -->
-                        <select type="text" class="form-control disabled inputalta" id="gstAreIDasig" name="gstAreIDasig" disabled="">
-                                <option value="1">DIRECCIÓN GENERAL DE LA AGENCIA FEDERAL DE AVIACIÓN CIVIL</option>
-                                <option value="2">DIRECCIÓN EJECUTIVA DE SEGURIDAD AÉREA</option>
-                                <option value="3">DIRECCIÓN EJECUTIVA DE AVIACIÓN</option>
-                                <option value="4">DIRECCIÓN EJECUTIVA DE TRANSPORTE Y CONTROL AERONÁUTICO</option>
-                                <option value="5">DIRECCIÓN EJECUTIVA TÉCNICA</option>
-                                <option value="6">DIRECCIÓN EJECUTIVA COMO REPRESENTANTE PERMANENTE EN EL EXTRANJERO ANTE LA OACI</option>
-                                <option value="7">DIRECCIÓN DE ADMINISTRACIÓN</option>
-                                <option value="8">DIRECCIÓN DE ANÁLISIS DE ACCIDENTES E INCIDENTES DE AVIACIÓN</option>
-                                <option value="9">DIRECCIÓN DEL CENTRO INTERNACIONAL DE ADIESTRAMIENTO EN AVIACIÓN CIVIL</option>
-                                <option value="10">DIRECCIÓN DE CONTROL</option>
-                                <option value="11">DIRECCIÓN DE DESARROLLO ESTRATÉGICO</option>
-                                <option value="12">UNIDAD DE GESTIÓN Y TRÁMITE</option>
-                                <option value="13">SUBDIRECCIÓN TÉCNICA Y OPERATIVA</option>
-                            </select>
-                      </div>  
+
+                    <select style="width: 100%"  class="selectpicker inputalta" name="gstAreIDasig" id="gstAreIDasig" type="text" data-live-search="true" disabled="">
+                    <option value="0">ÁREA ADSCRIPCIÓN POR ASIGNAR</option>
+                    <?php while($ejct = mysqli_fetch_row($ejecut)):?>                      
+                    <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+                    <?php endwhile; ?>
+                    </select>
+                     </div>  
           
                     </div>
                     <div class="form-group">
                           <div class="col-sm-12">
                             <label class="label2">DIRECCIÓN</label>
-                            <select type="text" class="form-control inputalta" id="gsdirec" name="gsdirec">
-                                <option value="value11">DIRECCIÓN DE SEGURIDAD AÉREA</option>
-                                <option value="value22">DIRECCIÓN DE VERIFICACIÓN AEROPORTUARIA</option>
-                                <option value="value33">DIRECCIÓN DE SEGURIDAD DE LA AVIACIÓN CIVIL</option>
-                                <option value="value33">DIRECCIÓN DE AEROPUERTOS</option>
-                                <option value="value33">DIRECCIÓN DE CERTIFICACIÓN DE LICENCIAS</option>
-                                <option value="value33">COMANDANCIA GENERAL DEL AICM</option>
-                                <option value="value33">COMANDANCIA DE AEROPUERTO</option>
-                                <option value="value33">COMANDANCIA REGIONAL I, II, III, IV, V Y VI</option>
-                                <option value="value33">DIRECCIÓN DE AVIACIÓN</option>
-                                <option value="value33">DIRECCIÓN DE INGENIERÍA, NORMAS Y CERTIFICACIÓN</option>
-                                <option value="value33">DIRECCIÓN DE TARIFAS</option>
-                            </select>
+
+                    <select style="width: 100%" class="selectpicker inputalta" id="gsdirec" name="gsdirec" type="text" data-live-search="true">
+                    <option value="0">ÁREA ADSCRIPCIÓN POR ASIGNAR</option>
+                    <?php while($ccion = mysqli_fetch_row($direc)):?>                      
+                    <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
+                    <?php endwhile; ?>
+                    </select>
+
                         </div>
                         </div>
                     <div class="form-group">
@@ -310,6 +296,7 @@ include('header.php');
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function(){
+// $('#gsdirec').select2();
 $('#gstAreID').select2(); 
 $('#gstPstID').select2();
 $('#gstIDpai').select2();
