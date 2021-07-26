@@ -1550,6 +1550,7 @@ function cerrarEdit() {
 }
 
 function asignar() {
+
     var gstIdper = document.getElementById('gstIdper').value;
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
@@ -1578,11 +1579,20 @@ function asignar() {
         }).done(function(respuesta) {
             if (respuesta == 0) {
 
-                $('#succe2').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe2').toggle('toggle');
-                    location.href = 'inspecion.php';
-                }, 2500);
+                // $('#succe2').toggle('toggle');
+                // setTimeout(function() {
+                //     $('#succe2').toggle('toggle');
+                //     location.href = 'inspecion.php';
+                // }, 2500);
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Sus datos fueron guardados correctamente',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000
+                });
+                setTimeout("location.href = 'inspecion.php';", 2000);
             } else {
                 $('#danger2').toggle('toggle');
                 setTimeout(function() {
