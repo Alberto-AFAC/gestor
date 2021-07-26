@@ -1583,8 +1583,6 @@ function asignar() {
                     $('#succe2').toggle('toggle');
                     location.href = 'inspecion.php';
                 }, 2500);
-
-
             } else {
                 $('#danger2').toggle('toggle');
                 setTimeout(function() {

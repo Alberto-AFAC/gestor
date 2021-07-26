@@ -65,7 +65,7 @@ while($data=mysqli_fetch_array($resultado)){
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">ASIGANCIÓN DEL PUESTO</h4>
+                <h4 class="modal-title">ASIGANCIÓN DEL PUESTOsss</h4>
               </div>
               <div class="modal-body">
        <form id="Dtall" class="form-horizontal" action="" method="POST" >
