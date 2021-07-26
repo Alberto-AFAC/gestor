@@ -28,6 +28,8 @@ unset($_SESSION['consulta']);
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -38,7 +40,36 @@ unset($_SESSION['consulta']);
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
+<style>
+   .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:focus {
+  
+  background: white;
+}
+
+a:active {
+  background: white;
+  color: white;
+}
+</style>
+      </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -144,7 +175,6 @@ $psto = mysqli_query($conexion,$sql);
                      </select>
                      </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label class="label2">FECHA DE NACIMIENTO</label>
