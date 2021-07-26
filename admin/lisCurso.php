@@ -28,6 +28,8 @@ $inspector = mysqli_query($conexion,$sql);
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
+    <script src="../dist/jspdf/dist/jspdf.debug.js"></script>
+<script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
