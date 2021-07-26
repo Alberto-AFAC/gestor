@@ -862,22 +862,32 @@ function inspector(gstIdper) {
 
 //fcurso = '2021-01-26';
 //alert(obj.data[ii].gstVignc);
-gstVignc = obj.data[ii].gstVignc * 12;
+
+gstVignc = 1 * 12;
 vence = gstVignc - 6;
-var termino = new Date(obj.data[ii].fcurso);
-termino.setMonth(termino.getMonth() + vence);
-termino.setDate(termino.getDate() + 1);
+
 var hoy = new Date();
 var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
-var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
-//alert(factual);
-//alert(ftermino);
-if(factual >= ftermino){
-  status = "<a type='button' class='btn btn-success' data-toggle='modal' >VIGENTE</a>";   
-}else{
-  status = "<a type='button' class='btn btn-warning' data-toggle='modal' >POR VENCER</a>"; 
-}
 
+var termino = new Date(obj.data[ii].fcurso);
+var finaliza = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate()); 
+finaliza.setMonth(finaliza.getMonth() + gstVignc);
+
+termino.setMonth(termino.getMonth() + vence);
+termino.setDate(termino.getDate() + 1);
+
+var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
+
+if(factual >= finaliza){
+status = "<a type='button' class='btn btn-warning' data-toggle='modal' >VENCIDO</a>"; 
+}else 
+if(factual <= ftermino){
+status = "<a type='button' class='btn btn-success' data-toggle='modal' >VIGENTE</a>";  
+}
+else 
+if(factual >= ftermino){
+status = "<a type='button' class='btn btn-warning' data-toggle='modal' >POR VENCER</a>";   
+}
 
                         //
                         if (obj.data[ii].idinsp == gstIdper) {

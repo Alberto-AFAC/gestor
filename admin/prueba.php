@@ -99,23 +99,42 @@ while ($per = mysqli_fetch_row($person)) {
 	
 
 
-fcurso = '2021/06/30';
+fcurso = '2021/07/26';
 gstVignc = 1 * 12;
 vence = gstVignc - 6;
+
 var termino = new Date(fcurso);
+var finaliza = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate()); 
+finaliza.setMonth(finaliza.getMonth() + gstVignc);
+//alert(finaliza);
+
+oi = '2022/07/28';
+var hoy = new Date(oi);
+var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
+alert(factual);
+
+// if(factual <= finaliza){
 termino.setMonth(termino.getMonth() + vence);
 termino.setDate(termino.getDate() + 1);
-var hoy = new Date();
-var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
+
 var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
-alert(factual);
 alert(ftermino);
+
+ if(factual >= finaliza){
+ 	alert('VENCIDO');
+ }else 
+if(factual <= ftermino){
+alert('VIGENTE');
+ }
+else 
 if(factual >= ftermino){
-	alert('VIGENTE');
-}else if(factual >= ftermino && factual <= ftermino){
-	alert('POR VENCER');
-}else{
-	alert('VENCIDO	');
+	alert('POR VENCER');	
 }
+
+
+// }else{
+// 	alert('VENCIDO');	
+// }
+
 
 </script>
