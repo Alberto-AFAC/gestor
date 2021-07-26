@@ -99,7 +99,7 @@ while ($per = mysqli_fetch_row($person)) {
 	
 
 
-fcurso = '2021/07/14';
+fcurso = '2021/06/30';
 gstVignc = 1 * 12;
 vence = gstVignc - 6;
 var termino = new Date(fcurso);
@@ -112,8 +112,10 @@ alert(factual);
 alert(ftermino);
 if(factual >= ftermino){
 	alert('VIGENTE');
-}else if(factual <= ftermino){
+}else if(factual >= ftermino && factual <= ftermino){
 	alert('POR VENCER');
+}else{
+	alert('VENCIDO	');
 }
 
 </script>
