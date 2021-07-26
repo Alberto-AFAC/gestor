@@ -1324,12 +1324,21 @@ function registrar() {
         }).done(function(respuesta) {
             if (respuesta == 0) {
                 // alert(respuesta);
-                console.log(respuesta);
-                $('#succe').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe').toggle('toggle');
-                }, 2000);
-                $('#modal-seagrego').modal('show') //modal de se agrego con exito
+                Swal.fire({
+                    type: 'success',
+                    title: 'CIAAC INFORMA',
+                    text: 'Sus datos fueron guardados correctamente',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonColor: "#3C8DBC",
+                    customClass: 'swal-wide',
+                    confirmButtonText: '<span style="color: white;"><a href="../admin/personal.php">¿Deseas agregar otro registro?</a></span>',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                    cancelButtonText: '<span>Cerrar</span>',
+                    cancelButtonAriaLabel: 'Thumbs down'
+                        // timer: 2900
+                });
             } else {
                 $('#danger').toggle('toggle');
                 setTimeout(function() {
@@ -1559,6 +1568,7 @@ function cerrarEdit() {
 }
 
 function asignar() {
+
     var gstIdper = document.getElementById('gstIdper').value;
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
@@ -1587,13 +1597,20 @@ function asignar() {
         }).done(function(respuesta) {
             if (respuesta == 0) {
 
-                $('#succe2').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe2').toggle('toggle');
-                    location.href = 'inspecion.php';
-                }, 2500);
-
-
+                // $('#succe2').toggle('toggle');
+                // setTimeout(function() {
+                //     $('#succe2').toggle('toggle');
+                //     location.href = 'inspecion.php';
+                // }, 2500);
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Sus datos fueron guardados correctamente',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000
+                });
+                setTimeout("location.href = 'inspecion.php';", 2000);
             } else {
                 $('#danger2').toggle('toggle');
                 setTimeout(function() {

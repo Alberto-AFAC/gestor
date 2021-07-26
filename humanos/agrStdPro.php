@@ -41,7 +41,7 @@
                 <div class="form-group">
                 <div class="col-sm-5">
 
-                <button type="button" id="agrega" class="btn btn-info altaboton" onclick="agrStudio();">ACEPTAR</button>
+                <button type="button" id="agrega" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" onclick="agrStudio();">ACEPTAR</button>
                   <button type="reset" id="vacia" onclick="mosEtdio();" class="btn btn-primary" style="display: none; background: #2F5D8C; border-radius: 6px;">AÑADIR OTRO GRADO DE ESTUDIO</button>
                 </div>
               
@@ -124,7 +124,7 @@
                 <div class="form-group">
                 <div class="col-sm-5">
 
-                <button type="button" id="button" class="btn btn-info" onclick="actStudio();">ACTUALIZAR </button>
+                <button type="button" id="button" class="btn btn-info" style="font-size:16px; width:110px; height:35px" onclick="actStudio();">ACTUALIZAR </button>
 
                 </div>
               
@@ -221,7 +221,7 @@
               </div>
               <div class="form-group">
                   <div class="col-sm-5">
-                    <button type="button" id="agregar" class="btn btn-info altaboton" onclick="agrProfsn();">ACEPTAR</button>
+                    <button type="button" id="agregar" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" onclick="agrProfsn();">ACEPTAR</button>
                     <button type="reset" id="vaciar" onclick="mostrar();" class="btn btn-primary" style="display: none; background: #2F5D8C; border-radius: 6px;">AÑADIR OTRA EXPERIENCIA PROFESIONAL</button>
                   </div>
                     <b><p class="alert alert-warning text-center padding error" id="danger3">Los datos ya están agregados </p></b>

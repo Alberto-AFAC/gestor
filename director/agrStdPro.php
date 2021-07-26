@@ -41,7 +41,7 @@
                 <div class="form-group">
                 <div class="col-sm-5">
 
-                <button type="button" id="agrega" class="btn btn-info" onclick="agrStudio();">ACEPTAR</button>
+                <button type="button" id="agrega" class="btn btn-info" style="font-size:16px; width:110px; height:35px" onclick="agrStudio();">ACEPTAR</button>
                   <button type="reset" id="vacia" onclick="mosEtdio();" class="btn btn-primary" style="display: none;">AÑADIR OTRO GRADO DE ESTUDIO</button>
                 </div>
               
