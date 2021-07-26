@@ -261,7 +261,7 @@ include('header.php');
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" class="btn btn-info altaboton" onclick="asignar();">ACEPTAR</button>
+<button type="button" id="button" style="font-size:18px; width:120px; height:40px"  class="btn btn-info altaboton" onclick="asignar();">ACEPTAR</button>
 </div>
 <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
 
