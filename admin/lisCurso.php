@@ -66,8 +66,8 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 <li class="active"><a href="#activity" data-toggle="tab">PROGRAMACIÓN DEL CURSO</a></li>
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
 </ul>-->
-<div class="tab-content">
-
+        
+        
     <div class="box-body" id="listCurso">
         <?php include('../html/lisCurso.html');?>
         <!-- Datatables -->
