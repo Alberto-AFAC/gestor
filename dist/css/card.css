@@ -204,16 +204,15 @@ border-radius: 8px;
   background: linear-gradient(180deg, #0F3F87 0%, #1E3058 100%);
   border-radius: 8px;
 }
-/*boton descarga*/
-
+/*boton descarga lista*/
 /* 5 */
 .custom-btn {
     width: 130px;
     height: 40px;
-    color: rgb(1, 0, 82);
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     padding: 10px 25px;
-
+    text-align: center;
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -261,5 +260,133 @@ border-radius: 8px;
     width:100%;
     transition:800ms ease all;
   }
+
+ /*boton confirmación detalle curso*/
   
+ .circular-button,
+ .circular-checkbox label {
+   border: none;
+   border-radius: 50%;
+   cursor: pointer;
+   display: block;
+   height: 2.5em;
+   margin: 1.2em;
+   position: relative;
+   text-indent: -9999px;
+   width: 2.5em;
+ }
+ 
+ .circular-button.small,
+ .circular-checkbox.small label {
+   height: 1.5em;
+   width: 1.5em;
+ }
+  
+ .circular-button:hover:before,
+ .circular-checkbox label:hover:before {
+   -ms-transform: scale(1.15);
+   -webkit-transform: scale(1.15);
+   transform: scale(1.15);
+   transition: all 1.5s ease;
+ }
+ 
+ .circular-button:active:before,
+ .circular-checkbox label:active:before,
+ .circular-checkbox input[type='checkbox']:checked + label:before {
+   -ms-transform: scale(1.05);
+   -webkit-transform: scale(1.05);
+   transform: scale(1.05);
+   transition: all 0.5s ease;
+ }
+ 
+ .circular-button:after,
+ .circular-checkbox label:after {
+   color: white;
+   content: "";
+   display: inline-block;
+   font: normal normal normal 14px/1 FontAwesome;
+   font-size: 1.5em;
+   margin-top: -0.5em;
+   position: absolute;
+   top: 50%;
+   left: 0%;
+   text-align: center;
+   text-indent: 0px;
+   text-rendering: auto;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   transform: translate(0, 0);
+   transition: all 0.5s ease;
+   -ms-transform: scale(1);
+   -webkit-transform: scale(1);
+   transform: scale(1);
+   width: 100%;
+ }
+ 
+ .circular-button.small:after,
+ .circular-checkbox.small label:after {
+   font-size: 1.2em;
+ }
+ 
+ .circular-button:active:after,
+ .circular-checkbox label:active:after {
+   -ms-transform: scale(1.2);
+   -webkit-transform: scale(1.2);
+   transform: scale(1.2);
+   transition: all 1s ease;
+ }
+ 
+ .check:after,
+ .circular-checkbox input[type="checkbox"]:checked + label:after {
+   content: "\f00c";
+ }
+ 
+ .right:after {
+   content: "\f017";
+ }
+ 
+ .facebook:after {
+   content: "\f09a";
+ }
+ 
+ .twitter:after {
+   content: "\f099";
+ }
+ 
+ .circular-checkbox label:after {
+   content: "\f00d";
+ }
+ 
+ .green,
+ .circular-checkbox input:checked + label {
+   background: #8CC63F;
+ }
+ 
+ .green:active {
+   background: #007932;
+ }
+ 
+ .circular-button.green:before,
+ .circular-checkbox input[type='checkbox']:checked ~ label:before {
+   border-color: #8CC63F;
+ }
+ 
+ .circular-button.green:active:before {
+   border-color: #007932;
+ }
+ 
+ .transition {
+   transition: all 0.4s ease;
+ }
+ 
+ .circular-checkbox input[type='checkbox'] {
+   display: none;
+ }
+
+ 
+ .pend,
+ .circular-checkbox input:checked + label {
+   background: #f0bd17;
+   
+ }
 
