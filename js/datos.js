@@ -1266,11 +1266,7 @@ function actEstudio(datos) {
     //$("#Actuliza #gstpdf").html("<a href='"+d[5]+"' target='_blanck'><span class='icon-file-pdf' style='color:red; font-size:22px;  cursor: pointer;' ></span></a>");
 }
 
-
-
 function registrar() {
-
-
     //Datos personales
     var gstNombr = document.getElementById('gstNombr').value;
     var gstApell = document.getElementById('gstApell').value;

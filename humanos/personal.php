@@ -24,7 +24,9 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements andrecursos media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

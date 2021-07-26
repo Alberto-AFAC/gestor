@@ -499,7 +499,7 @@ $psto = mysqli_query($conexion,$sql);
 </section>  
   </div>
   <!-- modal de se agrego usuario -->
-  <div class="modal fade" id='modal-seagrego'>
+  <!-- <div class="modal fade" id='modal-seagrego'>
   <div class="modal1">
   <div id="success-icon">
     <div>
@@ -512,7 +512,7 @@ $psto = mysqli_query($conexion,$sql);
   <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-primary" onclick="location.href='personal.php'" >Agregar otro Registro</button>
   <button type="button" id="cerrarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" onclick="location.href='persona.php'">Cerrar</button>
 </div>
-</div>
+</div> -->
   <!-- modal de se agrego usuario -->
 
   <footer class="main-footer">

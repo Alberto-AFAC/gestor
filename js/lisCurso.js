@@ -94,7 +94,7 @@ function curso(cursos) {
                             html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>"+"</td><td>"+"<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                         }
                         if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {    
-                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>"+"</td><td>"+"<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Descarga de certificado' onclick='' class='btn btn-success'><i class='fa fa fa-download' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>"+"</td><td>"+"<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Descarga de certificado' onclick='certificado()' class='btn btn-success'><i class='fa fa fa-download' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                         }
                         if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
                             html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>"+"</td><td>"+"<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
@@ -199,6 +199,30 @@ function imprimir() {
 
 }
 
+//CERTIFICADO
+function certificado() {
+    var pdf = new jsPDF("landscape");
+    pdf.setFontSize(10)
+        // pdf.setFontType('bold')
+        // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
+        // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL'
+    var logo = new Image();
+    logo.src = '../dist/img/certificado.png';
+    pdf.addImage(logo, 'PNG', 0, 0, 300, 210);
+   
+    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+    const pageCount = pdf.internal.getNumberOfPages();
+    for (var i = 1; i <= pageCount; i++) {
+        pdf.setFontSize(8)
+        pdf.setPage(i);
+        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+            "right");
+    }
+  
+
+    window.open(pdf.output('bloburl'))
+
+}
 function openCurso() {
     $("#detCurso").toggle(250); //Muestra contenedor 
     $("#listCurso").toggle("fast"); //Oculta lista
