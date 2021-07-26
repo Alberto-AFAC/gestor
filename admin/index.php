@@ -41,6 +41,9 @@
   <script src="https://cdn.anychart.com/releases/8.10.0/locales/es-es.js"></script>
   <script src="https://cdn.anychart.com/releases/8.10.0/themes/dark_provence.min.js"></script>
   <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+  <script src="dist/js/sweetalert2.all.min.js"></script>
+  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+
   <style>
       #legend {
       height: 50px;
