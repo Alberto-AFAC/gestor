@@ -17,7 +17,37 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  <style>
+   .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
 
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:focus {
+  
+  background: white;
+}
+
+a:active {
+  background: white;
+  color: white;
+}
+</style>
 </head>
 
 <?php
