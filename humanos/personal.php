@@ -36,7 +36,38 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
+
+
+<style>
+       .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:focus {
+  
+  background: white;
+}
+
+a:active {
+  background: white;
+  color: white;
+}
+   </style>
+      </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
