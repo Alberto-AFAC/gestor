@@ -28,12 +28,16 @@ $.ajax({
 
 
     $("#confirma").html(confirmar);
-    $("#programados").html(programados);
-    $("#cancelados").html(cancelados);
-    $("#completos").html(completos);
+    //$("#programados").html(programados);
+   // $("#cancelados").html(cancelados);
+   // $("#completos").html(completos);
     $("#noti").html(confirmar);
-    document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirmar + ' notificaciones.</b>';
-    document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirmar + ' nuevo personal';
-
+    if(confirmar==1){
+    document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirmar + ' notificación.</b>';        
+    document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirmar + ' nuevo personal asignado';
+    }else{
+    document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirmar + ' notificaciones.</b>';        
+    document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirmar + ' nuevos personales asignados';
+    }
 
 });
