@@ -77,7 +77,7 @@ while($data=mysqli_fetch_array($resultado)){
                 
                     <div class="form-group">
                       <div class="col-sm-4">
-                        <label>NOMBRE(S)</label>
+                        <label class="label2">NOMBRE(S)</label>
                         <input type="text"onkeyup="mayus(this);"class="form-control disabled" id="gstNombr" disabled="">
                       </div>
                       <div class="col-sm-4">
