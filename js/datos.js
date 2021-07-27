@@ -863,14 +863,10 @@ function inspector(gstIdper) {
 //fcurso = '2021-01-26';
 //aler1 t(obj.data[ii].gstVignc);
 
+
+
 gstVignc = obj.data[ii].gstVignc * 12;
 vence = gstVignc - 6;
-
-if(vence=='NaN'){
-
-}else{
-    console.log(vence);
-}
 
 
 var hoy = new Date();
@@ -885,17 +881,24 @@ termino.setDate(termino.getDate() + 1);
 
 var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
 
-
+// console.log(factual);
+// console.log('<br>');
+// console.log(finaliza);
+// console.log('<br>');
+// console.log(ftermino);
 
 if(factual >= finaliza){
 status = "<a type='button' class='btn btn-danger' data-toggle='modal' >VENCIDO</a>"; 
+console.log(status);
 }else 
 if(factual <= ftermino){
 status = "<a type='button' class='btn btn-success' data-toggle='modal' >VIGENTE</a>";  
+console.log(status);
 }
 else 
 if(factual >= ftermino){
 status = "<a type='button' class='btn btn-warning' data-toggle='modal' >POR VENCER</a>";   
+console.log(status);
 }
 
                         //

@@ -21,7 +21,7 @@ unset($_SESSION['consulta']);
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-   <title>Gestor inspectores | Programar Curso</title>
+  <title>Gestor inspectores | Programar Curso</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -81,16 +81,33 @@ include('header.php');
 <form class="form-horizontal">
 
 
-<div class="form-group">
-<div class="col-sm-12">
+<div class="form-group" id="seecioncat" style="display: none;">
+<div class="col-sm-4">
+<label>SELECCIONE CATEGORÍA</label>
+<div id="categoria"></div>                            
+</div>
+<div class="col-sm-8">
 <label>SELECCIONE CURSO</label>
-<div id="selcurso"></div>                            
+<div id="selecat"></div> 
 </div>
 </div>
 
+<div id="partici"></div> 
 
-<!-- <div id="partici"></div>  -->
 
+
+<div class="form-group" id="selecurso">
+<div class="col-sm-offset-0 col-sm-12">
+<label style="color: white">.</label>
+<select style="width: 100%" class="form-control" class="selectpicker" name="id_mstr" id="id_mstr" type="text" data-live-search="true">
+<option value="0">SELECCIONE CURSO</option> 
+<?php while($cursos = mysqli_fetch_row($curso)):?>
+
+<option value="<?php echo $cursos[0]?>"><?php echo $cursos[1]?></option>
+<?php endwhile; ?>
+</select>
+</div>
+</div>
 
 <div class="form-group">
 <div class="col-sm-4">
@@ -136,7 +153,11 @@ include('header.php');
 
     <div class="col-sm-4">
     <label>SEDE DEL CURSO</label>
-    <input type="text" class="form-control" id="sede" name="sede">
+      <select type="text" class="form-control" id="sede" name="sede">
+         <option value="0">ELEGIR SEDE</option>     
+         <option value="AGENCIA FEDERAL DE AVIACIÓN CIVIL">AGENCIA FEDERAL DE AVIACIÓN CIVIL</option>
+         <option value="CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL">CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL</option>
+      </select>
     </div>
 </div>
 
@@ -146,8 +167,10 @@ include('header.php');
       <select type="text" class="form-control" id="modalidad" name="modalidad">
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
-          <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
-          <option value="AUTOGESTIVO">AUTOGESTIVO</option>          
+          <option value="PRESENCIAL">MIXTA</option>
+          <option value="PRESENCIAL">PRESENCIAL</option>
+          <option value="PRESENCIAL">SEMIPRESENCIAL</option>
+          
       </select>
     </div>
     <div class="col-sm-4">
@@ -178,16 +201,11 @@ include('header.php');
 </div>                     
 </div>   
 
-
-<div id="tabcurso"></div> 
-
-
-<!-- <div class="form-group">
-<div class="col-sm-12">
-
+<div id="scroll" style="width: 100%; height: 300px; overflow: scroll;">
+<div class="box-body">
+<?php include('../html/proInspc.html');?>
 </div>
-</div> -->
-
+</div>
 <br>
 
 
@@ -264,7 +282,6 @@ include('header.php');
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../js/proInspc.js"></script>
 <!-- page script -->
 
 </body>
@@ -272,12 +289,12 @@ include('header.php');
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function(){
-//$('#id_mstr').select2();
+$('#id_mstr').select2();
 $('#idinst').select2();
 $("#idcord").select2();
- $('#selcurso').load('select/buscateg.php');
- $('#tabcurso').load('select/tablacateg.php');
- //$('#partici').load('select/tablaoblig.php')
+ $('#categoria').load('select/buscateg.php');
+ $('#selecat').load('select/tablacateg.php');
+ $('#partici').load('select/tablaoblig.php')
 }); 
 </script>
 <script src="../js/select2.js"></script> 
