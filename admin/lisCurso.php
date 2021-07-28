@@ -68,7 +68,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 <li class="active"><a href="#activity" data-toggle="tab">PROGRAMACIÓN DEL CURSO</a></li>
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
 </ul>-->
-        
+<div class="tab-content">
         
     <div class="box-body" id="listCurso">
         <?php include('../html/lisCurso.html');?>
@@ -1022,7 +1022,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
                                                                                                                 </tbody>
                                                                                                             </table>
 
-                                                                                                        </div>
+                                                                                                    </div>
 
                                                                                                         <div class="col-sm-12">
                                                                                                             <textarea class="col-sm-12" name="comentarios" id="comeneva" rows="4" cols="10"
@@ -1052,23 +1052,21 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
                                                                                                                 <p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto
                                                                                                                 Ingresar la Fecha!</p>
                                                                                                             </b>
-                                                                                                        </div>
                                                                                                     </div>
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
+                                                                                                </div>   
                                                                                                 </div>
                                                                                             </div>    
                                                                                         </div>
+                                                                                        
                                                                                         <!-- /.modal-content -->
                                                                                         <!-- /.modal-dialog -->
-                                                                                    </form>
-
-                                                                                </section>
+                                                                    </form>
                                                                                 <!-- /.content -->
-                                                                            </div>
+                                                                                
+                                                                                </section>
+                                                                              <!-- /.content -->
+                                                                          </div>
+                                                                          
                                                                             <!-- /.content-wrapper -->
                                                                             <footer class="main-footer">
                                                                                 <div class="pull-right hidden-xs">
@@ -1095,11 +1093,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
                             <a href="javascript:void(0)">
                                 <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-                                    <p>Will be 23 on April 24th</p>
-                                </div>
                             </a>
                         </li>
                         <li>
