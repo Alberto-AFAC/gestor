@@ -9,7 +9,7 @@ function lisCurso() {
 
 
 
-        html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> TÍTULO</th><th><i></i> TIPO</th><th><i></i> INICIO</th><th><i></i> DURACIÓN</th><th><i></i> FINAL</th><th><i></i> PARTICIPANTES</th><th style="width:13%"><i></i> ACCIÓN</th></tr></thead><tfoot><tr></tr></tfoot><tbody>';
+        html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> TÍTULO</th><th><i></i> TIPO</th><th><i></i> INICIO</th><th><i></i> DURACIÓN</th><th><i></i> FINAL</th><th><i></i> PARTICIPANTES</th><th><i></i>ESTATUS</th><th style="width:13%"><i></i> ACCIÓN</th></tr></thead><tfoot><tr></tr></tfoot><tbody>';
         for (i = 0; i < res.length; i++) {
             x++;
 
@@ -25,7 +25,7 @@ function lisCurso() {
 
             cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad;
 
-            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td>" + obj.data[i].proceso + "</td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
         }
         html += '</tbody></table>';
         $("#lstacurs").html(html);
