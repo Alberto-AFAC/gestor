@@ -424,14 +424,12 @@ function evaluarins(cursos) {
 }
 //EDICIÓN DEL CURSO
 function editcurso(){
-    div = document.getElementById('cerrareditc'); //oculta boton abrir edición
-    div.style.display = '';
-    div = document.getElementById('editcurs'); //muestra boton cerrar edición
-    div.style.display = 'none';
-    cerrarcurs = document.getElementById('cerrarc'); //oculta boton cerrar
-    cerrarcurs.style.display ='none';
+    document.getElementById('cerrareditc').style.display =''; //muestra boton cerrar edición
+    document.getElementById('editcurs').style.display ='none'; //muestra boton cerrar edición
+    document.getElementById('cerrarc').style.display ='none'; //oculta boton cerrar
     document.getElementById('buttonfin').style.display ='none'; // oculta boton finalazar curso
     document.getElementById('buttongcambios').style.display =''; //muestra botton
+
      //Habilita los campos para edición
      document.getElementById('gstTitlo').disabled = false;
      document.getElementById('gstTipo').disabled = false;
