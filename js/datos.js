@@ -853,59 +853,58 @@ function inspector(gstIdper) {
                         // alert(termino);
                         // alert("Aquí va la fecha convertida" + fecha);
                         //FLUJO VIGENCIA DE CURSOS
-// if (total >= 365) {
-// obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
+                        // if (total >= 365) {
+                        // obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
 
-// } else if (total >= 100000000) {
-// obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
-// } 
+                        // } else if (total >= 100000000) {
+                        // obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
+                        // } 
 
-//fcurso = '2021-01-26';
-//aler1 t(obj.data[ii].gstVignc);
-
-
-
-gstVignc = obj.data[ii].gstVignc * 12;
-vence = gstVignc - 6;
-
-//oi = '2023/01/28';
-//var hoy = new Date(oi);
-
-var hoy = new Date();
-var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
-
-var termino = new Date(obj.data[ii].fechaf);
-var finaliza = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate()); 
-
-finaliza.setMonth(finaliza.getMonth() + gstVignc);
-termino.setMonth(termino.getMonth() + vence);
-termino.setDate(termino.getDate() + 1);
-
-var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
-
-// console.log(factual);
-// console.log('<br>');
-// console.log(finaliza);
-// console.log('<br>');
-// console.log(ftermino);
+                        //fcurso = '2021-01-26';
+                        //aler1 t(obj.data[ii].gstVignc);
 
 
-// alert(obj.data[ii].gstIdlsc+' '+finaliza);
+
+                        gstVignc = obj.data[ii].gstVignc * 12;
+                        vence = gstVignc - 6;
+
+                        //oi = '2023/01/28';
+                        //var hoy = new Date(oi);
+
+                        var hoy = new Date();
+                        var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+
+                        var termino = new Date(obj.data[ii].fechaf);
+                        var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
+
+                        finaliza.setMonth(finaliza.getMonth() + gstVignc);
+                        termino.setMonth(termino.getMonth() + vence);
+                        termino.setDate(termino.getDate() + 1);
+
+                        var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
+
+                        // console.log(factual);
+                        // console.log('<br>');
+                        // console.log(finaliza);
+                        // console.log('<br>');
+                        // console.log(ftermino);
 
 
-if(factual >= finaliza){
-status = "<a type='button' class='btn btn-danger' data-toggle='modal' >VENCIDO</a>"; 
-//console.log(status);
-}else 
-if(factual <= ftermino){
-status = "<a type='button' class='btn btn-success' data-toggle='modal' >VIGENTE</a>";  
-//console.log(status);
-}
-else 
-if(factual >= ftermino){
-status = "<a type='button' class='btn btn-warning' data-toggle='modal' >POR VENCER</a>";   
-//console.log(status);
-}
+                        // alert(obj.data[ii].gstIdlsc+' '+finaliza);
+
+
+                        if (factual >= finaliza) {
+                            status = "<a type='button' class='btn btn-danger' data-toggle='modal' >VENCIDO</a>";
+                            //console.log(status);
+                        } else
+                        if (factual <= ftermino) {
+                            status = "<a type='button' class='btn btn-success' data-toggle='modal' >VIGENTE</a>";
+                            //console.log(status);
+                        } else
+                        if (factual >= ftermino) {
+                            status = "<a type='button' class='btn btn-warning' data-toggle='modal' >POR VENCER</a>";
+                            //console.log(status);
+                        }
 
                         //
                         if (obj.data[ii].idinsp == gstIdper) {
@@ -922,10 +921,10 @@ status = "<a type='button' class='btn btn-warning' data-toggle='modal' >POR VENC
                                 Final = day + '/' + month + '/' + year;
 
                                 idlista = obj.data[ii].idmstr;
-                               // if (obj.data[ii].confirmar == 'CONFIRMAR') {
-                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>" + obj.data[ii].proceso + "</a></td><td>"+status+"</td></tr>";
+                                // if (obj.data[ii].confirmar == 'CONFIRMAR') {
+                                html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>" + obj.data[ii].proceso + "</a></td><td>" + status + "</td></tr>";
                                 //} else if (obj.data[ii].confirmar == 'CONFIRMADO') {
-                                  //  html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-confirma'>CONFIRMADO</a></td><td>" + status + "</td></tr>";
+                                //  html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-confirma'>CONFIRMADO</a></td><td>" + status + "</td></tr>";
                                 //} else {}
                             }
                         }
@@ -1357,9 +1356,9 @@ function registrar() {
                     focusConfirm: false,
                     confirmButtonColor: "#3C8DBC",
                     customClass: 'swal-wide',
-                    confirmButtonText: '<span style="color: white;"><a href="../admin/personal.php">¿Deseas agregar otro registro?</a></span>',
+                    confirmButtonText: '<span style="color: white;"><a class="a-alert" href="../admin/personal.php">¿Deseas agregar otro registro?</a></span>',
                     confirmButtonAriaLabel: 'Thumbs up, great!',
-                    cancelButtonText: '<span style="color: white;"><a href="../admin/persona.php">Cerrar</a></span>',
+                    cancelButtonText: '<span style="color: white;"><a  class="a-alert" href="../admin/persona.php">Cerrar</a></span>',
                     cancelButtonAriaLabel: 'Thumbs down'
                         // timer: 2900
                 });
