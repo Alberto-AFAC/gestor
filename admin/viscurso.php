@@ -127,7 +127,7 @@
   </div>
   <div id= "dismod" style="display:none;" class="form-group">
       <div  class="col-sm-4">
-        <label id="linlabelc" class="label2">LINK DE ACCESO</label>
+        <label class="label2">LINK DE ACCESO</label>
         <input type="url" class="form-control inputalta" id="linkcur" name="linkcur" placeholder="URL" disabled="">
       </div>
       <div class="col-sm-4">

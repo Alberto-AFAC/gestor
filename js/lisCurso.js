@@ -51,6 +51,8 @@ function curso(cursos) {
     $("#Dtall #idinst").val(d[11]);
     $("#Dtall #sede").val(d[12]);
     $("#Dtall #modalidads").val(d[14]);
+    $("#Dtall #linkcur").val(d[13]);
+    //$("#Dtall #contracur").val(d[15]); falta la contraseña en base de datos
 
     modalidadcur = document.getElementById('modalidads').value;  //variable para declara la modalidad
     dismod = document.getElementById("dismod"); //variable para el contenedor de el link y la contraseña
