@@ -20,68 +20,74 @@
         <?php 
                                 $query ="SELECT
                                 'total',
-                                COUNT( id_curso ) AS COMPLETADOS,
-                                COUNT( CASE WHEN proceso = 'PENDIENTE' THEN 1 END ) AS PENDIENTES,
-                                COUNT( CASE WHEN proceso = 'ACREEDITADO' THEN 1 END ) AS ACREEDITADO,
-                                COUNT( CASE WHEN proceso = 'EN PROCESO' THEN 1 END ) AS PORACREEDITAR,
-                                COUNT( id_curso ) * 100 / COUNT( id_curso ) AS COMPLETADOSPOR,
-                                COUNT( CASE WHEN proceso = 'PENDIENTE' THEN 1 END ) * 100 / COUNT( id_curso ) AS PENDIENTE,
-                                COUNT( CASE WHEN proceso = 'ACREEDITADO' THEN 1 END ) * 100 / COUNT( id_curso ) AS ACREEDITADO,
-                                COUNT( CASE WHEN proceso = 'EN PROCESO' THEN 1 END ) * 100 / COUNT( id_curso ) AS PORACREEDITAR 
+                                COUNT( gstIdlsc ) AS COMPLETADOS,
+                                COUNT( CASE WHEN gstTipo = 'INDUCCIÓN' THEN 1 END ) AS INDUCCION,
+                                COUNT( CASE WHEN gstTipo = 'RECURRENTES' THEN 1 END ) AS RECURRENTES,
+                                COUNT( CASE WHEN gstTipo = 'BÁSICOS' THEN 1 END ) AS BÁSICOS,
+                                COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) AS ESPECÍFICOS,
+                                COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) AS OJT,
+                                COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) AS BINICIAS,
+                                COUNT( CASE WHEN gstTipo = 'INDUCCIÓN' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS INDUCCIÓNP,
+                                COUNT( CASE WHEN gstTipo = 'RECURRENTES' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS RECURRENTESP,
+                                COUNT( CASE WHEN gstTipo = 'BÁSICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS BASICOSP,
+                                COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS ESPECÍFICOSP,
+                                COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS OJTP,
+                                COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS BINICIASP 
                             FROM
-                                cursos";
+                            listacursos";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
                                 ?>
-                        
-
-                        <div  class="col-sm-offset-1 col-md-10">
+                       <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
-                    <span class="progress-text">TOTAL DE CURSOS PROGRAMADOS</span>
-                    <span class="progress-number"><b><?php echo $row['COMPLETADOS'] ?></b> /<?php echo $row['COMPLETADOSPOR'] ?> %</span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['COMPLETADOSPOR'] ?>%"></div>
-                        </div>
+                    <span class="progress-text">TOTAL CURSOS DE INDUCCIÓN</span>
+                    <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: <?php echo $row['INDUCCIÓNP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['INDUCCIÓNP'] ?>%</div>
+            </div>
                   </div>
             </div>  
         <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
-                    <span class="progress-text">IVA DE NAVEGACIÓN AÉREA</span>
-                    <span class="progress-number"><b><?php echo $row['IVANAVEGACIONA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVANAVEGACIONAP'] ?>%"></div>
-                        </div>
+                    <span class="progress-text">TOTAL CURSOS RECURRENTES</span>
+                    <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <?php echo $row['RECURRENTESP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['RECURRENTESP'] ?>%</div>
+          </div>
                   </div>
             </div>  
-        <div  class="col-sm-offset-1 col-md-10">
+            <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
-                    <span class="progress-text">IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</span>
-                    <span class="progress-number"><b><?php echo $row['SISOPERA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['SISOPERAP'] ?>%"></div>
-                        </div>
+                    <span class="progress-text">TOTAL CURSOS BÁSICOS</span>
+                    <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <?php echo $row['BASICOSP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['BASICOSP'] ?>%</div>
+          </div>
                   </div>
             </div>  
-            
-        <div  class="col-sm-offset-1 col-md-10">
+            <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
-                    <span class="progress-text">IVA DE AERÓDROMOS</span>
-                    <span class="progress-number"><b><?php echo $row['AERODROMOS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['AERODROMOSP'] ?>%"></div>
-                        </div>
+                    <span class="progress-text">TOTAL CURSOS ESPECÍFICOS</span>
+                    <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <?php echo $row['ESPECÍFICOSP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['ESPECÍFICOSP'] ?>%</div>
+          </div>
                   </div>
             </div>  
-        <div  class="col-sm-offset-1 col-md-10">
+            <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
-                    <span class="progress-text">IVA DE OPERACIONES</span>
-                    <span class="progress-number"><b><?php echo $row['OPERACIONES'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['OPERACIONESP'] ?>%"></div>
-                        </div>
+                    <span class="progress-text">TOTAL CURSOS OJT</span>
+                    <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <?php echo $row['OJTP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['OJTP'] ?>%</div>
+          </div>
+                  </div>
+            </div>  
+            <div  class="col-sm-offset-1 col-md-10">
+            <div class="progress-group">
+                    <span class="progress-text">TOTAL CURSOS BÁSICOS/INICIAL</span>
+                    <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <?php echo $row['BINICIASP'] ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $row['BINICIASP'] ?>%</div>
+          </div>
                   </div>
             </div>  
           <!-- ./col -->
+        </div>
         </div>
         <!-- /.row -->
       </div>
