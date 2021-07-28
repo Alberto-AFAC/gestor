@@ -32,7 +32,7 @@
   <label for=""></label>
 <button type="button" title="Editar Curso" style="float:right;" class="btn btn-box-tool" data-widget="collapse">
      <a href='javascript:editcurso()' id="editcurs" style="font-size:20px"> <i class="fa fa-edit"></i> </a>
-     <a href='javascript:cerrarEdit()'  id="cerrareditc" style="display:none; font-size:20px"> <i class="fa fa-ban"></i> </a>
+     <a href='javascript:cereditcurso()'  id="cerrareditc" style="display:none; font-size:20px"> <i class="fa fa-ban"></i> </a>
   </button>
 </div>
 <form class="form-horizontal" action="" method="POST" id="Dtall" >
