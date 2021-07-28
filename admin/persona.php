@@ -20,6 +20,7 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  
 <style>
      .swal-wide{
     width: 500px !important;

@@ -8,15 +8,14 @@
   <!-- /.col -->
   <div class="col-md-12">
   <div class="box-tools pull-right">
-  <button type="button" title="Cerrar" class="btn btn-box-tool" style="font-size:18px" data-widget="remove">
+  <button type="button" title="Cerrar" id= "cerrarc" class="btn btn-box-tool" style="font-size:18px" data-widget="remove">
      <a href='javascript:closeCurso()'><i class='fa fa-times'></i></a>
   </button>
   <button type="button" title="Editar Curso" class="btn btn-box-tool" data-widget="collapse">
-     <a href='javascript:openEdit()' id="cerrarcur" style="font-size:18px"> <i class="fa fa-edit"></i> </a>
-     <a href='javascript:cerrarEdit()'  id="cerrar1curs" style="display:none; font-size:18px"> <i class="fa fa-ban"></i> </a>
+     <a href='javascript:editcurso()' id="editcurs" style="font-size:18px"> <i class="fa fa-edit"></i> </a>
+     <a href='javascript:cerrarEdit()'  id="cerrareditc" style="display:none; font-size:18px"> <i class="fa fa-ban"></i> </a>
   </button>
-  </div>   
-           
+  </div>            
   <div class="nav-tabs-custom">
   <ul class="nav nav-tabs">
   <div class="box-tools pull-right">
@@ -137,6 +136,11 @@
   </div>  
   <button type="button" id="button" title="Finalizar Curso" style="font-size:15px; width:130px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR</button>
   </button>
+  <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
+
+  <b><p class="alert alert-success text-center padding exito" id="exito">¡Se finalizo con éxito!</p></b>
+
+  <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario finalizar los procesos</p></b>
 </form>
 </div>
 
@@ -235,7 +239,11 @@
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se agrego el curso con éxito!</p></b>
 
   <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
-  </div>
+  </div><b><p class="alert alert-danger text-center padding error" id="error">Error al agregar curso </p></b>
+
+  <b><p class="alert alert-success text-center padding exito" id="exito">¡Se agrego el curso con éxito!</p></b>
+
+  <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
   </div>
   </div>
   </div>

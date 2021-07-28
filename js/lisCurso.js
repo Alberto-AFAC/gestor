@@ -422,6 +422,31 @@ function evaluarins(cursos) {
         //    statusev.value = "PENDIENTE"
     }
 }
+//EDICIÓN DEL CURSO
+function editcurso(){
+    div = document.getElementById('cerrareditc'); //oculta boton abrir edición
+    div.style.display = '';
+    div = document.getElementById('editcurs'); //muestra boton cerrar edición
+    div.style.display = 'none';
+    cerrarcurs = document.getElementById('cerrarc'); //oculta boton cerrar
+    cerrarcurs.style.display ='none';
+     //Habilita los campos para edición
+     document.getElementById('gstTitlo').disabled = false;
+     document.getElementById('gstTipo').disabled = false;
+     document.getElementById('gstPrfil').disabled = false;
+     document.getElementById('gstCntnc').disabled = false;
+     document.getElementById('gstDrcin').disabled = false;
+     document.getElementById('gstVignc').disabled = false;
+     document.getElementById('gstObjtv').disabled = false;
+     document.getElementById('fcurso').disabled = false;
+     document.getElementById('hcurso').disabled = false;
+     document.getElementById('fechaf').disabled = false;
+     document.getElementById('idinst').disabled = false;
+     document.getElementById('sede').disabled = false;
+     document.getElementById('modalidads').disabled = false;
+     document.getElementById('linkcur').disabled = false;
+     document.getElementById('contracur').disabled = false;
+} 
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
 function cerrareval() {
