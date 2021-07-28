@@ -33,6 +33,7 @@
                                 COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS ESPECÍFICOSP,
                                 COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS OJTP,
                                 COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS BINICIASP 
+                                
                             FROM
                             listacursos";
                                 $resultado = mysqli_query($conexion, $query);
@@ -102,8 +103,6 @@
     <!-- /.box -->
   </div>
   <!-- /.col -->
-</div>
-
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->

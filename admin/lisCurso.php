@@ -60,8 +60,6 @@ $inspector = mysqli_query($conexion,$sql);
             </section>
             <!-- Main content -->
             <section class="content">
-            
-
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-md-12">
@@ -74,7 +72,7 @@ $inspector = mysqli_query($conexion,$sql);
 <div class="tab-content">
         
     <div class="box-body" id="listCurso">
-    <?php include('cursosprogramados.php'); ?>
+        <?php include('cursosprogramados.php'); ?>
         <?php include('../html/lisCurso.html');?>
         <!-- Datatables -->
     </div>
@@ -85,7 +83,7 @@ $inspector = mysqli_query($conexion,$sql);
             <?php include('viscurso.php');?>
 
         </div>
-    </div>
+</div>
     <div id='lstacurs'></div>
     <div class="modal fade" id="modal-participnt">
         <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
