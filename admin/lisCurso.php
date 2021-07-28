@@ -117,7 +117,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
                 <div class="modal-body">
                     <form class="form-horizontal" id="Prtcpnt">
 
-                        <input type="hidden" class="form-control" id="gstIdlsc"
+                        <input type="text" class="form-control" id="gstIdlsc"
                         name="gstIdlsc">
 
                         <div class="form-group">

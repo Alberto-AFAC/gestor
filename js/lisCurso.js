@@ -38,6 +38,10 @@ function curso(cursos) {
 
     gstIdlsc = d[0];
 
+    
+    $("#impri #gstIdlstc").val(d[0]);
+    $("#impri #gstTitulo").val(d[1]);
+
     $("#Dtall #gstTitlo").val(d[1]);
     $("#Dtall #gstTipo").val(d[2]);
     $("#Dtall #gstPrfil").val(d[3]);
@@ -129,6 +133,10 @@ function curso(cursos) {
 }
 
 function imprimir() {
+
+gstIdlsc = document.getElementById('gstIdlstc').value;
+gstTitulo = document.getElementById('gstTitulo').value;
+
     var pdf = new jsPDF("landscape");
     pdf.setFontSize(10)
         // pdf.setFontType('bold')
@@ -141,40 +149,41 @@ function imprimir() {
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-        var x = 0;
-
-        for (i = 0; i < res.length; i++) {
-            x++;
-
-            if (obj.data[i].gstIdper == gstTitlo) {
-
-                valor = obj.data[i].gstIdper;
-                cargo = obj.data[i].gstCargo;
-                nombre = obj.data[i].gstNombr;
+        
 
 
-
-            }
-
-        }
-    })
-    var logo = new Image();
+  var logo = new Image();
     logo.src = '../dist/img/AFACPDF.png';
     pdf.addImage(logo, 'PNG', 120, 5, 40, 30);
     pdf.setFontType('bold')
     pdf.text(15, 40, 'LISTA TECNICA DE PARTICIPANTES')
 
-    pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' + document.getElementById('gstTitlo').value)
+    pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' +gstTitulo)
 
-    var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
-    var data = [
-        [1, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
-        [2, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE OPERACIONES VUELO"],
-        [3, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO EN SMS-SSP"],
-        [4, "NENFI REIBER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
-        [5, "JUAN MANUEL", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."],
-        [6, "PEDRO JAVIER", "INSPECTOR VERIFICADOR AERONÁUTICO DE LICENCIAS."]
-    ];
+        var x = 0;
+
+var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].gstIdlsc == gstIdlsc) {
+
+                //alert(obj.data[i].gstIdlsc);
+
+                titulo = obj.data[i].gstTitlo;
+                valor = obj.data[i].gstIdper;
+                cargo = obj.data[i].gstCargo;
+                nombre = obj.data[i].gstNombr;
+                        
+            //const array1 = [x, nombre, cargo];
+
+            }
+        }
+        
+       // alert(nombre);
+
+           var data = [[x,nombre,cargo]];
     /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
     const pageCount = pdf.internal.getNumberOfPages();
     for (var i = 1; i <= pageCount; i++) {
@@ -183,6 +192,8 @@ function imprimir() {
         pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
             "right");
     }
+
+
     pdf.autoTable(columns, data, {
         margin: {
             top: 50,
@@ -206,7 +217,22 @@ function imprimir() {
 
     window.open(pdf.output('bloburl'))
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+   }
 
 //CERTIFICADO
 function certificado() {
