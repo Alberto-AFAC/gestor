@@ -146,6 +146,7 @@ include('header.php');
       <select type="text" class="form-control" id="modalidad" name="modalidad">
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
+          <option value="PRESENCIAL">PRESENCIAL</option>
           <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
           <option value="AUTOGESTIVO">AUTOGESTIVO</option>          
       </select>

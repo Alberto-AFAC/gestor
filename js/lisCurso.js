@@ -50,12 +50,19 @@ function curso(cursos) {
     $("#Dtall #fechaf").val(d[10]);
     $("#Dtall #idinst").val(d[11]);
     $("#Dtall #sede").val(d[12]);
+    $("#Dtall #modalidads").val(d[14]);
 
-    if (d[13] != 0) {
-        //$("#Dtall #link").val(d[13]);
-        // $("#link").show();
-    } else {
-        //$("#link").hide();    
+    modalidadcur = document.getElementById('modalidads').value;  //variable para declara la modalidad
+    dismod = document.getElementById("dismod"); //variable para el contenedor de el link y la contraseña
+
+    if (modalidadcur== "A DISTANCIA") { //se visualiza el link y contraseña 
+        dismod.style.display = '';
+    } 
+    if (modalidadcur== "PRESENCIAL (SEMIPRESENCIAL)") { //se visualiza el link y contraseña 
+        linidismodnpu.style.display = '';
+    }
+    if (modalidadcur== "PRESENCIAL") { //se oculta el link y la contraseña
+        dismod.style.display = 'none';
     }
 
 
