@@ -40,6 +40,21 @@ $inspector = mysqli_query($conexion,$sql);
 <!-- Google Font -->
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<style>
+    
+  .progress {
+    height: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.progress-bar-striped {
+    background-image: linear-gradient(-45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+}
+.progress-bar {
+    font-size: 18px;
+    animation-direction: reverse;
+}
+    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -52,6 +67,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
+           
 
             <section class="content-header">
                 <h1>
@@ -60,10 +76,13 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
             </section>
             <!-- Main content -->
             <section class="content">
+            
+
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
+                      
                             <!--<ul class="nav nav-tabs">
 <li class="active"><a href="#activity" data-toggle="tab">PROGRAMACIÓN DEL CURSO</a></li>
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
@@ -71,6 +90,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
         
         
     <div class="box-body" id="listCurso">
+    <?php include('cursosprogramados.php'); ?>
         <?php include('../html/lisCurso.html');?>
         <!-- Datatables -->
     </div>
