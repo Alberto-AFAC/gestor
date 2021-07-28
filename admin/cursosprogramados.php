@@ -41,6 +41,7 @@
                        <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">TOTAL CURSOS DE INDUCCIÓN</span>
+                    <span class="progress-number"><b><?php echo $row['INDUCCION']?></b>/ <?php echo $row['COMPLETADOS']?></span>
                     <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: <?php echo $row['INDUCCIÓNP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['INDUCCIÓNP'] ?>%</div>
             </div>
@@ -49,6 +50,7 @@
         <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">TOTAL CURSOS RECURRENTES</span>
+                    <span class="progress-number"><b><?php echo $row['RECURRENTES']?></b>/ <?php echo $row['COMPLETADOS']?></span>
                     <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: <?php echo $row['RECURRENTESP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['RECURRENTESP'] ?>%</div>
           </div>
@@ -57,6 +59,7 @@
             <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">TOTAL CURSOS BÁSICOS</span>
+                    <span class="progress-number"><b><?php echo $row['BÁSICOS']?></b>/ <?php echo $row['COMPLETADOS']?></span>
                     <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: <?php echo $row['BASICOSP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['BASICOSP'] ?>%</div>
           </div>
@@ -65,6 +68,7 @@
             <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">TOTAL CURSOS ESPECÍFICOS</span>
+                    <span class="progress-number"><b><?php echo $row['ESPECÍFICOS']?></b>/ <?php echo $row['COMPLETADOS']?></span>
                     <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: <?php echo $row['ESPECÍFICOSP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['ESPECÍFICOSP'] ?>%</div>
           </div>
@@ -73,6 +77,7 @@
             <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">TOTAL CURSOS OJT</span>
+                    <span class="progress-number"><b><?php echo $row['OJT']?></b>/ <?php echo $row['COMPLETADOS']?></span>
                     <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: <?php echo $row['OJTP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['OJTP'] ?>%</div>
           </div>
@@ -81,6 +86,7 @@
             <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
                     <span class="progress-text">TOTAL CURSOS BÁSICOS/INICIAL</span>
+                    <span class="progress-number"><b><?php echo $row['BINICIAS']?></b>/ <?php echo $row['COMPLETADOS']?></span>
                     <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: <?php echo $row['BINICIASP'] ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $row['BINICIASP'] ?>%</div>
           </div>
