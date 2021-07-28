@@ -137,10 +137,17 @@
   <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:130px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR</button>
   </button>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
-
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se finalizo con éxito!</p></b>
-
   <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario finalizar los procesos</p></b>
+  <!-- boton finaliza edición -->
+  <div class="form-group" id="buttongcambios" style="display:none;"><br>
+  <div class="col-sm-offset-0 col-sm-5">
+  <button type="button" id="button" class="btn btn-info btn-lg" onclick="actCurso();">Aceptar</button>
+  </div>
+  <b><p class="alert alert-danger text-center padding error" id="error">Error al agregar curso </p></b>
+  <b><p class="alert alert-success text-center padding exito" id="exito">¡Se agrego el curso con éxito!</p></b>
+  <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
+  </div>
 </form>
 </div>
 

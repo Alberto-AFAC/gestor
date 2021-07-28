@@ -430,8 +430,8 @@ function editcurso(){
     div.style.display = 'none';
     cerrarcurs = document.getElementById('cerrarc'); //oculta boton cerrar
     cerrarcurs.style.display ='none';
-    btnfinalizar = document.getElementById('buttonfin'); //oculta boton cerrar
-    btnfinalizar.style.display ='none';
+    document.getElementById('buttonfin').style.display ='none'; // oculta boton finalazar curso
+    document.getElementById('buttongcambios').style.display =''; //muestra botton
      //Habilita los campos para edición
      document.getElementById('gstTitlo').disabled = false;
      document.getElementById('gstTipo').disabled = false;
