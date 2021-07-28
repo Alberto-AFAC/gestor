@@ -97,20 +97,37 @@ function proCurso() {
             console.log(respuesta);
 
             if (respuesta == 0) {
-                $('#succe').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe').toggle('toggle');
-                }, 2000);
+                // $('#succe').toggle('toggle');
+                // setTimeout(function() {
+                //     $('#succe').toggle('toggle');
+                // }, 2000);
 
-                document.getElementById('button').disabled = 'false';
-                // document.getElementById('button').style.color = "silver"; 
-                $('#vaciar').toggle('toggle');
+                // document.getElementById('button').disabled = 'false';
+                // // document.getElementById('button').style.color = "silver"; 
+                // $('#vaciar').toggle('toggle');
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Curso programado correctamente',
+                    // showConfirmButton: false,
+                    showCancelButton: true,
+                    showCloseButton: true,
+                    customClass: 'swal-wide',
+                    confirmButtonText: '<span style="color: white;"><a class="a-alert" href="../admin/programa.php">¿Deseas agregar otro curso?</a></span>',
+                    cancelButtonText: '<span style="color: white;"><a  class="a-alert" href="../admin/lisCurso.php">Cerrar</a></span>',
+
+                });
+                // setTimeout("location.href = 'inspecion.php';", 2000);
 
             } else {
-                $('#danger').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger').toggle('toggle');
-                }, 2000);
+                Swal.fire({
+                    type: 'warning',
+                    title: 'AFAC INFORMA',
+                    text: 'Error al agregar curso',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000
+                });
             }
         });
     }

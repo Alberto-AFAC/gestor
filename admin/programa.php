@@ -36,6 +36,29 @@ unset($_SESSION['consulta']);
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  
+<style>
+  .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.a-alert:link {
+  color: white;
+}
+
+.a-alert:visited {
+  color: white;
+}
+
+</style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -284,22 +307,31 @@ $("#idcord").select2();
 <script src="../js/select2.js"></script> 
 
 <script>
-// 	jQuery(function($){
-//   $(document).ajaxSend(function() {
-//     $("#overlay").fadeIn(3000);　
-//   });
-		
-//   $('#button').click(function(){
-//     $.ajax({
-//       type: 'GET',
-//       success: function(proCurso){
-  
-//       }
-//     }).done(function() {
-//       setTimeout(function(){
-//         $("#overlay").fadeOut(3000);
-//       },3000);
-//     });
-//   });	
-// });
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("fcurso").setAttribute("min", today);
+//Second date
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("fechaf").setAttribute("min", today);
 </script>

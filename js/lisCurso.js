@@ -9,7 +9,7 @@ function lisCurso() {
 
 
 
-        html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> TÍTULO</th><th><i></i> TIPO</th><th><i></i> INICIO</th><th><i></i> DURACIÓN</th><th><i></i> FINAL</th><th><i></i> PARTICIPANTES</th><th style="width:13%"><i></i> ACCIÓN</th></tr></thead><tfoot><tr></tr></tfoot><tbody>';
+        html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> TÍTULO</th><th><i></i> TIPO</th><th><i></i> INICIO</th><th><i></i> DURACIÓN</th><th><i></i> FINAL</th><th><i></i> PARTICIPANTES</th><th><i></i>ESTATUS</th><th style="width:13%"><i></i> ACCIÓN</th></tr></thead><tfoot><tr></tr></tfoot><tbody>';
         for (i = 0; i < res.length; i++) {
             x++;
 
@@ -25,7 +25,7 @@ function lisCurso() {
 
             cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad;
 
-            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td>" + obj.data[i].proceso + "</td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
         }
         html += '</tbody></table>';
         $("#lstacurs").html(html);
@@ -450,22 +450,12 @@ function evaluarins(cursos) {
 }
 //EDICIÓN DEL CURSO
 function editcurso(){
-    div = document.getElementById('cerrareditc'); //oculta boton abrir edición
-    div.style.display = '';
-    div = document.getElementById('editcurs'); //muestra boton cerrar edición
-    div.style.display = 'none';
-    cerrarcurs = document.getElementById('cerrarc'); //oculta boton cerrar
-    cerrarcurs.style.display ='none';
+    document.getElementById('cerrareditc').style.display =''; //muestra boton cerrar edición
+    document.getElementById('editcurs').style.display ='none'; //muestra boton cerrar edición
+    //document.getElementById('cerrarc').style.display ='none'; //oculta boton cerrar
     document.getElementById('buttonfin').style.display ='none'; // oculta boton finalazar curso
     document.getElementById('buttongcambios').style.display =''; //muestra botton
      //Habilita los campos para edición
-     document.getElementById('gstTitlo').disabled = false;
-     document.getElementById('gstTipo').disabled = false;
-     document.getElementById('gstPrfil').disabled = false;
-     document.getElementById('gstCntnc').disabled = false;
-     document.getElementById('gstDrcin').disabled = false;
-     document.getElementById('gstVignc').disabled = false;
-     document.getElementById('gstObjtv').disabled = false;
      document.getElementById('fcurso').disabled = false;
      document.getElementById('hcurso').disabled = false;
      document.getElementById('fechaf').disabled = false;
@@ -475,6 +465,25 @@ function editcurso(){
      document.getElementById('linkcur').disabled = false;
      document.getElementById('contracur').disabled = false;
 } 
+//FIN DE LA EDICIÓN DEL CURSO
+function cereditcurso(){
+    document.getElementById('cerrareditc').style.display ='none'; //muestra boton cerrar edición
+    document.getElementById('editcurs').style.display =''; //muestra boton cerrar edición
+    //document.getElementById('cerrarc').style.display ='none'; //oculta boton cerrar
+    document.getElementById('buttonfin').style.display =''; // oculta boton finalazar curso
+    document.getElementById('buttongcambios').style.display ='none'; //muestra botton
+     //Habilita los campos para edición
+     document.getElementById('fcurso').disabled = true;
+     document.getElementById('hcurso').disabled = true;
+     document.getElementById('fechaf').disabled = true;
+     document.getElementById('idinst').disabled = true;
+     document.getElementById('sede').disabled = true;
+     document.getElementById('modalidads').disabled = true;
+     document.getElementById('linkcur').disabled = true;
+     document.getElementById('contracur').disabled = true;
+} 
+
+
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
 function cerrareval() {

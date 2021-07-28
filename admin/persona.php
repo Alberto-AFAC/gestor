@@ -39,16 +39,6 @@
 .a-alert:visited {
   color: white;
 }
-
-.a-alert:focus {
-  
-  background: white;
-}
-
-.a-alert:active {
-  background: white;
-  color: white;
-}
 </style>
 </head>
 

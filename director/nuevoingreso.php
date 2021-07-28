@@ -20,7 +20,7 @@
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
   <style>
-   .swal-wide{
+    .swal-wide{
     width: 500px !important;
     font-size: 16px !important;
 }
@@ -35,16 +35,6 @@
 }
 
 .a-alert:visited {
-  color: white;
-}
-
-.a-alert:focus {
-  
-  background: white;
-}
-
-.a-alert:active {
-  background: white;
   color: white;
 }
 </style>
