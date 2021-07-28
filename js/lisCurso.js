@@ -426,18 +426,10 @@ function evaluarins(cursos) {
 function editcurso(){
     document.getElementById('cerrareditc').style.display =''; //muestra boton cerrar edición
     document.getElementById('editcurs').style.display ='none'; //muestra boton cerrar edición
-    document.getElementById('cerrarc').style.display ='none'; //oculta boton cerrar
+    //document.getElementById('cerrarc').style.display ='none'; //oculta boton cerrar
     document.getElementById('buttonfin').style.display ='none'; // oculta boton finalazar curso
     document.getElementById('buttongcambios').style.display =''; //muestra botton
-
      //Habilita los campos para edición
-     document.getElementById('gstTitlo').disabled = false;
-     document.getElementById('gstTipo').disabled = false;
-     document.getElementById('gstPrfil').disabled = false;
-     document.getElementById('gstCntnc').disabled = false;
-     document.getElementById('gstDrcin').disabled = false;
-     document.getElementById('gstVignc').disabled = false;
-     document.getElementById('gstObjtv').disabled = false;
      document.getElementById('fcurso').disabled = false;
      document.getElementById('hcurso').disabled = false;
      document.getElementById('fechaf').disabled = false;
@@ -447,6 +439,25 @@ function editcurso(){
      document.getElementById('linkcur').disabled = false;
      document.getElementById('contracur').disabled = false;
 } 
+//FIN DE LA EDICIÓN DEL CURSO
+function cereditcurso(){
+    document.getElementById('cerrareditc').style.display ='none'; //muestra boton cerrar edición
+    document.getElementById('editcurs').style.display =''; //muestra boton cerrar edición
+    //document.getElementById('cerrarc').style.display ='none'; //oculta boton cerrar
+    document.getElementById('buttonfin').style.display =''; // oculta boton finalazar curso
+    document.getElementById('buttongcambios').style.display ='none'; //muestra botton
+     //Habilita los campos para edición
+     document.getElementById('fcurso').disabled = true;
+     document.getElementById('hcurso').disabled = true;
+     document.getElementById('fechaf').disabled = true;
+     document.getElementById('idinst').disabled = true;
+     document.getElementById('sede').disabled = true;
+     document.getElementById('modalidads').disabled = true;
+     document.getElementById('linkcur').disabled = true;
+     document.getElementById('contracur').disabled = true;
+} 
+
+
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
 function cerrareval() {
