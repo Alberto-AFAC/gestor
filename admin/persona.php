@@ -20,6 +20,7 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  
 <style>
  .swal-wide{
     width: 500px !important;
@@ -290,7 +291,7 @@ include('header.php');
 <b>Version</b> 1.2
 </div>
 
-<strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
+<strong>AFAC &copy; 2021 <a style="color:#3c8dbc" href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
 </footer>
 
  <?php include('panel.html');?>

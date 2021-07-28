@@ -50,12 +50,21 @@ function curso(cursos) {
     $("#Dtall #fechaf").val(d[10]);
     $("#Dtall #idinst").val(d[11]);
     $("#Dtall #sede").val(d[12]);
+    $("#Dtall #modalidads").val(d[14]);
+    $("#Dtall #linkcur").val(d[13]);
+    //$("#Dtall #contracur").val(d[15]); falta la contraseña en base de datos
 
-    if (d[13] != 0) {
-        //$("#Dtall #link").val(d[13]);
-        // $("#link").show();
-    } else {
-        //$("#link").hide();    
+    modalidadcur = document.getElementById('modalidads').value;  //variable para declara la modalidad
+    dismod = document.getElementById("dismod"); //variable para el contenedor de el link y la contraseña
+
+    if (modalidadcur== "A DISTANCIA") { //se visualiza el link y contraseña 
+        dismod.style.display = '';
+    } 
+    if (modalidadcur== "PRESENCIAL (SEMIPRESENCIAL)") { //se visualiza el link y contraseña 
+        linidismodnpu.style.display = '';
+    }
+    if (modalidadcur== "PRESENCIAL") { //se oculta el link y la contraseña
+        dismod.style.display = 'none';
     }
 
 
@@ -413,6 +422,33 @@ function evaluarins(cursos) {
         //    statusev.value = "PENDIENTE"
     }
 }
+//EDICIÓN DEL CURSO
+function editcurso(){
+    div = document.getElementById('cerrareditc'); //oculta boton abrir edición
+    div.style.display = '';
+    div = document.getElementById('editcurs'); //muestra boton cerrar edición
+    div.style.display = 'none';
+    cerrarcurs = document.getElementById('cerrarc'); //oculta boton cerrar
+    cerrarcurs.style.display ='none';
+    btnfinalizar = document.getElementById('buttonfin'); //oculta boton cerrar
+    btnfinalizar.style.display ='none';
+     //Habilita los campos para edición
+     document.getElementById('gstTitlo').disabled = false;
+     document.getElementById('gstTipo').disabled = false;
+     document.getElementById('gstPrfil').disabled = false;
+     document.getElementById('gstCntnc').disabled = false;
+     document.getElementById('gstDrcin').disabled = false;
+     document.getElementById('gstVignc').disabled = false;
+     document.getElementById('gstObjtv').disabled = false;
+     document.getElementById('fcurso').disabled = false;
+     document.getElementById('hcurso').disabled = false;
+     document.getElementById('fechaf').disabled = false;
+     document.getElementById('idinst').disabled = false;
+     document.getElementById('sede').disabled = false;
+     document.getElementById('modalidads').disabled = false;
+     document.getElementById('linkcur').disabled = false;
+     document.getElementById('contracur').disabled = false;
+} 
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
 function cerrareval() {
