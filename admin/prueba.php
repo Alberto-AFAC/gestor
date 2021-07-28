@@ -111,14 +111,14 @@ finaliza.setMonth(finaliza.getMonth() + gstVignc);
 oi = '2022/07/28';
 var hoy = new Date(oi);
 var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
-alert(factual);
+//alert(factual);
 
 // if(factual <= finaliza){
 termino.setMonth(termino.getMonth() + vence);
 termino.setDate(termino.getDate() + 1);
 
 var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
-alert(ftermino);
+//alert(ftermino);
 
  if(factual >= finaliza){
  	alert('VENCIDO');
