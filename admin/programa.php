@@ -40,7 +40,7 @@ unset($_SESSION['consulta']);
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
   
 <style>
- .swal-wide{
+  .swal-wide{
     width: 500px !important;
     font-size: 16px !important;
 }
@@ -58,15 +58,6 @@ unset($_SESSION['consulta']);
   color: white;
 }
 
-.a-alert:focus {
-  
-  background: white;
-}
-
-.a-alert:active {
-  background: white;
-  color: white;
-}
 </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -316,22 +307,31 @@ $("#idcord").select2();
 <script src="../js/select2.js"></script> 
 
 <script>
-// 	jQuery(function($){
-//   $(document).ajaxSend(function() {
-//     $("#overlay").fadeIn(3000);　
-//   });
-		
-//   $('#button').click(function(){
-//     $.ajax({
-//       type: 'GET',
-//       success: function(proCurso){
-  
-//       }
-//     }).done(function() {
-//       setTimeout(function(){
-//         $("#overlay").fadeOut(3000);
-//       },3000);
-//     });
-//   });	
-// });
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("fcurso").setAttribute("min", today);
+//Second date
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("fechaf").setAttribute("min", today);
 </script>

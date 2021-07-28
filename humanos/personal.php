@@ -39,7 +39,7 @@
 
 
 <style>
-      .swal-wide{
+     .swal-wide{
     width: 500px !important;
     font-size: 16px !important;
 }
@@ -54,16 +54,6 @@
 }
 
 .a-alert:visited {
-  color: white;
-}
-
-.a-alert:focus {
-  
-  background: white;
-}
-
-.a-alert:active {
-  background: white;
   color: white;
 }
    </style>
