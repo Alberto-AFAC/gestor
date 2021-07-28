@@ -3,164 +3,162 @@
 
   <!-- Main content -->
 
-
   <div class="row" id="detCurso" style="display: none;">
 
   <!-- /.col -->
   <div class="col-md-12">
   <div class="box-tools pull-right">
-  <button type="button" class="btn btn-box-tool" data-widget="remove">
-  <a href='javascript:closeCurso()'><i class='fa fa-times'></i></a>
+  <button type="button" title="Cerrar" id= "cerrarc" class="btn btn-box-tool" style="font-size:18px" data-widget="remove">
+     <a href='javascript:closeCurso()'><i class='fa fa-times'></i></a>
+  </button>
+  <button type="button" title="Editar Curso" class="btn btn-box-tool" data-widget="collapse">
+     <a href='javascript:editcurso()' id="editcurs" style="font-size:18px"> <i class="fa fa-edit"></i> </a>
+     <a href='javascript:cerrarEdit()'  id="cerrareditc" style="display:none; font-size:18px"> <i class="fa fa-ban"></i> </a>
   </button>
   </div>            
   <div class="nav-tabs-custom">
   <ul class="nav nav-tabs">
-  <li class="active"><a href="#activity" data-toggle="tab">INFORMACION DE CURSOS</a></li>
+  <div class="box-tools pull-right">
+
+</div>
+  <li class="active"><a href="#activity" data-toggle="tab">INFORMACION DEL CURSO</a></li>
+  
   <li><a href="#timeline" data-toggle="tab">PARTICIPANTES</a></li>
   </ul>
-  <div class="tab-content">
-  <div class="active tab-pane" id="activity">
+  
+<div class="tab-content">
+<div class="active tab-pane" id="activity">
   <!-- Post -->
-  <div class="post">
-
-  <form class="form-horizontal" action="" method="POST" id="Dtall" >
-
-  <div class="form-group">
-  <div class="col-sm-4">
-  <label>NOMBRE</label>
-  <input type="text" style="text-transform:uppercase;" class="form-control disabled" id="gstTitlo" name="gstTitlo" disabled="">
-  </div>
-
-  <div class="col-sm-4">
-  <label>TIPO</label>
-  <select type="text" class="form-control disabled" id="gstTipo" name="gstTipo" disabled="">
-
-  <option value="CURSOS BÁSICOS">CURSOS BÁSICOS</option>
-  <option value="CURSOS RECURRENTE">CURSOS RECURRENTES</option>
-  <option value="CURSOS ESPECÍFICOS">CURSOS ESPECÍFICOS</option>
-  </select>
-  </div>
-
-  <div class="col-sm-4">
-  <label>PERFIL A QUIEN VA DIRIGIDO</label>
-  <input type="text" style="text-transform:uppercase;" class="form-control disabled" id="gstPrfil" name="gstPrfil" disabled="">
-  </div>
-
-  <div class="col-sm-4">
-  <label>DOCUMENTO QUE EMITE</label>
-  <input type="text" style="text-transform:uppercase;" class="form-control disabled" id="gstCntnc" name="gstCntnc" disabled="">
-  </div>
-  <div class="col-sm-4">
-  <label>DURACIÓN</label>
-  <input type="text" class="form-control disabled" id="gstDrcin" name="gstDrcin" disabled="">
-  </div>
-
-  <div class="col-sm-4">
-  <label>PERIODO DE VIGENCIA</label>                         
-  <select type="text" class="form-control disabled" id="gstVignc" name="gstVignc" disabled="">
-  <option>SELECCIONE VIGENCIA</option>
-  <option value="1 AÑO">1 AÑO</option>
-  <option value="2 AÑOS">2 AÑOS</option>
-  <option value="3 AÑOS">3 AÑOS</option>
-  <option value="4 AÑOS">4 AÑOS</option>
-  <option value="5 AÑOS">5 AÑOS</option>
-  <option value="6 AÑOS">6 AÑOS</option>
-  <option value="7 AÑOS">7 AÑOS</option>
-  <option value="8 AÑOS">8 AÑOS</option>
-  <option value="9 AÑOS">9 AÑOS</option>
-  <option value="10 AÑOS">10 AÑOS</option>
-  </select>
-  </div>
-  </div>
-  <div class="form-group">
-  <div class="col-sm-12">
-  <label>OBJETIVO</label>
-  <textarea name="gstObjtv" id="gstObjtv"  placeholder="Escribir el Objetivo" style="text-transform:uppercase;" class="form-control disabled" rows="5" cols="50" disabled=""></textarea>
-  </div>
-  </div>
+<div class="post">
+  
+<form class="form-horizontal" action="" method="POST" id="Dtall" >
 
   <div class="form-group">
-  <div class="col-sm-4">
-  <label>FECHA INICIO</label>
-  <input type="date" class="form-control disabled" id="fcurso" name="fcurso" disabled="">
+      <div class="col-sm-4">
+        <label class="label2">NOMBRE</label>
+        <input type="text" style="text-transform:uppercase;" class="form-control disabled inputalta" id="gstTitlo" name="gstTitlo" disabled="">
+      </div>
+      <div class="col-sm-4">
+        <label class="label2">TIPO DE CAPACITACIÓN</label>
+        <select type="text" class="form-control inputalta" id="gstTipo" name="gstTipo" disabled="">
+            <option value="0">ELEGIR UNA OPCIÓN</option>
+            <option value="INDUCCIÓN">INDUCCIÓN</option>
+            <option value="BÁSICOS">BÁSICO/INICIAL</option>
+            <option value="TRANSVERSALES">TRANSVERSALE</option>
+            <option value="RECURRENTES">RECURRENTE</option>
+            <option value="ESPECÍFICOS">ESPECÍFICO</option>
+            <option value="OJT">OJT</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <label class="label2">PERFIL A QUIEN VA DIRIGIDO</label>
+        <input type="text" style="text-transform:uppercase;" class="form-control inputalta" id="gstPrfil" name="gstPrfil" disabled="">
+      </div>
   </div>
-
-  <div class="col-sm-4">
-  <label>HORA</label>
-  <input type="time" class="form-control disabled" id="hcurso" name="hcurso" disabled="">
-  </select>
-  </div>
-
-  <div class="col-sm-4">
-  <label>FECHA CONCLUCIÓN</label>
-  <input type="date" class="form-control disabled" id="fechaf" name="fechaf" disabled="">
-  </div>
-  </div>
-
   <div class="form-group">
-  <div class="col-sm-4">
-  <label>COORDINADOR</label>
-  <select style="width: 100%" class="form-control" class="selectpicker" id="idinst" name="idinst" type="text" data-live-search="true" disabled="">
-  <?php while($instructors = mysqli_fetch_row($instructor)):?>
-
-  <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
-  <?php endwhile; ?>
-  </select>
+      <div class="col-sm-4">
+        <label class="label2">DOCUMENTO QUE EMITE</label>
+        <input type="text" style="text-transform:uppercase;" class="form-control inputalta" id="gstCntnc" name="gstCntnc" disabled="">
+      </div>
+      <div class="col-sm-4">
+        <label class="label2">DURACIÓN</label>
+        <input type="text" class="form-control inputalta" id="gstDrcin" name="gstDrcin" disabled="">
+      </div>
+      <div class="col-sm-offset-0 col-sm-4">
+        <label class="label2">PERIODO DE VIGENCIA</label>                         
+        <select type="text" class="form-control inputalta" id="gstVignc" name="gstVignc" disabled=""> 
+            <option value="0">SELECCIONE VIGENCIA</option>
+            <option value="RECURRENTE">RECURRENTE</option>
+            <option value="NO APLICA">UNICA VEZ</option>
+            <option value="1 AÑO">1 AÑO</option>
+            <option value="2 AÑOS">2 AÑOS</option>
+            <option value="3 AÑOS">3 AÑOS</option>
+            <option value="4 AÑOS">4 AÑOS</option>
+            <option value="5 AÑOS">5 AÑOS</option>
+            <option value="6 AÑOS">6 AÑOS</option>
+        </select>
+      </div>
   </div>
-
-
-  <div class="col-sm-4">
-  <label>SEDE DEL CURSO</label>
-  <select type="text" class="form-control disabled" id="sede" name="sede" disabled="">
-  <option value="AGENCIA FEDERAL DE AVIACIÓN CIVIL">AGENCIA FEDERAL DE AVIACIÓN CIVIL</option>
-  <option value="CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL">CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL</option>
-  </select>
-  </div>
-  <div class="col-sm-4">
-  <label>MODALIDAD</label>
-  <select type="text" class="form-control" id="modalidads" name="modalidads">
-  <option value="A DISTANCIA">A DISTANCIA</option>
-  <option value="PRESENCIAL">PRESENCIAL</option>
-  </select>
-  </div>
-  </div>
-
   <div class="form-group">
-  <div class="col-sm-4">
-  <label>LINK DE ACCESO</label>
-  <input type="url" class="form-control" id="link" name="link" placeholder="URL ">
+      <div class="col-sm-12">
+        <label class="label2">OBJETIVO</label>
+        <textarea name="gstObjtv" id="gstObjtv"  placeholder="Escribir el Objetivo" style="text-transform:uppercase;" class="form-control disabled inputalta" rows="5" cols="50" disabled=""></textarea>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="col-sm-4">
+        <label class="label2">FECHA INICIO</label>
+        <input type="date" class="form-control disabled inputalta" id="fcurso" name="fcurso" disabled="">
+      </div>
+      <div class="col-sm-4">
+        <label class="label2">HORA</label>
+        <input type="time" class="form-control disabled inputalta" id="hcurso" name="hcurso" disabled="">
+      </select>
+      </div>
+      <div class="col-sm-4">
+        <label class="label2">FECHA CONCLUCIÓN</label>
+        <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf" disabled="">
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="col-sm-4">
+        <label class="label2">COORDINADOR</label>
+        <select style="width: 100%" class="form-control inputalta" class="selectpicker" id="idinst" name="idinst" type="text" data-live-search="true" disabled="">
+          <?php while($instructors = mysqli_fetch_row($instructor)):?>
+          <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
+          <?php endwhile; ?>
+       </select>
+      </div>
+      <div class="col-sm-4">
+        <label class="label2">SEDE DEL CURSO</label>
+        <input type="text" class="form-control inputalta" id="sede" name="sede" disabled="">
+      </div>
+      <div class="col-sm-4">
+        <label class="label2">MODALIDAD</label>
+        <select type="text" class="form-control inputalta" id="modalidads" name="modalidads" disabled="">
+          <option value="0">ELEGIR UNA OPCIÓN</option>
+          <option value="A DISTANCIA">A DISTANCIA</option>
+          <option value="PRESENCIAL">PRESENCIAL</option>
+          <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
+          <option value="AUTOGESTIVO">AUTOGESTIVO</option>
+        </select>
+      </div>
+  </div>
+  <div id= "dismod" style="display:none;" class="form-group">
+      <div  class="col-sm-4">
+        <label class="label2">LINK DE ACCESO</label>
+        <input type="url" class="form-control inputalta" id="linkcur" name="linkcur" placeholder="URL" disabled="">
+      </div>
+      <div class="col-sm-4">
+        <label class="label2" >CONTRASEÑA DE ACCESO</label>
+        <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
+      </div>
+  </div>  
+  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:130px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR</button>
+  </button>
+  <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
 
-  </div>
-  </div>
-  </form>
+  <b><p class="alert alert-success text-center padding exito" id="exito">¡Se finalizo con éxito!</p></b>
 
-  </div>
+  <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario finalizar los procesos</p></b>
+</form>
+</div>
 
   <!-- Post -->
-  <div class="post">
-  <!-- /.user-block -->
-
-  <!-- /.row -->
-  <ul class="list-inline">
-  </ul>
-
-  </div>
+  
   <!-- /.post -->
   </div>
   <!-- /.tab-pane 2do panel-->
   <div class="tab-pane" id="timeline">
   <!-- The timeline -->
-
-
-
   <div class="row">
   <div class="col-xs-12">
-
   <div class="box">
   <br>
-
-<span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>IMPRIMIR LISTA</span>
+  <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>IMPRIMIR LISTA</span>
   <div class="box-body">
+  <br>
+  <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
   </div>
   </div>
@@ -236,7 +234,11 @@
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se agrego el curso con éxito!</p></b>
 
   <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
-  </div>
+  </div><b><p class="alert alert-danger text-center padding error" id="error">Error al agregar curso </p></b>
+
+  <b><p class="alert alert-success text-center padding exito" id="exito">¡Se agrego el curso con éxito!</p></b>
+
+  <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
   </div>
   </div>
   </div>
