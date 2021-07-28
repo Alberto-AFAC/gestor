@@ -21,30 +21,30 @@
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
 <style>
-     .swal-wide{
+ .swal-wide{
     width: 500px !important;
     font-size: 16px !important;
 }
-a {
+.a-alert {
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
 }
 
-a:link {
+.a-alert:link {
   color: white;
 }
 
-a:visited {
+.a-alert:visited {
   color: white;
 }
 
-a:focus {
+.a-alert:focus {
   
   background: white;
 }
 
-a:active {
+.a-alert:active {
   background: white;
   color: white;
 }
