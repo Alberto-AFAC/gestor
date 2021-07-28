@@ -134,7 +134,7 @@
         <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
       </div>
   </div>  
-  <button type="button" id="button" title="Finalizar Curso" style="font-size:15px; width:130px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR</button>
+  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:130px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR</button>
   </button>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
 
@@ -151,15 +151,10 @@
   <!-- /.tab-pane 2do panel-->
   <div class="tab-pane" id="timeline">
   <!-- The timeline -->
-
-
-
   <div class="row">
   <div class="col-xs-12">
-
   <div class="box">
   <br>
-
   <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>IMPRIMIR LISTA</span>
   <div class="box-body">
   <br>
