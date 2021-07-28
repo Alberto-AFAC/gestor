@@ -99,7 +99,7 @@ $inspector = mysqli_query($conexion,$sql);
                 <div class="modal-body">
                     <form class="form-horizontal" id="Prtcpnt">
 
-                        <input type="hidden" class="form-control" id="gstIdlsc"
+                        <input type="text" class="form-control" id="gstIdlsc"
                         name="gstIdlsc">
 
                         <div class="form-group">

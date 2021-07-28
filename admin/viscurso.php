@@ -166,7 +166,15 @@
   <div class="col-xs-12">
   <div class="box">
   <br>
-  <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>IMPRIMIR LISTA</span>
+  
+<form id="impri" action="" method="POST"  >
+  <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
+  <input type="hidden" name="gstTitulo" id="gstTitulo">
+
+
+  <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span>
+</form>  
+
   <div class="box-body">
   <br>
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
