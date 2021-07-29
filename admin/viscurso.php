@@ -170,8 +170,7 @@
 <form id="impri" action="" method="POST"  >
   <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
   <input type="hidden" name="gstTitulo" id="gstTitulo">
-
-
+  <button class="btn btn-info btn-sm" onclick="enviar()"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</button>
   <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span>
 </form>  
 
@@ -179,7 +178,6 @@
   <br>
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
-  <button type="button" id="button" class="btn btn-info btn-sm" onclick="">NOTIFICAR CONVOCATORIA</button>
   </div>
   
   </div>

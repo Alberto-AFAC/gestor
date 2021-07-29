@@ -584,3 +584,32 @@ function evalucurs(cursos) {
     $("#nomcursoen").val(d[1]); //NOMBRE DEL CURSO
     $("#idcursoen").val(d[19]); //ID DEL CURSO
 }
+
+function enviar() {
+    alert("Estoy funcionando??");
+    // Swal.fire({
+    //         title: 'ATENCIÓN',
+    //         type: 'info',
+    //         text: 'Recuerda que antes de enviar verifica que los datos de asistencia sean correctos',
+    //         showDenyButton: true,
+    //         showCancelButton: true,
+    //         customClass: 'swal-wide',
+    //         confirmButtonText: `<i class="fa fa-envelope-open" aria-hidden="true"></i> Enviar`,
+    //         denyButtonText: `Cerrar`,
+    //     }).then((result) => {
+    //         /* Read more about isConfirmed, isDenied below */
+    //         if (result.isConfirmed) {
+    //             Swal.fire('Enviar!', '', 'success')
+    //         } else if (result.isDenied) {
+    //             Swal.fire('Changes are not saved', '', 'info')
+    //         }
+    //     })
+    //     swal.fire({
+    //     title: 'Título',
+    //     text: 'Mensaje de texto',
+    //     html: '<p>Mensaje de texto con <strong>formato</strong>.</p>',
+    //     type: 'info',
+    //     customClass: 'swal-wide',
+    //     timer: 3000,
+    //   });
+}
