@@ -191,8 +191,6 @@ include('header.php');
     </div>
     </div>
 </div>
-
-
 <div class="form-group">
 <div class="col-sm-4">
 <label class="label2">PARTICIPANTES DEL CURSO</label>
@@ -200,9 +198,7 @@ include('header.php');
 </div>                     
 </div>   
 
-
 <div id="tabcurso"></div> 
-
 
 <!-- <div class="form-group">
 <div class="col-sm-12">
