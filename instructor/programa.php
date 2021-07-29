@@ -223,9 +223,8 @@ include('header.php');
     <span class="spinner"></span>
   </div>
 </div>
-<button type="button" id="vaciar" class="btn btn-default" onclick="location.href='programa.php'" style="display: none;">VACIAR</button>
-</div>
 
+</div>
 <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos </p></b>
 
 <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b>
@@ -307,22 +306,31 @@ $("#idcord").select2();
 <script src="../js/select2.js"></script> 
 
 <script>
-// 	jQuery(function($){
-//   $(document).ajaxSend(function() {
-//     $("#overlay").fadeIn(3000);　
-//   });
-		
-//   $('#button').click(function(){
-//     $.ajax({
-//       type: 'GET',
-//       success: function(proCurso){
-  
-//       }
-//     }).done(function() {
-//       setTimeout(function(){
-//         $("#overlay").fadeOut(3000);
-//       },3000);
-//     });
-//   });	
-// });
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("fcurso").setAttribute("min", today);
+//Second date
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("fechaf").setAttribute("min", today);
 </script>
