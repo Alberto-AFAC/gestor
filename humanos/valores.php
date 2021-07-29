@@ -115,7 +115,7 @@ $psto = mysqli_query($conexion,$sql);
           <h1 class="box-title"></h1>
           <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="remove">
-          <a href='javascript:closeDtlls()' style="font-size: 22px"><i class='fa fa-times'></i></a>
+          <a href='persona.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
           </button>
           </div>  
        </div>
@@ -340,26 +340,56 @@ $psto = mysqli_query($conexion,$sql);
          </div>  
 
 
-         <div class="col-sm-4">
+<!--          <div class="col-sm-4">
          <label>CARGO</label>
          <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
              
               <option value="INSPECTOR">INSPECTOR</option>
               <option value="INSTRUCTOR">INSTRUCTOR</option>
            </select>
-         </div>
+         </div> -->
      </div>
 
+<p id="codigo" style="display: none; cursor: pointer;"><a onclick="codigo();">EDITAR CÓDIGO PRESUPUESTAL <i class="fa fa-edit"></i></a></p>
+
+<div id="codigo1">
 <div class="form-group">
- <div class="col-sm-4">
- <label>CÓDIGO PRESUPUESTAL</label>
- <div id="actualiza"></div>                               
- </div>
- <div id="select1"></div> 
+<div class="col-sm-4">
+<label>CÓDIGO PRESUPUESTAL</label>
+<input type="text" class="form-control" name="Codig" id="Codig" disabled="" >
+</div>
+<div class="col-sm-4">
+<label>ID PUESTO (NIVEL TABULAR)</label>  
+<input type="text" class="form-control" name="Nivel" id="Nivel" disabled="" >
+</div>
+<div class="col-sm-4">
+<label>NOMBRE DEL PUESTO (GENERICO)</label>  
+<input type="text" class="form-control" name="Gnric" id="Gnric" disabled="" >
+</div>
+</div>
 </div>
 
+
+<div id="codigo2" style="display: none;">
 <div class="form-group">
-<div class="col-sm-5">
+<div class="col-sm-4">
+<label>CÓDIGO PRESUPUESTAL</label>
+<div id="actualiza"></div>                               
+</div>
+<div id="select1"></div> 
+</div>
+</div>
+
+<p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();">EDITAR NOMBRE DEL PUESTO<i class="fa fa-edit"></i></a></p>
+
+<div class="form-group">
+
+<div class="col-sm-5" id="nompusto1">
+<label>NOMBRE DEL PUESTO</label>
+<input type="text" class="form-control" name="nompuesto" id="nompuesto" disabled="" >
+</div>
+
+<div class="col-sm-5" id="nompusto2" style="display: none;">
 <label>NOMBRE DEL PUESTO</label>
 <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
 <?php while($pust = mysqli_fetch_row($psto)):?>                      
@@ -371,6 +401,7 @@ $psto = mysqli_query($conexion,$sql);
 <div id="actoaci"></div>
 <div id="siglas"></div>
 </div>
+
 
 
 <!-- <div class="form-group">

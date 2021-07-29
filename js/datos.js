@@ -52,7 +52,6 @@ function closeDtlls() {
     document.getElementById('gstAcReg').disabled = true;
     document.getElementById('gstIDuni').disabled = true;
 
-
 }
 
 function pdf() {
@@ -466,7 +465,7 @@ function perfil(gstIdper) {
                             $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                             $("#Dtall #gstApell").val(obj.data[i].gstApell);
                             $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-                            $("#Dtall #gstFenac").val(obj.data[i].gstFenaSc);
+                            $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
                             $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
                             $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
                             $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
@@ -487,12 +486,22 @@ function perfil(gstIdper) {
 
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
+                    
+                     //alert(obj.data[i].gstIdpst);                           
+
+$("#Pusto #Codig").val(obj.data[i].gstCodig);
+$("#Pusto #Nivel").val(obj.data[i].gstNivel);
+$("#Pusto #Gnric").val(obj.data[i].gstGnric);
+
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
+
+
                             $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
                             $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
                             $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-                            $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-                            $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
+
+                            $("#Dtall #gstCorro").val(obj.data[i].gstCorro);
+                            $("#Dtall #gstCinst").val(obj.data[i].gstCinst);
                             $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
                             $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
 
@@ -503,6 +512,7 @@ function perfil(gstIdper) {
 
                             //        alert(obj.data[i].gstAreID);
 
+$("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
@@ -622,7 +632,7 @@ function perfil(gstIdper) {
                     var x = 1;
 
 
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>CIUDAD</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
                     for (H = 0; H < res.length; H++) {
                         x++;
 
@@ -648,12 +658,23 @@ function perfil(gstIdper) {
 
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
                     for (P = 0; P < res.length; P++) {
+
+                        year = obj.data[P].gstFntra.substring(0, 4);
+                        month = obj.data[P].gstFntra.substring(5, 7);
+                        day = obj.data[P].gstFntra.substring(8, 10);
+                        gstFntra = day + '/' + month + '/' + year;
+
+                        year = obj.data[P].gstFslda.substring(0, 4);
+                        month = obj.data[P].gstFslda.substring(5, 7);
+                        day = obj.data[P].gstFslda.substring(8, 10);
+                        gstFslda = day + '/' + month + '/' + year;
+
                         x++;
                         datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
 
                         if (obj.data[P].gstIDper == gstIdper) {
 
-                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + obj.data[P].gstFntra + "</td><td> " + obj.data[P].gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
                         }
                     }
                     html += '</tbody></table></div></div></div>';
@@ -944,7 +965,7 @@ function inspector(gstIdper) {
                     var x = 1;
 
 
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>CIUDAD</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
                     for (H = 0; H < res.length; H++) {
                         x++;
 
@@ -970,12 +991,23 @@ function inspector(gstIdper) {
 
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
                     for (P = 0; P < res.length; P++) {
+
+                        year = obj.data[P].gstFntra.substring(0, 4);
+                        month = obj.data[P].gstFntra.substring(5, 7);
+                        day = obj.data[P].gstFntra.substring(8, 10);
+                        gstFntra = day + '/' + month + '/' + year;
+
+                        year = obj.data[P].gstFslda.substring(0, 4);
+                        month = obj.data[P].gstFslda.substring(5, 7);
+                        day = obj.data[P].gstFslda.substring(8, 10);
+                        gstFslda = day + '/' + month + '/' + year;
+
                         x++;
                         datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
 
                         if (obj.data[P].gstIDper == gstIdper) {
 
-                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + obj.data[P].gstFntra + "</td><td> " + obj.data[P].gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
                         }
                     }
                     html += '</tbody></table></div></div></div>';
@@ -1453,6 +1485,8 @@ function actPuesto() {
 
     datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&opcion=actPrsnls';
 
+    alert(datos);
+
     if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstCorro == '' || gstCinst == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni == '') {
 
         $('#empty1').toggle('toggle');
@@ -1536,6 +1570,9 @@ function openEdit() {
     document.getElementById('gstAcReg').disabled = false;
     document.getElementById('gstIDuni').disabled = false;
     //.../Habilita los campos FIN
+
+    $("#codigo").show();
+    $("#nompusto").show();
 }
 
 //CIERRA LAS HABILITACIONES DE LA EDICIÓN EN PERFIL DE INSTRUCTOR
@@ -1588,6 +1625,18 @@ function cerrarEdit() {
     document.getElementById('gstAcReg').disabled = true;
     document.getElementById('gstIDuni').disabled = true;
     //.../Habilita los campos FIN
+
+    $("#codigo").hide();
+    $("#nompusto").hide();
+}
+
+function codigo(){
+    $("#codigo1").toggle('toggle');
+    $("#codigo2").toggle('toggle');
+}
+function nompusto(){
+    $("#nompusto1").toggle('toggle');
+    $("#nompusto2").toggle('toggle');
 }
 
 function asignar() {

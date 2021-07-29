@@ -102,7 +102,7 @@
                   </div>
 
                   <div class="col-sm-6">
-                       <label>CIUDAD</label>
+                       <label>GRADO</label>
                        <input type="text" onkeyup="mayus(this);" class="form-control" id="EgstCiudad" name="EgstCiudad">
                   </div>
             </div>
