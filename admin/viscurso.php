@@ -170,9 +170,28 @@
 <form id="impri" action="" method="POST"  >
   <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
   <input type="hidden" name="gstTitulo" id="gstTitulo">
-  <span class="btn btn-info btn-sm" onclick="enviarMail()"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
+  <span data-toggle="modal" data-target="#basicModal" class="btn btn-info btn-sm" onclick="enviarMail()"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
   <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span>
-</form>  
+</form>
+<!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">CONFIRMACIÓN DE PARTICIPANTES</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Modal Body</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" onclick="enviarMail()" data-dismiss="modal" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
   <div class="box-body">
@@ -273,13 +292,5 @@
   <!-- /.col -->
   </div>
   <!-- /.row -->
-  <script>
- 
-    function enviar2(){
-alert("ESto es una prueba");
-     
-    }
-     </script>
-
 
 

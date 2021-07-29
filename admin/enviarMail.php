@@ -1,14 +1,8 @@
 <?php
 
 include("../conexion/conexion.php");
-
-
-	
-
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
 require '../php-mailer2/Exception.php';
 require '../php-mailer2/PHPMailer.php';
 require '../php-mailer2/SMTP.php';
