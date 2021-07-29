@@ -318,7 +318,7 @@ $psto = mysqli_query($conexion,$sql);
                           <div class="input-group-addon">
                              <i class="fa fa-phone"></i>
                           </div>
-                          <input type="text" class="form-control inputalta" id="gstCasa" name="gstCasa" placeholder="(55) 5555-5555">
+                          <input type="text" class="form-control inputalta" id="gstCasa" name="gstCasa" placeholder="(55) 5555-5555" autocomplete="off">
                        </div>     
                     </div> 
                     <div class="col-sm-4">
@@ -327,7 +327,7 @@ $psto = mysqli_query($conexion,$sql);
                           <div class="input-group-addon">
                              <i class="fa fa-phone"></i>
                           </div>
-                          <input type="text" class="form-control inputalta" id="gstClulr" name="gstClulr" placeholder="(52) 55-5555-5555">
+                          <input type="text" class="form-control inputalta" id="gstClulr" name="gstClulr" placeholder="(52) 55-5555-5555" autocomplete="off">
                        </div>     
                     </div>
                     <div class="col-sm-4">
@@ -336,7 +336,7 @@ $psto = mysqli_query($conexion,$sql);
                             <div class="input-group-addon">
                                <i class="fa fa-phone"></i>
                             </div>
-                            <input type="text" class="form-control inputalta" id="gstExTel" name="gstExTel" placeholder="(55)-5555-5555 x55555">
+                            <input type="text" class="form-control inputalta" id="gstExTel" name="gstExTel" placeholder="(55)-5555-5555 x55555" autocomplete="off">
                         </div>
                     </div>
                     </div>
