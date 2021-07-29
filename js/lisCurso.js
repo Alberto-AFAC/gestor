@@ -590,23 +590,44 @@ function evalucurs(cursos) {
     $("#idcursoen").val(d[19]); //ID DEL CURSO
 }
 
-function enviar1() {
+// function enviar1() {
 
-    Swal.fire({
-        title: 'ATENCIÓN',
-        type: 'info',
-        text: 'Recuerda que antes de enviar verifica que los datos de asistencia sean correctos',
-        showDenyButton: true,
-        showCancelButton: true,
-        customClass: 'swal-wide',
-        confirmButtonText: `<i class="fa fa-envelope-open" aria-hidden="true"></i> Enviar`,
-        denyButtonText: `Cerrar`,
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            Swal.fire('Enviar!', '', 'success')
-        } else if (result.isDenied) {
-            Swal.fire('Changes are not saved', '', 'info')
+//     Swal.fire({
+//         title: 'ATENCIÓN',
+//         type: 'info',
+//         text: 'Recuerda que antes de enviar verifica que los datos de asistencia sean correctos',
+//         showDenyButton: true,
+//         showCancelButton: true,
+//         customClass: 'swal-wide',
+//         confirmButtonText: `<i class="fa fa-envelope-open" aria-hidden="true"></i> Enviar`,
+//         denyButtonText: `Cerrar`,
+//     }).then((result) => {
+//         /* Read more about isConfirmed, isDenied below */
+//         if (result.isConfirmed) {
+//             Swal.fire('Enviar!', '', 'success')
+//         } else if (result.isDenied) {
+//             Swal.fire('Changes are not saved', '', 'info')
+//         }
+//     })
+// }
+function enviarMail() {
+    $.ajax({
+        type: "POST",
+        url: 'enviarMail.php',
+        data: { action: 'call_this' },
+        success: function(html) {
+            Swal.fire({
+                type: 'success',
+                title: 'ENVIADO CON ÉXITO',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 2000,
+                backdrop: `
+                rgba(100, 100, 100, 0.4)
+            `
+            });
+            // alert(html);
         }
-    })
+
+    });
 }
