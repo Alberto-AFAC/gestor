@@ -11,10 +11,6 @@
   <button type="button" title="Cerrar" id= "cerrarc" class="btn btn-box-tool" style="font-size:18px" data-widget="remove">
      <a href='javascript:closeCurso()'><i class='fa fa-times'></i></a>
   </button>
-  <button type="button" title="Editar Curso" class="btn btn-box-tool" data-widget="collapse">
-     <a href='javascript:editcurso()' id="editcurs" style="font-size:18px"> <i class="fa fa-edit"></i> </a>
-     <a href='javascript:cerrarEdit()'  id="cerrareditc" style="display:none; font-size:18px"> <i class="fa fa-ban"></i> </a>
-  </button>
   </div>            
   <div class="nav-tabs-custom">
   <ul class="nav nav-tabs">
@@ -27,10 +23,18 @@
   </ul>
   
 <div class="tab-content">
+  
 <div class="active tab-pane" id="activity">
   <!-- Post -->
-<div class="post">
   
+<div class="post">
+<div class="form-group">
+  <label for=""></label>
+<button type="button" title="Editar Curso" style="float:right;" class="btn btn-box-tool" data-widget="collapse">
+     <a href='javascript:editcurso()' id="editcurs" style="font-size:20px"> <i class="fa fa-edit"></i> </a>
+     <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc" style="display:none; font-size:20px"> <i class="fa fa-ban"></i> </a>
+  </button>
+</div>
 <form class="form-horizontal" action="" method="POST" id="Dtall" >
 
   <div class="form-group">
@@ -134,7 +138,7 @@
         <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
       </div>
   </div>  
-  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:130px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR</button>
+  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR CURSO</button>
   </button>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se finalizo con éxito!</p></b>
@@ -142,7 +146,7 @@
   <!-- boton finaliza edición -->
   <div class="form-group" id="buttongcambios" style="display:none;"><br>
   <div class="col-sm-offset-0 col-sm-5">
-  <button type="button" id="button" class="btn btn-info btn-lg" onclick="actCurso();">Aceptar</button>
+  <button type="button" style="font-size:16px; width:170px; height:40px" id="button" class="btn btn-info btn-lg altaboton" onclick="actCurso();">GUARDAR CAMBIOS</button>
   </div>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al agregar curso </p></b>
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se agrego el curso con éxito!</p></b>
@@ -166,9 +170,10 @@
 <form id="impri" action="" method="POST"  >
   <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
   <input type="hidden" name="gstTitulo" id="gstTitulo">
-  <button class="btn btn-info btn-sm" onclick="enviar()"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</button>
+  <span class="btn btn-info btn-sm" onclick="enviarMail()"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
   <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span>
 </form>  
+
 
   <div class="box-body">
   <br>
@@ -243,7 +248,7 @@
   </div>   
   <div class="form-group"><br>
   <div class="col-sm-offset-0 col-sm-5">
-  <button type="button" id="button" class="btn btn-info btn-lg" onclick="actCurso();">Aceptar</button>
+  
   </div>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al agregar curso </p></b>
 
@@ -268,6 +273,13 @@
   <!-- /.col -->
   </div>
   <!-- /.row -->
+  <script>
+ 
+    function enviar2(){
+alert("ESto es una prueba");
+     
+    }
+     </script>
 
 
 
