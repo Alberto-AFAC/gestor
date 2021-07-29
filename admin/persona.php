@@ -225,7 +225,7 @@ include('header.php');
                             <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                               style="width:100%;color:#000;" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
                               <?php while($cat = mysqli_fetch_row($categs)):?>                      
-                               <option  value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                               <option  value="<?php echo $cat[0]?>"><?php echo $cat[1]?></option>
                               <?php endwhile; ?>                
                             </select>
                         </div>
@@ -318,6 +318,7 @@ include('header.php');
 <script type="text/javascript">
 $(document).ready(function(){
 // $('#gsdirec').select2();
+$('#gstPrfil').select2();
 $('#gstAreID').select2(); 
 $('#gstPstID').select2();
 $('#gstIDpai').select2();
@@ -380,12 +381,3 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
     });
 
 </script>
-
-<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
-<script type="text/javascript">
-$(document).ready(function(){
-$('#gstPrfil').select2();
-$('#gstAreID').select2();
-}); 
-</script>
-<script src="../js/select2.js"></script> 

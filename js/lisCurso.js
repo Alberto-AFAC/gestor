@@ -165,6 +165,7 @@ function imprimir() {
         var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
 
 
+
         for (i = 0; i < res.length; i++) {
             x++;
             if (obj.data[i].gstIdlsc == gstIdlsc) {
@@ -180,40 +181,42 @@ function imprimir() {
                 //const array1 = [x, nombre, cargo];
             }
         }
+        
+       // alert(nombre);
 
-        // alert(nombre);
-        /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-        const pageCount = pdf.internal.getNumberOfPages();
-        for (var i = 1; i <= pageCount; i++) {
-            pdf.setFontSize(8)
-            pdf.setPage(i);
-            pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-                "right");
-        }
+            data = [[x,nombre,cargo]];
+    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+    const pageCount = pdf.internal.getNumberOfPages();
+    for (var i = 1; i <= pageCount; i++) {
+        pdf.setFontSize(8)
+        pdf.setPage(i);
+        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+            "right");
+    }
 
 
-        pdf.autoTable(columns, data, {
-            margin: {
-                top: 50,
-                bottom: 15
-            },
-            styles: {
+    pdf.autoTable(columns, data, {
+        margin: {
+            top: 50,
+            bottom: 15
+        },
+        styles: {
 
-                overflow: 'linebreak',
-                fontSize: 8
-            },
-            headStyles: {
-                fillColor: [0, 0, 0],
-                textColor: [0, 0, 0],
-                fontSize: 8,
-                padding: 0,
-            },
-            showHeader: 'everyPage',
-            theme: 'grid'
+            overflow: 'linebreak',
+            fontSize: 8
+        },
+        headStyles: {
+            fillColor: [0, 0, 0],
+            textColor: [0, 0, 0],
+            fontSize: 8,
+            padding: 0,
+        },
+        showHeader: 'everyPage',
+        theme: 'grid'
 
-        });
+    });
 
-        window.open(pdf.output('bloburl'))
+    window.open(pdf.output('bloburl'))
 
     })
 }
