@@ -182,7 +182,7 @@
         <h4 class="modal-title" id="myModalLabel">CONFIRMACIÓN DE PARTICIPANTES</h4>
       </div>
       <div class="modal-body">
-        <h3>Modal Body</h3>
+        <h3>Por favor de verificar los datos de los participantes antes de enviar el correo. Si son correctos continua con el procedimiento.</h3>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
