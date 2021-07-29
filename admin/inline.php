@@ -184,7 +184,7 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
         labels: ["IVA-L","IVA-ES","IVA-EX","IVA-C","IVA-O","IVA-ODG","IVA-OV","IVA-OC","IVA-AE", "IVA-AVSEC","IVA-SMS-SSP","IIA","IAA","ISAR","IVA-AER","IVA-ING","IVA-NA","IVA-AIS","IVA-CNS","IVA-ATS","IVA-PANS-OPS","IVA-MET","IVA-CARTAS"
         ],
         datasets: [{
-            label: "LICENCIAS", 
+            label: "INSPECTORES", 
             backgroundColor: ["#337ab7","#095892"],
             borderWidth: 0,
             data: ["<?php echo $data['LICENCIAS']?>","<?php echo $data['ESCUELAS']?>","<?php echo $data['EXAMENES']?>","<?php echo $data['CERTIFICACION']?>","<?php echo $data['OPERACIONES']?>","<?php echo $data['PELIGROSAS']?>","<?php echo $data['VUELO']?>","<?php echo $data['CABINA']?>","<?php echo $data['AERODROMOS']?>","<?php echo $data['AVSEC']?>","<?php echo $data['SMSSSP']?>","<?php echo $data['INVACCIDENTES']?>","<?php echo $data['AUXACCIDENTES']?>","<?php echo $data['SALVAMENTO']?>","<?php echo $data['AERONAVEGABILIDAD']?>","<?php echo $data['PRODUCCION']?>","<?php echo $data['NAVEGACIONAV']?>","<?php echo $data['AERONAUTICA']?>","<?php echo $data['VIGILANCIA']?>","<?php echo $data['AEREO']?>","<?php echo $data['SERVNAVAEREA']?>","<?php echo $data['METEOROLOGO']?>","<?php echo $data['CARTOGRAFIA']?>"] 
