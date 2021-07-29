@@ -611,12 +611,16 @@ function evalucurs(cursos) {
 //     })
 // }
 function enviarMail() {
-    $.ajax({
-        type: "POST",
-        url: 'enviarMail.php',
-        data: { action: 'call_this' },
-        success: function(html) {
-            Swal.fire({
+
+    gstIdlsc = document.getElementById('gstIdlstc').value;
+
+            $.ajax({
+            url: 'enviarMail.php',
+            type: 'POST',
+            data: 'gstIdlsc=' + gstIdlsc
+        }).done(function(html) {
+
+        Swal.fire({
                 type: 'success',
                 title: 'ENVIADO CON ÉXITO',
                 showConfirmButton: false,
@@ -626,8 +630,7 @@ function enviarMail() {
                 rgba(100, 100, 100, 0.4)
             `
             });
-            // alert(html);
-        }
 
-    });
+        });
+
 }
