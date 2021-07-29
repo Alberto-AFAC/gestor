@@ -2,12 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "
-		SELECT * FROM personal 
-		INNER JOIN codigo ON personal.gstIdpst = codigo.gstIdpst
-		INNER JOIN puesto ON personal.gstPstID = puesto.gstIdpus
-		WHERE personal.estado = 0 ORDER BY gstIdper DESC
-		";
+	$query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
