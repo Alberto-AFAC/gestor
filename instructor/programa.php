@@ -36,6 +36,30 @@ unset($_SESSION['consulta']);
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+
+  <style>
+  .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.a-alert:link {
+  color: white;
+}
+
+.a-alert:visited {
+  color: white;
+}
+
+</style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,7 +107,7 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-12">
-<label>SELECCIONE CURSO</label>
+<label class="label2">SELECCIONE CURSO</label>
 <div id="selcurso"></div>                            
 </div>
 </div>
@@ -94,19 +118,19 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-4">
-<label>FECHA INICIO</label>
-<input type="date" class="form-control" id="fcurso" name="fcurso">
+<label class="label2">FECHA INICIO</label>
+<input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
 </div>
 
 <div class="col-sm-4">
-<label>HORA</label>
-<input type="time" class="form-control" id="hcurso" name="hcurso">
+<label class="label2">HORA</label>
+<input type="time" class="form-control inputalta" id="hcurso" name="hcurso">
 </div>
 
 
 <div class="col-sm-4">
-<label>FECHA CONCLUCIÓN</label>
-<input type="date" class="form-control" id="fechaf" name="fechaf">
+<label class="label2">FECHA CONCLUCIÓN</label>
+<input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
 </div>
 </div>
 
@@ -114,8 +138,8 @@ include('header.php');
 
     
     <div class="col-sm-4">
-    <label>COORDINADOR </label>
-      <select class="form-control" id="idcord" name="idcord" style="width: 100%;">
+    <label class="label2">COORDINADOR </label>
+      <select class="form-control inputalta" id="idcord" name="idcord" style="width: 100%;">
           <option value="0">SELECCIONE COORDINADOR </option> 
           <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
           <option value="<?php echo $cordinadors[0]?>"><?php echo $cordinadors[1].' '.$cordinadors[2]?></option>
@@ -125,8 +149,8 @@ include('header.php');
     <?php //include('advanced.php');?>
 
     <div class="col-sm-4">
-    <label>INSTRUCTOR</label>
-      <select style="width: 100%" class="form-control" class="selectpicker" id="idinst" name="idinst[]" type="text" multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR" data-live-search="true">
+    <label class="label2">INSTRUCTOR</label>
+      <select style="width: 100%" class="form-control inputalta" class="selectpicker" id="idinst" name="idinst[]" type="text" multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR" data-live-search="true">
           <?php while($instructors = mysqli_fetch_row($instructor)):?>
 
           <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
@@ -135,15 +159,15 @@ include('header.php');
     </div>
 
     <div class="col-sm-4">
-    <label>SEDE DEL CURSO</label>
-    <input type="text" class="form-control" id="sede" name="sede">
+    <label class="label2">SEDE DEL CURSO</label>
+    <input type="text" class="form-control inputalta" id="sede" name="sede">
     </div>
 </div>
 
 <div class="form-group">
     <div class="col-sm-4">
-      <label>MODALIDAD</label>
-      <select type="text" class="form-control" id="modalidad" name="modalidad">
+      <label class="label2">MODALIDAD</label>
+      <select type="text" class="form-control inputalta" id="modalidad" name="modalidad">
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
           <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
@@ -151,21 +175,21 @@ include('header.php');
       </select>
     </div>
     <div class="col-sm-4">
-      <label>LINK DE ACCESO</label>
+      <label class="label2">LINK DE ACCESO</label>
       <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-globe"></i>
                   </div>
-            <input type="url" class="form-control" id="link" name="link" placeholder="URL ">
+            <input type="url" class="form-control inputalta" id="link" name="link" placeholder="URL ">
       </div>
     </div>
     <div class="col-sm-4">
-      <label>CONTRASEÑA DE ACCESO</label>
+      <label class="label2">CONTRASEÑA DE ACCESO</label>
       <div class="input-group">
       <div class="input-group-addon">
                     <i class="fa fa-unlock-alt"></i>
                   </div>
-      <input type="text" class="form-control" id="contracceso" name="contracceso">
+      <input type="text" class="form-control inputalta" id="contracceso" name="contracceso">
     </div>
     </div>
 </div>
@@ -173,7 +197,7 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-4">
-<label>PARTICIPANTES DEL CURSO</label>
+<label class="label2">PARTICIPANTES DEL CURSO</label>
 
 </div>                     
 </div>   
@@ -193,7 +217,7 @@ include('header.php');
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" class="btn btn-info" onclick="proCurso();">PROGRAMAR</button>
+<button type="button" id="button" style="font-size:16px" class="btn btn-info altaboton" onclick="proCurso();">PROGRAMAR</button>
 <div id="overlay">
   <div class="cv-spinner">
     <span class="spinner"></span>

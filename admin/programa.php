@@ -107,12 +107,10 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-12">
-<label>SELECCIONE CURSO</label>
+<label class="label2">SELECCIONE CURSO</label>
 <div id="selcurso"></div>                            
 </div>
 </div>
-
-
 <!-- <div id="partici"></div>  -->
 
 <div class="form-group">
