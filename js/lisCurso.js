@@ -165,6 +165,7 @@ gstTitulo = document.getElementById('gstTitulo').value;
 var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
 
 
+
         for (i = 0; i < res.length; i++) {
             x++;
             if (obj.data[i].gstIdlsc == gstIdlsc) {
@@ -183,7 +184,7 @@ var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
         
        // alert(nombre);
 
-           var data = [[x,nombre,cargo]];
+            data = [[x,nombre,cargo]];
     /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
     const pageCount = pdf.internal.getNumberOfPages();
     for (var i = 1; i <= pageCount; i++) {
@@ -216,20 +217,6 @@ var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
     });
 
     window.open(pdf.output('bloburl'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     })
    }

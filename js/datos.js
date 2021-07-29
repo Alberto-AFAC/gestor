@@ -1599,10 +1599,26 @@ function asignar() {
     var AgstIDuni = document.getElementById('gstIDuni').value;
     var AgstAcReg = document.getElementById('AgstAcReg').value;
 
+    var gstPrfil = ''
+
+    var selectObject = document.getElementById("gstPrfil");
+
+    for (var i = 0; i < selectObject.options.length; i++) {
+        if (selectObject.options[i].selected == true) {
+
+            gstPrfil += "," + selectObject.options[i].value;
+
+        }
+    }
+
+     gstPrfil = gstPrfil.substr(1);
+    //datos = 'idPer-->'+gstIdper+'Cargo-->'+AgstCargo+'IDcat-->'+AgstIDCat+'IDsub-->'+AgstIDSub+'IDuni-->'+AgstIDuni+'Acreg-->'+AgstAcReg;
+
+    alert(gstPrfil);
+
 
     datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&opcion=asignar';
 
-    //alert(datas);
 
     if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstIDuni == '') {
 
@@ -1614,7 +1630,7 @@ function asignar() {
         return;
     } else {
         $.ajax({
-            url: '../php/agrEvalu.php',
+            //url: '../php/agrEvalu.php',
             type: 'POST',
             data: datas
         }).done(function(respuesta) {
@@ -1631,7 +1647,7 @@ function asignar() {
                     text: 'Sus datos fueron guardados correctamente',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
-                    timer: 2000
+                    timer: 3000
                 });
                 setTimeout("location.href = 'inspecion.php';", 2000);
             } else {
