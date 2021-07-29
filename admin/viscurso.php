@@ -179,10 +179,13 @@
   <br>
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
+  <button type="button" id="button" class="btn btn-info btn-sm" onclick="">NOTIFICAR CONVOCATORIA</button>
   </div>
+  
   </div>
   <!-- /.box -->
   </div>
+ 
   <!-- /.col -->
   </div>
  
