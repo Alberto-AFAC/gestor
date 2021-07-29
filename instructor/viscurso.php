@@ -1,10 +1,6 @@
 
-
-
   <!-- Main content -->
-
   <div class="row" id="detCurso" style="display: none;">
-
   <!-- /.col -->
   <div class="col-md-12">
   <div class="box-tools pull-right">
@@ -169,11 +165,14 @@
   <br>
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
+  <button type="button" id="button" class="btn btn-info btn-sm" onclick="">NOTIFICAR CONVOCATORIA</button>
   </div>
   </div>
   <!-- /.box -->
+  
   </div>
   <!-- /.col -->
+  
   </div>
  
   <form class="form-horizontal" action="" method="POST"  >

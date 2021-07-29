@@ -111,10 +111,9 @@ function proCurso() {
                     text: 'Curso programado correctamente',
                     // showConfirmButton: false,
                     showCancelButton: true,
-                    showCloseButton: true,
                     customClass: 'swal-wide',
-                    confirmButtonText: '<span style="color: white;"><a class="a-alert" href="../admin/programa.php">¿Deseas agregar otro curso?</a></span>',
-                    cancelButtonText: '<span style="color: white;"><a  class="a-alert" href="../admin/lisCurso.php">Cerrar</a></span>',
+                    confirmButtonText: '<a class="a-alert" href="../admin/programa.php"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                    cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso.php"><span style="color: white;">Cerrar</span></a>',
 
                 });
                 // setTimeout("location.href = 'inspecion.php';", 2000);

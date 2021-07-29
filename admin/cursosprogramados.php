@@ -14,7 +14,7 @@
 
         </div>
       </div>
-      <!-- /.box-header -->
+      <!-- /.SE SACA LA SUMA Y LOS PPORCENTAJES DE CADA CURSO -->
       <div class="box-body" style="display: none;">
         <div class="row">
         <?php 
@@ -27,12 +27,12 @@
                                 COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) AS ESPECÍFICOS,
                                 COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) AS OJT,
                                 COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) AS BINICIAS,
-                                COUNT( CASE WHEN gstTipo = 'INDUCCIÓN' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS INDUCCIÓNP,
-                                COUNT( CASE WHEN gstTipo = 'RECURRENTES' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS RECURRENTESP,
-                                COUNT( CASE WHEN gstTipo = 'BÁSICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS BASICOSP,
-                                COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS ESPECÍFICOSP,
-                                COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS OJTP,
-                                COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) * 100 / COUNT( gstIdlsc ) AS BINICIASP 
+                                ROUND(COUNT(CASE WHEN gstTipo = 'INDUCCIÓN' THEN 1 END )* 100 / COUNT( gstIdlsc ),2) AS INDUCCIÓNP,
+                                ROUND(COUNT( CASE WHEN gstTipo = 'RECURRENTES' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS RECURRENTESP,
+                                ROUND(COUNT( CASE WHEN gstTipo = 'BÁSICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS BASICOSP , 
+                                ROUND(COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS ESPECÍFICOSP,
+                                ROUND(COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS OJTP,
+                                ROUND(COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) * 100 / COUNT(gstIdlsc),2) AS BINICIASP 
                                 
                             FROM
                             listacursos";
