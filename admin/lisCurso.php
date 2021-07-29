@@ -891,7 +891,12 @@ $inspector = mysqli_query($conexion,$sql);
         <div class="box-body">
             <div class="form-group"><br>
                 <div class="col-sm-offset-0 col-sm-5">
+
+<form id="impri" action="" method="POST"  >
+  <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
+
                     <button type="button" class="btn btn-info btn-lg" onclick="enviar();">ENVIAR</button>
+</form>
                 </div>
                 <b>
                     <p class="alert alert-danger text-center padding error" id="peligro">Los datos ya están agregados
