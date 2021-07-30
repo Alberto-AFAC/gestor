@@ -24,7 +24,7 @@ function lisCurso() {
             Finaliza = day + '/' + month + '/' + year;
 
             cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad;
-            
+
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
             if (obj.data[i].proceso == "FINALIZADO") {
                 proceso = "<span style='font-weight: bold; height: 50px; color:green;'>FINALIZADO</span>";
@@ -32,7 +32,7 @@ function lisCurso() {
             } else
             if (obj.data[i].proceso == "PENDIENTE") {
                 proceso = "<span style='font-weight: bold; height: 50px; color: #EA1706;'>PENDIENTE</span>";
-            }else
+            } else
             if (obj.data[i].proceso == "EN PROCESO") {
                 proceso = "<span style='font-weight: bold; height: 50px; color: #F79D00;'>EN PROCESO</span>";
             }
@@ -149,63 +149,66 @@ function imprimir() {
     gstIdlsc = document.getElementById('gstIdlstc').value;
     gstTitulo = document.getElementById('gstTitulo').value;
 
-            $.ajax({
-            url: '../php/listapdf.php',
-            type: 'POST',
-            data: 'gstIdlsc='+gstIdlsc+'&gstTitulo='+gstTitulo
-        }).done(function(datos) {
+    $.ajax({
+        url: '../php/listapdf.php',
+        type: 'POST',
+        data: 'gstIdlsc=' + gstIdlsc + '&gstTitulo=' + gstTitulo
+    }).done(function(datos) {
 
-                // alert(datos);
-     if(datos!=''){           
+        // alert(datos);
+        if (datos != '') {
 
-    alert(datos);
+            // alert(datos);
 
-    var pdf = new jsPDF("landscape");
-    pdf.setFontSize(10)
+            var pdf = new jsPDF("landscape");
+            pdf.setFontSize(10)
 
-    var logo = new Image();
-    logo.src = '../dist/img/AFACPDF.png';
-    pdf.addImage(logo, 'PNG', 120, 5, 40, 30);
-    pdf.setFontType('bold')
-    pdf.text(15, 40, 'LISTA TECNICA DE PARTICIPANTES')
+            var logo = new Image();
+            logo.src = '../dist/img/AFACPDF.png';
+            pdf.addImage(logo, 'PNG', 120, 5, 40, 30);
+            pdf.setFontType('bold')
+            pdf.text(15, 40, 'LISTA TECNICA DE PARTICIPANTES')
 
-    pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' + document.getElementById('gstTitlo').value)
+            pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' + document.getElementById('gstTitlo').value)
+            var prueba = "Prueba";
+            console.log(prueba);
+            var columns = ["NOMBRE", "APELLIDOS"];
+            var data = [
+                [datos]
+            ];
+            /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+            const pageCount = pdf.internal.getNumberOfPages();
+            for (var i = 1; i <= pageCount; i++) {
+                pdf.setFontSize(8)
+                pdf.setPage(i);
+                pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+                    "right");
+            }
+            pdf.autoTable(columns, data, {
+                margin: {
+                    top: 50,
+                    bottom: 15
+                },
+                styles: {
 
-    var columns = ["NOMBRE"];
-    var data = datos;
-    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-    const pageCount = pdf.internal.getNumberOfPages();
-    for (var i = 1; i <= pageCount; i++) {
-        pdf.setFontSize(8)
-        pdf.setPage(i);
-        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-            "right");
-    }
-    pdf.autoTable(columns, data, {
-        margin: {
-            top: 50,
-            bottom: 15
-        },
-        styles: {
+                    overflow: 'linebreak',
+                    fontSize: 8
+                },
+                headStyles: {
+                    fillColor: [0, 0, 0],
+                    textColor: [0, 0, 0],
+                    fontSize: 8,
+                    padding: 0,
+                },
+                showHeader: 'everyPage',
+                theme: 'grid'
 
-            overflow: 'linebreak',
-            fontSize: 8
-        },
-        headStyles: {
-            fillColor: [0, 0, 0],
-            textColor: [0, 0, 0],
-            fontSize: 8,
-            padding: 0,
-        },
-        showHeader: 'everyPage',
-        theme: 'grid'
+            });
 
-    });
-
-    window.open(pdf.output('bloburl'))
+            window.open(pdf.output('bloburl'))
 
 
-}
+        }
         // Swal.fire({
         //         type: 'success',
         //         title: 'ENVIADO CON ÉXITO',
@@ -217,10 +220,10 @@ function imprimir() {
         //     `
         //     });
 
-        });
+    });
 
 
-    
+
 }
 
 //CERTIFICADO
@@ -614,23 +617,23 @@ function enviarMail() {
 
     gstIdlsc = document.getElementById('gstIdlstc').value;
 
-            $.ajax({
-            url: 'enviarMail.php',
-            type: 'POST',
-            data: 'gstIdlsc=' + gstIdlsc
-        }).done(function(html) {
+    $.ajax({
+        url: 'enviarMail.php',
+        type: 'POST',
+        data: 'gstIdlsc=' + gstIdlsc
+    }).done(function(html) {
 
         Swal.fire({
-                type: 'success',
-                title: 'ENVIADO CON ÉXITO',
-                showConfirmButton: false,
-                customClass: 'swal-wide',
-                timer: 2000,
-                backdrop: `
+            type: 'success',
+            title: 'ENVIADO CON ÉXITO',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 2000,
+            backdrop: `
                 rgba(100, 100, 100, 0.4)
             `
-            });
-
         });
+
+    });
 
 }
