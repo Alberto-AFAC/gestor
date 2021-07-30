@@ -690,6 +690,7 @@ $("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
 //////////////DATOS DEL PERSONAL//////////// 
 
 function inspector(gstIdper) {
+
     $.ajax({
         url: '../php/consulta.php',
         type: 'POST'
@@ -928,6 +929,8 @@ function inspector(gstIdper) {
                         }
 
                         //
+                        programados = 0;
+
                         if (obj.data[ii].idinsp == gstIdper) {
                             if (obj.data[ii].evaluacion >= '0') {
 
@@ -947,6 +950,14 @@ function inspector(gstIdper) {
                                 //} else if (obj.data[ii].confirmar == 'CONFIRMADO') {
                                 //  html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-confirma'>CONFIRMADO</a></td><td>" + status + "</td></tr>";
                                 //} else {}
+
+                                if(obj.data[ii].proceso=='PENDIENTE'){
+                                    programados++;
+                                }
+
+                                
+                                  //$("#programado").html(programados); 
+                                  document.getElementById("programado").innerHTML = programados+'/0';
                             }
                         }
 
