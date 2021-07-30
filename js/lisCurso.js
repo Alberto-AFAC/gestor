@@ -31,7 +31,7 @@ function lisCurso() {
                 //console.log(proceso);
             } else
             if (obj.data[i].proceso == "PENDIENTE") {
-                proceso = "<span style='font-weight: bold; height: 50px; color: #EA1706;'>PENDIENTE</span>";
+                proceso = "<span style='font-weight: bold; height: 50px; color: #F39403;'>PENDIENTE</span>";
             }else
             if (obj.data[i].proceso == "EN PROCESO") {
                 proceso = "<span style='font-weight: bold; height: 50px; color: #F79D00;'>EN PROCESO</span>";
@@ -92,7 +92,7 @@ function curso(cursos) {
             var res = obj.data;
             var x = 0;
             //TODO AQUI ES
-            html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i>CATEGORÍA</th><th><i></i>ASISTENCIA</th><th style="width:18%"><i></i>ACCIONES</th></tr></thead><tbody>';
+            html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i>ESPECIALIDAD</th><th><i></i>ASISTENCIA</th><th style="width:18%"><i></i>ACCIONES</th></tr></thead><tbody>';
             for (i = 0; i < res.length; i++) {
                 x++;
 
