@@ -158,7 +158,7 @@
         </li>-->
 
         <li class="active">
-          <a href="../">
+          <a href="../inspector.php">
             <i class="fa ion-android-plane"></i> <span>Inicio</span>
             <span class="pull-right-container">
             </span>
