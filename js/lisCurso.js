@@ -24,15 +24,15 @@ function lisCurso() {
             Finaliza = day + '/' + month + '/' + year;
 
             cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad;
-            
+
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
             if (obj.data[i].proceso == "FINALIZADO") {
                 proceso = "<span style='font-weight: bold; height: 50px; color:green;'>FINALIZADO</span>";
                 //console.log(proceso);
             } else
             if (obj.data[i].proceso == "PENDIENTE") {
-                proceso = "<span style='font-weight: bold; height: 50px; color: #9C9C9C;'>PENDIENTE</span>";
-            }else
+                proceso = "<span style='font-weight: bold; height: 50px; color: #EA1706;'>PENDIENTE</span>";
+            } else
             if (obj.data[i].proceso == "EN PROCESO") {
                 proceso = "<span style='font-weight: bold; height: 50px; color: ##3C8DBC;'>EN PROCESO</span>";
             }
@@ -171,10 +171,10 @@ function imprimir() {
 
 
 
-        });
+    });
 
 
-    
+
 }
 
 //CERTIFICADO
@@ -568,23 +568,23 @@ function enviarMail() {
 
     gstIdlsc = document.getElementById('gstIdlstc').value;
 
-            $.ajax({
-            url: 'enviarMail.php',
-            type: 'POST',
-            data: 'gstIdlsc=' + gstIdlsc
-        }).done(function(html) {
+    $.ajax({
+        url: 'enviarMail.php',
+        type: 'POST',
+        data: 'gstIdlsc=' + gstIdlsc
+    }).done(function(html) {
 
         Swal.fire({
-                type: 'success',
-                title: 'ENVIADO CON ÉXITO',
-                showConfirmButton: false,
-                customClass: 'swal-wide',
-                timer: 2000,
-                backdrop: `
+            type: 'success',
+            title: 'ENVIADO CON ÉXITO',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 2000,
+            backdrop: `
                 rgba(100, 100, 100, 0.4)
             `
-            });
-
         });
+
+    });
 
 }
