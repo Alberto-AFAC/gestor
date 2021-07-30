@@ -118,12 +118,23 @@ include('header.php');
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box bg-aqua">
             <span class="info-box-icon"><i class="fa ion-easel"></i></span>
+            <?php 
+                                $query ="SELECT 
+                                  COUNT( id_curso ) AS COMPLETADOS,
+                                  COUNT( CASE WHEN proceso = 'PENDIENTE' THEN 1 END ) AS PENDIENTES,
+                                  COUNT( CASE WHEN proceso = 'ACREEDITADO' THEN 1 END ) AS ACREEDITADO,
+                                  COUNT( CASE WHEN proceso = 'EN PROCESO' THEN 1 END ) AS PORACREEDITAR 
+                                        FROM
+                                        cursos";
+                                $resultado = mysqli_query($conexion, $query);
+                                $row = mysqli_fetch_assoc($resultado);
+                                ?>
             
 
             <div class="info-box-content">
               <span class="info-box-text">TOTAL DE CURSOS</span>
               <span class="info-box-text">PROGRAMADOS</span>
-              <span class="info-box-number">191</span>
+              <span class="info-box-number"><?php echo $row['COMPLETADOS']?></span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 70%"></div>
@@ -147,7 +158,7 @@ include('header.php');
             <div class="info-box-content">
               <span class="info-box-text">TOTAL DE CURSOS</span>
               <span class="info-box-text">Acreditados</span>
-              <span class="info-box-number">50</span>
+              <span class="info-box-number"><?php echo $row['ACREEDITADO']?></span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 70%"></div>
@@ -168,7 +179,7 @@ include('header.php');
             <div class="info-box-content">
               <span class="info-box-text">TOTAL DE CURSOS</span>
               <span class="info-box-text">POR ACREDITAR</span>
-              <span class="info-box-number">23</span>
+              <span class="info-box-number"><?php echo $row['PORACREEDITAR']?></span>
               <span class="progress-description"> 
               <div class="progress">
                 <div class="progress-bar" style="width: 70%"></div>

@@ -1,8 +1,8 @@
 <!DOCTYPE html><?php 
+include ("../conexion/conexion.php");
 
 session_start();
 
-include ("../conexion/conexion.php");
 
 $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
 $curso = mysqli_query($conexion,$sql);

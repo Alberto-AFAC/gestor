@@ -1,4 +1,8 @@
-<?php include ("../conexion/conexion.php"); session_start();
+<?php include ("../conexion/conexion.php"); 
+  if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
@@ -26,7 +30,7 @@ unset($_SESSION['consulta']);
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
     <!-- Logo -->
-    <a href="./" class="logo">
+    <a href="inicio.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>DI</span>
       <!-- logo for regular state and mobile devices -->
@@ -144,7 +148,7 @@ unset($_SESSION['consulta']);
         </li>-->
 
         <li class="active">
-          <a href="index.php">
+          <a href="inicio.php">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
