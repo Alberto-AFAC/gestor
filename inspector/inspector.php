@@ -50,6 +50,9 @@
                 <li class="list-group-item">
                   <b>Cursos cancelados</b> <a class="pull-right"><div id="cancelados"></div></a>
                 </li>
+                <li class="list-group-item">
+                  <b>Cursos vencidos</b> <a class="pull-right"><div id="cancelados"></div></a>
+                </li>
               </ul>
       
             </div>

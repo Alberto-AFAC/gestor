@@ -472,14 +472,14 @@ function cerrareval() {
 
             // alert(respuesta);
             if (respuesta == 0) {
-                $('#succeev').toggle('toggle');
-                setTimeout(function() {
-                    $('#succeev').toggle('toggle');
-                }, 2000);
-            } else {
                 $('#dangerev').toggle('toggle');
                 setTimeout(function() {
                     $('#dangerev').toggle('toggle');
+                }, 2000);
+            } else {
+                $('#succeev').toggle('toggle');
+                setTimeout(function() {
+                    $('#succeev').toggle('toggle');
                 }, 2000);
             }
 
