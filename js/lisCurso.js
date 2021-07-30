@@ -31,10 +31,10 @@ function lisCurso() {
                 //console.log(proceso);
             } else
             if (obj.data[i].proceso == "PENDIENTE") {
-                proceso = "<span style='font-weight: bold; height: 50px; color: #9C9C9C;'>PENDIENTE</span>";
+                proceso = "<span style='font-weight: bold; height: 50px; color: #EA1706;'>PENDIENTE</span>";
             }else
             if (obj.data[i].proceso == "EN PROCESO") {
-                proceso = "<span style='font-weight: bold; height: 50px; color: ##3C8DBC;'>EN PROCESO</span>";
+                proceso = "<span style='font-weight: bold; height: 50px; color: #F79D00;'>EN PROCESO</span>";
             }
 
             html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td>" + proceso + "</td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";

@@ -173,24 +173,6 @@
   <span data-toggle="modal" data-target="#basicModal" style="font-size:12px; width:180px; height:30px " class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
   <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span>
 </form>
-<!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
-<!-- <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">CONFIRMACIÓN DE PARTICIPANTES</h4>
-      </div>
-      <div class="modal-body">
-        <h3>Por favor de verificar los datos de los participantes antes de enviar el correo. Si son correctos continua con el procedimiento.</h3>
-      </div>
-      <div class="modal-footer">
-       
-        <button type="button" onclick="enviarMail()" data-dismiss="modal" class="btn btn-primary">Confirmar</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
   <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
   <div class="modal fade" id='basicModal'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -214,14 +196,11 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
   </div>
-  
   </div>
   <!-- /.box -->
   </div>
- 
   <!-- /.col -->
   </div>
- 
   <form class="form-horizontal" action="" method="POST"  >
   <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
