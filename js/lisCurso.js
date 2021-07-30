@@ -149,90 +149,78 @@ function imprimir() {
     gstIdlsc = document.getElementById('gstIdlstc').value;
     gstTitulo = document.getElementById('gstTitulo').value;
 
+            $.ajax({
+            url: '../php/listapdf.php',
+            type: 'POST',
+            data: 'gstIdlsc='+gstIdlsc+'&gstTitulo='+gstTitulo
+        }).done(function(datos) {
+
+                // alert(datos);
+     if(datos!=''){           
+
+    alert(datos);
+
     var pdf = new jsPDF("landscape");
     pdf.setFontSize(10)
-        // pdf.setFontType('bold')
-        // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
-        // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL')
 
-    $.ajax({
-        url: '../php/curLista.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
+    var logo = new Image();
+    logo.src = '../dist/img/AFACPDF.png';
+    pdf.addImage(logo, 'PNG', 120, 5, 40, 30);
+    pdf.setFontType('bold')
+    pdf.text(15, 40, 'LISTA TECNICA DE PARTICIPANTES')
 
+    pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' + document.getElementById('gstTitlo').value)
 
+    var columns = ["NOMBRE"];
+    var data = datos;
+    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+    const pageCount = pdf.internal.getNumberOfPages();
+    for (var i = 1; i <= pageCount; i++) {
+        pdf.setFontSize(8)
+        pdf.setPage(i);
+        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+            "right");
+    }
+    pdf.autoTable(columns, data, {
+        margin: {
+            top: 50,
+            bottom: 15
+        },
+        styles: {
 
-        var logo = new Image();
-        logo.src = '../dist/img/AFACPDF.png';
-        pdf.addImage(logo, 'PNG', 120, 5, 40, 30);
-        pdf.setFontType('bold')
-        pdf.text(15, 40, 'LISTA TECNICA DE PARTICIPANTES')
+            overflow: 'linebreak',
+            fontSize: 8
+        },
+        headStyles: {
+            fillColor: [0, 0, 0],
+            textColor: [0, 0, 0],
+            fontSize: 8,
+            padding: 0,
+        },
+        showHeader: 'everyPage',
+        theme: 'grid'
 
-        pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' + gstTitulo)
+    });
 
-        var x = 0;
-
-        var columns = ["N", "NOMBRE", "CARGO", "TEL.EXT.", "CORREO", "FIRMA"];
-
-
-
-        for (i = 0; i < res.length; i++) {
-            x++;
-            if (obj.data[i].gstIdlsc == gstIdlsc) {
-
-                //alert(obj.data[i].gstIdlsc);
-                titulo = obj.data[i].gstTitlo;
-                valor = obj.data[i].gstIdper;
-                cargo = obj.data[i].gstCargo;
-                nombre = obj.data[i].gstNombr;
-                var data = [
-                    [x, obj.data[i].gstNombr, obj.data[i].gstCargo]
-                ];
-                //const array1 = [x, nombre, cargo];
-            }
-        }
-
-        // alert(nombre);
-
-        data = [
-            [x, nombre, cargo]
-        ];
-        /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-        const pageCount = pdf.internal.getNumberOfPages();
-        for (var i = 1; i <= pageCount; i++) {
-            pdf.setFontSize(8)
-            pdf.setPage(i);
-            pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-                "right");
-        }
+    window.open(pdf.output('bloburl'))
 
 
-        pdf.autoTable(columns, data, {
-            margin: {
-                top: 50,
-                bottom: 15
-            },
-            styles: {
-
-                overflow: 'linebreak',
-                fontSize: 8
-            },
-            headStyles: {
-                fillColor: [0, 0, 0],
-                textColor: [0, 0, 0],
-                fontSize: 8,
-                padding: 0,
-            },
-            showHeader: 'everyPage',
-            theme: 'grid'
+}
+        // Swal.fire({
+        //         type: 'success',
+        //         title: 'ENVIADO CON ÉXITO',
+        //         showConfirmButton: false,
+        //         customClass: 'swal-wide',
+        //         timer: 2000,
+        //         backdrop: `
+        //         rgba(100, 100, 100, 0.4)
+        //     `
+        //     });
 
         });
 
-        window.open(pdf.output('bloburl'))
 
-    })
+    
 }
 
 //CERTIFICADO
