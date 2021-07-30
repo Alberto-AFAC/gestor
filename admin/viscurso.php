@@ -196,14 +196,11 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
   </div>
-  
   </div>
   <!-- /.box -->
   </div>
- 
   <!-- /.col -->
   </div>
- 
   <form class="form-horizontal" action="" method="POST"  >
   <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
