@@ -31,10 +31,10 @@ function lisCurso() {
                 //console.log(proceso);
             } else
             if (obj.data[i].proceso == "PENDIENTE") {
-                proceso = "<span style='font-weight: bold; height: 50px; color: #EA1706;'>PENDIENTE</span>";
+                proceso = "<span style='font-weight: bold; height: 50px; color: #9C9C9C;'>PENDIENTE</span>";
             }else
             if (obj.data[i].proceso == "EN PROCESO") {
-                proceso = "<span style='font-weight: bold; height: 50px; color: #F79D00;'>EN PROCESO</span>";
+                proceso = "<span style='font-weight: bold; height: 50px; color: ##3C8DBC;'>EN PROCESO</span>";
             }
 
             html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td>" + proceso + "</td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
@@ -153,69 +153,23 @@ function imprimir() {
             url: '../php/listapdf.php',
             type: 'POST',
             data: 'gstIdlsc='+gstIdlsc+'&gstTitulo='+gstTitulo
-        }).done(function(datos) {
+        }).done(function(data) {
 
-                // alert(datos);
-     if(datos!=''){           
-
-    alert(datos);
-
-    var pdf = new jsPDF("landscape");
-    pdf.setFontSize(10)
-
-    var logo = new Image();
-    logo.src = '../dist/img/AFACPDF.png';
-    pdf.addImage(logo, 'PNG', 120, 5, 40, 30);
-    pdf.setFontType('bold')
-    pdf.text(15, 40, 'LISTA TECNICA DE PARTICIPANTES')
-
-    pdf.text(15, 45, 'TEMA DEL CURSO:' + ' ' + document.getElementById('gstTitlo').value)
-
-    var columns = ["NOMBRE"];
-    var data = datos;
-    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-    const pageCount = pdf.internal.getNumberOfPages();
-    for (var i = 1; i <= pageCount; i++) {
-        pdf.setFontSize(8)
-        pdf.setPage(i);
-        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-            "right");
-    }
-    pdf.autoTable(columns, data, {
-        margin: {
-            top: 50,
-            bottom: 15
-        },
-        styles: {
-
-            overflow: 'linebreak',
-            fontSize: 8
-        },
-        headStyles: {
-            fillColor: [0, 0, 0],
-            textColor: [0, 0, 0],
-            fontSize: 8,
-            padding: 0,
-        },
-        showHeader: 'everyPage',
-        theme: 'grid'
-
-    });
-
-    window.open(pdf.output('bloburl'))
+                 //alert(data);
+        Swal.fire({
+                type: 'success',
+                title: 'ENVIADO CON ÉXITO',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 2000,
+                backdrop: `
+                rgba(100, 100, 100, 0.4)
+            `
+            });
+    setTimeout("location.href = '../php/listapdf.php';", 1000);
 
 
-}
-        // Swal.fire({
-        //         type: 'success',
-        //         title: 'ENVIADO CON ÉXITO',
-        //         showConfirmButton: false,
-        //         customClass: 'swal-wide',
-        //         timer: 2000,
-        //         backdrop: `
-        //         rgba(100, 100, 100, 0.4)
-        //     `
-        //     });
+
 
         });
 
