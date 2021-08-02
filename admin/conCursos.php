@@ -390,6 +390,15 @@ $query = "SELECT * FROM listacursos
 $resultado = mysqli_query($conexion, $query);
   $n=0;
       while($data = mysqli_fetch_array($resultado)){ 
+        if($data['gstVignc'] == 100){
+          echo  "RECURRENTE";
+
+        } else if ($data['gstVignc'] == 101){
+          echo "UNICA VEZ";
+
+        } else {
+          echo $data['gstVignc']. ' AÑOS ';
+        }
 $n++;
 
 $gstIdlsc = $data['gstIdlsc'];
