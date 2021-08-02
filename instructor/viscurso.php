@@ -160,12 +160,32 @@
   <div class="col-xs-12">
   <div class="box">
   <br>
-  <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>IMPRIMIR LISTA</span>
+  <form id="impri" action="" method="POST"  >
+  <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
+  <input type="hidden" name="gstTitulo" id="gstTitulo">
+  <span data-toggle="modal" data-target="#basicModal" style="font-size:12px; width:180px; height:30px " class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
+  <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span>
+</form>
+  <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+  <div class="modal fade" id='basicModal'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal1">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/email.png">
+    </div>
+  </div>
+  <h1 class="modaltitle"><strong>ENVIÓ DE CONVOCATORIA</strong></h1>
+  <p class="points">Favor de verificar los datos del curso y de los participantes antes de enviar el correo.</p>
+  <hr>
+  <button type="button" id="cerrarres" style="font-size:18px" class="btn btn-block btn-primary" onclick="prueba1()" data-dismiss="modal">ENVIAR</button>
+  <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" data-dismiss="modal">CERRAR</button>
+</div>
+</div>
   <div class="box-body">
   <br>
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
-  <button type="button" id="button" class="btn btn-info btn-sm" onclick="">NOTIFICAR CONVOCATORIA</button>
   </div>
   </div>
   <!-- /.box -->
@@ -260,6 +280,10 @@
   <!-- /.col -->
   </div>
   <!-- /.row -->
-
+<script>
+  function prueba1(){
+    alert("Si esta entrando???");
+  }
+</script>
 
 
