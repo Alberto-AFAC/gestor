@@ -181,6 +181,7 @@
             <li><a href="conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
             <li><a href="programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
             <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <li><a href="lisCurso.php"><i class="fa fa-area-chart"></i> Gantt Cursos programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
           </ul>
