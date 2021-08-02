@@ -196,12 +196,8 @@ include('header.php');
 <label class="label2">PARTICIPANTES DEL CURSO</label>
 
 </div>                     
-</div>   
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" style="color: white;" class="btn btn-success btn-default">VIGENTE</button>
-  <button type="button" style="color: white;"class="btn btn-warning btn-default">POR VENCER</button>
-  <button type="button" style="color: white;" class="btn btn-danger btn-default">VENCIDO</button>
-</div>
+</div>  
+
 <div id="tabcurso"></div> 
 
 <!-- <div class="form-group">
