@@ -248,14 +248,14 @@
                 <div class="col-sm-offset-0 col-sm-3">
                          <label>PERIODO DE VIGENCIA</label>                         
                             <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
-                            <option value="RECURRENTE">RECURRENTE</option>
-                            <option value="NO APLICA">UNICA VEZ</option>
-                            <option value="1 AÑO">1 AÑO</option>
-                            <option value="2 AÑOS">2 AÑOS</option>
-                            <option value="3 AÑOS">3 AÑOS</option>
-                            <option value="4 AÑOS">4 AÑOS</option>
-                            <option value="5 AÑOS">5 AÑOS</option>
-                            <option value="6 AÑOS">6 AÑOS</option>
+                            <option value="100">RECURRENTE</option>
+                            <option value="101">UNICA VEZ</option>
+                            <option value="1">1 AÑO</option>
+                            <option value="2">2 AÑOS</option>
+                            <option value="3">3 AÑOS</option>
+                            <option value="4">4 AÑOS</option>
+                            <option value="5">5 AÑOS</option>
+                            <option value="6">6 AÑOS</option>
                             </select>
                       </div>
                       </div>
@@ -391,13 +391,13 @@ $resultado = mysqli_query($conexion, $query);
   $n=0;
       while($data = mysqli_fetch_array($resultado)){ 
         if($data['gstVignc'] == 100){
-          echo  "RECURRENTE";
+          $gstVignc =  "RECURRENTE";
 
         } else if ($data['gstVignc'] == 101){
-          echo "UNICA VEZ";
+          $gstVignc = "UNICA VEZ";
 
         } else {
-          echo $data['gstVignc']. ' AÑOS ';
+          $gstVignc = $data['gstVignc'].' AÑOS';
         }
 $n++;
 
@@ -406,7 +406,7 @@ $gstIdlsc = $data['gstIdlsc'];
 //,"<?php //echo  $data['gstTitlo']
       ?>
 
-["<?php echo  $n?>",'<?php echo  $data['gstTitlo']?>',"<?php echo $data['gstTipo']?>","<?php echo $data['gstPrfil']?>","<?php echo $data['gstDrcin']?>","<?php echo $data['gstCntnc']?>","<?php echo $data['gstVignc']?>","<?php echo "<a href='{$data['gstTmrio']}' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a> " ?>","<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"],
+["<?php echo  $n?>",'<?php echo  $data['gstTitlo']?>',"<?php echo $data['gstTipo']?>","<?php echo $data['gstPrfil']?>","<?php echo $data['gstDrcin']?>","<?php echo $data['gstCntnc']?>","<?php echo $gstVignc ?>","<?php echo "<a href='{$data['gstTmrio']}' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a> " ?>","<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"],
 
 
 <?php } ?>
