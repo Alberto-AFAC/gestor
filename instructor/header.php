@@ -184,6 +184,7 @@ unset($_SESSION['consulta']);
             <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <li><a href="cursosgantt.php"><i class="fa fa-area-chart"></i> Gantt Cursos programados</a></li>
           </ul>
         </li>
         <li>
