@@ -32,7 +32,7 @@ function lisCurso() {
             } else
             if (obj.data[i].proceso == "PENDIENTE") {
                 proceso = "<span style='font-weight: bold; height: 50px; color: #F39403;'>PENDIENTE</span>";
-            }else
+            } else
             if (obj.data[i].proceso == "EN PROCESO") {
                 proceso = "<span style='font-weight: bold; height: 50px; color: ##3C8DBC;'>EN PROCESO</span>";
             }
@@ -149,24 +149,24 @@ function imprimir() {
     gstIdlsc = document.getElementById('gstIdlstc').value;
     gstTitulo = document.getElementById('gstTitulo').value;
 
-            $.ajax({
-            url: '../php/listapdf.php',
-            type: 'POST',
-            data: 'gstIdlsc='+gstIdlsc+'&gstTitulo='+gstTitulo
-        }).done(function(data) {
+    $.ajax({
+        url: '../php/listapdf.php',
+        type: 'POST',
+        data: 'gstIdlsc=' + gstIdlsc + '&gstTitulo=' + gstTitulo
+    }).done(function(data) {
 
-                 //alert(data);
+        //alert(data);
         Swal.fire({
-                type: 'success',
-                title: 'ENVIADO CON ÉXITO',
-                showConfirmButton: false,
-                customClass: 'swal-wide',
-                timer: 2000,
-                backdrop: `
+            type: 'success',
+            title: 'ENVIADO CON ÉXITO',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 2000,
+            backdrop: `
                 rgba(100, 100, 100, 0.4)
             `
-            });
-    setTimeout("location.href = '../php/listapdf.php';", 1000);
+        });
+        setTimeout("location.href = '../php/listapdf.php';", 1000);
 
 
 
