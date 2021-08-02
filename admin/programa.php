@@ -197,7 +197,11 @@ include('header.php');
 
 </div>                     
 </div>   
-
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" style="color: white;" class="btn btn-success btn-default">VIGENTE</button>
+  <button type="button" style="color: white;"class="btn btn-warning btn-default">POR VENCER</button>
+  <button type="button" style="color: white;" class="btn btn-danger btn-default">VENCIDO</button>
+</div>
 <div id="tabcurso"></div> 
 
 <!-- <div class="form-group">
@@ -303,7 +307,7 @@ $("#idcord").select2();
 <script>
 var today = new Date();
 var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
+var mm = today.getMonth()+1; 
 var yyyy = today.getFullYear();
  if(dd<10){
         dd='0'+dd
@@ -317,7 +321,7 @@ document.getElementById("fcurso").setAttribute("min", today);
 //Second date
 var today = new Date();
 var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
+var mm = today.getMonth()+1; 
 var yyyy = today.getFullYear();
  if(dd<10){
         dd='0'+dd

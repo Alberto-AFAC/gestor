@@ -41,7 +41,7 @@ require_once "../../conexion/conexion.php";
                                     <th><i></i> APELLIDOS</th>
                                     <th><i></i> CORREO</th>
                                     <th><i></i> CATEGORÍA</th>
-                                    <th><i></i> FECHA INGRESO</th>
+                                    <th><i></i> FECHA TERMINO</th>
                                     <th><i></i> DETALLE</th>
                                 </tr>
                             </thead>
