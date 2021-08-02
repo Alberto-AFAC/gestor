@@ -309,7 +309,7 @@ $psto = mysqli_query($conexion,$sql);
                 
                     <div class="form-group" id="buton" style="display: none;"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-info btn-lg" onclick="actDatos();">ACEPTAR</button>
+                    <button type="button" id="button" class="btn btn-info btn-lg" onclick="actDatos();"> ACEPTAR</button>
                     </div>
                     <b><p class="alert alert-danger text-center padding error" id="danger">Error al actualizar datos </p></b>
                     <b><p class="alert alert-success text-center padding exito" id="succe">¡Se actualizaron los datos con éxito!</p></b>
@@ -350,7 +350,7 @@ $psto = mysqli_query($conexion,$sql);
          </div> -->
      </div>
 
-<p id="codigo" style="display: none; cursor: pointer;"><a onclick="codigo();">EDITAR CÓDIGO PRESUPUESTAL <i class="fa fa-edit"></i></a></p>
+<p id="codigo" style="display: none; cursor: pointer;"><a onclick="codigo();"> EDITAR CÓDIGO PRESUPUESTAL <i class="fa fa-edit"></i></a></p>
 
 <div id="codigo1">
 <div class="form-group">
@@ -380,7 +380,9 @@ $psto = mysqli_query($conexion,$sql);
 </div>
 </div>
 
-<p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();">EDITAR NOMBRE DEL PUESTO<i class="fa fa-edit"></i></a></p>
+<p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();"> EDITAR NOMBRE DEL PUESTO <i class="fa fa-edit"></i></a>
+<b style="margin-left: 19em;"></b>
+<a onclick="especialidads();">EDITAR ESPECIALIDAD OACI PERSONAL TÉCNICO <i class="fa fa-edit"></i></a></p>  
 
 <div class="form-group">
 
@@ -392,14 +394,32 @@ $psto = mysqli_query($conexion,$sql);
 <div class="col-sm-5" id="nompusto2" style="display: none;">
 <label>NOMBRE DEL PUESTO</label>
 <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
+  <option>SELECCIONE NOMBRE DEL PUESTO</option>
 <?php while($pust = mysqli_fetch_row($psto)):?>                      
 <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
 <?php endwhile; ?>
 </select>
 </div> 
 
+
+
+<div id="spcialidad1">
+<div class="col-sm-4">
+<label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
+<input type="text" class="form-control" id="spcialidad" name="spcialidad" disabled="" >
+</div>
+<div class="col-sm-3">
+<label>SIGLAS OACI</label>
+<input type="text" class="form-control" id="sigla" name="sigla" disabled="" >
+</div>
+</div>
+
+<div id="spcialidad2" style="display: none;">
 <div id="actoaci"></div>
 <div id="siglas"></div>
+</div>
+
+
 </div>
 
 
@@ -417,14 +437,26 @@ $psto = mysqli_query($conexion,$sql);
              </div>
          </div>
      </div>
+     
      <div class="form-group">
+
      <div class="col-sm-12">
+
+ <p id="ejecutiva" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR DIRECCIÓN EJECUTIVA <i class="fa fa-edit"></i></a></p>      
+        <p id="ejecutiva1">
+          <label>DIRECCIÓN EJECUTIVA </label> 
+        <input type="text" name="ejcutiva" id="ejcutiva" class="form-control" disabled="">
+        </p>
+        <p id="ejecutiva2" style="display: none;">
         <label>DIRECCIÓN EJECUTIVA </label>         
            <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
+            <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
            <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
            <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
            <?php endwhile; ?>
            </select>
+           </p>
+
          </div>          
      </div>
      <div class="form-group">
