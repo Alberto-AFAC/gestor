@@ -446,7 +446,7 @@ function perfil(gstIdper) {
 
 
                 $.ajax({
-                    url: '../php/conPerson.php',
+                    url: '../php/conDatos.php',
                     type: 'POST'
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
@@ -488,13 +488,11 @@ function perfil(gstIdper) {
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
                     
                      //alert(obj.data[i].gstIdpst);                           
-
 $("#Pusto #Codig").val(obj.data[i].gstCodig);
 $("#Pusto #Nivel").val(obj.data[i].gstNivel);
 $("#Pusto #Gnric").val(obj.data[i].gstGnric);
 
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-
 
                             $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
                             $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
@@ -508,12 +506,15 @@ $("#Pusto #Gnric").val(obj.data[i].gstGnric);
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
 
-                            $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
+$("#Pusto #ejcutiva").val(obj.data[i].gstAreje);    
+                            $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área ejecutiva
 
                             //        alert(obj.data[i].gstAreID);
 
 $("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
+$("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
+$("#Pusto #sigla").val(obj.data[i].gstSigla);                          
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
@@ -1584,6 +1585,8 @@ function openEdit() {
 
     $("#codigo").show();
     $("#nompusto").show();
+    $("#especialidad").show();
+    $("#ejecutiva").show();
 }
 
 //CIERRA LAS HABILITACIONES DE LA EDICIÓN EN PERFIL DE INSTRUCTOR
@@ -1639,6 +1642,8 @@ function cerrarEdit() {
 
     $("#codigo").hide();
     $("#nompusto").hide();
+    $("#especialidad").hide();
+    $("#ejecutiva").hide();
 }
 
 function codigo(){
@@ -1648,6 +1653,16 @@ function codigo(){
 function nompusto(){
     $("#nompusto1").toggle('toggle');
     $("#nompusto2").toggle('toggle');
+}
+
+function especialidads(){
+    $("#spcialidad1").toggle('toggle');
+    $("#spcialidad2").toggle('toggle');
+}
+
+function ejecutiva(){
+    $("#ejecutiva1").toggle('toggle');
+    $("#ejecutiva2").toggle('toggle');
 }
 
 function asignar() {
