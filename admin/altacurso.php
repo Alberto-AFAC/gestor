@@ -157,15 +157,15 @@ include ("../conexion/conexion.php");
                 <div class="col-sm-offset-0 col-sm-4">
                          <label>PERIODO DE VIGENCIA</label>                         
                             <select type="text" class="form-control" id="gstVignc" name="gstVignc">
-                            <option value="0">SELECCIONE VIGENCIA</option>
-                            <option value="RECURRENTE">RECURRENTE</option>
-                            <option value="NO APLICA">UNICA VEZ</option>
-                            <option value="1 AÑO">1 AÑO</option>
-                            <option value="2 AÑOS">2 AÑOS</option>
-                            <option value="3 AÑOS">3 AÑOS</option>
-                            <option value="4 AÑOS">4 AÑOS</option>
-                            <option value="5 AÑOS">5 AÑOS</option>
-                            <option value="6 AÑOS">6 AÑOS</option>
+                            <option value="">SELECCIONE VIGENCIA</option>
+                            <option value="100">RECURRENTE</option>
+                            <option value="101">UNICA VEZ</option>
+                            <option value="1">1 AÑO</option>
+                            <option value="2">2 AÑOS</option>
+                            <option value="3">3 AÑOS</option>
+                            <option value="4">4 AÑOS</option>
+                            <option value="5">5 AÑOS</option>
+                            <option value="6">6 AÑOS</option>
                             </select>
                       </div>
 
