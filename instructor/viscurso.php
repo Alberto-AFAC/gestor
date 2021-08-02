@@ -178,7 +178,7 @@
   <h1 class="modaltitle"><strong>ENVIÓ DE CONVOCATORIA</strong></h1>
   <p class="points">Favor de verificar los datos del curso y de los participantes antes de enviar el correo.</p>
   <hr>
-  <button type="button" id="cerrarres" style="font-size:18px" class="btn btn-block btn-primary" onclick="prueba1()" data-dismiss="modal">ENVIAR</button>
+  <button type="button" id="cerrarres" style="font-size:18px" class="btn btn-block btn-primary" onclick="enviarMail()" data-dismiss="modal">ENVIAR</button>
   <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" data-dismiss="modal">CERRAR</button>
 </div>
 </div>
@@ -280,10 +280,6 @@
   <!-- /.col -->
   </div>
   <!-- /.row -->
-<script>
-  function prueba1(){
-    alert("Si esta entrando???");
-  }
-</script>
+
 
 
