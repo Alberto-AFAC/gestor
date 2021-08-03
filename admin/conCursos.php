@@ -399,6 +399,11 @@ $resultado = mysqli_query($conexion, $query);
         } else {
           $gstVignc = $data['gstVignc'].' AÑOS';
         }
+
+        if($data['gstTmrio'] == 0){
+          $temario = "Falta cargar";
+
+        }
 $n++;
 
 $gstIdlsc = $data['gstIdlsc'];
@@ -406,7 +411,7 @@ $gstIdlsc = $data['gstIdlsc'];
 //,"<?php //echo  $data['gstTitlo']
       ?>
 
-["<?php echo  $n?>",'<?php echo  $data['gstTitlo']?>',"<?php echo $data['gstTipo']?>","<?php echo $data['gstPrfil']?>","<?php echo $data['gstDrcin']?>","<?php echo $data['gstCntnc']?>","<?php echo $gstVignc ?>","<?php echo "<a href='{$data['gstTmrio']}' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a> " ?>","<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"],
+["<?php echo  $n?>",'<?php echo  $data['gstTitlo']?>',"<?php echo $data['gstTipo']?>","<?php echo $data['gstPrfil']?>","<?php echo $data['gstDrcin']?>","<?php echo $data['gstCntnc']?>","<?php echo $gstVignc ?>","<?php if($data['gstTmrio'] == '0'){ echo "<span style='text-align: center;'>N/A</span>";} else { echo "<a href='{$data['gstTmrio']}' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; font-size:22px;  cursor: pointer;' ></span></a>";} ?>","<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"],
 
 
 <?php } ?>
