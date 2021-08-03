@@ -118,7 +118,7 @@ include ("../conexion/conexion.php");
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                       <select  class="form-control" id="hr" name="hr">
                         <option value="00">00</option>
-                      <?php for($h=1; $h<=24; $h++){
+                      <?php for($h=1; $h<=456; $h++){
                          if($h<10){ ?>
                        <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
                         <?php }else{ ?>
@@ -129,7 +129,7 @@ include ("../conexion/conexion.php");
 
                     <div class="col-sm-1" style="padding: 0;">
                       <label style="color: white">.</label>
-                      <input type="text" class="form-control" id="tmp1" name="tmp1" value="HRS.">
+                      <input type="text" class="form-control" id="tmp1" name="tmp1" value="HRS." readonly>
                     </div>
 
                       <div class="col-sm-1" style="padding: 0;">
@@ -148,7 +148,7 @@ include ("../conexion/conexion.php");
                     </div>
                     <div class="col-sm-1" style="padding: 0;">
                       <label style="color: white">.</label>
-                      <input type="text" class="form-control" id="tmp2" name="tmp2" value="MIN.">
+                      <input type="text" class="form-control" id="tmp2" name="tmp2" value="MIN." readonly>
   
                     </div>
 
@@ -183,11 +183,8 @@ include ("../conexion/conexion.php");
                       </div>
 
                   <div class="col-sm-4">
-                    <label>CENTRO DE INSTRUCCIÓN</label>                   
-                      <select type="text" class="form-control" id="gstCntro" name="gstCntro">
-                        <option value="0">ELEGIR A QUIEN VA DIRIGIDO</option>
-                        <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
-                      </select>
+                    <label>CENTRO DE INSTRUCCIÓN</label>    
+                    <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntro" name="gstCntro">
                     </div>
                   </div> 
     
