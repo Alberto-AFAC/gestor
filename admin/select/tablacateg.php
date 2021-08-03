@@ -11,8 +11,8 @@ require_once "../../conexion/conexion.php";
         	
 			$f = explode(',', $idper);
 			$idcurso = intval($f[0]);
-
-
+            $fecha = intval($f[2]);
+            $lista = intval($f[3]);
 			$valor = explode(",", $idper);
 
 ?>
@@ -41,18 +41,31 @@ require_once "../../conexion/conexion.php";
                                     <th><i></i> APELLIDOS</th>
                                     <th><i></i> CORREO</th>
                                     <th><i></i> CATEGORÍA</th>
-                                    <th><i></i> FECHA TERMINO</th>
                                     <th><i></i> DETALLE</th>
+                                    <th style="width: 100px"><i></i> ESTADO</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+$f = $fecha;
 
 
 	foreach ($valor as $id) {
 		if($idcurso!=$id){
 
-$sql = "SELECT 	personal.gstIdper, personal.gstNombr, personal.gstApell, personal.gstCorro, categorias.gstCatgr, personal.gstIDCat, categorias.gstCsigl,personal.gstFeing, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Feingreso
+
+//echo $fecha;
+
+$sql = "SELECT 	
+personal.gstIdper, 
+personal.gstNombr, 
+personal.gstApell, 
+personal.gstCorro, 
+categorias.gstCatgr, 
+personal.gstIDCat, 
+categorias.gstCsigl,
+personal.gstFeing, 
+DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Feingreso
 FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
 WHERE personal.estado = 0
@@ -72,7 +85,10 @@ ORDER BY gstFeing DESC";
 		// }else if ($antiguedad > 0) {
 		// 	echo "Mayor 2";
 		// }
-			 if($per[6]==$id){
+		 if($per[6]==$id){
+         
+
+
 	?>
                                 <tr>
                                     <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp'
@@ -82,17 +98,77 @@ ORDER BY gstFeing DESC";
                                     <td><?php echo $per[3]?></td>
                                     <td><?php echo $per[4]?></td>
 
-                                    <td><?php echo $per[8]?></td>
-                                   
-							<?php 
-							if($antiguedad <=30){
-								echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
-							}else {
-								echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
-							}
-							?></td>
+
+                            <?php 
+                            if($antiguedad <=30){
+                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                            }else {
+                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                            }
+                            ?>
+
+<?php
+
+$sql = "
+SELECT DATE_FORMAT(fechaf, '%d-%m-%Y') as fechaf,idinsp FROM cursos 
+-- INNER JOIN listacursos ON idmstr = gstIdlsc
+-- INNER JOIN personal ON idinsp = gstIdper
+WHERE idmstr = $lista";
+$fecha = mysqli_query($conexion,$sql);
+while ($fec = mysqli_fetch_row($fecha)) {
+
+
+if($fec[1]==$per[0]){
+
+ $fec[0];
+// "<br>";
+ $fec[1];
+// "<br>";
+ $per[0];
+// "<br>";
+// $fecha;
+$fechav = date("d-m-Y",strtotime($fec[0]."+ ".$f." year")); 
+
+$vencer = date("d-m-Y",strtotime($fechav."- 6 month"));
+ini_set('date.timezone','America/Mexico_City');
+$actual= date("d-m-Y"); 
+
+$f1 = strtotime($fechav);
+$f2 = strtotime($vencer);
+$f3 = strtotime($actual);
+
+if($f3>=$f1){
+$fech = 'vencio';
+echo "<td style='color: white; background-color:#AC2925;'>$fechav</td>";
+}else if($f3 <= $f2){
+$fech = 'vigente';
+
+echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
+
+}else if($f3 >= $f2){
+$fech = 'por vencer';
+echo "<td style='color: white; background-color: #D58512;'>$fechav</td>";
+}
+
+?>
+    
+
+<?php } ?> 
+        
+<?php }  
+
+
+
+?>
+
+				
                                 </tr>
                                 <?php 
+
+
+
+
+
 			}
 		}
 	}
