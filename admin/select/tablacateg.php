@@ -27,6 +27,14 @@ require_once "../../conexion/conexion.php";
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" style="pointer-events: none; color: white;"
+                            class="btn btn-success btn-default">VIGENTE</button>
+                        <button type="button" style="pointer-events: none; color: white;"
+                            class="btn btn-warning btn-default">POR VENCER</button>
+                        <button type="button" style="pointer-events: none; color: white;"
+                            class="btn btn-danger btn-default">VENCIDO</button>
+                    </div><br><br>
                     <div class="table-responsive mailbox-messages">
 
                         <table class="table display table-striped table-bordered" role="grid"
