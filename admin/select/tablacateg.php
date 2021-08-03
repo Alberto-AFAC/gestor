@@ -41,9 +41,9 @@ require_once "../../conexion/conexion.php";
                             aria-describedby="example_info">
                             <thead>
                                 <tr>
-                                    <th>N°
-                                        <!-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                </button> -->
+                                    <th>
+<!-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+</button>  -->                 <input type="checkbox" name="selectall" id="selectall">
                                     </th>
                                     <th><i></i> NOMBRE(S)</th>
                                     <th><i></i> APELLIDOS</th>
@@ -93,13 +93,66 @@ ORDER BY gstFeing DESC";
 		// }else if ($antiguedad > 0) {
 		// 	echo "Mayor 2";
 		// }
-		 if($per[6]==$id){
-         
-
-
+		 if($per[6]==$id){        
 	?>
                                 <tr>
-                                    <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp'
+<?php
+
+$sql = "SELECT DATE_FORMAT(fechaf, '%d-%m-%Y') as fechaf,idinsp FROM cursos 
+-- INNER JOIN listacursos ON idmstr = gstIdlsc
+-- INNER JOIN personal ON idinsp = gstIdper
+WHERE idmstr = $lista AND idinsp = $per[0] ORDER BY idinsp DESC";
+$fechas = mysqli_query($conexion,$sql);
+
+if($fecs = mysqli_fetch_row($fechas)) {
+
+
+ $fecs[0];
+ $fecs[1];
+ $per[0];
+
+
+//echo $fecs[1].',';
+
+//if(isset($fechav)&&!empty($fechav)){    
+//if(empty($fechav)){
+
+//}else{
+$fechav = date("d-m-Y",strtotime($fecs[0]."+ ".$f." year"));     
+//}
+
+
+
+$vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
+ini_set('date.timezone','America/Mexico_City');
+$actual= date("d-m-Y"); 
+
+$f1 = strtotime($fechav);
+$f2 = strtotime($vencer);
+$f3 = strtotime($actual);
+
+if($f3>=$f1){
+//$fech = 'vencido';
+?>
+                                    <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $per[0]?>' class="idinsp" /></td>
+                                    <td><?php echo $per[1]?></td>
+                                    <td><?php echo $per[2]?></td>
+                                    <td><?php echo $per[3]?></td>
+                                    <td><?php echo $per[4]?></td>
+
+
+                            <?php 
+                            if($antiguedad <=30){
+                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                            }else {
+                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                            }
+
+echo "<td style='color: white; background-color:#AC2925;'>$fechav</td>";
+}else if($f3 <= $f2){
+//$fech = 'vigente';
+    ?>
+                                        <td style="width: 5%;"><input disabled="" type='checkbox' 
                                             value='<?php echo $per[0]?>' /></td>
                                     <td><?php echo $per[1]?></td>
                                     <td><?php echo $per[2]?></td>
@@ -113,70 +166,51 @@ ORDER BY gstFeing DESC";
                             }else {
                                 echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
                             }
-                            ?>
-
-<?php
-
-$sql = "
-SELECT DATE_FORMAT(fechaf, '%d-%m-%Y') as fechaf,idinsp FROM cursos 
--- INNER JOIN listacursos ON idmstr = gstIdlsc
--- INNER JOIN personal ON idinsp = gstIdper
-WHERE idmstr = $lista";
-$fecha = mysqli_query($conexion,$sql);
-while ($fec = mysqli_fetch_row($fecha)) {
-
-
-if($fec[1]==$per[0]){
-
- $fec[0];
-// "<br>";
- $fec[1];
-// "<br>";
- $per[0];
-// "<br>";
-// $fecha;
-$fechav = date("d-m-Y",strtotime($fec[0]."+ ".$f." year")); 
-
-$vencer = date("d-m-Y",strtotime($fechav."- 6 month"));
-ini_set('date.timezone','America/Mexico_City');
-$actual= date("d-m-Y"); 
-
-$f1 = strtotime($fechav);
-$f2 = strtotime($vencer);
-$f3 = strtotime($actual);
-
-if($f3>=$f1){
-$fech = 'vencio';
-echo "<td style='color: white; background-color:#AC2925;'>$fechav</td>";
-}else if($f3 <= $f2){
-$fech = 'vigente';
 
 echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
-
 }else if($f3 >= $f2){
-$fech = 'por vencer';
+//$fech = 'por vencer';
+    ?>
+                                        <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
+                                    <td><?php echo $per[1]?></td>
+                                    <td><?php echo $per[2]?></td>
+                                    <td><?php echo $per[3]?></td>
+                                    <td><?php echo $per[4]?></td>
+
+
+                            <?php 
+                            if($antiguedad <=30){
+                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                            }else {
+                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                            }
+
 echo "<td style='color: white; background-color: #D58512;'>$fechav</td>";
 }
 
-?>
-    
 
-<?php } ?> 
-        
-<?php }  
+}else{ ?>
 
-
-
-?>
-
-				
-                                </tr>
-                                <?php 
+                                    <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
+                                    <td><?php echo $per[1]?></td>
+                                    <td><?php echo $per[2]?></td>
+                                    <td><?php echo $per[3]?></td>
+                                    <td><?php echo $per[4]?></td>
 
 
+                            <?php 
+                            if($antiguedad <=30){
+                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                            }else {
+                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                            }
 
+echo "<td style='color: #333; background-color: #F4F4F4;'>POR REALIZAR</td>";
 
+}
 
+?>        </tr>
+                <?php 
 			}
 		}
 	}
@@ -204,3 +238,25 @@ echo "<td style='color: white; background-color: #D58512;'>$fechav</td>";
 <?php   }else{   ?>
 <input type="hidden" name="id_mstr" id="id_mstr" value="0">
 <?php } ?>
+
+
+<script type="text/javascript">
+
+// Use 'prop' instead of 'attr'
+// 'attr' only work the first time, better use 'prop'
+
+// add multiple select/unselect functionality
+$("#selectall").on("click", function() {
+  $(".idinsp").prop("checked", this.checked);
+});
+
+// if all checkbox are selected, check the selectall checkbox and viceversa
+$(".idinsp").on("click", function() {
+  if ($(".idinsp").length == $(".idinsp:checked").length) {
+    $("#selectall").prop("checked", true);
+  } else {
+    $("#selectall").prop("checked", false);
+  }
+});
+    
+</script>
