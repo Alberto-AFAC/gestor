@@ -51,8 +51,9 @@
                   <b>Cursos cancelados</b> <a class="pull-right"><div id="cancelados"></div></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Cursos vencidos</b> <a class="pull-right"><div id="cancelados"></div></a>
+                  <b>Cursos vencidos</b> <a class="pull-right"><div id="vencidos"></div></a>
                 </li>
+                
               </ul>
       
             </div>
@@ -107,6 +108,7 @@
               <li class="active"><a href="#activity" data-toggle="tab">Cursos en proceso </a></li>
               <li><a href="#curComplet" data-toggle="tab">Cursos programados</a></li>              
               <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
+              <li><a href="#settings" data-toggle="tab">Cursos vencidos</a></li>
               <li><a href="#settings" data-toggle="tab">Cursos cancelados</a></li>
             </ul>
           <div class="tab-content">
