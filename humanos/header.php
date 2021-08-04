@@ -27,7 +27,7 @@ unset($_SESSION['consulta']);
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <header class="main-header">
     <!-- Logo -->
-    <a href="director.php" class="logo">
+    <a href="./" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>DI</span>
       <!-- logo for regular state and mobile devices -->
