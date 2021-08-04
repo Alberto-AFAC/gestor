@@ -5,12 +5,11 @@
       $oaci = mysqli_query($conexion,$sql);
     ?>
 <div class="col-sm-4">
-	          <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
+	          <label class="label2">ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
 
-			<select  id="gstSpcID" class="form-control" class="selectpicker" name="gstSpcID" type="text" data-live-search="true" style="width: 100%" disabled="">
-				<option value="0">SELECCIONE ESPECIALIDAD OACI PERSONAL</option>
+			<select  id="gstSpcID"  class="selectpicker form-control inputalta" name="gstSpcID" type="text" data-live-search="true" style="width: 100%" >
+			<option value="0">SELECIONE ESPECIALIDAD OACI</option>                     
 			<?php while($sigla = mysqli_fetch_row($oaci)):?>
-  
 			<option value="<?php echo $sigla[0]?>"><?php echo $sigla[1]?></option>
 			<?php endwhile; ?>
 			</select>

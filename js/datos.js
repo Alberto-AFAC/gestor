@@ -944,7 +944,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
 
                         if (obj.data[s].gstIDper == gstIdper) {
                             gstID = obj.data[s].gstIDper;
-                            if(obj.data[s].gstCatgr!='TODOS'){
+                            if(obj.data[s].gstIdcat!=24){
                             html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td></tr>";
                             }
                             // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>

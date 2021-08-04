@@ -1,13 +1,12 @@
 <?php include ("../../conexion/conexion.php");
 
     
-      $sql = "SELECT gstIdpst,gstCodig,gstNivel FROM codigo WHERE estado = 0";
+      $sql = "SELECT gstIdpst,gstCodig,gstNivel FROM puesto WHERE estado = 0";
       $puesto = mysqli_query($conexion,$sql);
     ?>
 
-
-			<select  id="gstIdpst" class="form-control" class="selectpicker" name="gstIdpst" type="text" data-live-search="true" style="width: 100%" disabled="">
-			
+			<select  id="gstIdpst" class="form-control" class="selectpicker" name="gstIdpst" type="text" data-live-search="true" style="width: 100%">
+			<option value="0">CODIGO PRESUPUESTAL</option> 
 			<?php while($idpst = mysqli_fetch_row($puesto)):?>                      
 			<option value="<?php echo $idpst[0]?>"><?php echo $idpst[1]?></option>
 			<?php endwhile; ?>
