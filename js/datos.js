@@ -486,11 +486,11 @@ function perfil(gstIdper) {
 
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-                    
-                     //alert(obj.data[i].gstIdpst);                           
-$("#Pusto #Codig").val(obj.data[i].gstCodig);
-$("#Pusto #Nivel").val(obj.data[i].gstNivel);
-$("#Pusto #Gnric").val(obj.data[i].gstGnric);
+
+                            //alert(obj.data[i].gstIdpst);                           
+                            $("#Pusto #Codig").val(obj.data[i].gstCodig);
+                            $("#Pusto #Nivel").val(obj.data[i].gstNivel);
+                            $("#Pusto #Gnric").val(obj.data[i].gstGnric);
 
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
 
@@ -506,15 +506,15 @@ $("#Pusto #Gnric").val(obj.data[i].gstGnric);
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
 
-$("#Pusto #ejcutiva").val(obj.data[i].gstAreje);    
+                            $("#Pusto #ejcutiva").val(obj.data[i].gstAreje);
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área ejecutiva
 
                             //        alert(obj.data[i].gstAreID);
 
-$("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
+                            $("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
-$("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
-$("#Pusto #sigla").val(obj.data[i].gstSigla);                          
+                            $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
+                            $("#Pusto #sigla").val(obj.data[i].gstSigla);
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
@@ -742,6 +742,7 @@ function inspector(gstIdper) {
                             $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                             $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                             $("#Dtall #gstApell").val(obj.data[i].gstApell);
+                            $("#Dtall #gstFeing").val(obj.data[i].gstFeing); //TODO AQUI LE MOVI
                             $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
                             $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
                             $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
@@ -952,13 +953,13 @@ function inspector(gstIdper) {
                                 //  html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-confirma'>CONFIRMADO</a></td><td>" + status + "</td></tr>";
                                 //} else {}
 
-                                if(obj.data[ii].proceso=='PENDIENTE'){
+                                if (obj.data[ii].proceso == 'PENDIENTE') {
                                     programados++;
                                 }
 
-                                
-                                  //$("#programado").html(programados); 
-                                  document.getElementById("programado").innerHTML = programados+'/0';
+
+                                //$("#programado").html(programados); 
+                                document.getElementById("programado").innerHTML = programados + '/0';
                             }
                         }
 
@@ -1646,21 +1647,22 @@ function cerrarEdit() {
     $("#ejecutiva").hide();
 }
 
-function codigo(){
+function codigo() {
     $("#codigo1").toggle('toggle');
     $("#codigo2").toggle('toggle');
 }
-function nompusto(){
+
+function nompusto() {
     $("#nompusto1").toggle('toggle');
     $("#nompusto2").toggle('toggle');
 }
 
-function especialidads(){
+function especialidads() {
     $("#spcialidad1").toggle('toggle');
     $("#spcialidad2").toggle('toggle');
 }
 
-function ejecutiva(){
+function ejecutiva() {
     $("#ejecutiva1").toggle('toggle');
     $("#ejecutiva2").toggle('toggle');
 }
@@ -1686,7 +1688,7 @@ function asignar() {
         }
     }
 
-     gstPrfil = gstPrfil.substr(1);
+    gstPrfil = gstPrfil.substr(1);
     //datos = 'idPer-->'+gstIdper+'Cargo-->'+AgstCargo+'IDcat-->'+AgstIDCat+'IDsub-->'+AgstIDSub+'IDuni-->'+AgstIDuni+'Acreg-->'+AgstAcReg;
 
     alert(gstPrfil);
