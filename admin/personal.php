@@ -456,11 +456,13 @@ $psto = mysqli_query($conexion,$sql);
                       </select>
                     </div>
                   <div class="col-sm-6">
-                  <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN </label>
-                    <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
+
+                  <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
+
+                  <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN </label>                    
                         <label  style="color: white">.</label>
                         <select style="width: 100%" class="selectpicker inputalta inputPadding" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
-                         <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
+                         
                          <?php while($rea = mysqli_fetch_row($are)):?>                      
                          <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
                          <?php endwhile; ?>

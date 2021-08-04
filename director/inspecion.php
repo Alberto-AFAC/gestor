@@ -117,16 +117,17 @@
                 <h4 class="modal-title">EVALUAR</h4>
               </div>
               <div class="modal-body">
-              <form id="Evalúa">
+              <form id="Evalua">
               <div class="row">  
               <div class="form-group">
                   <div class="col-sm-5">
                     <label>NOMBRE</label>
                       <input type="text" class="form-control" id="evalu_nombre" name="evalu_nombre" disabled="">
                   </div>
+
                     <div class="col-sm-offset-0 col-sm-7">
                       <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCat" name="gstIDCat" type="text" data-live-search="true" disabled="">
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCate" name="gstIDCate"type="text" data-live-search="true" disabled="">
                          <?php while($oira = mysqli_fetch_row($categ)):?>                      
                          <option value="<?php echo $oira[0]?>"><?php echo $oira[1]?></option>
                          <?php endwhile; ?>
@@ -189,7 +190,7 @@
                   </div>
                     <div class="col-sm-offset-0 col-sm-7">
                       <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCat" name="gstIDCat" type="text" data-live-search="true" disabled="">
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="IDCat" name="IDCat" type="text" data-live-search="true" >
                          <?php while($oiras = mysqli_fetch_row($categs)):?>                      
                          <option value="<?php echo $oiras[0]?>"><?php echo $oiras[1]?></option>
                          <?php endwhile; ?>
@@ -265,7 +266,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 $('#gstIDara').select2();
-$('#gstIDCat').select2();
+//$('#gstIDCat').select2();
 //$('#gstIDSub').select2();
 //$('#gstIDuni').select2();
 $('#gstAreID').select2();

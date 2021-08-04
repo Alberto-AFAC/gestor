@@ -101,13 +101,7 @@ include('header.php');
 </div>
 </div>
 </section>
-
-
-
-
 </div>
-
-
   <div class="modal fade" id='modal-asignar'>
     <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -153,10 +147,9 @@ include('header.php');
                    
                     <div class="form-group"  >
                       <div class="col-sm-12">
-                        <label class="label2"></label>         
+                            <label class="label2">DIRECCIÓN EJECUTIVA</label>
 
                     <select style="width: 100%"  class="selectpicker inputalta" name="gstAreIDasig" id="gstAreIDasig" type="text" data-live-search="true" disabled="">
-                    <option value="0">ÁREA ADSCRIPCIÓN POR ASIGNAR</option>
                     <?php while($ejct = mysqli_fetch_row($ejecut)):?>                      
                     <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
                     <?php endwhile; ?>
@@ -166,10 +159,9 @@ include('header.php');
                     </div>
                     <div class="form-group">
                           <div class="col-sm-12">
-                            <label class="label2">DIRECCIÓN</label>
+                            <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
 
-                    <select style="width: 100%" class="selectpicker inputalta" id="gsdirec" name="gsdirec" type="text" data-live-search="true">
-                    <option value="0">ÁREA ADSCRIPCIÓN POR ASIGNAR</option>
+                    <select style="width: 100%" class="selectpicker inputalta" id="gstIDara" name="gstIDara" type="text" data-live-search="true" disabled="">
                     <?php while($ccion = mysqli_fetch_row($direc)):?>                      
                     <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
                     <?php endwhile; ?>
@@ -219,17 +211,17 @@ include('header.php');
                         </div>
                         </div>
                         <!-- multiselec -->
-                        <div class="form-group">
+<!--                         <div class="form-group">
                         <div class="col-md-12">
                           <label class="label2">OTRAS ESPECIALIDADES</label>  
                             <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                               style="width:100%;color:#000;" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
-                              <?php while($cat = mysqli_fetch_row($categs)):?>                      
-                               <option  value="<?php echo $cat[0]?>"><?php echo $cat[1]?></option>
-                              <?php endwhile; ?>                
+                              <?php //while($cat = mysqli_fetch_row($categs)):?>                      
+                               <option  value="<?php //echo $cat[0]?>"><?php //echo $cat[1]?></option>
+                              <?php //endwhile; ?>                
                             </select>
                         </div>
-                        </div>
+                        </div> -->
                         <!-- multiselec -->
                         <div class="form-group">
                           <div class="col-sm-4">
@@ -241,19 +233,21 @@ include('header.php');
                               <div id="select3"></div> 
                               </div>
                           </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-0 col-sm-12">
-                            <label class="label2">UBICACIÓN CENTRAL EN ASIGNACIÓN</label> 
-                              <select style="width: 100%" class="form-control" class="selectpicker" id="AgstIDuni" name="AgstIDuni"type="text" data-live-search="true">
-                                 <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
-                                 <option value="CIAAC">CIAAC</option> 
-                                 <option value="FLORES">LAS FLORES</option> 
-                                 <option value="ANGAR8">ANGAR 8</option> 
-                                 <option value="LICENCIA">LICENCIAS</option>
-                              </select>
-                          </div>
-                        </div>
+
                   </div>
+
+                <div class="form-group">
+                <div class="col-sm-offset-0 col-sm-12">
+                <label class="label2">UBICACIÓN CENTRAL EN ASIGNACIÓN</label> 
+                <select style="width: 100%" class="form-control" class="selectpicker" id="AgstNucrt" name="AgstNucrt"type="text" data-live-search="true">
+                <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
+                <option value="CIAAC">CIAAC</option> 
+                <option value="LAS FLORES">LAS FLORES</option> 
+                <option value="ANGAR 8">ANGAR 8</option> 
+                <option value="LICENCIA">LICENCIAS</option>
+                </select>
+                </div>
+                </div>
 <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
                         <div class="form-group"><br>
                           <div class="col-sm-offset-0 col-sm-5">

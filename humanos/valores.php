@@ -501,6 +501,8 @@ $psto = mysqli_query($conexion,$sql);
              
               <option value="INSPECTOR">INSPECTOR</option>
               <option value="INSTRUCTOR">INSTRUCTOR</option>
+              <option value="COORDINADOR">COORDINADOR</option>
+
            </select>
          </div>
      </div>

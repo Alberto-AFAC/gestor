@@ -12,8 +12,37 @@ if($opcion === 'asignar'){
   $AgstIDSub = $_POST['AgstIDSub']; //SUBCATEGORIA
   $AgstAcReg = $_POST['AgstAcReg'];
   $AgstIDuni = $_POST['AgstIDuni'];
+  $AgstNucrt = $_POST['AgstNucrt'];
 
-	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$conexion)){
+if($AgstCargo == 'INSPECTOR'){
+
+	agrEspcldd($gstIdper,$AgstIDCat,$conexion);
+	$gstObli = 24;
+	obligatorio($gstIdper,$gstObli,$conexion);	
+
+}else if($AgstCargo == 'INSTRUCTOR'){
+
+	$AgstIDCat = 25;
+	agrEspcldd($gstIdper,$AgstIDCat,$conexion);
+	$gstObli = 24;
+	obligatorio($gstIdper,$gstObli,$conexion);
+
+}else if($AgstCargo == 'COORDINADOR'){
+
+	$AgstIDCat = 26;
+	agrEspcldd($gstIdper,$AgstIDCat,$conexion);
+	$gstObli = 24;
+	obligatorio($gstIdper,$gstObli,$conexion);
+
+}else{
+	$AgstIDCat = 24;
+	agrEspcldd($gstIdper,$AgstIDCat,$conexion);	  	
+}
+
+
+
+
+	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$conexion)){
 		echo "0";
 	}else{
 		echo "1";
@@ -69,7 +98,28 @@ function proEvalue($gstInspr,$gstIDprm,$gstActul,$comntr,$conexion){
 		}
 	}
 
-function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$conexion){
+function agrEspcldd($gstIdper,$AgstIDCat,$conexion){
+
+	$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$AgstIDCat',0);";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+}
+
+function obligatorio($gstIdper,$gstObli,$conexion){
+	$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$gstObli',0);";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+}
+
+function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$conexion){
 
 	$query = "UPDATE personal SET 
 	gstCargo='$AgstCargo',
@@ -77,6 +127,7 @@ function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDun
 	gstIDSub='$AgstIDSub',
 	gstAcReg='$AgstAcReg',
 	gstIDuni='$AgstIDuni',
+	gstNucrt='$AgstNucrt',
 	gstEvalu='NO'
 	 WHERE gstIdper='$gstIdper'";
 	if(mysqli_query($conexion,$query)){

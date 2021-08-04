@@ -64,20 +64,28 @@ $f = $fecha;
 
 //echo $fecha;
 
-$sql = "SELECT 	
-personal.gstIdper, 
-personal.gstNombr, 
-personal.gstApell, 
-personal.gstCorro, 
-categorias.gstCatgr, 
-personal.gstIDCat, 
-categorias.gstCsigl,
-personal.gstFeing, 
-DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Feingreso
+// $sql = "SELECT 	
+// personal.gstIdper, 
+// personal.gstNombr, 
+// personal.gstApell, 
+// personal.gstCorro, 
+// categorias.gstCatgr, 
+// personal.gstIDCat, 
+// categorias.gstCsigl,
+// personal.gstFeing, 
+// DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Feingreso
+// FROM personal 
+// INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+
+// WHERE personal.estado = 0
+// ORDER BY gstFeing DESC";
+    $sql = "SELECT personal.gstIdper, personal.gstNombr, personal.gstApell, personal.gstCorro, categorias.gstCatgr, personal.gstIDCat, categorias.gstCsigl, personal.gstFeing, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Feingreso 
 FROM personal 
-INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.estado = 0
-ORDER BY gstFeing DESC";
+INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
+INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+WHERE personal.estado = 0 ORDER BY gstFeing DESC
+
+";        
 
 	$person = mysqli_query($conexion,$sql);
 	while ($per = mysqli_fetch_row($person)) {
