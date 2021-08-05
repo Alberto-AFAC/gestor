@@ -327,14 +327,19 @@ var dataSet = [
 $query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
-      while($data = mysqli_fetch_array($resultado)){ 
+      while($data = mysqli_fetch_array($resultado)){
+        if($data['gstCargo']== '0'){
+          $datosCargo = "SIN ASIGNAR";
+        } else {
+          $datosCargo = $data['gstCargo'];
+        } 
 
       $gstIdper = $data['gstIdper'];
       ?>
 
 //console.log('<?php echo $gstIdper ?>');
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCargo']?>",
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo?>",
 
 "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
 
