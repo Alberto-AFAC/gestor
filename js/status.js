@@ -10,7 +10,7 @@
         var inspectores=0;
         var instructor=0;
         var coordinador=0;
-
+        var total = 0;
         for(i=0; i<res.length;i++){
         
          if(obj.data[i].gstCargo=='INSPECTOR' || obj.data[i].gstCargo=='DIRECTOR' ){
@@ -22,9 +22,11 @@
         }else if(obj.data[i].gstIDCat == '0' && obj.data[i].gstIDSub == '0'){  
             personas++;
             }
+            total++;
+
         } 
 
-        $("#persona").html(personas); 
+        $("#persona").html(total); 
         $("#inspectores").html(inspectores); 
         $("#instructor").html(instructor);
         $("#coordinador").html(coordinador); 

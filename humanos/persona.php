@@ -324,7 +324,7 @@ $('#AgstIDSub').select2();
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal WHERE gstIDCat  = 0 AND estado = 0 ORDER BY gstIdper DESC";
+$query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
@@ -351,7 +351,9 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
+    },"order": [
+            [4, "desc"]
+        ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
