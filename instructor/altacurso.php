@@ -117,7 +117,7 @@ include ("../conexion/conexion.php");
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                       <select  class="form-control" id="hr" name="hr">
                         <option value="00">00</option>
-                      <?php for($h=1; $h<=24; $h++){
+                      <?php for($h=1; $h<=456; $h++){
                          if($h<10){ ?>
                        <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
                         <?php }else{ ?>

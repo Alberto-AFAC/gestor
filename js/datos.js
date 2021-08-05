@@ -495,7 +495,7 @@ function perfil(gstIdper) {
 
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
 
-  
+
 
                             $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
 
@@ -721,7 +721,7 @@ function inspector(gstIdper) {
                 if (gstEvalu == 'NO') {
                     $("#ocultar1").hide();
                     $("#ocultar2").hide();
-//                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                    //                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                 } else {
                     $("#ocultar1").show();
                     $("#ocultar2").show();
@@ -770,15 +770,15 @@ function inspector(gstIdper) {
 
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-                    
-                     //alert(obj.data[i].gstIdpst);                           
-$("#Pusto #Codig").val(obj.data[i].gstCodig);
-$("#Pusto #Nivel").val(obj.data[i].gstNivel);
-$("#Pusto #Gnric").val(obj.data[i].gstGnric);
+
+                            //alert(obj.data[i].gstIdpst);                           
+                            $("#Pusto #Codig").val(obj.data[i].gstCodig);
+                            $("#Pusto #Nivel").val(obj.data[i].gstNivel);
+                            $("#Pusto #Gnric").val(obj.data[i].gstGnric);
 
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
 
-                              
+
 
                             $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
 
@@ -793,15 +793,15 @@ $("#Pusto #Gnric").val(obj.data[i].gstGnric);
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
 
-$("#Pusto #ejcutiva").val(obj.data[i].gstAreje);    
+                            $("#Pusto #ejcutiva").val(obj.data[i].gstAreje);
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área ejecutiva
 
                             //        alert(obj.data[i].gstAreID);
 
-$("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
+                            $("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
-$("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
-$("#Pusto #sigla").val(obj.data[i].gstSigla);                          
+                            $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
+                            $("#Pusto #sigla").val(obj.data[i].gstSigla);
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
@@ -840,7 +840,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                             $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
                             $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
                             $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-                            
+
                             $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
                             $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
                             $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
@@ -865,7 +865,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                             $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
 
-                            $("#Pusto #gstNucrt").val(obj.data[i].gstNucrt);//ubicion
+                            $("#Pusto #gstNucrt").val(obj.data[i].gstNucrt); //ubicion
 
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
 
@@ -893,8 +893,8 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
 
                         if (obj.data[s].gstIDper == gstIdper) {
                             gstID = obj.data[s].gstIDper;
-                            if(obj.data[s].gstIdcat!=24){
-                            html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td></tr>";
+                            if (obj.data[s].gstIdcat != 24) {
+                                html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td></tr>";
                             }
                             // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
                         }
@@ -918,59 +918,53 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
 
-                        if(gstIdper == obj.data[ii].idinsp){
+                        if (gstIdper == obj.data[ii].idinsp) {
 
 
 
 
-                        //BASICOS
-                        if(obj.data[ii].gstTipo =='BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80)
-                        { 
-                        document.getElementById('bscos').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                        $("#Bfecha").html(obj.data[ii].fcursof);
+                            //BASICOS
+                            if (obj.data[ii].gstTipo == 'BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                                document.getElementById('bscos').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                                $("#Bfecha").html(obj.data[ii].fcursof);
 
-                        }else if(obj.data[ii].gstTipo =='BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80){
-                            document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
-                            $("#Bfecha").html(obj.data[ii].fcursof);                        
-                        }else 
-                        if(obj.data[ii].gstTipo =='BÁSICO' && obj.data[ii].proceso == 'PENDIENTE')
-                        {
-                            document.getElementById('bscos').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
-                           $("#Bfecha").html('PENDIENTE');                                                    
-                        }
+                            } else if (obj.data[ii].gstTipo == 'BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                                document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                                $("#Bfecha").html(obj.data[ii].fcursof);
+                            } else
+                            if (obj.data[ii].gstTipo == 'BÁSICO' && obj.data[ii].proceso == 'PENDIENTE') {
+                                document.getElementById('bscos').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                                $("#Bfecha").html('PENDIENTE');
+                            }
 
-                        //RECURRENTES recurnt
-                        if(obj.data[ii].gstTipo =='RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80)
-                        { 
-                        document.getElementById('recurnt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                        $("#Rfecha").html(obj.data[ii].fcursof);
+                            //RECURRENTES recurnt
+                            if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                                document.getElementById('recurnt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                                $("#Rfecha").html(obj.data[ii].fcursof);
 
-                        }else if(obj.data[ii].gstTipo =='RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80){
-                            document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
-                            $("#Rfecha").html(obj.data[ii].fcursof);                        
-                        }else 
-                        if(obj.data[ii].gstTipo =='RECURRENTES' && obj.data[ii].proceso == 'PENDIENTE')
-                        {
-                            document.getElementById('recurnt').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
-                           $("#Rfecha").html('PENDIENTE');                                                    
-                        }
+                            } else if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                                document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                                $("#Rfecha").html(obj.data[ii].fcursof);
+                            } else
+                            if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'PENDIENTE') {
+                                document.getElementById('recurnt').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                                $("#Rfecha").html('PENDIENTE');
+                            }
 
-                        //ESPECIFICOS specifico
-                        if(obj.data[ii].gstTipo =='ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80)
-                        { 
-                        document.getElementById('specifico').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                        $("#Efecha").html(obj.data[ii].fcursof);
+                            //ESPECIFICOS specifico
+                            if (obj.data[ii].gstTipo == 'ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                                document.getElementById('specifico').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                                $("#Efecha").html(obj.data[ii].fcursof);
 
-                        }else if(obj.data[ii].gstTipo =='ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80){
-                            document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
-                            $("#Efecha").html(obj.data[ii].fcursof);                        
-                        }else 
-                        if(obj.data[ii].gstTipo =='ESPECIFICOS' && obj.data[ii].proceso == 'PENDIENTE')
-                        {
-                            document.getElementById('specifico').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
-                           $("#Efecha").html('PENDIENTE');                                                    
-                        }
-                        
+                            } else if (obj.data[ii].gstTipo == 'ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                                document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                                $("#Efecha").html(obj.data[ii].fcursof);
+                            } else
+                            if (obj.data[ii].gstTipo == 'ESPECIFICOS' && obj.data[ii].proceso == 'PENDIENTE') {
+                                document.getElementById('specifico').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                                $("#Efecha").html('PENDIENTE');
+                            }
+
                         }
 
                         gstVignc = obj.data[ii].gstVignc * 12;
@@ -1062,16 +1056,16 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                             datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
 
                             html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-                       document.getElementById('estudios').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                            document.getElementById('estudios').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
 
-                        }else{
+                        } else {
 
-//                      document.getElementById('estudios').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            //                      document.getElementById('estudios').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
 
                         }
 
- 
- 
+
+
 
                     }
                     html += '</tbody></table></div></div></div>';
@@ -1107,10 +1101,10 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
 
                             html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
 
-                        document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
- 
-                        }else{
-//                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+
+                        } else {
+                            //                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                         }
                     }
                     html += '</tbody></table></div></div></div>';
@@ -1480,7 +1474,7 @@ function registrar() {
                 // alert(respuesta);
                 Swal.fire({
                     type: 'success',
-                    title: 'CIAAC INFORMA',
+                    title: 'AFAC INFORMA',
                     text: 'Sus datos fueron guardados correctamente',
                     showCloseButton: true,
                     showCancelButton: true,
@@ -1583,8 +1577,8 @@ function actPuesto() {
     var gstNucrt = document.getElementById('gstNucrt').value;
 
 
-    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt='+gstNucrt+ '&opcion=actPrsnls';
-//alert(datos);
+    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&opcion=actPrsnls';
+    //alert(datos);
     if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstCorro == '' || gstCinst == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni == '' || gstNucrt == '') {
 
         $('#empty1').toggle('toggle');
@@ -1660,8 +1654,8 @@ function openEdit() {
     document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
     document.getElementById('gstIdpst').disabled = false; // NUM. DE EMPLEADO
     document.getElementById('gstCargo').disabled = false;
-            //document.getElementById('gstIDCat').disabled = false;
-            //document.getElementById('gstIDSub').disabled = false; //SUBCATEGORIA
+    //document.getElementById('gstIDCat').disabled = false;
+    //document.getElementById('gstIDSub').disabled = false; //SUBCATEGORIA
     document.getElementById('gstCorro').disabled = false;
     document.getElementById('gstCinst').disabled = false;
     document.getElementById('gstFeing').disabled = false;
@@ -1722,7 +1716,7 @@ function cerrarEdit() {
     document.getElementById('gstIdpst').disabled = true; // NUM. DE EMPLEADO
     document.getElementById('gstCargo').disabled = true;
     //document.getElementById('gstIDCat').disabled = true;
-   // document.getElementById('gstIDSub').disabled = true; //SUBCATEGORIA
+    // document.getElementById('gstIDSub').disabled = true; //SUBCATEGORIA
     document.getElementById('gstCorro').disabled = true;
     document.getElementById('gstCinst').disabled = true;
     document.getElementById('gstFeing').disabled = true;
@@ -1737,7 +1731,7 @@ function cerrarEdit() {
     document.getElementById('gstNucrt').disabled = true;
     //.../Habilita los campos FIN
 
-   
+
 }
 
 function codigo() {
@@ -1784,21 +1778,20 @@ function asignar() {
     //  gstPrfil = gstPrfil.substr(1);
     //datos = 'idPer-->'+gstIdper+'Cargo-->'+AgstCargo+'IDcat-->'+AgstIDCat+'IDsub-->'+AgstIDSub+'IDuni-->'+AgstIDuni+'Acreg-->'+AgstAcReg;
 
-    
-    if(AgstCargo !='INSPECTOR'){
+
+    if (AgstCargo != 'INSPECTOR') {
         AgstIDCat = '0';
-    }else{
-    }
+    } else {}
 
 
-    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt='+ AgstNucrt+'&opcion=asignar';
+    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&opcion=asignar';
 
-//alert(datas);
-//alert(gstIdper+'/'+AgstCargo+'/'+AgstIDCat+'/'+AgstIDSub+'/'+AgstIDuni+'/'+AgstAcReg);
+    //alert(datas);
+    //alert(gstIdper+'/'+AgstCargo+'/'+AgstIDCat+'/'+AgstIDSub+'/'+AgstIDuni+'/'+AgstAcReg);
 
     if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstIDuni == '' || AgstNucrt == '') {
 
-//alert('llene');
+        //alert('llene');
         $('#empty2').toggle('toggle');
         setTimeout(function() {
             $('#empty2').toggle('toggle');
