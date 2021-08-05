@@ -1483,7 +1483,7 @@ function registrar() {
                     customClass: 'swal-wide',
                     confirmButtonText: '<span style="color: white;"><a class="a-alert" href="../admin/personal.php">¿Deseas agregar otro registro?</a></span>',
                     confirmButtonAriaLabel: 'Thumbs up, great!',
-                    cancelButtonText: '<span style="color: white;"><a  class="a-alert" href="../admin/persona.php">Cerrar</a></span>',
+                    cancelButtonText: '<a  class="a-alert" href="../admin/persona.php"><span style="color: white;">Cerrar</span></a>',
                     cancelButtonAriaLabel: 'Thumbs down'
                         // timer: 2900
                 });
