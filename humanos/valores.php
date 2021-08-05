@@ -499,9 +499,12 @@ $psto = mysqli_query($conexion,$sql);
          <label>CARGO</label>
          <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
              
-              <option value="INSPECTOR">INSPECTOR</option>
               <option value="INSTRUCTOR">INSTRUCTOR</option>
               <option value="COORDINADOR">COORDINADOR</option>
+              <option value="INSPECTOR">INSPECTOR</option>
+              <option value="NUEVO INGRESO">NUEVO INGRESO</option>
+              <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+
 
            </select>
          </div>

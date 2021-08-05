@@ -334,7 +334,7 @@ $('#AgstIDSub').select2();
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal WHERE gstIDCat  = 0 AND estado = 0 ORDER BY gstIdper DESC";
+$query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
@@ -348,11 +348,7 @@ $resultado = mysqli_query($conexion, $query);
 
 "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
 
-//"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-
-
 ],
-
 
 <?php } ?>
 ];
@@ -361,7 +357,9 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
+    },  "order": [
+            [4, "desc"]
+        ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
