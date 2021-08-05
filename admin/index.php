@@ -101,7 +101,7 @@ include('header.php');
                         <div class="small-box bg-blue">
                             <div class="inner">
                                 <h3>
-                                    <div id="persona"></div>
+                                    <!-- <div id="persona"></div> -->
                                 </h3>
 
                                 <p>Total personal AFAC</p>
