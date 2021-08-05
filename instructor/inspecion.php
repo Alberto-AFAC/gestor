@@ -320,9 +320,11 @@ $resultado = mysqli_query($conexion, $query);
 ];
 
 var tableGenerarReporte = $('#data-table-inspectores').DataTable({
+     "order": [[ 4, "asc" ]],
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+   
     },
     orderCellsTop: true,
     fixedHeader: true,
