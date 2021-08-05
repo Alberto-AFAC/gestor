@@ -721,7 +721,7 @@ function inspector(gstIdper) {
                 if (gstEvalu == 'NO') {
                     $("#ocultar1").hide();
                     $("#ocultar2").hide();
-                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+//                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                 } else {
                     $("#ocultar1").show();
                     $("#ocultar2").show();
@@ -935,7 +935,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                         }else 
                         if(obj.data[ii].gstTipo =='BÁSICO' && obj.data[ii].proceso == 'PENDIENTE')
                         {
-                            document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            document.getElementById('bscos').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
                            $("#Bfecha").html('PENDIENTE');                                                    
                         }
 
@@ -951,7 +951,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                         }else 
                         if(obj.data[ii].gstTipo =='RECURRENTES' && obj.data[ii].proceso == 'PENDIENTE')
                         {
-                            document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            document.getElementById('recurnt').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
                            $("#Rfecha").html('PENDIENTE');                                                    
                         }
 
@@ -967,7 +967,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                         }else 
                         if(obj.data[ii].gstTipo =='ESPECIFICOS' && obj.data[ii].proceso == 'PENDIENTE')
                         {
-                            document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            document.getElementById('specifico').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
                            $("#Efecha").html('PENDIENTE');                                                    
                         }
                         
@@ -1066,7 +1066,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
 
                         }else{
 
-                      document.getElementById('estudios').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+//                      document.getElementById('estudios').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
 
                         }
 
@@ -1110,7 +1110,7 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                         document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
  
                         }else{
-                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+//                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                         }
                     }
                     html += '</tbody></table></div></div></div>';
