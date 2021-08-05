@@ -170,14 +170,12 @@ anychart.onDocumentReady(function () {
 
   // get chart data grid
   var dataGrid = chart.dataGrid();
+  dataGrid.column(1).title('NOMBRE DEL CURSO').width(230);
+  dataGrid.column(0).title('ITEM').width(60);
 
   // enable tooltip html mode
   dataGrid.tooltip().useHtml(true);
 
-  // set data grid column's width
-  dataGrid.column(1).width(250);
-
-  // set start splitter position settings
   chart.splitterPosition(303);
 
   // get chart's timeline
