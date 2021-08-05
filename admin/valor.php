@@ -145,14 +145,14 @@ $psto = mysqli_query($conexion,$sql);
                         <tr>
                             <th scope="row">B)</th>
                             <td style="background-color: yellow;">CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
-                            <td><img src="../dist/img/uncheked.svg" alt="NO" width="25px;"></td>
+                            <td><div id="evaluaciones"></div></td>
                             <td></td>
 
                         </tr>
                         <tr>
                             <th scope="row">C)</th>
                             <td style="background-color: yellow;">CURRICULUM VITAE. (requisitado y firmado)</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td><div id="profesions"></div></td>
                             <td></td>
 
 
@@ -160,7 +160,7 @@ $psto = mysqli_query($conexion,$sql);
                         <tr>
                             <th scope="row">D)</th>
                             <td style="background-color: yellow;">CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td><div id="estudios"></div></td>
                             <td></td>
 
                         </tr>
@@ -187,20 +187,20 @@ $psto = mysqli_query($conexion,$sql);
                         <tr>
                             <th scope="row"></th>
                             <td style="background-color: yellow;">BÁSICO</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td><div id="bscos"></div></td>
+                            <td><div id="Bfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td style="background-color: yellow;">RECURRENTE</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td><div id="recurnt"></div></td>
+                            <td><div id="Rfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td style="background-color: yellow;">ESPECIFICOS</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td><div id="specifico"></div></td>
+                            <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
             </form>

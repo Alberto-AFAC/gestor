@@ -721,9 +721,11 @@ function inspector(gstIdper) {
                 if (gstEvalu == 'NO') {
                     $("#ocultar1").hide();
                     $("#ocultar2").hide();
+                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                 } else {
                     $("#ocultar1").show();
                     $("#ocultar2").show();
+                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 }
 
 
@@ -738,59 +740,6 @@ function inspector(gstIdper) {
 
                         if (obj.data[i].gstIdper == gstIdper) {
 
-                            // // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-                            // $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
-                            // $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                            // $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                            // $("#cargopersonal").val(obj.data[i].gstCargo);
-                            // $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
-                            // $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
-                            // $("#Dtall #gstApell").val(obj.data[i].gstApell);
-                            // $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
-                            // $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
-                            // $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
-                            // $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
-                            // $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
-                            // $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
-                            // $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
-                            // $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
-                            // $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
-                            // $("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
-                            // $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
-                            // $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
-                            // $("#Dtall #gstClnia").val(obj.data[i].gstClnia);
-                            // $("#Dtall #gstCpstl").val(obj.data[i].gstCpstl);
-                            // $("#Dtall #gstCiuda").val(obj.data[i].gstCiuda);
-                            // $("#Dtall #gstStado").val(obj.data[i].gstStado);
-                            // $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
-                            // $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
-                            // $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
-                            // $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
-                            // $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-                            // $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-                            // $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
-                            // $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
-                            // $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-                            // $("#Pusto #gstCorro").val(obj.data[i].gstCorro);
-                            // $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
-                            // $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
-                            // $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-
-                            // $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
-                            // $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
-                            // $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
-
-                            // //        alert(obj.data[i].gstAreID);
-
-                            // $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
-                            // $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
-                            // //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
-                            // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-                            //alert(obj.data[i].gstIDCat);
-//                            $("#Evalua #IDCat").val(obj.data[i].gstIDCat);
                             $("#Evalua #gstIDCate").val(obj.data[i].gstIDCat);
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
@@ -969,26 +918,60 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
 
-                        // var hoy = new Date();
-                        // var termino = new Date(obj.data[ii].fcurso);
-                        // var total = termino.setDate(termino.getDate() + obj.data[ii].gstVignc);
-                        //  alert(total);
-                        // alert(total)
-                        // termino.setDate(today.getDate() + obj.data[ii].gstVignc);
-                        // alert(termino);
-                        // alert("Aquí va la fecha convertida" + fecha);
-                        //FLUJO VIGENCIA DE CURSOS
-                        // if (total >= 365) {
-                        // obj.data[ii].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
-
-                        // } else if (total >= 100000000) {
-                        // obj.data[ii].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
-                        // } 
-
-                        //fcurso = '2021-01-26';
-                        //aler1 t(obj.data[ii].gstVignc);
+                        if(gstIdper == obj.data[ii].idinsp){
 
 
+
+
+                        //BASICOS
+                        if(obj.data[ii].gstTipo =='BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80)
+                        { 
+                        document.getElementById('bscos').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                        $("#Bfecha").html(obj.data[ii].fcursof);
+
+                        }else if(obj.data[ii].gstTipo =='BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80){
+                            document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            $("#Bfecha").html(obj.data[ii].fcursof);                        
+                        }else 
+                        if(obj.data[ii].gstTipo =='BÁSICO' && obj.data[ii].proceso == 'PENDIENTE')
+                        {
+                            document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                           $("#Bfecha").html('PENDIENTE');                                                    
+                        }
+
+                        //RECURRENTES recurnt
+                        if(obj.data[ii].gstTipo =='RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80)
+                        { 
+                        document.getElementById('recurnt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                        $("#Rfecha").html(obj.data[ii].fcursof);
+
+                        }else if(obj.data[ii].gstTipo =='RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80){
+                            document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            $("#Rfecha").html(obj.data[ii].fcursof);                        
+                        }else 
+                        if(obj.data[ii].gstTipo =='RECURRENTES' && obj.data[ii].proceso == 'PENDIENTE')
+                        {
+                            document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                           $("#Rfecha").html('PENDIENTE');                                                    
+                        }
+
+                        //ESPECIFICOS specifico
+                        if(obj.data[ii].gstTipo =='ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80)
+                        { 
+                        document.getElementById('specifico').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                        $("#Efecha").html(obj.data[ii].fcursof);
+
+                        }else if(obj.data[ii].gstTipo =='ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80){
+                            document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                            $("#Efecha").html(obj.data[ii].fcursof);                        
+                        }else 
+                        if(obj.data[ii].gstTipo =='ESPECIFICOS' && obj.data[ii].proceso == 'PENDIENTE')
+                        {
+                            document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                           $("#Efecha").html('PENDIENTE');                                                    
+                        }
+                        
+                        }
 
                         gstVignc = obj.data[ii].gstVignc * 12;
                         vence = gstVignc - 6;
@@ -1007,15 +990,6 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                         termino.setDate(termino.getDate() + 1);
 
                         var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-                        // console.log(factual);
-                        // console.log('<br>');
-                        // console.log(finaliza);
-                        // console.log('<br>');
-                        // console.log(ftermino);
-
-
-                        // alert(obj.data[ii].gstIdlsc+' '+finaliza);
 
 
                         if (factual >= finaliza) {
@@ -1088,7 +1062,17 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                             datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
 
                             html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                       document.getElementById('estudios').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+
+                        }else{
+
+                      document.getElementById('estudios').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+
                         }
+
+ 
+ 
+
                     }
                     html += '</tbody></table></div></div></div>';
                     $("#studios").html(html);
@@ -1122,6 +1106,11 @@ $("#Pusto #sigla").val(obj.data[i].gstSigla);
                         if (obj.data[P].gstIDper == gstIdper) {
 
                             html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+
+                        document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+ 
+                        }else{
+                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                         }
                     }
                     html += '</tbody></table></div></div></div>';
