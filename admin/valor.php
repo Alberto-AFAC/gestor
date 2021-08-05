@@ -109,7 +109,7 @@ $psto = mysqli_query($conexion,$sql);
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
-                            <a href='javascript:closeDtlls()' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
                         </button>
                     </div>
                 </div>
@@ -121,15 +121,13 @@ $psto = mysqli_query($conexion,$sql);
 <!-- /FIN DE NUEVO DISEÑO -->
 
 
-
-<div class="col-md-12">
-    <div class="conteiner" style="background: #fbfbfb">
-        <div class="card-container" style="background: #fbfbfb">
+<div style="padding-top: 10px;" class="col-md-12">
+    <div class="nav-tabs-custom">
             <form id="Dtall" class="form-horizontal" action="" method="POST">
                 <input type="hidden" name="gstIdper" id="gstIdper">
-                <table class="table table-striped table-hover">
+                <table style="width: 60%;" class="table table-striped table-hover center">
                     <thead>
-                        <tr>
+                        <tr style="color: white; background-color: #3C8DBC;">
                             <th scope="col">INCISO</th>
                             <th scope="col">DOCUMENTO</th>
                             <th scope="col">CUMPLE</th>
@@ -141,82 +139,73 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">A)</th>
                             <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
                             <td></td>
 
                         </tr>
                         <tr>
                             <th scope="row">B)</th>
-                            <td>CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
-                            <td><img src="../dist/img/uncheked.svg" alt="NO" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td style="background-color: yellow;">CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
+                            <td><div id="evaluaciones"></div></td>
+                            <td></td>
+
                         </tr>
                         <tr>
                             <th scope="row">C)</th>
-                            <td>CURRICULUM VITAE. (requisitado y firmado)</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td style="background-color: yellow;">CURRICULUM VITAE. (requisitado y firmado)</td>
+                            <td><div id="profesions"></div></td>
+                            <td></td>
+
 
                         </tr>
                         <tr>
                             <th scope="row">D)</th>
-                            <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td style="background-color: yellow;">CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
+                            <td><div id="estudios"></div></td>
+                            <td></td>
 
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>b. Personal tecnico aeronautico<br> Copia de licencia técnica aeronautica</td>
                             <td></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td></td>
+
 
                         </tr>
                         <tr>
                             <th scope="row">F)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
-                            <td>BÁSICO</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td style="background-color: yellow;">BÁSICO</td>
+                            <td><div id="bscos"></div></td>
+                            <td><div id="Bfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
-                            <td>RECURRENTE</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td style="background-color: yellow;">RECURRENTE</td>
+                            <td><div id="recurnt"></div></td>
+                            <td><div id="Rfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
-                            <td>ESPECIFICOS</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td><input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstFeing" name="gstFeing"></td>
+                            <td style="background-color: yellow;">ESPECIFICOS</td>
+                            <td><div id="specifico"></div></td>
+                            <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
             </form>
             </table>
-        </div>
-    </div>
+</div>
 </div>
 <!-- DISEÑO ANTIGUO/.col -->
 <div style="padding-top: 15px;" class="col-md-12">

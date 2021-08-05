@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT * FROM cursos
+	$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as fcursof FROM cursos
 			   INNER JOIN listacursos
 			   ON gstIdlsc = idmstr";
 	$resultado = mysqli_query($conexion, $query);
