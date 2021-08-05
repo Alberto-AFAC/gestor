@@ -144,14 +144,14 @@ $psto = mysqli_query($conexion,$sql);
                         </tr>
                         <tr>
                             <th scope="row">B)</th>
-                            <td style="background-color: yellow;">CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
+                            <td>CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
                             <td><div id="evaluaciones"></div></td>
                             <td></td>
 
                         </tr>
                         <tr>
                             <th scope="row">C)</th>
-                            <td style="background-color: yellow;">CURRICULUM VITAE. (requisitado y firmado)</td>
+                            <td>CURRICULUM VITAE. (requisitado y firmado)</td>
                             <td><div id="profesions"></div></td>
                             <td></td>
 
@@ -159,7 +159,7 @@ $psto = mysqli_query($conexion,$sql);
                         </tr>
                         <tr>
                             <th scope="row">D)</th>
-                            <td style="background-color: yellow;">CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
+                            <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
                             <td><div id="estudios"></div></td>
                             <td></td>
 
@@ -186,19 +186,19 @@ $psto = mysqli_query($conexion,$sql);
                         </tr>
                         <tr>
                             <th scope="row"></th>
-                            <td style="background-color: yellow;">BÁSICO</td>
+                            <td>BÁSICO</td>
                             <td><div id="bscos"></div></td>
                             <td><div id="Bfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
-                            <td style="background-color: yellow;">RECURRENTE</td>
+                            <td>RECURRENTE</td>
                             <td><div id="recurnt"></div></td>
                             <td><div id="Rfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
-                            <td style="background-color: yellow;">ESPECIFICOS</td>
+                            <td>ESPECIFICOS</td>
                             <td><div id="specifico"></div></td>
                             <td><div id="Efecha"></div></td>
                         </tr>
