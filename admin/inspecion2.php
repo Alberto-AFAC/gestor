@@ -4,12 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <title>Gestor inspectores | Inspectores</title>
-
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script> 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>  -->
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script> -->
   <!--   <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
   <!-- Theme style -->
 
@@ -24,7 +22,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
 </head>
 
@@ -83,7 +80,7 @@
     <section class="content">
 
 <!-- row -->
-  <?php include('inline.php'); ?> <!-- aquii le dddddddddddddddddddddddddddddddddcambiaste-->
+  <?php include('inline.php'); ?>
 
             <!-- /FIN DE INDICADORES -->
             <div class="box-body">
@@ -120,16 +117,17 @@
                 <h4 class="modal-title">EVALUAR</h4>
               </div>
               <div class="modal-body">
-              <form id="Evalúa">
+              <form id="Evalua">
               <div class="row">  
               <div class="form-group">
                   <div class="col-sm-5">
                     <label>NOMBRE</label>
                       <input type="text" class="form-control" id="evalu_nombre" name="evalu_nombre" disabled="">
                   </div>
+
                     <div class="col-sm-offset-0 col-sm-7">
                       <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCat" name="gstIDCat" type="text" data-live-search="true" disabled="">
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCate" name="gstIDCate"type="text" data-live-search="true" disabled="">
                          <?php while($oira = mysqli_fetch_row($categ)):?>                      
                          <option value="<?php echo $oira[0]?>"><?php echo $oira[1]?></option>
                          <?php endwhile; ?>
@@ -139,7 +137,10 @@
               </div>
 
               <div id="evlacns"></div>
+
              
+                <input type="hidden" id='evla' name='evla' value='<?php echo $datos[0];?>'> 
+
                  <div class="form-group" >
                     <div class="col-sm-12" style=" margin-bottom: 1em">
                     <label>COMENTARIOS</label>
@@ -189,7 +190,7 @@
                   </div>
                     <div class="col-sm-offset-0 col-sm-7">
                       <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCat" name="gstIDCat" type="text" data-live-search="true" disabled="">
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="IDCat" name="IDCat" type="text" data-live-search="true" >
                          <?php while($oiras = mysqli_fetch_row($categs)):?>                      
                          <option value="<?php echo $oiras[0]?>"><?php echo $oiras[1]?></option>
                          <?php endwhile; ?>
@@ -256,6 +257,7 @@
 <!-- page script -->
 <script src="../js/global.js"></script>
 <script src="../js/datos.js"></script>
+<script type="text/javascript" src="../js/director.js"></script>
 
 
 </body>
@@ -264,7 +266,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 $('#gstIDara').select2();
-$('#gstIDCat').select2();
+//$('#gstIDCat').select2();
 //$('#gstIDSub').select2();
 //$('#gstIDuni').select2();
 $('#gstAreID').select2();
@@ -283,47 +285,55 @@ $('#select2').load('select/acttablacom.php');
 
 <script type="text/javascript">
 
+
 var dataSet = [
 <?php 
+
+ $Direje= $datos[1];
+
 $query = "SELECT * FROM personal 
           INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
+          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 AND gstAreID  = $Direje OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 AND gstAreID  = $Direje ORDER BY personal.gstCargo ASC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
-        $fechaActual = date_create(date('Y-m-d')); 
-		    $FechaIngreso = date_create($data['gstFeing']); 
-		    $interval = date_diff($FechaIngreso, $fechaActual,false);  
-		    $antiguedad = intval($interval->format('%R%a')); 
-
+      $fechaActual = date_create(date('Y-m-d')); 
+      $FechaIngreso = date_create($data['gstFeing']); 
+      $interval = date_diff($FechaIngreso, $fechaActual,false);  
+      $antiguedad = intval($interval->format('%R%a')); 
       $gstIdper = $data['gstIdper'];
       $result = $data['gstIdper'];
 
 
+            if($data['gstEvalu'] == 'NO' && $data['gstCargo']!='DIRECTOR'){
       ?>
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstFeing']?>","<?php 
-							if($antiguedad <=30){
-								echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
-							}else {
-								echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
-							}
-							?>","<?php
+    ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php 
+     if($antiguedad <=30){
+      echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
+    }else {
+      echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
+    }?>","<?php
 
+    echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";?>"],
 
-                if($data['gstEvalu'] == 'NO'){
-                
-                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
+<?php 
+}else if($data['gstEvalu'] == 'SI' && $data['gstCargo']!='DIRECTOR') { 
+  ?>
 
-                echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
+  ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php  if($antiguedad <=30){
+        echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
+      }else {
+        echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
+      } ?>","<?php
+  echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";
+  ?>"],
 
-                    }else if($data['gstEvalu'] == 'SI') {
-                echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
+<?php }
 
-                    }?>"],
+}
 
-
-<?php } ?>
+ ?>
 ];
 
 var tableGenerarReporte = $('#data-table-inspectores').DataTable({
@@ -331,7 +341,6 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
-    "order": [[5,'asc']],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -340,7 +349,6 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     {title: "NOMBRE(S)"},
     {title: "APELLIDO(S)"},
     {title: "CATEGORÍA"},
-    {title: "FECHA DE INGRESO"},
     {title: "DETALLES"},
     {title: "ACCIÓN"}
     ],

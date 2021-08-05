@@ -266,9 +266,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 $('#gstIDara').select2();
-//$('#gstIDCat').select2();
-//$('#gstIDSub').select2();
-//$('#gstIDuni').select2();
+$('#gstIDCat').select2();
+$('#gstIDSub').select2();
+$('#gstIDuni').select2();
 $('#gstAreID').select2();
 $('#gstPstID').select2();
 $('#gstIDpai').select2();

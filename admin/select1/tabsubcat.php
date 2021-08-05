@@ -15,7 +15,7 @@ require_once "../../conexion/conexion.php";
       $result=mysqli_query($conexion,$sql);
 	?>
 	<select  id="AgstIDSub" class="form-control" class="selectpicker" name="AgstIDSub" type="text" data-live-search="true" style="width: 100%" >
-			<option value="0">SELECCIONE SUB CATEGORÍA </option> 
+			<!-- <option value="0">SELECCIONE SUB CATEGORÍA </option>  -->
 			<?php while($valor = mysqli_fetch_row($result)):?>                      
 			<option value="<?php echo $valor[0]?>"><?php echo $valor[1]?></option>
 			<?php endwhile; ?>
@@ -25,7 +25,7 @@ require_once "../../conexion/conexion.php";
 <?php   }else{   ?>
 
 	<select  id="AgstIDSub" class="form-control" class="selectpicker" name="AgstIDSub" type="text" data-live-search="true" style="width: 100%">
-			<option value="0">SELECCIONE SUB CATEGORÍA </option> 
+			<!-- <option value="0">SELECCIONE SUB CATEGORÍA </option>  -->
 			</select>
 
 <?php } ?>

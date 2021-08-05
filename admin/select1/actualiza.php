@@ -5,8 +5,9 @@
       $puesto = mysqli_query($conexion,$sql);
     ?>
 
-			<select  id="gstIdpst" class="form-control" class="selectpicker" name="gstIdpst" type="text" data-live-search="true" style="width: 100%" >
-			<option value="0">CODIGO PRESUPUESTAL</option> 
+
+			<select  id="gstIdpst" class="form-control" class="selectpicker" name="gstIdpst" type="text" data-live-search="true" style="width: 100%" disabled="">
+			
 			<?php while($idpst = mysqli_fetch_row($puesto)):?>                      
 			<option value="<?php echo $idpst[0]?>"><?php echo $idpst[1]?></option>
 			<?php endwhile; ?>
