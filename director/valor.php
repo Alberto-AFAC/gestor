@@ -102,9 +102,15 @@ $psto = mysqli_query($conexion,$sql);
         <div class="box-header">
           <h1 class="box-title"></h1>
           <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="remove">
+
+<!--           <button type="button" class="btn btn-box-tool" data-widget="remove">
           <a href='javascript:closeDtlls()' style="font-size: 22px"><i class='fa fa-times'></i></a>
           </button>
+ -->
+            <button type="button" class="btn btn-box-tool" data-widget="remove">
+            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
+            </button>
+
           </div>  
        </div>
        </div>
