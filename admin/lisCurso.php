@@ -96,7 +96,6 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
-                                    <!-- <?php include('cursosprogramados.php'); ?> -->
                                     <?php include('../html/lisCurso.html');?>
                                     <!-- Datatables -->
                                 </div>
