@@ -95,7 +95,7 @@ function proCurso() {
         }).done(function(respuesta) {
 
             console.log(respuesta);
-
+            alert(respuesta);
             if (respuesta == 0) {
                 // $('#succe').toggle('toggle');
                 // setTimeout(function() {

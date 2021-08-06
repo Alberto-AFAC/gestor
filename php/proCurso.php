@@ -1,8 +1,8 @@
 <?php
 include("../conexion/conexion.php");
-include_once('../php-mailer/class.phpmailer.php');
-include_once('../php-mailer/class.smtp.php');
-$opcion = $_POST["opcion"];
+// include_once('../php-mailer/class.phpmailer.php');
+// include_once('../php-mailer/class.smtp.php');
+ $opcion = $_POST["opcion"];
 $informacion = [];
 
 if($opcion === 'procurso'){
