@@ -124,7 +124,19 @@ $Direje= $datos[1];
 
 $query = "SELECT * FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' AND gstAreID  = $Direje OR personal.estado = 0 AND gstCargo = 'COORDINADOR' AND gstAreID  = $Direje ORDER BY gstIdper DESC";
+WHERE 
+gstCargo = 'INSTRUCTOR' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0
+OR 
+gstCargo = 'COORDINADOR' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0 
+OR 
+gstCargo = 'ADMINISTRATIVO' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0 
+ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 

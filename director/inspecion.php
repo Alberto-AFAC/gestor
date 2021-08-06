@@ -315,7 +315,7 @@ $resultado = mysqli_query($conexion, $query);
       echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
     }?>","<?php
 
-    echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";?>"],
+    echo "<a type='button' title='Por evaluación' onclick='perfil({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";?>"],
 
 <?php 
 }else if($data['gstEvalu'] == 'SI' && $data['gstCargo']!='DIRECTOR') { 
@@ -326,7 +326,7 @@ $resultado = mysqli_query($conexion, $query);
       }else {
         echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
       } ?>","<?php
-  echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";
+  echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";
   ?>"],
 
 <?php }

@@ -9,8 +9,11 @@
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $are = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
-$uni = mysqli_query($conexion,$sql);
+$sql = "SELECT gstIdCom,gstRgion,gstNombr FROM comandancia WHERE estado = 0";
+$unidad = mysqli_query($conexion,$sql);
+
+$sql="SELECT gstIdAir,gstCSigl,gstUnid1,gstUnid2,gstRgion FROM aeropuertos";
+$resulta=mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
@@ -102,9 +105,15 @@ $psto = mysqli_query($conexion,$sql);
         <div class="box-header">
           <h1 class="box-title"></h1>
           <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="remove">
+
+<!--           <button type="button" class="btn btn-box-tool" data-widget="remove">
           <a href='javascript:closeDtlls()' style="font-size: 22px"><i class='fa fa-times'></i></a>
           </button>
+ -->
+            <button type="button" class="btn btn-box-tool" data-widget="remove">
+            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
+            </button>
+
           </div>  
        </div>
        </div>
@@ -113,12 +122,100 @@ $psto = mysqli_query($conexion,$sql);
        </div>        
         
 <!-- /FIN DE NUEVO DISEÑO -->
+<div style="padding-top: 10px;" class="col-md-12">
+    <div class="nav-tabs-custom">
+    <table style="width: 60%;" class="table table-striped table-hover center">
+                    <thead>
+                        <tr style="color: white; background-color: #3C8DBC;">
+                            <th scope="col">INCISO</th>
+                            <th scope="col">DOCUMENTO</th>
+                            <th scope="col">CUMPLE</th>
+                            <th scope="col">FECHA DE REVISIÓN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A)</th>
+                            <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td>
 
+                        </tr>
+                        <tr>
+                            <th scope="row">B)</th>
+                            <td>CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
+                            <td><div id="evaluaciones"></div></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">C)</th>
+                            <td>CURRICULUM VITAE. (requisitado y firmado)</td>
+                            <td><div id="profesions"></div></td>
+                            <td></td>
+
+
+                        </tr>
+                        <tr>
+                            <th scope="row">D)</th>
+                            <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
+                            <td><div id=""></div></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>b. Personal tecnico aeronautico<br> Copia de licencia técnica aeronautica</td>
+                            <td></td>
+                            <td></td>
+
+
+                        </tr>
+                        <tr>
+                            <th scope="row">F)</th>
+                            <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">G)</th>
+                            <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>BÁSICO</td>
+                            <td><div id="bscos"></div></td>
+                            <td><div id="Bfecha"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>RECURRENTE</td>
+                            <td><div id="recurnt"></div></td>
+                            <td><div id="Rfecha"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>ESPECIFICOS</td>
+                            <td><div id="specifico"></div></td>
+                            <td><div id="Efecha"></div></td>
+                        </tr>
+                    </tbody>
+            </form>
+            </table>
+</div>
+</div>
 <!-- DISEÑO ANTIGUO/.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
 
            <!-- DISEÑO ANTIGUO/.col -->
+
+
+
+
+
 
 
 <div class="box-tools pull-right">
@@ -535,15 +632,27 @@ $psto = mysqli_query($conexion,$sql);
 
        
 <div class="form-group">
+<div id="comandancias1">
 <div class="col-sm-3">
-<label>SELECCIONE COMANDANCIA</label>
-<div id="comandancia"></div>                            
+
+<label>COMANDANCIA</label>
+                  
+<select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="AcReg" id="AcReg" type="text" data-live-search="true">
+<?php while($unidads = mysqli_fetch_row($unidad)):?>                      
+<option value="<?php echo $unidads[0]?>"><?php echo $unidads[1].' > '.$unidads[2]?></option>
+<?php endwhile; ?>
+</select>
+
 </div>
 <div class="col-sm-6">
-<label>SELECCIONE AEROPUERTOS</label>
-<div id="select2"></div> 
+<label>AEROPUERTOS</label>
+  <select  id="IDuni" class="form-control" class="selectpicker" name="IDuni" type="text" data-live-search="true" style="width: 100%" disabled="">
+      <?php while($valor = mysqli_fetch_row($resulta)):?>                      
+      <option value="<?php echo $valor[0]?>"><?php echo $valor[1].' > '.$valor[2]?></option>
+      <?php endwhile; ?>
+      </select>
 </div>
-
+</div>
 
 <div class="col-sm-3">
 

@@ -112,7 +112,7 @@ include ("../conexion/conexion.php");
                       </div>
 
 
-                     <div class="col-sm-1" style="padding-right: 0;">
+                      <div class="col-sm-1" style="padding-right: 0;">
                      <label>DURACIÓN</label> 
                       <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                       <select  class="form-control" id="hr" name="hr">
@@ -124,6 +124,11 @@ include ("../conexion/conexion.php");
                         <option value="<?php echo $h?>"><?php echo $h?></option>
                       <?php } }?>
                 </select>
+                    </div>
+
+                    <div class="col-sm-1" style="padding: 0;">
+                      <label style="color: white">.</label>
+                      <input type="text" class="form-control" id="tmp1" name="tmp1" value="HRS." readonly>
                     </div>
 
                       <div class="col-sm-1" style="padding: 0;">
@@ -141,14 +146,12 @@ include ("../conexion/conexion.php");
                 </select>
                     </div>
                     <div class="col-sm-1" style="padding: 0;">
-               <label style="color: white">.</label>
-                      <select  class="form-control" id="tmp" name="tmp">
-                        <option value="HRS.">HRS.</option>
-                        <option value="MIN.">MIN.</option>
-                      </select>
+                      <label style="color: white">.</label>
+                      <input type="text" class="form-control" id="tmp2" name="tmp2" value="MIN." readonly>
+  
                     </div>
 
-                <div class="col-sm-offset-1 col-sm-4">
+                <div class="col-sm-offset-0 col-sm-4">
                          <label>PERIODO DE VIGENCIA</label>                         
                             <select type="text" class="form-control" id="gstVignc" name="gstVignc">
                             <option value="0">SELECCIONE VIGENCIA</option>
