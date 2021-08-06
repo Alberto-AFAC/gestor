@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
   <header class="main-header">
     <!-- Logo -->
-    <a href="../" class="logo">
+    <a href="../inicio" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>DI</span>
       <!-- logo for regular state and mobile devices -->
@@ -144,7 +144,7 @@
         </li>-->
 
         <li class="active">
-          <a href="../">
+          <a href="../inicio.php">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
@@ -195,6 +195,15 @@
             </span>
           </a>
         </li>
+        <!-- <li>
+          <a href="gantt.php">
+            <i class="fa fa-calendar"></i> <span>Bitacora cursos</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red"></small>
+              <small class="label pull-right bg-blue"></small>
+            </span>
+          </a>
+        </li> -->
         <!--  -->
         
         <!--  -->
