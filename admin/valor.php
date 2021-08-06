@@ -173,13 +173,13 @@ $psto = mysqli_query($conexion,$sql);
 
                         </tr>
                         <tr>
-                            <th scope="row">F)</th>
+                            <th scope="row">E)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <th scope="row">G)</th>
+                            <th scope="row">F)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
                             <td></td>
