@@ -162,7 +162,7 @@ $psto = mysqli_query($conexion,$sql);
                         <tr>
                             <th scope="row">D)</th>
                             <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
-                            <td><div id="estudios"></div></td>
+                            <td><div id=""></div></td>
                             <td></td>
 
                         </tr>
@@ -205,8 +205,9 @@ $psto = mysqli_query($conexion,$sql);
                             <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
+                    </table>
             </form>
-            </table>
+         
 </div>
 </div>
 <!-- DISEÑO ANTIGUO/.col -->
