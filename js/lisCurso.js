@@ -474,7 +474,7 @@ function cerrareval() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'ENVIADO CON ÉXITO',
+                    title: 'EVALUADO CON ÉXITO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
@@ -485,7 +485,7 @@ function cerrareval() {
             } else {
                 Swal.fire({
                     type: 'success',
-                    title: 'ENVIADO CON ÉXITO',
+                    title: 'EVALUADO CON ÉXITO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
