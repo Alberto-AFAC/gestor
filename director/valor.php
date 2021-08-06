@@ -223,7 +223,7 @@ $psto = mysqli_query($conexion,$sql);
             <ul class="nav nav-tabs" style="font-size: 14px;">
               <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
               <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
-              <li><a href="#estudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
+              <li><a href="#lisestudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
               <li><a href="#experiencia" data-toggle="tab">EXPERIENCIA PROFESIONAL</a></li>  
               <li><a href="#obligatorio" data-toggle="tab" id="ocultar1">CURSOS OBLIGATORIOS </a></li>
               <li><a href="#curso" data-toggle="tab" id="ocultar2">CURSOS PROGRAMADOS</a></li>
@@ -659,7 +659,7 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
               </form>  
            </div>
-<div class="tab-pane" id="estudios">
+<div class="tab-pane" id="lisestudios">
 <form class="form-horizontal">
 <div class="form-group">
 <div class="col-sm-4">
