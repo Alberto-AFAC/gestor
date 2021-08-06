@@ -37,7 +37,9 @@ require '../php-mailer2/SMTP.php';
 		$mail->setFrom('jmondragonescamilla@gmail.com', 'NOTIFICACIONES AFAC');
 		$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto');     //Add a recipient
 		// $mail->addReplyTo('info@example.com', 'Information');
-		// $mail->addCC('jessica.soto928@gmail.com');
+		$mail->addCC('jessica.soto928@gmail.com');
+		$mail->addCC('angelcanseco.c@gmail.com');
+
 		// $mail->addBCC('bcc@example.com');
 		//Content
 		$mail->isHTML(true);                                  //Set email format to HTML
