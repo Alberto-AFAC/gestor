@@ -9,8 +9,11 @@
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $are = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdCom,gstCSigl,gstNombr,gstNocrt,gstRgion FROM comandancia WHERE estado = 0";
-$uni = mysqli_query($conexion,$sql);
+$sql = "SELECT gstIdCom,gstRgion,gstNombr FROM comandancia WHERE estado = 0";
+$unidad = mysqli_query($conexion,$sql);
+
+$sql="SELECT gstIdAir,gstCSigl,gstUnid1,gstUnid2,gstRgion FROM aeropuertos";
+$resulta=mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
@@ -102,9 +105,15 @@ $psto = mysqli_query($conexion,$sql);
         <div class="box-header">
           <h1 class="box-title"></h1>
           <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="remove">
+
+<!--           <button type="button" class="btn btn-box-tool" data-widget="remove">
           <a href='javascript:closeDtlls()' style="font-size: 22px"><i class='fa fa-times'></i></a>
           </button>
+ -->
+            <button type="button" class="btn btn-box-tool" data-widget="remove">
+            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
+            </button>
+
           </div>  
        </div>
        </div>
@@ -535,15 +544,27 @@ $psto = mysqli_query($conexion,$sql);
 
        
 <div class="form-group">
+<div id="comandancias1">
 <div class="col-sm-3">
-<label>SELECCIONE COMANDANCIA</label>
-<div id="comandancia"></div>                            
+
+<label>COMANDANCIA</label>
+                  
+<select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="AcReg" id="AcReg" type="text" data-live-search="true">
+<?php while($unidads = mysqli_fetch_row($unidad)):?>                      
+<option value="<?php echo $unidads[0]?>"><?php echo $unidads[1].' > '.$unidads[2]?></option>
+<?php endwhile; ?>
+</select>
+
 </div>
 <div class="col-sm-6">
-<label>SELECCIONE AEROPUERTOS</label>
-<div id="select2"></div> 
+<label>AEROPUERTOS</label>
+  <select  id="IDuni" class="form-control" class="selectpicker" name="IDuni" type="text" data-live-search="true" style="width: 100%" disabled="">
+      <?php while($valor = mysqli_fetch_row($resulta)):?>                      
+      <option value="<?php echo $valor[0]?>"><?php echo $valor[1].' > '.$valor[2]?></option>
+      <?php endwhile; ?>
+      </select>
 </div>
-
+</div>
 
 <div class="col-sm-3">
 
