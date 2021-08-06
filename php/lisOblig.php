@@ -1,9 +1,13 @@
 <?php
 	include("../conexion/conexion.php");
 	
-	$query = "SELECT * FROM `listacursobliga` INNER JOIN listacursos ON listacursos.gstIdlsc = listacursobliga.gstIDlsc 
-		INNER JOIN categorias ON categorias.gstIdcat = listacursobliga.gstIcatg";
+	$query = "SELECT * FROM especialidadcat
+INNER JOIN categorias ON especialidadcat.gstIDcat = categorias.gstIdcat
+INNER JOIN listacursos ON listacursos.gstPrfil = categorias.gstCsigl";
 
+
+// SELECT * FROM `listacursobliga` INNER JOIN listacursos ON listacursos.gstIdlsc = listacursobliga.gstIDlsc 
+// INNER JOIN categorias ON categorias.gstIdcat = listacursobliga.gstIcatg
 	// "SELECT * FROM `listacursobliga` 
 	// INNER JOIN listacursos ON listacursos.gstIdlsc = listacursobliga.gstIDlsc
 	// INNER JOIN categorias ON categorias.gstIdcat = listacursobliga.gstIDcat 

@@ -1317,32 +1317,19 @@ function consultaCurso(gst) {
 
     var d = gst.split("*");
 
+
     gstIdper = d[0];
     gstCateg = d[1];
     //alert('valor: '+d[0]);
 
-    $.ajax({
-        url: '../php/gesCurso.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
+    // $.ajax({
+    //     url: '../php/gesCurso.php',
+    //     type: 'POST'
+    // }).done(function(resp) {
+    //     obj = JSON.parse(resp);
+    //     var res = obj.data;
 
-        // for (cu = 0; cu < res.length; cu++) {  
-
-        //     alert(obj.data[cu].idinsp);
-
-        //     if(obj.data[cu].idinsp==gstIdper){
-        //     alert('vacio');
-
-        //     }else{
-        //     alert('registo');
-        //     }
-
-        // }
-
-
-        //     if(obj==0){
+ 
         $.ajax({
             url: '../php/lisOblig.php',
             type: 'POST'
@@ -1354,15 +1341,13 @@ function consultaCurso(gst) {
             html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
             for (o = 0; o < res.length; o++) {
 
-                // if (obj.data[o].gstDrcin >= "03:00 HRS.") {
-                //     obj.data[o].status = "<td style='color: white; background-color: green;'>VIGENTE<td>";
+                x++;
 
-                // } else if (obj.data[o].gstDrcin == "03 HRS. 01 MIN.") {
-                //     obj.data[o].status = "<td style='color: white; background-color: orange;'>POR VENCER<td>";
-                // }
+                if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS') {
+          /*+ obj.data[o].status +*/ 
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>PENDIENTE</td> </tr>";
+                }else{
 
-                if (obj.data[o].gstIcatg == gstCateg) {
-                    html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>PENDIENTE</td>" + obj.data[o].status + "</tr>";
                 }
 
 
@@ -1371,50 +1356,8 @@ function consultaCurso(gst) {
             $("#obligados").html(html);
         })
 
-        //      }else{
 
-        //         var x = 0;
-        //         for (c = 0; c < res.length; c++) {             
-
-        //             if (obj.data[c].idinsp == gstIdper) {
-
-        //                 listcur = obj.data[c].idmstr;
-        //                 proceso = obj.data[c].proceso;
-        //                 idinsp = obj.data[c].idinsp;
-
-        //             }
-        //         }
-        // $.ajax({
-        //         url: '../php/lisOblig.php',
-        //         type: 'POST'
-        //     }).done(function(resp) {
-        //         obj = JSON.parse(resp);
-        //         var res = obj.data;
-        //         var x = 0;
-        //         html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
-        //         for (o = 0; o < res.length; o++) {
-
-
-        //             if (obj.data[o].gstIDlsc == listcur && proceso == 'PENDIENTE' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) 
-        //             {
-        //                 html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>EN PROCESO</td> </tr>";
-        //             }else 
-        //             if (obj.data[o].gstIDlsc == listcur && proceso == 'FINALIZADO' && obj.data[o].gstIcatg == gstCateg && idinsp == gstIdper) 
-        //             {
-        //                 html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>FINALIZADO</td> </tr>";
-        //             }else   
-        //             if (obj.data[o].gstIcatg == gstCateg) {
-        //                         html += "<tr><td>" + o + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>PENDIENTE</td> </tr>";
-        //                     }
-        //         }
-        //         html += '</tbody></table></div></div></div>';
-        //         $("#obligados").html(html);
-        //     })
-
-        //    }
-
-    })
-
+   // })
 
 
 }
