@@ -123,6 +123,92 @@ $psto = mysqli_query($conexion,$sql);
        </div>
        </div>
        </div>       
+       <div style="padding-top: 10px;" class="col-md-12">
+    <div class="nav-tabs-custom">
+            <form id="Dtall" class="form-horizontal" action="" method="POST">
+                <input type="hidden" name="gstIdper" id="gstIdper">
+                <table style="width: 60%;" class="table table-striped table-hover center">
+                    <thead>
+                        <tr style="color: white; background-color: #3C8DBC;">
+                            <th scope="col">INCISO</th>
+                            <th scope="col">DOCUMENTO</th>
+                            <th scope="col">CUMPLE</th>
+                            <th scope="col">FECHA DE REVISIÓN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A)</th>
+                            <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">B)</th>
+                            <td>CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
+                            <td><div id="evaluaciones"></div></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">C)</th>
+                            <td>CURRICULUM VITAE. (requisitado y firmado)</td>
+                            <td><div id="profesions"></div></td>
+                            <td></td>
+
+
+                        </tr>
+                        <tr>
+                            <th scope="row">D)</th>
+                            <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
+                            <td><div id="estudios"></div></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>b. Personal tecnico aeronautico<br> Copia de licencia técnica aeronautica</td>
+                            <td></td>
+                            <td></td>
+
+
+                        </tr>
+                        <tr>
+                            <th scope="row">F)</th>
+                            <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">G)</th>
+                            <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>BÁSICO</td>
+                            <td><div id="bscos"></div></td>
+                            <td><div id="Bfecha"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>RECURRENTE</td>
+                            <td><div id="recurnt"></div></td>
+                            <td><div id="Rfecha"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>ESPECIFICOS</td>
+                            <td><div id="specifico"></div></td>
+                            <td><div id="Efecha"></div></td>
+                        </tr>
+                    </tbody>
+            </form>
+            </table>
+</div>
+</div>
 <!-- DISEÑO ANTIGUO/.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
