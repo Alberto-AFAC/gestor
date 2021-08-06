@@ -156,7 +156,7 @@ function imprimir() {
     }).done(function(data) {
 
         //alert(data);
-        Swal.fire({
+        /*Swal.fire({
             type: 'success',
             title: 'ENVIADO CON ÉXITO',
             showConfirmButton: false,
@@ -166,7 +166,7 @@ function imprimir() {
                 rgba(100, 100, 100, 0.4)
             `
         });
-        setTimeout("location.href = '../php/listapdf.php';", 1000);
+        setTimeout("location.href = '../php/listapdf.php';", 1000);  */
 
 
 

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-  <title>Gestor inspectores | Instructores y Coordinadores</title>
+<title>Gestor inspectores | Instructores y Coordinadores</title>
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
@@ -132,7 +132,7 @@ $gstIdper = $data['gstIdper'];
 
 ["<?php echo  $data['gstNmpld'];?>","<?php echo $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstCargo']?>",
 
- "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"; ?>"
+ "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"; ?>"
 ],
 
 
