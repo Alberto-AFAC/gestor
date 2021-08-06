@@ -308,10 +308,10 @@ $resultado = mysqli_query($conexion, $query);
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
 
-                echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' ><i class='fa ion-android-clipboard'></i> POR EVALUAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";
+                echo "<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a></center><br><center><span style='background-color: orange;' class='badge'>POR EVALUAR</span><center>";
 
                     }else if($data['gstEvalu'] == 'SI') {
-                echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal'><i class='fa ion-android-clipboard'></i> EVALUADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> ";
+                echo "<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a></center><center><span style='background-color: green;' class='badge'>EVALUADO</span></center> ";
 
                     }?>"],
 
@@ -320,9 +320,11 @@ $resultado = mysqli_query($conexion, $query);
 ];
 
 var tableGenerarReporte = $('#data-table-inspectores').DataTable({
+     "order": [[ 4, "asc" ]],
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+   
     },
     orderCellsTop: true,
     fixedHeader: true,
