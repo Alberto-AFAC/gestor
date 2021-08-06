@@ -30,11 +30,11 @@ require '../php-mailer2/SMTP.php';
 		$mail->Host       = 'smtp.gmail.com';                     	//Set the SMTP server to send through
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = "tls";                                //Enable SMTP authentication
-		$mail->Username   = 'jmondragonescamilla@gmail.com';                     //SMTP username
-		$mail->Password   = 'ELVIS_wolf97$$';                               //SMTP password
+		$mail->Username   = 'the77pres@gmail.com';                     //SMTP username
+		$mail->Password   = 'sagitario77';                               //SMTP password
 		$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 		//Recipients
-		$mail->setFrom('jmondragonescamilla@gmail.com', 'NOTIFICACIONES AFAC');
+		$mail->setFrom('the77pres@gmail.com', 'NOTIFICACIONES AFAC');
 		$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto');     //Add a recipient
 		// $mail->addReplyTo('info@example.com', 'Information');
 		$mail->addCC('jessica.soto928@gmail.com');
