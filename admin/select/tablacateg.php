@@ -48,7 +48,7 @@ require_once "../../conexion/conexion.php";
                                     <th><i></i> NOMBRE(S)</th>
                                     <th><i></i> APELLIDOS</th>
                                     <th><i></i> CORREO</th>
-                                    <th><i></i> CATEGORÍA</th>
+                                    <th><i></i> ESPECIALIDAD</th>
                                     <th><i></i> DETALLE</th>
                                     <th style="width: 100px"><i></i> ESTADO</th>
                                 </tr>
