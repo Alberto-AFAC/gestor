@@ -130,6 +130,11 @@ $psto = mysqli_query($conexion,$sql);
            <!-- DISEÑO ANTIGUO/.col -->
 
 
+
+
+
+
+
 <div class="box-tools pull-right">
 <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse">
 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>

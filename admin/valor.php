@@ -203,8 +203,9 @@ $psto = mysqli_query($conexion,$sql);
                             <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
-            </form>
+            
             </table>
+        </form>
 </div>
 </div>
 <!-- DISEÑO ANTIGUO/.col -->
