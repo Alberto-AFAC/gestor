@@ -31,7 +31,7 @@ require '../php-mailer2/SMTP.php';
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = "tls";                                //Enable SMTP authentication
 		$mail->Username   = 'jmondragonescamilla@gmail.com';                     //SMTP username
-		$mail->Password   = 'ELVIS_wolf97';                               //SMTP password
+		$mail->Password   = 'ELVIS_wolf97$$';                               //SMTP password
 		$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 		//Recipients
 		$mail->setFrom('jmondragonescamilla@gmail.com', 'NOTIFICACIONES AFAC');
