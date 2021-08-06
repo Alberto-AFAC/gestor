@@ -470,17 +470,29 @@ function cerrareval() {
             data: datos
         }).done(function(respuesta) {
 
-            // alert(respuesta);
+            alert(respuesta);
             if (respuesta == 0) {
-                $('#dangerev').toggle('toggle');
-                setTimeout(function() {
-                    $('#dangerev').toggle('toggle');
-                }, 2000);
+                Swal.fire({
+                    type: 'success',
+                    title: 'ENVIADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    backdrop: `
+                        rgba(100, 100, 100, 0.4)
+                    `
+                });
             } else {
-                $('#succeev').toggle('toggle');
-                setTimeout(function() {
-                    $('#succeev').toggle('toggle');
-                }, 2000);
+                Swal.fire({
+                    type: 'success',
+                    title: 'ENVIADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    backdrop: `
+                        rgba(100, 100, 100, 0.4)
+                    `
+                });
             }
 
         });
