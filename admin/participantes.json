@@ -1,0 +1,417 @@
+[{
+        "id": "1",
+        "name": "CARTOGRAFÍA AERONAUTICA",
+        "periods": [{
+            "id": "1_1",
+            "start": 1628252045000,
+            "end": 1628252045000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_2",
+            "start": 1628252045000,
+            "end": 1175612400000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_3",
+            "start": 1628252045000,
+            "end": 1178550000000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_4",
+            "start": 1628252045000,
+            "end": 1182697200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_5",
+            "start": 1183647600000,
+            "end": 1183906800000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }]
+    },
+    {
+        "id": "1",
+        "name": "INTRODUCCIÓN A LA AFAC",
+        "periods": [{
+            "id": "1_1",
+            "start": 1171468800000,
+            "end": 1171987200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_2",
+            "start": 1174921200000,
+            "end": 1175612400000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_3",
+            "start": 1177599600000,
+            "end": 1178550000000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_4",
+            "start": 1182092400000,
+            "end": 1182697200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_5",
+            "start": 1183647600000,
+            "end": 1183906800000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "20_17",
+            "start": 1214838000000,
+            "end": 1215097200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }]
+    },
+    {
+        "id": "1",
+        "name": "CARTOGRAFÍA AERONAUTICA",
+        "periods": [{
+            "id": "1_1",
+            "start": 1171468800000,
+            "end": 1171987200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_2",
+            "start": 1174921200000,
+            "end": 1175612400000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_3",
+            "start": 1177599600000,
+            "end": 1178550000000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_4",
+            "start": 1182092400000,
+            "end": 1182697200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_5",
+            "start": 1183647600000,
+            "end": 1183906800000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "20_17",
+            "start": 1214838000000,
+            "end": 1215097200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }]
+    },
+    {
+        "id": "1",
+        "name": "GESTIÓN DE TRÁNSITO AÉREO",
+        "periods": [{
+            "id": "1_1",
+            "start": 1171468800000,
+            "end": 1171987200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_2",
+            "start": 1174921200000,
+            "end": 1175612400000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_3",
+            "start": 1177599600000,
+            "end": 1178550000000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "1_4",
+            "start": 1182092400000,
+            "end": 1182697200000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }, {
+            "id": "20_17",
+            "start": 1628252045000,
+            "end": 1628252045000,
+            "stroke": "#B8AA96",
+            "fill": {
+                "angle": 90,
+                "keys": [{
+                    "color": "#CFC0A9",
+                    "position": 0
+                }, {
+                    "color": "#E6D5BC",
+                    "position": 0.38
+                }, {
+                    "color": "#E8D9C3",
+                    "position": 1
+                }]
+            }
+        }]
+    }
+]
