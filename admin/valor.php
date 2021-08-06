@@ -160,7 +160,7 @@ $psto = mysqli_query($conexion,$sql);
                         <tr>
                             <th scope="row">D)</th>
                             <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
-                            <td><div id=""></div></td>
+                            <td><div id="estudios"></div></td>
                             <td></td>
 
                         </tr>
@@ -173,13 +173,13 @@ $psto = mysqli_query($conexion,$sql);
 
                         </tr>
                         <tr>
-                            <th scope="row">E)</th>
+                            <th scope="row">F)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <th scope="row">F)</th>
+                            <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
                             <td></td>
@@ -225,7 +225,7 @@ $psto = mysqli_query($conexion,$sql);
         <ul class="nav nav-tabs" style="font-size: 14px;">
             <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
             <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
-            <li><a href="#estudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
+            <li><a href="#lisestudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
             <li><a href="#experiencia" data-toggle="tab">EXPERIENCIA PROFESIONAL</a></li>
             <li><a href="#obligatorio" data-toggle="tab" id="ocultar1">CURSOS OBLIGATORIOS </a></li>
             <li><a href="#curso" data-toggle="tab" id="ocultar2">CURSOS PROGRAMADOS</a></li>
@@ -645,7 +645,7 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
                 </form>
             </div>
-            <div class="tab-pane" id="estudios">
+            <div class="tab-pane" id="lisestudios">
                 <form class="form-horizontal">
                     <div class="form-group">
                         <div class="col-sm-4">
