@@ -162,7 +162,7 @@ include('header.php');
                         <div class="info-box bg-aqua">
                             <span class="info-box-icon"><i class="fa ion-easel"></i></span>
 
-                            <?php 
+<!--                             <?php 
                                 $query ="SELECT 
                                   COUNT( id_curso ) AS COMPLETADOS,
                                   COUNT( CASE WHEN proceso = 'PENDIENTE' THEN 1 END ) AS PENDIENTES,
@@ -172,11 +172,11 @@ include('header.php');
                                         cursos";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
-                                ?>
+                                ?> -->
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">PROGRAMADOS</span>
-                                <span class="info-box-number"><?php echo $row['COMPLETADOS']?></span>
+                                <span class="info-box-number"><div id="progrmas"></div></span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>
@@ -202,7 +202,7 @@ include('header.php');
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">Acreditados</span>
-                                <span class="info-box-number"><?php echo $row['ACREEDITADO']?></span>
+                                <span class="info-box-number"><div id="finalizado"></div> </span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>
@@ -225,7 +225,7 @@ include('header.php');
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">POR ACREDITAR</span>
-                                <span class="info-box-number"><?php echo $row['PORACREEDITAR']?></span>
+                                <span class="info-box-number"><div id="acreditar"></div> </span>
                                 <span class="progress-description">
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
@@ -248,7 +248,7 @@ include('header.php');
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">Por vencer</span>
-                                <span class="info-box-number">10</span>
+                                <span class="info-box-number"><div id="vencer"></div> </span>
                                 <span class="progress-description">
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
