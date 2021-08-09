@@ -362,6 +362,7 @@ $resultado = mysqli_query($conexion, $query);
 ];
 
 var tableGenerarReporte = $('#data-table-reportes').DataTable({
+  "order": [[ 0, "desc" ]],
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
