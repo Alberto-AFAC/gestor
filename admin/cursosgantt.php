@@ -760,13 +760,65 @@ $inspector = mysqli_query($conexion,$sql);
 //         }
 //       );
 //     });
-anychart.onDocumentReady(function () {
+// anychart.onDocumentReady(function () {
   
-      var locale = "es-mx";
+//       var locale = "es-mx";
 
-    anychart.format.outputLocale('es-es');
+//     anychart.format.outputLocale('es-es');
+//       // The data used in this sample can be obtained from the CDN
+//       // https://cdn.anychart.com/samples/gantt-charts/human-resource-chart/data.js
+//       anychart.data.loadJsonFile(
+//         'participantes.json',
+//         function (data) {
+//           // create data tree
+//           var treeData = anychart.data.tree(data, 'as-table');
+
+//           // create resource gantt chart
+//           var chart = anychart.ganttResource();
+
+//           // set data for the chart
+//           chart.data(treeData);
+
+//           chart
+//             .rowSelectedFill('#D4DFE8')
+//             .rowHoverFill('#EAEFF3')
+//             // set start splitter position settings
+//             .splitterPosition(150);
+
+//           // get chart data grid link to set column settings
+//           var dataGrid = chart.dataGrid();
+
+//           // set first column settings
+//           dataGrid
+//             .column(0)
+//             .title('#')
+//             .width(30)
+//             .labels({ hAlign: 'center' });
+
+//           // set second column settings
+//           dataGrid.column(1).title('Nombre del curso').width(120);
+
+//           // set container id for the chart
+//           chart.container('container');
+
+//           // initiate chart drawing
+//           chart.draw();
+
+//           // zoom chart to specified date
+//           chart.zoomTo(1171036800000, 1176908400000);
+//           document
+//             .getElementById('startMonth')
+//             .addEventListener('change', function (event) {
+//               // set fiscal year start month
+//               chart.xScale().fiscalYearStartMonth(event.target.value);
+//             });
+//         }
+//       );
+//     });
+//TODO ESTE ES EL NUEVO GANTT
+anychart.onDocumentReady(function () {
       // The data used in this sample can be obtained from the CDN
-      // https://cdn.anychart.com/samples/gantt-charts/human-resource-chart/data.js
+      // https://cdn.anychart.com/samples/gantt-general-features/resource-gantt-chart-with-adaptive-labels-format/data.json
       anychart.data.loadJsonFile(
         'participantes.json',
         function (data) {
@@ -796,7 +848,47 @@ anychart.onDocumentReady(function () {
             .labels({ hAlign: 'center' });
 
           // set second column settings
-          dataGrid.column(1).title('Nombre del curso').width(120);
+          dataGrid.column(1).title('Person').width(120);
+
+          var tl = chart.getTimeline();
+          // set base stroke
+          tl.elements().stroke('0.5 black');
+          // set base labels settings
+          tl.elements()
+            .labels()
+            .enabled(true)
+            .fontColor('#fff')
+            // format labels
+            .format(function () {
+              var name = this.name;
+              // create short name
+              // sample: Trevor Moore => T.M
+              var shortName = name
+                .split(' ')
+                .map(function (item) {
+                  return item[0];
+                })
+                .join('.');
+
+              var label = this.label;
+
+              var barBounds = this.barBounds;
+              var labelBounds = label.measureWithText(name);
+
+              // if width of the label is greater than the width of the bar, then we show short name
+              if (barBounds.width < labelBounds.width) {
+                return shortName;
+              }
+
+              return name;
+            })
+            // set text shadow for the elements labels
+            .textShadow({
+              color: '#333333',
+              offsetX: '1px',
+              offsetY: '1px',
+              blurRadius: '1px'
+            });
 
           // set container id for the chart
           chart.container('container');
@@ -805,16 +897,11 @@ anychart.onDocumentReady(function () {
           chart.draw();
 
           // zoom chart to specified date
-          chart.zoomTo(1171036800000, 1176908400000);
-          document
-            .getElementById('startMonth')
-            .addEventListener('change', function (event) {
-              // set fiscal year start month
-              chart.xScale().fiscalYearStartMonth(event.target.value);
-            });
+          chart.zoomTo(1191168000000, 1201795200000);
         }
       );
     });
+  
     </script>
 </body>
 </html>
