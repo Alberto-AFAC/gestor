@@ -914,6 +914,12 @@ $inspector = mysqli_query($conexion,$sql);
 
                 // zoom chart to specified date
                 chart.zoomTo(1191168000000, 1201795200000);
+                document
+                .getElementById('startMonth')
+                .addEventListener('change', function (event) {
+                  // set fiscal year start month
+                  chart.xScale().fiscalYearStartMonth(event.target.value);
+                });
             }
         );
     });
