@@ -280,7 +280,7 @@
                                         <div class="col-sm-offset-0 col-sm-3">
                                             <label>PERIODO DE VIGENCIA</label>
                                             <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
-                                                <option value="100">RECURRENTE</option>
+                                                <!-- <option value="100">RECURRENTE</option> -->
                                                 <option value="101">UNICA VEZ</option>
                                                 <option value="1">1 AÑO</option>
                                                 <option value="2">2 AÑOS</option>
@@ -516,10 +516,7 @@ $query = "SELECT * FROM listacursos
 $resultado = mysqli_query($conexion, $query);
   $n=0;
       while($data = mysqli_fetch_array($resultado)){ 
-        if($data['gstVignc'] == 100){
-          $gstVignc =  "RECURRENTE";
-
-        } else if ($data['gstVignc'] == 101){
+        if ($data['gstVignc'] == 101){
           $gstVignc = "UNICA VEZ";
 
         } else {
