@@ -1168,6 +1168,9 @@ function inspector(gstIdper) {
 
                         //
                         programados = 0;
+                        FINALIZADO = 0;
+                        CANCELADO = 0;
+                        insp = 0 ;
 
                         if (obj.data[ii].idinsp == gstIdper) {
                             if (obj.data[ii].evaluacion >= '0') {
@@ -1192,10 +1195,19 @@ function inspector(gstIdper) {
                                 if (obj.data[ii].proceso == 'PENDIENTE') {
                                     programados++;
                                 }
-
-
+                                if (obj.data[ii].proceso == 'FINALIZADO') {
+                                    FINALIZADO++;
+                                }
+                                if (obj.data[ii].proceso == 'CANCELADO') {
+                                    CANCELADO++;
+                                }
+                                if (obj.data[ii].estado == '0') {
+                                    insp++;
+                                }
                                 //$("#programado").html(programados); 
-                                document.getElementById("programado").innerHTML = programados + '/22';
+                                document.getElementById("programado").innerHTML = programados + '/' + insp ;
+                                document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp ;
+                                document.getElementById("CANCELADO").innerHTML = CANCELADO + '/' + insp ;
                             }
                         }
 
