@@ -56,7 +56,8 @@
 
 <div class="col-sm-offset-0 col-sm-6">
     
-	<h4 style="color:#05001E; font-weight: bold;">CONFIRMAR ASISTENCIA:</H4> 
+	<h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR ASISTENCIA:</H4> 
+    
 <!-- 	<input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
 <div class="switcher">
       <input type="radio" name="Opc" value="SI" id="SI" class="switcher__input switcher__input--yin" checked="">
@@ -73,11 +74,12 @@
     <br>
 <p id="asiste" style="display: none;">  
 <i style="color: green; font-size: 25px;" class="icon fa fa-check" ></i>
-<label  style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
+<label  id="confm1" style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
 <input type="hidden" id="conf" name="conf" >	
 </p>
 
 <p id="noasis" style="display:none;">
+<label class="label2"  style="font-size: 16px;">MOTIVOS DE TU INASISTENCIA</label>
 <select style="width: 100%" class="form-control inputalta" class="selectpicker" type="text" data-live-search="true" id="confir" name="confir" onChange="justificacion()">
 <option value="0">SELECCIONE OPCIÓN  </option>
 <option value="TRABAJO">TRABAJO</option>
@@ -148,6 +150,15 @@
     <b><p class="alert alert-danger text-center padding adjuto" id="max">
     Supera el limite permitido</p></b>
 </div>
+<!-- script para validar los lebel de confiam la asistencia -->
+<script>
+    rad = document.getElementById('SI')
+    lab1 = document.getElementById('asiste')
+    if (rad.checked ) {
+        lab1.style.display = '';
+    }
+
+</script>
 </form>    
 </div>
 </div>
