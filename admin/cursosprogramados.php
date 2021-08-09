@@ -23,13 +23,13 @@
                                 COUNT( gstIdlsc ) AS COMPLETADOS,
                                 COUNT( CASE WHEN gstTipo = 'INDUCCIÓN' THEN 1 END ) AS INDUCCION,
                                 COUNT( CASE WHEN gstTipo = 'RECURRENTES' THEN 1 END ) AS RECURRENTES,
-                                COUNT( CASE WHEN gstTipo = 'BÁSICOS' THEN 1 END ) AS BÁSICOS,
+                                COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) AS BÁSICOS,
                                 COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) AS ESPECÍFICOS,
                                 COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) AS OJT,
                                 COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) AS BINICIAS,
                                 ROUND(COUNT(CASE WHEN gstTipo = 'INDUCCIÓN' THEN 1 END )* 100 / COUNT( gstIdlsc ),2) AS INDUCCIÓNP,
                                 ROUND(COUNT( CASE WHEN gstTipo = 'RECURRENTES' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS RECURRENTESP,
-                                ROUND(COUNT( CASE WHEN gstTipo = 'BÁSICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS BASICOSP , 
+                                ROUND(COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS BASICOSP , 
                                 ROUND(COUNT( CASE WHEN gstTipo = 'ESPECÍFICOS' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS ESPECÍFICOSP,
                                 ROUND(COUNT( CASE WHEN gstTipo = 'OJT' THEN 1 END ) * 100 / COUNT( gstIdlsc),2) AS OJTP,
                                 ROUND(COUNT( CASE WHEN gstTipo = 'BÁSICOS/INICIAL' THEN 1 END ) * 100 / COUNT(gstIdlsc),2) AS BINICIASP 
@@ -59,7 +59,7 @@
             </div>  
             <div  class="col-sm-offset-1 col-md-10">
             <div class="progress-group">
-                    <span class="progress-text">TOTAL CURSOS BÁSICOS</span>
+                    <span class="progress-text">TOTAL CURSOS BÁSICOS/INICIAL</span>
                     <span class="progress-number"><b><?php echo $row['BÁSICOS']?></b>/ <?php echo $row['COMPLETADOS']?></span>
                     <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: <?php echo $row['BASICOSP'] ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $row['BASICOSP'] ?>%</div>
@@ -84,13 +84,6 @@
           </div>
                   </div>
             </div>  
-            <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">TOTAL CURSOS BÁSICOS/INICIAL</span>
-                    <span class="progress-number"><b><?php echo $row['BINICIAS']?></b>/ <?php echo $row['COMPLETADOS']?></span>
-                    <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: <?php echo $row['BINICIASP'] ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $row['BINICIASP'] ?>%</div>
-          </div>
                   </div>
             </div>  
           <!-- ./col -->

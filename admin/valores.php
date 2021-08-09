@@ -82,7 +82,9 @@ $psto = mysqli_query($conexion,$sql);
 <div  class="col-sm-offset-1 col-md-10">
     <div class="progress-group">
           <span class="progress-text">CURSOS COMPLETADOS</span>
-          <span class="progress-number"><b>160</b>/500</span>
+          <span class="progress-number">
+            <div id="FINALIZADO1"></div>
+          </span>
         <div class="progress sm">
             <div class="progress-bar progress-bar-green" style="width: 30%"></div>
             </div>
