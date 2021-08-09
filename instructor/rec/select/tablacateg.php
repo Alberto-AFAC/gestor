@@ -86,7 +86,7 @@ ORDER BY gstFeing DESC";
                                    
                             <?php 
                             if($antiguedad <=30){
-                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                                echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
                             }else {
                                 echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
                             }

@@ -139,7 +139,7 @@ $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
 
-if($f3>=$f1){
+if($fecha==101){
 //$fech = 'vencido';
 ?>
                                     <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $per[0]?>' class="idinsp" /></td>
@@ -151,13 +151,15 @@ if($f3>=$f1){
 
                             <?php 
                             if($antiguedad <=30){
-                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                                echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
                             }else {
-                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                                echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
                             }
 
-echo "<td style='color: white; background-color:#AC2925;'>$fechav</td>";
-}else if($f3 <= $f2){
+                            echo "<td style='color: white; background-color:rgba(0, 128, 0, 0.658);'>ÚNICA VEZ</td>";
+}else 
+
+if($f3 <= $f2){
 //$fech = 'vigente';
     ?>
                                         <td style="width: 5%;"><input disabled="" type='checkbox' 
@@ -170,9 +172,9 @@ echo "<td style='color: white; background-color:#AC2925;'>$fechav</td>";
 
                             <?php 
                             if($antiguedad <=30){
-                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                                echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
                             }else {
-                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                                echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
                             }
 
 echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
@@ -188,9 +190,9 @@ echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
 
                             <?php 
                             if($antiguedad <=30){
-                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                                echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
                             }else {
-                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                                echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
                             }
 
 echo "<td style='color: white; background-color: #D58512;'>$fechav</td>";
@@ -208,9 +210,9 @@ echo "<td style='color: white; background-color: #D58512;'>$fechav</td>";
 
                             <?php 
                             if($antiguedad <=30){
-                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                                echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
                             }else {
-                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                                echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
                             }
 
 echo "<td style='color: #333; background-color: #F4F4F4;'>POR REALIZAR</td>";
