@@ -138,7 +138,7 @@
         <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
       </div>
   </div>  
-  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR CURSO</button>
+  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="finalizar();">FINALIZAR CURSO</button>
   </button>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se finalizo con éxito!</p></b>
