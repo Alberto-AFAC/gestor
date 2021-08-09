@@ -541,7 +541,8 @@ $gstIdlsc = $data['gstIdlsc'];
         "<?php echo $data['gstPrfil']?>", "<?php echo $data['gstDrcin']?>", "<?php echo $data['gstCntnc']?>",
         "<?php echo $gstVignc ?>",
         "<?php if($data['gstTmrio'] == '0'){ echo "<span style='text-align: center;'>N/A</span>";} else { echo "<a href='{$data['gstTmrio']}' target='_blanck'><img src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;' ></a>";} ?>",
-        "<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a><a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalUpdate'><i class='fa fa-file-pdf-o text-info'></i></a>"?>"
+        // <a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalUpdate'><i class='fa fa-file-pdf-o text-info'></i></a>
+        "<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"
         ],
 
 
