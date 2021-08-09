@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../models/menu/css/font-awesome.min.css">
     <link href="../models/menu/css/style.css" rel="stylesheet" type="text/css">
     <link href="../models/menu/css/cards.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <script src="js/jquery.js"></script>
 </head>
 

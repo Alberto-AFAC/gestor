@@ -1,5 +1,5 @@
 
-
+<link rel="stylesheet" type="text/css" href="../dist/css/card.css">
 <div class="modal fade" id='modal-confirma'>
 <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -55,16 +55,30 @@
 <th>
 
 <div class="col-sm-offset-0 col-sm-6">
-	CONFIRMAR ASISTENCIA: <label for="SI"> SI </label> <input name="Opc" id="Opc" type="radio" value="SI" id="SI" /> <label for="NO"> NO </label> <input name="Opc" id="Opc" type="radio" value="NO" id="NO" />
+    
+	<h4 style="color:#05001E; font-weight: bold;">CONFIRMAR ASISTENCIA:</H4> 
 <!-- 	<input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
+<div class="switcher">
+      <input type="radio" name="Opc" value="SI" id="SI" class="switcher__input switcher__input--yin" checked="">
+      <label for="SI" class="switcher__label">SI</label>
+      
+      <input type="radio" name="Opc" value="NO" id="NO" class="switcher__input switcher__input--yang">
+      <label for="NO" class="switcher__label">NO</label>
+      
+      <span class="switcher__toggle"></span>
+    </div>
 </div>
-<div class="col-sm-offset-0 col-sm-6">
 
-<p id="asiste" style="display: none;">
+<div class="col-sm-offset-0 col-sm-6">
+    <br>
+<p id="asiste" style="display: none;">  
+<i style="color: green; font-size: 25px;" class="icon fa fa-check" ></i>
+<label  style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
 <input type="hidden" id="conf" name="conf" >	
 </p>
+
 <p id="noasis" style="display:none;">
-<select style="width: 100%" class="form-control" class="selectpicker" type="text" data-live-search="true" id="confir" name="confir" onChange="justificacion()">
+<select style="width: 100%" class="form-control inputalta" class="selectpicker" type="text" data-live-search="true" id="confir" name="confir" onChange="justificacion()">
 <option value="0">SELECCIONE OPCIÓN  </option>
 <option value="TRABAJO">TRABAJO</option>
 <option value="ENFERMEDAD">ENFERMEDAD</option>
@@ -81,7 +95,7 @@
 <div class="col-sm-12">
 <input id="archivo" type="file" name="archivo" style="display: none; width: 410px;" required accept=".pdf,.doc" class="input-file" size="1450"> 
 
-<textarea style="display: none; font-size: 15px;" id="obser" name="obser" class="form-control is-invalid" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea>	
+<textarea style="display: none; font-size: 15px;" id="obser" name="obser" class="form-control is-invalid inputalta" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea>	
 </div>
 </div> 
 </th>
@@ -111,7 +125,7 @@
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" class="btn btn-info" onclick="confirma();">ACEPTAR</button>
+<button type="button" id="button" class="btn btn-info altaboton" style="" onclick="confirma();">ACEPTAR</button>
 </div>
    <b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos</p></b>
 
