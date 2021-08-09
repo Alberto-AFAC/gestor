@@ -55,7 +55,7 @@ $end = strtotime($fechaf.''.$horaEstimada) * 1000;
 		}
 		if(isset($arreglo)&&!empty($arreglo)){
 
-			echo json_encode($arreglo, JSON_PRETTY_PRINT);
+			echo json_encode($arreglo, JSON_UNESCAPED_UNICODE);
 		}else{
 
 			echo $arreglo='0';
@@ -65,4 +65,3 @@ $end = strtotime($fechaf.''.$horaEstimada) * 1000;
 		mysqli_close($conexion);
 
 ?>
-
