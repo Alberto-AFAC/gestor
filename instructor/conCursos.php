@@ -62,13 +62,15 @@
 
             </div>
             <!-- /INDICADORES -->
-
+            <div class="tab-content">
 
 
             <!-- /FIN DE INDICADORES -->
             <div class="box-body">
-             <?php //include('../html/conCurso.html');?> 
-  <table style="width: 100%;" id="data-table-concurso" class="table display table-striped table-bordered"></table>
+            <?php include('cursosprogramados.php'); ?>
+                                <table style="width: 100%;" id="data-table-concurso"
+                                    class="table display table-striped table-bordered"></table>
+                                    </div>
             </div>
           </div>
           <!-- /.nav-tabs-custom -->

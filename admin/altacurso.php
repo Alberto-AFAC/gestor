@@ -158,7 +158,7 @@ include ("../conexion/conexion.php");
                          <label>PERIODO DE VIGENCIA</label>                         
                             <select type="text" class="form-control" id="gstVignc" name="gstVignc">
                             <option value="">SELECCIONE VIGENCIA</option>
-                            <option value="100">RECURRENTE</option>
+                            <!-- <option value="100">RECURRENTE</option> -->
                             <option value="101">UNICA VEZ</option>
                             <option value="1">1 AÑO</option>
                             <option value="2">2 AÑOS</option>

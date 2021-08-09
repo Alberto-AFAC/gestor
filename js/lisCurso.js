@@ -599,4 +599,26 @@ function enviarMail() {
 
     });
 
+
+}
+
+function finalizar() {
+    $.ajax({
+        url: 'finalizar.php',
+        type: 'POST',
+        data: 'gstIdlsc=' + gstIdlsc
+    }).done(function(respuesta) {
+        // if (respuesta == 0) {
+        //     Swal.fire({
+        //         type: 'success',
+        //         title: 'FINALIZADO',
+        //         showConfirmButton: false,
+        //         customClass: 'swal-wide',
+        //         timer: 2000,
+        //         backdrop: `
+        //     rgba(100, 100, 100, 0.4)
+        // `
+        //     });
+
+    });
 }
