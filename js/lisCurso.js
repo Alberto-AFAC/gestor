@@ -603,6 +603,7 @@ function enviarMail() {
 }
 
 function finalizar() {
+    
     $.ajax({
         url: 'finalizar.php',
         type: 'POST',

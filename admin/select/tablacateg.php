@@ -143,7 +143,8 @@ if($fecha==101){
 
 
 ?>
-                                    <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $per[0]?>' class="idinsp" /></td>
+                                    <td style="width: 5%;"><input disabled="" type='checkbox' 
+                                            value='<?php echo $per[0]?>' /></td>
                                     <td><?php echo $per[1]?></td>
                                     <td><?php echo $per[2]?></td>
                                     <td><?php echo $per[3]?></td>
