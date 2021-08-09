@@ -71,7 +71,6 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 <div class="tab-content">
         
     <div class="box-body" id="listCurso">
-    <?php include('cursosprogramados.php'); ?>
         <?php include('../html/lisCurso.html');?>
         <!-- Datatables -->
     </div>
