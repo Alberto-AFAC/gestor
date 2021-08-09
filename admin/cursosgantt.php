@@ -820,7 +820,7 @@ anychart.onDocumentReady(function () {
       var locale = "es-mx";
       anychart.format.outputLocale('es-es');
       anychart.data.loadJsonFile(
-        'participantes.json',
+        '../php/lisCursoGanntt.php',
         function (data) {
           // create data tree
           var treeData = anychart.data.tree(data, 'as-table');
