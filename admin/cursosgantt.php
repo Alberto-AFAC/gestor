@@ -84,7 +84,7 @@ $inspector = mysqli_query($conexion,$sql);
                                     <!--TODO AQUI VA--> 
 
                                     <div id="legend"></div>
-          <div class="toolbar">
+          <!-- <div class="toolbar">
     
     <label for="startMonth">Selecciona mes: </label>
     
@@ -116,7 +116,7 @@ $inspector = mysqli_query($conexion,$sql);
     
     </select>
   
-  </div> 
+  </div>  -->
                                     <div style="width: 96%; height: 400px;" id="container"></div>
                                 </div>
 
@@ -817,8 +817,8 @@ $inspector = mysqli_query($conexion,$sql);
 //     });
 //TODO ESTE ES EL NUEVO GANTT
 anychart.onDocumentReady(function () {
-      // The data used in this sample can be obtained from the CDN
-      // https://cdn.anychart.com/samples/gantt-general-features/resource-gantt-chart-with-adaptive-labels-format/data.json
+      var locale = "es-mx";
+      anychart.format.outputLocale('es-es');
       anychart.data.loadJsonFile(
         'participantes.json',
         function (data) {
@@ -843,12 +843,12 @@ anychart.onDocumentReady(function () {
           // set first column settings
           dataGrid
             .column(0)
-            .title('#')
-            .width(30)
+            .title('Items')
+            .width(70)
             .labels({ hAlign: 'center' });
 
           // set second column settings
-          dataGrid.column(1).title('Person').width(120);
+          dataGrid.column(1).title('Nombre del curso').width(170);
 
           var tl = chart.getTimeline();
           // set base stroke
@@ -884,7 +884,7 @@ anychart.onDocumentReady(function () {
             })
             // set text shadow for the elements labels
             .textShadow({
-              color: '#333333',
+              color: '#005D4C',
               offsetX: '1px',
               offsetY: '1px',
               blurRadius: '1px'
