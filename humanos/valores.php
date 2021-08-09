@@ -38,6 +38,7 @@ $unidad = mysqli_query($conexion,$sql);
 $sql="SELECT gstIdAir,gstCSigl,gstUnid1,gstUnid2,gstRgion FROM aeropuertos";
 $resulta=mysqli_query($conexion,$sql);
 
+
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12" >
@@ -408,8 +409,6 @@ $resulta=mysqli_query($conexion,$sql);
 </select>
 </div> 
 
-
-
 <div id="spcialidad1">
 <div class="col-sm-4">
 <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
@@ -425,8 +424,6 @@ $resulta=mysqli_query($conexion,$sql);
 <div id="actoaci"></div>
 <div id="siglas"></div>
 </div>
-
-
 </div>
 
 
@@ -445,27 +442,25 @@ $resulta=mysqli_query($conexion,$sql);
          </div>
      </div>
      
-     <div class="form-group">
-
-     <div class="col-sm-12">
-
- <p id="ejecutiva" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR DIRECCIÓN EJECUTIVA <i class="fa fa-edit"></i></a></p>      
+        <div class="form-group">
+        <div class="col-sm-12">
+        <p id="ejecutiva" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR DIRECCIÓN EJECUTIVA <i class="fa fa-edit"></i></a></p>      
         <p id="ejecutiva1">
-          <label>DIRECCIÓN EJECUTIVA </label> 
+        <label>DIRECCIÓN EJECUTIVA </label> 
         <input type="text" name="ejcutiva" id="ejcutiva" class="form-control" disabled="">
         </p>
         <p id="ejecutiva2" style="display: none;">
         <label>DIRECCIÓN EJECUTIVA </label>         
-           <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
-            <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
-           <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
-           <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
-           <?php endwhile; ?>
-           </select>
-           </p>
+        <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
+        <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
+        <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
+        <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+        <?php endwhile; ?>
+        </select>
+        </p>
+        </div>
+        </div>
 
-         </div>          
-     </div>
      <div class="form-group">
      <div class="col-sm-12">
         <label>DIRECCIÓN </label>         
@@ -474,6 +469,8 @@ $resulta=mysqli_query($conexion,$sql);
            </select>
          </div>          
      </div>
+
+
      <div class="form-group">
          <div class="col-sm-offset-0 col-sm-12">
              <label>SUBDIRECCIÓN</label>
@@ -481,7 +478,9 @@ $resulta=mysqli_query($conexion,$sql);
               <option value="">SELECCIONE LA SUBDIRECCIÓN</option>                       
             </select>
          </div>                  
-       </div>     
+       </div>   
+
+
        <div class="form-group">
          <div class="col-sm-offset-0 col-sm-12">
              <label>DEPARTAMENTO</label>
@@ -492,7 +491,10 @@ $resulta=mysqli_query($conexion,$sql);
               <?php endwhile; ?>
             </select>
          </div>                  
-       </div>   
+       </div>  
+
+
+
        <div class="form-group">
          <div class="col-sm-4">
              <div class="input-group">
@@ -501,6 +503,7 @@ $resulta=mysqli_query($conexion,$sql);
              </div>
          </div>
      </div>
+
      <div class="form-group">
      <div class="col-sm-4">
          <label>CARGO</label>
@@ -519,15 +522,7 @@ $resulta=mysqli_query($conexion,$sql);
 
 
        <div class="form-group">
-
-<!-- <div class="col-sm-6">
-<label>CATEGORIA</label>
-<select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="gstIDCat" id="gstIDCat" type="text" data-live-search="true">
-<?php //while($idcat = mysqli_fetch_row($cat)):?>                      
-<option value="<?php// echo $idcat[0]?>"><?php //echo $idcat[1];?></option>
-<?php //endwhile; ?>
-</select>
-</div>  -->        
+    
      <div class="col-sm-12">
         <label>ESPECIALIDAD</label>     
               <div id="especialidades"></div>    
