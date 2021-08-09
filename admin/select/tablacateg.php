@@ -115,13 +115,13 @@ $fechas = mysqli_query($conexion,$sql);
 if($fecs = mysqli_fetch_row($fechas)) {
 
 
+
+
  $fecs[0];
  $fecs[1];
  $per[0];
 
-
 //echo $fecs[1].',';
-
 //if(isset($fechav)&&!empty($fechav)){    
 //if(empty($fechav)){
 
@@ -138,6 +138,30 @@ $actual= date("d-m-Y");
 $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
+
+if($fecha==101){
+
+
+?>
+                                    <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $per[0]?>' class="idinsp" /></td>
+                                    <td><?php echo $per[1]?></td>
+                                    <td><?php echo $per[2]?></td>
+                                    <td><?php echo $per[3]?></td>
+                                    <td><?php echo $per[4]?></td>
+
+
+                            <?php 
+                            if($antiguedad <=30){
+                                echo "<td style='color: white; background-color: rgba(0, 128, 0, 0.658);'>Nuevo ingreso</td>";
+                            }else {
+                                echo "<td style='color: white; background-color: #3C8DBC;'>Personal antiguo</td>";
+                            }
+
+echo "<td style='color: #000; background-color:silver;'>ÚNICA VEZ</td>";
+
+
+
+}else
 
 if($f3>=$f1){
 //$fech = 'vencido';
