@@ -21,12 +21,12 @@ $('document').ready(function()
 		  {
 				tecn: {
 				required: true,
-				validname: true,
+				validname: false,
 				minlength: 5
 				},
 				pass: {
 					required: true,
-					minlength: 7,
+					minlength: 1,
 					maxlength: 15
 				},
 		   },
@@ -40,7 +40,7 @@ $('document').ready(function()
 					  },
 				pass:{
 					required: "Favor de ingresar contraseña",
-					minlength: "La contraseña tiene al menos 7 caracteres"
+					minlength: "La contraseña tiene al menos 1 caracteres"
 					},
 
 		   },

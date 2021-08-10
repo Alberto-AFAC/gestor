@@ -1,19 +1,36 @@
 <?php include ("../../conexion/conexion.php"); session_start();
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
+
+      if($_SESSION['usuario']['privilegios'] == 'ADMINISTRATIVO'){
+        $_SESSION['usuario']['privilegios'] = "INSPECTOR";
+      }
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "inspector"){
+        if($_SESSION['usuario']['privilegios'] != "INSPECTOR"){
             //y se redirecciona al directorio que le corresponde
-            header("Location: ../../");
+            header("Location: ../");
             }
         }else{
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
-            header('Location: ../../');
+            header('Location: ../');
         }
       $id = $_SESSION['usuario']['id_usu'];
+
+
       $sql = 
-     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo,gstInstt,gstMpres FROM personal 
-      INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
+     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo FROM personal 
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
+    $persona = mysqli_query($conexion,$sql);
+    $datos = mysqli_fetch_row($persona);
+
+      $datos[1];
+      $datos[2];
+      $datos[3];
+
+
+      $sqli = 
+     "SELECT gstInstt,gstMpres FROM personal 
+       INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
       INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
       WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
       ";
@@ -22,19 +39,12 @@
       $datos = mysqli_fetch_row($persona);
 
   
-  if (!empty($datos[1]) || !empty($datos[2]) || !empty($datos[3]) || !empty($datos[4]) || !empty($datos[5])) {
-      $datos[1];
-      $datos[2];
-      $datos[3];
-      $datos[4];
-      $datos[5];
+  if (!empty($dato[4]) || !empty($dato[5])) {
+      $dato[4];
+      $dato[5];
   }else{
-      $datos[1]="Sus trámites están en proceso";
-      $datos[2]="";
-      $datos[3]="";
-      $datos[4]="";
-      $datos[5]="";
-
+      $dato[4]="";
+      $dato[5]="";
   }
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
