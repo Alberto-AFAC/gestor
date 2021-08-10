@@ -65,413 +65,451 @@
                             <!-- /INDICADORES -->
 
                             <section class="content">
-                            <div class="tab-content">
-                            <!-- /FIN DE INDICADORES -->
-                            <div class="box-body">
-                                    <?php include('cursosprogramados.php'); ?>
-                                <table style="width: 100%;" id="data-table-concurso"
-                                    class="table display table-striped table-bordered"></table>
-                            </div>
-</div>
-</div>
+                                <div class="tab-content">
+                                    <!-- /FIN DE INDICADORES -->
+                                    <div class="box-body">
+                                        <?php include('cursosprogramados.php'); ?>
+                                        <table style="width: 100%;" id="data-table-concurso"
+                                            class="table display table-striped table-bordered"></table>
+
+                                        <table id="example" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Position</th>
+                                                    <th>Office</th>
+                                                    <th>Extn.</th>
+                                                    <th>Start date</th>
+                                                    <th>Salary</th>
+                                                </tr>
+                                            </thead>
+                                           
+                                        </table>
+                                    </div>
+                                </div>
                         </div>
-                        <!-- /.nav-tabs-custom -->
                     </div>
-                    <!-- /.col -->
+                    <!-- /.nav-tabs-custom -->
                 </div>
-                <!-- /.row -->
+                <!-- /.col -->
+        </div>
+        <!-- /.row -->
 
-                <form class="form-horizontal" action="" method="POST">
-                    <div class="modal fade" id="modal-eliminar">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">ELIMINAR CURSO DE CATALOGO </h4>
+        <form class="form-horizontal" action="" method="POST">
+            <div class="modal fade" id="modal-eliminar">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">ELIMINAR CURSO DE CATALOGO </h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <p> ¿ESTÁS SEGURO DE ELIMINAR ESTE CURSO? <input type="text" name="EgstTitlo"
+                                            id="EgstTitlo" class="form-control disabled" disabled=""
+                                            style="background: white;border: 1px solid white;"></p>
                                 </div>
-                                <div class="modal-body">
-                                    <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <p> ¿ESTÁS SEGURO DE ELIMINAR ESTE CURSO? <input type="text"
-                                                    name="EgstTitlo" id="EgstTitlo" class="form-control disabled"
-                                                    disabled="" style="background: white;border: 1px solid white;"></p>
-                                        </div>
-                                        <br>
-                                        <div class="col-sm-5">
-                                            <button type="button" class="btn btn-primary"
-                                                onclick="eliCurso()">ACEPTAR</button>
-                                        </div>
+                                <br>
+                                <div class="col-sm-5">
+                                    <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
+                                </div>
 
-                                        <b>
-                                            <p class="alert alert-warning text-center padding error" id="danger">Error
-                                                al eliminar curso</p>
-                                        </b>
-                                        <b>
-                                            <p class="alert alert-success text-center padding exito" id="succe">¡Se
-                                                elimino curso con éxito !</p>
-                                        </b>
-                                        <b>
-                                            <p class="alert alert-warning text-center padding aviso" id="empty">Elija
-                                                curso para eliminar </p>
-                                        </b>
-                                    </div>
-                                </div>
+                                <b>
+                                    <p class="alert alert-warning text-center padding error" id="danger">Error
+                                        al eliminar curso</p>
+                                </b>
+                                <b>
+                                    <p class="alert alert-success text-center padding exito" id="succe">¡Se
+                                        elimino curso con éxito !</p>
+                                </b>
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="empty">Elija
+                                        curso para eliminar </p>
+                                </b>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+            </div>
+        </form>
 
 
 
 
 
 
-                <form class="form-horizontal" action="" method="POST">
-                    <div class="modal fade" id="modal-evaluar">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">EVALUACIÓN</h4>
+        <form class="form-horizontal" action="" method="POST">
+            <div class="modal fade" id="modal-evaluar">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">EVALUACIÓN</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="evgstIdlsc" id="evgstIdlsc">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <p> CONFIRME ACEPTAR, PARA EVALUAR <input type="text" name="evgstTitlo"
+                                            id="evgstTitlo" class="form-control disabled" disabled=""
+                                            style="background: white;border: 1px solid white;"></p>
                                 </div>
-                                <div class="modal-body">
-                                    <input type="hidden" name="evgstIdlsc" id="evgstIdlsc">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <p> CONFIRME ACEPTAR, PARA EVALUAR <input type="text" name="evgstTitlo"
-                                                    id="evgstTitlo" class="form-control disabled" disabled=""
-                                                    style="background: white;border: 1px solid white;"></p>
-                                        </div>
-                                        <br>
-                                        <div class="col-sm-5">
-                                            <button type="button" class="btn btn-primary">ACEPTAR</button>
-                                        </div>
-
-                                        <b>
-                                            <p class="alert alert-warning text-center padding error" id="danger">Error
-                                                al eliminar curso</p>
-                                        </b>
-                                        <b>
-                                            <p class="alert alert-success text-center padding exito" id="succe">¡Se
-                                                elimino curso con éxito !</p>
-                                        </b>
-                                        <b>
-                                            <p class="alert alert-warning text-center padding aviso" id="empty">Elija
-                                                curso para eliminar </p>
-                                        </b>
-                                    </div>
+                                <br>
+                                <div class="col-sm-5">
+                                    <button type="button" class="btn btn-primary">ACEPTAR</button>
                                 </div>
+
+                                <b>
+                                    <p class="alert alert-warning text-center padding error" id="danger">Error
+                                        al eliminar curso</p>
+                                </b>
+                                <b>
+                                    <p class="alert alert-success text-center padding exito" id="succe">¡Se
+                                        elimino curso con éxito !</p>
+                                </b>
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="empty">Elija
+                                        curso para eliminar </p>
+                                </b>
                             </div>
                         </div>
                     </div>
-                </form>
-                
-                <form class="form-horizontal" action="" method="POST">
-                    <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel">
-                        <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            style="color: black" aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title" id="exampleModalLabel">EDITAR CURSO </h4>
+                </div>
+            </div>
+        </form>
+
+        <form class="form-horizontal" action="" method="POST">
+            <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    style="color: black" aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel">EDITAR CURSO </h4>
+                        </div>
+
+                        <input type="hidden" class="form-control" id="AgstIdlsc" name="AgstIdlsc">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label>NOMBRE</label>
+                                    <input type="text" onkeyup="mayus(this);" class="form-control" id="AgstTitlo"
+                                        name="AgstTitlo">
                                 </div>
 
-                                <input type="hidden" class="form-control" id="AgstIdlsc" name="AgstIdlsc">
-                                <div class="modal-body">
+                                <div class="col-sm-4">
+                                    <label>TIPO DE CAPACITACIÓN</label>
+                                    <select type="text" class="form-control" id="AgstTipo" name="AgstTipo">
+                                        <option value="INDUCCIÓN">INDUCCIÓN</option>
+                                        <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
+                                        <option value="TRANSVERSALES">TRANSVERSALES</option>
+                                        <option value="RECURRENTES">RECURRENTES</option>
+                                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                                        <option value="OJT">OJT</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label>NOMBRE</label>
-                                            <input type="text" onkeyup="mayus(this);" class="form-control"
-                                                id="AgstTitlo" name="AgstTitlo">
-                                        </div>
+                                <link rel="stylesheet" type="text/css" href="advanced.php">
 
-                                        <div class="col-sm-4">
-                                            <label>TIPO DE CAPACITACIÓN</label>
-                                            <select type="text" class="form-control" id="AgstTipo" name="AgstTipo">
-                                                <option value="INDUCCIÓN">INDUCCIÓN</option>
-                                                <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
-                                                <option value="TRANSVERSALES">TRANSVERSALES</option>
-                                                <option value="RECURRENTES">RECURRENTES</option>
-                                                <option value="ESPECÍFICOS">ESPECÍFICOS</option>
-                                                <option value="OJT">OJT</option>
-                                            </select>
-                                        </div>
+                                <p>PERFIL A QUIEN VA DIRIGIDO - SELECCIONE</p>
+                                <div class="col-md-2">
+                                    <p id="gstPrfil"></p>
+                                </div>
 
-                                        <link rel="stylesheet" type="text/css" href="advanced.php">
+                                <link rel="stylesheet" type="text/css" href="advanced.php">
+                                <div class="col-md-2">
+                                    <select multiple="multiple" data-placeholder="SELECCIONE"
+                                        style="width: 100%;color: #000" class="form-control select2" type="text"
+                                        class="form-control" id="AgstPrfil" name="AgstPrfil[]">
 
-                                        <p>PERFIL A QUIEN VA DIRIGIDO - SELECCIONE</p>
-                                        <div class="col-md-2">
-                                            <p id="gstPrfil"></p>
-                                        </div>
-
-                                        <link rel="stylesheet" type="text/css" href="advanced.php">
-                                        <div class="col-md-2">
-                                            <select multiple="multiple" data-placeholder="SELECCIONE"
-                                                style="width: 100%;color: #000" class="form-control select2" type="text"
-                                                class="form-control" id="AgstPrfil" name="AgstPrfil[]">
-
-                                                <?php while($cat = mysqli_fetch_row($categs)):?>
-                                                <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
-                                                <?php endwhile; ?>
-                                            </select>
-                                        </div>
+                                        <?php while($cat = mysqli_fetch_row($categs)):?>
+                                        <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
 
 
 
-                                    </div>
-                                    <div class="form-group">
+                            </div>
+                            <div class="form-group">
 
-                                        <div class="col-sm-4">
-                                            <label>DOCUMENTO QUE EMITE</label>
-                                            <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
-                                            <select type="text" class="form-control" id="AgstCntnc" name="AgstCntnc">
-                                                <option value="DIPLOMA">DIPLOMA</option>
-                                                <option value="CONSTANCIA">CONSTANCIA</option>
-                                                <option value="CERTIFICADO">CERTIFICADO</option>
-                                            </select>
-                                        </div>
+                                <div class="col-sm-4">
+                                    <label>DOCUMENTO QUE EMITE</label>
+                                    <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
+                                    <select type="text" class="form-control" id="AgstCntnc" name="AgstCntnc">
+                                        <option value="DIPLOMA">DIPLOMA</option>
+                                        <option value="CONSTANCIA">CONSTANCIA</option>
+                                        <option value="CERTIFICADO">CERTIFICADO</option>
+                                    </select>
+                                </div>
 
 
-                                        <div class="col-sm-1" style="padding-right: 0; width: 79px;">
-                                            <label>DURACION</label>
-                                            <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                                            <select class="form-control" id="Ahr" name="Ahr">
-                                                <option value="00">00</option>
-                                                <?php for($h=1; $h<=24; $h++){
+                                <div class="col-sm-1" style="padding-right: 0; width: 79px;">
+                                    <label>DURACION</label>
+                                    <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
+                                    <select class="form-control" id="Ahr" name="Ahr">
+                                        <option value="00">00</option>
+                                        <?php for($h=1; $h<=24; $h++){
                          if($h<10){ ?>
-                                                <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
-                                                <?php }else{ ?>
-                                                <option value="<?php echo $h?>"><?php echo $h?></option>
-                                                <?php } }?>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-1" style="padding: 0;">
-                                            <label style="color: white">.</label>
-                                            <input type="text" class="form-control" id="Atmp1" name="Atmp1"
-                                                value="HRS.">
-                                        </div>
-                                        <div class="col-sm-1" style="padding: 0;">
-                                            <label style="color: white">.</label>
-                                            <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                                            <select class="form-control" id="Amin" name="Amin">
-                                                <option value="00">00</option>
-                                                <?php for($m=1; $m<=59; $m++){
+                                        <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
+                                        <?php }else{ ?>
+                                        <option value="<?php echo $h?>"><?php echo $h?></option>
+                                        <?php } }?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1" style="padding: 0;">
+                                    <label style="color: white">.</label>
+                                    <input type="text" class="form-control" id="Atmp1" name="Atmp1" value="HRS.">
+                                </div>
+                                <div class="col-sm-1" style="padding: 0;">
+                                    <label style="color: white">.</label>
+                                    <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
+                                    <select class="form-control" id="Amin" name="Amin">
+                                        <option value="00">00</option>
+                                        <?php for($m=1; $m<=59; $m++){
 
                         if($m<10){?>
-                                                <option value="<?php echo '0'.$m?>"><?php echo '0'.$m?></option>
-                                                <?php }else{ ?>
-                                                <option value="<?php echo $m?>"><?php echo $m?></option>
-                                                <?php } }?>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-1" style="padding: 0;">
-                                            <label style="color: white">.</label>
-                                            <input type="text" class="form-control" id="Atmp2" name="Atmp2"
-                                                value="MIN.">
+                                        <option value="<?php echo '0'.$m?>"><?php echo '0'.$m?></option>
+                                        <?php }else{ ?>
+                                        <option value="<?php echo $m?>"><?php echo $m?></option>
+                                        <?php } }?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1" style="padding: 0;">
+                                    <label style="color: white">.</label>
+                                    <input type="text" class="form-control" id="Atmp2" name="Atmp2" value="MIN.">
 
-                                        </div>
-
-
-                                        <div class="col-sm-offset-0 col-sm-3">
-                                            <label>PERIODO DE VIGENCIA</label>
-                                            <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
-                                                <!-- <option value="100">RECURRENTE</option> -->
-                                                <option value="101">UNICA VEZ</option>
-                                                <option value="1">1 AÑO</option>
-                                                <option value="2">2 AÑOS</option>
-                                                <option value="3">3 AÑOS</option>
-                                                <option value="4">4 AÑOS</option>
-                                                <option value="5">5 AÑOS</option>
-                                                <option value="6">6 AÑOS</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label>TIPO DE CURSO</label>
-                                            <select type="text" class="form-control" id="AgstProvd" name="AgstProvd">
-                                                <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
-                                                <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
-                                                <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label>CENTRO DE INSTRUCCIÓN</label>
-                                            <select type="text" class="form-control" id="AgstCntro" name="AgstCntro">
-                                                <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label>OBJETIVO</label>
-                                            <textarea name="AgstObjtv" id="AgstObjtv" placeholder="Escribir el Objetivo"
-                                                onkeyup="mayus(this);" class="form-control" rows="5"
-                                                cols="50"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label>TEMARIO</label>
-
-                                            <input type="file" id="AgstTmrio" name="AgstTmrio"
-                                                style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
-                                                class="input-file" size="1450">
+                                </div>
 
 
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group"><br>
-                                        <div class="col-sm-offset-0 col-sm-5">
-                                            <button type="button" id="button" class="btn btn-primary"
-                                                onclick="actCurso();">ACEPTAR </button>
-                                        </div>
-                                        <b>
-                                            <p class="alert alert-danger text-center padding error" id="afalla">Error al
-                                                actualizar curso o al adjuntar archivo</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-success text-center padding exito" id="aexito">¡Se
-                                                actualizo curso y archivo con éxito!</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-warning text-center padding aviso" id="avacio">Es
-                                                necesario agregar los datos que se solicitan </p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-warning text-center padding aviso" id="arepetido">¡El
-                                                curso ya está registrado!</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-danger text-center padding adjuto" id="arenom">
-                                                Renombre su archivo</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-warning text-center padding adjuto" id="aadjunta">
-                                                Debes adjuntar archivo</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-danger text-center padding adjuto" id="aerror">
-                                                Ocurrio un error</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-danger text-center padding adjuto" id="aforn">
-                                                Formato no valido</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-danger text-center padding adjuto" id="amax">
-                                                Supera el limite permitido</p>
-                                        </b>
-
-
-                                    </div>
+                                <div class="col-sm-offset-0 col-sm-3">
+                                    <label>PERIODO DE VIGENCIA</label>
+                                    <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
+                                        <!-- <option value="100">RECURRENTE</option> -->
+                                        <option value="101">UNICA VEZ</option>
+                                        <option value="1">1 AÑO</option>
+                                        <option value="2">2 AÑOS</option>
+                                        <option value="3">3 AÑOS</option>
+                                        <option value="4">4 AÑOS</option>
+                                        <option value="5">5 AÑOS</option>
+                                        <option value="6">6 AÑOS</option>
+                                    </select>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label>TIPO DE CURSO</label>
+                                    <select type="text" class="form-control" id="AgstProvd" name="AgstProvd">
+                                        <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
+                                        <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
+                                        <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label>CENTRO DE INSTRUCCIÓN</label>
+                                    <select type="text" class="form-control" id="AgstCntro" name="AgstCntro">
+                                        <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>OBJETIVO</label>
+                                    <textarea name="AgstObjtv" id="AgstObjtv" placeholder="Escribir el Objetivo"
+                                        onkeyup="mayus(this);" class="form-control" rows="5" cols="50"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label>TEMARIO</label>
+
+                                    <input type="file" id="AgstTmrio" name="AgstTmrio"
+                                        style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
+                                        class="input-file" size="1450">
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group"><br>
+                                <div class="col-sm-offset-0 col-sm-5">
+                                    <button type="button" id="button" class="btn btn-primary"
+                                        onclick="actCurso();">ACEPTAR </button>
+                                </div>
+                                <b>
+                                    <p class="alert alert-danger text-center padding error" id="afalla">Error al
+                                        actualizar curso o al adjuntar archivo</p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-success text-center padding exito" id="aexito">¡Se
+                                        actualizo curso y archivo con éxito!</p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="avacio">Es
+                                        necesario agregar los datos que se solicitan </p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="arepetido">¡El
+                                        curso ya está registrado!</p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="arenom">
+                                        Renombre su archivo</p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-warning text-center padding adjuto" id="aadjunta">
+                                        Debes adjuntar archivo</p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="aerror">
+                                        Ocurrio un error</p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="aforn">
+                                        Formato no valido</p>
+                                </b>
+
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="amax">
+                                        Supera el limite permitido</p>
+                                </b>
+
+
+                            </div>
                         </div>
-                </form>
-                <!-- MODAL PARA ACTUALIZAR PDFS -->
-                <form class="form-horizontal" action="" method="POST"  >
-<div class="modal fade" id="modalUpdate" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<div class="modal-dialog" role="document" style="/*margin-top: 7em;*/">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: black"  aria-hidden="true">&times;</span>
-</button>
-<h4 class="modal-title" id="exampleModalLabel">ACTUALIZAR TEMARIO </h4>  
-</div>
-
-<input type="hidden" class="form-control" id="Idlsc" name="Idlsc">
-<div class="modal-body">
-
-                  <div class="form-group">
-                    <div class="col-sm-12">
-                    <label>NOMBRE</label>
-                    <input type="text" onkeyup="mayus(this);" class="form-control" id="AgstTitlo" name="AgstTitlo" readonly>
                     </div>
-                  </div>
-                 
-                 <div class="form-group">
-                     <div class="col-sm-4">
-                      <label>TEMARIO</label>
+                </div>
+        </form>
+        <!-- MODAL PARA ACTUALIZAR PDFS -->
+        <form class="form-horizontal" action="" method="POST">
+            <div class="modal fade" id="modalUpdate" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    style="color: black" aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel">ACTUALIZAR TEMARIO </h4>
+                        </div>
 
-                   <input type="file" id="AgstTmrio" name="AgstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
+                        <input type="hidden" class="form-control" id="Idlsc" name="Idlsc">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>NOMBRE</label>
+                                    <input type="text" onkeyup="mayus(this);" class="form-control" id="AgstTitlo"
+                                        name="AgstTitlo" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label>TEMARIO</label>
+
+                                    <input type="file" id="AgstTmrio" name="AgstTmrio"
+                                        style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
+                                        class="input-file" size="1450">
 
 
-                      </div>
-                      <!-- <input type="file" id="myPdf" /><br>
+                                </div>
+                                <!-- <input type="file" id="myPdf" /><br>
                       <canvas id="pdfViewer"></canvas> -->
-                  </div>  
+                            </div>
 
-              <div class="form-group"><br>
-              <div class="col-sm-offset-0 col-sm-5">
-              <button type="button" id="button" class="btn btn-primary" onclick="updatePDF();">ACEPTAR </button>
-              </div>
-             <b><p class="alert alert-danger text-center padding error" id="afalla">Error al actualizar curso o al adjuntar archivo</p></b>
+                            <div class="form-group"><br>
+                                <div class="col-sm-offset-0 col-sm-5">
+                                    <button type="button" id="button" class="btn btn-primary"
+                                        onclick="updatePDF();">ACEPTAR </button>
+                                </div>
+                                <b>
+                                    <p class="alert alert-danger text-center padding error" id="afalla">Error al
+                                        actualizar curso o al adjuntar archivo</p>
+                                </b>
 
-                    <b><p class="alert alert-success text-center padding exito" id="aexito">¡Se actualizo curso y archivo con éxito!</p></b>
+                                <b>
+                                    <p class="alert alert-success text-center padding exito" id="aexito">¡Se actualizo
+                                        curso y archivo con éxito!</p>
+                                </b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="avacio">Es necesario agregar los datos que se solicitan </p></b>
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="avacio">Es necesario
+                                        agregar los datos que se solicitan </p>
+                                </b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="arepetido">¡El curso ya está registrado!</p></b>
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="arepetido">¡El curso ya
+                                        está registrado!</p>
+                                </b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="arenom">
-                    Renombre su archivo</p></b>
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="arenom">
+                                        Renombre su archivo</p>
+                                </b>
 
-                    <b><p class="alert alert-warning text-center padding adjuto" id="aadjunta">
-                    Debes adjuntar archivo</p></b>
+                                <b>
+                                    <p class="alert alert-warning text-center padding adjuto" id="aadjunta">
+                                        Debes adjuntar archivo</p>
+                                </b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="aerror">
-                    Ocurrio un error</p></b>
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="aerror">
+                                        Ocurrio un error</p>
+                                </b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="aforn">
-                    Formato no valido</p></b>
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="aforn">
+                                        Formato no valido</p>
+                                </b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="amax">
-                    Supera el limite permitido</p></b>
+                                <b>
+                                    <p class="alert alert-danger text-center padding adjuto" id="amax">
+                                        Supera el limite permitido</p>
+                                </b>
 
 
-</div>
-</div>
-</div>
-</div>
-</form>
-            </section>
-            <!-- /.content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.1
         </div>
+        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+        Todos los derechos Reservados AJ.
+    </footer>
 
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.1
-            </div>
-            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados AJ.
-        </footer>
-
-        <!-- Control Sidebar -->
-        <?php include('panel.html');?>
-        <!-- /.control-sidebar -->
-        <!-- Add the sidebar's background. This div must be placed
+    <!-- Control Sidebar -->
+    <?php include('panel.html');?>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+    <div class="control-sidebar-bg"></div>
     </div>
 
 
@@ -541,7 +579,7 @@ $gstIdlsc = $data['gstIdlsc'];
         "<?php if($data['gstTmrio'] == '0'){ echo "<span style='text-align: center;'>N/A</span>";} else { echo "<a href='{$data['gstTmrio']}' target='_blanck'><img src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;' ></a>";} ?>",
         // <a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalUpdate'><i class='fa fa-file-pdf-o text-info'></i></a>
         "<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"
-        ],
+    ],
 
 
     <?php } ?>
@@ -586,4 +624,19 @@ var tableGenerarReporte = $('#data-table-concurso').DataTable({
     ],
 });
 
+$(document).ready(function() {
+    var table = $('#example').DataTable({
+        "ajax": "../php/consdaTable.php",
+        "columnDefs": [{
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<button>Click!</button>"
+        }]
+    });
+
+    $('#example tbody').on('click', 'button', function() {
+        var data = table.row($(this).parents('tr')).data();
+        alert(data[0] + "'s salary is: " + data[5]);
+    });
+});
 </script>
