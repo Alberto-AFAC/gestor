@@ -15,12 +15,17 @@
 
 		//	$arreglo["data"][] = $data; 
 
+if($data["gstVignc"] == 101){
+
+	$vigencia = 'ÚNICA VEZ';
+}else{
+	$vigencia = $data["gstVignc"].' AÑOS';
+}
 
 
 
 
-
-	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstVignc"],$data["gstPrfil"],$data["gstTmrio"],$data["gstDrcin"],$data["gstCntnc"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
+	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$vigencia,$data["gstPrfil"],$data["gstTmrio"],$data["gstDrcin"],$data["gstCntnc"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
 
 		}
 
