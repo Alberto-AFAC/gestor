@@ -20,7 +20,7 @@
 
 
 
-	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstVignc"],$data["gstPrfil"],$data["gstTmrio"],$data["gstDrcin"],$data["gstCntnc"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
+	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstTmrio"],$data["gstDrcin"],$data["gstCntnc"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
 
 		}
 
