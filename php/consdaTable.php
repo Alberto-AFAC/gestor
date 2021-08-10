@@ -25,7 +25,7 @@ if($data["gstVignc"] == 101){
 
 
 
-	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$vigencia,$data["gstPrfil"],$data["gstTmrio"],$data["gstDrcin"],$data["gstCntnc"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
+	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstTmrio"],$data["gstDrcin"],$data["gstCntnc"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
 
 		}
 
