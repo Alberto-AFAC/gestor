@@ -22,10 +22,15 @@ if($data["gstVignc"] == 101){
 	$vigencia = $data["gstVignc"].' AÑOS';
 }
 
+if($data['gstTmrio'] == '0'){
+    $temario = 'N/A';
+} else {
+    $temario = $data["gstTmrio"];
+}
 
 
 
-	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstCntnc"],$vigencia,$data["gstTmrio"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
+	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstCntnc"],$vigencia,$temario];
 
 		}
 
