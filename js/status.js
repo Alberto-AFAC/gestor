@@ -52,33 +52,49 @@ document.getElementById("fecha").innerHTML = ""+'<b>CURSOS AÑO '+fecha_actual+'
 
         for(i=0; i<res.length;i++){
 
+            var hoy = new Date();
+            var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+
+            var fcurso = new Date(obj.data[i].fcurso);
+            var fcurso = new Date(fcurso.getFullYear(), fcurso.getMonth(), fcurso.getDate());
+
+
             if(obj.data[i].proceso == 'FINALIZADO'){
                 finalizado++;
             }
-            if(obj.data[i].proceso=='PENDIENTE'){
+            if(obj.data[i].proceso=='PENDIENTE' && factual <= fcurso){
                 acreditar++;
             }
 
             progrmas++;
 
 
-var hoy = new Date();
-var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
 
-
-var termino = new Date(obj.data[i].fechaf);
-var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-finaliza.setMonth(finaliza.getMonth() - 3);
+         
 // finaliza.setMonth(obj.data[i].fechaf.getMonth() - 3);
 
 // var finaliza = new Date(finaliza.getFullYear(), finaliza.getMonth(), finaliza.getDate());
 
+//alert(factual+'=='+finaliza);
 
+        if(factual <= fcurso){
 
-if (factual <= finaliza) {
-            vencer++;
-}
+             // alert(factual+' === '+fcurso);
+
+        var termino = new Date(obj.data[i].fechaf);
+        var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
+
+        finaliza.setMonth(finaliza.getMonth() - 3);
+
+            if (factual >= finaliza) {
+                        vencer++;
+                }
+    }
+
+// if(factual >= finaliza){
+//             alert('VENCIÓ');    
+// }
+
 
 
         } 
