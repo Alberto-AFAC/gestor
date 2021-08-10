@@ -72,7 +72,7 @@
                                         <table style="width: 100%;" id="data-table-concurso"
                                             class="table display table-striped table-bordered"></table>
 
-                                        <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
+                                        <!-- <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -87,7 +87,7 @@
                                                 </tr>
                                             </thead>
                                            
-                                        </table>
+                                        </table> -->
                                     </div>
                                 </div>
                         </div>
@@ -627,41 +627,41 @@ var tableGenerarReporte = $('#data-table-concurso').DataTable({
     ],
 });
 
-$(document).ready(function() {
-    var table = $('#example').DataTable({
+// $(document).ready(function() {
+//     var table = $('#example').DataTable({
         
-        "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-        "ajax": "../php/consdaTable.php",
-        "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<button>Editar</button> <button>Eliminar</button>"
-        }]
-    });
-    $('#example thead tr').clone(true).appendTo('#example thead');
+//         "language": {
+//         "searchPlaceholder": "Buscar datos...",
+//         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+//     },
+//         "ajax": "../php/consdaTable.php",
+//         "columnDefs": [{
+//             "targets": -1,
+//             "data": null,
+//             "defaultContent": "<button>Editar</button> <button>Eliminar</button>"
+//         }]
+//     });
+//     $('#example thead tr').clone(true).appendTo('#example thead');
 
-        $('#example thead tr:eq(1) th').each(function(i) {
-            var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text"  placeholder="Buscar" />');
+//         $('#example thead tr:eq(1) th').each(function(i) {
+//             var title = $(this).text(); //es el nombre de la columna
+//             $(this).html('<input type="text"  placeholder="Buscar" />');
 
-            $('input', this).on('keyup change', function() {
-                if (table.column(i).search() !== this.value) {
-                    table
-                        .column(i)
-                        .search(this.value)
-                        .draw();
-                }
-            });
-        });
+//             $('input', this).on('keyup change', function() {
+//                 if (table.column(i).search() !== this.value) {
+//                     table
+//                         .column(i)
+//                         .search(this.value)
+//                         .draw();
+//                 }
+//             });
+//         });
 
-    $('#example tbody').on('click', 'button', function() {
-        var data = table.row($(this).parents('tr')).data();
-        alert(data[0] + "'s salary is: " + data[5]);
-    });
-});
+//     $('#example tbody').on('click', 'button', function() {
+//         var data = table.row($(this).parents('tr')).data();
+//         alert(data[0] + "'Este es el ID: " + data[0]);
+//     });
+// });
 </script>
 <style>
     #example
