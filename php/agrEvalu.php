@@ -39,11 +39,14 @@ if($AgstCargo == 'INSPECTOR'){
 	agrEspcldd($gstIdper,$AgstIDCat,$conexion);	  	
 }
 
+	$gstNombr = $_POST['gstNombr'];
+	$gstNmpld = $_POST['gstNmpld'];
 
 
+	accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion);
 
 	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$conexion)){
-		echo "0";
+		echo $AgstCargo;
 	}else{
 		echo "1";
 	}
@@ -97,6 +100,30 @@ function proEvalue($gstInspr,$gstIDprm,$gstActul,$comntr,$conexion){
 
 		}
 	}
+
+
+function accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion){
+
+$query="SELECT * FROM accesos WHERE password='$gstNmpld' AND usuario='$gstNombr' AND baja = 0 ";
+			$resultado= mysqli_query($conexion,$query);
+		if($resultado->num_rows==0){
+			$query="INSERT INTO accesos VALUES(0,'$gstIdper','$gstNombr','$gstNmpld','$AgstCargo',0,0);";
+				if(mysqli_query($conexion,$query)){
+
+					return true;
+				
+				}else{
+
+					return false;
+				}
+				$this->conexion->cerrar();
+		}else{
+
+		}
+
+}
+
+
 
 function agrEspcldd($gstIdper,$AgstIDCat,$conexion){
 

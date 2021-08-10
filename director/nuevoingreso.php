@@ -120,6 +120,7 @@ include('header.php');
           <div class="modal-body">
               <form id="Dtall" class="form-horizontal" action="" method="POST" >
                 <input type="hidden" name="gstIdper" id="gstIdper">
+                 <input type="hidden" name="gstANmpld" id="gstANmpld">
                 
                     <div class="form-group">
                       <div class="col-sm-4">
