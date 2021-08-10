@@ -115,6 +115,7 @@ include('header.php');
           <div class="modal-body">
               <form id="Dtall" class="form-horizontal" action="" method="POST" >
                 <input type="hidden" name="gstIdper" id="gstIdper">
+                <input type="hidden" name="gstANmpld" id="gstANmpld">
                 
                     <div class="form-group">
                       <div class="col-sm-4">
@@ -210,19 +211,7 @@ include('header.php');
                           <div id="categoria"></div>
                         </div>
                         </div>
-                        <!-- multiselec -->
-<!--                         <div class="form-group">
-                        <div class="col-md-12">
-                          <label class="label2">OTRAS ESPECIALIDADES</label>  
-                            <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
-                              style="width:100%;color:#000;" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
-                              <?php //while($cat = mysqli_fetch_row($categs)):?>                      
-                               <option  value="<?php //echo $cat[0]?>"><?php //echo $cat[1]?></option>
-                              <?php //endwhile; ?>                
-                            </select>
-                        </div>
-                        </div> -->
-                        <!-- multiselec -->
+
                         <div class="form-group">
                           <div class="col-sm-4">
                             <label class="label2">SELECCIONE COMANDANCIA</label>
@@ -304,7 +293,7 @@ include('header.php');
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
 <script src="../js/global.js"></script>
-<script src="../js/datos.js"></script>
+<script src="../js/datos.json"></script>
 
 </body>
 </html>

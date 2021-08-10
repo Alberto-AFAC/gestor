@@ -14,15 +14,15 @@ jQuery(document).on('submit','#formtec',function(event){
 	.done(function(respuesta){ //espera como parametro una respuesta
 		console.log(respuesta); //por consola se pone(respusta)
 	   if(!respuesta.error){	//*resivimos objeto json desde php para la evaluacion
-	   	 if(respuesta.tipo == 'admin'){ //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
+	   	 if(respuesta.tipo == 'ADMIN'){ //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
 	   	 	location.href = 'administrador/'; //*redirecionado al directorio que le toca(carpeta)
-	   	 }else if(respuesta.tipo == 'inspector'){ //*redireccion al manejador si el .tipo es manejador
+	   	 }else if(respuesta.tipo == 'INSPECTOR' || respuesta.tipo == 'ADMINISTRATIVO'){ //*redireccion al manejador si el .tipo es manejador
 	   	 	location.href = 'inspector/';
-	   	 }else if(respuesta.tipo == 'director'){ //*redireccion al manejador si el .tipo es manejador
+	   	 }else if(respuesta.tipo == 'DIRECTOR'){ //*redireccion al manejador si el .tipo es manejador
 	   	 	location.href = 'director/';
-	   	 }else if(respuesta.tipo == 'instructor'){
+	   	 }else if(respuesta.tipo == 'INSTRUCTOR'){
 	   	 	location.href = 'instructor/';
-	   	 }else if(respuesta.tipo == 'humanos'){
+	   	 }else if(respuesta.tipo == 'HUMANOS'){
 	   	 	location.href = 'humanos/';
 	   	 }
 

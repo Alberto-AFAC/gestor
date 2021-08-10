@@ -26,7 +26,7 @@ $('document').ready(function()
 				},
 				pass: {
 					required: true,
-					minlength: 8,
+					minlength: 7,
 					maxlength: 15
 				},
 		   },
@@ -40,7 +40,7 @@ $('document').ready(function()
 					  },
 				pass:{
 					required: "Favor de ingresar contraseña",
-					minlength: "La contraseña tiene al menos 8 caracteres"
+					minlength: "La contraseña tiene al menos 7 caracteres"
 					},
 
 		   },

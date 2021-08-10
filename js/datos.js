@@ -408,6 +408,7 @@ function asignacion(gstIdper) {
                 $("#Dtall #gstApell").val(obj.data[i].gstApell);
                 $("#Dtall #gstAreIDasig").val(obj.data[i].gstAreID); //ID área
                 $("#Dtall #gstIDara").val(obj.data[i].gstIDara);
+                $("#Dtall #gstANmpld").val(obj.data[i].gstNmpld);
             }
         }
     })
@@ -1892,6 +1893,8 @@ function asignar() {
     var AgstIDuni = document.getElementById('gstIDuni').value;
     var AgstAcReg = document.getElementById('AgstAcReg').value;
     var AgstNucrt = document.getElementById('AgstNucrt').value;
+    var gstNombr = document.getElementById('gstNombr').value;
+    var gstNmpld = document.getElementById('gstANmpld').value;
 
     // var gstPrfil = ''
 
@@ -1913,12 +1916,12 @@ function asignar() {
     } else {}
 
 
-    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&opcion=asignar';
+    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&gstNombr='+gstNombr+'&gstNmpld='+gstNmpld+'&opcion=asignar';
 
     //alert(datas);
     //alert(gstIdper+'/'+AgstCargo+'/'+AgstIDCat+'/'+AgstIDSub+'/'+AgstIDuni+'/'+AgstAcReg);
 
-    if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstIDuni == '' || AgstNucrt == '') {
+    if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstIDuni == '' || AgstNucrt == '' || gstNombr == '' || gstNmpld == '') {
 
         //alert('llene');
         $('#empty2').toggle('toggle');
@@ -1929,17 +1932,13 @@ function asignar() {
         return;
     } else {
         $.ajax({
-            url: '../php/agrEvalu.php',
+           url: '../php/agrEvalu.php',
             type: 'POST',
             data: datas
         }).done(function(respuesta) {
-            if (respuesta == 0) {
 
-                // $('#succe2').toggle('toggle');
-                // setTimeout(function() {
-                //     $('#succe2').toggle('toggle');
-                //     location.href = 'inspecion.php';
-                // }, 2500);
+            if (respuesta == 'INSPECTOR') {
+
                 Swal.fire({
                     type: 'success',
                     title: 'AFAC INFORMA',
@@ -1949,7 +1948,19 @@ function asignar() {
                     timer: 3000
                 });
                 setTimeout("location.href = 'inspecion.php';", 2000);
-            } else {
+
+            }else if(respuesta != 'INSPECTOR'){
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Sus datos fueron guardados correctamente',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                //setTimeout("location.href = 'persona.php';", 2000);
+
+            }else if(respuesta == 1){
                 $('#danger2').toggle('toggle');
                 setTimeout(function() {
                     $('#danger2').toggle('toggle');
