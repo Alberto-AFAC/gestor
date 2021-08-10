@@ -72,15 +72,18 @@
                                         <table style="width: 100%;" id="data-table-concurso"
                                             class="table display table-striped table-bordered"></table>
 
-                                        <table id="example" class="display" style="width:100%">
+                                        <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Extn.</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th>ID</th>
+                                                    <th>TÍTULO</th>
+                                                    <th>TIPO</th>
+                                                    <th>PERFIL.</th>
+                                                    <th>DURACIÓN</th>
+                                                    <th>DOCUMENTO</th>
+                                                    <th>VIGENCIA</th>
+                                                    <th>TEMARIO</th>
+                                                    <th>ACCIÓN</th>
                                                 </tr>
                                             </thead>
                                            
@@ -626,13 +629,33 @@ var tableGenerarReporte = $('#data-table-concurso').DataTable({
 
 $(document).ready(function() {
     var table = $('#example').DataTable({
+        
+        "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
         "ajax": "../php/consdaTable.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<button>Click!</button>"
+            "defaultContent": "<button>Editar</button> <button>Eliminar</button>"
         }]
     });
+    $('#example thead tr').clone(true).appendTo('#example thead');
+
+        $('#example thead tr:eq(1) th').each(function(i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html('<input type="text"  placeholder="Buscar" />');
+
+            $('input', this).on('keyup change', function() {
+                if (table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
 
     $('#example tbody').on('click', 'button', function() {
         var data = table.row($(this).parents('tr')).data();
@@ -640,3 +663,9 @@ $(document).ready(function() {
     });
 });
 </script>
+<style>
+    #example
+     input {
+        width: 75% !important;
+    }
+</style>
