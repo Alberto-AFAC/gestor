@@ -90,6 +90,52 @@ function lisAcreed() {
         $("#lstacreed").html(html);
     })
 }
+//CURSOS PENDIENTES//
+function listPendient() {
+    $.ajax({
+        url: '../php/listPend.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+
+
+        html = '<table id="lstPend" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> TÍTULO</th><th><i></i> TIPO</th><th><i></i> INICIO</th><th><i></i> DURACIÓN</th><th><i></i> FINAL</th><th><i></i> PARTICIPANTES</th><th><i></i>ESTATUS</th><th style="width:13%"><i></i> ACCIÓN</th></tr></thead><tfoot><tr></tr></tfoot><tbody>';
+        for (i = 0; i < res.length; i++) {
+            x++;
+
+            year = obj.data[i].fcurso.substring(0, 4);
+            month = obj.data[i].fcurso.substring(5, 7);
+            day = obj.data[i].fcurso.substring(8, 10);
+            Finicio = day + '/' + month + '/' + year;
+
+            year = obj.data[i].fechaf.substring(0, 4);
+            month = obj.data[i].fechaf.substring(5, 7);
+            day = obj.data[i].fechaf.substring(8, 10);
+            Finaliza = day + '/' + month + '/' + year;
+
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad;
+
+            //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
+            if (obj.data[i].proceso == "FINALIZADO") {
+                proceso = "<span style='font-weight: bold; height: 50px; color:green;'>FINALIZADO</span>";
+                //console.log(proceso);
+            } else
+            if (obj.data[i].proceso == "PENDIENTE") {
+                proceso = "<span style='font-weight: bold; height: 50px; color: #F39403;'>PENDIENTE</span>";
+            } else
+            if (obj.data[i].proceso == "EN PROCESO") {
+                proceso = "<span style='font-weight: bold; height: 50px; color: ##3C8DBC;'>EN PROCESO</span>";
+            }
+
+            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td>" + proceso + "</td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+        }
+        html += '</tbody></table>';
+        $("#listaPend").html(html);
+    })
+}
 
 function curso(cursos) {
 
