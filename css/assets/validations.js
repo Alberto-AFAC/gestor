@@ -21,7 +21,7 @@ $('document').ready(function()
 		  {
 				tecn: {
 				required: true,
-				validname: true,
+				validname: false,
 				minlength: 5
 				},
 				pass: {
