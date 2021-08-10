@@ -13,16 +13,32 @@
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
 
-			$arreglo["data"][] = $data; 
-		}
-		if(isset($arreglo)&&!empty($arreglo)){
+		//	$arreglo["data"][] = $data; 
 
-			echo json_encode($arreglo, JSON_PRETTY_PRINT);
-		}else{
 
-			echo $arreglo='0';
+
+
+
+
+	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstVignc"],$data["gstPrfil"],$data["gstTmrio"],$data["gstDrcin"],$data["gstCntnc"],$data["gstObjtv"],$data["gstFalta"],$data["gstProvd"],$data["gstCntro"] ];
+
 		}
+
+
+
+		// if(isset($arreglo)&&!empty($arreglo)){
+
+		// 	echo json_encode($arreglo, JSON_PRETTY_PRINT);
+		// }else{
+
+		// 	echo $arreglo='0';
+		// }
 	}
+
+
+	$json_string = json_encode(array( 'data' => $caledario ));
+	echo $json_string;
+
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);
 
