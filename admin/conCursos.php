@@ -64,7 +64,7 @@
                             </div>
                             <!-- /INDICADORES -->
 
-
+                            <section class="content">
                             <div class="tab-content">
                             <!-- /FIN DE INDICADORES -->
                             <div class="box-body">
@@ -72,6 +72,7 @@
                                 <table style="width: 100%;" id="data-table-concurso"
                                     class="table display table-striped table-bordered"></table>
                             </div>
+</div>
 </div>
                         </div>
                         <!-- /.nav-tabs-custom -->
