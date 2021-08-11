@@ -8,6 +8,10 @@ if($opcion === 'registrar'){
 
 	$gstNombr = $_POST['gstNombr'];
 	$gstApell = $_POST['gstApell'];
+	$gstNmpld = $_POST['gstNmpld'];
+	
+	if(comprobacion($gstNombr,$gstApell,$gstNmpld,$conexion)){
+	
 	$gstLunac = $_POST['gstLunac'];
 	$gstFenac = $_POST['gstFenac'];
 	$gstStcvl = $_POST['gstStcvl'];
@@ -27,7 +31,7 @@ if($opcion === 'registrar'){
 	$gstCasa  = $_POST['gstCasa'];
 	$gstClulr = $_POST['gstClulr'];
 	$gstExTel = $_POST['gstExTel'];
-	$gstNmpld = $_POST['gstNmpld'];
+	
 	$gstIdpst = $_POST['gstIdpst'];
 
 	$gstAreID = $_POST['gstAreID'];
@@ -45,11 +49,19 @@ if($opcion === 'registrar'){
 	$gstAcReg = $_POST['gstAcReg'];
 	$gstIDuni = $_POST['gstIDuni'];
 
-if(registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion)){
+
+
+	if(registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion)){
 		echo "0";
 	}else{
 		echo "1";
 	}
+
+	}else{
+		echo "2";
+	}
+
+
 }else if($opcion === 'actualizar'){
 
     $gstIdper = $_POST['gstIdper'];
@@ -144,11 +156,20 @@ if(registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,
 	}
 
 
+function comprobacion($gstNombr,$gstApell,$gstNmpld,$conexion){
+
+$query="SELECT * FROM personal WHERE gstNombr = '$gstNombr' AND gstApell = '$gstApell' AND estado = 0 OR gstNmpld = $gstNmpld AND estado = 0";
+$resultado= mysqli_query($conexion,$query);
+		if($resultado->num_rows==0){
+		return true;
+		}else{
+		return false;	
+		}
+		$this->conexion->cerrar();
+}
+
 function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion){
 
-	$query="SELECT * FROM personal WHERE gstNombr = '$gstNombr' AND gstApell = '$gstApell' AND estado = 0";
-			$resultado= mysqli_query($conexion,$query);
-		if($resultado->num_rows==0){
 			$query="INSERT INTO personal VALUES(0,'$gstNombr','$gstApell','$gstLunac','$gstFenac','$gstStcvl','$gstCurp','$gstRfc','$gstNpspr','$gstPsvig','$gstVisa','$gstVignt','$gstNucrt','$gstCalle','$gstNumro','$gstClnia','$gstCpstl','$gstCiuda','$gstStado','$gstCasa','$gstClulr','$gstExTel','$gstNmpld','$gstIdpst','$gstAreID','$gstPstID','$gstSpcID','$gstSigID','$gstCargo','$gstIDCat','$gstIDSub','$gstCorro','$gstCinst','$gstFeing','$gstFeing','$gstIDara','$gstAcReg','$gstIDuni','NO','',0)";
 				if(mysqli_query($conexion,$query)){
 					return true;
@@ -156,10 +177,7 @@ function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$g
 					return false;
 				}
 				$this->conexion->cerrar();
-		}else{
-
-		}
-	}
+				}
 
 function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$conexion){
 
