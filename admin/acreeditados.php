@@ -1097,6 +1097,166 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- /.content -->
     </div>
 
+    <!-- inicio de el check list para generar un certificado -->
+<form class="form-horizontal" action="" method="POST" id="acreditacion">
+        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal fade" id="modal-acreditacion">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                            <p>
+                            <h4 class="modal-title" style="text-align:Center;">GENERACIÓN DE CONSTANCIAS</h4>
+                            </p>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                  <label>FOLIO:</label>
+                                  <input type="text" name="id_cursoc" id="id_cursoc" style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                </div>     
+                                <div class="col-sm-10">
+                                  <label>PARTICIPANTE</label>
+                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt; display:none" class="form-control " id="idinsevc" name="evaNombrc">
+                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt" class="form-control" id="evaNombrc" name="evaNombrc">
+                                </div>
+                                <div class="col-sm-12">
+                                  <label>CURSO:</label>
+                                  <input type="text" name="idperonc" id="idperonc" style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                </div>
+                                   
+                            </div>                                         
+                        </div>
+                        
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                <table class="table table-striped table-bordered dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>PARAMETROS</th>
+                                                <th>ESTATUS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                   CONVOCATORIA Y CONFIRMACIÓN
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" disabled id="check1c" type="checkbox" name="check-box" /> <span></span>
+                                                
+                                                <i class="fa fa-check" id="che1" disabled style="color:green; font-size: 16pt"></i></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    LISTA DE REGISTRO
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" id="check2c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    LISTA DE ASISTENCIA
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" id="check3c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    REPORTES DE INCIDENCIAS
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" id="check4c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    CARTAS DESCRIPTIVAS
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" id="check5c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    EVALUACIÓN POR PARTICIPANTE
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" disabled id="check6c" type="checkbox" name="check-box" /> <span></span>
+                                                <i class="fa fa-check" id="che6" disabled style="color:green; font-size: 16pt"></i></span>    
+                                            </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    REGISTRO DE PONDERACIÓN
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" id="check7c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    INFORME FINAL
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" id="check8c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    EVALUACIÓN DE REACCIÓN
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" id="check9c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-5">
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="cerrareval()">ACEPTAR</button>
+                                </div>
+                                <b>
+                                    <p class="alert alert-warning text-center padding error" id="dangerev">Error al
+                                        Acreditar!!
+                                </b>
+                                <b>
+                                    <p class="alert alert-success text-center padding exito" id="succeev">¡Se Acredito con
+                                        exito!</p>
+                                </b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
+    </form>
+    <!-- /.content -->
+
+    </section>
+    <!-- /.content -->
+    </div>
+
+    <!-- fin del chechk list para copletar iun certificado -->
+
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">

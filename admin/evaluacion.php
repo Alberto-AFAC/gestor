@@ -176,20 +176,11 @@
               <table class="table table-hover">
                 <tr>
                   <th>PARAMETROS</th>
-                  <th>OBJETIVO</th>
-                  <th>ACTUAL</th>
                   <th>CUMPLIO</th>
                   <th>COMENTARIOS</th>
                   <th>EVALUADOR</th>
                 </tr>
-                <tr>
-                  <td>EXPERIENCIA EN TRASPORTE AÉREO</td>
-                  <td>5</td>
-                  <td>7</td>
-                  <td><span class="label label-success">CUMPLIO</span></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                
                 <tr>
                   <td>EXPERIENCIA CON LA GESTIÓN U OPERACIÓN DE AÉRONAVES COMERCIALES</td>
                   <td>SI</td>
