@@ -144,7 +144,7 @@ function listPendient() {
             // }else 
     
 
-            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo;
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad+ "*" + obj.data[i].codigo;
 
 
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
@@ -317,7 +317,7 @@ function curso(cursos) {
                 day = obj.data[i].fechaf.substring(8, 10);
                 Finaliza = day + '/' + month + '/' + year;
 
-                cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj.data[i].confirmar;
+                cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj.data[i].confirmar + "*" + obj.data[i].codigo;
 
 
                 if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'PENDIENTE') {
@@ -606,10 +606,10 @@ function cambiartexto() {
 }
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     var cer = cursos.split("*");
-   //alert(cer[20]);
+  // alert(cer[21]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
-    $("#id_cursoc").val(cer[19]); //ID DEL CURSO
+    $("#id_cursoc").val(cer[21]); //ID DEL CURSO
     check6c = document.getElementById('check6c'); // 
     check1c = document.getElementById('check1c'); //
     che1= document.getElementById('che1'); //che1 

@@ -1228,8 +1228,7 @@ $inspector = mysqli_query($conexion,$sql);
 
                             <div class="form-group">
                                 <div class="col-sm-5">
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="cerrareval()">ACEPTAR</button>
+                                    <button type="button" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" onclick="()">ACEPTAR</button>
                                 </div>
                                 <b>
                                     <p class="alert alert-warning text-center padding error" id="dangerev">Error al
