@@ -69,8 +69,8 @@
                                     <!-- /FIN DE INDICADORES -->
                                     <div class="box-body">
                                         <?php include('cursosprogramados.php'); ?>
-                                        <table style="width: 100%;" id="data-table-concurso"
-                                            class="table display table-striped table-bordered"></table>
+                                       <!--  <table style="width: 100%;" id="data-table-concurso"
+                                            class="table display table-striped table-bordered"></table> -->
 
                                         <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
                                             <thead>
@@ -550,82 +550,9 @@ $(document).ready(function() {
 
 </html>
 <script type="text/javascript">
-var dataSet = [
-    <?php 
-$query = "SELECT * FROM listacursos 
-          WHERE estado = 0
-          ORDER BY gstIdlsc ASC";
-$resultado = mysqli_query($conexion, $query);
-  $n=0;
-      while($data = mysqli_fetch_array($resultado)){ 
-        if ($data['gstVignc'] == 101){
-          $gstVignc = "UNICA VEZ";
-
-        } else {
-          $gstVignc = $data['gstVignc'].' AÑOS';
-        }
-
-        if($data['gstTmrio'] == 0){
-          $temario = "Falta cargar";
-
-        }
-$n++;
-
-$gstIdlsc = $data['gstIdlsc'];
-//print_r($data['gstTitlo']);
-//,"<?php //echo  $data['gstTitlo']
-      ?>
-
-    ["<?php echo  $n?>", '<?php echo  $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
-        "<?php echo $data['gstPrfil']?>", "<?php echo $data['gstDrcin']?>", "<?php echo $data['gstCntnc']?>",
-        "<?php echo $gstVignc ?>",
-        "<?php if($data['gstTmrio'] == '0'){ echo "<span style='text-align: center;'>N/A</span>";} else { echo "<a href='{$data['gstTmrio']}' target='_blanck'><img src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;' ></a>";} ?>",
-        // <a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalUpdate'><i class='fa fa-file-pdf-o text-info'></i></a>
-        "<?php echo "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"?>"
-    ],
 
 
-    <?php } ?>
-];
 
-var tableGenerarReporte = $('#data-table-concurso').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    orderCellsTop: true,
-    fixedHeader: true,
-    data: dataSet,
-    columns: [{
-            title: "ID"
-        },
-        {
-            title: "TÍTULO"
-        },
-        {
-            title: "TIPO"
-        },
-        {
-            title: "PERFIL"
-        },
-        {
-            title: "DURACIÓN"
-        },
-        {
-            title: "DOCUMENTO"
-        },
-        {
-            title: "VIGENCIA"
-        },
-        {
-            title: "TEMARIO"
-        },
-        {
-            title: "ACCIÓN"
-        }
-
-    ],
-});
 
 // $(document).ready(function() {
 //     var table = $('#example').DataTable({
@@ -715,10 +642,14 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
         }]
     });
+
+    detalles("#example tbody",table);
+
+
     $('#example thead tr').clone(true).appendTo('#example thead');
 
         $('#example thead tr:eq(1) th').each(function(i) {
@@ -735,12 +666,74 @@ $(document).ready(function() {
             });
         });
 
+
+
     $('#example tbody').on('click', 'a', function() {
         var data = table.row( $(this).parents('tr') ).data();
-        alert( "Es el ID: "+ data[0] );
+        //alert( "Es el ID: "+ data[0] );
+
+        gstIdlsc = data[0];
+
+    $.ajax({
+        url: '../php/conCurso.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+        for (i = 0; i < res.length; i++) {
+            if (obj.data[i].gstIdlsc == gstIdlsc) {
+
+                datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
+
+                var d = datos.split("*");
+                $("#modalVal #AgstIdlsc").val(d[0]);
+                $("#AgstIdlsc #AgstIdlsc").val(d[0]);
+                $("#modalUpdate #Idlsc").val(d[0]);
+                $("#modalVal #AgstTitlo").val(d[1]);
+                $("#modalUpdate #AgstTitlo").val(d[1]);
+                $("#modalVal #AgstTipo").val(d[2]);
+                $("#gstPrfil").html(d[3]);
+                $("#modalVal #AgstCntnc").val(d[4]);
+
+                Ahr = d[5].substr(0, 2);
+                Amin = d[5].substr(8, 2);
+                //                Atmp = d[5].substr(6,4);
+
+                $("#modalVal #Ahr").val(Ahr);
+                $("#modalVal #Amin").val(Amin);
+
+                $("#modalVal #AgstVignc").val(d[6]);
+                $("#modalVal #AgstObjtv").val(d[7]);
+                $("#modalVal #AgstTmrio").val(d[8]);
+                $("#modalUpdate #AgstTmrio").val(d[8]);
+                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
+                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+
+            }
+        }
+    })
+
+
     });
    
+
+ 
+
+
 });
+
+   function detalles(tbody,table){
+
+    $(tbody).on("click", "a.eliminar", function(){
+        var data = table.row($(this).parents("tr")).data();   
+        //var gstIdlsc = $().val(data.gstIdlsc);
+         $("#modal-eliminar #EgstIdlsc").val(data[0]);
+
+      });
+    }
+
 </script>
 <style>
     #example
