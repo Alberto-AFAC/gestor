@@ -182,18 +182,18 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="col-sm-4">
                        <label class="label2">CURP</label>
-                       <i class="ion-ios-checkmark iconoInput" id="labelvalid"  style="display:none;"></i>
-                       <i class="ion-ios-close iconoInput" id="labelinval"  style=" color: #F10C25; display:none;"></i>
+                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalid"  style="display:none;"></i>
+                       <i class="ion-ios-close iconoInput" id="labelinval"  style=" color: #F10C25; display:none;"></i> -->
                        <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
-                       <label class="label label-success" id="resultado" style="display:none;"><i class="fa fa-check-circle-o"></i></label> 
+                       <!-- <label class="label label-success" id="resultado" style="display:none;"><i class="fa fa-check-circle-o"></i></label>  -->
                        <!-- <label class="label label-danger" id="resultado1"  style="display:none;">NO VALIDO</label>  -->
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label class="label2">RFC</label>
-                       <i class="ion-ios-checkmark iconoInput" id="labelvalidrfc"  style="display:none;"></i>
-                       <i class="ion-ios-close iconoInput" id="labelinvarfc"  style=" color: #F10C25; display:none;"></i>
+                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalidrfc"  style="display:none;"></i>
+                       <i class="ion-ios-close iconoInput" id="labelinvarfc"  style=" color: #F10C25; display:none;"></i> -->
                        <input type="tex" maxlength="12" oninput="validarInputRF(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstRfc" name="gstRfc" > 
                        <label id="resultado1"></label> 
                     </div>
