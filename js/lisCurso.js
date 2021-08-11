@@ -613,19 +613,19 @@ function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
         check6c.checked = true;
         check6c.style.display = 'none';
-        che1.style.display = '';
+        che6.style.display = '';
     }else{
         check6c.checked = false;
-        che1.style.display = 'none';
+        che6.style.display = 'none';
     }
 
     if (cer[20]== "CONFIRMADO")  {
         check1c.checked = true;
         check1c.style.display = 'none';
-        che6.style.display = '';
+        che1.style.display = '';
     }else{
         check1c.checked = false;
-        che6.style.display = 'none';
+        che1.style.display = 'none';
     }
 
 
