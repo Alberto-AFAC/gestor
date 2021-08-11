@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE proceso = 'PENDIENTE' GROUP by cursos.idmstr,cursos.idinst ORDER BY id_curso DESC ";
+	$query = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE proceso = 'PENDIENTE' GROUP by cursos.codigo ORDER BY cursos.proceso DESC ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
