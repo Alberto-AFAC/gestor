@@ -79,7 +79,7 @@ $inspector = mysqli_query($conexion,$sql);
 
             <section class="content-header">
                 <h1>
-                    CURSOS ACREEDITADOS
+                    CURSOS ACREDITADOS
                 </h1>
             </section>
             <!-- Main content -->

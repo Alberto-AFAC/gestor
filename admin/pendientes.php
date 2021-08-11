@@ -79,7 +79,7 @@ $inspector = mysqli_query($conexion,$sql);
 
             <section class="content-header">
                 <h1>
-                    CURSOS POR ACREEDITAR
+                    CURSOS POR PENDIENTES 
                 </h1>
             </section>
             <!-- Main content -->

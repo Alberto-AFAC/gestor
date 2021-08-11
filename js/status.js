@@ -49,6 +49,7 @@ $.ajax({
     var finalizado = 0;
     var acreditar = 0;
     var vencer = 0;
+    var vencio = 0;
 
     for (i = 0; i < res.length; i++) {
 
@@ -77,24 +78,39 @@ $.ajax({
 
         //alert(factual+'=='+finaliza);
 
-        if (factual <= fcurso) {
+        // if (factual <= fcurso) {
 
-            // alert(factual+' === '+fcurso);
+        //     // alert(factual+' === '+fcurso);
+
+        //     var termino = new Date(obj.data[i].fechaf);
+        //     var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
+
+        //     finaliza.setMonth(finaliza.getMonth() - 3);
+
+        //     if (factual >= finaliza) {
+        //         vencer++;
+        //     }
+
+        // }
+            if(factual > fcurso && obj.data[i].proceso == "PENDIENTE"){
+                vencio++;
+            }
+
+            if(factual <= fcurso && obj.data[i].proceso == "PENDIENTE"){
 
             var termino = new Date(obj.data[i].fechaf);
             var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
 
             finaliza.setMonth(finaliza.getMonth() - 3);
 
-            if (factual >= finaliza) {
+            if(factual >= finaliza && obj.data[i].proceso == "PENDIENTE"){
                 vencer++;
             }
-        }
 
-        // if(factual >= finaliza){
-        //             alert('VENCIÓ');    
-        // }
+            }
 
+            totalv =  vencio + vencer;
+      
 
 
     }
@@ -102,6 +118,6 @@ $.ajax({
     $("#progrmas").html(progrmas);
     $("#finalizado").html(finalizado);
     $("#acreditar").html(acreditar);
-    $("#vencer").html(vencer);
+    $("#vencer").html(totalv);
 
 });
