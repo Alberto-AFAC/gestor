@@ -627,6 +627,82 @@ var tableGenerarReporte = $('#data-table-concurso').DataTable({
     ],
 });
 
+// $(document).ready(function() {
+//     var table = $('#example').DataTable({
+        
+//         "language": {
+//         "searchPlaceholder": "Buscar datos...",
+//         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+//     },
+//     "order": [[ 0, "desc" ]],
+//         "ajax": "../php/consdaTable.php",
+//         "columnDefs": [{
+//             "targets": -1,
+//             "data": null,
+//             "defaultContent": '<button>Editar</button>'
+
+//         }]
+//     });
+//     $('#example thead tr').clone(true).appendTo('#example thead');
+
+//         $('#example thead tr:eq(1) th').each(function(i) {
+//             var title = $(this).text(); //es el nombre de la columna
+//             $(this).html('<input type="text"  placeholder="Buscar" />');
+
+//             $('input', this).on('keyup change', function() {
+//                 if (table.column(i).search() !== this.value) {
+//                     table
+//                         .column(i)
+//                         .search(this.value)
+//                         .draw();
+//                 }
+//             });
+//         });
+
+//     $('#example tbody').on('click', 'button', function() {
+//         var data = table.row( $(this).parents('tr') ).data();
+//         alert( "Es el ID: "+ data[0] );
+//     });
+   
+// });
+// $(document).ready(function() {
+// //     var table = $('#example').DataTable({
+        
+// //         "language": {
+// //         "searchPlaceholder": "Buscar datos...",
+// //         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+// //     },
+// //     "order": [[ 0, "desc" ]],
+// //         "ajax": "../php/consdaTable.php",
+// //         "columnDefs": [{
+// //             "targets": -1,
+// //             "data": null,
+// //             "defaultContent": '<button>Editar</button>'
+
+// //         }]
+// //     });
+// //     $('#example thead tr').clone(true).appendTo('#example thead');
+
+// //         $('#example thead tr:eq(1) th').each(function(i) {
+// //             var title = $(this).text(); //es el nombre de la columna
+// //             $(this).html('<input type="text"  placeholder="Buscar" />');
+
+// //             $('input', this).on('keyup change', function() {
+// //                 if (table.column(i).search() !== this.value) {
+// //                     table
+// //                         .column(i)
+// //                         .search(this.value)
+// //                         .draw();
+// //                 }
+// //             });
+// //         });
+
+// //     $('#example tbody').on('click', 'button', function() {
+// //         var data = table.row( $(this).parents('tr') ).data();
+// //         alert( "Es el ID: "+ data[0] );
+// //     });
+   
+// // });
 $(document).ready(function() {
     var table = $('#example').DataTable({
         
@@ -639,7 +715,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": '<button>Editar</button>'
+            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a><a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
         }]
     });
@@ -659,7 +735,7 @@ $(document).ready(function() {
             });
         });
 
-    $('#example tbody').on('click', 'button', function() {
+    $('#example tbody').on('click', 'a', function() {
         var data = table.row( $(this).parents('tr') ).data();
         alert( "Es el ID: "+ data[0] );
     });
