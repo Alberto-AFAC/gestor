@@ -480,9 +480,12 @@ $psto = mysqli_query($conexion,$sql);
                     <div class="col-sm-offset-0 col-sm-2">
                     <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrar();">ACEPTAR</button>
                     </div>
-                    <b><p class="alert alert-danger text-center padding error" id="danger">Los datos ya están agregados </p></b>
+                    
+                    <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos</p></b>
+                    
+                    <b><p class="alert alert-info text-center padding error" id="succe">Los datos ya están agregados </p></b>
 
-                    <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b>
+                   <!--  <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b> -->
 
                     <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
                     </div>

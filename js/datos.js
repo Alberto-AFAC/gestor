@@ -1580,7 +1580,7 @@ function registrar() {
 
     datos = 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstNucrt=' + gstNucrt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstSigID=' + gstSigID + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDara=' + gstIDara + '&gstAcReg=' + gstAcReg + '&gstIDuni=' + gstIDuni + '&opcion=registrar';
 
-    //alert(datos);
+//    alert(datos);
     if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstNucrt == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '' || gstNmpld == '' || gstIdpst == '' || gstAreID == '' || gstPstID == '' || gstSpcID == '' || gstCargo == '' || gstIDCat == '' || gstIDSub == '' || gstCorro == '' || gstIDara == '' || gstAcReg == '' || gstIDuni == '' || gstCinst == '' || gstFeing == '') {
 
         $('#empty').toggle('toggle');
@@ -1594,6 +1594,7 @@ function registrar() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
+
             if (respuesta == 0) {
                 // alert(respuesta);
                 Swal.fire({
@@ -1611,6 +1612,13 @@ function registrar() {
                     cancelButtonAriaLabel: 'Thumbs down'
                         // timer: 2900
                 });
+            }else if(respuesta==2){
+                //Que el usuario este duplicado en número de empleado o nombre y apellidos 
+                $('#succe').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe').toggle('toggle');
+                }, 2000);
+
             } else {
                 $('#danger').toggle('toggle');
                 setTimeout(function() {

@@ -7,9 +7,12 @@ $informacion = [];
 
 if($opcion === 'procurso'){
 	
+$n = consulta($conexion);
+
 
 //$idcord = $_POST['idcord'];
-
+$result = $n + 1;
+$codigo = 'FO'.$result;
 $id_mstr = $_POST['id_mstr'];
 $hcurso = $_POST['hcurso'];
 $fcurso = $_POST['fcurso'];
@@ -19,6 +22,8 @@ $sede = $_POST['sede'];
 $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
 
+
+
 //proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$link, $conexion);
 
 $id = $_POST['idinsps'].','.$idinst;
@@ -27,7 +32,7 @@ $valor = explode(",", $id);
 
 foreach ($valor as $idinsps) {
 	
-	if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
+	if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link,$codigo, $conexion))
 		{ 
 			echo "0";	
 		}else{	
@@ -69,7 +74,7 @@ $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
 $idinsps= $_POST['idinsp'];
 
-if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
+if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link,$codigo, $conexion))
 		{	echo "0";	}else{	echo "1";	}
 
 //ACTUALIZAR EVALUACIÓN
@@ -84,16 +89,29 @@ if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$
 	}else{	
 		echo "1";	}
 }
+
+//CONTEO DE CURSO
+
+function consulta($conexion){
+$query = "SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP by cursos.codigo";
+	$resultado = mysqli_query($conexion,$query);
+
+	$n=0;
+	while ( $resul = mysqli_fetch_row($resultado) ) {
+	 	$n++;
+	 } 
+	 return $n;
+}
+
 //FIN ACTUALIZAR EVALUACIÓN
+function proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link,$codigo, $conexion){
 
-function proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
 
-
-	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND idmstr='$id_mstr' AND idinst='$idinst' AND proceso = 'PENDIENTE' AND estado = 0 ";
+	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,0);";
+			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;

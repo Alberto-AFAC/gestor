@@ -79,14 +79,22 @@ $f = $fecha;
 
 // WHERE personal.estado = 0
 // ORDER BY gstFeing DESC";
-    $sql = "SELECT personal.gstIdper, personal.gstNombr, personal.gstApell, personal.gstCorro, categorias.gstCatgr, personal.gstIDCat, categorias.gstCsigl, personal.gstFeing, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Feingreso 
-FROM personal 
-INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
-INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
-WHERE personal.estado = 0 ORDER BY gstFeing DESC
-
-";        
-
+    $sql = "SELECT 
+    personal.gstIdper,
+    personal.gstNombr,
+    personal.gstApell,
+    personal.gstCorro,
+    categorias.gstCatgr,
+    personal.gstIDCat,
+    categorias.gstCsigl,
+    personal.gstFeing,
+    DATE_FORMAT(personal.gstFeing,
+    '%d/%m/%Y') as Feingreso,
+    personal.gstCargo 
+    FROM personal 
+    INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
+    INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+    WHERE personal.gstCargo!='INSTRUCTOR' AND personal.estado = 0 ORDER BY gstFeing DESC";        
 	$person = mysqli_query($conexion,$sql);
 	while ($per = mysqli_fetch_row($person)) {
 		$fechaActual = date_create(date('Y-m-d')); 
@@ -94,7 +102,7 @@ WHERE personal.estado = 0 ORDER BY gstFeing DESC
 		$interval = date_diff($FechaIngreso, $fechaActual,false);  
 		$antiguedad = intval($interval->format('%R%a')); 
 	
-		// if ($antiguedad < 0) {
+        // if ($antiguedad < 0) {
 		// 	echo "Mayor 1";
 		// }else if ($antiguedad == 0) {
 		// 	echo "iguales";
@@ -143,23 +151,21 @@ if($fecha==101){
 
 
 ?>
-                                    <td style="width: 5%;"><input disabled="" type='checkbox' 
-                                            value='<?php echo $per[0]?>' /></td>
-                                    <td><?php echo $per[1]?></td>
-                                    <td><?php echo $per[2]?></td>
-                                    <td><?php echo $per[3]?></td>
-                                    <td><?php echo $per[4]?></td>
-
-
-                            <?php 
-                            if($antiguedad <=30){
-                                echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-                            }else {
-                                echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-                            }
-
-echo "<td style='color: white; background-color:rgba(0, 128, 0, 0.658);'>ÚNICA VEZ</td>";
-
+<!--                 
+                <td style="width: 5%;"><input disabled="" type='checkbox' 
+                value='<?php //echo $per[0]?>' /></td>
+                <td><?php //echo $per[1]?></td>
+                <td><?php //echo $per[2]?></td>
+                <td><?php //echo $per[3]?></td>
+                <td><?php //echo $per[4]?></td>
+ -->
+                <?php 
+                // if($antiguedad <=30){
+                // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+                // }else {
+                // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+                // }
+                // echo "<td style='color: white; background-color:rgba(0, 128, 0, 0.658);'>ÚNICA VEZ</td>";
 
 
 }else
@@ -185,22 +191,20 @@ echo "<td style='color: white; background-color:#AC2925;'>$fechav</td>";
 }else if($f3 <= $f2){
 //$fech = 'vigente';
     ?>
-                                        <td style="width: 5%;"><input disabled="" type='checkbox' 
-                                            value='<?php echo $per[0]?>' /></td>
-                                    <td><?php echo $per[1]?></td>
-                                    <td><?php echo $per[2]?></td>
-                                    <td><?php echo $per[3]?></td>
-                                    <td><?php echo $per[4]?></td>
+                    <td style="width: 5%;"><input disabled="" type='checkbox' 
+                    value='<?php echo $per[0]?>' /></td>
+                    <td><?php echo $per[1]?></td>
+                    <td><?php echo $per[2]?></td>
+                    <td><?php echo $per[3]?></td>
+                    <td><?php echo $per[4]?></td>
+                    <?php 
+                    if($antiguedad <=30){
+                    echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+                    }else {
+                    echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+                    }
+                    echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
 
-
-                            <?php 
-                            if($antiguedad <=30){
-                                echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-                            }else {
-                                echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-                            }
-
-echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
 }else if($f3 >= $f2){
 //$fech = 'por vencer';
     ?>
