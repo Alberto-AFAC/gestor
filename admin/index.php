@@ -139,7 +139,7 @@ include('header.php');
                                     <div id="instructor"></div>
                                 </h3>
 
-                                <p>Total de instructores y Coordinadores</p>
+                                <p>Total, Instructores y Coordinadores</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-person"></i>

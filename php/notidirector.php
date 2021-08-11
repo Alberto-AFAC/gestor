@@ -2,9 +2,16 @@
 	include("../conexion/conexion.php");
 	session_start();
 
-	$id = $_SESSION['usuario']['id_usu'];
+	 	$id = $_SESSION['usuario']['id_usu'];
+
+		$quer = "SELECT gstAreID FROM personal WHERE gstIdper = $id AND estado = 0 ";
+		$resul = mysqli_query($conexion, $quer);
+
+		$dato = mysqli_fetch_row($resul);
+		$eje = $dato[0];
+
 	// $Direje= $datos[1];
-	$query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO'  AND estado = 0 ORDER BY gstCargo DESC";
+	$query = "SELECT * FROM personal WHERE gstAreID = $eje AND `gstCargo` = 'NUEVO INGRESO' AND estado = 0 ORDER BY gstCargo DESC";
 	$resultado = mysqli_query($conexion, $query);
 	if(!$resultado){
 		die("error");

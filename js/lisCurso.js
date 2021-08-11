@@ -274,10 +274,8 @@ function curso(cursos) {
 
     gstIdlsc = d[0];
 
-
     $("#impri #gstIdlstc").val(d[0]);
     $("#impri #gstTitulo").val(d[1]);
-
     $("#Dtall #gstTitlo").val(d[1]);
     $("#Dtall #gstTipo").val(d[2]);
     $("#Dtall #gstPrfil").val(d[3]);
@@ -292,6 +290,9 @@ function curso(cursos) {
     $("#Dtall #sede").val(d[12]);
     $("#Dtall #modalidads").val(d[14]);
     $("#Dtall #linkcur").val(d[13]);
+
+    fecha = d[9];
+
     //$("#Dtall #contracur").val(d[15]); falta la contraseña en base de datos
 
     modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
@@ -332,7 +333,7 @@ function curso(cursos) {
                 cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso;
 
 
-                if (obj.data[i].idmstr == gstIdlsc && obj.data[i].proceso == 'PENDIENTE') {
+                if (obj.data[i].idmstr == gstIdlsc && obj.data[i].proceso == 'PENDIENTE' && obj.data[i].fcurso == fecha) {
 
                     if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR' || obj.data[i].gstCargo == 'ADMINISTRATIVO') {
 
@@ -352,7 +353,7 @@ function curso(cursos) {
                     } else {}
 
                     //ISPECTOR
-                    if (obj.data[i].gstCargo == 'INSTRUCTOR' || obj.data[i].gstCargo == 'COORDINADOR') {
+                    if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].fcurso == fecha || obj.data[i].gstCargo == 'COORDINADOR' && obj.data[i].fcurso == fecha) {
                         html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td></td>" + "<td> <a type='button' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-agregar'>" + obj.data[i].gstCargo + "</a> <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                     }
 
