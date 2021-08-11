@@ -554,7 +554,7 @@ var dataSet = [
     <?php 
 $query = "SELECT * FROM listacursos 
           WHERE estado = 0
-          ORDER BY gstIdlsc DESC";
+          ORDER BY gstIdlsc ASC";
 $resultado = mysqli_query($conexion, $query);
   $n=0;
       while($data = mysqli_fetch_array($resultado)){ 
@@ -634,11 +634,12 @@ $(document).ready(function() {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+    "order": [[ 0, "desc" ]],
         "ajax": "../php/consdaTable.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            defaultContent: '<a href="#" onclick="dato({$gstIdlsc})" type="button" class="btn btn-default" data-toggle="modal" data-target="#modalVal"><i class="fa ion-compose text-info"></i></a><a href="#" onclick="eliminar({$gstIdlsc})" type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-eliminar"><i class="fa fa-trash-o text-danger"></i></a>'
+            "defaultContent": '<button>Editar</button>'
 
         }]
     });
@@ -658,15 +659,11 @@ $(document).ready(function() {
             });
         });
 
-    // $('#example tbody').on('click', 'button', function() {
-    //   ;
-    //     dato(data['gstIdlsc']);
-    // });
-    $('#example').on( 'click', 'a.remove', function (e) {
-        var data = table.row($(this).parents('tr')).data()
-            .buttons( { "label": "Delete", "fn": function () { editor.submit() } } )
-            .editar( $(this).closest('tr') );
-    } );
+    $('#example tbody').on('click', 'button', function() {
+        var data = table.row( $(this).parents('tr') ).data();
+        alert( "Es el ID: "+ data[0] );
+    });
+   
 });
 </script>
 <style>
