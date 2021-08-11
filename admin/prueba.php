@@ -69,27 +69,34 @@ include ("../conexion/conexion.php");
 
 
 
-$idcat = '1,7,9';
+// $idcat = '1,7,9';
 
-$valor = explode(",", $idcat);
+// $valor = explode(",", $idcat);
 
-foreach ($valor as $id) {
-		echo $id;
-		echo '<br>';	
+// foreach ($valor as $id) {
+// 		echo $id;
+// 		echo '<br>';	
 
 
 
-$sql = "SELECT gstIdper, gstNombr,gstApell,gstIDCat FROM personal WHERE gstIDCat = $id AND estado = 0";
-$person = mysqli_query($conexion,$sql);
+// $sql = "SELECT gstIdper, gstNombr,gstApell,gstIDCat FROM personal WHERE gstIDCat = $id AND estado = 0";
+// $person = mysqli_query($conexion,$sql);
 
-while ($per = mysqli_fetch_row($person)) {
-		// if($per[3]!=0){
-		 echo $per[1];
-		 echo '<br>';
-		// }		
-}
+// while ($per = mysqli_fetch_row($person)) {
+// 		// if($per[3]!=0){
+// 		 echo $per[1];
+// 		 echo '<br>';
+// 		// }		
+// }
 
-	}
+// 	}
+
+
+
+
+
+
+
 
 
 ?>
@@ -120,16 +127,16 @@ termino.setDate(termino.getDate() + 1);
 var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
 //alert(ftermino);
 
- if(factual >= finaliza){
- 	alert('VENCIDO');
- }else 
-if(factual <= ftermino){
-alert('VIGENTE');
- }
-else 
-if(factual >= ftermino){
-	alert('POR VENCER');	
-}
+//  if(factual >= finaliza){
+//  	alert('VENCIDO');
+//  }else 
+// if(factual <= ftermino){
+// alert('VIGENTE');
+//  }
+// else 
+// if(factual >= ftermino){
+// 	alert('POR VENCER');	
+// }
 
 
 // }else{
@@ -138,3 +145,4 @@ if(factual >= ftermino){
 
 
 </script>
+

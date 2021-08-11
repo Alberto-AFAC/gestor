@@ -1613,7 +1613,7 @@ function registrar() {
                         // timer: 2900
                 });
             }else if(respuesta==2){
-
+                //Que el usuario este duplicado en número de empleado o nombre y apellidos 
                 $('#succe').toggle('toggle');
                 setTimeout(function() {
                     $('#succe').toggle('toggle');
