@@ -25,7 +25,7 @@ if($data["gstVignc"] == 101){
 if($data['gstTmrio'] == '0'){
     $temario = 'N/A';
 } else {
-    $temario = $data["gstTmrio"];
+    $temario = "<a href='{$data['gstTmrio']}' target='_blanck'><img src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;' ></a>";
 }
 
 

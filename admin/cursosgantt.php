@@ -84,7 +84,7 @@ $inspector = mysqli_query($conexion,$sql);
                                     <!--TODO AQUI VA-->
 
                                     <div id="legend"></div>
-                                    <!-- <div class="toolbar">
+                                    <div class="toolbar">
     
     <label for="startMonth">Selecciona mes: </label>
     
@@ -116,7 +116,7 @@ $inspector = mysqli_query($conexion,$sql);
     
     </select>
   
-  </div>  -->
+  </div> 
                                     <div style="width: 96%; height: 400px;" id="container"></div>
                                 </div>
 
