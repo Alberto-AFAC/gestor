@@ -271,38 +271,6 @@ $inspector = mysqli_query($conexion,$sql);
     </form>
 
     <!-- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
-    <form class="form-horizontal" action="" method="POST">
-        <div class="modal fade" id="modal-evalcurso">
-            <div class="modal-dialog" style="width:500px long:200px" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                        <h4><i class="fa fa-question-circle" style="color:#08308A"></i>
-                            EVALUACIÓN DE REACCIÓN
-                        </h4>
-                        <br>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                 <label1 style="font-size: 14px; text-align:Center;">LA EVALUACIÓN DEL CURSO SE GENERO:</label1>
-                                 <input type="text">
-                            </div> 
-                            <br>
-                            <br>
-                            <div class="col-sm-12">
-                                  <label1 style="font-size: 14px; text-align:Center;">FECHA DE LA EVALUACIÓN:</label1>
-                                  <input type="text">
-                            </div> 
-                        </div>  
-                        <br>
-                        <section class="content">
-                        </div>    
-                                    
-        </section>
-        </div>
-        </div>
-        </div>
-    </form>
     <!-- FIN EVALUACIÓN CURSO -->
 
     <!-- inicia la evaluación DEL INSTRUCTOR -->
