@@ -448,7 +448,7 @@ function evaluar() {
 
   if($('input[name=preg14]:checked').val()=='OTROS'){
     
-        preg14 = document.getElementById('otros1').value;
+        preg14 = document.getElementById('otro').value;
 
     }
 
