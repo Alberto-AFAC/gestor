@@ -229,7 +229,7 @@
                                     </section>
                                 </div>
                                 <!-- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
-
+                                <style type="text/css">#modal-evalcurso span{color: red;font-size: 1.5em; display: none;}</style>
                                 <form class="form-horizontal" action="" method="POST">
                                     <div class="modal fade" id="modal-evalcurso">
                                         <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
@@ -257,16 +257,17 @@
                                                                 <div class="nav-tabs-custom">
                                                                     <div class="box-header with-border">
                                                                         <form action="" class="formulario1">
+                                                                          <input type="hidden" name="idcursoen" id="idcursoen">
+                                                  
                                                                             <div class="radio">
                                                                                 <div class="form-group ">
                                                                                     <div class="col-sm-8">
-                                                                                        <label style="font-size:16px">ID
-                                                                                            DEL CURSO:</label>
+                                                                                        <label style="font-size:16px">FOLIO DEL CURSO:</label>
                                                                                     </div>
                                                                                     <div class="col-sm-8">
                                                                                         <input class="col-sm-2"
-                                                                                            type="text" name="idcursoen"
-                                                                                            id="idcursoen"
+                                                                                            type="text" name="codigo"
+                                                                                            id="codigo"
                                                                                             style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
                                                                                             disabled="">
                                                                                     </div>
@@ -297,7 +298,7 @@
                                                                         <div class="box-header with-border">
                                                                             <h3 class="box-title">SE ESPECIFICÓ LOS
                                                                                 OBJETIVOS AL INICIO DEL CURSO,
-                                                                                EN FORMA CLARA Y COMPRENSIBLE? </h3>
+                                                                                EN FORMA CLARA Y COMPRENSIBLE? <span id="span1">*</span></h3>
                                                                         </div>
                                                                         <form class="form-horizontal">
                                                                             <div class="box-body">
@@ -348,7 +349,7 @@
                                                             <div class="radio">
                                                                 <div class="box-header with-border">
                                                                     <h3 class="box-title">SE EXPLICÓ EL MODO DE
-                                                                        EVALUACIÓN AL INICIO DEL CURSO?</h3>
+                                                                        EVALUACIÓN AL INICIO DEL CURSO? <span id="span2">*</span></h3>
                                                                 </div>
                                                                 <form class="form-horizontal">
                                                                     <div class="box-body">
@@ -391,7 +392,7 @@
                                                         <div class="radio">
                                                             <div class="box-header with-border">
                                                                 <h3 class="box-title">EL INSTRUCTOR/A CONTESTÓ LAS DUDAS
-                                                                    EN TIEMPO Y FORMA?</h3>
+                                                                    EN TIEMPO Y FORMA? <span id="span3">*</span></h3>
                                                             </div>
                                                             <form class="form-horizontal">
                                                                 <div class="box-body">
@@ -435,7 +436,7 @@
                                                         <div class="box-header with-border">
                                                             <h3 class="box-title">LOS CONOCIMIENTOS ADQUIRIDOS SON
                                                                 APLICABLES A TU PUESTO DE
-                                                                TRABAJO?</h3>
+                                                                TRABAJO? <span id="span4">*</span></h3>
                                                         </div>
                                                         <form class="form-horizontal">
                                                             <div class="box-body">
@@ -478,31 +479,31 @@
                                                 <div class="radio">
                                                     <div class="box-header with-border">
                                                         <h3 class="box-title">CONSIDERAS QUE EL CONTENIDO DEL CURSO FUE
-                                                            SUFICIENTE?</h3>
+                                                            SUFICIENTE? <span id="span5">*</span></h3>
                                                     </div>
                                                     <form class="form-horizontal">
                                                         <div class="box-body">
                                                             <div class="form-group">
                                                                 <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5" id="r17">
+                                                                    <input type="radio" name="preg5" value="DEFICIENTE" id="r17">
                                                                     <label for="r17">DEFICIENTE</label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5" id="r18">
+                                                                    <input type="radio" name="preg5" value="NO SATISFACTORIO"  id="r18">
                                                                     <label for="r18">NO SATISFACTORIO</label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5" id="r19">
+                                                                    <input type="radio" name="preg5" value="SATISFACTORIO" id="r19">
                                                                     <label for="r19">SATISFACTORIO</label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5" id="r20">
+                                                                    <input type="radio" name="preg5" value="EXCELENTE" id="r20">
                                                                     <label for="r20">EXCELENTE</label>
                                                                 </div>
                                                             </div>
@@ -516,7 +517,7 @@
                                     <form name="form6" action="" class="formulario1">
                                         <div class="radio">
                                             <div class="box-header with-border">
-                                                <h3 class="box-title">EL CURSO CUBRIÓ TUS EXPECTATIVAS?</h3>
+                                                <h3 class="box-title">EL CURSO CUBRIÓ TUS EXPECTATIVAS? <span id="span6">*</span></h3>
                                             </div>
                                             <form class="form-horizontal">
                                                 <div class="box-body">
@@ -559,7 +560,7 @@
                                         <div class="box-header with-border">
                                             <h3 class="box-title">EL CONTENIDO DEL CURSO AUMENTÓ TUS CONOCIMIENTOS Y
                                                 COMPRENSIÓN DE LOS
-                                                TEMAS REVISADOS?</h3>
+                                                TEMAS REVISADOS? <span id="span7">*</span></h3>
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
@@ -600,7 +601,7 @@
                                     <div class="box-header with-border">
                                         <h3 class="box-title">EL TIEMPO PARA ENTREGAR LAS ACTIVIDADES, FUE SUFICIENTE
                                             PARA CUMPLIR
-                                            CON ELLAS?</h3>
+                                            CON ELLAS? <span id="span8">*</span></h3>
                                     </div>
                                     <form class="form-horizontal">
                                         <div class="box-body">
@@ -638,7 +639,7 @@
                         <form name="form9" action="" class="formulario1">
                             <div class="radio">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">LA PRESENTACIÓN DEL CONTENIDO, FUE FÁCIL DE REVISAR?</h3>
+                                    <h3 class="box-title">LA PRESENTACIÓN DEL CONTENIDO, FUE FÁCIL DE REVISAR? <span id="span9">*</span></h3>
                                 </div>
                                 <form class="form-horizontal">
                                     <div class="box-body">
@@ -676,7 +677,7 @@
                 <form name="form10" action="" class="formulario1">
                     <div class="radio">
                         <div class="box-header with-border">
-                            <h3 class="box-title">LA EXPLICACIÓN DE LAS TAREAS, FUERON CLARAS Y SENCILLAS?</h3>
+                            <h3 class="box-title">LA EXPLICACIÓN DE LAS TAREAS, FUERON CLARAS Y SENCILLAS? <span id="span10">*</span></h3>
                         </div>
                         <form class="form-horizontal">
                             <div class="box-body">
@@ -715,7 +716,7 @@
                 <div class="radio">
                     <div class="box-header with-border">
                         <h3 class="box-title">EL TIEMPO CON EL QUE RECIBIÓ LA INFORMACIÓN (INVITACIÓN, TEMARIO,
-                            ETC.) AL CURSO FUE ADECUADO?</h3>
+                            ETC.) AL CURSO FUE ADECUADO? <span id="span11">*</span></h3>
                     </div>
                     <form class="form-horizontal">
                         <div class="box-body">
@@ -754,7 +755,7 @@
                 <div class="radio">
                     <div class="box-header with-border">
                         <h3 class="box-title">CÓMO FUE EL MATERIAL DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN, TEXTOS,
-                            ENLACES) UTILIZADO?</h3>
+                            ENLACES) UTILIZADO? <span id="span12">*</span></h3>
                     </div>
                     <form class="form-horizontal">
                         <div class="box-body">
@@ -793,7 +794,7 @@
                 <div class="radio">
                     <div class="box-header with-border">
                         <h3 class="box-title">MENCIONA ALGUNA MEJORA QUE SE PUDIERA REALIZAR A ESTE PROCESO DE
-                            APRENDIZAJE</h3>
+                            APRENDIZAJE <span id="span13">*</span></h3>
                     </div>
                     <form class="form-horizontal">
                         <div class="box-body">
@@ -814,7 +815,7 @@
             <form name="form14" action="" class="formulario1">
                 <div class="radio">
                     <div class="box-header with-border">
-                        <h3 class="box-title">DÓNDE REALIZASTE TU CURSO?</h3>
+                        <h3 class="box-title">DÓNDE REALIZASTE TU CURSO? <span id="span14">*</span></h3>
                     </div>
                     <form class="form-horizontal">
                         <div class="box-body" id=pregunta14>
@@ -840,7 +841,7 @@
                                 <div class="col-sm-12">
                                     <input type="radio" name="preg14" value="OTROS" id="r52">
                                     <label for="r52">OTROS</label>
-                                    <input type="text" name="preg14" id="otros" onkeyup="mayus(this);"
+                                    <input type="text" name="otro" id="otro" onkeyup="mayus(this);"
                                         placeholder="TU RESPUESTA"
                                         style="background-color: #E5E7EC; border: 0; outline: none">
                                 </div>
@@ -857,7 +858,7 @@
             <form name="form15" action="" class="formulario1">
                 <div class="radio">
                     <div class="box-header with-border">
-                        <h3 class="box-title">DÓNDE REALIZASTE TU CURSO?</h3>
+                        <h3 class="box-title">DÓNDE REALIZASTE TU CURSO? <span id="span15">*</span></h3>
                     </div>
                     <form class="form-horizontal">
                         <div class="box-body">
@@ -889,13 +890,13 @@
             <form name="form16" action="" class="formulario1">
                 <div class="radio">
                     <div class="box-header with-border">
-                        <h3 class="box-title">COMPARTE TUS COMENTARIOS, QUEJAS, SUGERENCIAS...</h3>
+                        <h3 class="box-title">COMPARTE TUS COMENTARIOS, QUEJAS, SUGERENCIAS...  <span id="span16">*</span></h3>
                     </div>
                     <form class="form-horizontal">
                         <div class="box-body">
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <textarea class="col-sm-12" name="comentarios" id="preg16" rows="5" cols="40"
+                                    <textarea class="col-sm-12" name="preg16" id="preg16" rows="5" cols="40"
                                         onkeyup="mayus(this);"
                                         style="font-size: 18px; border-radius: 5px; background-color: #E5E7EC"
                                         placeholder="ESCRIBE AQUÍ TUS COMENTARIOS"></textarea>
@@ -920,14 +921,22 @@
                 </div>
             </div>
             <b>
-                <p class="alert alert-danger text-center padding error" id="peligro">Los datos ya están agregados
+                <p class="alert alert-danger text-center padding error" id="peligro">Error al agregar datos
                 </p>
             </b>
             <b>
                 <p class="alert alert-success text-center padding exito" id="enviadoexito">¡Se agregaron los datos
                     con éxito!</p>
-            </b>
+               </b>
             <b>
+                <p class="alert alert-info text-center padding error" id="aviso">Los datos ya están agregados
+                </p>
+            </b>
+              <b>
+                <p class="alert alert-warning text-center padding error" id="pregunta">Pregunta obligatoria<strong style=";font-size: 1.7em" > *</strong >
+                </p>
+            </b>
+<!--             <b>
                 <p class="alert alert-warning text-center padding aviso" id="pendiente1">Es necesario agregar la
                     respuesta en la pregunta 1</p>
             </b>
@@ -990,7 +999,7 @@
             <b>
                 <p class="alert alert-warning text-center padding aviso" id="pendiente16">Es necesario agregar la
                     respuesta en la pregunta 16</p>
-            </b>
+            </b> -->
         </div>
     </div>
     </div>
@@ -1048,7 +1057,7 @@
 
 </html>
 
-<?php echo $datos[0];?>
+<?php $datos[0];?>
 
 
 <script type="text/javascript">
