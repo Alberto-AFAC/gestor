@@ -30,7 +30,7 @@ function lisCurso() {
             day = obj.data[i].fechaf.substring(8, 10);
             Finaliza = day + '/' + month + '/' + year;
 
-            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp;
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo;
             if (factual > fcurso && obj.data[i].proceso == "PENDIENTE") {
                 proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
                 //            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td><span style='font-weight: bold; height: 50px; color: #D73925;'>VENCIDO</span></td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";                                
@@ -81,7 +81,7 @@ function lisAcreed() {
             day = obj.data[i].fechaf.substring(8, 10);
             Finaliza = day + '/' + month + '/' + year;
 
-            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp;
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo;
 
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
             if (obj.data[i].proceso == "FINALIZADO") {
@@ -143,7 +143,8 @@ function listPendient() {
 
             // }else 
 
-            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp;
+
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo;
 
 
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
@@ -204,7 +205,7 @@ function listPorvencer() {
             day = obj.data[i].fechaf.substring(8, 10);
             Finaliza = day + '/' + month + '/' + year;
 
-            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp;
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo;
 
 
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
@@ -315,7 +316,7 @@ function curso(cursos) {
                 day = obj.data[i].fechaf.substring(8, 10);
                 Finaliza = day + '/' + month + '/' + year;
 
-                cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj.data[i].confirmar + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp;
+                cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj.data[i].confirmar + "*" + obj.data[i].codigo;
 
 
                 if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'PENDIENTE') {
@@ -323,10 +324,10 @@ function curso(cursos) {
                     if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR' || obj.data[i].gstCargo == 'ADMINISTRATIVO') {
 
                         if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
-                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</td><td>" + "</a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</td><td>" + "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
 
                         } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
-                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <center><a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</center></td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
                         }
                         if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
                             html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
@@ -338,7 +339,7 @@ function curso(cursos) {
                     } else if (obj.data[i].gstCargo == 'COORDINADOR') {
 
                         if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
-                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td><center><a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</center></td><td>" + "</a> <a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</td><td>" + "</a> <a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
 
                         } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
                             html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
@@ -354,7 +355,7 @@ function curso(cursos) {
 
                     //ISPECTOR
                     if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td><center><img src='../dist/img/inspector.svg' width='40px;' title='Inspector' alt='Inspector'></center></td>" + "<td>  <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i > </a></td > </tr>";
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCatgr + "</td><td></td>" + "<td>  <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                     }
 
                 } else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
@@ -425,56 +426,63 @@ function imprimir() {
 function evaluar() {
 
 
-    var idcursoen = document.getElementById('idcursoen').value; //ID CURSO 
+    var idcursoen = document.getElementById('idcursoen').value;//ID CURSO 
+    
+    var preg1 = $('input[name=preg1]:checked').val();//-
+    var preg2 = $('input[name=preg2]:checked').val();// -
+    var preg3 = $('input[name=preg3]:checked').val();//  -
+    var preg4 = $('input[name=preg4]:checked').val();//   -
+    var preg5 = $('input[name=preg5]:checked').val();//    -
+    var preg6 = $('input[name=preg6]:checked').val();//     -
+    var preg7 = $('input[name=preg7]:checked').val();//      -PREGUNTAS RADIO  
+    var preg8 = $('input[name=preg8]:checked').val();//      -
+    var preg9 = $('input[name=preg9]:checked').val();//     -
+    var preg10 = $('input[name=preg10]:checked').val();//  -
+    var preg11 = $('input[name=preg11]:checked').val();// -
+    var preg12 = $('input[name=preg12]:checked').val();//-
 
-    var preg1 = $('input[name=preg1]:checked').val(); //-
-    var preg2 = $('input[name=preg2]:checked').val(); // -
-    var preg3 = $('input[name=preg3]:checked').val(); //  -
-    var preg4 = $('input[name=preg4]:checked').val(); //   -
-    var preg5 = $('input[name=preg5]:checked').val(); //    -
-    var preg6 = $('input[name=preg6]:checked').val(); //     -
-    var preg7 = $('input[name=preg7]:checked').val(); //      -PREGUNTAS RADIO  
-    var preg8 = $('input[name=preg8]:checked').val(); //      -
-    var preg9 = $('input[name=preg9]:checked').val(); //     -
-    var preg10 = $('input[name=preg10]:checked').val(); //  -
-    var preg11 = $('input[name=preg11]:checked').val(); // -
-    var preg12 = $('input[name=preg12]:checked').val(); //-
+    var preg13 = document.getElementById('preg13').value;//PREGUNTA ABIERTA 
 
-    var preg13 = document.getElementById('preg13').value; //PREGUNTA ABIERTA 
-
-    var preg14 = $('input[name=preg14]:checked').val(); //PREGUNTAS RADIO
-
-    var preg15 = $('input[name=preg15]:checked').val(); //PREGUNTAS RADIO
-
-    var preg16 = document.getElementById('preg16').value; //PREGUNTA ABIERTA 
-
-    datos = 'idcursoen=' + idcursoen + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&preg8=' + preg8 + '&preg9=' + preg9 + '&preg10=' + preg10 + '&preg11=' + preg11 + '&preg12=' + preg12 + '&preg13=' + preg13 + '&preg14=' + preg14 + '&preg15=' + preg15 + '&preg16=' + preg16 + '&opcion=agreaccion';
+    var preg14 = $('input[name=preg14]:checked').val();//PREGUNTAS RADIO
 
 
+  if($('input[name=preg14]:checked').val()=='OTROS'){
+    
+        preg14 = document.getElementById('otros1').value;
 
-    if (idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || !document.querySelector('input[name=preg13]:checked') || !document.querySelector('input[name=preg14]:checked') || !document.querySelector('input[name=preg15]:checked') || !document.querySelector('input[name=preg16]:checked')) {
+    }
 
-        if (!document.querySelector('input[name=preg1]:checked')) { $('#span1').show('toggle'); } else { $('#span1').hide('toggle'); }
-        if (!document.querySelector('input[name=preg2]:checked')) { $('#span2').show('toggle'); } else { $('#span2').hide('toggle'); }
-        if (!document.querySelector('input[name=preg3]:checked')) { $('#span3').show('toggle'); } else { $('#span3').hide('toggle'); }
-        if (!document.querySelector('input[name=preg4]:checked')) { $('#span4').show('toggle'); } else { $('#span4').hide('toggle'); }
-        if (!document.querySelector('input[name=preg5]:checked')) { $('#span5').show('toggle'); } else { $('#span5').hide('toggle'); }
-        if (!document.querySelector('input[name=preg6]:checked')) { $('#span6').show('toggle'); } else { $('#span6').hide('toggle'); }
-        if (!document.querySelector('input[name=preg7]:checked')) { $('#span7').show('toggle'); } else { $('#span7').hide('toggle'); }
-        if (!document.querySelector('input[name=preg8]:checked')) { $('#span8').show('toggle'); } else { $('#span8').hide('toggle'); }
-        if (!document.querySelector('input[name=preg9]:checked')) { $('#span9').show('toggle'); } else { $('#span9').hide('toggle'); }
-        if (!document.querySelector('input[name=preg10]:checked')) { $('#span10').show('toggle'); } else { $('#span10').hide('toggle'); }
-        if (!document.querySelector('input[name=preg11]:checked')) { $('#span11').show('toggle'); } else { $('#span11').hide('toggle'); }
-        if (!document.querySelector('input[name=preg12]:checked')) { $('#span12').show('toggle'); } else { $('#span12').hide('toggle'); }
-        if (preg13 == '') { $('#span13').show('toggle'); } else { $('#span13').hide('toggle'); }
-        if (!document.querySelector('input[name=preg14]:checked')) { $('#span14').show('toggle'); } else { $('#span14').hide('toggle'); }
-        if (!document.querySelector('input[name=preg15]:checked')) { $('#span15').show('toggle'); } else { $('#span15').hide('toggle'); }
-        if (preg16 == '') { $('#span16').show('toggle'); } else { $('#span16').hide('toggle'); }
 
-        $('#pregunta').toggle('toggle');
-        setTimeout(function() { $('#pregunta').toggle('toggle'); }, 2000);
 
-    } else {
+    var preg15 = $('input[name=preg15]:checked').val();//PREGUNTAS RADIO
+
+    var preg16 = document.getElementById('preg16').value;//PREGUNTA ABIERTA 
+
+    datos = 'idcursoen='+idcursoen+'&preg1='+preg1+'&preg2='+preg2+'&preg3='+preg3+'&preg4='+preg4+'&preg5='+preg5+'&preg6='+preg6+'&preg7='+preg7+'&preg8='+preg8+'&preg9='+preg9+'&preg10='+preg10+'&preg11='+preg11+'&preg12='+preg12+'&preg13='+preg13+'&preg14='+preg14+'&preg15='+preg15+'&preg16='+preg16+ '&opcion=agreaccion';
+
+ 
+if(idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || preg13 == '' || !document.querySelector('input[name=preg14]:checked') || !document.querySelector('input[name=preg15]:checked') || preg16=='' || preg14 ==''){
+
+    if(!document.querySelector('input[name=preg1]:checked')){$('#span1').show('toggle');}else{$('#span1').hide('toggle');} 
+    if(!document.querySelector('input[name=preg2]:checked')){$('#span2').show('toggle');}else{$('#span2').hide('toggle');}
+    if(!document.querySelector('input[name=preg3]:checked')){$('#span3').show('toggle');}else{$('#span3').hide('toggle');} 
+    if(!document.querySelector('input[name=preg4]:checked')){$('#span4').show('toggle');}else{$('#span4').hide('toggle');}
+    if(!document.querySelector('input[name=preg5]:checked')){$('#span5').show('toggle');}else{$('#span5').hide('toggle');} 
+    if(!document.querySelector('input[name=preg6]:checked')){$('#span6').show('toggle');}else{$('#span6').hide('toggle');}
+    if(!document.querySelector('input[name=preg7]:checked')){$('#span7').show('toggle');}else{$('#span7').hide('toggle');} 
+    if(!document.querySelector('input[name=preg8]:checked')){$('#span8').show('toggle');}else{$('#span8').hide('toggle');}
+    if(!document.querySelector('input[name=preg9]:checked')){$('#span9').show('toggle');}else{$('#span9').hide('toggle');}
+    if(!document.querySelector('input[name=preg10]:checked')){$('#span10').show('toggle');}else{$('#span10').hide('toggle');}
+    if(!document.querySelector('input[name=preg11]:checked')){$('#span11').show('toggle');}else{$('#span11').hide('toggle');}
+    if(!document.querySelector('input[name=preg12]:checked')){$('#span12').show('toggle');}else{$('#span12').hide('toggle');}
+    if(preg13==''){$('#span13').show('toggle');}else{$('#span13').hide('toggle');}
+    if(!document.querySelector('input[name=preg14]:checked')){$('#span14').show('toggle');}else{$('#span14').hide('toggle');}
+    if(!document.querySelector('input[name=preg15]:checked')){$('#span15').show('toggle');}else{$('#span15').hide('toggle');}
+    if(preg16==''){$('#span16').show('toggle');}else{$('#span16').hide('toggle');}
+
+    $('#pregunta').toggle('toggle');setTimeout(function() {$('#pregunta').toggle('toggle');}, 2000);    
+
+}else{
 
         $.ajax({
             url: '../php/reaccion.php',
@@ -487,21 +495,21 @@ function evaluar() {
                 setTimeout(function() {
                     $('#enviadoexito').toggle('toggle');
                 }, 2000);
-            } else if (respuesta == 2) {
+            } else if(respuesta == 2){
                 $('#aviso').toggle('toggle');
                 setTimeout(function() {
                     $('#aviso').toggle('toggle');
                 }, 2000);
-            } else {
+            }else{
 
                 $('#peligro').toggle('toggle');
                 setTimeout(function() {
-                    $('#peligro').toggle('toggle');
+                $('#peligro').toggle('toggle');
                 }, 2000);
             }
         });
 
-    }
+}
 
 
 }
@@ -687,82 +695,35 @@ function cambiartexto() {
 
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     var cer = cursos.split("*");
-    //alert(cer[22]);
+    // alert(cer[21]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
-    $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
-
+    check6c = document.getElementById('check6c'); // 
+    check1c = document.getElementById('check1c'); //
     che1 = document.getElementById('che1'); //che1 
     che6 = document.getElementById('che6'); //che6
     // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
     if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
-
+        check6c.checked = true;
+        check6c.style.display = 'none';
         che6.style.display = '';
     } else {
-
+        check6c.checked = false;
         che6.style.display = 'none';
     }
 
     if (cer[20] == "CONFIRMADO") {
-
+        check1c.checked = true;
+        check1c.style.display = 'none';
         che1.style.display = '';
     } else {
-
+        check1c.checked = false;
         che1.style.display = 'none';
     }
 
+
 }
-
-//GUARDAR certificación
-function vergenercerf() {
-    var id_persona = document.getElementById('idinsevc1').value; //ID DE LA PERSONA
-    var id_codigocurso = document.getElementById('id_cursoc').value; //ID DE LA PERSONA
-    var listregis = $('input[id=check2c]:checked').val(); // LISTA DE REGISTRO
-    var lisasisten = $('input[id=check3c]:checked').val(); // LISTA DE ASISTENCIA
-    var listreportein = $('input[id=check4c]:checked').val(); // REPORTES DE INCIDENCIAS
-    var cartdescrip = $('input[id=check5c]:checked').val(); // CARTAS DESCRIPTIVAS
-    var regponde = $('input[id=check7c]:checked').val(); // REGISTRO DE PONDERACIÓN
-    var infinal = $('input[id=check8c]:checked').val(); // INFORME FINAL
-    var evreaccion = $('input[id=check9c]:checked').val(); // EVALUACIÓN DE REACCIÓN
-    var nom1 = document.getElementById('evaNombrc'); //che1  evaNombrc;
-    var copias = document.getElementById('copnum'); //che1  evaNombrc;
-    //se comenta
-    datos = 'id_persona=' + id_persona + '&id_codigocurso=' + id_codigocurso + '&listregis=' + listregis + '&lisasisten=' + lisasisten + '&listreportein=' + listreportein + '&cartdescrip=' + cartdescrip + '&regponde=' + regponde + '&infinal=' + infinal + '&evreaccion=' + evreaccion + '&copias=' + copias + '&opcion=alrcertific';
-    alert(datos);
-    if (nom1 == '') {
-        $('#ceravisos').toggle('toggle');
-        setTimeout(function() {
-            $('#ceravisos').toggle('toggle');
-        }, 2000);
-        return;
-
-    } else {
-
-        $.ajax({
-            url: '../php/gecerticados.php',
-            type: 'POST',
-            data: datos
-        }).done(function(respuesta) {
-            //console.log(respuesta);
-            if (respuesta == 0) {
-                alert("respuesta");
-                $('#cersucceev').toggle('toggle');
-                setTimeout(function() {
-                    $('#cersucceev').toggle('toggle');
-                    location.href = 'lisCurso.php';
-                }, 1500);
-            } else {
-                $('#cerdangerev').toggle('toggle');
-                setTimeout(function() {
-                    $('#cerdangerev').toggle('toggle');
-                }, 2000);
-            }
-        });
-    }
-}
-
-
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
     var d = cursos.split("*");
@@ -955,25 +916,25 @@ function cerrarEditeva() {
     document.getElementById('comeneva').disabled = true; // COMENTARIOS 
 }
 
-function cursoeval(idcurso) {
+function cursoeval(idcurso){
 
     $.ajax({
-        url: '../php/curConfir.php',
-        type: 'POST'
+    url: '../php/curConfir.php',
+    type: 'POST'
     }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
+    obj = JSON.parse(resp);
+    var res = obj.data;
 
-        for (i = 0; i < res.length; i++) {
+    for (i = 0; i < res.length; i++) {
 
-            if (obj.data[i].id_curso == idcurso) {
+        if(obj.data[i].id_curso == idcurso){
 
-                $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO
+            $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
-                $("#codigo").val(obj.data[i].codigo);
+                    $("#codigo").val(obj.data[i].codigo);
 
-            }
         }
+    }
     })
 
 
