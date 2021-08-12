@@ -239,9 +239,9 @@
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span></button>
-                                                    <h2><i class="fa fa-question-circle" style="color:#08308A"></i>
+                                                    <h3><i class="fa fa-question-circle" style="color:#08308A"></i>
                                                         EVALUACIÓN DE REACCIÓN
-                                                    </h2>
+                                                    </h3>
                                                     <br>
                                                     <b>
                                                         <label1 style="font-size: 14px">EL OBJETIVO DE ESTA EVALUACIÓN,
@@ -842,7 +842,7 @@
                                 <div class="col-sm-12">
                                     <input type="radio" name="preg14" value="OTROS" id="r52">
                                     <label for="r52">OTROS</label>
-                                    <input type="text" name="otros1" id="otros1" onkeyup="mayus(this);"
+                                    <input type="text" name="otro" id="otro" onkeyup="mayus(this);"
                                         placeholder="TU RESPUESTA"
                                         style="background-color: #E5E7EC; border: 0; outline: none">
                                 </div>
