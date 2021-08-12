@@ -31,10 +31,10 @@ function lisCurso() {
             Finaliza = day + '/' + month + '/' + year;
 
             cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp;
-            if(factual > fcurso && obj.data[i].proceso == "PENDIENTE"){
-            proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
-//            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td><span style='font-weight: bold; height: 50px; color: #D73925;'>VENCIDO</span></td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";                                
-            }else
+            if (factual > fcurso && obj.data[i].proceso == "PENDIENTE") {
+                proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+                //            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstTitlo + "</td><td>" + obj.data[i].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[i].gstDrcin + "</td><td>" + Finaliza + "</td><td>" + obj.data[i].prtcpnts + "</td><td><span style='font-weight: bold; height: 50px; color: #D73925;'>VENCIDO</span></td><td> <a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a><a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a><a type='button' onclick='eliminar(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";                                
+            } else
 
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
             if (obj.data[i].proceso == "FINALIZADO") {
@@ -204,7 +204,7 @@ function listPorvencer() {
             day = obj.data[i].fechaf.substring(8, 10);
             Finaliza = day + '/' + month + '/' + year;
 
-            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp ;
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo + "*" + obj.data[i].idinsp;
 
 
             //CAMBIA EL COLOR DEL TEXTO DEL ESTATUS EN CURSOS PROGRAMADOS
@@ -421,7 +421,94 @@ function imprimir() {
 
 
 }
+//TODO EVALUACIN
+function evaluar() {
+    // Swal.fire({
+    //     position: 'top-end',
+    //     icon: 'success',
+    //     title: 'EVALUACIÓN FINALIZADA',
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //     customClass: 'swal-wide',
 
+    // })
+    costOfTicket = document.getElementById("NOE");
+    selectedStand = document.getElementById("SIe");
+    pendiente = document.getElementById("PE");
+    valor2 = document.getElementById('validoev').value;
+    // validación de curso
+    var validoev = document.getElementById("validoev").value;
+    var fechaev = document.getElementById("fechaev").value;
+    var pendiente = document.getElementById("PE");
+    idinsp = document.getElementById('idinsev').value;
+    id_curso = document.getElementById('id_curso').value;
+
+    datos = 'idinsp=' + idinsp + '&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
+
+    //   alert(datos);
+
+    if (validoev == '') {
+        pendiente.style.display = '';
+        costOfTicket.style.display = 'none';
+        selectedStand.style.display = 'none';
+        $('#emptyev').toggle('toggle');
+        setTimeout(function() {
+            $('#emptyev').toggle('toggle');
+        }, 2000);
+        return;
+    }
+    if (fechaev == '') {
+        $('#emptyev1').toggle('toggle');
+        setTimeout(function() {
+            $('#emptyev1').toggle('toggle');
+        }, 2000);
+        return;
+
+    } else {
+        $.ajax({
+            url: '../php/proCurso.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+
+            // alert(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'EVALUADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    backdrop: `
+                        rgba(100, 100, 100, 0.4)
+                    `
+                });
+            } else {
+                Swal.fire({
+                    type: 'success',
+                    title: 'EVALUADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    backdrop: `
+                        rgba(100, 100, 100, 0.4)
+                    `
+                });
+            }
+
+        });
+        //inhanilita los campos EVALUACIÓN INSPECTOR
+        div1 = document.getElementById('abrirev');
+        div1.style.display = '';
+        div1 = document.getElementById('cerrareval');
+        div1.style.display = 'none';
+        document.getElementById('fechaev').disabled = true; // FECHA
+        document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
+        document.getElementById('comeneva').disabled = true; // COMENTARIOS  
+
+
+    }
+}
 //CERTIFICADO
 function certificado() {
     var pdf = new jsPDF("landscape");
@@ -604,28 +691,28 @@ function cambiartexto() {
 
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     var cer = cursos.split("*");
-  //alert(cer[22]);
+    //alert(cer[22]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
     $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
 
-    che1= document.getElementById('che1'); //che1 
-    che6= document.getElementById('che6'); //che6
-   // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
+    che1 = document.getElementById('che1'); //che1 
+    che6 = document.getElementById('che6'); //che6
+    // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
     if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
 
         che6.style.display = '';
-    }else{
+    } else {
 
         che6.style.display = 'none';
     }
 
-    if (cer[20]== "CONFIRMADO")  {
+    if (cer[20] == "CONFIRMADO") {
 
         che1.style.display = '';
-    }else{
- 
+    } else {
+
         che1.style.display = 'none';
     }
 
@@ -635,18 +722,18 @@ function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
 function vergenercerf() {
     var id_persona = document.getElementById('idinsevc1').value; //ID DE LA PERSONA
     var id_codigocurso = document.getElementById('id_cursoc').value; //ID DE LA PERSONA
-    var listregis = $('input[id=check2c]:checked').val();// LISTA DE REGISTRO
-    var lisasisten = $('input[id=check3c]:checked').val();// LISTA DE ASISTENCIA
-    var listreportein = $('input[id=check4c]:checked').val();// REPORTES DE INCIDENCIAS
-    var cartdescrip = $('input[id=check5c]:checked').val();// CARTAS DESCRIPTIVAS
-    var regponde = $('input[id=check7c]:checked').val();// REGISTRO DE PONDERACIÓN
-    var infinal = $('input[id=check8c]:checked').val();// INFORME FINAL
-    var evreaccion = $('input[id=check9c]:checked').val();// EVALUACIÓN DE REACCIÓN
-    var nom1= document.getElementById('evaNombrc'); //che1  evaNombrc;
-    var copias= document.getElementById('copnum'); //che1  evaNombrc;
-    
-    datos = 'id_persona=' + id_persona + '&id_codigocurso=' + id_codigocurso + '&listregis=' + listregis + '&lisasisten=' + lisasisten + '&listreportein=' + listreportein + '&cartdescrip=' + cartdescrip + '&regponde=' + regponde + '&infinal=' + infinal + '&evreaccion=' + evreaccion +  '&copias=' + copias +'&opcion=alrcertific';
-   alert(datos);
+    var listregis = $('input[id=check2c]:checked').val(); // LISTA DE REGISTRO
+    var lisasisten = $('input[id=check3c]:checked').val(); // LISTA DE ASISTENCIA
+    var listreportein = $('input[id=check4c]:checked').val(); // REPORTES DE INCIDENCIAS
+    var cartdescrip = $('input[id=check5c]:checked').val(); // CARTAS DESCRIPTIVAS
+    var regponde = $('input[id=check7c]:checked').val(); // REGISTRO DE PONDERACIÓN
+    var infinal = $('input[id=check8c]:checked').val(); // INFORME FINAL
+    var evreaccion = $('input[id=check9c]:checked').val(); // EVALUACIÓN DE REACCIÓN
+    var nom1 = document.getElementById('evaNombrc'); //che1  evaNombrc;
+    var copias = document.getElementById('copnum'); //che1  evaNombrc;
+
+    datos = 'id_persona=' + id_persona + '&id_codigocurso=' + id_codigocurso + '&listregis=' + listregis + '&lisasisten=' + lisasisten + '&listreportein=' + listreportein + '&cartdescrip=' + cartdescrip + '&regponde=' + regponde + '&infinal=' + infinal + '&evreaccion=' + evreaccion + '&copias=' + copias + '&opcion=alrcertific';
+    alert(datos);
     if (nom1 == '') {
         $('#ceravisos').toggle('toggle');
         setTimeout(function() {
@@ -654,29 +741,29 @@ function vergenercerf() {
         }, 2000);
         return;
 
-    }else {
+    } else {
 
-    $.ajax({
-        url: '../php/gecerticados.php',
-        type: 'POST',
-        data: datos
-    }).done(function(respuesta) {
-        //console.log(respuesta);
-        if (respuesta == 0) {
-            alert("respuesta");
-            $('#cersucceev').toggle('toggle');
-            setTimeout(function() {
+        $.ajax({
+            url: '../php/gecerticados.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            //console.log(respuesta);
+            if (respuesta == 0) {
+                alert("respuesta");
                 $('#cersucceev').toggle('toggle');
-                location.href = 'lisCurso.php';
-            }, 1500);
-        } else {
-            $('#cerdangerev').toggle('toggle');
-            setTimeout(function() {
+                setTimeout(function() {
+                    $('#cersucceev').toggle('toggle');
+                    location.href = 'lisCurso.php';
+                }, 1500);
+            } else {
                 $('#cerdangerev').toggle('toggle');
-            }, 2000);
-        }
-    });
-}
+                setTimeout(function() {
+                    $('#cerdangerev').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
 }
 
 
