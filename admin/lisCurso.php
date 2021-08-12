@@ -96,12 +96,12 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
-                                    <div hidden>
+                                   
                                     <?php include('../html/lisCurso.html');?>
-                                </div>
+                              
                                     <!-- Datatables -->
                                     <!--SEGUNDA TABLA OPTIMIZADA-->
-                                    <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
+                                    <!-- <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -116,7 +116,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                 </tr>
                                             </thead>
                                            
-                                        </table>
+                                        </table> -->
                                 </div>
 
                                 <section class="content" id="viscurso">
