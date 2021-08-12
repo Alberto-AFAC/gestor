@@ -841,7 +841,7 @@
                                 <div class="col-sm-12">
                                     <input type="radio" name="preg14" value="OTROS" id="r52">
                                     <label for="r52">OTROS</label>
-                                    <input type="text" name="otro" id="otro" onkeyup="mayus(this);"
+                                    <input type="text" name="otros1" id="otros1" onkeyup="mayus(this);"
                                         placeholder="TU RESPUESTA"
                                         style="background-color: #E5E7EC; border: 0; outline: none">
                                 </div>
