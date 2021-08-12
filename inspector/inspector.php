@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.2/sweetalert2.min.css"
@@ -238,9 +239,9 @@
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span></button>
-                                                    <h1><i class="fa fa-question-circle" style="color:#08308A"></i>
+                                                    <h2><i class="fa fa-question-circle" style="color:#08308A"></i>
                                                         EVALUACIÓN DE REACCIÓN
-                                                    </h1>
+                                                    </h2>
                                                     <br>
                                                     <b>
                                                         <label1 style="font-size: 14px">EL OBJETIVO DE ESTA EVALUACIÓN,
