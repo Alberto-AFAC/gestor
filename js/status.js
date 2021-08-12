@@ -70,28 +70,6 @@ $.ajax({
         progrmas++;
 
 
-
-
-        // finaliza.setMonth(obj.data[i].fechaf.getMonth() - 3);
-
-        // var finaliza = new Date(finaliza.getFullYear(), finaliza.getMonth(), finaliza.getDate());
-
-        //alert(factual+'=='+finaliza);
-
-        // if (factual <= fcurso) {
-
-        //     // alert(factual+' === '+fcurso);
-
-        //     var termino = new Date(obj.data[i].fechaf);
-        //     var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-        //     finaliza.setMonth(finaliza.getMonth() - 3);
-
-        //     if (factual >= finaliza) {
-        //         vencer++;
-        //     }
-
-        // }
             if(factual > fcurso && obj.data[i].proceso == "PENDIENTE"){
                 vencio++;
             }

@@ -926,11 +926,10 @@
                 </p>
             </b>
             <b>
-                <p class="alert alert-success text-center padding exito" id="enviadoexito">¡Se agregaron los datos
-                    con éxito!</p>
+                <p class="alert alert-success text-center padding exito" id="enviadoexito">¡Su evaluación de reacción se realizó con éxito !</p>
                </b>
             <b>
-                <p class="alert alert-info text-center padding error" id="aviso">Los datos ya están agregados
+                <p class="alert alert-info text-center padding error" id="aviso">Su evaluación de reacción fue realizada 
                 </p>
             </b>
               <b>
