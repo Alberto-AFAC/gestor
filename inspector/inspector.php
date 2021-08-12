@@ -905,6 +905,7 @@
         </div>
     </div>
     </div>
+
     <div class="box-body">
         <div class="form-group"><br>
             <div class="col-sm-offset-0 col-sm-5">
@@ -1051,8 +1052,9 @@
 
 
 <script type="text/javascript">
+
 var dataSet = [
-    <?php 
+<?php 
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
@@ -1067,49 +1069,37 @@ $id_curso = $data['id_curso'];
  $fechaf = $data['fechaf'] = date("d-m-Y");
 ?>
 
-    //console.log('<?php echo $id_curso ?>');
+//console.log('<?php echo $id_curso ?>');
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
 
-        "<a type='button' title='Confirmar asistencia' onclick='confirmar(<?php echo $id_curso ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>CONFIRMAR </a>"
+"<a type='button' title='Confirmar asistencia' onclick='confirmar(<?php echo $id_curso ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>CONFIRMAR </a>"
 
-        //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
+//"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
 
-    ],
-    <?php } ?>
+],
+<?php } ?>
 ]
 
 var tableGenerarReporte = $('#data-table-confirmar').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    data: dataSet,
-    columns: [{
-            title: "CURSO"
-        },
-        {
-            title: "TIPO"
-        },
-        {
-            title: "INICIA"
-        },
-        {
-            title: "HORA"
-        },
-        {
-            title: "FINALIZA"
-        },
-        {
-            title: "ACCIÓN"
-        }
-    ],
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ACCIÓN"}
+],
 });
 
-// TODO CURSOS PROGRAMADOS
+
 var dataSet = [
-    <?php 
+<?php 
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
@@ -1128,67 +1118,44 @@ $valor='POR CONFIRMAR';
 }else if($data['confirmar']=='CONFIRMADO'){
  $valor=$data['confirmar']; 
 }else{
- $valor='DECLINADO';  
-}
-
-if($data['evaluacion'] == ''){
-  $Evaluacion = "FALTA EVALUAR";
-
-} else {
-  $Evaluacion = "EVALUADO";
+ $valor=$data['confirmar'];  
 }
 
 ?>
 
-    //console.log('<?php echo $id_curso ?>');
+//console.log('<?php echo $id_curso ?>');
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
 
-        // "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-asignar'><?php echo $valor?> </a>"
+// "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-asignar'><?php echo $valor?> </a>"
 
-        "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
-        "<span title='Evaluación Curso'  class='badge' style='background-color: #3C8DBC;' data-toggle='modal' data-target='#modal-evalcurso'>EVALUAR</span>"
+"<?php echo $valor?>"
 
 
 
-    ],
-    <?php } ?>
+],
+<?php } ?>
 ]
 
 var tableGenerarReporte = $('#data-table-programado').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    data: dataSet,
-    columns: [{
-            title: "CURSO"
-        },
-        {
-            title: "TIPO"
-        },
-        {
-            title: "INICIA"
-        },
-        {
-            title: "HORA"
-        },
-        {
-            title: "FINALIZA"
-        },
-        {
-            title: "ESTATUS"
-        },
-        {
-            title: "ACCIÓN"
-        }
-    ],
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ACCIÓN"}
+],
 });
 
-// TODO CURSOS COMPLETADOS
+
 var dataSet = [
-    <?php 
+<?php 
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
@@ -1201,42 +1168,56 @@ $id_curso = $data['id_curso'];
 
  $fcurso = $data['fcurso'] = date("d-m-Y");
  $fechaf = $data['fechaf'] = date("d-m-Y");
-?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-        "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-success' data-toggle='modal' data-target='#modal-asignar'>FINALIZADO </a>"
-    ],
-    <?php } ?>
+// if($data['confirmar']=='CONFIRMAR'){
+// $valor='POR CONFIRMAR';
+// }else if($data['confirmar']=='CONFIRMADO'){
+// $valor=$data['confirmar']; 
+// }else{
+ $valor=$data['confirmar'];;  
+//}
+
+if($data['evaluacion'] == ''){
+  $Evaluacion = "FALTA EVALUAR";
+
+} else {
+  $Evaluacion = "EVALUADO";
+}
+
+?>
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
+
+// "<a type='button' title='Evaluación' onclick='asignacion(<?php //echo $id_curso ?>)' class='btn btn-success' data-toggle='modal' data-target='#modal-asignar'>FINALIZADO </a>"
+
+
+ "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
+
+ // "<span title='Evaluación Curso'  class='badge' style='background-color: #3C8DBC;' data-toggle='modal' data-target='#modal-evalcurso'>EVALUAR</span>"
+
+"<a type='button' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-info'>EVALUAR </a>"
+
+],
+<?php } ?>
 ];
 var tableGenerarReporte = $('#data-table-completo').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    data: dataSet,
-    columns: [{
-            title: "CURSO"
-        },
-        {
-            title: "TIPO"
-        },
-        {
-            title: "INICIA"
-        },
-        {
-            title: "HORA"
-        },
-        {
-            title: "FINALIZA"
-        },
-        {
-            title: "ACCIÓN"
-        }
-    ],
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ESTATUS"},
+{title: "ACCIÓN"}
+],
 });
 
 var dataSet = [
-    <?php 
+<?php 
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
@@ -1249,37 +1230,26 @@ $id_curso = $data['id_curso'];
 
  $fcurso = $data['fcurso'] = date("d-m-Y");
  $fechaf = $data['fechaf'] = date("d-m-Y");
-?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+?>
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
 
-        "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
-    ],
-    <?php } ?>
+"<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
+],
+<?php } ?>
 ];
 var tableGenerarReporte = $('#data-table-cancelado').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    data: dataSet,
-    columns: [{
-            title: "CURSO"
-        },
-        {
-            title: "TIPO"
-        },
-        {
-            title: "INICIA"
-        },
-        {
-            title: "HORA"
-        },
-        {
-            title: "FINALIZA"
-        },
-        {
-            title: "ACCIÓN"
-        }
-    ],
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+data: dataSet,
+columns: [
+{title: "CURSO"},
+{title: "TIPO"},
+{title: "INICIA"},
+{title: "HORA"},
+{title: "FINALIZA"},
+{title: "ACCIÓN"}
+],
 });
 </script>

@@ -446,7 +446,7 @@ function evaluar() {
 
     datos = 'idinsp=' + idinsp + '&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
 
-    //   alert(datos);
+       alert(datos);
 
     if (validoev == '') {
         pendiente.style.display = '';
@@ -913,8 +913,33 @@ function cerrarEditeva() {
     document.getElementById('comeneva').disabled = true; // COMENTARIOS 
 }
 
+function cursoeval(idcurso){
+
+    $.ajax({
+    url: '../php/curConfir.php',
+    type: 'POST'
+    }).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+
+    for (i = 0; i < res.length; i++) {
+
+        if(obj.data[i].id_curso == idcurso){
+
+            $("#idcursoen").val(obj.data[i].codigo); //ID DEL CURSO
+                $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
+
+        }
+    }
+    })
+
+
+}
+
 //EVALUACIÓN CURSO
 function evalucurs(cursos) {
+
+
     var d = cursos.split("*");
     //alert(d[11]);
     $("#nomcursoen").val(d[1]); //NOMBRE DEL CURSO
