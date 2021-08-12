@@ -61,7 +61,7 @@ function confirmar(idcurso){
                 if (obj.data[i].id_curso == idcurso) {
 
 
-                lista = obj.data[i].idmstr;
+                lista = obj.data[i].codigo;
                 $("#id_curso").val(idcurso);
                 $("#idinsp").val(obj.data[i].idinsp);      
                 $("#gstTitlo").html(obj.data[i].gstTitlo);
@@ -69,16 +69,16 @@ function confirmar(idcurso){
 
 
 
-var fechai = new Date(obj.data[i].fcurso);
-var fcurso = fechai.getDate()+'-'+(fechai.getMonth()+1)+'-'+fechai.getFullYear();
+            var fechai = new Date(obj.data[i].fcurso);
+            var fcurso = fechai.getDate()+'-'+(fechai.getMonth()+1)+'-'+fechai.getFullYear();
 
-var fechac = new Date(obj.data[i].fechaf);
-var fechaf = fechac.getDate()+'-'+(fechac.getMonth()+1)+'-'+fechac.getFullYear();
-                $("#fcurso").html(fcurso);
-                $("#hcurso").html(obj.data[i].hcurso);
-                $("#fechaf").html(fechaf);
-                $("#sede").html(obj.data[i].sede);
-                $("#modalidad").html(obj.data[i].modalidad);
+            var fechac = new Date(obj.data[i].fechaf);
+            var fechaf = fechac.getDate()+'-'+(fechac.getMonth()+1)+'-'+fechac.getFullYear();
+            $("#fcurso").html(fcurso);
+            $("#hcurso").html(obj.data[i].hcurso);
+            $("#fechaf").html(fechaf);
+            $("#sede").html(obj.data[i].sede);
+            $("#modalidad").html(obj.data[i].modalidad);
 
 
             }
@@ -89,10 +89,18 @@ var fechaf = fechac.getDate()+'-'+(fechac.getMonth()+1)+'-'+fechac.getFullYear()
         x=0;
     for(i = 0; i < res.length; i++){
         x++;
-            if(obj.data[i].gstCargo=='COORDINADOR' && obj.data[i].idmstr == lista || obj.data[i].gstCargo=='INSTRUCTOR' && obj.data[i].idmstr == lista){
+
+
+
+
+            if(obj.data[i].gstCargo=='COORDINADOR' && obj.data[i].codigo == lista || obj.data[i].gstCargo=='INSTRUCTOR' && obj.data[i].codigo == lista){
                         
                       html += "<tr><td>"+x+"</td><td>"+obj.data[i].gstNombr+' '+obj.data[i].gstApell+"</td><td>"+obj.data[i].gstCargo+"</td></tr>";
             }
+
+
+
+
         }
         html += '</table>';
         $("#instruc").html(html);
