@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<?php include ("../conexion/conexion.php");?>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-    <title>Gestor de inspectores</title>
+    <title>Gestor de Inspectores</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -29,17 +30,45 @@
     <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="dist/js/sweetalert2.all.min.js"></script>
+  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+
+  <style>
+      #legend {
+      height: 50px;
+      background: #f7f7f7;
+      border-bottom: 1px solid #d6d6d6;
+    }
+
+    .anychart-tooltip {
+      padding: 0;
+      background: white;
+      color: #333;
+      box-shadow: 2px 2px 5px #333;
+      border-radius: 0;
+    }
+
+    .anychart-tooltip-title h5 {
+      background: #455a64;
+      padding: 10px 30px;
+      margin: 0;
+    }
+
+    .anychart-tooltip-title h5.default {
+      color: #fff;
+    }
+
+    .anychart-tooltip hr {
+      margin: 0;
+    }
+
+    .anychart-tooltip .tooltip-content {
+      padding: 0 30px;
+    }
+      </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -76,11 +105,12 @@ include('header.php');
                                 </h3>
 
                                 <p>Total personal AFAC</p>
+
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-people"></i>
                             </div>
-                            <a href="persona.php" class="small-box-footer">Mas information <i
+                            <a href="persona.php" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -97,7 +127,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-person"></i>
                             </div>
-                            <a href="inspecion.php" class="small-box-footer">Mas information <i
+                            <a href="inspecion.php" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -110,12 +140,12 @@ include('header.php');
                                     <div id="instructor"></div>
                                 </h3>
 
-                                <p>Total de instructores y Coordinadores</p>
+                                <p>Total, Instructores y Coordinadores</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-person"></i>
                             </div>
-                            <a href="instructor.php" class="small-box-footer">Mas information <i
+                            <a href="instructor.php" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
 
                         </div>
@@ -132,7 +162,8 @@ include('header.php');
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box bg-aqua">
                             <span class="info-box-icon"><i class="fa ion-easel"></i></span>
-                            <?php 
+
+<!--                             <?php 
                                 $query ="SELECT 
                                   COUNT( id_curso ) AS COMPLETADOS,
                                   COUNT( CASE WHEN proceso = 'PENDIENTE' THEN 1 END ) AS PENDIENTES,
@@ -142,12 +173,11 @@ include('header.php');
                                         cursos";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
-                                ?>
-
+                                ?> -->
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">PROGRAMADOS</span>
-                                <span class="info-box-number"><?php echo $row['COMPLETADOS']?></span>
+                                <span class="info-box-number"><div id="progrmas"></div></span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>
@@ -155,7 +185,7 @@ include('header.php');
                                 <span class="progress-description">
 
                                     <a link rel="stylesheet" href="lisCurso.php" style="color:white"
-                                        class="small-box-footer">information <i
+                                        class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
                                 </span>
 
@@ -173,14 +203,14 @@ include('header.php');
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">Acreditados</span>
-                                <span class="info-box-number"><?php echo $row['ACREEDITADO']?></span>
+                                <span class="info-box-number"><div id="finalizado"></div> </span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>
                                 </div>
                                 <span class="progress-description">
-                                    <a link rel="stylesheet" href="lisCurso.php" style="color:white"
-                                        class="small-box-footer">information <i
+                                    <a link rel="stylesheet" href="acreeditados.php" style="color:white"
+                                        class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
                                 </span>
                             </div>
@@ -196,14 +226,14 @@ include('header.php');
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">POR ACREDITAR</span>
-                                <span class="info-box-number"><?php echo $row['PORACREEDITAR']?></span>
+                                <span class="info-box-number"><div id="acreditar"></div> </span>
                                 <span class="progress-description">
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
 
-                                    <a link rel="stylesheet" href="lisCurso.php" style="color:white"
-                                        class="small-box-footer">information <i
+                                    <a link rel="stylesheet" href="pendientes.php" style="color:white"
+                                        class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
 
                             </div>
@@ -218,22 +248,23 @@ include('header.php');
 
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
-                                <span class="info-box-text">Por vencer</span>
-                                <span class="info-box-number">10</span>
+                                <span class="info-box-text">Por vencer y Vencidos</span>
+                                <span class="info-box-number"><div id="vencer"></div> </span>
                                 <span class="progress-description">
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        <a link rel="stylesheet" href="lisCurso.php" style="color:white"
-                                            class="small-box-footer">information <i
+                                        <a link rel="stylesheet" href="porvencer.php" style="color:white"
+                                            class="small-box-footer">Información <i
                                                 class="fa fa-arrow-circle-right"></i></a>
+
+
                             </div>
-                            <!-- /.info-box-content -->
-
             </section>
-
-            <!-- /.content -->
+            <div class="container">
+            
+</div>
         </div>
 
 
@@ -269,7 +300,7 @@ include('header.php');
     <script src="../bower_components/raphael/raphael.min.js"></script>
     <script src="../bower_components/morris.js/morris.min.js"></script>
     <!-- Sparkline -->
-    <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script> -->
     <!-- jvectormap -->
     <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -293,6 +324,12 @@ include('header.php');
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <script src="../js/status.js"></script>
+    <script src="js/anychart-base.min.js"></script>
+    <script src="js/anychart-ui.min.js"></script>
+    <script src="js/anychart-exports.min.js"></script>
+    <script src="js/anychart-gantt.min.js"></script>
+    <script src="js/anychart-data-adapter.min.js"></script>
+   
 </body>
 
 </html>

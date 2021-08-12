@@ -79,7 +79,7 @@ $inspector = mysqli_query($conexion,$sql);
 
             <section class="content-header">
                 <h1>
-                    CURSOS PROGRAMADOS
+                    CURSOS POR PENDIENTES 
                 </h1>
             </section>
             <!-- Main content -->
@@ -96,27 +96,8 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
-                                   
-                                    <?php include('../html/lisCurso.html');?>
-                              
+                                    <?php include('../html/pendientes.html');?>
                                     <!-- Datatables -->
-                                    <!--SEGUNDA TABLA OPTIMIZADA-->
-                                    <!-- <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>TÍTULO</th>
-                                                    <th>TIPO</th>
-                                                    <th>INICIO</th>
-                                                    <th>DURACIÓN</th>
-                                                    <th>FINAL</th>
-                                                    <th>PARTICIPANTES</th>
-                                                    <th>ESTATUS</th>
-                                                    <th>ACCIÓN</th>
-                                                </tr>
-                                            </thead>
-                                           
-                                        </table> -->
                                 </div>
 
                                 <section class="content" id="viscurso">
@@ -126,7 +107,7 @@ $inspector = mysqli_query($conexion,$sql);
 
                                     </div>
                             </div>
-                            <div id='lstacurs'></div>
+                            <div id='listaPend'></div>
                             <div class="modal fade" id="modal-participnt">
                                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel">
@@ -1116,169 +1097,6 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- /.content -->
     </div>
 
-<!-- inicio de el check list para generar un certificado -->
-<form class="form-horizontal" action="" method="POST" id="acreditacion">
-        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal fade" id="modal-acreditacion">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-                            <p>
-                            <h4 class="modal-title" style="text-align:Center;">GENERACIÓN DE CONSTANCIAS</h4>
-                            </p>
-                            <div class="form-group">
-                                <div class="col-sm-2">
-                                  <label>FOLIO:</label>
-                                  <input type="text" name="id_cursoc" id="id_cursoc" style="text-transform:uppercase;" class="form-control disabled" disabled="">
-                                </div>     
-                                <div class="col-sm-10">
-                                  <label>PARTICIPANTE</label>
-                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt; display:none;" class="form-control " id="idinsevc1" name="idinsevc1">
-                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt" class="form-control" id="evaNombrc" name="evaNombrc">
-                                </div>
-                                <div class="col-sm-12">
-                                  <label>CURSO:</label>
-                                  <input type="text" name="idperonc" id="idperonc" style="text-transform:uppercase;" class="form-control disabled" disabled="">
-                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt; display:none;" class="form-control " id="copnum" name="copnum">
-                                </div>
-                                   
-                            </div>                                         
-                        </div>
-                        
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                <table class="table table-striped table-bordered dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>PARAMETROS</th>
-                                                <th>ESTATUS</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                   CONVOCATORIA Y CONFIRMACIÓN
-                                                </td>
-                                                <td>
-
-                                                <i class="fa fa-check" id="che1" disabled style="color:green; font-size: 16pt"></i></span>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    LISTA DE REGISTRO
-                                                </td>
-                                                <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    LISTA DE ASISTENCIA
-                                                </td>
-                                                <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    REPORTES DE INCIDENCIAS
-                                                </td>
-                                                <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    CARTAS DESCRIPTIVAS
-                                                </td>
-                                                <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    EVALUACIÓN POR PARTICIPANTE
-                                                </td>
-                                                <td>
-                                                
-                                                <i class="fa fa-check" id="che6" disabled style="color:green; font-size: 16pt"></i></span>    
-                                            </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    REGISTRO DE PONDERACIÓN
-                                                </td>
-                                                <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    INFORME FINAL
-                                                </td>
-                                                <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    EVALUACIÓN DE REACCIÓN
-                                                </td>
-                                                <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                
-                            </div>
-                           
-
-                            <div class="form-group">
-                                <div class="col-sm-5">
-                                    <button type="button" id="guaacredit" onclick="vergenercerf()" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" >ACEPTAR</button>
-                                </div>
-                                <b>
-                                    <p class="alert alert-warning text-center padding error" id="cerdangerev">Error al
-                                        Acreditar!!
-                                </b>
-                                <b>
-                                    <p class="alert alert-warning text-center padding aviso" id="ceravisos">Error al
-                                        Acreditar!!
-                                </b>
-                                <b>
-                                    <p class="alert alert-success text-center padding exito" id="cersucceev">¡Se Acredito con
-                                        exito!</p>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- /.modal-content -->
-            <!-- /.modal-dialog -->
-    </form>
-    <!-- /.content -->
-
-    </section>
-    <!-- /.content -->
-    </div>
-
-    <!-- fin del chechk list para copletar iun certificado -->
-
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -1511,116 +1329,103 @@ $(document).ready(function() {
 });
 </script>
 <script src="../js/select2.js"></script>
-<!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
+var dataSet = [
+    <?php 
+    $query = "SELECT
+          *,
+    COUNT(*) AS prtcpnts 
+    FROM
+    cursos
+    INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
+    WHERE
+    cursos.estado = 0 
+    GROUP BY
+    cursos.idmstr,
+    cursos.idinst 
+    ORDER BY
+    id_curso DESC";
+    $resultado = mysqli_query($conexion, $query);
+    $contador=0;
+    while($data = mysqli_fetch_array($resultado)){ 
+        $contador++;
+        ?>
+
+    ["<?php echo $contador?>", "<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+        "<?php echo $data['fcurso']?>", "<?php echo $data['gstDrcin']?>", "<?php echo $data['fechaf']?>",
+        "<?php echo $data['prtcpnts']?>"
+    ],
+
+
+    <?php } ?>
+];
 $(document).ready(function() {
-    var table = $('#example').DataTable({
-        
+    var tableGenerarReporte = $('#data-table-inspectores').DataTable({
+
         "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-        "ajax": "../php/cursosProgra.php",
-        "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
-
-        }]
-    });
-
-    detalles("#example tbody",table);
-
-
-    $('#example thead tr').clone(true).appendTo('#example thead');
-
-        $('#example thead tr:eq(1) th').each(function(i) {
-            var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text"  placeholder="Buscar" />');
-
-            $('input', this).on('keyup change', function() {
-                if (table.column(i).search() !== this.value) {
-                    table
-                        .column(i)
-                        .search(this.value)
-                        .draw();
-                }
-            });
-        });
-
-
-
-    $('#example tbody').on('click', 'a', function() {
-        var data = table.row( $(this).parents('tr') ).data();
-        //alert( "Es el ID: "+ data[0] );
-
-        gstIdlsc = data[0];
-
-    $.ajax({
-        url: '../php/conCurso.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].gstIdlsc == gstIdlsc) {
-
-                datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
-
-                var d = datos.split("*");
-                $("#modalVal #AgstIdlsc").val(d[0]);
-                $("#AgstIdlsc #AgstIdlsc").val(d[0]);
-                $("#modalUpdate #Idlsc").val(d[0]);
-                $("#modalVal #AgstTitlo").val(d[1]);
-                $("#modalUpdate #AgstTitlo").val(d[1]);
-                $("#modalVal #AgstTipo").val(d[2]);
-                $("#gstPrfil").html(d[3]);
-                $("#modalVal #AgstCntnc").val(d[4]);
-
-                Ahr = d[5].substr(0, 2);
-                Amin = d[5].substr(8, 2);
-                //                Atmp = d[5].substr(6,4);
-
-                $("#modalVal #Ahr").val(Ahr);
-                $("#modalVal #Amin").val(Amin);
-
-                $("#modalVal #AgstVignc").val(d[6]);
-                $("#modalVal #AgstObjtv").val(d[7]);
-                $("#modalVal #AgstTmrio").val(d[8]);
-                $("#modalUpdate #AgstTmrio").val(d[8]);
-                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
-                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
-
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: 'ID'
+            },
+            {
+                name: "TÍTULO"
+            },
+            {
+                title: "TIPO"
+            },
+            {
+                title: "INICIO"
+            },
+            {
+                title: "DURACIÓN"
+            },
+            {
+                title: "FINAL"
+            },
+            {
+                title: "PARTICIPANTES"
+            },
+            {
+                title: "ACCIÓN"
             }
-        }
-    })
-
-
+        ],
     });
-   
+    // Setup - add a text input to each footer cell
+    $('#data-table-inspectores thead tr').clone(true).appendTo('#data-table-inspectores thead');
+    $('#data-table-inspectores thead tr:eq(1) th').each(function(i) {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder="Buscar ' + title + '" />');
 
- 
-
-
+        $('input', this).on('keyup change', function() {
+            if (tableGenerarReporte.column(i).search() !== this.value) {
+                tableGenerarReporte
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
+        });
+    });
+});
+//
+$(document).ready(function() {
+    $('.progress-value > span').each(function() {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 1800,
+            easing: 'swing',
+            step: function(now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
 });
 
-   function detalles(tbody,table){
 
-    $(tbody).on("click", "a.eliminar", function(){
-        var data = table.row($(this).parents("tr")).data();   
-        //var gstIdlsc = $().val(data.gstIdlsc);
-         $("#modal-eliminar #EgstIdlsc").val(data[0]);
-
-      });
-    }
 
 </script>
-<style>
-    #example
-     input {
-        width: 50% !important;
-    }
-</style>
-
