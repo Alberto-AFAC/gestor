@@ -98,6 +98,23 @@ $inspector = mysqli_query($conexion,$sql);
                                 <div class="box-body" id="listCurso">
                                     <?php include('../html/lisCurso.html');?>
                                     <!-- Datatables -->
+                                    <!--SEGUNDA TABLA OPTIMIZADA-->
+                                    <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>TÍTULO</th>
+                                                    <th>TIPO</th>
+                                                    <th>INICIO</th>
+                                                    <th>DURACIÓN</th>
+                                                    <th>FINAL</th>
+                                                    <th>PARTICIPANTES</th>
+                                                    <th>ESTATUS</th>
+                                                    <th>ACCIÓN</th>
+                                                </tr>
+                                            </thead>
+                                           
+                                        </table>
                                 </div>
 
                                 <section class="content" id="viscurso">
@@ -1583,7 +1600,117 @@ $(document).ready(function() {
         });
     });
 });
+</script>
+<!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
+<script type="text/javascript">
+$(document).ready(function() {
+    var table = $('#example').DataTable({
+        
+        "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+        "ajax": "../php/cursosProgra.php",
+        "columnDefs": [{
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+
+        }]
+    });
+
+    detalles("#example tbody",table);
 
 
+    $('#example thead tr').clone(true).appendTo('#example thead');
+
+        $('#example thead tr:eq(1) th').each(function(i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html('<input type="text"  placeholder="Buscar" />');
+
+            $('input', this).on('keyup change', function() {
+                if (table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+
+
+
+    $('#example tbody').on('click', 'a', function() {
+        var data = table.row( $(this).parents('tr') ).data();
+        //alert( "Es el ID: "+ data[0] );
+
+        gstIdlsc = data[0];
+
+    $.ajax({
+        url: '../php/conCurso.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+        for (i = 0; i < res.length; i++) {
+            if (obj.data[i].gstIdlsc == gstIdlsc) {
+
+                datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
+
+                var d = datos.split("*");
+                $("#modalVal #AgstIdlsc").val(d[0]);
+                $("#AgstIdlsc #AgstIdlsc").val(d[0]);
+                $("#modalUpdate #Idlsc").val(d[0]);
+                $("#modalVal #AgstTitlo").val(d[1]);
+                $("#modalUpdate #AgstTitlo").val(d[1]);
+                $("#modalVal #AgstTipo").val(d[2]);
+                $("#gstPrfil").html(d[3]);
+                $("#modalVal #AgstCntnc").val(d[4]);
+
+                Ahr = d[5].substr(0, 2);
+                Amin = d[5].substr(8, 2);
+                //                Atmp = d[5].substr(6,4);
+
+                $("#modalVal #Ahr").val(Ahr);
+                $("#modalVal #Amin").val(Amin);
+
+                $("#modalVal #AgstVignc").val(d[6]);
+                $("#modalVal #AgstObjtv").val(d[7]);
+                $("#modalVal #AgstTmrio").val(d[8]);
+                $("#modalUpdate #AgstTmrio").val(d[8]);
+                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
+                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+
+            }
+        }
+    })
+
+
+    });
+   
+
+ 
+
+
+});
+
+   function detalles(tbody,table){
+
+    $(tbody).on("click", "a.eliminar", function(){
+        var data = table.row($(this).parents("tr")).data();   
+        //var gstIdlsc = $().val(data.gstIdlsc);
+         $("#modal-eliminar #EgstIdlsc").val(data[0]);
+
+      });
+    }
 
 </script>
+<style>
+    #example
+     input {
+        width: 50% !important;
+    }
+</style>
+
