@@ -663,12 +663,16 @@ function vergenercerf() {
     }).done(function(respuesta) {
         //console.log(respuesta);
         if (respuesta == 0) {
-            alert("respuesta");
-            $('#cersucceev').toggle('toggle');
-            setTimeout(function() {
-                $('#cersucceev').toggle('toggle');
-                location.href = 'lisCurso.php';
-            }, 1500);
+            Swal.fire({
+                type: 'success',
+                title: 'SE REGISTRA CON ÉXITO',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 2000,
+                backdrop: `
+                    rgba(100, 100, 100, 0.4)
+                `
+            });
         } else {
             $('#cerdangerev').toggle('toggle');
             setTimeout(function() {
