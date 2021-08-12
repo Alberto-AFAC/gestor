@@ -80,8 +80,9 @@ $psto = mysqli_query($conexion,$sql);
                             <span class="progress-number">
                             <div id="FINALIZADO"></div>
                             </span>
-                            <div class="progress sm">
-                                <div class="progress-bar progress-bar-green" style="width: 30%"></div>
+                            <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                0% </div>
                             </div>
                         </div>
                     </div>
@@ -92,8 +93,9 @@ $psto = mysqli_query($conexion,$sql);
                             <span class="progress-number">
                                 <div id="programado"></div>
                             </span>
-                            <div class="progress sm">
-                                <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                            <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                             60% </div>
                             </div>
                         </div>
                     </div>
@@ -104,8 +106,9 @@ $psto = mysqli_query($conexion,$sql);
                             <span class="progress-number">
                             <div id="CANCELADO"></div>
                             </span>
-                            <div class="progress sm">
-                                <div class="progress-bar progress-bar-red" style="width: 50%"></div>
+                            <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                             60% </div>
                             </div>
                         </div>
                     </div>
@@ -842,6 +845,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                         <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
                                         <label for="finalizado">FINALIZADO</label><br>
                                     </div>
+                                    
                                     <div class="col-sm-2">
                                         <input type="radio" id="programados" name="cursinfoinsp" value="programados">
                                         <label for="programados">PROGRAMADOS</label><br>
