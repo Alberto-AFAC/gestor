@@ -96,7 +96,9 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
+                                    <div hidden>
                                     <?php include('../html/lisCurso.html');?>
+                                </div>
                                     <!-- Datatables -->
                                     <!--SEGUNDA TABLA OPTIMIZADA-->
                                     <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
@@ -1504,103 +1506,6 @@ $(document).ready(function() {
 });
 </script>
 <script src="../js/select2.js"></script>
-<script type="text/javascript">
-var dataSet = [
-    <?php 
-    $query = "SELECT
-          *,
-    COUNT(*) AS prtcpnts 
-    FROM
-    cursos
-    INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
-    WHERE
-    cursos.estado = 0 
-    GROUP BY
-    cursos.idmstr,
-    cursos.idinst 
-    ORDER BY
-    id_curso DESC";
-    $resultado = mysqli_query($conexion, $query);
-    $contador=0;
-    while($data = mysqli_fetch_array($resultado)){ 
-        $contador++;
-        ?>
-
-    ["<?php echo $contador?>", "<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
-        "<?php echo $data['fcurso']?>", "<?php echo $data['gstDrcin']?>", "<?php echo $data['fechaf']?>",
-        "<?php echo $data['prtcpnts']?>"
-    ],
-
-
-    <?php } ?>
-];
-$(document).ready(function() {
-    var tableGenerarReporte = $('#data-table-inspectores').DataTable({
-
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        orderCellsTop: true,
-        fixedHeader: true,
-        data: dataSet,
-        columns: [{
-                title: 'ID'
-            },
-            {
-                name: "TÍTULO"
-            },
-            {
-                title: "TIPO"
-            },
-            {
-                title: "INICIO"
-            },
-            {
-                title: "DURACIÓN"
-            },
-            {
-                title: "FINAL"
-            },
-            {
-                title: "PARTICIPANTES"
-            },
-            {
-                title: "ACCIÓN"
-            }
-        ],
-    });
-    // Setup - add a text input to each footer cell
-    $('#data-table-inspectores thead tr').clone(true).appendTo('#data-table-inspectores thead');
-    $('#data-table-inspectores thead tr:eq(1) th').each(function(i) {
-        var title = $(this).text();
-        $(this).html('<input type="text" placeholder="Buscar ' + title + '" />');
-
-        $('input', this).on('keyup change', function() {
-            if (tableGenerarReporte.column(i).search() !== this.value) {
-                tableGenerarReporte
-                    .column(i)
-                    .search(this.value)
-                    .draw();
-            }
-        });
-    });
-});
-//
-$(document).ready(function() {
-    $('.progress-value > span').each(function() {
-        $(this).prop('Counter', 0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 1800,
-            easing: 'swing',
-            step: function(now) {
-                $(this).text(Math.ceil(now));
-            }
-        });
-    });
-});
-</script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
 $(document).ready(function() {
