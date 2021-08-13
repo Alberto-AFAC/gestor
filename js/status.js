@@ -88,9 +88,6 @@ $.ajax({
             }
 
             totalv =  vencio + vencer;
-      
-
-
     }
 
     $("#progrmas").html(progrmas);
