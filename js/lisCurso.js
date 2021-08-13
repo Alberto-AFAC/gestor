@@ -184,7 +184,7 @@ function vergenercerf() {
     var copias = document.getElementById('copnum'); //che1  evaNombrc;
 
     datos = 'id_persona=' + id_persona + '&id_codigocurso=' + id_codigocurso + '&listregis=' + listregis + '&lisasisten=' + lisasisten + '&listreportein=' + listreportein + '&cartdescrip=' + cartdescrip + '&regponde=' + regponde + '&infinal=' + infinal + '&evreaccion=' + evreaccion + '&copias=' + copias + '&opcion=alrcertific';
-    alert(datos);
+   // alert(datos);
     if (nom1 == '') {
         $('#ceravisos').toggle('toggle');
         setTimeout(function() {
@@ -197,16 +197,23 @@ function vergenercerf() {
         $.ajax({
             url: '../php/gecerticados.php',
             type: 'POST',
+            async: true, 
             data: datos
         }).done(function(respuesta) {
             //console.log(respuesta);
             if (respuesta == 0) {
-                alert("respuesta");
-                $('#cersucceev').toggle('toggle');
-                setTimeout(function() {
-                    $('#cersucceev').toggle('toggle');
-                    location.href = 'lisCurso.php';
-                }, 1500);
+                Swal.fire({
+                    type: 'success',
+                    title: 'GUARDADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    
+                    backdrop: `
+                        rgba(100, 100, 100, 0.4)
+                    `
+                    
+                });
             } else {
                 $('#cerdangerev').toggle('toggle');
                 setTimeout(function() {
@@ -742,7 +749,7 @@ function cambiartexto() {
 
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     var cer = cursos.split("*");
-    alert(cer[22]);
+   // alert(cer[22]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
@@ -843,6 +850,7 @@ function cereditcurso() {
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
 function cerrareval() {
+
     costOfTicket = document.getElementById("NOE");
     selectedStand = document.getElementById("SIe");
     pendiente = document.getElementById("PE");
@@ -877,8 +885,10 @@ function cerrareval() {
 
     } else {
         $.ajax({
-            url: '../php/proCurso.php',
             type: 'POST',
+            url: '../php/proCurso.php',
+            cache:false,
+            async: true, 
             data: datos
         }).done(function(respuesta) {
 
@@ -894,6 +904,7 @@ function cerrareval() {
                         rgba(100, 100, 100, 0.4)
                     `
                 });
+                $('#modal-evaluar').modal('hide');
             } else {
                 Swal.fire({
                     type: 'success',
