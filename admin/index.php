@@ -274,7 +274,7 @@ include('header.php');
                 <b>Version</b> 1.1
             </div>
             <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados AJ.
+            Todos los derechos Reservados AAJ.
         </footer>
 
         <!-- Control Sidebar -->
@@ -282,7 +282,7 @@ include('header.php');
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+        <div class="control-sidebar-bg"></div>|
     </div>
     <!-- ./wrapper -->
 
