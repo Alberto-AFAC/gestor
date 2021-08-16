@@ -3,16 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts 
-			FROM
-			cursos
-			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
-			WHERE
-			cursos.estado = 0 
-			GROUP BY
-			cursos.codigo
-			ORDER BY
-			id_curso ASC";
+	$query = "SELECT *,COUNT(*) AS prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE proceso='FINALIZADO' AND cursos.estado = 0 GROUP BY cursos.codigo ORDER BY id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 	$contador=0;
 	if(!$resultado){
@@ -70,6 +61,21 @@
 		}
 
 
+	}
+
+
+		if(isset($cursos )&&!empty($cursos )){
+
+			$json_string = json_encode(array( 'data' => $cursos ));
+	echo $json_string;
+		}else{
+
+			echo $cursos ='0';
+		}
+
+
+	
+
 
 		// if(isset($arreglo)&&!empty($arreglo)){
 
@@ -78,11 +84,6 @@
 
 		// 	echo $arreglo='0';
 		// }
-	}
-
-
-	$json_string = json_encode(array( 'data' => $cursos ));
-	echo $json_string;
 
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);

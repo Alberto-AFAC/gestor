@@ -27,24 +27,16 @@
 		$factual = strtotime(Date("Y-m-d"));
 		$fcurso = strtotime(Date($data["fcurso"]));
 
+		$nuevafecha = strtotime ( '-3 month' , strtotime ( $data["fechaf"] ) ) ;
+		$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+		$finaliza = strtotime(Date($nuevafecha));
+
 		if ($factual > $fcurso && $data["proceso"] == "PENDIENTE") {
 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 		$proc = 'VENCIDO';
-		} else
 
-		if($data["proceso"] == 'PENDIENTE'){
-
-		$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
-		$proc = 'PENDIENTE';
-		} else if($data["proceso"] == 'FINALIZADO'){
-		$proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
-		$proc = 'FINALIZADO';
-		} else if($data["proceso"] == 'EN PROCESO'){
-		$proceso = '<span style="font-weight: bold; height: 50px; color: ##3C8DBC;">EN PROCESO</span>';
-		$proc = 'EN PROCESO';
-		} 
 		$cursos[] = [ 
-			$contador, 
+		$contador, 
 		$data["gstTitlo"],
 		$data["gstTipo"],
 		$data["fcurso"],
@@ -63,21 +55,46 @@
 		$data['idinst'],
 		$data['hcurso'],
 		$proc
-	];
-
-
-
+		];
 		}
 
 
+		if ($factual <= $fcurso && $data["proceso"] == "PENDIENTE") {
 
-		// if(isset($arreglo)&&!empty($arreglo)){
+		if ($factual >= $finaliza && $data["proceso"] == "PENDIENTE") {
 
-		// 	echo json_encode($arreglo, JSON_PRETTY_PRINT);
-		// }else{
+			$proceso = "<span style='font-weight: bold; height: 50px; color:#F39403;'>POR VENCER</span>";
+			$proc = 'POR VENCER';
 
-		// 	echo $arreglo='0';
-		// }
+			$cursos[] = [ 
+			$contador, 
+			$data["gstTitlo"],
+			$data["gstTipo"],
+			$data["fcurso"],
+			$data["gstDrcin"],
+			$data["fechaf"],
+			$data["prtcpnts"],
+			$proceso,
+			$data["id_curso"],
+			$data["codigo"],
+			$data["gstDrcin"], 
+			$data['idinst'],
+			$data['sede'],
+			$data['link'],
+			$data['modalidad'],
+			$data['gstIdlsc'],
+			$data['idinst'],
+			$data['hcurso'],
+			$proc
+			];
+
+		}
+	}
+
+
+
+}
+		
 	}
 
 

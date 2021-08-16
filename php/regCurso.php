@@ -32,6 +32,15 @@ if(eliminar($EgstIdlsc,$conexion)){
 	}else{
 		echo "1";
 	}
+}else if($opcion === 'canCurso'){
+
+$codigos = $_POST['codigos'];
+
+if(cancelar($codigos,$conexion)){
+		echo "0";
+	}else{
+		echo "1";
+	}
 }
 
 
@@ -62,6 +71,21 @@ function eliminar($EgstIdlsc,$conexion){
 		}
 	cerrar($conexion);
 }
+
+function cancelar($codigos,$conexion){
+
+	$query = "UPDATE cursos SET proceso='CANCELADO',estado=1 WHERE codigo='$codigos'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+}
+
 /*function eliminar($id_categoria,$conexion){
 
 	$query = "UPDATE categoria SET estado = 0 WHERE id_categoria = '$id_categoria'";

@@ -3,16 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts 
-			FROM
-			cursos
-			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
-			WHERE
-			cursos.estado = 0 
-			GROUP BY
-			cursos.codigo
-			ORDER BY
-			id_curso ASC";
+	$query = "SELECT *,COUNT(*) AS prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE proceso='PENDIENTE' AND cursos.estado = 0 GROUP BY cursos.codigo ORDER BY id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 	$contador=0;
 	if(!$resultado){
@@ -27,22 +18,15 @@
 		$factual = strtotime(Date("Y-m-d"));
 		$fcurso = strtotime(Date($data["fcurso"]));
 
-		if ($factual > $fcurso && $data["proceso"] == "PENDIENTE") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
-		$proc = 'VENCIDO';
-		} else
-
-		if($data["proceso"] == 'PENDIENTE'){
+		if ($factual < $fcurso && $data["proceso"] == "PENDIENTE") {
+	
 
 		$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
 		$proc = 'PENDIENTE';
-		} else if($data["proceso"] == 'FINALIZADO'){
-		$proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
-		$proc = 'FINALIZADO';
-		} else if($data["proceso"] == 'EN PROCESO'){
-		$proceso = '<span style="font-weight: bold; height: 50px; color: ##3C8DBC;">EN PROCESO</span>';
-		$proc = 'EN PROCESO';
-		} 
+		
+
+
+		
 		$cursos[] = [ 
 			$contador, 
 		$data["gstTitlo"],
@@ -64,11 +48,17 @@
 		$data['hcurso'],
 		$proc
 	];
-
+}
 
 
 		}
 
+
+	}
+
+
+	$json_string = json_encode(array( 'data' => $cursos ));
+	echo $json_string;
 
 
 		// if(isset($arreglo)&&!empty($arreglo)){
@@ -78,12 +68,7 @@
 
 		// 	echo $arreglo='0';
 		// }
-	}
-
-
-	$json_string = json_encode(array( 'data' => $cursos ));
-	echo $json_string;
-
+	
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);
 
