@@ -670,18 +670,19 @@ $(document).ready(function() {
         //  if($row['pregunta1'] == 'DEFICIENTE'){
         // }
       }
-      $pregunta1 = $deficiente + $nosatisfactorio + $satisfactorio + $excelentes / 4;
-      $pregunta2 = $deficiente2 + $nosatisfactorio2 + $satisfactorio2 + $excelentes2  / 4 ;
-      $pregunta3 = $deficiente3 + $nosatisfactorio3 + $satisfactorio3 + $excelentes3 / 4;
-      $pregunta4 = $deficiente4 + $nosatisfactorio4 + $satisfactorio4 + $excelentes4 / 4;
-      $pregunta5 = $deficiente5 + $nosatisfactorio5 + $satisfactorio5 + $excelentes5 / 4;
-      $pregunta6 = $deficiente6 + $nosatisfactorio6 + $satisfactorio6 + $excelentes6 / 4;
-      $pregunta7 = $deficiente7 + $nosatisfactorio7 + $satisfactorio7 + $excelentes7 / 4;
-      $pregunta8 = $deficiente8 + $nosatisfactorio8 + $satisfactorio8 + $excelentes8 / 4;
-      $pregunta9 = $deficiente9 + $nosatisfactorio9 + $satisfactorio9 + $excelentes9 / 4;
-      $pregunta10 = $deficiente10 + $nosatisfactorio + $satisfactorio10 + $excelentes10 / 4;
-      $pregunta11 = $deficiente11 + $nosatisfactorio11 + $satisfactorio11 + $excelentes11 / 4;
-      $pregunta12 = $deficiente12 + $nosatisfactorio12 + $satisfactorio12 + $excelentes12 / 4;
+      $pregunta1 = $deficiente * 2.5 / 4 + $nosatisfactorio * 5 / 4   + $satisfactorio * 7.5 / 4  + $excelentes * 10 / 4;
+      $pregunta2 = $deficiente2 * 2.5 / 4 + $nosatisfactorio2 * 5 / 4   + $satisfactorio2 * 7.5 / 4  + $excelentes2 * 10 / 4;
+      $pregunta3 = $deficiente3 * 2.5 / 4 + $nosatisfactorio3 * 5 / 4   + $satisfactorio3 * 7.5 / 4  + $excelentes3 * 10 / 4;
+      $pregunta4 = $deficiente4 * 2.5 / 4 + $nosatisfactorio4 * 5 / 4   + $satisfactorio4 * 7.5 / 4  + $excelentes4 * 10 / 4;
+      $pregunta5 = $deficiente5 * 2.5 / 4 + $nosatisfactorio5 * 5 / 4   + $satisfactorio5 * 7.5 / 4  + $excelentes5 * 10 / 4;
+      $pregunta6 = $deficiente6 * 2.5 / 4 + $nosatisfactorio6 * 5 / 4   + $satisfactorio6 * 7.5 / 4  + $excelentes6 * 10 / 4;
+      $pregunta7 = $deficiente7 * 2.5 / 4 + $nosatisfactorio7 * 5 / 4   + $satisfactorio7 * 7.5 / 4  + $excelentes7 * 10 / 4;
+      $pregunta8 = $deficiente8 * 2.5 / 4 + $nosatisfactorio8 * 5 / 4   + $satisfactorio8 * 7.5 / 4  + $excelentes8 * 10 / 4;
+      $pregunta9 = $deficiente9 * 2.5 / 4 + $nosatisfactorio9 * 5 / 4   + $satisfactorio9 * 7.5 / 4  + $excelentes9 * 10 / 4;
+      $pregunta10 = $deficiente10 * 2.5 / 4 + $nosatisfactorio10 * 5 / 4   + $satisfactorio10 * 7.5 / 4  + $excelentes10 * 10 / 4;
+      $pregunta11 = $deficiente11 * 2.5 / 4 + $nosatisfactorio11 * 5 / 4   + $satisfactorio11 * 7.5 / 4  + $excelentes11 * 10 / 4;
+      $pregunta12 = $deficiente12 * 2.5 / 4 + $nosatisfactorio12 * 5 / 4   + $satisfactorio12 * 7.5 / 4  + $excelentes12 * 10 / 4;
+
 
       // $resul1 = $deficiente * 2.5 / 100;
       // $resul2= $nosatis * 5 / 100;
@@ -702,7 +703,7 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
     type: 'bar',
     data: {
         labels: ["PREGUNTA 1", "PREGUNTA 2", "PREGUNTA 3", "PREGUNTA 4", "PREGUNTA 5", "PREGUNTA 6",
-            "PREGUNTA 7", "PREGUNTA 8", "PREGUNTA 10", "PREGUNTA 11", "PREGUNTA 12"
+            "PREGUNTA 7", "PREGUNTA 8","PREGUNTA 9", "PREGUNTA 10", "PREGUNTA 11", "PREGUNTA 12"
         ],
         datasets: [{
                 label: "PONDERACIÓN",
@@ -717,7 +718,7 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
         responsive: true,
         elements: {
             bar: {
-                borderWidth: 2,
+                borderWidth: 4,
             }
         },
         plugins: {
@@ -728,7 +729,13 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
                 display: true,
                 text: 'Evaluación de satisfacción'
             }
-        }
+        },
+        scales: {
+      x: { // defining min and max so hiding the dataset does not change scale range
+        min: 0,
+        max: 10
+      }
+    }
     }
 });
 
