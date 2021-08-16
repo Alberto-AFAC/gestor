@@ -76,12 +76,12 @@ $psto = mysqli_query($conexion,$sql);
                     </p><br><br>
                     <div class="col-sm-offset-1 col-md-10">
                         <div class="progress-group">
-                            <span class="progress-text">CURSOS COMPLETADOS</span>
+                            <span class="progress-text">CURSOS COMPLETADOS </span>
                             <span class="progress-number">
                             <div id="FINALIZADO"></div>
                             </span>
                             <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                            <div class="progress-bar progress-bar-green" id='porcentaje11' role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="">
                                 0% </div>
                             </div>
                         </div>
@@ -94,8 +94,8 @@ $psto = mysqli_query($conexion,$sql);
                                 <div id="programado"></div>
                             </span>
                             <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                             60% </div>
+                            <div class="progress-bar progress-bar-yellow" id='porcentaje12' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+                             0% </div>
                             </div>
                         </div>
                     </div>
@@ -107,8 +107,8 @@ $psto = mysqli_query($conexion,$sql);
                             <div id="CANCELADO"></div>
                             </span>
                             <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                             60% </div>
+                            <div class="progress-bar" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+                             0% </div>
                             </div>
                         </div>
                     </div>

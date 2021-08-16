@@ -3,9 +3,9 @@
     <!-- Logo -->
     <a href="../" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>G</b>DI</span>
+      <span class="logo-mini"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Gestión de inspección</b></span>
+      <span class="logo-lg"><b>Capacitación AFAC</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -21,7 +21,7 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning"></span>
             </a>
 
  <!-- LOGO DE LA AFAC-->
