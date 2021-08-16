@@ -82,7 +82,7 @@ include('header.php');
                                 <h3 style="color: gray;" class="box-title">NIVEL GENERAL DE SATISFACCIÓN</h3>
                             </div>
                             <div style="color: green; font-size: 50px;" class="box-body">
-                                <?php echo porcentaje($cantidad, 2) . "%"?>
+                                <?php echo porcentaje($cantidad, $cantidad1, 2) . "%"?>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ include('header.php');
                                 <h3 style="color: gray;" class="box-title">NIVEL DE SATISFACCIÓN DESEADA</h3>
                             </div>
                             <div style="color: green; font-size: 50px;" class="box-body">
-                                9.4%
+                                96.4%
                             </div>
                         </div>
                     </div>

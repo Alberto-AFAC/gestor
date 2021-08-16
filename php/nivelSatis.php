@@ -307,26 +307,27 @@
         //  if($row['pregunta1'] == 'DEFICIENTE'){
         // }
       }
-      $pregunta1 = $deficiente * 2.5 / 4 + $nosatisfactorio * 5 / 4   + $satisfactorio * 7.5 / 4  + $excelentes * 10 / 4;
-      $pregunta2 = $deficiente2 * 2.5 / 4 + $nosatisfactorio2 * 5 / 4   + $satisfactorio2 * 7.5 / 4  + $excelentes2 * 10 / 4;
-      $pregunta3 = $deficiente3 * 2.5 / 4 + $nosatisfactorio3 * 5 / 4   + $satisfactorio3 * 7.5 / 4  + $excelentes3 * 10 / 4;
-      $pregunta4 = $deficiente4 * 2.5 / 4 + $nosatisfactorio4 * 5 / 4   + $satisfactorio4 * 7.5 / 4  + $excelentes4 * 10 / 4;
-      $pregunta5 = $deficiente5 * 2.5 / 4 + $nosatisfactorio5 * 5 / 4   + $satisfactorio5 * 7.5 / 4  + $excelentes5 * 10 / 4;
-      $pregunta6 = $deficiente6 * 2.5 / 4 + $nosatisfactorio6 * 5 / 4   + $satisfactorio6 * 7.5 / 4  + $excelentes6 * 10 / 4;
-      $pregunta7 = $deficiente7 * 2.5 / 4 + $nosatisfactorio7 * 5 / 4   + $satisfactorio7 * 7.5 / 4  + $excelentes7 * 10 / 4;
-      $pregunta8 = $deficiente8 * 2.5 / 4 + $nosatisfactorio8 * 5 / 4   + $satisfactorio8 * 7.5 / 4  + $excelentes8 * 10 / 4;
-      $pregunta9 = $deficiente9 * 2.5 / 4 + $nosatisfactorio9 * 5 / 4   + $satisfactorio9 * 7.5 / 4  + $excelentes9 * 10 / 4;
-      $pregunta10 = $deficiente10 * 2.5 / 4 + $nosatisfactorio10 * 5 / 4   + $satisfactorio10 * 7.5 / 4  + $excelentes10 * 10 / 4;
-      $pregunta11 = $deficiente11 * 2.5 / 4 + $nosatisfactorio11 * 5 / 4   + $satisfactorio11 * 7.5 / 4  + $excelentes11 * 10 / 4;
-      $pregunta12 = $deficiente12 * 2.5 / 4 + $nosatisfactorio12 * 5 / 4   + $satisfactorio12 * 7.5 / 4  + $excelentes12 * 10 / 4;
+      $pregunta1 = $deficiente * 2.5 / 10 + $nosatisfactorio * 5 / 10   + $satisfactorio * 7.5 / 10  + $excelentes * 10 / 10;
+      $pregunta2 = $deficiente2 * 2.5 / 10 + $nosatisfactorio2 * 5 / 10   + $satisfactorio2 * 7.5 / 10  + $excelentes2 * 10 / 10;
+      $pregunta3 = $deficiente3 * 2.5 / 10 + $nosatisfactorio3 * 5 / 10   + $satisfactorio3 * 7.5 / 10  + $excelentes3 * 10 / 10;
+      $pregunta4 = $deficiente4 * 2.5 / 10 + $nosatisfactorio4 * 5 / 10   + $satisfactorio4 * 7.5 / 10  + $excelentes4 * 10 / 10;
+      $pregunta5 = $deficiente5 * 2.5 / 10 + $nosatisfactorio5 * 5 / 10   + $satisfactorio5 * 7.5 / 10  + $excelentes5 * 10 / 10;
+      $pregunta6 = $deficiente6 * 2.5 / 10 + $nosatisfactorio6 * 5 / 10   + $satisfactorio6 * 7.5 / 10  + $excelentes6 * 10 / 10;
+      $pregunta7 = $deficiente7 * 2.5 / 10 + $nosatisfactorio7 * 5 / 10   + $satisfactorio7 * 7.5 / 10  + $excelentes7 * 10 / 10;
+      $pregunta8 = $deficiente8 * 2.5 / 10 + $nosatisfactorio8 * 5 / 10   + $satisfactorio8 * 7.5 / 10  + $excelentes8 * 10 / 10;
+      $pregunta9 = $deficiente9 * 2.5 / 10 + $nosatisfactorio9 * 5 / 10   + $satisfactorio9 * 7.5 / 10  + $excelentes9 * 10 / 10;
+      $pregunta10 = $deficiente10 * 2.5 / 10 + $nosatisfactorio10 * 5 / 10   + $satisfactorio10 * 7.5 / 10  + $excelentes10 * 10 / 10;
+      $pregunta11 = $deficiente11 * 2.5 / 10 + $nosatisfactorio11 * 5 / 10   + $satisfactorio11 * 7.5 / 10  + $excelentes11 * 10 / 10;
+      $pregunta12 = $deficiente12 * 2.5 / 10 + $nosatisfactorio12 * 5 / 10   + $satisfactorio12 * 7.5 / 10  + $excelentes12 * 10 / 10;
 
 
       // $resul1 = $deficiente * 2.5 / 100;
       $cantidad = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12; 
+      $cantidad1 = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 ; 
       
 
-      function porcentaje($cantidad, $parte, $redondear = 2) {
-        return round($parte / $cantidad * 100, $redondear);
+      function porcentaje($cantidad, $cantidad1, $redondear = 2) {
+        return round($cantidad1 / $cantidad * 100, $redondear);
     }
      
     // $n1 = 255;
