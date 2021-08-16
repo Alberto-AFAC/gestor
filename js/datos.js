@@ -975,10 +975,6 @@ function inspector(gstIdper) {
                             $("#Pusto #sigla").val(obj.data[i].gstSigla);
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
-
-
-
                         }
                     }
                 })
