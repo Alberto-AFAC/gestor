@@ -79,7 +79,7 @@ $inspector = mysqli_query($conexion,$sql);
 
             <section class="content-header">
                 <h1>
-                    CURSOS POR PENDIENTES 
+                    CURSOS PROGRAMADOS
                 </h1>
             </section>
             <!-- Main content -->
@@ -96,8 +96,27 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
-                                    <?php include('../html/pendientes.html');?>
-                                    <!-- Datatables -->
+                                   <div style="display: none;">
+                                    <?php include('../html/lisCurso.html');?>
+                                </div>
+                                    <!-- Datatables> 
+                                    <!--SEGUNDA TABLA OPTIMIZADA-->
+                                    <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>TÍTULO</th>
+                                                    <th>TIPO</th>
+                                                    <th>INICIO</th>
+                                                    <th>DURACIÓN</th>
+                                                    <th>FINAL</th>
+                                                    <th>PARTICIPANTES</th>
+                                                    <th>ESTATUS</th>
+                                                    <th>ACCIÓN</th>
+                                                </tr>
+                                            </thead>
+                                           
+                                        </table> 
                                 </div>
 
                                 <section class="content" id="viscurso">
@@ -107,21 +126,21 @@ $inspector = mysqli_query($conexion,$sql);
 
                                     </div>
                             </div>
-                            <div id='listaPend'></div>
+                            <div id='lstacurs'></div>
                             <div class="modal fade" id="modal-participnt">
                                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel">
                                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" onclick="location.href='lisCurso.php'"
+                                                <button type="button" onclick="location.href='pendientes.php'"
                                                     class="close" data-dismiss="modal" aria-label="Close"><span
                                                         aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <form class="form-horizontal" id="Prtcpnt">
-
+                                                    <input type="hidden" name="acodigos" id="acodigos">
                                                     <input type="hidden" class="form-control" id="gstIdlsc"
                                                         name="gstIdlsc">
 
@@ -164,12 +183,12 @@ $inspector = mysqli_query($conexion,$sql);
                                                         </div>
                                                     </div>
 
-                                                    <input type="hidden" name="hrcurs" id="hrcurs">
-                                                    <input type="hidden" name="finalf" id="finalf">
-                                                    <input type="hidden" name="idcord" id="idcord">
-                                                    <input type="hidden" name="sede" id="sede">
-                                                    <input type="hidden" name="linke" id="linke">
-                                                    <input type="hidden" name="modalidad" id="modalidad">
+                                                            <input type="hidden" name="hrcurs" id="hrcurs">
+                                                            <input type="hidden" name="finalf" id="finalf">
+                                                            <input type="hidden" name="idcord" id="idcord">
+                                                            <input type="hidden" name="sede" id="sede">
+                                                            <input type="hidden" name="linke" id="linke">
+                                                            <input type="hidden" name="modalidad" id="modalidad">
 
                                                     <div class="form-group">
                                                         <div class="col-sm-5">
@@ -199,7 +218,7 @@ $inspector = mysqli_query($conexion,$sql);
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.tab-content -->
+                            <!-- /.tab-content
                         </div>
                         <!-- /.nav-tabs-custom -->
                     </div>
@@ -213,20 +232,20 @@ $inspector = mysqli_query($conexion,$sql);
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">ELIMINAR CURSO </h4>
+                                    <h4 class="modal-title">CANCELAR CURSO </h4>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" name="gstIdlsc" id="gstIdlsc">
+                                    <input type="hidden" name="codigos" id="codigos">
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <p> CONFIRME ACEPTAR, PARA ELIMINAR: <input type="text" name="gstTitlo"
-                                                    id="gstTitlo" class="form-control disabled" disabled=""
-                                                    style="background: white;border: 1px solid white;"></p>
+                                            <p> ¿ESTÁ SEGURO DE CANCELAR EL CURSO: <span id="cgstTitlo"></span> <!-- +'?'<input type="text" name="cgstTitlo"
+             +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
+                                                    style="background: white;border: 1px solid white;"> --></p>
                                         </div>
                                         <br>
                                         <div class="col-sm-5">
                                             <button type="button" class="btn btn-primary"
-                                                onclick="eliCurso()">ACEPTAR</button>
+                                                onclick="canCurso()">ACEPTAR</button>
                                         </div>
                                         <b>
                                             <p class="alert alert-warning text-center padding error" id="danger">Error
@@ -252,733 +271,6 @@ $inspector = mysqli_query($conexion,$sql);
     </form>
 
     <!-- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
-    <form class="form-horizontal" action="" method="POST">
-        <div class="modal fade" id="modal-evalcurso">
-            <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                        <h1><i class="fa fa-question-circle" style="color:#08308A"></i>
-                            EVALUACIÓN DE REACCIÓN
-                        </h1>
-                        <br>
-                        <b>
-                            <label1 style="font-size: 14px">EL OBJETIVO DE ESTA EVALUACIÓN, ES CONOCER LA OPINIÓN ACERCA
-                                DE LA EFICACIA DEL CURSO Y SU DESARROLLO, LO QUE PERMITE ESTABLECER ACCIONES DE MEJORA
-                                CONTINUA HACIA LA CAPACITACIÓN.</label1>
-                        </b>
-                        <br>
-                        <section class="content">
-                            <div class="row">
-                                <!-- <img src="../dist/img/AFAC2.png" alt="Descripción de la imagen"> -->
-                                <div class="col-md-12">
-                                    <div class="nav-tabs-custom">
-                                        <div class="box-header with-border">
-                                            <form action="" class="formulario1">
-                                                <div class="radio">
-                                                    <div class="form-group ">
-                                                        <div class="col-sm-8">
-                                                            <label style="font-size:16px">ID DEL CURSO:</label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <input class="col-sm-2" type="text" name="idcursoen"
-                                                                id="idcursoen"
-                                                                style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
-                                                                disabled="">
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <label style="font-size:16px">NOMBRE DEL CURSO:</label>
-                                                        </div>
-                                                        <div class="col-sm-12">
-                                                            <input class="col-sm-12" type="text" name="nomcursoen"
-                                                                id="nomcursoen"
-                                                                style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
-                                                                disabled="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <form name="form1" action="" class="formulario1">
-                                        <div class="radio">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">SE ESPECIFICÓ LOS OBJETIVOS AL INICIO DEL CURSO,
-                                                    EN FORMA CLARA Y COMPRENSIBLE? </h3>
-                                            </div>
-                                            <form class="form-horizontal">
-                                                <div class="box-body">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg1" value="DEFICIENTE" id="r1"
-                                                                required>
-                                                            <label for="r1">DEFICIENTE</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg1" value="NO SATISFACTORIO"
-                                                                id="r2">
-                                                            <label for="r2">NO SATISFACTORIO</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg1" value="SATISFACTORIO"
-                                                                id="r3">
-                                                            <label for="r3">SATISFACTORIO</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg1" value="EXCELENTE" id="r4">
-                                                            <label for="r4">EXCELENTE</label>
-                                                        </div>
-                                                    </div>
-                                            </form>
-                                        </div>
-                                </div>
-                            </div>
-                    </div>
-
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <form name="form2" action="" class="formulario1">
-                                <div class="radio">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">SE EXPLICÓ EL MODO DE EVALUACIÓN AL INICIO DEL CURSO?</h3>
-                                    </div>
-                                    <form class="form-horizontal">
-                                        <div class="box-body">
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg2" value="DEFICIENTE" id="r5">
-                                                    <label for="r5">DEFICIENTE</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg2" value="NO SATISFACTORIO" id="r6">
-                                                    <label for="r6">NO SATISFACTORIO</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg2" value="SATISFACTORIO" id="r7">
-                                                    <label for="r7">SATISFACTORIO</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg2" value="EXCELENTE" id="r8">
-                                                    <label for="r8">EXCELENTE</label>
-                                                </div>
-                                            </div>
-                                    </form>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <form name="form3" action="" class="formulario1">
-                            <div class="radio">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">EL INSTRUCTOR/A CONTESTÓ LAS DUDAS EN TIEMPO Y FORMA?</h3>
-                                </div>
-                                <form class="form-horizontal">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg3" value="DEFICIENTE" id="r9">
-                                                <label for="r9">DEFICIENTE</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg3" value="NO SATISFACTORIO" id="r10">
-                                                <label for="r10">NO SATISFACTORIO</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg3" value="SATISFACTORIO" id="r11">
-                                                <label for="r11">SATISFACTORIO</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg3" value="EXCELENTE" id="r12">
-                                                <label for="r12">EXCELENTE</label>
-                                            </div>
-                                        </div>
-                                </form>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <form name="form4" action="" class="formulario1">
-                        <div class="radio">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE
-                                    TRABAJO?</h3>
-                            </div>
-                            <form class="form-horizontal">
-                                <div class="box-body">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <input type="radio" name="preg4" value="DEFICIENTE" id="r13">
-                                            <label for="r13">DEFICIENTE</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <input type="radio" name="preg4" value="NO SATISFACTORIO" id="r14">
-                                            <label for="r14">NO SATISFACTORIO</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <input type="radio" name="preg4" value="SATISFACTORIO" id="r15">
-                                            <label for="r15">SATISFACTORIO</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <input type="radio" name="preg4" value="EXCELENTE" id="r16">
-                                            <label for="r16">EXCELENTE</label>
-                                        </div>
-                                    </div>
-                            </form>
-                        </div>
-                </div>
-            </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form5" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">CONSIDERAS QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg5" id="r17">
-                                        <label for="r17">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg5" id="r18">
-                                        <label for="r18">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg5" id="r19">
-                                        <label for="r19">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg5" id="r20">
-                                        <label for="r20">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form6" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">EL CURSO CUBRIÓ TUS EXPECTATIVAS?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg6" value="DEFICIENTE" id="r21">
-                                        <label for="r21">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg6" value="NO SATISFACTORIO" id="r22">
-                                        <label for="r22">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg6" value="SATISFACTORIO" id="r23">
-                                        <label for="r23">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg6" value="EXCELENTE" id="r24">
-                                        <label for="r24">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form7" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">EL CONTENIDO DEL CURSO AUMENTÓ TUS CONOCIMIENTOS Y COMPRENSIÓN DE LOS
-                                TEMAS REVISADOS?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg7" value="DEFICIENTE" id="r25">
-                                        <label for="r25">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg7" value="NO SATISFACTORIO" id="r26">
-                                        <label for="r26">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg7" value="SATISFACTORIO" id="r27">
-                                        <label for="r27">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg7" value="EXCELENTE" id="r28">
-                                        <label for="r28">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form8" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">EL TIEMPO PARA ENTREGAR LAS ACTIVIDADES, FUE SUFICIENTE PARA CUMPLIR
-                                CON ELLAS?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg8" value="DEFICIENTE" id="r29">
-                                        <label for="r29">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg8" value="NO SATISFACTORIO" id="r30">
-                                        <label for="r30">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg8" value="SATISFACTORIO" id="r31">
-                                        <label for="r31">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg8" value="EXCELENTE" id="r32">
-                                        <label for="r32">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form9" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">LA PRESENTACIÓN DEL CONTENIDO, FUE FÁCIL DE REVISAR?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg9" value="DEFICIENTE" id="r33">
-                                        <label for="r33">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg9" value="NO SATISFACTORIO" id="r34">
-                                        <label for="r34">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg9" value="SATISFACTORIO" id="r35">
-                                        <label for="r35">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg9" value="EXCELENTE" id="r36">
-                                        <label for="r36">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form10" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">LA EXPLICACIÓN DE LAS TAREAS, FUERON CLARAS Y SENCILLAS?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="DEFICIENTE" id="r37">
-                                        <label for="r37">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="NO SATISFACTORIO" id="r38">
-                                        <label for="r38">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="SATISFACTORIO" id="r39">
-                                        <label for="r39">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="EXCELENTE" id="r40">
-                                        <label for="r40">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form11" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">EL TIEMPO CON EL QUE RECIBIÓ LA INFORMACIÓN (INVITACIÓN, TEMARIO,
-                                ETC.) AL CURSO FUE ADECUADO?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg11" value="DEFICIENTE" id="r41">
-                                        <label for="r41">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg11" value="NO SATISFACTORIO" id="r42">
-                                        <label for="r42">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg11" value="SATISFACTORIO" id="r43">
-                                        <label for="r43">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg11" value="EXCELENTE" id="r44">
-                                        <label for="r44">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form12" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">CÓMO FUE EL MATERIAL DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN, TEXTOS,
-                                ENLACES) UTILIZADO?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg12" value="DEFICIENTE" id="r45">
-                                        <label for="r45">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg12" value="NO SATISFACTORIO" id="r46">
-                                        <label for="r46">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg12" value="SATISFACTORIO" id="r47">
-                                        <label for="r47">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg12" value="EXCELENTE" id="r48">
-                                        <label for="r48">EXCELENTE</label>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form13" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">MENCIONA ALGUNA MEJORA QUE SE PUDIERA REALIZAR A ESTE PROCESO DE
-                                APRENDIZAJE</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="text" name="preg13" id="preg13" class="col-sm-12"
-                                            onkeyup="mayus(this);" placeholder="TU RESPUESTA"
-                                            style="background-color: #E5E7EC; border: 0; outline: none">
-                                    </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form14" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">DÓNDE REALIZASTE TU CURSO?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body" id=pregunta14>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg14" value="OFICINA" id="r49">
-                                        <label for="r49">OFICINA</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg14" value="CASA" id="r50">
-                                        <label for="r50">CASA</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg14" value="CAFÉ INTERNET" id="r51">
-                                        <label for="r51">CAFÉ INTERNET</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg14" value="OTROS" id="r52">
-                                        <label for="r52">OTROS</label>
-                                        <input type="text" name="preg14" id="otros" onkeyup="mayus(this);"
-                                            placeholder="TU RESPUESTA"
-                                            style="background-color: #E5E7EC; border: 0; outline: none">
-                                    </div>
-
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form15" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">DÓNDE REALIZASTE TU CURSO?</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg15" value="COMPUTADORA" id="r53" required>
-                                        <label for="r53">COMPUTADORA</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg15" value="TABLET" id="r54">
-                                        <label for="r54">TABLET</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg15" value="TELÉFONO" id="r55">
-                                        <label for="r55">TELÉFONO</label>
-                                    </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form16" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">COMPARTE TUS COMENTARIOS, QUEJAS, SUGERENCIAS...</h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <textarea class="col-sm-12" name="comentarios" id="preg16" rows="5" cols="40"
-                                            onkeyup="mayus(this);"
-                                            style="font-size: 18px; border-radius: 5px; background-color: #E5E7EC"
-                                            placeholder="ESCRIBE AQUÍ TUS COMENTARIOS"></textarea>
-                                    </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="box-body">
-            <div class="form-group"><br>
-                <div class="col-sm-offset-0 col-sm-5">
-
-<!-- <form id="impri" action="" method="POST"  >
-  <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
-
-                    <button type="button" class="btn btn-info btn-lg" onclick="enviar();">ENVIAR</button>
-</form> -->
-                </div>
-                <b>
-                    <p class="alert alert-danger text-center padding error" id="peligro">Los datos ya están agregados
-                    </p>
-                </b>
-                <b>
-                    <p class="alert alert-success text-center padding exito" id="enviadoexito">¡Se agregaron los datos
-                        con éxito!</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente1">Es necesario agregar la
-                        respuesta en la pregunta 1</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente2">Es necesario agregar la
-                        respuesta en la pregunta 2</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente3">Es necesario agregar la
-                        respuesta en la pregunta 3</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente4">Es necesario agregar la
-                        respuesta en la pregunta 4</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente5">Es necesario agregar la
-                        respuesta en la pregunta 5</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente6">Es necesario agregar la
-                        respuesta en la pregunta 6</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente7">Es necesario agregar la
-                        respuesta en la pregunta 7</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente8">Es necesario agregar la
-                        respuesta en la pregunta 8</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente9">Es necesario agregar la
-                        respuesta en la pregunta 9</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente10">Es necesario agregar la
-                        respuesta en la pregunta 10</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente11">Es necesario agregar la
-                        respuesta en la pregunta 11</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente12">Es necesario agregar la
-                        respuesta en la pregunta 12</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente13">Es necesario agregar la
-                        respuesta en la pregunta 13</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente14">Es necesario agregar la
-                        respuesta en la pregunta 14</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente17">Es necesario agregar la
-                        respuesta en la pregunta 17</p>
-                </b>
-                <b>
-                    <p class="alert alert-warning text-center padding aviso" id="pendiente16">Es necesario agregar la
-                        respuesta en la pregunta 16</p>
-                </b>
-            </div>
-        </div>
-        </div>
-        </div>
-        <script type="text/javascript" src="../js/encuestadatos.js"></script>
-        </section>
-        </div>
-        </div>
-        </div>
-    </form>
     <!-- FIN EVALUACIÓN CURSO -->
 
     <!-- inicia la evaluación DEL INSTRUCTOR -->
@@ -1096,6 +388,170 @@ $inspector = mysqli_query($conexion,$sql);
     </section>
     <!-- /.content -->
     </div>
+
+<!-- inicio de el check list para generar un certificado -->
+<form class="form-horizontal" action="" method="POST" id="acreditacion">
+        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal fade" id="modal-acreditacion">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                            <p>
+                            <h4 class="modal-title" style="text-align:Center;">GENERACIÓN DE CONSTANCIAS</h4>
+                            </p>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                  <label>FOLIO:</label>
+                                  <input type="text" name="id_cursoc" id="id_cursoc" style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                </div>     
+                                <div class="col-sm-10">
+                                  <label>PARTICIPANTE</label>
+                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt; display:none;" class="form-control " id="idinsevc1" name="idinsevc1">
+                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt" class="form-control" id="evaNombrc" name="evaNombrc">
+                                </div>
+                                <div class="col-sm-12">
+                                  <label>CURSO:</label>
+                                  <input type="text" name="idperonc" id="idperonc" style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                  <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt; display:none;" class="form-control " id="copnum" name="copnum">
+                                </div>
+                                   
+                            </div>                                         
+                        </div>
+                        
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                <table class="table table-striped table-bordered dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>PARAMETROS</th>
+                                                <th>ESTATUS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                   CONVOCATORIA Y CONFIRMACIÓN
+                                                </td>
+                                                <td>
+
+                                                <i class="fa fa-check" id="che1" disabled style="color:green; font-size: 16pt"></i></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    LISTA DE REGISTRO
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    LISTA DE ASISTENCIA
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    REPORTES DE INCIDENCIAS
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    CARTAS DESCRIPTIVAS
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    EVALUACIÓN POR PARTICIPANTE
+                                                </td>
+                                                <td>
+                                                
+                                                <i class="fa fa-check" id="che6" disabled style="color:green; font-size: 16pt"></i></span>    
+                                            </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    REGISTRO DE PONDERACIÓN
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    INFORME FINAL
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    EVALUACIÓN DE REACCIÓN
+                                                </td>
+                                                <td>
+                                                <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                
+                            </div>
+                           
+
+                            <div class="form-group">
+                                <div class="col-sm-5">
+                                    <button type="button" id="guaacredit" onclick="vergenercerf()" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" >ACEPTAR</button>
+                                    <button type="button" id="actacredit" onclick="" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
+                                </div>
+                                <b>
+                                    <p class="alert alert-warning text-center padding error" id="cerdangerev">Error al
+                                        Acreditar!!
+                                </b>
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="ceravisos">Error al
+                                        Acreditar!!
+                                </b>
+                                <b>
+                                    <p class="alert alert-success text-center padding exito" id="cersucceev">¡Se Acredito con
+                                        exito!</p>
+                                </b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
+    </form>
+    <!-- /.content -->
+
+    </section>
+    <!-- /.content -->
+    </div>
+
+    <!-- fin del chechk list para copletar iun certificado -->
 
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -1329,103 +785,255 @@ $(document).ready(function() {
 });
 </script>
 <script src="../js/select2.js"></script>
+<!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
-var dataSet = [
-    <?php 
-    $query = "SELECT
-          *,
-    COUNT(*) AS prtcpnts 
-    FROM
-    cursos
-    INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
-    WHERE
-    cursos.estado = 0 
-    GROUP BY
-    cursos.idmstr,
-    cursos.idinst 
-    ORDER BY
-    id_curso DESC";
-    $resultado = mysqli_query($conexion, $query);
-    $contador=0;
-    while($data = mysqli_fetch_array($resultado)){ 
-        $contador++;
-        ?>
-
-    ["<?php echo $contador?>", "<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
-        "<?php echo $data['fcurso']?>", "<?php echo $data['gstDrcin']?>", "<?php echo $data['fechaf']?>",
-        "<?php echo $data['prtcpnts']?>"
-    ],
-
-
-    <?php } ?>
-];
 $(document).ready(function() {
-    var tableGenerarReporte = $('#data-table-inspectores').DataTable({
-
+    var table = $('#example').DataTable({
+        
         "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        orderCellsTop: true,
-        fixedHeader: true,
-        data: dataSet,
-        columns: [{
-                title: 'ID'
-            },
-            {
-                name: "TÍTULO"
-            },
-            {
-                title: "TIPO"
-            },
-            {
-                title: "INICIO"
-            },
-            {
-                title: "DURACIÓN"
-            },
-            {
-                title: "FINAL"
-            },
-            {
-                title: "PARTICIPANTES"
-            },
-            {
-                title: "ACCIÓN"
-            }
-        ],
-    });
-    // Setup - add a text input to each footer cell
-    $('#data-table-inspectores thead tr').clone(true).appendTo('#data-table-inspectores thead');
-    $('#data-table-inspectores thead tr:eq(1) th').each(function(i) {
-        var title = $(this).text();
-        $(this).html('<input type="text" placeholder="Buscar ' + title + '" />');
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+        "ajax": "../php/cursosPendnt.php",
+        "columnDefs": [{
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<a href='javascript:openCurso()' id='example' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
-        $('input', this).on('keyup change', function() {
-            if (tableGenerarReporte.column(i).search() !== this.value) {
-                tableGenerarReporte
-                    .column(i)
-                    .search(this.value)
-                    .draw();
-            }
+        }]
+    });
+
+    detalles("#example tbody",table);
+    agrinspctor("#example tbody", table);
+
+
+    $('#example thead tr').clone(true).appendTo('#example thead');
+
+        $('#example thead tr:eq(1) th').each(function(i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html('<input type="text"  placeholder="Buscar" />');
+
+            $('input', this).on('keyup change', function() {
+                if (table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
         });
-    });
-});
-//
-$(document).ready(function() {
-    $('.progress-value > span').each(function() {
-        $(this).prop('Counter', 0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 1800,
-            easing: 'swing',
-            step: function(now) {
-                $(this).text(Math.ceil(now));
+
+
+
+    $('#example tbody').on('click', 'a', function() {
+        var data = table.row( $(this).parents('tr') ).data();
+        //alert( "Es el ID: "+ data );
+    $.ajax({
+        url: '../php/lisCurso.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+        for (i = 0; i < res.length; i++) {
+            if (obj.data[i].id_curso == data[8]) {
+
+
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo+'*'+obj.data[i].proceso;
+
+
+      var d = cursos.split("*");
+
+    gstIdlsc = d[0];
+
+    $("#impri #gstIdlstc").val(d[0]);
+    $("#impri #gstTitulo").val(d[1]);
+    $("#Dtall #gstTitlo").val(d[1]);
+    $("#Dtall #gstTipo").val(d[2]);
+    $("#Dtall #gstPrfil").val(d[3]);
+    $("#Dtall #gstCntnc").val(d[4]);
+    $("#Dtall #gstDrcin").val(d[5]);
+    $("#Dtall #gstVignc").val(d[6]);
+    $("#Dtall #gstObjtv").val(d[7]);
+    $("#Dtall #hcurso").val(d[8]);
+    $("#Dtall #fcurso").val(d[9]);
+    $("#Dtall #fechaf").val(d[10]);
+    $("#Dtall #idinst").val(d[11]);
+    $("#Dtall #sede").val(d[12]);
+    $("#Dtall #modalidads").val(d[14]);
+    $("#Dtall #linkcur").val(d[13]);
+    $("#Dtall #codigo").val(d[15]);
+    $("#Dtall #proceso").val(data[18]);
+
+    codigo = d[15];
+
+  idcurso(codigo);
+
             }
-        });
+        }
+    })
+
+
+modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
+    dismod = document.getElementById("dismod"); //variable para el contenedor de el link y la contraseña
+
+    if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
+        dismod.style.display = '';
+    }
+    if (modalidadcur == "PRESENCIAL (SEMIPRESENCIAL)") { //se visualiza el link y contraseña 
+        linidismodnpu.style.display = '';
+    }
+    if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
+        dismod.style.display = 'none';
+    }
+
+
+  
+   
     });
+   
 });
 
+function idcurso(codigo){
 
+ $.ajax({
+            url: '../php/curLista.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+            //TODO AQUI ES
+            html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i>ESPECIALIDAD</th><th><i></i>ASISTENCIA</th><th style="width:18%"><i></i>ACCIONES</th></tr></thead><tbody>';
+            for (i = 0; i < res.length; i++) {
+                x++;
+
+                year = obj.data[i].fcurso.substring(0, 4);
+                month = obj.data[i].fcurso.substring(5, 7);
+                day = obj.data[i].fcurso.substring(8, 10);
+                Finicio = day + '/' + month + '/' + year;
+                year = obj.data[i].fechaf.substring(0, 4);
+                month = obj.data[i].fechaf.substring(5, 7);
+                day = obj.data[i].fechaf.substring(8, 10);
+                Finaliza = day + '/' + month + '/' + year;
+
+                cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj.data[i].confirmar + "*" + obj.data[i].codigo;
+
+                    if(obj.data[i].gstCargo == 'ADMINISTRATIVO' ){
+                        cargo = obj.data[i].gstCargo;
+                    }else{
+                        cargo = obj.data[i].gstCatgr;
+                    }
+
+                if (obj.data[i].codigo == codigo ) {
+
+                    if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR' || obj.data[i].gstCargo == 'ADMINISTRATIVO') {
+
+                        if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</td><td>" + "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+
+                        } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO' || obj.data[i].evaluacion == 0 && obj.data[i].proceso == 'FINALIZADO') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+
+                    } else if (obj.data[i].gstCargo == 'COORDINADOR') {
+
+                        if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</td><td>" + "</a> <a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+
+                        } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Descarga de certificado' onclick='certificado()' class='btn btn-success'><i class='fa fa fa-download' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+
+                    }
+
+                    //ISPECTOR
+                    if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td></td>" + "<td>  <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                    }
+
+                } else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
+
+                    if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
+                        if (obj.data[i].gstCargo == 'COORDINADOR') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        } else {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+
+                        }
+
+                    }
+                    if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                    }
+                    if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                    }
+                }
+
+            }
+            html += '</tbody></table>';
+            $("#proCursos").html(html);
+
+        })
+
+
+}
+
+
+   function detalles(tbody,table){
+
+    $(tbody).on("click", "a.eliminar", function(){
+        var data = table.row($(this).parents("tr")).data();   
+
+        //var gstIdlsc = $().val(data.gstIdlsc);
+         $("#modal-eliminar #codigos").val(data[9]);
+         $("#modal-eliminar #cgstTitlo").html(data[1]+'?');
+
+      });
+    }
+
+   function agrinspctor(tbody,table){
+
+    $(tbody).on("click", "a.asiste", function(){
+        var data = table.row($(this).parents("tr")).data();   
+
+        alert(data[16]);
+
+        $("#Prtcpnt #gstIdlsc").val(data[15]);
+        $("#Prtcpnt #acodigos").val(data[9]);
+        $("#Prtcpnt #gstTitlo").val(data[1]);
+        $("#Prtcpnt #finicio").val(data[3]);
+        $("#Prtcpnt #gstDrcin").val(data[10]);
+
+        $("#Prtcpnt #hrcurs").val(data[17]);
+        $("#Prtcpnt #finalf").val(data[5]);
+         $("#Prtcpnt #idcord").val(data[16]);
+         $("#Prtcpnt #sede").val(data[12]);
+         $("#Prtcpnt #linke").val(data[13]);
+         $("#Prtcpnt #modalidad").val(data[14]);
+         
+      });
+    }
 
 </script>
+<style>
+    #example
+     input {
+        width: 50% !important;
+    }
+</style>
+
