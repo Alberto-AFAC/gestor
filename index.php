@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" href="../dist/img/iconafac.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Gestores</title>
+		<title>Capacitación AFAC</title>
 	
 	<link rel="stylesheet" type="text/css" href="css/icono/iconos/style.css">
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css" type="text/css" />
@@ -57,7 +57,7 @@
 		<div class="form-header">
 		<h3 class="form-title">
 		<span class="glyphicon glyphicon-plane"></span>
-		<b>Gestión de inspección </b> 
+		<b>Capacitación AFAC</b> 
 		</h3>
 		</div>
 			<div class="rowadmin">                  
@@ -100,7 +100,7 @@
 		<div class="form-header">
 			<h3 class="form-title">
 				<span class="glyphicon glyphicon-plane"></span>
-					<b>Gestión de inspección</b>
+					<b>Capacitación AFAC</b>
 			</h3>					
 		</div>
 			<div class="row">                  

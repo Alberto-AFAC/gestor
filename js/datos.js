@@ -1202,10 +1202,26 @@ function inspector(gstIdper) {
                                 if (obj.data[ii].estado == '0') {
                                     insp++;
                                 }
-                                //$("#programado").html(programados); 
+        
                                 document.getElementById("programado").innerHTML = programados + '/' + insp;
                                 document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
                                 document.getElementById("CANCELADO").innerHTML = CANCELADO + '/' + insp;
+                               //PORCENTAJE DE COMPLETADOS
+                               
+                               var porcentaje1  = document.getElementById("porcentaje11");
+                                porcentaje1.style.width = ((FINALIZADO * 100) / insp  + "%");
+                                porcentaje11.innerHTML = ((FINALIZADO * 100) / insp  + "%");
+
+                               // PORCENTAJE DE PROGRAMADOS
+                                var porcentaje12  = document.getElementById("porcentaje12");
+                                porcentaje12.style.width = ((programados * 100) / insp  + "%");
+                                porcentaje12.innerHTML = ((programados * 100) / insp  + "%"); //VALOR
+
+                                // PORCENTAJE DE CANCELADO
+                                var porcentaje13  = document.getElementById("porcentaje13");
+                                porcentaje13.style.width = ((CANCELADO * 100) / insp  + "%");
+                                porcentaje13.innerHTML = ((CANCELADO * 100) / insp  + "%"); //VALOR
+
                             }
                         }
                         // TODO AQUI TERMINA
