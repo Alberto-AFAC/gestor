@@ -78,6 +78,17 @@ include('header.php');
                             <div class="box-body text-center">
                                 <canvas id="piechart-satisfaccion"></canvas>
                             </div>
+                            <div style="padding-left: 100px; padding-bottom: 10px;" class="container">
+                            <table width="80%">
+                                    <tr style="color: gray;">
+                                        <th>DEFICIENTE</th>
+                                        <th>NO SATISFACTORIO</th>
+                                        <th>SATISFACTORIO</th>
+                                        <th>EXCELENTE</th>
+
+                                    </tr>
+                                </table>
+                            </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
@@ -703,15 +714,20 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
     type: 'bar',
     data: {
         labels: ["PREGUNTA 1", "PREGUNTA 2", "PREGUNTA 3", "PREGUNTA 4", "PREGUNTA 5", "PREGUNTA 6",
-            "PREGUNTA 7", "PREGUNTA 8","PREGUNTA 9", "PREGUNTA 10", "PREGUNTA 11", "PREGUNTA 12"
+            "PREGUNTA 7", "PREGUNTA 8", "PREGUNTA 9", "PREGUNTA 10", "PREGUNTA 11", "PREGUNTA 12"
         ],
         datasets: [{
-                label: "PONDERACIÓN",
-                backgroundColor: ["#154360","#1A5276","#1F618D","#2471A3","#2980B9","#5499C7","#7FB3D5","#A9CCE3","#1ABC9C","#48C9B0","#76D7C4","#A3E4D7"],
-                borderWidth: 0,
-                data: ["<?php echo $pregunta1?>","<?php echo $pregunta2?>","<?php echo $pregunta3?>","<?php echo $pregunta4?>","<?php echo $pregunta5?>","<?php echo $pregunta6?>","<?php echo $pregunta7?>","<?php echo $pregunta8?>","<?php echo $pregunta9?>","<?php echo $pregunta10?>","<?php echo $pregunta11?>","<?php echo $pregunta12?>"]
-            }
-        ]
+            label: "PONDERACIÓN",
+            backgroundColor: ["#154360", "#1A5276", "#1F618D", "#2471A3", "#2980B9", "#5499C7",
+                "#7FB3D5", "#A9CCE3", "#1ABC9C", "#48C9B0", "#76D7C4", "#A3E4D7"
+            ],
+            borderWidth: 0,
+            data: ["<?php echo $pregunta1?>", "<?php echo $pregunta2?>", "<?php echo $pregunta3?>",
+                "<?php echo $pregunta4?>", "<?php echo $pregunta5?>", "<?php echo $pregunta6?>",
+                "<?php echo $pregunta7?>", "<?php echo $pregunta8?>", "<?php echo $pregunta9?>",
+                "<?php echo $pregunta10?>", "<?php echo $pregunta11?>", "<?php echo $pregunta12?>"
+            ]
+        }]
     },
     options: {
         indexAxis: 'y',
@@ -730,12 +746,12 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
                 text: 'Evaluación de satisfacción'
             }
         },
-        scales: {
-      x: { // defining min and max so hiding the dataset does not change scale range
-        min: 0,
-        max: 10
-      }
-    }
+        // scales: {
+        //     x: { // defining min and max so hiding the dataset does not change scale range
+        //         min: 0,
+        //         max: 10
+        //     }
+        // }
     }
 });
 
