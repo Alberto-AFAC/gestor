@@ -96,12 +96,12 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
-                                   
+                                   <div style="display: none;">
                                     <?php include('../html/lisCurso.html');?>
-                              
-                                    <!-- Datatables -->
+                                </div>
+                                    <!-- Datatables> 
                                     <!--SEGUNDA TABLA OPTIMIZADA-->
-                                    <!-- <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
+                                    <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -116,7 +116,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                 </tr>
                                             </thead>
                                            
-                                        </table> -->
+                                        </table> 
                                 </div>
 
                                 <section class="content" id="viscurso">
@@ -140,7 +140,7 @@ $inspector = mysqli_query($conexion,$sql);
                                             </div>
                                             <div class="modal-body">
                                                 <form class="form-horizontal" id="Prtcpnt">
-
+                                                    <input type="hidden" name="acodigos" id="acodigos">
                                                     <input type="hidden" class="form-control" id="gstIdlsc"
                                                         name="gstIdlsc">
 
@@ -183,12 +183,12 @@ $inspector = mysqli_query($conexion,$sql);
                                                         </div>
                                                     </div>
 
-                                                    <input type="hidden" name="hrcurs" id="hrcurs">
-                                                    <input type="hidden" name="finalf" id="finalf">
-                                                    <input type="hidden" name="idcord" id="idcord">
-                                                    <input type="hidden" name="sede" id="sede">
-                                                    <input type="hidden" name="linke" id="linke">
-                                                    <input type="hidden" name="modalidad" id="modalidad">
+                                                            <input type="hidden" name="hrcurs" id="hrcurs">
+                                                            <input type="hidden" name="finalf" id="finalf">
+                                                            <input type="hidden" name="idcord" id="idcord">
+                                                            <input type="hidden" name="sede" id="sede">
+                                                            <input type="hidden" name="linke" id="linke">
+                                                            <input type="hidden" name="modalidad" id="modalidad">
 
                                                     <div class="form-group">
                                                         <div class="col-sm-5">
@@ -218,7 +218,7 @@ $inspector = mysqli_query($conexion,$sql);
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.tab-content -->
+                            <!-- /.tab-content
                         </div>
                         <!-- /.nav-tabs-custom -->
                     </div>
@@ -232,20 +232,20 @@ $inspector = mysqli_query($conexion,$sql);
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">ELIMINAR CURSO </h4>
+                                    <h4 class="modal-title">CANCELAR CURSO </h4>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" name="gstIdlsc" id="gstIdlsc">
+                                    <input type="hidden" name="codigos" id="codigos">
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <p> CONFIRME ACEPTAR, PARA ELIMINAR: <input type="text" name="gstTitlo"
-                                                    id="gstTitlo" class="form-control disabled" disabled=""
-                                                    style="background: white;border: 1px solid white;"></p>
+                                            <p> ¿ESTÁ SEGURO DE CANCELAR EL CURSO: <span id="cgstTitlo"></span> <!-- +'?'<input type="text" name="cgstTitlo"
+             +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
+                                                    style="background: white;border: 1px solid white;"> --></p>
                                         </div>
                                         <br>
                                         <div class="col-sm-5">
                                             <button type="button" class="btn btn-primary"
-                                                onclick="eliCurso()">ACEPTAR</button>
+                                                onclick="canCurso()">ACEPTAR</button>
                                         </div>
                                         <b>
                                             <p class="alert alert-warning text-center padding error" id="danger">Error
@@ -798,12 +798,13 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' onclick='curso(" + '"' + cursos + '"' + ")' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' onclick='agrPart(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
         }]
     });
 
     detalles("#example tbody",table);
+    agrinspctor("#example tbody", table);
 
 
     $('#example thead tr').clone(true).appendTo('#example thead');
@@ -826,12 +827,9 @@ $(document).ready(function() {
 
     $('#example tbody').on('click', 'a', function() {
         var data = table.row( $(this).parents('tr') ).data();
-        //alert( "Es el ID: "+ data[0] );
-
-        gstIdlsc = data[0];
-
+        //alert( "Es el ID: "+ data );
     $.ajax({
-        url: '../php/conCurso.php',
+        url: '../php/lisCurso.php',
         type: 'POST'
     }).done(function(resp) {
         obj = JSON.parse(resp);
@@ -839,54 +837,196 @@ $(document).ready(function() {
         var x = 0;
 
         for (i = 0; i < res.length; i++) {
-            if (obj.data[i].gstIdlsc == gstIdlsc) {
+            if (obj.data[i].id_curso == data[8]) {
 
-                datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
 
-                var d = datos.split("*");
-                $("#modalVal #AgstIdlsc").val(d[0]);
-                $("#AgstIdlsc #AgstIdlsc").val(d[0]);
-                $("#modalUpdate #Idlsc").val(d[0]);
-                $("#modalVal #AgstTitlo").val(d[1]);
-                $("#modalUpdate #AgstTitlo").val(d[1]);
-                $("#modalVal #AgstTipo").val(d[2]);
-                $("#gstPrfil").html(d[3]);
-                $("#modalVal #AgstCntnc").val(d[4]);
+            cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].modalidad + "*" + obj.data[i].codigo+'*'+obj.data[i].proceso;
 
-                Ahr = d[5].substr(0, 2);
-                Amin = d[5].substr(8, 2);
-                //                Atmp = d[5].substr(6,4);
 
-                $("#modalVal #Ahr").val(Ahr);
-                $("#modalVal #Amin").val(Amin);
+      var d = cursos.split("*");
 
-                $("#modalVal #AgstVignc").val(d[6]);
-                $("#modalVal #AgstObjtv").val(d[7]);
-                $("#modalVal #AgstTmrio").val(d[8]);
-                $("#modalUpdate #AgstTmrio").val(d[8]);
-                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
-                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+    gstIdlsc = d[0];
+
+    $("#impri #gstIdlstc").val(d[0]);
+    $("#impri #gstTitulo").val(d[1]);
+    $("#Dtall #gstTitlo").val(d[1]);
+    $("#Dtall #gstTipo").val(d[2]);
+    $("#Dtall #gstPrfil").val(d[3]);
+    $("#Dtall #gstCntnc").val(d[4]);
+    $("#Dtall #gstDrcin").val(d[5]);
+    $("#Dtall #gstVignc").val(d[6]);
+    $("#Dtall #gstObjtv").val(d[7]);
+    $("#Dtall #hcurso").val(d[8]);
+    $("#Dtall #fcurso").val(d[9]);
+    $("#Dtall #fechaf").val(d[10]);
+    $("#Dtall #idinst").val(d[11]);
+    $("#Dtall #sede").val(d[12]);
+    $("#Dtall #modalidads").val(d[14]);
+    $("#Dtall #linkcur").val(d[13]);
+    $("#Dtall #codigo").val(d[15]);
+    $("#Dtall #proceso").val(data[18]);
+
+    codigo = d[15];
+
+  idcurso(codigo);
 
             }
         }
     })
 
 
+modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
+    dismod = document.getElementById("dismod"); //variable para el contenedor de el link y la contraseña
+
+    if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
+        dismod.style.display = '';
+    }
+    if (modalidadcur == "PRESENCIAL (SEMIPRESENCIAL)") { //se visualiza el link y contraseña 
+        linidismodnpu.style.display = '';
+    }
+    if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
+        dismod.style.display = 'none';
+    }
+
+
+  
+   
     });
    
-
- 
-
-
 });
+
+function idcurso(codigo){
+
+ $.ajax({
+            url: '../php/curLista.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+            //TODO AQUI ES
+            html = '<table id="lstcurs" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i>ESPECIALIDAD</th><th><i></i>ASISTENCIA</th><th style="width:18%"><i></i>ACCIONES</th></tr></thead><tbody>';
+            for (i = 0; i < res.length; i++) {
+                x++;
+
+                year = obj.data[i].fcurso.substring(0, 4);
+                month = obj.data[i].fcurso.substring(5, 7);
+                day = obj.data[i].fcurso.substring(8, 10);
+                Finicio = day + '/' + month + '/' + year;
+                year = obj.data[i].fechaf.substring(0, 4);
+                month = obj.data[i].fechaf.substring(5, 7);
+                day = obj.data[i].fechaf.substring(8, 10);
+                Finaliza = day + '/' + month + '/' + year;
+
+                cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr + "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj.data[i].confirmar + "*" + obj.data[i].codigo;
+
+                    if(obj.data[i].gstCargo == 'ADMINISTRATIVO' ){
+                        cargo = obj.data[i].gstCargo;
+                    }else{
+                        cargo = obj.data[i].gstCatgr;
+                    }
+
+                if (obj.data[i].codigo == codigo ) {
+
+                    if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR' || obj.data[i].gstCargo == 'ADMINISTRATIVO') {
+
+                        if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</td><td>" + "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+
+                        } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO' || obj.data[i].evaluacion == 0 && obj.data[i].proceso == 'FINALIZADO') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+
+                    } else if (obj.data[i].gstCargo == 'COORDINADOR') {
+
+                        if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button right transition pend' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-time'  style='font-size:18px;'></i>" + "</td><td>" + "</a> <a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+
+                        } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Descarga de certificado' onclick='certificado()' class='btn btn-success'><i class='fa fa fa-download' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+                        if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        }
+
+                    }
+
+                    //ISPECTOR
+                    if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td></td>" + "<td>  <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                    }
+
+                } else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
+
+                    if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
+                        if (obj.data[i].gstCargo == 'COORDINADOR') {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        } else {
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+
+                        }
+
+                    }
+                    if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" + '"' + cursos + '"' + ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                    }
+                    if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" + "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" + '"' + cursos + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                    }
+                }
+
+            }
+            html += '</tbody></table>';
+            $("#proCursos").html(html);
+
+        })
+
+
+}
+
 
    function detalles(tbody,table){
 
     $(tbody).on("click", "a.eliminar", function(){
         var data = table.row($(this).parents("tr")).data();   
-        //var gstIdlsc = $().val(data.gstIdlsc);
-         $("#modal-eliminar #EgstIdlsc").val(data[0]);
 
+        //var gstIdlsc = $().val(data.gstIdlsc);
+         $("#modal-eliminar #codigos").val(data[9]);
+         $("#modal-eliminar #cgstTitlo").html(data[1]+'?');
+
+      });
+    }
+
+   function agrinspctor(tbody,table){
+
+    $(tbody).on("click", "a.asiste", function(){
+        var data = table.row($(this).parents("tr")).data();   
+
+        // alert(data[16]);
+        // alert(data[17]);
+
+        $("#Prtcpnt #gstIdlsc").val(data[15]);
+        $("#Prtcpnt #acodigos").val(data[9]);
+        $("#Prtcpnt #gstTitlo").val(data[1]);
+        $("#Prtcpnt #finicio").val(data[3]);
+        $("#Prtcpnt #gstDrcin").val(data[10]);
+
+        $("#Prtcpnt #hrcurs").val(data[17]);
+        $("#Prtcpnt #finalf").val(data[5]);
+         $("#Prtcpnt #idcord").val(data[16]);
+         $("#Prtcpnt #sede").val(data[12]);
+         $("#Prtcpnt #linke").val(data[13]);
+         $("#Prtcpnt #modalidad").val(data[14]);
+         
       });
     }
 
