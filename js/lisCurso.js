@@ -1,4 +1,58 @@
 
+function vergenercerf() {
+    var id_persona = document.getElementById('idinsevc1').value; //ID DE LA PERSONA
+    var id_codigocurso = document.getElementById('id_cursoc').value; //ID DE LA PERSONA
+    var listregis = $('input[id=check2c]:checked').val(); // LISTA DE REGISTRO
+    var lisasisten = $('input[id=check3c]:checked').val(); // LISTA DE ASISTENCIA
+    var listreportein = $('input[id=check4c]:checked').val(); // REPORTES DE INCIDENCIAS
+    var cartdescrip = $('input[id=check5c]:checked').val(); // CARTAS DESCRIPTIVAS
+    var regponde = $('input[id=check7c]:checked').val(); // REGISTRO DE PONDERACIÓN
+    var infinal = $('input[id=check8c]:checked').val(); // INFORME FINAL
+    var evreaccion = $('input[id=check9c]:checked').val(); // EVALUACIÓN DE REACCIÓN
+    var nom1 = document.getElementById('evaNombrc'); //che1  evaNombrc;
+    var copias = document.getElementById('copnum'); //che1  evaNombrc;
+
+    datos = 'id_persona=' + id_persona + '&id_codigocurso=' + id_codigocurso + '&listregis=' + listregis + '&lisasisten=' + lisasisten + '&listreportein=' + listreportein + '&cartdescrip=' + cartdescrip + '&regponde=' + regponde + '&infinal=' + infinal + '&evreaccion=' + evreaccion + '&copias=' + copias + '&opcion=alrcertific';
+   // alert(datos);
+    if (nom1 == '') {
+        $('#ceravisos').toggle('toggle');
+        setTimeout(function() {
+            $('#ceravisos').toggle('toggle');
+        }, 2000);
+        return;
+
+    } else {
+
+        $.ajax({
+            url: '../php/gecerticados.php',
+            type: 'POST',
+            async: true, 
+            data: datos
+        }).done(function(respuesta) {
+            //console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'GUARDADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    
+                    backdrop: `
+                        rgba(100, 100, 100, 0.4)
+                    `
+                    
+                });
+            } else {
+                $('#cerdangerev').toggle('toggle');
+                setTimeout(function() {
+                    $('#cerdangerev').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
+}
+
 
 function imprimir() {
 
