@@ -30,7 +30,7 @@ function vergenercerf() {
         }).done(function(respuesta) {
             //console.log(respuesta);
             if (respuesta == 0) {
-                Swal.fire({
+                Swal.fire({ //ALERTA DE SE GUARDO CORRECTAMENTE
                     type: 'success',
                     title: 'GUARDADO CON ÉXITO',
                     showConfirmButton: false,
@@ -40,8 +40,8 @@ function vergenercerf() {
                     backdrop: `
                         rgba(100, 100, 100, 0.4)
                     `
-
                 });
+                $('#modal-acreditacion').modal('hide'); // CIERRA EL MODAL
             } else {
                 $('#cerdangerev').toggle('toggle');
                 setTimeout(function() {
@@ -82,10 +82,7 @@ function imprimir() {
 }
 //TODO EVALUACIN
 function evaluar() {
-
-
     var idcursoen = document.getElementById('idcursoen').value; //ID CURSO 
-
     var preg1 = $('input[name=preg1]:checked').val(); //-
     var preg2 = $('input[name=preg2]:checked').val(); // -
     var preg3 = $('input[name=preg3]:checked').val(); //  -
@@ -404,10 +401,11 @@ function cambiartexto() {
 
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     var cer = cursos.split("*");
-    // alert(cer[21]);
+    alert(cer[22]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
+    $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
     check6c = document.getElementById('check6c'); // 
     check1c = document.getElementById('check1c'); //
     che1 = document.getElementById('che1'); //che1 
@@ -559,10 +557,11 @@ function cerrareval() {
                         rgba(100, 100, 100, 0.4)
                     `
                 });
+                $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
             } else {
                 Swal.fire({
                     type: 'success',
-                    title: 'EVALUADO CON ÉXITO',
+                    title: 'ERRO AL EVALUAR',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
