@@ -1165,10 +1165,10 @@ function inspector(gstIdper) {
                             //console.log(status);
                         }
                         if (obj.data[ii].proceso == 'FINALIZADO') {
-                            status1 = "<span style='color: green;>FINALIZADO</span>'";
+                            status1 = "<span style='color: green;'>FINALIZADO</span>";
 
                         } else if (obj.data[ii].proceso == 'CANCELADO') {
-                            status1 = "<span style='color: orange;>CANCELADO ME LA CHUPAS</span>'";
+                            status1 = "<span style='color: orange;'>CANCELADO ME LA CHUPAS</span>";
 
                         }
 
