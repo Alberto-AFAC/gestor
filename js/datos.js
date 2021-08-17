@@ -1202,25 +1202,25 @@ function inspector(gstIdper) {
                                 if (obj.data[ii].estado == '0') {
                                     insp++;
                                 }
-        
+
                                 document.getElementById("programado").innerHTML = programados + '/' + insp;
                                 document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
                                 document.getElementById("CANCELADO").innerHTML = CANCELADO + '/' + insp;
-                               //PORCENTAJE DE COMPLETADOS
-                               
-                               var porcentaje1  = document.getElementById("porcentaje11");
-                                porcentaje1.style.width = ((FINALIZADO * 100) / insp  + "%");
-                                porcentaje11.innerHTML = ((FINALIZADO * 100) / insp  + "%");
+                                //PORCENTAJE DE COMPLETADOS
 
-                               // PORCENTAJE DE PROGRAMADOS
-                                var porcentaje12  = document.getElementById("porcentaje12");
-                                porcentaje12.style.width = ((programados * 100) / insp  + "%");
-                                porcentaje12.innerHTML = ((programados * 100) / insp  + "%"); //VALOR
+                                var porcentaje1 = document.getElementById("porcentaje11");
+                                porcentaje1.style.width = ((FINALIZADO * 100) / insp + "%");
+                                porcentaje11.innerHTML = ((FINALIZADO * 100) / insp + "%");
+
+                                // PORCENTAJE DE PROGRAMADOS
+                                var porcentaje12 = document.getElementById("porcentaje12");
+                                porcentaje12.style.width = ((programados * 100) / insp + "%");
+                                porcentaje12.innerHTML = ((programados * 100) / insp + "%"); //VALOR
 
                                 // PORCENTAJE DE CANCELADO
-                                var porcentaje13  = document.getElementById("porcentaje13");
-                                porcentaje13.style.width = ((CANCELADO * 100) / insp  + "%");
-                                porcentaje13.innerHTML = ((CANCELADO * 100) / insp  + "%"); //VALOR
+                                var porcentaje13 = document.getElementById("porcentaje13");
+                                porcentaje13.style.width = ((CANCELADO * 100) / insp + "%");
+                                porcentaje13.innerHTML = ((CANCELADO * 100) / insp + "%"); //VALOR
 
                             }
                         }
@@ -1904,6 +1904,8 @@ function comandancias() {
     $("#comandancias2").toggle('toggle');
 }
 
+
+
 function asignar() {
 
     var gstIdper = document.getElementById('gstIdper').value;
@@ -1962,7 +1964,7 @@ function asignar() {
                 Swal.fire({
                     type: 'success',
                     title: 'AFAC INFORMA',
-                    text: 'Sus datos fueron guardados correctamente',
+                    text: 'Sus datos fueron guardados correctamentessssss',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 3000
@@ -1978,7 +1980,7 @@ function asignar() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-                //setTimeout("location.href = 'persona.php';", 2000);
+                setTimeout("location.href = 'persona.php';", 2000);
 
             } else if (respuesta == 1) {
                 $('#danger2').toggle('toggle');
