@@ -1077,6 +1077,11 @@ function inspector(gstIdper) {
                     var res = obj.data;
                     var x = 0;
 
+                   //
+                        programados = 0;
+                        FINALIZADO = 0;
+                        CANCELADO = 0;
+                        insp = 0;
 
                     //TODO AQUÍ ES LO QUE LLEVA
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
@@ -1164,12 +1169,7 @@ function inspector(gstIdper) {
                             //console.log(status);
                         }
 
-                        //
-                        programados = 0;
-                        FINALIZADO = 0;
-                        CANCELADO = 0;
-                        insp = 0;
-
+     
                         if (obj.data[ii].idinsp == gstIdper) {
                             if (obj.data[ii].evaluacion >= '0') {
 
