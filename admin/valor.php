@@ -840,7 +840,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                 <div class="box-header">
                                     <h3 class="box-title">Cursos programados</h3>
                                 </div>
-                                <div class="form-group">
+<!--                                 <div class="form-group">
                                     <div class="col-sm-2">
                                         <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
                                         <label for="finalizado">FINALIZADO</label><br>
@@ -854,7 +854,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                         <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
                                         <label for="cancelados">CANCELADOS</label><br>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="box-body">
                                     <?php include('../html/gesCurso.html');?>
                                 </div>
