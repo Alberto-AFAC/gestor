@@ -65,24 +65,19 @@
 		$proc
 	];
 
-
-
 		}
-
-
-
-		// if(isset($arreglo)&&!empty($arreglo)){
-
-		// 	echo json_encode($arreglo, JSON_PRETTY_PRINT);
-		// }else{
-
-		// 	echo $arreglo='0';
-		// }
 	}
 
 
-	$json_string = json_encode(array( 'data' => $cursos ));
-	echo $json_string;
+
+			if(isset($cursos)&&!empty($cursos )){
+
+			$json_string = json_encode(array( 'data' => $cursos ));
+			echo $json_string;
+			}else{
+
+			echo $cursos ='0';
+			}
 
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);

@@ -97,9 +97,14 @@
 		
 	}
 
+			if(isset($cursos)&&!empty($cursos )){
 
-	$json_string = json_encode(array( 'data' => $cursos ));
-	echo $json_string;
+			$json_string = json_encode(array( 'data' => $cursos ));
+			echo $json_string;
+			}else{
+
+			echo $cursos ='0';
+			}
 
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);
