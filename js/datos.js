@@ -1153,15 +1153,15 @@ function inspector(gstIdper) {
 
 
                         if (factual >= finaliza) {
-                            status = "<a type='button' class='btn btn-danger' data-toggle='modal' >VENCIDO</a>";
+                            status = "<span style='background-color: orange; font-size: 14px;' class='badge'>VENCIDO</span>";
                             //console.log(status);
                         } else
                         if (factual <= ftermino) {
-                            status = "<a type='button' class='btn btn-success' data-toggle='modal' >VIGENTE</a>";
+                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
                             //console.log(status);
                         } else
                         if (factual >= ftermino) {
-                            status = "<a type='button' class='btn btn-warning' data-toggle='modal' >POR VENCER</a>";
+                            status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         }
 
@@ -1183,7 +1183,7 @@ function inspector(gstIdper) {
                                 if (obj.data[ii].confirmar == 'CONFIRMAR') {
                                     html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>" + obj.data[ii].proceso + "</a></td><td>" + status + "</td></tr>";
                                 } else if (obj.data[ii].confirmar == 'CONFIRMADO') {
-                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-confirma'>CONFIRMADO</a></td><td>" + status + "</td></tr>";
+                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span title='Confirmado' style='font-weight: bold; color: green;'>CONFIRMADO</span></td><td>" + status + "</td></tr>";
                                 } else {}
 
                                 if (obj.data[ii].proceso == 'PENDIENTE') {
