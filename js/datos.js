@@ -1371,6 +1371,8 @@ function consultaCurso(gst) {
                 html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: #3C8DBC;'>EN CURSO</td> </tr>";
             } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'PENDIENTE') {
                 html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: orange;'>PENDIENTE</td> </tr>";
+            }else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'FINALIZADO') {
+                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: green;'>FINALIZADO</td> </tr>";
             }
         }
         html += '</tbody></table></div></div></div>';
