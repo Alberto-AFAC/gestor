@@ -68,7 +68,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Agel Canseco</span>
+              <span class="hidden-xs">Angel Canseco</span>
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">
