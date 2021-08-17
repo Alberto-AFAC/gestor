@@ -1181,7 +1181,7 @@ function inspector(gstIdper) {
 
                                 idlista = obj.data[ii].idmstr;
                                 if (obj.data[ii].confirmar == 'CONFIRMAR') {
-                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>" + obj.data[ii].proceso + "</a></td><td>" + status + "</td></tr>";
+                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + obj.data[ii].proceso + "</span></td><td>" + status + "</td></tr>";
                                 } else if (obj.data[ii].confirmar == 'CONFIRMADO') {
                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span title='Confirmado' style='font-weight: bold; color: green;'>CONFIRMADO</span></td><td>" + status + "</td></tr>";
                                 } else {}
@@ -1371,7 +1371,7 @@ function consultaCurso(gst) {
                 html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: #3C8DBC;'>EN CURSO</td> </tr>";
             } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'PENDIENTE') {
                 html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: orange;'>PENDIENTE</td> </tr>";
-            }else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'FINALIZADO') {
+            } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'FINALIZADO') {
                 html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: green;'>FINALIZADO</td> </tr>";
             }
         }
