@@ -285,13 +285,13 @@ $('#select2').load('select/acttablacom.php');
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal 
+$query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso FROM personal 
           INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
           WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
-        $fechaActual = date_create(date('Y-m-d')); 
+        $fechaActual = date_create(date('d-m-Y')); 
 		    $FechaIngreso = date_create($data['gstFeing']); 
 		    $interval = date_diff($FechaIngreso, $fechaActual,false);  
 		    $antiguedad = intval($interval->format('%R%a')); 
@@ -302,7 +302,7 @@ $resultado = mysqli_query($conexion, $query);
 
       ?>
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstFeing']?>","<?php 
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['Ingreso']?>","<?php 
 							if($antiguedad <=30){
 								echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
 							}else {
