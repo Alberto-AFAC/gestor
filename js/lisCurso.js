@@ -401,35 +401,25 @@ function cambiartexto() {
 
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     var cer = cursos.split("*");
-    alert(cer[22]);
+    alert(cer[20]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
     $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
-    check6c = document.getElementById('check6c'); // 
-    check1c = document.getElementById('check1c'); //
     che1 = document.getElementById('che1'); //che1 
     che6 = document.getElementById('che6'); //che6
     // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
     if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
-        check6c.checked = true;
-        check6c.style.display = 'none';
         che6.style.display = '';
     } else {
-        check6c.checked = false;
         che6.style.display = 'none';
     }
-
     if (cer[20] == "CONFIRMADO") {
-        check1c.checked = true;
-        check1c.style.display = 'none';
+
         che1.style.display = '';
     } else {
-        check1c.checked = false;
         che1.style.display = 'none';
     }
-
-
 }
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
