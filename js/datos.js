@@ -1076,11 +1076,11 @@ function inspector(gstIdper) {
                     obj = JSON.parse(resp);
                     var res = obj.data;
                     var x = 0;
-                   //
-                        programados = 0;
-                        FINALIZADO = 0;
-                        CANCELADO = 0;
-                        insp = 0;
+                    //
+                    programados = 0;
+                    FINALIZADO = 0;
+                    CANCELADO = 0;
+                    insp = 0;
 
                     //TODO AQUÍ ES LO QUE LLEVA
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
@@ -1165,7 +1165,7 @@ function inspector(gstIdper) {
                             //console.log(status);
                         }
 
-     
+
                         if (obj.data[ii].idinsp == gstIdper) {
                             if (obj.data[ii].evaluacion >= '0') {
 
@@ -1355,22 +1355,22 @@ function consultaCurso(gst) {
     $.ajax({
         url: '../php/lisOblig.php',
         type: 'POST',
-        data: 'gstIdper='+gstIdper 
+        data: 'gstIdper=' + gstIdper
 
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
-        
+
         html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
         for (o = 0; o < res.length; o++) {
             x++;
 
-            if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'EN CURSO' ) {
+            if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'EN CURSO') {
                 /*+ obj.data[o].status +*/
-                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>EN CURSO</td> </tr>";
-            } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'PENDIENTE' ){
-                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td>PENDIENTE</td> </tr>";
+                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: #3C8DBC;'>EN CURSO</td> </tr>";
+            } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'PENDIENTE') {
+                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: orange;'>PENDIENTE</td> </tr>";
             }
         }
         html += '</tbody></table></div></div></div>';
