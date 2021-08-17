@@ -1165,6 +1165,8 @@ columns: [
 
 var dataSet = [
 <?php 
+
+
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
@@ -1172,19 +1174,13 @@ WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 ORDER 
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
-
 $id_curso = $data['id_curso'];
 
- $fcurso = $data['fcurso'] = date("d-m-Y");
+
+$fcurso = $data['fcurso'] = date("d-m-Y");
  $fechaf = $data['fechaf'] = date("d-m-Y");
 
-// if($data['confirmar']=='CONFIRMAR'){
-// $valor='POR CONFIRMAR';
-// }else if($data['confirmar']=='CONFIRMADO'){
-// $valor=$data['confirmar']; 
-// }else{
  $valor=$data['confirmar'];;  
-//}
 
 if($data['evaluacion'] == ''){
   $Evaluacion = "FALTA EVALUAR";
@@ -1193,20 +1189,52 @@ if($data['evaluacion'] == ''){
   $Evaluacion = "EVALUADO";
 }
 
+
+$queri = "
+SELECT * FROM cursos 
+INNER JOIN reaccion ON cursos.id_curso = reaccion.id_curso
+WHERE reaccion.id_curso = $id_curso AND cursos.estado = 0 ORDER BY cursos.id_curso DESC";
+$resul = mysqli_query($conexion, $queri);
+
+
+while($res = mysqli_fetch_array($resul)){
+//if($res != 0){
+
+
+
+$accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>";
+
+
 ?>
-["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
 
-// "<a type='button' title='Evaluación' onclick='asignacion(<?php //echo $id_curso ?>)' class='btn btn-success' data-toggle='modal' data-target='#modal-asignar'>FINALIZADO </a>"
+["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>","<span class='badge' style='background-color: green;'><?php echo $valor?></span>","<?php echo $accion?>"],
 
 
- "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
 
- // "<span title='Evaluación Curso'  class='badge' style='background-color: #3C8DBC;' data-toggle='modal' data-target='#modal-evalcurso'>EVALUAR</span>"
 
-"<a type='button' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-info'>EVALUAR </a>"
+<?php 
 
-],
-<?php } ?>
+
+
+
+
+}//else{
+
+
+?>
+ ["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
+
+  "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
+
+   "<a type='button' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-info'>EVALUAR</a>"
+
+ ],
+ <?php 
+
+//}
+
+
+}?>
 ];
 var tableGenerarReporte = $('#data-table-completo').DataTable({
 "language": {

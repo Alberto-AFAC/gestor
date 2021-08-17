@@ -150,10 +150,23 @@ if(idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !d
         }).done(function(respuesta) {
             console.log(respuesta);
             if (respuesta == 0) {
-                $('#enviadoexito').toggle('toggle');
-                setTimeout(function() {
-                    $('#enviadoexito').toggle('toggle');
-                }, 2000);
+
+
+                // $('#enviadoexito').toggle('toggle');
+                // setTimeout(function() {
+                //     $('#enviadoexito').toggle('toggle');
+                // }, 2000);
+
+            Swal.fire({
+                type: 'succe',
+                title: 'SE AVALUÓ CON ÉXITO LA REACCIÓN',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 3000,
+                backdrop: `rgba(100, 100, 100, 0.4)`
+            });
+            setTimeout("location.href = 'inspector.php';", 3000); 
+
             } else if(respuesta == 2){
                 $('#aviso').toggle('toggle');
                 setTimeout(function() {
