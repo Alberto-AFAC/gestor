@@ -1,4 +1,3 @@
-
 function vergenercerf() {
     var id_persona = document.getElementById('idinsevc1').value; //ID DE LA PERSONA
     var id_codigocurso = document.getElementById('id_cursoc').value; //ID DE LA PERSONA
@@ -13,7 +12,7 @@ function vergenercerf() {
     var copias = document.getElementById('copnum'); //che1  evaNombrc;
 
     datos = 'id_persona=' + id_persona + '&id_codigocurso=' + id_codigocurso + '&listregis=' + listregis + '&lisasisten=' + lisasisten + '&listreportein=' + listreportein + '&cartdescrip=' + cartdescrip + '&regponde=' + regponde + '&infinal=' + infinal + '&evreaccion=' + evreaccion + '&copias=' + copias + '&opcion=alrcertific';
-   // alert(datos);
+    // alert(datos);
     if (nom1 == '') {
         $('#ceravisos').toggle('toggle');
         setTimeout(function() {
@@ -26,7 +25,7 @@ function vergenercerf() {
         $.ajax({
             url: '../php/gecerticados.php',
             type: 'POST',
-            async: true, 
+            async: true,
             data: datos
         }).done(function(respuesta) {
             //console.log(respuesta);
@@ -37,9 +36,11 @@ function vergenercerf() {
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
+
                     backdrop: `
                         rgba(100, 100, 100, 0.4)
                     `
+
                 });
                 $('#modal-acreditacion').modal('hide'); // CIERRA EL MODAL
             } else {
@@ -84,63 +85,67 @@ function imprimir() {
 function evaluar() {
 
 
-    var idcursoen = document.getElementById('idcursoen').value;//ID CURSO 
-    
-    var preg1 = $('input[name=preg1]:checked').val();//-
-    var preg2 = $('input[name=preg2]:checked').val();// -
-    var preg3 = $('input[name=preg3]:checked').val();//  -
-    var preg4 = $('input[name=preg4]:checked').val();//   -
-    var preg5 = $('input[name=preg5]:checked').val();//    -
-    var preg6 = $('input[name=preg6]:checked').val();//     -
-    var preg7 = $('input[name=preg7]:checked').val();//      -PREGUNTAS RADIO  
-    var preg8 = $('input[name=preg8]:checked').val();//      -
-    var preg9 = $('input[name=preg9]:checked').val();//     -
-    var preg10 = $('input[name=preg10]:checked').val();//  -
-    var preg11 = $('input[name=preg11]:checked').val();// -
-    var preg12 = $('input[name=preg12]:checked').val();//-
+    var idcursoen = document.getElementById('idcursoen').value; //ID CURSO 
 
-    var preg13 = document.getElementById('preg13').value;//PREGUNTA ABIERTA 
+    var preg1 = $('input[name=preg1]:checked').val(); //-
+    var preg2 = $('input[name=preg2]:checked').val(); // -
+    var preg3 = $('input[name=preg3]:checked').val(); //  -
+    var preg4 = $('input[name=preg4]:checked').val(); //   -
+    var preg5 = $('input[name=preg5]:checked').val(); //    -
+    var preg6 = $('input[name=preg6]:checked').val(); //     -
+    var preg7 = $('input[name=preg7]:checked').val(); //      -PREGUNTAS RADIO  
+    var preg8 = $('input[name=preg8]:checked').val(); //      -
+    var preg9 = $('input[name=preg9]:checked').val(); //     -
+    var preg10 = $('input[name=preg10]:checked').val(); //  -
+    var preg11 = $('input[name=preg11]:checked').val(); // -
+    var preg12 = $('input[name=preg12]:checked').val(); //-
 
-    var preg14 = $('input[name=preg14]:checked').val();//PREGUNTAS RADIO
+    var preg13 = document.getElementById('preg13').value; //PREGUNTA ABIERTA 
+
+    var preg14 = $('input[name=preg14]:checked').val(); //PREGUNTAS RADIO
 
 
-  if($('input[name=preg14]:checked').val()=='OTROS'){
-    
+    if ($('input[name=preg14]:checked').val() == 'OTROS') {
+
         preg14 = document.getElementById('otro').value;
 
     }
 
 
 
-    var preg15 = $('input[name=preg15]:checked').val();//PREGUNTAS RADIO
+    var preg15 = $('input[name=preg15]:checked').val(); //PREGUNTAS RADIO
 
-    var preg16 = document.getElementById('preg16').value;//PREGUNTA ABIERTA 
+    var preg16 = document.getElementById('preg16').value; //PREGUNTA ABIERTA 
 
-    datos = 'idcursoen='+idcursoen+'&preg1='+preg1+'&preg2='+preg2+'&preg3='+preg3+'&preg4='+preg4+'&preg5='+preg5+'&preg6='+preg6+'&preg7='+preg7+'&preg8='+preg8+'&preg9='+preg9+'&preg10='+preg10+'&preg11='+preg11+'&preg12='+preg12+'&preg13='+preg13+'&preg14='+preg14+'&preg15='+preg15+'&preg16='+preg16+ '&opcion=agreaccion';
+    datos = 'idcursoen=' + idcursoen + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&preg8=' + preg8 + '&preg9=' + preg9 + '&preg10=' + preg10 + '&preg11=' + preg11 + '&preg12=' + preg12 + '&preg13=' + preg13 + '&preg14=' + preg14 + '&preg15=' + preg15 + '&preg16=' + preg16 + '&opcion=agreaccion';
 
- 
-if(idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || preg13 == '' || !document.querySelector('input[name=preg14]:checked') || !document.querySelector('input[name=preg15]:checked') || preg16=='' || preg14 ==''){
 
-    if(!document.querySelector('input[name=preg1]:checked')){$('#span1').show('toggle');}else{$('#span1').hide('toggle');} 
-    if(!document.querySelector('input[name=preg2]:checked')){$('#span2').show('toggle');}else{$('#span2').hide('toggle');}
-    if(!document.querySelector('input[name=preg3]:checked')){$('#span3').show('toggle');}else{$('#span3').hide('toggle');} 
-    if(!document.querySelector('input[name=preg4]:checked')){$('#span4').show('toggle');}else{$('#span4').hide('toggle');}
-    if(!document.querySelector('input[name=preg5]:checked')){$('#span5').show('toggle');}else{$('#span5').hide('toggle');} 
-    if(!document.querySelector('input[name=preg6]:checked')){$('#span6').show('toggle');}else{$('#span6').hide('toggle');}
-    if(!document.querySelector('input[name=preg7]:checked')){$('#span7').show('toggle');}else{$('#span7').hide('toggle');} 
-    if(!document.querySelector('input[name=preg8]:checked')){$('#span8').show('toggle');}else{$('#span8').hide('toggle');}
-    if(!document.querySelector('input[name=preg9]:checked')){$('#span9').show('toggle');}else{$('#span9').hide('toggle');}
-    if(!document.querySelector('input[name=preg10]:checked')){$('#span10').show('toggle');}else{$('#span10').hide('toggle');}
-    if(!document.querySelector('input[name=preg11]:checked')){$('#span11').show('toggle');}else{$('#span11').hide('toggle');}
-    if(!document.querySelector('input[name=preg12]:checked')){$('#span12').show('toggle');}else{$('#span12').hide('toggle');}
-    if(preg13==''){$('#span13').show('toggle');}else{$('#span13').hide('toggle');}
-    if(!document.querySelector('input[name=preg14]:checked')){$('#span14').show('toggle');}else{$('#span14').hide('toggle');}
-    if(!document.querySelector('input[name=preg15]:checked')){$('#span15').show('toggle');}else{$('#span15').hide('toggle');}
-    if(preg16==''){$('#span16').show('toggle');}else{$('#span16').hide('toggle');}
+    if (idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || preg13 == '' || !document.querySelector('input[name=preg14]:checked') || !document.querySelector('input[name=preg15]:checked') || preg16 == '' || preg14 == '') {
 
-    $('#pregunta').toggle('toggle');setTimeout(function() {$('#pregunta').toggle('toggle');}, 2000);    
+        if (!document.querySelector('input[name=preg1]:checked')) { $('#span1').show('toggle'); } else { $('#span1').hide('toggle'); }
+        if (!document.querySelector('input[name=preg2]:checked')) { $('#span2').show('toggle'); } else { $('#span2').hide('toggle'); }
+        if (!document.querySelector('input[name=preg3]:checked')) { $('#span3').show('toggle'); } else { $('#span3').hide('toggle'); }
+        if (!document.querySelector('input[name=preg4]:checked')) { $('#span4').show('toggle'); } else { $('#span4').hide('toggle'); }
+        if (!document.querySelector('input[name=preg5]:checked')) { $('#span5').show('toggle'); } else { $('#span5').hide('toggle'); }
+        if (!document.querySelector('input[name=preg6]:checked')) { $('#span6').show('toggle'); } else { $('#span6').hide('toggle'); }
+        if (!document.querySelector('input[name=preg7]:checked')) { $('#span7').show('toggle'); } else { $('#span7').hide('toggle'); }
+        if (!document.querySelector('input[name=preg8]:checked')) { $('#span8').show('toggle'); } else { $('#span8').hide('toggle'); }
+        if (!document.querySelector('input[name=preg9]:checked')) { $('#span9').show('toggle'); } else { $('#span9').hide('toggle'); }
+        if (!document.querySelector('input[name=preg10]:checked')) { $('#span10').show('toggle'); } else { $('#span10').hide('toggle'); }
+        if (!document.querySelector('input[name=preg11]:checked')) { $('#span11').show('toggle'); } else { $('#span11').hide('toggle'); }
+        if (!document.querySelector('input[name=preg12]:checked')) { $('#span12').show('toggle'); } else { $('#span12').hide('toggle'); }
+        if (preg13 == '') { $('#span13').show('toggle'); } else { $('#span13').hide('toggle'); }
+        if (!document.querySelector('input[name=preg14]:checked')) { $('#span14').show('toggle'); } else { $('#span14').hide('toggle'); }
+        if (!document.querySelector('input[name=preg15]:checked')) { $('#span15').show('toggle'); } else { $('#span15').hide('toggle'); }
+        if (preg16 == '') { $('#span16').show('toggle'); } else { $('#span16').hide('toggle'); }
 
-}else{
+        $('#pregunta').toggle('toggle');
+        setTimeout(function() { $('#pregunta').toggle('toggle'); }, 2000);
+
+
+
+
+    } else {
 
         $.ajax({
             url: '../php/reaccion.php',
@@ -149,25 +154,38 @@ if(idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !d
         }).done(function(respuesta) {
             console.log(respuesta);
             if (respuesta == 0) {
-                $('#enviadoexito').toggle('toggle');
-                setTimeout(function() {
-                    $('#enviadoexito').toggle('toggle');
-                }, 2000);
-            } else if(respuesta == 2){
+
+
+                // $('#enviadoexito').toggle('toggle');
+                // setTimeout(function() {
+                //     $('#enviadoexito').toggle('toggle');
+                // }, 2000);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'SE EVALUÓ CON ÉXITO LA REACCIÓN',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000,
+                    backdrop: `rgba(100, 100, 100, 0.4)`
+                });
+                setTimeout("location.href = 'inspector.php';", 3000);
+
+            } else if (respuesta == 2) {
                 $('#aviso').toggle('toggle');
                 setTimeout(function() {
                     $('#aviso').toggle('toggle');
                 }, 2000);
-            }else{
+            } else {
 
                 $('#peligro').toggle('toggle');
                 setTimeout(function() {
-                $('#peligro').toggle('toggle');
+                    $('#peligro').toggle('toggle');
                 }, 2000);
             }
         });
 
-}
+    }
 
 
 }
@@ -231,7 +249,7 @@ function agrPartc() {
 
     idinsp = document.getElementById('idinsp').value;
     gstIdlsc = document.getElementById('gstIdlsc').value;
-    
+
     idcord = document.getElementById('idcord').value;
     finicio = document.getElementById('finicio').value;
     finalf = document.getElementById('finalf').value;
@@ -241,9 +259,9 @@ function agrPartc() {
     link = document.getElementById('linke').value;
     acodigos = document.getElementById('acodigos').value;
 
-    datos = 'idinsp=' + idinsp + '&acodigos='+acodigos +'&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&opcion=participante';
+    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&opcion=participante';
 
-    if (idcord == '' || acodigos == ''|| idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '') {
+    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -609,25 +627,25 @@ function cerrarEditeva() {
     document.getElementById('comeneva').disabled = true; // COMENTARIOS 
 }
 
-function cursoeval(idcurso){
+function cursoeval(idcurso) {
 
     $.ajax({
-    url: '../php/curConfir.php',
-    type: 'POST'
+        url: '../php/curConfir.php',
+        type: 'POST'
     }).done(function(resp) {
-    obj = JSON.parse(resp);
-    var res = obj.data;
+        obj = JSON.parse(resp);
+        var res = obj.data;
 
-    for (i = 0; i < res.length; i++) {
+        for (i = 0; i < res.length; i++) {
 
-        if(obj.data[i].id_curso == idcurso){
+            if (obj.data[i].id_curso == idcurso) {
 
-            $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO
+                $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
-                    $("#codigo").val(obj.data[i].codigo);
+                $("#codigo").val(obj.data[i].codigo);
 
+            }
         }
-    }
     })
 
 
@@ -694,42 +712,42 @@ function finalizar() {
     codigo = document.getElementById('codigo').value;
     proceso = document.getElementById('proceso').value;
 
-    if(proceso=='VENCIDO'){
+    if (proceso == 'VENCIDO') {
 
-            Swal.fire({
-                type: 'error',
-                title: 'CURSO VENCIDO, NO PUEDES FINALIZAR ',
-                showConfirmButton: false,
-                customClass: 'swal-wide',
-                timer: 3000,
-                backdrop: `rgba(22, 57, 37, 0.4)`
-            });
-            setTimeout("location.href = 'lisCurso.php';", 3000); 
+        Swal.fire({
+            type: 'error',
+            title: 'CURSO VENCIDO, NO PUEDES FINALIZAR ',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000,
+            backdrop: `rgba(22, 57, 37, 0.4)`
+        });
+        setTimeout("location.href = 'lisCurso.php';", 3000);
 
-    }else{
+    } else {
 
-    $.ajax({
-        url: '../php/proCurso.php',
-        type: 'POST',
-        data: 'codigo=' + codigo + '&opcion=finalizac'
+        $.ajax({
+            url: '../php/proCurso.php',
+            type: 'POST',
+            data: 'codigo=' + codigo + '&opcion=finalizac'
 
-    }).done(function(respuesta) {
+        }).done(function(respuesta) {
 
-        if (respuesta == 0) {
-            Swal.fire({
-                type: 'success',
-                title: 'CURSO FINALIZADO',
-                showConfirmButton: false,
-                customClass: 'swal-wide',
-                timer: 2000,
-                backdrop: `
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'CURSO FINALIZADO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    backdrop: `
             rgba(100, 100, 100, 0.4)
         `
-            });
-            setTimeout("location.href = 'lisCurso.php';", 1000); 
-    }
+                });
+                setTimeout("location.href = 'lisCurso.php';", 1000);
+            }
 
-    });        
+        });
 
     }
 }
