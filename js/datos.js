@@ -1164,6 +1164,13 @@ function inspector(gstIdper) {
                             status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         }
+                        if (obj.data[ii].proceso == 'FINALIZADO') {
+                            status1 = "<span style='color: green;>FINALIZADO</span>'";
+
+                        } else if (obj.data[ii].proceso == 'CANCELADO') {
+                            status1 = "<span style='color: orange;>CANCELADO ME LA CHUPAS</span>'";
+
+                        }
 
 
                         if (obj.data[ii].idinsp == gstIdper) {
@@ -1181,7 +1188,7 @@ function inspector(gstIdper) {
 
                                 idlista = obj.data[ii].idmstr;
                                 if (obj.data[ii].confirmar == 'CONFIRMAR') {
-                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + obj.data[ii].proceso + "</span></td><td>" + status + "</td></tr>";
+                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td>" + status + "</td></tr>";
                                 } else if (obj.data[ii].confirmar == 'CONFIRMADO') {
                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span title='Confirmado' style='font-weight: bold; color: green;'>CONFIRMADO</span></td><td>" + status + "</td></tr>";
                                 } else {}
