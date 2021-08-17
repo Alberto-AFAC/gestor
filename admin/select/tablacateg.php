@@ -34,7 +34,9 @@ require_once "../../conexion/conexion.php";
                             class="btn btn-warning btn-default">POR VENCER</button>
                         <button type="button" style="pointer-events: none; color: white;"
                             class="btn btn-danger btn-default">VENCIDO</button>
-                    </div><br><br>
+                    </div>
+                    <input style="float: right;" id="myInput" type="text" placeholder="Búscar..">
+                    <br><br>
                     <div class="table-responsive mailbox-messages">
 
                         <table class="table display table-striped table-bordered" role="grid"
@@ -53,7 +55,7 @@ require_once "../../conexion/conexion.php";
                                     <th style="width: 100px"><i></i> ESTADO</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="myTable">
                                 <?php
 $f = $fecha;
 
@@ -296,4 +298,12 @@ $(".idinsp").on("click", function() {
   }
 });
     
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>
