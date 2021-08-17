@@ -23,26 +23,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.2/sweetalert2.min.js"
         integrity="sha512-2sjxi4MoP9Gn7QE0NhJdxOFVMK/qYsZO6JnO6pngGvck8p5UPwFX2LV5AsAMOQYgvbzMmki6sIqJ90YO3STAnA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-    <style>.swal-wide {
-        width: 700px !important;
-        font-size: 20px !important;
-    }
+   <style>
+    .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
 
-    .a-alert {
-        outline: none;
-        text-decoration: none;
-        padding: 2px 1px 0;
-    }
+.a-alert:link {
+  color: white;
+}
 
-    .a-alert:link {
-        color: white;
-    }
-
-    .a-alert:visited {
-        color: white;
-    }
-    </style>
+.a-alert:visited {
+  color: white;
+}
     </style>
 </head>
 
@@ -1191,13 +1189,11 @@ if($data['evaluacion'] == ''){
 
 
 $queri = "
-SELECT * FROM cursos 
-INNER JOIN reaccion ON cursos.id_curso = reaccion.id_curso
-WHERE reaccion.id_curso = $id_curso AND cursos.estado = 0 ORDER BY cursos.id_curso DESC";
+SELECT * FROM reaccion WHERE id_curso = $id_curso AND estado = 0 ORDER BY id_curso DESC";
 $resul = mysqli_query($conexion, $queri);
 
 
-while($res = mysqli_fetch_array($resul)){
+if($res = mysqli_fetch_array($resul)){
 //if($res != 0){
 
 
@@ -1209,17 +1205,9 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
 ["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>","<span class='badge' style='background-color: green;'><?php echo $valor?></span>","<?php echo $accion?>"],
 
-
-
-
 <?php 
 
-
-
-
-
-}//else{
-
+}else{
 
 ?>
  ["<?php echo $data['gstTitlo']?>","<?php echo $data['gstTipo']?>","<?php echo  $fcurso?>","<?php echo $data['hcurso']?>","<?php echo $fechaf?>",
@@ -1228,14 +1216,9 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
    "<a type='button' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-info'>EVALUAR</a>"
 
- ],
- <?php 
+ ], <?php }   
+            }?> ];
 
-//}
-
-
-}?>
-];
 var tableGenerarReporte = $('#data-table-completo').DataTable({
 "language": {
 "searchPlaceholder": "Buscar datos...",
