@@ -187,7 +187,7 @@ include('header.php');
       <div class="input-group-addon">
                     <i class="fa fa-unlock-alt"></i>
                   </div>
-      <input type="text" class="form-control inputalta" id="contracceso" name="contracceso">
+      <input type="password" class="form-control inputalta" id="contracceso" name="contracceso">
     </div>
     </div>
 </div>
