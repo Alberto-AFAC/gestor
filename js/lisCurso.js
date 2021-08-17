@@ -141,6 +141,16 @@ if(idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !d
 
     $('#pregunta').toggle('toggle');setTimeout(function() {$('#pregunta').toggle('toggle');}, 2000);    
 
+
+            Swal.fire({
+                type: 'success',
+                title: 'SE AVALUÓ CON ÉXITO LA REACCIÓN',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 3000,
+                backdrop: `rgba(100, 100, 100, 0.4)`
+            });
+
 }else{
 
         $.ajax({
@@ -158,7 +168,7 @@ if(idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !d
                 // }, 2000);
 
             Swal.fire({
-                type: 'succe',
+                type: 'success',
                 title: 'SE AVALUÓ CON ÉXITO LA REACCIÓN',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
