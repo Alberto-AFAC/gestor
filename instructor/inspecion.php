@@ -178,7 +178,7 @@
               </div>
               <form id="Result">
 
-<input type="hidden" class="form-control" id="pdfIdper" name="pdfIdper" disabled="">
+              <input type="hidden" class="form-control" id="pdfIdper" name="pdfIdper" disabled="">
               <div class="row">  
               <div class="form-group">
                   <div class="col-sm-5">
@@ -308,10 +308,10 @@ $resultado = mysqli_query($conexion, $query);
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
 
-                echo "<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a></center><br><center><span style='background-color: orange;' class='badge'>POR EVALUAR</span><center>";
+                echo "<center><a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a></center><center><span style='background-color: orange;' class='badge'>POR EVALUAR</span><center>";
 
                     }else if($data['gstEvalu'] == 'SI') {
-                echo "<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a></center><center><span style='background-color: green;' class='badge'>EVALUADO</span></center> ";
+                echo "<center><a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a></center><center><span style='background-color: green;' class='badge'>EVALUADO</span></center> ";
 
                     }?>"],
 
