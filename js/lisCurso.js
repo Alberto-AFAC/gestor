@@ -401,7 +401,7 @@ function cambiartexto() {
 
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     var cer = cursos.split("*");
-    alert(cer[20]);
+    //alert(cer[22]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
@@ -424,7 +424,7 @@ function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
     var d = cursos.split("*");
-    //alert(d[11]);
+    //alert(d[23]);
     $("#avaluacion #evaNombr").val(d[14] + " " + d[15]); //NOMBRE COMPLETO
     $("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
     $("#avaluacion #id_curso").val(d[19]); //ID DEL CURSO
@@ -457,6 +457,7 @@ function evaluarins(cursos) {
         //    statusev.value = "PENDIENTE"
     }
 }
+
 //EDICIÓN DEL CURSO
 function editcurso() {
     document.getElementById('cerrareditc').style.display = ''; //muestra boton cerrar edición
@@ -474,6 +475,7 @@ function editcurso() {
     document.getElementById('linkcur').disabled = false;
     document.getElementById('contracur').disabled = false;
 }
+
 //FIN DE LA EDICIÓN DEL CURSO
 function cereditcurso() {
     document.getElementById('cerrareditc').style.display = 'none'; //muestra boton cerrar edición
@@ -491,8 +493,6 @@ function cereditcurso() {
     document.getElementById('linkcur').disabled = true;
     document.getElementById('contracur').disabled = true;
 }
-
-
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
 function cerrareval() {
@@ -575,7 +575,6 @@ function cerrareval() {
     }
 }
 
-
 //fecha actual  EVALUACIÓN INSPECTOR
 window.onload = function() {
     var fecha = new Date(); //Fecha actual
@@ -634,7 +633,6 @@ function cursoeval(idcurso) {
             }
         }
     })
-
 
 }
 
