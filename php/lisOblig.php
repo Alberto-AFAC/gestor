@@ -34,7 +34,7 @@ WHERE especialidadcat.gstIDper = $idins ";
 			$lis = $data['list'];
 	
 			$queri = "
-			SELECT * FROM cursos WHERE idmstr = $lis AND estado = 0 ORDER BY id_curso DESC";
+			SELECT * FROM cursos WHERE 	idinsp = $idins AND idmstr = $lis AND estado = 0 ORDER BY id_curso DESC";
 			$resul = mysqli_query($conexion, $queri);
 
 
