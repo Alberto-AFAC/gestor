@@ -3,7 +3,7 @@
     <!-- Logo -->
     <a href="./" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>AFAC</span>
+      <span class="logo-mini" style="font-size: 12px"><b>C-</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Capacitación AFAC</b></span>
     </a>
@@ -68,35 +68,19 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Agel Canseco</span>
+              <span class="hidden-xs">ADMINISTRADOR</span>
             </a>
-            <ul class="dropdown-menu">
-              <li class="user-header">
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-              </li>
+            <ul class="dropdown-menu" style="width: 200px;">
+   
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <li class="user-footer" style="padding: 0; background: #ECF0F5;">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="#" class="btn btn-primary btn-flat">Perfil </a>
+                  <a href="#" class="btn btn-primary btn-flat">Cerrar sesión </a>
+
                 </div>
               </li>
             </ul>

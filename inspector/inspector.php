@@ -1299,7 +1299,7 @@ var dataSet = [
 $query = "
 SELECT * FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'CANCELADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'CANCELADO' AND cursos.estado = 1 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 

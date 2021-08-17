@@ -85,10 +85,10 @@ include('header.php');
                     Dashboard
                     <small>Panel de Control</small>
                 </h1>
-                <ol class="breadcrumb">
+<!--                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa ion-android-home"></i> Inicio</a></li>
                     <li class="active">Dashboard</li>
-                </ol>
+                </ol> -->
             </section>
 
 
