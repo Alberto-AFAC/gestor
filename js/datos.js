@@ -1212,18 +1212,18 @@ function inspector(gstIdper) {
                                 //PORCENTAJE DE COMPLETADOS
 
                                 var porcentaje1 = document.getElementById("porcentaje11");
-                                porcentaje1.style.width = ((FINALIZADO * 100) / insp + "%");
-                                porcentaje11.innerHTML = ((FINALIZADO * 100) / insp + "%");
+                                porcentaje1.style.width = (Math.round(FINALIZADO * 100) / insp + "%");
+                                porcentaje11.innerHTML = (Math.round(FINALIZADO * 100) / insp + "%");
 
                                 // PORCENTAJE DE PROGRAMADOS
                                 var porcentaje12 = document.getElementById("porcentaje12");
-                                porcentaje12.style.width = ((programados * 100) / insp + "%");
-                                porcentaje12.innerHTML = ((programados * 100) / insp + "%"); //VALOR
+                                porcentaje12.style.width = (Math.round(programados * 100) / insp + "%");
+                                porcentaje12.innerHTML = (Math.round(programados * 100) / insp + "%"); //VALOR
 
                                 // PORCENTAJE DE CANCELADO
                                 var porcentaje13 = document.getElementById("porcentaje13");
-                                porcentaje13.style.width = ((CANCELADO * 100) / insp + "%");
-                                porcentaje13.innerHTML = ((CANCELADO * 100) / insp + "%"); //VALOR
+                                porcentaje13.style.width = (Math.round(CANCELADO * 100) / insp + "%");
+                                porcentaje13.innerHTML = (Math.round(CANCELADO * 100) / insp + "%"); //VALOR
 
                             }
                         }
