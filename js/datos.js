@@ -1164,7 +1164,7 @@ function inspector(gstIdper) {
                             status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         }
-                        if (obj.data[ii].proceso == 'FINALIZADO') {
+                        if (obj.data[ii].proceso == 'PENDIENTE') {
                             status1 = "<span style='font-weight: bold; color: green;'>FINALIZADO</span>";
 
                         } else if (obj.data[ii].proceso == 'CANCELADO') {
