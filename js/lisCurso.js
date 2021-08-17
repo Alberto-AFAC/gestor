@@ -31,18 +31,17 @@ function vergenercerf() {
         }).done(function(respuesta) {
             //console.log(respuesta);
             if (respuesta == 0) {
-                Swal.fire({
+                Swal.fire({ //ALERTA DE SE GUARDO CORRECTAMENTE
                     type: 'success',
                     title: 'GUARDADO CON ÉXITO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
-                    
                     backdrop: `
                         rgba(100, 100, 100, 0.4)
                     `
-                    
                 });
+                $('#modal-acreditacion').modal('hide'); // CIERRA EL MODAL
             } else {
                 $('#cerdangerev').toggle('toggle');
                 setTimeout(function() {
@@ -543,10 +542,11 @@ function cerrareval() {
                         rgba(100, 100, 100, 0.4)
                     `
                 });
+                $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
             } else {
                 Swal.fire({
                     type: 'success',
-                    title: 'EVALUADO CON ÉXITO',
+                    title: 'ERRO AL EVALUAR',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
