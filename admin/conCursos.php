@@ -25,7 +25,8 @@
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">}
+    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
 
 
 
@@ -202,14 +203,14 @@
 
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <label>NOMBRE</label>
-                                    <input type="text" onkeyup="mayus(this);" class="form-control" id="AgstTitlo"
+                                    <label class="label2">NOMBRE</label>
+                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="AgstTitlo"
                                         name="AgstTitlo">
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <label>TIPO DE CAPACITACIÓN</label>
-                                    <select type="text" class="form-control" id="AgstTipo" name="AgstTipo">
+                                    <label class="label2">TIPO DE CAPACITACIÓN</label>
+                                    <select type="text" class="form-control inputalta" id="AgstTipo" name="AgstTipo">
                                         <option value="INDUCCIÓN">INDUCCIÓN</option>
                                         <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
                                         <option value="TRANSVERSALES">TRANSVERSALES</option>
@@ -230,7 +231,7 @@
                                 <div class="col-md-2">
                                     <select multiple="multiple" data-placeholder="SELECCIONE"
                                         style="width: 100%;color: #000" class="form-control select2" type="text"
-                                        class="form-control" id="AgstPrfil" name="AgstPrfil[]">
+                                        class="form-control inputalta" id="AgstPrfil" name="AgstPrfil[]">
 
                                         <?php while($cat = mysqli_fetch_row($categs)):?>
                                         <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
@@ -244,9 +245,9 @@
                             <div class="form-group">
 
                                 <div class="col-sm-4">
-                                    <label>DOCUMENTO QUE EMITE</label>
+                                    <label class="label2">DOCUMENTO QUE EMITE</label>
                                     <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
-                                    <select type="text" class="form-control" id="AgstCntnc" name="AgstCntnc">
+                                    <select type="text" class="form-control inputalta" id="AgstCntnc" name="AgstCntnc">
                                         <option value="DIPLOMA">DIPLOMA</option>
                                         <option value="CONSTANCIA">CONSTANCIA</option>
                                         <option value="CERTIFICADO">CERTIFICADO</option>
@@ -255,9 +256,9 @@
 
 
                                 <div class="col-sm-1" style="padding-right: 0; width: 79px;">
-                                    <label>DURACION</label>
+                                    <label class="label2">DURACION</label>
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                                    <select class="form-control" id="Ahr" name="Ahr">
+                                    <select class="form-control inputalta" id="Ahr" name="Ahr">
                                         <option value="00">00</option>
                                         <?php for($h=1; $h<=24; $h++){
                          if($h<10){ ?>
@@ -268,13 +269,13 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
-                                    <label style="color: white">.</label>
-                                    <input type="text" class="form-control" id="Atmp1" name="Atmp1" value="HRS.">
+                                    <label class="label2" style="color: white">.</label>
+                                    <input type="text" class="form-control inputalta" id="Atmp1" name="Atmp1" value="HRS.">
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
-                                    <label style="color: white">.</label>
+                                    <label class="label2" style="color: white">.</label>
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
-                                    <select class="form-control" id="Amin" name="Amin">
+                                    <select class="form-control inputalta" id="Amin" name="Amin">
                                         <option value="00">00</option>
                                         <?php for($m=1; $m<=59; $m++){
 
@@ -286,15 +287,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
-                                    <label style="color: white">.</label>
-                                    <input type="text" class="form-control" id="Atmp2" name="Atmp2" value="MIN.">
+                                    <label class="label2" style="color: white">.</label>
+                                    <input type="text" class="form-control inputalta" id="Atmp2" name="Atmp2" value="MIN.">
 
                                 </div>
 
 
                                 <div class="col-sm-offset-0 col-sm-3">
-                                    <label>PERIODO DE VIGENCIA</label>
-                                    <select type="text" class="form-control" id="AgstVignc" name="AgstVignc">
+                                    <label class="label2" >PERIODO DE VIGENCIA</label>
+                                    <select type="text" class="form-control inputalta" id="AgstVignc" name="AgstVignc">
                                         <!-- <option value="100">RECURRENTE</option> -->
                                         <option value="101">UNICA VEZ</option>
                                         <option value="1">1 AÑO</option>
@@ -309,8 +310,8 @@
 
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <label>TIPO DE CURSO</label>
-                                    <select type="text" class="form-control" id="AgstProvd" name="AgstProvd">
+                                    <label class="label2">TIPO DE CURSO</label>
+                                    <select type="text" class="form-control inputalta" id="AgstProvd" name="AgstProvd">
                                         <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
                                         <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
                                         <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
@@ -318,8 +319,8 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <label>CENTRO DE INSTRUCCIÓN</label>
-                                    <select type="text" class="form-control" id="AgstCntro" name="AgstCntro">
+                                    <label class="label2">CENTRO DE INSTRUCCIÓN</label>
+                                    <select type="text" class="form-control inputalta" id="AgstCntro" name="AgstCntro">
                                         <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
                                     </select>
                                 </div>
@@ -327,18 +328,18 @@
 
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <label>OBJETIVO</label>
+                                    <label class="label2">OBJETIVO</label>
                                     <textarea name="AgstObjtv" id="AgstObjtv" placeholder="Escribir el Objetivo"
-                                        onkeyup="mayus(this);" class="form-control" rows="5" cols="50"></textarea>
+                                        onkeyup="mayus(this);" class="form-control inputalta" rows="5" cols="50"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <label>TEMARIO</label>
+                                    <label class="label2">TEMARIO</label>
 
                                     <input type="file" id="AgstTmrio" name="AgstTmrio"
                                         style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
-                                        class="input-file" size="1450">
+                                        class="input-file inputalta" size="1450">
 
 
                                 </div>
@@ -497,7 +498,7 @@
         </section>
         <!-- /.content -->
     </div>
-
+</div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
