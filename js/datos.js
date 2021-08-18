@@ -444,7 +444,7 @@ function perfil(gstIdper) {
                 } else {
                     $("#ocultar1").show();
                     $("#ocultar2").show();
-                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                  //  document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 }
 
 
@@ -638,52 +638,6 @@ function perfil(gstIdper) {
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
-
-                        // if (gstIdper == obj.data[ii].idinsp) {
-
-                        //     //BASICOS
-                        //     if (obj.data[ii].gstTipo == 'BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
-                        //         document.getElementById('bscos').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                        //         $("#Bfecha").html(obj.data[ii].fcursof);
-
-                        //     } else if (obj.data[ii].gstTipo == 'BÁSICO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
-                        //         document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
-                        //         $("#Bfecha").html(obj.data[ii].fcursof);
-                        //     } else
-                        //     if (obj.data[ii].gstTipo == 'BÁSICO' && obj.data[ii].proceso == 'PENDIENTE') {
-                        //         document.getElementById('bscos').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
-                        //         $("#Bfecha").html('PENDIENTE');
-                        //     }
-
-                        //     //RECURRENTES recurnt
-                        //     if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
-                        //         document.getElementById('recurnt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                        //         $("#Rfecha").html(obj.data[ii].fcursof);
-
-                        //     } else if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
-                        //         document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
-                        //         $("#Rfecha").html(obj.data[ii].fcursof);
-                        //     } else
-                        //     if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'PENDIENTE') {
-                        //         document.getElementById('recurnt').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
-                        //         $("#Rfecha").html('PENDIENTE');
-                        //     }
-
-                        //     //ESPECIFICOS specifico
-                        //     if (obj.data[ii].gstTipo == 'ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
-                        //         document.getElementById('specifico').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                        //         $("#Efecha").html(obj.data[ii].fcursof);
-
-                        //     } else if (obj.data[ii].gstTipo == 'ESPECIFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
-                        //         document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
-                        //         $("#Efecha").html(obj.data[ii].fcursof);
-                        //     } else
-                        //     if (obj.data[ii].gstTipo == 'ESPECIFICOS' && obj.data[ii].proceso == 'PENDIENTE') {
-                        //         document.getElementById('specifico').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
-                        //         $("#Efecha").html('PENDIENTE');
-                        //     }
-
-                        // }
 
                         gstVignc = obj.data[ii].gstVignc * 12;
                         vence = gstVignc - 6;

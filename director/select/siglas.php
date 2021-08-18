@@ -21,8 +21,8 @@ background: white;
 </style>      
 
 <div class="col-sm-3">
-<label>SIGLAS OACI</label>
-<input disabled="" type="text" onkeyup="mayus(this);" class="form-control disabled" value="<?php echo $ver[2];?>" >
+<label class="label2">SIGLAS OACI</label>
+<input disabled="" type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" value="<?php echo $ver[2];?>" >
 </div>
 
               

@@ -102,6 +102,7 @@ include('header.php');
 </div>
 </section>
 </div>
+
   <div class="modal fade" id='modal-asignar'>
     <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
