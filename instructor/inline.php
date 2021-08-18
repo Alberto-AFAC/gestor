@@ -44,79 +44,16 @@
                                 ?>
                         
 
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE LICENCIAS</span>
-                    <span class="progress-number"><b><?php echo $row['IVALICENCIAS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVALICENCIASP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE NAVEGACIÓN AÉREA</span>
-                    <span class="progress-number"><b><?php echo $row['IVANAVEGACIONA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVANAVEGACIONAP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</span>
-                    <span class="progress-number"><b><?php echo $row['SISOPERA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['SISOPERAP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-            
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE AERÓDROMOS</span>
-                    <span class="progress-number"><b><?php echo $row['AERODROMOS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['AERODROMOSP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE OPERACIONES</span>
-                    <span class="progress-number"><b><?php echo $row['OPERACIONES'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['OPERACIONESP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-        <!-- <div class="row">
-                    <div class="col-sm-offset-1 col-md-2 text-center">
-                        <input type="text" class="knob" value="20" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-                        <div class="knob-label">IVA DE LICENCIAS.</div>
-                    </div>
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="40" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-                        <div class="knob-label">IVA DE NAVEGACIÓN AÉREA</div>
-                    </div>
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="60" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-
-                        <div class="knob-label">IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</div>
-                    </div>
-
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="80" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-
-                        <div class="knob-label">IVA DE AERÓDROMOS</div>
-                    </div>
-                    <div class="col-xs-0 col-md-2 text-center">
-                        <input type="text" class="knob" value="100" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
-
-                        <div class="knob-label">IVA DE OPERACIONES</div>
-                    </div>
-                </div> -->
-    </div>
+                        <div  class="col-sm-offset-1 col-md-10">
+           
+           <div class=" sm">
+                 </div> <canvas id="piechart-licencias"></canvas>
+     </div>  
+   <!-- ./col -->
+ </div>
+ <!-- /.row -->
+</div>
+<!-- /.box-body -->
 </div>
 <!-- /.box -->
 </div>
@@ -138,82 +75,147 @@
 <!-- Sparkline -->
 <!-- page script -->
 <script>
+
+
 $(".knob").knob({
-    /*change : function (value) {
-     //console.log("change : " + value);
-     },
-     release : function (value) {
-     console.log("release : " + value);
-     },
-     cancel : function () {
-     console.log("cancel : " + this.value);
-     },*/
-    draw: function() {
+/*change : function (value) {
+//console.log("change : " + value);
+},
+release : function (value) {
+console.log("release : " + value);
+},
+cancel : function () {
+console.log("cancel : " + this.value);
+},*/
+draw: function () {
 
-        // "tron" case
-        if (this.$.data('skin') == 'tron') {
+ // "tron" case
+ if (this.$.data('skin') == 'tron') {
 
-            var a = this.angle(this.cv) // Angle
-                ,
-                sa = this.startAngle // Previous start angle
-                ,
-                sat = this.startAngle // Start angle
-                ,
-                ea // Previous end angle
-                , eat = sat + a // End angle
-                ,
-                r = true;
+   var a = this.angle(this.cv)  // Angle
+       , sa = this.startAngle          // Previous start angle
+       , sat = this.startAngle         // Start angle
+       , ea                            // Previous end angle
+       , eat = sat + a                 // End angle
+       , r = true;
 
-            this.g.lineWidth = this.lineWidth;
+   this.g.lineWidth = this.lineWidth;
 
-            this.o.cursor &&
-                (sat = eat - 0.3) &&
-                (eat = eat + 0.3);
+   this.o.cursor
+   && (sat = eat - 0.3)
+   && (eat = eat + 0.3);
 
-            if (this.o.displayPrevious) {
-                ea = this.startAngle + this.angle(this.value);
-                this.o.cursor &&
-                    (sa = ea - 0.3) &&
-                    (ea = ea + 0.3);
-                this.g.beginPath();
-                this.g.strokeStyle = this.previousColor;
-                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
-                this.g.stroke();
-            }
+   if (this.o.displayPrevious) {
+     ea = this.startAngle + this.angle(this.value);
+     this.o.cursor
+     && (sa = ea - 0.3)
+     && (ea = ea + 0.3);
+     this.g.beginPath();
+     this.g.strokeStyle = this.previousColor;
+     this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+     this.g.stroke();
+   }
 
-            this.g.beginPath();
-            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
-            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
-            this.g.stroke();
+   this.g.beginPath();
+   this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+   this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+   this.g.stroke();
 
-            this.g.lineWidth = 2;
-            this.g.beginPath();
-            this.g.strokeStyle = this.o.fgColor;
-            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 *
-                Math.PI, false);
-            this.g.stroke();
+   this.g.lineWidth = 2;
+   this.g.beginPath();
+   this.g.strokeStyle = this.o.fgColor;
+   this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+   this.g.stroke();
 
-            return false;
-        }
-    }
+   return false;
+ }
+}
 });
 /* END JQUERY KNOB */
 
 //INITIALIZE SPARKLINE CHARTS
-$(".sparkline").each(function() {
-    var $this = $(this);
-    $this.sparkline('html', $this.data());
+$(".sparkline").each(function () {
+var $this = $(this);
+$this.sparkline('html', $this.data());
 });
 
 
 
 /**
- ** Draw the little mouse speed animated graph
- ** This just attaches a handler to the mousemove event to see
- ** (roughly) how far the mouse has moved
- ** and then updates the display a couple of times a second via
- ** setTimeout()
- **/
+** Draw the little mouse speed animated graph
+** This just attaches a handler to the mousemove event to see
+** (roughly) how far the mouse has moved
+** and then updates the display a couple of times a second via
+** setTimeout()
+**/
+
+</script>
+<script>
+                     <?php 
+                         $query ="SELECT
+                         'total',
+                           COUNT( CASE WHEN gstIDCat = '1' THEN 1 END ) AS LICENCIAS,
+                           COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) AS ESCUELAS,
+                           COUNT( CASE WHEN gstIDCat = '3' THEN 1 END ) AS EXAMENES,
+                           COUNT( CASE WHEN gstIDCat = '4' THEN 1 END ) AS CERTIFICACION,
+                           COUNT( CASE WHEN gstIDCat = '5' THEN 1 END ) AS OPERACIONES,
+                           COUNT( CASE WHEN gstIDCat = '6' THEN 1 END ) AS PELIGROSAS,
+                           COUNT( CASE WHEN gstIDCat = '7' THEN 1 END ) AS VUELO,
+                           COUNT( CASE WHEN gstIDCat = '8' THEN 1 END ) AS CABINA,
+                           COUNT( CASE WHEN gstIDCat = '9' THEN 1 END ) AS AERODROMOS,
+                           COUNT( CASE WHEN gstIDCat = '10' THEN 1 END ) AS AVSEC,
+                           COUNT( CASE WHEN gstIDCat = '11' THEN 1 END ) AS SMSSSP,
+                           COUNT( CASE WHEN gstIDCat = '12' THEN 1 END ) AS INVACCIDENTES,
+                           COUNT( CASE WHEN gstIDCat = '13' THEN 1 END ) AS AUXACCIDENTES,
+                           COUNT( CASE WHEN gstIDCat = '14' THEN 1 END ) AS SALVAMENTO,
+                           COUNT( CASE WHEN gstIDCat = '15' THEN 1 END ) AS AERONAVEGABILIDAD,
+                           COUNT( CASE WHEN gstIDCat = '16' THEN 1 END ) AS PRODUCCION,
+                           COUNT( CASE WHEN gstIDCat = '17' THEN 1 END ) AS NAVEGACIONAV,
+                           COUNT( CASE WHEN gstIDCat = '18' THEN 1 END ) AS AERONAUTICA,
+                           COUNT( CASE WHEN gstIDCat = '19' THEN 1 END ) AS VIGILANCIA,
+                           COUNT( CASE WHEN gstIDCat = '20' THEN 1 END ) AS AEREO,
+                           COUNT( CASE WHEN gstIDCat = '21' THEN 1 END ) AS SERVNAVAEREA,
+                           COUNT( CASE WHEN gstIDCat = '22' THEN 1 END ) AS METEOROLOGO,
+                           COUNT( CASE WHEN gstIDCat = '23' THEN 1 END ) AS CARTOGRAFIA,
+                           COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS INSPECTOR 
+                     FROM
+                         personal";
+                         $resultado = mysqli_query($conexion, $query);
+                         ?>
+var piechar = new Chart(document.getElementById("piechart-licencias"), {
+type: 'bar',
+data: {
+<?php  while($data = mysqli_fetch_array($resultado)){ ?>
+ labels: ["IVA-L","IVA-ES","IVA-EX","IVA-C","IVA-O","IVA-ODG","IVA-OV","IVA-OC","IVA-AE", "IVA-AVSEC","IVA-SMS-SSP","IIA","IAA","ISAR","IVA-AER","IVA-ING","IVA-NA","IVA-AIS","IVA-CNS","IVA-ATS","IVA-PANS-OPS","IVA-MET","IVA-CARTAS"
+ ],
+ datasets: [{
+     label: "INSPECTORES", 
+     backgroundColor: ["#337ab7","#095892"],
+     borderWidth: 0,
+     data: ["<?php echo $data['LICENCIAS']?>","<?php echo $data['ESCUELAS']?>","<?php echo $data['EXAMENES']?>","<?php echo $data['CERTIFICACION']?>","<?php echo $data['OPERACIONES']?>","<?php echo $data['PELIGROSAS']?>","<?php echo $data['VUELO']?>","<?php echo $data['CABINA']?>","<?php echo $data['AERODROMOS']?>","<?php echo $data['AVSEC']?>","<?php echo $data['SMSSSP']?>","<?php echo $data['INVACCIDENTES']?>","<?php echo $data['AUXACCIDENTES']?>","<?php echo $data['SALVAMENTO']?>","<?php echo $data['AERONAVEGABILIDAD']?>","<?php echo $data['PRODUCCION']?>","<?php echo $data['NAVEGACIONAV']?>","<?php echo $data['AERONAUTICA']?>","<?php echo $data['VIGILANCIA']?>","<?php echo $data['AEREO']?>","<?php echo $data['SERVNAVAEREA']?>","<?php echo $data['METEOROLOGO']?>","<?php echo $data['CARTOGRAFIA']?>"] 
+ },      
+]
+ <?php } ?>
+ 
+},
+options: {
+responsive: true,
+plugins: {
+// legend: {
+//   position: 'top',
+// },
+title: {
+ display: true,
+ // text: 'Aqui va el titulo'
+}
+},
+scales: {
+y: {
+ beginAtZero: true
+}
+}
+},
+});
 </script>
 </body>
 
