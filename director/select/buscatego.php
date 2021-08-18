@@ -1,13 +1,13 @@
 <?php include ("../../conexion/conexion.php");
 
     
-	  $sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0";
+	  $sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0 AND gstCatgr != 'TODOS'";
 	  $Acat = mysqli_query($conexion,$sql);
 
     ?>
 
 			<select  id="AgstIDCat" class="form-control" class="selectpicker" name="AgstIDCat" type="text" data-live-search="true" style="width: 100%" >
-			<option value="0">SELECCIONE CATEGORÍA </option> 
+			<option value="">SELECCIONE ESPECIALIDAD </option> 
 			<?php while($idAcat = mysqli_fetch_row($Acat)):?>                      
 			<option value="<?php echo $idAcat[0]?>"><?php echo $idAcat[1]?></option>
 			<?php endwhile; ?>
