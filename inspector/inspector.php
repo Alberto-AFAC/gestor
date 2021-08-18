@@ -235,6 +235,7 @@
                                     display: none;
                                 }
                                 </style>
+
                                 <form class="form-horizontal" action="" method="POST">
                                     <div class="modal fade" id="modal-evalcurso">
                                         <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
@@ -346,11 +347,13 @@
                                                                                             for="r4">EXCELENTE</label>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
                                                                         </form>
                                                                     </div>
+                                                                </form>
                                                             </div>
                                                         </div>
-                                                </div>
+                                                
 
                                                 <div class="box box-primary">
                                                     <div class="box-header with-border">
@@ -391,11 +394,13 @@
                                                                                 <label for="r8">EXCELENTE</label>
                                                                             </div>
                                                                         </div>
+                                                                    </div>
                                                                 </form>
                                                             </div>
+                                                        </form>
                                                     </div>
                                                 </div>
-                                            </div>
+                                          
                                             <div class="box box-primary">
                                                 <div class="box-header with-border">
                                                     <form name="form3" action="" class="formulario1">
@@ -434,11 +439,13 @@
                                                                             <label for="r12">EXCELENTE</label>
                                                                         </div>
                                                                     </div>
+                                                                </div>
                                                             </form>
                                                         </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                        
                                         <div class="box box-primary">
                                             <div class="box-header with-border">
                                                 <form name="form4" action="" class="formulario1">
@@ -478,9 +485,11 @@
                                                                         <label for="r16">EXCELENTE</label>
                                                                     </div>
                                                                 </div>
-                                                        </form>
+                                                       
                                                     </div>
+                                                </form>
                                             </div>
+                                        </form>
                                         </div>
                                     </div>
                                     <div class="box box-primary">
@@ -521,11 +530,13 @@
                                                                     <label for="r20">EXCELENTE</label>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                     </form>
                                                 </div>
+                                            </form>
                                         </div>
                                     </div>
-                            </div>
+                            
                             <div class="box box-primary">
                                 <div class="box-header with-border">
                                     <form name="form6" action="" class="formulario1">
@@ -563,11 +574,13 @@
                                                             <label for="r24">EXCELENTE</label>
                                                         </div>
                                                     </div>
+                                                </div>
                                             </form>
                                         </div>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
+                       
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <form name="form7" action="" class="formulario1">
@@ -604,11 +617,13 @@
                                                         <label for="r28">EXCELENTE</label>
                                                     </div>
                                                 </div>
+                                            </div>
                                         </form>
                                     </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
+                
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <form name="form8" action="" class="formulario1">
@@ -644,11 +659,13 @@
                                                     <label for="r32">EXCELENTE</label>
                                                 </div>
                                             </div>
+                                        </div>
                                     </form>
                                 </div>
+                            </form>
                         </div>
                     </div>
-                </div>
+                
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <form name="form9" action="" class="formulario1">
@@ -683,11 +700,13 @@
                                                 <label for="r36">EXCELENTE</label>
                                             </div>
                                         </div>
+                                    </div>
                                 </form>
                             </div>
+                        </form>
                     </div>
                 </div>
-        </div>
+    
         <div class="box box-primary">
             <div class="box-header with-border">
                 <form name="form10" action="" class="formulario1">
@@ -722,11 +741,13 @@
                                         <label for="r40">EXCELENTE</label>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
+                </form>
             </div>
         </div>
-    </div>
+    
     <div class="box box-primary">
         <div class="box-header with-border">
             <form name="form11" action="" class="formulario1">
@@ -761,11 +782,13 @@
                                     <label for="r44">EXCELENTE</label>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
+            </form>
         </div>
     </div>
-    </div>
+ 
     <div class="box box-primary">
         <div class="box-header with-border">
             <form name="form12" action="" class="formulario1">
@@ -800,11 +823,13 @@
                                     <label for="r48">EXCELENTE</label>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
+            </form>
         </div>
     </div>
-    </div>
+    
     <div class="box box-primary">
         <div class="box-header with-border">
             <form name="form13" action="" class="formulario1">
@@ -821,12 +846,14 @@
                                         onkeyup="mayus(this);" placeholder="TU RESPUESTA"
                                         style="background-color: #E5E7EC; border: 0; outline: none">
                                 </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
+            </form>
         </div>
     </div>
-    </div>
-
+   
     <div class="box box-primary">
         <div class="box-header with-border">
             <form name="form14" action="" class="formulario1">
@@ -862,14 +889,17 @@
                                         placeholder="TU RESPUESTA"
                                         style="background-color: #E5E7EC; border: 0; outline: none">
                                 </div>
-
+                            </div>
+                        </div>
                     </form>
                 </div>
+            </form>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
+
+
+   
+
     <div class="box box-primary">
         <div class="box-header with-border">
             <form name="form15" action="" class="formulario1">
@@ -896,12 +926,17 @@
                                     <input type="radio" name="preg15" value="TELÉFONO" id="r55">
                                     <label for="r55">TELÉFONO</label>
                                 </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
+            </form>
         </div>
     </div>
-    </div>
-    </div>
+
+
+
+   
     <div class="box box-primary">
         <div class="box-header with-border">
             <form name="form16" action="" class="formulario1">
@@ -919,11 +954,14 @@
                                         style="font-size: 18px; border-radius: 5px; background-color: #E5E7EC"
                                         placeholder="ESCRIBE AQUÍ TUS COMENTARIOS"></textarea>
                                 </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
+            </form>
         </div>
     </div>
-    </div>
+
 
     <div class="box-body">
         <div class="form-group"><br>
@@ -955,81 +993,20 @@
                         style=";font-size: 1.7em"> *</strong>
                 </p>
             </b>
-            <!--             <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente1">Es necesario agregar la
-                    respuesta en la pregunta 1</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente2">Es necesario agregar la
-                    respuesta en la pregunta 2</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente3">Es necesario agregar la
-                    respuesta en la pregunta 3</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente4">Es necesario agregar la
-                    respuesta en la pregunta 4</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente5">Es necesario agregar la
-                    respuesta en la pregunta 5</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente6">Es necesario agregar la
-                    respuesta en la pregunta 6</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente7">Es necesario agregar la
-                    respuesta en la pregunta 7</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente8">Es necesario agregar la
-                    respuesta en la pregunta 8</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente9">Es necesario agregar la
-                    respuesta en la pregunta 9</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente10">Es necesario agregar la
-                    respuesta en la pregunta 10</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente11">Es necesario agregar la
-                    respuesta en la pregunta 11</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente12">Es necesario agregar la
-                    respuesta en la pregunta 12</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente13">Es necesario agregar la
-                    respuesta en la pregunta 13</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente14">Es necesario agregar la
-                    respuesta en la pregunta 14</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente17">Es necesario agregar la
-                    respuesta en la pregunta 17</p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="pendiente16">Es necesario agregar la
-                    respuesta en la pregunta 16</p>
-            </b> -->
+
         </div>
     </div>
-    </div>
-    </div>
-    <script type="text/javascript" src="../js/encuestadatos.js"></script>
-    </section>
-    </div>
-    </div>
-    </div>
-    </form>
+</section>
+</div>
+</div>
+</div>
+</form>
 
+
+    
+
+
+    <script type="text/javascript" src="../js/encuestadatos.js"></script>
     <?php include('modal.php');?>
     <!-- /.tab-pane -->
     </div>
@@ -1311,7 +1288,8 @@ $id_curso = $data['id_curso'];
 ?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-        "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
+        // "<a type='button' title='Evaluación' onclick='asignacion(<?php //echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
+        "<span class='badge' style='background-color: red;'>CANCELADO</span>"
     ],
     <?php } ?>
 ];
