@@ -164,7 +164,7 @@ include('header.php');
                 <div class="progress-bar" style="width: 70%"></div>
               </div>
                   <span class="progress-description">
-                    <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+                    <a link rel="stylesheet" href="acreeditados.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -185,7 +185,7 @@ include('header.php');
                 <div class="progress-bar" style="width: 70%"></div>
               </div>
 
-                    <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+                    <a link rel="stylesheet" href="pendientes.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
                   
             </div>
             <!-- /.info-box-content -->
@@ -206,7 +206,7 @@ include('header.php');
                 <div class="progress-bar" style="width: 70%"></div>
               </div>
                   <span class="progress-description">
-                  <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+                  <a link rel="stylesheet" href="porvencer.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
             </div>
             <!-- /.info-box-content -->
         
