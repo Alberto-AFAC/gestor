@@ -136,6 +136,10 @@ OR
 gstCargo = 'ADMINISTRATIVO' 
 AND gstAreID  = $Direje 
 AND personal.estado = 0 
+OR 
+gstCargo = 'INSPECTOR' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0 
 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 

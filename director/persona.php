@@ -323,7 +323,26 @@ $('#AgstIDSub').select2();
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
+$Direje= $datos[1];
+$query = "SELECT * FROM personal 
+INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+WHERE 
+gstCargo = 'INSTRUCTOR' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0
+OR 
+gstCargo = 'COORDINADOR' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0 
+OR 
+gstCargo = 'ADMINISTRATIVO' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0 
+OR 
+gstCargo = 'INSPECTOR' 
+AND gstAreID  = $Direje 
+AND personal.estado = 0 
+ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
@@ -335,17 +354,12 @@ $resultado = mysqli_query($conexion, $query);
       $gstIdper = $data['gstIdper'];
       ?>
 
-//console.log('<?php echo $gstIdper ?>');
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>",
-<?php if($data['gstCargo']=='NUEVO INGRESO'){?>
-  "<a type='button' title='Asignar' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
-<?php }else{?>
-//"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
 
-<?php } ?>
 
+["<?php echo  $data['gstNmpld'];?>","<?php echo $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstCargo']?>",
+
+ "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"; ?>"
 ],
 
 
@@ -362,11 +376,12 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
     fixedHeader: true,
     data: dataSet,
     columns: [
-    {title: "ID"},
-    {title: "NOMBRE(S)"},
-    {title: "APELLIDO(S)"},
-    {title: "CARGO"},
-    {title: "ACCIÓN"}
+{title: "ID"},
+{title: "NOMBRES(S)"},
+{title: "APELLIDO(S)"},
+{title: "CATEGORIA"},
+{title: "CARGO"},
+{title: "ACCIÓN"}
     ],
     });
 
