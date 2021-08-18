@@ -112,7 +112,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                     <th>FINAL</th>
                                                     <th>PARTICIPANTES</th>
                                                     <th>ESTATUS</th>
-                                                    <th>ACCIÓN</th>
+                                                    <th style="width:15%;">ACCIÓN</th>
                                                 </tr>
                                             </thead>
                                            
