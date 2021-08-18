@@ -1968,3 +1968,8 @@ function asiginspec() {
     }
 
 }
+
+function spcialidad(gstIdper){
+
+    alert(gstIdper);
+}
