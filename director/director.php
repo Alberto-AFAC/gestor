@@ -173,85 +173,105 @@ include('header.php');
                                         cursos";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
-                                ?>
-             -->
+                                ?> -->
+                            <div class="info-box-content">
+                                <span class="info-box-text">TOTAL DE CURSOS</span>
+                                <span class="info-box-text">PROGRAMADOS</span>
+                                <span class="info-box-number"><div id="progrmas"></div></span>
 
-            <div class="info-box-content">
-              <span class="info-box-text">TOTAL DE CURSOS</span>
-              <span class="info-box-text">PROGRAMADOS</span>
-              <span class="info-box-number"><div id="progrmas"></div></span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                                <span class="progress-description">
 
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-              </div>
-                  <span class="progress-description">
+                                    <a link rel="stylesheet" href="lisCurso.php" style="color:white"
+                                        class="small-box-footer">Información <i
+                                            class="fa fa-arrow-circle-right"></i></a>
+                                </span>
 
-                    <a link rel="stylesheet" href="lisCurso.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
-                  </span>
-                  
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-green">
+                            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">TOTAL DE CURSOS</span>
+                                <span class="info-box-text">Acreditados</span>
+                                <span class="info-box-number"><div id="finalizado"></div> </span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                                <span class="progress-description">
+                                    <a link rel="stylesheet" href="acreeditados.php" style="color:white"
+                                        class="small-box-footer">Información <i
+                                            class="fa fa-arrow-circle-right"></i></a>
+                                </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-yellow">
+                            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">TOTAL DE CURSOS</span>
+                                <span class="info-box-text">POR ACREDITAR</span>
+                                <span class="info-box-number"><div id="acreditar"></div> </span>
+                                <span class="progress-description">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 70%"></div>
+                                    </div>
+
+                                    <a link rel="stylesheet" href="pendientes.php" style="color:white"
+                                        class="small-box-footer">Información <i
+                                            class="fa fa-arrow-circle-right"></i></a>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-red">
+                            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">TOTAL DE CURSOS</span>
+                                <span class="info-box-text">Por vencer y Vencidos</span>
+                                <span class="info-box-number"><div id="vencer"></div> </span>
+                                <span class="progress-description">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 70%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        <a link rel="stylesheet" href="porvencer.php" style="color:white"
+                                            class="small-box-footer">Información <i
+                                                class="fa fa-arrow-circle-right"></i></a>
+
+
+                            </div>
+            </section>
+            <div class="container">
+            
+</div>
         </div>
-        <!-- /.col -->
-        
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
 
-            <div class="info-box-content">
-              <span class="info-box-text">TOTAL DE CURSOS</span>
-              <span class="info-box-text">Acreditados</span>
-              <span class="info-box-number"><div id="finalizado"></div> </span>
 
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-              </div>
-                  <span class="progress-description">
-                    <a link rel="stylesheet" href="acreeditados.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
-                  </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-yellow">
-            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">TOTAL DE CURSOS</span>
-              <span class="info-box-text">POR ACREDITAR</span>
-              <span class="info-box-number"><div id="acreditar"></div> </span>
-              <span class="progress-description"> 
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-              </div>
-
-                    <a link rel="stylesheet" href="pendientes.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
-                  
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-red">
-            <span class="info-box-icon"><i class="fa ion-easel"></i></span>
-
-            <div class="info-box-content">
-            <span class="info-box-text">TOTAL DE CURSOS</span>
-              <span class="info-box-text">Por vencer</span>
-              <span class="info-box-number"><div id="vencer"></div></span> 
-              <span class="progress-description">
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-              </div>
-                  <span class="progress-description">
-                  <a link rel="stylesheet" href="porvencer.php" style = "color:white" class="small-box-footer">information <i class="fa fa-arrow-circle-right"></i></a>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.1
             </div>
             <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
             Todos los derechos Reservados AAJ.
