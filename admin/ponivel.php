@@ -15,28 +15,28 @@
 
 
         <div class="col-sm-offset-0 col-md-3 text-center">
-                  <input type="text" class="knob" value=<?php echo porcentajedef($totalfulldef, $totaldeficiente,0)."%"?> data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
+                  <input type="text" class="knob" value=<?php echo porcentajedef($totalfulldef, $totaldeficiente,0)."%"?> data-width="90" data-height="90" data-fgColor="#154360" data-readonly="true">
 
-                  <div class="knob-label" style="font-size:15px">DEFICIENTE %</div>
+                  <div class="knob-label" style="font-size:15px; font-weight: bold;">DEFICIENTE %</div>
                 </div>
           <!-- ./col -->
           <div class="col-xs-0 col-md-3 text-center">
-            <input type="text" class="knob" value=<?php echo porcentaje2($totalfullnosa, $totaldnosatisf,0)."%"?> data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
+            <input type="text" class="knob" value=<?php echo porcentaje2($totalfullnosa, $totaldnosatisf,0)."%"?> data-width="90" data-height="90" data-fgColor="#5499C7" data-readonly="true">
 
-            <div class="knob-label" style="font-size:15px">NO SATISFACTORIO %</div>
+            <div class="knob-label" style="font-size:15px; font-weight: bold;">NO SATISFACTORIO %</div>
           </div>
 
           <!-- ./col -->
           <div class="col-xs-0 col-md-3 text-center">
             <input type="text" class="knob" value=<?php echo porcentaje3($totalfullsatis, $totalsatis,0)."%"?> data-width="90" data-height="90" data-fgColor="#1ABC9C" data-readonly="true">
 
-            <div class="knob-label" style="font-size:15px">SATISFACTORIO %</div>
+            <div class="knob-label" style="font-size:15px; font-weight: bold;">SATISFACTORIO %</div>
           </div>
         <!-- ./col -->
           <div class="col-xs-0 col-md-3 text-center">
             <input type="text" class="knob" value=<?php echo porcentaje4($totalfullexc, $totalexc,0)."%"?> data-width="90" data-height="90" data-fgColor="#1ABC9C" data-readonly="true">
 
-            <div class="knob-label" style="font-size:15px">EXCELENTE %</div>
+            <div class="knob-label" style="font-size:15px; font-weight: bold;">EXCELENTE %</div>
           </div>
           <!-- ./col -->
         </div>
