@@ -71,7 +71,11 @@ include('header.php');
                     <div class="col-md-12">
                         <div class="box box-solid">
                             <div class="box-header with-border">
-
+                            <div class="box-header with-border">
+                                <h3 style="color: grey;" class="box-title">TOTAL DE PERSONAS ENCUESTADAS:</h3>
+                               <label id="per1"style="font-size:28px; color:green" for=""><?php echo ($totalresg)?></label>
+                               
+                            </div>
                                 <button id="button" type="button" class="btn btn-info" style="float: right"> EVALUACIÓN
                                     DE SATISFACCIÓN</button>
                             </div>
@@ -82,7 +86,7 @@ include('header.php');
                                 <h3 style="color: gray;" class="box-title">NIVEL GENERAL DE SATISFACCIÓN</h3>
                             </div>
                             <div style="color: green; font-size: 50px;" class="box-body">
-                                <?php echo porcentaje($cantidad, $cantidad1, 2) . "%"?>
+                                <?php echo porcentaje($totalfull, $totalcantida, 0) . "%"?>
                             </div>
                         </div>
                     </div>
@@ -110,6 +114,7 @@ include('header.php');
                                 </table>
                             </div>
                             <!-- /.box-body -->
+                            <?php include('ponivel.php'); ?>
                         </div>
                         <!-- /.box -->
                     </div>
