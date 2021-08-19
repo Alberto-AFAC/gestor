@@ -15,7 +15,7 @@
 
 
         <div class="col-sm-offset-0 col-md-3 text-center">
-|                  <input type="text" class="knob" value=<?php echo porcentajedef($totalfulldef, $totaldeficiente,0)."%"?> data-width="90" data-height="90" data-fgColor="#154360" data-readonly="true">
+                <input type="text" class="knob" value=<?php echo porcentajedef($totalfulldef, $totaldeficiente,0)."%"?> data-width="90" data-height="90" data-fgColor="#154360" data-readonly="true">
 
                   <div class="knob-label" style="font-size:15px; font-weight: bold;">DEFICIENTE %</div>
                 </div>
