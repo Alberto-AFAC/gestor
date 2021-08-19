@@ -446,7 +446,7 @@ function perfil(gstIdper) {
                 } else {
                     $("#ocultar1").show();
                     $("#ocultar2").show();
-                  //  document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                    //  document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 }
 
 
@@ -1168,18 +1168,26 @@ function inspector(gstIdper) {
                                 //PORCENTAJE DE COMPLETADOS
 
                                 var porcentaje1 = document.getElementById("porcentaje11");
-                                porcentaje1.style.width = (Math.round(FINALIZADO * 100) / insp + "%");
-                                porcentaje11.innerHTML = (Math.round(FINALIZADO * 100) / insp + "%");
+                                resultado3 = ((FINALIZADO * 100) / insp);
+                                var resFinal3 = resultado3.toFixed(0);
+                                porcentaje1.style.width = (resFinal3 + "%");
+                                porcentaje11.innerHTML = (resFinal3 + "%");
 
                                 // PORCENTAJE DE PROGRAMADOS
                                 var porcentaje12 = document.getElementById("porcentaje12");
-                                porcentaje12.style.width = (Math.round(programados * 100) / insp + "%");
-                                porcentaje12.innerHTML = (Math.round(programados * 100) / insp + "%"); //VALOR
+                                resultado = ((programados * 100) / insp);
+
+                                var resFinal = resultado.toFixed(0);
+                                porcentaje12.style.width = (resFinal + "%");
+                                porcentaje12.innerHTML = (resFinal + "%"); //VALOR
 
                                 // PORCENTAJE DE CANCELADO
                                 var porcentaje13 = document.getElementById("porcentaje13");
-                                porcentaje13.style.width = (Math.round(CANCELADO * 100) / insp + "%");
-                                porcentaje13.innerHTML = (Math.round(CANCELADO * 100) / insp + "%"); //VALOR
+                                resultado1 = ((CANCELADO * 100) / insp);
+                                var resFinal1 = resultado1.toFixed(0);
+
+                                porcentaje13.style.width = (resFinal1 + "%");
+                                porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
 
                             }
                         }
@@ -1969,7 +1977,7 @@ function asiginspec() {
 
 }
 
-function spcialidad(gstIdper){
+function spcialidad(gstIdper) {
 
     alert(gstIdper);
 }
