@@ -86,7 +86,7 @@ include('header.php');
                                 <h3 style="color: gray;" class="box-title">NIVEL GENERAL DE SATISFACCIÓN</h3>
                             </div>
                             <div style="color: green; font-size: 50px;" class="box-body">
-                                <?php echo porcentaje($totalfull, $totalcantida, 2) . "%"?>
+                                <?php echo porcentaje($totalfull, $totalcantida, 0) . "%"?>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ include('header.php');
                                 </table>
                             </div>
                             <!-- /.box-body -->
-                            <?php include('ponivel.html'); ?>
+                            <?php include('ponivel.php'); ?>
                         </div>
                         <!-- /.box -->
                     </div>
