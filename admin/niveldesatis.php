@@ -114,6 +114,7 @@ include('header.php');
                                 </table>
                             </div>
                             <!-- /.box-body -->
+                            <?php include('ponivel.html'); ?>
                         </div>
                         <!-- /.box -->
                     </div>

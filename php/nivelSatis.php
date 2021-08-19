@@ -331,7 +331,7 @@
   $totalfull = $totalresg * 12;
   $totalcantida = $cantidad1 * 100;
       
-
+      
       function porcentaje($totalfull, $totalcantida, $redondear = 2) {
         return round($totalcantida / $totalfull, $redondear); 
     }
