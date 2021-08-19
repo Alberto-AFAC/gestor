@@ -237,6 +237,7 @@
                                 </style>
 
                                 <form class="form-horizontal" action="" method="POST">
+                                
                                     <div class="modal fade" id="modal-evalcurso">
                                         <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
                                             <div class="modal-content">
@@ -256,7 +257,12 @@
                                                             CONTINUA HACIA LA CAPACITACIÓN.</label1>
                                                     </b>
                                                     <br>
-                                                    <section class="content">
+<section class="content">
+
+
+
+
+
                                                         <div class="row">
                                                             <!-- <img src="../dist/img/AFAC2.png" alt="Descripción de la imagen"> -->
                                                             <div class="col-md-12">
@@ -996,7 +1002,12 @@
 
         </div>
     </div>
+
+
+
+
 </section>
+</div>
 </div>
 </div>
 </div>
