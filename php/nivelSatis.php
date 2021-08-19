@@ -62,7 +62,7 @@
         $nosatisfactorio12 = 0;
         $satisfactorio12=0;
         $excelentes12=0;
-
+        $totalresg =0;
         // ANTIGUO ALGORITMO
          $nosatis = 0;
          $satis = 0;
@@ -201,6 +201,8 @@
             $satisfactorio12++;
           }if($row[14] == 'EXCELENTE'){
             $excelentes12++;
+          }if($row[19] == '0'){
+            $totalresg++;
           }
           // if($row[4] == 'DEFICIENTE'){
           //   $deficiente++;
@@ -321,13 +323,17 @@
       $pregunta12 = $deficiente12 * 2.5 / 10 + $nosatisfactorio12 * 5 / 10   + $satisfactorio12 * 7.5 / 10  + $excelentes12 * 10 / 10;
 
 
-      // $resul1 = $deficiente * 2.5 / 100;
-      $cantidad = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12; 
-      $cantidad1 = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 ; 
+      
+  // $resul1 = $deficiente * 2.5 / 100;
+  $cantidad = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12; //NUMERO 
+  $cantidad1 = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12; 
+ //sacar el porcentaje
+  $totalfull = $totalresg * 12;
+  $totalcantida = $cantidad1 * 100;
       
 
-      function porcentaje($cantidad, $cantidad1, $redondear = 2) {
-        return round($cantidad1 / $cantidad * 100, $redondear);
+      function porcentaje($totalfull, $totalcantida, $redondear = 2) {
+        return round($totalcantida / $totalfull, $redondear); 
     }
      
     // $n1 = 255;
