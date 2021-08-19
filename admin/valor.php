@@ -202,6 +202,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td><div id="ccfecha"></div></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -223,6 +224,7 @@ $psto = mysqli_query($conexion,$sql);
                             <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
+                    
                     </table>
             </form>
            
