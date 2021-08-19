@@ -131,8 +131,24 @@ $psto = mysqli_query($conexion,$sql);
 </div>
 
 <!-- /FIN DE NUEVO DISEÑO -->
+<div class="col-xs-12">
+          <div class="box box-solid">
+            <div class="box-header">
+               <i class="fa fa fa-list"></i>
 
+               <h3 class="box-title">Check list</h3>
 
+                 <div class="box-tools pull-right">
+                   <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                   </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            
+            <div class="box-body">
+            <div class="row">
+
+                <!-- ./col -->
 <div style="padding-top: 10px;" class="col-md-12">
     <div class="nav-tabs-custom">
             <form id="Dtall" class="form-horizontal" action="" method="POST">
@@ -220,6 +236,19 @@ $psto = mysqli_query($conexion,$sql);
            
 </div>
 </div>
+
+
+
+
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+
+
 <!-- DISEÑO ANTIGUO/.col -->
 <div style="padding-top: 15px;" class="col-md-12">
     <div class="nav-tabs-custom">
