@@ -149,16 +149,16 @@ $psto = mysqli_query($conexion,$sql);
             <div class="row">
 
                 <!-- ./col -->
-<div style="padding-top: 10px;" class="col-md-12">
+<div style="padding-top: 5px;" class="col-md-12">
     <div class="nav-tabs-custom">
             <form id="Dtall" class="form-horizontal" action="" method="POST">
                 <input type="hidden" name="gstIdper" id="gstIdper">
-                <table style="width: 60%;" class="table table-striped table-hover center">
+                <table style="width: 100%;" class="table table-striped table-hover center" >
                     <thead>
-                        <tr style="color: white; background-color: #3C8DBC;">
+                        <tr>
                             <th scope="col">INCISO</th>
-                            <th scope="col">DOCUMENTO</th>
-                            <th scope="col">CUMPLE</th>
+                            <th scope="col" style="width: 600px;">DOCUMENTO</th>
+                            <th scope="col">CUMPLE</th> 
                             <th scope="col">FECHA DE REVISIÓN</th>
                         </tr>
                     </thead>
@@ -187,17 +187,9 @@ $psto = mysqli_query($conexion,$sql);
                         </tr>
                         <tr>
                             <th scope="row">D)</th>
-                            <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
+                            <td>CONSTANCIA ACADÉMICA (a.Licenciatura o ingeniería, b.Licencia técnica aeronautica)</td>
                             <td><div id="estudios"></div></td>
                             <td></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            <td>b. Personal tecnico aeronautico<br> Copia de licencia técnica aeronautica</td>
-                            <td></td>
-                            <td></td>
-
 
                         </tr>
                         <tr>
