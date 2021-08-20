@@ -151,7 +151,7 @@ include('header.php');
                       <div class="col-sm-12">
                             <label class="label2">DIRECCIÓN EJECUTIVA</label>
 
-                    <select style="width: 100%"  class="selectpicker inputalta" name="gstAreIDasig" id="gstAreIDasig" type="text" data-live-search="true" disabled="">
+                    <select style="width: 100%"  class="selectpicker disabled inputalta" name="gstAreIDasig" id="gstAreIDasig" type="text" data-live-search="true" disabled="">
                     <?php while($ejct = mysqli_fetch_row($ejecut)):?>                      
                     <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
                     <?php endwhile; ?>
@@ -163,7 +163,7 @@ include('header.php');
                           <div class="col-sm-12">
                             <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
 
-                    <select style="width: 100%" class="selectpicker inputalta" id="gstIDara" name="gstIDara" type="text" data-live-search="true" disabled="">
+                    <select style="width: 100%" class="selectpicker disabled inputalta" id="gstIDara" name="gstIDara" type="text" data-live-search="true" disabled="">
                     <?php while($ccion = mysqli_fetch_row($direc)):?>                      
                     <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
                     <?php endwhile; ?>

@@ -1339,11 +1339,11 @@ function consultaCurso(gst) {
 
             if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'EN CURSO') {
                 /*+ obj.data[o].status +*/
-                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: #3C8DBC;'>EN CURSO</td> </tr>";
+                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td><span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span></td> </tr>";
             } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'PENDIENTE') {
-                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: orange;'>PENDIENTE</td> </tr>";
+                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span></td> </tr>";
             } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'FINALIZADO') {
-                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td style='color: white; background-color: green;'>FINALIZADO</td> </tr>";
+                html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span></td> </tr>";
             }
         }
         html += '</tbody></table></div></div></div>';
