@@ -101,7 +101,7 @@ include('header.php');
                         <div class="small-box bg-blue">
                             <div class="inner">
                                 <h3>
-                                    <div id="persona"></div>
+                                    <div id="personad"></div>
                                 </h3>
 
                                 <p>Total personal AFAC</p>
@@ -119,7 +119,7 @@ include('header.php');
                         <div class="small-box bg-aqua">
                             <div class="inner">
                                 <h3>
-                                    <div id="inspectores"></div>
+                                    <div id="inspectoresd"></div>
                                 </h3>
 
                                 <p>Total de inspectores</p>
@@ -137,7 +137,7 @@ include('header.php');
                         <div class="small-box bg-blue">
                             <div class="inner">
                                 <h3>
-                                    <div id="instructor"></div>
+                                    <div id="instructord"></div>
                                 </h3>
 
                                 <p>Total, Instructores y Coordinadores</p>
