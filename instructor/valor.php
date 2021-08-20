@@ -133,16 +133,34 @@ $psto = mysqli_query($conexion,$sql);
 <!-- /FIN DE NUEVO DISEÑO -->
 
 
-<div style="padding-top: 10px;" class="col-md-12">
+<div class="col-xs-12">
+          <div class="box box-solid">
+            <div class="box-header">
+               <i class="fa fa fa-list"></i>
+
+               <h3 class="box-title">Check list</h3>
+
+                 <div class="box-tools pull-right">
+                   <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                   </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            
+            <div class="box-body">
+            <div class="row">
+
+                <!-- ./col -->
+<div style="padding-top: 5px;" class="col-md-12">
     <div class="nav-tabs-custom">
             <form id="Dtall" class="form-horizontal" action="" method="POST">
                 <input type="hidden" name="gstIdper" id="gstIdper">
-                <table style="width: 60%;" class="table table-striped table-hover center">
+                <table style="width: 100%;" class="table table-striped table-hover center" >
                     <thead>
-                        <tr style="color: white; background-color: #3C8DBC;">
+                        <tr>
                             <th scope="col">INCISO</th>
-                            <th scope="col">DOCUMENTO</th>
-                            <th scope="col">CUMPLE</th>
+                            <th scope="col" style="width: 600px;">DOCUMENTO</th>
+                            <th scope="col">CUMPLE</th> 
                             <th scope="col">FECHA DE REVISIÓN</th>
                         </tr>
                     </thead>
@@ -171,17 +189,9 @@ $psto = mysqli_query($conexion,$sql);
                         </tr>
                         <tr>
                             <th scope="row">D)</th>
-                            <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
+                            <td>CONSTANCIA ACADÉMICA (a.Licenciatura o ingeniería, b.Licencia técnica aeronautica)</td>
                             <td><div id="estudios"></div></td>
                             <td></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            <td>b. Personal tecnico aeronautico<br> Copia de licencia técnica aeronautica</td>
-                            <td></td>
-                            <td></td>
-
 
                         </tr>
                         <tr>
@@ -194,6 +204,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td><div id="ccfecha"></div></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -215,11 +226,24 @@ $psto = mysqli_query($conexion,$sql);
                             <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
+                    
                     </table>
             </form>
            
 </div>
 </div>
+
+
+
+
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+
 <!-- DISEÑO ANTIGUO/.col -->
 <div style="padding-top: 15px;" class="col-md-12">
     <div class="nav-tabs-custom">

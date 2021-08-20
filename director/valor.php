@@ -60,75 +60,97 @@ $psto = mysqli_query($conexion,$sql);
         </div>
     </div>
     
-<div  class="col-sm-offset-0 col-sm-9" style="background: #fbfbfb">
-  
-    <p class="text-center">
-       <strong>   </strong>
-    </p><br><br>
-<div  class="col-sm-offset-1 col-md-10">
+
+    <div class="col-sm-offset-0 col-sm-9" style="background: #fbfbfb">
+
+<p class="text-center">
+    <strong> </strong>
+</p><br><br>
+<div class="col-sm-offset-1 col-md-10">
     <div class="progress-group">
-          <span class="progress-text">CURSOS COMPLETADOS</span>
-          <span class="progress-number"><b>160</b>/500</span>
-        <div class="progress sm">
-            <div class="progress-bar progress-bar-green" style="width: 30%"></div>
-            </div>
+        <span class="progress-text">CURSOS COMPLETADOS </span>
+        <span class="progress-number">
+        <div id="FINALIZADO"></div>
+        </span>
+        <div class="progress">
+        <div class="progress-bar progress-bar-green" id='porcentaje11' role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="">
+            0% </div>
         </div>
     </div>
-              <!-- /.progress-group -->
-<div  class="col-sm-offset-1 col-md-10">
+</div>
+<!-- /.progress-group -->
+<div class="col-sm-offset-1 col-md-10">
     <div class="progress-group">
-            <span class="progress-text">CURSOS PROGRAMADOS</span>
-            <span class="progress-number"><b>310</b>/400</span>
-          <div class="progress sm">
-                <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                </div>
-          </div>
-    </div>  
-              <!-- /.progress-group -->
-<div  class="col-sm-offset-1 col-md-10">  
+        <span class="progress-text">CURSOS PROGRAMADOS</span>
+        <span class="progress-number">
+            <div id="programado"></div>
+        </span>
+        <div class="progress">
+        <div class="progress-bar progress-bar-yellow" id='porcentaje12' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+         0% </div>
+        </div>
+    </div>
+</div>
+<!-- /.progress-group -->
+<div class="col-sm-offset-1 col-md-10">
     <div class="progress-group">
-                <span class="progress-text">CURSOS CANCELADOS</span>
-                <span class="progress-number"><b>200</b>/400</span>
-            <div class="progress sm">
-                  <div class="progress-bar progress-bar-red" style="width: 50%"></div>
-                  </div>
-            </div>
-    </div>  
-              <!-- /.progress-group -->
-              <!-- /.progress-group -->
+        <span class="progress-text">CURSOS CANCELADOS</span>
+        <span class="progress-number">
+        <div id="CANCELADO"></div>
+        </span>
+        <div class="progress">
+        <div class="progress-bar" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+         0% </div>
+        </div>
+    </div>
+</div>
+<!-- /.progress-group -->
+<!-- /.progress-group -->
 </div>
 
-        
-        <div class="box-header">
-          <h1 class="box-title"></h1>
-          <div class="box-tools pull-right">
 
-<!--           <button type="button" class="btn btn-box-tool" data-widget="remove">
-          <a href='javascript:closeDtlls()' style="font-size: 22px"><i class='fa fa-times'></i></a>
-          </button>
- -->
-            <button type="button" class="btn btn-box-tool" data-widget="remove">
-            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
-            </button>
+<div class="box-header">
+<h1 class="box-title"></h1>
+<div class="box-tools pull-right">
+    <button type="button" class="btn btn-box-tool" data-widget="remove">
+        <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
+    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-          </div>  
-       </div>
-       </div>
-       </div>
-       </div>
-       </div>        
-        
 <!-- /FIN DE NUEVO DISEÑO -->
-<div style="padding-top: 10px;" class="col-md-12">
+<div class="col-xs-12">
+          <div class="box box-solid">
+            <div class="box-header">
+               <i class="fa fa fa-list"></i>
+
+               <h3 class="box-title">Check list</h3>
+
+                 <div class="box-tools pull-right">
+                   <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                   </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            
+            <div class="box-body">
+            <div class="row">
+
+                <!-- ./col -->
+<div style="padding-top: 5px;" class="col-md-12">
     <div class="nav-tabs-custom">
             <form id="Dtall" class="form-horizontal" action="" method="POST">
                 <input type="hidden" name="gstIdper" id="gstIdper">
-                <table style="width: 60%;" class="table table-striped table-hover center">
+                <table style="width: 100%;" class="table table-striped table-hover center" >
                     <thead>
-                        <tr style="color: white; background-color: #3C8DBC;">
+                        <tr>
                             <th scope="col">INCISO</th>
-                            <th scope="col">DOCUMENTO</th>
-                            <th scope="col">CUMPLE</th>
+                            <th scope="col" style="width: 600px;">DOCUMENTO</th>
+                            <th scope="col">CUMPLE</th> 
                             <th scope="col">FECHA DE REVISIÓN</th>
                         </tr>
                     </thead>
@@ -157,17 +179,9 @@ $psto = mysqli_query($conexion,$sql);
                         </tr>
                         <tr>
                             <th scope="row">D)</th>
-                            <td>CONSTANCIA ACADÉMICA <br> a. Licenciatura o ingeniería</td>
+                            <td>CONSTANCIA ACADÉMICA (a.Licenciatura o ingeniería, b.Licencia técnica aeronautica)</td>
                             <td><div id="estudios"></div></td>
                             <td></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            <td>b. Personal tecnico aeronautico<br> Copia de licencia técnica aeronautica</td>
-                            <td></td>
-                            <td></td>
-
 
                         </tr>
                         <tr>
@@ -180,6 +194,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td><div id="ccfecha"></div></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -201,10 +216,24 @@ $psto = mysqli_query($conexion,$sql);
                             <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
+                    
+                    </table>
             </form>
-            </table>
+           
 </div>
 </div>
+
+
+
+
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+
 <!-- DISEÑO ANTIGUO/.col -->
         <div class="col-md-12">
           <div class="nav-tabs-custom">
