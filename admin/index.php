@@ -262,20 +262,14 @@ include('header.php');
 
                             </div>
             </section>
-            <div class="container">
-            
-</div>
         </div>
-
-
-        <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.1
-            </div>
-            <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados AAJ.
-        </footer>
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.2
+    </div>
+
+    <strong>AFAC &copy; 2021 <a style="color:#3c8dbc"  href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
+  </footer>
 
         <!-- Control Sidebar -->
         <?php include('panel.html');?>

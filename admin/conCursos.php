@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="../css/style.css">}
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
 
 
