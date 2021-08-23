@@ -36,39 +36,7 @@
   <script src="dist/js/sweetalert2.all.min.js"></script>
   <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
 
-  <style>
-      #legend {
-      height: 50px;
-      background: #f7f7f7;
-      border-bottom: 1px solid #d6d6d6;
-    }
-
-    .anychart-tooltip {
-      padding: 0;
-      background: white;
-      color: #333;
-      box-shadow: 2px 2px 5px #333;
-      border-radius: 0;
-    }
-
-    .anychart-tooltip-title h5 {
-      background: #455a64;
-      padding: 10px 30px;
-      margin: 0;
-    }
-
-    .anychart-tooltip-title h5.default {
-      color: #fff;
-    }
-
-    .anychart-tooltip hr {
-      margin: 0;
-    }
-
-    .anychart-tooltip .tooltip-content {
-      padding: 0 30px;
-    }
-      </style>
+  
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -85,10 +53,10 @@ include('header.php');
                     Dashboard
                     <small>Panel de Control</small>
                 </h1>
-                <ol class="breadcrumb">
+<!--                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa ion-android-home"></i> Inicio</a></li>
                     <li class="active">Dashboard</li>
-                </ol>
+                </ol> -->
             </section>
 
 
@@ -262,27 +230,35 @@ include('header.php');
 
                             </div>
             </section>
-            <div class="container">
-            
-</div>
         </div>
-
-
-        <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.1
-            </div>
-            <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados AJ.
-        </footer>
+    <div class="pull-right hidden-xs">
+      <b>Version</b>
+                                <?php 
+                                $query ="SELECT 
+                                        *
+                                        FROM
+                                        controlvers";
+                                $resultado = mysqli_query($conexion, $query);
+
+                                $row = mysqli_fetch_assoc($resultado);
+                                if(!$resultado) {
+                                    var_dump(mysqli_error($conexion));
+                                    exit;
+                                }
+                                ?>
+                    <?php echo $row['version']?>
+    </div>
+
+    <strong>AFAC &copy; 2021 <a style="color:#3c8dbc"  href="https://www.gob.mx/afac">Agencia Federal de Aviación Civil</a>.</strong> Todos los derechos Reservados AJ.
+  </footer>
 
         <!-- Control Sidebar -->
         <?php include('panel.html');?>
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+        <div class="control-sidebar-bg"></div>|
     </div>
     <!-- ./wrapper -->
 

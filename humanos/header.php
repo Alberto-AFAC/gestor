@@ -29,7 +29,7 @@ unset($_SESSION['consulta']);
     <!-- Logo -->
     <a href="humanos.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>AFAC</span>
+      <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Capacitación AFAC</b></span>
     </a>

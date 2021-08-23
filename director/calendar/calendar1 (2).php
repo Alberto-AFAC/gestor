@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Gestor inspectores | Calendario</title>
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -41,52 +42,48 @@ include('header.php');
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
+    <!-- Content Header (Page header) -->
+    <!-- <section class="content-header">
+      <h1>
+        CALENDARIO
+      </h1>    
+    </section> -->
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-      
-
-
-<div class="col-md-12" style="background: white">
-     
-        <div class="col-md-2">
-          <div class="box box-solid">
-            
-              <div class="box-body">
-              <!-- the events -->
-              <div id="external-events" style="margin-top:12em; ">
-              <div class="btn-group">
-              <button style="width: 100%;" class="btn btn-default" data-calendar-nav="today">Hoy</button>
-              <button style="width: 100%;" class="btn btn-info" data-calendar-nav="prev"><< Anterior</button>
-              <button style="width: 100%;" class="btn btn-info" data-calendar-nav="next">Siguiente  >></button>
-
-              <button style="width: 100%;" class="btn btn-warning" data-calendar-view="day">Día</button>
-              <button style="width: 100%;" class="btn btn-warning" data-calendar-view="week">Semana</button>
-              <button style="width: 100%;" class="btn btn-warning active" data-calendar-view="month">Mes</button>
-              <button style="width: 100%;" class="btn btn-warning" data-calendar-view="year">Año</button>
-              
-              
-        			</div>
-              </div> 
-              
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /. box -->
-          
-        </div>
+        <div class="col-md-12">
+ <div class="box box-solid">            
         <!-- /.col -->
-        <div class="col-md-10">
-            <div class="box-body no-padding">
-              <!-- THE CALENDAR -->
-              <?php include('index.html');?>
-            </div>
+<div class="col-sm-offset-1 col-md-10">
+<div class="pull-right form-inline">
+<div class="btn-group">
+<button class="btn btn-info" data-calendar-nav="prev"><< Anterior</button>
+<button class="btn" data-calendar-nav="today">Hoy</button>
+<button class="btn btn-info" data-calendar-nav="next">Siguiente  >></button>
+</div>
+<div class="btn-group">
+<button class="btn btn-warning" data-calendar-view="year">Año</button>
+<button class="btn btn-warning active" data-calendar-view="month">Mes</button>
+<button class="btn btn-warning" data-calendar-view="week">Semana</button>
+<button class="btn btn-warning" data-calendar-view="day">Día</button>
+</div> 
+</div>
+</div>
+<div class="col-sm-offset-1 col-md-1">
+
+</div>
+
+<div class="col-sm-offset-1 col-md-10">
+<div class="box box-solid">              <!-- THE CALENDAR -->
+<?php include('index.html');?>
+</div>
+<!-- /.box-body -->
+</div>
+
+</div>
           <!-- /. box -->
         </div>
-<div>
-
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -95,6 +92,7 @@ include('header.php');
   </div>
   <!-- /.content-wrapper -->
 
+  <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b>    <?php 
@@ -112,9 +110,9 @@ include('header.php');
                                 ?>
                     <?php echo $row['version']?>
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
   </footer>
+
 
 
   <!-- /.control-sidebar -->
@@ -143,6 +141,10 @@ include('header.php');
 <script src="../../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- Page specific script -->
 <script>
+
+ 
+
+
   // $(function () {
 
   //   /* initialize the external events

@@ -131,6 +131,8 @@ $psto = mysqli_query($conexion,$sql);
 </div>
 
 <!-- /FIN DE NUEVO DISEÑO -->
+
+
 <div class="col-xs-12">
           <div class="box box-solid">
             <div class="box-header">
@@ -241,7 +243,6 @@ $psto = mysqli_query($conexion,$sql);
           </div>
           <!-- /.box -->
         </div>
-
 
 <!-- DISEÑO ANTIGUO/.col -->
 <div style="padding-top: 15px;" class="col-md-12">

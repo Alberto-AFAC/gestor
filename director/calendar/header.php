@@ -1,9 +1,35 @@
+<?php include ("../../conexion/conexion.php"); session_start();
+//si la variable ssesion existe realizara las siguiente evaluacion 
+    if (isset($_SESSION['usuario'])) {
+        //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
+        if($_SESSION['usuario']['privilegios'] != "DIRECTOR"){
+            //y se redirecciona al directorio que le corresponde
+            header("Location: ../../");
+            }
+        }else{
+            //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
+            header('Location: ../../');
+        }
+   $id = $_SESSION['usuario']['id_usu'];
+      $sql = 
+       "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
+      INNER JOIN accesos ON id_usu = gstIdper
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
+
+      $persona = mysqli_query($conexion,$sql);
+      $datos = mysqli_fetch_row($persona);
+
+//session_start(); 
+unset($_SESSION['consulta']);
+
+?>
+
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
   <header class="main-header">
     <!-- Logo -->
     <a href="../director.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>AFAC</span>
+      <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Capacitación AFAC</b></span>
     </a>
@@ -18,85 +44,73 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- Notifications: style can be found in dropdown.less -->
-<!--           <li class="dropdown notifications-menu">
+          <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning"><div id="noti"></div></span>
             </a>
+
+ <!-- LOGO DE LA AFAC-->
+
+
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header"><div id="notif"></div></li>
               <li>
+                <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li>
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
+                      <div id="confirmar"></div>
                     </a>
                   </li>
-                  <li>
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-users text-red"></i> 5 new members joined
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+<!--                   <li>
                     <a href="#">
                       <i class="fa fa-user text-red"></i> You changed your username
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <!-- - -->
             </ul>
-          </li> -->
+          </li>
           <!-- Tasks: style can be found in dropdown.less -->
 
           <!-- User Account: style can be found in dropdown.less -->
-      <!--     <li class="dropdown user user-menu">
+         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Agel Canseco</span>
+              <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
             </a>
-            <ul class="dropdown-menu">
-              <li class="user-header">
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-              </li>
+            <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
+              <!-- User image -->
+     
+              <!-- Menu Body -->
+   
               <!-- Menu Footer-->
-              <!-- <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
+       
+            
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar sesión</a>
+
                 </div>
-              </li>
+            
             </ul>
-          </li>  -->
+          </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
              <img href="#" data-toggle="control-sidebar" src="../../dist/img/AFAC.png" ALIGN=RIGHT class="img" alt="User Image" style="cursor: pointer;padding-right:  0.5em;">
@@ -156,10 +170,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../nuevoingreso.php"><i class="fa ion-document-text"></i>  Lista nuevo ingreso</a></li>
+           <li><a href="../nuevoingreso.php"><i class="fa ion-document-text"></i> Lista nuevo ingreso</a></li>            
+            
             <li><a href="../inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="../personal.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
-            <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
+    
+           <li><a href="../persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+            <!--<li><a href="../"><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
         </li>
@@ -172,10 +188,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <!-- <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li> -->
             <li><a href="../conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
-
+            
             <li><a href="../lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <!-- <li><a href="../estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
+            <li><a href="../niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
           </ul>
         </li>
         <!--  -->
@@ -183,6 +201,15 @@
         <li>
           <a href="calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red"></small>
+              <small class="label pull-right bg-blue"></small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="../cursosgantt.php">
+          <i class="fa fa-area-chart"></i> <span>Gantt Cursos programados</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
               <small class="label pull-right bg-blue"></small>
