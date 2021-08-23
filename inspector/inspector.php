@@ -1157,8 +1157,12 @@ if($data['confirmar']=='CONFIRMAR'){
 $valor='POR CONFIRMAR';
 }else if($data['confirmar']=='CONFIRMADO'){
  $valor=$data['confirmar']; 
-}else{
- $valor=$data['confirmar'];  
+}else if($data['confirmar']=='ENFERMEDAD'){
+    $valor ='DECLINADO POR ENFERMEDAD';
+}else if($data['confirmar']=='TRABAJO'){
+    $valor ='DECLINADO POR TRABAJO';
+}else if($data['confirmar']=='OTROS'){
+    $valor ='DECLINADO POR OTROS MOTIVOS';
 }
 
 ?>
@@ -1200,7 +1204,7 @@ var tableGenerarReporte = $('#data-table-programado').DataTable({
             title: "FINALIZA"
         },
         {
-            title: "ACCIÓN"
+            title: "ESTATUS"
         }
     ],
 });
@@ -1255,15 +1259,41 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
 }else{
 
-?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+
+
+
+
+
+?>
+
+<?php if($data['confirmar'] == 'TRABAJO' || $data['confirmar'] == 'ENFERMEDAD' || $data['confirmar'] == 'OTROS'){ ?>
+
+
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<span class='badge' style='background-color: orange;'><?php if($data['confirmar'] == 'TRABAJO'){ echo 'DECLINADO POR TRABAJO';} else if($data['confirmar'] == 'ENFERMEDAD'){ echo 'DECLINADO POR ENFERMEDAD';}else{ echo 'DECLINADO POR OTROS MOTIVOS';}?></span>",
+
+        "NO SE PUEDE EVALUAR"
+
+ ], 
+
+<?php }else{ ?>
+
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
 
         "<a type='button' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-info'>EVALUAR</a>"
 
- ], <?php }   
-            }?> ];
+],     
+ 
+ 
+ <?php } 
+ 
+} 
+           }?> ];
 
 var tableGenerarReporte = $('#data-table-completo').DataTable({
     "language": {
