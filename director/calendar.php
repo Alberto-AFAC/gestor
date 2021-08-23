@@ -75,7 +75,20 @@ include('header.php');
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Version</b>    <?php 
+                                $query ="SELECT 
+                                        *
+                                        FROM
+                                        controlvers";
+                                $resultado = mysqli_query($conexion, $query);
+
+                                $row = mysqli_fetch_assoc($resultado);
+                                if(!$resultado) {
+                                    var_dump(mysqli_error($conexion));
+                                    exit;
+                                }
+                                ?>
+                    <?php echo $row['version']?>
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
