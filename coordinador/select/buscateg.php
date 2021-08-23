@@ -1,7 +1,7 @@
 <?php include ("../../conexion/conexion.php");
 
     
-      $sql = "SELECT gstIdlsc,gstPrfil,gstTitlo,gstVignc,gstIdlsc FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc DESC";
+      $sql = "SELECT gstIdlsc,gstPrfil,gstTitlo,gstVignc,gstIdlsc FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc ASC";
       $cat = mysqli_query($conexion,$sql);
     ?>
 

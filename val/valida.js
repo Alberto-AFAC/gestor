@@ -22,7 +22,9 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     location.href = 'director/';
                 } else if (respuesta.tipo == 'INSTRUCTOR') {
                     location.href = 'instructor/';
-                } else if (respuesta.tipo == 'HUMANOS') {
+                } else if(respuesta.tipo == 'COORDINADOR'){
+                    location.href = 'coordinador/';                    
+                }else if (respuesta.tipo == 'HUMANOS') {
                     location.href = 'humanos/';
                 }
 

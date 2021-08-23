@@ -125,18 +125,6 @@
 				</div>
 			</div>
 	</form>
-
-
-
-
-
-
-
-
-
-
-
-
 	</div>
     </main>
 	<script src="login/js/sript.js"></script>

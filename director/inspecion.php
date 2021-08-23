@@ -193,7 +193,7 @@
                   </div>
                     <div class="col-sm-offset-0 col-sm-7">
                       <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="IDCat" name="IDCat" type="text" data-live-search="true" >
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="IDCat" name="IDCat" type="text" data-live-search="true" disabled="">
                          <?php while($oiras = mysqli_fetch_row($categs)):?>                      
                          <option value="<?php echo $oiras[0]?>"><?php echo $oiras[1]?></option>
                          <?php endwhile; ?>
