@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include ("../../conexion/conexion.php");?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -94,7 +95,20 @@ include('header.php');
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1
+      <b>Version</b>    <?php 
+                                $query ="SELECT 
+                                        *
+                                        FROM
+                                        controlvers";
+                                $resultado = mysqli_query($conexion, $query);
+
+                                $row = mysqli_fetch_assoc($resultado);
+                                if(!$resultado) {
+                                    var_dump(mysqli_error($conexion));
+                                    exit;
+                                }
+                                ?>
+                    <?php echo $row['version']?>
     </div>
     <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
   </footer>
