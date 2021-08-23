@@ -1,7 +1,7 @@
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="../director.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
@@ -18,19 +18,14 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
+<!--           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
             </a>
-
- <!-- LOGO DE LA AFAC-->
-
-
             <ul class="dropdown-menu">
               <li class="header">You have 10 notifications</li>
               <li>
-                <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
                     <a href="#">
@@ -62,26 +57,22 @@
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
-          </li>
+          </li> -->
           <!-- Tasks: style can be found in dropdown.less -->
 
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+      <!--     <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
+              <img src="../../dist/img/perfil.png" class="user-image" alt="User Image">
               <span class="hidden-xs">Agel Canseco</span>
             </a>
             <ul class="dropdown-menu">
-              <!-- User image -->
               <li class="user-header">
-                <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
-
                 <p>
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
-              <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
@@ -94,10 +85,9 @@
                     <a href="#">Friends</a>
                   </div>
                 </div>
-                <!-- /.row -->
               </li>
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <!-- <li class="user-footer">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
@@ -106,10 +96,10 @@
                 </div>
               </li>
             </ul>
-          </li>
+          </li>  -->
           <!-- Control Sidebar Toggle Button -->
           <li>
-             <img href="#" data-toggle="control-sidebar" src="../dist/img/AFAC.png" ALIGN=RIGHT class="img" alt="User Image" style="cursor: pointer;padding-right:  0.5em;">
+             <img href="#" data-toggle="control-sidebar" src="../../dist/img/AFAC.png" ALIGN=RIGHT class="img" alt="User Image" style="cursor: pointer;padding-right:  0.5em;">
           </li>
         </ul>
       </div>
@@ -120,15 +110,15 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
+<!--       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/perfil.png" class="img-circle" alt="User Image">
+          <img src="../../dist/img/perfil.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Angel Canseco</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
         </div>
-      </div>
+      </div> -->
       <!-- search form -->
  
       <!-- /.search form -->
@@ -149,7 +139,7 @@
         </li>-->
 
         <li class="active">
-          <a href="./">
+          <a href="../director.php">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
@@ -166,10 +156,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <!--<li><a href="personal.php"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>-
-            <li><a href="persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>-->
-            <li><a href="inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="instructor.php"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+            <li><a href="../nuevoingreso.php"><i class="fa ion-document-text"></i>  Lista nuevo ingreso</a></li>
+            <li><a href="../inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+            <li><a href="../personal.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -183,19 +172,20 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../instructor"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-            <li><a href="../instructor/programa.php"><i class="fa ion-compose"></i>Programación del Curso</a></li>
-            <li><a href="../instructor/lisCurso.php"><i class="fa ion-compose"></i>Cursos Programados</a></li>
+            <li><a href="../altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <li><a href="../conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
+
+            <li><a href="../lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
           </ul>
         </li>
         <!--  -->
         <!-- -->
         <li>
-          <a href="../instructor/calendar.php">
+          <a href="calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
+              <small class="label pull-right bg-red"></small>
+              <small class="label pull-right bg-blue"></small>
             </span>
           </a>
         </li>
