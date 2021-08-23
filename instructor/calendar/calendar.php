@@ -114,7 +114,7 @@ include('header.php');
     <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
   </footer>
 
-
+<?php include('../panel.html')?>
 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
