@@ -10,18 +10,51 @@
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
             header('Location: ../');
         }
-   $id = $_SESSION['usuario']['id_usu'];
+// $id = $_SESSION['usuario']['id_usu'];
+// $sql = 
+// "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
+// INNER JOIN accesos ON id_usu = gstIdper
+// WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
+
+// $persona = mysqli_query($conexion,$sql);
+// $datos = mysqli_fetch_row($persona);
+
+
+
+     $id = $_SESSION['usuario']['id_usu'];
+
+
       $sql = 
-       "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
-      INNER JOIN accesos ON id_usu = gstIdper
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
+     "SELECT personal.gstIdper,gstAreID,gstNombr,gstApell,gstCargo FROM personal 
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
+    $persona = mysqli_query($conexion,$sql);
+    $datos = mysqli_fetch_row($persona);
+
+      $datos[1];
+      $datos[2];
+      $datos[3];
+
+
+      $sqli = 
+     "SELECT gstInstt,gstMpres FROM personal 
+       INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
+      INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
+      ";
 
       $persona = mysqli_query($conexion,$sql);
       $datos = mysqli_fetch_row($persona);
 
-
-
+  
+  if (!empty($dato[4]) || !empty($dato[5])) {
+      $dato[4];
+      $dato[5];
+  }else{
+      $dato[4]="";
+      $dato[5]="";
+  }
 ?>
+
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
     <!-- Logo -->
@@ -150,14 +183,29 @@
           </ul>
         </li>-->
 
-        <li class="active">
+<!--         <li class="active">
           <a href="director.php">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
           </a>
-        </li>        
+        </li>   -->      
         <!-- -->
+        <li class="active">
+          <a href="inspector.php">
+            <i><img src="../dist/img/perfil.png" class="user-image" alt="User Image" style="
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;"></i> <span>PERFIL</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>   
+
+
+
         <!----> 
         <li class="treeview">
           <a href="#">
