@@ -72,6 +72,17 @@ $valor = count($gstIDprm);
 				echo "1";	
 			}
 		}
+}else if($opcion==='especialidad'){
+
+	$gstIdper = $_POST['gstIDpr'];
+	$AgstIDCat = $_POST['gstIDSpe'];	
+
+	if(agrEspcldd($gstIdper,$AgstIDCat,$conexion)){
+		echo "0";
+	}else{
+		echo "1";
+	}	 
+
 }
 
 
@@ -127,13 +138,19 @@ $query="SELECT * FROM accesos WHERE password='$gstNmpld' AND usuario='$gstNombr'
 
 function agrEspcldd($gstIdper,$AgstIDCat,$conexion){
 
-	$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$AgstIDCat',0);";
+
+$query="SELECT * FROM especialidadcat WHERE gstIDper=$gstIdper AND gstIDcat=$AgstIDCat AND estado = 0 ";
+			$resultado= mysqli_query($conexion,$query);
+		if($resultado->num_rows==0){
+
+		$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$AgstIDCat',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
 			return false;
 		}
 		$this->conexion->cerrar();
+	}else{}
 }
 
 function obligatorio($gstIdper,$gstObli,$conexion){

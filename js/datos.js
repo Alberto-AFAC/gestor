@@ -1886,20 +1886,6 @@ function asignar() {
     var gstNombr = document.getElementById('gstNombr').value;
     var gstNmpld = document.getElementById('gstANmpld').value;
 
-    // var gstPrfil = ''
-
-    // var selectObject = document.getElementById("gstPrfil");
-
-    // for (var i = 0; i < selectObject.options.length; i++) {
-    //     if (selectObject.options[i].selected == true) {
-
-    //         gstPrfil += "," + selectObject.options[i].value;
-
-    //     }
-    // }
-    //  gstPrfil = gstPrfil.substr(1);
-    //datos = 'idPer-->'+gstIdper+'Cargo-->'+AgstCargo+'IDcat-->'+AgstIDCat+'IDsub-->'+AgstIDSub+'IDuni-->'+AgstIDuni+'Acreg-->'+AgstAcReg;
-
 
     if (AgstCargo != 'INSPECTOR') {
         AgstIDCat = '0';
@@ -1979,5 +1965,64 @@ function asiginspec() {
 
 function spcialidad(gstIdper) {
 
-    alert(gstIdper);
+    $.ajax({
+        url: '../php/consulta.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+        for (r = 0; r < res.length; r++) {
+            if (obj.data[r].gstIdper == gstIdper) {
+
+
+                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt;
+                var d = result.split("*");
+
+                $("#Espcial #gstIDpr").val(d[0]);
+                $("#Espcial #spcialid_nombre").val(d[1]);
+                // $("#Result #IDCat").val(d[2]);
+                // $("#Result #gstComnt").val(d[4]);
+            }
+        }
+    })
+
+}
+
+function especialidad(){
+
+    var gstIDpr = document.getElementById('gstIDpr').value;
+    var gstIDSpe = document.getElementById('gstIDSpe').value;
+
+    if (gstIDpr == '' || gstIDSpe == '' ) {
+
+        $('#emptyE').toggle('toggle');
+        setTimeout(function() {
+            $('#emptyE').toggle('toggle');
+        }, 2000);
+            return;
+    } else {
+        $.ajax({
+            url: '../php/agrEvalu.php',
+            type: 'POST',
+            data: 'gstIDpr='+gstIDpr+'&gstIDSpe='+gstIDSpe+'&opcion=especialidad'
+        }).done(function(respuesta) {
+
+            console.log(respuesta);
+            if (respuesta == 0) {
+                $('#succeE').toggle('toggle');
+                setTimeout(function() {
+                    $('#succeE').toggle('toggle');
+                }, 2000);
+            } else {
+                $('#dangerE').toggle('toggle');
+                setTimeout(function() {
+                    $('#dangerE').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
+
+
 }
