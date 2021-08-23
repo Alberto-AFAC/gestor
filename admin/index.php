@@ -36,39 +36,7 @@
   <script src="dist/js/sweetalert2.all.min.js"></script>
   <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
 
-  <style>
-      #legend {
-      height: 50px;
-      background: #f7f7f7;
-      border-bottom: 1px solid #d6d6d6;
-    }
-
-    .anychart-tooltip {
-      padding: 0;
-      background: white;
-      color: #333;
-      box-shadow: 2px 2px 5px #333;
-      border-radius: 0;
-    }
-
-    .anychart-tooltip-title h5 {
-      background: #455a64;
-      padding: 10px 30px;
-      margin: 0;
-    }
-
-    .anychart-tooltip-title h5.default {
-      color: #fff;
-    }
-
-    .anychart-tooltip hr {
-      margin: 0;
-    }
-
-    .anychart-tooltip .tooltip-content {
-      padding: 0 30px;
-    }
-      </style>
+  
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
