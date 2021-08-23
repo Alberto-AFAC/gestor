@@ -1038,8 +1038,8 @@ function inspector(gstIdper) {
                     CANCELADO = 0;
                     insp = 0;
 
-                    //TODO AQUÍ ES LO QUE LLEVA
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>PROCESO</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
+                    //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE INSPECTOR
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>ESTATUS</th><th><i></i>PROCESO</th></tr></thead><tbody>';
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
 
@@ -1126,9 +1126,20 @@ function inspector(gstIdper) {
                         } else if (obj.data[ii].proceso == 'CANCELADO') {
                             status1 = "<span style='font-weight: bold; color: red;'>CANCELADO</span>";
 
+                        }if (obj.data[ii].proceso == 'FINALIZADO') {
+                            proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span>";
+                            
+
+                        }else if (obj.data[ii].proceso == 'PENDIENTE') {
+                            proc12 = "<span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                            
+                           //COMPARACION DE FECHAS 
+                         feccomar =  document.getElementById('fecomp1').value;
+                       if (obj.data[ii].fcurso == feccomar){
+                         proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
+                     }
+                        // FIN COMPARACIÓN FECHAS
                         }
-
-
                         if (obj.data[ii].idinsp == gstIdper) {
                             if (obj.data[ii].evaluacion >= '0') {
 
@@ -1144,9 +1155,9 @@ function inspector(gstIdper) {
 
                                 idlista = obj.data[ii].idmstr;
                                 if (obj.data[ii].confirmar == 'CONFIRMAR') {
-                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td>" + status + "</td></tr>";
+                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td>" + status + "</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
                                 } else if (obj.data[ii].confirmar == 'CONFIRMADO') {
-                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span title='Confirmado' style='font-weight: bold; color: green;'>CONFIRMADO</span></td><td>" + status + "</td></tr>";
+                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span title='Confirmado' style='font-weight: bold; color: green;'>CONFIRMADO</span></td><td>" + status + "</td><td>" + proc12 + "</td></tr>";
                                 } else {}
 
                                 if (obj.data[ii].proceso == 'PENDIENTE') {
