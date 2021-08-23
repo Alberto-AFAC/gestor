@@ -1015,8 +1015,8 @@ function inspector(gstIdper) {
                         if (obj.data[s].gstIDper == gstIdper) {
                             gstID = obj.data[s].gstIDper;
                             if (obj.data[s].gstIdcat != 24) {
-                                html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td></tr>";
-                            }
+                                html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td></td></tr>";
+                            }//<a type='button' title='Eliminar' onclick='eliminar()' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a>
                             // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
                         }
                     }
