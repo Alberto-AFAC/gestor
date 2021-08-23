@@ -83,7 +83,7 @@
                                                     <th>DOCUMENTO</th>
                                                     <th>VIGENCIA</th>
                                                     <th>TEMARIO</th>
-                                                    <th>ACCIÓN</th>
+                                                    <!-- <th>ACCIÓN</th> -->
                                                 </tr>
                                             </thead>
                                            
@@ -652,12 +652,12 @@ $(document).ready(function() {
     },
     "order": [[ 0, "desc" ]],
         "ajax": "../php/consdaTable.php",
-        "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+        // "columnDefs": [{
+        //     "targets": -1,
+        //     "data": null,
+        //     "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
-        }]
+        // }]
     });
 
     detalles("#example tbody",table);
