@@ -83,7 +83,7 @@
                                                     <th>DOCUMENTO</th>
                                                     <th>VIGENCIA</th>
                                                     <th>TEMARIO</th>
-                                                    <th>ACCIÓN</th>
+                                                    <!-- <th>ACCIÓN</th> -->
                                                 </tr>
                                             </thead>
                                            
@@ -501,7 +501,20 @@
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 1.1
+            <b>Version</b>    <?php 
+                                $query ="SELECT 
+                                        *
+                                        FROM
+                                        controlvers";
+                                $resultado = mysqli_query($conexion, $query);
+
+                                $row = mysqli_fetch_assoc($resultado);
+                                if(!$resultado) {
+                                    var_dump(mysqli_error($conexion));
+                                    exit;
+                                }
+                                ?>
+                    <?php echo $row['version']?>
         </div>
         <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
         Todos los derechos Reservados AJ.
@@ -639,12 +652,12 @@ $(document).ready(function() {
     },
     "order": [[ 0, "desc" ]],
         "ajax": "../php/consdaTable.php",
-        "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+        // "columnDefs": [{
+        //     "targets": -1,
+        //     "data": null,
+        //     "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
-        }]
+        // }]
     });
 
     detalles("#example tbody",table);
