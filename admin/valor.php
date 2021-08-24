@@ -854,6 +854,26 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                     </div>
                 </section>
             </div>
+            <!-- modal evaluar -->
+  <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+  <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal1">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/declinado.png">
+    </div>
+  </div>
+  <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+  <!-- <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label> -->
+  <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points"></label>
+  <label id="nombredeclin" style="font-size: 20px;"  for=""></label>
+  <hr>
+  <!-- <button type="button" id="pdfdeclin" style="font-size:18px" class="btn btn-block btn-primary" onclick="" data-dismiss="modal"><i style="color:white" class="fa fa-file-pdf-o text-info"></i>PDF ADJUNTO</button> -->
+  <a class="btn btn-block btn-social btn-linkedin" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+</div>
+</div>
+<!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
             <!-------------------------------------------->
             <div class="tab-pane" id="curso">
                 <section class="content">

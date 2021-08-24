@@ -1149,12 +1149,15 @@ function inspector(gstIdper) {
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                         
                         }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                            inputNombre = document.getElementById("nombredeclin").innerHTML= "ENFERMEDAD";
+                            inputcurso = document.getElementById("declindet").innerHTML= "Declina la convocatoria del curso "+obj.data[ii].gstTitlo +" "+"por el siguiente motivo:" ;
+    
 
                         }if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
-                            confirmar = "<span title='Confirma su asitencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
+                            confirmar = "<span title='Confirma su asistencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
                         }
                        
                         }
