@@ -1149,12 +1149,12 @@ function inspector(gstIdper) {
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                         
                         }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
-                            confirmar = "<span style='font-weight: bold; color: #BB2303;'>DECLINADO</span>";
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
 
                         }if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
-                            confirmar = "<span style='font-weight: bold; color: green;'>CONFIRMADO</span>";
+                            confirmar = "<span title='Confirma su asitencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
                         }
                        
                         }
