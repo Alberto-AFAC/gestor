@@ -1151,6 +1151,7 @@ function inspector(gstIdper) {
                            // alert(obj.data[ii].confirmar);
 
                         if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
+
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
@@ -1159,7 +1160,10 @@ function inspector(gstIdper) {
                             inputpdf1 = document.getElementById("declinpdf").href = obj.data[ii].justifi;
                             inputcodigo1 = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
                         
+
                         }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
+                            
+
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
@@ -1169,7 +1173,19 @@ function inspector(gstIdper) {
                             inputcodigo = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
                             //inputded = document.getElementById("pruebadec").value = obj.data[ii].codigo;
                             
-                        }if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
+                        }else if(obj.data[ii].confirmar == 'OTROS'){
+                          confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                            proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                            inputNombre = document.getElementById("nombredeclin").innerHTML= obj.data[ii].confirmar;
+                            inputcurso = document.getElementById("declindet").innerHTML= "Declina la convocatoria del curso "+obj.data[ii].gstTitlo +" "+"por el siguiente motivo:" ;
+                            inputpdf = document.getElementById("declinpdf").href = obj.data[ii].justifi;
+                            inputcodigo = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
+                            //inputded = document.getElementById("pruebadec").value = obj.data[ii].codigo;
+
+                        }
+
+                        if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
                             confirmar = "<span title='Confirma su asistencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
                         }
                        
