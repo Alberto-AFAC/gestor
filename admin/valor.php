@@ -864,13 +864,13 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
     <img class="img-circle1" src="../dist/img/declinado.png">
     </div>
   </div>
+  <!-- <input id="pruebadec" type="text"> -->
   <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
-  <!-- <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label> -->
+  <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
   <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points"></label>
   <label id="nombredeclin" style="font-size: 20px;"  for=""></label>
   <hr>
-  <!-- <button type="button" id="pdfdeclin" style="font-size:18px" class="btn btn-block btn-primary" onclick="" data-dismiss="modal"><i style="color:white" class="fa fa-file-pdf-o text-info"></i>PDF ADJUNTO</button> -->
-  <a class="btn btn-block btn-social btn-linkedin" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+  <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="../documento/estudios/1070/prueba 1.pdf" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
 </div>
 </div>
 <!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->

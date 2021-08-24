@@ -1140,22 +1140,35 @@ function inspector(gstIdper) {
                          feccomar =  document.getElementById('fecomp1').value;
                        if (obj.data[ii].fcurso == feccomar){
                          proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
-                     }if (obj.data[ii].proceso == 'PENDIENTE') {
+                     }
+                     if (obj.data[ii].proceso == 'PENDIENTE') {
                             status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
                          // FIN COMPARACIÓN FECHAS
-                        }if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
-                            confirmar = "<span style='font-weight: bold; color: #BB2303;'>DECLINADO</span>";
+
+
+                        }
+
+                           // alert(obj.data[ii].confirmar);
+
+                        if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                            inputNombre1 = document.getElementById("nombredeclin").innerHTML= obj.data[ii].confirmar;
+                            inputcurso1 = document.getElementById("declindet").innerHTML= "Declina la convocatoria del curso "+obj.data[ii].gstTitlo +" "+"por el siguiente motivo:" ;
+                            inputpdf1 = document.getElementById("declinpdf").href = obj.data[ii].justifi;
+                            inputcodigo1 = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
                         
                         }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            inputNombre = document.getElementById("nombredeclin").innerHTML= "ENFERMEDAD";
+                            inputNombre = document.getElementById("nombredeclin").innerHTML= obj.data[ii].confirmar;
                             inputcurso = document.getElementById("declindet").innerHTML= "Declina la convocatoria del curso "+obj.data[ii].gstTitlo +" "+"por el siguiente motivo:" ;
-    
-
+                            inputpdf = document.getElementById("declinpdf").href = obj.data[ii].justifi;
+                            inputcodigo = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
+                            //inputded = document.getElementById("pruebadec").value = obj.data[ii].codigo;
+                            
                         }if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
                             confirmar = "<span title='Confirma su asistencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
                         }

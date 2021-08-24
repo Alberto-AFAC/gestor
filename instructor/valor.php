@@ -131,8 +131,6 @@ $psto = mysqli_query($conexion,$sql);
 </div>
 
 <!-- /FIN DE NUEVO DISEÑO -->
-
-
 <div class="col-xs-12">
           <div class="box box-solid">
             <div class="box-header">
@@ -243,6 +241,7 @@ $psto = mysqli_query($conexion,$sql);
           </div>
           <!-- /.box -->
         </div>
+
 
 <!-- DISEÑO ANTIGUO/.col -->
 <div style="padding-top: 15px;" class="col-md-12">
@@ -855,6 +854,26 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                     </div>
                 </section>
             </div>
+            <!-- modal evaluar -->
+  <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+  <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal1">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/declinado.png">
+    </div>
+  </div>
+  <!-- <input id="pruebadec" type="text"> -->
+  <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+  <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
+  <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points"></label>
+  <label id="nombredeclin" style="font-size: 20px;"  for=""></label>
+  <hr>
+  <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="../documento/estudios/1070/prueba 1.pdf" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+</div>
+</div>
+<!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
             <!-------------------------------------------->
             <div class="tab-pane" id="curso">
                 <section class="content">
@@ -863,6 +882,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Cursos programados</h3>
+                                    <input id="fecomp1" style='display:none' type="text">
                                 </div>
 <!--                                 <div class="form-group">
                                     <div class="col-sm-2">
@@ -887,6 +907,20 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                     </div>
                 </section>
             </div>
+            <script>
+    window.onload = function() {
+                            var fecha = new Date(); //Fecha actual
+                            var mes = fecha.getMonth() + 1; //obteniendo mes
+                            var dia = fecha.getDate(); //obteniendo dia
+                            var ano = fecha.getFullYear(); //obteniendo año
+                            if (dia < 10)
+                                dia = '0' + dia; //agrega cero si el menor de 10
+                            if (mes < 10)
+                                mes = '0' + mes //agrega cero si el menor de 10
+                            document.getElementById('fecomp1').value = ano + "-" + mes + "-" + dia;
+                        }
+</script>
+
             <!-- /.tab-pane -->
             <!-- /.tab-pane -->
         </div>
