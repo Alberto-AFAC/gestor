@@ -694,7 +694,10 @@ function perfil(gstIdper) {
                                     html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>" + obj.data[ii].proceso + "</a></td><td>" + status + "</td></tr>";
                                 } else if (obj.data[ii].confirmar == 'CONFIRMADO') {
                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><a type='button' title='Por confirmar' onclick='agregar(" + '"' + obj.data[ii].id_curso + '"' + ")' class='btn btn-success' data-toggle='modal' data-target='#modal-confirma'>CONFIRMADO</a></td><td>" + status + "</td></tr>";
-                                } else {}
+                                } else {
+                                     
+
+                                }
 
                                 if (obj.data[ii].proceso == 'PENDIENTE') {
                                     programados++;
@@ -1119,7 +1122,7 @@ function inspector(gstIdper) {
                         if (factual >= ftermino) {
                             status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
-                        }
+                        } 
                         if (obj.data[ii].proceso == 'PENDIENTE') {
                             status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
 
@@ -1137,8 +1140,23 @@ function inspector(gstIdper) {
                          feccomar =  document.getElementById('fecomp1').value;
                        if (obj.data[ii].fcurso == feccomar){
                          proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
-                     }
-                        // FIN COMPARACIÓN FECHAS
+                     }if (obj.data[ii].proceso == 'PENDIENTE') {
+                            status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
+                         // FIN COMPARACIÓN FECHAS
+                        }if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
+                            confirmar = "<span style='font-weight: bold; color: #BB2303;'>DECLINADO</span>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                            proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                        
+                        }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
+                            confirmar = "<span style='font-weight: bold; color: #BB2303;'>DECLINADO</span>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                            proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+
+                        }if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
+                            confirmar = "<span style='font-weight: bold; color: green;'>CONFIRMADO</span>";
+                        }
+                       
                         }
                         if (obj.data[ii].idinsp == gstIdper) {
                             if (obj.data[ii].evaluacion >= '0') {
@@ -1152,13 +1170,13 @@ function inspector(gstIdper) {
                                 month = obj.data[ii].fechaf.substring(5, 7);
                                 day = obj.data[ii].fechaf.substring(8, 10);
                                 Final = day + '/' + month + '/' + year;
-
+//JESS
                                 idlista = obj.data[ii].idmstr;
                                 if (obj.data[ii].confirmar == 'CONFIRMAR') {
-                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td>" + status + "</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
-                                } else if (obj.data[ii].confirmar == 'CONFIRMADO') {
-                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span title='Confirmado' style='font-weight: bold; color: green;'>CONFIRMADO</span></td><td>" + status + "</td><td>" + proc12 + "</td></tr>";
-                                } else {}
+                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
+                                } else  {
+                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td></tr>";
+                                } 
 
                                 if (obj.data[ii].proceso == 'PENDIENTE') {
                                     programados++;
