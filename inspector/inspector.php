@@ -1244,27 +1244,35 @@ $resul = mysqli_query($conexion, $queri);
 if($res = mysqli_fetch_array($resul)){
 //if($res != 0){
 
+ $query = "SELECT * FROM constancias WHERE id_persona = $datos[0] AND id_codigocurso = '".$data['codigo']."' AND estado_cer = 0";
+ $const = mysqli_query($conexion, $query);
+ if($con = mysqli_fetch_array($const)){
 
-
-$accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>";
-
-
-?>
-
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-        "<span class='badge' style='background-color: green;'><?php echo $valor?></span>", "<?php echo $accion?>"],
-
-<?php 
-
+if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
+$accion = "<center><a href='javascript:openDtlls()' title='Perfil' onclick='pdf()' class='datos btn btn-default'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
-
-
+$accion = "<center><b style='color:silver;' href='javascript:openDtlls()' title='Perfil' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+}
 
 
 
 
 ?>
+
+["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+"<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+"<span class='badge' style='background-color: green;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
+
+<?php }else{  
+
+
+$accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>";  ?>
+
+["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+"<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+"<span class='badge' style='background-color: green;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
+
+<?php } }else{ ?>
 
 <?php if($data['confirmar'] == 'TRABAJO' || $data['confirmar'] == 'ENFERMEDAD' || $data['confirmar'] == 'OTROS'){ ?>
 
