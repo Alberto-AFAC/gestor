@@ -873,7 +873,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
   <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
   <hr>
   <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
-  <textarea readonly id="otrosd" name="textarea" style='display:none' rows="3" cols="50"></textarea>
+  <label readonly id="otrosd" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
 </div>
 <script>
 
