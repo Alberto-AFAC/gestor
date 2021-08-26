@@ -431,8 +431,9 @@ $psto = mysqli_query($conexion,$sql);
                </select>
             </div> 
 
-            <div id="oaci"></div>
-            <div id="siglas"></div>                                
+           <input type="hidden" name="gstSpcID" id="gstSpcID" value="0">
+<!--             <div id="oaci"></div>
+            <div id="siglas"></div> -->                                  
          </div>
                     <div class="form-group">
                       <div class="col-sm-4">
@@ -568,8 +569,8 @@ $('#gstIDara').select2();
 $('#gstPstID').select2();
 $('#buscador').load('select/buscar.php');
 $('#select1').load('select/tabla.php');
-$('#oaci').load('select/oaci.php');
-$('#siglas').load('select/siglas.php');
+// $('#oaci').load('select/oaci.php');
+// $('#siglas').load('select/siglas.php');
 });
 
 </script>

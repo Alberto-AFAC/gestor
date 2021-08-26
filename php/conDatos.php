@@ -6,7 +6,7 @@
 		SELECT * FROM personal 
 		INNER JOIN codigo ON personal.gstIdpst = codigo.gstIdpst
 		INNER JOIN puesto ON personal.gstPstID = puesto.gstIdpus
-		INNER JOIN especialidad ON personal.gstSpcID = especialidad.gstSpcld
+		-- INNER JOIN especialidad ON personal.gstSpcID = especialidad.gstSpcld
         INNER JOIN ejecutiva ON personal.gstAreID = ejecutiva.gstIdeje
 		WHERE personal.estado = 0 ORDER BY gstIdper DESC
 		";

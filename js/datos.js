@@ -440,14 +440,14 @@ function perfil(gstIdper) {
 
                 consultaCurso(gstIdper + '*' + gstIDCat);
 
-                if (gstEvalu == 'NO') {
-                    $("#ocultar1").hide();
-                    $("#ocultar2").hide();
-                } else {
+                // if (gstEvalu == 'NO') {
+                //     $("#ocultar1").hide();
+                //     $("#ocultar2").hide();
+                // } else {
                     $("#ocultar1").show();
                     $("#ocultar2").show();
                     //  document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                }
+                // }
 
 
                 $.ajax({
