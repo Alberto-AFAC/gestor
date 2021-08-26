@@ -110,7 +110,7 @@
 
 <?php //include('evaluar.php');?>
 <!-- modal evaluar -->
-  <div class="modal fade" id="modal-evaluar">
+<div class="modal fade" id="modal-evaluar">
           <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
             <div class="modal-content">
@@ -120,16 +120,17 @@
                 <h4 class="modal-title">EVALUAR</h4>
               </div>
               <div class="modal-body">
-              <form id="Evalúa">
+              <form id="Evalua">
               <div class="row">  
               <div class="form-group">
                   <div class="col-sm-5">
                     <label>NOMBRE</label>
                       <input type="text" class="form-control" id="evalu_nombre" name="evalu_nombre" disabled="">
                   </div>
+
                     <div class="col-sm-offset-0 col-sm-7">
                       <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCat" name="gstIDCat" type="text" data-live-search="true" disabled="">
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCate" name="gstIDCate"type="text" data-live-search="true" disabled="">
                          <?php while($oira = mysqli_fetch_row($categ)):?>                      
                          <option value="<?php echo $oira[0]?>"><?php echo $oira[1]?></option>
                          <?php endwhile; ?>
@@ -139,7 +140,10 @@
               </div>
 
               <div id="evlacns"></div>
+
              
+                <input type="hidden" id='evla' name='evla' value='<?php echo $datos[0];?>'> 
+
                  <div class="form-group" >
                     <div class="col-sm-12" style=" margin-bottom: 1em">
                     <label>COMENTARIOS</label>
