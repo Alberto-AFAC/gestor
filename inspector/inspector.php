@@ -1249,9 +1249,9 @@ if($res = mysqli_fetch_array($resul)){
  if($con = mysqli_fetch_array($const)){
 
 if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
-$accion = "<center><a href='javascript:openDtlls()' title='Perfil' onclick='pdf()' class='datos btn btn-default'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+$accion = "<center><a title='Descarga Constancia' onclick='certificado1()' class='datos btn btn-default'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
-$accion = "<center><b style='color:silver;' href='javascript:openDtlls()' title='Perfil' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+$accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }
 
 
@@ -1381,4 +1381,30 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
         }
     ],
 });
+</script>
+
+<script>
+    function certificado1() {
+    var pdf = new jsPDF("landscape");
+    pdf.setFontSize(10)
+        // pdf.setFontType('bold')
+        // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
+        // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL'
+    var logo = new Image();
+    logo.src = '../dist/img/certificado.png';
+    pdf.addImage(logo, 'PNG', 0, 0, 300, 210);
+
+    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+    const pageCount = pdf.internal.getNumberOfPages();
+    for (var i = 1; i <= pageCount; i++) {
+        pdf.setFontSize(8)
+        pdf.setPage(i);
+        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+            "right");
+    }
+
+
+    window.open(pdf.output('bloburl'))
+
+}
 </script>

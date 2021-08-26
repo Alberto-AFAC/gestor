@@ -844,11 +844,12 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                 <div class="box-header">
                                     <h3 class="box-title">Cursos obligatorios</h3>
                                 </div>
-
+                                
                                 <div class="box-body">
                                     <div id="obligados"></div>
 
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -867,11 +868,16 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
   <!-- <input id="pruebadec" type="text"> -->
   <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
   <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
-  <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points"></label>
-  <label id="nombredeclin" style="font-size: 20px;"  for=""></label>
+  <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
+  <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
+  <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
   <hr>
-  <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="../documento/estudios/1070/prueba 1.pdf" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+  <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+  <label readonly id="otrosd" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
 </div>
+<script>
+
+</script>
 </div>
 <!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
             <!-------------------------------------------->
