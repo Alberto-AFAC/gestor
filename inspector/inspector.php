@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script> 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.2/sweetalert2.min.css"
@@ -1382,17 +1383,32 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
     ],
 });
 </script>
+<!-- <script>
+
+$(document).ready(function() {
+                        $("#data-table-completo tr").on('click', function() {
+                            var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
+                                    toma1 += $(this).find('td:eq(1)').html(); //NOMBRE DEL CURSO  
+                                    toma2 += $(this).find('td:eq(9)').html(); //PDF
+                                    toma3 += $(this).find('td:eq(10)').html(); //PDF                    
+
+                        });
+                    }); 
+</script> -->
 
 <script>
+                    
     function certificado1() {
+        
     var pdf = new jsPDF("landscape");
     pdf.setFontSize(10)
-        // pdf.setFontType('bold')
-        // pdf.text(15, 20, 'LISTA TECNICA DE PARTICIPANTES')
-        // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL'
+        
     var logo = new Image();
     logo.src = '../dist/img/certificado.png';
     pdf.addImage(logo, 'PNG', 0, 0, 300, 210);
+    pdf.setFontType('bold')
+   // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL'
+   // pdf.text(100, 102, 'LISTA TECNICA DE PARTICIPANTES')
 
     /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
     const pageCount = pdf.internal.getNumberOfPages();
@@ -1403,8 +1419,9 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
             "right");
     }
 
-
+    
     window.open(pdf.output('bloburl'))
 
 }
+
 </script>
