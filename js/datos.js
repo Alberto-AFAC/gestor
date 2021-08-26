@@ -1055,8 +1055,23 @@ function inspector(gstIdper) {
                             $("#nombredeclin").text(toma1); // Label esta en valor.php
                             $("#declinpdf").attr('href',toma2); // Label esta en valor.php
                             $("#motivod").text('Motivo:'+ toma3); // Label esta en valor.php
+                            $("#otrosd").text(toma2); // Label esta en valor.php
+
+                            if (toma3 == 'OTROS'){
+                                document.getElementById('otrosd').style.display='';
+                                document.getElementById('declinpdf').style.display='none';
+                            }
+                            if (toma3 == 'TRABAJO'){
+                                document.getElementById('otrosd').style.display='none';
+                                document.getElementById('declinpdf').style.display='';
+                            }
+                            if (toma3 == 'ENFERMEDAD'){
+                                document.getElementById('otrosd').style.display='none';
+                                document.getElementById('declinpdf').style.display='';
+                            }
                         });
                     }); 
+
                   
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
@@ -1170,16 +1185,18 @@ function inspector(gstIdper) {
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                        
+
 
                         }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
-                        
+
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            
+
+
                         }else if(obj.data[ii].confirmar == 'OTROS'){ //DECLINADO POR OTROS
-                          confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+ 
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
 
