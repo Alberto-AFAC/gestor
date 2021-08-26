@@ -17,6 +17,7 @@
       <!-- /.box-header -->
       <div class="box-body" style="display: none;">
         <div class="row">
+       
         <?php 
                                 $query ="SELECT
                                 'total',
@@ -36,64 +37,23 @@
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
                                 ?>
+                        
 
-<div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE LICENCIAS</span>
-                    <span class="progress-number"><b><?php echo $row['IVALICENCIAS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVALICENCIASP'] ?>%"></div>
-                        </div>
-                  </div>
+                        <div  class="col-sm-offset-1 col-md-10">
+           
+                  <div class=" sm">
+                        </div> <canvas id="piechart-licencias"></canvas>
             </div>  
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE NAVEGACIÓN AÉREA</span>
-                    <span class="progress-number"><b><?php echo $row['IVANAVEGACIONA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['IVANAVEGACIONAP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA EN SIS. DE GESTIÓN DE SEG. OPERACIONAL</span>
-                    <span class="progress-number"><b><?php echo $row['SISOPERA'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['SISOPERAP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-            
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE AERÓDROMOS</span>
-                    <span class="progress-number"><b><?php echo $row['AERODROMOS'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['AERODROMOSP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-        <div  class="col-sm-offset-1 col-md-10">
-            <div class="progress-group">
-                    <span class="progress-text">IVA DE OPERACIONES</span>
-                    <span class="progress-number"><b><?php echo $row['OPERACIONES'] ?></b>/<?php echo $row['INSPECTOR'] ?></span>
-                  <div class="progress sm">
-                        <div class="progress-bar progress-bar-blue" style="width: <?php echo $row['OPERACIONESP'] ?>%"></div>
-                        </div>
-                  </div>
-            </div>  
-                  <!-- ./col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
+          <!-- ./col -->
         </div>
-        
+        <!-- /.row -->
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.col -->
+</div>
 
 <!-- ./wrapper -->
 
@@ -185,5 +145,72 @@
    **/
 
 </script>
+<script>
+                            <?php 
+                                $query ="SELECT
+                                'total',
+                                  COUNT( CASE WHEN gstIDCat = '1' THEN 1 END ) AS LICENCIAS,
+                                  COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) AS ESCUELAS,
+                                  COUNT( CASE WHEN gstIDCat = '3' THEN 1 END ) AS EXAMENES,
+                                  COUNT( CASE WHEN gstIDCat = '4' THEN 1 END ) AS CERTIFICACION,
+                                  COUNT( CASE WHEN gstIDCat = '5' THEN 1 END ) AS OPERACIONES,
+                                  COUNT( CASE WHEN gstIDCat = '6' THEN 1 END ) AS PELIGROSAS,
+                                  COUNT( CASE WHEN gstIDCat = '7' THEN 1 END ) AS VUELO,
+                                  COUNT( CASE WHEN gstIDCat = '8' THEN 1 END ) AS CABINA,
+                                  COUNT( CASE WHEN gstIDCat = '9' THEN 1 END ) AS AERODROMOS,
+                                  COUNT( CASE WHEN gstIDCat = '10' THEN 1 END ) AS AVSEC,
+                                  COUNT( CASE WHEN gstIDCat = '11' THEN 1 END ) AS SMSSSP,
+                                  COUNT( CASE WHEN gstIDCat = '12' THEN 1 END ) AS INVACCIDENTES,
+                                  COUNT( CASE WHEN gstIDCat = '13' THEN 1 END ) AS AUXACCIDENTES,
+                                  COUNT( CASE WHEN gstIDCat = '14' THEN 1 END ) AS SALVAMENTO,
+                                  COUNT( CASE WHEN gstIDCat = '15' THEN 1 END ) AS AERONAVEGABILIDAD,
+                                  COUNT( CASE WHEN gstIDCat = '16' THEN 1 END ) AS PRODUCCION,
+                                  COUNT( CASE WHEN gstIDCat = '17' THEN 1 END ) AS NAVEGACIONAV,
+                                  COUNT( CASE WHEN gstIDCat = '18' THEN 1 END ) AS AERONAUTICA,
+                                  COUNT( CASE WHEN gstIDCat = '19' THEN 1 END ) AS VIGILANCIA,
+                                  COUNT( CASE WHEN gstIDCat = '20' THEN 1 END ) AS AEREO,
+                                  COUNT( CASE WHEN gstIDCat = '21' THEN 1 END ) AS SERVNAVAEREA,
+                                  COUNT( CASE WHEN gstIDCat = '22' THEN 1 END ) AS METEOROLOGO,
+                                  COUNT( CASE WHEN gstIDCat = '23' THEN 1 END ) AS CARTOGRAFIA,
+                                  COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS INSPECTOR 
+                            FROM
+                                personal";
+                                $resultado = mysqli_query($conexion, $query);
+                                ?>
+var piechar = new Chart(document.getElementById("piechart-licencias"), {
+    type: 'bar',
+    data: {
+       <?php  while($data = mysqli_fetch_array($resultado)){ ?>
+        labels: ["IVA-L","IVA-ES","IVA-EX","IVA-C","IVA-O","IVA-ODG","IVA-OV","IVA-OC","IVA-AE", "IVA-AVSEC","IVA-SMS-SSP","IIA","IAA","ISAR","IVA-AER","IVA-ING","IVA-NA","IVA-AIS","IVA-CNS","IVA-ATS","IVA-PANS-OPS","IVA-MET","IVA-CARTAS"
+        ],
+        datasets: [{
+            label: "INSPECTORES", 
+            backgroundColor: ["#337ab7","#095892"],
+            borderWidth: 0,
+            data: ["<?php echo $data['LICENCIAS']?>","<?php echo $data['ESCUELAS']?>","<?php echo $data['EXAMENES']?>","<?php echo $data['CERTIFICACION']?>","<?php echo $data['OPERACIONES']?>","<?php echo $data['PELIGROSAS']?>","<?php echo $data['VUELO']?>","<?php echo $data['CABINA']?>","<?php echo $data['AERODROMOS']?>","<?php echo $data['AVSEC']?>","<?php echo $data['SMSSSP']?>","<?php echo $data['INVACCIDENTES']?>","<?php echo $data['AUXACCIDENTES']?>","<?php echo $data['SALVAMENTO']?>","<?php echo $data['AERONAVEGABILIDAD']?>","<?php echo $data['PRODUCCION']?>","<?php echo $data['NAVEGACIONAV']?>","<?php echo $data['AERONAUTICA']?>","<?php echo $data['VIGILANCIA']?>","<?php echo $data['AEREO']?>","<?php echo $data['SERVNAVAEREA']?>","<?php echo $data['METEOROLOGO']?>","<?php echo $data['CARTOGRAFIA']?>"] 
+        },      
+      ]
+        <?php } ?>
+        
+    },
+    options: {
+    responsive: true,
+    plugins: {
+      // legend: {
+      //   position: 'top',
+      // },
+      title: {
+        display: true,
+        // text: 'Aqui va el titulo'
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  },
+});
+  </script>
 </body>
 </html>

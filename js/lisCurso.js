@@ -547,6 +547,7 @@ function cerrareval() {
                         rgba(100, 100, 100, 0.4)
                     `
                 });
+                $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
             } else {
                 Swal.fire({
