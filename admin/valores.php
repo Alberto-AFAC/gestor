@@ -229,11 +229,11 @@ $psto = mysqli_query($conexion,$sql);
                                 <label>VISA VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstVignt" name="gstVignt">
                             </div>
-                            <div class="col-sm-4">
+<!--                             <div class="col-sm-4">
                                 <label>NÚMERO DE CARTILLA</label>
                                 <input type="text" disabled="" style="text-transform:uppercase" class="form-control"
                                     id="gstNucrt" name="gstNucrt">
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <div class="col-sm-4">
@@ -422,9 +422,9 @@ $psto = mysqli_query($conexion,$sql);
 
                     <p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();"> EDITAR NOMBRE DEL
                             PUESTO <i class="fa fa-edit"></i></a>
-                        <b style="margin-left: 19em;"></b>
-                        <a onclick="especialidads();">EDITAR ESPECIALIDAD OACI PERSONAL TÉCNICO <i
-                                class="fa fa-edit"></i></a>
+                        <!-- <b style="margin-left: 19em;"></b> -->
+                        <!-- <a onclick="especialidads();">EDITAR ESPECIALIDAD OACI PERSONAL TÉCNICO <i
+                                class="fa fa-edit"></i></a> -->
                     </p>
 
                     <div class="form-group">
@@ -447,15 +447,12 @@ $psto = mysqli_query($conexion,$sql);
 
                         <div id="spcialidad1">
                             <div class="col-sm-4">
-                                <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
-                                <input type="text" class="form-control" id="spcialidad" name="spcialidad" disabled="">
+                                <input type="hidden" class="form-control" id="spcialidad" name="spcialidad" value="0">
                             </div>
                             <div class="col-sm-3">
-                                <label>SIGLAS OACI</label>
-                                <input type="text" class="form-control" id="sigla" name="sigla" disabled="">
+                                <input type="hidden" class="form-control" id="sigla" name="sigla" value="0">
                             </div>
                         </div>
-
                         <div id="spcialidad2" style="display: none;">
                             <div id="actoaci"></div>
                             <div id="siglas"></div>
@@ -550,6 +547,19 @@ $psto = mysqli_query($conexion,$sql);
                                 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
                             </select>
                         </div>
+
+                        <div class="col-sm-5"></div>                        
+
+                        <div class="col-sm-3">
+                        <label class="label2">UBICACIÓN CENTRAL</label> 
+                        <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
+                        <option value="CIAAC">CIAAC</option> 
+                        <option value="LAS FLORES">LAS FLORES</option> 
+                        <option value="ANGAR 8">ANGAR 8</option> 
+                        <option value="LICENCIA">LICENCIAS</option>
+                        </select>
+                        </div>
+
                     </div>
 
 
