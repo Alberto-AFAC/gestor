@@ -103,36 +103,40 @@ if($opcion === 'registrar'){
 	if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
 		{	echo "0";	}else{	echo "1";	}
 
-}else if($opcion === 'agrProfsn'){
+}else 
 
-	$gstIDper = $_POST['gstIDper'];
-	$gstPusto = $_POST['gstPusto'];
-	$gstMpres = $_POST['gstMpres'];
-	$gstIDpai = $_POST['gstIDpai'];
-	$gstCidua = $_POST['gstCidua'];
-	$gstActiv = $_POST['gstActiv'];
-	$gstFntra = $_POST['gstFntra'];
-	$gstFslda = $_POST['gstFslda'];
+// if($opcion === 'agrProfsn'){
 
-	if(profesion($gstIDper,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFntra,$gstFslda,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+// 	$gstIDper = $_POST['gstIDper'];
+// 	$gstPusto = $_POST['gstPusto'];
+// 	$gstMpres = $_POST['gstMpres'];
+// 	$gstIDpai = $_POST['gstIDpai'];
+// 	$gstCidua = $_POST['gstCidua'];
+// 	$gstActiv = $_POST['gstActiv'];
+// 	$gstFntra = $_POST['gstFntra'];
+// 	$gstFslda = $_POST['gstFslda'];
 
-	}else if($opcion === 'actProfsn'){
+// 	if(profesion($gstIDper,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFntra,$gstFslda,$conexion))
+// 		{	echo "0";	}else{	echo "1";	}
 
- $gstIdpro = $_POST['gstIdpro'];
- $gstPusto = $_POST['gstPusto'];
- $gstMpres = $_POST['gstMpres'];
- $gstIDpai = $_POST['gstIDpai'];
- $gstCidua = $_POST['gstCidua'];
- $gstActiv = $_POST['gstActiv'];
- $gstFntra = $_POST['gstFntra'];
- $gstFslda = $_POST['gstFslda'];
+// 	}else if($opcion === 'actProfsn'){
+
+//  $gstIdpro = $_POST['gstIdpro'];
+//  $gstPusto = $_POST['gstPusto'];
+//  $gstMpres = $_POST['gstMpres'];
+//  $gstIDpai = $_POST['gstIDpai'];
+//  $gstCidua = $_POST['gstCidua'];
+//  $gstActiv = $_POST['gstActiv'];
+//  $gstFntra = $_POST['gstFntra'];
+//  $gstFslda = $_POST['gstFslda'];
 
 
-	if(actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFntra,$gstFslda,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+// 	if(actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFntra,$gstFslda,$conexion))
+// 		{	echo "0";	}else{	echo "1";	}
 
-	}else if($opcion === 'actPrsnls'){
+// 	}else 
+
+	if($opcion === 'actPrsnls'){
 
      $pstIdper = $_POST['pstIdper'];
      $gstNmpld = $_POST['gstNmpld'];

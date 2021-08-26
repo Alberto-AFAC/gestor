@@ -219,14 +219,42 @@
                      <input type="date" class="form-control inputalta" id="gstFslda" name="gstFslda">
                   </div>  
               </div>
+<div class="form-group">
+  <div class="col-sm-6">
+  <label class="label2">DOCUMENTO</label>
+  <input id="gstDocep" type="file" name="gstDocep" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+  </div>
+</div>
+
               <div class="form-group">
                   <div class="col-sm-5">
                     <button type="button" id="agregar" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" onclick="agrProfsn();">ACEPTAR</button>
                     <button type="reset" id="vaciar" onclick="mostrar();" class="btn btn-primary" style="display: none;">AÑADIR OTRA EXPERIENCIA PROFESIONAL</button>
                   </div>
-                    <b><p class="alert alert-warning text-center padding error" id="danger3">Los datos ya están agregados </p></b>
-                    <b><p class="alert alert-success text-center padding exito" id="succe3">¡Se agregaron los datos con éxito!</p></b>
-                    <b><p class="alert alert-warning text-center padding aviso" id="empty3">Es necesario agregar los datos que se solicitan </p></b>
+
+                   <b><p class="alert alert-danger text-center padding error" id="falla2">Error al registrar datos o al adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="exito2">¡Se registraron los datos y archivo con éxito!</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="vacio2">Es necesario agregar los datos que se solicitan </p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="repetido2">¡El grado de estudio ya está registrado!</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="renom2">
+                    Renombre su archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta2">
+                    Debes adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="error2">
+                    Ocurrio un error</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="forn2">
+                    Formato no valido</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="max2">
+                    Supera el limite permitido</p></b>
+
                     </div>
                 </form>  
             </div>
