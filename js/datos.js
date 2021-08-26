@@ -349,7 +349,7 @@ function agrProfsn() {
         contentType: false,
         processData: false,
         success: function(r) {
-            alert(r);
+            //alert(r);
             //console.log(r);
             if (r == 8) {
                 $('#vacio2').toggle('toggle');
