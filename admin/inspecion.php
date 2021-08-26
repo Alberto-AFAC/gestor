@@ -165,7 +165,7 @@
       </div>
     </div>
 
- <div class="modal fade" id="modal-resultado">
+    <div class="modal fade" id="modal-resultado">
           <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
             <div class="modal-content">
@@ -189,7 +189,7 @@
                   </div>
                     <div class="col-sm-offset-0 col-sm-7">
                       <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCat" name="gstIDCat" type="text" data-live-search="true" disabled="">
+                        <select style="width: 100%" class="form-control" class="selectpicker" id="IDCat" name="IDCat" type="text" data-live-search="true" disabled="">
                          <?php while($oiras = mysqli_fetch_row($categs)):?>                      
                          <option value="<?php echo $oiras[0]?>"><?php echo $oiras[1]?></option>
                          <?php endwhile; ?>
