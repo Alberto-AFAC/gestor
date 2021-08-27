@@ -26,11 +26,11 @@ $rutaTemporal=$_FILES['EgstDocmt']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/act/estudios/'.$EgstIDper.'/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$EgstIDper.'/estudios/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/act/estudios/'.$EgstIDper;
+ $ruta = '../documento/'.$EgstIDper.'/estudios/';
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
