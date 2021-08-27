@@ -50,13 +50,33 @@ if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
 }else{ echo "3"; }
 }else{ echo "4"; }
 //}else{ echo "5"; }
-}else{ echo "6";}
+}else{ 
+
+
+//	echo "6";
+$EgstIDper = $_POST['EgstIDper'];
+$EgstInstt = $_POST['EgstInstt'];
+$EgstCiuda = $_POST['EgstCiudad']; 
+$EgstPriod = $_POST['EgstPriod'];
+$EgstDocmt = '';
+
+if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
+		{	echo "6";	}else{	echo "1";	}		
+
+
+}
 
 }
 
 function actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion){
 
-			$query="UPDATE estudios SET gstInstt = '$EgstInstt', gstCiuda = '$EgstCiuda', gstPriod = '$EgstPriod', gstDocmt = '$EgstDocmt' WHERE gstIdstd='$EgstIDper'";
+			if($EgstDocmt==''){			
+			$query="UPDATE estudios SET gstInstt = '$EgstInstt', gstCiuda = '$EgstCiuda', gstPriod = '$EgstPriod' WHERE gstIdstd='$EgstIDper'";
+			}else{
+			$query="UPDATE estudios SET gstInstt = '$EgstInstt', gstCiuda = '$EgstCiuda', gstPriod = '$EgstPriod', gstDocmt = '$EgstDocmt' WHERE gstIdstd='$EgstIDper'";				
+			}
+
+
 				if(mysqli_query($conexion,$query)){
 					return true;
 				}else{

@@ -130,7 +130,7 @@
               
                    <b><p class="alert alert-danger text-center padding error" id="falla1">Error al registrar datos o al adjuntar archivo</p></b>
 
-                    <b><p class="alert alert-success text-center padding exito" id="exito1">¡Se registraron los datos y archivo con éxito!</p></b>
+                    <b><p class="alert alert-success text-center padding exito" id="exito1">¡Se actualizaron los datos y archivo con éxito!</p></b>
 
                     <b><p class="alert alert-warning text-center padding aviso" id="vacio1">Es necesario agregar los datos que se solicitan </p></b>
 
@@ -139,8 +139,7 @@
                     <b><p class="alert alert-danger text-center padding adjuto" id="renom1">
                     Renombre su archivo</p></b>
 
-                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta1">
-                    Debes adjuntar archivo</p></b>
+                    <b><p class="alert alert-success text-center padding adjuto" id="adjunta1">¡Se actualizaron los datos con éxito!</p></b>
 
                     <b><p class="alert alert-danger text-center padding adjuto" id="error1">
                     Ocurrio un error</p></b>
@@ -219,12 +218,12 @@
                      <input type="date" class="form-control inputalta" id="gstFslda" name="gstFslda">
                   </div>  
               </div>
-<div class="form-group">
-  <div class="col-sm-6">
-  <label class="label2">DOCUMENTO</label>
-  <input id="gstDocep" type="file" name="gstDocep" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
-  </div>
-</div>
+              <div class="form-group">
+                <div class="col-sm-6">
+                <label class="label2">DOCUMENTO</label>
+                <input id="gstDocep" type="file" name="gstDocep" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+                </div>
+              </div>
 
               <div class="form-group">
                   <div class="col-sm-5">
@@ -330,6 +329,75 @@
                     <b><p class="alert alert-danger text-center padding error" id="danger4">Error al actualizar datos </p></b>
                     <b><p class="alert alert-success text-center padding exito" id="succe4">¡Se actualizaron los datos con éxito!</p></b>
                     <b><p class="alert alert-warning text-center padding aviso" id="empty4">Es necesario agregar los datos que se solicitan </p></b>
+                    </div>
+                </form>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-------------------------------------------------------------->
+
+      <div class="modal fade" id="modaldocprofesion">
+          <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">REMPLAZAR DOCUMENTO</h4>
+              </div>
+              <div class="modal-body" id="actForpro">
+              <form class="form-horizontal">
+                 <input type="hidden" class="form-control" id="DgstIDper" name="DgstIDper">
+                <input type="hidden" class="form-control" id="DgstIdpro" name="DgstIdpro">
+                  
+              <div class="form-group">
+                  <div class="col-sm-6">
+                    <label>PUESTO</label>
+                      <input type="text" onkeyup="mayus(this);" class="form-control" id="DgstPusto" name="DgstPusto">
+                  </div>
+
+                  <div class="col-sm-6">
+                       <label>EMPRESA</label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control" id="DgstMpres" name="DgstMpres">
+                  </div>
+              </div>
+
+            <div class="form-group">
+              <div class="col-sm-6">
+              <label class="label2">DOCUMENTO</label>
+              <input id="DgstDocep" type="file" name="DgstDocep" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+              </div>
+            </div>
+
+              <div class="form-group">
+                  <div class="col-sm-5">
+                    <button type="button" id="button" class="btn btn-info" onclick="docProfsn();">ACEPTAR</button>
+                  </div>
+                   <b><p class="alert alert-danger text-center padding error" id="falla3">Error al adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="exito3">¡Se adjunto archivo con éxito!</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="vacio3">Es necesario adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="repetido3">¡El archivo adjunto está registrado!</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="renom3">
+                    Renombre su archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta3">
+                    Debes adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="error3">
+                    Ocurrio un error</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="forn3">
+                    Formato no valido</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="max3">
+                    Supera el limite permitido</p></b>
                     </div>
                 </form>  
             </div>

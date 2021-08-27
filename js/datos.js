@@ -212,6 +212,7 @@ function actStudio() {
         contentType: false,
         processData: false,
         success: function(r) {
+            alert(r);
             //console.log(r);
             if (r == 8) {
                 $('#vacio1').toggle('toggle');
@@ -323,11 +324,83 @@ function actPrfsn(datos) {
     $("#actForpro #AgstActiv").val(d[6]);
     $("#actForpro #AgstFntra").val(d[7]);
     $("#actForpro #AgstFslda").val(d[8]);
+}
+
+function carPrfsn(datos){
+
+    var d = datos.split("*");
+    $("#actForpro #DgstIdpro").val(d[0]);
+    $("#actForpro #DgstIDper").val(d[1]);
+    $("#actForpro #DgstPusto").val(d[2]);
+    $("#actForpro #DgstMpres").val(d[3]);
+    
 
 }
 
+function docProfsn(){
 
+    var paqueteDeDatos = new FormData();
+        paqueteDeDatos.append('DgstDocep', $('#DgstDocep')[0].files[0]);
+            paqueteDeDatos.append('DgstIdpro', $('#DgstIdpro').prop('value'));
+                paqueteDeDatos.append('DgstIDper', $('#DgstIDper').prop('value'));
+                    paqueteDeDatos.append('opcion', 'documento');
 
+   $.ajax({
+        url: '../php/docProfesion.php',
+        data: paqueteDeDatos,
+        type: "POST",
+        contentType: false,
+        processData: false,
+        success: function(r) {
+            //alert(r);
+            console.log(r);
+            if (r == 8) {
+                $('#vacio3').toggle('toggle');
+                setTimeout(function() {
+                    $('#vacio3').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 0) {
+                $('#exito3').toggle('toggle');
+                setTimeout(function() {
+                    $('#exito3').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 1) {
+                $('#falla3').toggle('toggle');
+                setTimeout(function() {
+                    $('#falla3').toggle('toggle');
+                }, 4000);
+            } else if (r == 2) {
+                $('#error3').toggle('toggle');
+                setTimeout(function() {
+                    $('#error3').toggle('toggle');
+                }, 4000);
+            } else if (r == 3) {
+                $('#renom3').toggle('toggle');
+                setTimeout(function() {
+                    $('#renom3').toggle('toggle');
+                }, 4000);
+            } else if (r == 4) {
+                $('#forn3').toggle('toggle');
+                setTimeout(function() {
+                    $('#forn3').toggle('toggle');
+                }, 4000);
+            } else if (r == 6) {
+                $('#adjunta3').toggle('toggle');
+                setTimeout(function() {
+                    $('#adjunta3').toggle('toggle');
+                }, 4000);
+            } else if (r == 7) {
+                $('#repetido3').toggle('toggle');
+                setTimeout(function() {
+                    $('#repetido3').toggle('toggle');
+                }, 4000);
+            }
+        }
+    });
+
+}
 
 function agrProfsn() {
 
@@ -341,6 +414,7 @@ function agrProfsn() {
     paqueteDeDatos.append('gstActiv', $('#gstActiv').prop('value'));
     paqueteDeDatos.append('gstFntra', $('#gstFntra').prop('value'));
     paqueteDeDatos.append('gstFslda', $('#gstFslda').prop('value'));
+    paqueteDeDatos.append('opcion', 'profesion');
 
    $.ajax({
         url: '../php/docProfesion.php',
@@ -397,101 +471,7 @@ function agrProfsn() {
         }
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // $.ajax({
-        //     url: '../php/docProfesion.php',
-        //     type: 'POST',
-        //     data: paqueteDeDatos
-        // }).done(function(respuesta) {
-        //     if (respuesta == 0) {
-        //         $('#succe3').toggle('toggle');
-        //         setTimeout(function() {
-        //             $('#succe3').toggle('toggle');
-        //         }, 2000);
-
-        //         $('#vaciar').show('slow');
-        //         $('#agregar').hide();
-
-        //         //$('#exito').slideDown('slow');
-        //         //$('#exito').slideUp('slow');
-
-        //     } else {
-        //         $('#danger3').toggle('toggle');
-        //         setTimeout(function() {
-        //             $('#danger3').toggle('toggle');
-        //         }, 2000);
-        //     }
-        // });
-    //}
 }
-
-// function agrProfsn() {
-
-//     var gstIDper = document.getElementById('AgstIDper').value;
-//     var gstPusto = document.getElementById('gstPusto').value;
-//     var gstMpres = document.getElementById('gstMpres').value;
-//     var gstIDpai = document.getElementById('gstIDpai').value;
-//     var gstCidua = document.getElementById('gstCidua').value;
-//     var gstActiv = document.getElementById('gstActiv').value;
-//     var gstFntra = document.getElementById('gstFntra').value;
-//     var gstFslda = document.getElementById('gstFslda').value;
-
-//     datas = 'gstIDper=' + gstIDper + '&gstPusto=' + gstPusto + '&gstMpres=' + gstMpres + '&gstIDpai=' + gstIDpai + '&gstCidua=' + gstCidua + '&gstActiv=' + gstActiv + '&gstFntra=' + gstFntra + '&gstFslda=' + gstFslda + '&opcion=agrProfsn';
-
-//     //alert(datas);
-
-//     if (gstIDper == '' || gstPusto == '' || gstMpres == '' || gstIDpai == '' || gstCidua == '' || gstActiv == '' || gstFntra == '' || gstFslda == '') {
-
-//         $('#empty3').toggle('toggle');
-//         setTimeout(function() {
-//             $('#empty3').toggle('toggle');
-//         }, 2000);
-
-//         return;
-//     } else {
-//         $.ajax({
-//             url: '../php/regInspc.php',
-//             type: 'POST',
-//             data: datas
-//         }).done(function(respuesta) {
-//             if (respuesta == 0) {
-//                 $('#succe3').toggle('toggle');
-//                 setTimeout(function() {
-//                     $('#succe3').toggle('toggle');
-//                 }, 2000);
-
-//                 $('#vaciar').show('slow');
-//                 $('#agregar').hide();
-
-//                 //$('#exito').slideDown('slow');
-//                 //$('#exito').slideUp('slow');
-
-//             } else {
-//                 $('#danger3').toggle('toggle');
-//                 setTimeout(function() {
-//                     $('#danger3').toggle('toggle');
-//                 }, 2000);
-//             }
-//         });
-//     }
-// }
 
 function mostrar() {
     $('#vaciar').hide();
@@ -872,7 +852,7 @@ function perfil(gstIdper) {
                     var x = 1;
 
 
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
                     for (P = 0; P < res.length; P++) {
 
                         year = obj.data[P].gstFntra.substring(0, 4);
@@ -890,7 +870,7 @@ function perfil(gstIdper) {
 
                         if (obj.data[P].gstIDper == gstIdper) {
 
-                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default'  href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a> <a type='button' title='Subir archivo' onclick='carPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modaldocprofesion'><i class='fa fa-cloud-upload'></i></a></td> </tr>";
 
                             //document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
 
@@ -1023,9 +1003,6 @@ function inspector(gstIdper) {
                             $("#Pusto #Gnric").val(obj.data[i].gstGnric);
 
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
-
-
-
                             $("#Pusto #gstCargo").val(obj.data[i].gstCargo);
 
                             // $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
@@ -1041,9 +1018,7 @@ function inspector(gstIdper) {
 
                             $("#Pusto #ejcutiva").val(obj.data[i].gstAreje);
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área ejecutiva
-
                             //        alert(obj.data[i].gstAreID);
-
                             $("#Pusto #nompuesto").val(obj.data[i].gstNpsto); //Nombre del puesto
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
@@ -1418,7 +1393,7 @@ function inspector(gstIdper) {
                     var x = 1;
 
 
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>ACCIÓN</th></tr></thead><tbody>';
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
                     for (P = 0; P < res.length; P++) {
 
                         year = obj.data[P].gstFntra.substring(0, 4);
@@ -1436,7 +1411,7 @@ function inspector(gstIdper) {
 
                         if (obj.data[P].gstIDper == gstIdper) {
 
-                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default' title='Descargar archivo' href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a> <a type='button' title='Editar experiencia profesional' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a> <a type='button' title='Subir archivo' onclick='carPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modaldocprofesion'><i class='fa fa-cloud-upload'></i></a></td> </tr>";
 
                             document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
 
