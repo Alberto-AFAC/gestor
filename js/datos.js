@@ -1135,7 +1135,7 @@ function inspector(gstIdper) {
                     //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE INSPECTOR
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>ESTATUS</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
                     //26082021
-                    //TRAE LOS DATOS DE LA TABLA 
+                    //TRAE LOS DATOS DE LA TABLA CELDA
                     $(document).ready(function() {
                         $("#curso tr").on('click', function() {
                             var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO

@@ -193,7 +193,7 @@
   <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" data-dismiss="modal">CERRAR</button>
 </div>
 </div>
-}
+
 <!--FIN DE CONFIRMACIÓN ENVIÓ -->
 
  <!-- CONFIRMACIÓN DE COONVOCATORIA -->
@@ -207,9 +207,9 @@
   </div>
   <!-- <input id="pruebadec" type="text"> -->
   <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+  <label id="nomdeclina" style="font-size: 16px; color:gray"  for=""></label>
   <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
   <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
-  <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
   <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
   <hr>
   <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
