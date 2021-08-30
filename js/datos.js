@@ -1133,7 +1133,36 @@ function inspector(gstIdper) {
                     insp = 0;
 
                     //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE INSPECTOR
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>ESTATUS</th><th><i></i>PROCESO</th></tr></thead><tbody>';
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>ESTATUS</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
+                    //26082021
+                    //TRAE LOS DATOS DE LA TABLA 
+                    $(document).ready(function() {
+                        $("#curso tr").on('click', function() {
+                            var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
+                                    toma1 += $(this).find('td:eq(1)').html(); //NOMBRE DEL CURSO  
+                                    toma2 += $(this).find('td:eq(9)').html(); //PDF
+                                    toma3 += $(this).find('td:eq(10)').html(); //PDF                    
+                            $("#nombredeclin").text(toma1); // Label esta en valor.php
+                            $("#declinpdf").attr('href',toma2); // Label esta en valor.php
+                            $("#motivod").text('Motivo:'+ toma3); // Label esta en valor.php
+                            $("#otrosd").text(toma2); // Label esta en valor.php
+
+                            if (toma3 == 'OTROS'){
+                                document.getElementById('otrosd').style.display='';
+                                document.getElementById('declinpdf').style.display='none';
+                            }
+                            if (toma3 == 'TRABAJO'){
+                                document.getElementById('otrosd').style.display='none';
+                                document.getElementById('declinpdf').style.display='';
+                            }
+                            if (toma3 == 'ENFERMEDAD'){
+                                document.getElementById('otrosd').style.display='none';
+                                document.getElementById('declinpdf').style.display='';
+                            }
+                        });
+                    }); 
+                    
+                    
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
 
@@ -1246,10 +1275,7 @@ function inspector(gstIdper) {
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            inputNombre1 = document.getElementById("nombredeclin").innerHTML= obj.data[ii].confirmar;
-                            inputcurso1 = document.getElementById("declindet").innerHTML= "Declina la convocatoria del curso "+obj.data[ii].gstTitlo +" "+"por el siguiente motivo:" ;
-                            inputpdf1 = document.getElementById("declinpdf").href = obj.data[ii].justifi;
-                            inputcodigo1 = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
+                           
                         
 
                         }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
@@ -1258,21 +1284,13 @@ function inspector(gstIdper) {
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            inputNombre = document.getElementById("nombredeclin").innerHTML= obj.data[ii].confirmar;
-                            inputcurso = document.getElementById("declindet").innerHTML= "Declina la convocatoria del curso "+obj.data[ii].gstTitlo +" "+"por el siguiente motivo:" ;
-                            inputpdf = document.getElementById("declinpdf").href = obj.data[ii].justifi;
-                            inputcodigo = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
-                            //inputded = document.getElementById("pruebadec").value = obj.data[ii].codigo;
+                           
                             
                         }else if(obj.data[ii].confirmar == 'OTROS'){
                           confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            inputNombre = document.getElementById("nombredeclin").innerHTML= obj.data[ii].confirmar;
-                            inputcurso = document.getElementById("declindet").innerHTML= "Declina la convocatoria del curso "+obj.data[ii].gstTitlo +" "+"por el siguiente motivo:" ;
-                            inputpdf = document.getElementById("declinpdf").href = obj.data[ii].justifi;
-                            inputcodigo = document.getElementById("cursdeclina").innerHTML = "Codigo del curso:" + obj.data[ii].codigo;
-                            //inputded = document.getElementById("pruebadec").value = obj.data[ii].codigo;
+                            
 
                         }
 
@@ -1298,7 +1316,7 @@ function inspector(gstIdper) {
                                 if (obj.data[ii].confirmar == 'CONFIRMAR') {
                                     html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
                                 } else  {
-                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td></tr>";
+                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td><td style='display:none;'>" + obj.data[ii].justifi + "</td><td style='display:none;'>" + obj.data[ii].confirmar + "</td></tr>";
                                 } 
 
                                 if (obj.data[ii].proceso == 'PENDIENTE') {
