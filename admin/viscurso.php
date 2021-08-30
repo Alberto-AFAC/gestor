@@ -123,7 +123,7 @@
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
           <option value="PRESENCIAL">PRESENCIAL</option>
-          <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
+          <option value="MIXTA (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
           <option value="AUTOGESTIVO">AUTOGESTIVO</option>
         </select>
       </div>
@@ -315,6 +315,7 @@
   </div>
   <!-- /.col -->
   </div>
+  
   <!-- /.row -->
 
 

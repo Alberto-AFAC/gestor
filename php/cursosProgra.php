@@ -44,7 +44,8 @@
 		$proc = 'EN PROCESO';
 		} 
 		$cursos[] = [ 
-			$contador, 
+			$contador,
+		//$data["codigo"], 
 		$data["gstTitlo"],
 		$data["gstTipo"],
 		$data["fcurso"],
