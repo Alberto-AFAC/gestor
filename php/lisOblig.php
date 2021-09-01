@@ -25,13 +25,25 @@ WHERE especialidadcat.gstIDper = $idins ";
 
 
 			if($res = mysqli_fetch_array($resul)){
-				if($res['proceso']=='PENDIENTE'){
-						$data['proceso'] = 'EN CURSO';
-						$arreglo["data"][] = $data; 
-					}else if($res['proceso']=='FINALIZADO'){
-						$data['proceso'] = 'FINALIZADO';
-						$arreglo["data"][] = $data; 
-					}
+				if($res['proceso']=='PENDIENTE' && $res['confirmar']=='CONFIRMADO'){ // CONRFIRMA (SIN FINALIZAR CURSO)
+					$data['proceso'] = 'EN CURSO';
+					$arreglo["data"][] = $data; 
+				}else if($res['proceso']=='FINALIZADO' && $res['confirmar']=='CONFIRMADO'){ // CONFIRMA Y ESTA FINALIZADO EL CURSO
+					$data['proceso'] = 'FINALIZADO';
+					$arreglo["data"][] = $data; 
+				}
+				if($res['proceso']=='FINALIZADO' && $res['confirmar']=='TRABAJO'){ //DECLINA POR TABAJO
+					$data['proceso'] = 'PENDIENTE';
+					$arreglo["data"][] = $data;
+				}
+				if($res['proceso']=='FINALIZADO' && $res['confirmar']=='ENFERMEDAD'){ //DECLINA POR ENFERMEDAD
+					$data['proceso'] = 'PENDIENTE';
+					$arreglo["data"][] = $data;
+				}
+				if($res['proceso']=='FINALIZADO' && $res['confirmar']=='OTROS'){ //DECLINA POR OTROS
+					$data['proceso'] = 'PENDIENTE';
+					$arreglo["data"][] = $data;
+				}
 			}else{
 			
 			$data["proceso"] = 'PENDIENTE';
@@ -51,5 +63,3 @@ WHERE especialidadcat.gstIDper = $idins ";
 		mysqli_close($conexion);
 
 ?>
-
-
