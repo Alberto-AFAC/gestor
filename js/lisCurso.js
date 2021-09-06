@@ -617,7 +617,7 @@ function cerrarEditeva() {
 }
 
 function cursoeval(idcurso) {
-
+//COPEAR
     $.ajax({
         url: '../php/curConfir.php',
         type: 'POST'
@@ -638,6 +638,8 @@ function cursoeval(idcurso) {
     })
 
 }
+
+
 
 //EVALUACIÓN CURSO
 function evalucurs(cursos) {
