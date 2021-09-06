@@ -159,7 +159,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="col">INCISO</th>
                             <th scope="col" style="width: 600px;">DOCUMENTO</th>
                             <th scope="col">CUMPLE</th> 
-                            <th scope="col">FECHA DE REVISIÓN</th>
+                            <th scope="col">ESTATUS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -864,7 +864,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                 </section>
             </div>
             <!-- modal evaluar -->
-  <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+  <!-- DETALLE DECLINA CONVOCATORIA -->
   <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal1">
   
@@ -873,7 +873,6 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
     <img class="img-circle1" src="../dist/img/declinado.png">
     </div>
   </div>
-  <!-- <input id="pruebadec" type="text"> -->
   <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
   <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
   <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
@@ -888,7 +887,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
 
 </script>
 </div>
-<!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+<!--FIN DETALLE DECLINA CONVOCATORIA -->
             <!-------------------------------------------->
             <div class="tab-pane" id="curso">
                 <section class="content">

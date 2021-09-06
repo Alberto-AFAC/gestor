@@ -29,7 +29,7 @@ $valor = explode(",", $id);
 
 foreach ($valor as $idinsps) {
 	
-	if(proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link,$codigo, $conexion))
+	if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion))
 		{ 
 			echo "0";	
 		}else{	

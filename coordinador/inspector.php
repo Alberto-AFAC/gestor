@@ -68,9 +68,9 @@
                                 <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png"
                                     alt="User profile picture">
 
-                                <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
+                                <h3 class="profile-username text-center"><?php echo $datos[2]?></h3>
 
-                                <p class="text-muted text-center"><?php echo $datos[3]?></p>
+                                <p class="text-muted text-center">COORDINADOR</p>
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
@@ -84,7 +84,7 @@
                                         </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Cursos cancelados</b> <a class="pull-right">
+                                        <b>Cursos declinados</b> <a class="pull-right">
                                             <div id="cancelados"></div>
                                         </a>
                                     </li>
@@ -110,11 +110,10 @@
                             <div class="box-body">
                                 <a href="#">
                                     <strong><i class="fa fa-book margin-r-5"></i>Educación</strong>
-                                    
                                 </a>
+                                <label for=""></label>
                                 <p class="text-muted">
-                                
-                                    <?php echo $dato[4];?>
+                                   
                                 </p>
 
                                 <hr>
@@ -122,7 +121,7 @@
                                     <strong><i class="ion-briefcase margin-r-5"></i>Experiencia Laboral</strong>
                                 </a>
 
-                                <p class="text-muted"><?php echo $dato[5]; ?></p>
+                               
 
                                 <!--               <strong><i class="fa fa-pencil margin-r-5"></i>Habilidades</strong>
               <a href="#" class="btn ion-edit"><b></b></a>
@@ -147,11 +146,11 @@
                         <div class="nav-tabs-custom">
 
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#activity" data-toggle="tab">Cursos por confirmar </a></li>
-                                <li><a href="#curComplet" data-toggle="tab">Cursos en proceso</a></li>
+                                <li class="active"><a href="#activity" data-toggle="tab">Cursos en proceso </a></li>
+                                <li><a href="#curComplet" data-toggle="tab">Cursos programados</a></li>
                                 <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
                                 <li><a href="#settings" data-toggle="tab">Cursos vencidos</a></li>
-                                <li><a href="#settings" data-toggle="tab">Cursos cancelados</a></li>
+                                <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activity">
@@ -1015,6 +1014,11 @@
 </div>
 </div>
 </form>
+
+
+    
+
+
     <script type="text/javascript" src="../js/encuestadatos.js"></script>
     <?php include('modal.php');?>
     <!-- /.tab-pane -->
@@ -1060,6 +1064,7 @@
     <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
+
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../dist/js/adminlte.min.js"></script>
@@ -1092,20 +1097,24 @@ $id_curso = $data['id_curso'];
 
  $fcurso = $data['fcurso'] = date("d-m-Y");
  $fechaf = $data['fechaf'] = date("d-m-Y");
+
+
 ?>
 
     //console.log('<?php echo $id_curso ?>');
-
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ["<?php echo $data['codigo']?>","<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-        "<a type='button' title='Confirmar asistencia' onclick='confirmar(<?php echo $id_curso ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>CONFIRMAR</a>"
+       "<a type='button' title='Confirmar asistencia' onclick='confirmar(<?php echo $id_curso ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>CONFIRMAR</a>"
 
         //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-
+        
     ],
     <?php } ?>
 ]
+
+
+
 
 var tableGenerarReporte = $('#data-table-confirmar').DataTable({
     "language": {
@@ -1114,6 +1123,9 @@ var tableGenerarReporte = $('#data-table-confirmar').DataTable({
     },
     data: dataSet,
     columns: [{
+            title: "CODIGO"
+        },
+        {
             title: "CURSO"
         },
         {
@@ -1151,29 +1163,33 @@ $id_curso = $data['id_curso'];
  $fechaf = $data['fechaf'] = date("d-m-Y");
 
 if($data['confirmar']=='CONFIRMAR'){
-$valor="<span title='Pendiente por ' style='background-color: grey; font-size: 13px;' class='badge'>PENDIENTE</span>";
+$valor='POR CONFIRMAR';
 }else if($data['confirmar']=='CONFIRMADO'){
- $valor="<span style='background-color:green; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado'>CONFIRMADO</span>";
+ $valor=$data['confirmar']; 
 }else if($data['confirmar']=='ENFERMEDAD'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='declina();'>DECLINADO</span>";
+    $valor ='DECLINADO POR ENFERMEDAD';
 }else if($data['confirmar']=='TRABAJO'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='declina();'>DECLINADO</span>";
+    $valor ='DECLINADO POR TRABAJO';
 }else if($data['confirmar']=='OTROS'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='declina();'>DECLINADO</span>";
+    $valor ='DECLINADO POR OTROS MOTIVOS';
+}
+
+if($data['idinst']== $data['idinsp']){
+    $valor="<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>COORDINAS</span>";
+
+    
 }
 
 ?>
 
     //console.log('<?php echo $id_curso ?>');
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
+    ["<?php echo $data['codigo']?>","<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         // "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-asignar'><?php echo $valor?> </a>"
 
-        "<?php echo $valor?>", "<?php echo $data['confirmar']?>"
-
-//aquies
+        "<?php echo $valor?>"
 
     ],
     <?php } ?>
@@ -1186,6 +1202,9 @@ var tableGenerarReporte = $('#data-table-programado').DataTable({
     },
     data: dataSet,
     columns: [{
+            title: "CODIGO"
+        },
+        {
             title: "CURSO"
         },
         {
@@ -1201,13 +1220,10 @@ var tableGenerarReporte = $('#data-table-programado').DataTable({
             title: "FINALIZA"
         },
         {
-            title: "ASISTENCIA"
-        },
-        {
-            title: "CONFIR", "visible": false
+            title: "ESTATUS"
         }
     ],
-}); 
+});
 
 // CURSOS PROGRAMADOS
 var dataSet = [
@@ -1261,7 +1277,7 @@ $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><
 
 ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
 "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-"<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
+"<span class='badge' style='background-color: green;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
 
 <?php }else{  
 
@@ -1270,7 +1286,7 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
 ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
 "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-"<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
+"<span class='badge' style='background-color: green;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
 
 <?php } }else{ ?>
 
@@ -1279,10 +1295,10 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-//BILL0Y
-        "<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop'><?php if($data['confirmar'] == 'TRABAJO'){ echo 'DECLINADO';} else if($data['confirmar'] == 'ENFERMEDAD'){ echo 'DECLINADO';}else{ echo 'DECLINADO';}?></span>",
-        "<span style='background-color: grey; font-size: 13px;' class='badge'>SIN ACCIONES</span>"
-        
+
+        "<span class='badge' style='background-color: orange;'><?php if($data['confirmar'] == 'TRABAJO'){ echo 'DECLINADO POR TRABAJO';} else if($data['confirmar'] == 'ENFERMEDAD'){ echo 'DECLINADO POR ENFERMEDAD';}else{ echo 'DECLINADO POR OTROS MOTIVOS';}?></span>",
+
+        "NO SE PUEDE EVALUAR"
 
  ], 
 
@@ -1293,7 +1309,7 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
         "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
 
-        "<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-primary '>EVALUAR</a>"
+        "<a type='button' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-info'>EVALUAR</a>"
 
 ],     
  
@@ -1325,7 +1341,7 @@ var tableGenerarReporte = $('#data-table-completo').DataTable({
             title: "FINALIZA"
         },
         {
-            title: "ASISTENCIA"
+            title: "ESTATUS"
         },
         {
             title: "ACCIÓN"

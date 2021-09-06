@@ -197,7 +197,7 @@
 <!--FIN DE CONFIRMACIÓN ENVIÓ -->
 
  <!-- CONFIRMACIÓN DE COONVOCATORIA -->
- <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+ <div class="modal fade" id='modal-declinado1'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal1">
   
   <div id="success-icon">
@@ -206,14 +206,14 @@
     </div>
   </div>
   <!-- <input id="pruebadec" type="text"> -->
-  <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
-  <label id="nomdeclina" style="font-size: 16px; color:gray"  for=""></label>
-  <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
-  <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
-  <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
+  <h1 class="modaltitle1" style="color:gray"><strong>DETALLES</strong></h1>
+  <label id="nomdeclina1" style="font-size: 16px; color:gray"  for=""></label>
+  <label id="cursdeclina1" style="font-size: 16px; color:gray"  for=""></label>
+  <label id="declindet1" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
+  <label id="motivod1" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
   <hr>
-  <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
-  <label readonly id="otrosd" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
+  <a id="declinpdf1" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+  <label readonly id="otrosd1" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
 </div>
 <script>
 
@@ -226,6 +226,7 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
   </div>
+  SXSX
   </div>
   <!-- /.box -->
   </div>

@@ -374,7 +374,7 @@
 
               <div class="form-group">
                   <div class="col-sm-5">
-                    <button type="button" id="button" class="btn btn-info" onclick="docProfsn();">ACEPTAR</button>
+                    <button type="button" id="button" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="">ACTUALIZAR</button>
                   </div>
                    <b><p class="alert alert-danger text-center padding error" id="falla3">Error al adjuntar archivo</p></b>
 
@@ -405,3 +405,100 @@
         </div>
       </div>
     </div>
+    <!-----------------------------ACTUALIZAR EL ARCHIVO CHECK LIST--------------------------------->
+    <div class="modal fade" id="modal-actualizardoc">
+          <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">REMPLAZAR DOCUMENTO</h4>
+                
+              </div>
+              <div class="modal-body" id="actForpro">
+              <form class="form-horizontal">
+                 
+
+            <div class="form-group">
+              <div class="col-sm-12">
+              <label class="label2" id="docadjunto" for=""></label>
+              <div class="col-sm-6">
+              <input id="DgstDocep" type="file" name="DgstDocep" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+              </div>
+            </div>
+            </div>
+
+              <div class="form-group">
+                  <div class="col-sm-5">
+                    <button type="button" id="button1" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="">ACTUALIZAR</button>
+                  </div>
+                   <b><p class="alert alert-danger text-center padding error" id="falla3">Error al adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="exito3">¡Se adjunto archivo con éxito!</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="vacio3">Es necesario adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="repetido3">¡El archivo adjunto está registrado!</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="renom3">Renombre su archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta3">Debes adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="error3">Ocurrio un error</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="forn3">Formato no valido</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="max3">Supera el limite permitido</p></b>
+                    </div>
+                </form>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-------------------------------- ELIMINAR ARCHIVO----------------------------------------------- -->
+    <form class="form-horizontal" action="" method="POST">
+                    <div class="modal fade" id="eliminararchi">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                         <label class="label2" id="titledoc" for=""></label>
+                                            <p>¿ESTÁ SEGURO DE ELIMINAR EL ARCHIVO?<span id=""></span> </p>
+                                        </div>
+                                        <br>
+                                        <div class="col-sm-5">
+                                            <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="">ACEPTAR</button>
+                                        </div>
+                                        <b>
+                                            <p class="alert alert-warning text-center padding error" id="danger">Error
+                                                al eliminar curso</p>
+                                        </b>
+                                        <b>
+                                            <p class="alert alert-success text-center padding exito" id="succe">¡Se
+                                                elimino curso con éxito !</p>
+                                        </b>
+                                        <b>
+                                            <p class="alert alert-warning text-center padding aviso" id="empty">Elija
+                                                curso para eliminar </p>
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    </form>
+
+    
