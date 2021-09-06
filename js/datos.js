@@ -799,7 +799,7 @@ function perfil(gstIdper) {
                         var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
                         
                         if (factual >= finaliza) {
-                            status = "<span style='background-color: orange; font-size: 14px;' class='badge'>VENCIDO</span>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
                             //console.log(status);
                         } else
                         if (factual <= ftermino) {
@@ -1371,7 +1371,7 @@ function inspector(gstIdper) {
 
 
                         if (factual >= finaliza) {
-                            status = "<span style='background-color: orange; font-size: 14px;' class='badge'>VENCIDO</span>";
+                            status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
                             //console.log(status);
                         } else
                         if (factual <= ftermino) {
@@ -1379,7 +1379,7 @@ function inspector(gstIdper) {
                             //console.log(status);
                         } else
                         if (factual >= ftermino) {
-                            status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>POR VENCER</span>";
+                            status = "<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         } 
                         if (obj.data[ii].gstTipo == "INDUCCIÓN") { //UNICA VEZ EN ESTATUS "INDUCCIÓN"
