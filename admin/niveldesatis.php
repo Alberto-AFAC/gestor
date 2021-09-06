@@ -50,7 +50,7 @@ if(!$resultado) {
     <link rel="stylesheet" href="../dist/css/skins/card.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
 
 
@@ -209,7 +209,7 @@ include('header.php');
         <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
             aria-hidden="true">
             <form class="col s12" id="ponderacion" method="POST">
-                <div class="modal-dialog" style="width: 40%">
+                <div class="modal-dialog" style="width: 50%">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -229,7 +229,24 @@ include('header.php');
                                 <input type="text" id="evaluation" name="evaluation" class="form-control"
                                     placeholder="Escribe la ponderación" aria-describedby="basic-addon2">
                                 <span class="input-group-addon" id="basic-addon2">%</span>
-                            </div><br>
+
+                                <div class="col-lg-6">
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    Desde
+                                </span>
+                                <input type="date" name="start_date" id="start_date" class="form-control" aria-label="...">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    Hasta
+                                </span>
+                                <input type="date" name="end_date" id="end_date" class="form-control" aria-label="...">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            </div><br><br>
                             <table id="data-table-ponderacion" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
                         </div>
@@ -569,79 +586,82 @@ $('#button').confirm({
 })
 //AQUI COMIENZA PARA PODER INSERTAR LOS DATOS EN LA TABLA DE PONDERACIÓN
 $(document).ready(function() {
-    // $('#btnguardar').click(function() {
-    //     var evaluation = $("#evaluation").val();
-    //     swal.showLoading();
-    //     if (evaluation == '') {
-    //         Swal.fire({
-    //             type: 'error',
-    //             title: 'ATENCIÓN!',
-    //             customClass: 'swal-wide',
-    //             timer: 2300,
-    //             text: 'Aun no has ingresado ponderación de evaluación',
-    //             showConfirmButton: false,
-    //         });
-    //     } else {
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "../php/insertEv.php",
-    //             data: {evaluation: evaluation},
-    //             success: function(data) {
-    //                 document.getElementById("ponderacion").reset();
-    //                 Swal.fire({
-    //                     type: 'success',
-    //                     title: 'AFAC INFORMA',
-    //                     text: 'Sus datos fueron guardados correctamente',
-    //                     showConfirmButton: false,
-    //                     timer: 2900,
-    //                     customClass: 'swal-wide',
-    //                     showConfirmButton: false,
-    //                 });
-    //                 // setTimeout("location.href = 'flights.php';", 2000);
-    //             }
-    //         });
-    //     }
-
-    //     return false;
-    // });
-    // $(document).ready(function(){
     $('#btnguardar').click(function() {
-        var datos = $('#ponderacion').serialize();
-        $.ajax({
-            type: "POST",
-            url: "../php/insertEv.php",
-            data: datos,
-            success: function(r) {
-                document.getElementById("ponderacion").reset();
-                if (r == 1) {
-                    Swal.fire({
-                        type: 'error',
-                        title: 'ATENCIÓN!',
-                        text: 'Verificar campos faltantes o con información incorrecta',
-                        showConfirmButton: false,
-                        customClass: 'swal-wide',
-                        timer: 2900
-                    });
-
-
-                    // setTimeout("location.href = 'flights';",2000);
-                } else {
+        var date_update = $("#date_update").val();
+        var evaluation = $("#evaluation").val();
+        var start_date = $("#start_date").val();
+        var end_date = $("#end_date").val();
+        swal.showLoading();
+        if (date_update == '' || evaluation == ''  || start_date == '' || end_date == '') {
+            Swal.fire({
+                type: 'error',
+                title: 'ATENCIÓN!',
+                customClass: 'swal-wide',
+                timer: 2300,
+                text: 'Aun no has ingresado ponderación de evaluación',
+                showConfirmButton: false,
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "../php/insertEv.php",
+                data: {date_update: date_update,evaluation: evaluation, start_date:start_date,end_date:end_date},
+                success: function(data) {
+                    document.getElementById("ponderacion").reset();
                     Swal.fire({
                         type: 'success',
                         title: 'AFAC INFORMA',
-                        text: 'Nivel de satisfacción actualizada correctamente',
+                        text: 'Sus datos fueron guardados correctamente',
                         showConfirmButton: false,
+                        timer: 2900,
                         customClass: 'swal-wide',
-                        timer: 2900
+                        showConfirmButton: false,
                     });
                     setTimeout("location.href = '../admin/niveldesatis.php';",2000);
-
                 }
-            }
-        });
+            });
+        }
 
         return false;
     });
+    // $(document).ready(function(){
+    // $('#btnguardar').click(function() {
+    //     var datos = $('#ponderacion').serialize();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "../php/insertEv.php",
+    //         data: datos,
+    //         success: function(r) {
+    //             document.getElementById("ponderacion").reset();
+    //             if (r == 1) {
+    //                 Swal.fire({
+    //                     type: 'error',
+    //                     title: 'ATENCIÓN!',
+    //                     text: 'Verificar campos faltantes o con información incorrecta',
+    //                     showConfirmButton: false,
+    //                     customClass: 'swal-wide',
+    //                     timer: 2900
+    //                 });
+
+
+    //                 // setTimeout("location.href = 'flights';",2000);
+    //             } else {
+    //                 Swal.fire({
+    //                     type: 'success',
+    //                     title: 'AFAC INFORMA',
+    //                     text: 'Nivel de satisfacción actualizada correctamente',
+    //                     showConfirmButton: false,
+    //                     customClass: 'swal-wide',
+    //                     timer: 2900
+    //                 });
+    //                 setTimeout("location.href = '../admin/niveldesatis.php';",2000);
+
+    //             }
+    //         }
+    //     });
+
+    //     return false;
+    // });
 });
 
 //DATATABLES//
@@ -654,7 +674,7 @@ $resultado = mysqli_query($conexion, $query);
       while($data = mysqli_fetch_array($resultado)){ 
       ?>
 
-["<?php echo $data['id']?>","<?php echo $data['date_update']?>","<?php echo $data['evaluation']?> %"],
+["<?php echo $data['id']?>","<?php echo $data['start_date']. " - " . $data['end_date']?>","<?php echo $data['evaluation']?> %","<?php echo $data['date_update']?>"],
 
 
 <?php } ?>
@@ -673,8 +693,9 @@ var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
     data: dataSet,
     columns: [
     {title: "FOLIO"},
-    {title: "FECHA MODIFICACIÓN"},
-    {title: "VALOR"}
+    {title: "PERIÓDO"},
+    {title: "VALOR"},
+    {title: "FECHA MODIFICACIÓN"}
     ]
     });
 </script>
