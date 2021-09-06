@@ -9,6 +9,20 @@ $instructor = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
 $inspector = mysqli_query($conexion,$sql);
 include("../php/nivelSatis.php");
+$query ="SELECT
+                *
+            FROM
+                bitevaluacion 
+            ORDER BY
+                id DESC
+                LIMIT 1";
+$resultado = mysqli_query($conexion, $query);
+
+$row = mysqli_fetch_assoc($resultado);
+if(!$resultado) {
+    var_dump(mysqli_error($conexion));
+    exit;
+}
 ?>
 <html>
 
@@ -35,6 +49,9 @@ include("../php/nivelSatis.php");
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="../dist/css/skins/card.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bulma.min.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,6 +64,26 @@ include("../php/nivelSatis.php");
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+    .swal-wide {
+        width: 500px !important;
+        font-size: 16px !important;
+    }
+
+    .a-alert {
+        outline: none;
+        text-decoration: none;
+        padding: 2px 1px 0;
+    }
+
+    .a-alert:link {
+        color: white;
+    }
+
+    .a-alert:visited {
+        color: white;
+    }
+    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -71,39 +108,49 @@ include('header.php');
                     <div class="col-md-12">
                         <div class="box box-solid">
                             <div class="box-header with-border">
-                            <div class="box-header with-border">
-                                <h3 style="color: grey;" class="box-title">TOTAL DE PERSONAS ENCUESTADAS:</h3>
-                               <label id="per1"style="font-size:28px; color:green" for=""><?php echo ($totalresg)?></label>
-                               
-                            </div>
+                                <div class="box-header with-border">
+                                    <h3 style="color: grey;" class="box-title">TOTAL DE PERSONAS ENCUESTADAS:</h3>
+                                    <label id="per1" style="font-size:28px; color:green"
+                                        for=""><?php echo ($totalresg)?></label>
+
+                                </div>
                                 <button id="button" type="button" class="btn btn-info" style="float: right"> EVALUACIÓN
                                     DE SATISFACCIÓN</button>
                             </div>
                             <div class="box-body text-center">
-                            <div class="col-md-6">
-                        <div class="box box-info">
-                            <div class="box-header with-border">
-                                <h3 style="color: gray;" class="box-title">NIVEL GENERAL DE SATISFACCIÓN</h3>
-                            </div>
-                            <div style="color: green; font-size: 50px;" class="box-body">
-                                <?php echo porcentaje($totalfull, $totalcantida, 0) . "%"?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="box box-info">
-                            <div class="box-header with-border">
-                                <h3 style="color: gray;" class="box-title">NIVEL DE SATISFACCIÓN DESEADA</h3>
-                            </div>
-                            <div style="color: green; font-size: 50px;" class="box-body">
-                                96.4%
-                            </div>
-                        </div>
-                    </div>
+                                <div class="col-md-6">
+                                    <div class="box box-info">
+                                        <div class="box-header with-border">
+                                            <h3 style="color: gray;" class="box-title">NIVEL GENERAL DE SATISFACCIÓN
+                                            </h3>
+                                        </div>
+                                        <div style="color: green; font-size: 50px;" class="box-body">
+                                            <?php echo porcentaje($totalfull, $totalcantida, 0) . "%"?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="box box-info">
+                                        <div class="box-header with-border">
+                                            <h3 style="color: gray;" data-toggle="modal" data-target="#basicModal"
+                                                class="box-title">NIVEL DE SATISFACCIÓN DESEADA
+                                            </h3>
+                                        </div>
+                                        <div style="color: green; font-size: 50px;" class="box-body">
+                                        <?php if($row['evaluation']== ''){
+                                            echo "N/A";
+                                        } else {
+                                            echo "$row[evaluation] %";
+                                        }
+                                        ?>
+                            
+                                        </div>
+                                    </div>
+                                </div>
                                 <canvas id="piechart-satisfaccion"></canvas>
                             </div>
                             <div style="padding-left: 100px; padding-bottom: 10px;" class="container">
-                            <table width="80%">
+                                <table width="80%">
                                     <tr style="color: gray;">
                                         <th>DEFICIENTE</th>
                                         <th>NO SATISFACTORIO</th>
@@ -158,10 +205,46 @@ include('header.php');
             </section>
             <!-- /.content -->
         </div>
+        <!-- MODAL PARA HACER HISTORIAL DE SATISFACCIÓN -->
+        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+            aria-hidden="true">
+            <form class="col s12" id="ponderacion" method="POST">
+                <div class="modal-dialog" style="width: 40%">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">NIVEL DE SATISFACCIÓN DESEADA</h4>
+                        </div>
+                        <div class="modal-body">
+                        <!-- <div class="input-group"> -->
+                                <input type="date" id="date_update" name="date_update"
+                                    value="<?php echo date("Y-m-d"); ?>" hidden>
+                                <span style="font-size: 20px;">Ponderación actual</span>
+                                <span style="font-weight: bold; color: green; font-size: 25px; float: right;"><?php echo $row['evaluation']?> %</span>
+                            <!-- </div> -->
+                            <br><br>
+                            <div class="input-group">
+                                <input type="date" id="date_update" name="date_update"
+                                    value="<?php echo date("Y-m-d"); ?>" hidden>
+                                <input type="text" id="evaluation" name="evaluation" class="form-control"
+                                    placeholder="Escribe la ponderación" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2">%</span>
+                            </div><br>
+                            <table id="data-table-ponderacion" class="table table-bordered" width="100%" cellspacing="0">
+                        </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" id="btnguardar" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b>    <?php 
+                <b>Version</b> <?php 
                                 $query ="SELECT 
                                         *
                                         FROM
@@ -174,7 +257,7 @@ include('header.php');
                                     exit;
                                 }
                                 ?>
-                    <?php echo $row['version']?>
+                <?php echo $row['version']?>
             </div>
             <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
             Todos los derechos Reservados AJ.
@@ -394,7 +477,8 @@ include('header.php');
     <script src="../dist/js/demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
     <!-- page script -->
 
 </body>
@@ -483,4 +567,114 @@ $('#button').confirm({
     columnClass: 'small',
     icon: 'fa fa-question-circle'
 })
+//AQUI COMIENZA PARA PODER INSERTAR LOS DATOS EN LA TABLA DE PONDERACIÓN
+$(document).ready(function() {
+    // $('#btnguardar').click(function() {
+    //     var evaluation = $("#evaluation").val();
+    //     swal.showLoading();
+    //     if (evaluation == '') {
+    //         Swal.fire({
+    //             type: 'error',
+    //             title: 'ATENCIÓN!',
+    //             customClass: 'swal-wide',
+    //             timer: 2300,
+    //             text: 'Aun no has ingresado ponderación de evaluación',
+    //             showConfirmButton: false,
+    //         });
+    //     } else {
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "../php/insertEv.php",
+    //             data: {evaluation: evaluation},
+    //             success: function(data) {
+    //                 document.getElementById("ponderacion").reset();
+    //                 Swal.fire({
+    //                     type: 'success',
+    //                     title: 'AFAC INFORMA',
+    //                     text: 'Sus datos fueron guardados correctamente',
+    //                     showConfirmButton: false,
+    //                     timer: 2900,
+    //                     customClass: 'swal-wide',
+    //                     showConfirmButton: false,
+    //                 });
+    //                 // setTimeout("location.href = 'flights.php';", 2000);
+    //             }
+    //         });
+    //     }
+
+    //     return false;
+    // });
+    // $(document).ready(function(){
+    $('#btnguardar').click(function() {
+        var datos = $('#ponderacion').serialize();
+        $.ajax({
+            type: "POST",
+            url: "../php/insertEv.php",
+            data: datos,
+            success: function(r) {
+                document.getElementById("ponderacion").reset();
+                if (r == 1) {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'ATENCIÓN!',
+                        text: 'Verificar campos faltantes o con información incorrecta',
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 2900
+                    });
+
+
+                    // setTimeout("location.href = 'flights';",2000);
+                } else {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'AFAC INFORMA',
+                        text: 'Nivel de satisfacción actualizada correctamente',
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 2900
+                    });
+                    setTimeout("location.href = '../admin/niveldesatis.php';",2000);
+
+                }
+            }
+        });
+
+        return false;
+    });
+});
+
+//DATATABLES//
+
+var dataSet = [
+<?php 
+$query = "SELECT * FROM bitevaluacion";
+$resultado = mysqli_query($conexion, $query);
+
+      while($data = mysqli_fetch_array($resultado)){ 
+      ?>
+
+["<?php echo $data['id']?>","<?php echo $data['date_update']?>","<?php echo $data['evaluation']?> %"],
+
+
+<?php } ?>
+];
+
+var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
+    "language": {
+    "searchPlaceholder": "Buscar datos...",
+    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    pageLength : 5,
+    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    "order": [[0,'desc']],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [
+    {title: "FOLIO"},
+    {title: "FECHA MODIFICACIÓN"},
+    {title: "VALOR"}
+    ]
+    });
 </script>
