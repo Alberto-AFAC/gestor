@@ -137,13 +137,13 @@ include('header.php');
                                             </h3>
                                         </div>
                                         <div style="color: green; font-size: 50px;" class="box-body">
-                                        <?php if($row['evaluation']== ''){
+                                            <?php if($row['evaluation']== ''){
                                             echo "N/A";
                                         } else {
                                             echo "$row[evaluation] %";
                                         }
                                         ?>
-                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -216,11 +216,13 @@ include('header.php');
                             <h4 class="modal-title" id="myModalLabel">NIVEL DE SATISFACCIÓN DESEADA</h4>
                         </div>
                         <div class="modal-body">
-                        <!-- <div class="input-group"> -->
-                                <input type="date" id="date_update" name="date_update"
-                                    value="<?php echo date("Y-m-d"); ?>" hidden>
-                                <span style="font-size: 20px;">Ponderación actual</span>
-                                <span style="font-weight: bold; color: green; font-size: 25px; float: right;"><?php echo $row['evaluation']?> %</span>
+                            <!-- <div class="input-group"> -->
+                            <input type="date" id="date_update" name="date_update" value="<?php echo date("Y-m-d"); ?>"
+                                hidden>
+                            <span style="font-size: 20px;">Ponderación actual</span>
+                            <span
+                                style="font-weight: bold; color: green; font-size: 25px; float: right;"><?php echo $row['evaluation']?>
+                                %</span>
                             <!-- </div> -->
                             <br><br>
                             <div class="input-group">
@@ -231,24 +233,27 @@ include('header.php');
                                 <span class="input-group-addon" id="basic-addon2">%</span>
 
                                 <div class="col-lg-6">
-                                <div class="input-group">
-                                <span class="input-group-addon">
-                                    Desde
-                                </span>
-                                <input type="date" name="start_date" id="start_date" class="form-control" aria-label="...">
-                                </div><!-- /input-group -->
-                            </div><!-- /.col-lg-6 -->
-                            <div class="col-lg-6">
-                                <div class="input-group">
-                                <span class="input-group-addon">
-                                    Hasta
-                                </span>
-                                <input type="date" name="end_date" id="end_date" class="form-control" aria-label="...">
-                                </div><!-- /input-group -->
-                            </div><!-- /.col-lg-6 -->
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Desde
+                                        </span>
+                                        <input type="date" name="start_date" id="start_date" class="form-control"
+                                            aria-label="...">
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Hasta
+                                        </span>
+                                        <input type="date" name="end_date" id="end_date" class="form-control"
+                                            aria-label="...">
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
                             </div><br><br>
-                            <table id="data-table-ponderacion" class="table table-bordered" width="100%" cellspacing="0">
-                        </table>
+                            <table id="data-table-ponderacion" class="table table-bordered" width="100%"
+                                cellspacing="0">
+                            </table>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -592,7 +597,7 @@ $(document).ready(function() {
         var start_date = $("#start_date").val();
         var end_date = $("#end_date").val();
         swal.showLoading();
-        if (date_update == '' || evaluation == ''  || start_date == '' || end_date == '') {
+        if (date_update == '' || evaluation == '' || start_date == '' || end_date == '') {
             Swal.fire({
                 type: 'error',
                 title: 'ATENCIÓN!',
@@ -605,7 +610,12 @@ $(document).ready(function() {
             $.ajax({
                 type: "POST",
                 url: "../php/insertEv.php",
-                data: {date_update: date_update,evaluation: evaluation, start_date:start_date,end_date:end_date},
+                data: {
+                    date_update: date_update,
+                    evaluation: evaluation,
+                    start_date: start_date,
+                    end_date: end_date
+                },
                 success: function(data) {
                     document.getElementById("ponderacion").reset();
                     Swal.fire({
@@ -617,85 +627,66 @@ $(document).ready(function() {
                         customClass: 'swal-wide',
                         showConfirmButton: false,
                     });
-                    setTimeout("location.href = '../admin/niveldesatis.php';",2000);
+                    setTimeout("location.href = '../admin/niveldesatis.php';", 2000);
                 }
             });
         }
 
         return false;
     });
-    // $(document).ready(function(){
-    // $('#btnguardar').click(function() {
-    //     var datos = $('#ponderacion').serialize();
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "../php/insertEv.php",
-    //         data: datos,
-    //         success: function(r) {
-    //             document.getElementById("ponderacion").reset();
-    //             if (r == 1) {
-    //                 Swal.fire({
-    //                     type: 'error',
-    //                     title: 'ATENCIÓN!',
-    //                     text: 'Verificar campos faltantes o con información incorrecta',
-    //                     showConfirmButton: false,
-    //                     customClass: 'swal-wide',
-    //                     timer: 2900
-    //                 });
-
-
-    //                 // setTimeout("location.href = 'flights';",2000);
-    //             } else {
-    //                 Swal.fire({
-    //                     type: 'success',
-    //                     title: 'AFAC INFORMA',
-    //                     text: 'Nivel de satisfacción actualizada correctamente',
-    //                     showConfirmButton: false,
-    //                     customClass: 'swal-wide',
-    //                     timer: 2900
-    //                 });
-    //                 setTimeout("location.href = '../admin/niveldesatis.php';",2000);
-
-    //             }
-    //         }
-    //     });
-
-    //     return false;
-    // });
 });
 
 //DATATABLES//
 
 var dataSet = [
-<?php 
+    <?php 
 $query = "SELECT * FROM bitevaluacion";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
+          $Modificacion = $data['date_update'];
+          $Modificacion = date("d-m-Y");  
+          $start = $data['start_date'];
+          $end = $data['end_date'];
+          $start = date("d-m-Y");
+          $end = date("d-m-Y");
       ?>
 
-["<?php echo $data['id']?>","<?php echo $data['start_date']. " - " . $data['end_date']?>","<?php echo $data['evaluation']?> %","<?php echo $data['date_update']?>"],
+    ["<?php echo $data['id']?>", "<?php echo $start. " - " . $end?>", "<?php echo $data['evaluation']?> %",
+        "<?php echo $Modificacion?>"],
 
 
-<?php } ?>
+    <?php } ?>
 ];
 
 var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
     "language": {
-    "searchPlaceholder": "Buscar datos...",
-    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
-    pageLength : 5,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
-    "order": [[0,'desc']],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
+    "order": [
+        [0, 'desc']
+    ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
-    columns: [
-    {title: "FOLIO"},
-    {title: "PERIÓDO"},
-    {title: "VALOR"},
-    {title: "FECHA MODIFICACIÓN"}
+    columns: [{
+            title: "FOLIO"
+        },
+        {
+            title: "PERIÓDO"
+        },
+        {
+            title: "VALOR"
+        },
+        {
+            title: "FECHA MODIFICACIÓN"
+        }
     ]
-    });
+});
 </script>
