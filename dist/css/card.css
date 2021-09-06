@@ -345,6 +345,10 @@ border-radius: 8px;
    content: "\f017";
  }
  
+ .declin:after {
+  content: "\f00d";
+}
+
  .facebook:after {
    content: "\f09a";
  }
@@ -389,6 +393,13 @@ border-radius: 8px;
    background: #f0bd17;
    
  }
+
+ .pend1,
+ .circular-checkbox input:checked + label {
+   background: #9b0000;
+   
+ }
+
 
 /*diseño de modal enviar corre*/
 .modal1 {

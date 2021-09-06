@@ -89,7 +89,7 @@ $psto = mysqli_query($conexion,$sql);
                     <!-- /.progress-group -->
                     <div class="col-sm-offset-1 col-md-10">
                         <div class="progress-group">
-                            <span class="progress-text">CURSOS PROGRAMADOS</span>
+                            <span class="progress-text">CURSOS PROGRAMADOS EN PROCESO</span>
                             <span class="progress-number">
                                 <div id="programado"></div>
                             </span>
@@ -102,12 +102,12 @@ $psto = mysqli_query($conexion,$sql);
                     <!-- /.progress-group -->
                     <div class="col-sm-offset-1 col-md-10">
                         <div class="progress-group">
-                            <span class="progress-text">CURSOS CANCELADOS</span>
+                            <span class="progress-text">CURSOS DECLINADOS</span>
                             <span class="progress-number">
                             <div id="CANCELADO"></div>
                             </span>
                             <div class="progress">
-                            <div class="progress-bar" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+                            <div class="progress-bar progress-bar-red" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
                              0% </div>
                             </div>
                         </div>
@@ -439,7 +439,7 @@ $psto = mysqli_query($conexion,$sql);
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label>CORREO PERSONAL</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -447,12 +447,20 @@ $psto = mysqli_query($conexion,$sql);
                                         id="gstCorro" name="gstCorro">
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label>CORREO INSTITUCIONAL</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                     <input disabled="" type="email" class="form-control" placeholder="Correo"
                                         id="gstCinst" name="gstCinst">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>CORREO ALTERNATIVO</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input disabled="" type="email" class="form-control" placeholder="Correo"
+                                        id="gstSpcID" name="gstSpcID">
                                 </div>
                             </div>
                         </div>
@@ -855,6 +863,32 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                 </section>
             </div>
             <!-------------------------------------------->
+           <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+  <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal1">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/declinado.png">
+    </div>
+  </div>
+  <!-- <input id="pruebadec" type="text"> -->
+  <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+  <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
+  <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
+  <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
+  <br>
+  <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label> 
+  <hr>
+  <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+  <label readonly id="otrosd" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
+</div>
+<script>
+
+</script>
+</div>
+<!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+            <!-------------------------------------------->
             <div class="tab-pane" id="curso">
                 <section class="content">
                     <div class="row">
@@ -862,6 +896,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Cursos programados</h3>
+                                    <input id="fecomp1" style='display:none' type="text">
                                 </div>
 <!--                                 <div class="form-group">
                                     <div class="col-sm-2">
@@ -886,6 +921,20 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                     </div>
                 </section>
             </div>
+            <script>
+    window.onload = function() {
+                            var fecha = new Date(); //Fecha actual
+                            var mes = fecha.getMonth() + 1; //obteniendo mes
+                            var dia = fecha.getDate(); //obteniendo dia
+                            var ano = fecha.getFullYear(); //obteniendo año
+                            if (dia < 10)
+                                dia = '0' + dia; //agrega cero si el menor de 10
+                            if (mes < 10)
+                                mes = '0' + mes //agrega cero si el menor de 10
+                            document.getElementById('fecomp1').value = ano + "-" + mes + "-" + dia;
+                        }
+</script>
+
             <!-- /.tab-pane -->
             <!-- /.tab-pane -->
         </div>

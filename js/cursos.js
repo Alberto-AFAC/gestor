@@ -1,4 +1,34 @@
 
+    //DECLINA1
+function declina(){
+    $(document).ready(function() {
+        //alert("declina")
+        $("#data-table-programado_wrapper tr").on('click', function() {
+            var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
+                    toma1 += $(this).find('td:eq(0)').html(); //NOMBRE DEL CURSO  
+                    toma2 += $(this).find('td:eq(2)').html(); //PDF
+                    toma3 += $(this).find('td:eq(6)').html(); //PDF                    
+            $("#nombredeclin").text(toma1); // Label esta en valor.php
+            $("#declinpdf").attr('href',toma2); // Label esta en valor.php
+            $("#motivod").text('Motivo:'+ toma3); // Label esta en valor.php
+            $("#otrosd").text(toma2); // Label esta en valor.php
+
+            if (toma3 == 'OTROS'){
+                document.getElementById('otrosd').style.display='';
+                document.getElementById('declinpdf').style.display='none';
+            }
+            if (toma3 == 'TRABAJO'){
+                document.getElementById('otrosd').style.display='none';
+                document.getElementById('declinpdf').style.display='';
+            }
+            if (toma3 == 'ENFERMEDAD'){
+                document.getElementById('otrosd').style.display='none';
+                document.getElementById('declinpdf').style.display='';
+            }
+        });
+    }); 
+}
+    
     //destroy:true,
     $.ajax({
     url:'../php/cursos.php',
@@ -44,8 +74,6 @@
 //var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
 //var fecha_actual = years.getFullYear();
 //document.getElementById("fecha").innerHTML = ""+'<b>CURSOS AÑO '+fecha_actual+'</b>';
- 
-
 
 function confirmar(idcurso){
 
@@ -92,8 +120,8 @@ function confirmar(idcurso){
 
 
 
-
-            if(obj.data[i].gstCargo=='COORDINADOR' && obj.data[i].codigo == lista || obj.data[i].gstCargo=='INSTRUCTOR' && obj.data[i].codigo == lista){
+// TRAE EL CORDINADOR PRINCIPAL DEL CURSO
+            if(obj.data[i].gstCargo=='COORDINADOR' && obj.data[i].codigo == lista && obj.data[i].idinst == obj.data[i].idinsp || obj.data[i].gstCargo=='INSTRUCTOR' && obj.data[i].codigo == lista){
                         
                       html += "<tr><td>"+x+"</td><td>"+obj.data[i].gstNombr+' '+obj.data[i].gstApell+"</td><td>"+obj.data[i].gstCargo+"</td></tr>";
             }
@@ -172,10 +200,19 @@ if(conf==0){
                 }, 4000);
 
             } else if (r == 0) {
-                $('#exito').toggle('toggle');
-                setTimeout(function() {
-                    $('#exito').toggle('toggle');
-                }, 4000);
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Su respuesta fue enviada con exito',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                setTimeout("location.href = 'inspector.php';", 2000);
+               // $('#exito').toggle('toggle');
+                //setTimeout(function() {
+                  //  $('#exito').toggle('toggle');
+                //}, 4000);
 
                         // setTimeout(function(){
                         // $("#data-table-confirmar").load(location.reload() + " #data-table-confirmar");

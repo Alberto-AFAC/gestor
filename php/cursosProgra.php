@@ -23,20 +23,28 @@
 
 
 		ini_set('date.timezone','America/Mexico_City');
-
+//-----COMPARACIÓN DE FECHAS DE VENCIMIENTO
 		$factual = strtotime(Date("Y-m-d"));
 		$fcurso = strtotime(Date($data["fcurso"]));
-
-		if ($factual > $fcurso && $data["proceso"] == "PENDIENTE") {
+		$sumfech= $data["gstVignc"]; //VIGENCIA DEL CURSO
+		$ftermino =strtotime($fcurso. '+'.$sumfech.'years'); //se suma los años del vencimiento
+		$xvencer = (($data["gstVignc"] * 12) - 3);
+		$xvencer1 =strtotime($fcurso. '+'.$xvencer.'months'); //SE restan 3 meses 
+	
+		if ($factual < $xvencer1 &&  $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
+		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>prueba</span>";
+		$proc = 'prueba';
+	
+	}
+//LOS RECURRENTES VENCEN CADA 3 AÑOS 
+		if ($factual >= $ftermino && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 		$proc = 'VENCIDO';
-		} else
-
-		if($data["proceso"] == 'PENDIENTE'){
-
+	} else
+		if($data["proceso"] == 'PENDIENTE'){ //PENDIENTE
 		$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
 		$proc = 'PENDIENTE';
-		} else if($data["proceso"] == 'FINALIZADO'){
+		}else if($data["proceso"] == 'FINALIZADO'){
 		$proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
 		$proc = 'FINALIZADO';
 		} else if($data["proceso"] == 'EN PROCESO'){
@@ -44,7 +52,8 @@
 		$proc = 'EN PROCESO';
 		} 
 		$cursos[] = [ 
-			$contador, 
+			$contador,
+		//$data["codigo"], 
 		$data["gstTitlo"],
 		$data["gstTipo"],
 		$data["fcurso"],

@@ -146,6 +146,18 @@ unset($_SESSION['consulta']);
             
           </ul>
         </li>-->
+        <li class="active">
+          <a href="inspector.php">
+            <i><img src="../dist/img/perfil.png" class="user-image" alt="User Image" style="
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;"></i> <span>PERFIL</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>   
 
         <li class="active">
           <a href="inicio.php">

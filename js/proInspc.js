@@ -38,7 +38,7 @@ $.ajax({
 // }); 
 
 function proCurso() {
-
+    
     var idInsptr = new Array();
 
     $("input[name='idinsp[]']:checked").each(function() {
@@ -61,7 +61,7 @@ function proCurso() {
     // var idcord = document.getElementById('idcord').value;
 
     var id_mstr = document.getElementById('id_mstr').value;
-
+   
 
     var hcurso = document.getElementById('hcurso').value;
     var fcurso = document.getElementById('fcurso').value;
@@ -71,14 +71,16 @@ function proCurso() {
     var link = document.getElementById('link').value;
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
-
+   
+    
     idinsps = idInsptr + '' + idInstr;
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
 
-    alert(datos);
+   // alert(datos);
 
-    if (idcord == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
+    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
+      
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -91,7 +93,7 @@ function proCurso() {
         $.ajax({
             url: '../php/proCurso.php',
             type: 'POST',
-            data: 'idcord=' + idcord + '&idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&opcion=procurso'
+            data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&opcion=procurso'
         }).done(function(respuesta) {
 
             console.log(respuesta);

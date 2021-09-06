@@ -89,7 +89,7 @@ $psto = mysqli_query($conexion,$sql);
                     <!-- /.progress-group -->
                     <div class="col-sm-offset-1 col-md-10">
                         <div class="progress-group">
-                            <span class="progress-text">CURSOS PROGRAMADOS</span>
+                            <span class="progress-text">CURSOS PROGRAMADOS EN PROCESO</span>
                             <span class="progress-number">
                                 <div id="programado"></div>
                             </span>
@@ -102,12 +102,12 @@ $psto = mysqli_query($conexion,$sql);
                     <!-- /.progress-group -->
                     <div class="col-sm-offset-1 col-md-10">
                         <div class="progress-group">
-                            <span class="progress-text">CURSOS CANCELADOS</span>
+                            <span class="progress-text">CURSOS DECLINADOS</span>
                             <span class="progress-number">
                             <div id="CANCELADO"></div>
                             </span>
                             <div class="progress">
-                            <div class="progress-bar" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+                            <div class="progress-bar progress-bar-red" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
                              0% </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="col">INCISO</th>
                             <th scope="col" style="width: 600px;">DOCUMENTO</th>
                             <th scope="col">CUMPLE</th> 
-                            <th scope="col">FECHA DE REVISIÓN</th>
+                            <th scope="col">ESTATUS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -439,7 +439,7 @@ $psto = mysqli_query($conexion,$sql);
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label>CORREO PERSONAL</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -447,12 +447,20 @@ $psto = mysqli_query($conexion,$sql);
                                         id="gstCorro" name="gstCorro">
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label>CORREO INSTITUCIONAL</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                     <input disabled="" type="email" class="form-control" placeholder="Correo"
                                         id="gstCinst" name="gstCinst">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>CORREO ALTERNATIVO</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input disabled="" type="email" class="form-control" placeholder="Correo"
+                                        id="gstSpcID" name="gstSpcID">
                                 </div>
                             </div>
                         </div>
@@ -856,7 +864,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                 </section>
             </div>
             <!-- modal evaluar -->
-  <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+  <!-- DETALLE DECLINA CONVOCATORIA -->
   <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal1">
   
@@ -865,11 +873,11 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
     <img class="img-circle1" src="../dist/img/declinado.png">
     </div>
   </div>
-  <!-- <input id="pruebadec" type="text"> -->
   <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
   <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
   <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
   <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
+  <br>
   <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
   <hr>
   <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
@@ -879,7 +887,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
 
 </script>
 </div>
-<!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+<!--FIN DETALLE DECLINA CONVOCATORIA -->
             <!-------------------------------------------->
             <div class="tab-pane" id="curso">
                 <section class="content">

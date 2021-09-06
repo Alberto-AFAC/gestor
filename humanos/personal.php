@@ -359,6 +359,14 @@ $psto = mysqli_query($conexion,$sql);
                             <input type="email" class="form-control inputalta" placeholder="correo@sct.gob.mx" id="gstCinst" name="gstCinst">
                           </div>
                     </div>
+                    <div class="col-sm-4">
+                                <label>CORREO ALTERNATIVO</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input disabled="" type="email" class="form-control" placeholder="Correo"
+                                        id="gstSpcID" name="gstSpcID">
+                                </div>
+                            </div>
                    <br> <br> <br> <br> 
                    <div class="form-group">
                     <div class="col-sm-10">

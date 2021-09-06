@@ -213,13 +213,14 @@ function certificado() {
 function openCurso() {
     $("#detCurso").toggle(250); //Muestra contenedor 
     $("#listCurso").toggle("fast"); //Oculta lista
-
-    //document.getElementById('nombre').disabled='false';
+   
 }
 
 function closeCurso() {
     $("#listCurso").toggle(250); //Muestra lista  
     $("#detCurso").toggle("fast"); //Oculta contenedor
+
+   
 }
 
 // function agrPart(cursos) {
@@ -420,6 +421,7 @@ function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     } else {
         che1.style.display = 'none';
     }
+    
 }
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
