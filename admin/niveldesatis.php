@@ -114,8 +114,9 @@ include('header.php');
                                         for=""><?php echo ($totalresg)?></label>
 
                                 </div>
-                                <button id="button" type="button" class="btn btn-info" style="float: right"> EVALUACIÓN
+                                <button id="button" type="button" class="btn btn-info" style="float: left"> NIVEL GENERAL DE SATISFACCIÓN
                                     DE SATISFACCIÓN</button>
+                                <button type="button" data-toggle="modal" data-target="#basicModal" class="btn btn-info" style="float: right"> NIVEL DE SATISFACCIÓN DESEADA</button>
                             </div>
                             <div class="box-body text-center">
                                 <div class="col-md-6">
@@ -132,7 +133,7 @@ include('header.php');
                                 <div class="col-md-6">
                                     <div class="box box-info">
                                         <div class="box-header with-border">
-                                            <h3 style="color: gray;" data-toggle="modal" data-target="#basicModal"
+                                            <h3 style="color: gray;"
                                                 class="box-title">NIVEL DE SATISFACCIÓN DESEADA
                                             </h3>
                                         </div>
@@ -142,8 +143,8 @@ include('header.php');
                                         } else {
                                             echo "$row[evaluation] %";
                                         }
-                                        ?>
-
+                                        ?><br>
+                                      
                                         </div>
                                     </div>
                                 </div>
@@ -621,7 +622,7 @@ $(document).ready(function() {
                     Swal.fire({
                         type: 'success',
                         title: 'AFAC INFORMA',
-                        text: 'Sus datos fueron guardados correctamente',
+                        text: 'Ponderación de evaluación actualizada satisfactoriamente',
                         showConfirmButton: false,
                         timer: 2900,
                         customClass: 'swal-wide',
@@ -652,8 +653,8 @@ $resultado = mysqli_query($conexion, $query);
           $end = date("d-m-Y");
       ?>
 
-    ["<?php echo $data['id']?>", "<?php echo $start. " - " . $end?>", "<?php echo $data['evaluation']?> %",
-        "<?php echo $Modificacion?>"],
+    ["<?php echo $data['id']?>", "<?php echo $start. " - " . $end?>", "<?php echo $Modificacion?>",
+        "<?php echo $data['evaluation']?> %"],
 
 
     <?php } ?>
@@ -682,10 +683,10 @@ var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
             title: "PERIÓDO"
         },
         {
-            title: "VALOR"
+            title: "FECHA MODIFICACIÓN"
         },
         {
-            title: "FECHA MODIFICACIÓN"
+            title: "VALOR"
         }
     ]
 });
