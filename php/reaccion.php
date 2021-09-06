@@ -45,6 +45,65 @@ if($opcion === 'agreaccion'){
 	}
 
 
+}else if($opcion === 'constancia'){
+
+
+// $id = $_POST['cgstInspr'];
+// $listregis = $_POST['listregis'];
+
+
+$valor = $_POST['valor'];
+$varray1 = json_decode($valor, true);
+$valor = count($varray1);
+
+$array2 = $_POST['array2'];
+$array2 = json_decode($array2, true);
+
+$array3 = $_POST['array3'];
+$varray3 = json_decode($array3, true);
+
+$array4 = $_POST['array4'];
+$varray4 = json_decode($array4, true);
+
+$array5 = $_POST['array5'];
+$varray5 = json_decode($array5, true);
+
+$array6 = $_POST['array6'];
+$varray6 = json_decode($array6, true);
+
+$array7 = $_POST['array7'];
+$varray7 = json_decode($array7, true); 
+
+for($i=0; $i<$valor; $i++){
+
+$idcons = $varray1[$i]["cgstInspr"];
+$listreg = $varray1[$i]["listregis"];
+$lisasisten = $array2[$i]["lisasisten"];
+$listreportein = $varray3[$i]['listreportein']; 
+$cartdescrip = $varray4[$i]['cartdescrip']; 
+$regponde = $varray5[$i]['regponde']; 
+$infinal = $varray6[$i]['infinal']; 
+$evreaccion = $varray7[$i]['evreaccion']; 
+
+if($listreg==1){ $listreg = 'SI'; }else{ $listreg = 'NO'; }
+if($lisasisten==1){ $lisasisten = 'SI'; }else{ $lisasisten = 'NO'; }
+if($listreportein==1){ $listreportein = 'SI'; }else{ $listreportein = 'NO'; }
+if($cartdescrip==1){ $cartdescrip = 'SI'; }else{ $cartdescrip = 'NO'; }
+
+if($regponde==1){ $regponde = 'SI'; }else{ $regponde = 'NO'; }
+if($infinal==1){ $infinal = 'SI'; }else{ $infinal = 'NO'; }
+if($evreaccion==1){ $evreaccion = 'SI'; }else{ $evreaccion = 'NO'; }
+
+
+if(constancia($idcons,$listreg,$lisasisten,$listreportein,$cartdescrip,$regponde,$infinal,$evreaccion,$conexion)){
+	echo "0";
+	}else{
+	echo "1";
+	}
+
+}
+ 
+
 }
 
 
@@ -72,30 +131,32 @@ function reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,
 				}
 
 
-// `id_reac`
-// `id_cursor`
-// `fechareac`
-// `pregunta1`
-// `pregunta2`
-// `pregunta3`
-// `pregunta4`
-// `pregunta5`
-// `pregunta6`
-// `pregunta7`
-// `pregunta8`
-// `pregunta9`
-// `pregunta10`
-// `pregunta11`
-// `pregunta12`
-// `pregunta13`
-// `pregunta14`
-// `pregunta15`
-// `pregunta16`
-// `estado`
-
 function cerrar($conexion){
 
 	mysqli_close($conexion);
+
+}
+
+function constancia($idcons,$listreg,$lisasisten,$listreportein,$cartdescrip,$regponde,$infinal,$evreaccion,$conexion){
+
+	$query = "UPDATE constancias SET 
+	listregis='$listreg', 
+	lisasisten='$lisasisten',
+	listreportein='$listreportein',
+	cartdescrip='$cartdescrip',
+	regponde='$regponde',
+	infinal='$infinal',
+	evreaccion='$evreaccion'
+	WHERE id='$idcons'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
 
 }
 ?>

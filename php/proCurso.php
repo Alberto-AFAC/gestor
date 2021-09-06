@@ -35,6 +35,9 @@ foreach ($valor as $idinsps) {
 		}else{	
 			echo "1";	
 		}
+
+		contancia($idinsps,$codigo, $conexion);
+
 //		if(enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
 	//	{ 
 //			echo "0";	
@@ -70,6 +73,8 @@ $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
 $idinsps= $_POST['idinsp'];
 $codigo = $_POST['acodigos'];
+
+contancia($idinsps,$codigo, $conexion);
 
 if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion))
 		{	echo "0";	}else{	echo "1";	}
@@ -128,6 +133,21 @@ function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modal
 		}else{
 				}		
 					}
+
+
+
+function contancia($idinsps,$codigo,$conexion){
+
+			$query="INSERT INTO constancias VALUES(0,$idinsps,'$codigo','','','','','','','',0,0);";
+				if(mysqli_query($conexion,$query)){
+					
+					return true;
+				}
+				else{
+					return false;
+				}
+				
+}
 
 
 //PARTICIPANTES

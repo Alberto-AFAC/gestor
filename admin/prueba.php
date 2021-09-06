@@ -2,8 +2,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <form>
 <table>
+<?php for($i=0; $i<3; $i++){?>
 <input type='checkbox' value='1'>
 <input type="checkbox" value='2'>
+<?php }?>
+
 </table>  
 <button type="button" onclick="mostrar()">enviar</button>
 </form>
@@ -146,3 +149,76 @@ var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate
 
 </script>
 
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<table class="table is-striped">
+  <theader>
+    <th>Nombre</th>
+    <th>Estatus</th>
+  </theader>
+  <tbody>
+    <tr>
+      <td>Pedro</td>
+      <td>
+        <input type="checkbox" name="cbxEstudiante" value="1" /></td>
+    </tr>
+    <tr>
+      <td>Santiago</td>
+      <td>
+        <input type="checkbox" name="cbxEstudiante" value="2" /></td>
+    </tr>
+    <tr>
+      <td>María</td>
+      <td>
+        <input type="checkbox" name="cbxEstudiante" value="3" /></td>
+    </tr>
+    <tr>
+      <td>Juan</td>
+      <td>
+        <input type="checkbox" name="cbxEstudiante" value="4" /></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="button is-primary" onclick="btnEnviar();">Enviar</a>
+
+    <script type="text/javascript">
+
+function btnEnviar(){
+  var arrTodo = new Array();
+  /*Agrupamos todos los input con name=cbxEstudiante*/
+  $('input[name="cbxEstudiante"]').each(function(element) {
+    var item = {};
+    item.id = this.value;
+    item.status = this.checked;
+    arrTodo.push(item);
+  });
+
+  /*Creamos un objeto para enviarlo al servidor*/
+  var toPost = JSON.stringify(arrTodo);
+  console.log(toPost);
+  
+  alert(toPost);
+  /*
+    Aquí convendría lanzar una petición Ajax al servidor
+    enviándole la variabel toPost
+    En el servidor desglosamos esa variable
+    obteniendo cada id y cada estatus y procesamos los datos
+  */
+}
+
+  	
+ </script>
+<?php
+    $numeros=[10,20,30,40];
+    $matriz_numeros=[{2,4,6,8},{5,10,15,20},{10,20,30,40}];
+?>
+
+<pre>
+<?php 
+    echo '<strong>$matriz_numeros</strong><br>'; // Mostramos literal con  el nombre del array 
+    print_r($matriz_numeros); //  Imprimir estructura y contenido del array
+?>
+</pre>
