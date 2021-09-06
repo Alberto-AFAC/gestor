@@ -458,6 +458,144 @@ function evaluarins(cursos) {
     }
 }
 
+
+function generacion(cursos) {
+
+    var d = cursos.split("*");
+    $("#cursoc").html(d[1]);
+    $("#folioc").html(d[21]);
+
+
+
+                $.ajax({
+                    url: '../php/conInsp.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 0;
+
+                     html = '<table id="reacc" class="table table-hover"><tr><th colspan="10">CURSO: <label>'+d[1]+'</label></th><th colspan="2">FOLIO: <label>'+d[21]+' <input type="hidden" name="idcod" id="idcod" value='+d[21]+'></label></th></tr><tr style="font-size: 12px;"><th>ID</th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
+                    for (G = 0; G < res.length; G++) {
+
+                        //if(obj.data[E].gstCatga == gstIDCat){
+
+                        //if(obj.data[E].gstOrden==1){
+// <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
+                        if(obj.data[G].id_codigocurso==d[21]){
+                        x++;
+
+                        //alert(obj.data[G].id);
+
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td><input type='checkbox' id='listregis' name='listregis' value='"+obj.data[G].id+"'/> </td><td><input type='checkbox' name='lisasisten' id='lisasisten' /></td><td><input type='checkbox' name='listreportein' id='listreportein'/></td><td><input type='checkbox' name='cartdescrip' id='cartdescrip'/></td><td><input type='checkbox' name='regponde' id='regponde'/></td><td><input type='checkbox' name='infinal' id='infinal'/></td><td><input type='checkbox' name='evreaccion' id='evreaccion' /></td><td><input type='checkbox' name='copias' id='copias' /></td><td><input type='checkbox' name='estado_cer' id='estado_cer' /></td></tr>";
+
+                        }
+
+                        // <td>" + obj.data[G].gstApell + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
+                        //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
+                        // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
+                        //}<td><input id='comntr' name='comntr[]'> </td>
+                        //}
+                    }
+                    html +='</table>';
+                    $("#generacion").html(html);
+                })
+}
+
+function generar(){
+
+  var cgstInspr = new Array();
+  /*Agrupamos todos los input con name=cbxEstudiante*/
+  $('input[name="listregis"]').each(function(element) {
+    var item ={};
+    item.cgstInspr = this.value;
+    item.listregis = this.checked;
+    cgstInspr.push(item);
+  });
+
+  var lisasisten = new Array();
+  /*Agrupamos todos los input con name=cbxEstudiante*/
+  $('input[name="lisasisten"]').each(function(element) {
+    var item ={};
+    item.lisasisten = this.checked;
+    lisasisten.push(item);
+  });
+
+
+    var listreportein = new Array();  
+  $('input[name="listreportein"]').each(function(element) {
+    var item ={};
+    item.listreportein = this.checked;
+    listreportein.push(item);
+  });
+
+
+    var cartdescrip = new Array();  
+  $('input[name="cartdescrip"]').each(function(element) {
+    var item ={};
+    item.cartdescrip = this.checked;
+    cartdescrip.push(item);
+  });
+
+    var regponde = new Array();  
+  $('input[name="regponde"]').each(function(element) {
+    var item ={};
+    item.regponde = this.checked;
+    regponde.push(item);
+  });
+
+    var infinal = new Array();  
+  $('input[name="infinal"]').each(function(element) {
+    var item ={};
+    item.infinal = this.checked;
+    infinal.push(item);
+  });
+
+    var evreaccion = new Array();  
+  $('input[name="evreaccion"]').each(function(element) {
+    var item ={};
+    item.evreaccion = this.checked;
+    evreaccion.push(item);
+  });
+
+
+  /*Creamos un objeto para enviarlo al servidor*/
+  var array1 = JSON.stringify(cgstInspr);
+  var array2 = JSON.stringify(lisasisten);
+  var array3 = JSON.stringify(listreportein);
+  var array4 = JSON.stringify(cartdescrip);
+  var array5 = JSON.stringify(regponde);
+  var array6 = JSON.stringify(infinal);
+  var array7 = JSON.stringify(evreaccion);
+
+    datos  = 'valor='+array1+'&array2='+array2+'&array3='+array3+'&array4='+array4+'&array5='+array5+'&array6='+array6+'&array7='+array7+'&opcion=constancia';
+
+    $.ajax({
+        url: '../php/reaccion.php',
+        type: 'POST',
+        data: datos
+        }).done(function(respuesta) {
+            alert(respuesta);
+        if (respuesta == 0) {
+            // $('#succ').toggle('toggle');
+            // setTimeout(function() {
+            // $('#succ').toggle('toggle');
+            // }, 2000);
+        } else {
+            // $('#dange').toggle('toggle');
+            // setTimeout(function() {
+            // $('#dange').toggle('toggle');
+            // }, 2000);
+        }
+    });
+
+
+
+}
+
+
+
+
 //EDICIÓN DEL CURSO
 function editcurso() {
     document.getElementById('cerrareditc').style.display = ''; //muestra boton cerrar edición

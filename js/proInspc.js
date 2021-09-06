@@ -76,7 +76,7 @@ function proCurso() {
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
 
-    
+    alert(datos);
 
     if (idcord == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
 

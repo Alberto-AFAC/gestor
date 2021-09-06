@@ -385,50 +385,72 @@ $inspector = mysqli_query($conexion,$sql);
     </form>
     <!-- EVALUACIÓN MASIVA DEL INSTRUCTOR -->
     <!-- inicia la evaluación DEL INSTRUCTOR -->
+
+
+
+
+
+<!--  <form class="form-horizontal" action="" method="POST" id="avaluacion">
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+<h3 class="box-title">Responsive Hover Table</h3>
+
+<div class="box-tools">
+<div class="input-group input-group-sm" style="width: 150px;">
+<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+<div class="input-group-btn">
+<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="box-body table-responsive no-padding">
+
+</div>
+
+</div>
+
+</div>
+</div>
+</form> -->
+
+
+
+
+
+
+
+
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" rel="stylesheet"/>
+ --><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+
     <form class="form-horizontal" action="" method="POST" id="avaluacion">
-        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal fade" id="modal-masiva">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content" style="width: 1100px;">
                         <div class="modal-header">
                             <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
                                 aria-label="Close">
                                 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
                             <p>
-                            <h4 class="modal-title" style="text-align:center;">EVALUACIÓN GENERAL DE PARTICIPANTES</h4><br>
+                            <h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS DE PARTICIPANTES</h4><br>
                             <div class="col-sm-12">
-                            <div style="width: 100%;overflow: scroll;">
-                            <table width="100%" class="table table-striped table-bordered dataTable">
-                            <thead style="text-align: center;">
-                                            <tr style="font-size: 12px;">
-                                                <th>ITEM</th>
-                                                <th>PARTICIPANTE</th>
-                                                <th>CONVOCATORIA Y CONFIRMACIÓN</th>
-                                                <th>LISTA DE REGISTRO</th>
-                                                <th>LISTA DE ASISTENCIA </th>
-                                                <th>REPORTES DE INCIDENCIAS</th>
-                                                <th>CARTAS DESCRIPTIVAS</th>
-                                               <th>EVALUACIÓN POR PARTICIPANTE</th>
-                                               <th>REGISTRO DE PONDERACIÓN</th>
-                                                <th>INFORME FINAL</th>
-                                                <th>EVALUACIÓN DE REACCIÓN</th> 
-                                                <th>EVALUACIÓN</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <td>101</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+          
+<!-- <table class="table table-hover"><tr><th colspan="10">CURSO: <label id="cursoc"></label></th><th colspan="2">FOLIO: <label id="folioc"></label></th></tr>    <tr style="font-size: 12px;"><th>ID</th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr></table>
+ -->
+<div id="generacion"></div>
 
-                                    </tbody>
-                                </table>
-                            </div>
+          
+
+
                                                                 </div>
                             </p>
                             <!-- <label>PARTICIPANTE</label> -->
@@ -501,7 +523,7 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="form-group">
                                 <div class="col-sm-5">
                                     <button type="button" class="btn btn-primary"
-                                        onclick="cerrareval()">ACEPTAR</button>
+                                        onclick="generar()">ACEPTAR</button>
                                 </div>
                                 <b>
                                     <p class="alert alert-warning text-center padding error" id="dangerev">Error al
@@ -524,10 +546,9 @@ $inspector = mysqli_query($conexion,$sql);
                     </div>
                 </div>
             </div>
-
-            <!-- /.modal-content -->
-            <!-- /.modal-dialog -->
     </form>
+
+
     <!-- /.content -->
 
     </section>
@@ -1136,7 +1157,7 @@ function idcurso(codigo){
 //TODO
                     //ISPECTOR TODO
                     if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" + "<td>  <a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' + cursos + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-masiva'><i class='fa fa-list-alt' style='font-size:18px;'></i></a> <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' style='font-size:18px;' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" + "<td>  <a type='button' id='ev' title='Evaluación Inspector' onclick='generacion(" + '"' + cursos + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-masiva'><i class='fa fa-list-alt' style='font-size:18px;'></i></a> <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' style='font-size:18px;' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                     }
 
                 } else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
