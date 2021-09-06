@@ -135,21 +135,22 @@ include('header.php');
 
     
     <div class="col-sm-4">
-    <label class="label2">COORDINADOR </label>
+    <label class="label2">COORDINADOR</label>
       <select class="form-control inputalta" id="idcord" name="idcord" style="width: 100%;">
           <option value="0">SELECCIONE COORDINADOR </option> 
           <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
           <option value="<?php echo $cordinadors[0]?>"><?php echo $cordinadors[1].' '.$cordinadors[2]?></option>
+          
           <?php endwhile; ?>
       </select>
     </div>
+
     <?php //include('advanced.php');?>
 
     <div class="col-sm-4">
     <label class="label2">INSTRUCTOR</label>
       <select style="width: 100%" class="form-control inputalta" class="selectpicker" id="idinst" name="idinst[]" type="text" multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR" data-live-search="true">
           <?php while($instructors = mysqli_fetch_row($instructor)):?>
-
           <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
           <?php endwhile; ?>
       </select>

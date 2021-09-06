@@ -89,7 +89,7 @@ $psto = mysqli_query($conexion,$sql);
                     <!-- /.progress-group -->
                     <div class="col-sm-offset-1 col-md-10">
                         <div class="progress-group">
-                            <span class="progress-text">CURSOS PROGRAMADOS</span>
+                            <span class="progress-text">CURSOS PROGRAMADOS EN PROCESO</span>
                             <span class="progress-number">
                                 <div id="programado"></div>
                             </span>
@@ -102,12 +102,12 @@ $psto = mysqli_query($conexion,$sql);
                     <!-- /.progress-group -->
                     <div class="col-sm-offset-1 col-md-10">
                         <div class="progress-group">
-                            <span class="progress-text">CURSOS CANCELADOS</span>
+                            <span class="progress-text">CURSOS DECLINADOS</span>
                             <span class="progress-number">
                             <div id="CANCELADO"></div>
                             </span>
                             <div class="progress">
-                            <div class="progress-bar" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+                            <div class="progress-bar progress-bar-red" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
                              0% </div>
                             </div>
                         </div>

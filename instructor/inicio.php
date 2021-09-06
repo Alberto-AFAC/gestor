@@ -110,7 +110,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-people"></i>
                             </div>
-                            <a href="persona.php" class="small-box-footer">Mas Información <i
+                            <a href="inicio.php" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
