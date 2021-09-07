@@ -653,7 +653,7 @@ $resultado = mysqli_query($conexion, $query);
           $end = date("d-m-Y");
       ?>
 
-    ["<?php echo $data['id']?>", "<?php echo $start. " - " . $end?>", "<?php echo $Modificacion?>",
+    ["<?php echo $data['id']?>", "<?php echo $data['start_date']. " - " . $data['end_date']?>", "<?php echo $Modificacion?>",
         "<?php echo $data['evaluation']?> %"],
 
 
