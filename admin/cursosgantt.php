@@ -33,7 +33,7 @@ $inspector = mysqli_query($conexion,$sql);
     <script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <!-- <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/v8/js/anychart-gantt.min.js"></script>
@@ -41,7 +41,9 @@ $inspector = mysqli_query($conexion,$sql);
     <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
     <script src="https://cdn.anychart.com/releases/8.10.0/locales/es-es.js"></script>
     <script src="https://cdn.anychart.com/releases/8.10.0/themes/dark_provence.min.js"></script>
-    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet"> -->
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.min.css'><link rel="stylesheet" href="./style.css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,57 +88,13 @@ $inspector = mysqli_query($conexion,$sql);
                                     <div id="legend"></div>
                                     <div class="toolbar">
     
-    <label for="startMonth">Selecciona mes: </label>
-    
-    <select name="startMonth" id="startMonth">
-      
-      <option value="1">Enero</option>
-      
-      <option value="2">Febrero</option>
-      
-      <option value="3">Marzo</option>
-      
-      <option value="4">Abril</option>
-      
-      <option value="5">Mayo</option>
-      
-      <option value="6">Junio</option>
-      
-      <option value="7">Julio</option>
-      
-      <option value="8">Agosto</option>
-      
-      <option value="9">Septiembre</option>
-      
-      <option value="10">Octubre</option>
-      
-      <option value="11">Noviembre</option>
-      
-      <option value="12">Diciembre</option>
-    
-    </select>
-  
+                                    <div id='calendar'></div>
+
   </div> 
                                     <div style="width: 96%; height: 400px;" id="container"></div>
                                 </div>
 
-                                <section class="content" id="viscurso">
-
-                            </div>
-
-                            <!-- /.tab-content -->
-                        </div>
-                        <!-- /.nav-tabs-custom -->
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-
-
-
-        </div>
-        <script type="text/javascript" src="../js/encuestadatos.js"></script>
-        </section>
+                                
     </div>
     </div>
     </div>
@@ -201,6 +159,8 @@ $inspector = mysqli_query($conexion,$sql);
     <script src="js/anychart-exports.min.js"></script>
     <script src="js/anychart-gantt.min.js"></script>
     <script src="js/anychart-data-adapter.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.min.js'></script><script  src="./script.js"></script>
+
     <script>
     // anychart.onDocumentReady(function () {
     //     var locale = "es-mx";
@@ -828,114 +788,136 @@ $inspector = mysqli_query($conexion,$sql);
     //       );
     //     });
     //TODO ESTE ES EL NUEVO GANTT
-    anychart.onDocumentReady(function() {
-        var locale = "es-mx";
-        anychart.format.outputLocale('es-es');
-        anychart.data.loadJsonFile(
-            '../php/lisCursoGanntt.php',
-            function(data) {
+    // anychart.onDocumentReady(function() {
+    //     var locale = "es-mx";
+    //     anychart.format.outputLocale('es-es');
+    //     anychart.data.loadJsonFile(
+    //         '../php/lisCursoGanntt.php',
+    //         function(data) {
 
-                // create data tree
-                var treeData = anychart.data.tree(data, 'as-table');
+    //             // create data tree
+    //             var treeData = anychart.data.tree(data, 'as-table');
 
-                // create resource gantt chart
-                var chart = anychart.ganttResource();
-                var timeline = chart.getTimeline();
-                timeline
-                    .tooltip()
-                    .useHtml(true)
-                    .format(function() {
-                        return (
-                            'Inicio: ' +
-                            anychart.format.date(this.start) +
-                            '\n' +
-                            'Termina: ' +
-                            anychart.format.date(this.end) +
-                            '\n'
-                        );
-                    });
+    //             // create resource gantt chart
+    //             var chart = anychart.ganttResource();
+    //             var timeline = chart.getTimeline();
+    //             timeline
+    //                 .tooltip()
+    //                 .useHtml(true)
+    //                 .format(function() {
+    //                     return (
+    //                         'Inicio: ' +
+    //                         anychart.format.date(this.start) +
+    //                         '\n' +
+    //                         'Termina: ' +
+    //                         anychart.format.date(this.end) +
+    //                         '\n'
+    //                     );
+    //                 });
 
-                // set data for the chart
-                chart.data(treeData);
+    //             // set data for the chart
+    //             chart.data(treeData);
 
-                chart
-                    .rowSelectedFill('#D4DFE8')
-                    .rowHoverFill('#EAEFF3')
-                    // set start splitter position settings
-                    .splitterPosition(150);
+    //             chart
+    //                 .rowSelectedFill('#D4DFE8')
+    //                 .rowHoverFill('#EAEFF3')
+    //                 // set start splitter position settings
+    //                 .splitterPosition(150);
 
-                // get chart data grid link to set column settings
-                var dataGrid = chart.dataGrid();
+    //             // get chart data grid link to set column settings
+    //             var dataGrid = chart.dataGrid();
 
-                // set first column settings
-                dataGrid
-                    .column(0)
-                    .title('Items')
-                    .width(70)
-                    .labels({
-                        hAlign: 'center'
-                    });
+    //             // set first column settings
+    //             dataGrid
+    //                 .column(0)
+    //                 .title('Items')
+    //                 .width(70)
+    //                 .labels({
+    //                     hAlign: 'center'
+    //                 });
 
-                // set second column settings
-                dataGrid.column(1).title('Nombre del curso').width(170);
+    //             // set second column settings
+    //             dataGrid.column(1).title('Nombre del curso').width(170);
 
-                var tl = chart.getTimeline();
-                // set base stroke
-                tl.elements().stroke('0.5 black');
-                // set base labels settings
-                tl.elements()
-                    .labels()
-                    .enabled(true)
-                    .fontColor('#fff')
-                    // format labels
-                    .format(function() {
-                        var name = this.name;
-                        // create short name
-                        // sample: Trevor Moore => T.M
-                        var shortName = name
-                            .split(' ')
-                            .map(function(item) {
-                                return item[0];
-                            })
-                            .join('.');
+    //             var tl = chart.getTimeline();
+    //             // set base stroke
+    //             tl.elements().stroke('0.5 black');
+    //             // set base labels settings
+    //             tl.elements()
+    //                 .labels()
+    //                 .enabled(true)
+    //                 .fontColor('#fff')
+    //                 // format labels
+    //                 .format(function() {
+    //                     var name = this.name;
+    //                     // create short name
+    //                     // sample: Trevor Moore => T.M
+    //                     var shortName = name
+    //                         .split(' ')
+    //                         .map(function(item) {
+    //                             return item[0];
+    //                         })
+    //                         .join('.');
 
-                        var label = this.label;
+    //                     var label = this.label;
 
-                        var barBounds = this.barBounds;
-                        var labelBounds = label.measureWithText(name);
+    //                     var barBounds = this.barBounds;
+    //                     var labelBounds = label.measureWithText(name);
 
-                        // if width of the label is greater than the width of the bar, then we show short name
-                        if (barBounds.width < labelBounds.width) {
-                            return shortName;
-                        }
+    //                     // if width of the label is greater than the width of the bar, then we show short name
+    //                     if (barBounds.width < labelBounds.width) {
+    //                         return shortName;
+    //                     }
 
-                        return name;
-                    })
-                    // set text shadow for the elements labels
-                    .textShadow({
-                        color: '#005D4C',
-                        offsetX: '1px',
-                        offsetY: '1px',
-                        blurRadius: '1px'
-                    });
+    //                     return name;
+    //                 })
+    //                 // set text shadow for the elements labels
+    //                 .textShadow({
+    //                     color: '#005D4C',
+    //                     offsetX: '1px',
+    //                     offsetY: '1px',
+    //                     blurRadius: '1px'
+    //                 });
 
-                // set container id for the chart
-                chart.container('container');
+    //             // set container id for the chart
+    //             chart.container('container');
 
-                // initiate chart drawing
-                chart.draw();
+    //             // initiate chart drawing
+    //             chart.draw();
 
-                // zoom chart to specified date
-                chart.zoomTo(1191168000000, 1201795200000);
-                document
-                .getElementById('startMonth')
-                .addEventListener('change', function (event) {
-                  // set fiscal year start month
-                  chart.xScale().fiscalYearStartMonth(event.target.value);
-                });
-            }
-        );
-    });
+    //             // zoom chart to specified date
+    //             chart.zoomTo(1191168000000, 1201795200000);
+    //             document
+    //             .getElementById('startMonth')
+    //             .addEventListener('change', function (event) {
+    //               // set fiscal year start month
+    //               chart.xScale().fiscalYearStartMonth(event.target.value);
+    //             });
+    //         }
+    //     );
+    // });
+
+    document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    timeZone: 'UTC',
+    initialView: 'resourceTimelineDay',
+    aspectRatio: 1.5,
+    headerToolbar: {
+      left: 'prev,next',
+      center: 'title',
+      right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth'
+    },
+    editable: true,
+    resourceAreaHeaderContent: 'Rooms',
+    resources: 'calendar/calendar-line.php',
+//    resources: 'https://fullcalendar.io/demo-resources.json?with-nesting&with-colors',
+    events: 'https://fullcalendar.io/demo-events.json?single-day&for-resource-timeline'
+  });
+
+  calendar.render();
+});
     </script>
 </body>
 
