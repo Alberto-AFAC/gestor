@@ -100,6 +100,27 @@ if(finalizac($codigo,$conexion)){
 	echo "1";
 }
 
+}else if($opcion === 'evaluaciones'){
+
+$valor = $_POST['array1'];
+$varray1 = json_decode($valor, true);
+$valor = count($varray1);
+
+$array2 = $_POST['array2'];
+$array2 = json_decode($array2, true);
+
+for($i=0; $i<$valor; $i++){
+
+$idcurs = $varray1[$i]["idperon"];
+
+if($idcurs==''){}else{	$evaluacion = $array2[$i]["evaluacion"];
+
+if($evaluacion!=''){	$fechaev = $_POST['array3']; 	}else{	$evaluacion = '0';	$fechaev = '0000-00-00';	}
+
+if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	echo "1";	}
+
+		}
+	}
 }
 
 //CONTEO DE CURSO
@@ -121,7 +142,7 @@ function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modal
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0);";
+			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
@@ -207,6 +228,18 @@ function finalizac($codigo,$conexion){
 		}
 		cerrar($conexion);
 	}	
+//EVALUAR INSPECTOR CON FECHA 
+	function evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion){
+
+	$query="UPDATE cursos SET evaluacion = '$evaluacion',fnotif='$fechaev' WHERE id_curso='$idcurs'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
+	}
+
 
 // fin actualia evaluación el curso
 function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){

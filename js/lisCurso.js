@@ -461,6 +461,105 @@ function evaluarins(cursos) {
 }
 
 
+
+function inspeval(cursos) {
+
+        //alert(cursos);
+
+    var d = cursos.split("*");
+    $("#cursoc").html(d[1]);
+    $("#folioc").html(d[21]);
+
+
+
+                $.ajax({
+                    url: '../php/conProgra.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 0;
+                    var hoy = new Date();
+                    var fecha_actual = hoy.getDate()+'/'+(hoy.getMonth()+1)+'/'+hoy.getFullYear();
+
+                    //alert(fecha_actual);
+                     html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>'+d[1]+'</label></th><th colspan="2">FOLIO: <label>'+d[21]+' <input type="hidden" name="idcod" id="idcod" value='+d[21]+'></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
+                    for (G = 0; G < res.length; G++) {
+
+                        fhoyd = obj.data[G].fnotif.substring(8,10);
+                        fhoym = obj.data[G].fnotif.substring(5,7);
+                        fhoyy = obj.data[G].fnotif.substring(0,4);
+
+                        fnotif = fhoyd+'/'+fhoym+'/'+fhoyy;
+
+                        if(obj.data[G].codigo==d[21]){
+                        x++;
+
+
+                        if(obj.data[G].evaluacion==0){
+                       html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='"+obj.data[G].id_curso+"'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td><input type='number' title='el numero no debe ser superior a 100' name='cantidad' min='1' max='100' style='text-transform:uppercase;height:30px; width:100px; border:1px solid silver;' class='disabled' id='validoev'></td><td><span class='label label-primary' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;' id='PE'>PENDIENTE</span></td><td>"+fecha_actual+"</td></tr>";
+                        }else{
+
+                            if(obj.data[G].evaluacion>=80){
+                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+obj.data[G].evaluacion+"</td><td><span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>APROBADO</span></td><td>"+fnotif+"</td></tr>";
+                            }else if(obj.data[G].evaluacion<80){
+                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+obj.data[G].evaluacion+"</td><td><span class='label label-danger' style='font-size:13px;'>REPROBADO</span></td><td>"+fnotif+"</td></tr>";
+                           }
+                   }
+                         }
+                    }
+                    html +='</table>';
+                    $("#evaluacion").html(html);
+                })
+}
+
+function evalresult(){
+
+    var idperon = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="idperon"]').each(function(element) {
+    var item ={};
+    item.idperon = this.value;
+    idperon.push(item);
+    });
+
+    var evaluacion = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="cantidad"]').each(function(element) {
+    var item ={};
+    item.evaluacion = this.value;
+    evaluacion.push(item);
+    });
+
+    var array1 = JSON.stringify(idperon);
+    var array2 = JSON.stringify(evaluacion);
+    var hoy = new Date();
+    var fecha = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();    
+    var array3 = fecha;
+
+    datos  = 'array1='+array1+'&array2='+array2+'&array3='+array3+'&opcion=evaluaciones';
+
+    $.ajax({
+        url: '../php/proCurso.php',
+        type: 'POST',
+        data: datos
+        }).done(function(respuesta) {
+      
+        if (respuesta == 0) {
+            $('#exito1').toggle('toggle');
+            setTimeout(function() {
+            $('#exito1').toggle('toggle');
+            }, 2000);
+        } else {
+            $('#danger1').toggle('toggle');
+            setTimeout(function() {
+            $('#danger1').toggle('toggle');
+            }, 2000);
+        }
+    });
+
+}
+
 function generacion(cursos) {
 
     var d = cursos.split("*");
