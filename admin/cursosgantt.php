@@ -911,7 +911,8 @@ $inspector = mysqli_query($conexion,$sql);
     },
     editable: true,
     resourceAreaHeaderContent: 'Rooms',
-    resources: 'https://fullcalendar.io/demo-resources.json?with-nesting&with-colors',
+    resources: 'calendar/calendar-line.php',
+//    resources: 'https://fullcalendar.io/demo-resources.json?with-nesting&with-colors',
     events: 'https://fullcalendar.io/demo-events.json?single-day&for-resource-timeline'
   });
 

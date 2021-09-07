@@ -22,7 +22,7 @@
 		$horaEstimada = $Tiempo->format('H:i:s');
 
 		$fechaf=$data['fechaf'];
-		$url = '#';
+		$url = 'green';
 
 		$fecha_actual = strtotime(date("Y-m-d"));
 		$fecha_entrada = strtotime(date($fcurso));
@@ -44,12 +44,12 @@
 			$end = strtotime($fechaf.''.$horaEstimada) * 1000;
 		}
 
-		 $caledario[] = array('id'=> $gstIdlsc, 'title'=> $gstTitlo, 'url'=> $url, 'class'=> $valor,'start'=> $start, 'end'=> $end);
+		 $caledario = array('id'=> 'a', 'title'=> $gstTitlo, 'eventColor'=> $url);
 	
 		}
 
 	}
-	$json_string = json_encode(array( 'success' => 1, 'result' => $caledario ));
+	$json_string = json_encode(array($caledario ));
 	echo $json_string;
 		//mysqli_free_result($resultado);
 		mysqli_close($conexion);
