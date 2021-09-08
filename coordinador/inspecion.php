@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-  <title>Gestor inspectores | Inspectores</title>
+  <title>Capacitación AFAC | Inspectores</title>
 
   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script> -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script> -->
@@ -154,7 +154,7 @@
 
             <div class="form-group">
               <div class="col-sm-7">
-              <button type="button" id="button" class="btn btn-info" onclick="evaluar();">ACEPTAR</button>
+              <button type="button" id="button" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" onclick="evaluar();">ACEPTAR</button>
               </div>
               <b><p class="alert alert-success text-center padding exito" id="succe0">¡Se ha evaluado con éxito!</p></b>
               <b><p class="alert alert-info text-center padding error" id="danger0">El inspector ya esta evaluado </p></b>

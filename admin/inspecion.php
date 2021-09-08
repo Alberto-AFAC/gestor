@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-  <title>Gestor inspectores | Inspectores</title>
+  <title>Capacitación AFAC | Inspectores</title>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script> 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>  -->
@@ -124,12 +124,12 @@
               <div class="row">  
               <div class="form-group">
                   <div class="col-sm-5">
-                    <label>NOMBRE</label>
+                    <label class="label2">NOMBRE</label>
                       <input type="text" class="form-control" id="evalu_nombre" name="evalu_nombre" disabled="">
                   </div>
 
                     <div class="col-sm-offset-0 col-sm-7">
-                      <label>CATEGORÍA</label>
+                      <label class="label2">CATEGORÍA</label>
                         <select style="width: 100%" class="form-control" class="selectpicker" id="gstIDCate" name="gstIDCate"type="text" data-live-search="true" disabled="">
                          <?php while($oira = mysqli_fetch_row($categ)):?>                      
                          <option value="<?php echo $oira[0]?>"><?php echo $oira[1]?></option>
@@ -146,8 +146,8 @@
 
                  <div class="form-group" >
                     <div class="col-sm-12" style=" margin-bottom: 1em">
-                    <label>COMENTARIOS</label>
-                    <textarea name="comntr" id="comntr" onkeyup="mayus(this);" class="form-control" rows="2" cols="50"></textarea>
+                    <label class="label2">COMENTARIOS</label>
+                    <textarea name="comntr" id="comntr" onkeyup="mayus(this);" class="form-control inputalta" rows="2" cols="50"></textarea>
                     </div>
                   </div>
 
@@ -155,7 +155,7 @@
 
             <div class="form-group">
               <div class="col-sm-7">
-              <button type="button" id="button" class="btn btn-info" onclick="evaluar();">ACEPTAR</button>
+              <button type="button" id="button" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" onclick="evaluar();">ACEPTAR</button>
               </div>
               <b><p class="alert alert-success text-center padding exito" id="succe0">¡Se ha evaluado con éxito!</p></b>
               <b><p class="alert alert-info text-center padding error" id="danger0">El inspector ya esta evaluado </p></b>
