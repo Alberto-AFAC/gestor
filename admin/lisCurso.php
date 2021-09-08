@@ -585,7 +585,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                 </td>
                                                 <td>
 
-                                                <i class="fa fa-check" id="che1" disabled style="color:green; font-size: 16pt"></i></span>
+                                                <i class="" id="che1" disabled style="color:green; font-size: 16pt"></i></span>
+                                                <!-- <i class="fa fa-exclamation" id="chep1" disabled style="color:#CD8704; font-size: 16pt"></i></span> -->
                                                 </td>
 
                                             </tr>
@@ -629,10 +630,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                     EVALUACIÓN POR PARTICIPANTE
                                                 </td>
                                                 <td>
-                                
                                                 <i class="fa fa-check" id="che6" disabled style="color:green; font-size: 16pt"></i></span>    
                                             </td>
-
                                             </tr>
                                             <tr>
                                                 <td>

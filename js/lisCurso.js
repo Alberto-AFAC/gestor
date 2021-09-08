@@ -407,19 +407,27 @@ function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
     $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
-    che1 = document.getElementById('che1'); //che1 
-    che6 = document.getElementById('che6'); //che6
+  //  che1 = document.getElementById('che1'); //che1 
+   // che6 = document.getElementById('che6'); //che6
     // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
     if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
-        che6.style.display = '';
+        document.getElementById("che6").className = "fa fa-check";
+        document.getElementById("che6").style = "color:green; font-size: 16pt";
     } else {
-        che6.style.display = 'none';
+        document.getElementById("che6").className = "fa fa-exclamation";
+        document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
     }
     if (cer[20] == "CONFIRMADO") {
 
-        che1.style.display = '';
+        //che1.style.display = '';
+        document.getElementById("che1").className = "fa fa-check";
+        document.getElementById("che1").style = "color:green; font-size: 16pt";
+
     } else {
-        che1.style.display = 'none';
+        //che1.style.display = 'none';
+        document.getElementById("che1").className = "fa fa-exclamation";
+        document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
+
     }
     
 }
