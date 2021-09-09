@@ -413,23 +413,29 @@ function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
     if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
         document.getElementById("che6").className = "fa fa-check";
         document.getElementById("che6").style = "color:green; font-size: 16pt";
+        document.getElementById("guaacredit").disabled = false;
     } else {
         document.getElementById("che6").className = "fa fa-exclamation";
         document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
+        document.getElementById("guaacredit").disabled = false;
     }
+    if (((cer[17]) < 80) && ((cer[17]) > 0)) {
+        document.getElementById("che6").className = "fa fa-times";
+        document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
+        document.getElementById("guaacredit").disabled = false;
+    } 
     if (cer[20] == "CONFIRMADO") {
-
         //che1.style.display = '';
         document.getElementById("che1").className = "fa fa-check";
         document.getElementById("che1").style = "color:green; font-size: 16pt";
-
+        document.getElementById("guaacredit").disabled = false;
     } else {
         //che1.style.display = 'none';
         document.getElementById("che1").className = "fa fa-exclamation";
         document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
-
+        document.getElementById("guaacredit").disabled = false;
     }
-    
+
 }
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {

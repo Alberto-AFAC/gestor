@@ -452,8 +452,7 @@ $inspector = mysqli_query($conexion,$sql);
         <div class="modal-body">
         <div class="form-group">
         <div class="col-sm-5">
-        <button type="button" class="btn btn-primary"
-        onclick="generar()">ACEPTAR</button>
+        <button type="button" class="btn btn-primary" onclick="generar()">ACEPTAR</button>
         </div>
         <b>
         <p class="alert alert-warning text-center padding error" id="dangerev">Error al
@@ -1158,18 +1157,21 @@ function idcurso(codigo){
                         confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
                         evaluacion="";
                         evalcurso="";
+                        listcer ="";
                     }
                     // vista cuando se DECLINA POR ENFERMEDAD "DETALLE DEL CURSO"
                     if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'ENFERMEDAD') {
                         confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
                         evaluacion="";
                         evalcurso="";
+                        listcer ="";
                     }
                     // vista cuando se DECLINA POR OTROS "DETALLE DEL CURSO"
                     if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'OTROS') {
                         confirmar = "<a type='button' title='Declina la convocatoria otros' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
                         evaluacion="";
                         evalcurso="";
+                        listcer ="";
                     }
                      // vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
                     if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100) && ((obj.data[i].reaccion) == 'SI EXISTE')) {
