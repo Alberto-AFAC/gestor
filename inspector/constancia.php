@@ -1,5 +1,14 @@
-<?php ob_start();?>
-<?php include('header.php');?>
+<?php ob_start();
+    include('../conexion/conexion.php');
+    $datos = $_GET['data'];
+    $query = "SELECT * FROM constancias WHERE id = $datos";
+    $const = mysqli_query($conexion, $query);
+    $con = mysqli_fetch_array($const);
+
+
+
+
+?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
@@ -44,6 +53,7 @@
                 z-index:  -1000;
             }
 </style>
+
         <?php
             $path = '../dist/img/header.png';
             $type = pathinfo($path, PATHINFO_EXTENSION);
@@ -61,7 +71,7 @@
 <p class="titulo">Certificado</p>
 <p class="people">A : <span style="  font-family: 'Montserrat', sans-serif; font-weight: bold; color: #BE0202;"><!--MONDRAGON ESCAMILLA JORGE ALBERTO--></span></p>
 <div style="text-align: center;">
-    <span style="line-height:10px;" class="p-2">Por haber participado en el:</span>
+    <span style="line-height:10px;" class="p-2">Por haber participado en el: <?php echo $con[0]?></span>
     <p class="titulo">Nombre del curso</p>
     <span class="p-2">Impartido del <!--X--> de MES al <!--XX--> de MES del <!--2021-->, en la modalidad e-learning por, con un total de <!--XXX--> horas, obteniendo una calificación de <!--XX-->/<!--XXX--></span><br><br>
     <span style="font-size: 22px; font-style: italic;" class="p-2">La presente se extiende a los <!--XXXXXXXX--> del mes de <!--XXXX--> de dos mil veintiuno.</span>
