@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Gestor inspectores |Alta Curso</title>
+  <title>Capacitación AFAC |Alta Curso</title>
 
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 

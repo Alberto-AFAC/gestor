@@ -28,12 +28,12 @@
 		$fcurso = strtotime(Date($data["fcurso"]));
 		$sumfech= $data["gstVignc"]; //VIGENCIA DEL CURSO
 		$ftermino =strtotime($fcurso. '+'.$sumfech.'years'); //se suma los años del vencimiento
-		$xvencer = (($data["gstVignc"] * 12) - 3);
-		$xvencer1 =strtotime($fcurso. '+'.$xvencer.'months'); //SE restan 3 meses 
-	
-		if ($factual < $xvencer1 &&  $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>prueba</span>";
-		$proc = 'prueba';
+		$xvencer = date("Y-m-d",strtotime($ftermino."- 3 month")); //SE restan 3 meses
+		
+		//pendiente POR VENCER
+		if ($factual <= $xvencer && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
+			$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>POR VENCER</span>";
+		$proc = 'POR VENCER';
 	
 	}
 //LOS RECURRENTES VENCEN CADA 3 AÑOS 

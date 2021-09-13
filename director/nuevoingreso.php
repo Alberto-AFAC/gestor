@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Gestor inspectores | Nuevo ingreso</title>
+  <title>Capacitación AFAC | Nuevo ingreso</title>
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

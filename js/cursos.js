@@ -1,33 +1,5 @@
 
-    //DECLINA1
-function declina(){
-    $(document).ready(function() {
-        //alert("declina")
-        $("#data-table-programado_wrapper tr").on('click', function() {
-            var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
-                    toma1 += $(this).find('td:eq(0)').html(); //NOMBRE DEL CURSO  
-                    toma2 += $(this).find('td:eq(2)').html(); //PDF
-                    toma3 += $(this).find('td:eq(6)').html(); //PDF                    
-            $("#nombredeclin").text(toma1); // Label esta en valor.php
-            $("#declinpdf").attr('href',toma2); // Label esta en valor.php
-            $("#motivod").text('Motivo:'+ toma3); // Label esta en valor.php
-            $("#otrosd").text(toma2); // Label esta en valor.php
 
-            if (toma3 == 'OTROS'){
-                document.getElementById('otrosd').style.display='';
-                document.getElementById('declinpdf').style.display='none';
-            }
-            if (toma3 == 'TRABAJO'){
-                document.getElementById('otrosd').style.display='none';
-                document.getElementById('declinpdf').style.display='';
-            }
-            if (toma3 == 'ENFERMEDAD'){
-                document.getElementById('otrosd').style.display='none';
-                document.getElementById('declinpdf').style.display='';
-            }
-        });
-    }); 
-}
     
     //destroy:true,
     $.ajax({
@@ -68,6 +40,23 @@ function declina(){
 
 });
 
+    //DECLINA ENFERMEDAD
+    function declina(){
+        $(document).ready(function() {
+            //alert("declina")
+            $("#data-table-programado tr").on('click', function() {
+                var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
+                        toma1 += $(this).find('td:eq(0)').html(); //NOMBRE DEL CURSO  
+                        toma2 += $(this).find('td:eq(2)').html(); //PDF
+                        toma3 += $(this).find('td:eq(6)').html(); //PDF                    
+                $("#nombredeclin").text(toma1); // Label esta en valor.php
+                //$("#declinpdf").attr('href',toma2); // Label esta en valor.php
+               // $("#motivod").text('MOTIVO: ENFERMEDAD'); // Label esta en valor.php
+                //$("#otrosd").text(toma2); // Label esta en valor. php
+            });
+        }); 
+
+    }
 
 
 //var years = new Date();
@@ -94,9 +83,7 @@ function confirmar(idcurso){
                 $("#idinsp").val(obj.data[i].idinsp);      
                 $("#gstTitlo").html(obj.data[i].gstTitlo);
                 $("#gstTipo").html(obj.data[i].gstTipo);
-
-
-
+                
             var fechai = new Date(obj.data[i].fcurso);
             var fcurso = fechai.getDate()+'-'+(fechai.getMonth()+1)+'-'+fechai.getFullYear();
 
@@ -107,7 +94,8 @@ function confirmar(idcurso){
             $("#fechaf").html(fechaf);
             $("#sede").html(obj.data[i].sede);
             $("#modalidad").html(obj.data[i].modalidad);
-
+            $("#nombredeclin").html(obj.data[i].gstTitlo);
+            $("#motivod").html('MOTIVO:'+obj.data[i].confirmar);
 
             }
         }

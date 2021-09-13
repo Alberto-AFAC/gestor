@@ -30,7 +30,7 @@ if(!$resultado) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-    <title>Gestor inspectores | Nivel de Calidad</title>
+    <title>Capacitación AFAC | Nivel de Calidad</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -218,6 +218,8 @@ include('header.php');
                         </div>
                         <div class="modal-body">
                             <!-- <div class="input-group"> -->
+                            
+                            <input type="text" id="obtained" name="obtained" value="<?php echo porcentaje($totalfull, $totalcantida, 0) . "%"?>" hidden>
                             <input type="date" id="date_update" name="date_update" value="<?php echo date("Y-m-d"); ?>"
                                 hidden>
                             <span style="font-size: 20px;">Ponderación actual</span>
@@ -594,11 +596,12 @@ $('#button').confirm({
 $(document).ready(function() {
     $('#btnguardar').click(function() {
         var date_update = $("#date_update").val();
+        var obtained = $("#obtained").val();
         var evaluation = $("#evaluation").val();
         var start_date = $("#start_date").val();
         var end_date = $("#end_date").val();
         swal.showLoading();
-        if (date_update == '' || evaluation == '' || start_date == '' || end_date == '') {
+        if (date_update == '' || obtained == '' || evaluation == '' || start_date == '' || end_date == '') {
             Swal.fire({
                 type: 'error',
                 title: 'ATENCIÓN!',
@@ -613,6 +616,7 @@ $(document).ready(function() {
                 url: "../php/insertEv.php",
                 data: {
                     date_update: date_update,
+                    obtained: obtained,
                     evaluation: evaluation,
                     start_date: start_date,
                     end_date: end_date
@@ -653,7 +657,7 @@ $resultado = mysqli_query($conexion, $query);
           $end = date("d-m-Y");
       ?>
 
-    ["<?php echo $data['id']?>", "<?php echo $start. " - " . $end?>", "<?php echo $Modificacion?>",
+    ["<?php echo $data['id']?>", "<?php echo $data['start_date']. " - " . $data['end_date']?>", "<?php echo $Modificacion?>","<?php echo $data['obtained']?>",
         "<?php echo $data['evaluation']?> %"],
 
 
@@ -683,10 +687,13 @@ var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
             title: "PERIÓDO"
         },
         {
-            title: "FECHA MODIFICACIÓN"
+            title: "MODIFICACIÓN"
         },
         {
-            title: "VALOR"
+            title: "OBTENIDA"
+        },
+        {
+            title: "DESEADA"
         }
     ]
 });

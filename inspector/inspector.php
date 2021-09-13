@@ -1153,25 +1153,21 @@ $id_curso = $data['id_curso'];
 if($data['confirmar']=='CONFIRMAR'){
 $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 13px;' class='badge'>PENDIENTE</span>";
 }else if($data['confirmar']=='CONFIRMADO'){
- $valor="<span style='background-color:green; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado'>CONFIRMADO</span>";
+ $valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";
 }else if($data['confirmar']=='ENFERMEDAD'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='declina();'>DECLINADO</span>";
+    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
 }else if($data['confirmar']=='TRABAJO'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='declina();'>DECLINADO</span>";
+    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
 }else if($data['confirmar']=='OTROS'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='declina();'>DECLINADO</span>";
+    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
 }
 
 ?>
 
-    //console.log('<?php echo $id_curso ?>');
-
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-        // "<a type='button' title='Evaluación' onclick='asignacion(<?php echo $id_curso ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-asignar'><?php echo $valor?> </a>"
-
-        "<?php echo $valor?>", "<?php echo $data['confirmar']?>"
+        "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
 
 //aquies
 

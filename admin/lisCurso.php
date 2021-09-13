@@ -16,7 +16,7 @@ $inspector = mysqli_query($conexion,$sql);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-    <title>Gestor inspectores | Programación</title>
+    <title>Capacitación AFAC | Programación</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -286,7 +286,7 @@ $inspector = mysqli_query($conexion,$sql);
                                 aria-label="Close">
                                 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
                             <p>
-                            <h4 class="modal-title" style="text-align:Center;">EVALUACIÓN DE RESULTADOS</h4>
+                            <h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE RESULTADOS</b></h4>
                             </p>
                             <label>PARTICIPANTE</label>
                             <input type="text" disabled=""
@@ -433,122 +433,100 @@ $inspector = mysqli_query($conexion,$sql);
 
 
 
-    <form class="form-horizontal" action="" method="POST" id="avaluacion">
+        <form class="form-horizontal" action="" method="POST" id="avaluacion">
         <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal fade" id="modal-masiva">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content" style="width: 1100px;">
-                        <div class="modal-header">
-                            <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-                            <p>
-                            <h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS DE PARTICIPANTES</h4><br>
-                            <div class="col-sm-12">
-          
-<!-- <table class="table table-hover"><tr><th colspan="10">CURSO: <label id="cursoc"></label></th><th colspan="2">FOLIO: <label id="folioc"></label></th></tr>    <tr style="font-size: 12px;"><th>ID</th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr></table>
- -->
-<div id="generacion"></div>
+        <div class="modal fade" id="modal-masiva">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="width: 1100px;">
+        <div class="modal-header">
+        <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
+        aria-label="Close">
+        <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+        <p>
+        <h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS DE PARTICIPANTES</h4><br>
+        <div class="col-sm-12">
+        <div id="generacion"></div>
+        </div>
+        </p>
+        </div>
+        <div class="modal-body">
+        <div class="form-group">
+        <div class="col-sm-5">
+        <button type="button" class="btn btn-primary" onclick="generar()">ACEPTAR</button>
+        </div>
+        <b>
+        <p class="alert alert-warning text-center padding error" id="dangerev">Error al
+        Evaluar!!
+        </b>
+        <b>
+        <p class="alert alert-success text-center padding exito" id="succeev">¡Se Evaluo con
+        exito!</p>
+        </b>
+        <b>
+        <p class="alert alert-warning text-center padding aviso" id="emptyev">Falto Ingresar
+        la Puntuación!</p>
+        </b>
+        <b>
+        <p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto
+        Ingresar la Fecha!</p>
+        </b>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </form>
 
-          
 
 
-                                                                </div>
-                            </p>
-                            <!-- <label>PARTICIPANTE</label> -->
-                            <!-- <input type="text" disabled=""
-                                style="text-transform:uppercase; font-size: 14pt; display:none" class="form-control "
-                                id="idinsev" name="evaNombr">
-                            <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt"
-                                class="form-control" id="evaNombr" name="evaNombr"> -->
-                        </div>
-                        <div class="modal-body">
-                            <!-- <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                    <a href='javascript:openEditeva()' id="abrirev" style="font-size:22px"> <i
-                                            class="fa fa-edit"></i> </a>
-                                    <a href='javascript:cerrarEditeva()' id="cerrareval"
-                                        style="display:none; font-size: 22px"> <i class="fa fa-ban"></i> </a>
-                                </button>
-                            </div> -->
-                            <!-- <div class="form-group">
-                                <div class="col-sm-2">
-                                    <label>FOLIO:</label>
-                                    <input type="text" name="id_curso" id="id_curso" style="text-transform:uppercase;"
-                                        class="form-control disabled" disabled="">
-                                </div>
-                                <div class="col-sm-12">
-                                    <label>CURSO:</label>
-                                    <input type="text" name="idperon" id="idperon" style="text-transform:uppercase;"
-                                        class="form-control disabled" disabled="">
-                                </div>
-                                <div class="col-sm-12">
-                                    <label>FECHA DE LA EVALUACIÓN:</label>
-                                    <input type="date" style="text-transform:uppercase;" class="form-control disabled"
-                                        disabled="" id='fechaev'>
 
-                                </div> -->
-                                <!-- <div class="col-sm-12">
-                                    <table class="content-table">
-                                        <thead>
-                                            <tr>
-                                                <th>RESULTADOS</th>
-                                                <th>ESTATUS</th>
-                                            </tr>
-                                        </thead>
-                                         <tbody>
-                                            <tr>
-                                                <td><input type="number" title="el numero no debe ser superior a 100"
-                                                        name="cantidad" min="1" max="100"
-                                                        style="text-transform:uppercase;" class="form-control disabled"
-                                                        disabled="" id='validoev' onchange="cambiartexto()"></td>
-                                                <td><span class='label label-primary' style="font-size:18px;"
-                                                        id='PE'>PENDIENTE</span><span class='label label-success'
-                                                        style="font-size:18px; display:none"
-                                                        id='SIe'>APROBADO</span><span class='label label-danger'
-                                                        style="font-size:18px; display:none" id='NOE'>REPROBADO</span>
-                                                </td>
+      <form class="form-horizontal"    action="" method="POST" id="avaluacion">
+        <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="modal-evalua">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
+        aria-label="Close">
+        <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+        <p>
+        <h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE RESULTADOS</b></h4><br>
+        <div class="col-sm-12">
+        <div id="evaluacion"></div>
+        </div>
+        </p>
+        </div>
+        <div class="modal-body">
+        <div class="form-group">
+        <div style="margin-left: 3em" class="col-sm-offset-0 col-sm-5">
+        <button type="button" class="btn btn-primary"
+        onclick="evalresult()">ACEPTAR</button>
+        </div>
+        <b>
+        <p class="alert alert-danger text-center padding error" id="danger1">Error al
+        evaluar!!
+        </b>
+        <b>
+        <p class="alert alert-success text-center padding exito" id="exito1">¡Se evaluo con
+        exito!</p>
+        </b>
+        <b>
+        <p class="alert alert-warning text-center padding aviso" id="emptyev">Falto Ingresar
+        la Puntuación!</p>
+        </b>
+        <b>
+        <p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto
+        Ingresar la Fecha!</p>
+        </b>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </form>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
 
-                                </div> -->
 
-                                <!-- <div class="col-sm-12">
-                                    <textarea class="col-sm-12" name="comentarios" id="comeneva" rows="4" cols="10"
-                                        onkeyup="mayus(this);" style="font-size: 14px; border-radius: 5px;"
-                                        placeholder="Comentarios Adicionales" disabled=""></textarea>
-                                </div> -->
-                            <!-- </div> -->
-
-                            <div class="form-group">
-                                <div class="col-sm-5">
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="generar()">ACEPTAR</button>
-                                </div>
-                                <b>
-                                    <p class="alert alert-warning text-center padding error" id="dangerev">Error al
-                                        Evaluar!!
-                                </b>
-                                <b>
-                                    <p class="alert alert-success text-center padding exito" id="succeev">¡Se Evaluo con
-                                        exito!</p>
-                                </b>
-                                <b>
-                                    <p class="alert alert-warning text-center padding aviso" id="emptyev">Falto Ingresar
-                                        la Puntuación!</p>
-                                </b>
-                                <b>
-                                    <p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto
-                                        Ingresar la Fecha!</p>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </form>
 
 
     <!-- /.content -->
@@ -606,7 +584,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                 </td>
                                                 <td>
 
-                                                <i class="fa fa-check" id="che1" disabled style="color:green; font-size: 16pt"></i></span>
+                                                <i class="" id="che1" disabled style="color:green; font-size: 16pt"></i></span>
+                                                <!-- <i class="fa fa-exclamation" id="chep1" disabled style="color:#CD8704; font-size: 16pt"></i></span> -->
                                                 </td>
 
                                             </tr>
@@ -650,10 +629,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                     EVALUACIÓN POR PARTICIPANTE
                                                 </td>
                                                 <td>
-                                
                                                 <i class="fa fa-check" id="che6" disabled style="color:green; font-size: 16pt"></i></span>    
                                             </td>
-
                                             </tr>
                                             <tr>
                                                 <td>
@@ -1180,18 +1157,21 @@ function idcurso(codigo){
                         confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
                         evaluacion="";
                         evalcurso="";
+                        listcer ="";
                     }
                     // vista cuando se DECLINA POR ENFERMEDAD "DETALLE DEL CURSO"
                     if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'ENFERMEDAD') {
                         confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
                         evaluacion="";
                         evalcurso="";
+                        listcer ="";
                     }
                     // vista cuando se DECLINA POR OTROS "DETALLE DEL CURSO"
                     if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'OTROS') {
                         confirmar = "<a type='button' title='Declina la convocatoria otros' style= 'red' onclick='agregar(" + '"' + obj.data[i].id_curso + '"' + ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
                         evaluacion="";
                         evalcurso="";
+                        listcer ="";
                     }
                      // vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
                     if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100) && ((obj.data[i].reaccion) == 'SI EXISTE')) {
@@ -1241,7 +1221,7 @@ function idcurso(codigo){
                     //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO INSTRUCTOR---------------//
                    
                     if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" + "<td>  <a type='button' id='ev' title='Evaluación Inspector' onclick='generacion(" + '"' + cursos + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-masiva'><i class='fa fa-list-alt' style='font-size:18px;'></i></a> <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' style='font-size:18px;' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + cargo + "</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" + "<td><a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval(" + '"' + cursos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:18px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" + '"' + cursos + '"' + ")' class='btn btn-info' data-toggle='modal' data-target='#modal-masiva'><i class='fa fa-list-alt' style='font-size:18px;'></i></a> <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' + ")' class='btn btn-default' data-toggle='modal' style='font-size:18px;' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                     }
 
                 } else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
