@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"
+        integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg=="
+        crossorigin="anonymous"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.2/sweetalert2.min.css"
@@ -24,24 +26,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.2/sweetalert2.min.js"
         integrity="sha512-2sjxi4MoP9Gn7QE0NhJdxOFVMK/qYsZO6JnO6pngGvck8p5UPwFX2LV5AsAMOQYgvbzMmki6sIqJ90YO3STAnA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <style>
-    .swal-wide{
-    width: 500px !important;
-    font-size: 16px !important;
-}
-.a-alert {
-  outline: none;
-  text-decoration: none;
-  padding: 2px 1px 0;
-}
+    <style>
+    .swal-wide {
+        width: 500px !important;
+        font-size: 16px !important;
+    }
 
-.a-alert:link {
-  color: white;
-}
+    .a-alert {
+        outline: none;
+        text-decoration: none;
+        padding: 2px 1px 0;
+    }
 
-.a-alert:visited {
-  color: white;
-}
+    .a-alert:link {
+        color: white;
+    }
+
+    .a-alert:visited {
+        color: white;
+    }
     </style>
 </head>
 
@@ -110,10 +113,10 @@
                             <div class="box-body">
                                 <a href="#">
                                     <strong><i class="fa fa-book margin-r-5"></i>Educación</strong>
-                                    
+
                                 </a>
                                 <p class="text-muted">
-                                
+
                                     <?php echo $dato[4];?>
                                 </p>
 
@@ -240,7 +243,7 @@
                                 </style>
 
                                 <form class="form-horizontal" action="" method="POST">
-                                
+
                                     <div class="modal fade" id="modal-evalcurso">
                                         <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
                                             <div class="modal-content">
@@ -260,7 +263,7 @@
                                                             CONTINUA HACIA LA CAPACITACIÓN.</label1>
                                                     </b>
                                                     <br>
-<section class="content">
+                                                    <section class="content">
 
 
 
@@ -362,677 +365,836 @@
                                                                 </form>
                                                             </div>
                                                         </div>
-                                                
 
-                                                <div class="box box-primary">
-                                                    <div class="box-header with-border">
-                                                        <form name="form2" action="" class="formulario1">
-                                                            <div class="radio">
-                                                                <div class="box-header with-border">
-                                                                    <h3 class="box-title">SE EXPLICÓ EL MODO DE
-                                                                        EVALUACIÓN AL INICIO DEL CURSO? <span
-                                                                            id="span2">*</span></h3>
-                                                                </div>
-                                                                <form class="form-horizontal">
-                                                                    <div class="box-body">
-                                                                        <div class="form-group">
-                                                                            <div class="col-sm-12">
-                                                                                <input type="radio" name="preg2"
-                                                                                    value="DEFICIENTE" id="r5">
-                                                                                <label for="r5">DEFICIENTE</label>
-                                                                            </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form2" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">SE EXPLICÓ EL MODO DE
+                                                                                EVALUACIÓN AL INICIO DEL CURSO? <span
+                                                                                    id="span2">*</span></h3>
                                                                         </div>
-                                                                        <div class="form-group">
-                                                                            <div class="col-sm-12">
-                                                                                <input type="radio" name="preg2"
-                                                                                    value="NO SATISFACTORIO" id="r6">
-                                                                                <label for="r6">NO SATISFACTORIO</label>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg2"
+                                                                                            value="DEFICIENTE" id="r5">
+                                                                                        <label
+                                                                                            for="r5">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg2"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r6">
+                                                                                        <label for="r6">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg2"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r7">
+                                                                                        <label
+                                                                                            for="r7">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg2"
+                                                                                            value="EXCELENTE" id="r8">
+                                                                                        <label
+                                                                                            for="r8">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <div class="col-sm-12">
-                                                                                <input type="radio" name="preg2"
-                                                                                    value="SATISFACTORIO" id="r7">
-                                                                                <label for="r7">SATISFACTORIO</label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <div class="col-sm-12">
-                                                                                <input type="radio" name="preg2"
-                                                                                    value="EXCELENTE" id="r8">
-                                                                                <label for="r8">EXCELENTE</label>
-                                                                            </div>
-                                                                        </div>
+                                                                        </form>
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                          
-                                            <div class="box box-primary">
-                                                <div class="box-header with-border">
-                                                    <form name="form3" action="" class="formulario1">
-                                                        <div class="radio">
+                                                        </div>
+
+                                                        <div class="box box-primary">
                                                             <div class="box-header with-border">
-                                                                <h3 class="box-title">EL INSTRUCTOR/A CONTESTÓ LAS DUDAS
-                                                                    EN TIEMPO Y FORMA? <span id="span3">*</span></h3>
+                                                                <form name="form3" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">EL INSTRUCTOR/A
+                                                                                CONTESTÓ LAS DUDAS
+                                                                                EN TIEMPO Y FORMA? <span
+                                                                                    id="span3">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg3"
+                                                                                            value="DEFICIENTE" id="r9">
+                                                                                        <label
+                                                                                            for="r9">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg3"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r10">
+                                                                                        <label for="r10">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg3"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r11">
+                                                                                        <label
+                                                                                            for="r11">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg3"
+                                                                                            value="EXCELENTE" id="r12">
+                                                                                        <label
+                                                                                            for="r12">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
                                                             </div>
-                                                            <form class="form-horizontal">
-                                                                <div class="box-body">
-                                                                    <div class="form-group">
-                                                                        <div class="col-sm-12">
-                                                                            <input type="radio" name="preg3"
-                                                                                value="DEFICIENTE" id="r9">
-                                                                            <label for="r9">DEFICIENTE</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <div class="col-sm-12">
-                                                                            <input type="radio" name="preg3"
-                                                                                value="NO SATISFACTORIO" id="r10">
-                                                                            <label for="r10">NO SATISFACTORIO</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <div class="col-sm-12">
-                                                                            <input type="radio" name="preg3"
-                                                                                value="SATISFACTORIO" id="r11">
-                                                                            <label for="r11">SATISFACTORIO</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <div class="col-sm-12">
-                                                                            <input type="radio" name="preg3"
-                                                                                value="EXCELENTE" id="r12">
-                                                                            <label for="r12">EXCELENTE</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
                                                         </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        
-                                        <div class="box box-primary">
-                                            <div class="box-header with-border">
-                                                <form name="form4" action="" class="formulario1">
-                                                    <div class="radio">
-                                                        <div class="box-header with-border">
-                                                            <h3 class="box-title">LOS CONOCIMIENTOS ADQUIRIDOS SON
-                                                                APLICABLES A TU PUESTO DE
-                                                                TRABAJO? <span id="span4">*</span></h3>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form4" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">LOS CONOCIMIENTOS
+                                                                                ADQUIRIDOS SON
+                                                                                APLICABLES A TU PUESTO DE
+                                                                                TRABAJO? <span id="span4">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg4"
+                                                                                            value="DEFICIENTE" id="r13">
+                                                                                        <label
+                                                                                            for="r13">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg4"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r14">
+                                                                                        <label for="r14">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg4"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r15">
+                                                                                        <label
+                                                                                            for="r15">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg4"
+                                                                                            value="EXCELENTE" id="r16">
+                                                                                        <label
+                                                                                            for="r16">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                        <form class="form-horizontal">
-                                                            <div class="box-body">
-                                                                <div class="form-group">
-                                                                    <div class="col-sm-12">
-                                                                        <input type="radio" name="preg4"
-                                                                            value="DEFICIENTE" id="r13">
-                                                                        <label for="r13">DEFICIENTE</label>
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form5" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">CONSIDERAS QUE EL
+                                                                                CONTENIDO DEL CURSO FUE
+                                                                                SUFICIENTE? <span id="span5">*</span>
+                                                                            </h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg5"
+                                                                                            value="DEFICIENTE" id="r17">
+                                                                                        <label
+                                                                                            for="r17">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg5"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r18">
+                                                                                        <label for="r18">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg5"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r19">
+                                                                                        <label
+                                                                                            for="r19">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg5"
+                                                                                            value="EXCELENTE" id="r20">
+                                                                                        <label
+                                                                                            for="r20">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="col-sm-12">
-                                                                        <input type="radio" name="preg4"
-                                                                            value="NO SATISFACTORIO" id="r14">
-                                                                        <label for="r14">NO SATISFACTORIO</label>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form6" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">EL CURSO CUBRIÓ TUS
+                                                                                EXPECTATIVAS? <span id="span6">*</span>
+                                                                            </h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg6"
+                                                                                            value="DEFICIENTE" id="r21">
+                                                                                        <label
+                                                                                            for="r21">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg6"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r22">
+                                                                                        <label for="r22">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg6"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r23">
+                                                                                        <label
+                                                                                            for="r23">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg6"
+                                                                                            value="EXCELENTE" id="r24">
+                                                                                        <label
+                                                                                            for="r24">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="col-sm-12">
-                                                                        <input type="radio" name="preg4"
-                                                                            value="SATISFACTORIO" id="r15">
-                                                                        <label for="r15">SATISFACTORIO</label>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form7" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">EL CONTENIDO DEL CURSO
+                                                                                AUMENTÓ TUS CONOCIMIENTOS Y
+                                                                                COMPRENSIÓN DE LOS
+                                                                                TEMAS REVISADOS? <span
+                                                                                    id="span7">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg7"
+                                                                                            value="DEFICIENTE" id="r25">
+                                                                                        <label
+                                                                                            for="r25">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg7"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r26">
+                                                                                        <label for="r26">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg7"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r27">
+                                                                                        <label
+                                                                                            for="r27">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg7"
+                                                                                            value="EXCELENTE" id="r28">
+                                                                                        <label
+                                                                                            for="r28">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="col-sm-12">
-                                                                        <input type="radio" name="preg4"
-                                                                            value="EXCELENTE" id="r16">
-                                                                        <label for="r16">EXCELENTE</label>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form8" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">EL TIEMPO PARA
+                                                                                ENTREGAR LAS ACTIVIDADES, FUE SUFICIENTE
+                                                                                PARA CUMPLIR
+                                                                                CON ELLAS? <span id="span8">*</span>
+                                                                            </h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg8"
+                                                                                            value="DEFICIENTE" id="r29">
+                                                                                        <label
+                                                                                            for="r29">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg8"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r30">
+                                                                                        <label for="r30">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg8"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r31">
+                                                                                        <label
+                                                                                            for="r31">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg8"
+                                                                                            value="EXCELENTE" id="r32">
+                                                                                        <label
+                                                                                            for="r32">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
-                                                                </div>
-                                                       
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </form>
-                                        </div>
-                                    </div>
-                                    <div class="box box-primary">
-                                        <div class="box-header with-border">
-                                            <form name="form5" action="" class="formulario1">
-                                                <div class="radio">
-                                                    <div class="box-header with-border">
-                                                        <h3 class="box-title">CONSIDERAS QUE EL CONTENIDO DEL CURSO FUE
-                                                            SUFICIENTE? <span id="span5">*</span></h3>
-                                                    </div>
-                                                    <form class="form-horizontal">
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form9" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">LA PRESENTACIÓN DEL
+                                                                                CONTENIDO, FUE FÁCIL DE REVISAR? <span
+                                                                                    id="span9">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg9"
+                                                                                            value="DEFICIENTE" id="r33">
+                                                                                        <label
+                                                                                            for="r33">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg9"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r34">
+                                                                                        <label for="r34">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg9"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r35">
+                                                                                        <label
+                                                                                            for="r35">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio" name="preg9"
+                                                                                            value="EXCELENTE" id="r36">
+                                                                                        <label
+                                                                                            for="r36">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form10" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">LA EXPLICACIÓN DE LAS
+                                                                                TAREAS, FUERON CLARAS Y SENCILLAS? <span
+                                                                                    id="span10">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg10"
+                                                                                            value="DEFICIENTE" id="r37">
+                                                                                        <label
+                                                                                            for="r37">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg10"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r38">
+                                                                                        <label for="r38">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg10"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r39">
+                                                                                        <label
+                                                                                            for="r39">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg10"
+                                                                                            value="EXCELENTE" id="r40">
+                                                                                        <label
+                                                                                            for="r40">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form11" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">EL TIEMPO CON EL QUE
+                                                                                RECIBIÓ LA INFORMACIÓN (INVITACIÓN,
+                                                                                TEMARIO,
+                                                                                ETC.) AL CURSO FUE ADECUADO? <span
+                                                                                    id="span11">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg11"
+                                                                                            value="DEFICIENTE" id="r41">
+                                                                                        <label
+                                                                                            for="r41">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg11"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r42">
+                                                                                        <label for="r42">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg11"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r43">
+                                                                                        <label
+                                                                                            for="r43">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg11"
+                                                                                            value="EXCELENTE" id="r44">
+                                                                                        <label
+                                                                                            for="r44">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form12" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">CÓMO FUE EL MATERIAL
+                                                                                DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN,
+                                                                                TEXTOS,
+                                                                                ENLACES) UTILIZADO? <span
+                                                                                    id="span12">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg12"
+                                                                                            value="DEFICIENTE" id="r45">
+                                                                                        <label
+                                                                                            for="r45">DEFICIENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg12"
+                                                                                            value="NO SATISFACTORIO"
+                                                                                            id="r46">
+                                                                                        <label for="r46">NO
+                                                                                            SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg12"
+                                                                                            value="SATISFACTORIO"
+                                                                                            id="r47">
+                                                                                        <label
+                                                                                            for="r47">SATISFACTORIO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg12"
+                                                                                            value="EXCELENTE" id="r48">
+                                                                                        <label
+                                                                                            for="r48">EXCELENTE</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form13" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">MENCIONA ALGUNA MEJORA
+                                                                                QUE SE PUDIERA REALIZAR A ESTE PROCESO
+                                                                                DE
+                                                                                APRENDIZAJE <span id="span13">*</span>
+                                                                            </h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="text" name="preg13"
+                                                                                            id="preg13"
+                                                                                            class="col-sm-12"
+                                                                                            onkeyup="mayus(this);"
+                                                                                            placeholder="TU RESPUESTA"
+                                                                                            style="background-color: #E5E7EC; border: 0; outline: none">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form14" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">DÓNDE REALIZASTE TU
+                                                                                CURSO? <span id="span14">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body" id=pregunta14>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg14"
+                                                                                            value="OFICINA" id="r49">
+                                                                                        <label for="r49">OFICINA</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg14" value="CASA"
+                                                                                            id="r50">
+                                                                                        <label for="r50">CASA</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg14"
+                                                                                            value="CAFÉ INTERNET"
+                                                                                            id="r51">
+                                                                                        <label for="r51">CAFÉ
+                                                                                            INTERNET</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg14" value="OTROS"
+                                                                                            id="r52">
+                                                                                        <label for="r52">OTROS</label>
+                                                                                        <input type="text" name="otro"
+                                                                                            id="otro"
+                                                                                            onkeyup="mayus(this);"
+                                                                                            placeholder="TU RESPUESTA"
+                                                                                            style="background-color: #E5E7EC; border: 0; outline: none">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form15" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">DÓNDE REALIZASTE TU
+                                                                                CURSO? <span id="span15">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg15"
+                                                                                            value="COMPUTADORA" id="r53"
+                                                                                            required>
+                                                                                        <label
+                                                                                            for="r53">COMPUTADORA</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg15" value="TABLET"
+                                                                                            id="r54">
+                                                                                        <label for="r54">TABLET</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="radio"
+                                                                                            name="preg15"
+                                                                                            value="TELÉFONO" id="r55">
+                                                                                        <label
+                                                                                            for="r55">TELÉFONO</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                        <div class="box box-primary">
+                                                            <div class="box-header with-border">
+                                                                <form name="form16" action="" class="formulario1">
+                                                                    <div class="radio">
+                                                                        <div class="box-header with-border">
+                                                                            <h3 class="box-title">COMPARTE TUS
+                                                                                COMENTARIOS, QUEJAS, SUGERENCIAS...
+                                                                                <span id="span16">*</span></h3>
+                                                                        </div>
+                                                                        <form class="form-horizontal">
+                                                                            <div class="box-body">
+                                                                                <div class="form-group">
+                                                                                    <div class="col-sm-12">
+                                                                                        <textarea class="col-sm-12"
+                                                                                            name="preg16" id="preg16"
+                                                                                            rows="5" cols="40"
+                                                                                            onkeyup="mayus(this);"
+                                                                                            style="font-size: 18px; border-radius: 5px; background-color: #E5E7EC"
+                                                                                            placeholder="ESCRIBE AQUÍ TUS COMENTARIOS"></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+
                                                         <div class="box-body">
-                                                            <div class="form-group">
-                                                                <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5" value="DEFICIENTE"
-                                                                        id="r17">
-                                                                    <label for="r17">DEFICIENTE</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5"
-                                                                        value="NO SATISFACTORIO" id="r18">
-                                                                    <label for="r18">NO SATISFACTORIO</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5"
-                                                                        value="SATISFACTORIO" id="r19">
-                                                                    <label for="r19">SATISFACTORIO</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="col-sm-12">
-                                                                    <input type="radio" name="preg5" value="EXCELENTE"
-                                                                        id="r20">
-                                                                    <label for="r20">EXCELENTE</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                            
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <form name="form6" action="" class="formulario1">
-                                        <div class="radio">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">EL CURSO CUBRIÓ TUS EXPECTATIVAS? <span
-                                                        id="span6">*</span></h3>
-                                            </div>
-                                            <form class="form-horizontal">
-                                                <div class="box-body">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg6" value="DEFICIENTE"
-                                                                id="r21">
-                                                            <label for="r21">DEFICIENTE</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg6" value="NO SATISFACTORIO"
-                                                                id="r22">
-                                                            <label for="r22">NO SATISFACTORIO</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg6" value="SATISFACTORIO"
-                                                                id="r23">
-                                                            <label for="r23">SATISFACTORIO</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <input type="radio" name="preg6" value="EXCELENTE" id="r24">
-                                                            <label for="r24">EXCELENTE</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                       
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <form name="form7" action="" class="formulario1">
-                                    <div class="radio">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title">EL CONTENIDO DEL CURSO AUMENTÓ TUS CONOCIMIENTOS Y
-                                                COMPRENSIÓN DE LOS
-                                                TEMAS REVISADOS? <span id="span7">*</span></h3>
-                                        </div>
-                                        <form class="form-horizontal">
-                                            <div class="box-body">
-                                                <div class="form-group">
-                                                    <div class="col-sm-12">
-                                                        <input type="radio" name="preg7" value="DEFICIENTE" id="r25">
-                                                        <label for="r25">DEFICIENTE</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12">
-                                                        <input type="radio" name="preg7" value="NO SATISFACTORIO"
-                                                            id="r26">
-                                                        <label for="r26">NO SATISFACTORIO</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12">
-                                                        <input type="radio" name="preg7" value="SATISFACTORIO" id="r27">
-                                                        <label for="r27">SATISFACTORIO</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12">
-                                                        <input type="radio" name="preg7" value="EXCELENTE" id="r28">
-                                                        <label for="r28">EXCELENTE</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <form name="form8" action="" class="formulario1">
-                                <div class="radio">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">EL TIEMPO PARA ENTREGAR LAS ACTIVIDADES, FUE SUFICIENTE
-                                            PARA CUMPLIR
-                                            CON ELLAS? <span id="span8">*</span></h3>
-                                    </div>
-                                    <form class="form-horizontal">
-                                        <div class="box-body">
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg8" value="DEFICIENTE" id="r29">
-                                                    <label for="r29">DEFICIENTE</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg8" value="NO SATISFACTORIO" id="r30">
-                                                    <label for="r30">NO SATISFACTORIO</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg8" value="SATISFACTORIO" id="r31">
-                                                    <label for="r31">SATISFACTORIO</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <input type="radio" name="preg8" value="EXCELENTE" id="r32">
-                                                    <label for="r32">EXCELENTE</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <form name="form9" action="" class="formulario1">
-                            <div class="radio">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">LA PRESENTACIÓN DEL CONTENIDO, FUE FÁCIL DE REVISAR? <span
-                                            id="span9">*</span></h3>
-                                </div>
-                                <form class="form-horizontal">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg9" value="DEFICIENTE" id="r33">
-                                                <label for="r33">DEFICIENTE</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg9" value="NO SATISFACTORIO" id="r34">
-                                                <label for="r34">NO SATISFACTORIO</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg9" value="SATISFACTORIO" id="r35">
-                                                <label for="r35">SATISFACTORIO</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <input type="radio" name="preg9" value="EXCELENTE" id="r36">
-                                                <label for="r36">EXCELENTE</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-    
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <form name="form10" action="" class="formulario1">
-                    <div class="radio">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">LA EXPLICACIÓN DE LAS TAREAS, FUERON CLARAS Y SENCILLAS? <span
-                                    id="span10">*</span></h3>
-                        </div>
-                        <form class="form-horizontal">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="DEFICIENTE" id="r37">
-                                        <label for="r37">DEFICIENTE</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="NO SATISFACTORIO" id="r38">
-                                        <label for="r38">NO SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="SATISFACTORIO" id="r39">
-                                        <label for="r39">SATISFACTORIO</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="radio" name="preg10" value="EXCELENTE" id="r40">
-                                        <label for="r40">EXCELENTE</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </form>
-            </div>
-        </div>
-    
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <form name="form11" action="" class="formulario1">
-                <div class="radio">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">EL TIEMPO CON EL QUE RECIBIÓ LA INFORMACIÓN (INVITACIÓN, TEMARIO,
-                            ETC.) AL CURSO FUE ADECUADO? <span id="span11">*</span></h3>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg11" value="DEFICIENTE" id="r41">
-                                    <label for="r41">DEFICIENTE</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg11" value="NO SATISFACTORIO" id="r42">
-                                    <label for="r42">NO SATISFACTORIO</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg11" value="SATISFACTORIO" id="r43">
-                                    <label for="r43">SATISFACTORIO</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg11" value="EXCELENTE" id="r44">
-                                    <label for="r44">EXCELENTE</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </form>
-        </div>
-    </div>
- 
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <form name="form12" action="" class="formulario1">
-                <div class="radio">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">CÓMO FUE EL MATERIAL DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN, TEXTOS,
-                            ENLACES) UTILIZADO? <span id="span12">*</span></h3>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg12" value="DEFICIENTE" id="r45">
-                                    <label for="r45">DEFICIENTE</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg12" value="NO SATISFACTORIO" id="r46">
-                                    <label for="r46">NO SATISFACTORIO</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg12" value="SATISFACTORIO" id="r47">
-                                    <label for="r47">SATISFACTORIO</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg12" value="EXCELENTE" id="r48">
-                                    <label for="r48">EXCELENTE</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <form name="form13" action="" class="formulario1">
-                <div class="radio">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">MENCIONA ALGUNA MEJORA QUE SE PUDIERA REALIZAR A ESTE PROCESO DE
-                            APRENDIZAJE <span id="span13">*</span></h3>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="text" name="preg13" id="preg13" class="col-sm-12"
-                                        onkeyup="mayus(this);" placeholder="TU RESPUESTA"
-                                        style="background-color: #E5E7EC; border: 0; outline: none">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </form>
-        </div>
-    </div>
-   
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <form name="form14" action="" class="formulario1">
-                <div class="radio">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">DÓNDE REALIZASTE TU CURSO? <span id="span14">*</span></h3>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="box-body" id=pregunta14>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg14" value="OFICINA" id="r49">
-                                    <label for="r49">OFICINA</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg14" value="CASA" id="r50">
-                                    <label for="r50">CASA</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg14" value="CAFÉ INTERNET" id="r51">
-                                    <label for="r51">CAFÉ INTERNET</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg14" value="OTROS" id="r52">
-                                    <label for="r52">OTROS</label>
-                                    <input type="text" name="otro" id="otro" onkeyup="mayus(this);"
-                                        placeholder="TU RESPUESTA"
-                                        style="background-color: #E5E7EC; border: 0; outline: none">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </form>
-        </div>
-    </div>
+                                                            <div class="form-group"><br>
+                                                                <div class="col-sm-offset-0 col-sm-5">
 
-
-   
-
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <form name="form15" action="" class="formulario1">
-                <div class="radio">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">DÓNDE REALIZASTE TU CURSO? <span id="span15">*</span></h3>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg15" value="COMPUTADORA" id="r53" required>
-                                    <label for="r53">COMPUTADORA</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg15" value="TABLET" id="r54">
-                                    <label for="r54">TABLET</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="radio" name="preg15" value="TELÉFONO" id="r55">
-                                    <label for="r55">TELÉFONO</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-
-   
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <form name="form16" action="" class="formulario1">
-                <div class="radio">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">COMPARTE TUS COMENTARIOS, QUEJAS, SUGERENCIAS... <span
-                                id="span16">*</span></h3>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <textarea class="col-sm-12" name="preg16" id="preg16" rows="5" cols="40"
-                                        onkeyup="mayus(this);"
-                                        style="font-size: 18px; border-radius: 5px; background-color: #E5E7EC"
-                                        placeholder="ESCRIBE AQUÍ TUS COMENTARIOS"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <div class="box-body">
-        <div class="form-group"><br>
-            <div class="col-sm-offset-0 col-sm-5">
-
-                <!-- <form id="impri" action="" method="POST"  >
+                                                                    <!-- <form id="impri" action="" method="POST"  >
   <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
 
                     <button type="button" class="btn btn-info btn-lg" onclick="enviar();">ENVIAR</button>
 </form> -->
-                <div class="col-sm-5">
-                    <button type="button" class="btn btn-primary" onclick="evaluar()">ACEPTAR</button>
+                                                                    <div class="col-sm-5">
+                                                                        <button type="button" class="btn btn-primary"
+                                                                            onclick="evaluar()">ACEPTAR</button>
+                                                                    </div>
+                                                                </div>
+                                                                <b>
+                                                                    <p class="alert alert-danger text-center padding error"
+                                                                        id="peligro">Error al agregar datos
+                                                                    </p>
+                                                                </b>
+                                                                <b>
+                                                                    <p class="alert alert-success text-center padding exito"
+                                                                        id="enviadoexito">¡Su evaluación de reacción se
+                                                                        realizó con éxito !</p>
+                                                                </b>
+                                                                <b>
+                                                                    <p class="alert alert-info text-center padding error"
+                                                                        id="aviso">Su evaluación de reacción fue
+                                                                        realizada
+                                                                    </p>
+                                                                </b>
+                                                                <b>
+                                                                    <p class="alert alert-warning text-center padding error"
+                                                                        id="pregunta">Pregunta obligatoria<strong
+                                                                            style=";font-size: 1.7em"> *</strong>
+                                                                    </p>
+                                                                </b>
+
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <script type="text/javascript" src="../js/encuestadatos.js"></script>
+                                <?php include('modal.php');?>
+                                <!-- /.tab-pane -->
+                            </div>
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
                 </div>
-            </div>
-            <b>
-                <p class="alert alert-danger text-center padding error" id="peligro">Error al agregar datos
-                </p>
-            </b>
-            <b>
-                <p class="alert alert-success text-center padding exito" id="enviadoexito">¡Su evaluación de reacción se
-                    realizó con éxito !</p>
-            </b>
-            <b>
-                <p class="alert alert-info text-center padding error" id="aviso">Su evaluación de reacción fue realizada
-                </p>
-            </b>
-            <b>
-                <p class="alert alert-warning text-center padding error" id="pregunta">Pregunta obligatoria<strong
-                        style=";font-size: 1.7em"> *</strong>
-                </p>
-            </b>
+                <!-- /.row -->
 
+            </section>
+            <!-- /.content -->
         </div>
-    </div>
 
-
-
-
-</section>
-</div>
-</div>
-</div>
-</div>
-</form>
-    <script type="text/javascript" src="../js/encuestadatos.js"></script>
-    <?php include('modal.php');?>
-    <!-- /.tab-pane -->
-    </div>
-    </div>
-    <!-- /.nav-tabs-custom -->
-    </div>
-    <!-- /.col -->
-    </div>
-    <!-- /.row -->
-
-    </section>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b>    <?php 
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> <?php 
                                 $query ="SELECT 
                                         *
                                         FROM
@@ -1045,19 +1207,19 @@
                                     exit;
                                 }
                                 ?>
-                    <?php echo $row['version']?>
-        </div>
-        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-        Todos los derechos Reservados AJ.
+                <?php echo $row['version']?>
+            </div>
+            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+            Todos los derechos Reservados AJ.
 
-    </footer>
+        </footer>
 
-    <!-- Control Sidebar -->
-    <?php include('../admin/panel.html');?>
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
+        <!-- Control Sidebar -->
+        <?php include('../admin/panel.html');?>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
+        <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -1169,7 +1331,7 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
 
         "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
 
-//aquies
+        //aquies
 
     ],
     <?php } ?>
@@ -1200,10 +1362,11 @@ var tableGenerarReporte = $('#data-table-programado').DataTable({
             title: "ASISTENCIA"
         },
         {
-            title: "CONFIR", "visible": false
+            title: "CONFIR",
+            "visible": false
         }
     ],
-}); 
+});
 
 // CURSOS PROGRAMADOS
 var dataSet = [
@@ -1245,7 +1408,7 @@ if($res = mysqli_fetch_array($resul)){
  if($con = mysqli_fetch_array($const)){
 
 if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
-$accion = "<center><a title='Descarga Constancia' onclick='certificado1()' class='datos btn btn-default'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+$accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='constancia.php?data={$con[0]}' onclick='desactivar();' class='datos btn btn-default'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
 $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }
@@ -1255,34 +1418,36 @@ $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><
 
 ?>
 
-["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-"<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-"<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+        "<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>",
+        "<?php echo $accion?>"],
 
-<?php }else{  
+    <?php }else{  
 
 
 $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>";  ?>
 
-["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-"<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-"<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>", "<?php echo $accion?>"], 
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+        "<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>",
+        "<?php echo $accion?>"],
 
-<?php } }else{ ?>
+    <?php } }else{ ?>
 
-<?php if($data['confirmar'] == 'TRABAJO' || $data['confirmar'] == 'ENFERMEDAD' || $data['confirmar'] == 'OTROS'){ ?>
+    <?php if($data['confirmar'] == 'TRABAJO' || $data['confirmar'] == 'ENFERMEDAD' || $data['confirmar'] == 'OTROS'){ ?>
 
 
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-//BILL0Y
+        //BILL0Y
         "<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop'><?php if($data['confirmar'] == 'TRABAJO'){ echo 'DECLINADO';} else if($data['confirmar'] == 'ENFERMEDAD'){ echo 'DECLINADO';}else{ echo 'DECLINADO';}?></span>",
         "<span style='background-color: grey; font-size: 13px;' class='badge'>SIN ACCIONES</span>"
-        
 
- ], 
 
-<?php }else{ ?>
+    ],
+
+    <?php }else{ ?>
 
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
@@ -1291,13 +1456,14 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
         "<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-primary '>EVALUAR</a>"
 
-],     
- 
- 
- <?php } 
+    ],
+
+
+    <?php } 
  
 } 
-           }?> ];
+           }?>
+];
 
 var tableGenerarReporte = $('#data-table-completo').DataTable({
     "language": {
@@ -1392,31 +1558,41 @@ $(document).ready(function() {
 </script> -->
 
 <script>
-                    
-    function certificado1() {
-        
-    var pdf = new jsPDF("landscape");
-    pdf.setFontSize(10)
-        
-    var logo = new Image();
-    logo.src = '../dist/img/certificado.png';
-    pdf.addImage(logo, 'PNG', 0, 0, 300, 210);
-    pdf.setFontType('bold')
-   // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL'
-   // pdf.text(100, 102, 'LISTA TECNICA DE PARTICIPANTES')
+// function certificado1() {
 
-    /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-    const pageCount = pdf.internal.getNumberOfPages();
-    for (var i = 1; i <= pageCount; i++) {
-        pdf.setFontSize(8)
-        pdf.setPage(i);
-        pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-            "right");
+//     var pdf = new jsPDF("landscape");
+//     pdf.setFontSize(10)
+
+//     var logo = new Image();
+//     logo.src = '../dist/img/certificado.png';
+//     pdf.addImage(logo, 'PNG', 0, 0, 300, 210);
+//     pdf.setFontType('bold')
+//     // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL'
+//     // pdf.text(100, 102, 'LISTA TECNICA DE PARTICIPANTES')
+
+//     /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
+//     const pageCount = pdf.internal.getNumberOfPages();
+//     for (var i = 1; i <= pageCount; i++) {
+//         pdf.setFontSize(8)
+//         pdf.setPage(i);
+//         pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
+//             "right");
+//     }
+
+
+//     window.open(pdf.output('bloburl'))
+
+// }
+
+var counter = 0;
+
+function desactivar() {
+    if (counter < 1) {
+        document.getElementById("myCertificate").enable = true;
+        counter++;
+    } else {
+        document.getElementById("myCertificate").disabled = true;
+
     }
-
-    
-    window.open(pdf.output('bloburl'))
-
 }
-
 </script>
