@@ -59,6 +59,11 @@ ini_set('date.timezone','America/Mexico_City');
     $fecha2= $dia[date('d')];
     setlocale(LC_TIME, "spanish");
     $mesactual = strftime("%B");
-    
+    $nombre = $con['gstNombr'];
+    $apellido = $con['gstApell'];
+    $curso = $con['gstTitlo'];
+    $dateF = $con['fcurso'];
+    $registro = $con['id_codigocurso'];
+    // $qrFecha = $dateF[date("F j, Y")];  
 
 ?>
