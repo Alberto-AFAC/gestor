@@ -186,6 +186,10 @@ include ("../conexion/conexion.php");
                     <label>CENTRO DE INSTRUCCIÓN</label>    
                     <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntro" name="gstCntro">
                     </div>
+
+                    <div style="padding-top: 25px;" class="col-sm-4">
+                   <button style="width: 100%;" class="btn btn-info">AGREGAR TEMARIO</button>
+                    </div>
                   </div> 
     
                   <div class="form-group">
@@ -195,10 +199,14 @@ include ("../conexion/conexion.php");
                     </div>
                   </div>
                  <div class="form-group">
-                     <div class="col-sm-4">
-                      <label>TEMARIO</label>
-
-                   <input type="file" id="gstTmrio" name="gstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
+                     <div class="col-sm-5">
+                      <label>TEMARIO</label><br>
+                      <!-- <input type="button" id="add_field" value="adicionar"> -->
+                      <br>
+                      <div id="listas">
+                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div><img id="add_field" src="../dist/img/add.svg" width="30px;">
+                      </div>
+                   <!-- <input type="file" id="gstTmrio" name="gstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450"> -->
                       </div>
                   </div>   
               <div class="form-group"><br>
@@ -301,5 +309,26 @@ $(document).ready(function(){
 $('#gstPrfil').select2();
 
 }); 
+// add temario
+var campos_max          = 10;   //max de 10 campos
+
+        var x = 0;
+        $('#add_field').click (function(e) {
+                e.preventDefault();     //prevenir novos clicks
+                if (x < campos_max) {
+                        $('#listas').append('<div>\
+                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <a href="#" class="remover_campo">Remover</a>\
+                                </div>');
+                        x++;
+                }
+        });
+        // Remover o div anterior
+        $('#listas').on("click",".remover_campo",function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+        });
+
 </script>
 <script src="../js/select2.js"></script> 
