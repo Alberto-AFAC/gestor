@@ -309,12 +309,12 @@ $(document).ready(function(){
 $('#gstPrfil').select2();
 
 }); 
-// add temario
-var campos_max          = 10;   //max de 10 campos
+
+var campos_max          = 30;   
 
         var x = 0;
         $('#add_field').click (function(e) {
-                e.preventDefault();     //prevenir novos clicks
+                e.preventDefault();    //chups
                 if (x < campos_max) {
                         $('#listas').append('<div>\
                                 <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
