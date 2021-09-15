@@ -42,3 +42,14 @@ p {
     /** Your watermark should be behind every content**/
     z-index: -1000;
 }
+
+footer {
+    position: fixed;
+    bottom: -40px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    /** Extra personal styles **/
+    text-align: center;
+    line-height: 35px;
+}
