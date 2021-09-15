@@ -92,56 +92,76 @@ function regCurso() {
         }
     }
 
-        var campo = new Array();
-        /*Agrupamos todos los input con name=cbxEstudiante*/
-        $('input[name="campo[]"]').each(function(element) {
-        var item ={};
+    var campo = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="campo[]"]').each(function(element) {
+        var item = {};
         item.campo = this.value;
         campo.push(item);
-        });
+    });
 
-        var array = JSON.stringify(campo);
+    var array = JSON.stringify(campo);
 
-        gstPrfiles = tPrfil.substr(1);
+    gstPrfiles = tPrfil.substr(1);
 
-    var gstPrfil = gstPrfiles; 
+    var gstPrfil = gstPrfiles;
     // var gstTitlo =  document.getElementById('gstTitlo').value;
-    var gstTitlo =  document.getElementById('gstTitlo').value;
-    var gstTipo =  document.getElementById('gstTipo').value;
-    var gstVignc =  document.getElementById('gstVignc').value;
-    var gstObjtv =  document.getElementById('gstObjtv').value;
-    var hr =  document.getElementById('hr').value;
-    var tmp1 =  document.getElementById('tmp1').value;
-    var min =  document.getElementById('min').value;
-    var tmp2 =  document.getElementById('tmp2').value;
-    var gstCntnc =  document.getElementById('gstCntnc').value;
-    var gstProvd =  document.getElementById('gstProvd').value;
-    var gstCntro =  document.getElementById('gstCntro').value;
+    var gstTitlo = document.getElementById('gstTitlo').value;
+    var gstTipo = document.getElementById('gstTipo').value;
+    var gstVignc = document.getElementById('gstVignc').value;
+    var gstObjtv = document.getElementById('gstObjtv').value;
+    var hr = document.getElementById('hr').value;
+    var tmp1 = document.getElementById('tmp1').value;
+    var min = document.getElementById('min').value;
+    var tmp2 = document.getElementById('tmp2').value;
+    var gstCntnc = document.getElementById('gstCntnc').value;
+    var gstProvd = document.getElementById('gstProvd').value;
+    var gstCntro = document.getElementById('gstCntro').value;
 
-    datos = 'gstPrfil='+gstPrfil+'&gstTitlo='+gstTitlo+'&gstTipo='+gstTipo+'&gstVignc='+gstVignc+'&gstObjtv='+gstObjtv+'&hr='+hr+'&tmp1='+tmp1+'&min='+min+'&tmp2='+tmp2+'&gstCntnc='+gstCntnc+'&gstProvd='+gstProvd+'&gstCntro='+gstCntro+'&array='+array+'&opcion=insert';
+    datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&array=' + array + '&opcion=insert';
+    if (gstPrfil == '' || gstTitlo == '' || gstTipo == '' || gstVignc == '' || gstObjtv == '' || hr == '' || tmp1 == '' || min == '' || tmp2 == '' || gstCntnc == '' || gstProvd == '' || gstCntro == '') {
+        Swal.fire({
+            type: 'error',
+            title: 'ATENCIÓN!',
+            text: 'Verificar campos faltantes o con información incorrecta',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
 
-           $.ajax({
+        });
+    } else {
+        $.ajax({
             url: '../php/docCursos.php',
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            
-           // alert(respuesta);
+            document.getElementById("addcurse").reset();
+
+            // alert(respuesta);
 
             if (respuesta == 0) {
-                alert(respuesta);
-                $('#succe4').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe4').toggle('toggle');
-                }, 2000);
+                // alert(respuesta);
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'CURSO GUARDADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
             } else {
-                $('#danger4').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger4').toggle('toggle');
-                }, 2000);
+                alert("AQUÍ ESTA VACÍO");
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'AFAC INFORMA',
+                //     text: 'CURSO GUARDADO CON ÉXITO',
+                //     showConfirmButton: false,
+                //     customClass: 'swal-wide',
+                //     timer: 3000
+                // });
             }
         });
-
+    }
 }
 
 
@@ -346,3 +366,55 @@ function eliCurso() {
         });
     }
 }
+
+
+$(document).ready(function() {
+    $('#btnguardar').click(function() {
+        var fecha_salida = $("#fecha_salida").val();
+        var hora_salida = $("#hora_salida").val();
+        var origenVuelo = $("#origenVuelo").val();
+        var destinoVuelo = $("#destinoVuelo").val();
+        var aerolinea = $("#aerolinea").val();
+        var nVuelo = $("#nVuelo").val();
+        var email = $("#email").val();
+        var telefono = $("#telefono").val();
+        var pais = $("#pais").val();
+        var estado = $("#estado").val();
+        var cp = $("#cp").val();
+        var nombres = $("#nombres").val();
+        var pApellido = $("#pApellido").val();
+        var sApellido = $("#sApellido").val();
+        var edad = $("#edad").val();
+        var genero = $("#genero").val();
+        var nacionalidad = $("#nacionalidad").val();
+        var sintomasC = $("#sintomasC1").val();
+        swal.showLoading();
+        if (fecha_salida == '' || hora_salida == '' || origenVuelo == '' || destinoVuelo == '' || aerolinea == '' || nVuelo == '' || email == '' || telefono == '' || pais == '' || estado == '' || cp == '' || nombres == '' || pApellido == '' || sApellido == '' || edad == '' || genero == '' || nacionalidad == '' || sintomasC == '' || pruebaC == '') {
+            Swal.fire({
+                type: 'error',
+                title: 'ATENCIÓN!',
+                text: 'Verificar campos faltantes o con información incorrecta',
+                showConfirmButton: false,
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "controllers/php/insert.php",
+                data: { fecha_salida: fecha_salida, hora_salida: hora_salida, hora_salida: hora_salida, origenVuelo: origenVuelo, destinoVuelo: destinoVuelo, aerolinea: aerolinea, nVuelo: nVuelo, email: email, telefono: telefono, pais: pais, estado: estado, cp: cp, nombres: nombres, pApellido: pApellido, sApellido: sApellido, edad: edad, genero: genero, nacionalidad: nacionalidad, sintomasC: sintomasC1, pruebaC: pruebaC },
+                success: function(data) {
+                    document.getElementById("datosPersonales").reset();
+                    Swal.fire({
+                        type: 'success',
+                        title: 'AFAC INFORMA',
+                        text: 'Sus datos fueron guardados correctamente',
+                        showConfirmButton: false,
+                        timer: 2900,
+                        showConfirmButton: false,
+                    });
+                }
+            });
+        }
+
+        return false;
+    });
+});
