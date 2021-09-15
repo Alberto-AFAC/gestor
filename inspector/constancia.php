@@ -12,7 +12,7 @@ $tamanio = 5;
 $level = 'H';
 $frameSize = 1;
 // $contenido = $nombre . "FECHA DE SALIDA"  . $data['fecha_salida'] . "AEROLINEA" . $data['aerolinea'];
-$contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL, OTORGÓ A:" .$nombre. " ".$apellido . " " . "UN CERTIFICADO POR HABER PARTICIPADO EN EL CURSO". " " .$curso. " ". "EL DIA". " "."BAJO EL REGISTRO". " " .$registro. " ". "SECRETARIA DE COMUNICACIONES Y TRANSPORTES DIRECCIÓN GENERAL DE AVIACIÓN CIVIL.";
+$contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE AVIACIÓN CIVIL, OTORGÓ A:". " " .$nombre. " " .$apellido. " " ."UN CERTIFICADO POR HABER PARTICIPADO EN EL CURSO CON FOLIO". " " .$registro. " ". "El DIA"." ".$dateFinal;
 
 QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 ?>
@@ -63,9 +63,10 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         	echo '<img style="float: right; width: 10%;" src="'.$filename.'" />';
         ?>
 </div><br>
-<div class="container">
+<div style="padding-top: 25px;" class="container">
     <p class="temario">Este certificado ampara los temas visto en el Diplomado de Medicina Aeroespacial (01/2021), que a
         continuación se enlistan:</p>
+        <p class="temario"><?php echo $temario?></p>
     <div style="padding-top: 25px; text-align: center;">
         <span class="p-2">Lic. Rebeca Morales Reyes Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
     </div>
