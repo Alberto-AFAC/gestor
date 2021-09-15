@@ -92,80 +92,135 @@ function regCurso() {
         }
     }
 
-    gstPrfiles = tPrfil.substr(1);
 
-    var paqueteDeDatos = new FormData();
-    paqueteDeDatos.append('gstTmrio', $('#gstTmrio')[0].files[0]);
-    //paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
-    paqueteDeDatos.append('gstTitlo', $('#gstTitlo').prop('value'));
-    paqueteDeDatos.append('gstTipo', $('#gstTipo').prop('value'));
-    paqueteDeDatos.append('gstVignc', $('#gstVignc').prop('value'));
-    paqueteDeDatos.append('gstPrfil', gstPrfiles);
-    paqueteDeDatos.append('gstObjtv', $('#gstObjtv').prop('value'));
+        var campo = new Array();
+        /*Agrupamos todos los input con name=cbxEstudiante*/
+        $('input[name="campo[]"]').each(function(element) {
+        var item ={};
+        item.campo = this.value;
+        campo.push(item);
+        });
 
-    paqueteDeDatos.append('hr', $('#hr').prop('value'));
-    paqueteDeDatos.append('tmp1', $('#tmp1').prop('value'));
-    paqueteDeDatos.append('min', $('#min').prop('value'));
-    paqueteDeDatos.append('tmp2', $('#tmp2').prop('value'));
-    paqueteDeDatos.append('gstCntnc', $('#gstCntnc').prop('value'));
+        var array = JSON.stringify(campo);
 
-    paqueteDeDatos.append('gstProvd', $('#gstProvd').prop('value'));
-    paqueteDeDatos.append('gstCntro', $('#gstCntro').prop('value'));
+        gstPrfiles = tPrfil.substr(1);
 
-    $.ajax({
-        url: '../php/docCursos.php',
-        data: paqueteDeDatos,
-        type: "POST",
-        contentType: false,
-        processData: false,
-        success: function(r) {
-            // alert(r);
-            console.log(r);
-            if (r == 8) {
-                $('#vacio').toggle('toggle');
-                setTimeout(function() {
-                    $('#vacio').toggle('toggle');
-                }, 4000);
 
-            } else if (r == 0) {
-                $('#exito').toggle('toggle');
+    var gstPrfil = gstPrfiles; 
+    // var gstTitlo =  document.getElementById('gstTitlo').value;
+    var gstTitlo =  document.getElementById('gstTitlo').value;
+    var gstTipo =  document.getElementById('gstTipo').value;
+    var gstVignc =  document.getElementById('gstVignc').value;
+    var gstObjtv =  document.getElementById('gstObjtv').value;
+    var hr =  document.getElementById('hr').value;
+    var tmp1 =  document.getElementById('tmp1').value;
+    var min =  document.getElementById('min').value;
+    var tmp2 =  document.getElementById('tmp2').value;
+    var gstCntnc =  document.getElementById('gstCntnc').value;
+    var gstProvd =  document.getElementById('gstProvd').value;
+    var gstCntro =  document.getElementById('gstCntro').value;
+
+
+    datos = 'gstPrfil='+gstPrfil+'&gstTitlo='+gstTitlo+'&gstTipo='+gstTipo+'&gstVignc='+gstVignc+'&gstObjtv='+gstObjtv+'&hr='+hr+'&tmp1='+tmp1+'&min='+min+'&tmp2='+tmp2+'&gstCntnc='+gstCntnc+'&gstProvd='+gstProvd+'&gstCntro='+gstCntro+'&array='+array+'&opcion=insert';
+
+    // var paqueteDeDatos = new FormData();
+    // paqueteDeDatos.append('gstTmrio', $('#gstTmrio')[0].files[0]);
+    // //paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
+    // paqueteDeDatos.append('gstTitlo', $('#gstTitlo').prop('value'));
+    // paqueteDeDatos.append('gstTipo', $('#gstTipo').prop('value'));
+    // paqueteDeDatos.append('gstVignc', $('#gstVignc').prop('value'));
+    // paqueteDeDatos.append('gstPrfil', gstPrfiles);
+    // paqueteDeDatos.append('gstObjtv', $('#gstObjtv').prop('value'));
+
+    // paqueteDeDatos.append('hr', $('#hr').prop('value'));
+    // paqueteDeDatos.append('tmp1', $('#tmp1').prop('value'));
+    // paqueteDeDatos.append('min', $('#min').prop('value'));
+    // paqueteDeDatos.append('tmp2', $('#tmp2').prop('value'));
+    // paqueteDeDatos.append('gstCntnc', $('#gstCntnc').prop('value'));
+
+    // paqueteDeDatos.append('gstProvd', $('#gstProvd').prop('value'));
+    // paqueteDeDatos.append('gstCntro', $('#gstCntro').prop('value'));
+
+
+        $.ajax({
+            url: '../php/docCursos.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            
+            alert(respuesta);
+
+            if (respuesta == 0) {
+                alert(respuesta);
+                $('#succe4').toggle('toggle');
                 setTimeout(function() {
-                    $('#exito').toggle('toggle');
-                }, 4000);
-                conCurso('');
-            } else if (r == 1) {
-                $('#falla').toggle('toggle');
+                    $('#succe4').toggle('toggle');
+                }, 2000);
+            } else {
+                $('#danger4').toggle('toggle');
                 setTimeout(function() {
-                    $('#falla').toggle('toggle');
-                }, 4000);
-            } else if (r == 2) {
-                $('#error').toggle('toggle');
-                setTimeout(function() {
-                    $('#error').toggle('toggle');
-                }, 4000);
-            } else if (r == 3) {
-                $('#renom').toggle('toggle');
-                setTimeout(function() {
-                    $('#renom').toggle('toggle');
-                }, 4000);
-            } else if (r == 4) {
-                $('#forn').toggle('toggle');
-                setTimeout(function() {
-                    $('#forn').toggle('toggle');
-                }, 4000);
-            } else if (r == 6) {
-                $('#adjunta').toggle('toggle');
-                setTimeout(function() {
-                    $('#adjunta').toggle('toggle');
-                }, 4000);
-            } else if (r == 7) {
-                $('#repetido').toggle('toggle');
-                setTimeout(function() {
-                    $('#repetido').toggle('toggle');
-                }, 4000);
+                    $('#danger4').toggle('toggle');
+                }, 2000);
             }
-        }
-    });
+        });
+
+
+
+
+    // $.ajax({
+    //     url: '../php/docCursos.php',
+    //     data: paqueteDeDatos,
+    //     type: "POST",
+    //     contentType: false,
+    //     processData: false,
+    //     success: function(r) {
+    //         // alert(r);
+    //         console.log(r);
+    //         if (r == 8) {
+    //             $('#vacio').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#vacio').toggle('toggle');
+    //             }, 4000);
+
+    //         } else if (r == 0) {
+    //             $('#exito').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#exito').toggle('toggle');
+    //             }, 4000);
+    //             conCurso('');
+    //         } else if (r == 1) {
+    //             $('#falla').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#falla').toggle('toggle');
+    //             }, 4000);
+    //         } else if (r == 2) {
+    //             $('#error').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#error').toggle('toggle');
+    //             }, 4000);
+    //         } else if (r == 3) {
+    //             $('#renom').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#renom').toggle('toggle');
+    //             }, 4000);
+    //         } else if (r == 4) {
+    //             $('#forn').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#forn').toggle('toggle');
+    //             }, 4000);
+    //         } else if (r == 6) {
+    //             $('#adjunta').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#adjunta').toggle('toggle');
+    //             }, 4000);
+    //         } else if (r == 7) {
+    //             $('#repetido').toggle('toggle');
+    //             setTimeout(function() {
+    //                 $('#repetido').toggle('toggle');
+    //             }, 4000);
+    //         }
+    //     }
+    // });
 
     //}
 }
