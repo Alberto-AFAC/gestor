@@ -211,14 +211,34 @@ function btnEnviar(){
 
   	
  </script>
-<?php
-    $numeros=[10,20,30,40];
-    $matriz_numeros=[{2,4,6,8},{5,10,15,20},{10,20,30,40}];
-?>
+
 
 <pre>
 <?php 
-    echo '<strong>$matriz_numeros</strong><br>'; // Mostramos literal con  el nombre del array 
-    print_r($matriz_numeros); //  Imprimir estructura y contenido del array
+   // echo '<strong>$matriz_numeros</strong><br>'; // Mostramos literal con  el nombre del array 
+   // print_r($matriz_numeros); //  Imprimir estructura y contenido del array
+//
+
+
+
+  $query="SELECT gstIdlsc FROM listacursos ORDER BY gstIdlsc DESC LIMIT 1";  
+  
+$result = mysqli_query($conexion,$query);
+
+$res = mysqli_fetch_row($result);
+
+  echo $res[0];
+
+
+
+
+
+
+
+
+
+
+
 ?>
 </pre>
+
