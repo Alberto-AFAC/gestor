@@ -66,8 +66,21 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 <div style="padding-top: 25px;" class="container">
     <p class="temario">Este certificado ampara los temas visto en el Diplomado de Medicina Aeroespacial (01/2021), que a
         continuación se enlistan:</p>
-        <p class="temario"><?php echo $temario?></p>
-    <div style="padding-top: 25px; text-align: center;">
+       <?php 
+       $datos = $_GET['data'];
+       $queryTemario = "SELECT idtem, titulo,idcurso FROM temario WHERE idcurso = $idc";
+                          $const = mysqli_query($conexion, $queryTemario);
+                          $contador = 0;
+                          while($consulta2 = mysqli_fetch_array($const)){
+                          $contador ++;
+                          $temario = $consulta2['titulo'];
+       ?>
+        <p class="temario"><?php echo $contador?>.- <?php echo $temario?></p>
+        <?php } ?>
+        <div style="padding-top: 10%; text-align: center;">
+        <span class="p-2">Registrado bajo el No XX a fojas X del libro de registro de Certificados y Constancias de capacitación No. 1 cursos en línea.</span>
+    </div>
+    <div style="text-align: center;">
         <span class="p-2">Lic. Rebeca Morales Reyes Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
     </div>
 </div>
