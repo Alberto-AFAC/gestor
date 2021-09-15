@@ -310,8 +310,7 @@ $('#gstPrfil').select2();
 
 }); 
 
-var campos_max          = 30;   
-
+        var campos_max = 30;   
         var x = 0;
         $('#add_field').click (function(e) {
                 e.preventDefault();    //chups
