@@ -158,12 +158,12 @@ function evaluar() {
                 // }, 2000);
 
                 Swal.fire({
-                    icon: 'success',
-                    title: 'SE EVALUÓ CON ÉXITO LA REACCIÓN',
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'SE EVALUO CON EXITO EL CURSO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
-                    timer: 3000,
-                    backdrop: `rgba(100, 100, 100, 0.4)`
+                    timer: 3000
                 });
                 setTimeout("location.href = 'inspector.php';", 3000);
 
@@ -401,7 +401,7 @@ function cambiartexto() {
 }
 
 function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
-    var cer = cursos.split("*");
+    var cer = cursos.split("*"); 
     //alert(cer[22]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
@@ -578,7 +578,7 @@ function evalresult(){
 
 }
 
-function generacion(cursos) {
+function generacion(cursos) { //abre el modal de generacion de constancias 
 
     var d = cursos.split("*");
     $("#cursoc").html(d[1]);
@@ -598,18 +598,70 @@ function generacion(cursos) {
                     for (G = 0; G < res.length; G++) {
 
                         //if(obj.data[E].gstCatga == gstIDCat){
-
+                            
                         //if(obj.data[E].gstOrden==1){
 // <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
                         if(obj.data[G].id_codigocurso==d[21]){
                         x++;
+                        
+                   // alert(d[21]);
+                      
+                      evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'>"
+                      confirmaasis1="<i class='fa fa-check' id='cov1' disabled style='color:green; font-size: 16pt'></i>" ;
+                      lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' name='listregis' value='"+obj.data[G].id+"'/> " ;
+                      asistencia1="<input type='checkbox' style='width:17px; height:17px;' name='lisasisten' id='lisasisten' />"
+                      lisreport1="<input type='checkbox' style='width:17px; height:17px;' name='listreportein' id='listreportein'/>"
+                      cartdescrip1="<input type='checkbox' style='width:17px; height:17px;' name='cartdescrip' id='cartdescrip'/>"
+                      regponde1="<input type='checkbox' style='width:17px; height:17px;' name='regponde' id='regponde'/>"
+                      infinal1="<input type='checkbox' style='width:17px; height:17px;' name='infinal' id='infinal'/>"
+                      evreaccion1 ="<input type='checkbox' style='width:17px; height:17px;' name='evreaccion' id='evreaccion' />"
+                     
 
-                        //alert(obj.data[G].id);
+                     //if (((d[17]) >= 80) && ((d[17]) <= 100)) {
+                       // evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
+                     //}
 
-                        html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td><input type='checkbox' id='listregis' name='listregis' value='"+obj.data[G].id+"'/> </td><td><input type='checkbox' name='lisasisten' id='lisasisten' /></td><td><input type='checkbox' name='listreportein' id='listreportein'/></td><td><input type='checkbox' name='cartdescrip' id='cartdescrip'/></td><td><input type='checkbox' name='regponde' id='regponde'/></td><td><input type='checkbox' name='infinal' id='infinal'/></td><td><input type='checkbox' name='evreaccion' id='evreaccion' /></td><td><input type='checkbox' name='copias' id='copias' /></td><td><input type='checkbox' name='estado_cer' id='estado_cer' /></td></tr>";
+               //      if (((d[17]) < 80) && ((d[17]) <= 100)) {
+                 //       evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
+                   //  }
 
-                        }
+               //    if (obj.data[G].listregis=='SI'){ // columna1
+                 //   lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='"+obj.data[G].id+"'/> "
+             //     }        
 
+                      if (obj.data[G].listregis=='SI'){ // columna1
+                      lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='"+obj.data[G].id+"'/> "
+                    }            
+
+                    if (obj.data[G].lisasisten=='SI'){ // columna2    
+                        asistencia1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='lisasisten' id='lisasisten' /> "
+                    } 
+
+                    if (obj.data[G].listreportein=='SI'){ // columna3    
+                        lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='listreportein' id='listreportein'/> "
+                    }
+
+                    if (obj.data[G].cartdescrip=='SI'){ // columna4    
+                        cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='cartdescrip' id='cartdescrip'/> "
+                    }
+
+                    if (obj.data[G].regponde=='SI'){ // columna5    
+                        regponde1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='regponde' id='regponde'/> "
+                    }
+
+                    if (obj.data[G].infinal=='SI'){ // columna6   
+                        infinal1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal'/>"
+                    }
+
+                    if (obj.data[G].evreaccion=='SI'){ // columna7   
+                        evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='evreaccion' id='evreaccion' />"
+                    }
+
+                        html += "<tr><td>" + x +"<input type='checkbox' style='width:14px; height:14px;' name='full' id='full' />"  + "</td><td>" + obj.data[G].gstNombr +" " +obj.data[G].gstApell +"</td><td>"+confirmaasis1+"</td><td>"+lista1+"</td><td>"+asistencia1+"</td><td>"+lisreport1+"</td><td>"+cartdescrip1+"</td><td>"+evalreac1+"</i></span></td><td>"+regponde1+"</td><td>"+infinal1+"</td><td>"+evreaccion1+"</td></tr>";
+    //  html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+confirmaasis1+"</td><td><input type='checkbox' id='listregis' name='listregis' value='"+obj.data[G].id+"'/> </td><td><input type='checkbox' name='lisasisten' id='lisasisten' /></td><td><input type='checkbox' name='listreportein' id='listreportein'/></td><td><input type='checkbox' name='cartdescrip' id='cartdescrip'/></td><td><i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'></i></span></td><td><input type='checkbox' name='regponde' id='regponde'/></td><td><input type='checkbox' name='infinal' id='infinal'/></td><td><input type='checkbox' name='evreaccion' id='evreaccion' /></td></tr>";
+                       
+                       
+                    }
                         // <td>" + obj.data[G].gstApell + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
                         //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
                         // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
@@ -619,6 +671,8 @@ function generacion(cursos) {
                     html +='</table>';
                     $("#generacion").html(html);
                 })
+
+
 }
 
 function generar(){
@@ -694,12 +748,17 @@ function generar(){
         type: 'POST',
         data: datos
         }).done(function(respuesta) {
-            //alert(respuesta);
+            //alert(respuesta); 13092021
         if (respuesta == 0) {
-            // $('#succ').toggle('toggle');
-            // setTimeout(function() {
-            // $('#succ').toggle('toggle');
-            // }, 2000);
+            Swal.fire({
+                type: 'success',
+                title: 'AFAC INFORMA',
+                text: 'SE GUARDO CON EXITO',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 3000
+            });
+
         } else {
             // $('#dange').toggle('toggle');
             // setTimeout(function() {

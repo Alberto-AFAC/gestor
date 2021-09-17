@@ -226,7 +226,6 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <div id="proCursos"></div>
   </div>
-  SXSX
   </div>
   <!-- /.box -->
   </div>

@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT gstNombr,gstApell,id_codigocurso,gstCargo,gstIdper,id FROM constancias INNER JOIN personal ON gstIdper=id_persona WHERE gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'DIRECTOR'";
+	$query = "SELECT gstNombr,gstApell,id_codigocurso,gstCargo,gstIdper,id,listregis,lisasisten,listreportein,cartdescrip,regponde,infinal,evreaccion FROM constancias INNER JOIN personal ON gstIdper=id_persona WHERE gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'DIRECTOR'";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

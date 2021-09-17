@@ -222,7 +222,7 @@ $inspector = mysqli_query($conexion,$sql);
                             </div>
                             <!-- /.tab-content
                         </div>
-                        <!-- /.nav-tabs-custom -->
+                        <!- /.nav-tabs-custom -->
                     </div>
                     <!-- /.col -->
                 </div>
