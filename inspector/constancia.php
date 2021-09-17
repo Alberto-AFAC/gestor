@@ -44,8 +44,8 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 <div style="text-align: center;">
     <span style="line-height:10px;" class="p-2">Por haber participado en el curso: </span>
     <p class="titulo"><?php echo $con['gstTitlo']?></p>
-    <span class="p-2">Comprendido durante el periódo del <?php echo $con['dia']?> al <?php echo $con['diafinal']?> de <?php echo $con['mesnombre']?> del presente año, en la modalidad
-        <span class="p-2" style="font-weight:bold;"><?php echo $con['modalidad']?></span>impartido por el <span class="p-2" style="font-weight:bold;"><?php echo $con['sede']?></span> con una duración de <?php echo $con['gstDrcin']?> horas.
+    <span class="p-2">Comprendido durante el periódo del <?php echo $con['dia']?> de <?php echo $con['mesnombre']?> al <?php echo $con['diafinal']?> de <?php echo $con['mesfinales']?> del presente año, en la modalidad
+        <span class="p-2" style="font-weight:bold;"><?php echo $con['modalidad']?></span> impartido por el <span class="p-2" style="font-weight:bold;"><?php echo $con['sede']?></span> con una duración de <?php echo $con['gstDrcin']?>
         <!-- obteniendo una calificación
         de <?php echo $con['evaluacion']?>/100</span><br>
     <span style="font-size: 22px; font-style: italic;" class="p-2">La presente se extiende a los <?php echo $fecha2?>
@@ -60,14 +60,14 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     <span style="padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;" class="p-2">Secretaria de
         Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
-    <span class="p-2">Benjamín Romero Fuentes</span><br>
-    <span style="line-height:14px;" class="p-2">Gral. de División P.A. DEMA en Ret.</span>
+    <span style="font-weight: bold;" class="p-2">Benjamín Romero Fuentes</span><br>
+    <span style="font-weight: bold; line-height:14px;" class="p-2">Gral. de División P.A. DEMA en Ret.</span>
     <?php 
         	echo '<img style="float: right; width: 10%;" src="'.$filename.'" />';
         ?>
 </div><br>
 <div style="padding-top: 25px;" class="container">
-    <p class="temario">Este certificado ampara los temas visto en el Diplomado de Medicina Aeroespacial (01/2021), que a
+    <p class="temario">Este certificado ampara los temas visto en el <span style="font-weight: bold;">CURSO <?php echo $con['gstTitlo']?></span>, que a
         continuación se enlistan:</p>
        <?php 
        $datos = $_GET['data'];
