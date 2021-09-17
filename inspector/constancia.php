@@ -1,5 +1,20 @@
 <?php ob_start();
 include('generating.php');
+require '../dist/phpqrcode/qrlib.php';
+$dir = 'temp/';
+
+if(!file_exists($dir))
+    mkdir($dir);
+
+$filename = $dir.'test.png';
+
+$tamanio = 5;
+$level = 'H';
+$frameSize = 1;
+// $contenido = $nombre . "FECHA DE SALIDA"  . $data['fecha_salida'] . "AEROLINEA" . $data['aerolinea'];
+$contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACIÓN CIVIL, OTORGÓ A:" .$nombre. " ".$apellido . " " . "UN CERTIFICADO POR HABER PARTICIPADO EN EL CURSO". " " .$curso. " ". "EL DIA". " "."BAJO EL REGISTRO". " " .$registro. " ". "SECRETARIA DE COMUNICACIONES Y TRANSPORTES DIRECCIÓN GENERAL DE AVIACIÓN CIVIL.";
+
+QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 ?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,6 +59,9 @@ include('generating.php');
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
     <span class="p-2">Benjamín Romero Fuentes</span><br>
     <span style="line-height:14px;" class="p-2">Gral. de División P.A. DEMA en Ret.</span>
+    <?php 
+        	echo '<img style="float: right; width: 10%;" src="'.$filename.'" />';
+        ?>
 </div><br>
 <div class="container">
     <p class="temario">Este certificado ampara los temas visto en el Diplomado de Medicina Aeroespacial (01/2021), que a
@@ -52,6 +70,7 @@ include('generating.php');
         <span class="p-2">Lic. Rebeca Morales Reyes Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
     </div>
 </div>
+
 <?php
         // require_once 'dompdf/autoload.inc.php';
         require_once '../dist/dompdf/autoload.inc.php';
