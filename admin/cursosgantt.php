@@ -178,7 +178,7 @@ $inspector = mysqli_query($conexion,$sql);
         },
     });
     Highcharts.getJSON('../php/data.php', function (data) {
-    Highcharts.ganttChart('container', {
+   let chart = Highcharts.ganttChart('container', {
         title: {
             text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
         },
@@ -216,7 +216,13 @@ $inspector = mysqli_query($conexion,$sql);
         }]
       
     });
+
+    let DATA = chart.series[0].data;
+for(let i = 0; i< DATA.length; i++) {
+	console.log(i, new Date(DATA[i].x).toUTCString())
+}
 });
+
     </script>
 
 </body>

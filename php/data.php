@@ -34,25 +34,25 @@ header('Content-Type: application/json');
 		$end = $data['fechaf'];
 		$start = date("j, n, Y");
 		$end = date("j, n, Y");
-// if($fecha_entrada <= $fecha_actual && $fecha_actual <= $fecha_salida){
-// $valor = 'event-success';
-// $start = strtotime($fcurso.''.$hcurso) * 1000;
-// $end = strtotime($fechaf.''.$horaEstimada) * 1000;
+if($fecha_entrada <= $fecha_actual && $fecha_actual <= $fecha_salida){
+$valor = 'event-success';
+$start = strtotime($fcurso.''.$hcurso) * 1000;
+$end = strtotime($fechaf.''.$horaEstimada) * 1000;
 
-// }else if($fecha_entrada < $fecha_actual && $fecha_actual > $fecha_salida){
-// $valor = '0';
-// $start = strtotime($fcurso.''.$hcurso) * 1000;
-// $end = strtotime($fechaf.''.$horaEstimada) * 1000;
+}else if($fecha_entrada < $fecha_actual && $fecha_actual > $fecha_salida){
+$valor = '0';
+$start = strtotime($fcurso.''.$hcurso) * 1000;
+$end = strtotime($fechaf.''.$horaEstimada) * 1000;
 
-// }else if($fecha_entrada > $fecha_actual && $fecha_actual < $fecha_salida){
-// $valor = 'event-info';
-// $start = strtotime($fcurso.''.$hcurso) * 1000;
-// $end = strtotime($fechaf.''.$horaEstimada) * 1000;
-// }
+}else if($fecha_entrada > $fecha_actual && $fecha_actual < $fecha_salida){
+$valor = 'event-info';
+$start = strtotime($fcurso.''.$hcurso) * 1000;
+$end = strtotime($fechaf.''.$horaEstimada) * 1000;
+}
 
-	//$start = strtotime($data['fcurso'].''.$data['hcurso']) * 1000;
+	$start = strtotime($data['fcurso'].''.$data['hcurso']) * 1000;
 
-//			$arreglo[] = $data; 
+			// $arreglo[] = $data; 
 			//  $arreglo[] = array('id'=> $id,'name'=> $gstTitlo, 'periods'=> [['id'=> $id_curso,'start'=>$start, 'end' => $end]] );
 			
 			 $arreglo[] = array('start'=>$start, 'end' => $end,'name'=> $gstTitlo);
