@@ -33,15 +33,8 @@ $inspector = mysqli_query($conexion,$sql);
     <script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-gantt.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
-    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
-    <script src="https://cdn.anychart.com/releases/8.10.0/locales/es-es.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.10.0/themes/dark_provence.min.js"></script>
-    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+    <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,45 +75,9 @@ $inspector = mysqli_query($conexion,$sql);
 
                                 <div class="box-body" id="listCurso">
                                     <!--TODO AQUI VA-->
-
-                                    <div id="legend"></div>
-                                    <div class="toolbar">
-    
-    <label for="startMonth">Selecciona mes: </label>
-    
-    <select name="startMonth" id="startMonth">
-      
-      <option value="1">Enero</option>
-      
-      <option value="2">Febrero</option>
-      
-      <option value="3">Marzo</option>
-      
-      <option value="4">Abril</option>
-      
-      <option value="5">Mayo</option>
-      
-      <option value="6">Junio</option>
-      
-      <option value="7">Julio</option>
-      
-      <option value="8">Agosto</option>
-      
-      <option value="9">Septiembre</option>
-      
-      <option value="10">Octubre</option>
-      
-      <option value="11">Noviembre</option>
-      
-      <option value="12">Diciembre</option>
-    
-    </select>
-  
-  </div> 
-                                    <div style="width: 96%; height: 400px;" id="container"></div>
                                 </div>
 
-                                <section class="content" id="viscurso">
+                                <div id="container"></div>
 
                             </div>
 
@@ -156,7 +113,7 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b>    <?php 
+            <b>Version</b> <?php 
                                 $query ="SELECT 
                                         *
                                         FROM
@@ -169,7 +126,7 @@ $inspector = mysqli_query($conexion,$sql);
                                     exit;
                                 }
                                 ?>
-                    <?php echo $row['version']?>
+            <?php echo $row['version']?>
         </div>
         <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
         Todos los derechos Reservados AAJ.
@@ -196,747 +153,102 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- page script -->
     <script src="../js/global.js"></script>
     <!-- page script -->
-    <script src="js/anychart-base.min.js"></script>
-    <script src="js/anychart-ui.min.js"></script>
-    <script src="js/anychart-exports.min.js"></script>
-    <script src="js/anychart-gantt.min.js"></script>
-    <script src="js/anychart-data-adapter.min.js"></script>
     <script>
-    // anychart.onDocumentReady(function () {
-    //     var locale = "es-mx";
-
-    //     anychart.format.outputLocale('es-es');
-    //   // create a data tree
-    //   var treeData = anychart.data.tree(data, 'as-tree');
-
-    //   // create a chart
-    //   var chart = anychart.ganttProject();
-    //   // set the data
-    //   chart.data(treeData);
-
-    //   // get chart data grid
-    //   var dataGrid = chart.dataGrid();
-    //   dataGrid.column(1).title('NOMBRE DEL CURSO').width(230);
-    //   dataGrid.column(0).title('ITEM').width(60);
-
-    //   // enable tooltip html mode
-    //   dataGrid.tooltip().useHtml(true);
-
-    //   chart.splitterPosition(303);
-
-    //   // get chart's timeline
-    //   var timeline = chart.getTimeline();
-
-    //   //get chart's timeline milestones
-    //   var milestones = timeline.milestones();
-
-    //   // set default settings for the milestones
-    //   // settings for other milestones was pre-setted in the data using "milestone" property
-    //   milestones.markerType('square').fill('#96a6a6').stroke('#333');
-
-    //   // set default tooltip's title formatter
-    //   timeline.tooltip().titleFormat(function () {
-    //     return '<h1 class="title default">' + this.name + '</h1>';
-    //   });
-
-    //   // set default tooltip's content formatter
-    //   timeline
-    //     .tooltip()
-    //     .useHtml(true)
-    //     .format(function () {
-    //       return (
-    //         '<div class="tooltip-content">\n' +
-    //         '<p><b>Fecha de inicio</b>: ' +
-    //         anychart.format.date(this.actualStart) +
-    //         '</p>\n' +
-    //         '<p><b> Fecha final</b>: ' +
-    //         anychart.format.date(this.actualEnd) +
-    //         '</p>\n' +
-    //         '</div>'
-    //       );
-    //     });
-
-    //   // set milestones tooltip's title formatter
-    //   milestones
-    //     .tooltip()
-    //     .useHtml(true)
-    //     .titleFormat(function () {
-    //       var bgcolor = this.getData('milestone')
-    //         ? this.getData('milestone').fill
-    //         : '#96a6a6';
-    //       return (
-    //         '<h5 class="title" style="background: ' +
-    //         bgcolor +
-    //         '">' +
-    //         this.name +
-    //         '</h5>'
-    //       );
-    //     });
-
-    //   // set milestones tooltip's content formatter
-    //   milestones
-    //     .tooltip()
-    //     .useHtml(true)
-    //     .format(function () {
-    //       return (
-    //         '<div class="tooltip-content"><p><b>Fecha de Inicio</b>: ' +
-    //         anychart.format.date(this.actualStart) +
-    //         '</p></div>'
-    //       );
-    //     });
-
-    //   // enable milestones preview
-    //   milestones.preview().enabled(true);
-
-    //   // set the container id
-    //   chart.container('container');
-
-    //   // initiate drawing the chart
-    //   chart.draw();
-
-    //   chart.collapseAll();
-    //   chart.expandTask('1');
-
-    //   // set chart's initial zoom
-    //   chart.zoomTo(Date.UTC(2019, 6, 1, 0), Date.UTC(2019, 6, 16, 0));
-
-    //   // create gantt toolbar and render it in the container
-    //   var toolbar = anychart.ui.ganttToolbar();
-    //   toolbar.container('container');
-    //   toolbar.target(chart);
-    //   toolbar.draw();
-
-    //   // set weekends fill color
-    //   timeline.weekendsFill('red 0.2');
-
-    //   // set holidays fill color
-    //   timeline.holidaysFill('green 0.2');
-
-    //   // get timeline calendar
-    //   var calendar = timeline.scale().calendar();
-
-    //   // set working hours  and holidays
-    //   calendar
-    //     .schedule([
-    //       null,
-    //       { from: 10, to: 18 },
-    //       { from: 10, to: 18 },
-    //       { from: 10, to: 18 },
-    //       { from: 10, to: 18 },
-    //       { from: 10, to: 18 },
-    //       null
-    //     ])
-    //     .holidays([{ day: 4, month: 6, label: 'Independence Day' }]);
-
-    //   // create and setup legend
-
-
-    //   // draw legend
-    // });
-
-    // // create data
-    // var data = [
-    //   {
-    //     id: '1',
-    //     name: 'Inducción',
-    //     actualStart: '2019-07-01',
-    //     actualEnd: '2019-08-03',
-    //     children: [
-    //       {
-    //         id: '1.1',
-    //         name: 'A Distancia',
-    //         actualStart: '2019-07-01',
-    //         actualEnd: '2019-07-06',
-    //         children: [
-    //           {
-    //             id: '1.1.1',
-    //             name: 'Legislación Aeronáutica Internacional',
-    //             actualStart: '2019-07-01',
-    //             actualEnd: '2019-07-03'
-    //           },
-    //           {
-    //             id: '1.1.2',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-05',
-    //             actualEnd: '2019-07-05',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           },
-    //           {
-    //             id: '1.1.3',
-    //             name: 'Inducción a la AFAC',
-    //             actualStart: '2019-07-06',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.2',
-    //         name: 'Mixta (Semipresencial)',
-    //         actualStart: '2019-07-07',
-    //         actualEnd: '2019-07-11',
-    //         children: [
-    //           {
-    //             id: '1.2.1',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-07',
-    //             actualEnd: '2019-07-10'
-    //           },
-    //           {
-    //             id: '1.2.2',
-    //             name: 'Legislación Aeronáutica Nacional',
-    //             actualStart: '2019-07-11',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.3',
-    //         name: 'Autogestivo',
-    //         actualStart: '2019-07-10',
-    //         actualEnd: '2019-07-14',
-    //         children: [
-    //           {
-    //             id: '1.3.1',
-    //             name: 'Básico Inspector de Exámenes',
-    //             actualStart: '2019-07-10',
-    //             actualEnd: '2019-07-13'
-    //           },
-    //           {
-    //             id: '1.3.2',
-    //             name: 'Básico de Operaciones Tierra',
-    //             actualStart: '2019-07-14',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-
-
-
-    //     ]
-    //   },
-    //   {
-    //     id: '1',
-    //     name: 'Básico/inicial',
-    //     actualStart: '2019-07-01',
-    //     actualEnd: '2019-08-03',
-    //     children: [
-    //       {
-    //         id: '1.1',
-    //         name: 'A Distancia',
-    //         actualStart: '2019-07-01',
-    //         actualEnd: '2019-07-06',
-    //         children: [
-    //           {
-    //             id: '1.1.1',
-    //             name: 'Legislación Aeronáutica Internacional',
-    //             actualStart: '2019-07-01',
-    //             actualEnd: '2019-07-03'
-    //           },
-    //           {
-    //             id: '1.1.2',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-05',
-    //             actualEnd: '2019-07-05',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           },
-    //           {
-    //             id: '1.1.3',
-    //             name: 'Inducción a la AFAC',
-    //             actualStart: '2019-07-06',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.2',
-    //         name: 'Mixta (Semipresencial)',
-    //         actualStart: '2019-07-07',
-    //         actualEnd: '2019-07-11',
-    //         children: [
-    //           {
-    //             id: '1.2.1',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-07',
-    //             actualEnd: '2019-07-10'
-    //           },
-    //           {
-    //             id: '1.2.2',
-    //             name: 'Legislación Aeronáutica Nacional',
-    //             actualStart: '2019-07-11',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.3',
-    //         name: 'Autogestivo',
-    //         actualStart: '2019-07-10',
-    //         actualEnd: '2019-07-14',
-    //         children: [
-    //           {
-    //             id: '1.3.1',
-    //             name: 'Básico Inspector de Exámenes',
-    //             actualStart: '2019-07-10',
-    //             actualEnd: '2019-07-13'
-    //           },
-    //           {
-    //             id: '1.3.2',
-    //             name: 'Básico de Operaciones Tierra',
-    //             actualStart: '2019-07-14',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-
-
-
-    //     ]
-    //   },
-    //   {
-    //     id: '1',
-    //     name: 'Transversales',
-    //     actualStart: '2019-07-01',
-    //     actualEnd: '2019-08-03',
-    //     children: [
-    //       {
-    //         id: '1.1',
-    //         name: 'A Distancia',
-    //         actualStart: '2019-07-01',
-    //         actualEnd: '2019-07-06',
-    //         children: [
-    //           {
-    //             id: '1.1.1',
-    //             name: 'Legislación Aeronáutica Internacional',
-    //             actualStart: '2019-07-01',
-    //             actualEnd: '2019-07-03'
-    //           },
-    //           {
-    //             id: '1.1.2',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-05',
-    //             actualEnd: '2019-07-05',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           },
-    //           {
-    //             id: '1.1.3',
-    //             name: 'Inducción a la AFAC',
-    //             actualStart: '2019-07-06',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.2',
-    //         name: 'Mixta (Semipresencial)',
-    //         actualStart: '2019-07-07',
-    //         actualEnd: '2019-07-11',
-    //         children: [
-    //           {
-    //             id: '1.2.1',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-07',
-    //             actualEnd: '2019-07-10'
-    //           },
-    //           {
-    //             id: '1.2.2',
-    //             name: 'Legislación Aeronáutica Nacional',
-    //             actualStart: '2019-07-11',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.3',
-    //         name: 'Autogestivo',
-    //         actualStart: '2019-07-10',
-    //         actualEnd: '2019-07-14',
-    //         children: [
-    //           {
-    //             id: '1.3.1',
-    //             name: 'Básico Inspector de Exámenes',
-    //             actualStart: '2019-07-10',
-    //             actualEnd: '2019-07-13'
-    //           },
-    //           {
-    //             id: '1.3.2',
-    //             name: 'Básico de Operaciones Tierra',
-    //             actualStart: '2019-07-14',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-
-
-
-    //     ]
-    //   },
-    //   {
-    //     id: '1',
-    //     name: 'Recurrentes',
-    //     actualStart: '2019-07-01',
-    //     actualEnd: '2019-08-03',
-    //     children: [
-    //       {
-    //         id: '1.1',
-    //         name: 'A Distancia',
-    //         actualStart: '2019-07-01',
-    //         actualEnd: '2019-07-06',
-    //         children: [
-    //           {
-    //             id: '1.1.1',
-    //             name: 'Legislación Aeronáutica Internacional',
-    //             actualStart: '2019-07-01',
-    //             actualEnd: '2019-07-03'
-    //           },
-    //           {
-    //             id: '1.1.2',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-05',
-    //             actualEnd: '2019-07-05',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           },
-    //           {
-    //             id: '1.1.3',
-    //             name: 'Inducción a la AFAC',
-    //             actualStart: '2019-07-06',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'pentagon',
-    //               fill: '#64b5f6',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.2',
-    //         name: 'Mixta (Semipresencial)',
-    //         actualStart: '2019-07-07',
-    //         actualEnd: '2019-07-11',
-    //         children: [
-    //           {
-    //             id: '1.2.1',
-    //             name: 'Curso Específico de Supervisión de la Normatividad de Aeronavegabilidad',
-    //             actualStart: '2019-07-07',
-    //             actualEnd: '2019-07-10'
-    //           },
-    //           {
-    //             id: '1.2.2',
-    //             name: 'Legislación Aeronáutica Nacional',
-    //             actualStart: '2019-07-11',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         id: '1.3',
-    //         name: 'Autogestivo',
-    //         actualStart: '2019-07-10',
-    //         actualEnd: '2019-07-14',
-    //         children: [
-    //           {
-    //             id: '1.3.1',
-    //             name: 'Básico Inspector de Exámenes',
-    //             actualStart: '2019-07-10',
-    //             actualEnd: '2019-07-13'
-    //           },
-    //           {
-    //             id: '1.3.2',
-    //             name: 'Básico de Operaciones Tierra',
-    //             actualStart: '2019-07-14',
-    //             milestone: {
-    //               enabled: true,
-    //               markerType: 'diamond',
-    //               fill: '#ffd54f',
-    //               stroke: '#666'
-    //             }
-    //           }
-    //         ]
-    //       },
-
-
-
-    //     ]
-    //   }
-    // ];
-
-    //SEGUNDO GANTT
-    // anychart.onDocumentReady(function () {
-    //       var locale = "es-mx";
-
-    //     anychart.format.outputLocale('es-es');
-    //       // The data used in this sample can be obtained from the CDN
-    //       // https://cdn.anychart.com/samples-data/gantt-general-features/fiscal-year/data.json
-    //       anychart.data.loadJsonFile(
-    //         'https://cdn.anychart.com/samples-data/gantt-general-features/fiscal-year/data.json',
-    //         function (data) {
-    //           // tree data settings
-    //           var treeData = anychart.data.tree(data, 'as-table');
-
-    //           // create gantt resource chart
-    //           var chart = anychart.ganttResource();
-    //           var dataGrid = chart.dataGrid();
-    //           dataGrid.column(1).title('NOMBRE').width(180);
-    //           dataGrid.column(0).title('ITEM').width(60);
-    //           // set splitter position
-    //           chart.splitterPosition(222);
-
-    //           // set chart data
-    //           chart.data(treeData);
-
-    //           // set container id for the chart
-    //           chart.container('container');
-
-    //           // initiate chart drawing
-    //           chart.draw();
-
-    //           // show all items
-    //           chart.fitAll();
-
-    //           document
-    //             .getElementById('startMonth')
-    //             .addEventListener('change', function (event) {
-    //               // set fiscal year start month
-    //               chart.xScale().fiscalYearStartMonth(event.target.value);
-    //             });
-    //         }
-    //       );
-    //     });
-    // anychart.onDocumentReady(function () {
-
-    //       var locale = "es-mx";
-
-    //     anychart.format.outputLocale('es-es');
-    //       // The data used in this sample can be obtained from the CDN
-    //       // https://cdn.anychart.com/samples/gantt-charts/human-resource-chart/data.js
-    //       anychart.data.loadJsonFile(
-    //         'participantes.json',
-    //         function (data) {
-    //           // create data tree
-    //           var treeData = anychart.data.tree(data, 'as-table');
-
-    //           // create resource gantt chart
-    //           var chart = anychart.ganttResource();
-
-    //           // set data for the chart
-    //           chart.data(treeData);
-
-    //           chart
-    //             .rowSelectedFill('#D4DFE8')
-    //             .rowHoverFill('#EAEFF3')
-    //             // set start splitter position settings
-    //             .splitterPosition(150);
-
-    //           // get chart data grid link to set column settings
-    //           var dataGrid = chart.dataGrid();
-
-    //           // set first column settings
-    //           dataGrid
-    //             .column(0)
-    //             .title('#')
-    //             .width(30)
-    //             .labels({ hAlign: 'center' });
-
-    //           // set second column settings
-    //           dataGrid.column(1).title('Nombre del curso').width(120);
-
-    //           // set container id for the chart
-    //           chart.container('container');
-
-    //           // initiate chart drawing
-    //           chart.draw();
-
-    //           // zoom chart to specified date
-    //           chart.zoomTo(1171036800000, 1176908400000);
-    //           document
-    //             .getElementById('startMonth')
-    //             .addEventListener('change', function (event) {
-    //               // set fiscal year start month
-    //               chart.xScale().fiscalYearStartMonth(event.target.value);
-    //             });
-    //         }
-    //       );
-    //     });
-    //TODO ESTE ES EL NUEVO GANTT
-    anychart.onDocumentReady(function() {
-        var locale = "es-mx";
-        anychart.format.outputLocale('es-es');
-        anychart.data.loadJsonFile(
-            '../php/lisCursoGanntt.php',
-            function(data) {
-
-                // create data tree
-                var treeData = anychart.data.tree(data, 'as-table');
-
-                // create resource gantt chart
-                var chart = anychart.ganttResource();
-                var timeline = chart.getTimeline();
-                timeline
-                    .tooltip()
-                    .useHtml(true)
-                    .format(function() {
-                        return (
-                            'Inicio: ' +
-                            anychart.format.date(this.start) +
-                            '\n' +
-                            'Termina: ' +
-                            anychart.format.date(this.end) +
-                            '\n'
-                        );
-                    });
-
-                // set data for the chart
-                chart.data(treeData);
-
-                chart
-                    .rowSelectedFill('#D4DFE8')
-                    .rowHoverFill('#EAEFF3')
-                    // set start splitter position settings
-                    .splitterPosition(150);
-
-                // get chart data grid link to set column settings
-                var dataGrid = chart.dataGrid();
-
-                // set first column settings
-                dataGrid
-                    .column(0)
-                    .title('Items')
-                    .width(70)
-                    .labels({
-                        hAlign: 'center'
-                    });
-
-                // set second column settings
-                dataGrid.column(1).title('Nombre del curso').width(170);
-
-                var tl = chart.getTimeline();
-                // set base stroke
-                tl.elements().stroke('0.5 black');
-                // set base labels settings
-                tl.elements()
-                    .labels()
-                    .enabled(true)
-                    .fontColor('#fff')
-                    // format labels
-                    .format(function() {
-                        var name = this.name;
-                        // create short name
-                        // sample: Trevor Moore => T.M
-                        var shortName = name
-                            .split(' ')
-                            .map(function(item) {
-                                return item[0];
-                            })
-                            .join('.');
-
-                        var label = this.label;
-
-                        var barBounds = this.barBounds;
-                        var labelBounds = label.measureWithText(name);
-
-                        // if width of the label is greater than the width of the bar, then we show short name
-                        if (barBounds.width < labelBounds.width) {
-                            return shortName;
-                        }
-
-                        return name;
-                    })
-                    // set text shadow for the elements labels
-                    .textShadow({
-                        color: '#005D4C',
-                        offsetX: '1px',
-                        offsetY: '1px',
-                        blurRadius: '1px'
-                    });
-
-                // set container id for the chart
-                chart.container('container');
-
-                // initiate chart drawing
-                chart.draw();
-
-                // zoom chart to specified date
-                chart.zoomTo(1191168000000, 1201795200000);
-                document
-                .getElementById('startMonth')
-                .addEventListener('change', function (event) {
-                  // set fiscal year start month
-                  chart.xScale().fiscalYearStartMonth(event.target.value);
-                });
+    //       // OPTIONS FOR THE GRAPHICS
+    Highcharts.setOptions({
+         lang: {
+            loading: 'Cargando...',
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            exportButtonTitle: "Exportar",
+            printButtonTitle: "Importar",
+            rangeSelectorFrom: "Desde",
+            rangeSelectorTo: "Hasta",
+            rangeSelectorZoom: "Período",
+            downloadPNG: 'Descargar imagen PNG',
+            downloadJPEG: 'Descargar imagen JPEG',
+            downloadPDF: 'Descargar imagen PDF',
+            downloadSVG: 'Descargar imagen SVG',
+            printChart: 'Imprimir',
+            resetZoom: 'Reiniciar zoom',
+            resetZoomTitle: 'Reiniciar zoom',
+            thousandsSep: ",",
+            decimalPoint: '.'
+        },
+    });
+    Highcharts.ganttChart('container', {
+        title: {
+            text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
+        },
+
+        yAxis: {
+            uniqueNames: true
+        },
+
+        navigator: {
+            enabled: true,
+            liveRedraw: true,
+            series: {
+                type: 'gantt',
+                pointPlacement: 0.5,
+                pointPadding: 0.25
+            },
+            yAxis: {
+                min: 0,
+                max: 3,
+                reversed: true,
+                categories: []
             }
-        );
+        },
+        scrollbar: {
+            enabled: true
+        },
+        rangeSelector: {
+            enabled: true,
+            selected: 0
+        },
+        // AQUI EMPIEZA LA CONFIGURACIÓN DE LOS DATOS
+        series: [{
+            name: 'Agencia Federal de Aviación Civil',
+            data: [<?php echo join($data, ',') ?>]
+            // [{
+            //     start: Date.UTC(2017, 11, 1),
+            //     end: Date.UTC(2018, 1, 2),
+            //     completed: 0.95,
+            //     name: 'CURSO PROGRAMADO NÚMERO UNO'
+            // }, {
+            //     start: Date.UTC(2018, 1, 2),
+            //     end: Date.UTC(2018, 11, 5),
+            //     completed: 0.5,
+            //     name: 'CURSO PROGRAMADO NÚMERO DOS'
+            // }, {
+            //     start: Date.UTC(2018, 11, 8),
+            //     end: Date.UTC(2018, 11, 9),
+            //     completed: 0.15,
+            //     name: 'CURSO PROGRAMADO NÚMERO TRES'
+            // }, {
+            //     start: Date.UTC(2018, 11, 9),
+            //     end: Date.UTC(2018, 11, 19),
+            //     completed: {
+            //         amount: 0.3,
+            //         fill: '#fa0'
+            //     },
+            //     name: 'CURSO PROGRAMADO NÚMERO CUATRO'
+            // }, {
+            //     start: Date.UTC(2018, 11, 10),
+            //     end: Date.UTC(2018, 11, 23),
+            //     name: 'CURSO PROGRAMADO NÚMERO CINCO'
+            // }, {
+            //     start: Date.UTC(2018, 11, 25, 8),
+            //     end: Date.UTC(2018, 11, 25, 16),
+            //     name: 'CURSO PROGRAMADO NÚMERO SEIS'
+            // }]
+        }]
+      
     });
     </script>
+
 </body>
 
 </html>
