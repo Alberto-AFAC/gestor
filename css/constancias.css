@@ -30,15 +30,19 @@ p {
 
 #watermark {
     position: fixed;
-    /** 
-                    Set a position in the page for your image
-                    This should center it vertically
-                **/
     bottom: 5cm;
     left: 5.5cm;
-    /** Change image dimensions**/
     width: 16cm;
     height: 9cm;
-    /** Your watermark should be behind every content**/
     z-index: -1000;
+}
+
+footer {
+    position: fixed;
+    bottom: -40px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    text-align: center;
+    line-height: 35px;
 }

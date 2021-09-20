@@ -28,6 +28,8 @@ include ("../conexion/conexion.php");
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -37,6 +39,25 @@ include ("../conexion/conexion.php");
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style>
+ .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.a-alert:link {
+  color: white;
+}
+
+.a-alert:visited {
+  color: white;
+}
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -66,7 +87,7 @@ include ("../conexion/conexion.php");
                 <!-- Post -->
                 <div class="post">
 
-                  <form class="form-horizontal" action="" method="POST">
+                  <form id="addcurse" class="form-horizontal" action="" method="POST">
                   <div class="form-group">
                     <div class="col-sm-4">
                     <label>NOMBRE DEL CURSO</label>
@@ -186,6 +207,10 @@ include ("../conexion/conexion.php");
                     <label>CENTRO DE INSTRUCCIÓN</label>    
                     <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntro" name="gstCntro">
                     </div>
+
+                    <div style="padding-top: 25px;" class="col-sm-4">
+                   <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-info">AGREGAR TEMARIO</button>
+                    </div>
                   </div> 
     
                   <div class="form-group">
@@ -195,12 +220,38 @@ include ("../conexion/conexion.php");
                     </div>
                   </div>
                  <div class="form-group">
-                     <div class="col-sm-4">
-                      <label>TEMARIO</label>
-
-                   <input type="file" id="gstTmrio" name="gstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450">
+                     <div class="col-sm-5">
+                      <!-- <label>TEMARIO</label><br> -->
+                      <!-- <input type="button" id="add_field" value="adicionar"> -->
+                      <br>
+                      <!-- <div id="listas">
+                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div><img id="add_field" src="../dist/img/add.svg" width="30px;">
+                      </div> -->
+                   <!-- <input type="file" id="gstTmrio" name="gstTmrio" style="width: 410px; margin:0 auto;" required accept=".pdf,.doc" class="input-file" size="1450"> -->
                       </div>
-                  </div>   
+                  </div>  
+                                  <!-- MODAL PARA DAR DE ALTA EL CURSO -->
+                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 style="font-size: 20px;" class="modal-title" id="exampleModalLabel">AGREGA TEMARIO SEGÚN EL CASO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                      <div id="listas">
+                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div><span id="add_field" style="color: blue;">Añadir</span>
+                      </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">GUARDAR</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-primary" onclick="regCurso();">ACEPTAR </button>
@@ -301,5 +352,25 @@ $(document).ready(function(){
 $('#gstPrfil').select2();
 
 }); 
+
+        var campos_max = 30;   
+        var x = 0;
+        $('#add_field').click (function(e) {
+                e.preventDefault();    //chups
+                if (x < campos_max) {
+                        $('#listas').append('<div>\
+                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
+                                </div>');
+                        x++;
+                }
+        });
+        // Remover o div anterior
+        $('#listas').on("click",".remover_campo",function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+        });
+
 </script>
 <script src="../js/select2.js"></script> 
