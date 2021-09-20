@@ -177,6 +177,7 @@ $inspector = mysqli_query($conexion,$sql);
             decimalPoint: '.'
         },
     });
+    Highcharts.getJSON('../php/data.json', function (data) {
     Highcharts.ganttChart('container', {
         title: {
             text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
@@ -211,38 +212,11 @@ $inspector = mysqli_query($conexion,$sql);
         // AQUI EMPIEZA LA CONFIGURACIÓN DE LOS DATOS
         series: [{
             name: 'Agencia Federal de Aviación Civil',
-            data: 
-            [{
-                start: Date.UTC(2017,11,1),
-                end: Date.UTC(2018,1,2),
-                // completed: 0.95,
-                name: 'CURSO PROGRAMADO NÚMERO UNO'
-            }, {
-                start: Date.UTC(2018, 1, 2),
-                end: Date.UTC(2018, 11, 5),
-                // completed: 0.5,
-                name: 'CURSO PROGRAMADO NÚMERO DOS'
-            }, {
-                start: Date.UTC(2018, 11, 8),
-                end: Date.UTC(2018, 11, 9),
-                // completed: 0.15,
-                name: 'CURSO PROGRAMADO NÚMERO TRES'
-            }, {
-                start: Date.UTC(2018, 11, 9),
-                end: Date.UTC(2018, 11, 19),
-                // completed: {
-                //     amount: 0.3,
-                //     fill: '#fa0'
-                // },
-                name: 'CURSO PROGRAMADO NÚMERO CUATRO'
-            }, {
-                start: Date.UTC(2018, 11, 10),
-                end: Date.UTC(2018, 11, 23),
-                name: 'CURSO PROGRAMADO NÚMERO CINCO'
-            }]
+            data: data,
         }]
       
     });
+});
     </script>
 
 </body>
