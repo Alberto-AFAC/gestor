@@ -177,7 +177,7 @@ $inspector = mysqli_query($conexion,$sql);
             decimalPoint: '.'
         },
     });
-    Highcharts.getJSON('../php/data.json', function (data) {
+    Highcharts.getJSON('../php/data.php', function (data) {
     Highcharts.ganttChart('container', {
         title: {
             text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
