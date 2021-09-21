@@ -18,10 +18,10 @@
         if(obj.data[i].confirmar == 'CONFIRMAR' && obj.data[i].proceso == 'PENDIENTE'){  
             confirmar++;  
         }
-         if(obj.data[i].confirmar=='CONFIRMADO' && obj.data[i].proceso == 'PENDIENTE' || obj.data[i].confirmar!='CONFIRMADO' && obj.data[i].proceso == 'PENDIENTE'){
+         if(obj.data[i].proceso == 'PENDIENTE' && obj.data[i].confirmar=='CONFIRMADO' || obj.data[i].proceso == 'PENDIENTE' && obj.data[i].confirmar=='CONFIRMAR'){
             programados++;               
             }
-        if(obj.data[i].proceso=='CANCELADO'){
+        if(obj.data[i].confirmar=='TRABAJO' || obj.data[i].confirmar=='ENFERMEDAD' || obj.data[i].confirmar=='OTROS'){
             cancelados++;
             }
         if(obj.data[i].proceso=='FINALIZADO'){
@@ -96,7 +96,11 @@ function confirmar(idcurso){
             $("#modalidad").html(obj.data[i].modalidad);
             $("#nombredeclin").html(obj.data[i].gstTitlo);
             $("#motivod").html('MOTIVO:'+obj.data[i].confirmar);
-
+                if(obj.data[i].confirmar=='OTROS'){
+                $("#arcpdf").html("<p style='text-align: center;font-size:20px;'>"+obj.data[i].justifi+"</p>");        
+                }else{
+            $("#arcpdf").html("<a class='btn btn-block btn-social btn-linkedin' href='"+obj.data[i].justifi+"' style='text-align: center;' target='_blanck'> <i class='fa fa-file-pdf-o'></i> VISUALIZAR EL PDF ADJUNTO</a>");
+                }
             }
         }
 
