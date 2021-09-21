@@ -67,7 +67,7 @@ ini_set('date.timezone','America/Mexico_City');
     $registro = $con['id_codigocurso'];
     $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
-    $mes = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    $mes = array("0","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     $hoy= date('d').' de '.$mes[date('n')].' del año '.date('Y');
     // $qrFecha = $dateF[date("F j, Y")];  
 
