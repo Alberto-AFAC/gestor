@@ -40,7 +40,7 @@
             </li>
             <li class="layer" data-depth="0.20">
                 <div class="title">
-                    <h3 style="color: black; font-size: 24px;">
+                    <h3 style="color: white; font-size: 24px;">
                         AGENCIA FEDERAL DE AVIACIÓN CIVIL
                     </h3>
                     <span class="line"></span>

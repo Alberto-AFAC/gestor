@@ -22,7 +22,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Certficate</title>
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
@@ -141,13 +141,13 @@ footer {
 </div>
 <img src="<?php echo $base64 ?>" width="95%" height="113%" />
 <div style="text-align: center;">
-    <p class="CIAAC">El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class="otorga">Otorga el presente</p>
-    <p class="titulo-certificado">Certificado</p>
+    <p class="CIAAC">El Centro Internacional de Adiestramiento de Aviación Civil</p><br><br>
+    <p class="otorga">Otorga el presente</p><br><br>
+    <p class="titulo-certificado">Certificado</p><br><br><br>
     <p class="nombre-persona">Al C:. <span
-        class="nombre-persona-c"><?php echo $con['gstNombr']." ".$con['gstApell'] ?></span></p>
-        <p class="otorga">Por haber participado en el curso:</p>
-        <p class="nombre-curso"><?php echo $con['gstTitlo']?></p>
+        class="nombre-persona-c"><?php echo $con['gstNombr']." ".$con['gstApell'] ?></span></p><br><br><br>
+        <p class="otorga">Por haber participado en el curso:</p><br><br>
+        <p class="nombre-curso"><?php echo $con['gstTitlo']?></p><br><br><br><br>
         <span class="p-2">Comprendido durante el periódo del <?php echo $con['dia']?> de <?php echo $con['mesnombre']?> al <?php echo $con['diafinal']?> de <?php echo $con['mesfinales']?> del presente año, en la modalidad
         <span class="p-2" style="font-weight:bold;"><?php echo $con['modalidad']?></span> impartido por el <span class="p-2" style="font-weight:bold;"><?php echo $con['sede']?></span> con una duración de <?php echo $con['gstDrcin']?><br><span style="padding-top: 80px;" class="p-2">Ciudad de México, a <?php echo $hoy?></span>
         <p class="p-2">Director del CIAAC:</p>
@@ -164,7 +164,7 @@ footer {
     </div> -->
     </div>
 <!-- SEGUNDO DIV -->
-<div style="padding-top: 5px; text-align: center;">
+<div style="padding-top: 840px; text-align: center;">
 <div class="row">
         <div class="column left">
             <!-- <h2>Column 1</h2>
@@ -177,16 +177,16 @@ footer {
         <span style="font-weight: bold;" class="p-2">Benjamín Romero Fuentes</span><br>
         <span style="font-weight: bold; line-height:22px;" class="p-2">Gral. de División P.A. DEMA en Ret.</span>
         </div>
-        <div class="column right">
+        <div class="column right"><br>
         <?php 
-    echo '<img style="float: right; width: 35%;" src="'.$filename.'" />';
+    echo '<img style="padding-top: 10px; float: right; width: 45%;" src="'.$filename.'" />';
         ?>
         </div>
     </div>
 </div>
-<div>
+<div style="padding-top: 900px;">
 <p class="p-2">Este certificado ampara los temas visto en el <span style="font-weight: bold;">CURSO: <?php echo $con['gstTitlo']?></span>, que a
-        continuación se enlistan:</p>
+        continuación se enlistan:</p><br>
         <?php 
        $datos = $_GET['data'];
        $queryTemario = "SELECT idtem, titulo,idcurso FROM temario WHERE idcurso = $idc";
@@ -196,7 +196,7 @@ footer {
                           $contador ++;
                           $temario = $consulta2['titulo'];
        ?>
-        <p class="p-2"><?php echo $contador?>.- <?php echo $temario?></p>
+        <p class="p-2"><?php echo $contador?>.- <?php echo $temario?></p><br>
         <?php } ?>
         
 </div>
@@ -207,7 +207,7 @@ footer {
         $consulta2 = mysqli_fetch_array($const1)
 
         ?>
-<div style="padding-top: 20%; text-align: center;">
+<div style="padding-top: 90%; text-align: center;">
         <span class="p-2">Registrado bajo el No <?php echo $consulta2['numero'];?> a fojas <?php echo $consulta2['afojas'];?> del libro de <?php echo $consulta2['libro'];?></span>
     </div>
 <footer>
@@ -222,10 +222,10 @@ footer {
             $dompdf->load_html(ob_get_clean());
             // $dompdf->set_option('enable_font_subsetting', true);
             $dompdf->render();
-            $dompdf->stream("certificate-CIAAC", array("Attachment" => 0));
-            $pdf = $dompdf->output();
+            $dompdf->stream("certificate-CIAAC", array("Attachment" => true));
+            // $pdf = $dompdf->output();
             $filename = "certificate-CIAAC.pdf";
-            file_put_contents($filename, $pdf);
+            file_put_contents($filename, $dompdf);
             $dompdf->stream($filename);
         ?>
 
