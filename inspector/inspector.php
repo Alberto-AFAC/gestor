@@ -153,8 +153,8 @@
                                 <li class="active"><a href="#activity" data-toggle="tab">Cursos por confirmar </a></li>
                                 <li><a href="#curComplet" data-toggle="tab">Cursos en proceso</a></li>
                                 <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
-                                <li><a href="#settings" data-toggle="tab">Cursos vencidos</a></li>
                                 <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
+                                <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activity">
@@ -233,6 +233,23 @@
                                         </div>
                                     </section>
                                 </div>
+
+                                <div class="tab-pane" id="vencido">
+                                    <section class="content">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <table style="width: 100%;" id="data-table-vencidos"
+                                                            class="table display table-striped table-bordered"></table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>                               
                                 <!-- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
                                 <style type="text/css">
                                 #modal-evalcurso span {
@@ -1316,18 +1333,6 @@ $id_curso = $data['id_curso'];
 
 if($data['confirmar']=='CONFIRMAR'){
 $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 13px;' class='badge'>PENDIENTE</span>";
-// }else if($data['confirmar']=='CONFIRMADO'){
-//  $valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";
-// }
-
-// if($data['confirmar']=='ENFERMEDAD'){
-//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-// }
-// else if($data['confirmar']=='TRABAJO'){
-//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-// }else if($data['confirmar']=='OTROS'){
-//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-// }
 
 ?>
 
@@ -1340,7 +1345,7 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
 
     ],
 <?php }else if($data['confirmar']=='CONFIRMADO'){ 
-    //  $valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";
+      $valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";
     ?>
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
@@ -1517,26 +1522,22 @@ var tableGenerarReporte = $('#data-table-completo').DataTable({
 var dataSet = [
     <?php 
 $query = "
-SELECT * FROM cursos 
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
+FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso != 'CONFIRMADO' AND cursos.estado = 0 OR idinsp = $datos[0] AND proceso != 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
 
 $id_curso = $data['id_curso'];
 
- $fcurso = $data['fcurso'] = date("d-m-Y");
- $fechaf = $data['fechaf'] = date("d-m-Y");
+ $fcurso = $data['inicial'];
+ $fechaf = $data['final'];
 
 if($data['confirmar']=='ENFERMEDAD'){
     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-}
-else if($data['confirmar']=='TRABAJO'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-}else if($data['confirmar']=='OTROS'){
-    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-}
+
 
 ?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
@@ -1545,7 +1546,30 @@ else if($data['confirmar']=='TRABAJO'){
         // "<span class='badge' style='background-color: red;'>CANCELADO</span>"
         "<?php echo $valor ?>"
     ],
-    <?php } ?>
+
+<?php }else if($data['confirmar']=='TRABAJO'){ 
+
+    $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>"; ?>
+
+["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<?php echo $valor ?>"
+    ],
+
+<?php }else if($data['confirmar']=='OTROS'){
+     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";?>
+
+["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<?php echo $valor ?>"
+    ],
+
+
+
+    <?php } 
+    }?>
 ];
 var tableGenerarReporte = $('#data-table-cancelado').DataTable({
     "language": {
@@ -1573,6 +1597,75 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
         }
     ],
 });
+
+
+
+
+
+var dataSet = [
+    <?php 
+$query = "
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
+FROM cursos 
+INNER JOIN listacursos ON idmstr = gstIdlsc
+WHERE idinsp = $datos[0] AND proceso != 'FECHA' AND cursos.estado = 0 ORDER BY id_curso DESC";
+$resultado = mysqli_query($conexion, $query);
+
+while($data = mysqli_fetch_array($resultado)){ 
+
+$id_curso = $data['id_curso'];
+
+ $fcurso = $data['inicial'];
+ $fechaf = $data['final'];
+
+ $valor = 'FECHA';
+
+// if($data['confirmar']=='ENFERMEDAD'){
+//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
+// }
+// else if($data['confirmar']=='TRABAJO'){
+//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
+// }else if($data['confirmar']=='OTROS'){
+//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
+// }
+
+ ?>
+//["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+//         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+//         // "<a type='button' title='Evaluación' onclick='asignacion(<?php //echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
+//         // "<span class='badge' style='background-color: red;'>CANCELADO</span>"
+//         "<?php echo $valor ?>"
+//     ],
+    <?php } ?>
+];
+var tableGenerarReporte = $('#data-table-vencidos').DataTable({
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    data: dataSet,
+    columns: [{
+            title: "CURSO"
+        },
+        {
+            title: "TIPO"
+        },
+        {
+            title: "INICIA"
+        },
+        {
+            title: "HORA"
+        },
+        {
+            title: "FINALIZA"
+        },
+        {
+            title: "ACCIÓN"
+        }
+    ],
+});
+
 </script>
 <!-- <script>
 
