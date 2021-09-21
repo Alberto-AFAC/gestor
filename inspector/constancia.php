@@ -80,8 +80,15 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
        ?>
         <p class="temario"><?php echo $contador?>.- <?php echo $temario?></p>
         <?php } ?>
+        <?php 
+        $datos = $_GET['data'];
+        $queryTemario1 = "SELECT idtem, titulo,idcurso, libro, numero, afojas FROM temario WHERE idcurso = $idc";
+        $const1 = mysqli_query($conexion, $queryTemario1);
+        $consulta2 = mysqli_fetch_array($const1)
+
+        ?>
         <div style="padding-top: 10%; text-align: center;">
-        <span class="p-2">Registrado bajo el No XX a fojas X del libro de registro de Certificados y Constancias de capacitación No. 1 cursos en línea.</span>
+        <span class="p-2">Registrado bajo el No <?php echo $consulta2['numero'];?> a fojas <?php echo $consulta2['afojas'];?> del libro de <?php echo $consulta2['libro'];?></span>
     </div>
     
 </div>
