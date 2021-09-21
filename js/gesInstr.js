@@ -117,8 +117,14 @@ function regCurso() {
     var gstCntnc = document.getElementById('gstCntnc').value;
     var gstProvd = document.getElementById('gstProvd').value;
     var gstCntro = document.getElementById('gstCntro').value;
+    // LIBRARYS
+    var libro = document.getElementById('libro').value;
+    var numero = document.getElementById('numero').value;
+    var afojas = document.getElementById('afojas').value;
 
-    datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&array=' + array + '&opcion=insert';
+    alert(libro);
+
+    datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&libro=' + libro + '&numero=' + numero + '&afojas=' + afojas + '&array=' + array + '&opcion=insert';
     if (gstPrfil == '' || gstTitlo == '' || gstTipo == '' || gstVignc == '' || gstObjtv == '' || hr == '' || tmp1 == '' || min == '' || tmp2 == '' || gstCntnc == '' || gstProvd == '' || gstCntro == '' || array == '') {
         Swal.fire({
             type: 'error',

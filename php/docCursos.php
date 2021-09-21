@@ -20,6 +20,12 @@ $Hfinal=date('H:i:s');
 $gstProvd = $_POST['gstProvd'];
 $gstCntro = $_POST['gstCntro'];
 
+$libro = $_POST['libro'];
+$numero = $_POST['numero'];
+$afojas = $_POST['afojas'];
+ 
+
+
 if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd
 ,$gstCntro,$conexion))
 		{	echo "0";	
@@ -36,7 +42,7 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
 
 	$titulo = $varray1[$i]['campo'];
 
-	if(temario($id,$titulo,$conexion)){
+	if(temario($id,$titulo,$libro,$numero,$afojas,$conexion)){
 		echo "0";
 		}else{
 		echo "1";
@@ -78,9 +84,9 @@ function idcurso($conexion){
 		$this->conexion->cerrar();
 }
 
-function temario($id,$titulo,$conexion){
+function temario($id,$titulo,$libro,$numero,$afojas,$conexion){
 
-	$query="INSERT INTO temario VALUES(0,$id,'$titulo',0);";
+	$query="INSERT INTO temario VALUES(0,$id,'$titulo','$libro','$numero','$afojas',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
