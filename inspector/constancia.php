@@ -21,7 +21,57 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,800;1,700&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="../css/constancias.css">
+    <!-- <link rel="stylesheet" href="../css/constancias.css"> -->
+    <style>
+        p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+}
+
+.temario {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+}
+
+.p-2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+}
+
+.people {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+.titulo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#watermark {
+    position: fixed;
+    bottom: 5cm;
+    left: 5.5cm;
+    width: 16cm;
+    height: 9cm;
+    z-index: -1000;
+}
+
+footer {
+    position: fixed;
+    bottom: -40px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    text-align: center;
+    line-height: 35px;
+}
+        </style>
 
 <?php
             $path = '../dist/img/header.png';
