@@ -445,10 +445,6 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
             file_put_contents($filename, $pdf);
             $dompdf->stream($filename);
         ?>
-
-
-
-
 </body>
 
 </html>
