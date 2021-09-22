@@ -2,7 +2,7 @@
 ini_set('date.timezone','America/Mexico_City');
     include('../conexion/conexion.php');
     $datos = $_GET['data'];
-    $query = "SELECT id, id_persona, id_codigocurso,temario.titulo, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
+    $query = "SELECT id, id_persona, id_codigocurso,temario.titulo, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, listacursos.gstCntnc, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
     'enero' 
     WHEN MONTH ( fcurso ) = 2 THEN
     'febrero' 
@@ -67,6 +67,7 @@ ini_set('date.timezone','America/Mexico_City');
     $registro = $con['id_codigocurso'];
     $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
+    $nombresCompletos = $con['gstNombr']." ".$con['gstApell'];
     $mes = array("0","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     $hoy= date('d').' de '.$mes[date('n')].' del año '.date('Y');
     // $qrFecha = $dateF[date("F j, Y")];  
