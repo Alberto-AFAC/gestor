@@ -1,7 +1,7 @@
 <?php 
 include ("../conexion/conexion.php");
 
-      $sql = "SELECT gstIdcat, gstCsigl FROM categorias WHERE estado = 0";
+      $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0";
       $categs = mysqli_query($conexion,$sql);
 ?>
 
@@ -114,7 +114,7 @@ include ("../conexion/conexion.php");
                 <select multiple="multiple" data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                 style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstPrfil" name="gstPrfil[]">
                 <?php while($cat = mysqli_fetch_row($categs)):?>                      
-                <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?></option>
+                <option value="<?php echo $cat[2]?>"><?php echo $cat[2]?></option>
                 <?php endwhile; ?>                
                 </select>
                 </div>
