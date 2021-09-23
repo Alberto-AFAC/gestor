@@ -1396,7 +1396,7 @@ var dataSet = [
     <?php 
 
 
-$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
+$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
 WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
@@ -1434,7 +1434,12 @@ if($res = mysqli_fetch_array($resul)){
 if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
 $accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='constancia.php?data={$con[0]}' onclick='desactivar();' class='datos btn btn-default'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
+
+
 $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+
+
+
 }
 
 
@@ -1445,9 +1450,18 @@ $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
         "<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>",
-        "<?php echo $accion?>"],
+<?php if($data['evaluacion']<80){?>
+     
+"<center><b style='color:red;' title='Pendiente' onclick='pdf()' >Curso no acreditado</b></center><center><center>"
+<?php }else{?>
 
-    <?php }else{  
+       "<?php echo $accion?>"
+ 
+    <?php 
+}
+?>
+],
+<?php    }else{  
 
 
 $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>";  ?>
@@ -1457,7 +1471,11 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
         "<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>",
         "<?php echo $accion?>"],
 
-    <?php } }else{ ?>
+    <?php } 
+
+
+
+}else{ ?>
 
     <?php if($data['confirmar'] == 'TRABAJO' || $data['confirmar'] == 'ENFERMEDAD' || $data['confirmar'] == 'OTROS'){ ?>
 
