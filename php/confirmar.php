@@ -73,7 +73,7 @@ if(curConfir($id_curso,$confir,$justifi,$conexion))
 }
 
 function curConfir($id_curso,$confir,$justifi,$conexion){
-	$query="UPDATE cursos SET confirmar = '$confir',justifi='$justifi' WHERE id_curso='$id_curso'";
+	$query="UPDATE cursos SET confirmar = '$confir',justifi='$justifi',evaluacion=1 WHERE id_curso='$id_curso'";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

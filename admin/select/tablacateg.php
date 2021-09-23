@@ -179,7 +179,7 @@ if($fecs[3] >= 80){ //$fech = 'vigente'; ?>
         }
         echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
 
-}else if($f3 <= $f2 && $fecs[3] <= 80 && $fecs[3] >= 10){ ?>
+}else if($f3 <= $f2 && $fecs[3] <= 80 && $fecs[3] >= 1){ ?>
 
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
