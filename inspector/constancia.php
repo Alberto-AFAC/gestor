@@ -441,7 +441,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
             $dompdf->render();
             $dompdf->stream("certificate-CIAAC", array("Attachment" => 0));
             $pdf = $dompdf->output();
-            $filename = "certificate-CIAAC.pdf";
+            $filename = "certificados/certificate-CIAAC.pdf";
             file_put_contents($filename, $pdf);
             $dompdf->stream($filename);
         ?>
