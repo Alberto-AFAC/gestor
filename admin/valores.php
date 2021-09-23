@@ -525,9 +525,9 @@ $psto = mysqli_query($conexion,$sql);
                         </div>
 
                         <div class="form-group" id="buton" style="display: none;"><br>
-                            <div class="col-sm-offset-0 col-sm-5">
-                                <button type="button" id="button" class="btn btn-info btn-lg" onclick="actDatos();">
-                                    ACEPTAR</button>
+                            <div class="col-sm-offset-0 col-sm-2">
+                                <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actDatos();"> 
+                                    ACTUALIZAR</button>
                             </div>
                             <b>
                                 <p class="alert alert-danger text-center padding error" id="danger">Error al actualizar

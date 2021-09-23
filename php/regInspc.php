@@ -89,8 +89,11 @@ if($opcion === 'registrar'){
     $gstCasa  = $_POST['gstCasa']; // NUM. DE CASA
     $gstClulr = $_POST['gstClulr']; // NUM. DE CELULAR
     $gstExTel = $_POST['gstExTel']; // NUM. DE EXTENCION
+	$gstCorro = $_POST['gstCorro']; // correo 1 "23092021"
+    $gstCinst = $_POST['gstCinst']; //correo 2 
+	$gstSpcID = $_POST['gstSpcID']; //correo 3 
 
-	if(actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$conexion)){
+	if(actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion)){
 		echo "0";
 	}else{
 		echo "1";
@@ -170,9 +173,9 @@ function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$g
 				}
 
 
-function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$conexion){
+function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion){
 
-	$query = "UPDATE personal SET gstNombr = '$gstNombr',gstApell = '$gstApell',gstLunac = '$gstLunac',gstFenac = '$gstFenac',gstStcvl = '$gstStcvl',gstCurp  = '$gstCurp',gstRfc = '$gstRfc',gstNpspr = '$gstNpspr',gstPsvig = '$gstPsvig',gstVisa = '$gstVisa',gstVignt = '$gstVignt',gstCalle = '$gstCalle',gstNumro = '$gstNumro',gstClnia = '$gstClnia',gstCpstl = '$gstCpstl',gstCiuda = '$gstCiuda',gstStado = '$gstStado',gstCasa = '$gstCasa',gstClulr = '$gstClulr',gstExTel = '$gstExTel' WHERE gstIdper = '$gstIdper'";
+	$query = "UPDATE personal SET gstNombr = '$gstNombr',gstApell = '$gstApell',gstLunac = '$gstLunac',gstFenac = '$gstFenac',gstStcvl = '$gstStcvl',gstCurp  = '$gstCurp',gstRfc = '$gstRfc',gstNpspr = '$gstNpspr',gstPsvig = '$gstPsvig',gstVisa = '$gstVisa',gstVignt = '$gstVignt',gstCalle = '$gstCalle',gstNumro = '$gstNumro',gstClnia = '$gstClnia',gstCpstl = '$gstCpstl',gstCiuda = '$gstCiuda',gstStado = '$gstStado',gstCasa = '$gstCasa',gstClulr = '$gstClulr',gstExTel = '$gstExTel',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstSpcID = '$gstSpcID' WHERE gstIdper = '$gstIdper'";
 	if(mysqli_query($conexion,$query)){
 
 		return true;

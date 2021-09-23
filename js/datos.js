@@ -1952,8 +1952,12 @@ function actDatos() {
     var gstCasa = document.getElementById('gstCasa').value; // NUM. DE CASA
     var gstClulr = document.getElementById('gstClulr').value; // NUM. DE CELULAR
     var gstExTel = document.getElementById('gstExTel').value; // NUM. DE EXTENCION
+    
+    var gstCorro = document.getElementById('gstCorro').value; //CORREO 1 
+    var gstCinst = document.getElementById('gstCinst').value; // CORREO 2 
+    var gstSpcID = document.getElementById('gstSpcID').value; // CORREO 3
 
-    datos = 'gstIdper=' + gstIdper + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&opcion=actualizar'
+    datos = 'gstIdper=' + gstIdper + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstCorro=' + gstCorro +'&gstCinst=' + gstCinst +'&gstSpcID=' + gstSpcID +'&opcion=actualizar'
 
     if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstNpspr == '' || gstPsvig == '' || gstVisa == '' || gstVignt == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '') {
 
@@ -1971,10 +1975,15 @@ function actDatos() {
             data: datos
         }).done(function(respuesta) {
             if (respuesta == 0) {
-                $('#succe').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe').toggle('toggle');
-                }, 2000);
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'SE ACUALIZO CON EXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                cerrarEdit() //se llama a la función cerrar edit
             } else {
                 $('#danger').toggle('toggle');
                 setTimeout(function() {
