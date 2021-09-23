@@ -1990,10 +1990,10 @@ function actPuesto() {
     var gstCargo = document.getElementById('gstCargo').value;
     //var gstIDCat = document.getElementById('gstIDCat').value;
     //var gstIDSub = document.getElementById('gstIDSub').value;
-    var gstCorro = document.getElementById('gstCorro').value;
-    var gstCinst = document.getElementById('gstCinst').value;
-    var gstFeing = document.getElementById('gstFeing').value;
-    var gstIDuni = document.getElementById('gstIDuni').value;
+    var gstCorro = document.getElementById('gstCorro').value; //CORREO 1 "QUITAR"
+    var gstCinst = document.getElementById('gstCinst').value; // CORREO 2 "QUITAR"
+    var gstFeing = document.getElementById('gstFeing').value; //fecha de ingreso
+    var gstIDuni = document.getElementById('gstIDuni').value; //UNIDAD
     var gstIDSub = 0;
 
     var gstIDara = document.getElementById('gstIDara').value; //ID area
