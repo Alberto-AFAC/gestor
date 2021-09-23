@@ -417,13 +417,13 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         <?php } ?>
 
     </div>
-    <?php 
+    <!-- <?php 
         $datos = $_GET['data'];
         $queryTemario1 = "SELECT idtem, titulo,idcurso, libro, numero, afojas FROM temario WHERE idcurso = $idc";
         $const1 = mysqli_query($conexion, $queryTemario1);
         $consulta2 = mysqli_fetch_array($const1)
 
-        ?>
+        ?> -->
     <div class="afojas1">
         <span>Registrado bajo el No.<?php echo $con['gstIdlsc'];?></span>
         <!-- a fojas
