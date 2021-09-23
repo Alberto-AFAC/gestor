@@ -686,7 +686,7 @@ $psto = mysqli_query($conexion,$sql);
                                     DIRECCIÓN DE ADSCRIPCIÓN <i class="fa fa-edit"></i></a></p>
                             <p id="adscrip1">
                                 <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
-                                <input type="text" name="adscripción" id="adscripción" class="form-control" disabled="">
+                                <input type="text" name="adscripcion" id="adscripcion" class="form-control" disabled="">
                             </p>
                             <p id="adscrip2" style="display: none;">
                                 <label>DIRECCIÓN DE ADSCRIPCIÓN </label>

@@ -55,6 +55,9 @@ $ejecut = mysqli_query($conexion,$sql);
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $direc = mysqli_query($conexion,$sql);
 
+$sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+$direc1 = mysqli_query($conexion,$sql);
+
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
 
@@ -162,15 +165,14 @@ include('header.php');
                     <div class="form-group">
                           <div class="col-sm-12">
                             <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
-
-                    <select style="width: 100%" class="selectpicker disabled inputalta" id="gstIDara" name="gstIDara" type="text" data-live-search="true" disabled="">
-                    <?php while($ccion = mysqli_fetch_row($direc)):?>                      
-                    <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
+                    <select style="width: 100%" class="selectpicker inputalta" id="gstIDara1" name="gstIDara1" type="text" data-live-search="true" disabled="">
+                    <?php while($ccion1 = mysqli_fetch_row($direc1)):?>                      
+                    <option value="<?php echo $ccion1[0]?>"><?php echo $ccion1[1]?></option>
                     <?php endwhile; ?>
                     </select>
 
                         </div>
-                        </div>
+                    </div>
                     <div class="form-group">
                           <div class="col-sm-12">
                             <label class="label2">SUB DIRECCIÓN</label>

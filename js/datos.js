@@ -506,7 +506,7 @@ function asignacion(gstIdper) {
                 $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                 $("#Dtall #gstApell").val(obj.data[i].gstApell);
                 $("#Dtall #gstAreIDasig").val(obj.data[i].gstAreID); //ID área
-                $("#Dtall #gstIDara").val(obj.data[i].gstIDara);
+                $("#Dtall #gstIDara1").val(obj.data[i].gstIDara);
                 $("#Dtall #gstANmpld").val(obj.data[i].gstNmpld);
             }
         }
@@ -589,6 +589,8 @@ function perfil(gstIdper) {
 
                             $("#Pusto #gstSigID").val(obj.data[i].gstSigID); // estatus
 
+                            $("#Pusto #adscripcion").val(obj.data[i].adscripcion);  //area de adscripción modificar 
+
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
                             //alert(obj.data[i].gstIdpst);                           
@@ -602,7 +604,7 @@ function perfil(gstIdper) {
                             $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
                             $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
-                            $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+                            $("#Pusto #gstIDara").val(obj.data[i].gstIDara); //area de adscripcion
                             $("#Pusto #AcReg").val(obj.data[i].gstAcReg);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
                             $("#Pusto #ejcutiva").val(obj.data[i].gstAreje);
@@ -613,7 +615,7 @@ function perfil(gstIdper) {
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
                             $("#Pusto #sigla").val(obj.data[i].gstSigla);
-                            //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+                            //$("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
                         }
                     }
                 })
@@ -1141,6 +1143,7 @@ function inspector(gstIdper) {
 
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
+                      
 
                             $("#Pusto #ejcutiva").val(obj.data[i].gstAreje);
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área ejecutiva
