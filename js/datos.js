@@ -2193,6 +2193,11 @@ function ejecutiva() {
     $("#ejecutiva2").toggle('toggle');
 }
 
+function adscripcion() {
+    $("#adscrip1").toggle('toggle');
+    $("#adscrip2").toggle('toggle');
+}
+
 function comandancias() {
     $("#comandancias1").toggle('toggle');
     $("#comandancias2").toggle('toggle');

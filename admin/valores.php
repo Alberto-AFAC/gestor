@@ -682,7 +682,7 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
                     <div class="form-group">
                     <div class="col-sm-12">
-                            <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR
+                            <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="adscripcion();">EDITAR
                                     DIRECCIÓN DE ADSCRIPCIÓN <i class="fa fa-edit"></i></a></p>
                             <p id="adscrip1">
                                 <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
@@ -693,10 +693,10 @@ $psto = mysqli_query($conexion,$sql);
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
                                     disabled="" id="gstIDara" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
-                                    <?php while($ejct = mysqli_fetch_row($ejec)):?>
-                                        <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
-                                    <?php endwhile; ?>
-                                    </select>
+                                    <?php while($ccion = mysqli_fetch_row($direc)):?>                      
+                    <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
+                    <?php endwhile; ?>
+                    </select>
                             </p>
                         </div>
 
