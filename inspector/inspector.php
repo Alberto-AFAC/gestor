@@ -77,7 +77,7 @@
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Cursos Programados</b> <a class="pull-right">
+                                        <b>Cursos en Proceso</b> <a class="pull-right">
                                             <div id="programados"></div>
                                         </a>
                                     </li>
