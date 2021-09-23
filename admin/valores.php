@@ -682,7 +682,7 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label>DIRECCIÓN </label>
+                            <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección"
                                 disabled="" id="gstdirección" type="text" data-live-search="true">
                                 <option value="">SELECCIONE LA DIRECCIÓN</option>
