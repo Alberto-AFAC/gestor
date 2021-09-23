@@ -2052,6 +2052,7 @@ function openEdit() {
     $("#nompusto").show();
     $("#especialidad").show();
     $("#ejecutiva").show();
+    $("#adscrip").show(); //adscripción 23092021 
     $("#comandancias").show();
     // alert("prueba2!"); 
     $("#buton").toggle(100);
@@ -2116,6 +2117,7 @@ function cerrarEdit() {
     $("#nompusto").hide();
     $("#especialidad").hide();
     $("#ejecutiva").hide();
+    $("#adscrip").hide(); //adscripción oculta 23092021
     $("#comandancias").hide();
 
     // alert("CERRAR!"); 

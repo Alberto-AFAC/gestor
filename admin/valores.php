@@ -681,13 +681,25 @@ $psto = mysqli_query($conexion,$sql);
 
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-12">
-                            <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
-                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstdirección"
-                                disabled="" id="gstdirección" type="text" data-live-search="true">
-                                <option value="">SELECCIONE LA DIRECCIÓN</option>
-                            </select>
+                    <div class="col-sm-12">
+                            <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR
+                                    DIRECCIÓN DE ADSCRIPCIÓN <i class="fa fa-edit"></i></a></p>
+                            <p id="adscrip1">
+                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
+                                <input type="text" name="adscripción" id="adscripción" class="form-control" disabled="">
+                            </p>
+                            <p id="adscrip2" style="display: none;">
+                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
+                                <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
+                                    disabled="" id="gstIDara" type="text" data-live-search="true">
+                                    <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
+                                    <?php while($ejct = mysqli_fetch_row($ejec)):?>
+                                        <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
+                                    <?php endwhile; ?>
+                                    </select>
+                            </p>
                         </div>
+
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-0 col-sm-12">
