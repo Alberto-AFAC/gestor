@@ -5,7 +5,6 @@ $opcion = $_POST["opcion"];
 $informacion = [];
 
 if($opcion === 'registrar'){
-
 	$gstNombr = $_POST['gstNombr'];
 	$gstApell = $_POST['gstApell'];
 	$gstNmpld = $_POST['gstNmpld'];
@@ -48,8 +47,9 @@ if($opcion === 'registrar'){
 	$gstIDara = $_POST['gstIDara'];
 	$gstAcReg = $_POST['gstAcReg'];
 	$gstIDuni = $_POST['gstIDuni'];
+	
 
-
+		
 
 	if(registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion)){
 		echo "0";
@@ -60,6 +60,9 @@ if($opcion === 'registrar'){
 	}else{
 		echo "2";
 	}
+
+//	accesos($gstIdper,$gstNombr,$gstNmpld,$conexion);
+
 
 
 }else if($opcion === 'actualizar'){
@@ -120,24 +123,25 @@ if($opcion === 'registrar'){
 
  	}else if($opcion === 'actPrsnls'){
 
-     $pstIdper = $_POST['pstIdper'];
-     $gstNmpld = $_POST['gstNmpld'];
-     $gstIdpst = $_POST['gstIdpst'];
-     $gstCargo = $_POST['gstCargo'];
-     $gstIDCat = $_POST['gstIDCat'];
-     $gstIDSub = $_POST['gstIDSub'];
-     $gstCorro = $_POST['gstCorro'];
-     $gstCinst = $_POST['gstCinst'];
-     $gstFeing = $_POST['gstFeing'];
-     $gstIDuni = $_POST['gstIDuni'];
-	 $gstAreID = $_POST['gstAreID'];
-	 $gstPstID = $_POST['gstPstID'];
-	 $gstSpcID = $_POST['gstSpcID'];
-	 $gstIDara = $_POST['gstIDara'];
-	 $gstAcReg = $_POST['gstAcReg'];		
-	 $gstNucrt = $_POST['gstNucrt'];	 
+     $pstIdper = $_POST['pstIdper']; //id de la persona
+     $gstNmpld = $_POST['gstNmpld']; //numero de empleado
+     $gstIdpst = $_POST['gstIdpst']; //codigo presupuestal
+     $gstCargo = $_POST['gstCargo']; //cargo
+     $gstIDCat = $_POST['gstIDCat']; //categoria
+     $gstIDSub = $_POST['gstIDSub']; //subcategoria
+     $gstCorro = $_POST['gstCorro']; // correo personal "QUITAR"
+     $gstCinst = $_POST['gstCinst']; //correo institicuonal "QUITAR"
+     $gstFeing = $_POST['gstFeing']; // fecha de ingreso 
+     $gstIDuni = $_POST['gstIDuni']; //unidad adminisgtrativa
+	 $gstAreID = $_POST['gstAreID']; //area
+	 $gstPstID = $_POST['gstPstID']; //puesto
+	 $gstSpcID = $_POST['gstSpcID']; //correo opcion3 "QUITAR"
+	 $gstIDara = $_POST['gstIDara']; //area
+	 $gstAcReg = $_POST['gstAcReg']; //region		
+	 $gstNucrt = $_POST['gstNucrt']; //ubicacion de la persona 
+	 $gstSigID = $_POST['gstSigID']; //estatus	 
 
-	if(actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt ,$conexion))
+	if(actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$gstSigID,$conexion))
 		{	echo "0";	}else{	echo "1";	}
 	}
 
@@ -164,6 +168,7 @@ function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$g
 				}
 				$this->conexion->cerrar();
 				}
+
 
 function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$conexion){
 
@@ -226,9 +231,9 @@ function actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,
 	}
 
 
-function actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$conexion){
+function actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$gstSigID,$conexion){
 
-	$query = "UPDATE personal SET gstNmpld = '$gstNmpld',gstIdpst = '$gstIdpst',gstCargo = '$gstCargo',gstIDCat = '$gstIDCat',gstIDSub = '$gstIDSub',gstIDara='$gstIDara',gstAreID='$gstAreID',gstPstID='$gstPstID',gstSpcID='$gstSpcID',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstFeing = '$gstFeing',gstIDuni = '$gstIDuni', gstAcReg = '$gstAcReg',gstNucrt='$gstNucrt'  WHERE gstIdper = '$pstIdper'";
+	$query = "UPDATE personal SET gstNmpld = '$gstNmpld',gstIdpst = '$gstIdpst',gstCargo = '$gstCargo',gstIDCat = '$gstIDCat',gstIDSub = '$gstIDSub',gstIDara='$gstIDara',gstAreID='$gstAreID',gstPstID='$gstPstID',gstSpcID='$gstSpcID',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstFeing = '$gstFeing',gstIDuni = '$gstIDuni', gstAcReg = '$gstAcReg',gstNucrt='$gstNucrt',gstSigID='$gstSigID'  WHERE gstIdper = '$pstIdper'";
 	if(mysqli_query($conexion,$query)){
 
 		return true;
@@ -240,6 +245,27 @@ function actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$
 	cerrar($conexion);
 }
 
+//ACCESO A DIRECTOR
+
+//function accesos($gstIdper,$gstNombr,$gstNmpld,$conexion){
+
+//	$query="SELECT * FROM accesos WHERE password='$gstNmpld' AND usuario='$gstNombr' AND baja = 0 ";
+//				$resultado= mysqli_query($conexion,$query);
+//			if($resultado->num_rows==0){
+//				$query="INSERT INTO accesos VALUES(0,'$gstIdper','$gstNombr','$gstNmpld','DIRECTOR',0,0);";
+//					if(mysqli_query($conexion,$query)){
+	
+//						return true;
+					
+//					}else{
+	
+//						return false;
+//					}
+//					$this->conexion->cerrar();
+//			}else{
+
+//			}
+//	}
 
 
 function cerrar($conexion){

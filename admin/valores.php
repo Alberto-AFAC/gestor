@@ -564,6 +564,11 @@ $psto = mysqli_query($conexion,$sql);
                             <input disabled="" type="date" class="form-control" id="gstFeing" name="gstFeing">
                         </div>
 
+                        <div class="col-sm-4">
+                            <label class="label2">ESTATUS ALTA PERSONAL</label>
+                            <input disabled="" type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
+                        </div>
+
                     </div>
 
                     <p id="codigo" style="display: none; cursor: pointer;"><a onclick="codigo();"> EDITAR CÓDIGO
@@ -606,12 +611,12 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="form-group">
 
-                        <div class="col-sm-5" id="nompusto1">
+                        <div class="col-sm-12" id="nompusto1">
                             <label>NOMBRE DEL PUESTO</label>
                             <input type="text" class="form-control" name="nompuesto" id="nompuesto" disabled="">
                         </div>
 
-                        <div class="col-sm-5" id="nompusto2" style="display: none;">
+                        <div class="col-sm-12" id="nompusto2" style="display: none;">
                             <label>NOMBRE DEL PUESTO</label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID"
                                 id="gstPstID" type="text" data-live-search="true" disabled="">
@@ -715,7 +720,7 @@ $psto = mysqli_query($conexion,$sql);
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <label>CARGO</label>
                             <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
                                 <option value="INSTRUCTOR">INSTRUCTOR</option>
@@ -724,17 +729,15 @@ $psto = mysqli_query($conexion,$sql);
                                 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
                             </select>
                         </div>
-
-                        <div class="col-sm-5"></div>                        
-
-                        <div class="col-sm-3">
-                        <label class="label2">UBICACIÓN CENTRAL</label> 
-                        <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
-                        <option value="CIAAC">CIAAC</option> 
-                        <option value="LAS FLORES">LAS FLORES</option> 
-                        <option value="ANGAR 8">ANGAR 8</option> 
-                        <option value="LICENCIA">LICENCIAS</option>
-                        </select>
+                      
+                        <div class="col-sm-6">
+                            <label class="label2">UBICACIÓN CENTRAL</label> 
+                            <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
+                               <option value="CIAAC">CIAAC</option> 
+                               <option value="LAS FLORES">LAS FLORES</option> 
+                               <option value="ANGAR 8">ANGAR 8</option> 
+                               <option value="LICENCIA">LICENCIAS</option>
+                            </select>
                         </div>
 
                     </div>
@@ -786,9 +789,8 @@ $psto = mysqli_query($conexion,$sql);
 </div>
 </div>   -->
                     <div class="form-group" id="butons" style="display: none;"><br>
-                        <div class="col-sm-offset-0 col-sm-5">
-                            <button type="button" id="button" class="btn btn-info btn-lg"
-                                onclick="actPuesto();">ACEPTAR</button>
+                        <div class="col-sm-offset-0 col-sm-2">
+                            <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actPuesto();">ACTUALIZAR</button>
                         </div>
                         <b>
                             <p class="alert alert-danger text-center padding error" id="danger1">Error al actualizar
