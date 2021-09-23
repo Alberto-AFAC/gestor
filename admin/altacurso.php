@@ -244,7 +244,7 @@ include ("../conexion/conexion.php");
                       <div id="listas">
                           <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div><span id="add_field" style="color: blue;">Añadir</span>
                       </div>
-                                        <div class="form-group col-md-5">
+                                        <!-- <div class="form-group col-md-5">
                         <label for="inputCity">Nombre del libro:</label>
                         <input type="text" class="form-control" name="libro" id="libro">
                       </div>
@@ -255,7 +255,7 @@ include ("../conexion/conexion.php");
                       <div class="form-group col-md-3">
                         <label for="inputZip">Número de afojas:</label>
                         <input type="text" class="form-control" name="afojas" id="afojas">
-                      </div><br><br><br>
+                      </div> -->
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-info" data-dismiss="modal">GUARDAR</button>

@@ -118,13 +118,13 @@ function regCurso() {
     var gstProvd = document.getElementById('gstProvd').value;
     var gstCntro = document.getElementById('gstCntro').value;
     // LIBRARYS
-    var libro = document.getElementById('libro').value;
-    var numero = document.getElementById('numero').value;
-    var afojas = document.getElementById('afojas').value;
+    // var libro = document.getElementById('libro').value;
+    // var numero = document.getElementById('numero').value;
+    // var afojas = document.getElementById('afojas').value;
 
-    alert(libro);
+    // alert(libro);
 
-    datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&libro=' + libro + '&numero=' + numero + '&afojas=' + afojas + '&array=' + array + '&opcion=insert';
+    datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&array=' + array + '&opcion=insert';
     if (gstPrfil == '' || gstTitlo == '' || gstTipo == '' || gstVignc == '' || gstObjtv == '' || hr == '' || tmp1 == '' || min == '' || tmp2 == '' || gstCntnc == '' || gstProvd == '' || gstCntro == '' || array == '') {
         Swal.fire({
             type: 'error',
@@ -156,15 +156,14 @@ function regCurso() {
                     timer: 3000
                 });
             } else {
-                alert("AQUÍ ESTA VACÍO");
-                // Swal.fire({
-                //     type: 'success',
-                //     title: 'AFAC INFORMA',
-                //     text: 'CURSO GUARDADO CON ÉXITO',
-                //     showConfirmButton: false,
-                //     customClass: 'swal-wide',
-                //     timer: 3000
-                // });
+                Swal.fire({
+                    type: 'error',
+                    title: 'OCURRIO UN ERROR',
+                    text: 'Favor de contactar con soporte',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
             }
         });
     }
