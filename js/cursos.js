@@ -179,7 +179,7 @@ $(document).ready(function() {
     });
 }); 
 
-function confirma(){
+function confirasict(){
 
     var id_curso = document.getElementById('id_curso').value;
     var idinsp = document.getElementById('idinsp').value;
