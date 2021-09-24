@@ -380,14 +380,15 @@ AND listreportein = 'SI'
 AND cartdescrip = 'SI' 
 AND regponde = 'SI' 
 AND infinal = 'SI' 
-AND evreaccion = 'SI'";
+AND evreaccion = 'SI'
+GROUP BY cursos.id_curso";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
       
       ?>
 
-        ["<?php echo $data['id_reac']?>","<?php echo $data['gstNombr']." ".$data['gstApell']?>","<?php echo $data['gstTitlo']?>","<a href='constancia.php?data={$data[0]}'><img style='display:block; margin-left: auto; margin-right: auto;' src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></a>","<?php echo $data['fechareac']?>"],
+        ["<?php echo $data['id_reac']?>","<?php echo $data['gstNombr']." ".$data['gstApell']?>","<?php echo $data['gstTitlo']?>","<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><img style='display:block; margin-left: auto; margin-right: auto;' src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></a>","<?php echo $data['fechareac']?>"],
 
 
         <?php } ?>
