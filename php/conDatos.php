@@ -8,6 +8,7 @@
 		INNER JOIN puesto ON personal.gstPstID = puesto.gstIdpus
 		-- INNER JOIN especialidad ON personal.gstSpcID = especialidad.gstSpcld
         INNER JOIN ejecutiva ON personal.gstAreID = ejecutiva.gstIdeje
+		INNER JOIN area ON personal.gstIDara = area.id_area
 		WHERE personal.estado = 0 ORDER BY gstIdper DESC
 		";
 	$resultado = mysqli_query($conexion, $query);
