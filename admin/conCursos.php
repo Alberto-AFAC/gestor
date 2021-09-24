@@ -499,6 +499,45 @@
         <!-- /.content -->
     </div>
 </div>
+
+
+
+
+<!-- <img data-toggle='modal' data-target='#exampleModal{$data['gstIdlsc']}' src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;'> -->
+	<div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+	  <h5 style='font-size: 28px;' class='modal-title col-11 text-center'><span style='font-weight: bold;'>TEMARIO</span><br>{$data['gstTitlo']}</h5>
+      </div>
+      <div class='modal-body'>
+	  <div class='jumbotron'>
+	  <div class='container'>
+	  <p class='lead'>
+	 
+		  
+	  AQUI VA EL NOMBRE
+	  
+	 
+	  </p>
+	  </div>
+	  <hr class='my-4'>
+	</div>
+      </div>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-primary' data-dismiss='modal'>CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -668,6 +707,10 @@ $(document).ready(function() {
       });
     }
 
+function temario(gstIdlsc){
+    alert(gstIdlsc);
+}
+
 </script>
 <style>
     #example
@@ -675,3 +718,9 @@ $(document).ready(function() {
         width: 75% !important;
     }
 </style>
+
+<?php
+
+
+
+?>
