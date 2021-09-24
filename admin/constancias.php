@@ -336,8 +336,30 @@ include('header.php');
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
+       <!-- EDICION DEL TEMARIO -->
         <div class="control-sidebar-bg"></div>
     </div>
+    <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="font-size: 20px;" class="modal-title" id="correcionModalLabel">CORRECIÓN DE CONSTANCIAS Y CERTIFICADOS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         * SI REQUIERE HACER UN CAMBIO EN EL <u>NOMBRE DEL PARTICIPANTE</u> ES IMPORTANTE QUE ACUDA AL AREA DE <span style="font-weight: bold;">RECURSOS HUMANOS</span><br><br>
+         * TOME EN CUENTA QUE EL SISTEMA AUTOMATIZA LOS DATOS EN LA GENERACIÓN DE LA CONSTANCIA Y/O CERTIFICADOS POR LO QUE UNICAMENTE PUEDE REALIZAR CAMBIOS EN EL TEMARIO.
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+        <button type="button" class="btn btn-primary">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- ./wrapper -->
 
     <!-- jQuery 3 -->
@@ -388,7 +410,7 @@ $resultado = mysqli_query($conexion, $query);
       
       ?>
 
-        ["<?php echo $data['id_reac']?>","<?php echo $data['gstNombr']." ".$data['gstApell']?>","<?php echo $data['gstTitlo']?>","<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><img style='display:block; margin-left: auto; margin-right: auto;' src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></a>","<?php echo $data['fechareac']?>"],
+        ["<?php echo $data['id_reac']?>","<?php echo $data['gstNombr']." ".$data['gstApell']?>","<?php echo $data['gstTitlo']?>","<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>","<?php echo $data['fechareac']?>"],
 
 
         <?php } ?>
