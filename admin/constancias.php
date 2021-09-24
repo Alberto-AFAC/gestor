@@ -428,7 +428,7 @@ $resultado = mysqli_query($conexion, $query);
         </script>
         <div class="control-sidebar-bg"></div>
     </div>
-    <div class="modal fade" id="<?php echo $data['id']?>correcionModal" tabindex="-1" role="dialog"
+    <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog"
         aria-labelledby="correcionModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
