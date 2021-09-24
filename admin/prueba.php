@@ -109,25 +109,25 @@ include ("../conexion/conexion.php");
 	
 
 
-fcurso = '2021/07/26';
-gstVignc = 1 * 12;
-vence = gstVignc - 6;
+//fcurso = '2021/07/26';
+//gstVignc = 1 * 12;
+//vence = gstVignc - 6;
 
-var termino = new Date(fcurso);
-var finaliza = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate()); 
-finaliza.setMonth(finaliza.getMonth() + gstVignc);
+//var termino = new Date(fcurso);
+//var finaliza = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate()); 
+//finaliza.setMonth(finaliza.getMonth() + gstVignc);
 //alert(finaliza);
 
-oi = '2022/07/28';
-var hoy = new Date(oi);
-var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
+//oi = '2022/07/28';
+//var hoy = new Date(oi);
+//var factual = new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
 //alert(factual);
 
 // if(factual <= finaliza){
-termino.setMonth(termino.getMonth() + vence);
-termino.setDate(termino.getDate() + 1);
+//termino.setMonth(termino.getMonth() + vence);
+//termino.setDate(termino.getDate() + 1);
 
-var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
+//var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate());
 //alert(ftermino);
 
 //  if(factual >= finaliza){
@@ -150,7 +150,7 @@ var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate
 </script>
 
 
-
+<!-- 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -184,30 +184,8 @@ var ftermino = new Date(termino.getFullYear(),termino.getMonth(),termino.getDate
     </table>
     <a class="button is-primary" onclick="btnEnviar();">Enviar</a>
 
-    <script type="text/javascript">
+    <script type="text/javascript"> -->
 
-function btnEnviar(){
-  var arrTodo = new Array();
-  /*Agrupamos todos los input con name=cbxEstudiante*/
-  $('input[name="cbxEstudiante"]').each(function(element) {
-    var item = {};
-    item.id = this.value;
-    item.status = this.checked;
-    arrTodo.push(item);
-  });
-
-  /*Creamos un objeto para enviarlo al servidor*/
-  var toPost = JSON.stringify(arrTodo);
-  console.log(toPost);
-  
-  alert(toPost);
-  /*
-    Aquí convendría lanzar una petición Ajax al servidor
-    enviándole la variabel toPost
-    En el servidor desglosamos esa variable
-    obteniendo cada id y cada estatus y procesamos los datos
-  */
-}
 
   	
  </script>
@@ -221,13 +199,13 @@ function btnEnviar(){
 
 
 
-  $query="SELECT gstIdlsc FROM listacursos ORDER BY gstIdlsc DESC LIMIT 1";  
+//   $query="SELECT gstIdlsc FROM listacursos ORDER BY gstIdlsc DESC LIMIT 1";  
   
-$result = mysqli_query($conexion,$query);
+// $result = mysqli_query($conexion,$query);
 
-$res = mysqli_fetch_row($result);
+// $res = mysqli_fetch_row($result);
 
-  echo $res[0];
+//   echo $res[0];
 
 
 
@@ -242,3 +220,23 @@ $res = mysqli_fetch_row($result);
 ?>
 </pre>
 
+<?php
+
+$primer = 'valor1';
+$segundo = 'valor1';
+
+for($i=1; $i<=10; $i++){
+
+  echo '<br>'.$i.''.$primer;
+    echo '<br>'.$i.''.$segundo;
+
+    if($i<$i){
+      echo 'OK';
+    }
+
+  // if($i>$i){
+  //   echo 'es tooo'.$i;
+  // }
+}
+
+?>

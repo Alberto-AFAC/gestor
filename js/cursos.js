@@ -12,9 +12,34 @@
         var completos=0;
         var cancelados=0;
         var confirmar=0;
-
+        var conteo=0;
+        var fecha=0;
+        var ffin=0;
         for(i=0; i<res.length;i++){
+
+
+
+        var hoy = new Date();
+        var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+
+        var termino = new Date(obj.data[i].fechaf);
+        var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
+
+
+        // if(factual>finaliza && obj.data[i].proceso=='FINALIZADO' && obj.data[i].evaluacion==0){
+        //     ffin++;
+
+        //     alert('ok');
+        // }
+
+        if(factual>finaliza && obj.data[i].proceso=='PENDIENTE'){
+            fecha++;
+        }
         
+        if(obj.data[i].proceso=='PENDIENTE' && obj.data[i].evaluacion==1){
+            conteo++;
+        }
+
         if(obj.data[i].confirmar == 'CONFIRMAR' && obj.data[i].proceso == 'PENDIENTE'){  
             confirmar++;  
         }
@@ -24,18 +49,26 @@
         if(obj.data[i].confirmar=='TRABAJO' || obj.data[i].confirmar=='ENFERMEDAD' || obj.data[i].confirmar=='OTROS'){
             cancelados++;
             }
+
         if(obj.data[i].proceso=='FINALIZADO'){
             completos++;
-            }
-        } 
 
-        $("#confirma").html(confirmar);
+            if(factual>finaliza && obj.data[i].evaluacion==0){ffin++;}
+
+            }
+
+        } 
+            completo = completos - conteo - ffin;
+            confirma = confirmar - fecha;
+            venci = fecha + ffin;
+        $("#confirma").html(confirma);
         $("#programados").html(programados); 
          $("#cancelados").html(cancelados); 
-          $("#completos").html(completos);
-            $("#noti").html(confirmar);
-        document.getElementById("notif").innerHTML = ""+'<b>Tienes '+confirmar+' notificaciones.</b>';
-        document.getElementById("confirmar").innerHTML = ""+'<i class="fa fa-warning text-yellow"></i> Tienes '+confirmar+' cursos que confirmar.';
+          $("#completos").html(completo);
+            $("#noti").html(confirma);
+             $("#vencidos").html(venci);
+        document.getElementById("notif").innerHTML = ""+'<b>Tienes '+confirma+' notificaciones.</b>';
+        document.getElementById("confirmar").innerHTML = ""+'<i class="fa fa-warning text-yellow"></i> Tienes '+confirma+' cursos que confirmar.';
 
 
 });

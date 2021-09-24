@@ -125,28 +125,18 @@
 </th>
 
 </table>
-
-
-                    
+                   
 <!-- 					<div class="was-validated">
 					<div class="col-md-13">
 					<label for="validationTextarea">Observaciones.</label>
 					<textarea style="font-size: 18px;" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea>
 					</div>
 					</div> -->                    	
-
 <div class="form-group">
 <div class="col-sm-6">
 <div id="instruc"></div>
-
 </div>
 </div>
-
-
-
-
-
-
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
 <button type="button" id="button" class="btn btn-info altaboton" style="" onclick="confirma();">ACEPTAR</button>
