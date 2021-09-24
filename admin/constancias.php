@@ -336,54 +336,32 @@ include('header.php');
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-       <!-- EDICION DEL TEMARIO -->
-        <div class="control-sidebar-bg"></div>
-    </div>
-    <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 style="font-size: 20px;" class="modal-title" id="correcionModalLabel">CORRECIÓN DE CONSTANCIAS Y CERTIFICADOS</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         * SI REQUIERE HACER UN CAMBIO EN EL <u>NOMBRE DEL PARTICIPANTE</u> ES IMPORTANTE QUE ACUDA AL AREA DE <span style="font-weight: bold;">RECURSOS HUMANOS</span><br><br>
-         * TOME EN CUENTA QUE EL SISTEMA AUTOMATIZA LOS DATOS EN LA GENERACIÓN DE LA CONSTANCIA Y/O CERTIFICADOS POR LO QUE UNICAMENTE PUEDE REALIZAR CAMBIOS EN EL TEMARIO.
+        <!-- EDICION DEL TEMARIO -->
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-        <button type="button" class="btn btn-primary">GUARDAR</button>
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- ./wrapper -->
+        <!-- ./wrapper -->
 
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
-    <script>
-    var dataSet = [
-        <?php 
+        <!-- jQuery 3 -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="../dist/js/demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
+        <script>
+        var dataSet = [
+            <?php 
 $query = "SELECT
 * 
 FROM
@@ -410,41 +388,71 @@ $resultado = mysqli_query($conexion, $query);
       
       ?>
 
-        ["<?php echo $data['id_reac']?>","<?php echo $data['gstNombr']." ".$data['gstApell']?>","<?php echo $data['gstTitlo']?>","<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>","<?php echo $data['fechareac']?>"],
+            ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
+                "<?php echo $data['gstTitlo']?>",
+                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<?php echo $data['fechareac']?>"],
 
 
-        <?php } ?>
-    ];
+            <?php } ?>
+        ];
 
-    var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        "order": [
-            [0, 'desc']
-        ],
-        orderCellsTop: true,
-        fixedHeader: true,
-        data: dataSet,
-        columns: [{
-                title: "FOLIO"
+        var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
+            "language": {
+                "searchPlaceholder": "Buscar datos...",
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
             },
-            {
-                title: "PARTICIPANTE"
-            },
-            {
-                title: "CURSO"
-            },
-            {
-                title: "DOCUMENTO"
-            },
-            {
-                title: "FECHA DE GENERACIÓN"
-            }
-        ]
-    });
-    </script>
+            "order": [
+                [0, 'desc']
+            ],
+            orderCellsTop: true,
+            fixedHeader: true,
+            data: dataSet,
+            columns: [{
+                    title: "FOLIO"
+                },
+                {
+                    title: "PARTICIPANTE"
+                },
+                {
+                    title: "CURSO"
+                },
+                {
+                    title: "DOCUMENTO"
+                },
+                {
+                    title: "FECHA DE GENERACIÓN"
+                }
+            ]
+        });
+        </script>
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <div class="modal fade" id="<?php echo $data['id']?>correcionModal" tabindex="-1" role="dialog"
+        aria-labelledby="correcionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-size: 20px;" class="modal-title" id="correcionModalLabel">CORRECIÓN DE CONSTANCIAS Y
+                        CERTIFICADOS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    * SI REQUIERE HACER UN CAMBIO EN EL <u>NOMBRE DEL PARTICIPANTE</u> ES IMPORTANTE QUE ACUDA AL AREA
+                    DE <span style="font-weight: bold;">RECURSOS HUMANOS</span><br><br>
+                    * TOME EN CUENTA QUE EL SISTEMA AUTOMATIZA LOS DATOS EN LA GENERACIÓN DE LA CONSTANCIA Y/O
+                    CERTIFICADOS POR LO QUE UNICAMENTE PUEDE REALIZAR CAMBIOS EN EL TEMARIO.
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-primary">GUARDAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- page script -->
 
 </body>
