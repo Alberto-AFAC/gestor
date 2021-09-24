@@ -149,32 +149,32 @@
                             <?php 
                                 $query ="SELECT
                                 'total',
-                                  COUNT( CASE WHEN gstIDCat = '1' THEN 1 END ) AS LICENCIAS,
-                                  COUNT( CASE WHEN gstIDCat = '2' THEN 1 END ) AS ESCUELAS,
-                                  COUNT( CASE WHEN gstIDCat = '3' THEN 1 END ) AS EXAMENES,
-                                  COUNT( CASE WHEN gstIDCat = '4' THEN 1 END ) AS CERTIFICACION,
-                                  COUNT( CASE WHEN gstIDCat = '5' THEN 1 END ) AS OPERACIONES,
-                                  COUNT( CASE WHEN gstIDCat = '6' THEN 1 END ) AS PELIGROSAS,
-                                  COUNT( CASE WHEN gstIDCat = '7' THEN 1 END ) AS VUELO,
-                                  COUNT( CASE WHEN gstIDCat = '8' THEN 1 END ) AS CABINA,
-                                  COUNT( CASE WHEN gstIDCat = '9' THEN 1 END ) AS AERODROMOS,
-                                  COUNT( CASE WHEN gstIDCat = '10' THEN 1 END ) AS AVSEC,
-                                  COUNT( CASE WHEN gstIDCat = '11' THEN 1 END ) AS SMSSSP,
-                                  COUNT( CASE WHEN gstIDCat = '12' THEN 1 END ) AS INVACCIDENTES,
-                                  COUNT( CASE WHEN gstIDCat = '13' THEN 1 END ) AS AUXACCIDENTES,
-                                  COUNT( CASE WHEN gstIDCat = '14' THEN 1 END ) AS SALVAMENTO,
-                                  COUNT( CASE WHEN gstIDCat = '15' THEN 1 END ) AS AERONAVEGABILIDAD,
-                                  COUNT( CASE WHEN gstIDCat = '16' THEN 1 END ) AS PRODUCCION,
-                                  COUNT( CASE WHEN gstIDCat = '17' THEN 1 END ) AS NAVEGACIONAV,
-                                  COUNT( CASE WHEN gstIDCat = '18' THEN 1 END ) AS AERONAUTICA,
-                                  COUNT( CASE WHEN gstIDCat = '19' THEN 1 END ) AS VIGILANCIA,
-                                  COUNT( CASE WHEN gstIDCat = '20' THEN 1 END ) AS AEREO,
-                                  COUNT( CASE WHEN gstIDCat = '21' THEN 1 END ) AS SERVNAVAEREA,
-                                  COUNT( CASE WHEN gstIDCat = '22' THEN 1 END ) AS METEOROLOGO,
-                                  COUNT( CASE WHEN gstIDCat = '23' THEN 1 END ) AS CARTOGRAFIA,
-                                  COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS INSPECTOR 
+                                  COUNT( CASE WHEN gstIDcat = '1' THEN 1 END ) AS LICENCIAS,
+                                  COUNT( CASE WHEN gstIDcat = '2' THEN 1 END ) AS ESCUELAS,
+                                  COUNT( CASE WHEN gstIDcat = '3' THEN 1 END ) AS EXAMENES,
+                                  COUNT( CASE WHEN gstIDcat = '4' THEN 1 END ) AS CERTIFICACION,
+                                  COUNT( CASE WHEN gstIDcat = '5' THEN 1 END ) AS OPERACIONES,
+                                  COUNT( CASE WHEN gstIDcat = '6' THEN 1 END ) AS PELIGROSAS,
+                                  COUNT( CASE WHEN gstIDcat = '7' THEN 1 END ) AS VUELO,
+                                  COUNT( CASE WHEN gstIDcat = '8' THEN 1 END ) AS CABINA,
+                                  COUNT( CASE WHEN gstIDcat = '9' THEN 1 END ) AS AERODROMOS,
+                                  COUNT( CASE WHEN gstIDcat = '10' THEN 1 END ) AS AVSEC,
+                                  COUNT( CASE WHEN gstIDcat = '11' THEN 1 END ) AS SMSSSP,
+                                  COUNT( CASE WHEN gstIDcat = '12' THEN 1 END ) AS INVACCIDENTES,
+                                  COUNT( CASE WHEN gstIDcat = '13' THEN 1 END ) AS AUXACCIDENTES,
+                                  COUNT( CASE WHEN gstIDcat = '14' THEN 1 END ) AS SALVAMENTO,
+                                  COUNT( CASE WHEN gstIDcat = '15' THEN 1 END ) AS AERONAVEGABILIDAD,
+                                  COUNT( CASE WHEN gstIDcat = '16' THEN 1 END ) AS PRODUCCION,
+                                  COUNT( CASE WHEN gstIDcat = '17' THEN 1 END ) AS NAVEGACIONAV,
+                                  COUNT( CASE WHEN gstIDcat = '18' THEN 1 END ) AS AERONAUTICA,
+                                  COUNT( CASE WHEN gstIDcat = '19' THEN 1 END ) AS VIGILANCIA,
+                                  COUNT( CASE WHEN gstIDcat = '20' THEN 1 END ) AS AEREO,
+                                  COUNT( CASE WHEN gstIDcat = '21' THEN 1 END ) AS SERVNAVAEREA,
+                                  COUNT( CASE WHEN gstIDcat = '22' THEN 1 END ) AS METEOROLOGO,
+                                  COUNT( CASE WHEN gstIDcat = '23' THEN 1 END ) AS CARTOGRAFIA
+                              --    COUNT( CASE WHEN gstCargo = 'INSPECTOR' THEN 1 END ) AS INSPECTOR 
                             FROM
-                                personal";
+                                  especialidadcat";
                                 $resultado = mysqli_query($conexion, $query);
                                 ?>
 var piechar = new Chart(document.getElementById("piechart-licencias"), {

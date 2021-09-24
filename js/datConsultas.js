@@ -105,6 +105,7 @@ function closeDtlls() {
     document.getElementById('gstCinst').disabled = true;
     document.getElementById('gstFeing').disabled = true;
     document.getElementById('gstIDuni').disabled = true;
+    document.getElementById('siglasoaci').disabled = true; //ESTATUS DE PERSONAL
 
 }
 //muestra ventana estudios
