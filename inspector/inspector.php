@@ -1338,7 +1338,8 @@ while($data = mysqli_fetch_array($resultado)){
 
 $id_curso = $data['id_curso'];
 
- 
+$fcurso = $data['inicial'];
+$fechaf = $data['final']; 
 $fin = $data['fin'];
 
 $actual= date("d-m-Y"); 
