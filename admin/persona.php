@@ -77,6 +77,7 @@ include('header.php');
 <?php include('valores.php'); ?>
 <!-- /.col -->
 </div>
+
 <!-- /.row -->
 </section>  
 <!-- Content Header (Page header) -->
@@ -248,8 +249,7 @@ include('header.php');
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
 
 <?php include('agrStdPro.php');?>
 

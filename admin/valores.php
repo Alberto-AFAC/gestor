@@ -715,10 +715,7 @@ $psto = mysqli_query($conexion,$sql);
                             <label>DEPARTAMENTO</label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
                                 id="gstIDara" type="text" data-live-search="true" disabled="">
-                                <option value="">SELECCIONE EL DEPARTAMENTO</option>
-                                <?php while($rea = mysqli_fetch_row($are)):?>
-                                <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                                <?php endwhile; ?>
+
                             </select>
                         </div>
                     </div>
