@@ -336,7 +336,7 @@
                                 </div>
 
 
-                                <div class="col-sm-1" style="padding-right: 0; width: 79px;">
+                                <div class="col-sm-1" style="padding-right: 0; width: 85px;">
                                     <label class="label2">DURACION</label>
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                                     <select class="form-control inputalta" id="Ahr" name="Ahr">
@@ -685,7 +685,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='btn btn-default' data-toggle='modal' onclick='agregar({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a>"
+            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='btn btn-default' data-toggle='modal' onclick='datoss({gstVignc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a>"
 
         }]
     });
@@ -818,7 +818,6 @@ var campos_max = 30;
                         x++;
                 }
         });
-        // Remover o div anterior
         $('#listas').on("click",".remover_campo",function(e) {
                 e.preventDefault();
                 $(this).parent('div').remove();
