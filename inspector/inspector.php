@@ -77,7 +77,7 @@
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Cursos Programados</b> <a class="pull-right">
+                                        <b>Cursos en Proceso</b> <a class="pull-right">
                                             <div id="programados"></div>
                                         </a>
                                     </li>
@@ -1260,7 +1260,7 @@
 var dataSet = [
     <?php 
 $query = "
-SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin  
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
 WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
@@ -1272,6 +1272,15 @@ $id_curso = $data['id_curso'];
 
  $fcurso = $data['inicial'];
  $fechaf = $data['final'];
+ $fin = $data['fin'];
+
+ $actual= date("d-m-Y"); 
+
+$f3 = strtotime($actual);
+$f2 = strtotime($fin); 
+
+
+if($f3<$f2){
 ?>
 
     //console.log('<?php echo $id_curso ?>');
@@ -1284,7 +1293,8 @@ $id_curso = $data['id_curso'];
         //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
 
     ],
-    <?php } ?>
+    <?php } 
+    }?>
 ]
 
 var tableGenerarReporte = $('#data-table-confirmar').DataTable({
@@ -1318,7 +1328,7 @@ var tableGenerarReporte = $('#data-table-confirmar').DataTable({
 var dataSet = [
     <?php 
 $query = "
-SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
 WHERE idinsp = $datos[0] AND proceso = 'PENDIENTE' AND cursos.estado = 0 || idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
@@ -1328,8 +1338,16 @@ while($data = mysqli_fetch_array($resultado)){
 
 $id_curso = $data['id_curso'];
 
- $fcurso = $data['inicial'];
- $fechaf = $data['final'];
+$fcurso = $data['inicial'];
+$fechaf = $data['final']; 
+$fin = $data['fin'];
+
+$actual= date("d-m-Y"); 
+$f3 = strtotime($actual);
+$f2 = strtotime($fin); 
+
+
+ if($f3<$f2){
 
 if($data['confirmar']=='CONFIRMAR'){
 $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 13px;' class='badge'>PENDIENTE</span>";
@@ -1356,7 +1374,8 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
 
     ],
 
-    <?php } 
+    <?php }
+    }
 }?>
 ]
 
@@ -1396,7 +1415,7 @@ var dataSet = [
     <?php 
 
 
-$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
+$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
 WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
@@ -1434,10 +1453,13 @@ if($res = mysqli_fetch_array($resul)){
 if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
 $accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='constancia.php?data={$con[0]}' onclick='desactivar();' class='datos btn btn-default'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
+
+
 $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+
+
+
 }
-
-
 
 
 ?>
@@ -1445,9 +1467,18 @@ $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
         "<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>",
-        "<?php echo $accion?>"],
+<?php if($data['evaluacion']<80){?>
+     
+"<center><b style='color:red;' title='Pendiente' onclick='pdf()' ><span class='badge' style='background-color: #BB2303; font-size: 14px;'>NO ACREDITADO</span></b></center><center><center>"
+<?php }else{?>
 
-    <?php }else{  
+       "<?php echo $accion?>"
+ 
+    <?php 
+}
+?>
+],
+<?php    }else{  
 
 
 $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>";  ?>
@@ -1457,19 +1488,16 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
         "<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>",
         "<?php echo $accion?>"],
 
-    <?php } }else{ ?>
+    <?php } 
+
+
+
+}else{ ?>
 
     <?php if($data['confirmar'] == 'TRABAJO' || $data['confirmar'] == 'ENFERMEDAD' || $data['confirmar'] == 'OTROS'){ ?>
 
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-        //BILL0Y
-        "<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop'><?php if($data['confirmar'] == 'TRABAJO'){ echo 'DECLINADO';} else if($data['confirmar'] == 'ENFERMEDAD'){ echo 'DECLINADO';}else{ echo 'DECLINADO';}?></span>",
-        "<span style='background-color: grey; font-size: 13px;' class='badge'>SIN ACCIONES</span>"
 
-
-    ],
 
     <?php }else{ ?>
 
@@ -1605,7 +1633,7 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
 var dataSet = [
     <?php 
 $query = "
-SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial, cursos.fechaf AS fin,evaluacion
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
 WHERE idinsp = $datos[0] AND proceso != 'FECHA' AND cursos.estado = 0 ORDER BY id_curso DESC";
@@ -1617,28 +1645,34 @@ $id_curso = $data['id_curso'];
 
  $fcurso = $data['inicial'];
  $fechaf = $data['final'];
+ $eva = $data['evaluacion'];
+
+$fin = $data['fin'];
 
  $valor = 'FECHA';
 
-// if($data['confirmar']=='ENFERMEDAD'){
-//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-// }
-// else if($data['confirmar']=='TRABAJO'){
-//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-// }else if($data['confirmar']=='OTROS'){
-//     $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
-// }
+$actual= date("d-m-Y"); 
+$f3 = strtotime($actual);
+$f2 = strtotime($fin); 
 
- ?>
-//["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-//         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+if($f3>$f2 && $data['proceso']=='PENDIENTE' || $f3>$f2 && $data['proceso']=='FINALIZADO' && $eva==0){   ?>
 
-//         // "<a type='button' title='Evaluación' onclick='asignacion(<?php //echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
-//         // "<span class='badge' style='background-color: red;'>CANCELADO</span>"
-//         "<?php echo $valor ?>"
-//     ],
-    <?php } ?>
-];
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<span class='badge' style='background-color: red; font-size: 14px;'>VENCIDO</span> ", "<?php echo $data['confirmar']?>"
+    ],
+<?php }
+
+
+// else if($data['confirmar']=='CONFIRMADO'){ $valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";?>
+
+// ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>","<?php echo $data['hcurso']?>", "<?php echo $fechaf?>","<?php echo $valor ?>", "<?php echo $data['confirmar']?>"],
+     <?php //} 
+
+}?>
+]
+ 
 var tableGenerarReporte = $('#data-table-vencidos').DataTable({
     "language": {
         "searchPlaceholder": "Buscar datos...",

@@ -78,9 +78,9 @@
 
 <div class="col-sm-offset-0 col-sm-6">
     
-	<h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR ASISTENCIA:</H4> 
+  <h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR ASISTENCIA:</H4> 
     
-<!-- 	<input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
+<!--  <input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
 <div class="switcher">
       <input type="radio" name="Opc" value="SI" id="SI" class="switcher__input switcher__input--yin" checked="">
       <label for="SI" class="switcher__label">SI</label>
@@ -97,7 +97,7 @@
 <p id="asiste" style="display: none;">  
 <i style="color: green; font-size: 25px;" class="icon fa fa-check" ></i>
 <label  id="confm1" style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
-<input type="hidden" id="conf" name="conf" >	
+<input type="hidden" id="conf" name="conf" >  
 </p>
 
 <p id="noasis" style="display:none;">
@@ -119,7 +119,7 @@
 <div class="col-sm-12">
 <input id="archivo" type="file" name="archivo" style="display: none; width: 410px;" required accept=".pdf,.doc" class="input-file" size="1450"> 
 
-<textarea style="display: none; font-size: 15px;" id="obser" name="obser" class="form-control is-invalid inputalta" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea>	
+<textarea style="display: none; font-size: 15px;" id="obser" name="obser" class="form-control is-invalid inputalta" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea>  
 </div>
 </div> 
 </th>
@@ -128,12 +128,12 @@
 
 
                     
-<!-- 					<div class="was-validated">
-					<div class="col-md-13">
-					<label for="validationTextarea">Observaciones.</label>
-					<textarea style="font-size: 18px;" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea>
-					</div>
-					</div> -->                    	
+<!--          <div class="was-validated">
+          <div class="col-md-13">
+          <label for="validationTextarea">Observaciones.</label>
+          <textarea style="font-size: 18px;" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea>
+          </div>
+          </div> -->                      
 
 <div class="form-group">
 <div class="col-sm-6">
@@ -149,7 +149,7 @@
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" class="btn btn-info altaboton" style="" onclick="confirma();">ACEPTAR</button>
+<button type="button" id="button" class="btn btn-info altaboton" style="" onclick="confirasict();">ACEPTAR</button>
 </div>
    <b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos</p></b>
 
