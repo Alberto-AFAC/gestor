@@ -292,7 +292,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         </div>
     </div>
     <div>
-    <p class='p-2'>Este certificado ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
+    <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
            {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
     </div>

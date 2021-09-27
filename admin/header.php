@@ -167,6 +167,7 @@
             <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <li><a href="constancias.php"><i class="fa fa-certificate"></i>Constancias</a></li>
           </ul>
         </li>
         <!--  -->

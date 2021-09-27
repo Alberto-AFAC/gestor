@@ -158,7 +158,7 @@ include('header.php');
 
     <div class="col-sm-4">
     <label class="label2">SEDE DEL CURSO</label>
-    <input type="text" class="form-control inputalta" id="sede" name="sede">
+    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="sede" name="sede">
     </div>
 </div>
 
@@ -179,7 +179,7 @@ include('header.php');
                   <div class="input-group-addon">
                     <i class="fa fa-globe"></i>
                   </div>
-            <input type="url" class="form-control inputalta" id="link" name="link" placeholder="URL ">
+            <input type="url" onkeyup="mayus(this);" class="form-control inputalta" id="link" name="link" placeholder="URL ">
       </div>
     </div>
     <div class="col-sm-4">
@@ -344,3 +344,4 @@ var yyyy = today.getFullYear();
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("fechaf").setAttribute("min", today);
 </script>
+<script src="../js/global.js"></script>
