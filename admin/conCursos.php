@@ -685,12 +685,19 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='btn btn-default' data-toggle='modal' onclick='datoss({gstVignc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a>"
+            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
+
+
+
+//<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
+
+
 
         }]
     });
 
     detalles("#example tbody", table);
+    agrtemario("#example tbody", table);
 
 
     $('#example thead tr').clone(true).appendTo('#example thead');
@@ -779,6 +786,18 @@ function detalles(tbody, table) {
 
     });
 }
+
+function agrtemario(tbody, table) {
+
+$(tbody).on("click", "a.temario", function() {
+    var data = table.row($(this).parents("tr")).data();
+        alert(data[0]);
+    //var gstIdlsc = $().val(data.gstIdlsc);
+//    $("#modal-añadir #EgstIdlsc").val(data[0]);
+
+});
+}
+
 
 function temario(gstIdlsc) {
 
