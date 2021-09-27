@@ -902,7 +902,7 @@ window.onload = function() {
         dia = '0' + dia; //agrega cero si el menor de 10
     if (mes < 10)
         mes = '0' + mes //agrega cero si el menor de 10
-    document.getElementById('fechaev').value = ano + "-" + mes + "-" + dia;
+//    document.getElementById('fechaev').value = ano + "-" + mes + "-" + dia;
 }
 
 //ABRIR EDICIÓN DE EVALUACIÓN INSPECTOR

@@ -115,7 +115,6 @@ include('header.php');
               <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" style="font-size:19px; color: #000000;">ASIGANCIÓN DEL PUESTO</h4>
           </div>
-
           <div class="modal-body">
               <form id="Dtall" class="form-horizontal" action="" method="POST" >
                 <input type="hidden" name="gstIdper" id="gstIdper">
@@ -175,22 +174,16 @@ include('header.php');
                     </div>
                     <div class="form-group">
                           <div class="col-sm-12">
-                            <label class="label2">SUB DIRECCIÓN</label>
-                            <select type="text" class="form-control inputalta" id="gssubdireccion" name="gssubdireccion">
-                                <option value="value1">SELECCIONA LA SUB DIRECCIÓN</option>
-                                <option value="value2">SUBDIRECCIÓN DE SEGURIDAD AÉREA</option>
-                                <option value="value3">SUBDIRECCIÓN DE NORMAS</option>
-                            </select>
-                          </div>
+                            <label class="label2">SUBDIRECCIÓN</label>
+                         <div id="subdire"></div>                            
+                        </div>
                         </div>
                     <div class="form-group">
-                     <div class="col-sm-offset-0 col-sm-12">
+                     <div class="col-sm-12">
                         <label class="label2">DEPARTAMENTO</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker inputalta" name="" id="" type="text" data-live-search="true">
-                         <option value="">SELECCIONE EL DEPARTAMENTO</option> 
-                         <option value="">DEPARTAMENTO DE INSPECCIÓN</option>
-                       </select>
-                    </div>                  
+                        <div id="depart1"></div> 
+                    </div>   
+                                  
                 </div>   
 <!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
                   <div class="box" id="funcionemp" style="display: none" >
@@ -329,6 +322,8 @@ $('#AgstIDSub').select2();
  $('#select3').load('select/tablacom.php');
  $('#categoria').load('select/buscatego.php');
  $('#subcategoria').load('select/tabsubcat.php');
+ $('#subdire').load('select/buscardepart.php'); //departamento
+ $('#depart1').load('select/tabladep.php'); //departamento
 }); 
 </script>
 <script src="../js/select2.js"></script> 
