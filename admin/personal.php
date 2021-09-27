@@ -451,7 +451,16 @@ $psto = mysqli_query($conexion,$sql);
                       </div>
                 </div>
 
-
+                    <!-- <div class="form-group">
+                    <div class="col-sm-6">
+                   <label class="label2">DIRECCIÓN EJECUTIVA </label>         
+                      <select style="width: 100%"  class="selectpicker inputalta" name="gstAreID" id="gstAreID" type="text" data-live-search="true">
+                      <option value="0">SELECCIONA EL ÁREA</option>
+                      <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
+                      <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
+                      <?php endwhile; ?>
+                      </select>
+                    </div> -->
 
                     <div class="form-group">
                           <div class="col-sm-6">
