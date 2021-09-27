@@ -25,7 +25,7 @@ if($data["gstVignc"] == 101){
 }
 
 if($data['gstTmrio'] == '0'){
-    $temario = 'FALTA AGREGAR';
+    $temario = 'SIN TEMARIO';
 } else {
   
 	// $query = "SELECT * FROM temario 
