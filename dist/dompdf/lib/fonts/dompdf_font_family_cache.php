@@ -83,8 +83,4 @@
   'doppio one' => array(
     'normal' => $fontDir . '\2d5a066d68f1098d0e49b2b003802c2f',
   ),
-  'montserrat' => array(
-    'normal' => $fontDir . '\3ac4744d39c2d9cd9a8bb8429c8a8d3f',
-    'italic' => $fontDir . '\3aa3665d84a6e62cf78f331aa077231d',
-  ),
 ) ?>
