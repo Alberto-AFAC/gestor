@@ -77,6 +77,7 @@ include('header.php');
 <?php include('valores.php'); ?>
 <!-- /.col -->
 </div>
+
 <!-- /.row -->
 </section>  
 <!-- Content Header (Page header) -->
@@ -248,8 +249,7 @@ include('header.php');
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
 
 <?php include('agrStdPro.php');?>
 
@@ -322,7 +322,7 @@ $('#AgstIDSub').select2();
  $('#select3').load('select/tablacom.php');
  $('#categoria').load('select/buscatego.php');
  $('#subcategoria').load('select/tabsubcat.php');
- $('#subdire').load('select/buscardepart.php'); //departamento
+ $('#subdire').load('select/buscardepart.php'); //Subdirección
  $('#depart1').load('select/tabladep.php'); //departamento
 }); 
 </script>
