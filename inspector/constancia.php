@@ -342,32 +342,42 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
 </div>
 <div>
 </div>
-<div style='padding-top: 200%' class='footer2'>
-<span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-class='p-2'>Secretaria de
-Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-Adiestramiento de
-Aviación Civil / SCT-AFAC-CIAAC</span>
+<div style='page-break-after:always;'>
+<div style='padding-top: %' class='footer2'>
+
 </div>
-</div>
-
-
-
-    ";
+</div>";
 }
 ?>
+<div>
+        <?php 
+       $datos = $_GET['data'];
+       $queryTemario = "SELECT idtem, titulo,idcurso FROM temario WHERE idcurso = $idc";
+                          $const = mysqli_query($conexion, $queryTemario);
+                          $contador = 0;
+                          while($consulta2 = mysqli_fetch_array($const)){
+                          $contador ++;
+                          $temario = $contador."-. ".$consulta2['titulo'];
+       ?>
+       <?php
+       if($con['gstCntnc'] == 'CONSTANCIA'){
+        echo "<p class='p-2'>{$temario}</p>";
+       }else if($con['gstCntnc'] == 'CERTIFICADO'){
+        echo "<p class='p-2'>{$temario}</p>";
+       }else {
+           echo "";
+       }
+       ?>
+        <?php } ?>
 
-
-    
+    </div>
+<div class="afojas1">
+        <span>Registrado bajo el No.<?php echo $con['gstIdlsc'];?></span>
+        <!-- a fojas
+            <?php echo $consulta2['afojas'];?> del libro de <?php echo $consulta2['libro'];?> -->
+    </div>
 </body>
 </html>
-
-
-
-
-
-
-
 <?php
 require_once '../dist/dompdf/autoload.inc.php';
 
