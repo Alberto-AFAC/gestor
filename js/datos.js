@@ -588,8 +588,8 @@ function perfil(gstIdper) {
                             $("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); // correo 3
 
                             $("#Pusto #gstSigID").val(obj.data[i].gstSigID); // estatus
-
-                            $("#Pusto #adscripcion").val(obj.data[i].adscripcion);  //area de adscripción modificar 
+                            $("#Pusto #adscripcion").val(obj.data[i].adscripcion);
+                            $("#Pusto #subdir1").val(obj.data[i].gstAcReg);  //area de adscripción modificar 
 
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
@@ -2210,6 +2210,11 @@ function adscripcion() {
     $("#adscrip2").toggle('toggle');
 }
 
+function subdireccion() {
+    $("#subdirec2").toggle('toggle');
+    $("#subdirec3").toggle('toggle');
+}
+
 function comandancias() {
     $("#comandancias1").toggle('toggle');
     $("#comandancias2").toggle('toggle');
@@ -2222,9 +2227,9 @@ function asignar() {
     var gstIdper = document.getElementById('gstIdper').value;
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
-    var AgstIDSub = '0';
+    var AgstIDSub = document.getElementById('depart').value;
     var AgstIDuni = document.getElementById('gstIDuni').value;
-    var AgstAcReg = document.getElementById('AgstAcReg').value;
+    var AgstAcReg = document.getElementById('subdireccion').value;//subdirección
     var AgstNucrt = document.getElementById('AgstNucrt').value;
     var gstNombr = document.getElementById('gstNombr').value;
     var gstNmpld = document.getElementById('gstANmpld').value;
