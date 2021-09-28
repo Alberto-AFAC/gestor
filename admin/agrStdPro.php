@@ -560,9 +560,7 @@
                         </div>
                     </div>
                     <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+
     </form>
 
     

@@ -83,7 +83,6 @@ include('header.php');
 <!-- Content Header (Page header) -->
 <section class="content" id="lista">
 
-
 <div class="row">
    <div class="col-xs-12">
      <div class="box">
@@ -107,11 +106,6 @@ include('header.php');
 </div>
 </section>
 </div>
-
-
-
-<?php include('agrStdPro.php');?>
-
 
   <div class="modal fade" id='modal-asignar'>
     <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -256,9 +250,10 @@ include('header.php');
         </div>
       </div>
 
+</div>
+</div>
 
-
-
+<?php include('agrStdPro.php');?>
 
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
