@@ -379,16 +379,16 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
 </body>
 </html>
 <?php
-require_once '../dist/dompdf/autoload.inc.php';
-
-use Dompdf\Dompdf;
-$dompdf = new DOMPDF();
-$dompdf->set_paper('A4', 'landscape');
-$dompdf->load_html(ob_get_clean());
-$dompdf->render();
-$dompdf->stream("", array("Attachment" => 0));
-$pdf = $dompdf->output();
-$filename = "constancias/constancias-CIAAC.pdf";
-file_put_contents($filename, $pdf);
-$dompdf->stream($filename);
+  require_once '../dist/dompdf/autoload.inc.php';
+  use Dompdf\Dompdf;
+  $dompdf = new DOMPDF();
+  $dompdf->set_paper('A4', 'landscape');
+  $dompdf->load_html(ob_get_clean());
+  // $dompdf->set_option('enable_font_subsetting', true);
+  $dompdf->render();
+  $dompdf->stream("certificate-CIAAC", array("Attachment" => 0));
+  $pdf = $dompdf->output();
+  $filename = "certificados/certificate-CIAAC.pdf";
+  file_put_contents($filename, $pdf);
+  $dompdf->stream($filename);
 ?>
