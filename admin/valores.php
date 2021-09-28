@@ -31,6 +31,9 @@ $uni = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
 
+$sql = "SELECT id_sub,descripsub,id_2_sub FROM subdireccion WHERE estado = 0";
+$subdirec = mysqli_query($conexion,$sql);
+
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
@@ -593,7 +596,7 @@ $psto = mysqli_query($conexion,$sql);
                         </div>
 
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="col-sm-offset-0 col-sm-12">
                             <label>SUBDIRECCIÓN</label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion"
@@ -601,13 +604,34 @@ $psto = mysqli_query($conexion,$sql);
                                 <option value="">SELECCIONE LA SUBDIRECCIÓN</option>
                             </select>
                         </div>
+                    </div> -->
+                    <div class="form-group">
+                    <div class="col-sm-12">
+                            <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion();">EDITAR
+                            SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
+                            <p id="subdirec2">
+                                <label>SUBDIRECCIÓN </label>
+                                <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
+                            </p>
+                            <p id="subdirec3" style="display: none;">
+                                <label>SUBDIRECCIÓN </label>
+                                <select style="width: 100%" class="form-control" class="selectpicker" name="AgstAcReg"
+                                    disabled="" id="AgstAcReg1" type="text" data-live-search="true">
+                                    <option>SELECCIONE LA SUBDIRECCIÓN</option>
+                                    <?php while($subdic = mysqli_fetch_row($subdirec)):?>                      
+                    <option value="<?php echo $subdic[0]?>"><?php echo $subdic[1]?></option>
+                    <?php endwhile; ?>
+                    </select>
+                            </p>
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-0 col-sm-12">
                             <label>DEPARTAMENTO</label>
-                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                id="gstIDara" type="text" data-live-search="true" disabled="">
-
+                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstdepart"
+                                id="gstdepart" type="text" data-live-search="true" disabled="">
+                                <option value="">SELECCIONE EL DEPARTAMENTO</option>
                             </select>
                         </div>
                     </div>
@@ -680,7 +704,7 @@ $psto = mysqli_query($conexion,$sql);
          </div>  -->
                     </div>
 
-                    <input type="hidden" name="gstAcReg" id="gstAcReg">
+                    <input type="hidden" name="gstAcReg22" id="gstAcReg22">
 
                     <!-- <div class="form-group">
 <div class="col-sm-4">
