@@ -158,121 +158,13 @@ $psto = mysqli_query($conexion,$sql);
             <div class="row">
 
                 <!-- ./col -->
-<div style="padding-top: 5px;" class="col-md-12">
-    <div class="nav-tabs-custom">
-            <form id="Dtall" class="form-horizontal" action="" method="POST">
-                <input type="hidden" name="gstIdper" id="gstIdper">
-                <table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" >
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col" style="width:300px;">DOCUMENTO</th>
-                            <th scope="col" style="width:150px;">ESTATUS</th> 
-                            <th scope="col">ACCIONES</th> 
-                            <th scope="col">DOCUMENTO ADJUNTO</th>
-                            <th scope="col">FECHA DE ACTUALIZACION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1)</th>
-                            <td>ACTA DE NACIMIENTO</td>
-                            <td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            
-                        </td>
-                            <td></td>
-                            
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2)</th>
-                            <td>RFC</td>
-                            <td><div id="rfc1"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr> 
-                            <th scope="row">3)</th>
-                            <td>CURP</td>
-                            <td><div id="curp1"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4)</th>
-                            <td>CARTILLA MILITAR Y HOJA DE LIBERACIÓN </td>
-                            <td><div id="cartilla"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5)</th>
-                            <td>COMPROBANTE DE DOMICILIO</td>
-                            <td><div id="domicilio"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                           <th scope="row">6)</th>
-                            <td>CLABE INTERBANCARIA</td>
-                            <td><div id="claverh"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7)</th>
-                            <td>CONSTANCIA ACADÉMICA</td>
-                            <td><div id="estudios1"></div></td>
-                            <td><div id="Bfecha"></div></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8)</th>
-                            <td>CURRICULUM VITAE</td>
-                            <td><div id="curriculum1"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9)</th>
-                            <td>CONSTANCIAS LABORALES</td>
-                            <td><div id="specifico"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10)</th>
-                            <td>CERTIFICADO MÉDICO</td>
-                            <td><div id="cmedico"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">11)</th>
-                            <td>3 FOTOGRAFÍAS TAMAÑO INFANTIL A COLOR</td>
-                            <td><div id="fotos"></div></td>
-                            <td><a type="button" class="asiste btn btn-default" title="Subir documento" data-toggle="modal" data-target=""><i class="fa fa-cloud-upload text-info"></i></a><a type="button" title="Actualizar documento" onclick="adjunuevo();" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                    
-                    </table>
-            </form>
-           
-</div>
-</div>
+
+
+                <div id="perdoc"></div>
+
+<!----------------------------------------------------------------->
+
+
 
 
 

@@ -405,6 +405,65 @@
         </div>
       </div>
     </div>
+
+<!---------------------------------AGREGAR ARCHIVO---------------------------------------->
+
+
+    <div class="modal fade" id="modal-agregardoc">
+          <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">AGREGAR DOCUMENTO</h4>
+                
+              </div>
+              <div class="modal-body" id="actForpro">
+              <form class="form-horizontal">
+                 
+
+            <div class="form-group">
+              <div class="col-sm-12">
+              <label class="label2"  for=""></label>
+              <input type="hidden" name="gstIdperArc" id="gstIdperArc">
+              <input type="hidden" name="docadjunto" id="docadjunto">
+              <div class="col-sm-6">
+               <input id="DgsAgra" type="file" name="DgsAgra" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+              </div>
+            </div>
+            </div>
+
+              <div class="form-group">
+                  <div class="col-sm-5">
+                    <button type="button" id="button1" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="adjuntar();">ADJUNTAR</button>
+                  </div>
+                   <b><p class="alert alert-danger text-center padding error" id="falla5">Error al adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="exito5">¡Se adjunto archivo con éxito!</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="vacio5">Es necesario adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="repetido5">¡El archivo adjunto está registrado!</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="renom5">Renombre su archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta5">Debes adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="error5">Ocurrio un error</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="forn5">Formato no valido</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="max5">Supera el limite permitido</p></b>
+                    </div>
+                </form>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-----------------------------ACTUALIZAR EL ARCHIVO CHECK LIST--------------------------------->
     <div class="modal fade" id="modal-actualizardoc">
           <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -422,34 +481,37 @@
 
             <div class="form-group">
               <div class="col-sm-12">
+              <input type="hidden" name="gstIdperAct" id="gstIdperAct">
+              <input type="hidden" name="docactuali" id="docactuali">
               <label class="label2" id="docadjunto" for=""></label>
+
               <div class="col-sm-6">
-              <input id="DgstDocep" type="file" name="DgstDocep" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+              <input id="DgstActul" type="file" name="DgstActul" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
               </div>
             </div>
             </div>
 
               <div class="form-group">
                   <div class="col-sm-5">
-                    <button type="button" id="button1" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="">ACTUALIZAR</button>
+                    <button type="button" id="button1" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="adjuactual();">ACTUALIZAR</button>
                   </div>
-                   <b><p class="alert alert-danger text-center padding error" id="falla3">Error al adjuntar archivo</p></b>
+                   <b><p class="alert alert-danger text-center padding error" id="falla6">Error al adjuntar archivo</p></b>
 
-                    <b><p class="alert alert-success text-center padding exito" id="exito3">¡Se adjunto archivo con éxito!</p></b>
+                    <b><p class="alert alert-success text-center padding exito" id="exito6">¡Se adjunto archivo con éxito!</p></b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="vacio3">Es necesario adjuntar archivo</p></b>
+                    <b><p class="alert alert-warning text-center padding aviso" id="vacio6">Es necesario adjuntar archivo</p></b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="repetido3">¡El archivo adjunto está registrado!</p></b>
+                    <b><p class="alert alert-warning text-center padding aviso" id="repetido6">¡El archivo adjunto está registrado!</p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="renom3">Renombre su archivo</p></b>
+                    <b><p class="alert alert-danger text-center padding adjuto" id="renom6">Renombre su archivo</p></b>
 
-                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta3">Debes adjuntar archivo</p></b>
+                    <b><p class="alert alert-warning text-center padding adjuto" id="adjunta6">Debes adjuntar archivo</p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="error3">Ocurrio un error</p></b>
+                    <b><p class="alert alert-danger text-center padding adjuto" id="error6">Ocurrio un error</p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="forn3">Formato no valido</p></b>
+                    <b><p class="alert alert-danger text-center padding adjuto" id="forn6">Formato no valido</p></b>
 
-                    <b><p class="alert alert-danger text-center padding adjuto" id="max3">Supera el limite permitido</p></b>
+                    <b><p class="alert alert-danger text-center padding adjuto" id="max6">Supera el limite permitido</p></b>
                     </div>
                 </form>  
             </div>
@@ -469,6 +531,8 @@
                                     <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
                                 </div>
                                 <div class="modal-body">
+                                  <input type="hidden" name="gstIdperEli" id="gstIdperEli">
+                                  <input type="hidden" name="doceliminar" id="doceliminar">
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                          <label class="label2" id="titledoc" for=""></label>
@@ -476,19 +540,19 @@
                                         </div>
                                         <br>
                                         <div class="col-sm-5">
-                                            <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="">ACEPTAR</button>
+                                            <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="borrardoc()">ACEPTAR</button>
                                         </div>
                                         <b>
-                                            <p class="alert alert-warning text-center padding error" id="danger">Error
-                                                al eliminar curso</p>
+                                            <p class="alert alert-warning text-center padding error" id="danger7">Error
+                                                al eliminar archivo</p>
                                         </b>
                                         <b>
-                                            <p class="alert alert-success text-center padding exito" id="succe">¡Se
-                                                elimino curso con éxito !</p>
+                                            <p class="alert alert-success text-center padding exito" id="succe7">¡Se
+                                                elimino archivo con éxito !</p>
                                         </b>
                                         <b>
-                                            <p class="alert alert-warning text-center padding aviso" id="empty">Elija
-                                                curso para eliminar </p>
+                                            <p class="alert alert-danger text-center padding aviso" id="aviso7">Error
+                                                archivo para eliminar </p>
                                         </b>
                                     </div>
                                 </div>
