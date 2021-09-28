@@ -125,12 +125,13 @@ $f3 = strtotime($actual);
 if($fecha==101){  
 
 
+
 if($fecs[3] >= 80){ //$fech = 'vigente'; ?>
 
 
 <?php }
 
-     if($fecs[3] < 80 && $idcurso == $fecs[4]){ 
+     if($fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
 
 if($fecs[5] == 'CONFIRMADO'){
    $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p>POR REALIZAR</td>";
@@ -175,7 +176,7 @@ if($fecs[5] == 'CONFIRMADO'){
         echo "<td style='color: white; background-color:#AC2925;'>REPROGRAMAR</td>";
 
 
-}else if($f3 <= $f2 && $fecs[3] >= 80){ //$fech = 'vigente'; ?>
+}else if($f3 <= $f2 && $fecs[3] >= 80 ){ //$fech = 'vigente'; ?>
         <td style="width: 5%;"><input disabled="" type='checkbox' 
         value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
@@ -192,7 +193,7 @@ if($fecs[5] == 'CONFIRMADO'){
 
 }else 
 
-if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4]){ 
+if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
 
 
 

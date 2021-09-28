@@ -1039,7 +1039,228 @@ function perfil(gstIdper) {
             }
         }
     })
+              $("#gstIdperArc").val(gstIdper);
+              $("#gstIdperAct").val(gstIdper); 
+              $("#gstIdperEli").val(gstIdper);  
+    consultarDoc(gstIdper);
+}
 
+////////////////////CONSULTAR ARCHIVO///////////////////////////
+
+function consultarDoc(gstIdper){
+
+    $.ajax({
+        url: '../php/documentos.php',
+        type: 'POST',
+        data: 'gstIdper=' + gstIdper
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 1;
+
+
+
+html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">ID</th><th scope="col" style="width:300px;">DOCUMENTO</th><th scope="col" style="width:150px;">ESTATUS</th> <th scope="col">ACCIONES</th> <th scope="col">DOCUMENTO ADJUNTO</th><th scope="col">FECHA DE ACTUALIZACION</th></tr></thead><tbody>';
+
+  for (D = 0; D < res.length; D++) {
+
+     if(obj.data[D].documentos=='SI EXISTE'){
+     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
+     }else{
+     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo('+obj.data[D].id_doc+');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';            
+     }
+   }
+html += '</tbody></table></form></div></div>';
+
+         $("#perdoc").html(html);
+    })
+
+}
+
+///////////////////////BORRAR/////////////////////////
+
+function borrar(b){
+
+    $("#doceliminar").val(b);
+}
+
+function borrardoc(){
+
+var gstIdperEli = document.getElementById('gstIdperEli').value;
+var doceliminar = document.getElementById('doceliminar').value;
+
+
+    datos = 'gstIdperEli='+gstIdperEli+'&doceliminar='+doceliminar+'&opcion=elimnardoc';
+
+         $.ajax({
+            url: '../php/docDocumento.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            //alert(respuesta);
+            if (respuesta == 0) {
+                $('#succe7').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe7').toggle('toggle');
+                }, 2000);
+            } else if(respuesta == 1){
+                $('#danger7').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger7').toggle('toggle');
+                }, 2000);
+            }else{
+                $('#aviso7').toggle('toggle');
+                setTimeout(function() {
+                $('#aviso7').toggle('toggle');
+                }, 2000);
+            }
+        });
+
+}
+
+//////////////////ADJUNTAR ARCHIVOS////////////////////////
+
+function adjunuevo(v){
+
+  $("#docadjunto").val(v);    
+
+}
+
+function adjuntar(){
+
+    var paqueteDeDatos = new FormData();
+    paqueteDeDatos.append('DgsAgra', $('#DgsAgra')[0].files[0]);
+    paqueteDeDatos.append('gstIdperArc', $('#gstIdperArc').prop('value'));
+    paqueteDeDatos.append('docadjunto', $('#docadjunto').prop('value'));
+    paqueteDeDatos.append('opcion', 'documento');
+
+
+   $.ajax({
+        url: '../php/docDocumento.php',
+        data: paqueteDeDatos,
+        type: "POST",
+        contentType: false,
+        processData: false,
+        success: function(r) {
+            //alert(r);
+            //console.log(r);
+            if (r == 8) {
+                $('#vacio5').toggle('toggle');
+                setTimeout(function() {
+                    $('#vacio5').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 0) {
+                $('#exito5').toggle('toggle');
+                setTimeout(function() {
+                    $('#exito5').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 1) {
+                $('#falla5').toggle('toggle');
+                setTimeout(function() {
+                    $('#falla5').toggle('toggle');
+                }, 4000);
+            } else if (r == 2) {
+                $('#error5').toggle('toggle');
+                setTimeout(function() {
+                    $('#error5').toggle('toggle');
+                }, 4000);
+            } else if (r == 3) {
+                $('#renom5').toggle('toggle');
+                setTimeout(function() {
+                    $('#renom5').toggle('toggle');
+                }, 4000);
+            } else if (r == 4) {
+                $('#forn5').toggle('toggle');
+                setTimeout(function() {
+                    $('#forn5').toggle('toggle');
+                }, 4000);
+            } else if (r == 6) {
+                $('#adjunta5').toggle('toggle');
+                setTimeout(function() {
+                    $('#adjunta5').toggle('toggle');
+                }, 4000);
+            } else if (r == 7) {
+                $('#repetido5').toggle('toggle');
+                setTimeout(function() {
+                    $('#repetido5').toggle('toggle');
+                }, 4000);
+            }
+        }
+    });
+}
+////////////////////ACTUALIZAR ARCHIVO//////////////////
+
+function adjactual(act){
+    $("#docactuali").val(act);    
+
+}
+
+function adjuactual(){
+
+
+var gstIdperAct = document.getElementById('gstIdperAct').value;
+var docactuali = document.getElementById('docactuali').value;
+
+
+
+    var paqueteDeDatos = new FormData();
+    paqueteDeDatos.append('DgstActul', $('#DgstActul')[0].files[0]);
+    paqueteDeDatos.append('gstIdperAct', $('#gstIdperAct').prop('value'));
+    paqueteDeDatos.append('docactuali', $('#docactuali').prop('value'));
+    paqueteDeDatos.append('opcion', 'actualizar');
+
+
+   $.ajax({
+        url: '../php/docDocumento.php',
+        data: paqueteDeDatos,
+        type: "POST",
+        contentType: false,
+        processData: false,
+        success: function(r) {
+            // alert(r);
+            // console.log(r);
+            if (r == 8) {
+                $('#vacio6').toggle('toggle');
+                setTimeout(function() {
+                    $('#vacio6').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 0) {
+                $('#exito6').toggle('toggle');
+                setTimeout(function() {
+                    $('#exito6').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 1) {
+                $('#falla6').toggle('toggle');
+                setTimeout(function() {
+                    $('#falla6').toggle('toggle');
+                }, 4000);
+            } else if (r == 2) {
+                $('#error6').toggle('toggle');
+                setTimeout(function() {
+                    $('#error6').toggle('toggle');
+                }, 4000);
+            } else if (r == 3) {
+                $('#renom6').toggle('toggle');
+                setTimeout(function() {
+                    $('#renom6').toggle('toggle');
+                }, 4000);
+            } else if (r == 4) {
+                $('#forn6').toggle('toggle');
+                setTimeout(function() {
+                    $('#forn6').toggle('toggle');
+                }, 4000);
+            } else if (r == 6) {
+                $('#adjunta6').toggle('toggle');
+                setTimeout(function() {
+                    $('#adjunta6').toggle('toggle');
+                }, 4000);
+            } 
+        }
+    });
 }
 
 //////////////DATOS DEL PERSONAL INSPECTOR//////////// 
