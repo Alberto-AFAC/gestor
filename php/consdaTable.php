@@ -2,10 +2,12 @@
 	include("../conexion/conexion.php");
     header('Content-Type: application/json');
 	session_start();
-	
+
+
+
 	$query = "SELECT * FROM listacursos 
 	WHERE estado = 0
-	ORDER BY gstIdlsc DESC";
+	GROUP BY gstIdlsc DESC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -23,9 +25,20 @@ if($data["gstVignc"] == 101){
 }
 
 if($data['gstTmrio'] == '0'){
-    $temario = 'N/A';
+    $temario = 'SIN TEMARIO';
 } else {
-    $temario = "<a href='{$data['gstTmrio']}' target='_blanck'><img src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;' ></a>";
+  
+	// $query = "SELECT * FROM temario 
+	// WHERE idtem = gstIdlsc";
+	// $resultado = mysqli_query($conexion, $query);
+	// while($data = mysqli_fetch_assoc($resultado))
+	// {
+	// 	$data[2];
+	// }
+	$temario = "<center><a href='#' onclick='temario({$data["gstIdlsc"]})' data-toggle='modal' data-target='#exampleModal'><img src='../dist/img/temario.svg' width='30px;'></a> </center>";
+	//$idper = "<a href='#' type='button' class='btn btn-default' data-toggle='modal' onclick='idperosna({$data["gstIdlsc"]})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a>";	
+
+
 }
 
 
@@ -33,7 +46,6 @@ if($data['gstTmrio'] == '0'){
 	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstCntnc"],$vigencia,$temario];
 
 		}
-
 
 
 		// if(isset($arreglo)&&!empty($arreglo)){

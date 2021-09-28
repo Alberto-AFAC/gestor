@@ -27,6 +27,27 @@
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <style>
+     .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.a-alert:link {
+  color: white;
+}
+
+.a-alert:visited {
+  color: white;
+}
+    </style>
 
 
 
@@ -70,10 +91,11 @@
                                     <!-- /FIN DE INDICADORES -->
                                     <div class="box-body">
                                         <?php include('cursosprogramados.php'); ?>
-                                       <!--  <table style="width: 100%;" id="data-table-concurso"
+                                        <!--  <table style="width: 100%;" id="data-table-concurso"
                                             class="table display table-striped table-bordered"></table> -->
 
-                                        <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
+                                        <table class="display table table-striped table-bordered dataTable" id="example"
+                                            style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -87,7 +109,7 @@
                                                     <th>ACCIÓN</th>
                                                 </tr>
                                             </thead>
-                                           
+
                                         </table>
                                     </div>
                                 </div>
@@ -139,7 +161,66 @@
                 </div>
             </div>
         </form>
+<!-- MODAL PARA AÑADIR UN NUEVO CURSO -->
+<form class="form-horizontal" action="" method="POST">
+            <div class="modal fade" id="modal-añadir">
+                <!-- <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">ELIMINAR CURSO DE CATALOGO </h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <p> ¿ESTÁS SEGURO DE ELIMINAR ESTE CURSO? <input type="text" name="EgstTitlo"
+                                            id="EgstTitlo" class="form-control disabled" disabled=""
+                                            style="background: white;border: 1px solid white;"></p>
+                                </div>
+                                <br>
+                                <div class="col-sm-5">
+                                    <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
+                                </div>
 
+                                <b>
+                                    <p class="alert alert-warning text-center padding error" id="danger">Error
+                                        al eliminar curso</p>
+                                </b>
+                                <b>
+                                    <p class="alert alert-success text-center padding exito" id="succe">¡Se
+                                        elimino curso con éxito !</p>
+                                </b>
+                                <b>
+                                    <p class="alert alert-warning text-center padding aviso" id="empty">Elija
+                                        curso para eliminar </p>
+                                </b>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 style="font-size: 20px;" class="modal-title" id="exampleModalLabel">AGREGA TEMARIO SEGÚN EL CASO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                      <div id="listas">
+                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div><span id="add_field" style="color: blue;">Añadir</span>
+                      </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" onclick="agregar();" data-dismiss="modal">GUARDAR</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </form>
 
 
 
@@ -204,8 +285,8 @@
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label class="label2">NOMBRE</label>
-                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="AgstTitlo"
-                                        name="AgstTitlo">
+                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta"
+                                        id="AgstTitlo" name="AgstTitlo">
                                 </div>
 
                                 <div class="col-sm-4">
@@ -255,7 +336,7 @@
                                 </div>
 
 
-                                <div class="col-sm-1" style="padding-right: 0; width: 79px;">
+                                <div class="col-sm-1" style="padding-right: 0; width: 85px;">
                                     <label class="label2">DURACION</label>
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                                     <select class="form-control inputalta" id="Ahr" name="Ahr">
@@ -270,7 +351,8 @@
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
                                     <label class="label2" style="color: white">.</label>
-                                    <input type="text" class="form-control inputalta" id="Atmp1" name="Atmp1" value="HRS.">
+                                    <input type="text" class="form-control inputalta" id="Atmp1" name="Atmp1"
+                                        value="HRS.">
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
                                     <label class="label2" style="color: white">.</label>
@@ -288,13 +370,14 @@
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
                                     <label class="label2" style="color: white">.</label>
-                                    <input type="text" class="form-control inputalta" id="Atmp2" name="Atmp2" value="MIN.">
+                                    <input type="text" class="form-control inputalta" id="Atmp2" name="Atmp2"
+                                        value="MIN.">
 
                                 </div>
 
 
                                 <div class="col-sm-offset-0 col-sm-3">
-                                    <label class="label2" >PERIODO DE VIGENCIA</label>
+                                    <label class="label2">PERIODO DE VIGENCIA</label>
                                     <select type="text" class="form-control inputalta" id="AgstVignc" name="AgstVignc">
                                         <!-- <option value="100">RECURRENTE</option> -->
                                         <option value="101">UNICA VEZ</option>
@@ -330,7 +413,8 @@
                                 <div class="col-sm-12">
                                     <label class="label2">OBJETIVO</label>
                                     <textarea name="AgstObjtv" id="AgstObjtv" placeholder="Escribir el Objetivo"
-                                        onkeyup="mayus(this);" class="form-control inputalta" rows="5" cols="50"></textarea>
+                                        onkeyup="mayus(this);" class="form-control inputalta" rows="5"
+                                        cols="50"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -498,11 +582,34 @@
         </section>
         <!-- /.content -->
     </div>
-</div>
+    </div>
+
+
+
+
+    <!-- <img data-toggle='modal' data-target='#exampleModal{$data['gstIdlsc']}' src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;'> -->
+    <div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
+        aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content' style="width: 100%;">
+                <div class='modal-header'>
+                    <h5 style='font-size: 28px;' class='modal-title col-11 text-center'><span
+                            style='font-weight: bold;'>TEMARIO</span><br>
+                        
+                </div>
+                <div class='modal-body'>
+                    <div id="temario"></div>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-primary' data-dismiss='modal'>CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b>    <?php 
+            <b>Version</b> <?php 
                                 $query ="SELECT 
                                         *
                                         FROM
@@ -515,7 +622,7 @@
                                     exit;
                                 }
                                 ?>
-                    <?php echo $row['version']?>
+            <?php echo $row['version']?>
         </div>
         <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
         Todos los derechos Reservados AAJ.
@@ -566,112 +673,184 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function() {
     var table = $('#example').DataTable({
-        
+
         "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    "order": [[ 0, "desc" ]],
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
         "ajax": "../php/consdaTable.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
+
+
+
+//<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
+
+
 
         }]
     });
 
-    detalles("#example tbody",table);
+    detalles("#example tbody", table);
+    agrtemario("#example tbody", table);
 
 
     $('#example thead tr').clone(true).appendTo('#example thead');
 
-        $('#example thead tr:eq(1) th').each(function(i) {
-            var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text"  placeholder="Buscar" />');
+    $('#example thead tr:eq(1) th').each(function(i) {
+        var title = $(this).text(); //es el nombre de la columna
+        $(this).html('<input type="text"  placeholder="Buscar" />');
 
-            $('input', this).on('keyup change', function() {
-                if (table.column(i).search() !== this.value) {
-                    table
-                        .column(i)
-                        .search(this.value)
-                        .draw();
-                }
-            });
+        $('input', this).on('keyup change', function() {
+            if (table.column(i).search() !== this.value) {
+                table
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
         });
+    });
 
 
 
     $('#example tbody').on('click', 'a', function() {
-        var data = table.row( $(this).parents('tr') ).data();
+        var data = table.row($(this).parents('tr')).data();
         //alert( "Es el ID: "+ data[0] );
 
         gstIdlsc = data[0];
 
-    $.ajax({
-        url: '../php/conCurso.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
+        $.ajax({
+            url: '../php/conCurso.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
 
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].gstIdlsc == gstIdlsc) {
+            for (i = 0; i < res.length; i++) {
+                if (obj.data[i].gstIdlsc == gstIdlsc) {
 
-                datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
+                    datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[
+                            i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i]
+                        .gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc +
+                        '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
 
-                var d = datos.split("*");
-                $("#modalVal #AgstIdlsc").val(d[0]);
-                $("#AgstIdlsc #AgstIdlsc").val(d[0]);
-                $("#modalUpdate #Idlsc").val(d[0]);
-                $("#modalVal #AgstTitlo").val(d[1]);
-                $("#modalUpdate #AgstTitlo").val(d[1]);
-                $("#modalVal #AgstTipo").val(d[2]);
-                $("#gstPrfil").html(d[3]);
-                $("#modalVal #AgstCntnc").val(d[4]);
+                    var d = datos.split("*");
+                    $("#modalVal #AgstIdlsc").val(d[0]);
+                    $("#AgstIdlsc #AgstIdlsc").val(d[0]);
+                    $("#modalUpdate #Idlsc").val(d[0]);
+                    $("#modalVal #AgstTitlo").val(d[1]);
+                    $("#modalUpdate #AgstTitlo").val(d[1]);
+                    $("#modalVal #AgstTipo").val(d[2]);
+                    $("#gstPrfil").html(d[3]);
+                    $("#modalVal #AgstCntnc").val(d[4]);
 
-                Ahr = d[5].substr(0, 2);
-                Amin = d[5].substr(8, 2);
-                //                Atmp = d[5].substr(6,4);
+                    Ahr = d[5].substr(0, 2);
+                    Amin = d[5].substr(8, 2);
+                    //                Atmp = d[5].substr(6,4);
 
-                $("#modalVal #Ahr").val(Ahr);
-                $("#modalVal #Amin").val(Amin);
+                    $("#modalVal #Ahr").val(Ahr);
+                    $("#modalVal #Amin").val(Amin);
 
-                $("#modalVal #AgstVignc").val(d[6]);
-                $("#modalVal #AgstObjtv").val(d[7]);
-                $("#modalVal #AgstTmrio").val(d[8]);
-                $("#modalUpdate #AgstTmrio").val(d[8]);
-                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
-                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+                    $("#modalVal #AgstVignc").val(d[6]);
+                    $("#modalVal #AgstObjtv").val(d[7]);
+                    $("#modalVal #AgstTmrio").val(d[8]);
+                    $("#modalUpdate #AgstTmrio").val(d[8]);
+                    $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
+                    $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
 
+                }
             }
-        }
-    })
+        })
 
 
     });
-   
 
- 
+
+
 
 
 });
 
-   function detalles(tbody,table){
+function detalles(tbody, table) {
 
-    $(tbody).on("click", "a.eliminar", function(){
-        var data = table.row($(this).parents("tr")).data();   
+    $(tbody).on("click", "a.eliminar", function() {
+        var data = table.row($(this).parents("tr")).data();
         //var gstIdlsc = $().val(data.gstIdlsc);
-         $("#modal-eliminar #EgstIdlsc").val(data[0]);
+        $("#modal-eliminar #EgstIdlsc").val(data[0]);
 
-      });
-    }
+    });
+}
 
+function agrtemario(tbody, table) {
+
+$(tbody).on("click", "a.temario", function() {
+    var data = table.row($(this).parents("tr")).data();
+        alert(data[0]);
+    //var gstIdlsc = $().val(data.gstIdlsc);
+//    $("#modal-añadir #EgstIdlsc").val(data[0]);
+
+});
+}
+
+
+function temario(gstIdlsc) {
+
+    $.ajax({
+        url: '../php/temario.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+        var x = 0;
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idcurso == gstIdlsc) {
+                html += "<tr><td>" + x + "</td><td>" + obj.data[i].titulo + "</td><td>AQUÍ VAN LOS BOTONES DE ACCIÓN</td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#temario").html(html);
+    })
+
+}
+// FUNCION PARA AÑADIR
+
+// AÑADIR TEMARIO N NUMERO DE REGISTROS
+var campos_max = 30;   
+        var x = 0;
+        $('#add_field').click (function(e) {
+                e.preventDefault();    //chups
+                if (x < campos_max) {
+                        $('#listas').append('<div>\
+                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
+                                </div>');
+                        x++;
+                }
+        });
+        $('#listas').on("click",".remover_campo",function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+        });
 </script>
 <style>
-    #example
-     input {
-        width: 75% !important;
-    }
+#example input {
+    width: 75% !important;
+}
 </style>
+
+<?php
+
+
+
+?>

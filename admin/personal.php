@@ -451,8 +451,7 @@ $psto = mysqli_query($conexion,$sql);
                       </div>
                 </div>
 
-                    <div class="form-group">
-
+                    <!-- <div class="form-group">
                     <div class="col-sm-6">
                    <label class="label2">DIRECCIÓN EJECUTIVA </label>         
                       <select style="width: 100%"  class="selectpicker inputalta" name="gstAreID" id="gstAreID" type="text" data-live-search="true">
@@ -461,20 +460,24 @@ $psto = mysqli_query($conexion,$sql);
                       <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
                       <?php endwhile; ?>
                       </select>
-                    </div>
+                    </div> -->
+
+                    <div class="form-group">
+                          <div class="col-sm-6">
+                            <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                             <div id="gstAreID1"></div>                            
+                          </div>
+                    
+
                   <div class="col-sm-6">
 
-                  <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
+                      <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
 
-                  <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN </label>                    
-                        <label  style="color: white">.</label>
-                        <select style="width: 100%" class="selectpicker inputalta inputPadding" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
-                         
-                         <?php while($rea = mysqli_fetch_row($are)):?>                      
-                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>                  
+                      <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN </label>                    
+
+                      <div id="gstIDara1"></div> 
+                    
+                      </div>  
                   </div>    
 
            <input type="hidden" class="form-control inputalta" id="gstIDCat" name="gstIDCat" value="0">
@@ -581,6 +584,8 @@ $('#gstIDara').select2();
 $('#gstPstID').select2();
 $('#buscador').load('select/buscar.php');
 $('#select1').load('select/tabla.php');
+$('#gstAreID1').load('select/buscardirec.php');
+$('#gstIDara1').load('select/tabladirec.php');
 // $('#oaci').load('select/oaci.php');
 // $('#siglas').load('select/siglas.php');
 });

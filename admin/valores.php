@@ -715,10 +715,7 @@ $psto = mysqli_query($conexion,$sql);
                             <label>DEPARTAMENTO</label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
                                 id="gstIDara" type="text" data-live-search="true" disabled="">
-                                <option value="">SELECCIONE EL DEPARTAMENTO</option>
-                                <?php while($rea = mysqli_fetch_row($are)):?>
-                                <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                                <?php endwhile; ?>
+
                             </select>
                         </div>
                     </div>
@@ -735,17 +732,20 @@ $psto = mysqli_query($conexion,$sql);
                         <div class="col-sm-6">
                             <label>CARGO</label>
                             <select type="text" disabled="" class="form-control" id="gstCargo" name="gstCargo">
-                                <option value="INSTRUCTOR">INSTRUCTOR</option>
-                                <option value="COORDINADOR">COORDINADOR</option>
+                                <option value="">SELECCIONA EL CARGO</option>
                                 <option value="NUEVO INGRESO">NUEVO INGRESO</option>
                                 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+                                <option value="COORDINADOR">COORDINADOR</option>
+                                <option value="INSPECTOR">INSPECTOR</option>
+                                <option value="INSTRUCTOR">INSTRUCTOR</option>
                             </select>
                         </div>
                       
                         <div class="col-sm-6">
                             <label class="label2">UBICACIÓN CENTRAL</label> 
                             <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
-                               <option value="CIAAC">CIAAC</option> 
+                                <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>    
+                                 <option value="CIAAC">CIAAC</option> 
                                <option value="LAS FLORES">LAS FLORES</option> 
                                <option value="ANGAR 8">ANGAR 8</option> 
                                <option value="LICENCIA">LICENCIAS</option>
