@@ -77,6 +77,10 @@ function dato(gstIdlsc) {
         }
     })
 }
+// FUNCTION PARA AÑADIR NUEVOS DATOS EN EL TEMARIO
+function agregar() {
+    alert("Aqui tiene que agregar")
+}
 
 function regCurso() {
 

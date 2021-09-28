@@ -25,7 +25,7 @@ if($data["gstVignc"] == 101){
 }
 
 if($data['gstTmrio'] == '0'){
-    $temario = 'FALTA AGREGAR';
+    $temario = 'SIN TEMARIO';
 } else {
   
 	// $query = "SELECT * FROM temario 
@@ -35,8 +35,11 @@ if($data['gstTmrio'] == '0'){
 	// {
 	// 	$data[2];
 	// }
-	$temario = "<center><a href='#' onclick='temario({$data["gstIdlsc"]})' data-toggle='modal' data-target='#exampleModal'><img src='../dist/img/temario.svg' width='30px;'></a></center>";	
-	}
+	$temario = "<center><a href='#' onclick='temario({$data["gstIdlsc"]})' data-toggle='modal' data-target='#exampleModal'><img src='../dist/img/temario.svg' width='30px;'></a> </center>";
+	//$idper = "<a href='#' type='button' class='btn btn-default' data-toggle='modal' onclick='idperosna({$data["gstIdlsc"]})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a>";	
+
+
+}
 
 
 

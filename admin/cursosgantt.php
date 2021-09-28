@@ -156,9 +156,14 @@ $inspector = mysqli_query($conexion,$sql);
     <script>
     //       // OPTIONS FOR THE GRAPHICS
     Highcharts.setOptions({
-         lang: {
+        credits: {
+            enabled: false
+        },
+        lang: {
             loading: 'Cargando...',
-            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+                'Octubre', 'Noviembre', 'Diciembre'
+            ],
             weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
             shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
             exportButtonTitle: "Exportar",
@@ -177,52 +182,51 @@ $inspector = mysqli_query($conexion,$sql);
             decimalPoint: '.'
         },
     });
-    Highcharts.getJSON('../php/data.php', function (data) {
-   let chart = Highcharts.ganttChart('container', {
-        title: {
-            text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
-        },
-
-        yAxis: {
-            uniqueNames: true
-        },
-        
-        navigator: {
-            enabled: true,
-            liveRedraw: true,
-            series: {
-                type: 'gantt',
-                pointPlacement: 0.5,
-                pointPadding: 0.25
+    Highcharts.getJSON('../php/data.php', function(data) {
+        let chart = Highcharts.ganttChart('container', {
+            title: {
+                text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
             },
+
             yAxis: {
-                min: 0,
-                max: 3,
-                reversed: true,
-                categories: []
-            }
-        },
-        scrollbar: {
-            enabled: true
-        },
-        rangeSelector: {
-            enabled: true,
-            selected: 0
-        },
-        // AQUI EMPIEZA LA CONFIGURACIÓN DE LOS DATOS
-        series: [{
-            name: 'Agencia Federal de Aviación Civil',
-            data: data,
-        }]
-      
+                uniqueNames: true
+            },
+
+            navigator: {
+                enabled: true,
+                liveRedraw: true,
+                series: {
+                    type: 'gantt',
+                    pointPlacement: 0.5,
+                    pointPadding: 0.25
+                },
+                yAxis: {
+                    min: 0,
+                    max: 3,
+                    reversed: true,
+                    categories: []
+                }
+            },
+            scrollbar: {
+                enabled: true
+            },
+            rangeSelector: {
+                enabled: true,
+                selected: 0
+            },
+            // AQUI EMPIEZA LA CONFIGURACIÓN DE LOS DATOS
+            series: [{
+                name: 'Agencia Federal de Aviación Civil',
+                data: data,
+            }]
+
+        });
+
+        let DATA = chart.series[0].data;
+        for (let i = 0; i < DATA.length; i++) {
+            console.log(i, new Date(DATA[i].x).toUTCString())
+        }
     });
-
-    let DATA = chart.series[0].data;
-for(let i = 0; i< DATA.length; i++) {
-	console.log(i, new Date(DATA[i].x).toUTCString())
-}
-});
-
     </script>
 
 </body>

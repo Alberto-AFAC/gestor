@@ -360,8 +360,7 @@ include('header.php');
         <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
         <script>
-        var dataSet = [
-            <?php 
+        <?php 
 $query = "SELECT
 * 
 FROM
@@ -385,16 +384,22 @@ GROUP BY cursos.id_curso";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
-      
+      $id = $data['idmstr'];
+      $query2 = "SELECT * FROM temario WHERE idcurso = $id";
+      $resultado2 = mysqli_query($conexion, $query2);
+      $contador = 0;
       ?>
+
+        var dataSet = [
 
             ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
-                "<?php echo $data['fechareac']?>"],
+                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal<?php echo $data['id_curso']?>' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<?php echo $data['fechareac']?>"
+            ],
 
 
-            <?php } ?>
+
         ];
 
         var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
@@ -428,7 +433,7 @@ $resultado = mysqli_query($conexion, $query);
         </script>
         <div class="control-sidebar-bg"></div>
     </div>
-    <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog"
+    <div class="modal fade" id="correcionModal<?php echo $data['id_curso']?>" tabindex="-1" role="dialog"
         aria-labelledby="correcionModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -443,16 +448,49 @@ $resultado = mysqli_query($conexion, $query);
                     * SI REQUIERE HACER UN CAMBIO EN EL <u>NOMBRE DEL PARTICIPANTE</u> ES IMPORTANTE QUE ACUDA AL AREA
                     DE <span style="font-weight: bold;">RECURSOS HUMANOS</span><br><br>
                     * TOME EN CUENTA QUE EL SISTEMA AUTOMATIZA LOS DATOS EN LA GENERACIÓN DE LA CONSTANCIA Y/O
-                    CERTIFICADOS POR LO QUE UNICAMENTE PUEDE REALIZAR CAMBIOS EN EL TEMARIO.
+                    CERTIFICADOS POR LO QUE UNICAMENTE PUEDE REALIZAR CAMBIOS EN EL TEMARIO.<br><br>
 
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead style="background-color: #3C8DBC">
+                                        <tr style="font-size: 15px; color: white;">
+                                            <th>ID</th>
+                                            <th>TITULO</th>
+                                            <th>ACCIÓN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+              while($data2 = mysqli_fetch_array($resultado2)){
+                  $contador++;
+                ?>
+                                        <tr>
+                                            <td><?php echo $contador?></td>
+                                            <td style="width: 65%;"><?php echo $data2['titulo']?></td>
+                                            <td><button class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> <button
+                                                    class="btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                    <button type="button" class="btn btn-primary">GUARDAR</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
                 </div>
             </div>
         </div>
     </div>
+    <?php } ?>
     <!-- page script -->
 
 </body>
