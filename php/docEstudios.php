@@ -43,8 +43,14 @@ $gstDocmt=$rutaEnServidor;
 
 if(move_uploaded_file($rutaTemporal, $gstDocmt)){
 
+$factual = date('Y').'/'.date('m').'/'.date('d');
+
 if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	echo "0";	
+
+	personaldoc($gstIDper,$gstDocmt,$factual,$conexion);
+
+}else{	echo "1";	}
 /*if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
 		{	echo "0";	}else{	echo "1";	}*/
 
@@ -81,5 +87,19 @@ function estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion){
 				}
 				$this->conexion->cerrar();
 	}
+
+
+
+function personaldoc($gstIDper,$gstDocmt,$factual,$conexion){
+
+			$query="INSERT INTO personaldoc VALUES(0,'$gstIDper',7,'$gstDocmt','$factual',0)";
+				if(mysqli_query($conexion,$query)){
+					return true;
+				}else{
+					return false;
+				}
+				$this->conexion->cerrar();	
+	}
+
 
 ?>

@@ -951,22 +951,25 @@ function perfil(gstIdper) {
                     var res = obj.data;
                     var x = 1;
 
+
 //AQUI03
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
 
                     for (H = 0; H < res.length; H++) {
+
                         x++;
 
                         if (obj.data[H].gstIDper == gstIdper) {
-
+                            valor = obj.data[H].gstIDper;
+           
                             datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
 
                             html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-                            document.getElementById('estudios1').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+//                            document.getElementById('estudios1').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
 
                         } else {
 
-                           document.getElementById('estudios1').innerHTML = '<img src="../dist/img/advertir.svg" alt="NO" width="25px;">';
+//                           document.getElementById('estudios1').innerHTML = '<img src="../dist/img/advertir.svg" alt="NO" width="25px;">';
 
                         }
 
@@ -1062,16 +1065,22 @@ function consultarDoc(gstIdper){
         var res = obj.data;
         var x = 1;
 
-
-
 html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">ID</th><th scope="col" style="width:300px;">DOCUMENTO</th><th scope="col" style="width:150px;">ESTATUS</th> <th scope="col">ACCIONES</th> <th scope="col">DOCUMENTO ADJUNTO</th><th scope="col">FECHA DE ACTUALIZACION</th></tr></thead><tbody>';
 
   for (D = 0; D < res.length; D++) {
 
      if(obj.data[D].documentos=='SI EXISTE'){
+        if(obj.data[D].id_doc==7){
      html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
+        }else{
+     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
+        }
      }else{
-     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo('+obj.data[D].id_doc+');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';            
+     if(obj.data[D].id_doc==7){
+     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td></td><td></td><td></td></tr>';            
+     }else{
+     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo('+obj.data[D].id_doc+');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';                   
+         }   
      }
    }
 html += '</tbody></table></form></div></div>';
