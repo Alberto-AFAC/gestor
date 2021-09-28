@@ -190,6 +190,15 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="soporte.php">
+          <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red"></small>
+              <small class="label pull-right bg-blue"></small>
+            </span>
+          </a>
+        </li>
         <!-- <li>
           <a href="gantt2.php">
             <i class="fa fa-calendar"></i> <span>Bitacora cursos</span>
