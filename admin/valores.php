@@ -62,8 +62,7 @@ $subdirec = mysqli_query($conexion,$sql);
                                 <div class="col-sm-4 border-right">
                                     <div class="description-block">
                                         <span class="description-text"></span>
-                                        <h5><input type="text" name="cargopersonal" id="cargopersonal"
-                                                class="datas disabled" disabled=""></h5>
+                                        <h5><input type="text" name="cargopersonal" id="cargopersonal" class="datas disabled" disabled=""></h5>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -616,7 +615,7 @@ $subdirec = mysqli_query($conexion,$sql);
                             <p id="subdirec3" style="display: none;">
                                 <label>SUBDIRECCIÓN </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="AgstAcReg"
-                                    disabled="" id="AgstAcReg1" type="text" data-live-search="true">
+                                     id="AgstAcReg1" type="text" data-live-search="true">
                                     <option>SELECCIONE LA SUBDIRECCIÓN</option>
                                     <?php while($subdic = mysqli_fetch_row($subdirec)):?>                      
                     <option value="<?php echo $subdic[0]?>"><?php echo $subdic[1]?></option>

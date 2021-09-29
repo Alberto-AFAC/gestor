@@ -855,6 +855,7 @@ function actPuesto() {
 
 
 function openEdit() {
+    alert('inspector')
     $("#buton").toggle(100);
     $("#butons").toggle(100);
     //Habilita los campos INICIO
