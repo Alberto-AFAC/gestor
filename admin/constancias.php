@@ -360,9 +360,11 @@ include('header.php');
         <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
         <script>
-        <?php 
+        var dataSet = [
+            <?php 
 $query = "SELECT
-* 
+*,
+DATE_FORMAT(reaccion.fechareac, '%d/%m/%Y') as reaccion
 FROM
 cursos
 INNER JOIN constancias ON id_persona = idinsp
@@ -384,21 +386,17 @@ GROUP BY cursos.id_curso";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
-      $id = $data['idmstr'];
-      $query2 = "SELECT * FROM temario WHERE idcurso = $id";
-      $resultado2 = mysqli_query($conexion, $query2);
-      $contador = 0;
+      $id_curso = $data['idmstr'];
+     
       ?>
-
-        var dataSet = [
 
             ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf#'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal<?php echo $data['id_curso']?>' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
-                "<?php echo $data['fechareac']?>"
+                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<?php echo $data['reaccion']?>"
             ],
 
-
+            <?php  } ?>
 
         ];
 
@@ -433,8 +431,9 @@ $resultado = mysqli_query($conexion, $query);
         </script>
         <div class="control-sidebar-bg"></div>
     </div>
-    <div class="modal fade" id="correcionModal<?php echo $data['id_curso']?>" tabindex="-1" role="dialog"
-        aria-labelledby="correcionModalLabel" aria-hidden="true">
+    <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel"
+        aria-hidden="true">
+
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -453,30 +452,7 @@ $resultado = mysqli_query($conexion, $query);
                     <div class="container-fluid">
                         <div class="row">
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead style="background-color: #3C8DBC">
-                                        <tr style="font-size: 15px; color: white;">
-                                            <th>ID</th>
-                                            <th>TITULO</th>
-                                            <th>ACCIÓN</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-              while($data2 = mysqli_fetch_array($resultado2)){
-                  $contador++;
-                ?>
-                                        <tr>
-                                            <td><?php echo $contador?></td>
-                                            <td style="width: 65%;"><?php echo $data2['titulo']?></td>
-                                            <td><button class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> <button
-                                                    class="btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-
-                                </table>
-
+                                <div id="temariotab"></div>
                             </div>
                         </div>
 
@@ -490,9 +466,35 @@ $resultado = mysqli_query($conexion, $query);
             </div>
         </div>
     </div>
-    <?php } ?>
+
     <!-- page script -->
 
 </body>
 
 </html>
+
+<script>
+function perfil(id) {
+    $.ajax({
+        url: '../php/temario.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+     
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idcurso == id) {
+                html += "<tr><td>" + x + "</td><td style='width: 75%;'>" + obj.data[i].titulo + "</td><td><button class='btn btn-default fa fa-pencil-square-o'></button> <button class='btn btn-default fa fa-trash'></button></td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#temariotab").html(html);
+    })
+}
+</script>
