@@ -11,7 +11,7 @@
           <form class="form-horizontal" id="Forstd">
 
             <input type="hidden" class="form-control" id="gstIDper" name="gstIDper">
-            
+
         
             <div class="form-group">
                   <div class="col-sm-6">
@@ -93,6 +93,7 @@
           <form class="form-horizontal" id="Actuliza">
 
             <input type="hidden" name="EIdper" id="EIdper">
+            <input type="hidden" name="Nmplea" id="Nmplea">
             <input type="hidden" class="form-control" id="EgstIDper" name="EgstIDper">
         
               <div id="gstpdf"></div>
@@ -422,12 +423,13 @@
                 
               </div>
               <div class="modal-body" id="actForpro">
-              <form class="form-horizontal">
+              <form class="form-horizontal" id="agregardoc">
                  
 
             <div class="form-group">
-              <div class="col-sm-12">
+              <div class="col-sm-12">              
               <label class="label2"  for=""></label>
+              <input type="hidden" name="gstNemple" id="gstNemple">
               <input type="hidden" name="gstIdperArc" id="gstIdperArc">
               <input type="hidden" name="docadjunto" id="docadjunto">
               <div class="col-sm-6">
@@ -478,11 +480,12 @@
                 
               </div>
               <div class="modal-body" id="actForpro">
-              <form class="form-horizontal">
+              <form class="form-horizontal" id="actualizardoc">
                  
 
             <div class="form-group">
               <div class="col-sm-12">
+              <input type="hidden" name="actNemple" id="actNemple">
               <input type="hidden" name="gstIdperAct" id="gstIdperAct">
               <input type="hidden" name="docactuali" id="docactuali">
               <label class="label2" id="docadjunto" for=""></label>
@@ -523,46 +526,84 @@
     </div>
 
 <!-------------------------------- ELIMINAR ARCHIVO----------------------------------------------- -->
-    <form class="form-horizontal" action="" method="POST">
-                    <div class="modal fade" id="eliminararchi">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
-                                </div>
-                                <div class="modal-body">
-                                  <input type="hidden" name="gstIdperEli" id="gstIdperEli">
-                                  <input type="hidden" name="doceliminar" id="doceliminar">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                         <label class="label2" id="titledoc" for=""></label>
-                                            <p>¿ESTÁ SEGURO DE ELIMINAR EL ARCHIVO?<span id=""></span> </p>
-                                        </div>
-                                        <br>
-                                        <div class="col-sm-5">
-                                            <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="borrardoc()">ACEPTAR</button>
-                                        </div>
-                                        <b>
-                                            <p class="alert alert-warning text-center padding error" id="danger7">Error
-                                                al eliminar archivo</p>
-                                        </b>
-                                        <b>
-                                            <p class="alert alert-success text-center padding exito" id="succe7">¡Se
-                                                elimino archivo con éxito !</p>
-                                        </b>
-                                        <b>
-                                            <p class="alert alert-danger text-center padding aviso" id="aviso7">Error
-                                                archivo para eliminar </p>
-                                        </b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
+<form class="form-horizontal" action="" method="POST">
+      <div class="modal fade" id="eliminararchi">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" name="gstIdperEli" id="gstIdperEli">
+                    <input type="hidden" name="doceliminar" id="doceliminar">
+                      <div class="form-group">
+                          <div class="col-sm-12">
+                           <label class="label2" id="titledoc" for=""></label>
+                              <p>¿ESTÁ SEGURO DE ELIMINAR EL ARCHIVO?<span id=""></span> </p>
+                          </div>
+                          <br>
+                          <div class="col-sm-5">
+                              <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="borrardoc()">ACEPTAR</button>
+                          </div>
+                          <b>
+                              <p class="alert alert-warning text-center padding error" id="danger7">Error
+                                  al eliminar archivo</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-success text-center padding exito" id="succe7">¡Se
+                                  elimino archivo con éxito !</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-danger text-center padding aviso" id="aviso7">Error
+                                  archivo para eliminar </p>
+                          </b>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</form>
+<!---------------------------BORRAR ESTUDIOS Y PROFESOIN-------------------------------->
 
-    </form>
-
-    
+<form class="form-horizontal" action="" method="POST">
+      <div class="modal fade" id="eliminardoc">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" name="arcIdperEli" id="arcIdperEli">
+                    <input type="hidden" name="arceliminar" id="arceliminar">
+                    <input type="hidden" name="documen" id="documen">
+                      <div class="form-group">
+                          <div class="col-sm-12">
+                           <label class="label2" id="titledoc" for=""></label>
+                              <p>¿ESTÁ SEGURO DE ELIMINAR EL ARCHIVO?<span id=""></span> </p>
+                          </div>
+                          <br>
+                          <div class="col-sm-5">
+                              <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="archiborrar()">ACEPTAR</button>
+                          </div>
+                          <b>
+                              <p class="alert alert-warning text-center padding error" id="danger8">Error
+                                  al eliminar archivo</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-success text-center padding exito" id="succe8">¡Se
+                                  elimino archivo con éxito !</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-danger text-center padding aviso" id="aviso8">Error
+                                  archivo para eliminar </p>
+                          </b>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</form>    

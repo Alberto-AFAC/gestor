@@ -1,6 +1,8 @@
 <?php
 include("../conexion/conexion.php");
 
+
+
 if($_POST['gstIDper']=='' || $_POST['gstInstt']=='' || $_POST['gstCiudad']=='' || $_POST['gstPriod']==''){
 
 	echo "8";
@@ -50,11 +52,11 @@ if(move_uploaded_file($rutaTemporal, $gstDocmt)){
 
 $factual = date('Y').'/'.date('m').'/'.date('d');
 
+	$gstIDper = intval($f[0]);
+
 if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
 		{	echo "0";	
 
-	$gst = $_POST['gstIDper'];
-	$f = explode('.', $gst);
 	$gstIDper = intval($f[0]);
 
 	personaldoc($gstIDper,$gstDocmt,$factual,$conexion);
@@ -88,7 +90,9 @@ function comprobar($gstIDper,$gstInstt,$conexion){
 
 function estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion){
 
-			$query="INSERT INTO estudios VALUES(0,'$gstIDper','$gstInstt','$gstCiuda','$gstPriod','$gstDocmt',0)";
+			$factual = date('Y').'/'.date('m').'/'.date('d');
+	
+			$query="INSERT INTO estudios VALUES(0,'$gstIDper','$gstInstt','$gstCiuda','$gstPriod','$gstDocmt','$factual',0)";
 				if(mysqli_query($conexion,$query)){
 					return true;
 				}else{

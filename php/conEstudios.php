@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT * FROM estudios WHERE estado = 0";
+	$query = "SELECT *,DATE_FORMAT(fechar, '%d/%m/%Y') AS fechar  FROM estudios WHERE estado = 0";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
