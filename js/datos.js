@@ -1,3 +1,5 @@
+const { Alert } = require("bootstrap");
+
 function openDtlls() {
     $("#detalles").toggle(250); //Muestra contenedor 
     $("#lista").toggle("fast"); //Oculta lista
@@ -805,6 +807,7 @@ function perfil(gstIdper) {
                             status = "<span style='background-color:green; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                             //console.log(status);
                         }
+
                         if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
                             status = "<span style='background-color:green; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                             //console.log(status);
@@ -869,7 +872,8 @@ function perfil(gstIdper) {
                                 
                                 //LISTA DE CURSOS PERSONAS
                                 idlista = obj.data[ii].idmstr;
-                                if (obj.data[ii].confirmar == 'CONFIRMAR') { //POR CONFIRMAR CURSO
+                                
+                                if (obj.data[ii].confirmar == 'CONFIRMAR' ) { //POR CONFIRMAR CURSO
                                     html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
                                 } else  {
                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td><td style='display:none;'>" + obj.data[ii].justifi + "</td><td style='display:none;'>" + obj.data[ii].confirmar + "</td></tr>";
@@ -881,7 +885,6 @@ function perfil(gstIdper) {
                                 if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
                                     programados1++;
                                 }
-
 
                                 if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
                                     FINALIZADO++;
@@ -1905,7 +1908,7 @@ function consultaCurso(gst) {
 
 
 function evaluar() {
-
+//alert('pruebaevaluacion')
     var gstInspr = new Array();
     $("input[name='gstInspr[]']:hidden").each(function() {
         gstInspr.push($(this).val());
@@ -1954,14 +1957,15 @@ function evaluar() {
             }).done(function(respuesta) {
                 console.log(respuesta);
                 if (respuesta == 0) {
-                    $('#succe0').toggle('toggle');
-                    setTimeout(function() {
-                        $('#succe0').toggle('toggle');
-                    }, 2000);
-
-                    document.getElementById('button').disabled = 'false';
-                    document.getElementById("button").style.color = "silver";
-
+                    Swal.fire({
+                        type: 'success',
+                        title: 'AFAC INFORMA',
+                        text: 'SE EVALUO CON EXITO',
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 3000
+                    });
+                    setTimeout("location.href = 'inspecion.php';", 1000);
                 } else {
                     $('#danger0').toggle('toggle');
                     setTimeout(function() {
