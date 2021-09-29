@@ -139,8 +139,16 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 	$documen = $_POST['documen'];
 
 	 $docadjunto = consultarch($arcIdperEli,$documen,$conexion);
+		
+	if (file_exists($docadjunto)) {	
 
-		if(unlink($docadjunto)) {
+		unlink($docadjunto);	
+			eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion);
+			eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion);
+	} else {
+			eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion);
+			eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion);
+	}
 
 			if(borrararchivo($arcIdperEli,$documen,$arceliminar,$conexion)){
 				echo "0";	
@@ -148,9 +156,7 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 				echo "1";
 			}
 		
-		}else{
-			echo '2|';
-			}
+
 
 	}
 
@@ -168,8 +174,15 @@ function consultarch($arcIdperEli,$documen,$conexion){
 $query = "SELECT * FROM personaldoc WHERE idperdoc = $arcIdperEli AND documento = 7 AND docajunto = '$documen' AND estado = 0";
   $result = mysqli_query($conexion,$query);
   $res = mysqli_fetch_row($result);
+if($result->num_rows==0){
+
+//return 'no hay';
+
+}else{
+ // $res = mysqli_fetch_row($result);
 
   return $res[3];
+}
 }
 
 
@@ -199,7 +212,7 @@ function personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion){
 
 function documentoact($gstIdperAct,$docactuali,$DgstActul,$factual,$conexion){
 
-		$query="UPDATE personaldoc SET docajunto = '$DgstActul', fecactual = '$factual' WHERE idperdoc = $gstIdperAct AND documento = $docactuali";
+		$query="UPDATE personaldoc SET docajunto = '$DgstActul', fecactual = '$factual' WHERE idperdoc = $gstIdperAct AND documento = 7";
 			if(mysqli_query($conexion,$query)){
 				return true;
 			}else{
@@ -234,6 +247,27 @@ $query="DELETE personaldoc,estudios FROM estudios JOIN personaldoc ON personaldo
 		$this->conexion->cerrar();
 	}
 
+function eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion){
+	$query="DELETE FROM estudios WHERE gstIDper = $arcIdperEli AND gstIdstd = $arceliminar AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+	}
+
+function eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion){
+
+	$query="DELETE FROM personaldoc WHERE idperdoc = $arcIdperEli AND documento = 7 AND docajunto = '$documen'AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+	}
+	
  
 
 ?>
