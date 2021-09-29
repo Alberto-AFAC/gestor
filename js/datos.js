@@ -122,8 +122,7 @@ function pdf() {
 //muestra ventana estudios
 function estudio(gstIdper) {
 
-    //   var d=gstIdper.split("*");
-    gstIdper;
+
     $("#Forstd #gstIDper").val(gstIdper);
 }
 
@@ -207,7 +206,8 @@ function actStudio() {
     paqueteDeDatos.append('EgstInstt', $('#EgstInstt').prop('value'));
     paqueteDeDatos.append('EgstCiudad', $('#EgstCiudad').prop('value'));
     paqueteDeDatos.append('EgstPriod', $('#EgstPriod').prop('value'));
-    //paqueteDeDatos.append('agrEstudio', $('#agrEstudio').prop('value'));
+    paqueteDeDatos.append('EIdper', $('#EIdper').prop('value'));
+    paqueteDeDatos.append('Nmplea', $('#Nmplea').prop('value'));    
     //alert(paqueteDeDatos);
 
     $.ajax({
@@ -556,7 +556,6 @@ function perfil(gstIdper) {
 
                             // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
 
-
                             $("#Evalua #gstIDCate").val(obj.data[i].gstIDCat);
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             // $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
@@ -683,6 +682,12 @@ function perfil(gstIdper) {
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+
+                            $("#Actuliza #Nmplea").val(obj.data[i].gstNmpld);
+                            $("#agregardoc #gstNemple").val(obj.data[i].gstNmpld);
+                            $("#actualizardoc #actNemple").val(obj.data[i].gstNmpld);
+
+
 
                         }
                     }
@@ -951,22 +956,18 @@ function perfil(gstIdper) {
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
                     var res = obj.data;
-                    var x = 1;
-
 
 //AQUI03
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
-
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+                    var n = 0;
                     for (H = 0; H < res.length; H++) {
-
-                        x++;
 
                         if (obj.data[H].gstIDper == gstIdper) {
                             valor = obj.data[H].gstIDper;
-           
+                            n++;
                             datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
 
-                            html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                            html += "<tr><td>" + n + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td>" + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a> <a href='#' onclick='borrararc(" + '"' + datos + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminardoc'><i class='fa fa-trash-o text-danger'></i></a></td> <td>" + obj.data[H].fechar + "</td></tr>";
 //                            document.getElementById('estudios1').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
 
                         } else {
@@ -1050,7 +1051,8 @@ function perfil(gstIdper) {
     })
               $("#gstIdperArc").val(gstIdper);
               $("#gstIdperAct").val(gstIdper); 
-              $("#gstIdperEli").val(gstIdper);  
+              $("#gstIdperEli").val(gstIdper);
+              $("#arcIdperEli").val(gstIdper); 
     consultarDoc(gstIdper);
 }
 
@@ -1073,7 +1075,7 @@ html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-cu
 
      if(obj.data[D].documentos=='SI EXISTE'){
         if(obj.data[D].id_doc==7){
-     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
+     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td></td><td></td><td></td></tr>';            
         }else{
      html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
         }
@@ -1097,6 +1099,14 @@ html += '</tbody></table></form></div></div>';
 function borrar(b){
 
     $("#doceliminar").val(b);
+}
+
+function borrararc(datos){
+
+    var d = datos.split("*");
+$("#arceliminar").val(d[6]);   
+$("#documen").val(d[5]);   
+
 }
 
 function borrardoc(){
@@ -1133,6 +1143,42 @@ var doceliminar = document.getElementById('doceliminar').value;
 
 }
 
+function archiborrar(){
+
+    var arcIdperEli = document.getElementById('arcIdperEli').value;
+    var arceliminar = document.getElementById('arceliminar').value;
+    var documen = document.getElementById('documen').value;
+
+
+   datos = 'arcIdperEli='+arcIdperEli+'&arceliminar='+arceliminar+'&documen='+documen+'&opcion=arcelimnar';
+
+
+         $.ajax({
+            url: '../php/docDocumento.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            //alert(respuesta);
+            if (respuesta == 0) {
+                $('#succe8').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe8').toggle('toggle');
+                }, 2000);
+            } else if(respuesta == 1){
+                $('#danger8').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger8').toggle('toggle');
+                }, 2000);
+            }else{
+                $('#aviso8').toggle('toggle');
+                setTimeout(function() {
+                $('#aviso8').toggle('toggle');
+                }, 2000);
+            }
+        });
+
+
+}
 //////////////////ADJUNTAR ARCHIVOS////////////////////////
 
 function adjunuevo(v){
@@ -1147,6 +1193,7 @@ function adjuntar(){
     paqueteDeDatos.append('DgsAgra', $('#DgsAgra')[0].files[0]);
     paqueteDeDatos.append('gstIdperArc', $('#gstIdperArc').prop('value'));
     paqueteDeDatos.append('docadjunto', $('#docadjunto').prop('value'));
+    paqueteDeDatos.append('gstNemple', $('#gstNemple').prop('value'));   
     paqueteDeDatos.append('opcion', 'documento');
 
 
@@ -1215,15 +1262,11 @@ function adjactual(act){
 function adjuactual(){
 
 
-var gstIdperAct = document.getElementById('gstIdperAct').value;
-var docactuali = document.getElementById('docactuali').value;
-
-
-
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('DgstActul', $('#DgstActul')[0].files[0]);
     paqueteDeDatos.append('gstIdperAct', $('#gstIdperAct').prop('value'));
     paqueteDeDatos.append('docactuali', $('#docactuali').prop('value'));
+    paqueteDeDatos.append('actNemple', $('#actNemple').prop('value'));  
     paqueteDeDatos.append('opcion', 'actualizar');
 
 
@@ -2054,17 +2097,9 @@ function resultado(result) {
 
 function actEstudio(datos) {
 
-
-    /*datos = obj.data[H].gstIdstd
-    +"*"+obj.data[H].gstIDper
-    +"*"+obj.data[H].gstInstt
-    +"*"+obj.data[H].gstCiuda
-    +"*"+obj.data[H].gstPriod
-    +"*"+obj.data[H].gstDocmt*/
-
     var d = datos.split("*");
-
     // alert(d[0]);
+    $("#Actuliza #EIdper").val(d[1]);
     $("#Actuliza #EgstIDper").val(d[6]);
     $("#Actuliza #EgstInstt").val(d[2]);
     $("#Actuliza #EgstCiudad").val(d[3]);
