@@ -236,7 +236,7 @@ function actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,
 
 function actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$gstSigID,$conexion){
 
-	$query = "UPDATE personal SET gstNmpld = '$gstNmpld',gstIdpst = '$gstIdpst',gstCargo = '$gstCargo',gstIDCat = '$gstIDCat',gstIDSub = '$gstIDSub',gstIDara='$gstIDara',gstAreID='$gstAreID',gstPstID='$gstPstID',gstSpcID='$gstSpcID',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstFeing = '$gstFeing',gstIDuni = '$gstIDuni', gstAcReg = '$gstAcReg',gstNucrt='$gstNucrt',gstSigID='$gstSigID'  WHERE gstIdper = '$pstIdper'";
+	$query = "UPDATE personal SET gstNmpld = '$gstNmpld',gstIdpst = '$gstIdpst',gstCargo = '$gstCargo',gstIDCat = '$gstIDCat',gstIDSub = '$gstIDSub',gstIDara='$gstIDara',gstAreID='$gstAreID',gstPstID='$gstPstID',gstSpcID='$gstSpcID',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstFeing = '$gstFeing',gstIDuni = '$gstIDuni', gstAcReg = '$gstAcReg',gstNucrt='$gstNucrt',gstSigID='$gstSigID' WHERE gstIdper = '$pstIdper'";
 	if(mysqli_query($conexion,$query)){
 
 		return true;

@@ -207,10 +207,18 @@ include ("../conexion/conexion.php");
 
 //   echo $res[0];
 
+$gstIdperEli = 1321;
+$doceliminar = 1;
+echo $valor = documentos($gstIdperEli,$doceliminar,$conexion);
 
+function documentos($gstIdperEli,$doceliminar,$conexion){
 
+$query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar AND estado = 0";
+  $result = mysqli_query($conexion,$query);
+  $res = mysqli_fetch_row($result);
 
-
+  return $res[3];
+}
 
 
 
@@ -220,23 +228,3 @@ include ("../conexion/conexion.php");
 ?>
 </pre>
 
-<?php
-
-$primer = 'valor1';
-$segundo = 'valor1';
-
-for($i=1; $i<=10; $i++){
-
-  echo '<br>'.$i.''.$primer;
-    echo '<br>'.$i.''.$segundo;
-
-    if($i<$i){
-      echo 'OK';
-    }
-
-  // if($i>$i){
-  //   echo 'es tooo'.$i;
-  // }
-}
-
-?>
