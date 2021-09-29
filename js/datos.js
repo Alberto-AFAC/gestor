@@ -120,8 +120,7 @@ function pdf() {
 //muestra ventana estudios
 function estudio(gstIdper) {
 
-    //   var d=gstIdper.split("*");
-    gstIdper;
+
     $("#Forstd #gstIDper").val(gstIdper);
 }
 
@@ -205,7 +204,7 @@ function actStudio() {
     paqueteDeDatos.append('EgstInstt', $('#EgstInstt').prop('value'));
     paqueteDeDatos.append('EgstCiudad', $('#EgstCiudad').prop('value'));
     paqueteDeDatos.append('EgstPriod', $('#EgstPriod').prop('value'));
-    //paqueteDeDatos.append('agrEstudio', $('#agrEstudio').prop('value'));
+    paqueteDeDatos.append('EIdper', $('#EIdper').prop('value'));
     //alert(paqueteDeDatos);
 
     $.ajax({
@@ -215,7 +214,7 @@ function actStudio() {
         contentType: false,
         processData: false,
         success: function(r) {
-            alert(r);
+            //alert(r);
             //console.log(r);
             if (r == 8) {
                 $('#vacio1').toggle('toggle');
@@ -1068,7 +1067,7 @@ html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-cu
 
      if(obj.data[D].documentos=='SI EXISTE'){
         if(obj.data[D].id_doc==7){
-     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
+     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td></td><td></td><td>'+obj.data[D].fecactual+'</td></tr>';            
         }else{
      html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
         }
@@ -2041,17 +2040,9 @@ function resultado(result) {
 
 function actEstudio(datos) {
 
-
-    /*datos = obj.data[H].gstIdstd
-    +"*"+obj.data[H].gstIDper
-    +"*"+obj.data[H].gstInstt
-    +"*"+obj.data[H].gstCiuda
-    +"*"+obj.data[H].gstPriod
-    +"*"+obj.data[H].gstDocmt*/
-
     var d = datos.split("*");
-
     // alert(d[0]);
+    $("#Actuliza #EIdper").val(d[1]);
     $("#Actuliza #EgstIDper").val(d[6]);
     $("#Actuliza #EgstInstt").val(d[2]);
     $("#Actuliza #EgstCiudad").val(d[3]);

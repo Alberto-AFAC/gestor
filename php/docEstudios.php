@@ -6,7 +6,12 @@ if($_POST['gstIDper']=='' || $_POST['gstInstt']=='' || $_POST['gstCiudad']=='' |
 	echo "8";
 }else{
 
-$gstIDper = $_POST['gstIDper'];
+	$gst = $_POST['gstIDper'];
+
+	$f = explode('.', $gst);
+	$gstIDper = intval($f[0]);
+	$n_empl = intval($f[1]);
+
 $gstInstt = $_POST['gstInstt'];
 
 if(comprobar($gstIDper,$gstInstt,$conexion)){
@@ -28,11 +33,11 @@ $rutaTemporal=$_FILES['gstDocmt']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/estudios/'.$gstIDper.'/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$n_empl.'/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/estudios/'.$gstIDper;
+ $ruta = '../documento/'.$n_empl;
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
@@ -47,6 +52,10 @@ $factual = date('Y').'/'.date('m').'/'.date('d');
 
 if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
 		{	echo "0";	
+
+	$gst = $_POST['gstIDper'];
+	$f = explode('.', $gst);
+	$gstIDper = intval($f[0]);
 
 	personaldoc($gstIDper,$gstDocmt,$factual,$conexion);
 

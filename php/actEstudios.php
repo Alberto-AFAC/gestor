@@ -1,7 +1,9 @@
 <?php
 include("../conexion/conexion.php");
 
-if($_POST['EgstIDper']=='' || $_POST['EgstInstt']=='' || $_POST['EgstCiudad']=='' || $_POST['EgstPriod']==''){
+$factual = date('Y').'/'.date('m').'/'.date('d');
+
+if($_POST['EIdper']=='' || $_POST['EgstIDper']=='' || $_POST['EgstInstt']=='' || $_POST['EgstCiudad']=='' || $_POST['EgstPriod']==''){
 
 	echo "8";
 }else{
@@ -15,6 +17,7 @@ $EgstIDper = $_POST['EgstIDper'];
 $EgstInstt = $_POST['EgstInstt'];
 $EgstCiuda = $_POST['EgstCiudad'];
 $EgstPriod = $_POST['EgstPriod'];
+$EIdper = $_POST['EIdper'];
 //$formatos= array('.jpg', '.png', '.doc', '.xlsx','.docx','.msi','.pdf', '.zip', '.rar', '.JPG','.txt','.jpeg');
 $formatos= array('.pdf');	
 
@@ -26,11 +29,13 @@ $rutaTemporal=$_FILES['EgstDocmt']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$EgstIDper.'/estudios/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$EIdper.'/'.$nombreImagen;
+//$rutaEnServidor = '../documento/estudios/'.$gstIDper.'/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$EgstIDper.'/estudios/';
+ $ruta = '../documento/'.$EIdper;
+
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
@@ -41,8 +46,15 @@ $EgstDocmt=$rutaEnServidor;
 
 if(move_uploaded_file($rutaTemporal, $EgstDocmt)){
 
+	
+
 if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	echo "0";	
+
+	documentoact($EIdper,$EgstDocmt,$factual,$conexion);
+
+
+}else{	echo "1";	}
 /*if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
 		{	echo "0";	}else{	echo "1";	}*/
 
@@ -52,8 +64,8 @@ if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
 //}else{ echo "5"; }
 }else{ 
 
-
 //	echo "6";
+$EIdper = $_POST['EIdper'];	
 $EgstIDper = $_POST['EgstIDper'];
 $EgstInstt = $_POST['EgstInstt'];
 $EgstCiuda = $_POST['EgstCiudad']; 
@@ -61,11 +73,8 @@ $EgstPriod = $_POST['EgstPriod'];
 $EgstDocmt = '';
 
 if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
-		{	echo "6";	}else{	echo "1";	}		
-
-
-}
-
+		{	echo "6";	documentoact($EIdper,$EgstDocmt,$factual,$conexion);	}else{	echo "1";	}		
+	}
 }
 
 function actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion){
@@ -84,5 +93,18 @@ function actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$cone
 				}
 				$this->conexion->cerrar();
 	}
+
+
+	function documentoact($EgstIDper,$EgstDocmt,$factual,$conexion){
+
+		$query="UPDATE personaldoc SET docajunto = '$EgstDocmt', fecactual = '$factual' WHERE idperdoc = $EgstIDper AND documento = 7";
+			if(mysqli_query($conexion,$query)){
+				return true;
+			}else{
+				return false;
+			}
+			$this->conexion->cerrar();
+		}
+
 
 ?>
