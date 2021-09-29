@@ -617,6 +617,8 @@ function perfil(gstIdper) {
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
                             $("#Pusto #sigla").val(obj.data[i].gstSigla);
+                            $("#Pusto #subdir1").val(obj.data[i].descripsub);//adscripcion29092021
+                            
                             //$("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
                         }
                     }
@@ -1292,9 +1294,9 @@ function inspector(gstIdper) {
         for (p = 0; p < res.length; p++) {
             if (obj.data[p].gstIdper == gstIdper) {
 
-
+                
                 personal = obj.data[p].gstIdper + '*' + obj.data[p].gstIDCat + '*' + obj.data[p].gstEvalu + '*' + obj.data[p].gstCatgr;
-
+                
                 var d = personal.split("*");
                 gstIdper = d[0];
                 gstIDCat = d[1];
@@ -1302,6 +1304,7 @@ function inspector(gstIdper) {
                 gstCatgr = d[3];
 
                 consultaCurso(gstIdper + '*' + gstIDCat);
+                $("#insparea").html(gstCatgr); //especialidad Card
 
                 if (gstEvalu == 'NO') {
                     $("#ocultar1").hide();
@@ -1330,7 +1333,8 @@ function inspector(gstIdper) {
                             $("#Evalua #gstIDCate").val(obj.data[i].gstIDCat);
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                            $("#cargopersonal").val(obj.data[i].gstCargo);
+                            $("#cargopersonal").val(obj.data[i].gstCargo); 
+                            
                             $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                             $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                             $("#Dtall #gstApell").val(obj.data[i].gstApell);
@@ -1344,6 +1348,8 @@ function inspector(gstIdper) {
                             $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
                             $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
                             $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+                            
+                           
                             //$("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
                             $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
                             $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
@@ -1369,7 +1375,7 @@ function inspector(gstIdper) {
 
                             // $("#Pusto #gstIDCat").val(obj.data[i].gstIDCat);
                             // $("#Pusto #gstIDSub").val(obj.data[i].gstIDSub);
-
+                  
                             $("#Dtall #gstCorro").val(obj.data[i].gstCorro);
                             $("#Dtall #gstCinst").val(obj.data[i].gstCinst);
                             $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
@@ -1378,7 +1384,7 @@ function inspector(gstIdper) {
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
                       
-
+                           
                             $("#Pusto #ejcutiva").val(obj.data[i].gstAreje);
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área ejecutiva
                             //        alert(obj.data[i].gstAreID);
@@ -1386,8 +1392,11 @@ function inspector(gstIdper) {
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
                             $("#Pusto #sigla").val(obj.data[i].gstSigla);
-                            $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                            $("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+                            $("#Pusto #adscripcion").val(obj.data[i].adscripcion);//adscripcion29092021
+                            $("#Pusto #subdir1").val(obj.data[i].descripsub);//adscripcion29092021
+                            $("#Pusto #departam").val(obj.data[i].descripdep);
                         }
                     }
                 })
@@ -2294,11 +2303,14 @@ function actPuesto() {
 
 function openEdit() {
 
+    //alert('inspector')
 
     $("#codigo").show();
     $("#nompusto").show();
     $("#especialidad").show();
+    $("#subdirec1").show();
     $("#ejecutiva").show();
+    $("#depart").show();
     $("#adscrip").show(); //adscripción 23092021 
     $("#comandancias").show();
     // alert("prueba2!"); 
@@ -2350,7 +2362,8 @@ function openEdit() {
     document.getElementById('gstAcReg').disabled = false;
     document.getElementById('gstIDuni').disabled = false;
     document.getElementById('gstNucrt').disabled = false;
-    document.getElementById('gstSigID').disabled = false; //ESTATUS DE PERSONAL
+    document.getElementById('gstSigID').disabled = false;
+    document.getElementById('AgstAcReg').disabled = false;  //ESTATUS DE PERSONAL
     
     //.../Habilita los campos FIN
 
@@ -2366,11 +2379,12 @@ function cerrarEdit() {
     $("#ejecutiva").hide();
     $("#adscrip").hide(); //adscripción oculta 23092021
     $("#comandancias").hide();
-
+    $("#subdirec1").hide();
+    $("#depart").hide();
     // alert("CERRAR!"); 
     $("#buton").toggle();
     $("#butons").toggle();
-    div = document.getElementById('cerrar1');
+    div = document.getElementById('cerrar1');       
     div.style.display = 'none';
     div = document.getElementById('cerrar');
     div.style.display = '';
@@ -2415,6 +2429,8 @@ function cerrarEdit() {
     document.getElementById('gstIDuni').disabled = true;
     document.getElementById('gstNucrt').disabled = true;
     document.getElementById('gstSigID').disabled = true; //ESTATUS DE PERSONAL
+    document.getElementById('subdir1').disabled = true; //ESTATUS DE PERSONAL
+    
     //.../Habilita los campos FIN
 
 
@@ -2444,16 +2460,28 @@ function adscripcion() {
     $("#adscrip1").toggle('toggle');
     $("#adscrip2").toggle('toggle');
 }
+function adscripcion2() {
+    $("#adscrip1").toggle('toggle');
+    $("#adscrip2").toggle('toggle');
+}
 
 function subdireccion() {
     $("#subdirec2").toggle('toggle');
     $("#subdirec3").toggle('toggle');
 }
-
+function subdireccion1() {
+    $("#subdirec2").toggle('toggle');
+    $("#subdirec3").toggle('toggle');
+}
 function comandancias() {
     $("#comandancias1").toggle('toggle');
     $("#comandancias2").toggle('toggle');
 }
+function departamento1() {
+    $("#depart1").toggle('toggle');
+    $("#depart2").toggle('toggle');
+}
+
 
 
 
