@@ -200,7 +200,7 @@
               </div>
               <div class="modal-body">
               <div style="text-align: right">
-              <a href="lista.php"><img style="cursor: pointer;" src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png" class="img-fluid swing" width="46px" alt="Crear-PDF"></a>
+              <a href="lista.php"><img style="cursor: pointer;" onclick=pdf(); src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png" class="img-fluid swing" width="46px" alt="Crear-PDF"></a>
               </div>
               <form id="Result">
 
