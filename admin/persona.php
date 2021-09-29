@@ -83,7 +83,6 @@ include('header.php');
 <!-- Content Header (Page header) -->
 <section class="content" id="lista">
 
-
 <div class="row">
    <div class="col-xs-12">
      <div class="box">
@@ -107,11 +106,6 @@ include('header.php');
 </div>
 </section>
 </div>
-
-
-
-<?php include('agrStdPro.php');?>
-
 
   <div class="modal fade" id='modal-asignar'>
     <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -256,9 +250,10 @@ include('header.php');
         </div>
       </div>
 
+</div>
+</div>
 
-
-
+<?php include('agrStdPro.php');?>
 
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
@@ -349,16 +344,17 @@ $resultado = mysqli_query($conexion, $query);
         $datosCargo = $data['gstCargo'];
       }
       $gstIdper = $data['gstIdper'];
+      $gstNmpld = $data['gstNmpld'];
       ?>
 
 //console.log('<?php echo $gstIdper ?>');
 
 ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>",
 <?php if($data['gstCargo']=='NUEVO INGRESO'){?>
-  "<a type='button' title='Asignar' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
+  "<a type='button' title='Asignar' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
 <?php }else{?>
 //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
+" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
 
 <?php } ?>
 

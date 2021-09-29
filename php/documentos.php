@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$idper = 1321;
+	$idper = $_POST['gstIdper'];
 
 	$query = "	SELECT * FROM listadoc WHERE estado = 0";
 	$resultado = mysqli_query($conexion, $query);

@@ -24,8 +24,28 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+  <style>
+   .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.a-alert:link {
+  color: white;
+}
+
+.a-alert:visited {
+  color: white;
+}
+</style>
 </head>
 
 <?php

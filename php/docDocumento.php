@@ -1,19 +1,25 @@
 <?php
 include("../conexion/conexion.php");
 
+ini_set('date.timezone','America/Mexico_City');
+$factual = date('Y').'/'.date('m').'/'.date('d');
+
 $opcion = $_POST["opcion"];
 $informacion = [];
+
+
 
 if($opcion === 'documento'){
 
 
-if($_POST['gstIdperArc']=='' || $_POST['docadjunto']==''){
+if($_POST['gstIdperArc']=='' || $_POST['docadjunto']=='' || $_POST['gstNemple']==''){
 
 	echo "8";
 }else{
 
 $gstIdperArc = $_POST['gstIdperArc'];
 $docadjunto = $_POST['docadjunto'];
+$gstNemple = $_POST['gstNemple'];
 
 if(comprobar($gstIdperArc,$docadjunto,$conexion)){
 
@@ -31,11 +37,11 @@ $rutaTemporal=$_FILES['DgsAgra']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$gstIdperArc.'/Checklist/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$gstNemple.'/Check-RH/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$gstIdperArc.'/Checklist/';
+ $ruta = '../documento/'.$gstNemple.'/Check-RH/';
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
@@ -45,8 +51,6 @@ $DgsAgra=$rutaEnServidor;
 //$DgsAgra= 'documento/'.$idusu.'/'.$nombreImagen;
 
 if(move_uploaded_file($rutaTemporal, $DgsAgra)){
-
-$factual = date('Y').'/'.date('m').'/'.date('d');
 
 if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 		{	echo "0";	}else{	echo "1";	}
@@ -65,13 +69,14 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 	}else if($opcion === 'actualizar'){
 
 
-		if($_POST['gstIdperAct']=='' || $_POST['docactuali']==''){
+		if($_POST['gstIdperAct']=='' || $_POST['docactuali']=='' || $_POST['actNemple']==''){
 
 			echo "8";
 		}else{
 
 		$gstIdperAct = $_POST['gstIdperAct'];
 		$docactuali = $_POST['docactuali'];
+		$actNemple = $_POST['actNemple'];
 
 		if(!empty($_FILES['DgstActul']['size'])){
 
@@ -84,9 +89,9 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 		$ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 		if (in_array($ext, $formatos)){
 
-		$rutaEnServidor = '../documento/'.$gstIdperAct.'/Checklist/'.$nombreImagen;
+		$rutaEnServidor = '../documento/'.$actNemple.'/Check-RH/'.$nombreImagen;
 
-		 $ruta = '../documento/'.$gstIdperAct.'/Checklist/';
+		 $ruta = '../documento/'.$actNemple.'/Check-RH/';
 		if(!is_dir($ruta)){
 		  mkdir($ruta, 0777, true);
 		}
@@ -95,8 +100,6 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 		$DgstActul=$rutaEnServidor;
 
 		if(move_uploaded_file($rutaTemporal, $DgstActul)){
-
-		$factual = date('Y').'/'.date('m').'/'.date('d');
 
 		if(documentoact($gstIdperAct,$docactuali,$DgstActul,$factual,$conexion))
 				{	echo "0";	}else{	echo "1";	}
@@ -125,14 +128,37 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 			}
 		
 		}else{
-			echo '2|';
+			echo '2';
 			}
 		
+	}else if($opcion === 'arcelimnar'){
+
+
+	$arcIdperEli  = $_POST['arcIdperEli'];
+	$arceliminar = $_POST['arceliminar'];
+	$documen = $_POST['documen'];
+
+	 $docadjunto = consultarch($arcIdperEli,$documen,$conexion);
+		
+	if (file_exists($docadjunto)) {	
+
+		unlink($docadjunto);	
+			eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion);
+			eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion);
+	} else {
+			eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion);
+			eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion);
 	}
 
+			if(borrararchivo($arcIdperEli,$documen,$arceliminar,$conexion)){
+				echo "0";	
+			}else{
+				echo "1";
+			}
+		
 
 
-//}
+	}
 
 function consultadoc($gstIdperEli,$doceliminar,$conexion){
 
@@ -141,6 +167,22 @@ $query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento 
   $res = mysqli_fetch_row($result);
 
   return $res[3];
+}
+
+function consultarch($arcIdperEli,$documen,$conexion){
+
+$query = "SELECT * FROM personaldoc WHERE idperdoc = $arcIdperEli AND documento = 7 AND docajunto = '$documen' AND estado = 0";
+  $result = mysqli_query($conexion,$query);
+  $res = mysqli_fetch_row($result);
+if($result->num_rows==0){
+
+//return 'no hay';
+
+}else{
+ // $res = mysqli_fetch_row($result);
+
+  return $res[3];
+}
 }
 
 
@@ -156,8 +198,6 @@ function comprobar($gstIdperArc,$docadjunto,$conexion){
 		$this->conexion->cerrar();
 	}
 
-
-
 function personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion){
 
 			$query="INSERT INTO personaldoc VALUES(0,'$gstIdperArc','$docadjunto','$DgsAgra','$factual',0)";
@@ -172,7 +212,7 @@ function personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion){
 
 function documentoact($gstIdperAct,$docactuali,$DgstActul,$factual,$conexion){
 
-		$query="UPDATE personaldoc SET docajunto = '$DgstActul', fecactual = '$factual' WHERE idperdoc = $gstIdperAct AND documento = $docactuali";
+		$query="UPDATE personaldoc SET docajunto = '$DgstActul', fecactual = '$factual' WHERE idperdoc = $gstIdperAct AND documento = 7";
 			if(mysqli_query($conexion,$query)){
 				return true;
 			}else{
@@ -191,6 +231,43 @@ function borraregistro($gstIdperEli,$doceliminar,$conexion){
 			return false;
 		}
 		$this->conexion->cerrar();
-	}	
+	}
+
+function borrararchivo($arcIdperEli,$documen,$arceliminar,$conexion){
+
+$query="DELETE personaldoc,estudios FROM estudios JOIN personaldoc ON personaldoc.idperdoc = estudios.gstIDper AND gstDocmt = docajunto WHERE gstIdstd=$arceliminar";
+
+	if(mysqli_query($conexion,$query)){
+	// $query="DELETE FROM estudios WHERE gstIDper = $arcIdperEli AND gstIdstd = $arceliminar AND estado = 0";
+	// mysqli_query($conexion,$query);
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+	}
+
+function eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion){
+	$query="DELETE FROM estudios WHERE gstIDper = $arcIdperEli AND gstIdstd = $arceliminar AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+	}
+
+function eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion){
+
+	$query="DELETE FROM personaldoc WHERE idperdoc = $arcIdperEli AND documento = 7 AND docajunto = '$documen'AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+	}
+	
+ 
 
 ?>

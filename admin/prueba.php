@@ -215,10 +215,20 @@ function documentos($gstIdperEli,$doceliminar,$conexion){
 
 $query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar AND estado = 0";
   $result = mysqli_query($conexion,$query);
+
+if($result->num_rows==0){
+
+return 'no hay';
+
+}else{
   $res = mysqli_fetch_row($result);
 
   return $res[3];
 }
+
+}
+
+
 
 
 
