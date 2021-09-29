@@ -63,61 +63,9 @@ function pdf() {
 
 
     var pdfIdper = document.getElementById('pdfIdper').value;
+    alert(pdfIdper);
 
 
-    $.ajax({
-        url: '../php/conPerson.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-
-        for (i = 0; i < res.length; i++) {
-            x++;
-
-            if (obj.data[i].gstIdper == pdfIdper) {
-
-                valor = obj.data[i].gstIdper;
-                cargo = obj.data[i].gstCargo;
-                nombre = obj.data[i].gstNombr;
-            }
-        }
-        var logo = new Image();
-        logo.src = '../dist/img/ApéndiceE2-1-min.png';
-        var pdf = new jsPDF("p", "mm", "a4");
-        pdf.addImage(logo, 'PNG', 0, 0, 210, 280);
-
-        /* INICIO DE PDF*/
-
-        /* OBTENER FECHA DE IMPRESIÓN*/
-        var currentDate = new Date().toLocaleDateString('en-GB', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric'
-        });
-
-        var fecha = "Fecha de impresión : " + currentDate;
-        pdf.setFontSize(9);
-        pdf.text(15, 290, fecha);
-
-
-        // /* OBTENER FECHA DE IMPRESIÓN*/
-
-        /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-        const pageCount = pdf.internal.getNumberOfPages();
-        for (var i = 1; i <= pageCount; i++) {
-            pdf.setFontSize(8)
-            pdf.setPage(i);
-            pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-                "right");
-        }
-        /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-
-        window.open(pdf.output('bloburl'))
-
-    })
 }
 //muestra ventana estudios
 function estudio(gstIdper) {
@@ -330,26 +278,26 @@ function actPrfsn(datos) {
     $("#actForpro #AgstFslda").val(d[8]);
 }
 
-function carPrfsn(datos){
+function carPrfsn(datos) {
 
     var d = datos.split("*");
     $("#actForpro #DgstIdpro").val(d[0]);
     $("#actForpro #DgstIDper").val(d[1]);
     $("#actForpro #DgstPusto").val(d[2]);
     $("#actForpro #DgstMpres").val(d[3]);
-    
+
 
 }
 
-function docProfsn(){
+function docProfsn() {
 
     var paqueteDeDatos = new FormData();
-        paqueteDeDatos.append('DgstDocep', $('#DgstDocep')[0].files[0]);
-            paqueteDeDatos.append('DgstIdpro', $('#DgstIdpro').prop('value'));
-                paqueteDeDatos.append('DgstIDper', $('#DgstIDper').prop('value'));
-                    paqueteDeDatos.append('opcion', 'documento');
+    paqueteDeDatos.append('DgstDocep', $('#DgstDocep')[0].files[0]);
+    paqueteDeDatos.append('DgstIdpro', $('#DgstIdpro').prop('value'));
+    paqueteDeDatos.append('DgstIDper', $('#DgstIDper').prop('value'));
+    paqueteDeDatos.append('opcion', 'documento');
 
-   $.ajax({
+    $.ajax({
         url: '../php/docProfesion.php',
         data: paqueteDeDatos,
         type: "POST",
@@ -420,7 +368,7 @@ function agrProfsn() {
     paqueteDeDatos.append('gstFslda', $('#gstFslda').prop('value'));
     paqueteDeDatos.append('opcion', 'profesion');
 
-   $.ajax({
+    $.ajax({
         url: '../php/docProfesion.php',
         data: paqueteDeDatos,
         type: "POST",
@@ -525,7 +473,7 @@ function perfil(gstIdper) {
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
-//03092021
+        //03092021
         for (p = 0; p < res.length; p++) {
             if (obj.data[p].gstIdper == gstIdper) {
 
@@ -539,8 +487,8 @@ function perfil(gstIdper) {
                 gstCatgr = d[3];
 
                 consultaCurso(gstIdper + '*' + gstIDCat);
-                    $("#ocultar1").show();
-                    $("#ocultar2").show();
+                $("#ocultar1").show();
+                $("#ocultar2").show();
 
                 $.ajax({
                     url: '../php/conDatos.php',
@@ -590,7 +538,7 @@ function perfil(gstIdper) {
 
                             $("#Pusto #gstSigID").val(obj.data[i].gstSigID); // estatus
                             $("#Pusto #adscripcion").val(obj.data[i].adscripcion);
-                            $("#Pusto #subdir1").val(obj.data[i].gstAcReg);  //area de adscripción modificar 
+                            $("#Pusto #subdir1").val(obj.data[i].gstAcReg); //area de adscripción modificar 
 
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
@@ -723,52 +671,55 @@ function perfil(gstIdper) {
                     DECLINADOS = 0;
                     FINALIZADO = 0;
                     CANCELADO = 0;
-                    OTROS =0;
+                    OTROS = 0;
                     insp = 0;
 
 
                     //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE PERSONAL
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
-                      //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CHECK LIST DOCUMENTACIÓN
-                      $(document).ready(function() {
-                                      $("#checkrh tr").on('click', function() {
-                                          var toma1 = "", toma2 =""; //declaramos las columnas NOMBRE DEL CURSO
-                                                  toma1 += $(this).find('td:eq(0)').html(); //titulo del doc. 
-                                                  toma2 += $(this).find('td:eq(0)').html(); //titulo del doc. 
+                    //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CHECK LIST DOCUMENTACIÓN
+                    $(document).ready(function() {
+                        $("#checkrh tr").on('click', function() {
+                            var toma1 = "",
+                                toma2 = ""; //declaramos las columnas NOMBRE DEL CURSO
+                            toma1 += $(this).find('td:eq(0)').html(); //titulo del doc. 
+                            toma2 += $(this).find('td:eq(0)').html(); //titulo del doc. 
 
-                                          $("#docadjunto").text(toma1); // Label del titulo del documento actualizar
-                                          $("#titledoc").text(toma2); // Label del titulo del documento eliminar
-                                    //alert(toma2)
-                                        
-                                      });
-                                  }); 
+                            $("#docadjunto").text(toma1); // Label del titulo del documento actualizar
+                            $("#titledoc").text(toma2); // Label del titulo del documento eliminar
+                            //alert(toma2)
 
-                      //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CURSOS DETALLE PERSONAS
+                        });
+                    });
+
+                    //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CURSOS DETALLE PERSONAS
                     $(document).ready(function() {
                         $("#curso tr").on('click', function() {
-                            var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
-                                    toma1 += $(this).find('td:eq(2)').html(); //NOMBRE DEL CURSO  
-                                    toma2 += $(this).find('td:eq(10)').html(); //PDF
-                                    toma3 += $(this).find('td:eq(11)').html(); //PDF                    
+                            var toma1 = "",
+                                toma2 = "",
+                                toma3 = ""; //declaramos las columnas NOMBRE DEL CURSO
+                            toma1 += $(this).find('td:eq(2)').html(); //NOMBRE DEL CURSO  
+                            toma2 += $(this).find('td:eq(10)').html(); //PDF
+                            toma3 += $(this).find('td:eq(11)').html(); //PDF                    
                             $("#nombredeclinp").text(toma1); // Label esta en valor.php
-                            $("#declinpdfp").attr('href',toma2); // Label esta en valor.php
-                            $("#motivodp").text('Motivo:'+ toma3); // Label esta en valor.php
+                            $("#declinpdfp").attr('href', toma2); // Label esta en valor.php
+                            $("#motivodp").text('Motivo:' + toma3); // Label esta en valor.php
                             $("#otrosdp").text(toma2); // Label esta en valor.php
 
-                            if (toma3 == 'OTROS'){
-                                document.getElementById('otrosdp').style.display='';
-                                document.getElementById('declinpdfp').style.display='none';
+                            if (toma3 == 'OTROS') {
+                                document.getElementById('otrosdp').style.display = '';
+                                document.getElementById('declinpdfp').style.display = 'none';
                             }
-                            if (toma3 == 'TRABAJO'){
-                                document.getElementById('otrosdp').style.display='none';
-                                document.getElementById('declinpdfp').style.display='';
+                            if (toma3 == 'TRABAJO') {
+                                document.getElementById('otrosdp').style.display = 'none';
+                                document.getElementById('declinpdfp').style.display = '';
                             }
-                            if (toma3 == 'ENFERMEDAD'){
-                                document.getElementById('otrosdp').style.display='none';
-                                document.getElementById('declinpdfp').style.display='';
+                            if (toma3 == 'ENFERMEDAD') {
+                                document.getElementById('otrosdp').style.display = 'none';
+                                document.getElementById('declinpdfp').style.display = '';
                             }
                         });
-                    }); 
+                    });
 
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
@@ -790,7 +741,7 @@ function perfil(gstIdper) {
                         termino.setDate(termino.getDate() + 1);
 
                         var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-                        
+
                         if (factual >= finaliza) {
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
                             //console.log(status);
@@ -811,20 +762,20 @@ function perfil(gstIdper) {
                         if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
                             status = "<span style='background-color:green; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                             //console.log(status);
-                        } 
+                        }
                         if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
 
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                           
-                        }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
+
+                        } else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                           
-                        }else if(obj.data[ii].confirmar == 'OTROS'){ //DECLINADO POR OTROS
-                          confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+
+                        } else if (obj.data[ii].confirmar == 'OTROS') { //DECLINADO POR OTROS
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                         }
@@ -839,22 +790,23 @@ function perfil(gstIdper) {
                         } else if (obj.data[ii].proceso == 'CANCELADO') {
                             status1 = "<span style='font-weight: bold; color: red;'>CANCELADO</span>";
 
-                        }if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                        }
+                        if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
                             proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span>";
-                            
 
-                        }else if (obj.data[ii].proceso == 'PENDIENTE'  && obj.data[ii].confirmar == 'CONFIRMADO') {
+
+                        } else if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
                             proc12 = "<span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span>";
-                            
-                           //COMPARACION DE FECHAS 
-                         feccomar =  document.getElementById('fecomp1').value;
-                         if (obj.data[ii].fcurso == feccomar && obj.data[ii].confirmar == 'CONFIRMADO'){
-                          proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
-                         }
-                         if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                             status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
-                         }
-                 }
+
+                            //COMPARACION DE FECHAS 
+                            feccomar = document.getElementById('fecomp1').value;
+                            if (obj.data[ii].fcurso == feccomar && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
+                            }
+                            if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
+                            }
+                        }
                         // FIN COMPARACIÓN FECHAS
 
                         if (obj.data[ii].idinsp == gstIdper) {
@@ -869,15 +821,15 @@ function perfil(gstIdper) {
                                 month = obj.data[ii].fechaf.substring(5, 7);
                                 day = obj.data[ii].fechaf.substring(8, 10);
                                 Final = day + '/' + month + '/' + year;
-                                
+
                                 //LISTA DE CURSOS PERSONAS
                                 idlista = obj.data[ii].idmstr;
-                                
-                                if (obj.data[ii].confirmar == 'CONFIRMAR' ) { //POR CONFIRMAR CURSO
+
+                                if (obj.data[ii].confirmar == 'CONFIRMAR') { //POR CONFIRMAR CURSO
                                     html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
-                                } else  {
+                                } else {
                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td><td style='display:none;'>" + obj.data[ii].justifi + "</td><td style='display:none;'>" + obj.data[ii].confirmar + "</td></tr>";
-                                } 
+                                }
 
                                 if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
                                     programados++;
@@ -912,7 +864,7 @@ function perfil(gstIdper) {
                                 var resFinal3 = resultado3.toFixed(0);
                                 porcentaje1.style.width = (resFinal3 + "%");
                                 porcentaje11.innerHTML = (resFinal3 + "%");
-                                document.getElementById("porcentaje11").title =  porcentaje11.innerHTML //title de porcentajes
+                                document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
 
                                 // PORCENTAJE DE PROGRAMADOS
                                 var porcentaje12 = document.getElementById("porcentaje12");
@@ -921,7 +873,7 @@ function perfil(gstIdper) {
                                 var resFinal = resultado.toFixed(0);
                                 porcentaje12.style.width = (resFinal + "%");
                                 porcentaje12.innerHTML = (resFinal + "%"); //VALOR
-                                document.getElementById("porcentaje12").title =  porcentaje12.innerHTML //title de porcentajes
+                                document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
 
                                 // PORCENTAJE DE CANCELADO
                                 var porcentaje13 = document.getElementById("porcentaje13");
@@ -930,7 +882,7 @@ function perfil(gstIdper) {
 
                                 porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
                                 porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
-                                document.getElementById("porcentaje13").title =  porcentaje13.innerHTML //title de porcentajes
+                                document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
 
                             }
                         }
@@ -951,7 +903,7 @@ function perfil(gstIdper) {
                     var x = 1;
 
 
-//AQUI03
+                    //AQUI03
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
 
                     for (H = 0; H < res.length; H++) {
@@ -960,15 +912,15 @@ function perfil(gstIdper) {
 
                         if (obj.data[H].gstIDper == gstIdper) {
                             valor = obj.data[H].gstIDper;
-           
+
                             datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
 
                             html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-//                            document.getElementById('estudios1').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                            //                            document.getElementById('estudios1').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
 
                         } else {
 
-//                           document.getElementById('estudios1').innerHTML = '<img src="../dist/img/advertir.svg" alt="NO" width="25px;">';
+                            //                           document.getElementById('estudios1').innerHTML = '<img src="../dist/img/advertir.svg" alt="NO" width="25px;">';
 
                         }
 
@@ -1045,15 +997,15 @@ function perfil(gstIdper) {
             }
         }
     })
-              $("#gstIdperArc").val(gstIdper);
-              $("#gstIdperAct").val(gstIdper); 
-              $("#gstIdperEli").val(gstIdper);  
+    $("#gstIdperArc").val(gstIdper);
+    $("#gstIdperAct").val(gstIdper);
+    $("#gstIdperEli").val(gstIdper);
     consultarDoc(gstIdper);
 }
 
 ////////////////////CONSULTAR ARCHIVO///////////////////////////
 
-function consultarDoc(gstIdper){
+function consultarDoc(gstIdper) {
 
     $.ajax({
         url: '../php/documentos.php',
@@ -1064,81 +1016,81 @@ function consultarDoc(gstIdper){
         var res = obj.data;
         var x = 1;
 
-html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">ID</th><th scope="col" style="width:300px;">DOCUMENTO</th><th scope="col" style="width:150px;">ESTATUS</th> <th scope="col">ACCIONES</th> <th scope="col">DOCUMENTO ADJUNTO</th><th scope="col">FECHA DE ACTUALIZACION</th></tr></thead><tbody>';
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">ID</th><th scope="col" style="width:300px;">DOCUMENTO</th><th scope="col" style="width:150px;">ESTATUS</th> <th scope="col">ACCIONES</th> <th scope="col">DOCUMENTO ADJUNTO</th><th scope="col">FECHA DE ACTUALIZACION</th></tr></thead><tbody>';
 
-  for (D = 0; D < res.length; D++) {
+        for (D = 0; D < res.length; D++) {
 
-     if(obj.data[D].documentos=='SI EXISTE'){
-        if(obj.data[D].id_doc==7){
-     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td></td><td></td><td>'+obj.data[D].fecactual+'</td></tr>';            
-        }else{
-     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual('+obj.data[D].id_doc+');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar('+obj.data[D].id_doc+');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td></tr>';            
+            if (obj.data[D].documentos == 'SI EXISTE') {
+                if (obj.data[D].id_doc == 7) {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td></td><td></td><td>' + obj.data[D].fecactual + '</td></tr>';
+                } else {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual(' + obj.data[D].id_doc + ');" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrar(' + obj.data[D].id_doc + ');" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminararchi"><i class="fa fa-trash-o text-danger"></i></a></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>' + obj.data[D].fecactual + '</td></tr>';
+                }
+            } else {
+                if (obj.data[D].id_doc == 7) {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td></td><td></td><td></td></tr>';
+                } else {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo(' + obj.data[D].id_doc + ');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';
+                }
+            }
         }
-     }else{
-     if(obj.data[D].id_doc==7){
-     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td></td><td></td><td></td></tr>';            
-     }else{
-     html += '<tr><th scope="row">'+obj.data[D].id_doc+')</th><td>'+obj.data[D].nombre+'</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo('+obj.data[D].id_doc+');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';                   
-         }   
-     }
-   }
-html += '</tbody></table></form></div></div>';
+        html += '</tbody></table></form></div></div>';
 
-         $("#perdoc").html(html);
+        $("#perdoc").html(html);
     })
 
 }
 
 ///////////////////////BORRAR/////////////////////////
 
-function borrar(b){
+function borrar(b) {
 
     $("#doceliminar").val(b);
 }
 
-function borrardoc(){
+function borrardoc() {
 
-var gstIdperEli = document.getElementById('gstIdperEli').value;
-var doceliminar = document.getElementById('doceliminar').value;
+    var gstIdperEli = document.getElementById('gstIdperEli').value;
+    var doceliminar = document.getElementById('doceliminar').value;
 
 
-    datos = 'gstIdperEli='+gstIdperEli+'&doceliminar='+doceliminar+'&opcion=elimnardoc';
+    datos = 'gstIdperEli=' + gstIdperEli + '&doceliminar=' + doceliminar + '&opcion=elimnardoc';
 
-         $.ajax({
-            url: '../php/docDocumento.php',
-            type: 'POST',
-            data: datos
-        }).done(function(respuesta) {
-            //alert(respuesta);
-            if (respuesta == 0) {
+    $.ajax({
+        url: '../php/docDocumento.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        //alert(respuesta);
+        if (respuesta == 0) {
+            $('#succe7').toggle('toggle');
+            setTimeout(function() {
                 $('#succe7').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe7').toggle('toggle');
-                }, 2000);
-            } else if(respuesta == 1){
+            }, 2000);
+        } else if (respuesta == 1) {
+            $('#danger7').toggle('toggle');
+            setTimeout(function() {
                 $('#danger7').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger7').toggle('toggle');
-                }, 2000);
-            }else{
+            }, 2000);
+        } else {
+            $('#aviso7').toggle('toggle');
+            setTimeout(function() {
                 $('#aviso7').toggle('toggle');
-                setTimeout(function() {
-                $('#aviso7').toggle('toggle');
-                }, 2000);
-            }
-        });
+            }, 2000);
+        }
+    });
 
 }
 
 //////////////////ADJUNTAR ARCHIVOS////////////////////////
 
-function adjunuevo(v){
+function adjunuevo(v) {
 
-  $("#docadjunto").val(v);    
+    $("#docadjunto").val(v);
 
 }
 
-function adjuntar(){
+function adjuntar() {
 
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('DgsAgra', $('#DgsAgra')[0].files[0]);
@@ -1147,7 +1099,7 @@ function adjuntar(){
     paqueteDeDatos.append('opcion', 'documento');
 
 
-   $.ajax({
+    $.ajax({
         url: '../php/docDocumento.php',
         data: paqueteDeDatos,
         type: "POST",
@@ -1204,16 +1156,16 @@ function adjuntar(){
 }
 ////////////////////ACTUALIZAR ARCHIVO//////////////////
 
-function adjactual(act){
-    $("#docactuali").val(act);    
+function adjactual(act) {
+    $("#docactuali").val(act);
 
 }
 
-function adjuactual(){
+function adjuactual() {
 
 
-var gstIdperAct = document.getElementById('gstIdperAct').value;
-var docactuali = document.getElementById('docactuali').value;
+    var gstIdperAct = document.getElementById('gstIdperAct').value;
+    var docactuali = document.getElementById('docactuali').value;
 
 
 
@@ -1224,7 +1176,7 @@ var docactuali = document.getElementById('docactuali').value;
     paqueteDeDatos.append('opcion', 'actualizar');
 
 
-   $.ajax({
+    $.ajax({
         url: '../php/docDocumento.php',
         data: paqueteDeDatos,
         type: "POST",
@@ -1270,7 +1222,7 @@ var docactuali = document.getElementById('docactuali').value;
                 setTimeout(function() {
                     $('#adjunta6').toggle('toggle');
                 }, 4000);
-            } 
+            }
         }
     });
 }
@@ -1376,7 +1328,7 @@ function inspector(gstIdper) {
 
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-                      
+
 
                             $("#Pusto #ejcutiva").val(obj.data[i].gstAreje);
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área ejecutiva
@@ -1472,7 +1424,7 @@ function inspector(gstIdper) {
                             gstID = obj.data[s].gstIDper;
                             if (obj.data[s].gstIdcat != 24) {
                                 html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td></td></tr>";
-                            }//<a type='button' title='Eliminar' onclick='eliminar()' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a>
+                            } //<a type='button' title='Eliminar' onclick='eliminar()' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a>
                             // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
                         }
                     }
@@ -1488,13 +1440,13 @@ function inspector(gstIdper) {
                     obj = JSON.parse(resp);
                     var res = obj.data;
                     var x = 0;
-                      //30082021
+                    //30082021
                     programados = 0;
                     programados1 = 0;
                     DECLINADOS = 0;
                     FINALIZADO = 0;
                     CANCELADO = 0;
-                    OTROS =0;
+                    OTROS = 0;
                     insp = 0;
 
                     //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE INSPECTOR
@@ -1503,31 +1455,33 @@ function inspector(gstIdper) {
                     //TRAE LOS DATOS DE LA TABLA CELDA
                     $(document).ready(function() {
                         $("#curso tr").on('click', function() {
-                            var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
-                                    toma1 += $(this).find('td:eq(2)').html(); //NOMBRE DEL CURSO  
-                                    toma2 += $(this).find('td:eq(10)').html(); //PDF
-                                    toma3 += $(this).find('td:eq(11)').html(); //PDF                    
+                            var toma1 = "",
+                                toma2 = "",
+                                toma3 = ""; //declaramos las columnas NOMBRE DEL CURSO
+                            toma1 += $(this).find('td:eq(2)').html(); //NOMBRE DEL CURSO  
+                            toma2 += $(this).find('td:eq(10)').html(); //PDF
+                            toma3 += $(this).find('td:eq(11)').html(); //PDF                    
                             $("#nombredeclin").text(toma1); // Label esta en valor.php
-                            $("#declinpdf").attr('href',toma2); // Label esta en valor.php
-                            $("#motivod").text('Motivo:'+ toma3); // Label esta en valor.php
+                            $("#declinpdf").attr('href', toma2); // Label esta en valor.php
+                            $("#motivod").text('Motivo:' + toma3); // Label esta en valor.php
                             $("#otrosd").text(toma2); // Label esta en valor.php
 
-                            if (toma3 == 'OTROS'){
-                                document.getElementById('otrosd').style.display='';
-                                document.getElementById('declinpdf').style.display='none';
+                            if (toma3 == 'OTROS') {
+                                document.getElementById('otrosd').style.display = '';
+                                document.getElementById('declinpdf').style.display = 'none';
                             }
-                            if (toma3 == 'TRABAJO'){
-                                document.getElementById('otrosd').style.display='none';
-                                document.getElementById('declinpdf').style.display='';
+                            if (toma3 == 'TRABAJO') {
+                                document.getElementById('otrosd').style.display = 'none';
+                                document.getElementById('declinpdf').style.display = '';
                             }
-                            if (toma3 == 'ENFERMEDAD'){
-                                document.getElementById('otrosd').style.display='none';
-                                document.getElementById('declinpdf').style.display='';
+                            if (toma3 == 'ENFERMEDAD') {
+                                document.getElementById('otrosd').style.display = 'none';
+                                document.getElementById('declinpdf').style.display = '';
                             }
                         });
-                    }); 
-                    
-                    
+                    });
+
+
                     for (ii = 0; ii < res.length; ii++) {
                         x++;
 
@@ -1607,7 +1561,7 @@ function inspector(gstIdper) {
                         if (factual >= ftermino) {
                             status = "<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
-                        } 
+                        }
                         if (obj.data[ii].gstTipo == "INDUCCIÓN") { //UNICA VEZ EN ESTATUS "INDUCCIÓN"
                             status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                             //console.log(status);
@@ -1615,28 +1569,28 @@ function inspector(gstIdper) {
                         if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
                             status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                             //console.log(status);
-                        } 
-                           // alert(obj.data[ii].confirmar);
+                        }
+                        // alert(obj.data[ii].confirmar);
 
-                           if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
+                        if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
 
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                           
-                        
 
-                        }else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
+
+
+                        } else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
                             confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                           
-                            
-                        }else if(obj.data[ii].confirmar == 'OTROS'){
-                          confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+
+
+                        } else if (obj.data[ii].confirmar == 'OTROS') {
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            
+
                         }
 
                         if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
@@ -1649,209 +1603,210 @@ function inspector(gstIdper) {
                         } else if (obj.data[ii].proceso == 'CANCELADO') {
                             status1 = "<span style='font-weight: bold; color: red;'>CANCELADO</span>";
 
-                        }if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                        }
+                        if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
                             proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span>";
-                            
 
-                        }else if (obj.data[ii].proceso == 'PENDIENTE'  && obj.data[ii].confirmar == 'CONFIRMADO') {
+
+                        } else if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
                             proc12 = "<span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span>";
-                            
-                           //COMPARACION DE FECHAS 
-                         feccomar =  document.getElementById('fecomp1').value;
-                         if (obj.data[ii].fcurso == feccomar && obj.data[ii].confirmar == 'CONFIRMADO'){
-                          proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
-                         }
-                         if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                             status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
-                         }
- 
-                        // FIN COMPARACIÓN FECHAS
-                         }
-                         if (obj.data[ii].idinsp == gstIdper) {
-                             if (obj.data[ii].evaluacion >= '0') {
- 
-                                 year = obj.data[ii].fcurso.substring(0, 4);
-                                 month = obj.data[ii].fcurso.substring(5, 7);
-                                 day = obj.data[ii].fcurso.substring(8, 10);
-                                 Finicio = day + '/' + month + '/' + year;
- 
-                                 year = obj.data[ii].fechaf.substring(0, 4);
-                                 month = obj.data[ii].fechaf.substring(5, 7);
-                                 day = obj.data[ii].fechaf.substring(8, 10);
-                                 Final = day + '/' + month + '/' + year;
- 
-                                 idlista = obj.data[ii].idmstr;
-                                 if (obj.data[ii].confirmar == 'CONFIRMAR') { // LISTA INSPECTOR
-                                     html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
-                                 } else  {
-                                     html += "<tr><td>" + x + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td><td style='display:none;'>" + obj.data[ii].justifi + "</td><td style='display:none;'>" + obj.data[ii].confirmar + "</td></tr>";
-                                 } 
- 
-                                 if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                                     programados++;
-                                 }
-                                 if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
-                                     programados1++;
-                                 }
- 
- 
-                                 if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                                     FINALIZADO++;
-                                 }
-                                 if (obj.data[ii].confirmar == 'TRABAJO') {
-                                     CANCELADO++;
-                                 }
-                                 if (obj.data[ii].confirmar == 'ENFERMEDAD') {
-                                     DECLINADOS++;
-                                 }
-                                 if (obj.data[ii].confirmar == 'OTROS') {
-                                     OTROS++;
-                                 }
-                                 if (obj.data[ii].estado == '0') {
-                                     insp++;
-                                 }
- 
-                                 document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
-                                 document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
-                                 document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
-                                 //PORCENTAJE DE COMPLETADOS
- 
-                                 var porcentaje1 = document.getElementById("porcentaje11");
-                                 resultado3 = ((FINALIZADO * 100) / insp);
-                                 var resFinal3 = resultado3.toFixed(0);
-                                 porcentaje1.style.width = (resFinal3 + "%");
-                                 porcentaje11.innerHTML = (resFinal3 + "%");
-                                 document.getElementById("porcentaje11").title =  porcentaje11.innerHTML //title de porcentajes
- 
-                                 // PORCENTAJE DE PROGRAMADOS
-                                 var porcentaje12 = document.getElementById("porcentaje12");
-                                 resultado = (((programados + programados1) * 100) / insp);
- 
-                                 var resFinal = resultado.toFixed(0);
-                                 porcentaje12.style.width = (resFinal + "%");
-                                 porcentaje12.innerHTML = (resFinal + "%"); //VALOR
-                                 document.getElementById("porcentaje12").title =  porcentaje12.innerHTML //title de porcentajes
- 
-                                 // PORCENTAJE DE CANCELADO
-                                 var porcentaje13 = document.getElementById("porcentaje13");
-                                 resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
-                                 var resFinal1 = resultado1.toFixed(0);
- 
-                                 porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
-                                 porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
-                                 document.getElementById("porcentaje13").title =  porcentaje13.innerHTML //title de porcentajes
- 
-                             }
-                         }
-                         // TODO AQUI TERMINA
-                     }
-                     html += '</tbody></table></div></div></div>';
-                     $("#cursos").html(html);
-                 })
- 
- 
-                 $.ajax({
-                     url: '../php/conEstudios.php',
-                     type: 'POST'
-                 }).done(function(resp) {
-                     obj = JSON.parse(resp)
-                     var res = obj.data;
-                     var x = 1;
- 
- 
-                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
-                     for (H = 0; H < res.length; H++) {
-                         x++;
- 
-                         if (obj.data[H].gstIDper == gstIdper) {
- 
-                             datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
- 
-                             html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
-                             document.getElementById('estudios').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
- 
-                         } else {
- 
-                             //                      document.getElementById('estudios').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
- 
-                         }
- 
-                     }
-                     html += '</tbody></table></div></div></div>';
-                     $("#studios").html(html);
-                 })
- 
-                 $.ajax({
-                     url: '../php/conProfesion.php', //DETALLE PERFIL INSPECTOR
-                     type: 'POST'
-                 }).done(function(resp) {
-                     obj = JSON.parse(resp);
-                     var res = obj.data;
-                     var x = 1;
- 
- 
-                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
-                     for (P = 0; P < res.length; P++) {
- 
-                         year = obj.data[P].gstFntra.substring(0, 4);
-                         month = obj.data[P].gstFntra.substring(5, 7);
-                         day = obj.data[P].gstFntra.substring(8, 10);
-                         gstFntra = day + '/' + month + '/' + year;
- 
-                         year = obj.data[P].gstFslda.substring(0, 4);
-                         month = obj.data[P].gstFslda.substring(5, 7);
-                         day = obj.data[P].gstFslda.substring(8, 10);
-                         gstFslda = day + '/' + month + '/' + year;
- 
-                         x++;
-                         datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
- 
-                         if (obj.data[P].gstIDper == gstIdper) {
- 
-                             html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default' title='Descargar archivo' href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a> <a type='button' title='Editar experiencia profesional' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a> <a type='button' title='Subir archivo' onclick='carPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modaldocprofesion'><i class='fa fa-cloud-upload'></i></a></td> </tr>";
- 
-                             document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
- 
-                         } else {
-                             //                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
-                         }
-                     }
-                     html += '</tbody></table></div></div></div>';
-                     $("#profsions").html(html);
-                 })
- 
-                 $.ajax({
-                     url: '../php/conEvalu.php',
-                     type: 'POST'
-                 }).done(function(resp) {
-                     obj = JSON.parse(resp);
-                     var res = obj.data;
-                     var x = 1;
- 
- 
-                     // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-                     html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CUMPLE</th><th style="width:1%;"><i></i>SI</th><th style="width:1%"><i></i>NO</th></tr></thead><tbody>';
-                     for (E = 0; E < res.length; E++) {
-                         x++;
- 
-                         //if(obj.data[E].gstCatga == gstIDCat){
- 
-                         //if(obj.data[E].gstOrden==1){    
-                         html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
-                         //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-                         // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-                         //}<td><input id='comntr' name='comntr[]'> </td>
-                         //}
-                     }
-                     html += '</tbody></table></div>';
-                     $("#evlacns").html(html);
-                 })
- 
-             }
-         }
-     })
- 
- }
+
+                            //COMPARACION DE FECHAS 
+                            feccomar = document.getElementById('fecomp1').value;
+                            if (obj.data[ii].fcurso == feccomar && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
+                            }
+                            if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
+                            }
+
+                            // FIN COMPARACIÓN FECHAS
+                        }
+                        if (obj.data[ii].idinsp == gstIdper) {
+                            if (obj.data[ii].evaluacion >= '0') {
+
+                                year = obj.data[ii].fcurso.substring(0, 4);
+                                month = obj.data[ii].fcurso.substring(5, 7);
+                                day = obj.data[ii].fcurso.substring(8, 10);
+                                Finicio = day + '/' + month + '/' + year;
+
+                                year = obj.data[ii].fechaf.substring(0, 4);
+                                month = obj.data[ii].fechaf.substring(5, 7);
+                                day = obj.data[ii].fechaf.substring(8, 10);
+                                Final = day + '/' + month + '/' + year;
+
+                                idlista = obj.data[ii].idmstr;
+                                if (obj.data[ii].confirmar == 'CONFIRMAR') { // LISTA INSPECTOR
+                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
+                                } else {
+                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td><td style='display:none;'>" + obj.data[ii].justifi + "</td><td style='display:none;'>" + obj.data[ii].confirmar + "</td></tr>";
+                                }
+
+                                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                    programados++;
+                                }
+                                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
+                                    programados1++;
+                                }
+
+
+                                if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                    FINALIZADO++;
+                                }
+                                if (obj.data[ii].confirmar == 'TRABAJO') {
+                                    CANCELADO++;
+                                }
+                                if (obj.data[ii].confirmar == 'ENFERMEDAD') {
+                                    DECLINADOS++;
+                                }
+                                if (obj.data[ii].confirmar == 'OTROS') {
+                                    OTROS++;
+                                }
+                                if (obj.data[ii].estado == '0') {
+                                    insp++;
+                                }
+
+                                document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
+                                document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
+                                document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
+                                //PORCENTAJE DE COMPLETADOS
+
+                                var porcentaje1 = document.getElementById("porcentaje11");
+                                resultado3 = ((FINALIZADO * 100) / insp);
+                                var resFinal3 = resultado3.toFixed(0);
+                                porcentaje1.style.width = (resFinal3 + "%");
+                                porcentaje11.innerHTML = (resFinal3 + "%");
+                                document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
+
+                                // PORCENTAJE DE PROGRAMADOS
+                                var porcentaje12 = document.getElementById("porcentaje12");
+                                resultado = (((programados + programados1) * 100) / insp);
+
+                                var resFinal = resultado.toFixed(0);
+                                porcentaje12.style.width = (resFinal + "%");
+                                porcentaje12.innerHTML = (resFinal + "%"); //VALOR
+                                document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
+
+                                // PORCENTAJE DE CANCELADO
+                                var porcentaje13 = document.getElementById("porcentaje13");
+                                resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
+                                var resFinal1 = resultado1.toFixed(0);
+
+                                porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
+                                porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
+                                document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
+
+                            }
+                        }
+                        // TODO AQUI TERMINA
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#cursos").html(html);
+                })
+
+
+                $.ajax({
+                    url: '../php/conEstudios.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp)
+                    var res = obj.data;
+                    var x = 1;
+
+
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+                    for (H = 0; H < res.length; H++) {
+                        x++;
+
+                        if (obj.data[H].gstIDper == gstIdper) {
+
+                            datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
+
+                            html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                            document.getElementById('estudios').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+
+                        } else {
+
+                            //                      document.getElementById('estudios').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+
+                        }
+
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#studios").html(html);
+                })
+
+                $.ajax({
+                    url: '../php/conProfesion.php', //DETALLE PERFIL INSPECTOR
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+
+
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+                    for (P = 0; P < res.length; P++) {
+
+                        year = obj.data[P].gstFntra.substring(0, 4);
+                        month = obj.data[P].gstFntra.substring(5, 7);
+                        day = obj.data[P].gstFntra.substring(8, 10);
+                        gstFntra = day + '/' + month + '/' + year;
+
+                        year = obj.data[P].gstFslda.substring(0, 4);
+                        month = obj.data[P].gstFslda.substring(5, 7);
+                        day = obj.data[P].gstFslda.substring(8, 10);
+                        gstFslda = day + '/' + month + '/' + year;
+
+                        x++;
+                        datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
+
+                        if (obj.data[P].gstIDper == gstIdper) {
+
+                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default' title='Descargar archivo' href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a> <a type='button' title='Editar experiencia profesional' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a> <a type='button' title='Subir archivo' onclick='carPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modaldocprofesion'><i class='fa fa-cloud-upload'></i></a></td> </tr>";
+
+                            document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+
+                        } else {
+                            //                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                        }
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#profsions").html(html);
+                })
+
+                $.ajax({
+                    url: '../php/conEvalu.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 1;
+
+
+                    // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+                    html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CUMPLE</th><th style="width:1%;"><i></i>SI</th><th style="width:1%"><i></i>NO</th></tr></thead><tbody>';
+                    for (E = 0; E < res.length; E++) {
+                        x++;
+
+                        //if(obj.data[E].gstCatga == gstIDCat){
+
+                        //if(obj.data[E].gstOrden==1){    
+                        html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
+                        //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
+                        // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
+                        //}<td><input id='comntr' name='comntr[]'> </td>
+                        //}
+                    }
+                    html += '</tbody></table></div>';
+                    $("#evlacns").html(html);
+                })
+
+            }
+        }
+    })
+
+}
 ///////////DATOS PERSONAL FINAL DE CONSULTA/////////////
 
 function consultaCurso(gst) {
@@ -1886,8 +1841,7 @@ function consultaCurso(gst) {
         for (o = 0; o < res.length; o++) {
             x++;
 
-            if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'EN CURSO') 
-            {
+            if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'EN CURSO') {
                 /*+ obj.data[o].status +*/
                 html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>" + obj.data[o].gstDrcin + "</td><td><span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span></td> </tr>";
             } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].gstCsigl == 'TODOS' && obj.data[o].proceso == 'PENDIENTE') {
@@ -1908,7 +1862,7 @@ function consultaCurso(gst) {
 
 
 function evaluar() {
-//alert('pruebaevaluacion')
+    //alert('pruebaevaluacion')
     var gstInspr = new Array();
     $("input[name='gstInspr[]']:hidden").each(function() {
         gstInspr.push($(this).val());
@@ -2087,7 +2041,7 @@ function registrar() {
     var gstAreID = document.getElementById('gstAreID').value;
     var gstPstID = document.getElementById('gstPstID').value;
     var gstSpcID = document.getElementById('gstSpcID').value;
-   // var gstSigID = 0;
+    // var gstSigID = 0;
     var gstSigID = document.getElementById('gstSigID').value;
 
     var gstCargo = document.getElementById('gstCargo').value;
@@ -2178,12 +2132,12 @@ function actDatos() {
     var gstCasa = document.getElementById('gstCasa').value; // NUM. DE CASA
     var gstClulr = document.getElementById('gstClulr').value; // NUM. DE CELULAR
     var gstExTel = document.getElementById('gstExTel').value; // NUM. DE EXTENCION
-    
+
     var gstCorro = document.getElementById('gstCorro').value; //CORREO 1 
     var gstCinst = document.getElementById('gstCinst').value; // CORREO 2 
     var gstSpcID = document.getElementById('gstSpcID').value; // CORREO 3
 
-    datos = 'gstIdper=' + gstIdper + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstCorro=' + gstCorro +'&gstCinst=' + gstCinst +'&gstSpcID=' + gstSpcID +'&opcion=actualizar'
+    datos = 'gstIdper=' + gstIdper + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstSpcID=' + gstSpcID + '&opcion=actualizar'
 
     if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '') {
 
@@ -2242,7 +2196,7 @@ function actPuesto() {
     var gstNucrt = document.getElementById('gstNucrt').value;
     var gstSigID = document.getElementById('gstSigID').value; //estatus de persona
 
-//22092021
+    //22092021
 
     datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&opcion=actPrsnls';
     //alert(datos);
@@ -2342,7 +2296,7 @@ function openEdit() {
     document.getElementById('gstIDuni').disabled = false;
     document.getElementById('gstNucrt').disabled = false;
     document.getElementById('gstSigID').disabled = false; //ESTATUS DE PERSONAL
-    
+
     //.../Habilita los campos FIN
 
 
@@ -2455,7 +2409,7 @@ function asignar() {
     var AgstIDCat = document.getElementById('AgstIDCat').value;
     var AgstIDSub = document.getElementById('depart').value;
     var AgstIDuni = document.getElementById('gstIDuni').value;
-    var AgstAcReg = document.getElementById('subdireccion').value;//subdirección
+    var AgstAcReg = document.getElementById('subdireccion').value; //subdirección
     var AgstNucrt = document.getElementById('AgstNucrt').value;
     var gstNombr = document.getElementById('gstNombr').value;
     var gstNmpld = document.getElementById('gstANmpld').value;
@@ -2564,23 +2518,23 @@ function spcialidad(gstIdper) {
 
 }
 
-function especialidad(){
+function especialidad() {
 
     var gstIDpr = document.getElementById('gstIDpr').value;
     var gstIDSpe = document.getElementById('gstIDSpe').value;
 
-    if (gstIDpr == '' || gstIDSpe == '' ) {
+    if (gstIDpr == '' || gstIDSpe == '') {
 
         $('#emptyE').toggle('toggle');
         setTimeout(function() {
             $('#emptyE').toggle('toggle');
         }, 2000);
-            return;
+        return;
     } else {
         $.ajax({
             url: '../php/agrEvalu.php',
             type: 'POST',
-            data: 'gstIDpr='+gstIDpr+'&gstIDSpe='+gstIDSpe+'&opcion=especialidad'
+            data: 'gstIDpr=' + gstIDpr + '&gstIDSpe=' + gstIDSpe + '&opcion=especialidad'
         }).done(function(respuesta) {
 
             console.log(respuesta);
