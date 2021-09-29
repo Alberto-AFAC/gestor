@@ -11,6 +11,7 @@
           <form class="form-horizontal" id="Forstd">
 
             <input type="hidden" class="form-control" id="gstIDper" name="gstIDper">
+            
         
             <div class="form-group">
                   <div class="col-sm-6">
@@ -91,6 +92,7 @@
               <div class="modal-body">
           <form class="form-horizontal" id="Actuliza">
 
+            <input type="hidden" name="EIdper" id="EIdper">
             <input type="hidden" class="form-control" id="EgstIDper" name="EgstIDper">
         
               <div id="gstpdf"></div>
