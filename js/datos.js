@@ -1158,7 +1158,7 @@ function archiborrar(){
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            alert(respuesta);
+            //alert(respuesta);
             if (respuesta == 0) {
                 $('#succe8').toggle('toggle');
                 setTimeout(function() {
