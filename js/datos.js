@@ -155,6 +155,7 @@ function actStudio() {
     paqueteDeDatos.append('EgstCiudad', $('#EgstCiudad').prop('value'));
     paqueteDeDatos.append('EgstPriod', $('#EgstPriod').prop('value'));
     paqueteDeDatos.append('EIdper', $('#EIdper').prop('value'));
+    paqueteDeDatos.append('Nmplea', $('#Nmplea').prop('value'));
     //alert(paqueteDeDatos);
 
     $.ajax({
@@ -164,7 +165,7 @@ function actStudio() {
         contentType: false,
         processData: false,
         success: function(r) {
-            //alert(r);
+            alert(r);
             //console.log(r);
             if (r == 8) {
                 $('#vacio1').toggle('toggle');
@@ -503,7 +504,6 @@ function perfil(gstIdper) {
 
                             // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
 
-
                             $("#Evalua #gstIDCate").val(obj.data[i].gstIDCat);
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             // $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
@@ -564,6 +564,8 @@ function perfil(gstIdper) {
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
                             $("#Pusto #sigla").val(obj.data[i].gstSigla);
+                            $("#Pusto #subdir1").val(obj.data[i].descripsub); //adscripcion29092021
+
                             //$("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
                         }
                     }
@@ -628,6 +630,12 @@ function perfil(gstIdper) {
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+
+                            $("#Actuliza #Nmplea").val(obj.data[i].gstNmpld);
+                            $("#agregardoc #gstNemple").val(obj.data[i].gstNmpld);
+                            $("#actualizardoc #actNemple").val(obj.data[i].gstNmpld);
+
+
 
                         }
                     }
@@ -900,22 +908,18 @@ function perfil(gstIdper) {
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
                     var res = obj.data;
-                    var x = 1;
-
 
                     //AQUI03
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
-
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+                    var n = 0;
                     for (H = 0; H < res.length; H++) {
-
-                        x++;
 
                         if (obj.data[H].gstIDper == gstIdper) {
                             valor = obj.data[H].gstIDper;
-
+                            n++;
                             datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
 
-                            html += "<tr><td>" + H + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td> " + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td> </tr>";
+                            html += "<tr><td>" + n + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td>" + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a> <a href='#' onclick='borrararc(" + '"' + datos + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminardoc'><i class='fa fa-trash-o text-danger'></i></a></td> <td>" + obj.data[H].fechar + "</td></tr>";
                             //                            document.getElementById('estudios1').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
 
                         } else {
@@ -1000,6 +1004,7 @@ function perfil(gstIdper) {
     $("#gstIdperArc").val(gstIdper);
     $("#gstIdperAct").val(gstIdper);
     $("#gstIdperEli").val(gstIdper);
+    $("#arcIdperEli").val(gstIdper);
     consultarDoc(gstIdper);
 }
 
@@ -1048,6 +1053,14 @@ function borrar(b) {
     $("#doceliminar").val(b);
 }
 
+function borrararc(datos) {
+
+    var d = datos.split("*");
+    $("#arceliminar").val(d[6]);
+    $("#documen").val(d[5]);
+
+}
+
 function borrardoc() {
 
     var gstIdperEli = document.getElementById('gstIdperEli').value;
@@ -1082,6 +1095,42 @@ function borrardoc() {
 
 }
 
+function archiborrar() {
+
+    var arcIdperEli = document.getElementById('arcIdperEli').value;
+    var arceliminar = document.getElementById('arceliminar').value;
+    var documen = document.getElementById('documen').value;
+
+
+    datos = 'arcIdperEli=' + arcIdperEli + '&arceliminar=' + arceliminar + '&documen=' + documen + '&opcion=arcelimnar';
+
+
+    $.ajax({
+        url: '../php/docDocumento.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        //alert(respuesta);
+        if (respuesta == 0) {
+            $('#succe8').toggle('toggle');
+            setTimeout(function() {
+                $('#succe8').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 1) {
+            $('#danger8').toggle('toggle');
+            setTimeout(function() {
+                $('#danger8').toggle('toggle');
+            }, 2000);
+        } else {
+            $('#aviso8').toggle('toggle');
+            setTimeout(function() {
+                $('#aviso8').toggle('toggle');
+            }, 2000);
+        }
+    });
+
+
+}
 //////////////////ADJUNTAR ARCHIVOS////////////////////////
 
 function adjunuevo(v) {
@@ -1096,6 +1145,7 @@ function adjuntar() {
     paqueteDeDatos.append('DgsAgra', $('#DgsAgra')[0].files[0]);
     paqueteDeDatos.append('gstIdperArc', $('#gstIdperArc').prop('value'));
     paqueteDeDatos.append('docadjunto', $('#docadjunto').prop('value'));
+    paqueteDeDatos.append('gstNemple', $('#gstNemple').prop('value'));
     paqueteDeDatos.append('opcion', 'documento');
 
 
@@ -1164,15 +1214,11 @@ function adjactual(act) {
 function adjuactual() {
 
 
-    var gstIdperAct = document.getElementById('gstIdperAct').value;
-    var docactuali = document.getElementById('docactuali').value;
-
-
-
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('DgstActul', $('#DgstActul')[0].files[0]);
     paqueteDeDatos.append('gstIdperAct', $('#gstIdperAct').prop('value'));
     paqueteDeDatos.append('docactuali', $('#docactuali').prop('value'));
+    paqueteDeDatos.append('actNemple', $('#actNemple').prop('value'));
     paqueteDeDatos.append('opcion', 'actualizar');
 
 
@@ -1253,6 +1299,7 @@ function inspector(gstIdper) {
                 gstCatgr = d[3];
 
                 consultaCurso(gstIdper + '*' + gstIDCat);
+                $("#insparea").html(gstCatgr); //especialidad Card
 
                 if (gstEvalu == 'NO') {
                     $("#ocultar1").hide();
@@ -1282,6 +1329,7 @@ function inspector(gstIdper) {
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#cargopersonal").val(obj.data[i].gstCargo);
+
                             $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                             $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                             $("#Dtall #gstApell").val(obj.data[i].gstApell);
@@ -1295,6 +1343,8 @@ function inspector(gstIdper) {
                             $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
                             $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
                             $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
+
+
                             //$("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
                             $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
                             $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
@@ -1337,8 +1387,11 @@ function inspector(gstIdper) {
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #spcialidad").val(obj.data[i].gstSpoac); //ID especialidad  
                             $("#Pusto #sigla").val(obj.data[i].gstSigla);
-                            $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
+                            $("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
+                            $("#Pusto #adscripcion").val(obj.data[i].adscripcion); //adscripcion29092021
+                            $("#Pusto #subdir1").val(obj.data[i].descripsub); //adscripcion29092021
+                            $("#Pusto #departam").val(obj.data[i].descripdep);
                         }
                     }
                 })
@@ -2239,11 +2292,14 @@ function actPuesto() {
 
 function openEdit() {
 
+    //alert('inspector')
 
     $("#codigo").show();
     $("#nompusto").show();
     $("#especialidad").show();
+    $("#subdirec1").show();
     $("#ejecutiva").show();
+    $("#depart").show();
     $("#adscrip").show(); //adscripción 23092021 
     $("#comandancias").show();
     // alert("prueba2!"); 
@@ -2295,7 +2351,8 @@ function openEdit() {
     document.getElementById('gstAcReg').disabled = false;
     document.getElementById('gstIDuni').disabled = false;
     document.getElementById('gstNucrt').disabled = false;
-    document.getElementById('gstSigID').disabled = false; //ESTATUS DE PERSONAL
+    document.getElementById('gstSigID').disabled = false;
+    document.getElementById('AgstAcReg').disabled = false; //ESTATUS DE PERSONAL
 
     //.../Habilita los campos FIN
 
@@ -2311,7 +2368,8 @@ function cerrarEdit() {
     $("#ejecutiva").hide();
     $("#adscrip").hide(); //adscripción oculta 23092021
     $("#comandancias").hide();
-
+    $("#subdirec1").hide();
+    $("#depart").hide();
     // alert("CERRAR!"); 
     $("#buton").toggle();
     $("#butons").toggle();
@@ -2360,6 +2418,8 @@ function cerrarEdit() {
     document.getElementById('gstIDuni').disabled = true;
     document.getElementById('gstNucrt').disabled = true;
     document.getElementById('gstSigID').disabled = true; //ESTATUS DE PERSONAL
+    document.getElementById('subdir1').disabled = true; //ESTATUS DE PERSONAL
+
     //.../Habilita los campos FIN
 
 
@@ -2390,7 +2450,17 @@ function adscripcion() {
     $("#adscrip2").toggle('toggle');
 }
 
+function adscripcion2() {
+    $("#adscrip1").toggle('toggle');
+    $("#adscrip2").toggle('toggle');
+}
+
 function subdireccion() {
+    $("#subdirec2").toggle('toggle');
+    $("#subdirec3").toggle('toggle');
+}
+
+function subdireccion1() {
     $("#subdirec2").toggle('toggle');
     $("#subdirec3").toggle('toggle');
 }
@@ -2399,6 +2469,12 @@ function comandancias() {
     $("#comandancias1").toggle('toggle');
     $("#comandancias2").toggle('toggle');
 }
+
+function departamento1() {
+    $("#depart1").toggle('toggle');
+    $("#depart2").toggle('toggle');
+}
+
 
 
 
