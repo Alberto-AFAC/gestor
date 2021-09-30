@@ -340,7 +340,7 @@
       </div>
     </div>
 
-    <!-------------------------------------------------------------->
+    <!-----------------------------EXPERIENCIA PROFESIONAL--------------------------------->
 
       <div class="modal fade" id="modaldocprofesion">
           <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -353,18 +353,19 @@
               </div>
               <div class="modal-body" id="actForpro">
               <form class="form-horizontal">
+                <input type="hidden" class="form-control" id="DgstNemp" name="DgstNemp">
                  <input type="hidden" class="form-control" id="DgstIDper" name="DgstIDper">
                 <input type="hidden" class="form-control" id="DgstIdpro" name="DgstIdpro">
                   
               <div class="form-group">
                   <div class="col-sm-6">
                     <label>PUESTO</label>
-                      <input type="text" onkeyup="mayus(this);" class="form-control" id="DgstPusto" name="DgstPusto">
+                      <input type="text" onkeyup="mayus(this);" class="form-control" id="DgstPusto" name="DgstPusto" disabled="">
                   </div>
 
                   <div class="col-sm-6">
                        <label>EMPRESA</label>
-                       <input type="text" onkeyup="mayus(this);" class="form-control" id="DgstMpres" name="DgstMpres">
+                       <input type="text" onkeyup="mayus(this);" class="form-control" id="DgstMpres" name="DgstMpres" disabled="">
                   </div>
               </div>
 
@@ -377,7 +378,7 @@
 
               <div class="form-group">
                   <div class="col-sm-5">
-                    <button type="button" id="button" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="">ACTUALIZAR</button>
+                    <button type="button" id="button" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="docProfsn();">ACTUALIZAR</button>
                   </div>
                    <b><p class="alert alert-danger text-center padding error" id="falla3">Error al adjuntar archivo</p></b>
 
@@ -536,8 +537,8 @@
                       <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
                   </div>
                   <div class="modal-body">
-                    <input type="text" name="gstIdperEli" id="gstIdperEli">
-                    <input type="text" name="doceliminar" id="doceliminar">
+                    <input type="hidden" name="gstIdperEli" id="gstIdperEli">
+                    <input type="hidden" name="doceliminar" id="doceliminar">
                       <div class="form-group">
                           <div class="col-sm-12">
                            <label class="label2" id="titledoc" for=""></label>
@@ -565,7 +566,7 @@
           </div>
       </div>
 </form>
-<!---------------------------BORRAR ESTUDIOS Y PROFESOIN-------------------------------->
+<!---------------------------BORRAR DOC. ESTUDIOS-------------------------------->
 
 <form class="form-horizontal" action="" method="POST">
       <div class="modal fade" id="eliminardoc">
@@ -599,6 +600,49 @@
                           </b>
                           <b>
                               <p class="alert alert-danger text-center padding aviso" id="aviso8">Error
+                                  archivo para eliminar </p>
+                          </b>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</form>    
+
+<!-----------------------BORRAR DOC. PROFESION------------------------------>
+
+<form class="form-horizontal" action="" method="POST">
+      <div class="modal fade" id="eliminarpro">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
+                  </div>
+                  <div class="modal-body">
+                    <!-- <input type="text" name="arcIdperEli" id="arcIdperEli"> -->
+                    <input type="hidden" name="proliminar" id="proliminar">
+                    <!-- <input type="text" name="documen" id="documen"> -->
+                      <div class="form-group">
+                          <div class="col-sm-12">
+                           <label class="label2" id="titledoc" for=""></label>
+                              <p>¿ESTÁ SEGURO DE ELIMINAR EL ARCHIVO?<span id=""></span> </p>
+                          </div>
+                          <br>
+                          <div class="col-sm-5">
+                              <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="proborrar()">ACEPTAR</button>
+                          </div>
+                          <b>
+                              <p class="alert alert-warning text-center padding error" id="danger9">Error
+                                  al eliminar archivo</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-success text-center padding exito" id="succe9">¡Se
+                                  elimino archivo con éxito !</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-danger text-center padding aviso" id="aviso9">Error
                                   archivo para eliminar </p>
                           </b>
                       </div>

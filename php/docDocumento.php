@@ -119,17 +119,18 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 
 	 $docadjunto = consultadoc($gstIdperEli,$doceliminar,$conexion);
 
-		if(unlink($docadjunto)) {
+		if(file_exists($docadjunto)){	
 
-			if(borraregistro($gstIdperEli,$doceliminar,$conexion)){
-				echo "0";
+			if(unlink($docadjunto)) {
+
+				if(borraregistro($gstIdperEli,$doceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+
 			}else{
-				echo "1";
+				echo '2';
 			}
-		
 		}else{
-			echo '2';
-			}
+			if(borraregistro($gstIdperEli,$doceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}
 		
 	}else if($opcion === 'arcelimnar'){
 
@@ -141,27 +142,21 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 		
 	if (file_exists($docadjunto)) {	
 
-		unlink($docadjunto);	
-			eliminaRest($arceliminar,$conexion);
-			//eliminaPdoc($arceliminar,$conexion);
-	} else {
-			eliminaRest($arceliminar,$conexion);
-			//eliminaPdoc($arceliminar,$conexion);
-	}
+		if(unlink($docadjunto)){
 
-			if(eliminaRest($arceliminar,$conexion)){
-				echo "0";	
-			}else{
-				echo "1";
-			}
-		
-
-
+			if(eliminaRest($arceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}else{
+			echo '2';
+		}	
+			
+			} else {
+				if(eliminaRest($arceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}
 	}
 
 function consultadoc($gstIdperEli,$doceliminar,$conexion){
 
-$query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar AND estado = 0";
+$query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar";
   $result = mysqli_query($conexion,$query);
   $res = mysqli_fetch_row($result);
 
@@ -188,7 +183,7 @@ return 'no hay';
 
 function comprobar($gstIdperArc,$docadjunto,$conexion){
 
-	$query="SELECT * FROM personaldoc WHERE idperdoc = '$gstIdperArc' AND documento = '$docadjunto' AND estado = 0";
+	$query="SELECT * FROM personaldoc WHERE idperdoc = '$gstIdperArc' AND documento = '$docadjunto'";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 			return true;
@@ -224,7 +219,7 @@ function documentoact($gstIdperAct,$docactuali,$DgstActul,$factual,$conexion){
 
 function borraregistro($gstIdperEli,$doceliminar,$conexion){
 
-	$query="DELETE FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar AND estado = 0";
+	$query="DELETE FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

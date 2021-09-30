@@ -4,7 +4,7 @@
 	
 	$idper = $_POST['gstIdper'];
 
-	$query = "	SELECT * FROM listadoc";
+	$query = "	SELECT * FROM listadoc WHERE estado = 0";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

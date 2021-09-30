@@ -343,9 +343,10 @@ function docProfsn(){
 
     var paqueteDeDatos = new FormData();
         paqueteDeDatos.append('DgstDocep', $('#DgstDocep')[0].files[0]);
-            paqueteDeDatos.append('DgstIdpro', $('#DgstIdpro').prop('value'));
-                paqueteDeDatos.append('DgstIDper', $('#DgstIDper').prop('value'));
-                    paqueteDeDatos.append('opcion', 'documento');
+        paqueteDeDatos.append('DgstIdpro', $('#DgstIdpro').prop('value'));
+        paqueteDeDatos.append('DgstIDper', $('#DgstIDper').prop('value'));
+        paqueteDeDatos.append('DgstNemp', $('#DgstNemp').prop('value'));
+        paqueteDeDatos.append('opcion', 'documento');
 
    $.ajax({
         url: '../php/docProfesion.php',
@@ -438,6 +439,9 @@ function agrProfsn() {
                 setTimeout(function() {
                     $('#exito2').toggle('toggle');
                 }, 4000);
+
+                $('#vaciar').show('slow');
+                $('#agregar').hide();
 
             } else if (r == 1) {
                 $('#falla2').toggle('toggle');
@@ -680,12 +684,12 @@ function perfil(gstIdper) {
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
+
+                            ////////////////////APARTADO PARA ADJUNTAR ARCHIVOS///////////////////////////////
                             $("#Actuliza #Nmplea").val(obj.data[i].gstNmpld);
                             $("#agregardoc #gstNemple").val(obj.data[i].gstNmpld);
                             $("#actualizardoc #actNemple").val(obj.data[i].gstNmpld);
-
-
-
+                            $("#modaldocprofesion #DgstNemp").val(obj.data[i].gstNmpld);
                         }
                     }
                 })
@@ -984,7 +988,7 @@ function perfil(gstIdper) {
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
                     var res = obj.data;
-                    var x = 1;
+                    var x = 0;
 
 
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>PAÍS</th><th><i></i>CIUDAD</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
@@ -1000,17 +1004,14 @@ function perfil(gstIdper) {
                         day = obj.data[P].gstFslda.substring(8, 10);
                         gstFslda = day + '/' + month + '/' + year;
 
-                        x++;
+                        
                         datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
 
                         if (obj.data[P].gstIDper == gstIdper) {
-
-                            html += "<tr><td>" + P + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default'  href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a> <a type='button' title='Subir archivo' onclick='carPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modaldocprofesion'><i class='fa fa-cloud-upload'></i></a></td> </tr>";
-
-                            //document.getElementById('profesions').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                            x++;
+                            html += "<tr><td>" + x + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstPais + "</td><td> " + obj.data[P].gstCidua + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default'  href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a> <a type='button' onclick='actPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalprofesion'><i class='fa fa-edit text-info'></i></a> <a type='button' title='Subir archivo' onclick='carPrfsn(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modaldocprofesion'><i class='fa fa-cloud-upload'></i></a> <a href='#' onclick='borrarpro(" + '"' + obj.data[P].gstIdpro + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarpro'><i class='fa fa-trash-o text-danger'></i></a></td> </tr>";
 
                         } else {
-                            //                       document.getElementById('profesions').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                         }
                     }
                     html += '</tbody></table></div></div></div>';
@@ -1145,17 +1146,14 @@ function archiborrar(){
     // var arcIdperEli = document.getElementById('arcIdperEli').value;
     var arceliminar = document.getElementById('arceliminar').value;
     // var documen = document.getElementById('documen').value;
-
-
    datos = 'arceliminar='+arceliminar+'&opcion=arcelimnar';
-
 
          $.ajax({
             url: '../php/docDocumento.php',
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            alert(respuesta);
+            //alert(respuesta);
             if (respuesta == 0) {
                 $('#succe8').toggle('toggle');
                 setTimeout(function() {
@@ -1173,9 +1171,45 @@ function archiborrar(){
                 }, 2000);
             }
         });
-
-
 }
+
+function proborrar(){
+
+    // var arcIdperEli = document.getElementById('arcIdperEli').value;
+    var proliminar = document.getElementById('proliminar').value;
+    // var documen = document.getElementById('documen').value;
+   datos = 'proliminar='+proliminar+'&opcion=proelimnar';
+
+         $.ajax({
+            url: '../php/docProfesion.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            //alert(respuesta);
+            if (respuesta == 0) {
+                $('#succe9').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe9').toggle('toggle');
+                }, 2000);
+            } else if(respuesta == 1){
+                $('#danger9').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger9').toggle('toggle');
+                }, 2000);
+            }else{
+                $('#aviso9').toggle('toggle');
+                setTimeout(function() {
+                $('#aviso9').toggle('toggle');
+                }, 2000);
+            }
+        });
+}
+///////////////////BORRAR ARCHIVO, PROFESIONAL//////////////
+
+function borrarpro(pro){
+
+    $("#proliminar").val(pro);  
+} 
 //////////////////ADJUNTAR ARCHIVOS////////////////////////
 
 function adjunuevo(v){

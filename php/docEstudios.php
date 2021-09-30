@@ -35,11 +35,11 @@ $rutaTemporal=$_FILES['gstDocmt']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$n_empl.'/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$n_empl.'/Estudio/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$n_empl;
+ $ruta = '../documento/'.$n_empl.'/Estudio/';
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
