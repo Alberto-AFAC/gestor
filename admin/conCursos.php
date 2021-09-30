@@ -208,9 +208,12 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
+                      
+                      <input type="hidden" name="idcurtem" id="idcurtem">
                       <div class="modal-body">
+                        <span id="add_field" style="color: green;font-size: 20px;cursor: pointer;" class="fa fa-plus-square"></span>
                       <div id="listas">
-                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div><span id="add_field" style="color: blue;">Añadir</span>
+                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div>
                       </div>
                       </div>
                       <div class="modal-footer">
@@ -791,10 +794,8 @@ function agrtemario(tbody, table) {
 
 $(tbody).on("click", "a.temario", function() {
     var data = table.row($(this).parents("tr")).data();
-        alert(data[0]);
-    //var gstIdlsc = $().val(data.gstIdlsc);
-//    $("#modal-añadir #EgstIdlsc").val(data[0]);
-
+        //alert(data[0]);
+    $("#modal-añadir #idcurtem").val(data[0]);
 });
 }
 
@@ -812,8 +813,9 @@ function temario(gstIdlsc) {
         var x = 0;
 
         for (i = 0; i < res.length; i++) {
-            x++;
+ 
             if (obj.data[i].idcurso == gstIdlsc) {
+            x++;               
                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].titulo + "</td><td>AQUÍ VAN LOS BOTONES DE ACCIÓN</td></tr>";
             }
         }
@@ -832,7 +834,7 @@ var campos_max = 30;
                 if (x < campos_max) {
                         $('#listas').append('<div>\
                                 <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
-                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
+                                <a href="#" style="color: red; font-size:20px; cursor:pointer;" class="remover_campo"><span class="fa fa-minus-square"></span></a>\
                                 </div>');
                         x++;
                 }

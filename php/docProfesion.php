@@ -12,7 +12,12 @@ if($_POST['AgstIDper']=='' || $_POST['gstPusto']=='' || $_POST['gstMpres']=='' |
 	echo "8";
 }else{
 
-	$AgstIDper = $_POST['AgstIDper'];
+	$gst = $_POST['AgstIDper'];
+
+	$f = explode('.', $gst);
+	$AgstIDper = intval($f[0]);
+	$n_empl = intval($f[1]);
+
 	$gstPusto = $_POST['gstPusto'];
 
 if(comprobar($AgstIDper,$gstPusto,$conexion)){
@@ -39,11 +44,11 @@ $rutaTemporal=$_FILES['gstDocep']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$AgstIDper.'/profsion/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$n_empl.'/Profesion/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$AgstIDper.'/profsion/';
+ $ruta = '../documento/'.$n_empl.'/Profesion/';
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
@@ -70,12 +75,13 @@ if(profesion($AgstIDper,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFn
 	}else if($opcion==='documento'){
 
 
-if($_POST['DgstIdpro']=='' || $_POST['DgstIDper']==''){
+if($_POST['DgstIdpro']=='' || $_POST['DgstIDper']=='' || $_POST['DgstNemp']==''){
 	echo "8";
 }else{
 
 $DgstIdpro = $_POST['DgstIdpro'];
 $DgstIDper = $_POST['DgstIDper'];
+$DgstNemp = $_POST['DgstNemp'];
 
 //if(comprobar($AgstIDper,$gstPusto,$conexion)){
 
@@ -93,11 +99,11 @@ $rutaTemporal=$_FILES['DgstDocep']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$DgstIDper.'/profsion/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$DgstNemp.'/Profesion/'.$nombreImagen;
 
 //if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$DgstIDper.'/profsion/';
+ $ruta = '../documento/'.$DgstNemp.'/Profesion/';
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
@@ -121,8 +127,24 @@ if(docProfesion($DgstIdpro,$DgstDocep,$conexion))
 //}else{ echo "7";}
 
 }
+}else if($opcion==='proelimnar'){
 
+	$proliminar = $_POST['proliminar'];
 
+	 $docadjunto = consultarch($proliminar,$conexion);
+		
+	if (file_exists($docadjunto)) {	
+
+		if(unlink($docadjunto)){
+
+			if(eliminaPro($proliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}else{
+			echo '2';
+		}	
+			
+			} else {
+				if(eliminaPro($proliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}
 
 }
 
@@ -138,7 +160,21 @@ function comprobar($AgstIDper,$gstPusto,$conexion){
 		$this->conexion->cerrar();
 	}
 
+function consultarch($proliminar,$conexion){
 
+$query = "SELECT * FROM profesion WHERE gstIdpro = $proliminar ";
+  $result = mysqli_query($conexion,$query);
+  $res = mysqli_fetch_row($result);
+if($result->num_rows==0){
+
+return 'no hay';
+
+}else{
+ // $res = mysqli_fetch_row($result);
+
+  return $res[9];
+}
+}
 
 function profesion($AgstIDper,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFntra,$gstFslda,$gstDocep,$conexion){
 
@@ -163,4 +199,14 @@ function docProfesion($DgstIdpro,$DgstDocep,$conexion){
 		$this->conexion->cerrar();
 	}	
 
+function eliminaPro($proliminar,$conexion){
+	$query="DELETE FROM profesion WHERE gstIdpro = $proliminar";
+	if(mysqli_query($conexion,$query)){
+
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+	}
 ?>
