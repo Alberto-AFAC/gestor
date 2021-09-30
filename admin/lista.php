@@ -1,4 +1,6 @@
 <?php ob_start();
+ini_set('date.timezone','America/Mexico_City');
+$anio= date('Y');
 $nombre = $_POST['evalu_nombre'];
 $apellido = $_POST['apellido'];
 $comentario = $_POST['gstComnt'];
@@ -307,7 +309,7 @@ $espec1 = $_POST['siglas'];
         <span class="titulo">Cédula de Evaluación de Capacidades</span>
     </div><br>
     <div style="text-align: right;" class="container">
-        <span class="oficio">Folio/Oficio No.</span>
+        <span class="oficio">Folio/Oficio No. <?php echo $anio ?></span>
     </div><br>
     <div style="text-align: center;" class="container">
         <span class="oficio">La Agencia Federal de Aviación Civil, identifica y evalúa a:</span><br><br><br>

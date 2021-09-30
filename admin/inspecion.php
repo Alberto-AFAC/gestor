@@ -200,9 +200,6 @@
                 <h4 class="modal-title">RESULTADO</h4>
               </div>
               <div class="modal-body">
-              <div style="text-align: right">
-              <img style="cursor: pointer;" onclick=pdf(); src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png" class="img-fluid swing" width="46px" alt="Crear-PDF">
-              </div>
               <form id="Result" action="lista.php" method="POST">
               <input type="hidden" class="form-control" id="pdfIdper" name="pdfIdper">
               <input type="hidden" class="form-control" id="evalu_nombre" name="evalu_nombre">
@@ -211,7 +208,7 @@
               <input type="hidden" class="form-control" id="especialidad" name="especialidad">
               <input type="hidden" class="form-control" id="siglas" name="siglas">
 
-              <input type="submit" value="IMPRIMIR APÉNDICE E">
+              <input type="submit" style="float: right;" class="btn btn-info" value="CONSULTAR APÉNDICE E"><br><br>
 
               <div class="row">  
               <div class="form-group">
@@ -235,7 +232,7 @@
                  <div class="form-group">
                     <div class="col-sm-12">
                     <label>COMENTARIOS</label>
-                    <textarea name="gstComnt" id="gstComnt" onkeyup="mayus(this);" class="form-control" rows="2" cols="50"></textarea>
+                    <textarea name="gstComnt" id="gstComnt" onkeyup="mayus(this);" class="form-control" rows="2" cols="50" readonly></textarea>
                     </div>
                   </div>
 
