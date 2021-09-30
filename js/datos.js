@@ -59,14 +59,16 @@ function closeDtlls() {
 
 }
 
-function pdf() {
+// function pdf() {
 
 
-    var pdfIdper = document.getElementById('pdfIdper').value;
-    alert(pdfIdper);
+//     var pdfIdper = document.getElementById('pdfIdper').value;
+//     alert(pdfIdper);
 
 
-}
+//     setTimeout("location.href = 'lista.php?data=pdfIdper'");
+
+// }
 //muestra ventana estudios
 function estudio(gstIdper) {
 
@@ -2032,16 +2034,24 @@ function resultado(result) {
         var x = 0;
 
         for (r = 0; r < res.length; r++) {
+
             if (obj.data[r].gstIdper == id) {
 
 
-                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt;
+                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt + '*' + obj.data[r].gstApell + '*' + obj.data[r].gstCsigl;
                 var d = result.split("*");
 
                 $("#Result #pdfIdper").val(d[0]);
                 $("#Result #evalu_nombre").val(d[1]);
                 $("#Result #IDCat").val(d[2]);
+                $("#Result #especialidad").val(d[3]);
                 $("#Result #gstComnt").val(d[4]);
+                $("#Result #apellido").val(d[5]);
+                $("#Result #siglas").val(d[6]);
+
+
+
+
             }
         }
     })

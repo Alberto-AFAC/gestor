@@ -1,4 +1,11 @@
 <?php ob_start();
+$nombre = $_POST['evalu_nombre'];
+$apellido = $_POST['apellido'];
+$comentario = $_POST['gstComnt'];
+$espec = $_POST['especialidad'];
+$espec1 = $_POST['siglas'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -213,11 +220,11 @@
     }
 
     .middle {
-        width: 40%;
+        width: 34%;
     }
 
     .right {
-        width: 10%;
+        width: 30%;
     }
 
     /* Set additional styling options for the columns */
@@ -307,19 +314,22 @@
     </div>
     <div class="row">
         <div class="column left">
+           
             <span class="persona">Apellido Paterno</span><br><br>
         </div>
         <div class="column middle">
+        <span style="center;" class="persona"><?php echo $apellido ?></span><br>
             <span class="persona">Apellido Materno</span><br><br>
         </div>
         <div class="column right">
-            <span class="persona">Nombre(s)</span><br><br>
+        <span style="center;" class="persona"><?php echo $nombre ?></span><br>
+            <span  style="center;" class="persona">Nombre(s)</span><br><br>
         </div>
     </div><br>
-    <div style="line-height: 28%;" class="row">
+    <div style="line-height: 40%;" class="row">
         <div class="column2 left2">
-            <p class="persona2">Especialidad:</p>
-            <p class="persona2">Escolaridad:</p>
+            <p class="persona2">Especialidad: <?php echo $espec1 ?></p>
+            <p class="persona2">Escolaridad: </p>
             <p class="persona2">Licencia No.</p>
             <p class="persona2">Horas de vuelo:</p><br>
         </div>
@@ -343,10 +353,10 @@
     </div><br><br>
     <div class="row">
         <div class="column-tabla left-tabla">
-            <p class="persona2">Especialidad:</p>
-            <p class="persona2">Escolaridad:</p>
-            <p class="persona2">Licencia No.</p>
-            <p class="persona2">Horas de vuelo:</p><br>
+            <p class="persona2">1. EXPERIENCIA DE 5 AÑOS EN TRASPORTE AÉREO</p>
+            <p class="persona2">2. EXPERIENCIA CON LA GESTIÓN U OPERACIÓN DE AÉRONAVES COMERCIALES</p>
+            <p class="persona2">3. CONOCIMIENTOS Y EXPERIENCIA EN METEOROLOGÍA</p>
+            <p class="persona2">4. CUALIDADES DE INICITAIVA, TACTO, TOLERANCIA Y PACÍENCIA</p><br>
         </div>
         <div class="column-tabla right-tabla">
             <table>
@@ -363,7 +373,8 @@
     </div>
     <div style="line-height: 28%;">
         <p style="color:red; " class="persona2">Nota: En caso de no cumplir, anexar la documentación probatoria dentro del expediente del inspector</p>
-        <p class="persona2"><span style="font-weight: bold;">Observaciones:</span> En caso de ser necesario, indicar los cursos de capacitación requeridos para cumplir con el perfil.</p>
+        <p class="persona2"><span style="font-weight: bold;">Observaciones:</span> En caso de ser necesario, indicar los cursos de capacitación requeridos para cumplir con el perfil.</p><br>
+        <p class="persona2"><?php echo $comentario ?></span>
 </div>
 <div class="row">
         <div class="column-firma left-firma">
