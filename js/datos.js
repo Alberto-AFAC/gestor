@@ -194,8 +194,6 @@ function agrStudio() {
             }
         }
     });
-
-
 }
 
 function actStudio() {
@@ -209,7 +207,6 @@ function actStudio() {
     paqueteDeDatos.append('EIdper', $('#EIdper').prop('value'));
     paqueteDeDatos.append('Nmplea', $('#Nmplea').prop('value'));    
     //alert(paqueteDeDatos);
-
     $.ajax({
         url: '../php/actEstudios.php',
         data: paqueteDeDatos,
@@ -1052,7 +1049,7 @@ function perfil(gstIdper) {
               $("#gstIdperArc").val(gstIdper);
               $("#gstIdperAct").val(gstIdper); 
               $("#gstIdperEli").val(gstIdper);
-              $("#arcIdperEli").val(gstIdper); 
+              // $("#arcIdperEli").val(gstIdper); 
     consultarDoc(gstIdper);
 }
 
@@ -1105,7 +1102,7 @@ function borrararc(datos){
 
     var d = datos.split("*");
 $("#arceliminar").val(d[6]);   
-$("#documen").val(d[5]);   
+// $("#documen").val(d[5]);   
 
 }
 
@@ -1145,12 +1142,12 @@ var doceliminar = document.getElementById('doceliminar').value;
 
 function archiborrar(){
 
-    var arcIdperEli = document.getElementById('arcIdperEli').value;
+    // var arcIdperEli = document.getElementById('arcIdperEli').value;
     var arceliminar = document.getElementById('arceliminar').value;
-    var documen = document.getElementById('documen').value;
+    // var documen = document.getElementById('documen').value;
 
 
-   datos = 'arcIdperEli='+arcIdperEli+'&arceliminar='+arceliminar+'&documen='+documen+'&opcion=arcelimnar';
+   datos = 'arceliminar='+arceliminar+'&opcion=arcelimnar';
 
 
          $.ajax({
@@ -1158,7 +1155,7 @@ function archiborrar(){
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            //alert(respuesta);
+            alert(respuesta);
             if (respuesta == 0) {
                 $('#succe8').toggle('toggle');
                 setTimeout(function() {

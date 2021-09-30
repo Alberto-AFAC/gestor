@@ -536,8 +536,8 @@
                       <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
                   </div>
                   <div class="modal-body">
-                    <input type="hidden" name="gstIdperEli" id="gstIdperEli">
-                    <input type="hidden" name="doceliminar" id="doceliminar">
+                    <input type="text" name="gstIdperEli" id="gstIdperEli">
+                    <input type="text" name="doceliminar" id="doceliminar">
                       <div class="form-group">
                           <div class="col-sm-12">
                            <label class="label2" id="titledoc" for=""></label>
@@ -577,9 +577,9 @@
                       <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
                   </div>
                   <div class="modal-body">
-                    <input type="hidden" name="arcIdperEli" id="arcIdperEli">
+                    <!-- <input type="text" name="arcIdperEli" id="arcIdperEli"> -->
                     <input type="hidden" name="arceliminar" id="arceliminar">
-                    <input type="hidden" name="documen" id="documen">
+                    <!-- <input type="text" name="documen" id="documen"> -->
                       <div class="form-group">
                           <div class="col-sm-12">
                            <label class="label2" id="titledoc" for=""></label>
