@@ -119,64 +119,59 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 
 	 $docadjunto = consultadoc($gstIdperEli,$doceliminar,$conexion);
 
-		if(unlink($docadjunto)) {
+		if(file_exists($docadjunto)){	
 
-			if(borraregistro($gstIdperEli,$doceliminar,$conexion)){
-				echo "0";
+			if(unlink($docadjunto)) {
+
+				if(borraregistro($gstIdperEli,$doceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+
 			}else{
-				echo "1";
+				echo '2';
 			}
-		
 		}else{
-			echo '2';
-			}
+			if(borraregistro($gstIdperEli,$doceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}
 		
 	}else if($opcion === 'arcelimnar'){
 
 
-	$arcIdperEli  = $_POST['arcIdperEli'];
-	$arceliminar = $_POST['arceliminar'];
-	$documen = $_POST['documen'];
 
-	 $docadjunto = consultarch($arcIdperEli,$documen,$conexion);
+	$arceliminar = $_POST['arceliminar'];
+
+	 $docadjunto = consultarch($arceliminar,$conexion);
 		
 	if (file_exists($docadjunto)) {	
 
-		unlink($docadjunto);	
-			eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion);
-			eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion);
-	} else {
-			eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion);
-			eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion);
-	}
+		if(unlink($docadjunto)){
 
-			if(borrararchivo($arcIdperEli,$documen,$arceliminar,$conexion)){
-				echo "0";	
-			}else{
-				echo "1";
-			}
-		
-
-
+			if(eliminaRest($arceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}else{
+			echo '2';
+		}	
+			
+			} else {
+				if(eliminaRest($arceliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+		}
 	}
 
 function consultadoc($gstIdperEli,$doceliminar,$conexion){
 
-$query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar AND estado = 0";
+$query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar";
   $result = mysqli_query($conexion,$query);
   $res = mysqli_fetch_row($result);
 
   return $res[3];
 }
 
-function consultarch($arcIdperEli,$documen,$conexion){
 
-$query = "SELECT * FROM personaldoc WHERE idperdoc = $arcIdperEli AND documento = 7 AND docajunto = '$documen' AND estado = 0";
+function consultarch($arceliminar,$conexion){
+
+$query = "SELECT * FROM personaldoc WHERE documento = 7 AND idstd = $arceliminar ";
   $result = mysqli_query($conexion,$query);
   $res = mysqli_fetch_row($result);
 if($result->num_rows==0){
 
-//return 'no hay';
+return 'no hay';
 
 }else{
  // $res = mysqli_fetch_row($result);
@@ -188,7 +183,7 @@ if($result->num_rows==0){
 
 function comprobar($gstIdperArc,$docadjunto,$conexion){
 
-	$query="SELECT * FROM personaldoc WHERE idperdoc = '$gstIdperArc' AND documento = '$docadjunto' AND estado = 0";
+	$query="SELECT * FROM personaldoc WHERE idperdoc = '$gstIdperArc' AND documento = '$docadjunto'";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 			return true;
@@ -224,7 +219,7 @@ function documentoact($gstIdperAct,$docactuali,$DgstActul,$factual,$conexion){
 
 function borraregistro($gstIdperEli,$doceliminar,$conexion){
 
-	$query="DELETE FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar AND estado = 0";
+	$query="DELETE FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
@@ -233,13 +228,27 @@ function borraregistro($gstIdperEli,$doceliminar,$conexion){
 		$this->conexion->cerrar();
 	}
 
-function borrararchivo($arcIdperEli,$documen,$arceliminar,$conexion){
+// function borrararchivo($arceliminar,$conexion){
 
-$query="DELETE personaldoc,estudios FROM estudios JOIN personaldoc ON personaldoc.idperdoc = estudios.gstIDper AND gstDocmt = docajunto WHERE gstIdstd=$arceliminar";
+// $query="DELETE personaldoc,estudios FROM estudios JOIN personaldoc ON personaldoc.idperdoc = estudios.gstIDper AND gstDocmt = docajunto WHERE gstIdstd=$arceliminar";
 
+// 	if(mysqli_query($conexion,$query)){
+// 	// $query="DELETE FROM estudios WHERE gstIDper = $arcIdperEli AND gstIdstd = $arceliminar AND estado = 0";
+// 	// mysqli_query($conexion,$query);
+// 			return true;
+// 		}else{
+// 			return false;
+// 		}
+// 		$this->conexion->cerrar();
+// 	}
+
+function eliminaRest($arceliminar,$conexion){
+	$query="DELETE FROM estudios WHERE gstIdstd = $arceliminar AND estado = 0";
 	if(mysqli_query($conexion,$query)){
-	// $query="DELETE FROM estudios WHERE gstIDper = $arcIdperEli AND gstIdstd = $arceliminar AND estado = 0";
-	// mysqli_query($conexion,$query);
+
+		$queri="DELETE FROM personaldoc WHERE idstd = $arceliminar";
+		mysqli_query($conexion,$queri);
+
 			return true;
 		}else{
 			return false;
@@ -247,26 +256,16 @@ $query="DELETE personaldoc,estudios FROM estudios JOIN personaldoc ON personaldo
 		$this->conexion->cerrar();
 	}
 
-function eliminaRest($arcIdperEli,$documen,$arceliminar,$conexion){
-	$query="DELETE FROM estudios WHERE gstIDper = $arcIdperEli AND gstIdstd = $arceliminar AND estado = 0";
-	if(mysqli_query($conexion,$query)){
-			return true;
-		}else{
-			return false;
-		}
-		$this->conexion->cerrar();
-	}
+// function eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion){
 
-function eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion){
-
-	$query="DELETE FROM personaldoc WHERE idperdoc = $arcIdperEli AND documento = 7 AND docajunto = '$documen'AND estado = 0";
-	if(mysqli_query($conexion,$query)){
-			return true;
-		}else{
-			return false;
-		}
-		$this->conexion->cerrar();
-	}
+// 	$query="DELETE FROM personaldoc WHERE idstd = $arceliminar";
+// 	if(mysqli_query($conexion,$query)){
+// 			return true;
+// 		}else{
+// 			return false;
+// 		}
+// 		$this->conexion->cerrar();
+// 	}
 	
  
 
