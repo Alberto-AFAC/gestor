@@ -1,5 +1,7 @@
 <?php ob_start();
+include ("../conexion/conexion.php");
 ini_set('date.timezone','America/Mexico_City');
+$id = $_POST['pdfIdper'];
 $anio= date('Y');
 $nombre = $_POST['evalu_nombre'];
 $apellido = $_POST['apellido'];
@@ -28,13 +30,14 @@ $espec1 = $_POST['siglas'];
     table,
     td,
     th {
-        border: 1px  gray;
+        border: 1px gray;
     }
-    table{
+
+    table {
         border-collapse: collapse;
     }
 
-  
+
 
     .titulo {
         font-size: 25px;
@@ -316,16 +319,16 @@ $espec1 = $_POST['siglas'];
     </div>
     <div class="row">
         <div class="column left">
-           
+
             <span class="persona">Apellido Paterno</span><br><br>
         </div>
         <div class="column middle">
-        <span style="center;" class="persona"><?php echo $apellido ?></span><br>
+            <span style="center;" class="persona"><?php echo $apellido ?></span><br>
             <span class="persona">Apellido Materno</span><br><br>
         </div>
         <div class="column right">
-        <span style="center;" class="persona"><?php echo $nombre ?></span><br>
-            <span  style="center;" class="persona">Nombre(s)</span><br><br>
+            <span style="center;" class="persona"><?php echo $nombre ?></span><br>
+            <span style="center;" class="persona">Nombre(s)</span><br><br>
         </div>
     </div><br>
     <div style="line-height: 40%;" class="row">
@@ -361,33 +364,52 @@ $espec1 = $_POST['siglas'];
             <p class="persona2">4. CUALIDADES DE INICITAIVA, TACTO, TOLERANCIA Y PACÍENCIA</p><br>
         </div>
         <div class="column-tabla right-tabla">
-            <table>
-                <tr class="persona2">
-                    <th>Cumple</th>
-                    <th>No Cumple</th>
-                </tr>
-                <tr>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr class="persona2">
+                        <td cols="2" class="persona2">Cumple</td>
+                        <td class="persona2">No Cumple</td>
+                    </tr>
+                    <!-- <tr>
                     <td>SI</td>
                     <td>NO</td>
-                </tr>
+                 
+                </tr> -->
+                </thead>
+                <tbody>
+                    <?php 
+
+$query="SELECT * FROM evaluacion WHERE gstIDins= $id AND estado = 0 ";
+$resultado= mysqli_query($conexion,$query);
+while($data = mysqli_fetch_assoc($resultado)){
+?>
+<tr>
+    <td class="persona2"><?php echo $data['gstCmpli'];?></td>
+</tr>
+<?php } ?>
+</tbody>
             </table>
         </div>
     </div>
     <div style="line-height: 28%;">
-        <p style="color:red; " class="persona2">Nota: En caso de no cumplir, anexar la documentación probatoria dentro del expediente del inspector</p>
-        <p class="persona2"><span style="font-weight: bold;">Observaciones:</span> En caso de ser necesario, indicar los cursos de capacitación requeridos para cumplir con el perfil.</p><br>
+        <p style="color:red; " class="persona2">Nota: En caso de no cumplir, anexar la documentación probatoria dentro
+            del expediente del inspector</p>
+        <p class="persona2"><span style="font-weight: bold;">Observaciones:</span> En caso de ser necesario, indicar los
+            cursos de capacitación requeridos para cumplir con el perfil.</p><br>
         <p class="persona2"><?php echo $comentario ?></span>
-</div>
-<div class="row">
+    </div>
+    <div class="row">
         <div class="column-firma left-firma">
-            <p style="text-align: center;" class="persona2">Firma del Director General de AFAC., Por consideraciones especiales (con fecha).</p>
+            <p style="text-align: center;" class="persona2">Firma del Director General de AFAC., Por consideraciones
+                especiales (con fecha).</p>
         </div>
         <div class="column-firma middle-firma">
-        <!-- <p style="text-align: center;" class="persona2">Validación de Evaluación por el director del área (con fecha)</p> -->
+            <!-- <p style="text-align: center;" class="persona2">Validación de Evaluación por el director del área (con fecha)</p> -->
 
         </div>
         <div class="column-firma right-firma">
-        <p style="text-align: center;" class="persona2">Validación de Evaluación por el director del área (con fecha)</p>
+            <p style="text-align: center;" class="persona2">Validación de Evaluación por el director del área (con
+                fecha)</p>
         </div>
     </div>
     <?php
