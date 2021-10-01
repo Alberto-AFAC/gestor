@@ -15,13 +15,6 @@ $categs = mysqli_query($conexion,$sql);
 $sql = "SELECT  gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
 $ejec = mysqli_query($conexion,$sql);
 
- 
-// $sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0";
-// $cat = mysqli_query($conexion,$sql);
-
-// $sql = "SELECT  gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
-// $sub1 = mysqli_query($conexion,$sql);
-
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $are = mysqli_query($conexion,$sql);
 
@@ -34,6 +27,8 @@ $psto = mysqli_query($conexion,$sql);
 $sql = "SELECT id_sub,descripsub,id_2_sub FROM subdireccion WHERE estado = 0";
 $subdirec = mysqli_query($conexion,$sql);
 
+$sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+$direc = mysqli_query($conexion,$sql);
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
@@ -441,7 +436,7 @@ $subdirec = mysqli_query($conexion,$sql);
                     </form>
                 </div>
             </div>
-            <!--------------------DATOS DEL PUESTO------------------------------->
+<!--------------------DATOS DEL PUESTO------------------------------->
 
             <div class="tab-pane" id="puesto">
 
@@ -498,9 +493,7 @@ $subdirec = mysqli_query($conexion,$sql);
 
                     <p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();"> EDITAR NOMBRE DEL
                             PUESTO <i class="fa fa-edit"></i></a>
-                        <!-- <b style="margin-left: 19em;"></b> -->
-                        <!-- <a onclick="especialidads();">EDITAR ESPECIALIDAD OACI PERSONAL TÉCNICO <i
-                                class="fa fa-edit"></i></a> -->
+
                     </p>
 
                     <div class="form-group">
@@ -535,13 +528,6 @@ $subdirec = mysqli_query($conexion,$sql);
                         </div>
                     </div>
 
-
-
-                    <!-- <div class="form-group">
-
-<div id="oaci"></div>
-<div id="siglas"></div>                                
-</div> -->
                     <div class="form-group">
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -595,15 +581,7 @@ $subdirec = mysqli_query($conexion,$sql);
                         </div>
 
                     </div>
-                    <!-- <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <label>SUBDIRECCIÓN</label>
-                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion"
-                                id="gstsundireccion" type="text" data-live-search="true" disabled="">
-                                <option value="">SELECCIONE LA SUBDIRECCIÓN</option>
-                            </select>
-                        </div>
-                    </div> -->
+     
                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion();">EDITAR
@@ -735,6 +713,7 @@ $subdirec = mysqli_query($conexion,$sql);
                     </div>
                 </form>
             </div>
+<!----------------------------------------------------------------------------->            
             <div class="tab-pane" id="estudios">
                 <form class="form-horizontal">
                     <div class="form-group">

@@ -52,8 +52,8 @@ $paises = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdeje,gstAreje FROM ejecutiva WHERE estado = 0";
 $ejecut = mysqli_query($conexion,$sql);
 
-$sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
-$direc = mysqli_query($conexion,$sql);
+// $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+// $direc = mysqli_query($conexion,$sql);
 
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
