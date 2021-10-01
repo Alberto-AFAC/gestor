@@ -600,8 +600,9 @@
                             style='font-weight: bold;'>TEMARIO</span><br>
                         
                 </div>
-                <div class='modal-body'>
-                    <div id="temario"></div>
+                <div class='modal-body'><div id="elimino" style="display: none;">SU REGISTRO FUE ELIMINADO</div>
+
+<div id="temario"></div>
                 </div>
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-primary' data-dismiss='modal'>CERRAR</button>
@@ -809,21 +810,89 @@ function temario(gstIdlsc) {
 
         obj = JSON.parse(resp);
         var res = obj.data;
+
+
+
         html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+
+
         var x = 0;
 
         for (i = 0; i < res.length; i++) {
  
             if (obj.data[i].idcurso == gstIdlsc) {
+
+                //alert(obj.data[i].idcurso);
+                dato = obj.data[i].idtem+'*'+obj.data[i].idcurso;
+
             x++;               
-                html += "<tr><td>" + x + "</td><td>" + obj.data[i].titulo + "</td><td>AQUÍ VAN LOS BOTONES DE ACCIÓN</td></tr>";
+ html += "<tr><td>" + x + "</td><td>" + obj.data[i].titulo + "</td><td><a type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact('+obj.data[i].idtem +');' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a><a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
             }
         }
         html += '</table>';
+
+
         $("#temario").html(html);
     })
 
 }
+
+
+// $(document).ready(function() {
+//     var table = $('#example').DataTable();
+ 
+//     $('#example tbody').on( 'click', 'tr', function () {
+//         if ( $(this).hasClass('selected') ) {
+//             $(this).removeClass('selected');
+//         }
+//         else {
+//             table.$('tr.selected').removeClass('selected');
+//             $(this).addClass('selected');
+//         }
+//     } );
+ 
+//     $('#button').click( function () {
+//         table.row('.selected').remove().draw( false );
+//     } );
+// } );
+
+///BORRAR REGISTRO////
+
+function temborrar(dato){
+    
+    var d = dato.split("*");
+
+    idcurso = d[0];
+    cursoid = d[1];
+
+$.ajax({
+    data: 'idcurso='+idcurso+'&cursoid='+cursoid+'&opcion=eliminartem',
+    url:'../php/docCursos.php',
+    type: 'post',
+    beforeSend: function () {
+        //
+    },
+    success: function (response) {   
+        if(response!=1){      
+
+            $('#elimino').toggle('toggle');
+            setTimeout(function() {
+            $('#elimino').toggle('toggle');
+            }, 2000);
+
+        temario(gstIdlsc);            
+        }else{
+            $('#elimino').toggle('toggle');
+            setTimeout(function() {
+            $('#elimino').toggle('toggle');
+            }, 2000);            
+        $('#temario').hide();
+        }
+    }
+});
+
+}
+
 // FUNCION PARA AÑADIR
 
 // AÑADIR TEMARIO N NUMERO DE REGISTROS
@@ -842,7 +911,7 @@ var campos_max = 30;
         $('#listas').on("click",".remover_campo",function(e) {
                 e.preventDefault();
                 $(this).parent('div').remove();
-                x--;
+                x;
         });
 </script>
 <style>

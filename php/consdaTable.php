@@ -24,12 +24,6 @@ if($data["gstVignc"] == 101){
 	$vigencia = $data["gstVignc"].' AÑOS';
 }
 
-
-
-
-
-
-
 			$idtem = $data['gstIdlsc'];
 	
 			$queri = "

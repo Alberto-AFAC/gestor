@@ -1227,7 +1227,6 @@ function adjuntar(){
     paqueteDeDatos.append('gstNemple', $('#gstNemple').prop('value'));   
     paqueteDeDatos.append('opcion', 'documento');
 
-
    $.ajax({
         url: '../php/docDocumento.php',
         data: paqueteDeDatos,
