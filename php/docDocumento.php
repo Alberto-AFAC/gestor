@@ -228,20 +228,6 @@ function borraregistro($gstIdperEli,$doceliminar,$conexion){
 		$this->conexion->cerrar();
 	}
 
-// function borrararchivo($arceliminar,$conexion){
-
-// $query="DELETE personaldoc,estudios FROM estudios JOIN personaldoc ON personaldoc.idperdoc = estudios.gstIDper AND gstDocmt = docajunto WHERE gstIdstd=$arceliminar";
-
-// 	if(mysqli_query($conexion,$query)){
-// 	// $query="DELETE FROM estudios WHERE gstIDper = $arcIdperEli AND gstIdstd = $arceliminar AND estado = 0";
-// 	// mysqli_query($conexion,$query);
-// 			return true;
-// 		}else{
-// 			return false;
-// 		}
-// 		$this->conexion->cerrar();
-// 	}
-
 function eliminaRest($arceliminar,$conexion){
 	$query="DELETE FROM estudios WHERE gstIdstd = $arceliminar AND estado = 0";
 	if(mysqli_query($conexion,$query)){
