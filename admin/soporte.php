@@ -130,13 +130,14 @@ include('header.php');
                                     </li>
                                 </ul>
 
-                                <div class="tab-content clearfix">
+                                <div  style="padding-top: 40px;"  class="tab-content clearfix">
                                     <div class="tab-pane active" id="1b">
-                                        <h3>Same as example 1 but we have now styled the tab's corner</h3>
+                                    <table id="data-table-modificacion" class="table table-bordered" width="100%"
+                                cellspacing="0">
+                            </table>
                                     </div>
                                     <div class="tab-pane" id="2b">
-                                        <h3>We use the class nav-pills instead of nav-tabs which automatically creates a
-                                            background color for the tab</h3>
+                                        <h3>UNDER CONSTRUCTION !</h3>
                                     </div>
                                     <div class="tab-pane" id="3b">
                                         <h3>We applied clearfix to the tab-content to rid of the gap between the tab and
@@ -506,174 +507,30 @@ $(document).ready(function() {
 </script>
 <script src="../js/select2.js"></script>
 <script>
-var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
-    type: 'bar',
-    data: {
-        labels: ["PREGUNTA 1", "PREGUNTA 2", "PREGUNTA 3", "PREGUNTA 4", "PREGUNTA 5", "PREGUNTA 6",
-            "PREGUNTA 7", "PREGUNTA 8", "PREGUNTA 9", "PREGUNTA 10", "PREGUNTA 11", "PREGUNTA 12"
-        ],
-        datasets: [{
-            label: "PONDERACIÓN",
-            backgroundColor: ["#154360", "#1A5276", "#1F618D", "#2471A3", "#2980B9", "#5499C7",
-                "#7FB3D5", "#A9CCE3", "#1ABC9C", "#48C9B0", "#76D7C4", "#A3E4D7"
-            ],
-            borderWidth: 0,
-            data: ["<?php echo $pregunta1?>", "<?php echo $pregunta2?>", "<?php echo $pregunta3?>",
-                "<?php echo $pregunta4?>", "<?php echo $pregunta5?>", "<?php echo $pregunta6?>",
-                "<?php echo $pregunta7?>", "<?php echo $pregunta8?>", "<?php echo $pregunta9?>",
-                "<?php echo $pregunta10?>", "<?php echo $pregunta11?>", "<?php echo $pregunta12?>"
-            ]
-        }]
-    },
-    options: {
-        indexAxis: 'y',
-        responsive: true,
-        elements: {
-            bar: {
-                borderWidth: 4,
-            }
-        },
-        plugins: {
-            legend: {
-                position: 'right',
-            },
-            title: {
-                display: true,
-                text: 'Evaluación de satisfacción'
-            }
-        },
-        // scales: {
-        //     x: { // defining min and max so hiding the dataset does not change scale range
-        //         min: 0,
-        //         max: 10
-        //     }
-        // }
-    }
-});
-
-//JQUERY CONFIRM CALLBACK
-$('#button').confirm({
-    boxWidth: '50%',
-    useBootstrap: false,
-    animation: 'zoom',
-    closeAnimation: 'scale',
-    animationSpeed: 2000,
-    title: 'CONTENIDO DE EVALUACIÓN',
-    content: '<table class="table table-bordered table-condensed table-striped"><tr><th>CONTENIDO</th><th>DESCRIPCIÓN</th></tr><tr><td>PREGUNTA 1</td><td>¿SE ESPECIFICÓ LOS OBJETIVOS AL INICIO DEL CURSO, EN FORMA CLARA Y COMPRENSIBLE?</td></tr><tr><td>PREGUNTA 2</td><td>¿SE EXPLICÓ EL MODO DE EVALUACIÓN AL INICIO DEL CURSO?</td></tr><tr><td>PREGUNTA 3</td><td>¿EL INSTRUCTOR/A CONTESTÓ LAS DUDAS EN TIEMPO Y FORMA?</td></tr><tr><td>PREGUNTA 4</td><td>¿LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE TRABAJO?</td></tr><tr><td>PREGUNTA 5</td><td>¿CONSIDERAS QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE?</td></tr><tr><td>PREGUNTA 6</td><td>¿EL CURSO CUBRIÓ TUS EXPECTATIVAS?</td></tr><tr><td>PREGUNTA 7</td><td>¿EL CONTENIDO DEL CURSO AUMENTÓ TUS CONOCIMIENTOS Y COMPRENSIÓN DE LOS TEMAS REVISADOS?</td></tr><tr><td>PREGUNTA 8</td><td>¿EL TIEMPO PARA ENTREGAR LAS ACTIVIDADES, FUE SUFICIENTE PARA CUMPLIR CON ELLAS??</td></tr><tr><td>PREGUNTA 9</td><td>¿LA PRESENTACIÓN DEL CONTENIDO, FUE FÁCIL DE REVISAR?</td></tr><tr><td>PREGUNTA 10</td><td>¿LA EXPLICACIÓN DE LAS TAREAS, FUERON CLARAS Y SENCILLAS?</td></tr><tr><td>PREGUNTA 11</td><td>¿EL TIEMPO CON EL QUE RECIBIÓ LA INFORMACIÓN (INVITACIÓN, TEMARIO, ETC.) AL CURSO FUE ADECUADO?</td></tr><tr><td>PREGUNTA 12</td><td>¿CÓMO FUE EL MATERIAL DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN, TEXTOS, ENLACES) UTILIZADO?</td></tr></table>',
-    buttons: {
-        Aceptar: {
-            keys: ['Y'],
-            // action: function() {
-            //     $.alert('Thank you for contacting us.');
-            // },
-            btnClass: 'btn-info'
-        },
-        no: {
-            isHidden: true,
-            keys: ['N']
-        }
-
-    },
-    type: 'blue',
-    typeAnimated: true,
-    columnClass: 'small',
-    icon: 'fa fa-question-circle'
-})
-//AQUI COMIENZA PARA PODER INSERTAR LOS DATOS EN LA TABLA DE PONDERACIÓN
-$(document).ready(function() {
-    $('#btnguardar').click(function() {
-        var date_update = $("#date_update").val();
-        var obtained = $("#obtained").val();
-        var evaluation = $("#evaluation").val();
-        var start_date = $("#start_date").val();
-        var end_date = $("#end_date").val();
-        swal.showLoading();
-        if (date_update == '' || obtained == '' || evaluation == '' || start_date == '' || end_date ==
-            '') {
-            Swal.fire({
-                type: 'error',
-                title: 'ATENCIÓN!',
-                customClass: 'swal-wide',
-                timer: 2300,
-                text: 'Aun no has ingresado ponderación de evaluación',
-                showConfirmButton: false,
-            });
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "../php/insertEv.php",
-                data: {
-                    date_update: date_update,
-                    obtained: obtained,
-                    evaluation: evaluation,
-                    start_date: start_date,
-                    end_date: end_date
-                },
-                success: function(data) {
-                    document.getElementById("ponderacion").reset();
-                    Swal.fire({
-                        type: 'success',
-                        title: 'AFAC INFORMA',
-                        text: 'Ponderación de evaluación actualizada satisfactoriamente',
-                        showConfirmButton: false,
-                        timer: 2900,
-                        customClass: 'swal-wide',
-                        showConfirmButton: false,
-                    });
-                    setTimeout("location.href = '../admin/niveldesatis.php';", 2000);
-                }
-            });
-        }
-
-        return false;
-    });
-});
-
-//DATATABLES//
 
 var dataSet = [
-    <?php 
-$query = "SELECT * FROM bitevaluacion";
-$resultado = mysqli_query($conexion, $query);
-
-      while($data = mysqli_fetch_array($resultado)){ 
-          $Modificacion = $data['date_update'];
-          $Modificacion = date("d-m-Y");  
-          $start = $data['start_date'];
-          $end = $data['end_date'];
-          $start = date("d-m-Y");
-          $end = date("d-m-Y");
-      ?>
-
-    ["<?php echo $data['id']?>", "<?php echo $data['start_date']. " - " . $data['end_date']?>",
-        "<?php echo $Modificacion?>", "<?php echo $data['obtained']?>",
-        "<?php echo $data['evaluation']?> %"],
+    
+    [],
 
 
-    <?php } ?>
 ];
 
-var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
+var tableGenerarReporte = $('#data-table-modificacion').DataTable({
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
-    pageLength: 5,
-    lengthMenu: [
-        [5, 10, 20, -1],
-        [5, 10, 20, 'Todos']
-    ],
-    "order": [
-        [0, 'desc']
-    ],
+    // "order": [
+    //     [0, 'desc']
+    // ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
     columns: [{
-            title: "FOLIO"
+            title: "ID"
         },
         {
-            title: "PERIÓDO"
+            title: "FECHA MODIFICACION"
         },
         {
             title: "MODIFICACIÓN"
