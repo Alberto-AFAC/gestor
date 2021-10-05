@@ -132,9 +132,10 @@ include('header.php');
 
                                 <div  style="padding-top: 40px;"  class="tab-content clearfix">
                                     <div class="tab-pane active" id="1b">
-                                    <table id="data-table-modificacion" class="table table-bordered" width="100%"
+                                    <!-- <table id="data-table-modificacion" class="table table-bordered" width="100%"
                                 cellspacing="0">
-                            </table>
+                            </table> -->
+                            <h3>UNDER CONSTRUCTION !</h3>
                                     </div>
                                     <div class="tab-pane" id="2b">
                                         <h3>UNDER CONSTRUCTION !</h3>
