@@ -1,10 +1,8 @@
 <?php 
 ini_set('date.timezone','America/Mexico_City');
     include('../conexion/conexion.php');
-  
-    $codg = $_GET['cod'];
-    $data = $_GET['data'];
-    $query = "SELECT id, id_persona, id_codigocurso,temario.titulo, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, listacursos.gstCntnc, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
+    $datos = $_GET['data'];
+    $query = "SELECT id, id_persona, id_codigocurso, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, listacursos.gstCntnc, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
     'enero' 
     WHEN MONTH ( fcurso ) = 2 THEN
     'febrero' 
@@ -53,9 +51,8 @@ ini_set('date.timezone','America/Mexico_City');
 		'noviembre' 
 		WHEN MONTH ( fechaf ) = 12 THEN
 		'diciembre' ELSE 'MES NO VALIDO' 
-	END AS mesfinales 
-    FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc INNER JOIN temario ON listacursos.gstIdlsc = idcurso
-    WHERE id = $data AND id_codigocurso = '$codg'";
+	END AS mesfinales FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc 
+    WHERE id = $datos";
     $const = mysqli_query($conexion, $query);
     $con = mysqli_fetch_array($const);
     $dia = array("cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez","once","doce","trece","catorce","quince", "dieciseis","diecisiete","dieciocho","diecinueve", "veinte","veintiuno","veintidós","veintitres","veinticuatro","veinticinco","veintiseis","veintisiete","veintiocho","veintinueve","treinta","treinta y uno");
@@ -68,7 +65,7 @@ ini_set('date.timezone','America/Mexico_City');
     $dateF = $con['fcurso'];
     $dateFinal = $con['fechaf'];
     $registro = $con['id_codigocurso'];
-    $temario = $con['titulo'];
+    // $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
     $nombresCompletos = $con['gstNombr']." ".$con['gstApell'];
     $mes = array("0","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");

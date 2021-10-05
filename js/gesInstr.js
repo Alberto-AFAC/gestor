@@ -79,20 +79,18 @@ function dato(gstIdlsc) {
 }
 // FUNCTION PARA AÑADIR NUEVOS DATOS EN EL TEMARIO
 function agregar() {
-//    alert("Aqui tiene que agregar")
-
     var campo = new Array();
     /*Agrupamos todos los input con name=cbxEstudiante*/
     $('input[name="campo[]"]').each(function(element) {
-    var item = {};
-    item.campo = this.value;
-    campo.push(item);
+        var item = {};
+        item.campo = this.value;
+        campo.push(item);
     });
 
     var array = JSON.stringify(campo);
     var idcurtem = document.getElementById('idcurtem').value;
 
-        datos = 'idcurtem=' + idcurtem + '&array=' + array + '&opcion=agretem';
+    datos = 'idcurtem=' + idcurtem + '&array=' + array + '&opcion=agretem';
 
     if (idcurtem == '' || array == '') {
         Swal.fire({
@@ -112,7 +110,7 @@ function agregar() {
         }).done(function(respuesta) {
             document.getElementById("addcurse").reset();
 
-             alert(respuesta);
+            alert(respuesta);
 
             if (respuesta == 0) {
                 // alert(respuesta);
@@ -124,6 +122,74 @@ function agregar() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
+
+            } else {
+                Swal.fire({
+                    type: 'error',
+                    title: 'OCURRIO UN ERROR',
+                    text: 'Favor de contactar con soporte',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        });
+    }
+
+}
+// DISABLED BUTTON
+$(function() {
+    $("#gstCntnc").change(function() {
+        if ($(this).val() === "DIPLOMA") {
+            $("#diploma").prop("disabled", true);
+        } else {
+            $("#diploma").prop("disabled", false);
+        }
+    });
+});
+
+function agregarMas() {
+    var campo = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="campo[]"]').each(function(element) {
+        var item = {};
+        item.campo = this.value;
+        campo.push(item);
+    });
+
+    var array = JSON.stringify(campo);
+    var idcurtem = document.getElementById('idcurtem').value;
+
+    datos = 'idcurtem=' + idcurtem + '&array=' + array + '&opcion=agretem';
+
+    if (array == '') {
+        Swal.fire({
+            type: 'error',
+            title: '¡ATENCIÓN!',
+            text: 'Verificar campos faltantes',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+
+        });
+    } else {
+        $.ajax({
+            url: '../php/docCursos.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            if (respuesta == 0) {
+                // alert(respuesta);
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'GUARDADO CON ÉXITO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                setTimeout("location.href = 'conCursos.php';", 1500);
+
             } else {
                 Swal.fire({
                     type: 'error',

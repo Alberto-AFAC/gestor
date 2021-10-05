@@ -214,7 +214,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 if($con['gstCntnc'] == 'CONSTANCIA'){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga el presente</p>
+    <p class='otorga'>Otorga la presente</p>
     <p class='titulo-certificado'>{$con['gstCntnc']}</p>
     <p class='nombre-persona'>Al C:. <span
     class='nombre-persona-c'>{$nombresCompletos}</span></p>
@@ -344,13 +344,15 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         <img style='float: right; width: 35%;' src='{$filename}'/>
         </div>
     </div>
-</div>
-<div>
-</div>
-<div style='page-break-after:always;'>
-<div style='padding-top: %' class='footer2'>
-
-</div>
+    <div>
+    </div><br><br><br>
+    <div class='footer2'>
+    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
+    class='p-2'>Secretaria de
+    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+    Adiestramiento de
+    Aviación Civil / SCT-AFAC-CIAAC</span>
+    </div>
 </div>";
 }
 ?>
