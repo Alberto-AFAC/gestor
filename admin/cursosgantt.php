@@ -214,7 +214,8 @@ $inspector = mysqli_query($conexion,$sql);
                 enabled: true,
                 selected: 0
             },
-            xAxis: [{}, {
+            xAxis: [{
+            }, {
                 dateTimeLabelFormats: {
                     week: 'Sem %W'
                 }
