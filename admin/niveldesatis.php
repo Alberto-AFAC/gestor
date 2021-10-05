@@ -126,7 +126,14 @@ include('header.php');
                                             </h3>
                                         </div>
                                         <div style="color: green; font-size: 50px;" class="box-body">
-                                            <?php echo porcentaje($totalfull, $totalcantida, 0) . "%"?>
+                                        <?php 
+                                        
+                                        if($totalfull == 0 && $totalcantida == 0){
+                                            echo "N/A";
+                                        } else {
+                                            echo porcentaje($totalfull, $totalcantida, 0) . "%";
+                                        }
+                                        ?>
                                         </div>
                                     </div>
                                 </div>
