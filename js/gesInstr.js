@@ -137,6 +137,16 @@ function agregar() {
     }
 
 }
+// DISABLED BUTTON
+$(function() {
+    $("#gstCntnc").change(function() {
+        if ($(this).val() === "DIPLOMA") {
+            $("#diploma").prop("disabled", true);
+        } else {
+            $("#diploma").prop("disabled", false);
+        }
+    });
+});
 
 function agregarMas() {
     var campo = new Array();
