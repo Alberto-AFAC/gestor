@@ -162,44 +162,8 @@
             </div>
         </form>
 <!-- MODAL PARA AÑADIR UN NUEVO CURSO -->
-<form class="form-horizontal" action="" method="POST">
+<form id="add" class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-añadir">
-                <!-- <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">ELIMINAR CURSO DE CATALOGO </h4>
-                        </div>
-                        <div class="modal-body">
-                            <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <p> ¿ESTÁS SEGURO DE ELIMINAR ESTE CURSO? <input type="text" name="EgstTitlo"
-                                            id="EgstTitlo" class="form-control disabled" disabled=""
-                                            style="background: white;border: 1px solid white;"></p>
-                                </div>
-                                <br>
-                                <div class="col-sm-5">
-                                    <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
-                                </div>
-
-                                <b>
-                                    <p class="alert alert-warning text-center padding error" id="danger">Error
-                                        al eliminar curso</p>
-                                </b>
-                                <b>
-                                    <p class="alert alert-success text-center padding exito" id="succe">¡Se
-                                        elimino curso con éxito !</p>
-                                </b>
-                                <b>
-                                    <p class="alert alert-warning text-center padding aviso" id="empty">Elija
-                                        curso para eliminar </p>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -217,7 +181,7 @@
                       </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-info" onclick="agregar();" data-dismiss="modal">GUARDAR</button>
+                        <button type="button" class="btn btn-info" onclick="agregarMas();" data-dismiss="modal">GUARDAR</button>
                         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                       </div>
                     </div>
