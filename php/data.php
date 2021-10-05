@@ -28,7 +28,14 @@ header('Content-Type: application/json');
 		$fecha_actual = strtotime(date("Y-m-d"));
 		$fecha_entrada = strtotime(date($fcurso));
 		$fecha_salida = strtotime(date($fechaf));
-		
+		$tipo = $data['gstTipo'];
+		$id = $data['id_curso'];
+		$sede = $data['sede'];
+		$nombre = $data['gstTitlo'];
+
+
+		// owner: 'Peter'
+
 		
 		$start = $data['fcurso'];
 		$end = $data['fechaf'];
@@ -55,9 +62,11 @@ $end = strtotime($fechaf.''.$horaEstimada) * 1000;
 			// $arreglo[] = $data; 
 			//  $arreglo[] = array('id'=> $id,'name'=> $gstTitlo, 'periods'=> [['id'=> $id_curso,'start'=>$start, 'end' => $end]] );
 			
-			 $arreglo[] = array('start'=>$start, 'end' => $end,'name'=> $gstTitlo);
-	
+			//  $arreglo[] = array('start'=>$start, 'end' => $end,'name'=> $gstTitlo);
+			 $arregl[] = array('name'=> $tipo,'id'=>$tipo, 'owner'=> $sede);
+						$peque[] = array('name'=> $nombre,'parent' => $tipo,'start'=>$start, 'end' => $end);
 
+			$arreglo = array_merge($arregl,$peque);
 
 		}
 		if(isset($arreglo)&&!empty($arreglo)){
