@@ -145,7 +145,7 @@ include('header.php');
                                             </h3>
                                         </div>
                                         <div style="color: green; font-size: 50px;" class="box-body">
-                                            <?php if($row['evaluation']== ''){
+                                            <?php if($row['evaluation']== NULL){
                                             echo "N/A";
                                         } else {
                                             echo "$row[evaluation] %";

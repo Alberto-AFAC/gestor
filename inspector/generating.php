@@ -56,7 +56,7 @@ ini_set('date.timezone','America/Mexico_City');
     $const = mysqli_query($conexion, $query);
     $con = mysqli_fetch_array($const);
     $dia = array("cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez","once","doce","trece","catorce","quince", "dieciseis","diecisiete","dieciocho","diecinueve", "veinte","veintiuno","veintidós","veintitres","veinticuatro","veinticinco","veintiseis","veintisiete","veintiocho","veintinueve","treinta","treinta y uno");
-    $fecha2= $dia[date('d')];
+    // $fecha2= $dia[date('d')];
     setlocale(LC_TIME, "spanish");
     $mesactual = strftime("%B");
     $nombre = $con['gstNombr'];

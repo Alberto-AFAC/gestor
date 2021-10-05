@@ -213,18 +213,18 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     <?php
 if($con['gstCntnc'] == 'CONSTANCIA'){
     echo "<div style='text-align: center;'>
-    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga la presente</p>
-    <p class='titulo-certificado'>{$con['gstCntnc']}</p>
+    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p><br><br>
+    <p class='otorga'>Otorga la presente</p><br><br>
+    <p class='titulo-certificado'>{$con['gstCntnc']}</p><br><br>
     <p class='nombre-persona'>Al C:. <span
-    class='nombre-persona-c'>{$nombresCompletos}</span></p>
-    <p class='otorga'>Por haber participado en el curso:</p>
-            <p class='nombre-curso'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Impartido por el <span style='font-weight:bold;'>{$con['sede']}</span><span class='p-2'>, comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
+    class='nombre-persona-c'>{$nombresCompletos}</span></p><br><br><br>
+    <p class='otorga'>Por haber participado en el curso:</p><br><br>
+    <p class='nombre-curso'>{$con['gstTitlo']}</p><br><br><br>
+    <span class='p-2'>Impartido por el <span style='font-weight:bold;'>{$con['sede']}</span>< class='p-2'>, comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
         <p class='p-2'>Director del CIAAC:</p></div>
-        <div style='padding-top: 3px; text-align: center;'>
+        <div style='padding-top: 80%; text-align: center;'>
         <div class='row'>
             <div class='column left'>
             </div>
@@ -244,20 +244,22 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         </div>
     </div>
     <div>
-    <p class='p-2'>La presente <span style='font-weight: bold;'><u>Constancia</u></span> ampara los Temas vistos en el CURSO:
-    <span style='font-weight: bold;'>{$con['gstTitlo']}</span>, que a
-        continuación se enlistan:</p>
-    </div>
-    <div class='footer-constancia-gold'>
-    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-    class='p-2'>Secretaria de
-    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-    Adiestramiento de
-    Aviación Civil / SCT-AFAC-CIAAC</span>
-    </div>
-    <div class='footer-constancia'>
-    <span class='p-2'><span style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
-</div>";
+<div style='page-break-after:always;'>
+</div>
+<p class='p-2'>Esta <u>constancia</u> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
+   {$con['gstTitlo']}</span>, que a
+continuación se enlistan:</p>
+</div>
+<div class='footer-constancia-gold'>
+<span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
+class='p-2'>Secretaria de
+Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+Adiestramiento de
+Aviación Civil / SCT-AFAC-CIAAC</span>
+</div>
+<div class='footer-constancia'>
+<span class='p-2' style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+</div><br><br>";
 } else if($con['gstCntnc'] == 'CERTIFICADO'){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p><br><br>
@@ -368,7 +370,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
        ?>
        <?php
        if($con['gstCntnc'] == 'CONSTANCIA'){
-        echo "<p class='p-2'>{$temario}</p>";
+        echo "<br><br><p class='p-2'>{$temario}</p>";
        }else if($con['gstCntnc'] == 'CERTIFICADO'){
         echo "<br><br><p class='p-2'>{$temario}</p>";
        }else {
