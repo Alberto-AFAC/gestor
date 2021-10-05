@@ -214,6 +214,11 @@ $inspector = mysqli_query($conexion,$sql);
                 enabled: true,
                 selected: 0
             },
+            xAxis: [{}, {
+                dateTimeLabelFormats: {
+                    week: 'Sem %W'
+                }
+            }],
             // AQUI EMPIEZA LA CONFIGURACIÓN DE LOS DATOS
             series: [{
                 name: 'Agencia Federal de Aviación Civil',
