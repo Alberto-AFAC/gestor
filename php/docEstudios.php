@@ -35,11 +35,11 @@ $rutaTemporal=$_FILES['gstDocmt']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$n_empl.'/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$n_empl.'/Estudio/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$n_empl;
+ $ruta = '../documento/'.$n_empl.'/Estudio/';
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
@@ -59,7 +59,7 @@ if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
 
 	$gstIDper = intval($f[0]);
 
-	personaldoc($gstIDper,$gstDocmt,$factual,$conexion);
+	//personaldoc($gstIDper,$gstDocmt,$factual,$conexion);
 
 }else{	echo "1";	}
 /*if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
@@ -94,6 +94,10 @@ function estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion){
 	
 			$query="INSERT INTO estudios VALUES(0,'$gstIDper','$gstInstt','$gstCiuda','$gstPriod','$gstDocmt','$factual',0)";
 				if(mysqli_query($conexion,$query)){
+
+			$queri = "INSERT INTO personaldoc(idperdoc,documento,docajunto,fecactual,idstd) SELECT gstIDper,7,gstDocmt,fechar,gstIdstd FROM estudios ORDER BY gstIdstd DESC LIMIT 1";
+			mysqli_query($conexion,$queri);
+
 					return true;
 				}else{
 					return false;
@@ -103,16 +107,16 @@ function estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion){
 
 
 
-function personaldoc($gstIDper,$gstDocmt,$factual,$conexion){
+// function personaldoc($gstIDper,$gstDocmt,$factual,$conexion){
 
-			$query="INSERT INTO personaldoc VALUES(0,'$gstIDper',7,'$gstDocmt','$factual',0)";
-				if(mysqli_query($conexion,$query)){
-					return true;
-				}else{
-					return false;
-				}
-				$this->conexion->cerrar();	
-	}
+// 			$query="INSERT INTO personaldoc VALUES(0,'$gstIDper',7,'$gstDocmt','$factual',0)";
+// 				if(mysqli_query($conexion,$query)){
+// 					return true;
+// 				}else{
+// 					return false;
+// 				}
+// 				$this->conexion->cerrar();	
+// 	}
 
 
 ?>

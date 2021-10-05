@@ -162,44 +162,8 @@
             </div>
         </form>
 <!-- MODAL PARA AÑADIR UN NUEVO CURSO -->
-<form class="form-horizontal" action="" method="POST">
+<form id="add" class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-añadir">
-                <!-- <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">ELIMINAR CURSO DE CATALOGO </h4>
-                        </div>
-                        <div class="modal-body">
-                            <input type="hidden" name="EgstIdlsc" id="EgstIdlsc">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <p> ¿ESTÁS SEGURO DE ELIMINAR ESTE CURSO? <input type="text" name="EgstTitlo"
-                                            id="EgstTitlo" class="form-control disabled" disabled=""
-                                            style="background: white;border: 1px solid white;"></p>
-                                </div>
-                                <br>
-                                <div class="col-sm-5">
-                                    <button type="button" class="btn btn-primary" onclick="eliCurso()">ACEPTAR</button>
-                                </div>
-
-                                <b>
-                                    <p class="alert alert-warning text-center padding error" id="danger">Error
-                                        al eliminar curso</p>
-                                </b>
-                                <b>
-                                    <p class="alert alert-success text-center padding exito" id="succe">¡Se
-                                        elimino curso con éxito !</p>
-                                </b>
-                                <b>
-                                    <p class="alert alert-warning text-center padding aviso" id="empty">Elija
-                                        curso para eliminar </p>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -208,13 +172,16 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
+                      
+                      <input type="hidden" name="idcurtem" id="idcurtem">
                       <div class="modal-body">
+                        <span id="add_field" style="color: green;font-size: 20px;cursor: pointer;" class="fa fa-plus-square"></span>
                       <div id="listas">
-                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div><span id="add_field" style="color: blue;">Añadir</span>
+                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div>
                       </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-info" onclick="agregar();" data-dismiss="modal">GUARDAR</button>
+                        <button type="button" class="btn btn-info" onclick="agregarMas();" data-dismiss="modal">GUARDAR</button>
                         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                       </div>
                     </div>
@@ -597,8 +564,9 @@
                             style='font-weight: bold;'>TEMARIO</span><br>
                         
                 </div>
-                <div class='modal-body'>
-                    <div id="temario"></div>
+                <div class='modal-body'><div id="elimino" style="display: none;">SU REGISTRO FUE ELIMINADO</div>
+
+<div id="temario"></div>
                 </div>
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-primary' data-dismiss='modal'>CERRAR</button>
@@ -791,10 +759,8 @@ function agrtemario(tbody, table) {
 
 $(tbody).on("click", "a.temario", function() {
     var data = table.row($(this).parents("tr")).data();
-        alert(data[0]);
-    //var gstIdlsc = $().val(data.gstIdlsc);
-//    $("#modal-añadir #EgstIdlsc").val(data[0]);
-
+        //alert(data[0]);
+    $("#modal-añadir #idcurtem").val(data[0]);
 });
 }
 
@@ -808,20 +774,89 @@ function temario(gstIdlsc) {
 
         obj = JSON.parse(resp);
         var res = obj.data;
+
+
+
         html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+
+
         var x = 0;
 
         for (i = 0; i < res.length; i++) {
-            x++;
+ 
             if (obj.data[i].idcurso == gstIdlsc) {
-                html += "<tr><td>" + x + "</td><td>" + obj.data[i].titulo + "</td><td>AQUÍ VAN LOS BOTONES DE ACCIÓN</td></tr>";
+
+                //alert(obj.data[i].idcurso);
+                dato = obj.data[i].idtem+'*'+obj.data[i].idcurso;
+
+            x++;               
+ html += "<tr><td>" + x + "</td><td>" + obj.data[i].titulo + "</td><td><a type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact('+obj.data[i].idtem +');' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a><a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
             }
         }
         html += '</table>';
+
+
         $("#temario").html(html);
     })
 
 }
+
+
+// $(document).ready(function() {
+//     var table = $('#example').DataTable();
+ 
+//     $('#example tbody').on( 'click', 'tr', function () {
+//         if ( $(this).hasClass('selected') ) {
+//             $(this).removeClass('selected');
+//         }
+//         else {
+//             table.$('tr.selected').removeClass('selected');
+//             $(this).addClass('selected');
+//         }
+//     } );
+ 
+//     $('#button').click( function () {
+//         table.row('.selected').remove().draw( false );
+//     } );
+// } );
+
+///BORRAR REGISTRO////
+
+function temborrar(dato){
+    
+    var d = dato.split("*");
+
+    idcurso = d[0];
+    cursoid = d[1];
+
+$.ajax({
+    data: 'idcurso='+idcurso+'&cursoid='+cursoid+'&opcion=eliminartem',
+    url:'../php/docCursos.php',
+    type: 'post',
+    beforeSend: function () {
+        //
+    },
+    success: function (response) {   
+        if(response!=1){      
+
+            $('#elimino').toggle('toggle');
+            setTimeout(function() {
+            $('#elimino').toggle('toggle');
+            }, 2000);
+
+        temario(gstIdlsc);            
+        }else{
+            $('#elimino').toggle('toggle');
+            setTimeout(function() {
+            $('#elimino').toggle('toggle');
+            }, 2000);            
+        $('#temario').hide();
+        }
+    }
+});
+
+}
+
 // FUNCION PARA AÑADIR
 
 // AÑADIR TEMARIO N NUMERO DE REGISTROS
@@ -832,7 +867,7 @@ var campos_max = 30;
                 if (x < campos_max) {
                         $('#listas').append('<div>\
                                 <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
-                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
+                                <a href="#" style="color: red; font-size:20px; cursor:pointer;" class="remover_campo"><span class="fa fa-minus-square"></span></a>\
                                 </div>');
                         x++;
                 }
@@ -840,7 +875,7 @@ var campos_max = 30;
         $('#listas').on("click",".remover_campo",function(e) {
                 e.preventDefault();
                 $(this).parent('div').remove();
-                x--;
+                x;
         });
 </script>
 <style>

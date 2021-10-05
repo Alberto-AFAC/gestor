@@ -28,12 +28,12 @@ $rutaTemporal=$_FILES['EgstDocmt']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$Nmplea.'/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$Nmplea.'/Estudio/'.$nombreImagen;
 //$rutaEnServidor = '../documento/estudios/'.$gstIDper.'/'.$nombreImagen;
 
 //if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$Nmplea;
+ $ruta = '../documento/'.$Nmplea.'/Estudio/';
 
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
@@ -50,7 +50,7 @@ if(move_uploaded_file($rutaTemporal, $EgstDocmt)){
 if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
 		{	echo "0";	
 
-	documentoact($EIdper,$EgstDocmt,$conexion);
+	documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);
 
 
 }else{	echo "1";	}
@@ -72,7 +72,7 @@ $EgstPriod = $_POST['EgstPriod'];
 $EgstDocmt = '';
 
 if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
-		{	echo "6";	documentoact($EIdper,$EgstDocmt,$conexion);	}else{	echo "1";	}		
+		{	echo "6";	documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);	}else{	echo "1";	}		
 	}
 }
 
@@ -97,15 +97,15 @@ function actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$cone
 	}
 
 
-	function documentoact($EgstIDper,$EgstDocmt,$conexion){
+	function documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion){
 
 		ini_set('date.timezone','America/Mexico_City');
 		$factual = date('Y').'/'.date('m').'/'.date('d');
 
 		if($EgstDocmt==''){	
-		$query="UPDATE personaldoc SET fecactual = '$factual' WHERE idperdoc = $EgstIDper AND documento = 7";
+		$query="UPDATE personaldoc SET fecactual = '$factual' WHERE idstd = $EgstIDper AND idperdoc = $EIdper AND documento = 7";
 		}else{
-		$query="UPDATE personaldoc SET docajunto = '$EgstDocmt', fecactual = '$factual' WHERE idperdoc = $EgstIDper AND documento = 7";
+		$query="UPDATE personaldoc SET docajunto = '$EgstDocmt', fecactual = '$factual' WHERE idstd = $EgstIDper AND idperdoc = $EIdper AND documento = 7";
 		}
 
 			if(mysqli_query($conexion,$query)){

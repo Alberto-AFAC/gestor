@@ -208,17 +208,27 @@ include ("../conexion/conexion.php");
 //   echo $res[0];
 
 $gstIdperEli = 1321;
-$doceliminar = 1;
-echo $valor = documentos($gstIdperEli,$doceliminar,$conexion);
+$idcurs = 1064;
+echo $valor = documentos($idcurs,$conexion);
 
-function documentos($gstIdperEli,$doceliminar,$conexion){
+function documentos($idcurs,$conexion){
 
-$query = "SELECT * FROM personaldoc WHERE idperdoc = $gstIdperEli AND documento = $doceliminar AND estado = 0";
+$query = "SELECT *,count(*) AS total FROM temario WHERE idcurso = $idcurs";
   $result = mysqli_query($conexion,$query);
+
+if($result->num_rows==0){
+
+return 'no hay';
+
+}else{
   $res = mysqli_fetch_row($result);
 
-  return $res[3];
+  return $res[4];
 }
+
+}
+
+
 
 
 

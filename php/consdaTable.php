@@ -24,25 +24,20 @@ if($data["gstVignc"] == 101){
 	$vigencia = $data["gstVignc"].' AÑOS';
 }
 
-if($data['gstTmrio'] == '0'){
-    $temario = 'SIN TEMARIO';
-} else {
-  
-	// $query = "SELECT * FROM temario 
-	// WHERE idtem = gstIdlsc";
-	// $resultado = mysqli_query($conexion, $query);
-	// while($data = mysqli_fetch_assoc($resultado))
-	// {
-	// 	$data[2];
-	// }
-	$temario = "<center><a href='#' onclick='temario({$data["gstIdlsc"]})' data-toggle='modal' data-target='#exampleModal'><img src='../dist/img/temario.svg' width='30px;'></a> </center>";
-	//$idper = "<a href='#' type='button' class='btn btn-default' data-toggle='modal' onclick='idperosna({$data["gstIdlsc"]})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a>";	
+			$idtem = $data['gstIdlsc'];
+	
+			$queri = "
+			SELECT * FROM temario WHERE idcurso = $idtem";
+			$resul = mysqli_query($conexion, $queri);
 
 
-}
+			if($res = mysqli_fetch_array($resul)){
+$temario = "<center><a href='#' onclick='temario({$data["gstIdlsc"]})' data-toggle='modal' data-target='#exampleModal'><img src='../dist/img/temario.svg' width='30px;'></a> </center>";
+			}else{
+				$temario = 'SIN TEMARIO';
+			}
 
-
-
+ 	
 	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstCntnc"],$vigencia,$temario];
 
 		}

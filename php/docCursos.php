@@ -24,8 +24,6 @@ $gstCntro = $_POST['gstCntro'];
 // $numero = $_POST['numero'];
 // $afojas = $_POST['afojas'];
  
-
-
 if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd
 ,$gstCntro,$conexion))
 		{	echo "0";	
@@ -49,6 +47,37 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
 		}
 
 	}
+ }else if($opcion === 'agretem'){
+
+ 	$id = $_POST['idcurtem'];
+
+	$valors = $_POST['array'];
+	$varray1 = json_decode($valors, true);
+	$valor = count($varray1);
+
+ 	 for($i=0; $i<$valor; $i++){
+
+	$titulo = $varray1[$i]['campo'];
+
+	if(temario($id,$titulo,$conexion)){
+		echo "0";
+		}else{
+		echo "1";
+		}
+
+	}
+ }else if($opcion === 'eliminartem'){
+
+ 	$cursoid = $_POST['cursoid'];
+ 	$idcurso = $_POST['idcurso'];
+
+ 		$ok = eliminartemario($idcurso,$cursoid,$conexion);
+ 	if(eliminartemario($idcurso,$cursoid,$conexion)){
+ 		echo $ok;
+ 	}else{
+ 		echo '1';
+ 	}
+
  }
 
 function comprobar($gstTitlo,$conexion){
@@ -95,5 +124,32 @@ function temario($id,$titulo,$conexion){
 		$this->conexion->cerrar();
 
 }
+function eliminartemario($idcurso,$cursoid,$conexion){
+	$query="SELECT *,count(*) AS total FROM temario WHERE idcurso = $cursoid";
+	$result = mysqli_query($conexion,$query);
+		if($result->num_rows == 0){
+		
+
+		}else{		
+		
+		$query="DELETE FROM temario WHERE idtem = $idcurso";
+		if (mysqli_query($conexion,$query)) {	
+
+		$res = mysqli_fetch_row($result);
+
+			return $res[4];	
+		// return true;
+		}else{
+		return false;
+		}
+			$this->conexion->cerrar();
+
+		}	
+	}
+
+
+
+
+	
 
 ?>

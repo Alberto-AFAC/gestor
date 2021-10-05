@@ -16,7 +16,7 @@
 	$queri = "
 	SELECT *,
 	DATE_FORMAT(fecactual, '%d/%m/%Y') AS fecactual 
-	FROM personaldoc WHERE documento = $doc AND idperdoc = $idper AND estado = 0";
+	FROM personaldoc WHERE documento = $doc AND idperdoc = $idper";
 	$resul = mysqli_query($conexion, $queri);
 
 	if($res = mysqli_fetch_array($resul)){
