@@ -109,9 +109,6 @@ function agregar() {
             data: datos
         }).done(function(respuesta) {
             document.getElementById("addcurse").reset();
-
-            alert(respuesta);
-
             if (respuesta == 0) {
                 // alert(respuesta);
                 Swal.fire({
@@ -162,22 +159,25 @@ function agregarMas() {
 
     datos = 'idcurtem=' + idcurtem + '&array=' + array + '&opcion=agretem';
 
-    if (array == '') {
-        Swal.fire({
-            type: 'error',
-            title: '¡ATENCIÓN!',
-            text: 'Verificar campos faltantes',
-            showConfirmButton: false,
-            customClass: 'swal-wide',
-            timer: 3000
-
-        });
-    } else {
         $.ajax({
             url: '../php/docCursos.php',
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
+            
+            if(respuesta==2){
+
+         Swal.fire({
+                type: 'error',
+                title: '¡ATENCIÓN!',
+                text: 'Verificar campos faltantes',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 3000
+
+            });
+
+            }else
             if (respuesta == 0) {
                 // alert(respuesta);
                 Swal.fire({
@@ -201,7 +201,7 @@ function agregarMas() {
                 });
             }
         });
-    }
+  //  }
 
 }
 

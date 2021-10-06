@@ -59,13 +59,23 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
 
 	$titulo = $varray1[$i]['campo'];
 
+	if($titulo!=''){
 	if(temario($id,$titulo,$conexion)){
 		echo "0";
 		}else{
 		echo "1";
 		}
-
+	  }else{ echo "2";}
 	}
+ }else if($opcion === 'agregartem'){
+	
+	$idcurso = $_POST['idcurso'];
+	$titulo = $_POST['titulo'];
+
+	if(actualizartem($idcurso,$titulo,$conexion)){
+		echo "0";
+	}else{ echo "1";}
+
  }else if($opcion === 'eliminartem'){
 
  	$cursoid = $_POST['cursoid'];
@@ -124,6 +134,19 @@ function temario($id,$titulo,$conexion){
 		$this->conexion->cerrar();
 
 }
+
+function actualizartem($idcurso,$titulo,$conexion){
+
+$query="UPDATE temario SET titulo = '$titulo' WHERE idtem = $idcurso ";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
+	$this->conexion->cerrar();	
+}
+
+
 function eliminartemario($idcurso,$cursoid,$conexion){
 	$query="SELECT *,count(*) AS total FROM temario WHERE idcurso = $cursoid";
 	$result = mysqli_query($conexion,$query);
