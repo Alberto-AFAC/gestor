@@ -14,50 +14,13 @@ $.ajax({
     var ffin = 0;
     for (i = 0; i < res.length; i++) {
 
-
-
-        var hoy = new Date();
-        var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
-
-        var termino = new Date(obj.data[i].fechaf);
-        var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-
-        // if(factual>finaliza && obj.data[i].proceso=='FINALIZADO' && obj.data[i].evaluacion==0){
-        //     ffin++;
-
-        //     alert('ok');
-        // }
-
-        if (factual > finaliza && obj.data[i].proceso == 'PENDIENTE') {
-            fecha++;
-        }
-
-        if (obj.data[i].proceso == 'PENDIENTE' && obj.data[i].evaluacion == 1) {
-            conteo++;
-        }
-
-        if (obj.data[i].confirmar == 'CONFIRMAR' && obj.data[i].proceso == 'PENDIENTE') {
-            confirmar++;
-        }
-        if (obj.data[i].proceso == 'PENDIENTE' && obj.data[i].confirmar == 'CONFIRMADO' || obj.data[i].proceso == 'PENDIENTE' && obj.data[i].confirmar == 'CONFIRMAR') {
-            programados++;
-        }
-        if (obj.data[i].confirmar == 'TRABAJO' || obj.data[i].confirmar == 'ENFERMEDAD' || obj.data[i].confirmar == 'OTROS') {
-            cancelados++;
-        }
-
-        if (obj.data[i].proceso == 'FINALIZADO') {
-            completos++;
-
-            if (factual > finaliza && obj.data[i].evaluacion == 0) { ffin++; }
-
-        }
-
+        confirma = obj.data[i].confirmar;
+        programados = obj.data[i].proceso;
+        venci = obj.data[i].vencido;
+        cancelados = obj.data[i].declina;
+        completo = obj.data[i].finalizado;
     }
-    completo = completos - conteo - ffin;
-    confirma = confirmar - fecha;
-    venci = fecha + ffin;
+
     $("#confirma").html(confirma);
     $("#programados").html(programados);
     $("#cancelados").html(cancelados);
