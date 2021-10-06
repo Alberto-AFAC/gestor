@@ -35,7 +35,7 @@ require_once "../../conexion/conexion.php";
                         <button type="button" style="pointer-events: none; color: white;"
                             class="btn btn-danger btn-default">VENCIDO</button>
                     </div>
-                    <input style="float: right;" id="myInput" type="text" placeholder="Búscar..">
+                    <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                     <br><br>
                     <div class="table-responsive mailbox-messages">
 
@@ -311,12 +311,5 @@ $(".idinsp").on("click", function() {
   }
 });
     
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+
 </script>
