@@ -680,6 +680,7 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             });
         });
     });
+
 }
 
 function generar() {
