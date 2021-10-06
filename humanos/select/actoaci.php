@@ -8,7 +8,7 @@
 	          <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
 
 			<select  id="gstSpcID" class="form-control" class="selectpicker" name="gstSpcID" type="text" data-live-search="true" style="width: 100%" disabled="">
-			<option value="0">SELECCIONE ESPECIALIDAD OACI PERSONAL</option>	
+				<option value="0">SELECCIONE ESPECIALIDAD OACI PERSONAL</option>
 			<?php while($sigla = mysqli_fetch_row($oaci)):?>
   
 			<option value="<?php echo $sigla[0]?>"><?php echo $sigla[1]?></option>

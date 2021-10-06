@@ -1,29 +1,4 @@
-<!DOCTYPE html><?php include ("../conexion/conexion.php");
-
-$sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
-$curso = mysqli_query($conexion,$sql);
-
-$sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
-$instructor = mysqli_query($conexion,$sql);
-
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
-$inspector = mysqli_query($conexion,$sql);
-include("../php/nivelSatis.php");
-$query ="SELECT
-                *
-            FROM
-                bitevaluacion 
-            ORDER BY
-                id DESC
-                LIMIT 1";
-$resultado = mysqli_query($conexion, $query);
-
-$row = mysqli_fetch_assoc($resultado);
-if(!$resultado) {
-    var_dump(mysqli_error($conexion));
-    exit;
-}
-?>
+<!DOCTYPE html><?php include ("../conexion/conexion.php"); ?>
 <html>
 
 <head>
@@ -306,53 +281,19 @@ include('header.php');
         <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
         <script>
-        $('#myNavTabs a').click(function(evt) {
-            evt.preventDefault();
-            $(this).tab('show');
-        });
 
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-            //new tab
-            console.log(e.target);
-
-            //previous tab
-            console.log(e.relatedTarget);
-        })
         var dataSet = [
             <?php 
-$query = "SELECT
-*,
-DATE_FORMAT(reaccion.fechareac, '%d/%m/%Y') as reaccion
-FROM
-cursos
-INNER JOIN constancias ON id_persona = idinsp
-INNER JOIN personal ON idinsp = gstIdper
-INNER JOIN reaccion ON cursos.id_curso = reaccion.id_curso
-INNER JOIN listacursos ON idmstr = listacursos.gstIdlsc 
-WHERE
-proceso = 'Finalizado' 
-AND confirmar = 'CONFIRMADO' 
-AND evaluacion >= 70 
-AND listregis = 'SI' 
-AND lisasisten = 'SI' 
-AND listreportein = 'SI' 
-AND cartdescrip = 'SI' 
-AND regponde = 'SI' 
-AND infinal = 'SI' 
-AND evreaccion = 'SI'
-GROUP BY cursos.id_curso";
-$resultado = mysqli_query($conexion, $query);
+    $query ="
+    SELECT *,
+    DATE_FORMAT(fecha, '%d/%m/%Y') as fecha
+    FROM historial
+    INNER JOIN personal
+    ON gstIdper = id_usu";
+    $resultado = mysqli_query($conexion, $query);
+    while($data = mysqli_fetch_array($resultado)){ ?>
 
-      while($data = mysqli_fetch_array($resultado)){ 
-      $id_curso = $data['idmstr'];
-     
-      ?>
-
-            ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
-                "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
-                "<?php echo $data['reaccion']?>"
-            ],
+            ["<?php echo $data['id_his']?>", "<?php echo $data['gstNombr'].' '.$data['gstApell']?>", "<?php echo $data['proceso']?>","<?php echo $data['registro']?>","<?php echo $data['fecha']?>" ],
 
             <?php  } ?>
 
@@ -376,10 +317,10 @@ $resultado = mysqli_query($conexion, $query);
                     title: "RESPONSABLE"
                 },
                 {
-                    title: "REGISTRO MODIFICADO"
+                    title: "PROCESO"
                 },
                 {
-                    title: "PROCESO"
+                    title: "REGISTROS"
                 },
                 {
                     title: "FECHA"

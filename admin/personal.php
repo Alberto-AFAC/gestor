@@ -503,22 +503,6 @@ $psto = mysqli_query($conexion,$sql);
                 </form>            
 </section>  
   </div>
-  <!-- modal de se agrego usuario -->
-  <!-- <div class="modal fade" id='modal-seagrego'>
-  <div class="modal1">
-  <div id="success-icon">
-    <div>
-    <img class="img-circle1" src="../dist/img/cheque.png">
-    </div>
-  </div>
-  <h1><strong>REGISTRADO</strong></h1>
-  <p class="points">+Registro exitoso!</p>
-  <hr>
-  <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-primary" onclick="location.href='personal.php'" >Agregar otro Registro</button>
-  <button type="button" id="cerrarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" onclick="location.href='persona.php'">Cerrar</button>
-</div>
-</div> -->
-  <!-- modal de se agrego usuario -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">

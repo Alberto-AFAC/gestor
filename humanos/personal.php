@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE html><?php 
+include ("../conexion/conexion.php");
+session_start(); 
+unset($_SESSION['consulta']);
+?>
 <html>
 <head>
+<link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Capacitación AFAC | Alta de persona</title>
-  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -26,7 +30,7 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements andrecursos media queries -->
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -36,10 +40,8 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-
 <style>
-     .swal-wide{
+   .swal-wide{
     width: 500px !important;
     font-size: 16px !important;
 }
@@ -56,7 +58,7 @@
 .a-alert:visited {
   color: white;
 }
-   </style>
+</style>
       </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -68,13 +70,12 @@ include('header.php');
 <div class="content-wrapper" >
 <!-- Content Header (Page header) -->
 
-<section class="content-header">
-      <h1 class="titulo"> 
+   <section class="content-header">
+      <h1> 
       <i class="fa  ion-android-person"></i>
             ALTA / PERSONAL   
       </h1>
     </section>
-
 <?php
  
 $sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0";
@@ -95,12 +96,13 @@ $ejec = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
 ?>
+
     <section class="content">
 
       <div class="row">
     
- <!-- /.col -->
- <div class="col-md-12">
+        <!-- /.col -->
+        <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active "><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
@@ -163,7 +165,6 @@ $psto = mysqli_query($conexion,$sql);
                      </select>
                      </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-4">
                        <label class="label2">FECHA DE NACIMIENTO</label>
@@ -182,8 +183,8 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="col-sm-4">
                        <label class="label2">CURP</label>
-                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalid"  style="display:none;"></i>
-                       <i class="ion-ios-close iconoInput" id="labelinval"  style=" color: #F10C25; display:none;"></i> -->
+                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalid"  style="display:none;"></i> -->
+                       <!-- <i class="ion-ios-close iconoInput" id="labelinval"  style=" color: #F10C25; display:none;"></i> -->
                        <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
                        <!-- <label class="label label-success" id="resultado" style="display:none;"><i class="fa fa-check-circle-o"></i></label>  -->
                        <!-- <label class="label label-danger" id="resultado1"  style="display:none;">NO VALIDO</label>  -->
@@ -195,7 +196,7 @@ $psto = mysqli_query($conexion,$sql);
                        <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalidrfc"  style="display:none;"></i>
                        <i class="ion-ios-close iconoInput" id="labelinvarfc"  style=" color: #F10C25; display:none;"></i> -->
                        <input type="tex" maxlength="12" oninput="validarInputRF(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstRfc" name="gstRfc" > 
-                       <label id="resultado1"></label> 
+                       <!-- <label id="resultado1"></label>  -->
                     </div>
 
                     <div class="col-sm-4">
@@ -359,14 +360,13 @@ $psto = mysqli_query($conexion,$sql);
                             <input type="email" class="form-control inputalta" placeholder="correo@sct.gob.mx" id="gstCinst" name="gstCinst">
                           </div>
                     </div>
-                    <div class="col-sm-4">
-                                <label>CORREO ALTERNATIVO</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    <input disabled="" type="email" class="form-control" placeholder="Correo"
-                                        id="gstSpcID" name="gstSpcID">
-                                </div>
-                            </div>
+                    <div class="col-sm-4 ">
+                         <label class="label2">CORREO ALTERNATIVO</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control inputalta" placeholder="correo@correo.com" id="gstSpcID" name="gstSpcID">
+                          </div>
+                    </div>
                    <br> <br> <br> <br> 
                    <div class="form-group">
                     <div class="col-sm-10">
@@ -417,7 +417,7 @@ $psto = mysqli_query($conexion,$sql);
                     </div>  
                     <div class="col-sm-5">
                     <label class="label2">ESTATUS ALTA PERSONAL</label>
-                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="siglasoaci" name="siglasoaci">
+                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
                     </div>  
                     </div>
                     <div class="form-group">
@@ -429,7 +429,7 @@ $psto = mysqli_query($conexion,$sql);
           </div>
 
          <div class="form-group">
-            <div class="col-sm-5">
+            <div class="col-sm-12">
                <label class="label2">NOMBRE DEL PUESTO</label>
                <select style="width: 100%" class="form-control inputalta selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
                <option value="0">SELECCIONA EL PUESTO</option>
@@ -438,10 +438,9 @@ $psto = mysqli_query($conexion,$sql);
                <?php endwhile; ?>
                </select>
             </div> 
-
-           <input type="hidden" name="gstSpcID" id="gstSpcID" value="0">
+            <input type="hidden" name="gstSpcID" id="gstSpcID" value="0">
 <!--             <div id="oaci"></div>
-            <div id="siglas"></div> -->                                  
+            <div id="siglas"></div> -->                                
          </div>
                     <div class="form-group">
                       <div class="col-sm-4">
@@ -452,8 +451,7 @@ $psto = mysqli_query($conexion,$sql);
                       </div>
                 </div>
 
-                    <div class="form-group">
-
+                    <!-- <div class="form-group">
                     <div class="col-sm-6">
                    <label class="label2">DIRECCIÓN EJECUTIVA </label>         
                       <select style="width: 100%"  class="selectpicker inputalta" name="gstAreID" id="gstAreID" type="text" data-live-search="true">
@@ -462,18 +460,24 @@ $psto = mysqli_query($conexion,$sql);
                       <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
                       <?php endwhile; ?>
                       </select>
-                    </div>
+                    </div> -->
+
+                    <div class="form-group">
+                          <div class="col-sm-6">
+                            <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                             <div id="gstAreID1"></div>                            
+                          </div>
+                    
+
                   <div class="col-sm-6">
-                  <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN </label>
-                    <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
-                        <label  style="color: white">.</label>
-                        <select style="width: 100%" class="selectpicker inputalta inputPadding" name="gstIDara" id="gstIDara" type="text" data-live-search="true">
-                         <option value="">SELECCIONE ÁREA ADSCRIPCIÓN</option> 
-                         <?php while($rea = mysqli_fetch_row($are)):?>                      
-                         <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                         <?php endwhile; ?>
-                       </select>
-                    </div>                  
+
+                      <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
+
+                      <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN </label>                    
+
+                      <div id="gstIDara1"></div> 
+                    
+                      </div>  
                   </div>    
 
            <input type="hidden" class="form-control inputalta" id="gstIDCat" name="gstIDCat" value="0">
@@ -486,9 +490,12 @@ $psto = mysqli_query($conexion,$sql);
                     <div class="col-sm-offset-0 col-sm-2">
                     <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrar();">ACEPTAR</button>
                     </div>
-                    <b><p class="alert alert-danger text-center padding error" id="danger">Los datos ya están agregados </p></b>
+                    
+                    <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos</p></b>
+                    
+                    <b><p class="alert alert-info text-center padding error" id="succe">Los datos ya están agregados </p></b>
 
-                    <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b>
+                   <!--  <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b> -->
 
                     <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
                     </div>
@@ -496,22 +503,6 @@ $psto = mysqli_query($conexion,$sql);
                 </form>            
 </section>  
   </div>
-  <!-- modal de se agrego usuario -->
-  <div class="modal fade" id='modal-seagrego'>
-  <div class="modal1">
-  <div id="success-icon">
-    <div>
-    <img class="img-circle1" src="../dist/img/cheque.png">
-    </div>
-  </div>
-  <h1><strong>REGISTRADO</strong></h1>
-  <p class="points">+Registro exitoso!</p>
-  <hr>
-  <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-primary" onclick="location.href='personal.php'" >Agregar otro Registro</button>
-  <button type="button" id="cerrarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" onclick="location.href='persona.php'">Cerrar</button>
-</div>
-</div>
-  <!-- modal de se agrego usuario -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -564,7 +555,7 @@ $psto = mysqli_query($conexion,$sql);
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.phone.extensions.js"></script>
+
 <script src="../../js/valida.js"></script>
  
 </body>
@@ -577,6 +568,8 @@ $('#gstIDara').select2();
 $('#gstPstID').select2();
 $('#buscador').load('select/buscar.php');
 $('#select1').load('select/tabla.php');
+$('#gstAreID1').load('select/buscardirec.php');
+$('#gstIDara1').load('select/tabladirec.php');
 // $('#oaci').load('select/oaci.php');
 // $('#siglas').load('select/siglas.php');
 });

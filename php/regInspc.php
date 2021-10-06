@@ -1,6 +1,14 @@
 <?php
 include("../conexion/conexion.php");
 
+ session_start();
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$id = $_SESSION['usuario']['id_usu'];
+}else{
+$id = '929';
+}
+
+
 $opcion = $_POST["opcion"];
 $informacion = [];
 
@@ -48,11 +56,11 @@ if($opcion === 'registrar'){
 	$gstAcReg = $_POST['gstAcReg'];
 	$gstIDuni = $_POST['gstIDuni'];
 	
-
-		
-
 	if(registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion)){
 		echo "0";
+
+		historial($id,$conexion);
+
 	}else{
 		echo "1";
 	}
@@ -60,10 +68,6 @@ if($opcion === 'registrar'){
 	}else{
 		echo "2";
 	}
-
-//	accesos($gstIdper,$gstNombr,$gstNmpld,$conexion);
-
-
 
 }else if($opcion === 'actualizar'){
 
@@ -248,28 +252,25 @@ function actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$
 	cerrar($conexion);
 }
 
-//ACCESO A DIRECTOR
+// function selecionar($conexion){
+// 	// INSERT INTO asignacion(id_equi,n_emp,proceso) SELECT id_equipo,$nempleado,'$proceso' FROM equipo ORDER BY id_equipo DESC LIMIT 1
+// }
 
-//function accesos($gstIdper,$gstNombr,$gstNmpld,$conexion){
+function historial($id,$conexion){
+ini_set('date.timezone','America/Mexico_City');
+$fecha= date('Y').'/'.date('m').'/'.date('d');	
 
-//	$query="SELECT * FROM accesos WHERE password='$gstNmpld' AND usuario='$gstNombr' AND baja = 0 ";
-//				$resultado= mysqli_query($conexion,$query);
-//			if($resultado->num_rows==0){
-//				$query="INSERT INTO accesos VALUES(0,'$gstIdper','$gstNombr','$gstNmpld','DIRECTOR',0,0);";
-//					if(mysqli_query($conexion,$query)){
-	
-//						return true;
-					
-//					}else{
-	
-//						return false;
-//					}
-//					$this->conexion->cerrar();
-//			}else{
+//$query="INSERT INTO historial VALUES(0,,'PERSONAL','AGREGO',)";
 
-//			}
-//	}
+$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'AGREGO AL USUARIO',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
 
+if(mysqli_query($conexion,$query)){
+return true;
+}else{
+return false;
+}
+
+}
 
 function cerrar($conexion){
 
