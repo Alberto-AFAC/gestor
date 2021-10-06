@@ -7,7 +7,7 @@
     ?>
 
 			<select  id="AgstIDCat" class="form-control" class="selectpicker" name="AgstIDCat" type="text" data-live-search="true" style="width: 100%" >
-			<option value="">SELECCIONE ESPECIALIDAD </option> 
+			<option value="0">SELECCIONE ESPECIALIDAD </option> 
 			<?php while($idAcat = mysqli_fetch_row($Acat)):?>                      
 			<option value="<?php echo $idAcat[0]?>"><?php echo $idAcat[1]?></option>
 			<?php endwhile; ?>

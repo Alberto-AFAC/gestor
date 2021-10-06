@@ -1253,14 +1253,17 @@
 
 </html>
 
-<?php $datos[0];?>
+<?php 
+
+ini_set('date.timezone','America/Mexico_City');
+$datos[0];?>
 
 
 <script type="text/javascript">
 var dataSet = [
     <?php 
 $query = "
-SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin  
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fcurso AS fin  
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
 WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
@@ -1274,13 +1277,14 @@ $id_curso = $data['id_curso'];
  $fechaf = $data['final'];
  $fin = $data['fin'];
 
- $actual= date("d-m-Y"); 
+    $actual= date("Y-m-d"); 
+    $hactual = date('H:i:s');
 
-$f3 = strtotime($actual);
-$f2 = strtotime($fin); 
+    $f3 = strtotime($actual.''.$hactual);
+    $f2 = strtotime($fin.''.$data['hcurso']); 
 
 
-if($f3<$f2){
+if($f3<=$f2){
 ?>
 
     //console.log('<?php echo $id_curso ?>');
@@ -1328,7 +1332,7 @@ var tableGenerarReporte = $('#data-table-confirmar').DataTable({
 var dataSet = [
     <?php 
 $query = "
-SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin 
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fcurso AS fin 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
 WHERE idinsp = $datos[0] AND proceso = 'PENDIENTE' AND cursos.estado = 0 || idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
@@ -1342,12 +1346,15 @@ $fcurso = $data['inicial'];
 $fechaf = $data['final']; 
 $fin = $data['fin'];
 
-$actual= date("d-m-Y"); 
-$f3 = strtotime($actual);
-$f2 = strtotime($fin); 
+ $actual= date("Y-m-d"); 
+ $hactual = date('H:i:s');
+
+$f3 = strtotime($actual.''.$hactual);
+$f2 = strtotime($fin.''.$data['hcurso']); 
 
 
- if($f3<$f2){
+
+ if($f3<=$f2){
 
 if($data['confirmar']=='CONFIRMAR'){
 $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 13px;' class='badge'>PENDIENTE</span>";
@@ -1418,7 +1425,7 @@ var dataSet = [
 $query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 AND confirmar='CONFIRMADO' ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -1627,16 +1634,13 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
 });
 
 
-
-
-
 var dataSet = [
     <?php 
 $query = "
-SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial, cursos.fechaf AS fin,evaluacion
+SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial, cursos.fcurso AS fin,evaluacion
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso != 'FECHA' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -1651,11 +1655,14 @@ $fin = $data['fin'];
 
  $valor = 'FECHA';
 
-$actual= date("d-m-Y"); 
-$f3 = strtotime($actual);
-$f2 = strtotime($fin); 
+$actual = date("Y-m-d"); 
+$hactual = date('H:i:s');
+//strtotime($actual.''.$hcurso)
 
-if($f3>$f2 && $data['proceso']=='PENDIENTE' || $f3>$f2 && $data['proceso']=='FINALIZADO' && $eva==0){   ?>
+$f3 = strtotime($actual.''.$hactual);
+$f2 = strtotime($fin.''.$data['hcurso']); 
+
+if($f3>=$f2 && $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='FINALIZADO'){   ?>
 
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
@@ -1700,46 +1707,6 @@ var tableGenerarReporte = $('#data-table-vencidos').DataTable({
     ],
 });
 
-</script>
-<!-- <script>
-
-$(document).ready(function() {
-                        $("#data-table-completo tr").on('click', function() {
-                            var toma1 = "", toma2 ="", toma3 ="" ; //declaramos las columnas NOMBRE DEL CURSO
-                                    toma1 += $(this).find('td:eq(1)').html(); //NOMBRE DEL CURSO  
-                                    toma2 += $(this).find('td:eq(9)').html(); //PDF
-                                    toma3 += $(this).find('td:eq(10)').html(); //PDF                    
-
-                        });
-                    }); 
-</script> -->
-
-<script>
-// function certificado1() {
-
-//     var pdf = new jsPDF("landscape");
-//     pdf.setFontSize(10)
-
-//     var logo = new Image();
-//     logo.src = '../dist/img/certificado.png';
-//     pdf.addImage(logo, 'PNG', 0, 0, 300, 210);
-//     pdf.setFontType('bold')
-//     // pdf.text(15, 35, 'CENTRO INTERNACIONAL DE ADIESTRAMIENTO DE AVIACION CIVIL'
-//     // pdf.text(100, 102, 'LISTA TECNICA DE PARTICIPANTES')
-
-//     /* FUNCIÓN PARA CREAR EL PIE DE PAGINA*/
-//     const pageCount = pdf.internal.getNumberOfPages();
-//     for (var i = 1; i <= pageCount; i++) {
-//         pdf.setFontSize(8)
-//         pdf.setPage(i);
-//         pdf.text('Página ' + String(i) + ' de ' + String(pageCount), 220 - 20, 320 - 30, null, null,
-//             "right");
-//     }
-
-
-//     window.open(pdf.output('bloburl'))
-
-// }
 
 var counter = 0;
 

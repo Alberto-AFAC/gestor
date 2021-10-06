@@ -1,29 +1,4 @@
-<!DOCTYPE html><?php include ("../conexion/conexion.php");
-
-$sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
-$curso = mysqli_query($conexion,$sql);
-
-$sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
-$instructor = mysqli_query($conexion,$sql);
-
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
-$inspector = mysqli_query($conexion,$sql);
-include("../php/nivelSatis.php");
-$query ="SELECT
-                *
-            FROM
-                bitevaluacion 
-            ORDER BY
-                id DESC
-                LIMIT 1";
-$resultado = mysqli_query($conexion, $query);
-
-$row = mysqli_fetch_assoc($resultado);
-if(!$resultado) {
-    var_dump(mysqli_error($conexion));
-    exit;
-}
-?>
+<!DOCTYPE html><?php include ("../conexion/conexion.php"); ?>
 <html>
 
 <head>
@@ -51,6 +26,8 @@ if(!$resultado) {
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+
     <script src="../dist/js/sweetalert2.all.min.js"></script>
 
 
@@ -65,16 +42,6 @@ if(!$resultado) {
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
-    #exTab3 .nav-pills>li>a {
-        border-radius: 4px 4px 0 0;
-    }
-
-    #exTab3 .tab-content {
-        color: gray;
-        /* background-color: #428bca; */
-        padding: 5px 15px;
-    }
-
     .swal-wide {
         width: 500px !important;
         font-size: 16px !important;
@@ -109,151 +76,39 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    SOPORTE TÉCNICO CIAAC
+                    HISTORIAL DE CAMBIOS Y SOPORTE TÉCNICO
                 </h1>
             </section>
             <!-- Main content -->
             <section class="content">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="box box-solid">
+                        <div style="padding-top: 65px;" class="container box box-solid">
+                            <ul class="nav nav-tabs" id="myNavTabs">
+                                <li class="active"><a href="#navtabs1" data-toggle="tab">HISTORIAL DE CAMBIOS</a>
+                                <li><a href="#navtabs2" data-toggle="tab">AYUDA Y SOPORTE</a>
+                            </ul>
 
-                            <div class="container">
-                                <!-- <h2></h2> -->
-                            </div>
-                            <div style="padding-top: 20px;" id="exTab3" class="container">
-                                <ul class="nav nav-pills">
-                                    <li class="active">
-                                        <a href="#1b" data-toggle="tab">HISTORIAL DE MOVIMIENTOS</a>
-                                    </li>
-                                    <li><a href="#2b" data-toggle="tab">SOPORTE</a>
-                                    </li>
-                                </ul>
+                            <!-- using fade to define fade effect -->
+                            <!-- using active class to define the first actived tab and content -->
 
-                                <div  style="padding-top: 40px;"  class="tab-content clearfix">
-                                    <div class="tab-pane active" id="1b">
-                                    <!-- <table id="data-table-modificacion" class="table table-bordered" width="100%"
-                                cellspacing="0">
-                            </table> -->
-                            <h3>UNDER CONSTRUCTION !</h3>
-                                    </div>
-                                    <div class="tab-pane" id="2b">
-                                        <h3>UNDER CONSTRUCTION !</h3>
-                                    </div>
-                                    <div class="tab-pane" id="3b">
-                                        <h3>We applied clearfix to the tab-content to rid of the gap between the tab and
-                                            the content</h3>
-                                    </div>
-                                    <div class="tab-pane" id="4b">
-                                        <h3>We use css to change the background color of the content to be equal to the
-                                            tab</h3>
-                                    </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="navtabs1"> <br><br>
+                                    <table id="data-table-ponderacion" class="table table-bordered" width="100%"
+                                        cellspacing="0">
+                                    </table>
                                 </div>
+                                <div class="tab-pane fade" id="navtabs2"><br><br>   
+                                    UNDER CONSTRUCTION</div>
                             </div>
-
                         </div>
                         <!-- /.box -->
                     </div>
-                    <!-- <div class="col-md-6">
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Vertical Progress Bars Different Sizes</h3>
-            </div>
-        
-            <div class="box-body text-center">
-              <p>By adding the class <code>.vertical</code> and <code>.progress-sm</code>, <code>.progress-xs</code> or
-                <code>.progress-xxs</code> we achieve:</p>
-
-              <div class="progress vertical active">
-                <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height: 40%">
-                  <span class="sr-only">40%</span>
-                </div>
-              </div>
-              <div class="progress vertical progress-sm">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 100%">
-                  <span class="sr-only">100%</span>
-                </div>
-              </div>
-              <div class="progress vertical progress-xs">
-                <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">
-                  <span class="sr-only">60%</span>
-                </div>
-              </div>
-              <div class="progress vertical progress-xxs">
-                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">
-                  <span class="sr-only">60%</span>
-                </div>
-              </div>
-            </div>
-         
-          </div>
-        
-        </div> -->
-                    <!-- /.col -->
-
             </section>
+            <div>
+
+            </div>
             <!-- /.content -->
-        </div>
-        <!-- MODAL PARA HACER HISTORIAL DE SATISFACCIÓN -->
-        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
-            aria-hidden="true">
-            <form class="col s12" id="ponderacion" method="POST">
-                <div class="modal-dialog" style="width: 50%">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">NIVEL DE SATISFACCIÓN DESEADA</h4>
-                        </div>
-                        <div class="modal-body">
-                            <!-- <div class="input-group"> -->
-
-                            <input type="text" id="obtained" name="obtained"
-                                value="<?php echo porcentaje($totalfull, $totalcantida, 0) . "%"?>" hidden>
-                            <input type="date" id="date_update" name="date_update" value="<?php echo date("Y-m-d"); ?>"
-                                hidden>
-                            <span style="font-size: 20px;">Ponderación actual</span>
-                            <span
-                                style="font-weight: bold; color: green; font-size: 25px; float: right;"><?php echo $row['evaluation']?>
-                                %</span>
-                            <!-- </div> -->
-                            <br><br>
-                            <div class="input-group">
-                                <input type="date" id="date_update" name="date_update"
-                                    value="<?php echo date("Y-m-d"); ?>" hidden>
-                                <input type="text" id="evaluation" name="evaluation" class="form-control"
-                                    placeholder="Escribe la ponderación" aria-describedby="basic-addon2">
-                                <span class="input-group-addon" id="basic-addon2">%</span>
-
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Desde
-                                        </span>
-                                        <input type="date" name="start_date" id="start_date" class="form-control"
-                                            aria-label="...">
-                                    </div><!-- /input-group -->
-                                </div><!-- /.col-lg-6 -->
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Hasta
-                                        </span>
-                                        <input type="date" name="end_date" id="end_date" class="form-control"
-                                            aria-label="...">
-                                    </div><!-- /input-group -->
-                                </div><!-- /.col-lg-6 -->
-                            </div><br><br>
-                            <table id="data-table-ponderacion" class="table table-bordered" width="100%"
-                                cellspacing="0">
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" id="btnguardar" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -396,152 +251,88 @@ include('header.php');
                 <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
                 <!-- /.tab-pane -->
                 <!-- Settings tab content -->
-                <div class="tab-pane" id="control-sidebar-settings-tab">
-                    <form method="post">
-                        <h3 class="control-sidebar-heading">General Settings</h3>
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Report panel usage
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-
-                            <p>
-                                Some information about this general settings option
-                            </p>
-                        </div>
-                        <!-- /.form-group -->
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Allow mail redirect
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-
-                            <p>
-                                Other sets of options are available
-                            </p>
-                        </div>
-                        <!-- /.form-group -->
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Expose author name in posts
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-
-                            <p>
-                                Allow the user to show his name in blog posts
-                            </p>
-                        </div>
-                        <!-- /.form-group -->
-
-                        <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Show me as online
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-                        </div>
-                        <!-- /.form-group -->
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Turn off notifications
-                                <input type="checkbox" class="pull-right">
-                            </label>
-                        </div>
-                        <!-- /.form-group -->
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Delete chat history
-                                <a href="javascript:void(0)" class="text-red pull-right"><i
-                                        class="fa fa-trash-o"></i></a>
-                            </label>
-                        </div>
-                        <!-- /.form-group -->
-                    </form>
-                </div>
                 <!-- /.tab-pane -->
             </div>
         </aside>
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
+        <!-- EDICION DEL TEMARIO -->
+
+        <!-- ./wrapper -->
+
+        <!-- jQuery 3 -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="../dist/js/demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
+        <script>
+
+        var dataSet = [
+            <?php 
+    $query ="
+    SELECT *,
+    DATE_FORMAT(fecha, '%d/%m/%Y') as fecha
+    FROM historial
+    INNER JOIN personal
+    ON gstIdper = id_usu";
+    $resultado = mysqli_query($conexion, $query);
+    while($data = mysqli_fetch_array($resultado)){ ?>
+
+            ["<?php echo $data['id_his']?>", "<?php echo $data['gstNombr'].' '.$data['gstApell']?>", "<?php echo $data['proceso']?>","<?php echo $data['registro']?>","<?php echo $data['fecha']?>" ],
+
+            <?php  } ?>
+
+        ];
+
+        var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
+            "language": {
+                "searchPlaceholder": "Buscar datos...",
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            },
+            "order": [
+                [0, 'desc']
+            ],
+            orderCellsTop: true,
+            fixedHeader: true,
+            data: dataSet,
+            columns: [{
+                    title: "FOLIO"
+                },
+                {
+                    title: "RESPONSABLE"
+                },
+                {
+                    title: "PROCESO"
+                },
+                {
+                    title: "REGISTROS"
+                },
+                {
+                    title: "FECHA"
+                }
+            ]
+        });
+        </script>
         <div class="control-sidebar-bg"></div>
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
     <!-- page script -->
 
 </body>
 
 </html>
-<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#id_mstr').select2();
-    $('#idinst').select2();
-    $('#idinsp').select2();
-});
-</script>
-<script src="../js/select2.js"></script>
-<script>
-
-var dataSet = [
-    
-    [],
-
-
-];
-
-var tableGenerarReporte = $('#data-table-modificacion').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    // "order": [
-    //     [0, 'desc']
-    // ],
-    orderCellsTop: true,
-    fixedHeader: true,
-    data: dataSet,
-    columns: [{
-            title: "ID"
-        },
-        {
-            title: "FECHA MODIFICACION"
-        },
-        {
-            title: "MODIFICACIÓN"
-        },
-        {
-            title: "OBTENIDA"
-        },
-        {
-            title: "DESEADA"
-        }
-    ]
-});
-</script>
