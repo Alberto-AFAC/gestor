@@ -510,14 +510,14 @@ function inspeval(cursos) {
                         x++;
 
 
-                        if(obj.data[G].confirmar=='CONFIRMADO'){
-                        if(obj.data[G].evaluacion==0){
-                       html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='"+obj.data[G].id_curso+"'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td><input type='number' title='el numero no debe ser superior a 100' name='cantidad' min='1' max='100' style='text-transform:uppercase;height:30px; width:100px; border:1px solid silver;' class='disabled' id='validoev'></td><td><span class='label label-primary' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;' id='PE'>PENDIENTE</span></td><td>"+fecha_actual+"</td></tr>";
-                        }else{
-                        if(obj.data[G].evaluacion>=80){
-                        html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+obj.data[G].evaluacion+"</td><td><span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>APROBADO</span></td><td>"+fnotif+"</td></tr>";
-                        }else if(obj.data[G].evaluacion<80){
-                        html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+obj.data[G].evaluacion+"</td><td><span class='label label-danger' style='font-size:13px;'>REPROBADO</span></td><td>"+fnotif+"</td></tr>";
+if(obj.data[G].confirmar=='CONFIRMADO'){
+if(obj.data[G].evaluacion==0){
+html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='"+obj.data[G].id_curso+"'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td><input type='number' title='el numero no debe ser superior a 100' name='cantidad' min='1' max='100' style='text-transform:uppercase;height:30px; width:100px; border:1px solid silver;' class='disabled' id='validoev'></td><td><span class='label label-primary' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;' id='PE'>PENDIENTE</span></td><td>"+fecha_actual+"</td></tr>";
+}else{
+if(obj.data[G].evaluacion>=80){
+html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+obj.data[G].evaluacion+"</td><td><span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>APROBADO</span></td><td>"+fnotif+"</td></tr>";
+}else if(obj.data[G].evaluacion<80){
+html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+obj.data[G].evaluacion+"</td><td><span class='label label-danger' style='font-size:13px;'>REPROBADO</span></td><td>"+fnotif+"</td></tr>";
                                 }
                             }
                         }
@@ -584,8 +584,6 @@ function generacion(cursos) { //abre el modal de generacion de constancias
     $("#cursoc").html(d[1]);
     $("#folioc").html(d[21]);
 
-
-
                 $.ajax({
                     url: '../php/conInsp.php',
                     type: 'POST'
@@ -597,14 +595,9 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                      html = '<table id="reacc" class="table table-hover"><tr><th colspan="10">CURSO: <label>'+d[1]+'</label></th><th colspan="2">FOLIO: <label>'+d[21]+' <input type="hidden" name="idcod" id="idcod" value='+d[21]+'></label></th></tr><tr style="font-size: 12px;"><th>ID</th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
                     for (G = 0; G < res.length; G++) {
 
-                        //if(obj.data[E].gstCatga == gstIDCat){
-                            
-                        //if(obj.data[E].gstOrden==1){
-// <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
                         if(obj.data[G].id_codigocurso==d[21]){
                         x++;
-                        
-                   // alert(d[21]);
+   
                       
                       evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'>"
                       confirmaasis1="<i class='fa fa-check' id='cov1' disabled style='color:green; font-size: 16pt'></i>" ;
@@ -615,20 +608,7 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                       regponde1="<input type='checkbox' style='width:17px; height:17px;' name='regponde' id='regponde'/>"
                       infinal1="<input type='checkbox' style='width:17px; height:17px;' name='infinal' id='infinal'/>"
                       evreaccion1 ="<input type='checkbox' style='width:17px; height:17px;' name='evreaccion' id='evreaccion' />"
-                     
-
-                     //if (((d[17]) >= 80) && ((d[17]) <= 100)) {
-                       // evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
-                     //}
-
-               //      if (((d[17]) < 80) && ((d[17]) <= 100)) {
-                 //       evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
-                   //  }
-
-               //    if (obj.data[G].listregis=='SI'){ // columna1
-                 //   lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='"+obj.data[G].id+"'/> "
-             //     }        
-
+       
                       if (obj.data[G].listregis=='SI'){ // columna1
                       lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='"+obj.data[G].id+"'/> "
                     }            
@@ -657,16 +637,8 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                         evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='evreaccion' id='evreaccion' />"
                     }
 
-                        html += "<tr><td>" + x +"<input type='checkbox' style='width:14px; height:14px;' name='full' id='full' />"  + "</td><td>" + obj.data[G].gstNombr +" " +obj.data[G].gstApell +"</td><td>"+confirmaasis1+"</td><td>"+lista1+"</td><td>"+asistencia1+"</td><td>"+lisreport1+"</td><td>"+cartdescrip1+"</td><td>"+evalreac1+"</i></span></td><td>"+regponde1+"</td><td>"+infinal1+"</td><td>"+evreaccion1+"</td></tr>";
-    //  html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+confirmaasis1+"</td><td><input type='checkbox' id='listregis' name='listregis' value='"+obj.data[G].id+"'/> </td><td><input type='checkbox' name='lisasisten' id='lisasisten' /></td><td><input type='checkbox' name='listreportein' id='listreportein'/></td><td><input type='checkbox' name='cartdescrip' id='cartdescrip'/></td><td><i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'></i></span></td><td><input type='checkbox' name='regponde' id='regponde'/></td><td><input type='checkbox' name='infinal' id='infinal'/></td><td><input type='checkbox' name='evreaccion' id='evreaccion' /></td></tr>";
-                       
-                       
-                    }
-                        // <td>" + obj.data[G].gstApell + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
-                        //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-                        // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-                        //}<td><input id='comntr' name='comntr[]'> </td>
-                        //}
+                        html += "<tr><td>" + x +"<input type='hidden' style='width:14px; height:14px;' name='full' id='full' />"  + "</td><td>" + obj.data[G].gstNombr +" " +obj.data[G].gstApell +"</td><td>"+confirmaasis1+"</td><td>"+lista1+"</td><td>"+asistencia1+"</td><td>"+lisreport1+"</td><td>"+cartdescrip1+"</td><td>"+evalreac1+"</i></span></td><td>"+regponde1+"</td><td>"+infinal1+"</td><td>"+evreaccion1+"</td></tr>";                       
+                        }
                     }
                     html +='</table>';
                     $("#generacion").html(html);
