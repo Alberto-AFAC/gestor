@@ -564,7 +564,8 @@
                             style='font-weight: bold;'>TEMARIO</span><br>
                         
                 </div>
-                <div class='modal-body'><div id="elimino" style="display: none;">SU REGISTRO FUE ELIMINADO</div>
+                <div class='modal-body'><div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU REGISTRO FUE ELIMINADO</div><div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">SE ACTUALIZO REGISTRO CON ÉXITO</div>
+
 
 <div id="temario"></div>
                 </div>
@@ -787,41 +788,67 @@ function temario(gstIdlsc) {
             if (obj.data[i].idcurso == gstIdlsc) {
 
                 //alert(obj.data[i].idcurso);
-                dato = obj.data[i].idtem+'*'+obj.data[i].idcurso;
+                dato = obj.data[i].idtem+'*'+obj.data[i].idcurso+'*'+obj.data[i].titulo;
 
             x++;               
- html += "<tr><td>" + x + "</td><td>" + obj.data[i].titulo + "</td><td><a type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact('+obj.data[i].idtem +');' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a><a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+ html += "<tr><td>" + x + "</td><td><input id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td><td><a id='"+obj.data[i].idtem+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='temagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].idtem+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
             }
         }
         html += '</table>';
-
 
         $("#temario").html(html);
     })
 
 }
+///////EDITAR////////
 
+    function temact(dato){
+    var d = dato.split("*");
+    idcurso = d[0];
+    document.getElementById(idcurso).disabled = false;
+    $("#"+idcurso+"ocultar").hide();
+    $("#"+idcurso+"mostrar").show();
 
-// $(document).ready(function() {
-//     var table = $('#example').DataTable();
- 
-//     $('#example tbody').on( 'click', 'tr', function () {
-//         if ( $(this).hasClass('selected') ) {
-//             $(this).removeClass('selected');
-//         }
-//         else {
-//             table.$('tr.selected').removeClass('selected');
-//             $(this).addClass('selected');
-//         }
-//     } );
- 
-//     $('#button').click( function () {
-//         table.row('.selected').remove().draw( false );
-//     } );
-// } );
+    }
+
+function temagregar(dato){
+
+    var d = dato.split("*");
+    idcurso = d[0];
+    var titulo = document.getElementById(idcurso).value;
+
+    $.ajax({
+        data: 'idcurso='+idcurso+'&titulo='+titulo+'&opcion=agregartem',
+        url:'../php/docCursos.php',
+        type: 'post',
+        beforeSend: function () {
+            //
+        },
+        success: function (response) {   
+            if(response==0){      
+
+                $('#actualizo').toggle('toggle');
+                setTimeout(function() {
+                $('#actualizo').toggle('toggle');
+                }, 2000);
+
+            $("#"+idcurso+"ocultar").show();
+            $("#"+idcurso+"mostrar").hide();
+            document.getElementById(idcurso).disabled = true;
+            //temario(gstIdlsc);            
+            }else{
+                // $('#actualizo').toggle('toggle');
+                // setTimeout(function() {
+                // $('#actualizo').toggle('toggle');
+                // }, 2000);            
+            // $('#temario').hide();
+            }
+        }
+    });
+}
+
 
 ///BORRAR REGISTRO////
-
 function temborrar(dato){
     
     var d = dato.split("*");
@@ -851,6 +878,7 @@ $.ajax({
             $('#elimino').toggle('toggle');
             }, 2000);            
         $('#temario').hide();
+        setTimeout("location.href = 'conCursos.php';", 2100);
         }
     }
 });
