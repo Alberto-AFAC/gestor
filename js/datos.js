@@ -59,20 +59,7 @@ function closeDtlls() {
 
 }
 
-// function pdf() {
-
-
-//     var pdfIdper = document.getElementById('pdfIdper').value;
-//     alert(pdfIdper);
-
-
-//     setTimeout("location.href = 'lista.php?data=pdfIdper'");
-
-// }
-//muestra ventana estudios
-function estudio(gstIdper) {
-
-
+function estudio(gstIdper){
     $("#Forstd #gstIDper").val(gstIdper);
 }
 
@@ -2166,7 +2153,7 @@ function registrar() {
         }).done(function(respuesta) {
 
             if (respuesta == 0) {
-                // alert(respuesta);
+                 //alert(respuesta);
                 Swal.fire({
                     type: 'success',
                     title: 'AFAC INFORMA',
