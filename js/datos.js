@@ -1019,9 +1019,9 @@ function consultarDoc(gstIdper) {
                 }
             } else {
                 if (obj.data[D].id_doc == 7) {
-                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td></td><td></td><td></td></tr>';
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/time.png" alt="YES" width="33px;"></td><td></td><td></td><td></td></tr>';
                 } else {
-                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo(' + obj.data[D].id_doc + ');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/time.png" alt="YES" width="33px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo(' + obj.data[D].id_doc + ');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';
                 }
             }
         }
