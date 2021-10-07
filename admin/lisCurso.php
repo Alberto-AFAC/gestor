@@ -1363,11 +1363,11 @@ function idcurso(codigo) {
                         "</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" +
                         "<td><a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval(" + '"' +
                         cursos + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:18px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" +
+                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:17px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" +
                         '"' + cursos + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> <a type='button' onclick='eliminar(" +
+                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:17px;'></i></a> <a type='button' onclick='eliminar(" +
                         '"' + obj.data[i].id_curso + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' style='font-size:18px;' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o' style='font-size:17px;'></i></a></td></tr>";
                 }
 
                 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO COORDINADOR (PRINCIPAL)---------------//
