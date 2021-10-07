@@ -1500,14 +1500,18 @@ function agrinspctor(tbody, table) {
 }
 
 
-$(document).ready(function() {
-    $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
-});
+const myFunction = () => {
+  const trs = document.querySelectorAll('#lstcurs tr:not(.header)');
+  const filter = document.querySelector('#myInput').value;
+  const regex = new RegExp(filter, 'i');
+  const isFoundInTds = (td) => regex.test(td.innerHTML);
+  const isFound = (childrenArr) => childrenArr.some(isFoundInTds);
+  const setTrStyleDisplay = ({ style, children }) => {
+    style.display = isFound([...children]) ? '' : 'none';
+  };
+  
+  trs.forEach(setTrStyleDisplay);
+};
 </script>
 <style>
 #example input {
