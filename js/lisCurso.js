@@ -400,43 +400,7 @@ function cambiartexto() {
     }
 }
 
-function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
-    var cer = cursos.split("*"); 
-    //alert(cer[22]);
-    $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
-    $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
-    $("#id_cursoc").val(cer[21]); //ID DEL CURSO
-    $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
-  //  che1 = document.getElementById('che1'); //che1 
-   // che6 = document.getElementById('che6'); //che6
-    // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-    if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
-        document.getElementById("che6").className = "fa fa-check";
-        document.getElementById("che6").style = "color:green; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    } else {
-        document.getElementById("che6").className = "fa fa-exclamation";
-        document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    }
-    if (((cer[17]) < 80) && ((cer[17]) > 0)) {
-        document.getElementById("che6").className = "fa fa-times";
-        document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    } 
-    if (cer[20] == "CONFIRMADO") {
-        //che1.style.display = '';
-        document.getElementById("che1").className = "fa fa-check";
-        document.getElementById("che1").style = "color:green; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    } else {
-        //che1.style.display = 'none';
-        document.getElementById("che1").className = "fa fa-exclamation";
-        document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    }
 
-}
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
     var d = cursos.split("*");
@@ -579,12 +543,10 @@ function evalresult(){
 }
 
 function generacion(cursos) { //abre el modal de generacion de constancias 
-
+   // var cer = cursos.split("*"); 
     var d = cursos.split("*");
     $("#cursoc").html(d[1]);
     $("#folioc").html(d[21]);
-
-
 
                 $.ajax({
                     url: '../php/conInsp.php',
@@ -597,11 +559,13 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                      html = '<table id="reacc" class="table table-hover"><tr><th colspan="10">CURSO: <label>'+d[1]+'</label></th><th colspan="2">FOLIO: <label>'+d[21]+' <input type="hidden" name="idcod" id="idcod" value='+d[21]+'></label></th></tr><tr style="font-size: 12px;"><th>ID</th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
                     for (G = 0; G < res.length; G++) {
 
+                       
+
                         //if(obj.data[E].gstCatga == gstIDCat){
                             
                         //if(obj.data[E].gstOrden==1){
-// <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
-                        if(obj.data[G].id_codigocurso==d[21]){
+                  // <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
+                        if(obj.data[G].id_codigocurso==d[21] ){
                         x++;
                         
                    // alert(d[21]);
@@ -645,9 +609,20 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                         cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='cartdescrip' id='cartdescrip'/> "
                     }
 
+                    if (d[20] == "CONFIRMADO") { //confirmao
+                       
+                        confirmaasis1="<i class='fa fa-check' id='cov1' disabled style='color:green; font-size: 16pt'></i>" 
+                    } 
+                    //alert(d[20])
+
+                    if (d[20] == "CONFIRMAR") { //rechazado 
+                        
+                        confirmaasis1="<i class='fa fa-exclamation' id='cov1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'></i>" 
+                    } 
+
                     if (obj.data[G].regponde=='SI'){ // columna5    
                         regponde1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='regponde' id='regponde'/> "
-                    }
+                    }   
 
                     if (obj.data[G].infinal=='SI'){ // columna6   
                         infinal1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal'/>"
@@ -672,6 +647,112 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                     $("#generacion").html(html);
                 })
 
+
+}
+
+
+
+function gencerti(cursos){
+    var cer = cursos.split("*"); 
+
+    //alert(cer[22]);
+    $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
+    $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
+    $("#id_cursoc").val(cer[21]); //ID DEL CURSO
+    $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
+
+    $.ajax({
+        url: '../php/conCurcons.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (K = 0; K < res.length; K++) {
+
+            if (obj.data[K].gstIdper == cer[22] && obj.data[K].id_codigocurso == cer[21] ) {
+             //   alert(cer[22]);
+
+
+                if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
+                    document.getElementById("che6").className = "fa fa-check";
+                    document.getElementById("che6").style = "color:green; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+               } else {
+                    document.getElementById("che6").className = "fa fa-exclamation";
+                    document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+               }
+       
+               if (((cer[17]) < 80) && ((cer[17]) > 0)) {
+                    document.getElementById("che6").className = "fa fa-times";
+                    document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+               } 
+               if (cer[20] == "CONFIRMADO") {
+               //che1.style.display = '';
+                    document.getElementById("che1").className = "fa fa-check";
+                    document.getElementById("che1").style = "color:green; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+                } else {
+               //che1.style.display = 'none';
+                    document.getElementById("che1").className = "fa fa-exclamation";
+                    document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+                }
+               if (obj.data[K].listregis=='SI'){
+                    document.getElementById("check2c").className = "fa fa-check";
+                    document.getElementById("check2c").style = "color:green; font-size: 16pt";
+                }else {
+                   document.getElementById("check2c").className = "fa fa-exclamation";
+                   document.getElementById("check2c").style = "color:#CD8704; font-size: 16pt";
+              
+                }
+               if (obj.data[K].lisasisten=='SI'){
+                    document.getElementById("check3c").className = "fa fa-check";
+                    document.getElementById("check3c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check3c").className = "fa fa-exclamation";
+                    document.getElementById("check3c").style = "color:#CD8704; font-size: 16pt";  
+                }
+               if (obj.data[K].listreportein=='SI'){
+                    document.getElementById("check4c").className = "fa fa-check";
+                    document.getElementById("check4c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check4c").className = "fa fa-exclamation";
+                    document.getElementById("check4c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].cartdescrip=='SI'){
+                    document.getElementById("check5c").className = "fa fa-check";
+                    document.getElementById("check5c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check5c").className = "fa fa-exclamation";
+                    document.getElementById("check5c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].regponde=='SI'){
+                    document.getElementById("check7c").className = "fa fa-check";
+                    document.getElementById("check7c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check7c").className = "fa fa-exclamation";
+                    document.getElementById("check7c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].infinal=='SI'){
+                    document.getElementById("check8c").className = "fa fa-check";
+                    document.getElementById("check8c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check8c").className = "fa fa-exclamation";
+                    document.getElementById("check8c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].evreaccion=='SI'){
+                    document.getElementById("check9c").className = "fa fa-check";
+                    document.getElementById("check9c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check9c").className = "fa fa-exclamation";
+                    document.getElementById("check9c").style = "color:#CD8704; font-size: 16pt";
+                }
+            }
+        }
+    })
 
 }
 
@@ -865,6 +946,7 @@ function cerrareval() {
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
+               // openCurso ()
             } else {
                 Swal.fire({
                     type: 'success',

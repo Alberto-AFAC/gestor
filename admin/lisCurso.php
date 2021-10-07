@@ -594,7 +594,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                     LISTA DE REGISTRO
                                                 </td>
                                                 <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check2c" disabled style="color:green; font-size: 16pt"></i></span>
                                                 </td>
 
                                             </tr>
@@ -603,15 +604,17 @@ $inspector = mysqli_query($conexion,$sql);
                                                     LISTA DE ASISTENCIA
                                                 </td>
                                                 <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check3c" disabled style="color:green; font-size: 16pt"></i></span>
+                                               </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     REPORTES DE INCIDENCIAS
                                                 </td>
                                                 <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check4c" disabled style="color:green; font-size: 16pt"></i></span> 
                                                 </td>
 
                                             </tr>
@@ -620,7 +623,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                     CARTAS DESCRIPTIVAS
                                                 </td>
                                                 <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check5c" disabled style="color:green; font-size: 16pt"></i></span> 
                                                 </td>
 
                                             </tr>
@@ -637,15 +641,17 @@ $inspector = mysqli_query($conexion,$sql);
                                                     REGISTRO DE PONDERACIÓN
                                                 </td>
                                                 <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span>
-                                                </td>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check7c" disabled style="color:green; font-size: 16pt"></i></span> 
+                                               </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     INFORME FINAL
                                                 </td>
                                                 <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check8c" disabled style="color:green; font-size: 16pt"></i></span> 
                                                 </td>
                                             </tr>
                                             <tr>
@@ -653,7 +659,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                     EVALUACIÓN DE REACCIÓN
                                                 </td>
                                                 <td>
-                                                <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check9c" disabled style="color:green; font-size: 16pt"></i></span> 
                                                 <!-- <i class="fa fa-check" id="che91" disabled style="color:green; font-size: 16pt; display:none;"></i></span>         -->
                                             </td>
                                             </tr>
@@ -667,7 +674,7 @@ $inspector = mysqli_query($conexion,$sql);
 
                             <div class="form-group">
                                 <div class="col-sm-5">
-                                    <button type="button" id="guaacredit" onclick="vergenercerf()" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px" >ACEPTAR</button>
+                                    <button type="button" id="guaacredit" onclick="vergenercerf()" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px; display:none;" >ACEPTAR</button>
                                     <button type="button" id="actacredit" onclick="" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
                                 </div>
                                 <b>
