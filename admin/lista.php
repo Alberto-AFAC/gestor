@@ -8,7 +8,11 @@ $apellido = $_POST['apellido'];
 $comentario = $_POST['gstComnt'];
 $espec = $_POST['especialidad'];
 $espec1 = $_POST['siglas'];
+$nombresconcat  = $_POST['apellido'];
+$sep = explode(" ", $nombresconcat);
 
+    
+    
 
 ?>
 <!DOCTYPE html>
@@ -297,12 +301,6 @@ $espec1 = $_POST['siglas'];
 </head>
 
 <body>
-    <!-- <?php
-            $path = '../dist/img/header.png';
-            $type = pathinfo($path, PATHINFO_EXTENSION);
-            $data = file_get_contents($path);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-        ?> -->
     <div id="watermark">
         <img src="../dist/img/afac-degradado.png" height="97%" width="70%" />
     </div>
@@ -320,10 +318,11 @@ $espec1 = $_POST['siglas'];
     <div class="row">
         <div class="column left">
 
+        <span style="center;" class="persona"><?php echo $sep[0]; ?></span><br>
             <span class="persona">Apellido Paterno</span><br><br>
         </div>
         <div class="column middle">
-            <span style="center;" class="persona"><?php echo $apellido ?></span><br>
+            <span style="center;" class="persona"><?php echo $sep[1]; ?></span><br>
             <span class="persona">Apellido Materno</span><br><br>
         </div>
         <div class="column right">
@@ -384,7 +383,16 @@ $resultado= mysqli_query($conexion,$query);
 while($data = mysqli_fetch_assoc($resultado)){
 ?>
 <tr>
-    <td class="persona2"><?php echo $data['gstCmpli'];?></td>
+    <?php
+    if($data['gstCmpli'] == 'NO'){
+        echo "<td style='text-align: center;' class='persona2'></td><td  style='text-align: center;' class='persona2'>NO</td>";
+
+    }else{
+        echo "<td  style='text-align: center;' class='persona2'>SI</td><td  style='text-align: center;'class='persona2'></td>";
+
+    }
+    ?>
+  
 </tr>
 <?php } ?>
 </tbody>
