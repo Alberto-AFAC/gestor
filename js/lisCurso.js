@@ -400,7 +400,7 @@ function cambiartexto() {
     }
 }
 
-function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.07102021
+function gencerti(cursos){
     var cer = cursos.split("*"); 
 
     //alert(cer[22]);
@@ -408,46 +408,99 @@ function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.07102021
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
     $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
-  //  che1 = document.getElementById('che1'); //che1 
-   // che6 = document.getElementById('che6'); //che6
-    // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-    
+
+    $.ajax({
+        url: '../php/conCurcons.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (K = 0; K < res.length; K++) {
+
+            if (obj.data[K].gstIdper == cer[22] && obj.data[K].id_codigocurso == cer[21] ) {
+             //   alert(cer[22]);
 
 
-        if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
-             document.getElementById("che6").className = "fa fa-check";
-             document.getElementById("che6").style = "color:green; font-size: 16pt";
-             document.getElementById("guaacredit").disabled = false;
-        } else {
-             document.getElementById("che6").className = "fa fa-exclamation";
-             document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
-             document.getElementById("guaacredit").disabled = false;
-        }
-
-        if (((cer[17]) < 80) && ((cer[17]) > 0)) {
-             document.getElementById("che6").className = "fa fa-times";
-             document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
-             document.getElementById("guaacredit").disabled = false;
-        } 
-        if (cer[20] == "CONFIRMADO") {
-        //che1.style.display = '';
-             document.getElementById("che1").className = "fa fa-check";
-             document.getElementById("che1").style = "color:green; font-size: 16pt";
-             document.getElementById("guaacredit").disabled = false;
-        } else {
-        //che1.style.display = 'none';
-             document.getElementById("che1").className = "fa fa-exclamation";
-             document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
-             document.getElementById("guaacredit").disabled = false;
-        }
-        if (obj.data[G].listregis=='SI'){
-             document.getElementById("check2c").className = "fa fa-check";
-             document.getElementById("check2c").style = "color:green; font-size: 16pt";
-        }else {
-            document.getElementById("check2c").className = "fa fa-exclamation";
-            document.getElementById("check2c").style = "color:#CD8704; font-size: 16pt";
+                if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
+                    document.getElementById("che6").className = "fa fa-check";
+                    document.getElementById("che6").style = "color:green; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+               } else {
+                    document.getElementById("che6").className = "fa fa-exclamation";
+                    document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+               }
        
+               if (((cer[17]) < 80) && ((cer[17]) > 0)) {
+                    document.getElementById("che6").className = "fa fa-times";
+                    document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+               } 
+               if (cer[20] == "CONFIRMADO") {
+               //che1.style.display = '';
+                    document.getElementById("che1").className = "fa fa-check";
+                    document.getElementById("che1").style = "color:green; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+                } else {
+               //che1.style.display = 'none';
+                    document.getElementById("che1").className = "fa fa-exclamation";
+                    document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
+                    document.getElementById("guaacredit").disabled = false;
+                }
+               if (obj.data[K].listregis=='SI'){
+                    document.getElementById("check2c").className = "fa fa-check";
+                    document.getElementById("check2c").style = "color:green; font-size: 16pt";
+                }else {
+                   document.getElementById("check2c").className = "fa fa-exclamation";
+                   document.getElementById("check2c").style = "color:#CD8704; font-size: 16pt";
+              
+                }
+               if (obj.data[K].lisasisten=='SI'){
+                    document.getElementById("check3c").className = "fa fa-check";
+                    document.getElementById("check3c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check3c").className = "fa fa-exclamation";
+                    document.getElementById("check3c").style = "color:#CD8704; font-size: 16pt";  
+                }
+               if (obj.data[K].listreportein=='SI'){
+                    document.getElementById("check4c").className = "fa fa-check";
+                    document.getElementById("check4c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check4c").className = "fa fa-exclamation";
+                    document.getElementById("check4c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].cartdescrip=='SI'){
+                    document.getElementById("check5c").className = "fa fa-check";
+                    document.getElementById("check5c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check5c").className = "fa fa-exclamation";
+                    document.getElementById("check5c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].regponde=='SI'){
+                    document.getElementById("check7c").className = "fa fa-check";
+                    document.getElementById("check7c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check7c").className = "fa fa-exclamation";
+                    document.getElementById("check7c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].infinal=='SI'){
+                    document.getElementById("check8c").className = "fa fa-check";
+                    document.getElementById("check8c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check8c").className = "fa fa-exclamation";
+                    document.getElementById("check8c").style = "color:#CD8704; font-size: 16pt";
+                }
+                if (obj.data[K].evreaccion=='SI'){
+                    document.getElementById("check9c").className = "fa fa-check";
+                    document.getElementById("check9c").style = "color:green; font-size: 16pt";
+                }else {
+                    document.getElementById("check9c").className = "fa fa-exclamation";
+                    document.getElementById("check9c").style = "color:#CD8704; font-size: 16pt";
+                }
+            }
         }
+    })
 
 }
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
