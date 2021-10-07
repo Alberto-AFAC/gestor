@@ -400,42 +400,56 @@ function cambiartexto() {
     }
 }
 
-function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.
-    var cer = cursos.split("*");
+function gencerti(cursos) { //GENERACIÓN DE CERTIFICADOS ETC.07102021
+    var cer = cursos.split("*"); 
+
     //alert(cer[22]);
     $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
     $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
     $("#id_cursoc").val(cer[21]); //ID DEL CURSO
     $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
-    //  che1 = document.getElementById('che1'); //che1 
-    // che6 = document.getElementById('che6'); //che6
+  //  che1 = document.getElementById('che1'); //che1 
+   // che6 = document.getElementById('che6'); //che6
     // valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-    if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
-        document.getElementById("che6").className = "fa fa-check";
-        document.getElementById("che6").style = "color:green; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    } else {
-        document.getElementById("che6").className = "fa fa-exclamation";
-        document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    }
-    if (((cer[17]) < 80) && ((cer[17]) > 0)) {
-        document.getElementById("che6").className = "fa fa-times";
-        document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    }
-    if (cer[20] == "CONFIRMADO") {
-        //che1.style.display = '';
-        document.getElementById("che1").className = "fa fa-check";
-        document.getElementById("che1").style = "color:green; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    } else {
-        //che1.style.display = 'none';
-        document.getElementById("che1").className = "fa fa-exclamation";
-        document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
-        document.getElementById("guaacredit").disabled = false;
-    }
+    
 
+
+        if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
+             document.getElementById("che6").className = "fa fa-check";
+             document.getElementById("che6").style = "color:green; font-size: 16pt";
+             document.getElementById("guaacredit").disabled = false;
+        } else {
+             document.getElementById("che6").className = "fa fa-exclamation";
+             document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
+             document.getElementById("guaacredit").disabled = false;
+        }
+
+        if (((cer[17]) < 80) && ((cer[17]) > 0)) {
+             document.getElementById("che6").className = "fa fa-times";
+             document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
+             document.getElementById("guaacredit").disabled = false;
+        } 
+        if (cer[20] == "CONFIRMADO") {
+        //che1.style.display = '';
+             document.getElementById("che1").className = "fa fa-check";
+             document.getElementById("che1").style = "color:green; font-size: 16pt";
+             document.getElementById("guaacredit").disabled = false;
+        } else {
+        //che1.style.display = 'none';
+             document.getElementById("che1").className = "fa fa-exclamation";
+             document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
+             document.getElementById("guaacredit").disabled = false;
+        }
+        if (obj.data[G].listregis=='SI'){
+             document.getElementById("check2c").className = "fa fa-check";
+             document.getElementById("check2c").style = "color:green; font-size: 16pt";
+        }else {
+            document.getElementById("check2c").className = "fa fa-exclamation";
+            document.getElementById("check2c").style = "color:#CD8704; font-size: 16pt";
+       
+        }
+
+}
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
     var d = cursos.split("*");
@@ -578,7 +592,7 @@ function evalresult() {
 }
 
 function generacion(cursos) { //abre el modal de generacion de constancias 
-   // var cer = cursos.split("*"); 
+
     var d = cursos.split("*");
     $("#cursoc").html(d[1]);
     $("#folioc").html(d[21]);
@@ -872,7 +886,6 @@ function cerrareval() {
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
-               // openCurso ()
             } else {
                 Swal.fire({
                     type: 'success',
