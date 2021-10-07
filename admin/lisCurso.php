@@ -1512,6 +1512,8 @@ const myFunction = () => {
   
   trs.forEach(setTrStyleDisplay);
 };
+
+
 </script>
 <style>
 #example input {
