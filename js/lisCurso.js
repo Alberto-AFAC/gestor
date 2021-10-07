@@ -427,7 +427,7 @@ function gencerti(cursos){
                     document.getElementById("che6").style = "color:green; font-size: 16pt";
                     document.getElementById("guaacredit").disabled = false;
                } else {
-                    document.getElementById("che6").className = "fa fa-exclamation";
+                    document.getElementById("che6").className = "fa fa-clock-o";
                     document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
                     document.getElementById("guaacredit").disabled = false;
                }
@@ -444,7 +444,7 @@ function gencerti(cursos){
                     document.getElementById("guaacredit").disabled = false;
                 } else {
                //che1.style.display = 'none';
-                    document.getElementById("che1").className = "fa fa-exclamation";
+                    document.getElementById("che1").className = "fa fa-clock-o";
                     document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
                     document.getElementById("guaacredit").disabled = false;
                 }
@@ -452,7 +452,7 @@ function gencerti(cursos){
                     document.getElementById("check2c").className = "fa fa-check";
                     document.getElementById("check2c").style = "color:green; font-size: 16pt";
                 }else {
-                   document.getElementById("check2c").className = "fa fa-exclamation";
+                   document.getElementById("check2c").className = "fa fa-clock-o";
                    document.getElementById("check2c").style = "color:#CD8704; font-size: 16pt";
               
                 }
@@ -460,42 +460,42 @@ function gencerti(cursos){
                     document.getElementById("check3c").className = "fa fa-check";
                     document.getElementById("check3c").style = "color:green; font-size: 16pt";
                 }else {
-                    document.getElementById("check3c").className = "fa fa-exclamation";
+                    document.getElementById("check3c").className = "fa fa-clock-o";
                     document.getElementById("check3c").style = "color:#CD8704; font-size: 16pt";  
                 }
                if (obj.data[K].listreportein=='SI'){
                     document.getElementById("check4c").className = "fa fa-check";
                     document.getElementById("check4c").style = "color:green; font-size: 16pt";
                 }else {
-                    document.getElementById("check4c").className = "fa fa-exclamation";
+                    document.getElementById("check4c").className = "fa fa-clock-o";
                     document.getElementById("check4c").style = "color:#CD8704; font-size: 16pt";
                 }
                 if (obj.data[K].cartdescrip=='SI'){
                     document.getElementById("check5c").className = "fa fa-check";
                     document.getElementById("check5c").style = "color:green; font-size: 16pt";
                 }else {
-                    document.getElementById("check5c").className = "fa fa-exclamation";
+                    document.getElementById("check5c").className = "fa fa-clock-o";
                     document.getElementById("check5c").style = "color:#CD8704; font-size: 16pt";
                 }
                 if (obj.data[K].regponde=='SI'){
                     document.getElementById("check7c").className = "fa fa-check";
                     document.getElementById("check7c").style = "color:green; font-size: 16pt";
                 }else {
-                    document.getElementById("check7c").className = "fa fa-exclamation";
+                    document.getElementById("check7c").className = "fa fa-clock-o";
                     document.getElementById("check7c").style = "color:#CD8704; font-size: 16pt";
                 }
                 if (obj.data[K].infinal=='SI'){
                     document.getElementById("check8c").className = "fa fa-check";
                     document.getElementById("check8c").style = "color:green; font-size: 16pt";
                 }else {
-                    document.getElementById("check8c").className = "fa fa-exclamation";
+                    document.getElementById("check8c").className = "fa fa-clock-o";
                     document.getElementById("check8c").style = "color:#CD8704; font-size: 16pt";
                 }
                 if (obj.data[K].evreaccion=='SI'){
                     document.getElementById("check9c").className = "fa fa-check";
                     document.getElementById("check9c").style = "color:green; font-size: 16pt";
                 }else {
-                    document.getElementById("check9c").className = "fa fa-exclamation";
+                    document.getElementById("check9c").className = "fa fa-clock-o";
                     document.getElementById("check9c").style = "color:#CD8704; font-size: 16pt";
                 }
             }
@@ -549,8 +549,6 @@ function inspeval(cursos) {
     var d = cursos.split("*");
     $("#cursoc").html(d[1]);
     $("#folioc").html(d[21]);
-
-
 
     $.ajax({
         url: '../php/conProgra.php',
