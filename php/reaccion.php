@@ -13,7 +13,7 @@ if($opcion === 'agreaccion'){
 	$idcurso = $_POST['idcursoen'];
 	
 	if(comprobacion($idcurso,$conexion)){
-	
+
 	$fechareac = $realizo;
 	$preg1 = $_POST['preg1'];
 	$preg2 = $_POST['preg2'];

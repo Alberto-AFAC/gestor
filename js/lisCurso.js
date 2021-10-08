@@ -679,10 +679,10 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             if (obj.data[G].id_codigocurso == d[21]) {
                 x++;
 
-                // alert(d[21]);
+                // alert(d[21]);08/10/2021
 
-                evalreac1 = "<i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'>"
-                confirmaasis1 = "<i class='fa fa-check' id='cov1' disabled style='color:green; font-size: 16pt'></i>";
+                evalreac1 = "<i class='fa fa-clock-o' id='reac1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'>"
+                confirmaasis1 = "<i class='fa fa-clock-o' id='cov1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'></i>";
                 lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' name='listregis' value='" + obj.data[G].id + "'/> ";
                 asistencia1 = "<input type='checkbox' style='width:17px; height:17px;' name='lisasisten' id='lisasisten' />"
                 lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' name='listreportein' id='listreportein'/>"
@@ -734,6 +734,30 @@ function generacion(cursos) { //abre el modal de generacion de constancias
 
                 if (obj.data[G].listregis == 'SI' && obj.data[G].lisasisten == 'SI' && obj.data[G].listreportein == 'SI' && obj.data[G].cartdescrip == 'SI' && obj.data[G].regponde == 'SI' && obj.data[G].infinal == 'SI' && obj.data[G].evreaccion == 'SI') { // columna7   
                     fullselect ="<input title='prueba de todos' type='checkbox' onclick='fullchange()' name='fullc1' id='fullc1' checked />"
+                }
+
+                if (obj.data[G].confirmar == 'CONFIRMADO') { // columna4    
+                    confirmaasis1 = "<i class='fa fa-check' id='cov1' disabled style='color:green; font-size: 16pt'></i>";
+                }
+
+                if (obj.data[G].confirmar == 'ENFERMEDAD') { // columna4    
+                    confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
+                }
+
+                if (obj.data[G].confirmar == 'TRABAJO') { // columna4    
+                    confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
+                }
+
+                if (obj.data[G].confirmar == 'OTROS') { // columna4    
+                    confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
+                }
+
+                if (obj.data[G].evaluacion >= 80 && obj.data[G].evaluacion <= 100) { // columna4    
+                    evalreac1 = "<i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'>"
+                }
+
+                if (obj.data[G].evaluacion < 80 && obj.data[G].evaluacion >= 1) { // columna4    
+                    evalreac1 = "<i class='fa fa-times id='reac1' disabled style='color:red; font-size: 16pt'>"
                 }
 
                 html += "<tr><td>" + x + fullselect + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td>" + confirmaasis1 + "</td><td>" + lista1 + "</td><td><form id='form2'>" + asistencia1 + "</td><td>" + lisreport1 + "</td><td>" + cartdescrip1 + "</td><td>" + evalreac1 + "</i></span></td><td>" + regponde1 + "</td><td>" + infinal1 + "</td><td>" + evreaccion1 + "</td></form></tr>";
