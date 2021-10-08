@@ -1,7 +1,7 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-
+	ini_set('date.timezone','America/Mexico_City');
 	$id = $_SESSION['usuario']['id_usu'];
 
 	$query = "SELECT * FROM cursos 
