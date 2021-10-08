@@ -457,7 +457,7 @@ $inspector = mysqli_query($conexion,$sql);
                                 <h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS DE
                                     PARTICIPANTES</h4><br>
                                 <div class="col-sm-12">
-                                    <div id="generacion"></div>
+                                                                    <div id="generacion"></div>
                                 </div>
                                 </p>
                             </div>
@@ -1512,9 +1512,8 @@ const myFunction = () => {
   
   trs.forEach(setTrStyleDisplay);
 };
-
-
 </script>
+
 <style>
 #example input {
     width: 50% !important;
