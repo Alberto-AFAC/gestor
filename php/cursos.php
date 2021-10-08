@@ -29,7 +29,7 @@
 	$f3 = strtotime($actual.''.$hactual);
 	$f2 = strtotime($fin.''.$hfin); 
 
-	if($f3>=$f2 && $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='FINALIZADO'){ 
+	if($f3>=$f2 && $data['proceso']=='PENDIENTE' && $data['confirmar'] == 'CONFIRMAR' || $f3>= $f2 && $data['proceso']=='FINALIZADO' && $data['confirmar'] == 'CONFIRMAR'){ 
 	$vencidos++;
 	}
 

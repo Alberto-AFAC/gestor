@@ -1,5 +1,11 @@
 <?php
 include("../conexion/conexion.php");
+session_start();
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$id = $_SESSION['usuario']['id_usu'];
+}else{
+$id = '929';
+}
 
 $opcion = $_POST["opcion"];
 $informacion = [];
@@ -24,8 +30,6 @@ if(comprobar($AgstIDper,$gstPusto,$conexion)){
 
 if(!empty($_FILES['gstDocep']['size'])){
 
-
-	
 	$gstMpres = $_POST['gstMpres'];
 	$gstIDpai = $_POST['gstIDpai'];
 	$gstCidua = $_POST['gstCidua'];
@@ -60,7 +64,12 @@ $gstDocep=$rutaEnServidor;
 if(move_uploaded_file($rutaTemporal, $gstDocep)){
 
 if(profesion($AgstIDper,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFntra,$gstFslda,$gstDocep,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	echo "0";	
+
+	$realizo = 'AGREGO PROFESIÓN';
+	historial($id,$realizo,$AgstIDper,$conexion);
+
+}else{	echo "1";	}
 /*if(estudios($AgstIDper,$gstPusto,$gstCiuda,$gstPriod,$gstDocep,$conexion))
 		{	echo "0";	}else{	echo "1";	}*/
 
@@ -115,7 +124,13 @@ $DgstDocep=$rutaEnServidor;
 if(move_uploaded_file($rutaTemporal, $DgstDocep)){
 
 if(docProfesion($DgstIdpro,$DgstDocep,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	echo "0";	
+
+	$realizo = 'ACTUALIZO DOC. PROFESIÓN';
+	$AgstIDper = $DgstIDper;
+	historial($id,$realizo,$AgstIDper,$conexion);
+
+}else{	echo "1";	}
 /*if(estudios($AgstIDper,$gstPusto,$gstCiuda,$gstPriod,$gstDocep,$conexion))
 		{	echo "0";	}else{	echo "1";	}*/
 
@@ -131,19 +146,21 @@ if(docProfesion($DgstIdpro,$DgstDocep,$conexion))
 
 	$proliminar = $_POST['proliminar'];
 
+	hisT($id,$proliminar,$conexion);
+
 	 $docadjunto = consultarch($proliminar,$conexion);
 		
 	if (file_exists($docadjunto)) {	
 
 		if(unlink($docadjunto)){
 
-			if(eliminaPro($proliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+			if(eliminaPro($proliminar,$conexion)){	echo "0"; }else{	echo "1";	}
 		}else{
 			echo '2';
 		}	
 			
 			} else {
-				if(eliminaPro($proliminar,$conexion)){	echo "0";	}else{	echo "1";	}
+				if(eliminaPro($proliminar,$conexion)){	echo "0"; }else{	echo "1";	}
 		}
 
 }
@@ -198,6 +215,35 @@ function docProfesion($DgstIdpro,$DgstDocep,$conexion){
 		}
 		$this->conexion->cerrar();
 	}	
+
+	function historial($id,$realizo,$AgstIDper,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $AgstIDper AND estado = 0";
+
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+	function hisT($id,$proliminar,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,concat('ELIMINO REG.',$proliminar,' PROFESIÓN'),concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN profesion ON personal.gstIdper = profesion.gstIDper WHERE gstIdpro = '$proliminar'";
+
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+
+
 
 function eliminaPro($proliminar,$conexion){
 	$query="DELETE FROM profesion WHERE gstIdpro = $proliminar";
