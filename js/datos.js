@@ -991,9 +991,7 @@ function constudios(gstIdper){
 
                             html += "<tr><td>" + n + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td>" + obj.data[H].gstPriod + "</td><td><a class='btn btn-default'  href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + datos + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a> <a href='#' onclick='borrararc(" + '"' + datos + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminardoc'><i class='fa fa-trash-o text-danger'></i></a></td> <td>" + obj.data[H].fechar + "</td></tr>";
                             //                            document.getElementById('estudios1').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-
                         } else {
-
                             //                           document.getElementById('estudios1').innerHTML = '<img src="../dist/img/advertir.svg" alt="NO" width="25px;">';
 
                         }
