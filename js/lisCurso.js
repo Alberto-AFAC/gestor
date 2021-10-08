@@ -751,7 +751,7 @@ function generacion(cursos) { //abre el modal de generacion de constancias
         html += '</table>';
         $("#generacion").html(html);
     })
-
+// 32132123123
     $(document).ready(function() {
         $("#myInput").on("keyup", function() {
             var value = $(this).val().toLowerCase();
