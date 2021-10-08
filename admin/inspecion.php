@@ -207,6 +207,9 @@
               <input type="hidden" class="form-control" id="gstComnt" name="gstComnt">
               <input type="hidden" class="form-control" id="especialidad" name="especialidad">
               <input type="hidden" class="form-control" id="siglas" name="siglas">
+              <input type="hidden" class="form-control" id="adscripcion" name="adscripcion">
+              <input type="hidden" class="form-control" id="departamento" name="departamento">
+        
 
               <input type="submit" style="float: right;" class="btn btn-info" value="CONSULTAR APÉNDICE E"><br><br>
 

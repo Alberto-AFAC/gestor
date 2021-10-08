@@ -1,7 +1,7 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-
+	ini_set('date.timezone','America/Mexico_City');
 	$id = $_SESSION['usuario']['id_usu'];
 
 	$query = "SELECT * FROM cursos 
@@ -29,7 +29,7 @@
 	$f3 = strtotime($actual.''.$hactual);
 	$f2 = strtotime($fin.''.$hfin); 
 
-	if($f3>=$f2 && $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='FINALIZADO'){ 
+	if($f3>=$f2 && $data['proceso']=='PENDIENTE' && $data['confirmar'] == 'CONFIRMAR' || $f3>= $f2 && $data['proceso']=='FINALIZADO' && $data['confirmar'] == 'CONFIRMAR'){ 
 	$vencidos++;
 	}
 

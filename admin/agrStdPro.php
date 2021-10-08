@@ -278,6 +278,7 @@
               </div>
               <div class="modal-body" id="actForpro">
               <form class="form-horizontal">
+                <input type="hidden" class="form-control" id="ActIdpro" name="ActIdpro">
                 <input type="hidden" class="form-control" id="AgstIdpro" name="AgstIdpro">
                   
               <div class="form-group">
@@ -578,7 +579,7 @@
                       <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
                   </div>
                   <div class="modal-body">
-                    <!-- <input type="text" name="arcIdperEli" id="arcIdperEli"> -->
+                    <input type="hidden" name="arcIdperEli" id="arcIdperEli"> 
                     <input type="hidden" name="arceliminar" id="arceliminar">
                     <!-- <input type="text" name="documen" id="documen"> -->
                       <div class="form-group">
@@ -621,7 +622,7 @@
                       <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
                   </div>
                   <div class="modal-body">
-                    <!-- <input type="text" name="arcIdperEli" id="arcIdperEli"> -->
+                    <input type="hidden" name="proIdperEli" id="proIdperEli"> 
                     <input type="hidden" name="proliminar" id="proliminar">
                     <!-- <input type="text" name="documen" id="documen"> -->
                       <div class="form-group">
