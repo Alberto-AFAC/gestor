@@ -59,7 +59,11 @@ $DgsAgra=$rutaEnServidor;
 if(move_uploaded_file($rutaTemporal, $DgsAgra)){
 
 if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	echo "0";	
+
+	historial($id,$gstIdperArc,$docadjunto,$conexion);
+
+}else{	echo "1";	}
 /*if(estudios($gstIdperArc,$docadjunto,$gstCiuda,$gstPriod,$DgsAgra,$conexion))
 		{	echo "0";	}else{	echo "1";	}*/
 
@@ -108,7 +112,12 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 		if(move_uploaded_file($rutaTemporal, $DgstActul)){
 
 		if(documentoact($gstIdperAct,$docactuali,$DgstActul,$factual,$conexion))
-				{	echo "0";	}else{	echo "1";	}
+				{	echo "0";	
+
+		$realizo = 'ACTUALIZO DOC';	
+		historia($id,$gstIdperAct,$realizo,$docactuali,$conexion);
+
+		}else{	echo "1";	}
 		
 			}else{ echo "2"; }
 			//}else{ echo "3"; }
@@ -122,6 +131,11 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 
 	$gstIdperEli = $_POST['gstIdperEli']; 
 	$doceliminar = $_POST['doceliminar']; 
+
+	$gstIdperAct = $gstIdperEli;
+	$docactuali = $doceliminar;
+	$realizo = 'ELIMINO DOC'; 
+	historia($id,$gstIdperAct,$realizo,$docactuali,$conexion);
 
 	 $docadjunto = consultadoc($gstIdperEli,$doceliminar,$conexion);
 
@@ -213,7 +227,7 @@ function personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion){
 
 function documentoact($gstIdperAct,$docactuali,$DgstActul,$factual,$conexion){
 
-		$query="UPDATE personaldoc SET docajunto = '$DgstActul', fecactual = '$factual' WHERE idperdoc = $gstIdperAct AND documento = 7";
+		$query="UPDATE personaldoc SET docajunto = '$DgstActul', fecactual = '$factual' WHERE idperdoc = $gstIdperAct";
 			if(mysqli_query($conexion,$query)){
 				return true;
 			}else{
@@ -260,7 +274,53 @@ function eliminaRest($arceliminar,$conexion){
 	return false;
 	}
 	}
+
+	// function hisTcheck($id,$arceliminar,$conexion){
+	// ini_set('date.timezone','America/Mexico_City');
+	// $fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	// $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,concat('ELIMINO REG.',$arceliminar,' ESTUDIOS'),concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN estudios ON personal.gstIdper = estudios.gstIDper WHERE gstIdstd = '$arceliminar'";
+
+	// if(mysqli_query($conexion,$query)){
+	// return true;
+	// }else{
+	// return false;
+	// }
+	// }
 	
- 
+	function historial($id,$gstIdperArc,$docadjunto,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) 
+			  SELECT $id,concat('AGREGO DOC. ', nombre),concat(`gstNombr`,' ',`gstApell`),'$fecha' 
+			  FROM personal 
+			  INNER JOIN personaldoc ON personal.gstIdper = personaldoc.idperdoc 
+			  INNER JOIN listadoc ON id_doc = documento
+			  ORDER BY personaldoc.id DESC LIMIT 1";
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	} 
+
+
+	function historia($id,$gstIdperAct,$realizo,$docactuali,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) 
+			  SELECT $id,concat('$realizo. ', nombre),concat(`gstNombr`,' ',`gstApell`),'$fecha' 
+			  FROM personal 
+			  INNER JOIN personaldoc ON personal.gstIdper = personaldoc.idperdoc 
+			  INNER JOIN listadoc ON id_doc = documento
+			  WHERE idperdoc = $gstIdperAct AND documento = $docactuali";
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	} 
 
 ?>
