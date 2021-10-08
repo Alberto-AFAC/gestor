@@ -10,6 +10,8 @@ $espec = $_POST['especialidad'];
 $espec1 = $_POST['siglas'];
 $nombresconcat  = $_POST['apellido'];
 $sep = explode(" ", $nombresconcat);
+$adscripcion = $_POST['adscripcion'];
+$depart = $_POST['departamento'];
 
     
     
@@ -330,18 +332,18 @@ $sep = explode(" ", $nombresconcat);
             <span style="center;" class="persona">Nombre(s)</span><br><br>
         </div>
     </div><br>
-    <div style="line-height: 40%;" class="row">
+    <div style="line-height: 55%;" class="row">
         <div class="column2 left2">
             <p class="persona2">Especialidad: <?php echo $espec1 ?></p>
             <p class="persona2">Escolaridad: </p>
             <p class="persona2">Licencia No.</p>
             <p class="persona2">Horas de vuelo:</p><br>
         </div>
-        <div class="column2 middle2">
-            <span class="persona2">Adscripción:</span><br><br>
+        <div class="column2 middle2"><br>
+            <span class="persona2">Adscripción: <?php echo $adscripcion ?></span><br><br>
         </div>
-        <div class="column2 right2">
-            <span class="persona2">Área:</span><br><br>
+        <div class="column2 right2"><br>
+            <span class="persona2">Área: <?php echo $depart ?></span><br><br>
         </div>
     </div>
     <div style="text-align: justify;" class="container">

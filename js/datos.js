@@ -59,7 +59,7 @@ function closeDtlls() {
 
 }
 
-function estudio(gstIdper){
+function estudio(gstIdper) {
     $("#Forstd #gstIDper").val(gstIdper);
 }
 
@@ -2054,7 +2054,7 @@ function resultado(result) {
             if (obj.data[r].gstIdper == id) {
 
 
-                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt + '*' + obj.data[r].gstApell + '*' + obj.data[r].gstCsigl;
+                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt + '*' + obj.data[r].gstApell + '*' + obj.data[r].gstCsigl + '*' + obj.data[r].adscripcion + '*' + obj.data[r].descripdep;
                 var d = result.split("*");
 
                 $("#Result #pdfIdper").val(d[0]);
@@ -2064,6 +2064,9 @@ function resultado(result) {
                 $("#Result #gstComnt").val(d[4]);
                 $("#Result #apellido").val(d[5]);
                 $("#Result #siglas").val(d[6]);
+                $("#Result #adscripcion").val(d[7]);
+                $("#Result #departamento").val(d[8]);
+
 
 
 
@@ -2153,7 +2156,7 @@ function registrar() {
         }).done(function(respuesta) {
 
             if (respuesta == 0) {
-                 //alert(respuesta);
+                //alert(respuesta);
                 Swal.fire({
                     type: 'success',
                     title: 'AFAC INFORMA',
