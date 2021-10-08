@@ -3,9 +3,8 @@
 	session_start();
 	
 	$query = "SELECT * FROM personal 
-			  INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-			  INNER JOIN area ON personal.gstIDara = area.id_area
-			  INNER JOIN departamentos ON departamentos.id_departamentos = personal.gstIDSub
+			  INNER JOIN cursos ON cursos.idinsp = personal.gstIdper
+              INNER JOIN constancias ON constancias.id_persona = cursos.idinsp and constancias.id_codigocurso = cursos.codigo
 			  WHERE personal.estado = 0 ORDER BY gstIdper DESC";
 	$resultado = mysqli_query($conexion, $query);
 
@@ -28,5 +27,3 @@
 		mysqli_close($conexion);
 
 ?>
-
-

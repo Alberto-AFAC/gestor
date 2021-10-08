@@ -59,7 +59,7 @@ function closeDtlls() {
 
 }
 
-function estudio(gstIdper){
+function estudio(gstIdper) {
     $("#Forstd #gstIDper").val(gstIdper);
 }
 
@@ -958,9 +958,9 @@ function consultarDoc(gstIdper) {
                 }
             } else {
                 if (obj.data[D].id_doc == 7) {
-                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td></td><td></td><td></td></tr>';
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/time.png" alt="YES" width="33px;"></td><td></td><td></td><td></td></tr>';
                 } else {
-                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/advertir.svg" alt="YES" width="25px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo(' + obj.data[D].id_doc + ');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/time.png" alt="YES" width="33px;"></td><td><a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunuevo(' + obj.data[D].id_doc + ');" data-toggle="modal" data-target="#modal-agregardoc"><i class="fa fa-cloud-upload text-info"></i></a></td><td></td><td></td></tr>';
                 }
             }
         }
@@ -2075,7 +2075,7 @@ function resultado(result) {
             if (obj.data[r].gstIdper == id) {
 
 
-                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt + '*' + obj.data[r].gstApell + '*' + obj.data[r].gstCsigl;
+                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt + '*' + obj.data[r].gstApell + '*' + obj.data[r].gstCsigl + '*' + obj.data[r].adscripcion + '*' + obj.data[r].descripdep;
                 var d = result.split("*");
 
                 $("#Result #pdfIdper").val(d[0]);
@@ -2085,6 +2085,9 @@ function resultado(result) {
                 $("#Result #gstComnt").val(d[4]);
                 $("#Result #apellido").val(d[5]);
                 $("#Result #siglas").val(d[6]);
+                $("#Result #adscripcion").val(d[7]);
+                $("#Result #departamento").val(d[8]);
+
 
 
 
@@ -2174,7 +2177,7 @@ function registrar() {
         }).done(function(respuesta) {
 
             if (respuesta == 0) {
-                 //alert(respuesta);
+                //alert(respuesta);
                 Swal.fire({
                     type: 'success',
                     title: 'AFAC INFORMA',

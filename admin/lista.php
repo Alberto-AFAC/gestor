@@ -8,7 +8,13 @@ $apellido = $_POST['apellido'];
 $comentario = $_POST['gstComnt'];
 $espec = $_POST['especialidad'];
 $espec1 = $_POST['siglas'];
+$nombresconcat  = $_POST['apellido'];
+$sep = explode(" ", $nombresconcat);
+$adscripcion = $_POST['adscripcion'];
+$depart = $_POST['departamento'];
 
+    
+    
 
 ?>
 <!DOCTYPE html>
@@ -297,12 +303,6 @@ $espec1 = $_POST['siglas'];
 </head>
 
 <body>
-    <!-- <?php
-            $path = '../dist/img/header.png';
-            $type = pathinfo($path, PATHINFO_EXTENSION);
-            $data = file_get_contents($path);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-        ?> -->
     <div id="watermark">
         <img src="../dist/img/afac-degradado.png" height="97%" width="70%" />
     </div>
@@ -320,10 +320,11 @@ $espec1 = $_POST['siglas'];
     <div class="row">
         <div class="column left">
 
+        <span style="center;" class="persona"><?php echo $sep[0]; ?></span><br>
             <span class="persona">Apellido Paterno</span><br><br>
         </div>
         <div class="column middle">
-            <span style="center;" class="persona"><?php echo $apellido ?></span><br>
+            <span style="center;" class="persona"><?php echo $sep[1]; ?></span><br>
             <span class="persona">Apellido Materno</span><br><br>
         </div>
         <div class="column right">
@@ -331,18 +332,18 @@ $espec1 = $_POST['siglas'];
             <span style="center;" class="persona">Nombre(s)</span><br><br>
         </div>
     </div><br>
-    <div style="line-height: 40%;" class="row">
+    <div style="line-height: 55%;" class="row">
         <div class="column2 left2">
             <p class="persona2">Especialidad: <?php echo $espec1 ?></p>
             <p class="persona2">Escolaridad: </p>
             <p class="persona2">Licencia No.</p>
             <p class="persona2">Horas de vuelo:</p><br>
         </div>
-        <div class="column2 middle2">
-            <span class="persona2">Adscripción:</span><br><br>
+        <div class="column2 middle2"><br>
+            <span class="persona2">Adscripción: <?php echo $adscripcion ?></span><br><br>
         </div>
-        <div class="column2 right2">
-            <span class="persona2">Área:</span><br><br>
+        <div class="column2 right2"><br>
+            <span class="persona2">Área: <?php echo $depart ?></span><br><br>
         </div>
     </div>
     <div style="text-align: justify;" class="container">
@@ -384,7 +385,16 @@ $resultado= mysqli_query($conexion,$query);
 while($data = mysqli_fetch_assoc($resultado)){
 ?>
 <tr>
-    <td class="persona2"><?php echo $data['gstCmpli'];?></td>
+    <?php
+    if($data['gstCmpli'] == 'NO'){
+        echo "<td style='text-align: center;' class='persona2'></td><td  style='text-align: center;' class='persona2'>NO</td>";
+
+    }else{
+        echo "<td  style='text-align: center;' class='persona2'>SI</td><td  style='text-align: center;'class='persona2'></td>";
+
+    }
+    ?>
+  
 </tr>
 <?php } ?>
 </tbody>

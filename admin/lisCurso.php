@@ -620,8 +620,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                     LISTA DE REGISTRO
                                                 </td>
                                                 <td>
-                                                    <input style="width:16px; height:16px;" value="SI" id="check2c"
-                                                        type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check2c" disabled style="color:green; font-size: 16pt"></i></span>
                                                 </td>
 
                                             </tr>
@@ -630,17 +630,17 @@ $inspector = mysqli_query($conexion,$sql);
                                                     LISTA DE ASISTENCIA
                                                 </td>
                                                 <td>
-                                                    <input style="width:16px; height:16px;" value="SI" id="check3c"
-                                                        type="checkbox" name="check-box" /> <span></span>
-                                                </td>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check3c" disabled style="color:green; font-size: 16pt"></i></span>
+                                               </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     REPORTES DE INCIDENCIAS
                                                 </td>
                                                 <td>
-                                                    <input style="width:16px; height:16px;" value="SI" id="check4c"
-                                                        type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check4c" disabled style="color:green; font-size: 16pt"></i></span> 
                                                 </td>
 
                                             </tr>
@@ -649,8 +649,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                     CARTAS DESCRIPTIVAS
                                                 </td>
                                                 <td>
-                                                    <input style="width:16px; height:16px;" value="SI" id="check5c"
-                                                        type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check5c" disabled style="color:green; font-size: 16pt"></i></span> 
                                                 </td>
 
                                             </tr>
@@ -668,17 +668,17 @@ $inspector = mysqli_query($conexion,$sql);
                                                     REGISTRO DE PONDERACIÓN
                                                 </td>
                                                 <td>
-                                                    <input style="width:16px; height:16px;" value="SI" id="check7c"
-                                                        type="checkbox" name="check-box" /> <span></span>
-                                                </td>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check7c" disabled style="color:green; font-size: 16pt"></i></span> 
+                                               </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     INFORME FINAL
                                                 </td>
                                                 <td>
-                                                    <input style="width:16px; height:16px;" value="SI" id="check8c"
-                                                        type="checkbox" name="check-box" /> <span></span>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check8c" disabled style="color:green; font-size: 16pt"></i></span> 
                                                 </td>
                                             </tr>
                                             <tr>
@@ -686,10 +686,10 @@ $inspector = mysqli_query($conexion,$sql);
                                                     EVALUACIÓN DE REACCIÓN
                                                 </td>
                                                 <td>
-                                                    <input style="width:16px; height:16px;" value="SI" id="check9c"
-                                                        type="checkbox" name="check-box" /> <span></span>
-                                                    <!-- <i class="fa fa-check" id="che91" disabled style="color:green; font-size: 16pt; display:none;"></i></span>         -->
-                                                </td>
+                                                <!-- <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span> -->
+                                                <i class="" id="check9c" disabled style="color:green; font-size: 16pt"></i></span> 
+                                                <!-- <i class="fa fa-check" id="che91" disabled style="color:green; font-size: 16pt; display:none;"></i></span>         -->
+                                            </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -701,11 +701,8 @@ $inspector = mysqli_query($conexion,$sql);
 
                             <div class="form-group">
                                 <div class="col-sm-5">
-                                    <button type="button" id="guaacredit" onclick="vergenercerf()"
-                                        class="btn btn-info altaboton"
-                                        style="font-size:16px; width:110px; height:35px">ACEPTAR</button>
-                                    <button type="button" id="actacredit" onclick="" class="btn btn-info altaboton"
-                                        style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
+                                    <button type="button" id="guaacredit" onclick="vergenercerf()" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px; display:none;" >ACEPTAR</button>
+                                    <button type="button" id="actacredit" onclick="" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
                                 </div>
                                 <b>
                                     <p class="alert alert-warning text-center padding error" id="cerdangerev">Error al
@@ -1366,11 +1363,11 @@ function idcurso(codigo) {
                         "</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" +
                         "<td><a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval(" + '"' +
                         cursos + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:18px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" +
+                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" +
                         '"' + cursos + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> <a type='button' onclick='eliminar(" +
+                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> <a type='button' onclick='eliminar(" +
                         '"' + obj.data[i].id_curso + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' style='font-size:18px;' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o' style='font-size:15px;'></i></a></td></tr>";
                 }
 
                 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO COORDINADOR (PRINCIPAL)---------------//
@@ -1503,14 +1500,20 @@ function agrinspctor(tbody, table) {
 }
 
 
-$(document).ready(function() {
-    $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
-});
+const myFunction = () => {
+  const trs = document.querySelectorAll('#lstcurs tr:not(.header)');
+  const filter = document.querySelector('#myInput').value;
+  const regex = new RegExp(filter, 'i');
+  const isFoundInTds = (td) => regex.test(td.innerHTML);
+  const isFound = (childrenArr) => childrenArr.some(isFoundInTds);
+  const setTrStyleDisplay = ({ style, children }) => {
+    style.display = isFound([...children]) ? '' : 'none';
+  };
+  
+  trs.forEach(setTrStyleDisplay);
+};
+
+
 </script>
 <style>
 #example input {
