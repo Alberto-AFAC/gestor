@@ -1,5 +1,11 @@
 <?php
 include("../conexion/conexion.php");
+session_start();
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$id = $_SESSION['usuario']['id_usu'];
+}else{
+$id = '929';
+}
 
 if($_POST['Nmplea']=='' ||  $_POST['EIdper']=='' || $_POST['EgstIDper']=='' || $_POST['EgstInstt']=='' || $_POST['EgstCiudad']=='' || $_POST['EgstPriod']==''){
 
@@ -39,17 +45,16 @@ if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
 
-
 $EgstDocmt=$rutaEnServidor;
 //$EgstDocmt= 'documento/'.$idusu.'/'.$nombreImagen;
 
 if(move_uploaded_file($rutaTemporal, $EgstDocmt)){
 
-	
-
 if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
 		{	echo "0";	
-
+	
+	$realizo = 'ACTUALIZO DOC. ESTUDIOS';
+	historial($id,$realizo,$EgstIDper,$conexion);
 	documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);
 
 
@@ -72,7 +77,11 @@ $EgstPriod = $_POST['EgstPriod'];
 $EgstDocmt = '';
 
 if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
-		{	echo "6";	documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);	}else{	echo "1";	}		
+		{	echo "6";		
+	$realizo = 'ACTUALIZO REG. ESTUDIOS';
+	historial($id,$realizo,$EgstIDper,$conexion);
+	documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);	
+}else{	echo "1";	}		
 	}
 }
 
@@ -116,5 +125,17 @@ function actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$cone
 			$this->conexion->cerrar();
 		}
 
+	function historial($id,$realizo,$EgstIDper,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $EgstIDper AND estado = 0";
+
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
 
 ?>

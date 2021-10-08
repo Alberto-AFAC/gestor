@@ -129,7 +129,11 @@ if($opcion === 'registrar'){
 
 
 	if(actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,$gstFntra,$gstFslda,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	echo "0";	
+
+		historia($id,$gstIdpro,$conexion);
+
+}else{	echo "1";	}
 
  	}else if($opcion === 'actPrsnls'){
 
@@ -272,8 +276,21 @@ return true;
 }else{
 return false;
 }
-
 }
+
+	function historia($id,$gstIdpro,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'ACTUALIZO REG. PROFESIÓN',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN profesion ON personal.gstIdper = profesion.gstIDper WHERE gstIdpro = '$gstIdpro'";
+
+
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
 
 function cerrar($conexion){
 

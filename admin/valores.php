@@ -683,17 +683,7 @@ $direc = mysqli_query($conexion,$sql);
 
                     <input type="hidden" name="gstAcReg22" id="gstAcReg22">
 
-                    <!-- <div class="form-group">
-<div class="col-sm-4">
-<label>SELECCIONE COMANDANCIA</label>
-<div id="comandancia"></div>                            
-</div>
-<div class="col-sm-8">
-<label>SELECCIONE AEROPUERTOS</label>
-<div id="select2"></div> 
-</div>
-</div>   -->
-                    <div class="form-group" id="butons" style="display: none;"><br>
+                     <div class="form-group" id="butons" style="display: none;"><br>
                         <div class="col-sm-offset-0 col-sm-2">
                             <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actPuesto();">ACTUALIZAR</button>
                         </div>

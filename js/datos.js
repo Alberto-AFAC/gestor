@@ -151,7 +151,7 @@ function actStudio() {
         contentType: false,
         processData: false,
         success: function(r) {
-            //alert(r);
+            alert(r);
             //console.log(r);
             if (r == 8) {
                 $('#vacio1').toggle('toggle');
@@ -2294,7 +2294,8 @@ function actPuesto() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            console.log(respuesta);
+            //console.log(respuesta);
+            
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',

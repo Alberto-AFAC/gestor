@@ -1,7 +1,12 @@
 <?php
 include("../conexion/conexion.php");
 
-
+session_start();
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$id = $_SESSION['usuario']['id_usu'];
+}else{
+$id = '929';
+}
 
 if($_POST['gstIDper']=='' || $_POST['gstInstt']=='' || $_POST['gstCiudad']=='' || $_POST['gstPriod']==''){
 
@@ -59,6 +64,7 @@ if(estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion))
 
 	$gstIDper = intval($f[0]);
 
+	historial($id,$gstIDper,$conexion);
 	//personaldoc($gstIDper,$gstDocmt,$factual,$conexion);
 
 }else{	echo "1";	}
@@ -105,7 +111,19 @@ function estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion){
 				$this->conexion->cerrar();
 	}
 
+function historial($id,$gstIDper,$conexion){
+ini_set('date.timezone','America/Mexico_City');
+$fecha= date('Y').'/'.date('m').'/'.date('d');	
 
+$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'AGREGO ESTUDIO',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $gstIDper AND estado = 0";
+
+if(mysqli_query($conexion,$query)){
+return true;
+}else{
+return false;
+}
+
+}
 
 // function personaldoc($gstIDper,$gstDocmt,$factual,$conexion){
 

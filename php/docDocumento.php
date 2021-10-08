@@ -1,5 +1,11 @@
 <?php
 include("../conexion/conexion.php");
+session_start();
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$id = $_SESSION['usuario']['id_usu'];
+}else{
+$id = '929';
+}
 
 ini_set('date.timezone','America/Mexico_City');
 $factual = date('Y').'/'.date('m').'/'.date('d');
@@ -134,9 +140,9 @@ if(personaldoc($gstIdperArc,$docadjunto,$DgsAgra,$factual,$conexion))
 		
 	}else if($opcion === 'arcelimnar'){
 
-
-
 	$arceliminar = $_POST['arceliminar'];
+
+		hisT($id,$arceliminar,$conexion);
 
 	 $docadjunto = consultarch($arceliminar,$conexion);
 		
@@ -242,16 +248,18 @@ function eliminaRest($arceliminar,$conexion){
 		$this->conexion->cerrar();
 	}
 
-// function eliminaPdoc($arcIdperEli,$documen,$arceliminar,$conexion){
+	function hisT($id,$arceliminar,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
 
-// 	$query="DELETE FROM personaldoc WHERE idstd = $arceliminar";
-// 	if(mysqli_query($conexion,$query)){
-// 			return true;
-// 		}else{
-// 			return false;
-// 		}
-// 		$this->conexion->cerrar();
-// 	}
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,concat('ELIMINO REG.',$arceliminar,' ESTUDIOS'),concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN estudios ON personal.gstIdper = estudios.gstIDper WHERE gstIdstd = '$arceliminar'";
+
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
 	
  
 
