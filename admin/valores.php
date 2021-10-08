@@ -651,39 +651,16 @@ $direc = mysqli_query($conexion,$sql);
 
                     <div class="form-group">
                         <input type="hidden" name="gstIDCat" id="gstIDCat" value="0">
-                        <!--          <div class="col-sm-6">
-             <label>CATEGORIA</label>
-             <select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="gstIDCat" id="gstIDCat" type="text" data-live-search="true">
-                 <?php //while($idcat = mysqli_fetch_row($cat)):?>                      
-                 <option value="<?php //echo $idcat[0]?>"><?php//echo $idcat[1];?></option>
-                 <?php //endwhile; ?>
-            </select>
-         </div> -->
+
                         <input type="hidden" name="gstIDSub" id="gstIDSub" value="0">
-                        <!-- <div class="col-sm-6">
-            <label>SUB CATEGORIA</label>
-            <select style="width: 100%" disabled="" class="form-control" class="selectpicker" name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
-              <option value="">SELECCIONA LA SUB CATEGORÍA</option>
-              <option value="0">NO APLICA</option>
-              <?php //while($idsub1 = mysqli_fetch_row($sub1)):?>                      
-              <option value="<?php //echo $idsub1[0]?>"><?php //echo $idsub1[1];?></option>
-              <?php //endwhile; ?>
-            </select>
-         </div> -->
+
 
                     </div>
                     <div class="form-group">
-                        <!--      <div class="col-sm-12">
-        <label>ESPECIALIDAD</label>         
-           <select style="width: 100%" class="form-control" class="selectpicker" name="gstespecialidad" disabled="" id="gstespecialidad" type="text" data-live-search="true" >
-           <option value="">SELECCIONA LA ESPECIALIDAD</option>
-           </select>
-         </div>  -->
+
                     </div>
 
-                    <input type="hidden" name="gstAcReg22" id="gstAcReg22">
-
-                     <div class="form-group" id="butons" style="display: none;"><br>
+                        <div class="form-group" id="butons" style="display: none;"><br>
                         <div class="col-sm-offset-0 col-sm-2">
                             <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actPuesto();">ACTUALIZAR</button>
                         </div>

@@ -2293,14 +2293,14 @@ function actPuesto() {
     var gstAreID = document.getElementById('gstAreID').value; //ID directivas
     var gstPstID = document.getElementById('gstPstID').value; //ID puesto
     var gstSpcID = document.getElementById('gstSpcID').value; //ID especialidad
-    var gstAcReg = document.getElementById('gstAcReg').value;
+    var gstAcReg = document.getElementById('AgstAcReg1').value;
     var gstNucrt = document.getElementById('gstNucrt').value;
     var gstSigID = document.getElementById('gstSigID').value; //estatus de persona
 
     //22092021
 
     datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&opcion=actPrsnls';
-    //alert(datos);
+
     if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstCorro == '' || gstCinst == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni == '' || gstNucrt == '') {
 
         $('#empty1').toggle('toggle');
@@ -2370,7 +2370,7 @@ function openEdit() {
     document.getElementById('gstPsvig').disabled = false; // VIGENCIA DEL PASAPORTE
     document.getElementById('gstVisa').disabled = false; // PAIS DE LA VISA
     document.getElementById('gstVignt').disabled = false; // VISA VIGENCIA
-    document.getElementById('gstNucrt').disabled = false; // NUMERO DE CARTLLA
+   
     document.getElementById('gstCalle').disabled = false; // CALLE
     document.getElementById('gstNumro').disabled = false; // NUMERO DE DOMICILIO
     document.getElementById('gstClnia').disabled = false; // COLONIA
@@ -2382,26 +2382,33 @@ function openEdit() {
     document.getElementById('gstCiuda').disabled = false; // CUIDAD
 
     //------ DATOS DEL PUESTO
-    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
-    document.getElementById('gstIdpst').disabled = false; // NUM. DE EMPLEADO
-    document.getElementById('gstCargo').disabled = false;
-    //document.getElementById('gstIDCat').disabled = false;
-    //document.getElementById('gstIDSub').disabled = false; //SUBCATEGORIA
-    document.getElementById('gstCorro').disabled = false;
-    document.getElementById('gstCinst').disabled = false;
-    document.getElementById('gstFeing').disabled = false;
-    // document.getElementById('gstIDuni').disabled = false;
 
-    document.getElementById('gstAreID').disabled = false; //ID área
-    document.getElementById('gstPstID').disabled = false; //ID puesto
-    document.getElementById('gstSpcID').disabled = false; //ID especialidad
-    //document.getElementById('gstSigID').disabled=false;//ID siglas
-    document.getElementById('gstIDara').disabled = false; //ID del área
-    document.getElementById('gstAcReg').disabled = false;
-    document.getElementById('gstIDuni').disabled = false;
-    document.getElementById('gstNucrt').disabled = false;
+
+
+    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
+    document.getElementById('gstFeing').disabled = false;
     document.getElementById('gstSigID').disabled = false;
-    document.getElementById('AgstAcReg').disabled = false; //ESTATUS DE PERSONAL
+    document.getElementById('gstCargo').disabled = false;
+    document.getElementById('gstNucrt').disabled = false; // NUMERO DE CARTLLA 
+    // document.getElementById('gstIdpst').disabled = false; // NUM. DE EMPLEADO
+    
+    // //document.getElementById('gstIDCat').disabled = false;
+    // //document.getElementById('gstIDSub').disabled = false; //SUBCATEGORIA
+    // document.getElementById('gstCorro').disabled = false;
+    // document.getElementById('gstCinst').disabled = false;
+    
+    // // document.getElementById('gstIDuni').disabled = false;
+
+    // document.getElementById('gstAreID').disabled = false; //ID área
+    // document.getElementById('gstPstID').disabled = false; //ID puesto
+    // document.getElementById('gstSpcID').disabled = false; //ID especialidad
+    // //document.getElementById('gstSigID').disabled=false;//ID siglas
+    // document.getElementById('gstIDara').disabled = false; //ID del área
+    // document.getElementById('gstAcReg').disabled = false;
+    // document.getElementById('gstIDuni').disabled = false;
+    // document.getElementById('gstNucrt').disabled = false;
+    
+    // document.getElementById('AgstAcReg').disabled = false; //ESTATUS DE PERSONAL
 
     //.../Habilita los campos FIN
 
@@ -2438,7 +2445,7 @@ function cerrarEdit() {
     document.getElementById('gstPsvig').disabled = true; // VIGENCIA DEL PASAPORTE
     document.getElementById('gstVisa').disabled = true; // PAIS DE LA VISA
     document.getElementById('gstVignt').disabled = true; // VISA VIGENCIA
-    document.getElementById('gstNucrt').disabled = true; // NUMERO DE CARTLLA
+    
     document.getElementById('gstCalle').disabled = true; // CALLE
     document.getElementById('gstNumro').disabled = true; // NUMERO DE DOMICILIO
     document.getElementById('gstClnia').disabled = true; // COLONIA
@@ -2450,24 +2457,30 @@ function cerrarEdit() {
     document.getElementById('gstCiuda').disabled = true; // CUIDAD
 
     //------ DATOS DEL PUESTO
-    document.getElementById('gstNmpld').disabled = true; // NUM. DE EMPLEADO
-    document.getElementById('gstIdpst').disabled = true; // NUM. DE EMPLEADO
-    document.getElementById('gstCargo').disabled = true;
-    //document.getElementById('gstIDCat').disabled = true;
-    // document.getElementById('gstIDSub').disabled = true; //SUBCATEGORIA
-    document.getElementById('gstCorro').disabled = true;
-    document.getElementById('gstCinst').disabled = true;
-    document.getElementById('gstFeing').disabled = true;
+    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
+    document.getElementById('gstFeing').disabled = false;
+    document.getElementById('gstSigID').disabled = false;
+    document.getElementById('gstCargo').disabled = false;
+    document.getElementById('gstNucrt').disabled = false; // NUMERO DE CARTLLA 
 
-    document.getElementById('gstAreID').disabled = true; //ID área
-    document.getElementById('gstPstID').disabled = true; //ID puesto
-    document.getElementById('gstSpcID').disabled = true; //ID especialidad
-    document.getElementById('gstIDara').disabled = true; //ID del área
-    document.getElementById('gstAcReg').disabled = true;
-    document.getElementById('gstIDuni').disabled = true;
-    document.getElementById('gstNucrt').disabled = true;
-    document.getElementById('gstSigID').disabled = true; //ESTATUS DE PERSONAL
-    document.getElementById('subdir1').disabled = true; //ESTATUS DE PERSONAL
+    // document.getElementById('gstNmpld').disabled = true; // NUM. DE EMPLEADO
+    // document.getElementById('gstIdpst').disabled = true; // NUM. DE EMPLEADO
+    // document.getElementById('gstCargo').disabled = true;
+    // //document.getElementById('gstIDCat').disabled = true;
+    // // document.getElementById('gstIDSub').disabled = true; //SUBCATEGORIA
+    // document.getElementById('gstCorro').disabled = true;
+    // document.getElementById('gstCinst').disabled = true;
+    // document.getElementById('gstFeing').disabled = true;
+
+    // document.getElementById('gstAreID').disabled = true; //ID área
+    // document.getElementById('gstPstID').disabled = true; //ID puesto
+    // document.getElementById('gstSpcID').disabled = true; //ID especialidad
+    // document.getElementById('gstIDara').disabled = true; //ID del área
+    // document.getElementById('gstAcReg').disabled = true;
+    // document.getElementById('gstIDuni').disabled = true;
+    // document.getElementById('gstNucrt').disabled = true;
+    // document.getElementById('gstSigID').disabled = true; //ESTATUS DE PERSONAL
+    // document.getElementById('subdir1').disabled = true; //ESTATUS DE PERSONAL
 
     //.../Habilita los campos FIN
 
