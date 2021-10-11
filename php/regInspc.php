@@ -99,9 +99,10 @@ if($opcion === 'registrar'){
 
 	if(actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion)){
 		echo "0";
-	
-		historial($id,$conexion);
-	
+		
+		$realizo = 'ACTUALIZO DAT. PERSONALES';
+		historialp($id,$gstIdper,$realizo,$conexion);
+
 	}else{
 		echo "1";
 	}
@@ -156,7 +157,11 @@ if($opcion === 'registrar'){
 	 $gstSigID = $_POST['gstSigID']; //estatus	 
 
 	if(actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$gstSigID,$conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	echo "0";	
+			$realizo = 'ACTUALIZO DAT. DEL PUESTO';
+			$gstIdper = $pstIdper;
+			historialp($id,$gstIdper,$realizo,$conexion);
+		}else{	echo "1";	}
 	}
 
 
@@ -284,13 +289,26 @@ return false;
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'ACTUALIZO REG. PROFESIÓN',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN profesion ON personal.gstIdper = profesion.gstIDper WHERE gstIdpro = '$gstIdpro'";
 
-
 	if(mysqli_query($conexion,$query)){
 	return true;
 	}else{
 	return false;
 	}
 	}
+
+
+	function historialp($id,$gstIdper,$realizo,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE gstIdper = '$gstIdper'";
+
+	if(mysqli_query($conexion,$query)){
+		return true;
+		}else{
+		return false;
+		}
+	}	
 
 function cerrar($conexion){
 
