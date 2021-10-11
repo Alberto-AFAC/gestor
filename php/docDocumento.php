@@ -264,7 +264,7 @@ function eliminaRest($arceliminar,$conexion){
 
 	function hisT($id,$arceliminar,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+		$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,concat('ELIMINO REG.',$arceliminar,' ESTUDIOS'),concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN estudios ON personal.gstIdper = estudios.gstIDper WHERE gstIdstd = '$arceliminar'";
 
@@ -277,7 +277,7 @@ function eliminaRest($arceliminar,$conexion){
 
 	// function hisTcheck($id,$arceliminar,$conexion){
 	// ini_set('date.timezone','America/Mexico_City');
-	// $fecha= date('Y').'/'.date('m').'/'.date('d');	
+	// 	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	// $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,concat('ELIMINO REG.',$arceliminar,' ESTUDIOS'),concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN estudios ON personal.gstIdper = estudios.gstIDper WHERE gstIdstd = '$arceliminar'";
 
@@ -290,7 +290,7 @@ function eliminaRest($arceliminar,$conexion){
 	
 	function historial($id,$gstIdperArc,$docadjunto,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+		$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) 
 			  SELECT $id,concat('AGREGO DOC. ', nombre),concat(`gstNombr`,' ',`gstApell`),'$fecha' 
@@ -308,7 +308,7 @@ function eliminaRest($arceliminar,$conexion){
 
 	function historia($id,$gstIdperAct,$realizo,$docactuali,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+		$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) 
 			  SELECT $id,concat('$realizo. ', nombre),concat(`gstNombr`,' ',`gstApell`),'$fecha' 

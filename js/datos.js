@@ -2693,3 +2693,37 @@ function especialidad() {
 
 
 }
+
+function bajaUsu(gstIdper){
+
+$('#bajaIdper').val(gstIdper);
+
+}
+
+function usuBaja(){
+
+        idPer = document.getElementById('bajaIdper').value;
+
+        $.ajax({
+            url: '../php/regInspc.php',
+            type: 'POST',
+            data: 'idPer='+idPer+'&opcion=bajaUsu'
+        }).done(function(respuesta) {
+            //console.log(respuesta);
+            
+            if (respuesta == 0) {
+                $("#baja").hide();
+                $('#succe11').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe11').toggle('toggle');
+                }, 2000);
+                setTimeout("location.href = 'persona.php';", 2200);
+
+            } else {
+                $('#danger11').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger11').toggle('toggle');
+                }, 2000);
+            }
+        });
+}

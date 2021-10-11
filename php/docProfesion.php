@@ -218,7 +218,7 @@ function docProfesion($DgstIdpro,$DgstDocep,$conexion){
 
 	function historial($id,$realizo,$AgstIDper,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $AgstIDper AND estado = 0";
 
@@ -231,7 +231,7 @@ function docProfesion($DgstIdpro,$DgstDocep,$conexion){
 
 	function hisT($id,$proliminar,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,concat('ELIMINO REG.',$proliminar,' PROFESIÓN'),concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN profesion ON personal.gstIdper = profesion.gstIDper WHERE gstIdpro = '$proliminar'";
 

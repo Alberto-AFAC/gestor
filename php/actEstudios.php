@@ -125,12 +125,11 @@ function actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$cone
 			$this->conexion->cerrar();
 		}
 
-	function historial($id,$realizo,$EgstIDper,$conexion){
+	function historial($id,$realizo,$EIdper,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
 
-	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $EgstIDper AND estado = 0";
-
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $EIdper AND estado = 0";
 	if(mysqli_query($conexion,$query)){
 	return true;
 	}else{

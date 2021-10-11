@@ -286,7 +286,7 @@ include('header.php');
             <?php 
     $query ="
     SELECT *,
-    DATE_FORMAT(fecha, '%d/%m/%Y') as fecha
+    DATE_FORMAT(fecha, '%d/%m/%Y %H:%i:%s') as fecha
     FROM historial
     INNER JOIN personal
     ON gstIdper = id_usu";

@@ -113,7 +113,7 @@ function estudios($gstIDper,$gstInstt,$gstCiuda,$gstPriod,$gstDocmt,$conexion){
 
 function historial($id,$gstIDper,$conexion){
 ini_set('date.timezone','America/Mexico_City');
-$fecha= date('Y').'/'.date('m').'/'.date('d');	
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'AGREGO ESTUDIO',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $gstIDper AND estado = 0";
 

@@ -162,6 +162,18 @@ if($opcion === 'registrar'){
 			$gstIdper = $pstIdper;
 			historialp($id,$gstIdper,$realizo,$conexion);
 		}else{	echo "1";	}
+	}else if($opcion === 'bajaUsu'){
+
+		$idPer = $_POST['idPer'];
+
+		if(bajaUsuario($idPer,$conexion)){
+			echo "0";
+			$realizo = 'BAJA DEL USUARIO';
+			$gstIdper = $idPer;			
+			historialp($id,$gstIdper,$realizo,$conexion);
+		}else{
+			echo "1";
+		}
 	}
 
 
@@ -264,15 +276,28 @@ function actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$
 	cerrar($conexion);
 }
 
+function bajaUsuario($idPer,$conexion){
+	
+	$query = "UPDATE personal SET estado = 1 WHERE gstIdper = '$idPer'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+
+}
+
 // function selecionar($conexion){
 // 	// INSERT INTO asignacion(id_equi,n_emp,proceso) SELECT id_equipo,$nempleado,'$proceso' FROM equipo ORDER BY id_equipo DESC LIMIT 1
 // }
 
 function historial($id,$conexion){
 ini_set('date.timezone','America/Mexico_City');
-$fecha= date('Y').'/'.date('m').'/'.date('d');	
-
-//$query="INSERT INTO historial VALUES(0,,'PERSONAL','AGREGO',)";
+$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'AGREGO AL USUARIO',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
 
@@ -285,7 +310,7 @@ return false;
 
 	function historia($id,$gstIdpro,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'ACTUALIZO REG. PROFESIÓN',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal INNER JOIN profesion ON personal.gstIdper = profesion.gstIDper WHERE gstIdpro = '$gstIdpro'";
 
@@ -299,7 +324,7 @@ return false;
 
 	function historialp($id,$gstIdper,$realizo,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
-	$fecha= date('Y').'/'.date('m').'/'.date('d');	
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
 	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE gstIdper = '$gstIdper'";
 
