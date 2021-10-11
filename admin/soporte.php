@@ -76,7 +76,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    HISTORIAL DE CAMBIOS Y SOPORTE TÉCNICO
+                    HISTORIAL DE CAMBIOS Y MOVIMIENTOS
                 </h1>
             </section>
             <!-- Main content -->
@@ -86,7 +86,7 @@ include('header.php');
                         <div style="padding-top: 65px;" class="container box box-solid">
                             <ul class="nav nav-tabs" id="myNavTabs">
                                 <li class="active"><a href="#navtabs1" data-toggle="tab">HISTORIAL DE CAMBIOS</a>
-                                <li><a href="#navtabs2" data-toggle="tab">AYUDA Y SOPORTE</a>
+                                <!-- <li><a href="#navtabs2" data-toggle="tab">AYUDA Y SOPORTE</a> -->
                             </ul>
 
                             <!-- using fade to define fade effect -->
