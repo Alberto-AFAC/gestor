@@ -662,120 +662,120 @@ function generacion(cursos) { //abre el modal de generacion de constancias
 
 
     $.ajax({
-        url: '../php/conInsp.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
+            url: '../php/conInsp.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
 
-        html = '<input style="float: right;" id="myInput" type="text" placeholder="Búscar..."><br><br><table id="reacc" class="table table-hover"><tr><th colspan="10">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
-        for (G = 0; G < res.length; G++) {
+            html = '<table id="reacc" class="table table-hover"><tr><th colspan="10">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
+            for (G = 0; G < res.length; G++) {
 
-            //if(obj.data[E].gstCatga == gstIDCat){
+                //if(obj.data[E].gstCatga == gstIDCat){
 
-            //if(obj.data[E].gstOrden==1){
-            // <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
-            if (obj.data[G].id_codigocurso == d[21]) {
-                x++;
+                //if(obj.data[E].gstOrden==1){
+                // <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
+                if (obj.data[G].id_codigocurso == d[21]) {
+                    x++;
 
-                // alert(d[21]);08/10/2021
+                    // alert(d[21]);08/10/2021
 
-                evalreac1 = "<i class='fa fa-clock-o' id='reac1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'>"
-                confirmaasis1 = "<i class='fa fa-clock-o' id='cov1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'></i>";
-                lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' name='listregis' value='" + obj.data[G].id + "'/> ";
-                asistencia1 = "<input type='checkbox' style='width:17px; height:17px;' name='lisasisten' id='lisasisten' />"
-                lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' name='listreportein' id='listreportein'/>"
-                cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' name='cartdescrip' id='cartdescrip'/>"
-                regponde1 = "<input type='checkbox' style='width:17px; height:17px;' name='regponde' id='regponde'/>"
-                infinal1 = "<input type='checkbox' style='width:17px; height:17px;' name='infinal' id='infinal'/>"
-                evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' name='evreaccion' id='evreaccion' />"
-                fullselect ="<input type='checkbox' onclick='fullchange()' name='fullc1' id='fullc1' />"
+                    evalreac1 = "<i class='fa fa-clock-o' id='reac1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'>"
+                    confirmaasis1 = "<i class='fa fa-clock-o' id='cov1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'></i>";
+                    lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' name='listregis' value='" + obj.data[G].id + "'/> ";
+                    asistencia1 = "<input type='checkbox' style='width:17px; height:17px;' name='lisasisten' id='lisasisten' />"
+                    lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' name='listreportein' id='listreportein'/>"
+                    cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' name='cartdescrip' id='cartdescrip'/>"
+                    regponde1 = "<input type='checkbox' style='width:17px; height:17px;' name='regponde' id='regponde'/>"
+                    infinal1 = "<input type='checkbox' style='width:17px; height:17px;' name='infinal' id='infinal'/>"
+                    evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' name='evreaccion' id='evreaccion' />"
+                    fullselect = "<input type='checkbox' onclick='fullchange()' name='fullc1' id='fullc1' />"
 
-                //if (((d[17]) >= 80) && ((d[17]) <= 100)) {
-                // evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
+                    //if (((d[17]) >= 80) && ((d[17]) <= 100)) {
+                    // evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
+                    //}
+
+                    //      if (((d[17]) < 80) && ((d[17]) <= 100)) {
+                    //       evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
+                    //  }
+
+                    //    if (obj.data[G].listregis=='SI'){ // columna1
+                    //   lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='"+obj.data[G].id+"'/> "
+                    //     }        
+
+                    if (obj.data[G].listregis == 'SI') { // columna1
+                        lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='" + obj.data[G].id + "'/> "
+                    }
+
+                    if (obj.data[G].lisasisten == 'SI') { // columna2    
+                        asistencia1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='lisasisten' id='lisasisten' /> "
+                    }
+
+                    if (obj.data[G].listreportein == 'SI') { // columna3    
+                        lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='listreportein' id='listreportein'/> "
+                    }
+
+                    if (obj.data[G].cartdescrip == 'SI') { // columna4    
+                        cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='cartdescrip' id='cartdescrip'/> "
+                    }
+
+                    if (obj.data[G].regponde == 'SI') { // columna5    
+                        regponde1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='regponde' id='regponde'/> "
+                    }
+
+                    if (obj.data[G].infinal == 'SI') { // columna6   
+                        infinal1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal'/>"
+                    }
+
+                    if (obj.data[G].evreaccion == 'SI') { // columna7   
+                        evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='evreaccion' id='evreaccion' />"
+                    }
+
+                    if (obj.data[G].listregis == 'SI' && obj.data[G].lisasisten == 'SI' && obj.data[G].listreportein == 'SI' && obj.data[G].cartdescrip == 'SI' && obj.data[G].regponde == 'SI' && obj.data[G].infinal == 'SI' && obj.data[G].evreaccion == 'SI') { // columna7   
+                        fullselect = "<input title='prueba de todos' type='checkbox' onclick='fullchange()' name='fullc1' id='fullc1' checked />"
+                    }
+
+                    if (obj.data[G].confirmar == 'CONFIRMADO') { // columna4    
+                        confirmaasis1 = "<i class='fa fa-check' id='cov1' disabled style='color:green; font-size: 16pt'></i>";
+                    }
+
+                    if (obj.data[G].confirmar == 'ENFERMEDAD') { // columna4    
+                        confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
+                    }
+
+                    if (obj.data[G].confirmar == 'TRABAJO') { // columna4    
+                        confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
+                    }
+
+                    if (obj.data[G].confirmar == 'OTROS') { // columna4    
+                        confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
+                    }
+
+                    if (obj.data[G].evaluacion >= 80 && obj.data[G].evaluacion <= 100) { // columna4    
+                        evalreac1 = "<i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'>"
+                    }
+
+                    if (obj.data[G].evaluacion < 80 && obj.data[G].evaluacion >= 1) { // columna4    
+                        evalreac1 = "<i class='fa fa-times id='reac1' disabled style='color:red; font-size: 16pt'>"
+                    }
+
+                    html += "<tr><td>" + x + fullselect + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td>" + confirmaasis1 + "</td><td>" + lista1 + "</td><td><form id='form2'>" + asistencia1 + "</td><td>" + lisreport1 + "</td><td>" + cartdescrip1 + "</td><td>" + evalreac1 + "</i></span></td><td>" + regponde1 + "</td><td>" + infinal1 + "</td><td>" + evreaccion1 + "</td></form></tr>";
+                    //  html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+confirmaasis1+"</td><td><input type='checkbox' id='listregis' name='listregis' value='"+obj.data[G].id+"'/> </td><td><input type='checkbox' name='lisasisten' id='lisasisten' /></td><td><input type='checkbox' name='listreportein' id='listreportein'/></td><td><input type='checkbox' name='cartdescrip' id='cartdescrip'/></td><td><i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'></i></span></td><td><input type='checkbox' name='regponde' id='regponde'/></td><td><input type='checkbox' name='infinal' id='infinal'/></td><td><input type='checkbox' name='evreaccion' id='evreaccion' /></td></tr>";
+
+                }
+
+
+                // <td>" + obj.data[G].gstApell + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
+                //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
+                // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
+                //}<td><input id='comntr' name='comntr[]'> </td>
                 //}
-
-                //      if (((d[17]) < 80) && ((d[17]) <= 100)) {
-                //       evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
-                //  }
-
-                //    if (obj.data[G].listregis=='SI'){ // columna1
-                //   lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='"+obj.data[G].id+"'/> "
-                //     }        
-
-                if (obj.data[G].listregis == 'SI') { // columna1
-                    lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='" + obj.data[G].id + "'/> "
-                }
-
-                if (obj.data[G].lisasisten == 'SI') { // columna2    
-                    asistencia1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='lisasisten' id='lisasisten' /> "
-                }
-
-                if (obj.data[G].listreportein == 'SI') { // columna3    
-                    lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='listreportein' id='listreportein'/> "
-                }
-
-                if (obj.data[G].cartdescrip == 'SI') { // columna4    
-                    cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='cartdescrip' id='cartdescrip'/> "
-                }
-
-                if (obj.data[G].regponde == 'SI') { // columna5    
-                    regponde1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='regponde' id='regponde'/> "
-                }
-
-                if (obj.data[G].infinal == 'SI') { // columna6   
-                    infinal1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal'/>"
-                }
-
-                if (obj.data[G].evreaccion == 'SI') { // columna7   
-                    evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='evreaccion' id='evreaccion' />"
-                }
-
-                if (obj.data[G].listregis == 'SI' && obj.data[G].lisasisten == 'SI' && obj.data[G].listreportein == 'SI' && obj.data[G].cartdescrip == 'SI' && obj.data[G].regponde == 'SI' && obj.data[G].infinal == 'SI' && obj.data[G].evreaccion == 'SI') { // columna7   
-                    fullselect ="<input title='prueba de todos' type='checkbox' onclick='fullchange()' name='fullc1' id='fullc1' checked />"
-                }
-
-                if (obj.data[G].confirmar == 'CONFIRMADO') { // columna4    
-                    confirmaasis1 = "<i class='fa fa-check' id='cov1' disabled style='color:green; font-size: 16pt'></i>";
-                }
-
-                if (obj.data[G].confirmar == 'ENFERMEDAD') { // columna4    
-                    confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
-                }
-
-                if (obj.data[G].confirmar == 'TRABAJO') { // columna4    
-                    confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
-                }
-
-                if (obj.data[G].confirmar == 'OTROS') { // columna4    
-                    confirmaasis1 = "<i class='fa fa-times' id='cov1' disabled style='color:red; font-size: 16pt'></i>";
-                }
-
-                if (obj.data[G].evaluacion >= 80 && obj.data[G].evaluacion <= 100) { // columna4    
-                    evalreac1 = "<i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'>"
-                }
-
-                if (obj.data[G].evaluacion < 80 && obj.data[G].evaluacion >= 1) { // columna4    
-                    evalreac1 = "<i class='fa fa-times id='reac1' disabled style='color:red; font-size: 16pt'>"
-                }
-
-                html += "<tr><td>" + x + fullselect + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td>" + confirmaasis1 + "</td><td>" + lista1 + "</td><td><form id='form2'>" + asistencia1 + "</td><td>" + lisreport1 + "</td><td>" + cartdescrip1 + "</td><td>" + evalreac1 + "</i></span></td><td>" + regponde1 + "</td><td>" + infinal1 + "</td><td>" + evreaccion1 + "</td></form></tr>";
-                //  html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+confirmaasis1+"</td><td><input type='checkbox' id='listregis' name='listregis' value='"+obj.data[G].id+"'/> </td><td><input type='checkbox' name='lisasisten' id='lisasisten' /></td><td><input type='checkbox' name='listreportein' id='listreportein'/></td><td><input type='checkbox' name='cartdescrip' id='cartdescrip'/></td><td><i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'></i></span></td><td><input type='checkbox' name='regponde' id='regponde'/></td><td><input type='checkbox' name='infinal' id='infinal'/></td><td><input type='checkbox' name='evreaccion' id='evreaccion' /></td></tr>";
-
-            }   
-
-            
-            // <td>" + obj.data[G].gstApell + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
-            //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-            // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-            //}<td><input id='comntr' name='comntr[]'> </td>
-            //}
-        }
-        html += '</table>';
-        $("#generacion").html(html);
-    })
-// 32132123123
+            }
+            html += '</table>';
+            $("#generacion").html(html);
+        })
+        // 32132123123
     $(document).ready(function() {
         $("#myInput").on("keyup", function() {
             var value = $(this).val().toLowerCase();
@@ -788,10 +788,9 @@ function generacion(cursos) { //abre el modal de generacion de constancias
 
 }
 
-function fullchange(curso){
+function fullchange(curso) {
     //alert("entra")
-    if (document.getElementById('fullc1').checked) 
-    {
+    if (document.getElementById('fullc1').checked) {
         document.getElementById('listregis').checked = true;
         document.getElementById('lisasisten').checked = true;
         document.getElementById('listreportein').checked = true;
@@ -800,7 +799,7 @@ function fullchange(curso){
         document.getElementById('regponde').checked = true;
         document.getElementById('infinal').checked = true;
         document.getElementById('evreaccion').checked = true;
-        
+
     } else {
         document.getElementById('listregis').checked = false;
         document.getElementById('lisasisten').checked = false;
@@ -813,14 +812,13 @@ function fullchange(curso){
 
 }
 
-function marcar(source) 
-{
-    checkboxes=document.getElementsByTagName('input'); //obtenemos todos los controles del tipo Input
-    for(i=0;i<checkboxes.length;i++) //recoremos todos los controles
+function marcar(source) {
+    checkboxes = document.getElementsByTagName('input'); //obtenemos todos los controles del tipo Input
+    for (i = 0; i < checkboxes.length; i++) //recoremos todos los controles
     {
-        if(checkboxes[i].type == "checkbox") //solo si es un checkbox entramos
+        if (checkboxes[i].type == "checkbox") //solo si es un checkbox entramos
         {
-            checkboxes[i].checked=source.checked; //si es un checkbox le damos el valor del checkbox que lo llamó (Marcar/Desmarcar Todos)
+            checkboxes[i].checked = source.checked; //si es un checkbox le damos el valor del checkbox que lo llamó (Marcar/Desmarcar Todos)
         }
     }
 }
