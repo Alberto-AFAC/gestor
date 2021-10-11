@@ -7,28 +7,29 @@ function enviarCorreo(){
         type: 'POST',
         data: 'correo='+correo
     }).done(function(respuesta) {
-    	alert(respuesta);
+    	//alert(respuesta);
         if (respuesta == 0) {
-            // $('#succe4').toggle('toggle');
-            // setTimeout(function() {
-            //     $('#succe4').toggle('toggle');
-            // }, 2000);   conprofesion(ActIdpro);
+            $('#exito').show();
+            setTimeout(function() {
+                $('#exito').hide();
+            }, 4000);   conprofesion(ActIdpro);
         } else if(respuesta==1){
-            // $('#danger4').toggle('toggle');
-            // setTimeout(function() {
-            //     $('#danger4').toggle('toggle');
-            // }, 2000);
+            $('#falla').show();
+            setTimeout(function() {
+                $('#falla').hide();
+            }, 4000);
         } else if(respuesta==2){
-            // $('#danger4').toggle('toggle');
-            // setTimeout(function() {
-            //     $('#danger4').toggle('toggle');
-            // }, 2000);        	
+            $('#aviso').show();
+            setTimeout(function() {
+                $('#aviso').hide();
+            }, 2000);        	
         }
     });
-}else{	    // $('#danger4').toggle('toggle');
-			// setTimeout(function() {
-			//     $('#danger4').toggle('toggle');
-			// }, 2000);        	
+}else{	    
+			 $('#vacio').show();
+			 setTimeout(function() {
+			 $('#vacio').hide();
+			 }, 2000);        	
 }
 }
 		

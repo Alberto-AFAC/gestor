@@ -30,7 +30,8 @@ $resultado= mysqli_query($conexion,$query);
 function actCorreo($valor,$conexion){
 
 
-$nemple = base64_encode($valor);
+//$nemple = base64_encode($valor);
+$nemple = $valor;
 $query = "UPDATE accesos INNER JOIN personal ON id_usu = gstIdper SET password = '$nemple' WHERE gstNmpld = '$valor' AND estado = 0";
 
 

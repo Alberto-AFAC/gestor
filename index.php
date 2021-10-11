@@ -117,7 +117,12 @@
 						</div>
 						                   
 						<span class="help-block" id="error"></span>
-						<p><span  class="error">Corrobore su número de trabajador</span></p>
+						<p>
+				<span  class="error" id="vacio">Favor de ingresar su correo electrónico </span>
+				<span class="error" id="aviso">El correo que ingreso no existe</span>
+				<span class="error" id="exito" style="color:green;">Se mando contraseña restablecida a su correo</span>
+				<span class="error" id="falla">Error al restablecer contraseña, consulte con el administrador</span>
+						</p>
 					</div>
 				</div>
 				<div class="form-footer">
