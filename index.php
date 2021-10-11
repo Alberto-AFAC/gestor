@@ -121,7 +121,7 @@
 					</div>
 				</div>
 				<div class="form-footer">
-				<input type="submit" class="botton" value="Enviar" />
+				<button type="button" class="botton" onclick="enviarCorreo()">Enviar</button>
 				</div>
 			</div>
 	</form>
