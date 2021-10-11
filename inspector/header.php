@@ -187,6 +187,13 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="cursos.php">
+            <i class="fa fa-graduation-cap"></i> <span>E-learnning</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li> 
         <!--  -->
         
         <!--  -->
