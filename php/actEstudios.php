@@ -54,7 +54,7 @@ if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
 		{	echo "0";	
 	
 	$realizo = 'ACTUALIZO DOC. ESTUDIOS';
-	historial($id,$realizo,$EgstIDper,$conexion);
+	historial($id,$realizo,$EIdper,$conexion);
 	documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);
 
 
@@ -79,7 +79,7 @@ $EgstDocmt = '';
 if(actualizar($EgstIDper,$EgstInstt,$EgstCiuda,$EgstPriod,$EgstDocmt,$conexion))
 		{	echo "6";		
 	$realizo = 'ACTUALIZO REG. ESTUDIOS';
-	historial($id,$realizo,$EgstIDper,$conexion);
+	historial($id,$realizo,$EIdper,$conexion);
 	documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);	
 }else{	echo "1";	}		
 	}

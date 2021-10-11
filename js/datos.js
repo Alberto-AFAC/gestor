@@ -143,9 +143,10 @@ function actStudio() {
     paqueteDeDatos.append('EgstPriod', $('#EgstPriod').prop('value'));
     paqueteDeDatos.append('EIdper', $('#EIdper').prop('value'));
     paqueteDeDatos.append('Nmplea', $('#Nmplea').prop('value'));
-    //alert(paqueteDeDatos);
+    
     EIdper = document.getElementById('EIdper').value;
-        
+
+
         $.ajax({
         url: '../php/actEstudios.php',
         data: paqueteDeDatos,
