@@ -153,12 +153,18 @@ unset($_SESSION['consulta']);
         </li>-->
 
         <li class="active">
-          <a href="humanos.php">
-            <i class="fa ion-android-plane"></i> <span>Dashboard</span>
+          <a href="inspector.php">
+            <i><img src="../dist/img/perfil.png" class="user-image" alt="User Image" style="
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;"></i> <span>PERFIL</span>
             <span class="pull-right-container">
             </span>
           </a>
-        </li>        
+        </li>   
+      
         <!-- -->
         <!----> 
         <li class="treeview">
