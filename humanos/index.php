@@ -108,30 +108,6 @@
                     <img alt="flake" src="../models/menu/images/flakes/depth2/flakes2.png">
                 </div>
             </li>
- <!--  
-            <li class="layer" data-depth="0.60">
-                <div class="depth-3 flake1">
-                    <img alt="flake" src="images/flakes/depth3/flakes1.png">
-                </div>
-
-                <div class="depth-3 flake2">
-                    <img alt="flake" src="images/flakes/depth3/flakes2.png">
-                </div>
-
-                <div class="depth-3 flake3">
-                    <img alt="flake" src="images/flakes/depth3/flakes3.png">
-                </div>
-
-                <div class="depth-3 flake4">
-                    <img alt="flake" src="images/flakes/depth3/flakes4.png">
-                </div>
-            </li> 
-
-             <li class="layer" data-depth="0.80">
-                <div class="depth-4">
-                    <img alt="flake" src="images/flakes/depth4/flakes.png">
-                </div>
-            </li>  -->
 
             <li class="" data-depth="1.00">
                 <div class="depth-5">
