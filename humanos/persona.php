@@ -351,16 +351,8 @@ $resultado = mysqli_query($conexion, $query);
 
 ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>",
 
-  // "<a type='button' title='Asignar' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a> <a type='button' title='Baja de usuario' onclick='bajaUsu(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
-
-//"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
 "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a> <a type='button' title='Baja de usuario' onclick='bajaUsu(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
-
-
-
 ],
-
-// <a href="#" onclick="borrararc(&quot;130*1345*ESCULA PRUEBA*MEX*BNOSE*../documento/123456/Estudio/PRUEBA5.pdf*130&quot;);" type="button" style="margin-left:2px" title="Borrar documento" class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminardoc"><i class="fa fa-trash-o text-danger"></i></a>
 
 <?php } ?>
 ];
