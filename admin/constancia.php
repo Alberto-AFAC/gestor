@@ -214,7 +214,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 if($con['gstCntnc'] == 'CONSTANCIA'){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga el presente</p>
+    <p class='otorga'>Otorga la presente</p>
     <p class='titulo-certificado'>{$con['gstCntnc']}</p>
     <p class='nombre-persona'>Al C:. <span
     class='nombre-persona-c'>{$nombresCompletos}</span></p>
@@ -245,7 +245,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         </div>
     </div>
     <div>
-    <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
+    <p class='p-2'>Esta <span style='font-weight: bold;'><u>constancia</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
            {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
     </div>
