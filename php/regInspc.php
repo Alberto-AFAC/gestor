@@ -4,8 +4,6 @@ include("../conexion/conexion.php");
  session_start();
 if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
 $id = $_SESSION['usuario']['id_usu'];
-}else{
-$id = '929';
 }
 
 
