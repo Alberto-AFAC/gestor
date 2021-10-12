@@ -10,39 +10,29 @@ require '../php-mailer2/SMTP.php';
 
 	$idcurso = $_POST['gstIdlsc'];
 	
-	$query = "SELECT gstTitlo,gstIdlsc,gstNombr,gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y'),hcurso,gstCargo,sede,modalidad FROM listacursos 
+	$query = "SELECT gstTitlo,gstIdlsc,gstNombr,gstTipo, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y'),hcurso,gstCargo,sede,modalidad FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
 			  WHERE gstIdlsc = $idcurso";
 	$resultado = mysqli_query($conexion, $query);
-
-	while($curso = mysqli_fetch_row($resultado)) {
+    while($curso = mysqli_fetch_row($resultado)){
 	 //$curso[1];
-	
-
-
-
-   $mail = new PHPMailer(true);
-	try {
-		//Server settings
-		$mail->SMTPDebug = 0;                      //Enable verbose debug output
-		$mail->isSMTP();                                            //Send using SMTP
-		$mail->Host       = 'smtp.gmail.com';                     	//Set the SMTP server to send through
-		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = "tls";                                //Enable SMTP authentication
-		$mail->Username   = 'the77pres@gmail.com';                     //SMTP username
-		$mail->Password   = 'sagitario77';                               //SMTP password
-		$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-		//Recipients
-		$mail->setFrom('the77pres@gmail.com', 'NOTIFICACIONES AFAC');
-		$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto');     //Add a recipient
-		// $mail->addReplyTo('info@example.com', 'Information');
-		$mail->addCC('jessica.soto928@gmail.com');
-		$mail->addCC('angelcanseco.c@gmail.com');
-
-		// $mail->addBCC('bcc@example.com');
-		//Content
-		$mail->isHTML(true);                                  //Set email format to HTML
+$mail = new PHPMailer;
+$mail->isSMTP();
+$mail->SMTPDebug = 2;
+$mail->Host = 'smtp.hostinger.com';
+$mail->Port = 587;
+$mail->SMTPAuth = true;
+$mail->Username = 'notificaciones@afac-avciv.com';
+$mail->Password = 'Agencia.SCT2021';
+$mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
+$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
+// $mail->addBCC('laura.soto@sct.gob.mx', 'Jessica Soto');
+// $mail->addBCC('angel.canseco@sct.gob.mx', 'Angel Chupas');
+$mail->Subject = 'CURSO PROGRAMADO';
+$mail->msgHTML(file_get_contents('message.html'), __DIR__);
+//$mail->addAttachment('test.txt');
+	$mail->isHTML(true);                                  //Set email format to HTML
 		$mail->Subject = 'CURSO PROGRAMADO';
 		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
@@ -51,25 +41,22 @@ require '../php-mailer2/SMTP.php';
 				<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$curso[1]."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>Nombre del participante: ".$curso[2]."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>Tipo de curso: ".$curso[3]."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: ".$curso[4]."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$curso[5]."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Cargo: ".$curso[6]." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$curso[7]." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$curso[8]."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: ".$curso[5]."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$curso[6]."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>Cargo: ".$curso[7]." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$curso[8]." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$curso[9]."</td></tr>
 				<hr><center>
 				<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
 				</center><hr>
 				</table>";
 			$mail->MsgHTML($msg);
-	
-		$mail->send();
-		echo 'El correo se envió con exito';
-	} catch (Exception $e) {
-		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-	}
-  
+if (!$mail->send()) {
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'The email message was sent.';
 }
-
-
+  
+    }
 
 ?>
