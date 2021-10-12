@@ -169,10 +169,10 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="personal.php"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
-            <li><a href="persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
-            <li><a href="inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="instructor.php"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+            <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
+            <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+            <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+            <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -186,13 +186,13 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-            <li><a href="conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
-            <li><a href="programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
-            <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
+            <li><a href="programa"><i class="fa ion-compose"></i> Programación del Curso</a></li>
+            <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
-            <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
-            <li><a href="constancias.php"><i class="fa fa-certificate"></i>Constancias</a></li>
+            <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <li><a href="constancias"><i class="fa fa-certificate"></i>Constancias</a></li>
           </ul>
         </li>
         <!--  -->
@@ -207,7 +207,7 @@ unset($_SESSION['consulta']);
           </a>
         </li>
         <li>
-          <a href="cursosgantt.php">
+          <a href="cursosgantt">
           <i class="fa fa-area-chart"></i> <span>Gantt Cursos programados</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
@@ -216,7 +216,7 @@ unset($_SESSION['consulta']);
           </a>
         </li>
         <li>
-          <a href="soporte.php">
+          <a href="soporte">
           <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
