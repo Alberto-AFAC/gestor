@@ -14,8 +14,8 @@ jQuery(document).on('submit', '#formtec', function(event) {
         .done(function(respuesta) { //espera como parametro una respuesta
             console.log(respuesta); //por consola se pone(respusta)
             if (!respuesta.error) { //*resivimos objeto json desde php para la evaluacion
-                if (respuesta.tipo == 'ADMIN') { //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
-                    location.href = 'administrador/'; //*redirecionado al directorio que le toca(carpeta)
+                if (respuesta.tipo == 'ADMINISTRADOR') { //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
+                    location.href = 'admin/'; //*redirecionado al directorio que le toca(carpeta)
                 } else if (respuesta.tipo == 'INSPECTOR' || respuesta.tipo == 'ADMINISTRATIVO') { //*redireccion al manejador si el .tipo es manejador
                     location.href = 'inspector/';
                 } else if (respuesta.tipo == 'DIRECTOR') { //*redireccion al manejador si el .tipo es manejador
