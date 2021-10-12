@@ -214,14 +214,15 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 if($con['gstCntnc'] == 'CONSTANCIA'){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga la presente</p>
+    <p class='otorga'>Otorga el presente</p>
     <p class='titulo-certificado'>{$con['gstCntnc']}</p>
     <p class='nombre-persona'>Al C:. <span
     class='nombre-persona-c'>{$nombresCompletos}</span></p>
     <p class='otorga'>Por haber participado en el curso:</p>
             <p class='nombre-curso'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Impartido por el <span style='font-weight:bold;'>{$con['sede']}</span><span class='p-2'>, comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
+    </p><span class='p-2'>Comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
+    al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
+        class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
         <p class='p-2'>Director del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
@@ -244,8 +245,8 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         </div>
     </div>
     <div>
-    <p class='p-2'>La presente <span style='font-weight: bold;'><u>Constancia</u></span> ampara los Temas vistos en el CURSO:
-    <span style='font-weight: bold;'>{$con['gstTitlo']}</span>, que a
+    <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
+           {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
     </div>
     <div class='footer-constancia-gold'>
