@@ -50,7 +50,7 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
     <!-- Logo -->
-    <a href="inspector.php" class="logo">
+    <a href="inspector" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
@@ -168,7 +168,7 @@
         </li>-->
 
         <li class="active">
-          <a href="inspector.php">
+          <a href="inspector">
             <i class="fa ion-android-plane"></i> <span>Inicio</span>
             <span class="pull-right-container">
             </span>
@@ -188,7 +188,7 @@
           </a>
         </li>
         <li>
-          <a href="cursos.php">
+          <a href="cursos">
             <i class="fa fa-graduation-cap"></i> <span>E-learnning</span>
             <span class="pull-right-container">
             </span>
