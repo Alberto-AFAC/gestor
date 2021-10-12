@@ -31,6 +31,19 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         rel="stylesheet">
     <!-- SIN LIBRERIAS -->
     <style>
+    body {
+        padding: .5in;
+    }
+
+    @page {
+
+        margin: 0;
+    }
+
+    .page_break {
+        page-break-before: always;
+    }
+
     .CIAAC {
         font-family: 'Montserrat', sans-serif;
         font-size: 38px;
@@ -56,6 +69,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         font-family: 'Montserrat', sans-serif;
         font-size: 24px;
     }
+
     .p-3 {
         font-family: 'Montserrat', sans-serif;
         font-size: 20px;
@@ -82,6 +96,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         text-align: center;
         text-transform: uppercase;
     }
+
     .titulo-certificador {
         font-family: 'Montserrat', sans-serif;
         font-size: 35px;
@@ -99,6 +114,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         text-align: center;
         text-transform: uppercase;
     }
+
     .nombre-cursor {
         font-family: 'Montserrat', sans-serif;
         font-size: 35px;
@@ -126,6 +142,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         text-align: left;
         line-height: 35px;
     }
+
     .footer-constancia-gold {
         position: fixed;
         bottom: 195px;
@@ -135,6 +152,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         text-align: center;
         line-height: 35px;
     }
+
     .afojas1 {
         position: fixed;
         bottom: 300px;
@@ -147,6 +165,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         font-family: 'Montserrat', sans-serif;
 
     }
+
     .footer-constancia {
         position: fixed;
         bottom: 160px;
@@ -159,6 +178,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         font-family: 'Montserrat', sans-serif;
 
     }
+
     footer {
         position: fixed;
         bottom: -40px;
@@ -201,7 +221,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 
 <body>
     <?php
-            $path = '../dist/img/header.png';
+            $path = '../dist/img/header.jpg';
             $type = pathinfo($path, PATHINFO_EXTENSION);
             $data = file_get_contents($path);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
@@ -220,8 +240,9 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     class='nombre-persona-c'>{$nombresCompletos}</span></p>
     <p class='otorga'>Por haber participado en el curso:</p>
             <p class='nombre-curso'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Impartido por el <span style='font-weight:bold;'>{$con['sede']}</span><span class='p-2'>, comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
+    </p><span class='p-2'>Comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
+    al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
+        class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
         <p class='p-2'>Director del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
@@ -244,8 +265,8 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         </div>
     </div>
     <div>
-    <p class='p-2'>La presente <span style='font-weight: bold;'><u>Constancia</u></span> ampara los Temas vistos en el CURSO:
-    <span style='font-weight: bold;'>{$con['gstTitlo']}</span>, que a
+    <p class='p-2'>Esta <span style='font-weight: bold;'><u>constancia</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
+           {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
     </div>
     <div class='footer-constancia-gold'>
@@ -342,12 +363,14 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     </div>
     <div>
     </div><br><br><br>
+    <div class='page_break'>
     <div class='footer2'>
     <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
     class='p-2'>Secretaria de
     Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
     Adiestramiento de
     Aviación Civil / SCT-AFAC-CIAAC</span>
+    </div>
     </div>
 </div>";
 }
@@ -395,7 +418,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
                 <?php echo $con['gstTitlo']?></span>, que a
             continuación se enlistan:</p>
         </div> -->
-        <div>
+    <div>
         <?php 
        $datos = $_GET['data'];
        $queryTemario = "SELECT idtem, titulo,idcurso FROM temario WHERE idcurso = $idc";
@@ -405,7 +428,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
                           $contador ++;
                           $temario = $contador."-. ".$consulta2['titulo'];
        ?>
-       <?php
+        <?php
        if($con['gstCntnc'] == 'CONSTANCIA'){
         echo "<p class='p-2'>{$temario}</p>";
        }else if($con['gstCntnc'] == 'CERTIFICADO'){
@@ -429,7 +452,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         <!-- a fojas
             <?php echo $consulta2['afojas'];?> del libro de <?php echo $consulta2['libro'];?> -->
     </div>
-   
+
     <?php
         // require_once 'dompdf/autoload.inc.php';
         require_once '../dist/dompdf/autoload.inc.php';

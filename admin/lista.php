@@ -304,7 +304,7 @@ $depart = $_POST['departamento'];
 
 <body>
     <div id="watermark">
-        <img src="../dist/img/afac-degradado.png" height="97%" width="70%" />
+    <img src="../dist/img/afac-degradado.jpg" height="97%" width="70%" alt="sin-imagen" />
     </div>
     <!-- <img src="<?php echo $base64 ?>" width="95%" height="113%" /> -->
     <div style="text-align: center;" class="container">
