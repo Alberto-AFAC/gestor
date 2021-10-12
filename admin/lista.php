@@ -332,7 +332,7 @@ $depart = $_POST['departamento'];
             <span style="center;" class="persona">Nombre(s)</span><br><br>
         </div>
     </div><br>
-    <div style="line-height: 55%;" class="row">
+    <div style="line-height: 75%;" class="row">
         <div class="column2 left2">
             <p class="persona2">Especialidad: <?php echo $espec1 ?></p>
             <p class="persona2">Escolaridad: </p>

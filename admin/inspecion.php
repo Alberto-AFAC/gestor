@@ -200,7 +200,7 @@
                 <h4 class="modal-title">RESULTADO</h4>
               </div>
               <div class="modal-body">
-              <form id="Result" action="lista.php" method="POST">
+              <form id="Result" action="lista" target="_blank" method="POST">
               <input type="hidden" class="form-control" id="pdfIdper" name="pdfIdper">
               <input type="hidden" class="form-control" id="evalu_nombre" name="evalu_nombre">
               <input type="hidden" class="form-control" id="apellido" name="apellido">
