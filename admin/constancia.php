@@ -31,6 +31,9 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         rel="stylesheet">
     <!-- SIN LIBRERIAS -->
     <style>
+    .page_break {
+  page-break-before: always;
+}
     .CIAAC {
         font-family: 'Montserrat', sans-serif;
         font-size: 38px;
@@ -343,12 +346,14 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     </div>
     <div>
     </div><br><br><br>
+    <div class='page_break'>
     <div class='footer2'>
     <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
     class='p-2'>Secretaria de
     Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
     Adiestramiento de
     Aviación Civil / SCT-AFAC-CIAAC</span>
+    </div>
     </div>
 </div>";
 }
