@@ -1140,7 +1140,10 @@ function evalucurs(cursos) {
 function enviarMail() {
 
     gstIdlsc = document.getElementById('gstIdlstc').value;
-
+    swal.showLoading({
+        title: 'Cargando',
+        text: 'Espere por favor...'
+    });
     $.ajax({
         url: 'enviarMail.php',
         type: 'POST',
