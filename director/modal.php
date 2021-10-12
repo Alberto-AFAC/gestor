@@ -1,5 +1,27 @@
 
 <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+<script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  
+<style>
+ .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.a-alert:link {
+  color: white;
+}
+
+.a-alert:visited {
+  color: white;
+}
+</style>
 <div class="modal fade" id='modal-confirma'>
 <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -56,9 +78,9 @@
 
 <div class="col-sm-offset-0 col-sm-6">
     
-	<h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR ASISTENCIA:</H4> 
+  <h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR ASISTENCIA:</H4> 
     
-<!-- 	<input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
+<!--  <input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
 <div class="switcher">
       <input type="radio" name="Opc" value="SI" id="SI" class="switcher__input switcher__input--yin" checked="">
       <label for="SI" class="switcher__label">SI</label>
@@ -75,7 +97,7 @@
 <p id="asiste" style="display: none;">  
 <i style="color: green; font-size: 25px;" class="icon fa fa-check" ></i>
 <label  id="confm1" style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
-<input type="hidden" id="conf" name="conf" >	
+<input type="hidden" id="conf" name="conf" >  
 </p>
 
 <p id="noasis" style="display:none;">
@@ -97,7 +119,7 @@
 <div class="col-sm-12">
 <input id="archivo" type="file" name="archivo" style="display: none; width: 410px;" required accept=".pdf,.doc" class="input-file" size="1450"> 
 
-<textarea style="display: none; font-size: 15px;" id="obser" name="obser" class="form-control is-invalid inputalta" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea>	
+<textarea style="display: none; font-size: 15px;" id="obser" name="obser" class="form-control is-invalid inputalta" placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2" required></textarea>  
 </div>
 </div> 
 </th>
@@ -106,12 +128,12 @@
 
 
                     
-<!-- 					<div class="was-validated">
-					<div class="col-md-13">
-					<label for="validationTextarea">Observaciones.</label>
-					<textarea style="font-size: 18px;" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea>
-					</div>
-					</div> -->                    	
+<!--          <div class="was-validated">
+          <div class="col-md-13">
+          <label for="validationTextarea">Observaciones.</label>
+          <textarea style="font-size: 18px;" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea>
+          </div>
+          </div> -->                      
 
 <div class="form-group">
 <div class="col-sm-6">
@@ -127,7 +149,7 @@
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" class="btn btn-info altaboton" style="" onclick="confirma();">ACEPTAR</button>
+<button type="button" id="button" class="btn btn-info altaboton" style="" onclick="confirasict();">ACEPTAR</button>
 </div>
    <b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos</p></b>
 
@@ -165,3 +187,32 @@
 </div>
 </div>
 </div>
+
+<!-- DETALLE DECLINA CONVOCATORIA -->
+<div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal1">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/declinado.png">
+    </div>
+  </div>
+  <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+  <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
+  <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declinas la convocatoria del curso:</label>
+  <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
+  <br>
+  <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: bold;"  for=""></label>
+  <hr>
+ <div id="arcpdf"></div>
+
+  <label readonly id="otrosdp" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
+
+ 
+
+</div>
+<script>
+
+</script>
+</div>
+<!--FIN DETALLE DECLINA CONVOCATORIA -->

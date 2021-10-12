@@ -1509,11 +1509,13 @@ function inspector(gstIdper) {
 
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead></thead><tbody>';
                     for (s = 0; s < res.length; s++) {
-                        ss++;
+                        
 
                         if (obj.data[s].gstIDper == gstIdper) {
+
                             gstID = obj.data[s].gstIDper;
                             if (obj.data[s].gstIdcat != 24) {
+                                ss++;
                                 html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td></td></tr>";
                             } //<a type='button' title='Eliminar' onclick='eliminar()' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a>
                             // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
@@ -2000,17 +2002,26 @@ function evaluar() {
                 type: 'POST',
                 data: datos
             }).done(function(respuesta) {
-                console.log(respuesta);
+
+                // console.log(respuesta);
                 if (respuesta == 0) {
-                    Swal.fire({
-                        type: 'success',
-                        title: 'AFAC INFORMA',
-                        text: 'SE EVALUO CON EXITO',
-                        showConfirmButton: false,
-                        customClass: 'swal-wide',
-                        timer: 3000
-                    });
-                    setTimeout("location.href = 'inspecion.php';", 1000);
+
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'AFAC INFORMA',
+                //     text: 'Se evaluó con éxito ',
+                //     showConfirmButton: false,
+                //     customClass: 'swal-wide',
+                //     timer: 3000
+                // });
+
+                    $('#succe0').toggle('toggle');
+                    setTimeout(function() {
+                        $('#succe0').toggle('toggle');
+                    }, 2000);
+
+                setTimeout("location.href = 'inspecion.php';", 2000);
+
                 } else {
                     $('#danger0').toggle('toggle');
                     setTimeout(function() {
@@ -2580,7 +2591,7 @@ function asignar() {
             data: datas
         }).done(function(respuesta) {
 
-            if (respuesta == 'INSPECTOR') {
+            if (respuesta == 0) {
 
                 Swal.fire({
                     type: 'success',
@@ -2592,7 +2603,7 @@ function asignar() {
                 });
                 setTimeout("location.href = 'inspecion.php';", 2000);
 
-            } else if (respuesta != 'INSPECTOR') {
+            } else if (respuesta == 2) {
                 Swal.fire({
                     type: 'success',
                     title: 'AFAC INFORMA',

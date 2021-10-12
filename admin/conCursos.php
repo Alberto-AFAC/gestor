@@ -188,11 +188,6 @@
                   </div>
             </div>
         </form>
-
-
-
-
-
         <form class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-evaluar">
                 <div class="modal-dialog">
@@ -286,9 +281,6 @@
                                         <?php endwhile; ?>
                                     </select>
                                 </div>
-
-
-
                             </div>
                             <div class="form-group">
 
@@ -301,7 +293,6 @@
                                         <option value="CERTIFICADO">CERTIFICADO</option>
                                     </select>
                                 </div>
-
 
                                 <div class="col-sm-1" style="padding-right: 0; width: 85px;">
                                     <label class="label2">DURACION</label>

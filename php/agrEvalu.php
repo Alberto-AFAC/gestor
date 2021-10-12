@@ -1,5 +1,10 @@
 <?php
 include("../conexion/conexion.php");
+session_start();
+
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$id = $_SESSION['usuario']['id_usu'];
+}
 
 $opcion = $_POST["opcion"];
 $informacion = [];
@@ -46,9 +51,19 @@ if($AgstCargo == 'INSPECTOR'){
 	accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion);
 
 	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$conexion)){
-		echo $AgstCargo;
+		
+
+		$realizo = 'ASIGNO AL USUARIO';
+		historial($id,$realizo,$gstIdper,$conexion);
+
+		if($AgstCargo=='INSPECTOR'){
+			echo 0;
+		}else{
+			echo 2;
+		}
+
 	}else{
-		echo "1";
+		echo 1;
 	}
 
 
@@ -67,7 +82,15 @@ $valor = count($gstIDprm);
 
 	for($i=0; $i<$valor; $i++){
 		if(proEvalue($gstInspr[$i],$gstIDprm[$i],$gstActul[$i],$comntr,$conexion))
-			{	echo "0";	}else{
+			{		
+				if($i===1){
+					echo "0";
+				$realizo = 'EVALUÓ AL USUARIO';
+				$gstIdper = $gstInspr[$i];
+				historial($id,$realizo,$gstIdper,$conexion);					
+				}
+		
+			}else{
 				
 				echo "1";	
 			}
@@ -79,6 +102,8 @@ $valor = count($gstIDprm);
 
 	if(agrEspcldd($gstIdper,$AgstIDCat,$conexion)){
 		echo "0";
+				$realizo = 'ASIGNO ESPECIALIDAD';
+				historial($id,$realizo,$gstIdper,$conexion);		
 	}else{
 		echo "1";
 	}	 
@@ -185,7 +210,17 @@ function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDun
 	cerrar($conexion);
 }
 
+	function historial($id,$realizo,$gstIdper,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
 
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'$realizo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $gstIdper AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
 
 
 function cerrar($conexion){

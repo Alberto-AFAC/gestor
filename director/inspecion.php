@@ -268,7 +268,7 @@
   </div>
 
 
-    <?php include('agrStdPro.php'); ?>
+    <?php //include('agrStdPro.php'); ?>
  
   </div>
   <!-- /.content-wrapper -->
