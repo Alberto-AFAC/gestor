@@ -40,59 +40,17 @@ document.getElementById("fecha").innerHTML = "" + '<b>CURSOS AÑO ' + fecha_actu
 
 
 $.ajax({
-    url: '../php/lisCurso.php',
+    url: '../php/statusCur.php',
     type: 'POST'
 }).done(function(resp) {
     obj = JSON.parse(resp);
     var res = obj.data;
-    var progrmas = 0;
-    var finalizado = 0;
-    var acreditar = 0;
-    var vencer = 0;
-    var vencio = 0;
 
-    for (i = 0; i < res.length; i++) {
+    var totalv = obj.data[0].vencido + obj.data[0].porvencer;
 
-        var hoy = new Date();
-        var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
-
-        var fcurso = new Date(obj.data[i].fcurso);
-        var fcurso = new Date(fcurso.getFullYear(), fcurso.getMonth(), fcurso.getDate());
-
-
-        if (obj.data[i].proceso == 'FINALIZADO') {
-            finalizado++;
-        }
-        if (obj.data[i].proceso == 'PENDIENTE' && factual <= fcurso) {
-            acreditar++;
-        }
-
-        progrmas++;
-
-
-            if(factual > fcurso && obj.data[i].proceso == "PENDIENTE"){
-                vencio++;
-            }
-
-            if(factual <= fcurso && obj.data[i].proceso == "PENDIENTE"){
-
-            var termino = new Date(obj.data[i].fechaf);
-            var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-            finaliza.setMonth(finaliza.getMonth() - 3);
-
-            if(factual >= finaliza && obj.data[i].proceso == "PENDIENTE"){
-                vencer++;
-            }
-
-            }
-
-            totalv =  vencio + vencer;
-    }
-
-    $("#progrmas").html(progrmas);
-    $("#finalizado").html(finalizado);
-    $("#acreditar").html(acreditar);
+    $("#progrmas").html(obj.data[0].progrmas);
+    $("#finalizado").html(obj.data[0].finalizado);
+    $("#acreditar").html(obj.data[0].acreditar);
     $("#vencer").html(totalv);
 
 });

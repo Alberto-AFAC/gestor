@@ -34,14 +34,6 @@ $inspector = mysqli_query($conexion,$sql);
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-    <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
@@ -294,6 +286,7 @@ $inspector = mysqli_query($conexion,$sql);
                                 <p>
                                 <h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE RESULTADOS</b></h4>
                                 </p>
+                                <input type="hidden" name="ogidoc" id="ogidoc">
                                 <label>PARTICIPANTE</label>
                                 <input type="text" disabled=""
                                     style="text-transform:uppercase; font-size: 14pt; display:none"
@@ -391,9 +384,6 @@ $inspector = mysqli_query($conexion,$sql);
                         </div>
                     </div>
                 </div>
-
-                <!-- /.modal-content -->
-                <!-- /.modal-dialog -->
         </form>
         <!-- EVALUACIÓN MASIVA DEL INSTRUCTOR -->
         <!-- inicia la evaluación DEL INSTRUCTOR -->
@@ -694,10 +684,7 @@ $inspector = mysqli_query($conexion,$sql);
                                         </tbody>
                                     </table>
                                 </div>
-
-
                             </div>
-
 
                             <div class="form-group">
                                 <div class="col-sm-5">
@@ -722,9 +709,6 @@ $inspector = mysqli_query($conexion,$sql);
                     </div>
                 </div>
             </div>
-
-            <!-- /.modal-content -->
-            <!-- /.modal-dialog -->
     </form>
     <!-- /.content -->
 
@@ -1016,7 +1000,6 @@ $(document).ready(function() {
             }
         });
     });
-
 
 
     $('#example tbody').on('click', 'a', function() {
@@ -1458,10 +1441,6 @@ function idcurso(codigo) {
 
     })
 }
-
-//02092021
-
-
 
 function detalles(tbody, table) {
 
