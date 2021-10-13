@@ -164,11 +164,15 @@ if($opcion === 'registrar'){
 
 		$idPer = $_POST['idPer'];
 
+
+
+
 		if(bajaUsuario($idPer,$conexion)){
 			echo "0";
 			$realizo = 'BAJA DEL USUARIO';
 			$gstIdper = $idPer;			
 			historialp($id,$gstIdper,$realizo,$conexion);
+			bajaAcceso($idPer,$conexion);
 		}else{
 			echo "1";
 		}
@@ -289,6 +293,18 @@ function bajaUsuario($idPer,$conexion){
 
 }
 
+function bajaAcceso($idPer,$conexion){
+	$query = "UPDATE accesos SET baja = 1 WHERE id_usu = '$idPer'";
+	if(mysqli_query($conexion,$query)){
+
+	return true;
+
+	}else{
+
+	return false;
+	}
+	cerrar($conexion);
+}
 // function selecionar($conexion){
 // 	// INSERT INTO asignacion(id_equi,n_emp,proceso) SELECT id_equipo,$nempleado,'$proceso' FROM equipo ORDER BY id_equipo DESC LIMIT 1
 // }
