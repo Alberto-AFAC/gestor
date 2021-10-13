@@ -1,6 +1,10 @@
 
+
+
   <!-- Main content -->
+
   <div class="row" id="detCurso" style="display: none;">
+
   <!-- /.col -->
   <div class="col-md-12">
   <div class="box-tools pull-right">
@@ -19,12 +23,14 @@
   </ul>
   
 <div class="tab-content">
+  
 <div class="active tab-pane" id="activity">
   <!-- Post -->
+  
 <div class="post">
 <div class="form-group">
   <label for=""></label>
-  <button type="button" title="Editar Curso" style="float:right;" class="btn btn-box-tool" data-widget="collapse">
+<button type="button" title="Editar Curso" style="float:right;" class="btn btn-box-tool" data-widget="collapse">
      <a href='javascript:editcurso()' id="editcurs" style="font-size:20px"> <i class="fa fa-edit"></i> </a>
      <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc" style="display:none; font-size:20px"> <i class="fa fa-ban"></i> </a>
   </button>
@@ -66,14 +72,13 @@
         <label class="label2">PERIODO DE VIGENCIA</label>                         
         <select type="text" class="form-control inputalta" id="gstVignc" name="gstVignc" disabled=""> 
             <option value="0">SELECCIONE VIGENCIA</option>
-            <option value="RECURRENTE">RECURRENTE</option>
-            <option value="NO APLICA">UNICA VEZ</option>
-            <option value="1 AÑO">1 AÑO</option>
-            <option value="2 AÑOS">2 AÑOS</option>
-            <option value="3 AÑOS">3 AÑOS</option>
-            <option value="4 AÑOS">4 AÑOS</option>
-            <option value="5 AÑOS">5 AÑOS</option>
-            <option value="6 AÑOS">6 AÑOS</option>
+            <option value="101">UNICA VEZ</option>
+            <option value="1">1 AÑO</option>
+            <option value="2">2 AÑOS</option>
+            <option value="3">3 AÑOS</option>
+            <option value="4">4 AÑOS</option>
+            <option value="5">5 AÑOS</option>
+            <option value="6">6 AÑOS</option>
         </select>
       </div>
   </div>
@@ -117,7 +122,7 @@
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
           <option value="PRESENCIAL">PRESENCIAL</option>
-          <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
+          <option value="MIXTA (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
           <option value="AUTOGESTIVO">AUTOGESTIVO</option>
         </select>
       </div>
@@ -132,13 +137,16 @@
         <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
       </div>
   </div>  
-  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="">FINALIZAR CURSO</button>
+
+  <input type="hidden" name="codigo" id="codigo">
+  <input type="hidden" name="proceso" id="proceso">
+  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="finalizar();">FINALIZAR CURSO</button>
   </button>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se finalizo con éxito!</p></b>
   <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario finalizar los procesos</p></b>
-<!-- boton finaliza edición -->
-<div class="form-group" id="buttongcambios" style="display:none;"><br>
+  <!-- boton finaliza edición -->
+  <div class="form-group" id="buttongcambios" style="display:none;"><br>
   <div class="col-sm-offset-0 col-sm-5">
   <button type="button" style="font-size:16px; width:170px; height:40px" id="button" class="btn btn-info btn-lg altaboton" onclick="actCurso();">GUARDAR CAMBIOS</button>
   </div>
@@ -160,15 +168,14 @@
   <div class="col-xs-12">
   <div class="box">
   <br>
-
-
-  <form id="impri" action="" method="POST"  >
+  
+<form id="impri" action="" method="POST"  >
   <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
   <input type="hidden" name="gstTitulo" id="gstTitulo">
   <span data-toggle="modal" data-target="#basicModal" style="font-size:12px; width:180px; height:30px " class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
   <!-- <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span> -->
+  <input style="float: right;" id="myInput" onkeyup="myFunction()" placeholder="Búscar.." title="Type in a name">
 </form>
-
 
   <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
   <div class="modal fade" id='basicModal'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -186,6 +193,34 @@
   <button type="button" id="agregarres" style="font-size:18px" class="btn btn-block btn-default btn-sm" data-dismiss="modal">CERRAR</button>
 </div>
 </div>
+
+<!--FIN DE CONFIRMACIÓN ENVIÓ -->
+
+ <!-- CONFIRMACIÓN DE COONVOCATORIA -->
+ <div class="modal fade" id='modal-declinado1'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal1">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/declinado.png">
+    </div>
+  </div>
+  <!-- <input id="pruebadec" type="text"> -->
+  <h1 class="modaltitle1" style="color:gray"><strong>DETALLES</strong></h1>
+  <label id="nomdeclina1" style="font-size: 16px; color:gray"  for=""></label>
+  <label id="cursdeclina1" style="font-size: 16px; color:gray"  for=""></label>
+  <label id="declindet1" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
+  <label id="motivod1" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
+  <hr>
+  <a id="declinpdf1" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+  <label readonly id="otrosd1" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
+</div>
+<script>
+
+</script>
+</div>
+<!--FIN DE CONFIRMACIÓN DE COONVOCATORIA -->
+
   <div class="box-body">
   <br>
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
@@ -193,12 +228,9 @@
   </div>
   </div>
   <!-- /.box -->
-  
   </div>
   <!-- /.col -->
-  
   </div>
- 
   <form class="form-horizontal" action="" method="POST"  >
   <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -259,7 +291,7 @@
   </div>   
   <div class="form-group"><br>
   <div class="col-sm-offset-0 col-sm-5">
-  <button type="button" id="button" class="btn btn-info btn-lg" onclick="actCurso();">Aceptar</button>
+  
   </div>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al agregar curso </p></b>
 
@@ -283,7 +315,7 @@
   </div>
   <!-- /.col -->
   </div>
-  <!-- /.row -->
 
+  <!-- /.row -->
 
 
