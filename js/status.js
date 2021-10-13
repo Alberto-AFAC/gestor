@@ -1,35 +1,17 @@
 //destroy:true,
 $.ajax({
-    url: '../php/conPerson.php',
+    url: '../php/statusPer.php',
     type: 'POST'
 }).done(function(resp) {
     obj = JSON.parse(resp);
     var res = obj.data;
-    var personas = 0;
-    var inspectores = 0;
-    var instructor = 0;
-    var coordinador = 0;
-    var total = 0;
-    for (i = 0; i < res.length; i++) {
 
-        if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
-            inspectores++;
-        } else if (obj.data[i].gstCargo == 'INSTRUCTOR') {
-            instructor++;
-        } else if (obj.data[i].gstCargo == 'COORDINADOR') {
-            coordinador++;
-        } else if (obj.data[i].gstIDCat == '0' && obj.data[i].gstIDSub == '0') {
-            personas++;
-        }
-        total++;
+    var resultado = obj.data[0].instructor + obj.data[0].coordinador;
 
-    }
-    resultado = coordinador + instructor;
-
-    $("#persona").html(total);
-    $("#inspectores").html(inspectores);
+    $("#persona").html(obj.data[0].persona);
+    $("#inspectores").html(obj.data[0].inspectores);
     $("#instructor").html(resultado);
-    $("#coordinador").html(resultado);
+    // $("#coordinador").html(obj.data[0].resultado);
 });
 
 

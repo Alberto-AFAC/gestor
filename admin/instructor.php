@@ -133,7 +133,7 @@ var dataSet = [
 <?php 
 $query = "SELECT * FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR gstCargo = 'COORDINADOR'  ORDER BY gstIdper DESC";
+WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR personal.estado = 0 AND gstCargo = 'COORDINADOR'  ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 

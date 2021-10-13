@@ -28,12 +28,9 @@
 
 		$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
 		$proc = 'PENDIENTE';
-		
-
-
-		
+			
 		$cursos[] = [ 
-			$contador, 
+		$data["codigo"], 
 		$data["gstTitlo"],
 		$data["gstTipo"],
 		$data["inicio"],

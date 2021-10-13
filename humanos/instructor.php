@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Data Tables</title>
-   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <title>Capacitación AFAC | Instructores y Coordinadores</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
@@ -31,7 +32,7 @@ include('header.php');
 
       <section class="content" id="detalles" style="display: none;">
       <div class="row">
-      <?php include('valores.php'); ?>
+      <?php include('valoresinstruc.php'); ?>
       <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -132,7 +133,7 @@ var dataSet = [
 <?php 
 $query = "SELECT * FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR gstCargo = 'COORDINADOR'  ORDER BY gstIdper DESC";
+WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR personal.estado = 0 AND gstCargo = 'COORDINADOR'  ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 

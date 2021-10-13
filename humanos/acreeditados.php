@@ -6,10 +6,11 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo != 'INSTRUCTOR' AND estado = 0 || estado = 0 ";
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
 $inspector = mysqli_query($conexion,$sql);
 
 ?>
+
 <html>
 
 <head>
@@ -949,7 +950,6 @@ $inspector = mysqli_query($conexion,$sql);
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script src="../js/global.js"></script>
-    <!-- page script -->
 
 </body>
 
@@ -967,16 +967,16 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function() {
     var table = $('#example').DataTable({
-
+        
         "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        "ajax": "../php/cursosProgra.php",
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+        "ajax": "../php/cursosAcred.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a>"
 
         }]
     });
@@ -1000,6 +1000,7 @@ $(document).ready(function() {
             }
         });
     });
+
 
 
     $('#example tbody').on('click', 'a', function() {
