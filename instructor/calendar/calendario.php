@@ -1,6 +1,7 @@
 <?php
 	include("../../conexion/conexion.php");
 	session_start();
+
 	ini_set('date.timezone','America/Mexico_City');
 	$query = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP by cursos.idmstr,cursos.idinst ORDER BY id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);

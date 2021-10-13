@@ -6,7 +6,7 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "COORDINADOR"){
+      if($_SESSION['usuario']['privilegios'] != "COORDINADOR"){
             //y se redirecciona al directorio que le corresponde
             header("Location: ../");
             }
@@ -146,18 +146,6 @@ unset($_SESSION['consulta']);
             
           </ul>
         </li>-->
-        <li class="active">
-          <a href="inspector.php">
-            <i><img src="../dist/img/perfil.png" class="user-image" alt="User Image" style="
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-top: -2px;"></i> <span>PERFIL</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>   
 
         <li class="active">
           <a href="inicio.php">
@@ -181,6 +169,7 @@ unset($_SESSION['consulta']);
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
         </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa ion-easel"></i>
@@ -190,13 +179,13 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-            <li><a href="conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
-            <li><a href="programa.php"><i class="fa ion-compose"></i> Programación del Curso</a></li>
-            <li><a href="lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
+            <li><a href="programa"><i class="fa ion-compose"></i> Programación del Curso</a></li>
+            <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
-            <li><a href="niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
-           
+            <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <li><a href="constancias"><i class="fa fa-certificate"></i>Constancias</a></li>
           </ul>
         </li>
         <li>

@@ -71,9 +71,9 @@
                                 <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png"
                                     alt="User profile picture">
 
-                                <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
+                                <h3 class="profile-username text-center"><?php echo $datos[2]?></h3>
 
-                                <p class="text-muted text-center"><?php echo $datos[3]?></p>
+                                <p class="text-muted text-center"><?php echo $datos[4]?></p>
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">

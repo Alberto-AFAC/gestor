@@ -36,39 +36,7 @@
   <script src="dist/js/sweetalert2.all.min.js"></script>
   <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
 
-  <style>
-      #legend {
-      height: 50px;
-      background: #f7f7f7;
-      border-bottom: 1px solid #d6d6d6;
-    }
-
-    .anychart-tooltip {
-      padding: 0;
-      background: white;
-      color: #333;
-      box-shadow: 2px 2px 5px #333;
-      border-radius: 0;
-    }
-
-    .anychart-tooltip-title h5 {
-      background: #455a64;
-      padding: 10px 30px;
-      margin: 0;
-    }
-
-    .anychart-tooltip-title h5.default {
-      color: #fff;
-    }
-
-    .anychart-tooltip hr {
-      margin: 0;
-    }
-
-    .anychart-tooltip .tooltip-content {
-      padding: 0 30px;
-    }
-      </style>
+  
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -85,10 +53,10 @@ include('header.php');
                     Dashboard
                     <small>Panel de Control</small>
                 </h1>
-                <ol class="breadcrumb">
+<!--                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa ion-android-home"></i> Inicio</a></li>
                     <li class="active">Dashboard</li>
-                </ol>
+                </ol> -->
             </section>
 
 
@@ -110,7 +78,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-people"></i>
                             </div>
-                            <a href="inicio.php" class="small-box-footer">Mas Información <i
+                            <a href="persona" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -127,7 +95,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-person"></i>
                             </div>
-                            <a href="inspecion.php" class="small-box-footer">Mas Información <i
+                            <a href="inspecion" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -145,7 +113,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-person"></i>
                             </div>
-                            <a href="instructor.php" class="small-box-footer">Mas Información <i
+                            <a href="instructor" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
 
                         </div>
@@ -184,7 +152,7 @@ include('header.php');
                                 </div>
                                 <span class="progress-description">
 
-                                    <a link rel="stylesheet" href="lisCurso.php" style="color:white"
+                                    <a link rel="stylesheet" href="lisCurso" style="color:white"
                                         class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
                                 </span>
@@ -209,7 +177,7 @@ include('header.php');
                                     <div class="progress-bar" style="width: 70%"></div>
                                 </div>
                                 <span class="progress-description">
-                                    <a link rel="stylesheet" href="acreeditados.php" style="color:white"
+                                    <a link rel="stylesheet" href="acreeditados" style="color:white"
                                         class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
                                 </span>
@@ -232,7 +200,7 @@ include('header.php');
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
 
-                                    <a link rel="stylesheet" href="pendientes.php" style="color:white"
+                                    <a link rel="stylesheet" href="pendientes" style="color:white"
                                         class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
 
@@ -255,23 +223,18 @@ include('header.php');
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        <a link rel="stylesheet" href="porvencer.php" style="color:white"
+                                        <a link rel="stylesheet" href="porvencer" style="color:white"
                                             class="small-box-footer">Información <i
                                                 class="fa fa-arrow-circle-right"></i></a>
 
 
                             </div>
             </section>
-            <div class="container">
-            
-</div>
         </div>
-
-
-        <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b>    <?php 
+    <div class="pull-right hidden-xs">
+      <b>Version</b>
+                                <?php 
                                 $query ="SELECT 
                                         *
                                         FROM
@@ -285,17 +248,17 @@ include('header.php');
                                 }
                                 ?>
                     <?php echo $row['version']?>
-            </div>
-            <strong>AFAC&copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados AJ.
-        </footer>
+    </div>
+
+    <strong>AFAC &copy; 2021 <a style="color:#3c8dbc"  href="https://www.gob.mx/afac">Agencia Federal de Aviación Civil</a>.</strong> Todos los derechos Reservados AJ.
+  </footer>
 
         <!-- Control Sidebar -->
         <?php include('panel.html');?>
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+        <div class="control-sidebar-bg"></div>|
     </div>
     <!-- ./wrapper -->
 

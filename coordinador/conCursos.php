@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -26,6 +26,28 @@
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <style>
+     .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.a-alert:link {
+  color: white;
+}
+
+.a-alert:visited {
+  color: white;
+}
+    </style>
 
 
 
@@ -69,10 +91,11 @@
                                     <!-- /FIN DE INDICADORES -->
                                     <div class="box-body">
                                         <?php include('cursosprogramados.php'); ?>
-                                       <!--  <table style="width: 100%;" id="data-table-concurso"
+                                        <!--  <table style="width: 100%;" id="data-table-concurso"
                                             class="table display table-striped table-bordered"></table> -->
 
-                                        <table class="display table table-striped table-bordered dataTable"  id="example"  style="width:100%">
+                                        <table class="display table table-striped table-bordered dataTable" id="example"
+                                            style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -86,7 +109,7 @@
                                                     <th>ACCIÓN</th>
                                                 </tr>
                                             </thead>
-                                           
+
                                         </table>
                                     </div>
                                 </div>
@@ -138,12 +161,33 @@
                 </div>
             </div>
         </form>
-
-
-
-
-
-
+<!-- MODAL PARA AÑADIR UN NUEVO CURSO -->
+<form id="add" class="form-horizontal" action="" method="POST">
+            <div class="modal fade" id="modal-añadir">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 style="font-size: 20px;" class="modal-title" id="exampleModalLabel">AGREGA TEMARIO SEGÚN EL CASO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <input type="hidden" name="idcurtem" id="idcurtem">
+                      <div class="modal-body">
+                        <span id="add_field" style="color: green;font-size: 20px;cursor: pointer;" class="fa fa-plus-square"></span>
+                      <div id="listas">
+                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div>
+                      </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" onclick="agregarMas();" data-dismiss="modal">GUARDAR</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </form>
         <form class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-evaluar">
                 <div class="modal-dialog">
@@ -194,7 +238,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     style="color: black" aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title " id="exampleModalLabel">EDITAR CURSO </h4>
+                            <h4 class="modal-title" id="exampleModalLabel">EDITAR CURSO </h4>
                         </div>
 
                         <input type="hidden" class="form-control" id="AgstIdlsc" name="AgstIdlsc">
@@ -203,8 +247,8 @@
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label class="label2">NOMBRE</label>
-                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="AgstTitlo"
-                                        name="AgstTitlo">
+                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta"
+                                        id="AgstTitlo" name="AgstTitlo">
                                 </div>
 
                                 <div class="col-sm-4">
@@ -237,9 +281,6 @@
                                         <?php endwhile; ?>
                                     </select>
                                 </div>
-
-
-
                             </div>
                             <div class="form-group">
 
@@ -253,8 +294,7 @@
                                     </select>
                                 </div>
 
-
-                                <div class="col-sm-1" style="padding-right: 0; width: 79px;">
+                                <div class="col-sm-1" style="padding-right: 0; width: 85px;">
                                     <label class="label2">DURACION</label>
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                                     <select class="form-control inputalta" id="Ahr" name="Ahr">
@@ -268,11 +308,12 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
-                                    <label  style="color: white">.</label>
-                                    <input type="text" class="form-control" id="Atmp1" name="Atmp1" value="HRS.">
+                                    <label class="label2" style="color: white">.</label>
+                                    <input type="text" class="form-control inputalta" id="Atmp1" name="Atmp1"
+                                        value="HRS.">
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
-                                    <label style="color: white">.</label>
+                                    <label class="label2" style="color: white">.</label>
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                                     <select class="form-control inputalta" id="Amin" name="Amin">
                                         <option value="00">00</option>
@@ -286,8 +327,9 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-1" style="padding: 0;">
-                                    <label style="color: white">.</label>
-                                    <input type="text" class="form-control inputalta" id="Atmp2" name="Atmp2" value="MIN.">
+                                    <label class="label2" style="color: white">.</label>
+                                    <input type="text" class="form-control inputalta" id="Atmp2" name="Atmp2"
+                                        value="MIN.">
 
                                 </div>
 
@@ -329,7 +371,8 @@
                                 <div class="col-sm-12">
                                     <label class="label2">OBJETIVO</label>
                                     <textarea name="AgstObjtv" id="AgstObjtv" placeholder="Escribir el Objetivo"
-                                        onkeyup="mayus(this);" class="form-control inputalta" rows="5" cols="50"></textarea>
+                                        onkeyup="mayus(this);" class="form-control inputalta" rows="5"
+                                        cols="50"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -497,14 +540,52 @@
         </section>
         <!-- /.content -->
     </div>
+    </div>
 
+
+
+
+    <!-- <img data-toggle='modal' data-target='#exampleModal{$data['gstIdlsc']}' src='../dist/img/pdf.svg' alt='PDF' width='30px;' cursor: pointer;'> -->
+    <div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
+        aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content' style="width: 100%;">
+                <div class='modal-header'>
+                    <h5 style='font-size: 28px;' class='modal-title col-11 text-center'><span
+                            style='font-weight: bold;'>TEMARIO</span><br>
+                        
+                </div>
+                <div class='modal-body'><div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU REGISTRO FUE ELIMINADO</div><div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">SE ACTUALIZO REGISTRO CON ÉXITO</div>
+
+
+<div id="temario"></div>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-primary' data-dismiss='modal'>CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 1.1
+            <b>Version</b> <?php 
+                                $query ="SELECT 
+                                        *
+                                        FROM
+                                        controlvers";
+                                $resultado = mysqli_query($conexion, $query);
+
+                                $row = mysqli_fetch_assoc($resultado);
+                                if(!$resultado) {
+                                    var_dump(mysqli_error($conexion));
+                                    exit;
+                                }
+                                ?>
+            <?php echo $row['version']?>
         </div>
         <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-        Todos los derechos Reservados AJ.
+        Todos los derechos Reservados AAJ.
     </footer>
 
     <!-- Control Sidebar -->
@@ -550,194 +631,280 @@ $(document).ready(function() {
 
 </html>
 <script type="text/javascript">
-
-
-
-
-// $(document).ready(function() {
-//     var table = $('#example').DataTable({
-        
-//         "language": {
-//         "searchPlaceholder": "Buscar datos...",
-//         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-//     },
-//     "order": [[ 0, "desc" ]],
-//         "ajax": "../php/consdaTable.php",
-//         "columnDefs": [{
-//             "targets": -1,
-//             "data": null,
-//             "defaultContent": '<button>Editar</button>'
-
-//         }]
-//     });
-//     $('#example thead tr').clone(true).appendTo('#example thead');
-
-//         $('#example thead tr:eq(1) th').each(function(i) {
-//             var title = $(this).text(); //es el nombre de la columna
-//             $(this).html('<input type="text"  placeholder="Buscar" />');
-
-//             $('input', this).on('keyup change', function() {
-//                 if (table.column(i).search() !== this.value) {
-//                     table
-//                         .column(i)
-//                         .search(this.value)
-//                         .draw();
-//                 }
-//             });
-//         });
-
-//     $('#example tbody').on('click', 'button', function() {
-//         var data = table.row( $(this).parents('tr') ).data();
-//         alert( "Es el ID: "+ data[0] );
-//     });
-   
-// });
-// $(document).ready(function() {
-// //     var table = $('#example').DataTable({
-        
-// //         "language": {
-// //         "searchPlaceholder": "Buscar datos...",
-// //         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-// //     },
-// //     "order": [[ 0, "desc" ]],
-// //         "ajax": "../php/consdaTable.php",
-// //         "columnDefs": [{
-// //             "targets": -1,
-// //             "data": null,
-// //             "defaultContent": '<button>Editar</button>'
-
-// //         }]
-// //     });
-// //     $('#example thead tr').clone(true).appendTo('#example thead');
-
-// //         $('#example thead tr:eq(1) th').each(function(i) {
-// //             var title = $(this).text(); //es el nombre de la columna
-// //             $(this).html('<input type="text"  placeholder="Buscar" />');
-
-// //             $('input', this).on('keyup change', function() {
-// //                 if (table.column(i).search() !== this.value) {
-// //                     table
-// //                         .column(i)
-// //                         .search(this.value)
-// //                         .draw();
-// //                 }
-// //             });
-// //         });
-
-// //     $('#example tbody').on('click', 'button', function() {
-// //         var data = table.row( $(this).parents('tr') ).data();
-// //         alert( "Es el ID: "+ data[0] );
-// //     });
-   
-// // });
 $(document).ready(function() {
     var table = $('#example').DataTable({
-        
+
         "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    "order": [[ 0, "desc" ]],
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
         "ajax": "../php/consdaTable.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
+
+
+
+//<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
+
+
 
         }]
     });
 
-    detalles("#example tbody",table);
+    detalles("#example tbody", table);
+    agrtemario("#example tbody", table);
 
 
     $('#example thead tr').clone(true).appendTo('#example thead');
 
-        $('#example thead tr:eq(1) th').each(function(i) {
-            var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text"  placeholder="Buscar" />');
+    $('#example thead tr:eq(1) th').each(function(i) {
+        var title = $(this).text(); //es el nombre de la columna
+        $(this).html('<input type="text"  placeholder="Buscar" />');
 
-            $('input', this).on('keyup change', function() {
-                if (table.column(i).search() !== this.value) {
-                    table
-                        .column(i)
-                        .search(this.value)
-                        .draw();
-                }
-            });
+        $('input', this).on('keyup change', function() {
+            if (table.column(i).search() !== this.value) {
+                table
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
         });
+    });
 
 
 
     $('#example tbody').on('click', 'a', function() {
-        var data = table.row( $(this).parents('tr') ).data();
+        var data = table.row($(this).parents('tr')).data();
         //alert( "Es el ID: "+ data[0] );
 
         gstIdlsc = data[0];
 
-    $.ajax({
-        url: '../php/conCurso.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
+        $.ajax({
+            url: '../php/conCurso.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
 
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].gstIdlsc == gstIdlsc) {
+            for (i = 0; i < res.length; i++) {
+                if (obj.data[i].gstIdlsc == gstIdlsc) {
 
-                datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
+                    datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[
+                            i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i]
+                        .gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc +
+                        '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
 
-                var d = datos.split("*");
-                $("#modalVal #AgstIdlsc").val(d[0]);
-                $("#AgstIdlsc #AgstIdlsc").val(d[0]);
-                $("#modalUpdate #Idlsc").val(d[0]);
-                $("#modalVal #AgstTitlo").val(d[1]);
-                $("#modalUpdate #AgstTitlo").val(d[1]);
-                $("#modalVal #AgstTipo").val(d[2]);
-                $("#gstPrfil").html(d[3]);
-                $("#modalVal #AgstCntnc").val(d[4]);
+                    var d = datos.split("*");
+                    $("#modalVal #AgstIdlsc").val(d[0]);
+                    $("#AgstIdlsc #AgstIdlsc").val(d[0]);
+                    $("#modalUpdate #Idlsc").val(d[0]);
+                    $("#modalVal #AgstTitlo").val(d[1]);
+                    $("#modalUpdate #AgstTitlo").val(d[1]);
+                    $("#modalVal #AgstTipo").val(d[2]);
+                    $("#gstPrfil").html(d[3]);
+                    $("#modalVal #AgstCntnc").val(d[4]);
 
-                Ahr = d[5].substr(0, 2);
-                Amin = d[5].substr(8, 2);
-                //                Atmp = d[5].substr(6,4);
+                    Ahr = d[5].substr(0, 2);
+                    Amin = d[5].substr(8, 2);
+                    //                Atmp = d[5].substr(6,4);
 
-                $("#modalVal #Ahr").val(Ahr);
-                $("#modalVal #Amin").val(Amin);
+                    $("#modalVal #Ahr").val(Ahr);
+                    $("#modalVal #Amin").val(Amin);
 
-                $("#modalVal #AgstVignc").val(d[6]);
-                $("#modalVal #AgstObjtv").val(d[7]);
-                $("#modalVal #AgstTmrio").val(d[8]);
-                $("#modalUpdate #AgstTmrio").val(d[8]);
-                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
-                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+                    $("#modalVal #AgstVignc").val(d[6]);
+                    $("#modalVal #AgstObjtv").val(d[7]);
+                    $("#modalVal #AgstTmrio").val(d[8]);
+                    $("#modalUpdate #AgstTmrio").val(d[8]);
+                    $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
+                    $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
 
+                }
             }
-        }
-    })
+        })
 
 
     });
-   
 
- 
+
+
 
 
 });
 
-   function detalles(tbody,table){
+function detalles(tbody, table) {
 
-    $(tbody).on("click", "a.eliminar", function(){
-        var data = table.row($(this).parents("tr")).data();   
+    $(tbody).on("click", "a.eliminar", function() {
+        var data = table.row($(this).parents("tr")).data();
         //var gstIdlsc = $().val(data.gstIdlsc);
-         $("#modal-eliminar #EgstIdlsc").val(data[0]);
+        $("#modal-eliminar #EgstIdlsc").val(data[0]);
 
-      });
+    });
+}
+
+function agrtemario(tbody, table) {
+
+$(tbody).on("click", "a.temario", function() {
+    var data = table.row($(this).parents("tr")).data();
+        //alert(data[0]);
+    $("#modal-añadir #idcurtem").val(data[0]);
+});
+}
+
+
+function temario(gstIdlsc) {
+
+    $.ajax({
+        url: '../php/temario.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+
+
+        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+
+
+        var x = 0;
+
+        for (i = 0; i < res.length; i++) {
+ 
+            if (obj.data[i].idcurso == gstIdlsc) {
+
+                //alert(obj.data[i].idcurso);
+                dato = obj.data[i].idtem+'*'+obj.data[i].idcurso+'*'+obj.data[i].titulo;
+
+            x++;               
+ html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td><td><a id='"+obj.data[i].idtem+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='temagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].idtem+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+            }
+        }
+        html += '</table>';
+
+        $("#temario").html(html);
+    })
+
+}
+///////EDITAR////////
+
+    function temact(dato){
+    var d = dato.split("*");
+    idcurso = d[0];
+    document.getElementById(idcurso).disabled = false;
+    $("#"+idcurso+"ocultar").hide();
+    $("#"+idcurso+"mostrar").show();
+
     }
 
+function temagregar(dato){
+
+    var d = dato.split("*");
+    idcurso = d[0];
+    var titulo = document.getElementById(idcurso).value;
+
+    $.ajax({
+        data: 'idcurso='+idcurso+'&titulo='+titulo+'&opcion=agregartem',
+        url:'../php/docCursos.php',
+        type: 'post',
+        beforeSend: function () {
+            //
+        },
+        success: function (response) {   
+            if(response==0){      
+
+                $('#actualizo').toggle('toggle');
+                setTimeout(function() {
+                $('#actualizo').toggle('toggle');
+                }, 2000);
+
+            $("#"+idcurso+"ocultar").show();
+            $("#"+idcurso+"mostrar").hide();
+            document.getElementById(idcurso).disabled = true;
+            //temario(gstIdlsc);            
+            }else{
+                // $('#actualizo').toggle('toggle');
+                // setTimeout(function() {
+                // $('#actualizo').toggle('toggle');
+                // }, 2000);            
+            // $('#temario').hide();
+            }
+        }
+    });
+}
+
+
+///BORRAR REGISTRO////
+function temborrar(dato){
+    
+    var d = dato.split("*");
+
+    idcurso = d[0];
+    cursoid = d[1];
+
+$.ajax({
+    data: 'idcurso='+idcurso+'&cursoid='+cursoid+'&opcion=eliminartem',
+    url:'../php/docCursos.php',
+    type: 'post',
+    beforeSend: function () {
+        //
+    },
+    success: function (response) {   
+        if(response!=1){      
+
+            $('#elimino').toggle('toggle');
+            setTimeout(function() {
+            $('#elimino').toggle('toggle');
+            }, 2000);
+
+        temario(gstIdlsc);            
+        }else{
+            $('#elimino').toggle('toggle');
+            setTimeout(function() {
+            $('#elimino').toggle('toggle');
+            }, 2000);            
+        $('#temario').hide();
+        setTimeout("location.href = 'conCursos.php';", 2100);
+        }
+    }
+});
+
+}
+
+// FUNCION PARA AÑADIR
+
+// AÑADIR TEMARIO N NUMERO DE REGISTROS
+var campos_max = 30;   
+        var x = 0;
+        $('#add_field').click (function(e) {
+                e.preventDefault();    //chups
+                if (x < campos_max) {
+                        $('#listas').append('<div>\
+                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <a href="#" style="color: red; font-size:20px; cursor:pointer;" class="remover_campo"><span class="fa fa-minus-square"></span></a>\
+                                </div>');
+                        x++;
+                }
+        });
+        $('#listas').on("click",".remover_campo",function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x;
+        });
 </script>
 <style>
-    #example
-     input {
-        width: 75% !important;
-    }
+#example input {
+    width: 75% !important;
+}
 </style>
+
+<?php
+
+
+
+?>

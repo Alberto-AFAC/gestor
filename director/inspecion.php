@@ -170,55 +170,69 @@
       </div>
     </div>
 
- <div class="modal fade" id="modal-resultado">
-          <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">RESULTADO</h4>
-              </div>
-              <div class="modal-body">
-              <div style="text-align: right">
-              <img style="cursor: pointer;" onclick="pdf()" src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png" class="img-fluid swing" width="46px" alt="Crear-PDF">
-              </div>
-              <form id="Result">
+            <div class="modal fade" id="modal-resultado">
+                <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">RESULTADO</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="Result" action="lista" target="_blank" method="POST">
+                                    <input type="hidden" class="form-control" id="pdfIdper" name="pdfIdper">
+                                    <input type="hidden" class="form-control" id="evalu_nombre" name="evalu_nombre">
+                                    <input type="hidden" class="form-control" id="apellido" name="apellido">
+                                    <input type="hidden" class="form-control" id="gstComnt" name="gstComnt">
+                                    <input type="hidden" class="form-control" id="especialidad" name="especialidad">
+                                    <input type="hidden" class="form-control" id="siglas" name="siglas">
+                                    <input type="hidden" class="form-control" id="adscripcion" name="adscripcion">
+                                    <input type="hidden" class="form-control" id="departamento" name="departamento">
 
-<input type="hidden" class="form-control" id="pdfIdper" name="pdfIdper" disabled="">
-              <div class="row">  
-              <div class="form-group">
-                  <div class="col-sm-5">
-                    <label>NOMBRE</label>
-                      <input type="text" class="form-control" id="evalu_nombre" name="evalu_nombre" disabled="">
-                  </div>
-                    <div class="col-sm-offset-0 col-sm-7">
-                      <label>CATEGORÍA</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker" id="IDCat" name="IDCat" type="text" data-live-search="true" disabled="">
-                         <?php while($oiras = mysqli_fetch_row($categs)):?>                      
-                         <option value="<?php echo $oiras[0]?>"><?php echo $oiras[1]?></option>
-                         <?php endwhile; ?>
-                       </select>
+
+                                    <input type="submit" style="float: right;" class="btn btn-info"
+                                        value="CONSULTAR APÉNDICE E"><br><br>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-5">
+                                                <label>NOMBRE</label>
+                                                <input type="text" class="form-control" id="evalu_nombre"
+                                                    name="evalu_nombre" disabled="">
+                                            </div>
+                                            <div class="col-sm-offset-0 col-sm-7">
+                                                <label>CATEGORÍA</label>
+                                                <select style="width: 100%" class="form-control" class="selectpicker"
+                                                    id="IDCat" name="IDCat" type="text" data-live-search="true"
+                                                    disabled="">
+                                                    <?php while($oiras = mysqli_fetch_row($categs)):?>
+                                                    <option value="<?php echo $oiras[0]?>"><?php echo $oiras[1]?>
+                                                    </option>
+                                                    <?php endwhile; ?>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <div id="rsltad"></div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label>COMENTARIOS</label>
+                                                <textarea name="gstComnt" id="gstComnt" onkeyup="mayus(this);"
+                                                    class="form-control" rows="2" cols="50" readonly></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-              </div>
-
-              <div id="rsltad"></div>
-
-                 <div class="form-group">
-                    <div class="col-sm-12">
-                    <label>COMENTARIOS</label>
-                    <textarea name="gstComnt" id="gstComnt" onkeyup="mayus(this);" class="form-control" rows="2" cols="50"></textarea>
-                    </div>
-                  </div>
-
-             </div>
-              </form>  
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
 
   <div class="modal fade" id="modal-especialidad">

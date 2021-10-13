@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <title>Capacitación AFAC | Personal</title>
-
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -20,8 +19,7 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-  
-<style>
+  <style>
  .swal-wide{
     width: 500px !important;
     font-size: 16px !important;
@@ -55,9 +53,11 @@ $ejecut = mysqli_query($conexion,$sql);
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $direc = mysqli_query($conexion,$sql);
 
+$sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+$direc1 = mysqli_query($conexion,$sql);
+
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
-
 }
 ?>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -74,6 +74,7 @@ include('header.php');
 <?php include('valores.php'); ?>
 <!-- /.col -->
 </div>
+
 <!-- /.row -->
 </section>  
 <!-- Content Header (Page header) -->
@@ -102,6 +103,7 @@ include('header.php');
 </div>
 </section>
 </div>
+
   <div class="modal fade" id='modal-asignar'>
     <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -111,7 +113,6 @@ include('header.php');
               <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" style="font-size:19px; color: #000000;">ASIGANCIÓN DEL PUESTO</h4>
           </div>
-
           <div class="modal-body">
               <form id="Dtall" class="form-horizontal" action="" method="POST" >
                 <input type="hidden" name="gstIdper" id="gstIdper">
@@ -150,7 +151,7 @@ include('header.php');
                       <div class="col-sm-12">
                             <label class="label2">DIRECCIÓN EJECUTIVA</label>
 
-                    <select style="width: 100%"  class="selectpicker inputalta" name="gstAreIDasig" id="gstAreIDasig" type="text" data-live-search="true" disabled="">
+                    <select style="width: 100%" class="form-control" class="selectpicker disabled inputalta" name="gstAreIDasig" id="gstAreIDasig" type="text" data-live-search="true" disabled="">
                     <?php while($ejct = mysqli_fetch_row($ejecut)):?>                      
                     <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
                     <?php endwhile; ?>
@@ -161,33 +162,26 @@ include('header.php');
                     <div class="form-group">
                           <div class="col-sm-12">
                             <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
-
-                    <select style="width: 100%" class="selectpicker inputalta" id="gstIDara" name="gstIDara" type="text" data-live-search="true" disabled="">
-                    <?php while($ccion = mysqli_fetch_row($direc)):?>                      
-                    <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
+                    <select style="width: 100%" class="form-control"  class="selectpicker inputalta" id="gstIDara1" name="gstIDara1" type="text" data-live-search="true" disabled="">
+                    <?php while($ccion1 = mysqli_fetch_row($direc1)):?>                      
+                    <option value="<?php echo $ccion1[0]?>"><?php echo $ccion1[1]?></option>
                     <?php endwhile; ?>
                     </select>
 
                         </div>
-                        </div>
+                    </div>
                     <div class="form-group">
                           <div class="col-sm-12">
-                            <label class="label2">SUB DIRECCIÓN</label>
-                            <select type="text" class="form-control inputalta" id="gssubdireccion" name="gssubdireccion">
-                                <option value="value1">SELECCIONA LA SUB DIRECCIÓN</option>
-                                <option value="value2">SUBDIRECCIÓN DE SEGURIDAD AÉREA</option>
-                                <option value="value3">SUBDIRECCIÓN DE NORMAS</option>
-                            </select>
-                          </div>
+                            <label class="label2">SUBDIRECCIÓN</label>
+                         <div id="subdire"></div>                            
+                        </div>
                         </div>
                     <div class="form-group">
-                     <div class="col-sm-offset-0 col-sm-12">
+                     <div class="col-sm-12">
                         <label class="label2">DEPARTAMENTO</label>
-                        <select style="width: 100%" class="form-control" class="selectpicker inputalta" name="" id="" type="text" data-live-search="true">
-                         <option value="">SELECCIONE EL DEPARTAMENTO</option> 
-                         <option value="">DEPARTAMENTO DE INSPECCIÓN</option>
-                       </select>
-                    </div>                  
+                        <div id="depart1"></div> 
+                    </div>   
+                                  
                 </div>   
 <!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
                   <div class="box" id="funcionemp" style="display: none" >
@@ -252,16 +246,28 @@ include('header.php');
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
+</div>
+</div>
 
 <?php include('agrStdPro.php');?>
 
-
-
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
-<b>Version</b> 1.2
+<b>Version</b>    <?php 
+                                $query ="SELECT 
+                                        *
+                                        FROM
+                                        controlvers";
+                                $resultado = mysqli_query($conexion, $query);
+
+                                $row = mysqli_fetch_assoc($resultado);
+                                if(!$resultado) {
+                                    var_dump(mysqli_error($conexion));
+                                    exit;
+                                }
+                                ?>
+                    <?php echo $row['version']?>
 </div>
 
 <strong>AFAC &copy; 2021 <a style="color:#3c8dbc" href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
@@ -313,6 +319,8 @@ $('#AgstIDSub').select2();
  $('#select3').load('select/tablacom.php');
  $('#categoria').load('select/buscatego.php');
  $('#subcategoria').load('select/tabsubcat.php');
+ $('#subdire').load('select/buscardepart.php'); //Subdirección
+ $('#depart1').load('select/tabladep.php'); //departamento
 }); 
 </script>
 <script src="../js/select2.js"></script> 
@@ -333,21 +341,23 @@ $resultado = mysqli_query($conexion, $query);
         $datosCargo = $data['gstCargo'];
       }
       $gstIdper = $data['gstIdper'];
+      $gstNmpld = $data['gstNmpld'];
       ?>
 
 //console.log('<?php echo $gstIdper ?>');
 
 ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>",
 <?php if($data['gstCargo']=='NUEVO INGRESO'){?>
-  "<a type='button' title='Asignar' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
+  "<a type='button' title='Asignar' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a> <a type='button' title='Baja de usuario' onclick='bajaUsu(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
 <?php }else{?>
 //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
+" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a> <a type='button' title='Baja de usuario' onclick='bajaUsu(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
 
 <?php } ?>
 
 ],
 
+// <a href="#" onclick="borrararc(&quot;130*1345*ESCULA PRUEBA*MEX*BNOSE*../documento/123456/Estudio/PRUEBA5.pdf*130&quot;);" type="button" style="margin-left:2px" title="Borrar documento" class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminardoc"><i class="fa fa-trash-o text-danger"></i></a>
 
 <?php } ?>
 ];

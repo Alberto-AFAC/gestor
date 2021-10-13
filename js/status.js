@@ -1,35 +1,17 @@
 //destroy:true,
 $.ajax({
-    url: '../php/conPerson.php',
+    url: '../php/statusPer.php',
     type: 'POST'
 }).done(function(resp) {
     obj = JSON.parse(resp);
     var res = obj.data;
-    var personas = 0;
-    var inspectores = 0;
-    var instructor = 0;
-    var coordinador = 0;
-    var total = 0;
-    for (i = 0; i < res.length; i++) {
 
-        if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR') {
-            inspectores++;
-        } else if (obj.data[i].gstCargo == 'INSTRUCTOR') {
-            instructor++;
-        } else if (obj.data[i].gstCargo == 'COORDINADOR') {
-            coordinador++;
-        } else if (obj.data[i].gstIDCat == '0' && obj.data[i].gstIDSub == '0') {
-            personas++;
-        }
-        total++;
+    var resultado = obj.data[0].instructor + obj.data[0].coordinador;
 
-    }
-    resultado = coordinador + instructor;
-
-    $("#persona").html(total);
-    $("#inspectores").html(inspectores);
+    $("#persona").html(obj.data[0].persona);
+    $("#inspectores").html(obj.data[0].inspectores);
     $("#instructor").html(resultado);
-    $("#coordinador").html(resultado);
+    // $("#coordinador").html(obj.data[0].resultado);
 });
 
 
@@ -40,59 +22,17 @@ document.getElementById("fecha").innerHTML = "" + '<b>CURSOS AÑO ' + fecha_actu
 
 
 $.ajax({
-    url: '../php/lisCurso.php',
+    url: '../php/statusCur.php',
     type: 'POST'
 }).done(function(resp) {
     obj = JSON.parse(resp);
     var res = obj.data;
-    var progrmas = 0;
-    var finalizado = 0;
-    var acreditar = 0;
-    var vencer = 0;
-    var vencio = 0;
 
-    for (i = 0; i < res.length; i++) {
+    var totalv = obj.data[0].vencido + obj.data[0].porvencer;
 
-        var hoy = new Date();
-        var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
-
-        var fcurso = new Date(obj.data[i].fcurso);
-        var fcurso = new Date(fcurso.getFullYear(), fcurso.getMonth(), fcurso.getDate());
-
-
-        if (obj.data[i].proceso == 'FINALIZADO') {
-            finalizado++;
-        }
-        if (obj.data[i].proceso == 'PENDIENTE' && factual <= fcurso) {
-            acreditar++;
-        }
-
-        progrmas++;
-
-
-            if(factual > fcurso && obj.data[i].proceso == "PENDIENTE"){
-                vencio++;
-            }
-
-            if(factual <= fcurso && obj.data[i].proceso == "PENDIENTE"){
-
-            var termino = new Date(obj.data[i].fechaf);
-            var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-            finaliza.setMonth(finaliza.getMonth() - 3);
-
-            if(factual >= finaliza && obj.data[i].proceso == "PENDIENTE"){
-                vencer++;
-            }
-
-            }
-
-            totalv =  vencio + vencer;
-    }
-
-    $("#progrmas").html(progrmas);
-    $("#finalizado").html(finalizado);
-    $("#acreditar").html(acreditar);
+    $("#progrmas").html(obj.data[0].progrmas);
+    $("#finalizado").html(obj.data[0].finalizado);
+    $("#acreditar").html(obj.data[0].acreditar);
     $("#vencer").html(totalv);
 
 });
