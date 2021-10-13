@@ -972,6 +972,9 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
+        "order": [
+            [7, "DESC"]
+        ],
         "ajax": "../php/cursosProgra.php",
         "columnDefs": [{
             "targets": -1,
