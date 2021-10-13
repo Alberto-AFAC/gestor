@@ -532,23 +532,14 @@ $(document).ready(function() {
             [5, "asc"]
         ],
         "ajax": "../php/data-inspeccion.php",
-        "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>"
-
-
-
-            //<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
-
-
-
-        }]
+      
     });
 
     detalles("#data-table-inspectores tbody", table);
     agrtemario("#data-table-inspectores tbody", table);
-
+    function click(gstIdper){
+      alert(gstIdper);
+    }
     // CON ESTO FUNCIONA EL MULTIFILTRO//
     $('#data-table-inspectores thead tr').clone(true).appendTo('#data-table-inspectores thead');
 
