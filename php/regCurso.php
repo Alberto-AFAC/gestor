@@ -46,6 +46,9 @@ $codigos = $_POST['codigos'];
 
 if(cancelar($codigos,$conexion)){
 		echo "0";
+		$realizo = 'CANCELO CURSO FOLIO: '.$codigos;
+		historiCan($idp,$realizo,$codigos,$conexion);	
+
 	}else{
 		echo "1";
 	}
@@ -102,6 +105,20 @@ function eliminaCur($idp,$EgstIdlsc,$conexion){
 			  SELECT $idp,concat('ELIMINO REG.',$EgstIdlsc,' CURSO'),concat(gstTitlo),'$fecha' 
 			  FROM listacursos WHERE gstIdlsc = '$EgstIdlsc'";
 
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+	function historiCan($idp,$realizo,$codigos,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) 
+			  SELECT $idp,'$realizo',gstTitlo,'$fecha' FROM listacursos 
+			  INNER JOIN cursos ON 	idmstr = gstIdlsc
+			  WHERE `codigo` = '$codigos' AND cursos.estado = 1 LIMIT 1";			  
 	if(mysqli_query($conexion,$query)){
 	return true;
 	}else{

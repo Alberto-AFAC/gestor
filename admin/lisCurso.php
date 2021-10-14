@@ -246,18 +246,18 @@ $inspector = mysqli_query($conexion,$sql);
                                                     onclick="canCurso()">ACEPTAR</button>
                                             </div>
                                             <b>
-                                                <p class="alert alert-warning text-center padding error" id="danger">
+                                                <p class="alert alert-warning text-center padding error" id="dangerr">
                                                     Error
-                                                    al eliminar curso</p>
+                                                    al cancelar curso</p>
                                             </b>
                                             <b>
-                                                <p class="alert alert-success text-center padding exito" id="succe">¡Se
-                                                    elimino curso con éxito !</p>
+                                                <p class="alert alert-success text-center padding exito" id="succes">¡Se
+                                                    cancelo curso con éxito !</p>
                                             </b>
                                             <b>
-                                                <p class="alert alert-warning text-center padding aviso" id="empty">
+                                                <p class="alert alert-warning text-center padding aviso" id="emptyy">
                                                     Elija
-                                                    curso para eliminar </p>
+                                                    curso para cancelar </p>
                                             </b>
                                         </div>
                                     </div>
@@ -971,7 +971,9 @@ $(document).ready(function() {
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
+        },"order": [
+            [7, "DESC"]
+        ],
         "ajax": "../php/cursosProgra.php",
         "columnDefs": [{
             "targets": -1,

@@ -12,7 +12,7 @@
 			GROUP BY
 			cursos.codigo
 			ORDER BY
-			id_curso ASC";
+			id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 	$contador=0;
 	if(!$resultado){
@@ -67,7 +67,7 @@
 			$proc = 'POR VENCER';
 
 			$cursos[] = [ 
-			$contador, 
+			$data["codigo"], 
 			$data["gstTitlo"],
 			$data["gstTipo"],
 			$data["fcurso"],

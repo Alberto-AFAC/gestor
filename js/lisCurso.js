@@ -322,9 +322,9 @@ function canCurso() {
     //alert(codigos);
     if (codigos == '') {
 
-        $('#empty').toggle('toggle');
+        $('#emptyy').toggle('toggle');
         setTimeout(function() {
-            $('#empty').toggle('toggle');
+            $('#emptyy').toggle('toggle');
         }, 2000);
 
         return;
@@ -334,16 +334,17 @@ function canCurso() {
             type: 'POST',
             data: 'codigos=' + codigos + '&opcion=canCurso'
         }).done(function(respuesta) {
+             // alert(respuesta);
             if (respuesta == 0) {
-                $('#succe').toggle('toggle');
+                $('#succes').toggle('toggle');
                 setTimeout(function() {
-                    $('#succe').toggle('toggle');
+                    $('#succes').toggle('toggle');
                     location.href = 'lisCurso.php';
                 }, 1500);
             } else {
-                $('#danger').toggle('toggle');
+                $('#dangere').toggle('toggle');
                 setTimeout(function() {
-                    $('#danger').toggle('toggle');
+                    $('#dangere').toggle('toggle');
                 }, 2000);
             }
         });

@@ -1,7 +1,11 @@
 <?php
 include("../conexion/conexion.php");
-// include_once('../php-mailer/class.phpmailer.php');
-// include_once('../php-mailer/class.smtp.php');
+session_start();
+
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$idp = $_SESSION['usuario']['id_usu'];
+}
+
 $opcion = $_POST["opcion"];
 $informacion = [];
 
@@ -26,24 +30,24 @@ $modalidad = $_POST['modalidad'];
 $id = $_POST['idinsps'].','.$idinst;
 
 $valor = explode(",", $id);
-
+$val = count($valor);
+$n = 0;
 foreach ($valor as $idinsps) {
-	
+	$n++;
 	if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion))
 		{ 
 			echo "0";	
+			if($n==1){
+			$realizo = 'PROGRAMO CURSO ('.$val.' PART.) FOLIO: '.$codigo;
+			historiCur($idp,$realizo,$id_mstr,$conexion);				
+			}
+
 		}else{	
 			echo "1";	
 		}
 
 		contancia($idinsps,$codigo, $conexion);
 
-//		if(enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion))
-	//	{ 
-//			echo "0";	
-	//	}else{	
-//			echo "1";	
-	//	}
 	}
 }else if($opcion === 'actualizar'){
 
@@ -77,7 +81,13 @@ $codigo = $_POST['acodigos'];
 contancia($idinsps,$codigo, $conexion);
 
 if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion))
-		{	echo "0";	}else{	echo "1";	}
+		{	
+
+			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
+			historiCur($idp,$realizo,$id_mstr,$conexion);	
+			echo "0";	
+
+		}else{	echo "1";	}
 
 //ACTUALIZAR EVALUACIÓN
 }else if($opcion === 'actualizarevalu'){ 
@@ -96,6 +106,8 @@ $codigo = $_POST['codigo'];
 
 if(finalizac($codigo,$conexion)){
 	echo "0";
+		$realizo = 'FINALIZO CURSO FOLIO: '.$codigo;
+		historiCan($idp,$realizo,$codigo,$conexion);	
 }else{
 	echo "1";
 }
@@ -287,6 +299,33 @@ function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$m
 		$mail->MsgHTML($msg);
 		$mail->send();
 }
+
+
+	function historiCur($idp,$realizo,$id_mstr,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $idp,'$realizo',concat(gstTitlo),'$fecha' FROM listacursos WHERE `gstIdlsc` = $id_mstr AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+	function historiCan($idp,$realizo,$codigo,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) 
+			  SELECT $idp,'$realizo',gstTitlo,'$fecha' FROM listacursos 
+			  INNER JOIN cursos ON 	idmstr = gstIdlsc
+			  WHERE `codigo` = '$codigo' AND cursos.estado = 0 LIMIT 1";			  
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
 function cerrar($conexion){
 
 	mysqli_close($conexion);
