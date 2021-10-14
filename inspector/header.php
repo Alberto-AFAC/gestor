@@ -189,8 +189,8 @@
         </li>
         <li>
           <a href="cursos">
-            <i class="fa fa-graduation-cap"></i> <span>E-learnning</span>
-            <span class="pull-right-container">
+            <!-- <i class="fa fa-graduation-cap" ></i> <span>E-learnning</span> -->
+            <!-- <span class="pull-right-container"> -->
             </span>
           </a>
         </li> 
