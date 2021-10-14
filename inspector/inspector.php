@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gestor de Inspectores|Perfil Inspector</title>
+    <title>Capacitación AFAC | Perfil Inspector</title>
     <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
     <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -74,6 +74,8 @@
                                 <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
 
                                 <p class="text-muted text-center"><?php echo $datos[3]?></p>
+                                <input type="text" style="display:none;" name="f1t1" id="f1t1" value="<?php echo $datos[0]?>">
+
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
@@ -111,17 +113,19 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <a href="#">
+                                <a style="cursor: pointer;" onclick="constudios();"  data-toggle='modal' data-target='#modal-estud' >
                                     <strong><i class="fa fa-book margin-r-5"></i>Educación</strong>
 
                                 </a>
+
+                                <!-- <span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-estudiosins' onclick="">pruebas</span> -->
                                 <p class="text-muted">
 
                                     <?php echo $dato[4];?>
                                 </p>
 
                                 <hr>
-                                <a href="#">
+                                <a style="cursor: pointer;" onclick="conprofesion();"  data-toggle='modal' data-target='#modal-exprofe'>
                                     <strong><i class="ion-briefcase margin-r-5"></i>Experiencia Laboral</strong>
                                 </a>
 
@@ -1719,4 +1723,79 @@ function desactivar() {
 
     }
 }
+
+
+function constudios(gstIdper){
+    
+   var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
+   // alert(idpersona1);
+           $.ajax({
+                    url: '../php/conEstudios.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+
+                    //AQUI03
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+                    var n = 0;
+                    for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
+
+                        if (obj.data[H].gstIDper == idpersona1) {
+                            valor = obj.data[H].gstIDper;
+                            n++;
+                            datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
+
+                            html += "<tr><td>" + n + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td>" + obj.data[H].gstPriod + "</td><td><a class='btn btn-default' title='visualizar el documento' href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a></td> <td>" + obj.data[H].fechar + "</td></tr>";
+                        } else {
+                        
+                        }
+
+                    }
+                    html += '</tbody></table></div></div></div>';
+                    $("#studios").html(html);
+                })    
+               //alert('pruebas')
+}
+
+function conprofesion(){
+    var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
+   // alert(idpersona1);
+$.ajax({
+ url: '../php/conProfesion.php',
+ type: 'POST'
+}).done(function(resp) {
+ obj = JSON.parse(resp);
+ var res = obj.data;
+ var x = 0;
+
+
+ html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+ for (P = 0; P < res.length; P++) {
+
+     year = obj.data[P].gstFntra.substring(0, 4);
+     month = obj.data[P].gstFntra.substring(5, 7);
+     day = obj.data[P].gstFntra.substring(8, 10);
+     gstFntra = day + '/' + month + '/' + year;
+
+     year = obj.data[P].gstFslda.substring(0, 4);
+     month = obj.data[P].gstFslda.substring(5, 7);
+     day = obj.data[P].gstFslda.substring(8, 10);
+     gstFslda = day + '/' + month + '/' + year;
+
+
+     datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
+
+     if (obj.data[P].gstIDper == idpersona1) {
+         x++;
+         html += "<tr><td>" + x + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default'  href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a></td> </tr>";
+
+     } else {}
+ }
+ html += '</tbody></table></div></div></div>';
+ $("#profsions").html(html);
+})    
+}
+
 </script>
+

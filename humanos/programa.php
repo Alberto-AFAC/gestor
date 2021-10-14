@@ -212,7 +212,7 @@ include('header.php');
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" style="font-size:16px" class="btn btn-info altaboton" onclick="proCurso();">PROGRAMAR</button>
+<button type="button" id="button" style="font-size:16px" class="btn btn-info altaboton" onclick="proCursoH();">PROGRAMAR</button>
 <div id="overlay">
   <div class="cv-spinner">
     <span class="spinner"></span>
