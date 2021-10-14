@@ -208,11 +208,51 @@
 
   <label readonly id="otrosdp" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
 
- 
 
+</div>
+
+<script>
+
+</script>
+</div>
+
+<!-- !-- DETALLE DE EDUCACION --> 
+<div class="modal fade" id='modal-estud'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal2" style="width: 1100px;">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/estudios.png">
+    </div>
+  </div>
+  <h1 class="modaltitle" style="color:gray"><strong>EDUCACIÓN</strong></h1>
+  <div id="studios"></div>
 </div>
 <script>
 
 </script>
 </div>
-<!--FIN DETALLE DECLINA CONVOCATORIA -->
+<!-- !-- FIN DETALLE DE EDUCACION --> 
+
+<!-- !-- DETALLE DE EXPERIENCIA PROFESIONAL --> 
+<div class="modal fade" id='modal-exprofe'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal2" style="width: 1300px;">
+  
+  <div id="success-icon">
+    <div>
+    <img class="img-circle1" src="../dist/img/cv.png">
+    </div>
+  </div>
+  <h1 class="modaltitle" style="color:gray"><strong>EXPERIENCIA LABORAL</strong></h1>
+  <div id="profsions"></div>
+</div>
+<script>
+
+</script>
+</div>
+<!-- !-- FIN DETALLE DE EXPERIENCIA PROFESIONAL --> 
+
+
+<script>
+ 
+</script>
