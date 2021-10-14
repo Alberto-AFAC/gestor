@@ -135,21 +135,22 @@ include('header.php');
 
     
     <div class="col-sm-4">
-    <label class="label2">COORDINADOR </label>
+    <label class="label2">COORDINADOR</label>
       <select class="form-control inputalta" id="idcord" name="idcord" style="width: 100%;">
           <option value="0">SELECCIONE COORDINADOR </option> 
           <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
           <option value="<?php echo $cordinadors[0]?>"><?php echo $cordinadors[1].' '.$cordinadors[2]?></option>
+          
           <?php endwhile; ?>
       </select>
     </div>
+
     <?php //include('advanced.php');?>
 
     <div class="col-sm-4">
     <label class="label2">INSTRUCTOR</label>
       <select style="width: 100%" class="form-control inputalta" class="selectpicker" id="idinst" name="idinst[]" type="text" multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR" data-live-search="true">
           <?php while($instructors = mysqli_fetch_row($instructor)):?>
-
           <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
           <?php endwhile; ?>
       </select>
@@ -157,7 +158,7 @@ include('header.php');
 
     <div class="col-sm-4">
     <label class="label2">SEDE DEL CURSO</label>
-    <input type="text" class="form-control inputalta" id="sede" name="sede">
+    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="sede" name="sede">
     </div>
 </div>
 
@@ -178,7 +179,7 @@ include('header.php');
                   <div class="input-group-addon">
                     <i class="fa fa-globe"></i>
                   </div>
-            <input type="url" class="form-control inputalta" id="link" name="link" placeholder="URL ">
+            <input type="url" onkeyup="mayus(this);" class="form-control inputalta" id="link" name="link" placeholder="URL ">
       </div>
     </div>
     <div class="col-sm-4">
@@ -187,7 +188,7 @@ include('header.php');
       <div class="input-group-addon">
                     <i class="fa fa-unlock-alt"></i>
                   </div>
-      <input type="text" class="form-control inputalta" id="contracceso" name="contracceso">
+      <input type="password" class="form-control inputalta" id="contracceso" name="contracceso">
     </div>
     </div>
 </div>
@@ -228,6 +229,7 @@ include('header.php');
 </div>
 </form>
 </div>
+       
 
               </div>
               <!-- /.tab-pane 2do panel-->
@@ -266,7 +268,7 @@ include('header.php');
                                 ?>
                     <?php echo $row['version']?>
     </div>
-    <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados AJ.
+    <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Civil</a>.</strong> Todos los derechos Reservados AAJ.
   </footer>
 
   <!-- Control Sidebar -->
@@ -342,3 +344,4 @@ var yyyy = today.getFullYear();
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("fechaf").setAttribute("min", today);
 </script>
+<script src="../js/global.js"></script>

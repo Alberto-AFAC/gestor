@@ -488,7 +488,7 @@ $psto = mysqli_query($conexion,$sql);
    
                 <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-2">
-                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrar();">ACEPTAR</button>
+                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrarH();">ACEPTAR</button>
                     </div>
                     
                     <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos</p></b>

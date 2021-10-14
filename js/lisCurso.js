@@ -524,6 +524,8 @@ function evaluarins(cursos) {
     $("#avaluacion #validoev").val(d[17]); //EVALUACIÓN
     $("#avaluacion #idinsev").val(d[18]); //EVALUACIÓN
 
+    $("#avaluacion #ogidoc").val(d[21]); //EVALUACIÓN
+
     valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
     costOfTicket = document.getElementById("NOE");
     selectedStand = document.getElementById("SIe");
@@ -554,8 +556,6 @@ function evaluarins(cursos) {
 
 
 function inspeval(cursos) {
-
-    //alert(cursos);
 
     var d = cursos.split("*");
     $("#cursoc").html(d[1]);
@@ -964,6 +964,7 @@ function cereditcurso() {
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
 function cerrareval() {
+
     costOfTicket = document.getElementById("NOE");
     selectedStand = document.getElementById("SIe");
     pendiente = document.getElementById("PE");
@@ -974,10 +975,9 @@ function cerrareval() {
     var pendiente = document.getElementById("PE");
     idinsp = document.getElementById('idinsev').value;
     id_curso = document.getElementById('id_curso').value;
+    codigo = document.getElementById('ogidoc').value;
 
     datos = 'idinsp=' + idinsp + '&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
-
-    //   alert(datos);
 
     if (validoev == '') {
         pendiente.style.display = '';
@@ -1012,11 +1012,12 @@ function cerrareval() {
                     customClass: 'swal-wide',
                     timer: 2000,
                     backdrop: `
-                        rgba(100, 100, 100, 0.4)
-                    `
+                        rgba(100, 100, 100, 0.4)`
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
+                idcurso(codigo); 
+
             } else {
                 Swal.fire({
                     type: 'success',

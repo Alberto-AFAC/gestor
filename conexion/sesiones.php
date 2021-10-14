@@ -14,7 +14,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 	$usuario = $conexion->real_escape_string($_POST['tecn']);
 	$pas = $conexion->real_escape_string($_POST['pass']);
 //declaraciones preparadas realizamos la consulta en variables ponemos signo de interrogacion ya que resiviran los parametros nuetsra instruccion sql
-if($nueva_consulta = $conexion->prepare("SELECT * FROM accesos WHERE usuario= ? AND password = ? AND activo = 0")){
+if($nueva_consulta = $conexion->prepare("SELECT * FROM accesos WHERE usuario= ? AND password = ? AND activo = 0 AND baja = 0")){
 //pasamos los parametros primer parametro el tipo de datos locovamos dos s para indicar que son dos string, el primer dato variable usuario y el segundo dato pas que tre la contraseña
 //	$pass = md5($pas);
 	$nueva_consulta->bind_param('ss', $usuario, $pas);

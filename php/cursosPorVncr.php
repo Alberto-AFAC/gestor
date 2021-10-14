@@ -36,7 +36,7 @@
 		$proc = 'VENCIDO';
 
 		$cursos[] = [ 
-		$contador, 
+		$data["codigo"], 
 		$data["gstTitlo"],
 		$data["gstTipo"],
 		$data["fcurso"],

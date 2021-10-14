@@ -12,14 +12,38 @@
         }
    $id = $_SESSION['usuario']['id_usu'];
       $sql = 
-       "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
+       "SELECT gstIdper,gstAreID,gstNombr,gstApell,gstCargo FROM personal 
       INNER JOIN accesos ON id_usu = gstIdper
       WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
 
       $persona = mysqli_query($conexion,$sql);
       $datos = mysqli_fetch_row($persona);
+      $datos[1];
+      $datos[2];
+      $datos[3];
 
 //session_start(); 
+
+      $sqli = 
+     "SELECT gstInstt,gstMpres FROM personal 
+       INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
+      INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
+      ";
+
+      $persona = mysqli_query($conexion,$sql);
+      $datos = mysqli_fetch_row($persona);
+
+  
+  if (!empty($dato[4]) || !empty($dato[5])) {
+      $dato[4];
+      $dato[5];
+  }else{
+      $dato[4]="";
+      $dato[5]="";
+  }
+
+
 unset($_SESSION['consulta']);
 
 ?>
@@ -42,8 +66,6 @@ unset($_SESSION['consulta']);
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
@@ -58,31 +80,11 @@ unset($_SESSION['consulta']);
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li> -->
                   <li>
                     <a href="#">
                       <div id="confirmar"></div>
                     </a>
                   </li>
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li> -->
                 </ul>
               </li>
               <!-- - -->
@@ -123,35 +125,9 @@ unset($_SESSION['consulta']);
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
-<!--       <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/perfil.png" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Angel Canseco</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
-        </div>
-      </div> -->
-      <!-- search form -->
- 
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <!--<li class="active treeview">
-          <a href="./">
-            <i class="fa ion-android-plane"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="./"><i class="fa ion-pie-graph"></i> Dashboard</a></li>
-            
-          </ul>
-        </li>-->
-
+        
         <li class="active">
           <a href="inspector.php">
             <i><img src="../dist/img/perfil.png" class="user-image" alt="User Image" style="
@@ -183,7 +159,24 @@ unset($_SESSION['consulta']);
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
         </li>
-
+        <li class="treeview">
+          <a href="#">
+            <i class="fa ion-easel"></i>
+            <span>Cursos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+            <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
+            <li><a href="programa"><i class="fa ion-compose"></i> Programación del Curso</a></li>
+            <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
+<!--             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <li><a href="constancias"><i class="fa fa-certificate"></i>Constancias</a></li> -->
+          </ul>
+        </li>
         <!--  -->
         <!-- -->
         <li>
