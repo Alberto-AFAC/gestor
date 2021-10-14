@@ -254,12 +254,12 @@
                                 <div class="col-sm-4">
                                     <label class="label2">TIPO DE CAPACITACIÓN</label>
                                     <select type="text" class="form-control inputalta" id="AgstTipo" name="AgstTipo">
-                                    <option value="INDUCCIÓN">INDUCCIÓN</option>
-                                    <option value="BÁSICOS/INICIAL">BÁSICO/INICIAL</option>
-                                    <option value="TRANSVERSALES">TRANSVERSALE</option>
-                                    <option value="RECURRENTES">RECURRENTE</option>
-                                    <option value="ESPECÍFICOS">ESPECÍFICO</option>
-                                    <option value="OJT">OJT</option>
+                                        <option value="INDUCCIÓN">INDUCCIÓN</option>
+                                        <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
+                                        <option value="TRANSVERSALES">TRANSVERSALES</option>
+                                        <option value="RECURRENTES">RECURRENTES</option>
+                                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                                        <option value="OJT">OJT</option>
                                     </select>
                                 </div>
 
@@ -299,7 +299,7 @@
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                                     <select class="form-control inputalta" id="Ahr" name="Ahr">
                                         <option value="00">00</option>
-                                        <?php for($h=1; $h<=100; $h++){
+                                        <?php for($h=1; $h<=24; $h++){
                          if($h<10){ ?>
                                         <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
                                         <?php }else{ ?>
@@ -361,11 +361,10 @@
 
                                 <div class="col-sm-4">
                                     <label class="label2">CENTRO DE INSTRUCCIÓN</label>
-                                    <input type="text" onkeyup="mayus(this);" class="form-control"
-                                        id="AgstCntro" name="AgstCntro">
+                                    <select type="text" class="form-control inputalta" id="AgstCntro" name="AgstCntro">
+                                        <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
+                                    </select>
                                 </div>
-
-
                             </div>
 
                             <div class="form-group">
@@ -374,6 +373,17 @@
                                     <textarea name="AgstObjtv" id="AgstObjtv" placeholder="Escribir el Objetivo"
                                         onkeyup="mayus(this);" class="form-control inputalta" rows="5"
                                         cols="50"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label class="label2">TEMARIO</label>
+
+                                    <input type="file" id="AgstTmrio" name="AgstTmrio"
+                                        style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
+                                        class="input-file inputalta" size="1450">
+
+
                                 </div>
                             </div>
 
@@ -635,7 +645,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='#' title='Editar Curso' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
+            "defaultContent": "<a href='#' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
 
 
 
@@ -685,21 +695,12 @@ $(document).ready(function() {
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].gstIdlsc == gstIdlsc) {
 
-                datos = 
-                obj.data[i].gstIdlsc + '*' +
-                obj.data[i].gstTitlo + '*' +
-                obj.data[i].gstTipo + '*' +
-                obj.data[i].gstPrfil + '*' +
-                obj.data[i].gstCntnc + '*' +
-                obj.data[i].gstDrcin + '*' +
-                obj.data[i].gstVignc + '*' + 
-                obj.data[i].gstObjtv + '*' +
-                obj.data[i].gstTmrio + '*' + 
-                obj.data[i].gstProvd + '*' + 
-                obj.data[i].gstCntro;                  
+                    datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[
+                            i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i]
+                        .gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc +
+                        '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
 
-                    var d = datos.split("*");      
-                     $("#modalVal #AgstCntro").val(d[10]);            
+                    var d = datos.split("*");
                     $("#modalVal #AgstIdlsc").val(d[0]);
                     $("#AgstIdlsc #AgstIdlsc").val(d[0]);
                     $("#modalUpdate #Idlsc").val(d[0]);
@@ -711,21 +712,28 @@ $(document).ready(function() {
 
                     Ahr = d[5].substr(0, 2);
                     Amin = d[5].substr(8, 2);
+                    //                Atmp = d[5].substr(6,4);
 
                     $("#modalVal #Ahr").val(Ahr);
                     $("#modalVal #Amin").val(Amin);
+
                     $("#modalVal #AgstVignc").val(d[6]);
                     $("#modalVal #AgstObjtv").val(d[7]);
                     $("#modalVal #AgstTmrio").val(d[8]);
                     $("#modalUpdate #AgstTmrio").val(d[8]);
-                    $("#modalVal #AgstProvd").val(d[9]);
-                   
+                    $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
+                    $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+
                 }
             }
         })
 
 
     });
+
+
+
+
 
 });
 
@@ -763,6 +771,7 @@ function temario(gstIdlsc) {
 
         html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
 
+
         var x = 0;
 
         for (i = 0; i < res.length; i++) {
@@ -773,7 +782,7 @@ function temario(gstIdlsc) {
                 dato = obj.data[i].idtem+'*'+obj.data[i].idcurso+'*'+obj.data[i].titulo;
 
             x++;               
-        html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td><td><a id='"+obj.data[i].idtem+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='temagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].idtem+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+ html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td><td><a id='"+obj.data[i].idtem+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='temagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].idtem+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
             }
         }
         html += '</table>';
@@ -795,14 +804,12 @@ function temario(gstIdlsc) {
 
 function temagregar(dato){
 
-    // alert(dato);
     var d = dato.split("*");
     idcurso = d[0];
     var titulo = document.getElementById(idcurso).value;
-    var idcur = d[1];
 
     $.ajax({
-        data: 'idcurso='+idcurso+'&titulo='+titulo+'&idcur='+idcur+'&opcion=agregartem',
+        data: 'idcurso='+idcurso+'&titulo='+titulo+'&opcion=agregartem',
         url:'../php/docCursos.php',
         type: 'post',
         beforeSend: function () {
