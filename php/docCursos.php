@@ -2,6 +2,11 @@
 include("../conexion/conexion.php");
 ini_set('date.timezone','America/Mexico_City');
 
+session_start();
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$idp = $_SESSION['usuario']['id_usu'];
+}
+
 $opcion = $_POST["opcion"];
 $informacion = [];
 
@@ -28,6 +33,9 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
 ,$gstCntro,$conexion))
 		{	echo "0";	
 
+		$realizo = 'REGISTRO CURSO';
+		historial($idp,$realizo,$gstTitlo,$conexion);
+		documentoact($EgstIDper,$EgstDocmt,$EIdper,$conexion);
 		$id = idcurso($conexion);
 
 	}else{	echo "1";	}
@@ -62,6 +70,9 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
 	if($titulo!=''){
 	if(temario($id,$titulo,$conexion)){
 		echo "0";
+			$realizo = 'AGREGO TEMARIO';
+			historialT($idp,$realizo,$id,$conexion);
+
 		}else{
 		echo "1";
 		}
@@ -71,9 +82,14 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
 	
 	$idcurso = $_POST['idcurso'];
 	$titulo = $_POST['titulo'];
+	$id = $_POST['idcur'];
 
 	if(actualizartem($idcurso,$titulo,$conexion)){
 		echo "0";
+
+			$realizo = 'ACTUALIZO TEMARIO '.$titulo;
+			historialT($idp,$realizo,$id,$conexion);
+
 	}else{ echo "1";}
 
  }else if($opcion === 'eliminartem'){
@@ -81,9 +97,14 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
  	$cursoid = $_POST['cursoid'];
  	$idcurso = $_POST['idcurso'];
 
+	$realizo = 'ELIMINO REG.'.$idcurso.' TEMARIO';
+	$id = $cursoid;
+	historialT($idp,$realizo,$id,$conexion);
+
  		$ok = eliminartemario($idcurso,$cursoid,$conexion);
  	if(eliminartemario($idcurso,$cursoid,$conexion)){
  		echo $ok;
+
  	}else{
  		echo '1';
  	}
@@ -136,7 +157,6 @@ function temario($id,$titulo,$conexion){
 }
 
 function actualizartem($idcurso,$titulo,$conexion){
-
 $query="UPDATE temario SET titulo = '$titulo' WHERE idtem = $idcurso ";
 	if(mysqli_query($conexion,$query)){
 		return true;
@@ -152,7 +172,6 @@ function eliminartemario($idcurso,$cursoid,$conexion){
 	$result = mysqli_query($conexion,$query);
 		if($result->num_rows == 0){
 		
-
 		}else{		
 		
 		$query="DELETE FROM temario WHERE idtem = $idcurso";
@@ -171,8 +190,26 @@ function eliminartemario($idcurso,$cursoid,$conexion){
 	}
 
 
+	function historial($idp,$realizo,$gstTitlo,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+	$query = "INSERT INTO historial VALUES(0,'$idp','$realizo','$gstTitlo','$fecha')";
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
 
-
-	
+	function historialT($idp,$realizo,$id,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $idp,'$realizo',concat(gstTitlo),'$fecha' FROM listacursos WHERE `gstIdlsc` = $id AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
 
 ?>

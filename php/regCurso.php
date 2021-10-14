@@ -1,6 +1,11 @@
 <?php
 include("../conexion/conexion.php");
 ini_set('date.timezone','America/Mexico_City');
+session_start();
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+$idp = $_SESSION['usuario']['id_usu'];
+}
+
 $opcion = $_POST["opcion"];
 $informacion = [];
 
@@ -28,6 +33,9 @@ $Factual = date('Y').'/'.date('m').'/'.date('d');
 
 $EgstIdlsc = $_POST['EgstIdlsc'];
 if(eliminar($EgstIdlsc,$conexion)){
+
+		eliminaCur($idp,$EgstIdlsc,$conexion);
+
 		echo "0";
 	}else{
 		echo "1";
@@ -86,16 +94,20 @@ function cancelar($codigos,$conexion){
 	cerrar($conexion);
 }
 
-/*function eliminar($id_categoria,$conexion){
+function eliminaCur($idp,$EgstIdlsc,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+		$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
 
-	$query = "UPDATE categoria SET estado = 0 WHERE id_categoria = '$id_categoria'";
-	$resultado = mysqli_query($conexion,$query);
-	verificar_resultado($resultado); 
-	cerrar($conexion);
-}*/
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) 
+			  SELECT $idp,concat('ELIMINO REG.',$EgstIdlsc,' CURSO'),concat(gstTitlo),'$fecha' 
+			  FROM listacursos WHERE gstIdlsc = '$EgstIdlsc'";
 
-
-
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+	}
+	}
 
 function cerrar($conexion){
 

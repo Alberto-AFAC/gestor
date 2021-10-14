@@ -34,49 +34,50 @@ function conCurso() {
     })
 }
 
-function dato(gstIdlsc) {
+// function dato(gstIdlsc) {
 
-    $.ajax({
-        url: '../php/conCurso.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
+  
+//     $.ajax({
+//         url: '../php/conCurso.php',
+//         type: 'POST'
+//     }).done(function(resp) {
+//         obj = JSON.parse(resp);
+//         var res = obj.data;
+//         var x = 0;
 
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].gstIdlsc == gstIdlsc) {
+//         for (i = 0; i < res.length; i++) {
+//             if (obj.data[i].gstIdlsc == gstIdlsc) {
 
-                datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
+//                 datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i].gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc + '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
 
-                var d = datos.split("*");
-                $("#modalVal #AgstIdlsc").val(d[0]);
-                $("#AgstIdlsc #AgstIdlsc").val(d[0]);
-                $("#modalUpdate #Idlsc").val(d[0]);
-                $("#modalVal #AgstTitlo").val(d[1]);
-                $("#modalUpdate #AgstTitlo").val(d[1]);
-                $("#modalVal #AgstTipo").val(d[2]);
-                $("#gstPrfil").html(d[3]);
-                $("#modalVal #AgstCntnc").val(d[4]);
+//                 var d = datos.split("*");
+//                 $("#modalVal #AgstIdlsc").val(d[0]);
+//                 $("#AgstIdlsc #AgstIdlsc").val(d[0]);
+//                 $("#modalUpdate #Idlsc").val(d[0]);
+//                 $("#modalVal #AgstTitlo").val(d[1]);
+//                 $("#modalUpdate #AgstTitlo").val(d[1]);
+//                 $("#modalVal #AgstTipo").val(d[2]);
+//                 $("#gstPrfil").html(d[3]);
+//                 $("#modalVal #AgstCntnc").val(d[4]);
 
-                Ahr = d[5].substr(0, 2);
-                Amin = d[5].substr(8, 2);
-                //                Atmp = d[5].substr(6,4);
+//                 Ahr = d[5].substr(0, 2);
+//                 Amin = d[5].substr(8, 2);
+//                 //                Atmp = d[5].substr(6,4);
 
-                $("#modalVal #Ahr").val(Ahr);
-                $("#modalVal #Amin").val(Amin);
+//                 $("#modalVal #Ahr").val(Ahr);
+//                 $("#modalVal #Amin").val(Amin);
 
-                $("#modalVal #AgstVignc").val(d[6]);
-                $("#modalVal #AgstObjtv").val(d[7]);
-                $("#modalVal #AgstTmrio").val(d[8]);
-                $("#modalUpdate #AgstTmrio").val(d[8]);
-                $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
-                $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
+//                 $("#modalVal #AgstVignc").val(d[6]);
+//                 $("#modalVal #AgstObjtv").val(d[7]);
+//                 $("#modalVal #AgstTmrio").val(d[8]);
+//                 $("#modalUpdate #AgstTmrio").val(d[8]);
+//                 $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
+//                 $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
 
-            }
-        }
-    })
-}
+//             }
+//         }
+//     })
+// }
 // FUNCTION PARA AÑADIR NUEVOS DATOS EN EL TEMARIO
 function agregar() {
     var campo = new Array();
@@ -244,12 +245,6 @@ function regCurso() {
     var gstCntnc = document.getElementById('gstCntnc').value;
     var gstProvd = document.getElementById('gstProvd').value;
     var gstCntro = document.getElementById('gstCntro').value;
-    // LIBRARYS
-    // var libro = document.getElementById('libro').value;
-    // var numero = document.getElementById('numero').value;
-    // var afojas = document.getElementById('afojas').value;
-
-    // alert(libro);
 
     datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&array=' + array + '&opcion=insert';
     if (gstPrfil == '' || gstTitlo == '' || gstTipo == '' || gstVignc == '' || gstObjtv == '' || hr == '' || tmp1 == '' || min == '' || tmp2 == '' || gstCntnc == '' || gstProvd == '' || gstCntro == '' || array == '') {
@@ -312,11 +307,11 @@ function actCurso() {
     }
 
     gstPrfiles = tPrfil.substr(1);
-
+    var AgstTmrio = 0;
 
     var paqueteDeDatos = new FormData();
-    paqueteDeDatos.append('AgstTmrio', $('#AgstTmrio')[0].files[0]);
     //paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
+     paqueteDeDatos.append('AgstTmrio', AgstTmrio);
     paqueteDeDatos.append('AgstTitlo', $('#AgstTitlo').prop('value'));
     paqueteDeDatos.append('AgstTipo', $('#AgstTipo').prop('value'));
     paqueteDeDatos.append('AgstVignc', $('#AgstVignc').prop('value'));
@@ -467,8 +462,6 @@ function eliCurso() {
 
     var EgstIdlsc = document.getElementById('EgstIdlsc').value;
 
-    //alert(EgstIdlsc);
-    //alert(EgstIdlsc);
     if (EgstIdlsc == '') {
 
         $('#empty').toggle('toggle');
