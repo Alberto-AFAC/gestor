@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="../bower_components/select2/dist/css/select2.min.css">
-
+<!--  -->
 
   <!-- Theme style -->
   <!-- AdminLTE Skins. Choose a skin from the css/skins
