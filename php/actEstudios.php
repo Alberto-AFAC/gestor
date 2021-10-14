@@ -3,8 +3,6 @@ include("../conexion/conexion.php");
 session_start();
 if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
 $id = $_SESSION['usuario']['id_usu'];
-}else{
-$id = '929';
 }
 
 if($_POST['Nmplea']=='' ||  $_POST['EIdper']=='' || $_POST['EgstIDper']=='' || $_POST['EgstInstt']=='' || $_POST['EgstCiudad']=='' || $_POST['EgstPriod']==''){
