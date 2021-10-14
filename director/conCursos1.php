@@ -106,7 +106,7 @@
                                                     <th>DOCUMENTO</th>
                                                     <th>VIGENCIA</th>
                                                     <th>TEMARIO</th>
-                                                    <th>ACCIÓN</th>
+     
                                                 </tr>
                                             </thead>
 
@@ -162,32 +162,7 @@
             </div>
         </form>
 <!-- MODAL PARA AÑADIR UN NUEVO CURSO -->
-<form id="add" class="form-horizontal" action="" method="POST">
-            <div class="modal fade" id="modal-añadir">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 style="font-size: 20px;" class="modal-title" id="exampleModalLabel">AGREGA TEMARIO SEGÚN EL CASO</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      
-                      <input type="hidden" name="idcurtem" id="idcurtem">
-                      <div class="modal-body">
-                        <span id="add_field" style="color: green;font-size: 20px;cursor: pointer;" class="fa fa-plus-square"></span>
-                      <div id="listas">
-                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div>
-                      </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-info" onclick="agregarMas();" data-dismiss="modal">GUARDAR</button>
-                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                      </div>
-                    </div>
-                  </div>
-            </div>
-        </form>
+
         <form class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-evaluar">
                 <div class="modal-dialog">
@@ -254,12 +229,12 @@
                                 <div class="col-sm-4">
                                     <label class="label2">TIPO DE CAPACITACIÓN</label>
                                     <select type="text" class="form-control inputalta" id="AgstTipo" name="AgstTipo">
-                                    <option value="INDUCCIÓN">INDUCCIÓN</option>
-                                    <option value="BÁSICOS/INICIAL">BÁSICO/INICIAL</option>
-                                    <option value="TRANSVERSALES">TRANSVERSALE</option>
-                                    <option value="RECURRENTES">RECURRENTE</option>
-                                    <option value="ESPECÍFICOS">ESPECÍFICO</option>
-                                    <option value="OJT">OJT</option>
+                                        <option value="INDUCCIÓN">INDUCCIÓN</option>
+                                        <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
+                                        <option value="TRANSVERSALES">TRANSVERSALES</option>
+                                        <option value="RECURRENTES">RECURRENTES</option>
+                                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                                        <option value="OJT">OJT</option>
                                     </select>
                                 </div>
 
@@ -299,7 +274,7 @@
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                                     <select class="form-control inputalta" id="Ahr" name="Ahr">
                                         <option value="00">00</option>
-                                        <?php for($h=1; $h<=100; $h++){
+                                        <?php for($h=1; $h<=24; $h++){
                          if($h<10){ ?>
                                         <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
                                         <?php }else{ ?>
@@ -361,11 +336,10 @@
 
                                 <div class="col-sm-4">
                                     <label class="label2">CENTRO DE INSTRUCCIÓN</label>
-                                    <input type="text" onkeyup="mayus(this);" class="form-control"
-                                        id="AgstCntro" name="AgstCntro">
+                                    <select type="text" class="form-control inputalta" id="AgstCntro" name="AgstCntro">
+                                        <option value="EN EL EXTRANJERO">EN EL EXTRANJERO</option>
+                                    </select>
                                 </div>
-
-
                             </div>
 
                             <div class="form-group">
@@ -374,6 +348,17 @@
                                     <textarea name="AgstObjtv" id="AgstObjtv" placeholder="Escribir el Objetivo"
                                         onkeyup="mayus(this);" class="form-control inputalta" rows="5"
                                         cols="50"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label class="label2">TEMARIO</label>
+
+                                    <input type="file" id="AgstTmrio" name="AgstTmrio"
+                                        style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
+                                        class="input-file inputalta" size="1450">
+
+
                                 </div>
                             </div>
 
@@ -633,15 +618,7 @@ $(document).ready(function() {
         ],
         "ajax": "../php/consdaTable.php",
         "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<a href='#' title='Editar Curso' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
-
-
-
-//<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
-
-
+            "targets": -1
 
         }]
     });
@@ -666,88 +643,7 @@ $(document).ready(function() {
         });
     });
 
-
-
-    $('#example tbody').on('click', 'a', function() {
-        var data = table.row($(this).parents('tr')).data();
-        //alert( "Es el ID: "+ data[0] );
-
-        gstIdlsc = data[0];
-
-        $.ajax({
-            url: '../php/conCurso.php',
-            type: 'POST'
-        }).done(function(resp) {
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
-
-            for (i = 0; i < res.length; i++) {
-                if (obj.data[i].gstIdlsc == gstIdlsc) {
-
-                datos = 
-                obj.data[i].gstIdlsc + '*' +
-                obj.data[i].gstTitlo + '*' +
-                obj.data[i].gstTipo + '*' +
-                obj.data[i].gstPrfil + '*' +
-                obj.data[i].gstCntnc + '*' +
-                obj.data[i].gstDrcin + '*' +
-                obj.data[i].gstVignc + '*' + 
-                obj.data[i].gstObjtv + '*' +
-                obj.data[i].gstTmrio + '*' + 
-                obj.data[i].gstProvd + '*' + 
-                obj.data[i].gstCntro;                  
-
-                    var d = datos.split("*");      
-                     $("#modalVal #AgstCntro").val(d[10]);            
-                    $("#modalVal #AgstIdlsc").val(d[0]);
-                    $("#AgstIdlsc #AgstIdlsc").val(d[0]);
-                    $("#modalUpdate #Idlsc").val(d[0]);
-                    $("#modalVal #AgstTitlo").val(d[1]);
-                    $("#modalUpdate #AgstTitlo").val(d[1]);
-                    $("#modalVal #AgstTipo").val(d[2]);
-                    $("#gstPrfil").html(d[3]);
-                    $("#modalVal #AgstCntnc").val(d[4]);
-
-                    Ahr = d[5].substr(0, 2);
-                    Amin = d[5].substr(8, 2);
-
-                    $("#modalVal #Ahr").val(Ahr);
-                    $("#modalVal #Amin").val(Amin);
-                    $("#modalVal #AgstVignc").val(d[6]);
-                    $("#modalVal #AgstObjtv").val(d[7]);
-                    $("#modalVal #AgstTmrio").val(d[8]);
-                    $("#modalUpdate #AgstTmrio").val(d[8]);
-                    $("#modalVal #AgstProvd").val(d[9]);
-                   
-                }
-            }
-        })
-
-
-    });
-
 });
-
-function detalles(tbody, table) {
-
-    $(tbody).on("click", "a.eliminar", function() {
-        var data = table.row($(this).parents("tr")).data();
-        //var gstIdlsc = $().val(data.gstIdlsc);
-        $("#modal-eliminar #EgstIdlsc").val(data[0]);
-
-    });
-}
-
-function agrtemario(tbody, table) {
-
-$(tbody).on("click", "a.temario", function() {
-    var data = table.row($(this).parents("tr")).data();
-        //alert(data[0]);
-    $("#modal-añadir #idcurtem").val(data[0]);
-});
-}
-
 
 function temario(gstIdlsc) {
 
@@ -759,9 +655,7 @@ function temario(gstIdlsc) {
         obj = JSON.parse(resp);
         var res = obj.data;
 
-
-
-        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th>';
 
         var x = 0;
 
@@ -773,7 +667,7 @@ function temario(gstIdlsc) {
                 dato = obj.data[i].idtem+'*'+obj.data[i].idcurso+'*'+obj.data[i].titulo;
 
             x++;               
-        html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td><td><a id='"+obj.data[i].idtem+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='temagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].idtem+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+            html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td></tr>";
             }
         }
         html += '</table>';
@@ -782,92 +676,8 @@ function temario(gstIdlsc) {
     })
 
 }
-///////EDITAR////////
-
-    function temact(dato){
-    var d = dato.split("*");
-    idcurso = d[0];
-    document.getElementById(idcurso).disabled = false;
-    $("#"+idcurso+"ocultar").hide();
-    $("#"+idcurso+"mostrar").show();
-
-    }
-
-function temagregar(dato){
-
-    // alert(dato);
-    var d = dato.split("*");
-    idcurso = d[0];
-    var titulo = document.getElementById(idcurso).value;
-    var idcur = d[1];
-
-    $.ajax({
-        data: 'idcurso='+idcurso+'&titulo='+titulo+'&idcur='+idcur+'&opcion=agregartem',
-        url:'../php/docCursos.php',
-        type: 'post',
-        beforeSend: function () {
-            //
-        },
-        success: function (response) {   
-            if(response==0){      
-
-                $('#actualizo').toggle('toggle');
-                setTimeout(function() {
-                $('#actualizo').toggle('toggle');
-                }, 2000);
-
-            $("#"+idcurso+"ocultar").show();
-            $("#"+idcurso+"mostrar").hide();
-            document.getElementById(idcurso).disabled = true;
-            //temario(gstIdlsc);            
-            }else{
-                // $('#actualizo').toggle('toggle');
-                // setTimeout(function() {
-                // $('#actualizo').toggle('toggle');
-                // }, 2000);            
-            // $('#temario').hide();
-            }
-        }
-    });
-}
 
 
-///BORRAR REGISTRO////
-function temborrar(dato){
-    
-    var d = dato.split("*");
-
-    idcurso = d[0];
-    cursoid = d[1];
-
-$.ajax({
-    data: 'idcurso='+idcurso+'&cursoid='+cursoid+'&opcion=eliminartem',
-    url:'../php/docCursos.php',
-    type: 'post',
-    beforeSend: function () {
-        //
-    },
-    success: function (response) {   
-        if(response!=1){      
-
-            $('#elimino').toggle('toggle');
-            setTimeout(function() {
-            $('#elimino').toggle('toggle');
-            }, 2000);
-
-        temario(gstIdlsc);            
-        }else{
-            $('#elimino').toggle('toggle');
-            setTimeout(function() {
-            $('#elimino').toggle('toggle');
-            }, 2000);            
-        $('#temario').hide();
-        setTimeout("location.href = 'conCursos.php';", 2100);
-        }
-    }
-});
-
-}
 
 // FUNCION PARA AÑADIR
 
