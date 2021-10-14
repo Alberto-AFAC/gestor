@@ -74,7 +74,7 @@ footer {
         </style>
 
 <?php
-            $path = '../dist/img/header.png';
+            $path = '../dist/img/header.jpg';
             $type = pathinfo($path, PATHINFO_EXTENSION);
             $data = file_get_contents($path);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
