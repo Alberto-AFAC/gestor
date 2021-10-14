@@ -2221,6 +2221,105 @@ function registrar() {
     }
 }
 
+// HUMANOS
+function registrarH() {
+    //Datos personales
+    var gstNombr = document.getElementById('gstNombr').value;
+    var gstApell = document.getElementById('gstApell').value;
+    var gstLunac = document.getElementById('gstLunac').value;
+    var gstFenac = document.getElementById('gstFenac').value;
+    var gstStcvl = document.getElementById('gstStcvl').value;
+    var gstCurp = document.getElementById('gstCurp').value;
+    var gstRfc = document.getElementById('gstRfc').value;
+    var gstNpspr = document.getElementById('gstNpspr').value;
+    var gstPsvig = document.getElementById('gstPsvig').value;
+    var gstVisa = document.getElementById('gstVisa').value;
+    var gstVignt = document.getElementById('gstVignt').value;
+    var gstNucrt = document.getElementById('gstNucrt').value;
+    //Domicilio
+    var gstCalle = document.getElementById('gstCalle').value;
+    var gstNumro = document.getElementById('gstNumro').value;
+    var gstClnia = document.getElementById('gstClnia').value;
+    var gstCpstl = document.getElementById('gstCpstl').value;
+    var gstCiuda = document.getElementById('gstCiuda').value;
+    var gstStado = document.getElementById('gstStado').value;
+    //Contacto
+    var gstCasa = document.getElementById('gstCasa').value;
+    var gstClulr = document.getElementById('gstClulr').value;
+    var gstExTel = document.getElementById('gstExTel').value;
+    //Datos del puesto
+    var gstNmpld = document.getElementById('gstNmpld').value;
+    var gstIdpst = document.getElementById('gstIdpst').value;
+
+    var gstAreID = document.getElementById('gstAreID').value;
+    var gstPstID = document.getElementById('gstPstID').value;
+    var gstSpcID = document.getElementById('gstSpcID').value;
+    // var gstSigID = 0;
+    var gstSigID = document.getElementById('gstSigID').value;
+
+    var gstCargo = document.getElementById('gstCargo').value;
+    var gstIDCat = document.getElementById('gstIDCat').value;
+    var gstIDSub = document.getElementById('gstIDSub').value;
+    var gstCorro = document.getElementById('gstCorro').value;
+
+    var gstCinst = document.getElementById('gstCinst').value;
+    var gstFeing = document.getElementById('gstFeing').value;
+
+    var gstIDara = document.getElementById('gstIDara').value;
+    var gstAcReg = document.getElementById('gstAcReg').value;
+    var gstIDuni = document.getElementById('gstIDuni').value;
+
+    datos = 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstNucrt=' + gstNucrt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstSigID=' + gstSigID + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDara=' + gstIDara + '&gstAcReg=' + gstAcReg + '&gstIDuni=' + gstIDuni + '&opcion=registrar';
+
+    //    alert(datos);
+    if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstNucrt == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '' || gstNmpld == '' || gstIdpst == '' || gstAreID == '' || gstPstID == '' || gstSpcID == '' || gstCargo == '' || gstIDCat == '' || gstIDSub == '' || gstCorro == '' || gstIDara == '' || gstAcReg == '' || gstIDuni == '' || gstCinst == '' || gstFeing == '') {
+
+        $('#empty').toggle('toggle');
+        setTimeout(function() {
+            $('#empty').toggle('toggle');
+        }, 2000);
+        return;
+    } else {
+        $.ajax({
+            url: '../php/regInspc.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+
+            if (respuesta == 0) {
+                //alert(respuesta);
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Sus datos fueron guardados correctamente',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonColor: "#3C8DBC",
+                    customClass: 'swal-wide',
+                    confirmButtonText: '<span style="color: white;"><a class="a-alert" href="personal.php">¿Deseas agregar otro registro?</a></span>',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                    cancelButtonText: '<a  class="a-alert" href="persona.php"><span style="color: white;">Cerrar</span></a>',
+                    cancelButtonAriaLabel: 'Thumbs down'
+                        // timer: 2900
+                });
+            } else if (respuesta == 2) {
+                //Que el usuario este duplicado en número de empleado o nombre y apellidos 
+                $('#succe').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe').toggle('toggle');
+                }, 2000);
+
+            } else {
+                $('#danger').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
+}
+
 
 function actDatos() {
 
