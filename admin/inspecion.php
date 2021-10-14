@@ -534,11 +534,7 @@ $(document).ready(function() {
       
     });
 
-    detalles("#data-table-inspectores tbody", table);
-    agrtemario("#data-table-inspectores tbody", table);
-    function click(gstIdper){
-      alert(gstIdper);
-    }
+  
     // CON ESTO FUNCIONA EL MULTIFILTRO//
     $('#data-table-inspectores thead tr').clone(true).appendTo('#data-table-inspectores thead');
 
