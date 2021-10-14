@@ -519,7 +519,6 @@ $(document).ready(function() {
         "language": {
           buttons: {
                 copyTitle: 'Registros copiados',
-                // copyKeys: 'Appuyez sur <i>ctrl</i> ou <i>\u2318</i> + <i>C</i> pour copier les données du tableau à votre presse-papiers. <br><br>Pour annuler, cliquez sur ce message ou appuyez sur Echap.',
                 copySuccess: {
                     _: '%d registros copiados',
                     1: '1 registro copiado'
@@ -557,83 +556,5 @@ $(document).ready(function() {
         });
     });
     // CON ESTO FUNCIONA EL MULTIFILTRO//
-
-
-    $('#data-table-inspectores tbody').on('click', 'a', function() {
-        var data = table.row($(this).parents('tr')).data();
-        //alert( "Es el ID: "+ data[0] );
-
-        gstIdlsc = data[0];
-
-        $.ajax({
-            url: '../php/conCurso.php',
-            type: 'POST'
-        }).done(function(resp) {
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
-
-            for (i = 0; i < res.length; i++) {
-                if (obj.data[i].gstIdlsc == gstIdlsc) {
-
-                    datos = obj.data[i].gstIdlsc + '*' + obj.data[i].gstTitlo + '*' + obj.data[
-                            i].gstTipo + '*' + obj.data[i].gstPrfil + '*' + obj.data[i]
-                        .gstCntnc + '*' + obj.data[i].gstDrcin + '*' + obj.data[i].gstVignc +
-                        '*' + obj.data[i].gstObjtv + '*' + obj.data[i].gstTmrio;
-
-                    var d = datos.split("*");
-                    $("#modalVal #AgstIdlsc").val(d[0]);
-                    $("#AgstIdlsc #AgstIdlsc").val(d[0]);
-                    $("#modalUpdate #Idlsc").val(d[0]);
-                    $("#modalVal #AgstTitlo").val(d[1]);
-                    $("#modalUpdate #AgstTitlo").val(d[1]);
-                    $("#modalVal #AgstTipo").val(d[2]);
-                    $("#gstPrfil").html(d[3]);
-                    $("#modalVal #AgstCntnc").val(d[4]);
-
-                    Ahr = d[5].substr(0, 2);
-                    Amin = d[5].substr(8, 2);
-                    //                Atmp = d[5].substr(6,4);
-
-                    $("#modalVal #Ahr").val(Ahr);
-                    $("#modalVal #Amin").val(Amin);
-
-                    $("#modalVal #AgstVignc").val(d[6]);
-                    $("#modalVal #AgstObjtv").val(d[7]);
-                    $("#modalVal #AgstTmrio").val(d[8]);
-                    $("#modalUpdate #AgstTmrio").val(d[8]);
-                    $("#modalVal #AgstProvd").val(obj.data[i].gstProvd);
-                    $("#modalVal #AgstCntro").val(obj.data[i].gstCntro);
-
-                }
-            }
-        })
-
-
-    });
-
-
-
-
-
 });
-
-function detalles(tbody, table) {
-
-    $(tbody).on("click", "a.eliminar", function() {
-        var data = table.row($(this).parents("tr")).data();
-        //var gstIdlsc = $().val(data.gstIdlsc);
-        $("#modal-eliminar #EgstIdlsc").val(data[0]);
-
-    });
-}
-
-function agrtemario(tbody, table) {
-
-    $(tbody).on("click", "a.temario", function() {
-        var data = table.row($(this).parents("tr")).data();
-        //alert(data[0]);
-        $("#modal-añadir #idcurtem").val(data[0]);
-    });
-}
 </script>
