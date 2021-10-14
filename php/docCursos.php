@@ -70,8 +70,10 @@ if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$
 	if($titulo!=''){
 	if(temario($id,$titulo,$conexion)){
 		echo "0";
-			$realizo = 'AGREGO TEMARIO';
-			historialT($idp,$realizo,$id,$conexion);
+			if($i==0){
+			$realizo = 'AGREGO '.$valor. 'REG. EN TEMARIO';
+			historialT($idp,$realizo,$id,$conexion);				
+			}
 
 		}else{
 		echo "1";
