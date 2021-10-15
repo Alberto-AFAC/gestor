@@ -70,17 +70,26 @@ if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$
 }else if($opcion === 'participante'){
 $id_mstr = $_POST['gstIdlsc'];
 $hcurso = $_POST['hrcurs'];
-$fcurso = $_POST['finicio'];
-$fechaf = $_POST['finalf'];
+$fcursos = $_POST['finicio'];
+$fechafs = $_POST['finalf'];
 $idinst = $_POST['idcord'];
 $sede = $_POST['sede'];
 $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
 $idinsps= $_POST['idinsp'];
 $codigo = $_POST['acodigos'];
+$contracceso = $_POST['contracur'];
+
+    $date = new DateTime($fcursos);
+    $date = $date->format('Y-m-d');
+    $fcurso = $date;
+
+    $dates = new DateTime($fechafs);
+    $dates = $dates->format('Y-m-d');
+    $fechaf = $dates;
+
 
 contancia($idinsps,$codigo, $conexion);
-
 if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion))
 		{	
 

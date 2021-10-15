@@ -71,7 +71,8 @@
 		$data['gstIdlsc'],
 		$data['idinst'],
 		$data['hcurso'],
-		$proc
+		$proc,
+		$data['contracur']
 	];
 
 		}

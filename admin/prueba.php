@@ -228,13 +228,11 @@ return 'no hay';
 
 }
 
-
-
-
-
-
-
-
+   $source = '15-10-2021';
+    $date = new DateTime($source);
+    echo '<br>';
+    $fec = $date->format('Y-m-d'); // 31-07-2012
+    echo $fec;
 ?>
 </pre>
 

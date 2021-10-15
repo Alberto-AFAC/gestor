@@ -266,10 +266,11 @@ function agrPartc() {
     modalidad = document.getElementById('modalidad').value;
     link = document.getElementById('linke').value;
     acodigos = document.getElementById('acodigos').value;
+    contracur = document.getElementById('contracur').value;
 
-    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&opcion=participante';
-
-    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '') {
+    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur +'&opcion=participante';
+    //alert(datos);
+    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -284,7 +285,7 @@ function agrPartc() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-
+         alert(respuesta);
             console.log(respuesta);
 
             if (respuesta == 0) {
