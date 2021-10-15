@@ -4,7 +4,29 @@ include("../conexion/conexion.php");
 
  if($valor = conCorreo($correo,$conexion)){
 
- 	if(actCorreo($valor,$conexion)){	echo "0";	}else{	echo   "1";   }
+ 	if(actCorreo($valor,$conexion)){	
+	
+		ini_set( 'display_errors', 1 );
+    error_reporting( E_ALL );
+    $from = "notificaciones@afac-avciv.com";
+    $to = "jmondragonescamilla@gmail.com";
+    $subject = "RESTABLECER CONTRASEÑA";
+    $message = '<html><body>';
+	$message .= '<h1>La contraseña de acceso es la siguiente: '.$res[22].'</h1>';
+	$message .= "</body></html>";
+    $headers = "From:" . $from;
+    $headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+     if (mail($to, $subject, $message, $headers)) {
+              echo 'El mensaje ha sido enviado con exito.';
+            } else {
+              echo 'El mensaje falló.';
+            }
+	
+ 	    
+ 	    
+ 	}else{	echo   "1";   }
 
  }else{
  	echo "2";
