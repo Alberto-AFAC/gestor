@@ -250,7 +250,7 @@ include('header.php');
 </div>
 </div>
 
-<?php include('agrStdPro.php');?>
+<?php //include('agrStdPro.php');?>
 
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
