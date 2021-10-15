@@ -23,6 +23,7 @@ $fechaf = $_POST['fechaf'];
 $idinst = $_POST['idinst'];
 $sede = $_POST['sede'];
 $link = $_POST['link'];
+$contracceso = $_POST['contracceso'];
 $modalidad = $_POST['modalidad'];
 
 //proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$link, $conexion);
@@ -34,7 +35,7 @@ $val = count($valor);
 $n = 0;
 foreach ($valor as $idinsps) {
 	$n++;
-	if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion))
+if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion))
 		{ 
 			echo "0";	
 			if($n==1){
@@ -80,7 +81,7 @@ $codigo = $_POST['acodigos'];
 
 contancia($idinsps,$codigo, $conexion);
 
-if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion))
+if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion))
 		{	
 
 			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
@@ -133,6 +134,23 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 		}
 	}
+}else if($opcion === 'cursoAct'){
+
+	$codigo = $_POST['codigo'];
+	$fcurso = $_POST['fcurso'];
+	$hcurso = $_POST['hcurso'];
+	$fechaf = $_POST['fechaf'];
+	$sede = $_POST['sede'];
+	$modalidads = $_POST['modalidads'];
+	$linkcur = $_POST['linkcur'];
+	$contracur = $_POST['contracur'];
+
+	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$conexion))
+	{	
+		echo "0";		
+		$realizo = 'ACTUALIZO CURSO FOLIO: '.$codigo;
+		historiCan($idp,$realizo,$codigo,$conexion);	
+	}else{ echo "1";	}	
 }
 
 //CONTEO DE CURSO
@@ -149,12 +167,12 @@ $query = "SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON list
 }
 
 
-function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion){
+function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion){
 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,0);";
+			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
@@ -181,27 +199,6 @@ function contancia($idinsps,$codigo,$conexion){
 				}
 				
 }
-
-
-//PARTICIPANTES
-// function proPart($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo, $conexion){
-// 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
-// 			$resultado= mysqli_query($conexion,$query);
-// 		if($resultado->num_rows==0){
-
-// 			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0);";
-// 				if(mysqli_query($conexion,$query)){
-					
-// 					return true;
-// 				}
-// 				else{
-// 					return false;
-// 				}
-// 				$this->conexion->cerrar();
-// 		}else{
-
-// 		}		
-// 	}
 
 
 function actualizar($idinsp, $nombre, $apellidos, $correo, $idarea, $puesto,$unidad, $conexion){
@@ -252,6 +249,26 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 	}
 
+	function cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$conexion){
+
+	$query="UPDATE cursos 
+			SET 
+			fcurso='$fcurso',
+			fechaf='$fechaf',
+			hcurso='$hcurso',
+			sede='$sede',
+			modalidad='$modalidads',
+			link='$linkcur',
+			contracur='$contracur' 
+			WHERE codigo='$codigo'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
+
+	}
 
 // fin actualia evaluación el curso
 function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){

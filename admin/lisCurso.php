@@ -385,54 +385,8 @@ $inspector = mysqli_query($conexion,$sql);
                     </div>
                 </div>
         </form>
-        <!-- EVALUACIÓN MASIVA DEL INSTRUCTOR -->
-        <!-- inicia la evaluación DEL INSTRUCTOR -->
 
-
-
-
-
-        <!--  <form class="form-horizontal" action="" method="POST" id="avaluacion">
-<div class="row">
-<div class="col-xs-12">
-<div class="box">
-<div class="box-header">
-<h3 class="box-title">Responsive Hover Table</h3>
-
-<div class="box-tools">
-<div class="input-group input-group-sm" style="width: 150px;">
-<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-<div class="input-group-btn">
-<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-</div>
-</div>
-</div>
-</div>
-
-<div class="box-body table-responsive no-padding">
-
-</div>
-
-</div>
-
-</div>
-</div>
-</form> -->
-
-
-
-
-
-
-
-
-        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" rel="stylesheet"/>
- -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
-
 
         <form class="form-horizontal" action="" method="POST" id="avaluacion">
             <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -482,9 +436,6 @@ $inspector = mysqli_query($conexion,$sql);
                 </div>
         </form>
 
-
-
-
         <form class="form-horizontal" action="" method="POST" id="avaluacion">
             <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 <div class="modal fade" id="modal-evalua">
@@ -532,13 +483,7 @@ $inspector = mysqli_query($conexion,$sql);
                     </div>
                 </div>
         </form>
-
-
-
-
-
         <!-- /.content -->
-
         </section>
         <!-- /.content -->
     </div>
@@ -1019,19 +964,30 @@ $(document).ready(function() {
                 if (obj.data[i].id_curso == data[8]) {
 
 
-                    cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[
-                            i].gstTipo + "*" + obj.data[i].gstPrfil + "*" + obj.data[i]
-                        .gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i].gstVignc +
-                        "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[
-                            i].fcurso + "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst +
-                        "*" + obj.data[i].sede + "*" + obj.data[i].link + "*" + obj.data[i]
-                        .modalidad + "*" + obj.data[i].codigo + '*' + obj.data[i].proceso +
-                        '*' + obj.data[i].idinsp + '*' + obj.data[i].idinsp;
-
+cursos = 
+      obj.data[i].gstIdlsc + 
+"*" + obj.data[i].gstTitlo + 
+"*" + obj.data[i].gstTipo + 
+"*" + obj.data[i].gstPrfil + 
+"*" + obj.data[i].gstCntnc + 
+"*" + obj.data[i].gstDrcin + 
+"*" + obj.data[i].gstVignc +
+"*" + obj.data[i].gstObjtv + 
+"*" + obj.data[i].hcurso + 
+"*" + obj.data[i].fcurso + 
+"*" + obj.data[i].fechaf + 
+"*" + obj.data[i].idinst +
+"*" + obj.data[i].sede + 
+"*" + obj.data[i].link + 
+"*" + obj.data[i].modalidad + 
+"*" + obj.data[i].codigo + 
+"*" + obj.data[i].proceso +
+"*" + obj.data[i].idinsp + 
+"*" + obj.data[i].contracur;
 
                     var d = cursos.split("*");
 
-                    gstIdlsc = d[0];
+                     gstIdlsc = d[0];
 
                     $("#impri #gstIdlstc").val(d[0]);
                     $("#impri #gstTitulo").val(d[1]);
@@ -1048,7 +1004,18 @@ $(document).ready(function() {
                     $("#Dtall #idinst").val(d[11]);
                     $("#Dtall #sede").val(d[12]);
                     $("#Dtall #modalidads").val(d[14]);
+                    if(d[13]=='0'){
                     $("#Dtall #linkcur").val(d[13]);
+                    $("#Dtall #contracur").val(d[18]);
+                        $("#dismod").hide();
+                        $("#disocl").show();
+                    }else{
+                    $("#Dtall #linkcur").val(d[13]);
+                    $("#Dtall #contracur").val(d[18]);
+                    $("#dismod").show();
+                    $("#disocl").hide();
+                    }
+
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
 
@@ -1075,26 +1042,9 @@ $(document).ready(function() {
             dismod.style.display = 'none';
         }
 
-
-
-
     });
 
 });
-
-
-//function constancia() {
-
-//  $.ajax({
-//        url: '../php/conFinal.php',
-//      type: 'POST'
-//  }).done(function(resp) {
-// obj = JSON.parse(resp);
-//    var res = obj.data;
-//  var x = 0;
-// gencons1 = obj.data[i].id_persona+ "*" + obj.data[i].id_codigocurso;
-
-//}
 
 function idcurso(codigo) {
 
@@ -1143,8 +1093,6 @@ function idcurso(codigo) {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
                 }
-
-
 
             });
             //020920211
