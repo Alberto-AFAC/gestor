@@ -104,151 +104,7 @@ include('header.php');
 </section>
 </div>
 
-  <div class="modal fade" id='modal-asignar'>
-    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-      <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" style="font-size:19px; color: #000000;">ASIGANCIÓN DEL PUESTO</h4>
-          </div>
-          <div class="modal-body">
-              <form id="Dtall" class="form-horizontal" action="" method="POST" >
-                <input type="hidden" name="gstIdper" id="gstIdper">
-                <input type="hidden" name="gstANmpld" id="gstANmpld">
-                
-                    <div class="form-group">
-                      <div class="col-sm-4">
-                        <label class="label2">NOMBRE(S)</label>
-                        <input type="text"onkeyup="mayus(this);"class="form-control disabled inputalta" id="gstNombr" disabled="">
-                      </div>
-                      <div class="col-sm-4">
-                        <label class="label2">APELLIDO(S)</label>
-                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstApell" disabled="">
-                      </div>
-                      <div class="col-sm-4">
-                        <label class="label2">CARGO</label>
-                        <select type="text" class="form-control inputalta" id="AgstCargo" name="AgstCargo"  onchange="asiginspec()">
-                          <option value="">SELECCIONA EL CARGO</option>
-                          <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-                          <option value="COORDINADOR">COORDINADOR</option>
-                          <option value="INSPECTOR">INSPECTOR</option>
-                          <option value="INSTRUCTOR">INSTRUCTOR</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-4">
-                        <div class="input-group">
-                          <H4><i class="fa fa-dot-circle-o"></i><label> INFORMACIÓN DE ADSCRIPCIÓN </label>
-                          </H4>
-                        </div>
-                      </div>
-                    </div>
-                   
-                    <div class="form-group"  >
-                      <div class="col-sm-12">
-                            <label class="label2">DIRECCIÓN EJECUTIVA</label>
 
-                    <select style="width: 100%" class="form-control" class="selectpicker disabled inputalta" name="gstAreIDasig" id="gstAreIDasig" type="text" data-live-search="true" disabled="">
-                    <?php while($ejct = mysqli_fetch_row($ejecut)):?>                      
-                    <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
-                    <?php endwhile; ?>
-                    </select>
-                     </div>  
-          
-                    </div>
-                    <div class="form-group">
-                          <div class="col-sm-12">
-                            <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
-                    <select style="width: 100%" class="form-control"  class="selectpicker inputalta" id="gstIDara1" name="gstIDara1" type="text" data-live-search="true" disabled="">
-                    <?php while($ccion1 = mysqli_fetch_row($direc1)):?>                      
-                    <option value="<?php echo $ccion1[0]?>"><?php echo $ccion1[1]?></option>
-                    <?php endwhile; ?>
-                    </select>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                          <div class="col-sm-12">
-                            <label class="label2">SUBDIRECCIÓN</label>
-                         <div id="subdire"></div>                            
-                        </div>
-                        </div>
-                    <div class="form-group">
-                     <div class="col-sm-12">
-                        <label class="label2">DEPARTAMENTO</label>
-                        <div id="depart1"></div> 
-                    </div>   
-                                  
-                </div>   
-<!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
-                  <div class="box" id="funcionemp" style="display: none" >
-                        <div class="form-group">
-                          <div class="col-sm-4" >
-                            <div class="input-group">
-                              <H4><i class="fa   fa-suitcase"></i>
-                              <label> FUNCIÓN DEL EMPLEADO </label></H4>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group" style="display: none">
-                          <div class="col-sm-12">
-                            <label>ESPECIALIDAD PRINCIPAL B</label>
-                            <div  id="subcategoria"></div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-12">
-                            <label class="label2">ESPECIALIDAD PRINCIPAL</label>
-                          <div id="categoria"></div>
-                        </div>
-                        </div>
-
-                        <div class="form-group">
-                          <div class="col-sm-4">
-                            <label class="label2">SELECCIONE COMANDANCIA</label>
-                         <div id="comandan"></div>                            
-                        </div>
-                          <div class="col-sm-8">
-                            <label class="label2">SELECCIONE AEROPUERTOS</label>
-                              <div id="select3"></div> 
-                              </div>
-                          </div>
-
-                  </div>
-
-                <div class="form-group">
-                <div class="col-sm-offset-0 col-sm-12">
-                <label class="label2">UBICACIÓN CENTRAL EN ASIGNACIÓN</label> 
-                <select style="width: 100%" class="form-control" class="selectpicker" id="AgstNucrt" name="AgstNucrt"type="text" data-live-search="true">
-                <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
-                <option value="CIAAC">CIAAC</option> 
-                <option value="LAS FLORES">LAS FLORES</option> 
-                <option value="ANGAR 8">ANGAR 8</option> 
-                <option value="LICENCIA">LICENCIAS</option>
-                </select>
-                </div>
-                </div>
-<!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
-                        <div class="form-group"><br>
-                          <div class="col-sm-offset-0 col-sm-5">
-                            <button type="button" id="button" style="font-size:18px; width:120px; height:40px" class="btn btn-block btn-primary altaboton"  onclick="asignar();">ACEPTAR</button>
-                          </div>
-                             <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
-
-                             <b><p class="alert alert-success text-center padding exito" id="succe2">¡Se asignó con éxito!</p></b>
-
-                             <b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b>
-                          </div>
-              </form>    
-          </div>
-        </div>
-      </div>
-
-</div>
-</div>
 
 <?php //include('agrStdPro.php');?>
 
@@ -348,10 +204,10 @@ $resultado = mysqli_query($conexion, $query);
 
 ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>",
 <?php if($data['gstCargo']=='NUEVO INGRESO'){?>
-  "<a type='button' title='Asignar' onclick='asignacion(<?php echo $gstIdper ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a> <a type='button' title='Baja de usuario' onclick='bajaUsu(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
+  "<a type='button' title='Por Asignar' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>POR ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"
 <?php }else{?>
 //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion(<?php echo $gstIdper.'.'.$gstNmpld ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a> <a type='button' title='Baja de usuario' onclick='bajaUsu(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
+" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> "
 
 <?php } ?>
 
