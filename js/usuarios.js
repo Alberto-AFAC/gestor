@@ -60,7 +60,7 @@ function enviarCorreo() {
                 // alert("No se que sea");
             } else if (respuesta == 2) {
                 Swal.fire({
-                    type: 'info',
+                    type: 'error',
                     title: 'Solicitud sin éxito',
                     text: 'El correo electrónico proporcionado no existe',
                     showConfirmButton: false,
