@@ -174,7 +174,7 @@
   <input type="hidden" name="gstTitulo" id="gstTitulo">
   <span data-toggle="modal" data-target="#basicModal" style="font-size:12px; width:180px; height:30px " class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
   <!-- <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span> -->
-  <input style="float: right;" id="myInput" onkeyup="myFunction()" placeholder="Búscar.." title="Type in a name">
+  <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
 </form>
 
   <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
