@@ -54,10 +54,10 @@ function enviarCorreo() {
                     rgba(100, 100, 100, 0.4)
                 `
             });
-            alert("Tampoco se que sea");
+            // alert("Tampoco se que sea");
             // conprofesion(ActIdpro);
             if (respuesta == 1) {
-                alert("No se que sea");
+                // alert("No se que sea");
             } else if (respuesta == 2) {
                 Swal.fire({
                     type: 'info',
