@@ -15,7 +15,14 @@
 	<script type="text/javascript" src="val/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="val/validacion.js"></script>
 	<script type="text/javascript" src="val/valida.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+<style>
+	.swal-wide {
+        width: 500px !important;
+        font-size: 16px !important;
+    }
+	</style>
 </head>
 <body>
 
@@ -139,6 +146,7 @@
 	<script src="css/assets/validations.js"></script>
 	<script type="text/javascript" src="js/usuarios.js"></script>
 	<script src="js/select2.js"></script>	
+
 </body>
 
 

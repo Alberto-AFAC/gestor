@@ -5,7 +5,7 @@ $dir = 'temp/';
 
 if(!file_exists($dir))
     mkdir($dir);
-$filename = $dir.'test.png';
+$filename = $dir.'QR.png';
 
 $tamanio = 5;
 $level = 'H';

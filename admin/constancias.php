@@ -392,7 +392,7 @@ $resultado = mysqli_query($conexion, $query);
 
             ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf' target='_blank'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?> '><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
                 "<?php echo $data['reaccion']?>"
             ],
 
@@ -460,8 +460,7 @@ $resultado = mysqli_query($conexion, $query);
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
                 </div>
             </div>
         </div>
@@ -484,13 +483,13 @@ function perfil(id) {
         var res = obj.data;
         var x = 0;
         html =
-            '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+            '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th>';
      
 
         for (i = 0; i < res.length; i++) {
             x++;
             if (obj.data[i].idcurso == id) {
-                html += "<tr><td>" + x + "</td><td style='width: 75%;'>" + obj.data[i].titulo + "</td><td><button class='btn btn-default fa fa-pencil-square-o'></button> <button class='btn btn-default fa fa-trash'></button></td></tr>";
+                html += "<tr><td>" + x + "</td><td style='width: 75%;'>" + obj.data[i].titulo + "</td></tr>";
             }
         }
         html += '</table>';
