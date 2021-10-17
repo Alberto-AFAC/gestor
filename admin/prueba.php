@@ -228,11 +228,17 @@ return 'no hay';
 
 }
 
-   $source = '15-10-2021';
-    $date = new DateTime($source);
-    echo '<br>';
-    $fec = $date->format('Y-m-d'); // 31-07-2012
-    echo $fec;
+
+
+$fecha = '10-14-2021';
+$date = date_create($fecha);
+
+echo '<br>';
+  ini_set('date.timezone','America/Mexico_City');
+echo $newDate = date("Y-m-d", strtotime($fecha));
+
+
+echo date_format($date, 'Y-m-d');
 ?>
 </pre>
 

@@ -12,7 +12,6 @@ $informacion = [];
 if($opcion === 'procurso'){
 
 $n = consulta($conexion);
-
 //$idcord = $_POST['idcord'];
 $result = $n + 1;
 $codigo = 'FO'.$result;
@@ -26,8 +25,6 @@ $link = $_POST['link'];
 $contracceso = $_POST['contracceso'];
 $modalidad = $_POST['modalidad'];
 
-//proCurso($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$link, $conexion);
-
 $id = $_POST['idinsps'].','.$idinst;
 
 $valor = explode(",", $id);
@@ -37,11 +34,11 @@ foreach ($valor as $idinsps) {
 	$n++;
 if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion))
 		{ 
-			echo "0";	
-			if($n==1){
-			$realizo = 'PROGRAMO CURSO ('.$val.' PART.) FOLIO: '.$codigo;
-			historiCur($idp,$realizo,$id_mstr,$conexion);				
-			}
+		echo "0";	
+		if($n==1){
+		$realizo = 'PROGRAMO CURSO ('.$val.' PART.) FOLIO: '.$codigo;
+		historiCur($idp,$realizo,$id_mstr,$conexion);				
+		}
 
 		}else{	
 			echo "1";	
@@ -59,8 +56,6 @@ if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$
 	 $idarea = $_POST['id_area'];
 	 $puesto = $_POST['puesto'];
 	 $unidad = $_POST['unidad'];
-		
-
 
 	if(actualizar($idinsps, $nombre, $apellidos, $correo, $idarea, $puesto,$unidad, $conexion)){
 		echo "0";
@@ -80,14 +75,11 @@ $idinsps= $_POST['idinsp'];
 $codigo = $_POST['acodigos'];
 $contracceso = $_POST['contracur'];
 
-    $date = new DateTime($fcursos);
-    $date = $date->format('Y-m-d');
-    $fcurso = $date;
+$yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
+$fcurso = $yi.'-'.$mi.'-'.$di;
 
-    $dates = new DateTime($fechafs);
-    $dates = $dates->format('Y-m-d');
-    $fechaf = $dates;
-
+$yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,2);
+$fechaf = $yf.'-'.$mf.'-'.$df;
 
 contancia($idinsps,$codigo, $conexion);
 if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion))
@@ -194,19 +186,16 @@ function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modal
 				}		
 					}
 
-
-
 function contancia($idinsps,$codigo,$conexion){
 
-			$query="INSERT INTO constancias VALUES(0,$idinsps,'$codigo','','','','','','','',0,0);";
-				if(mysqli_query($conexion,$query)){
-					
-					return true;
-				}
-				else{
-					return false;
-				}
-				
+	$query="INSERT INTO constancias VALUES(0,$idinsps,'$codigo','','','','','','','',0,0);";
+		if(mysqli_query($conexion,$query)){
+			
+			return true;
+		}
+		else{
+			return false;
+		}				
 }
 
 

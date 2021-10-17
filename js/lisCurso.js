@@ -285,7 +285,7 @@ function agrPartc() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-         alert(respuesta);
+        // alert(respuesta);
             console.log(respuesta);
 
             if (respuesta == 0) {
