@@ -276,3 +276,4 @@ function modalidades() {
         $("#dismod").show();
         }
 }
+

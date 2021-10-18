@@ -165,7 +165,7 @@ include('header.php');
 <div class="form-group">
     <div class="col-sm-4">
       <label class="label2">MODALIDAD</label>
-      <select type="text" class="form-control inputalta" id="modalidad" name="modalidad">
+      <select type="text" class="form-control inputalta" id="modalidad" name="modalidad" onChange="modalidades()">
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
           <option value="PRESENCIAL">PRESENCIAL</option>
@@ -173,6 +173,26 @@ include('header.php');
           <option value="AUTOGESTIVO">AUTOGESTIVO</option>          
       </select>
     </div>
+
+
+
+
+<!--   <div  class="form-group">
+      <div  class="col-sm-4">
+        <label class="label2">LINK DE ACCESO</label>
+        <input type="url" class="form-control inputalta" id="linkcur" name="linkcur" placeholder="URL" disabled="">
+      </div>
+      <div class="col-sm-4">
+        <label class="label2" >CONTRASEÑA DE ACCESO</label>
+        <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
+      </div>
+  </div> 
+
+  <div id="disocl" style="display: none;" class="form-group">
+    <input type="hidden" name="linkcur" id="linkcur">
+    <input type="hidden" name="contracur" id="contracur">  
+</div>  -->
+    <div id="dismod" style="display: none;">
     <div class="col-sm-4">
       <label class="label2">LINK DE ACCESO</label>
       <div class="input-group">
@@ -191,6 +211,12 @@ include('header.php');
       <input type="password" class="form-control inputalta" id="contracceso" name="contracceso">
     </div>
     </div>
+    </div>
+      <div id="disocl" style="display: none;" class="form-group">
+      <input type="hidden" name="link" id="link">
+      <input type="hidden" name="contracceso" id="contracceso">  
+      </div> 
+
 </div>
 <div class="form-group">
 <div class="col-sm-4">

@@ -123,13 +123,13 @@ $inspector = mysqli_query($conexion,$sql);
                                     </div>
                             </div>
                             <div id='lstacurs'></div>
-                            <div class="modal fade" id="modal-participnt">
+                      <div class="modal fade" id="modal-participnt">
                                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel">
                                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" onclick="location.href='lisCurso.php'"
+                                                <button type="button" onclick="location.href='pendientes'"
                                                     class="close" data-dismiss="modal" aria-label="Close"><span
                                                         aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
@@ -150,9 +150,7 @@ $inspector = mysqli_query($conexion,$sql);
 
                                                         <div class="col-sm-3">
                                                             <label>INICIO</label>
-                                                            <input type="date" onkeyup="mayus(this);"
-                                                                class="form-control" id="finicio" name="finicio"
-                                                                disabled="">
+                                                            <input type="data" onkeyup="mayus(this);" class="form-control" id="finicio" name="finicio" disabled="">
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <label>DURACIÓN</label>
@@ -185,6 +183,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                     <input type="hidden" name="sede" id="sede">
                                                     <input type="hidden" name="linke" id="linke">
                                                     <input type="hidden" name="modalidad" id="modalidad">
+                                                    <input type="hidden" name="contracceso" id="contracceso">
 
                                                     <div class="form-group">
                                                         <div class="col-sm-5">

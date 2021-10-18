@@ -1056,6 +1056,12 @@ $(document).ready(function() {
 
                     idcurso(codigo);
 
+                    if(data[18]=='FINALIZADO' || data[18]=='VENCIDO'){
+
+                        $("#buttonfin").hide();
+                        $("#editcurs").hide();
+                        $("#notiocu").hide();
+                    }  
                 }
             }
         })

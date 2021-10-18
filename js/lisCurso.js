@@ -1174,19 +1174,19 @@ function finalizar() {
     codigo = document.getElementById('codigo').value;
     proceso = document.getElementById('proceso').value;
 
-    if (proceso == 'VENCIDO') {
+    if (proceso == 'FINALIZADO') {
 
         Swal.fire({
             type: 'error',
             title: 'AFAC INFORMA',
-            text: 'Curso vencido, no puedes finalizar',
+            text: 'El curso ya está finalizado',
+            //text: 'Curso vencido, no puedes finalizar',
             showConfirmButton: false,
             customClass: 'swal-wide',
             timer: 3000,
             backdrop: `rgba(22, 57, 37, 0.4)`
         });
-        setTimeout("location.href = 'lisCurso.php';", 3000);
-
+        
     } else {
 
         $.ajax({

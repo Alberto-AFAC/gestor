@@ -1057,6 +1057,13 @@ $(document).ready(function() {
 
                     idcurso(codigo);
 
+                    if(data[18]=='FINALIZADO'){
+
+                        $("#buttonfin").hide();
+                        $("#editcurs").hide();
+                        $("#notiocu").hide();
+                    }
+
                 }
             }
         })
@@ -1082,20 +1089,6 @@ $(document).ready(function() {
     });
 
 });
-
-
-//function constancia() {
-
-//  $.ajax({
-//        url: '../php/conFinal.php',
-//      type: 'POST'
-//  }).done(function(resp) {
-// obj = JSON.parse(resp);
-//    var res = obj.data;
-//  var x = 0;
-// gencons1 = obj.data[i].id_persona+ "*" + obj.data[i].id_codigocurso;
-
-//}
 
 function idcurso(codigo) {
 

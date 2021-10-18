@@ -188,7 +188,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                     <div class="form-group">
                                                         <div class="col-sm-5">
 
-                                                            <button type="button" id="button" class="btn btn-info"
+                                                            <button type="button" id="buttons" class="btn btn-info"
                                                                 onclick="agrPartc();">ACEPTAR</button>
 
                                                         </div>
@@ -241,7 +241,7 @@ $inspector = mysqli_query($conexion,$sql);
                                             </div>
                                             <br>
                                             <div class="col-sm-5">
-                                                <button type="button" class="btn btn-primary"
+                                                <button id="elimina" type="button" class="btn btn-primary"
                                                     onclick="canCurso()">ACEPTAR</button>
                                             </div>
                                             <b>
@@ -962,27 +962,26 @@ $(document).ready(function() {
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
 
-
-cursos = 
-      obj.data[i].gstIdlsc + 
-"*" + obj.data[i].gstTitlo + 
-"*" + obj.data[i].gstTipo + 
-"*" + obj.data[i].gstPrfil + 
-"*" + obj.data[i].gstCntnc + 
-"*" + obj.data[i].gstDrcin + 
-"*" + obj.data[i].gstVignc +
-"*" + obj.data[i].gstObjtv + 
-"*" + obj.data[i].hcurso + 
-"*" + obj.data[i].fcurso + 
-"*" + obj.data[i].fechaf + 
-"*" + obj.data[i].idinst +
-"*" + obj.data[i].sede + 
-"*" + obj.data[i].link + 
-"*" + obj.data[i].modalidad + 
-"*" + obj.data[i].codigo + 
-"*" + obj.data[i].proceso +
-"*" + obj.data[i].idinsp + 
-"*" + obj.data[i].contracur;
+                    cursos = 
+                          obj.data[i].gstIdlsc + 
+                    "*" + obj.data[i].gstTitlo + 
+                    "*" + obj.data[i].gstTipo + 
+                    "*" + obj.data[i].gstPrfil + 
+                    "*" + obj.data[i].gstCntnc + 
+                    "*" + obj.data[i].gstDrcin + 
+                    "*" + obj.data[i].gstVignc +
+                    "*" + obj.data[i].gstObjtv + 
+                    "*" + obj.data[i].hcurso + 
+                    "*" + obj.data[i].fcurso + 
+                    "*" + obj.data[i].fechaf + 
+                    "*" + obj.data[i].idinst +
+                    "*" + obj.data[i].sede + 
+                    "*" + obj.data[i].link + 
+                    "*" + obj.data[i].modalidad + 
+                    "*" + obj.data[i].codigo + 
+                    "*" + obj.data[i].proceso +
+                    "*" + obj.data[i].idinsp + 
+                    "*" + obj.data[i].contracur;
 
                     var d = cursos.split("*");
 
@@ -1021,7 +1020,15 @@ cursos =
                     codigo = d[15];
 
                     idcurso(codigo);
-
+                    if(data[18]=='FINALIZADO' || data[18]=='VENCIDO'){
+                        $("#buttonfin").hide();
+                        $("#editcurs").hide();
+                        $("#notiocu").hide();
+                    }else{
+                        $("#buttonfin").show();
+                        $("#editcurs").show();
+                        $("#notiocu").show();
+                    }                    
                 }
             }
         })
@@ -1409,6 +1416,12 @@ function detalles(tbody, table) {
         $("#modal-eliminar #codigos").val(data[9]);
         $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
+        if(data[18]=='FINALIZADO' || data[18]=='VENCIDO'){
+        $("#elimina").hide();
+        }else{
+        $("#elimina").show();        
+        }    
+
     });
 }
 
@@ -1433,6 +1446,13 @@ function agrinspctor(tbody, table) {
         $("#Prtcpnt #linke").val(data[13]);
         $("#Prtcpnt #modalidad").val(data[14]);
         $("#Prtcpnt #contracceso").val(data[19]);
+
+        if(data[18]=='FINALIZADO' || data[18]=='VENCIDO'){
+        $("#buttons").hide();
+        }else{
+        $("#buttons").show();        
+        }    
+
 
     });
 }
