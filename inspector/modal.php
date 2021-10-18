@@ -78,11 +78,11 @@
 
 <div class="col-sm-offset-0 col-sm-6">
     
-  <h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR ASISTENCIA:</H4> 
-    
+  <h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR ASISTENCIA:</h4>
+
 <!--  <input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
 <div class="switcher">
-      <input type="radio" name="Opc" value="SI" id="SI" class="switcher__input switcher__input--yin" checked="">
+      <input type="radio" name="Opc" value="SI" id="SI" class="switcher__input switcher__input--yin">
       <label for="SI" class="switcher__label">SI</label>
       
       <input type="radio" name="Opc" value="NO" id="NO" class="switcher__input switcher__input--yang">
@@ -94,6 +94,14 @@
 
 <div class="col-sm-offset-0 col-sm-6">
     <br>
+
+
+<p id="confiras" style="width: 420px;">  
+<i style="color: #D58512; font-size: 25px;" class="fa fa-exclamation-triangle" ></i>
+<label style="font-size: 25px;">FAVOR DE CONFIRMAR ASISTENCIA </label>
+<input type="hidden" id="conf" name="conf" >  
+</p>
+
 <p id="asiste" style="display: none;">  
 <i style="color: green; font-size: 25px;" class="icon fa fa-check" ></i>
 <label  id="confm1" style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
