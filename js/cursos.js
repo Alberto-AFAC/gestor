@@ -137,6 +137,7 @@ $(document).ready(function() {
             $("#noasis").hide();
             $("#obser").hide();
             $("#archivo").hide();
+            $("#confiras").hide();
         }
     });
 });
