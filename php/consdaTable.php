@@ -42,14 +42,6 @@ $temario = "<center><a href='#' onclick='temario({$data["gstIdlsc"]})' data-togg
 
 		}
 
-
-		// if(isset($arreglo)&&!empty($arreglo)){
-
-		// 	echo json_encode($arreglo, JSON_PRETTY_PRINT);
-		// }else{
-
-		// 	echo $arreglo='0';
-		// }
 	}
 
 

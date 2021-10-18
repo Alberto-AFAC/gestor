@@ -131,15 +131,6 @@
 
                                 <p class="text-muted"><?php echo $dato[5]; ?></p>
 
-                                <!--               <strong><i class="fa fa-pencil margin-r-5"></i>Habilidades</strong>
-              <a href="#" class="btn ion-edit"><b></b></a>
-              <p>
-                <span class="label label-danger">ingles</span>
-                <span class="label label-success">Codigos</span>
-                <span class="label label-info">Javascript</span>
-                <span class="label label-warning">PHP</span>
-                <span class="label label-primary">Node.js</span>
-              </p> -->
 
                                 <hr>
 

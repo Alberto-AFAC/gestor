@@ -266,10 +266,11 @@ function agrPartc() {
     modalidad = document.getElementById('modalidad').value;
     link = document.getElementById('linke').value;
     acodigos = document.getElementById('acodigos').value;
+    contracur = document.getElementById('contracur').value;
 
-    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&opcion=participante';
-
-    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '') {
+    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur +'&opcion=participante';
+    //alert(datos);
+    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -284,7 +285,7 @@ function agrPartc() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-
+        // alert(respuesta);
             console.log(respuesta);
 
             if (respuesta == 0) {
@@ -322,9 +323,9 @@ function canCurso() {
     //alert(codigos);
     if (codigos == '') {
 
-        $('#empty').toggle('toggle');
+        $('#emptyy').toggle('toggle');
         setTimeout(function() {
-            $('#empty').toggle('toggle');
+            $('#emptyy').toggle('toggle');
         }, 2000);
 
         return;
@@ -334,16 +335,17 @@ function canCurso() {
             type: 'POST',
             data: 'codigos=' + codigos + '&opcion=canCurso'
         }).done(function(respuesta) {
+             // alert(respuesta);
             if (respuesta == 0) {
-                $('#succe').toggle('toggle');
+                $('#succes').toggle('toggle');
                 setTimeout(function() {
-                    $('#succe').toggle('toggle');
+                    $('#succes').toggle('toggle');
                     location.href = 'lisCurso.php';
                 }, 1500);
             } else {
-                $('#danger').toggle('toggle');
+                $('#dangere').toggle('toggle');
                 setTimeout(function() {
-                    $('#danger').toggle('toggle');
+                    $('#dangere').toggle('toggle');
                 }, 2000);
             }
         });
@@ -937,7 +939,7 @@ function editcurso() {
     document.getElementById('fcurso').disabled = false;
     document.getElementById('hcurso').disabled = false;
     document.getElementById('fechaf').disabled = false;
-    document.getElementById('idinst').disabled = false;
+    // document.getElementById('idinst').disabled = false;
     document.getElementById('sede').disabled = false;
     document.getElementById('modalidads').disabled = false;
     document.getElementById('linkcur').disabled = false;
@@ -955,7 +957,7 @@ function cereditcurso() {
     document.getElementById('fcurso').disabled = true;
     document.getElementById('hcurso').disabled = true;
     document.getElementById('fechaf').disabled = true;
-    document.getElementById('idinst').disabled = true;
+    // document.getElementById('idinst').disabled = true;
     document.getElementById('sede').disabled = true;
     document.getElementById('modalidads').disabled = true;
     document.getElementById('linkcur').disabled = true;
@@ -1172,18 +1174,19 @@ function finalizar() {
     codigo = document.getElementById('codigo').value;
     proceso = document.getElementById('proceso').value;
 
-    if (proceso == 'VENCIDO') {
+    if (proceso == 'FINALIZADO') {
 
         Swal.fire({
             type: 'error',
-            title: 'CURSO VENCIDO, NO PUEDES FINALIZAR ',
+            title: 'AFAC INFORMA',
+            text: 'El curso ya está finalizado',
+            //text: 'Curso vencido, no puedes finalizar',
             showConfirmButton: false,
             customClass: 'swal-wide',
             timer: 3000,
             backdrop: `rgba(22, 57, 37, 0.4)`
         });
-        setTimeout("location.href = 'lisCurso.php';", 3000);
-
+        
     } else {
 
         $.ajax({
@@ -1196,7 +1199,8 @@ function finalizar() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'CURSO FINALIZADO',
+                    title: 'AFAC INFORMA',
+                    text: 'Curso finalizado',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
@@ -1210,4 +1214,78 @@ function finalizar() {
         });
 
     }
+}
+
+
+function cursoAct(){
+
+var codigo = document.getElementById('codigo').value;
+var fcurso = document.getElementById('fcurso').value;
+var hcurso = document.getElementById('hcurso').value;
+var fechaf = document.getElementById('fechaf').value;
+var sede = document.getElementById('sede').value;
+var modalidads = document.getElementById('modalidads').value;
+
+    if(modalidads=='PRESENCIAL'){
+    var linkcur = '0';
+    var contracur = '0';
+    }else{
+    var linkcur = document.getElementById('linkcur').value;
+    var contracur = document.getElementById('contracur').value;
+    }
+
+    datos = 'codigo='+codigo+'&fcurso='+fcurso+'&hcurso='+hcurso+'&fechaf='+fechaf+'&sede='+sede+'&modalidads='+modalidads+'&linkcur='+linkcur+'&contracur='+contracur+'&opcion=cursoAct';
+
+    if (codigo =='' ||fcurso =='' ||hcurso =='' ||fechaf =='' ||sede =='' ||modalidads =='' ||linkcur =='' ||contracur =='') {
+
+        Swal.fire({
+            type: 'error',
+            title: 'AFAC INFORMA',
+            text: 'Ingreso datos correctamente',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000,
+            backdrop: `rgba(22, 57, 37, 0.4)`
+        });
+
+    } else {
+
+        $.ajax({
+            url: '../php/proCurso.php',
+            type: 'POST',
+            data: datos
+
+        }).done(function(respuesta) {
+
+                 if (respuesta == 0) {
+                 Swal.fire({
+                     type: 'success',
+                     title: 'AFAC INFORMA',
+                     text: 'Datos del curso actualizado',
+                     showConfirmButton: false,
+                     customClass: 'swal-wide',
+                     timer: 2000,
+                     backdrop: `rgba(100, 100, 100, 0.4)`
+                 });
+            }
+
+        });
+
+    }
+
+}
+
+function modalidades() {
+
+   var seleccion = document.getElementById('modalidads');
+    valor = seleccion.options[seleccion.selectedIndex].value;
+   
+       if (valor == 'PRESENCIAL') {
+        $("#dismod").hide();
+        $("#disocl").show();
+
+    } else {
+        $("#disocl").hide();
+        $("#dismod").show();
+        }
 }

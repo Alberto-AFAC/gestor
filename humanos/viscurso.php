@@ -28,13 +28,7 @@
   <!-- Post -->
   
 <div class="post">
-<div class="form-group">
-  <label for=""></label>
-<button type="button" title="Editar Curso" style="float:right;" class="btn btn-box-tool" data-widget="collapse">
-     <a href='javascript:editcurso()' id="editcurs" style="font-size:20px"> <i class="fa fa-edit"></i> </a>
-     <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc" style="display:none; font-size:20px"> <i class="fa fa-ban"></i> </a>
-  </button>
-</div>
+
 <form class="form-horizontal" action="" method="POST" id="Dtall" >
 
   <div class="form-group">
@@ -88,6 +82,15 @@
         <textarea name="gstObjtv" id="gstObjtv"  placeholder="Escribir el Objetivo" style="text-transform:uppercase;" class="form-control disabled inputalta" rows="5" cols="50" disabled=""></textarea>
       </div>
   </div>
+
+<div class="form-group">
+  <label for=""></label>
+<button type="button" title="Editar Curso" class="btn btn-box-tool" data-widget="collapse">
+     <a href='javascript:editcurso()' id="editcurs" style="font-size:20px; padding-left: 0.5em;"> <i class="fa fa-edit"></i> </a>
+     <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc" style="display:none; font-size:20px;padding-left: 0.5em;"> <i class="fa fa-ban"></i> </a>
+  </button>
+</div>
+
   <div class="form-group">
       <div class="col-sm-4">
         <label class="label2">FECHA INICIO</label>
@@ -103,22 +106,16 @@
         <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf" disabled="">
       </div>
   </div>
+
+
   <div class="form-group">
-      <div class="col-sm-4">
-        <label class="label2">COORDINADOR</label>
-        <select style="width: 100%" class="form-control inputalta" class="selectpicker" id="idinst" name="idinst" type="text" data-live-search="true" disabled="">
-          <?php while($instructors = mysqli_fetch_row($instructor)):?>
-          <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
-          <?php endwhile; ?>
-       </select>
-      </div>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <label class="label2">SEDE DEL CURSO</label>
         <input type="text" class="form-control inputalta" id="sede" name="sede" disabled="">
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <label class="label2">MODALIDAD</label>
-        <select type="text" class="form-control inputalta" id="modalidads" name="modalidads" disabled="">
+        <select type="text" class="form-control inputalta" id="modalidads" name="modalidads" onChange="modalidades()" disabled="">
           <option value="0">ELEGIR UNA OPCIÓN</option>
           <option value="A DISTANCIA">A DISTANCIA</option>
           <option value="PRESENCIAL">PRESENCIAL</option>
@@ -126,29 +123,37 @@
           <option value="AUTOGESTIVO">AUTOGESTIVO</option>
         </select>
       </div>
-  </div>
-  <div id= "dismod" style="display:none;" class="form-group">
-      <div  class="col-sm-4">
+
+  <div id="dismod">
+      <div  class="col-sm-3">
         <label class="label2">LINK DE ACCESO</label>
         <input type="url" class="form-control inputalta" id="linkcur" name="linkcur" placeholder="URL" disabled="">
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <label class="label2" >CONTRASEÑA DE ACCESO</label>
         <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
       </div>
-  </div>  
+  </div> 
+  </div>
+
+  <div id="disocl" style="display: none;" class="form-group">
+    <input type="hidden" name="linkcur" id="linkcur">
+    <input type="hidden" name="contracur" id="contracur">  
+</div> 
 
   <input type="hidden" name="codigo" id="codigo">
   <input type="hidden" name="proceso" id="proceso">
-  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px" class="btn btn-block btn-primary altaboton"  onclick="finalizar();">FINALIZAR CURSO</button>
-  </button>
+  
+  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px;" class="btn btn-block btn-success"  onclick="finalizar();">FINALIZAR CURSO</button>
+  
+  <div id="buttonfin" ></div>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se finalizo con éxito!</p></b>
   <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario finalizar los procesos</p></b>
   <!-- boton finaliza edición -->
   <div class="form-group" id="buttongcambios" style="display:none;"><br>
   <div class="col-sm-offset-0 col-sm-5">
-  <button type="button" style="font-size:16px; width:170px; height:40px" id="button" class="btn btn-info btn-lg altaboton" onclick="actCurso();">GUARDAR CAMBIOS</button>
+  <button type="button" style="font-size:15px; width:150px; height:35px; background: #0F3F87;" id="button" class="btn btn-block btn-info" onclick="cursoAct();">GUARDAR CAMBIOS</button>
   </div>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al agregar curso </p></b>
   <b><p class="alert alert-success text-center padding exito" id="exito">¡Se agrego el curso con éxito!</p></b>
@@ -172,9 +177,9 @@
 <form id="impri" action="" method="POST"  >
   <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
   <input type="hidden" name="gstTitulo" id="gstTitulo">
-  <span data-toggle="modal" data-target="#basicModal" style="font-size:12px; width:180px; height:30px " class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
+  <span id="notiocu" data-toggle="modal" data-target="#basicModal" style="font-size:12px; width:180px; height:30px " class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open" aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA</span>
   <!-- <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span> -->
-  <input style="float: right;" id="myInput" onkeyup="myFunction()" placeholder="Búscar.." title="Type in a name">
+  <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
 </form>
 
   <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->

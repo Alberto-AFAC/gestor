@@ -18,24 +18,6 @@ $.ajax({
         html += '</tbody></table></div></div></div>';
         $("#conslts").html(html);
     })
-    //}
-
-// $(document).ready(function() {
-//     $("input[type=radio]").click(function(event){
-//         var valor = $(event.target).val();
-//         if(valor =="si"){
-//             $("#seecioncat").show();
-//             $("#selecurso").hide();
-//             $("#partici").show();
-//             limpiar_datos();
-//         } else if (valor == "no") {
-//             $("#seecioncat").hide();
-//             $("#selecurso").show();
-//             $("#partici").hide();
-//             limpiar_datos();
-//         } 
-//     });
-// }); 
 
 function proCurso() {
 
@@ -68,18 +50,24 @@ function proCurso() {
     //Solo ID coordinadores 
     var idinst = document.getElementById('idcord').value;
     var sede = document.getElementById('sede').value;
-    var link = document.getElementById('link').value;
+
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
-
+    if(modalidad=='PRESENCIAL'){
+    var link = '0';
+    var contracceso = '0';        
+    }else{
+    var link = document.getElementById('link').value;
+    var contracceso = document.getElementById('contracceso').value;
+    }
     idinsps = idInsptr + '' + idInstr;
 
-    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
+    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' +contracceso;
 
     // alert(datos);
 
-    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
+    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == ''){
 
 
         $('#empty').toggle('toggle');
@@ -93,20 +81,10 @@ function proCurso() {
         $.ajax({
             url: '../php/proCurso.php',
             type: 'POST',
-            data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&opcion=procurso'
+            data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&opcion=procurso'
         }).done(function(respuesta) {
 
-            console.log(respuesta);
-
             if (respuesta == 0) {
-                // $('#succe').toggle('toggle');
-                // setTimeout(function() {
-                //     $('#succe').toggle('toggle');
-                // }, 2000);
-
-                // document.getElementById('button').disabled = 'false';
-                // // document.getElementById('button').style.color = "silver"; 
-                // $('#vaciar').toggle('toggle');
                 Swal.fire({
                     type: 'success',
                     title: 'AFAC INFORMA',
@@ -283,3 +261,19 @@ function actualizar() {
     }
 
 }
+
+function modalidades() {
+
+   var seleccion = document.getElementById('modalidad');
+    valor = seleccion.options[seleccion.selectedIndex].value;
+   
+       if (valor == 'PRESENCIAL') {
+        $("#dismod").hide();
+        $("#disocl").show();
+
+    } else {
+        $("#disocl").hide();
+        $("#dismod").show();
+        }
+}
+

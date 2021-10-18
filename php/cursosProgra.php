@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts, DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as cfinal,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as cinicial 
+	$query = "SELECT *, COUNT(*) AS prtcpnts, DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as cfinal,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as cinicial,cursos.fcurso AS fin
 			FROM
 			cursos
 			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
@@ -30,14 +30,35 @@
 		$ftermino =strtotime($fcurso. '+'.$sumfech.'years'); //se suma los años del vencimiento
 		$xvencer = date("Y-m-d",strtotime($ftermino."- 3 month")); //SE restan 3 meses
 		
+
+			$nuevafecha = strtotime ( '-3 month' , strtotime ( $data["fechaf"] ) ) ;
+			$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+			$finaliza = strtotime(Date($nuevafecha));
+
+			$actual = date("Y-m-d"); 
+			$hactual = date('H:i:s');
+			$fin = $data['fin'];
+
+			$f3 = strtotime($actual.''.$hactual);
+			$f2 = strtotime($fin.''.$data['hcurso']); 
+
+
 		//pendiente POR VENCER
 		if ($factual <= $xvencer && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
 			$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>POR VENCER</span>";
 		$proc = 'POR VENCER';
 	
 	}
-//LOS RECURRENTES VENCEN CADA 3 AÑOS 
-		if ($factual >= $ftermino && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
+
+// (&& $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='FINALIZADO')
+
+		if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
+		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+		$proc = 'VENCIDO';
+		}
+		
+		//LOS RECURRENTES VENCEN CADA 3 AÑOS 
+		elseif ($factual >= $ftermino && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 		$proc = 'VENCIDO';
 	} else
@@ -71,7 +92,8 @@
 		$data['gstIdlsc'],
 		$data['idinst'],
 		$data['hcurso'],
-		$proc
+		$proc,
+		$data['contracur']
 	];
 
 		}

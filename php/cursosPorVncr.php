@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts 
+	$query = "SELECT *, COUNT(*) AS prtcpnts,cursos.fcurso AS fin 
 			FROM
 			cursos
 			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
@@ -12,7 +12,7 @@
 			GROUP BY
 			cursos.codigo
 			ORDER BY
-			id_curso ASC";
+			id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 	$contador=0;
 	if(!$resultado){
@@ -31,9 +31,18 @@
 		$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
 		$finaliza = strtotime(Date($nuevafecha));
 
-		if ($factual > $fcurso && $data["proceso"] == "PENDIENTE") {
+		$actual = date("Y-m-d"); 
+		$hactual = date('H:i:s');
+		$fin = $data['fin'];
+
+		$f3 = strtotime($actual.''.$hactual);
+		$f2 = strtotime($fin.''.$data['hcurso']); 
+
+
+if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 		$proc = 'VENCIDO';
+		
 
 		$cursos[] = [ 
 		$data["codigo"], 
@@ -58,16 +67,45 @@
 		];
 		}
 
+		if ($factual > $fcurso && $data["proceso"] == "PENDIENTE" && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
+		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+		$proc = 'VENCIDO';
+			
 
-		if ($factual <= $fcurso && $data["proceso"] == "PENDIENTE") {
+		$cursos[] = [ 
+		$data["codigo"], 
+		$data["gstTitlo"],
+		$data["gstTipo"],
+		$data["fcurso"],
+		$data["gstDrcin"],
+		$data["fechaf"],
+		$data["prtcpnts"],
+		$proceso,
+		$data["id_curso"],
+		$data["codigo"],
+		$data["gstDrcin"], 
+		$data['idinst'],
+		$data['sede'],
+		$data['link'],
+		$data['modalidad'],
+		$data['gstIdlsc'],
+		$data['idinst'],
+		$data['hcurso'],
+		$proc
+		];
+			}
 
-		if ($factual >= $finaliza && $data["proceso"] == "PENDIENTE") {
+	
+
+		if ($factual <= $fcurso && $data["proceso"] == "PENDIENTE" && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
+
+		if ($factual >= $finaliza && $data["proceso"] == "PENDIENTE" && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
 
 			$proceso = "<span style='font-weight: bold; height: 50px; color:#F39403;'>POR VENCER</span>";
 			$proc = 'POR VENCER';
 
 			$cursos[] = [ 
-			$contador, 
+			$data["codigo"], 
 			$data["gstTitlo"],
 			$data["gstTipo"],
 			$data["fcurso"],
@@ -90,8 +128,6 @@
 
 		}
 	}
-
-
 
 }
 		

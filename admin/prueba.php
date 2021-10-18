@@ -230,11 +230,15 @@ return 'no hay';
 
 
 
+$fecha = '10-14-2021';
+$date = date_create($fecha);
+
+echo '<br>';
+  ini_set('date.timezone','America/Mexico_City');
+echo $newDate = date("Y-m-d", strtotime($fecha));
 
 
-
-
-
+echo date_format($date, 'Y-m-d');
 ?>
 </pre>
 
