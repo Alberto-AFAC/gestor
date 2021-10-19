@@ -15,6 +15,8 @@
             header('Location: ../');
         }
       $id = $_SESSION['usuario']['id_usu'];
+      $usu = $_SESSION['usuario']['usuario'];
+      $pass = $_SESSION['usuario']['password'];
 
 
       $sql = 
@@ -67,50 +69,37 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- Notifications: style can be found in dropdown.less -->
+          
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning"><div id="noti"></div></span>
+              <i class="fa fa-bell-o"></i><span class="label label-warning"><div id="noti"></div></span>
             </a>
-
- <!-- LOGO DE LA AFAC-->
-
-
             <ul class="dropdown-menu">
               <li class="header"><div id="notif"></div></li>
               <li>
-                <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li> -->
                   <li>
                     <a href="#">
                       <div id="confirmar"></div>
                     </a>
                   </li>
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li> -->
                 </ul>
               </li>
-              <!-- - -->
             </ul>
           </li>
+
+          <li class="dropdown notifications-menu">
+
+<!-- <a style="cursor: pointer;" onclick="conprofesion();"  data-toggle='modal' > -->
+<!--             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target='#modal-actualizar'>
+              <i class="fa fa-lock"></i><span class="label label-warning"></span>
+            </a>
+ -->      
+
+<a style="cursor: pointer;" data-toggle='modal' data-target='#modal-actualizar'>
+    <i class="fa fa-lock"></i><span class="label label-warning"></span>
+</a> 
+</li>         
           <!-- Tasks: style can be found in dropdown.less -->
 
           <!-- User Account: style can be found in dropdown.less -->

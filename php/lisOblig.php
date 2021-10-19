@@ -4,11 +4,10 @@
 
 	$idins = $_POST['gstIdper'];
 
-$query = "SELECT *,listacursos.gstIdlsc AS list FROM especialidadcat
-INNER JOIN categorias ON especialidadcat.gstIDcat = categorias.gstIdcat
-INNER JOIN listacursos ON listacursos.gstPrfil = categorias.gstCsigl
-WHERE especialidadcat.gstIDper = $idins ";
-
+	$query = "SELECT *,listacursos.gstIdlsc AS list FROM especialidadcat
+	INNER JOIN categorias ON especialidadcat.gstIDcat = categorias.gstIdcat
+	INNER JOIN listacursos ON listacursos.gstPrfil = categorias.gstCsigl
+	WHERE especialidadcat.gstIDper = $idins ";
 
 	$resultado = mysqli_query($conexion, $query);
 

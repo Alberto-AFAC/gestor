@@ -260,6 +260,196 @@
 </div>
 <!-- !-- FIN DETALLE DE EXPERIENCIA PROFESIONAL --> 
 
+<!------------------PASSWORD------------------------>
+
+
+<!-- <div class="modal fade" id='modal-actualizar'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal2" style="width: 1100px;">
+  
+  <div id="success-icon">
+    <div>
+      <span style="font-size: 100px; color: white;" class="fa fa-lock"></span>
+    </div>
+  </div>
+  <h1 class="modaltitle" style="color:gray"><strong>ACTUALIZAR CONTRASEÑA</strong></h1>
+
+</div>
+</div> -->
+
+
+
+
+<!-- <div class="modal fade" id='modal-actualizar'>
+<div tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+
+
+      <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">ACTUALIZAR CONTRASEÑA</h3>
+            </div>
+ -->            <!-- /.box-header -->
+            <!-- form start -->
+<!-- <form class="form-horizontal">
+<div class="box-body">
+
+<div class="form-group">
+<input type="hidden" name="idper" id="idper" value="<?php echo $id?>">
+<label>Correo</label>
+<div class="input-group col-md-12">
+<div class="input-group-addon">
+<span class="glyphicon glyphicon-envelope"></span></div>
+<input type="email" name="usu" id="usu" class="form-control" pattern="[0-9]{1,7}" value="<?php echo $usu?>" disabled/>
+</div>
+</div>
+
+<div class="form-group">
+<label>Password</label>
+<div class="input-group">
+<div class="input-group col-md-12">
+<input type="password" class="form-control" name="contra" id="contra" value="<?php echo $pass?>"
+autocomplete="new-password" minlength="6">
+<div class="input-group-addon input-group-append toggle-password">
+<i style="cursor: pointer;" class="fa fa-eye toggle-password">
+</i>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<div class="box-footer">
+<button type="button" class="btn btn-info" onclick="actContr();">Actualizar</button>
+<button type="submit" class="btn btn-default">Cancelar</button>
+
+<b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos</p></b>
+
+<b><p class="alert alert-success text-center padding exito" id="exito">¡Se registraron los datos con éxito!</p></b>
+
+<b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
+</div>
+</form> -->
+       
+
+<!-- 
+</div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+ -->
+
+
+        <div class="modal fade" id="modal-actualizar">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">ACTUALIZAR CONTRASEÑA</h4>
+              </div>
+              <div class="modal-body">
+       
+<div class="form-group">
+<input type="hidden" name="idper" id="idper" value="<?php echo $id?>">
+<label>Usuario</label>
+
+<div class="input-group col-md-12">
+
+<input type="email" name="usu" id="usu" class="form-control" pattern="[0-9]{1,7}" value="<?php echo $usu?>" disabled/>
+
+
+<div class="input-group-addon">
+
+<span class="glyphicon glyphicon-user"></span>
+</div>
+</div>
+</div>
+
+<div class="form-group">
+<label>Contraseña</label>
+<div class="input-group col-md-12">
+<div class="input-group">
+<input type="password" class="form-control" name="password" id="password" autocomplete="new-password" >
+<div class="input-group-addon input-group-append toggle-password">
+<i style="cursor: pointer;" class="fa fa-eye toggle-password">
+</i>
+</div>
+</div>
+</div>
+</div>
+
+<div class="form-group">
+<label>Nueva contraseña</label>
+<div class="input-group col-md-12">
+<div class="input-group">
+<input type="password" class="form-control" name="pass" id="pass" autocomplete="new-password" >
+<div class="input-group-addon input-group-append toggle-password">
+<i style="cursor: pointer;" class="fa fa-eye toggle-password">
+</i>
+</div>
+</div>
+</div>
+</div>
+
+<div class="form-group">
+<label>Confirmar contraseña</label>
+<div class="input-group col-md-12">
+<div class="input-group">
+<input type="password" class="form-control" name="pass2" id="pass2" autocomplete="new-password" >
+<div class="input-group-addon input-group-append toggle-password">
+<i style="cursor: pointer;" class="fa fa-eye toggle-password">
+</i>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-left"  onclick="actContr();">Aceptar</button>
+ 
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+
+              <div class="alert alert-success text-center" style="color: #FFF;" id="echo">
+              <p>Contraseña actualizada</p>
+              </div>
+
+              <div class="alert alert-info text-center" style="color: #FFF;" id="invalida">
+              <p>Las contraseñas no coinciden</p>
+              </div>
+
+              <div class="alert alert-danger text-center" style="color: #FFF;" id="falso">
+              <p>Contraseña incorrecta</p>
+              </div>
+
+              <div class="alert alert-warning text-center" style="color: #FFF;" id="vacios">
+              <p>Llene campos vacíos</p>
+              </div>
+
+              <div class="alert alert-danger text-center" style="color: #FFF;" id="error">
+              <p>Datos no actualizados</p>
+              </div>
+
+
+              </div>
+
+
+
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+
 
 <script>
  
