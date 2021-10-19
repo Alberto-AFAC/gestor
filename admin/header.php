@@ -29,6 +29,7 @@
 //session_start(); 
 unset($_SESSION['consulta']);
 
+ini_set('date.timezone','America/Mexico_City');
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <header class="main-header">

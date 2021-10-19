@@ -61,7 +61,7 @@ color: white;
 </style>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 <div class="wrapper">
 
 <?php
@@ -166,13 +166,31 @@ alt="User profile picture">
 
 <?php 
 
-
 $sql2 =
-"SELECT * FROM cursos 
+"SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final FROM cursos 
 INNER JOIN listacursos ON gstIdlsc = idmstr  
 WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
  $query = mysqli_query($conexion,$sql2);
-while($datos2 = mysqli_fetch_assoc($query)){?>
+
+while($datos2 = mysqli_fetch_assoc($query)){
+
+$fcurso = $datos2['fechaf'];
+
+$actual = date("Y-m-d"); 
+$hactual = date('H:i:s');
+//strtotime($actual.''.$hcurso)
+
+$f3 = strtotime($actual.''.$hactual);
+$f2 = strtotime($fcurso.''.$datos2['hcurso']); 
+
+if($f3>=$f2 && $datos2['proceso']=='PENDIENTE' || $f3>= $f2 && $datos2['proceso']=='FINALIZADO'){
+
+    $ven = 'VENCIDO';
+}else{
+    $ven = $datos2['final'];
+}
+
+    ?>
 
       <!-- Default box -->
       <div class="col-md-6 col-sm-0">
@@ -192,9 +210,9 @@ while($datos2 = mysqli_fetch_assoc($query)){?>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-         <span style="color: gray;">FECHA DE VENCIMIENTO: 
-        
-             </span>
+
+         <span style="color: gray;">FECHA DE VENCIMIENTO: <?php echo $ven?></span>
+
         </div>
         <!-- /.box-footer-->
       </div>
@@ -279,7 +297,6 @@ immediately after the control sidebar -->
 
 <?php 
 
-ini_set('date.timezone','America/Mexico_City');
 $datos[0];?>
 
 
