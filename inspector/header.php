@@ -48,6 +48,13 @@
       $dato[4]="";
       $dato[5]="";
   }
+
+      $sql2 =
+      "SELECT * FROM cursos WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
+      $query = mysqli_query($conexion,$sql2);
+      $datos2 = mysqli_fetch_assoc($query);
+  
+
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
@@ -163,10 +170,17 @@
             </span>
           </a>
         </li>        
-        <!-- -->
-        <!----> 
-        <!--  -->
-        <!-- -->
+             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
+              <li>
+              <a href='e-learnning'>
+              <i class='fa fa-internet-explorer'></i> <span>E-learnning</span>
+                <span class='pull-right-container'>
+                  <small class='label pull-right bg-red'></small>
+                  <small class='label pull-right bg-blue'></small>
+                </span>
+              </a>
+            </li>
+            <?php }?>
         <li>
           <a href="calendar/calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>

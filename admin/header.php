@@ -221,8 +221,7 @@ unset($_SESSION['consulta']);
                 </a>
             </li>
 
-<!--         if($arreglo)&&!empty($arreglo)){
- -->            <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
+             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
               <li>
               <a href='e-learnning'>
               <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
