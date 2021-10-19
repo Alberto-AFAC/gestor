@@ -170,7 +170,7 @@ include('header.php');
           <option value="A DISTANCIA">A DISTANCIA</option>
           <option value="PRESENCIAL">PRESENCIAL</option>
           <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)</option>
-          <option value="AUTOGESTIVO">AUTOGESTIVO</option>          
+          <option value="E-LEARNNING">E-LEARNNING</option>          
       </select>
     </div>
 
