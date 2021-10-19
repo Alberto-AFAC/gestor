@@ -220,7 +220,9 @@ unset($_SESSION['consulta']);
                     </span>
                 </a>
             </li>
-            <?php if($datos2['modalidad'] == "E-LEARNNING"){ ?>
+
+<!--         if($arreglo)&&!empty($arreglo)){
+ -->            <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
               <li>
               <a href='e-learnning'>
               <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
@@ -230,7 +232,7 @@ unset($_SESSION['consulta']);
                 </span>
               </a>
             </li>
-            <?php } ?>
+            <?php }?>
 
             <!-- <li>
           <a href="gantt2.php">
