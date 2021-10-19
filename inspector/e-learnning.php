@@ -187,11 +187,14 @@ while($datos2 = mysqli_fetch_assoc($query)){?>
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+        <?php echo $datos2['gstObjtv']?>
+        <br><br><button class="btn btn-info btn-sm" style="float: right;">APRENDER MÁS...</button>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+         <span style="color: gray;">FECHA DE VENCIMIENTO: 
+        
+             </span>
         </div>
         <!-- /.box-footer-->
       </div>
