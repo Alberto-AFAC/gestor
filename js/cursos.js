@@ -130,6 +130,7 @@ $(document).ready(function() {
         if (valor == "NO") {
             $("#noasis").show();
             $("#asiste").hide();
+            $("#confiras").hide();
             limCampos();
         } else if (valor == "SI") {
             $("#asiste").show();
