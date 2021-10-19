@@ -130,7 +130,7 @@ $inspector = mysqli_query($conexion,$sql);
                                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" onclick="location.href='lisCurso.php'"
+                                                <button type="button" onclick="location.href='lisCurso'"
                                                     class="close" data-dismiss="modal" aria-label="Close"><span
                                                         aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>

@@ -1,23 +1,23 @@
 //function listar(){
 //destroy:true,
 $.ajax({
-        url: '../php/consulta.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cnslt" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDOS</th><th><i></i> CORREO</th><th><i></i> CATEGORÍA</th></tr></thead><tbody>';
-        for (i = 0; i < res.length; i++) {
-            x++;
-            //            alert(obj.data[i].gstCargo);
-            if (obj.data[i].gstCargo == 'INSPECTOR' && obj.data[i].gstEvalu == 'SI' || obj.data[i].gstCargo == 'DIRECTOR' && obj.data[i].gstEvalu == 'SI') {
-                html += "<tr><td><input type='checkbox' name='idinsp[]' id='id_insp' value='" + obj.data[i].gstIdper + "' /></td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCorro + "</td><td>" + obj.data[i].gstCatgr + "</td></tr>";
-            } else {}
-        }
-        html += '</tbody></table></div></div></div>';
-        $("#conslts").html(html);
-    })
+    url: '../php/consulta.php',
+    type: 'POST'
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+    var x = 0;
+    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cnslt" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDOS</th><th><i></i> CORREO</th><th><i></i> CATEGORÍA</th></tr></thead><tbody>';
+    for (i = 0; i < res.length; i++) {
+        x++;
+        //            alert(obj.data[i].gstCargo);
+        if (obj.data[i].gstCargo == 'INSPECTOR' && obj.data[i].gstEvalu == 'SI' || obj.data[i].gstCargo == 'DIRECTOR' && obj.data[i].gstEvalu == 'SI') {
+            html += "<tr><td><input type='checkbox' name='idinsp[]' id='id_insp' value='" + obj.data[i].gstIdper + "' /></td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCorro + "</td><td>" + obj.data[i].gstCatgr + "</td></tr>";
+        } else {}
+    }
+    html += '</tbody></table></div></div></div>';
+    $("#conslts").html(html);
+})
 
 function proCurso() {
 
@@ -54,20 +54,20 @@ function proCurso() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
-    if(modalidad=='PRESENCIAL'){
-    var link = '0';
-    var contracceso = '0';        
-    }else{
-    var link = document.getElementById('link').value;
-    var contracceso = document.getElementById('contracceso').value;
+    if (modalidad == 'PRESENCIAL') {
+        var link = '0';
+        var contracceso = '0';
+    } else {
+        var link = document.getElementById('link').value;
+        var contracceso = document.getElementById('contracceso').value;
     }
     idinsps = idInsptr + '' + idInstr;
 
-    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' +contracceso;
+    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso;
 
     // alert(datos);
 
-    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == ''){
+    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
 
         $('#empty').toggle('toggle');
@@ -92,8 +92,8 @@ function proCurso() {
                     // showConfirmButton: false,
                     showCancelButton: true,
                     customClass: 'swal-wide',
-                    confirmButtonText: '<a class="a-alert" href="../admin/programa.php"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                    cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso.php"><span style="color: white;">Cerrar</span></a>',
+                    confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                    cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
 
                 });
                 // setTimeout("location.href = 'inspecion.php';", 2000);
@@ -190,8 +190,8 @@ function proCursoH() {
                     // showConfirmButton: false,
                     showCancelButton: true,
                     customClass: 'swal-wide',
-                    confirmButtonText: '<a class="a-alert" href="programa.php"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                    cancelButtonText: '<a  class="a-alert" href="lisCurso.php"><span style="color: white;">Cerrar</span></a>',
+                    confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                    cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
 
                 });
                 // setTimeout("location.href = 'inspecion.php';", 2000);
@@ -264,16 +264,15 @@ function actualizar() {
 
 function modalidades() {
 
-   var seleccion = document.getElementById('modalidad');
+    var seleccion = document.getElementById('modalidad');
     valor = seleccion.options[seleccion.selectedIndex].value;
-   
-       if (valor == 'PRESENCIAL') {
+
+    if (valor == 'PRESENCIAL') {
         $("#dismod").hide();
         $("#disocl").show();
 
     } else {
         $("#disocl").hide();
         $("#dismod").show();
-        }
+    }
 }
-

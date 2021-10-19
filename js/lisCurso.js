@@ -268,7 +268,7 @@ function agrPartc() {
     acodigos = document.getElementById('acodigos').value;
     contracur = document.getElementById('contracur').value;
 
-    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur +'&opcion=participante';
+    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&opcion=participante';
     //alert(datos);
     if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '') {
 
@@ -285,7 +285,7 @@ function agrPartc() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-        // alert(respuesta);
+            // alert(respuesta);
             console.log(respuesta);
 
             if (respuesta == 0) {
@@ -335,12 +335,12 @@ function canCurso() {
             type: 'POST',
             data: 'codigos=' + codigos + '&opcion=canCurso'
         }).done(function(respuesta) {
-             // alert(respuesta);
+            // alert(respuesta);
             if (respuesta == 0) {
                 $('#succes').toggle('toggle');
                 setTimeout(function() {
                     $('#succes').toggle('toggle');
-                    location.href = 'lisCurso.php';
+                    location.href = 'lisCurso';
                 }, 1500);
             } else {
                 $('#dangere').toggle('toggle');
@@ -376,7 +376,7 @@ function eliCurso() {
                 $('#succe').toggle('toggle');
                 setTimeout(function() {
                     $('#succe').toggle('toggle');
-                    location.href = 'lisCurso.php';
+                    location.href = 'lisCurso';
                 }, 1500);
             } else {
                 $('#danger').toggle('toggle');
@@ -1018,7 +1018,7 @@ function cerrareval() {
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
-                idcurso(codigo); 
+                idcurso(codigo);
 
             } else {
                 Swal.fire({
@@ -1186,7 +1186,7 @@ function finalizar() {
             timer: 3000,
             backdrop: `rgba(22, 57, 37, 0.4)`
         });
-        
+
     } else {
 
         $.ajax({
@@ -1208,7 +1208,7 @@ function finalizar() {
             rgba(100, 100, 100, 0.4)
         `
                 });
-                setTimeout("location.href = 'lisCurso.php';", 1000);
+                setTimeout("location.href = 'lisCurso';", 1000);
             }
 
         });
@@ -1217,26 +1217,26 @@ function finalizar() {
 }
 
 
-function cursoAct(){
+function cursoAct() {
 
-var codigo = document.getElementById('codigo').value;
-var fcurso = document.getElementById('fcurso').value;
-var hcurso = document.getElementById('hcurso').value;
-var fechaf = document.getElementById('fechaf').value;
-var sede = document.getElementById('sede').value;
-var modalidads = document.getElementById('modalidads').value;
+    var codigo = document.getElementById('codigo').value;
+    var fcurso = document.getElementById('fcurso').value;
+    var hcurso = document.getElementById('hcurso').value;
+    var fechaf = document.getElementById('fechaf').value;
+    var sede = document.getElementById('sede').value;
+    var modalidads = document.getElementById('modalidads').value;
 
-    if(modalidads=='PRESENCIAL'){
-    var linkcur = '0';
-    var contracur = '0';
-    }else{
-    var linkcur = document.getElementById('linkcur').value;
-    var contracur = document.getElementById('contracur').value;
+    if (modalidads == 'PRESENCIAL') {
+        var linkcur = '0';
+        var contracur = '0';
+    } else {
+        var linkcur = document.getElementById('linkcur').value;
+        var contracur = document.getElementById('contracur').value;
     }
 
-    datos = 'codigo='+codigo+'&fcurso='+fcurso+'&hcurso='+hcurso+'&fechaf='+fechaf+'&sede='+sede+'&modalidads='+modalidads+'&linkcur='+linkcur+'&contracur='+contracur+'&opcion=cursoAct';
+    datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&opcion=cursoAct';
 
-    if (codigo =='' ||fcurso =='' ||hcurso =='' ||fechaf =='' ||sede =='' ||modalidads =='' ||linkcur =='' ||contracur =='') {
+    if (codigo == '' || fcurso == '' || hcurso == '' || fechaf == '' || sede == '' || modalidads == '' || linkcur == '' || contracur == '') {
 
         Swal.fire({
             type: 'error',
@@ -1257,16 +1257,16 @@ var modalidads = document.getElementById('modalidads').value;
 
         }).done(function(respuesta) {
 
-                 if (respuesta == 0) {
-                 Swal.fire({
-                     type: 'success',
-                     title: 'AFAC INFORMA',
-                     text: 'Datos del curso actualizado',
-                     showConfirmButton: false,
-                     customClass: 'swal-wide',
-                     timer: 2000,
-                     backdrop: `rgba(100, 100, 100, 0.4)`
-                 });
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Datos del curso actualizado',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000,
+                    backdrop: `rgba(100, 100, 100, 0.4)`
+                });
             }
 
         });
@@ -1277,15 +1277,15 @@ var modalidads = document.getElementById('modalidads').value;
 
 function modalidades() {
 
-   var seleccion = document.getElementById('modalidads');
+    var seleccion = document.getElementById('modalidads');
     valor = seleccion.options[seleccion.selectedIndex].value;
-   
-       if (valor == 'PRESENCIAL') {
+
+    if (valor == 'PRESENCIAL') {
         $("#dismod").hide();
         $("#disocl").show();
 
     } else {
         $("#disocl").hide();
         $("#dismod").show();
-        }
+    }
 }

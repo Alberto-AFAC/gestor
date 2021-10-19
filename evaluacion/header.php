@@ -166,10 +166,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="personal.php"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
-            <li><a href="persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
-            <li><a href="inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="instructor.php"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+            <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
+            <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+            <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+            <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -184,14 +184,14 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../instructor"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-            <li><a href="../instructor/programa.php"><i class="fa ion-compose"></i>Programación del Curso</a></li>
-            <li><a href="../instructor/lisCurso.php"><i class="fa ion-compose"></i>Cursos Programados</a></li>
+            <li><a href="../instructor/programa"><i class="fa ion-compose"></i>Programación del Curso</a></li>
+            <li><a href="../instructor/lisCurso"><i class="fa ion-compose"></i>Cursos Programados</a></li>
           </ul>
         </li>
         <!--  -->
         <!-- -->
         <li>
-          <a href="../instructor/calendar.php">
+          <a href="../instructor/calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
