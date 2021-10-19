@@ -50,7 +50,9 @@
   }
 
       $sql2 =
-      "SELECT * FROM cursos WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
+      "SELECT * FROM cursos 
+      INNER JOIN listacursos ON gstIdlsc = idmstr  
+      WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
       $query = mysqli_query($conexion,$sql2);
       $datos2 = mysqli_fetch_assoc($query);
   
