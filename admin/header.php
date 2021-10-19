@@ -220,15 +220,6 @@ unset($_SESSION['consulta']);
                     </span>
                 </a>
             </li>
-            <!-- <li>
-                <a href='e-learnning'>
-                    <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
-                    <span class='pull-right-container'>
-                        <small class='label pull-right bg-red'></small>
-                        <small class='label pull-right bg-blue'></small>
-                    </span>
-                </a>
-            </li> -->
             <?php if($datos2['modalidad'] == "E-LEARNNING"){ ?>
               <li>
               <a href='e-learnning'>
