@@ -27,7 +27,7 @@ unset($_SESSION['consulta']);
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <header class="main-header">
     <!-- Logo -->
-    <a href="../director.php" class="logo">
+    <a href="../director" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
@@ -153,7 +153,7 @@ unset($_SESSION['consulta']);
         </li>-->
 
         <li class="active">
-          <a href="../inspector.php">
+          <a href="../inspector">
             <i><img src="../../dist/img/perfil.png" class="user-image" alt="User Image" style="
     width: 25px;
     height: 25px;
@@ -175,11 +175,11 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-           <li><a href="../nuevoingreso.php"><i class="fa ion-document-text"></i> Lista nuevo ingreso</a></li>            
+           <li><a href="../nuevoingreso"><i class="fa ion-document-text"></i> Lista nuevo ingreso</a></li>            
             
-            <li><a href="../inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+            <li><a href="../inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
     
-           <li><a href="../persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+           <li><a href="../persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -194,17 +194,17 @@ unset($_SESSION['consulta']);
           </a>
           <ul class="treeview-menu">
             <!-- <li><a href="altacurso.php"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li> -->
-            <li><a href="../conCursos.php"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
+            <li><a href="../conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
             
-            <li><a href="../lisCurso.php"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <li><a href="../lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="../estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
-            <li><a href="../niveldesatis.php"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <li><a href="../niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
           </ul>
         </li>
         <!--  -->
         <!-- -->
         <li>
-          <a href="calendar.php">
+          <a href="calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
@@ -213,7 +213,7 @@ unset($_SESSION['consulta']);
           </a>
         </li>
         <li>
-          <a href="../cursosgantt.php">
+          <a href="../cursosgantt">
           <i class="fa fa-area-chart"></i> <span>Gantt Cursos programados</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
