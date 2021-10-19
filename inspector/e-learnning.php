@@ -164,8 +164,6 @@ alt="User profile picture">
 
 
 
-<div class="container">
-<div class="row">
 
 <?php 
 
@@ -178,7 +176,7 @@ WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
 while($datos2 = mysqli_fetch_assoc($query)){?>
 
 
-<div class="col-md-3 col-sm-6">
+<!-- <div class="col-md-3 col-sm-6">
 <div class="card" style="width: 18rem;">
 <img class="card-img-top img-responsive" src="https://globalindustries.mx/wp-content/uploads/2019/12/sct.jpg" alt="SCT">
 <div class="card-body">
@@ -187,7 +185,34 @@ while($datos2 = mysqli_fetch_assoc($query)){?>
 <a href="#" class="btn btn-primary">APRENDER MÁS</a>
 </div>
 </div>
-</div>
+</div> -->
+
+
+      <!-- Default box -->
+      <div class="col-md-6 col-sm-0">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title"><?php echo $datos2['gstTitlo']?></h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapsa">
+              <i class="fa fa-minus"></i></button>
+    
+          </div>
+        </div>
+        <div class="box-body">
+          Start creating your amazing application!
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          Footer
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+      </div>
+
+
 <?php } ?>
 <!-- <div class="col-md-3 col-sm-6">
 <div class="card" style="width: 18rem;">
