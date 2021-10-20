@@ -249,9 +249,7 @@ include('header.php');
                         <input type="hidden" id="idCurso" name="idCurso">
                         <div class="modal-header">
                             <span style="font-size: 20px;" id="tituloCurso" name="tituloCurso"></span>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                         
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -370,19 +368,7 @@ include('header.php');
         });
 
         // SEGUNDO DATATABLES PARA VISUALIZAR LOS VIDEOS CARGADOS
-        var tableGenerarReporte = $('#data-table-multimedia').DataTable({
-            "ajax": '',
-            "language": {
-                "searchPlaceholder": "Buscar datos...",
-                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-            },
-            // "order": [
-            //     [0, 'desc']
-            // ],
-            orderCellsTop: true,
-            fixedHeader: true
 
-        });
 
 
 
@@ -390,12 +376,14 @@ include('header.php');
 
 
         function insertLearnning(id) {
+
             $("#uVideo").slideDown("slow");
             $("#cuadro1").hide("slow");
             $.ajax({
                 url: '../php/e-learnningSel.php',
                 type: 'POST'
             }).done(function(resp) {
+
                 obj = JSON.parse(resp);
                 var res = obj.data;
                 for (i = 0; i < res.length; i++) {
@@ -406,7 +394,36 @@ include('header.php');
                             opcion = $("#uVideoM #opcion").val("modificar");
                     }
                 }
+
             })
+            var id = id;
+            var tableGenerarReporte = $('#data-table-multimedia').DataTable({
+                "ajax": {
+                    "url": "../php/elearnningdata.php",
+                    "type": 'GET',
+                    "data": {
+                        id: +id
+                    },
+                },
+
+
+
+                // "ajax": '../php/elearnningdata.php/?valor=`id`',
+                "language": {
+                    "searchPlaceholder": "Buscar datos...",
+                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                },
+                // "order": [
+                //     [0, 'desc']
+                // ],
+                orderCellsTop: true,
+                fixedHeader: true
+
+            });
+            setInterval(function() {
+                tableGenerarReporte.ajax.reload();
+            }, 20000);
+
         }
 
         $(document).ready(function() {
