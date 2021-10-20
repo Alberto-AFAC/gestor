@@ -60,7 +60,6 @@
     .a-alert:visited {
         color: white;
     }
-
     </style>
 </head>
 
@@ -255,22 +254,33 @@ include('header.php');
                             </button>
                         </div>
                         <div class="modal-body">
-                        <div class="form-group">
-                        <div class="col-sm-5">
-                            <label>NOMBRE DEL VIDEO</label>
-                            <input type="text" id="tituloV" name="tituloV" class="form-control" style="text-transform: uppercase;">
-                            </div>
-                            <div class="col-sm-7">
-                            <label>OBJETIVO</label>
-                            <input type="text" id="objetivoV" name="objetivoV" class="form-control" style="text-transform: uppercase;">
+                            <div class="form-group">
+                                <div class="col-sm-5">
+                                    <label>NOMBRE DEL VIDEO</label>
+                                    <input type="text" id="tituloV" name="tituloV" class="form-control"
+                                        style="text-transform: uppercase;">
+                                </div>
+                                <div class="col-sm-7">
+                                    <label>OBJETIVO</label>
+                                    <input type="text" id="objetivoV" name="objetivoV" class="form-control"
+                                        style="text-transform: uppercase;">
+                                </div><br><br>
+                                <div class="col-sm-12"><br>
+                                    <label>Ingresa URL</label>
+                                    <input type="url" pattern="https?://.+" required id="url" name="url"
+                                        class="form-control" style="text-transform: uppercase;">
+                                </div>
                             </div><br><br>
-                            <div class="col-sm-12"><br>
-                            <label>Ingresa URL</label>
-                            <input type="url" pattern="https?://.+" required id="url" name="url" class="form-control" style="text-transform: uppercase;">
-                            </div>
-                            </div><br><br>
-                            <table id="data-table-multimedia" class="table table-bordered" width="100%"
-                                cellspacing="0">
+                            <table id="data-table-multimedia" class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ITEM</th>
+                                        <th>TITULO</th>
+                                        <th>DESCRIPCIÓN</th>
+                                        <th>MODULO</th>
+                                        <th>VIDEO</th>
+                                    </tr>
+                                </thead>
                             </table>
                         </div><br><br><br>
                         <div class="modal-footer">
@@ -437,6 +447,7 @@ function idcursos(id){
         ];
 
         var tableGenerarReporte = $('#data-table-multimedia').DataTable({
+            "ajax": '',
             "language": {
                 "searchPlaceholder": "Buscar datos...",
                 "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -445,24 +456,8 @@ function idcursos(id){
             //     [0, 'desc']
             // ],
             orderCellsTop: true,
-            fixedHeader: true,
-            data: dataSet,
-            columns: [{
-                    title: "ID"
-                },
-                {
-                    title: "NOMBRE DEL VIDEO"
-                },
-                {
-                    title: "OBJETIVO"
-                },
-                {
-                    title: "MODULO"
-                },
-                {
-                    title: "VIDEO"
-                }
-            ]
+            fixedHeader: true
+
         });
 
 
@@ -473,50 +468,54 @@ function idcursos(id){
 
 
 
-        $(document).ready(function(){
-		$('#btnguardar').click(function(){
-            var tituloV  = $("#tituloV").val();
-            var objetivoV = $("#objetivoV").val();
-            var idCurso = $("#idCurso").val();
-            var url = $("#url").val();
-            swal.showLoading();
-                if(tituloV == '' || objetivoV == '' ){
-                Swal.fire({
-                    type: 'info',
-                    title: 'Notificaciones AFAC',
-                    text: 'Llene los campos que se solicitan',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-                }else{
-			$.ajax({
-				type:"POST",
-				url:"../php/insertVideo.php",
-				data: {idCurso:idCurso,tituloV:tituloV,objetivoV:objetivoV, url:url,},
-				success:function(data){
-                document.getElementById("uVideo").reset();
-                Swal.fire({
-                  type: 'success',
-                  title: 'AFAC INFORMA',
-                  text: 'Sus datos fueron guardados correctamente',
-                  showConfirmButton: false,
-                  timer: 2900,
-                  customClass: 'swal-wide',
-                  showConfirmButton: false,
-                });
-                setTimeout("location.href = 'e-learnning';", 2000);
-				}
-			});
-        }
+        $(document).ready(function() {
+            $('#btnguardar').click(function() {
+                var tituloV = $("#tituloV").val();
+                var objetivoV = $("#objetivoV").val();
+                var idCurso = $("#idCurso").val();
+                var url = $("#url").val();
+                swal.showLoading();
+                if (tituloV == '' || objetivoV == '') {
+                    Swal.fire({
+                        type: 'info',
+                        title: 'Notificaciones AFAC',
+                        text: 'Llene los campos que se solicitan',
+                        timer: 2000,
+                        customClass: 'swal-wide',
+                        showConfirmButton: false,
+                    });
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: "../php/insertVideo.php",
+                        data: {
+                            idCurso: idCurso,
+                            tituloV: tituloV,
+                            objetivoV: objetivoV,
+                            url: url,
+                        },
+                        success: function(data) {
+                            document.getElementById("uVideo").reset();
+                            Swal.fire({
+                                type: 'success',
+                                title: 'AFAC INFORMA',
+                                text: 'Sus datos fueron guardados correctamente',
+                                showConfirmButton: false,
+                                timer: 2900,
+                                customClass: 'swal-wide',
+                                showConfirmButton: false,
+                            });
+                            setTimeout("location.href = 'e-learnning';", 2000);
+                        }
+                    });
+                }
 
-			return false;
-		});
-	});
+                return false;
+            });
+        });
 
 
         // REZIZE INPUT
-  
         </script>
         <div class="control-sidebar-bg"></div>
     </div>
