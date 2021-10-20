@@ -826,9 +826,6 @@ function marcar(source) {
 }
 
 
-
-
-
 function generar() {
 
     var cgstInspr = new Array();
@@ -924,9 +921,6 @@ function generar() {
 
 
 }
-
-
-
 
 //EDICIÓN DEL CURSO
 function editcurso() {

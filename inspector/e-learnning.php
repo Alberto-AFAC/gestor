@@ -170,7 +170,7 @@ include('header.php');
 $sql2 =
 "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final FROM cursos 
 INNER JOIN listacursos ON gstIdlsc = idmstr  
-WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
+WHERE modalidad = 'E-LEARNNING' AND idinsp = $id ORDER BY codigo DESC";
  $query = mysqli_query($conexion,$sql2);
 
 while($datos2 = mysqli_fetch_assoc($query)){
@@ -186,9 +186,9 @@ $f2 = strtotime($fcurso.''.$datos2['hcurso']);
 
 if($f3>=$f2 && $datos2['proceso']=='PENDIENTE' || $f3>= $f2 && $datos2['proceso']=='FINALIZADO'){
 
-    $ven = "<span style='color: red;'>VENCIDO</pan>";
+    $ven = "<span style='color: red;' title='".$datos2['final'].' a las '.$datos2['hcurso']."'>VENCIDO</pan>";
 }else{
-    $ven = "<span style='color: green;'>".$datos2['final']."</span>";
+    $ven = "<span style='color: green;'>".$datos2['final'].' a las '.$datos2['hcurso']."</span>";
 }
 
     ?>
