@@ -282,7 +282,7 @@ include('header.php');
                             </table>
                         </div><br><br><br>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                            <button type="button" class="btn btn-secondary"><a href="e-learnning">CERRAR</a></button>
                             <button type="button" id="btnguardar" class="btn btn-primary">GUARDAR</button>
                         </div>
                     </div>
