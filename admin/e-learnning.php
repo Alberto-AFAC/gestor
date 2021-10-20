@@ -360,25 +360,8 @@ include('header.php');
         });
 
     // SEGUNDO DATATABLES PARA VISUALIZAR LOS VIDEOS CARGADOS
-    var dataSet = [
-            <?php 
-    //  $id = $data['gstIdlsc'];
-    $query ="SELECT * FROM elearnning";
-    $resultado = mysqli_query($conexion, $query);
-    $x = 0;
-    while($data = mysqli_fetch_array($resultado)){ 
-        $x++;
-     
-        
-        ?>
-
-            ["<?php echo $x?>","<?php echo $data['tituloV']?>","<?php echo $data['objetivoV']?>","$$$$$","<iframe width='220' height='100' src='<?php echo $data['url']?>'></iframe>"],
-
-            <?php  } ?>
-
-        ];
-
         var tableGenerarReporte = $('#data-table-multimedia').DataTable({
+            "ajax": ''
             "language": {
                 "searchPlaceholder": "Buscar datos...",
                 "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -387,24 +370,8 @@ include('header.php');
             //     [0, 'desc']
             // ],
             orderCellsTop: true,
-            fixedHeader: true,
-            data: dataSet,
-            columns: [{
-                    title: "ID"
-                },
-                {
-                    title: "NOMBRE DEL VIDEO"
-                },
-                {
-                    title: "OBJETIVO"
-                },
-                {
-                    title: "MODULO"
-                },
-                {
-                    title: "VIDEO"
-                }
-            ]
+            fixedHeader: true
+            
         });
 
 
