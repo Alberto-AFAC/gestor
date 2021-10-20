@@ -359,11 +359,69 @@ include('header.php');
             ]
         });
 
+
+        function insertLearnning(id) {
+            $("#uVideo").slideDown("slow");
+            $("#cuadro1").hide("slow");
+
+            idcursos(id);
+
+            $.ajax({
+                url: '../php/e-learnningSel.php',
+                type: 'POST'
+            }).done(function(resp) {
+                obj = JSON.parse(resp);
+                var res = obj.data;
+                for (i = 0; i < res.length; i++) {
+                    if (obj.data[i].gstIdlsc == id) {
+                        var
+                            id_curso = $("#uVideoM #idCurso").val(obj.data[i].gstIdlsc),
+                            titulo = $("#uVideoM #tituloCurso").html(obj.data[i].gstTitlo),
+                            opcion = $("#uVideoM #opcion").val("modificar");
+                    }
+                }
+            })
+        }
+
+
+
+function idcursos(id){
+
+        var idc = id;
+            // $.ajax({
+            //     url: '../php/conE-learnnin.php',
+            //     type: 'POST',
+            //     data: 'idc='+idc
+            // }).done(function(resp) {
+
+        $.ajax({
+            url: '../php/conE-learnnin.php',
+            type: 'POST',
+            data: 'idc='+idc
+        }).done(function(rsp) {
+                // obj = JSON.parse(resp);
+                // var res = obj.data;
+                // for (i = 0; i < res.length; i++) {
+
+
+                    alert(rsp);
+
+
+
+                // }
+            })
+
+}
+
+
+
     // SEGUNDO DATATABLES PARA VISUALIZAR LOS VIDEOS CARGADOS
     var dataSet = [
             <?php 
-    //  $id = $data['gstIdlsc'];
-    $query ="SELECT * FROM elearnning";
+
+    $id = "<script>document.writeln(id_curso)</script>";
+
+    $query ="SELECT * FROM elearnning  ";
     $resultado = mysqli_query($conexion, $query);
     $x = 0;
     while($data = mysqli_fetch_array($resultado)){ 
@@ -412,25 +470,8 @@ include('header.php');
 
 
 
-        function insertLearnning(id) {
-            $("#uVideo").slideDown("slow");
-            $("#cuadro1").hide("slow");
-            $.ajax({
-                url: '../php/e-learnningSel.php',
-                type: 'POST'
-            }).done(function(resp) {
-                obj = JSON.parse(resp);
-                var res = obj.data;
-                for (i = 0; i < res.length; i++) {
-                    if (obj.data[i].gstIdlsc == id) {
-                        var
-                            id_curso = $("#uVideoM #idCurso").val(obj.data[i].gstIdlsc),
-                            titulo = $("#uVideoM #tituloCurso").html(obj.data[i].gstTitlo),
-                            opcion = $("#uVideoM #opcion").val("modificar");
-                    }
-                }
-            })
-        }
+
+
 
         $(document).ready(function(){
 		$('#btnguardar').click(function(){
