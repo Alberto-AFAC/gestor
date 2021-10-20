@@ -151,7 +151,12 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 		echo "0";		
 		$realizo = 'ACTUALIZO CURSO FOLIO: '.$codigo;
 		historiCan($idp,$realizo,$codigo,$conexion);	
-	}else{ echo "1";	}	
+	}else{ echo "1";	}
+
+}else if($opcion === 'PDF'){
+
+	 $pdf = $_POST['v'];
+ 	if(descPDF($pdf,$conexion)){echo "0";}else{echo "1";}
 }
 
 //CONTEO DE CURSO
@@ -268,6 +273,17 @@ function finalizac($codigo,$conexion){
 
 	}
 
+	function descPDF($pdf,$conexion){
+
+	$query="UPDATE constancias SET copias='1' WHERE id='$pdf'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
+
+	}
 // fin actualia evaluación el curso
 function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
 						$query = "SELECT gstNombr,gstApell,gstCinst, gstCorro, gstTipo, modalidad, gstCargo, link, fcurso FROM personal INNER JOIN cursos	ON cursos.idinsp = personal.gstIdper
