@@ -158,74 +158,127 @@ include ("../conexion/conexion.php");
                     <div class="col-md-9">
 
                         <div class="nav-tabs-custom">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#activity" data-toggle="tab">Registrar Curso </a></li>
+                                <li><a href="#curComplet" data-toggle="tab">Historial</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <div class="post">
+                                        <section class="content">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="box">
+                                                        <div class="box-header">
+                                                        </div>
+                                                        <div class="box-body">
+                                                            <div id="refresh">
 
-                                    <h3>HISTORICO DE CURSOS</h3><br>
-                                    <form action method="POST" class="form-horizontal" id="form">
-                                        <input type="text" id="idinsp" name="idinsp" value="<?php echo $datos[0]?>"
-                                            hidden>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <label>NOMBRE DEL CURSO</label>
-                                                <select id="nCurse" name="nCurse" class="form-control"
-                                                    placeholder="Seleccione...">
-                                                    <option value="">Seleccione...</option>
-                                                    <?php while($data = mysqli_fetch_row($cursos)):?>
-                                                    <option value="<?php echo $data[0]?>"><?php echo $data[1]?> -
-                                                        <?php echo $data[2]?></option>
-                                                    <?php endwhile; ?>
-                                                </select>
+                                                                <form action method="POST" class="form-horizontal"
+                                                                    id="form">
+                                                                    <input type="text" id="idinsp" name="idinsp"
+                                                                        value="<?php echo $datos[0]?>" hidden>
+                                                                    <div class="form-group">
+                                                                        <div class="col-sm-12">
+                                                                            <label>NOMBRE DEL CURSO</label>
+                                                                            <select id="nCurse" name="nCurse"
+                                                                                class="form-control"
+                                                                                placeholder="Seleccione...">
+                                                                                <option value="">Seleccione...</option>
+                                                                                <?php while($data = mysqli_fetch_row($cursos)):?>
+                                                                                <option value="<?php echo $data[0]?>">
+                                                                                    <?php echo $data[1]?> -
+                                                                                    <?php echo $data[2]?></option>
+                                                                                <?php endwhile; ?>
+                                                                            </select>
 
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <label>TIPO DE CURSO</label>
-                                                <select type="text" class="form-control" id="tCurse" name="tCurse"
-                                                    placeholder="Seleccione...">
-                                                    <option value="">Seleccione...</option>
-                                                    <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
-                                                    <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
-                                                    <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)
-                                                    </option>
-                                                </select>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label>TIPO DE CURSO</label>
+                                                                            <select type="text" class="form-control"
+                                                                                id="tCurse" name="tCurse"
+                                                                                placeholder="Seleccione...">
+                                                                                <option value="">Seleccione...</option>
+                                                                                <option value="INTERNO (AFAC)">INTERNO
+                                                                                    (AFAC)</option>
+                                                                                <option value="INTERNO (NACIONAL)">
+                                                                                    INTERNO (NACIONAL)</option>
+                                                                                <option value="EXTERNO (INTERNACIONAL)">
+                                                                                    EXTERNO (INTERNACIONAL)
+                                                                                </option>
+                                                                            </select>
 
-                                            </div>
+                                                                        </div>
 
-                                            <div class="col-sm-6">
-                                                <label>MODALIDAD</label>
-                                                <select type="text" class="form-control" id="mCurse" name="mCurse"
-                                                    placeholder="Seleccione...">
-                                                    <option value="" selected>Seleccione...</option>
-                                                    <option value="A DISTANCIA">A DISTANCIA</option>
-                                                    <option value="PRESENCIAL">PRESENCIAL</option>
-                                                    <option value="PRESENCIAL (SEMIPRESENCIAL)">MIXTA (SEMIPRESENCIAL)
-                                                    </option>
-                                                    <option value="E-LEARNNING">E-LEARNNING</option>
-                                                </select>
+                                                                        <div class="col-sm-6">
+                                                                            <label>MODALIDAD</label>
+                                                                            <select type="text" class="form-control"
+                                                                                id="mCurse" name="mCurse"
+                                                                                placeholder="Seleccione...">
+                                                                                <option value="" selected>Seleccione...
+                                                                                </option>
+                                                                                <option value="A DISTANCIA">A DISTANCIA
+                                                                                </option>
+                                                                                <option value="PRESENCIAL">PRESENCIAL
+                                                                                </option>
+                                                                                <option
+                                                                                    value="PRESENCIAL (SEMIPRESENCIAL)">
+                                                                                    MIXTA (SEMIPRESENCIAL)
+                                                                                </option>
+                                                                                <option value="E-LEARNNING">E-LEARNNING
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label>INICIO</label>
+                                                                            <input type="date" class="form-control"
+                                                                                id="iCurse" name="iCurse">
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label>CONCLUYE</label>
+                                                                            <input type="date" class="form-control"
+                                                                                id="fCurse" name="fCurse">
+                                                                        </div>
+                                                                        <div class="col-sm-6"><br>
+                                                                            <label>SEDE</label>
+                                                                            <input type="text"
+                                                                                class="form-control inputalta"
+                                                                                id="sCurse" name="sCurse">
+                                                                        </div>
+                                                                    </div>
+                                                                    <button type="button" style="float: right;"
+                                                                        class="btn btn-primary"
+                                                                        id="btnguardar">GUARDAR</button>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <label>INICIO</label>
-                                                <input type="date" class="form-control" id="iCurse" name="iCurse">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <label>CONCLUYE</label>
-                                                <input type="date" class="form-control" id="fCurse" name="fCurse">
-                                            </div>
-                                            <div class="col-sm-6"><br>
-                                                <label>SEDE</label>
-                                                <input type="text" class="form-control inputalta" id="sCurse"
-                                                    name="sCurse">
+                                        </section>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="tab-pane" id="curComplet">
+                                    <section class="content">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                    </div>
+                                                    <div class="box-body">
+                                                    <table id="data-table-historial" class="display" style="width:100%">
+                                            </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <button type="button" style="float: right;" class="btn btn-primary"
-                                            id="btnguardar">GUARDAR</button>
-                                    </form>
-                                    <div style="padding-top: 60px;">
-                                        <table id="data-table-historial" class="display" style="width:100%">
-                                        </table>
-                                    </div>
+                                    </section>
                                 </div>
-                            </div>
+                               
             </section>
         </div>
     </div>
@@ -311,7 +364,8 @@ $resultado = mysqli_query($conexion, $query);
 $x =0;
 while($data = mysqli_fetch_array($resultado)){ 
     $x++;
-?>["<?php echo $x?>","<?php echo $data['gstTitlo']?>", "<?php echo $data['tCurse']?>","<?php echo $data['inicio']?>", "<?php echo $data['final']?>", ""],
+?>["<?php echo $x?>", "<?php echo $data['gstTitlo']?>", "<?php echo $data['tCurse']?>", "<?php echo $data['inicio']?>",
+        "<?php echo $data['final']?>", ""],
 
 
     <?php }?>
@@ -324,7 +378,7 @@ var tableGenerarReporte = $('#data-table-historial').DataTable({
     data: dataSet,
     columns: [{
             title: "ITEM"
-        },{
+        }, {
             title: "CURSO"
         },
         {
