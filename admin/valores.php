@@ -312,7 +312,7 @@ $direc = mysqli_query($conexion,$sql);
                             </div>
                             <div class="col-sm-4">
                                 <label>NÚMERO</label>
-                                <input type="number" disabled="" style="text-transform:uppercase;" class="form-control"
+                                <input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
                                     id="gstNumro" name="gstNumro">
                             </div>
                             <div class="col-sm-4">
@@ -506,7 +506,7 @@ $direc = mysqli_query($conexion,$sql);
                         <div class="col-sm-12" id="nompusto2" style="display: none;">
                             <label>NOMBRE DEL PUESTO</label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID"
-                                id="gstPstID" type="text" data-live-search="true" disabled="">
+                                id="gstPstID" type="text" data-live-search="true">
                                 <option>SELECCIONE NOMBRE DEL PUESTO</option>
                                 <?php while($pust = mysqli_fetch_row($psto)):?>
                                 <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
@@ -550,7 +550,7 @@ $direc = mysqli_query($conexion,$sql);
                             <p id="ejecutiva2" style="display: none;">
                                 <label>DIRECCIÓN EJECUTIVA </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID"
-                                    disabled="" id="gstAreID" type="text" data-live-search="true">
+                                     id="gstAreID" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
                                     <?php while($ejct = mysqli_fetch_row($ejec)):?>
                                     <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
@@ -571,7 +571,7 @@ $direc = mysqli_query($conexion,$sql);
                             <p id="adscrip2" style="display: none;">
                                 <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                    disabled="" id="gstIDara" type="text" data-live-search="true">
+                                     id="gstIDara" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
                                     <?php while($ccion = mysqli_fetch_row($direc)):?>                      
                     <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
