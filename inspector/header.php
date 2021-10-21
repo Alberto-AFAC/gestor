@@ -193,6 +193,15 @@
           </a>
         </li>
         <li>
+          <a href="history">
+            <i class="fa fa-archive"></i> <span>Historial</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red"></small>
+              <small class="label pull-right bg-blue"></small>
+            </span>
+          </a>
+        </li>
+        <li>
           <a href="cursos">
             <!-- <i class="fa fa-graduation-cap" ></i> <span>E-learnning</span> -->
             <!-- <span class="pull-right-container"> -->
