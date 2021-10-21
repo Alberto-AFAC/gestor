@@ -241,7 +241,7 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="col-sm-4">
                        <label class="label2">NÚMERO</label>
-                       <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstNumro" name="gstNumro">
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstNumro" name="gstNumro">
                     </div>
 
                     <div class="col-sm-4">
