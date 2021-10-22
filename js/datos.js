@@ -2787,9 +2787,7 @@ function spcialidad(gstIdper) {
                 setTimeout(function() {
                     $('#succe12').toggle('toggle');
                 }, 2000);
-                //let gstIdper = spcId;
-              spcialidads(idUsu); 
-
+                  spcialidads(idUsu); 
             } else {
                 $('#danger12').toggle('toggle');
                 setTimeout(function() {
