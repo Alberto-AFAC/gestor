@@ -11,10 +11,12 @@
 		die("error");
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
+		$view = "<iframe width='250' height='130' src=".$data['url'].">
+			</iframe>";
         $x++;
 
  	
-	 $caledario[] = [ $x, $data["tituloV"],$data["objetivoV"],$data[""],$data["url"]];
+	 $caledario[] = [ $x, $data["tituloV"],$data["objetivoV"],$data["modulo"],$view];
 
 		}
 
