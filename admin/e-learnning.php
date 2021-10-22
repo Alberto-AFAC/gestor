@@ -242,7 +242,7 @@ include('header.php');
         </aside>
         <!-- MODAL CARGAR VIDEO -->
         <form id="uVideo" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
-            <div class="modal fade" id="uVideoM" tabindex="-1" role="dialog" aria-labelledby="uVideoMLabel"
+            <div class="modal fade" data-backdrop="static" id="uVideoM" tabindex="-1" role="dialog" aria-labelledby="uVideoMLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content" style="width: 120%;">
