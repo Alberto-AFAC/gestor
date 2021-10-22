@@ -321,6 +321,9 @@ $('#AgstIDSub').select2();
  $('#subcategoria').load('select/tabsubcat.php');
  $('#subdire').load('select/buscardepart.php'); //Subdirección
  $('#depart1').load('select/tabladep.php'); //departamento
+
+ 
+
 }); 
 </script>
 <script src="../js/select2.js"></script> 
