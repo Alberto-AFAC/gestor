@@ -410,35 +410,7 @@ include('header.php');
                 }
 
             })
-            var id = id;
-            var tableGenerarReporte = $('#data-table-multimedia').DataTable({
-                "ajax": {
-                    "url": "../php/elearnningdata.php",
-                    "type": 'GET',
-                    "data": {
-                        id: +id
-                    },
-                },
-
-
-
-                // "ajax": '../php/elearnningdata.php/?valor=`id`',
-                "language": {
-                    "searchPlaceholder": "Buscar datos...",
-                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-                },
-                // "order": [
-                //     [0, 'desc']
-                // ],
-                orderCellsTop: true,
-                fixedHeader: true
-
-            });
-            setInterval(function() {
-                tableGenerarReporte.ajax.reload();
-            }, 20000);
-
-        }
+        
 
 
 
@@ -461,7 +433,7 @@ function idcursos(id){
                 // for (i = 0; i < res.length; i++) {
 
 
-                    alert(rsp);
+                   
 
 
 
@@ -493,28 +465,32 @@ function idcursos(id){
 
         ];
 
-        var tableGenerarReporte = $('#data-table-multimedia').DataTable({
-            "ajax": '',
-            "language": {
-                "searchPlaceholder": "Buscar datos...",
-                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-            },
-            // "order": [
-            //     [0, 'desc']
-            // ],
-            orderCellsTop: true,
-            fixedHeader: true
+        var id = id;
+         
+            var tableGenerarReporte = $('#data-table-multimedia').DataTable({
+                "ajax": {
+                    "url": "../php/elearnningdata.php",
+                    "type": 'GET',
+                    "data": {
+                        id: +id
+                    },
+                },
+                "language": {
+                    "searchPlaceholder": "Buscar datos...",
+                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                },
+                // "order": [
+                //     [0, 'desc']
+                // ],
+                orderCellsTop: true,
+                fixedHeader: true
 
-        });
+            });
+            setInterval(function() {
+                tableGenerarReporte.ajax.reload();
+            }, 20000);
 
-
-
-
-
-
-
-
-
+        }
         $(document).ready(function() {
             $('#btnguardar').click(function() {
                 var tituloV = $("#tituloV").val();
