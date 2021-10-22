@@ -108,6 +108,20 @@ $valor = count($gstIDprm);
 		echo "1";
 	}	 
 
+}else if($opcion==='bajaSpc'){
+
+	$idUsu = $_POST['idUsu'];
+	$spcId = $_POST['spcId'];
+
+	if(bajaSpc($idUsu,$spcId,$conexion)){
+		echo "0";
+				$realizo = 'BAJA ESPECIALIDAD';
+				$gstIdper = $idUsu;
+				historial($id,$realizo,$gstIdper,$conexion);		
+	}else{
+		echo "1";
+	}	
+
 }
 
 
@@ -158,7 +172,6 @@ $query="SELECT * FROM accesos WHERE password='$gstNmpld' AND usuario='$gstNombr'
 		}
 
 }
-
 
 
 function agrEspcldd($gstIdper,$AgstIDCat,$conexion){
@@ -222,8 +235,17 @@ function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDun
 	}
 	}
 
+	function bajaSpc($idUsu,$spcId,$conexion){
+	$query="UPDATE especialidadcat SET estado = '1' WHERE gstIdspc = $spcId ";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
+	$this->conexion->cerrar();	
+	}
 
-function cerrar($conexion){
+	function cerrar($conexion){
 
 	mysqli_close($conexion);
 

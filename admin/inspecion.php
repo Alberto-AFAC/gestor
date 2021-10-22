@@ -300,6 +300,70 @@
             </div>
 
 
+<!--------------------MODAL ESPECIALIDAD----------------------------->
+
+
+            <div class="modal fade" id="modal-especialidad">
+                <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">ESPECIALIDAD</h4>
+                            </div>
+                            <form id="Spcialidad">
+                                <div class="modal-body">
+                                    <input type="hidden" class="form-control" id="gstIDpr" name="gstIDpr" disabled="">
+                                    <div class="row">
+
+                                        <div class="form-group">
+   <!--                                          <div class="col-sm-5">
+                                                <label>NOMBRE</label>
+                                                <input type="text" class="form-control" id="spcialidnombre"
+                                                    name="spcialidadnombre" disabled="">
+                                            </div> -->
+                                            <div class="col-sm-offset-0 col-sm-12" style=" margin-bottom: 1em">
+                                                <label>ELIJA ESPECIALIDAD</label>
+                                                <select style="width: 100%" class="form-control" class="selectpicker"
+                                                    id="gstIDSpe" name="gstIDSpe" type="text" data-live-search="true">
+                                                    <option value="">ELIJA OPCIÓN </option>
+                                                    <?php while($oiras = mysqli_fetch_row($spcialidad)):?>
+                                                    <option value="<?php echo $oiras[0]?>"><?php echo $oiras[1]?>
+                                                    </option>
+                                                    <?php endwhile; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-7">
+                                                <button type="button" id="button" class="btn btn-info"
+                                                    onclick="especialidad();">ACEPTAR</button>
+                                            </div>
+                                            <b>
+                                                <p class="alert alert-success text-center padding exito" id="succeE">¡Se
+                                                    agrego especialidad con éxito !</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-info text-center padding error" id="dangerE">La
+                                                    especialidad ya fue agregada</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-warning text-center padding aviso" id="emptyE">Es
+                                                    necesario agregar especialidad</p>
+                                            </b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <?php include('agrStdPro.php'); ?>
 
         </div>
@@ -367,6 +431,7 @@
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function() {
+    $('#gstIDSpe').select2();
     $('#gstIDara').select2();
     $('#gstIDCat').select2();
     //$('#gstIDSub').select2();
@@ -381,6 +446,8 @@ $(document).ready(function() {
     $('#siglas').load('select/siglas.php');
     $('#comandancia').load('select/actbuscacom.php');
     $('#select2').load('select/acttablacom.php');
+    $('#subdireact').load('select/buscardepartact.php'); //Subdirección
+    $('#departact').load('select/tabladepact.php'); //departamento
 });
 </script>
 <script src="../js/select2.js"></script>

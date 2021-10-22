@@ -379,6 +379,9 @@ include('header.php');
 
             $("#uVideo").slideDown("slow");
             $("#cuadro1").hide("slow");
+
+            idcursos(id);
+
             $.ajax({
                 url: '../php/e-learnningSel.php',
                 type: 'POST'
@@ -425,6 +428,81 @@ include('header.php');
             }, 20000);
 
         }
+
+
+
+function idcursos(id){
+
+        var idc = id;
+            // $.ajax({
+            //     url: '../php/conE-learnnin.php',
+            //     type: 'POST',
+            //     data: 'idc='+idc
+            // }).done(function(resp) {
+
+        $.ajax({
+            url: '../php/conE-learnnin.php',
+            type: 'POST',
+            data: 'idc='+idc
+        }).done(function(rsp) {
+                // obj = JSON.parse(resp);
+                // var res = obj.data;
+                // for (i = 0; i < res.length; i++) {
+
+
+                    alert(rsp);
+
+
+
+                // }
+            })
+
+}
+
+
+
+    // SEGUNDO DATATABLES PARA VISUALIZAR LOS VIDEOS CARGADOS
+    var dataSet = [
+            <?php 
+
+    $id = "<script>document.writeln(id_curso)</script>";
+
+    $query ="SELECT * FROM elearnning  ";
+    $resultado = mysqli_query($conexion, $query);
+    $x = 0;
+    while($data = mysqli_fetch_array($resultado)){ 
+        $x++;
+     
+        
+        ?>
+
+            ["<?php echo $x?>","<?php echo $data['tituloV']?>","<?php echo $data['objetivoV']?>","$$$$$","<iframe width='220' height='100' src='<?php echo $data['url']?>'></iframe>"],
+
+            <?php  } ?>
+
+        ];
+
+        var tableGenerarReporte = $('#data-table-multimedia').DataTable({
+            "ajax": '',
+            "language": {
+                "searchPlaceholder": "Buscar datos...",
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            },
+            // "order": [
+            //     [0, 'desc']
+            // ],
+            orderCellsTop: true,
+            fixedHeader: true
+
+        });
+
+
+
+
+
+
+
+
 
         $(document).ready(function() {
             $('#btnguardar').click(function() {

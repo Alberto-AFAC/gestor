@@ -21,11 +21,8 @@ $are = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
 
-$sql = "SELECT id_sub,descripsub,id_2_sub FROM subdireccion WHERE estado = 0";
-$subdirec = mysqli_query($conexion,$sql);
-
-$sql = "SELECT id_departamentos,descripdep,id_3_dep FROM departamentos";
-$depart = mysqli_query($conexion,$sql);
+    $sqli = "SELECT gstIdcat,gstCatgr, gstCsigl FROM categorias WHERE estado = 0";
+      $spcialidad = mysqli_query($conexion,$sqli);
 
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
@@ -517,7 +514,10 @@ $depart = mysqli_query($conexion,$sql);
                             <label>FECHA INGRESO A LA AFAC</label>
                             <input disabled="" type="date" class="form-control" id="gstFeing" name="gstFeing">
                         </div>
-
+                       <div class="col-sm-4">
+                            <label class="label2">ESTATUS ALTA PERSONAL</label>
+                            <input disabled="" type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
+                        </div>
 
 <!--                         <div class="col-sm-4">
                             <label>CARGO</label>
@@ -696,7 +696,7 @@ $depart = mysqli_query($conexion,$sql);
                     </div>
 
 
-                    <div class="form-group">
+<!--                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion1();">EDITAR
                             SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
@@ -709,27 +709,19 @@ $depart = mysqli_query($conexion,$sql);
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="AgstAcReg"
                                      id="AgstAcReg" type="text" data-live-search="true">
                                     <option>SELECCIONE LA SUBDIRECCIÓN</option>
-                                    <?php while($subdic = mysqli_fetch_row($subdirec)):?>                      
-                    <option value="<?php echo $subdic[0]?>"><?php echo $subdic[1]?></option>
-                    <?php endwhile; ?>
+                                    <?php //while($subdic = mysqli_fetch_row($subdirec)):?>                      
+                    <option value="<?php //echo $subdic[0]?>"><?php //echo $subdic[1]?></option>
+                    <?php //endwhile; ?>
                     </select>
                             </p>
                         </div>
-                    </div>
-                    <!-- <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <label>DEPARTAMENTO</label>
-                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                id="gstIDara" type="text" data-live-search="true" disabled="">
-                                <option value="">SELECCIONE EL DEPARTAMENTO</option>
-                                <?php while($rea = mysqli_fetch_row($are)):?>
-                                <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                                <?php endwhile; ?>
-                            </select>
-                        </div>
                     </div> -->
 
-                    <div class="form-group">
+
+
+    
+
+<!--                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="depart" style="display: none; cursor: pointer;"><a onclick="departamento1();">EDITAR
                             DEPARTAMENTO <i class="fa fa-edit"></i></a></p>
@@ -742,13 +734,46 @@ $depart = mysqli_query($conexion,$sql);
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="departselec"
                                      id="departselec" type="text" data-live-search="true">
                                     <option>SELECCIONE EL DEPARTAMENTO</option>
-                                    <?php while($dep = mysqli_fetch_row($depart)):?>                      
-                                    <option value="<?php echo $dep[0]?>"><?php echo $dep[1]?></option>
-                                    <?php endwhile; ?>
+                                    <?php //while($dep = mysqli_fetch_row($depart)):?>                      
+                                    <option value="<?php //echo $dep[0]?>"><?php //echo $dep[1]?></option>
+                                    <?php //endwhile; ?>
                                 </select>
                             </p>
                         </div>
+                    </div> -->
+
+                    <div class="form-group">
+                    <div class="col-sm-12">
+                            <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion();">EDITAR
+                            SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
+                            <div id="subdirec2">
+                        <label>SUBDIRECCIÓN </label>
+                        <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
+
+                        <label>DEPARTAMENTO </label>
+                        <input type="text" name="departam" id="departam" class="form-control" disabled="">
+
+                            </div>
+                            <div id="subdirec3" style="display: none;">
+
+
+                        <div class="form-group">
+                        <div class="col-sm-12">
+                        <label class="label2">SUBDIRECCIÓN</label>
+                        <div id="subdireact"></div>                            
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="col-sm-12">
+                        <label class="label2">DEPARTAMENTO</label>
+                        <div id="departact"></div> 
+                        </div>   
+                        </div>
+                         </div>
+                        </div>
+
                     </div>
+
                     <div class="form-group">
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -776,13 +801,13 @@ $depart = mysqli_query($conexion,$sql);
      </div>
 
 
-
+     <input type="hidden" name="gstIDuni" id="gstIDuni">
 
 
        <div class="form-group">
     
      <div class="col-sm-12">
-        <label>ESPECIALIDAD</label>     
+        <label>ESPECIALIDAD</label> <a type='button' title='Nueva especialidad' onclick='spcialidad()' class='datos btn btn-default' data-toggle='modal' data-target='#modal-especialidad' style='width:40px; height:35px;padding:0;margin:0;'><img width='25px' style='padding-top:0.3em;' src='../dist/img/anadir.svg'></a>     
               <div id="especialidades"></div>    
 
          </div>          
@@ -871,8 +896,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                     
                     <div class="form-group" id="butons" style="display: none;"><br>
                         <div class="col-sm-offset-0 col-sm-2">
-                            <button type="buttonpuest" id="buttonpuest" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary"
-                                onclick="actPuesto();">ACTUALIZAR</button>
+                              <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actPuesto();">ACTUALIZAR</button>
                         </div>
                         <b>
                             <p class="alert alert-danger text-center padding error" id="danger1">Error al actualizar
@@ -951,6 +975,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
 
 </script>
 </div>
+
 <!--FIN DETALLE DECLINA CONVOCATORIA -->
             <!-------------------------------------------->
             <div class="tab-pane" id="curso">
