@@ -1894,7 +1894,7 @@ function spcialidads(gstIdper){
                 var res = obj.data;
                 var ss = 0;
 
-                html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>TITULO</th><th>ACCIONES</th></thead><tbody>';
+                html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>ESPECIALIDAD</th><th>ACCIONES</th></thead><tbody>';
                 for (s = 0; s < res.length; s++) {
 
 

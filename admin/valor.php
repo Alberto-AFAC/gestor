@@ -807,7 +807,7 @@ $psto = mysqli_query($conexion,$sql);
        <div class="form-group">
     
      <div class="col-sm-12">
-        <label>ESPECIALIDAD</label> <a type='button' title='Nueva especialidad' onclick='spcialidad()' class='datos btn btn-default' data-toggle='modal' data-target='#modal-especialidad' style='width:40px; height:35px;padding:0;margin:0;'><img width='25px' style='padding-top:0.3em;' src='../dist/img/anadir.svg'></a>     
+        <label>ESPECIALIDADES</label> <a type='button' title='Nueva especialidad' onclick='spcialidad()' class='datos btn btn-default' data-toggle='modal' data-target='#modal-especialidad' style='width:40px; height:35px;padding:0;margin:0;'><img width='25px' style='padding-top:0.3em;' src='../dist/img/anadir.svg'></a>     
               <div id="especialidades"></div>    
 
          </div>          
