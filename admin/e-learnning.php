@@ -242,14 +242,14 @@ include('header.php');
         </aside>
         <!-- MODAL CARGAR VIDEO -->
         <form id="uVideo" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
-            <div class="modal fade" data-backdrop="static" id="uVideoM" tabindex="-1" role="dialog" aria-labelledby="uVideoMLabel"
-                aria-hidden="true">
+            <div class="modal fade" data-backdrop="static" id="uVideoM" tabindex="-1" role="dialog"
+                aria-labelledby="uVideoMLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content" style="width: 120%;">
                         <input type="hidden" id="idCurso" name="idCurso">
                         <div class="modal-header">
                             <span style="font-size: 20px;" id="tituloCurso" name="tituloCurso"></span>
-                         
+
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -268,6 +268,17 @@ include('header.php');
                                     <input type="url" pattern="https?://.+" required id="url" name="url"
                                         class="form-control" style="text-transform: uppercase;">
                                 </div>
+                                <div class="col-sm-12"><br>
+                                    <label>Módulo</label>
+                                    <select type="text" class="form-control" id="modulo" name="modulo"
+                                        placeholder="Seleccione...">
+                                        <option value="">Seleccione...</option>
+                                        <option value="MODULO 1">MODULO 1</option>
+                                        <option value="MODULO 2">MODULO 2</option>
+                                        <option value="MODULO 3">MODULO 3</option>
+                                        <option value="MODULO 4">MODULO 4</option>
+                                    </select>
+                                </div>
                             </div><br><br>
                             <table id="data-table-multimedia" class="table table-bordered" width="100%" cellspacing="0">
                                 <thead>
@@ -282,7 +293,7 @@ include('header.php');
                             </table>
                         </div><br><br><br>
                         <div class="modal-footer">
-                        <a href="e-learnning"><button type="button" class="btn btn-secondary">CERRAR</button></a>
+                            <a href="e-learnning"><button type="button" class="btn btn-secondary">CERRAR</button></a>
                             <button type="button" id="btnguardar" class="btn btn-primary">GUARDAR</button>
                         </div>
                     </div>
@@ -510,6 +521,7 @@ function idcursos(id){
                 var objetivoV = $("#objetivoV").val();
                 var idCurso = $("#idCurso").val();
                 var url = $("#url").val();
+                var modulo = $("#modulo").val();
                 swal.showLoading();
                 if (tituloV == '' || objetivoV == '') {
                     Swal.fire({
@@ -528,6 +540,7 @@ function idcursos(id){
                             idCurso: idCurso,
                             tituloV: tituloV,
                             objetivoV: objetivoV,
+                            modulo: modulo,
                             url: url,
                         },
                         success: function(data) {
