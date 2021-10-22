@@ -16,7 +16,7 @@
         $x++;
 
  	
-	 $caledario[] = [ $x, $data["tituloV"],$data["objetivoV"],$data[""],$view];
+	 $caledario[] = [ $x, $data["tituloV"],$data["objetivoV"],$data["modulo"],$view];
 
 		}
 
