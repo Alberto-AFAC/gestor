@@ -1886,52 +1886,35 @@ function inspector(gstIdper) {
 
 function spcialidads(gstIdper){
 
-                $.ajax({
-                    url: '../php/conSpcialidad.php',
-                    type: 'POST'
-                }).done(function(resp) {
-                    obj = JSON.parse(resp);
-                    var res = obj.data;
-                    var ss = 0;
+            $.ajax({
+                url: '../php/conSpcialidad.php',
+                type: 'POST'
+            }).done(function(resp) {
+                obj = JSON.parse(resp);
+                var res = obj.data;
+                var ss = 0;
 
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>TITULO</th><th>ACCIONES</th></thead><tbody>';
-                    for (s = 0; s < res.length; s++) {
+                html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>TITULO</th><th>ACCIONES</th></thead><tbody>';
+                for (s = 0; s < res.length; s++) {
 
 
-                        if (obj.data[s].gstIDper == gstIdper) {
+                    if (obj.data[s].gstIDper == gstIdper) {
 
-                            datos = gstIdper;
+                        datos = gstIdper;
+                        dato = gstIdper+'*'+obj.data[s].gstIdspc+'*'+obj.data[s].gstCatgr;
+                        gstID = obj.data[s].gstIDper;
+                        if (obj.data[s].gstIdcat != 24) {
+                            ss++;
 
-                            gstID = obj.data[s].gstIDper;
-                            if (obj.data[s].gstIdcat != 24) {
-                                ss++;
-
-                                html += "<tr><td>" + ss + "</td><td>"+obj.data[s].gstCatgr+"</td><td><a onclick='spcBorrar(" + '"' + datos + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialista'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
-                            } //<a type='button' title='Eliminar' onclick='eliminar()' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a>
-                            // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
-                        }
+                            html += "<tr><td>" + ss + "</td><td>"+obj.data[s].gstCatgr+"</td><td><a onclick='spcBorrar(" + '"' + dato + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialidad'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                        } 
                     }
-                    html += '</tbody></table></div></div></div>';
-                    $("#especialidades").html(html);
-                })
-
-}
-
-
-// function mosSpc(datos){
-
-   
-//     document.getElementById(datos).disabled = false;
-//     $("#"+datos+"ocultar").hide();
-//     $("#"+datos+"mostrar").show();
-
-// }
-
-    function spcBorrar(datos){
-
-    $("#eliminarspci #spcId").val(datos);
-
+                }
+                html += '</tbody></table></div></div></div>';
+                $("#especialidades").html(html);
+            })
     }
+
 
 ///////////DATOS PERSONAL FINAL DE CONSULTA/////////////
 
@@ -1940,19 +1923,8 @@ function consultaCurso(gst) {
 
     var d = gst.split("*");
 
-
     gstIdper = d[0];
     gstCateg = d[1];
-    //alert('valor: '+d[0]);
-
-    // $.ajax({
-    //     url: '../php/gesCurso.php',
-    //     type: 'POST'
-    // }).done(function(resp) {
-    //     obj = JSON.parse(resp);
-    //     var res = obj.data;
-
-
     $.ajax({
         url: '../php/lisOblig.php',
         type: 'POST',
@@ -1979,11 +1951,6 @@ function consultaCurso(gst) {
         html += '</tbody></table></div></div></div>';
         $("#obligados").html(html);
     })
-
-
-    // })
-
-
 }
 
 
@@ -2008,18 +1975,12 @@ function evaluar() {
 
     $("input:checkbox").prop('checked', $(this).prop("checked"));
 
-
-
     actuals = actual.substr(1);
-
     comntr = document.getElementById('comntr').value;
     //evla = document.getElementById('evla').value;
-
     datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actuals + '&comntr=' + comntr + '&opcion=evaluar';
     //alert(datos);
-
     if (actual.length >= '12' && '12' >= actual.length) {
-
 
         if (gstInspr == ',,,' || gstIdprm == ',,,') {
 
@@ -2130,10 +2091,6 @@ function resultado(result) {
                 $("#Result #siglas").val(d[6]);
                 $("#Result #adscripcion").val(d[7]);
                 $("#Result #departamento").val(d[8]);
-
-
-
-
 
             }
         }
@@ -2801,8 +2758,47 @@ function spcialidad(gstIdper) {
             }
         }
     })
-
 }
+
+    function spcBorrar(dato){
+
+        var d = dato.split("*");
+
+    $("#eliminarspci #spcId").val(d[1]);
+    $("#eliminarspci #idUsu").val(d[0]);
+    $("#spcldd").html(d[2]);
+
+    }
+    function borrarSpc(){
+
+        spcId = document.getElementById('spcId').value;
+        idUsu = document.getElementById('idUsu').value;
+       //alert(spcId+'*'+idUsu);
+        $.ajax({
+            url: '../php/agrEvalu.php',
+            type: 'POST',
+            data: 'idUsu=' +idUsu+ '&spcId=' + spcId + '&opcion=bajaSpc'
+        }).done(function(respuesta) {
+            //console.log(respuesta);
+
+            if (respuesta == 0) {
+                //$("#baja").hide();
+                $('#succe12').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe12').toggle('toggle');
+                }, 2000);
+                //let gstIdper = spcId;
+              spcialidads(idUsu); 
+
+            } else {
+                $('#danger12').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger12').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
+
 
 function especialidad() {
 

@@ -3,7 +3,7 @@
 	session_start();
 	
 	$query = "
-	SELECT categorias.gstIdcat,gstCsigl,gstCatgr,especialidadcat.gstIDper FROM personal INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat WHERE personal.estado=0 ORDER BY especialidadcat.gstIdspc ASC
+	SELECT gstIdspc,categorias.gstIdcat,gstCsigl,gstCatgr,especialidadcat.gstIDper FROM personal INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat WHERE especialidadcat.estado=0 ORDER BY especialidadcat.gstIdspc ASC
 	";
 	$resultado = mysqli_query($conexion, $query);
 

@@ -702,28 +702,24 @@
                       <h4 class="modal-title">ELIMINAR ESPECIALIDAD</h4>
                   </div>
                   <div class="modal-body">
-                    <input type="text" name="spcId" id="spcId">
-                    <!-- <input type="hidden" name="doceliminar" id="doceliminar"> -->
+                    <input type="hidden" name="spcId" id="spcId">
+                    <input type="hidden" name="idUsu" id="idUsu">
                       <div class="form-group">
                           <div class="col-sm-12">
-                           <label class="label2" id="titledoc" for=""></label>
-                              <p>¿ESTÁ SEGURO DE ELIMINAR LA ESPECIALIDAD?<span id=""></span> </p>
+                           <label class="label2" for=""></label>
+                              <p>¿ESTÁ SEGURO DE ELIMINAR LA ESPECIALIDAD? <span id="spcldd"></span> </p>
                           </div>
                           <br>
                           <div class="col-sm-5">
-                              <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="borrardoc()">ACEPTAR</button>
+                              <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="borrarSpc()">ACEPTAR</button>
                           </div>
                           <b>
-                              <p class="alert alert-warning text-center padding error" id="danger7">Error
-                                  al eliminar archivo</p>
+                              <p class="alert alert-warning text-center padding error" id="danger12">Error
+                                  al eliminar especialidad</p>
                           </b>
                           <b>
-                              <p class="alert alert-success text-center padding exito" id="succe7">¡Se
-                                  elimino archivo con éxito !</p>
-                          </b>
-                          <b>
-                              <p class="alert alert-danger text-center padding aviso" id="aviso7">Error
-                                  archivo para eliminar </p>
+                              <p class="alert alert-success text-center padding exito" id="succe12">¡Se
+                                  elimino especialidad con éxito !</p>
                           </b>
                       </div>
                   </div>
