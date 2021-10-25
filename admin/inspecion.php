@@ -470,39 +470,22 @@ $resultado = mysqli_query($conexion, $query);
       $result = $data['gstIdper'];
 
 
+    $query = "SELECT *
+    FROM cursos 
+    WHERE idinsp  = $gstIdper AND proceso = 'FINALIZADO'";
+    $resultado = mysqli_query($conexion, $query);
+    if($curs = mysqli_fetch_row($resultado)){ 
 
-        $query = 
-"
-SELECT *
-FROM cursos 
-WHERE idinsp  = $gstIdper";
-$resultado = mysqli_query($conexion, $query);
-if($fecs = mysqli_fetch_row($resultado)){ 
+    $cursor = "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
 
-$curso = "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
-
-
-}else{  
-$curso = "<span style='font-weight: bold; height: 50px; color: green;'>--Nuevo ingreso</span>";  
-}
-
-
-
-                // if($antiguedad <=30){
-                //                 echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
-                //             }else {
-                //                 echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
-                //             }
-
+    }else{  
+    $cursor = "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";  
+    }
 
       ?>
 
     ["<?php echo  $data['gstNmpld']?>", "<?php echo  $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
-        "<?php echo $data['gstCatgr']?>", "<?php echo $data['Ingreso']?>", "<?php 
-						
-								echo "$curso";
-							
-							?>", "<?php
+        "<?php echo $data['gstCatgr']?>", "<?php echo $data['Ingreso']?>", "<?php echo "$cursor"?>", "<?php
 
 
                 if($data['gstEvalu'] == 'NO'){
@@ -520,25 +503,7 @@ $curso = "<span style='font-weight: bold; height: 50px; color: green;'>--Nuevo i
     <?php } ?>
 ];
 
-// var tableGenerarReporte = $('#data-table-inspectores').DataTable({
-//     "language": {
-//     "searchPlaceholder": "Buscar datos...",
-//     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-//     },
-//     "order": [[5,'asc']],
-//     orderCellsTop: true,
-//     fixedHeader: true,
-//     data: dataSet,
-//     columns: [
-//     {title: "ID"},
-//     {title: "NOMBRE(S)"},
-//     {title: "APELLIDO(S)"},
-//     {title: "CATEGORÍA"},
-//     {title: "FECHA DE INGRESO"},
-//     {title: "DETALLES"},
-//     {title: "ACCIÓN"}
-//     ],
-//     });
+
 $(document).ready(function() {
   var currentdate = new Date();
     var datetime = "Fecha de Impresion: " + currentdate.getDate() + "/"
