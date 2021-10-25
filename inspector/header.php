@@ -56,7 +56,9 @@
       $query = mysqli_query($conexion,$sql2);
       $datos2 = mysqli_fetch_assoc($query);
   
-
+      $datos[0];
+      $sql = "SELECT * FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc asc";
+      $cursos = mysqli_query($conexion,$sql);
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
@@ -201,13 +203,7 @@
             </span>
           </a>
         </li>
-        <li>
-          <a href="cursos">
-            <!-- <i class="fa fa-graduation-cap" ></i> <span>E-learnning</span> -->
-            <!-- <span class="pull-right-container"> -->
-            </span>
-          </a>
-        </li> 
+
         <!--  -->
         
         <!--  -->

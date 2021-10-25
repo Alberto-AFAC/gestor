@@ -109,9 +109,34 @@ include('header.php');
                 <div class="row">
                     <div class="col-md-12">
                         <div style="padding-top: 65px;" class="container box box-solid">
-                            <table id="data-table-ponderacion" class="table table-bordered" width="100%"
-                                cellspacing="0">
-                            </table>
+                            <ul class="nav nav-tabs" id="myNavTabs">
+                                <li class="active"><a href="#navtabs1" data-toggle="tab">HISTORIAL DE CONSTANCIAS Y
+                                        CERTIFICADOS</a>
+                                <li><a href="#navtabs2" data-toggle="tab">VERIFICAR CONSTANCIAS</a>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="navtabs1"> <br><br>
+                                    <table id="data-table-ponderacion" class="table table-bordered" width="100%"
+                                        cellspacing="0">
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="navtabs2"><br><br>
+                                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                                      
+                                        <label for="">INGRESE ID DE CERTIFICADO</label>
+                                        <input class="form-control" type="text" name="validar" required><br>
+                                        <input class="btn btn-info" type="submit" value="VALIDAR" name="submit">
+                                    </form><br>
+                                    <?php 
+                                    if(isset($_POST['submit'])){
+                                        $validar = base64_decode($_POST['validar']);
+                                        echo "<img src='../dist/img/check.gif' style='display: block; margin-left: auto; margin-right: auto; width: 150px;'><br><center><span style='font-size: 24px; color: gray;'>{$validar}</span></center>";
+
+                                    }
+                                        ?>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- /.box -->
                     </div>
@@ -484,7 +509,7 @@ function perfil(id) {
         var x = 0;
         html =
             '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th>';
-     
+
 
         for (i = 0; i < res.length; i++) {
             x++;

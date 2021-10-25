@@ -1,8 +1,6 @@
 <?php 
 include ("../conexion/conexion.php");
-      $datos[0];
-      $sql = "SELECT * FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc asc";
-      $cursos = mysqli_query($conexion,$sql);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,6 +62,9 @@ include ("../conexion/conexion.php");
 
         <?php
   include('header.php');
+
+
+
   ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -356,20 +357,140 @@ $datos[0];?>
 <script type="text/javascript">
 var dataSet = [
     <?php 
-$query = "SELECT *,DATE_FORMAT(iCurse, '%d/%m/%Y') as inicio,DATE_FORMAT(fCurse, '%d/%m/%Y') as final 
-FROM historyc 
-INNER JOIN listacursos ON gstIdlsc = nCurse
-WHERE id_inspector = $datos[0] AND historyc.estado = 0";
-$resultado = mysqli_query($conexion, $query);
+
+
+$queri = "SELECT *,DATE_FORMAT(iCurse, '%d/%m/%Y') as inicio,DATE_FORMAT(fCurse, '%d/%m/%Y') as final FROM historyc WHERE id_inspector = $datos[0] ";
+$result = mysqli_query($conexion, $queri);
 $x =0;
-while($data = mysqli_fetch_array($resultado)){ 
-    $x++;
-?>["<?php echo $x?>", "<?php echo $data['gstTitlo']?>", "<?php echo $data['tCurse']?>", "<?php echo $data['inicio']?>",
-        "<?php echo $data['final']?>", ""],
+while($datas = mysqli_fetch_array($result)){ 
+$x++;
+$query = 
+"
+SELECT 
+DATE_FORMAT(fechaf, '%d-%m-%Y') AS fechaf,
+idinsp,
+proceso,
+evaluacion,
+idmstr,
+confirmar, 
+gstTitlo,
+gstVignc
+FROM listacursos 
+INNER JOIN cursos ON gstIdlsc = idmstr 
+WHERE gstIdlsc = ".$datas['nCurse']."";
+$resultado = mysqli_query($conexion, $query);
+if($fecs = mysqli_fetch_row($resultado)){ 
+   
+ $fecs[0];
+ $fecs[1];
+ //$per[0];
+
+$fechav = date("d-m-Y",strtotime($fecs[0]."+ ".$fecs[7]." year"));     
+
+$vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
+ini_set('date.timezone','America/Mexico_City');
+$actual= date("d-m-Y"); 
+
+$f1 = strtotime($fechav);
+$f2 = strtotime($vencer);
+$f3 = strtotime($actual);
+
+if($fecs[7]==101){  
+
+    ///echo $fecs[7];
+
+//if($fecs[3] >= 80){ //$fech = 'vigente'; 
 
 
-    <?php }?>
+     //if($fecs[3] < 80 && $fecs[2]=='FINALIZADO'){ 
+
+    $conf = "<div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'><p style='color:red;float:left; '></p>REALIZADO</div>";      
+
+    ?>
+
+   ["<?php echo $x?>", "<?php echo $fecs[6]?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
+        "<?php echo $datas['final']?>", "<?php echo $conf?>"],
+
+  <?php  
+//}
+
+ }else 
+
+//////////////////////////////////
+ if($f3>=$f1){
+//$fech = 'vencido';
+$conf = "<div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color:#AC2925;'>REPROGRAMAR</div>";
+
+?>
+
+    
+
+["<?php echo $x?>", "<?php echo $fecs[6]?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
+        "<?php echo $datas['final']?>", "<?php echo $conf?>"],
+
+<?php
+}else if($f3 <= $f2 && $fecs[3] >= 80 ){ //$fech = 'vigente'; 
+$conf = "<div title='$fechav' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: #398439;'>VIGENTE</div>";
+?>
+
+["<?php echo $x?>", "<?php echo $fecs[6]?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
+        "<?php echo $datas['final']?>", "<?php echo $conf?>"],
+
+
+<?php }
+
+else 
+
+if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
+
+
+
+if($fecs[5] == 'CONFIRMADO'){
+   $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p>POR REALIZAR</td>";
+}else{
+  $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>#</p>POR REALIZAR</td>";  
+}
+
+    ?>
+
+["<?php echo $x?>", "<?php echo $fecs[6]?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
+        "<?php echo $datas['final']?>", "<?php echo $conf?>"],
+     
+
+
+
+<?php
+
+}else if($f3 >= $f2){   //$fech = 'por vencer';   
+
+$conf = "<div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: #D58512;'>POR VENCER</div>";
+?>
+
+["<?php echo $x?>", "<?php echo $fecs[6]?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
+        "<?php echo $datas['final']?>", "<?php echo $conf?>"],
+     
+<?php
+}  
+
+  }else{  
+
+  $conf = "<div title='Historial' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'><p style='color:red;float:left; '></p>REALIZADO</div>";  
+    ?>
+
+["<?php echo $x?>", "<?php echo $datas['nCurse']?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
+        "<?php echo $datas['final']?>", "<?php echo $conf?>"],
+ <?php 
+
+}
+
+
+}
+
+
+?>
 ];
+
+
 var tableGenerarReporte = $('#data-table-historial').DataTable({
     "language": {
         "searchPlaceholder": "Buscar datos...",

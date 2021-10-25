@@ -173,13 +173,13 @@ include('header.php');
                     <div class="form-group">
                           <div class="col-sm-12">
                             <label class="label2">SUBDIRECCIÓN</label>
-                         <div id="subdire"></div>                            
+                         <div id="subdirect"></div>                            
                         </div>
                         </div>
                     <div class="form-group">
                      <div class="col-sm-12">
                         <label class="label2">DEPARTAMENTO</label>
-                        <div id="depart1"></div> 
+                        <div id="departos1"></div> 
                     </div>   
                                   
                 </div>   
@@ -319,8 +319,8 @@ $('#AgstIDSub').select2();
  $('#select3').load('select/tablacom.php');
  $('#categoria').load('select/buscatego.php');
  $('#subcategoria').load('select/tabsubcat.php');
- $('#subdire').load('select/buscardepart.php'); //Subdirección
- $('#depart1').load('select/tabladep.php'); //departamento
+ $('#subdirect').load('select/buscardepart.php'); //Subdirección
+ $('#departos1').load('select/tabladep.php'); //departamento
 
  
 
