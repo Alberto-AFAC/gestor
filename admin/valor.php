@@ -814,6 +814,28 @@ $psto = mysqli_query($conexion,$sql);
      </div>
 
 
+
+
+
+<div class="form-group">
+<div class="col-sm-6">
+
+<label>OJT   </label> <p>ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+
+<div>
+
+ <div id="docInsp"></div>    
+
+<!-- <td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual()" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a> -->
+</div>                            
+</div>
+<div class="col-sm-6">
+<label>BITÁCORAS</label> <p>ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+<div> 
+    <div id="docBita"></div>    
+</div> 
+</div>
+</div>
 <!-- <div class="col-sm-6">
 <label>CATEGORIA</label>
 <select style="width: 100%" class="form-control" disabled="" class="selectpicker"
