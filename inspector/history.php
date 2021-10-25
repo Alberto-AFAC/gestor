@@ -397,36 +397,22 @@ $f3 = strtotime($actual);
 
 if($fecs[7]==101){  
 
-if($fecs[3] >= 80){ //$fech = 'vigente'; 
+    ///echo $fecs[7];
 
-    $conf = "<div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'><p style='color:red;float:left; '></p>REALIZADO</div>";      
-
-?>
-
-   ["<?php echo $x?>", "<?php echo $fecs[6]?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
-        "<?php echo $datas['final']?>", "<?php echo $conf?>"],
+//if($fecs[3] >= 80){ //$fech = 'vigente'; 
 
 
-<?php }
+     //if($fecs[3] < 80 && $fecs[2]=='FINALIZADO'){ 
 
-     if($fecs[3] < 80 && $fecs[2]=='FINALIZADO'){ 
-
-// if($fecs[5] == 'CONFIRMADO'){
-//    $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p>POR REALIZAR</td>";
-// }else{
-//   $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>#</p>POR REALIZAR</td>";  
-// }
     $conf = "<div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'><p style='color:red;float:left; '></p>REALIZADO</div>";      
 
     ?>
-
-
 
    ["<?php echo $x?>", "<?php echo $fecs[6]?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
         "<?php echo $datas['final']?>", "<?php echo $conf?>"],
 
   <?php  
-}
+//}
 
  }else 
 
