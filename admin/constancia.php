@@ -82,7 +82,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     }
 
     .nombre-persona-c {
-        font-size: 60px;
+        font-size: 53px;
         font-family: 'Montserrat', sans-serif;
         font-weight: bold;
         color: #BE0202;
@@ -278,7 +278,8 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     </div>
     <div class='footer-constancia'>
     <span class='p-2'><span style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
-</div>";
+    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+    </div>";
 } else if($con['gstCntnc'] == 'CERTIFICADO'){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
@@ -326,6 +327,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     </div>
     <div class='footer-constancia'>
     <span class='p-2'><span style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
 </div>";
 }else {
     echo "<div style='text-align: center;'>
@@ -438,7 +440,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
        }
        ?>
         <?php } ?>
-
+       <p class="p-2">PROMEDIO DE APROVECHAMIENTO <strong><?php echo $EvaluacionF ?></strong></p>
     </div>
     <!-- <?php 
         $datos = $_GET['data'];
