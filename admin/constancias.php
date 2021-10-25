@@ -124,7 +124,7 @@ include('header.php');
                                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                                       
                                         <label for="">INGRESE ID DE CERTIFICADO</label>
-                                        <input class="form-control" type="text" name="validar"><br>
+                                        <input class="form-control" type="text" name="validar" required><br>
                                         <input class="btn btn-info" type="submit" value="VALIDAR" name="submit">
                                     </form><br>
                                     <?php 
