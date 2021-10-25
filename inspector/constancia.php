@@ -440,7 +440,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
        }
        ?>
         <?php } ?>
-       <p class="p-2">PROMEDIO DE APROVECHAMIENTO <strong><?php echo $EvaluacionF ?></strong></p>
+       <p class="p-2">PROMEDIO DE APROVECHAMIENTO <strong><?php echo $EvaluacionF ?> %</strong></p>
     </div>
     <!-- <?php 
         $datos = $_GET['data'];
