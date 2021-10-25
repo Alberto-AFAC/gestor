@@ -2652,7 +2652,7 @@ function asignar() {
     var AgstIDCat = document.getElementById('AgstIDCat').value;
     var AgstIDSub = document.getElementById('depart').value;
     var AgstIDuni = document.getElementById('gstIDuni').value;
-    var AgstAcReg = document.getElementById('subdireccion').value; //subdirección
+    var AgstAcReg = document.getElementById('subdireccion1').value; //subdirección
     var AgstNucrt = document.getElementById('AgstNucrt').value;
     var gstNombr = document.getElementById('gstNombr').value;
     var gstNmpld = document.getElementById('gstANmpld').value;
