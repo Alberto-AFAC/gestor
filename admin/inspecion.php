@@ -470,15 +470,38 @@ $resultado = mysqli_query($conexion, $query);
       $result = $data['gstIdper'];
 
 
+
+        $query = 
+"
+SELECT *
+FROM cursos 
+WHERE idinsp  = $gstIdper";
+$resultado = mysqli_query($conexion, $query);
+if($fecs = mysqli_fetch_row($resultado)){ 
+
+$curso = "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
+
+
+}else{  
+$curso = "<span style='font-weight: bold; height: 50px; color: green;'>--Nuevo ingreso</span>";  
+}
+
+
+
+                // if($antiguedad <=30){
+                //                 echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
+                //             }else {
+                //                 echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
+                //             }
+
+
       ?>
 
     ["<?php echo  $data['gstNmpld']?>", "<?php echo  $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
         "<?php echo $data['gstCatgr']?>", "<?php echo $data['Ingreso']?>", "<?php 
-							if($antiguedad <=30){
-								echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
-							}else {
-								echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
-							}
+						
+								echo "$curso";
+							
 							?>", "<?php
 
 
