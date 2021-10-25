@@ -1495,7 +1495,9 @@ function inspector(gstIdper) {
                 } else {
                     $("#ocultar1").show();
                     $("#ocultar2").show();
+
                     document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+
                 }
 
 
