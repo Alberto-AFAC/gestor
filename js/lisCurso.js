@@ -1142,7 +1142,7 @@ function enviarMail() {
         text: 'Espere por favor...'
     });
     $.ajax({
-        url: 'enviarMail.php',
+        url: '../admin/enviarMail.php',
         type: 'POST',
         data: 'gstIdlsc=' + gstIdlsc
     }).done(function(html) {
