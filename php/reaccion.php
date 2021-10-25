@@ -31,10 +31,22 @@ if($opcion === 'agreaccion'){
 	$preg14 = $_POST['preg14'];
 	$preg15 = $_POST['preg15'];
 	$preg16 = $_POST['preg16'];
+	$preg17 = $_POST['preg17'];
+	$preg18 = $_POST['preg18'];
+	$preg19 = $_POST['preg19'];
+	$preg20 = $_POST['preg20'];
+	$preg21 = $_POST['preg21'];
+	$preg22 = $_POST['preg22'];
+	$preg23 = $_POST['preg23'];
+	$preg24 = $_POST['preg24'];
+	$preg25 = $_POST['preg25'];
+	$preg26 = $_POST['preg26'];
+	$preg27 = $_POST['preg27'];
+	$id_instruct = $_POST['id_instruct'];
 
 
 
-	if(reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$conexion)){
+	if(reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$id_instruct,$conexion)){
 		echo "0";
 	}else{
 		echo "1";
@@ -119,9 +131,9 @@ $resultado= mysqli_query($conexion,$query);
 		$this->conexion->cerrar();
 }
 
-function reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$conexion){
+function reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$id_instruct,$conexion){
 
-			$query="INSERT INTO reaccion VALUES(0,'$idcurso','$fechareac','$preg1','$preg2','$preg3','$preg4','$preg5','$preg6','$preg7','$preg8','$preg9','$preg10','$preg11','$preg12','$preg13','$preg14','$preg15','$preg16',0)";
+			$query="INSERT INTO reaccion VALUES(0,'$idcurso','$fechareac','$preg1','$preg2','$preg3','$preg4','$preg5','$preg6','$preg7','$preg8','$preg9','$preg10','$preg11','$preg12','$preg13','$preg14','$preg15','$preg16','$preg17','$preg18','$preg19','$preg20','$preg21','$preg22','$preg23','$preg24','$preg25','$preg26','$preg27','$id_instruct',0)";
 				if(mysqli_query($conexion,$query)){
 					return true;
 				}else{

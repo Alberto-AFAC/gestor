@@ -74,7 +74,7 @@
                         <div class="card">
                             <span></span>
                             <div class="content">
-                                <h3>COCODÍ</h3>
+                                <h3>COCODI</h3>
                                 <img class="img-servicios" src="../models/menu/images/cocodi.svg" width="75%;" alt="tecnico"><br><br>
                                 <a href="#">Iniciar</a>
                             </div>
