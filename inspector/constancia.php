@@ -5,7 +5,7 @@ $dir = 'temp/';
 
 if(!file_exists($dir))
     mkdir($dir);
-$filename = $dir.'test.png';
+$filename = $dir.'QR.png';
 
 $tamanio = 5;
 $level = 'H';
@@ -31,6 +31,19 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         rel="stylesheet">
     <!-- SIN LIBRERIAS -->
     <style>
+    body {
+        padding: .5in;
+    }
+
+    @page {
+
+        margin: 0;
+    }
+
+    .page_break {
+        page-break-before: always;
+    }
+
     .CIAAC {
         font-family: 'Montserrat', sans-serif;
         font-size: 38px;
@@ -56,6 +69,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         font-family: 'Montserrat', sans-serif;
         font-size: 24px;
     }
+
     .p-3 {
         font-family: 'Montserrat', sans-serif;
         font-size: 20px;
@@ -68,7 +82,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     }
 
     .nombre-persona-c {
-        font-size: 60px;
+        font-size: 45px;
         font-family: 'Montserrat', sans-serif;
         font-weight: bold;
         color: #BE0202;
@@ -82,6 +96,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         text-align: center;
         text-transform: uppercase;
     }
+
     .titulo-certificador {
         font-family: 'Montserrat', sans-serif;
         font-size: 35px;
@@ -93,12 +108,13 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 
     .nombre-curso {
         font-family: 'Montserrat', sans-serif;
-        font-size: 44px;
+        font-size: 35px;
         font-weight: bold;
         letter-spacing: 5px;
         text-align: center;
         text-transform: uppercase;
     }
+
     .nombre-cursor {
         font-family: 'Montserrat', sans-serif;
         font-size: 35px;
@@ -126,6 +142,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         text-align: left;
         line-height: 35px;
     }
+
     .footer-constancia-gold {
         position: fixed;
         bottom: 195px;
@@ -135,6 +152,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         text-align: center;
         line-height: 35px;
     }
+
     .afojas1 {
         position: fixed;
         bottom: 300px;
@@ -147,6 +165,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         font-family: 'Montserrat', sans-serif;
 
     }
+
     .footer-constancia {
         position: fixed;
         bottom: 160px;
@@ -159,6 +178,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         font-family: 'Montserrat', sans-serif;
 
     }
+
     footer {
         position: fixed;
         bottom: -40px;
@@ -220,8 +240,9 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     class='nombre-persona-c'>{$nombresCompletos}</span></p>
     <p class='otorga'>Por haber participado en el curso:</p>
             <p class='nombre-curso'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Impartido por el <span style='font-weight:bold;'>{$con['sede']}</span><span class='p-2'>, comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
+    </p><span class='p-2'>Comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
+    al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
+        class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
         <p class='p-2'>Director del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
@@ -244,8 +265,8 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         </div>
     </div>
     <div>
-    <p class='p-2'>La presente <span style='font-weight: bold;'><u>Constancia</u></span> ampara los Temas vistos en el CURSO:
-    <span style='font-weight: bold;'>{$con['gstTitlo']}</span>, que a
+    <p class='p-2'>Esta <span style='font-weight: bold;'><u>constancia</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
+           {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
     </div>
     <div class='footer-constancia-gold'>
@@ -257,7 +278,8 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     </div>
     <div class='footer-constancia'>
     <span class='p-2'><span style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
-</div>";
+    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+    </div>";
 } else if($con['gstCntnc'] == 'CERTIFICADO'){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
@@ -292,7 +314,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         </div>
     </div>
     <div>
-    <p class='p-2'>Este certificado ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
+    <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
            {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
     </div>
@@ -305,6 +327,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     </div>
     <div class='footer-constancia'>
     <span class='p-2'><span style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
 </div>";
 }else {
     echo "<div style='text-align: center;'>
@@ -342,12 +365,14 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     </div>
     <div>
     </div><br><br><br>
+    <div class='page_break'>
     <div class='footer2'>
     <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
     class='p-2'>Secretaria de
     Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
     Adiestramiento de
     Aviación Civil / SCT-AFAC-CIAAC</span>
+    </div>
     </div>
 </div>";
 }
@@ -395,7 +420,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
                 <?php echo $con['gstTitlo']?></span>, que a
             continuación se enlistan:</p>
         </div> -->
-        <div>
+    <div>
         <?php 
        $datos = $_GET['data'];
        $queryTemario = "SELECT idtem, titulo,idcurso FROM temario WHERE idcurso = $idc";
@@ -405,7 +430,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
                           $contador ++;
                           $temario = $contador."-. ".$consulta2['titulo'];
        ?>
-       <?php
+        <?php
        if($con['gstCntnc'] == 'CONSTANCIA'){
         echo "<p class='p-2'>{$temario}</p>";
        }else if($con['gstCntnc'] == 'CERTIFICADO'){
@@ -415,7 +440,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
        }
        ?>
         <?php } ?>
-
+       <p class="p-2">PROMEDIO DE APROVECHAMIENTO <strong><?php echo $EvaluacionF ?></strong></p>
     </div>
     <!-- <?php 
         $datos = $_GET['data'];
@@ -429,7 +454,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
         <!-- a fojas
             <?php echo $consulta2['afojas'];?> del libro de <?php echo $consulta2['libro'];?> -->
     </div>
-   
+
     <?php
         // require_once 'dompdf/autoload.inc.php';
         require_once '../dist/dompdf/autoload.inc.php';
@@ -439,7 +464,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
             $dompdf->load_html(ob_get_clean());
             // $dompdf->set_option('enable_font_subsetting', true);
             $dompdf->render();
-            $dompdf->stream("certificate-CIAAC", array("Attachment" => 1));
+            $dompdf->stream("certificate-CIAAC", array("Attachment" => 0));
             $pdf = $dompdf->output();
             $filename = "certificados/certificate-CIAAC.pdf";
             file_put_contents($filename, $pdf);
