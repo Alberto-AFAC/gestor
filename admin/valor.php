@@ -174,7 +174,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">A)</th>
                             <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td></td><td></td>
 
 
 
@@ -232,19 +232,19 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row"></th>
                             <td>BÁSICO</td>
                             <td><div id="bscos"></div></td>
-                            <td><div id="Bfecha"></div></td>
+                            <td><div id="Bfecha"></div></td> <td></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>RECURRENTE</td>
                             <td><div id="recurnt"></div></td>
-                            <td><div id="Rfecha"></div></td>
+                            <td><div id="Rfecha"></div></td> <td></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>ESPECIFICOS</td>
                             <td><div id="specifico"></div></td>
-                            <td><div id="Efecha"></div></td>
+                            <td><div id="Efecha"></div></td> <td></td>
                         </tr>
                     </tbody>
                     
