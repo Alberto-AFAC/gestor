@@ -670,12 +670,12 @@
     }
 
      //porcentaje de REGULAR
-  $cantidadexc = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12; 
-  $totalfullexc = $totalresg * 12;
-  $totalexc = $cantidadexc * 100;
-      function porcentaje4($totalfullexc, $totalexc, $redondear = 2) {
-        return round($totalexc / $totalfullexc, $redondear); 
-    }
+  //$cantidadexc = $regual + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12; 
+  //$totalfullexc = $totalresg * 12;
+  //$totalexc = $cantidadexc * 100;
+    //  function porcentaje4($totalfullexc, $totalexc, $redondear = 2) {
+      //  return round($totalexc / $totalfullexc, $redondear); 
+   // }
 
 
     // $n1 = 255;
