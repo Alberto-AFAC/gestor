@@ -535,7 +535,7 @@ function perfil(gstIdper) {
 
                             $("#Pusto #gstSigID").val(obj.data[i].gstSigID); // estatus
                             $("#Pusto #adscripcion").val(obj.data[i].adscripcion);
-                           // $("#Pusto #subdir1").val(obj.data[i].gstAcReg); //area de adscripción modificar 
+                            // $("#Pusto #subdir1").val(obj.data[i].gstAcReg); //area de adscripción modificar 
 
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
@@ -933,7 +933,7 @@ function perfil(gstIdper) {
     $("#gstIdperAct").val(gstIdper);
     $("#gstIdperEli").val(gstIdper);
     // $("#arcIdperEli").val(gstIdper); 
-    
+
     consultarDoc(gstIdper);
     constudios(gstIdper);
     conprofesion(gstIdper);
@@ -1325,7 +1325,7 @@ function adjunojt(v) {
     $("#modal-doc #ojtdocadjunto").val(v);
 }
 
-function adjuntarOjt(){
+function adjuntarOjt() {
 
     ojtIdper = document.getElementById('ojtIdper').value;
 
@@ -1354,7 +1354,7 @@ function adjuntarOjt(){
                     $('#exitojt').toggle('toggle');
                 }, 4000);
 
-               consultardocIns(ojtIdper);
+                consultardocIns(ojtIdper);
 
             } else if (r == 1) {
                 $('#fallajt').toggle('toggle');
@@ -1393,14 +1393,14 @@ function adjuntarOjt(){
 
 ///ACTUALIZAR
 
-function actualOjt(){
+function actualOjt() {
 
     ojtIdperact = document.getElementById('ojtIdperact').value;
 
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('OjtAgraAct', $('#OjtAgraAct')[0].files[0]);
     paqueteDeDatos.append('ojtIdperact', $('#ojtIdperact').prop('value'));
-//    paqueteDeDatos.append('ojtdocadjunto', $('#ojtdocadjunto').prop('value'));
+    //    paqueteDeDatos.append('ojtdocadjunto', $('#ojtdocadjunto').prop('value'));
     paqueteDeDatos.append('ojtNempleact', $('#ojtNempleact').prop('value'));
     paqueteDeDatos.append('opcion', 'actdoc');
     $.ajax({
@@ -1422,7 +1422,7 @@ function actualOjt(){
                     $('#exitobit').toggle('toggle');
                 }, 4000);
 
-               consultardocIns(ojtIdperact);
+                consultardocIns(ojtIdperact);
 
             } else if (r == 1) {
                 $('#fallabit').toggle('toggle');
@@ -1644,12 +1644,12 @@ function inspector(gstIdper) {
 
                             //DATOS ESPECIALIDAD
                             // alert(obj.data[i].gstIdper);
-                           // $("#Spcialidad #spcialidadnombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
-                             $("#Spcialidad #gstIDpr").val(obj.data[i].gstIdper);
+                            // $("#Spcialidad #spcialidadnombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                            $("#Spcialidad #gstIDpr").val(obj.data[i].gstIdper);
                             //PARA ADJUNTAR ARCHIVOS OJT Y BITACORA
-                                                     
+
                             $("#modal-doc #ojtNemple").val(obj.data[i].gstNmpld);
-                            $("#modal-doc #ojtIdper").val(obj.data[i].gstIdper); 
+                            $("#modal-doc #ojtIdper").val(obj.data[i].gstIdper);
 
                             $("#modal-docactualizar #ojtNempleact").val(obj.data[i].gstNmpld);
                             $("#modal-docactualizar #ojtIdperact").val(obj.data[i].gstIdper);
@@ -2033,7 +2033,7 @@ function inspector(gstIdper) {
         }
     })
 
-consultardocIns(gstIdper);
+    consultardocIns(gstIdper);
 
 }
 
@@ -2041,12 +2041,13 @@ consultardocIns(gstIdper);
 ////////////////////CONSULTA OJT Y BITACORA///////////////
 
 function consultardocIns(gstIdper) {
-
+    console.log(gstIdper);
     $.ajax({
-        url: '../php/insDoc.php',
-        type: 'POST',
+        url: "../php/InsDoc.php",
+        type: "POST",
         data: 'gstIdper=' + gstIdper
     }).done(function(resp) {
+
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
@@ -2055,13 +2056,13 @@ function consultardocIns(gstIdper) {
         html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">DOCUMENTO</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
 
         for (D = 0; D < res.length; D++) {
-               
-            if(obj.data[D].documento=='OJT'){
-             dato = obj.data[D].idi+'*'+obj.data[D].idperdoc;
-               x++;
-                    html += '<tr><td>'+x+'</td><td><a href="' + obj.data[D].docajunto + '" style="cursor:pointer; text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>' + obj.data[D].fecactual + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + obj.data[D].id_doc + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+
+            if (obj.data[D].documento == 'OJT') {
+                dato = obj.data[D].idi + '*' + obj.data[D].idperdoc;
+                x++;
+                html += '<tr><td>' + x + '</td><td><a href="' + obj.data[D].docajunto + '" style="cursor:pointer; text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>' + obj.data[D].fecactual + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + obj.data[D].id_doc + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
             }
-                
+
         }
         html += '</tbody></table></form></div></div>';
 
@@ -2071,13 +2072,13 @@ function consultardocIns(gstIdper) {
         html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">DOCUMENTO</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
 
         for (D = 0; D < res.length; D++) {
-               
-            if(obj.data[D].documento=='BITACORA'){
-             dato = obj.data[D].idi+'*'+obj.data[D].idperdoc;
-               y++;
-                    html += '<tr><td>'+y+'</td><td><a href="' + obj.data[D].docajunto + '" style="cursor:pointer; text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>' + obj.data[D].fecactual + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + obj.data[D].id_doc + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+
+            if (obj.data[D].documento == 'BITACORA') {
+                dato = obj.data[D].idi + '*' + obj.data[D].idperdoc;
+                y++;
+                html += '<tr><td>' + y + '</td><td><a href="' + obj.data[D].docajunto + '" style="cursor:pointer; text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>' + obj.data[D].fecactual + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + obj.data[D].id_doc + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
             }
-                
+
         }
         html += '</tbody></table></form></div></div>';
 
@@ -2093,17 +2094,18 @@ function consultardocIns(gstIdper) {
 
 function borrarOjt(dato) {
 
-  var d = dato.split("*");
+    var d = dato.split("*");
 
     $("#eliminarojt #ojtIdperEli").val(d[0]);
     $("#eliminarojt #ojtidperdoc").val(d[1]);
 }
-function borrarojt(){
+
+function borrarojt() {
 
     var ojtIdperEli = document.getElementById('ojtIdperEli').value;
     var ojtidperdoc = document.getElementById('ojtidperdoc').value;
     //alert(ojtIdperEli);
-    datos = 'ojtIdperEli=' + ojtIdperEli+ '&opcion=elimiarojt';
+    datos = 'ojtIdperEli=' + ojtIdperEli + '&opcion=elimiarojt';
 
     $.ajax({
         url: '../php/docInpector.php',
@@ -2117,7 +2119,7 @@ function borrarojt(){
                 $('#succei').toggle('toggle');
             }, 2000);
 
-           consultardocIns(ojtidperdoc);
+            consultardocIns(ojtidperdoc);
 
         } else if (respuesta == 1) {
             $('#dangeri').toggle('toggle');
@@ -2140,36 +2142,36 @@ function ctualDoc(actu) {
 
 }
 ///CONSULTA ESPECIALIDAD
-function spcialidads(gstIdper){
+function spcialidads(gstIdper) {
 
-            $.ajax({
-                url: '../php/conSpcialidad.php',
-                type: 'POST'
-            }).done(function(resp) {
-                obj = JSON.parse(resp);
-                var res = obj.data;
-                var ss = 0;
+    $.ajax({
+        url: '../php/conSpcialidad.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var ss = 0;
 
-                html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>TITULO</th><th>ACCIONES</th></thead><tbody>';
-                for (s = 0; s < res.length; s++) {
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>TITULO</th><th>ACCIONES</th></thead><tbody>';
+        for (s = 0; s < res.length; s++) {
 
 
-                    if (obj.data[s].gstIDper == gstIdper) {
+            if (obj.data[s].gstIDper == gstIdper) {
 
-                        datos = gstIdper;
-                        dato = gstIdper+'*'+obj.data[s].gstIdspc+'*'+obj.data[s].gstCatgr;
-                        gstID = obj.data[s].gstIDper;
-                        if (obj.data[s].gstIdcat != 24) {
-                            ss++;
+                datos = gstIdper;
+                dato = gstIdper + '*' + obj.data[s].gstIdspc + '*' + obj.data[s].gstCatgr;
+                gstID = obj.data[s].gstIDper;
+                if (obj.data[s].gstIdcat != 24) {
+                    ss++;
 
-                            html += "<tr><td>" + ss + "</td><td>"+obj.data[s].gstCatgr+"</td><td><a onclick='spcBorrar(" + '"' + dato + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialidad'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
-                        } 
-                    }
+                    html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td><a onclick='spcBorrar(" + '"' + dato + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialidad'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                 }
-                html += '</tbody></table></div></div></div>';
-                $("#especialidades").html(html);
-            })
-    }
+            }
+        }
+        html += '</tbody></table></div></div></div>';
+        $("#especialidades").html(html);
+    })
+}
 
 ///////////DATOS PERSONAL FINAL DE CONSULTA/////////////
 
@@ -2643,13 +2645,13 @@ function actPuesto() {
     var gstCinst = document.getElementById('gstCinst').value; // CORREO 2 "QUITAR"
     var gstFeing = document.getElementById('gstFeing').value; //fecha de ingreso
     var gstIDuni = document.getElementById('gstIDuni').value; //UNIDAD
-    var gstIDSub = document.getElementById('depart').value;//DEPARTAMENTO
+    var gstIDSub = document.getElementById('depart').value; //DEPARTAMENTO
 
     var gstIDara = document.getElementById('gstIDara').value; //ID area
     var gstAreID = document.getElementById('gstAreID').value; //ID directivas
     var gstPstID = document.getElementById('gstPstID').value; //ID puesto
     var gstSpcID = document.getElementById('gstSpcID').value; //ID especialidad
-    var gstAcReg = document.getElementById('subdireccion').value;//SUBDIRECCION
+    var gstAcReg = document.getElementById('subdireccion').value; //SUBDIRECCION
     var gstNucrt = document.getElementById('gstNucrt').value;
     var gstSigID = document.getElementById('gstSigID').value; //estatus de persona
 
@@ -2777,7 +2779,7 @@ function openEdit() {
 function cerrarEdit() {
 
     //$("#subdirec2").show();
-   // $("#subdirec3").hide();
+    // $("#subdirec3").hide();
     $("#codigo").hide();
     $("#nompusto").hide();
     $("#especialidad").hide();
@@ -3015,44 +3017,45 @@ function spcialidad(gstIdper) {
     })
 }
 
-    function spcBorrar(dato){
+function spcBorrar(dato) {
 
-        var d = dato.split("*");
+    var d = dato.split("*");
 
     $("#eliminarspci #spcId").val(d[1]);
     $("#eliminarspci #idUsu").val(d[0]);
     $("#spcldd").html(d[2]);
 
-    }
-    function borrarSpc(){
+}
 
-        spcId = document.getElementById('spcId').value;
-        idUsu = document.getElementById('idUsu').value;
-       //alert(spcId+'*'+idUsu);
-        $.ajax({
-            url: '../php/agrEvalu.php',
-            type: 'POST',
-            data: 'idUsu=' +idUsu+ '&spcId=' + spcId + '&opcion=bajaSpc'
-        }).done(function(respuesta) {
-            //console.log(respuesta);
+function borrarSpc() {
 
-            if (respuesta == 0) {
-                //$("#baja").hide();
+    spcId = document.getElementById('spcId').value;
+    idUsu = document.getElementById('idUsu').value;
+    //alert(spcId+'*'+idUsu);
+    $.ajax({
+        url: '../php/agrEvalu.php',
+        type: 'POST',
+        data: 'idUsu=' + idUsu + '&spcId=' + spcId + '&opcion=bajaSpc'
+    }).done(function(respuesta) {
+        //console.log(respuesta);
+
+        if (respuesta == 0) {
+            //$("#baja").hide();
+            $('#succe12').toggle('toggle');
+            setTimeout(function() {
                 $('#succe12').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe12').toggle('toggle');
-                }, 2000);
-                //let gstIdper = spcId;
-              spcialidads(idUsu); 
+            }, 2000);
+            //let gstIdper = spcId;
+            spcialidads(idUsu);
 
-            } else {
+        } else {
+            $('#danger12').toggle('toggle');
+            setTimeout(function() {
                 $('#danger12').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger12').toggle('toggle');
-                }, 2000);
-            }
-        });
-    }
+            }, 2000);
+        }
+    });
+}
 
 
 function especialidad() {
@@ -3073,13 +3076,13 @@ function especialidad() {
             type: 'POST',
             data: 'gstIDpr=' + gstIDpr + '&gstIDSpe=' + gstIDSpe + '&opcion=especialidad'
         }).done(function(respuesta) {
-                //alert(respuesta);
+            //alert(respuesta);
             if (respuesta == 0) {
                 $('#succeE').toggle('toggle');
                 setTimeout(function() {
                     $('#succeE').toggle('toggle');
                 }, 2000);
-                     spcialidads(gstIdper);   
+                spcialidads(gstIdper);
             } else {
                 $('#dangerE').toggle('toggle');
                 setTimeout(function() {
