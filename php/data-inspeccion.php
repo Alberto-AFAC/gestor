@@ -14,6 +14,7 @@
 		die("error");
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
+	
             $fechaActual = date_create(date('d-m-Y')); 
 		    $FechaIngreso = date_create($data['gstFeing']); 
 		    $interval = date_diff($FechaIngreso, $fechaActual,false);  
@@ -21,11 +22,26 @@
 
       $gstIdper = $data['gstIdper'];
       $result = $data['gstIdper'];
-      if($antiguedad <=30){
-        $antiguedadT = '<span style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</span>';
-    }else {
-        $antiguedadT = '<span style="font-weight: bold; height: 50px; color: #3C8DBC;">Personal antiguo</span>';
-    }
+
+	  $query2 = "SELECT *
+	  FROM cursos 
+	  WHERE idinsp  = $gstIdper AND proceso = 'FINALIZADO'";
+	  $resultado2 = mysqli_query($conexion, $query2);
+	  if($curs = mysqli_fetch_row($resultado2)){ 
+  
+	  $cursor = "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
+  
+	  }else{
+	  $cursor = "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
+	  }
+
+    //   if($antiguedad <=30){
+    //     $antiguedadT = '<span style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</span>';
+    // }else {
+    //     $antiguedadT = '<span style="font-weight: bold; height: 50px; color: #3C8DBC;">Personal antiguo</span>';
+    // }
+
+	
     if($data['gstEvalu'] == 'NO'){
                 
         // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
@@ -37,7 +53,7 @@
 
             }
  	
-	 $caledario[] = [ $data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$data["Ingreso"], $antiguedadT, $total];
+	 $caledario[] = [ $data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$data["Ingreso"], $cursor, $total];
 
 		}
 	}
