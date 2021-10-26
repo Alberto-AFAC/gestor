@@ -1673,7 +1673,7 @@
                                                                 <form name="form23" action="" class="formulario1">
                                                                     <div class="radio">
                                                                         <div class="box-header with-border">
-                                                                            <h3 class="box-title">SCÓMO FUERON LAS CONDICIONES DEL AULA PARA LA IMPARTICIÓN DE LA SESIÓN (LUZ, VENTILACIÓN, LIMPIEZA, COMODIDAD ETC.) ?<span id="span23">*</span>
+                                                                            <h3 class="box-title">CÓMO FUERON LAS CONDICIONES DEL AULA PARA LA IMPARTICIÓN DE LA SESIÓN (LUZ, VENTILACIÓN, LIMPIEZA, COMODIDAD ETC.) ?<span id="span23">*</span>
                                                                             </h3>
                                                                         </div>
                                                                         <form class="form-horizontal">

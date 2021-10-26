@@ -93,7 +93,7 @@ function imprimir() {
 }
 //TODO EVALUACIN
 function evaluar() {
-    alert("fkeofkef")
+    //alert("fkeofkef")
     var idcursoen = document.getElementById('idcursoen').value; //ID CURSO 
     var preg1 = $('input[name=preg1]:checked').val();//-
     var preg2 = $('input[name=preg2]:checked').val(); // -
@@ -1103,7 +1103,7 @@ function cursoeval(idcurso) {
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-
+        cod = obj.data[i].codigo;
         for (i = 0; i < res.length; i++) {
 
             if (obj.data[i].id_curso == idcurso) {
@@ -1111,9 +1111,14 @@ function cursoeval(idcurso) {
                 $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
                 $("#codigo").val(obj.data[i].codigo);
-                $("#id_instruct").val(obj.data[i].codigo);
 
             }
+            //TRAE AL INSTRUCTOR DEL CURSO
+            if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo==cod){
+                $("#id_instruct").val(obj.data[i].gstNombr+ ' ' + obj.data[i].gstApell);
+                
+            }
+
         }
     })
 
