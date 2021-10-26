@@ -2043,8 +2043,8 @@ function inspector(gstIdper) {
 function consultardocIns(gstIdper) {
     console.log(gstIdper);
     $.ajax({
-        url: '../php/insDoc.php',
-        type: 'POST',
+        url: "../php/InsDoc.php",
+        type: "POST",
         data: 'gstIdper=' + gstIdper
     }).done(function(resp) {
 
