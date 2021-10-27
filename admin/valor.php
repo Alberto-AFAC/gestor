@@ -837,7 +837,7 @@ $psto = mysqli_query($conexion,$sql);
 <div class="form-group">
 <div class="col-sm-6">
 
-<label>OJT   </label> <p>ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+ <p id="oclOJT"><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
 
 <div>
 
@@ -847,7 +847,7 @@ $psto = mysqli_query($conexion,$sql);
 </div>                            
 </div>
 <div class="col-sm-6">
-<label>BITÁCORAS</label> <p>ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+ <p id="oclBTC"><label>BITÁCORAS</label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
 <div> 
     <div id="docBita"></div>    
 </div> 

@@ -1400,7 +1400,7 @@ function actualOjt() {
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('OjtAgraAct', $('#OjtAgraAct')[0].files[0]);
     paqueteDeDatos.append('ojtIdperact', $('#ojtIdperact').prop('value'));
-    //    paqueteDeDatos.append('ojtdocadjunto', $('#ojtdocadjunto').prop('value'));
+    paqueteDeDatos.append('ojtdocadact', $('#ojtdocadact').prop('value'));
     paqueteDeDatos.append('ojtNempleact', $('#ojtNempleact').prop('value'));
     paqueteDeDatos.append('opcion', 'actdoc');
     $.ajax({
@@ -2047,7 +2047,7 @@ function inspector(gstIdper) {
 ////////////////////CONSULTA OJT Y BITACORA///////////////
 
 function consultardocIns(gstIdper) {
-    console.log(gstIdper);
+    //alert(gstIdper);
     $.ajax({
         url: "../php/InsDoc.php",
         type: "POST",
@@ -2060,17 +2060,19 @@ function consultardocIns(gstIdper) {
         var y = 0;
 
 //        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">DOCUMENTO</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
-        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 50%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">OJT - ACTUALIZAR </th> </tr></thead><tbody>';
 
         for (D = 0; D < res.length; D++) {
                
-            if(obj.data[D].documento=='OJT'){
-             dato = obj.data[D].idi+'*'+obj.data[D].idperdoc;
+            if(obj.data[D].documento==='OJT'){
+             dato = obj.data[D].idi+'*'+obj.data[D].idperdoc+'*'+obj.data[D].documento;
                x++;
-                    html += '<tr><td>'+x+'</td><td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + obj.data[D].id_doc + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';           
+                    html += '<tr><td>'+x+'</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';           
                     document.getElementById('ojt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                     document.getElementById('ojt-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';                            
                     document.getElementById('ojt-fec').innerHTML = obj.data[D].fecactual;
+                    $("#oclOJT").hide();
+                      
 
             }
 
@@ -2079,18 +2081,29 @@ function consultardocIns(gstIdper) {
 
         $("#docInsp").html(html);
 
+        if(x===0){
+         $("#oclOJT").show();
+         $("#ojt").hide();
+         $("#ojt-pdf").hide();
+         $("#ojt-fec").hide();         
+        }else{
+         $("#ojt").show();
+         $("#ojt-pdf").show();
+         $("#ojt-fec").show();              
+        }
 
-        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">DOCUMENTO</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">BITÁCORA - ACTUALIZAR </th> </tr></thead><tbody>';
 
         for (D = 0; D < res.length; D++) {
                
-            if(obj.data[D].documento=='BITACORA'){
-             dato = obj.data[D].idi+'*'+obj.data[D].idperdoc;
+            if(obj.data[D].documento==='BITACORA'){
+             dato = obj.data[D].idi+'*'+obj.data[D].idperdoc+'*'+obj.data[D].documento;
                y++;
-                    html += '<tr><td>'+y+'</td><td><a href="' + obj.data[D].docajunto + '" style="cursor:pointer; text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>' + obj.data[D].fecactual + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + obj.data[D].id_doc + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+                    html += '<tr><td>'+y+'</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
                     document.getElementById('btcr').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                     document.getElementById('btcr-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';                            
                     document.getElementById('btcr-fec').innerHTML = obj.data[D].fecactual;
+                    $("#oclBTC").hide();
             }
 
         }
@@ -2098,8 +2111,16 @@ function consultardocIns(gstIdper) {
 
         $("#docBita").html(html);
 
-
-
+        if(y===0){
+         $("#oclBTC").show();
+         $("#btcr").hide();
+         $("#btcr-pdf").hide();
+         $("#btcr-fec").hide();         
+        }else{
+         $("#btcr").show();
+         $("#btcr-pdf").show();
+         $("#btcr-fec").show();              
+        }
     })
 
 }
@@ -2151,9 +2172,11 @@ function borrarojt() {
 }
 ///ACTUALIZAR OJT O BITACORA
 
-function ctualDoc(actu) {
-    $("#docactuali").val(actu);
+function ctualDoc(dato) {
 
+    d = dato.split('*');
+    $("#docactuali").val(d[0]);
+    $("#ojtdocadact").val(d[2]);
 }
 ///CONSULTA ESPECIALIDAD
 function spcialidads(gstIdper) {
