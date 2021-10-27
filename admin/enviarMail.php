@@ -10,7 +10,7 @@ require '../php-mailer2/SMTP.php';
 
 	$idcurso = $_POST['gstIdlsc'];
 	
-	$query = "SELECT gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
+	$query = "SELECT gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
 			  WHERE gstIdlsc = $idcurso";
