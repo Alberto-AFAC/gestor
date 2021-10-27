@@ -804,7 +804,7 @@
               <div class="col-sm-12">
               <input type="hidden" name="ojtNempleact" id="ojtNempleact">
               <input type="hidden" name="ojtIdperact" id="ojtIdperact">
-              <!-- <input type="hidden" name="docactuali" id="docactuali"> -->
+              <input type="hidden" name="ojtdocadact" id="ojtdocadact">
               <label class="label2" id="docadjunto" for=""></label>
 
               <div class="col-sm-6">

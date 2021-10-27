@@ -257,8 +257,7 @@
                                     <input type="hidden" class="form-control" id="departamento" name="departamento">
 
 
-                                    <input type="submit" style="float: right;" class="btn btn-info"
-                                        value="CONSULTAR APÉNDICE E"><br><br>
+                                    <input type="submit" style="float: right;" class="btn btn-info" value="CONSULTAR APÉNDICE E"><br><br>
 
                                     <div class="row">
                                         <div class="form-group">

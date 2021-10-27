@@ -165,7 +165,8 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="col">INCISO</th>
                             <th scope="col" style="width: 600px;">DOCUMENTO</th>
                             <th scope="col">CUMPLE</th> 
-                            <th scope="col">ESTATUS</th>
+                            <th scope="col">ARCHIVO</th>
+                            <th scope="col">FECHA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -173,7 +174,9 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">A)</th>
                             <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td></td><td></td>
+
+
 
                         </tr>
                         <tr>
@@ -187,7 +190,8 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">C)</th>
                             <td>CURRICULUM VITAE. (requisitado y firmado)</td>
                             <td><div id="profesions"></div></td>
-                            <td></td>
+                            <td><div id="pro-pdf"> </div></td>
+                            <td><div id="pro-fec"></div> </td>
 
 
                         </tr>
@@ -195,15 +199,28 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">D)</th>
                             <td>CONSTANCIA ACADÉMICA (a.Licenciatura o ingeniería, b.Licencia técnica aeronautica)</td>
                             <td><div id="estudios"></div></td>
-                            <td></td>
+                            <td><div id="std-pdf"> </div></td>
+                            <td><div id="std-fec"></div> </td>
 
                         </tr>
                         <tr>
                             <th scope="row">F)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td><div id="ojt"></div></td>
+                            <td><div id="ojt-pdf"> </div></td>
+                            <td><div id="ojt-fec"></div> </td>                            
+                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td> -->
                         </tr>
+                        <tr>
+                            <th scope="row">F)</th>
+                            <td>FORMATO BITÁCORA</td>
+                            <td><div id="btcr"></div></td>
+                            <td><div id="btcr-pdf"> </div></td>
+                            <td><div id="btcr-fec"></div> </td>                            
+                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td> -->
+                        </tr>                        
                         <tr>
                             <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
@@ -215,19 +232,19 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row"></th>
                             <td>BÁSICO</td>
                             <td><div id="bscos"></div></td>
-                            <td><div id="Bfecha"></div></td>
+                            <td><div id="Bfecha"></div></td> <td></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>RECURRENTE</td>
                             <td><div id="recurnt"></div></td>
-                            <td><div id="Rfecha"></div></td>
+                            <td><div id="Rfecha"></div></td> <td></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>ESPECIFICOS</td>
                             <td><div id="specifico"></div></td>
-                            <td><div id="Efecha"></div></td>
+                            <td><div id="Efecha"></div></td> <td></td>
                         </tr>
                     </tbody>
                     
@@ -820,7 +837,7 @@ $psto = mysqli_query($conexion,$sql);
 <div class="form-group">
 <div class="col-sm-6">
 
-<label>OJT   </label> <p>ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+ <p id="oclOJT"><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
 
 <div>
 
@@ -830,7 +847,7 @@ $psto = mysqli_query($conexion,$sql);
 </div>                            
 </div>
 <div class="col-sm-6">
-<label>BITÁCORAS</label> <p>ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+ <p id="oclBTC"><label>BITÁCORAS</label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
 <div> 
     <div id="docBita"></div>    
 </div> 

@@ -185,7 +185,7 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
                     <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
-                    <li><a href="programa"><i class="fa ion-compose"></i> Programación del Curso</a></li>
+                    <li><a href="programa"><i class="fa ion-compose"></i> Programar curso</a></li>
                     <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>

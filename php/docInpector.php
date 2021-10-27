@@ -43,11 +43,11 @@ $rutaTemporal=$_FILES['OjtAgra']['tmp_name'];
 $ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 if (in_array($ext, $formatos)){
 
-$rutaEnServidor = '../documento/'.$ojtNemple.'/OJT/'.$nombreImagen;
+$rutaEnServidor = '../documento/'.$ojtNemple.'/'.$ojtdocadjunto.'/'.$nombreImagen;
 
 if (!file_exists($rutaEnServidor)){
 
- $ruta = '../documento/'.$ojtNemple.'/OJT/';
+ $ruta = '../documento/'.$ojtNemple.'/'.$ojtdocadjunto.'/';
 if(!is_dir($ruta)){
   mkdir($ruta, 0777, true);
 }
@@ -79,13 +79,13 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 	}else if($opcion === 'actdoc'){
 
 
-		if($_POST['ojtIdperact']=='' || $_POST['ojtNempleact']==''){
+		if($_POST['ojtIdperact']=='' || $_POST['ojtNempleact']=='' || $_POST['ojtdocadact']==''){
 
 			echo "8";
 		}else{
 
 		$ojtIdperact = $_POST['ojtIdperact'];
-		//$docactuali = $_POST['docactuali'];
+		$ojtdocadjunto = $_POST['ojtdocadact'];
 		$ojtNempleact = $_POST['ojtNempleact'];
 
 		if(!empty($_FILES['OjtAgraAct']['size'])){
@@ -99,9 +99,9 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 		$ext = substr($nombreImagen, strrpos($nombreImagen, '.'));
 		if (in_array($ext, $formatos)){
 
-		$rutaEnServidor = '../documento/'.$ojtNempleact.'/OJT/'.$nombreImagen;
+		$rutaEnServidor = '../documento/'.$ojtNempleact.'/'.$ojtdocadjunto.'/'.$nombreImagen;
 
-		 $ruta = '../documento/'.$ojtNempleact.'/OJT/';
+		 $ruta = '../documento/'.$ojtNempleact.'/'.$ojtdocadjunto.'/';
 		if(!is_dir($ruta)){
 		  mkdir($ruta, 0777, true);
 		}
