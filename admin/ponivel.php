@@ -37,10 +37,10 @@
           </div>
 
           <div class="col-xs-0 col-md-2 text-center">
-            <input type="text" class="knob" value=<?php if($totalfullsatis == 0 && $totalsatis == 0){
+            <input type="text" class="knob" value=<?php if($totalfullregu == 0 && $totalregu == 0){
               echo "0";
             } else {
-              echo porcentaje3($totalfullsatis, $totalsatis,0)."%";
+              echo porcentaje3($totalfullregu, $totalregu,0)."%";
             }
            ?> data-width="90" data-height="90" data-fgColor="#1ABC9C" data-readonly="true">
 
