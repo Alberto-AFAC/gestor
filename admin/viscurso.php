@@ -9,7 +9,7 @@
   <div class="col-md-12">
   <div class="box-tools pull-right">
   <button type="button" title="Cerrar" id= "cerrarc" class="btn btn-box-tool" style="font-size:18px" data-widget="remove">
-     <a href='javascript:closeCurso()'><i class='fa fa-times'></i></a>
+     <a href="lisCurso"><i class='fa fa-times'></i></a>
   </button>
   </div>            
   <div class="nav-tabs-custom">

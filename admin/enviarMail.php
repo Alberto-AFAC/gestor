@@ -16,7 +16,7 @@ require '../php-mailer2/SMTP.php';
 			  WHERE gstIdlsc = $idcurso";
 	$resultado = mysqli_query($conexion, $query);
     while($curso = mysqli_fetch_assoc($resultado)){
-        $to = $curso['gstCorro'];
+        $to = $curso['gstCinst'];
 	 //$curso[1];
 
 $mail = new PHPMailer;
@@ -29,8 +29,8 @@ $mail->SMTPAuth = true;
 $mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Password = 'Agencia.SCT2021.';
 $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
-// $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
-$mail->addAddress("{$to}");
+$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
+// $mail->addAddress("{$to}");
 $mail->addBCC('jmondragonescamilla@gmail.com');
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
