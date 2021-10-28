@@ -25,7 +25,7 @@
 
 
       $sql = 
-     "SELECT personal.gstIdper,gstAreID,gstNombr,gstApell,gstCargo FROM personal 
+     "SELECT personal.gstIdper,gstAreID,gstNombr,gstApell,gstCargo,gstNmpld FROM personal 
       WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
     $persona = mysqli_query($conexion,$sql);
     $datos = mysqli_fetch_row($persona);
@@ -124,7 +124,13 @@
           <!-- User Account: style can be found in dropdown.less -->
          <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
+              <?php
+            if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+              echo "<img src='../dist/img/profile-leonardoR.jpeg' class='user-image' alt='User Image'>";
+            } else{
+              echo "<img src='../dist/img/perfil.png' class='user-image' alt='User Image'>";
+            }
+              ?>
               <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
             </a>
             <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
@@ -193,16 +199,31 @@
         <!-- -->
         <li class="active">
           <a href="inspector">
-            <i><img src="../dist/img/perfil.png" class="user-image" alt="User Image" style="
+            <?php
+          if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+            echo "<i><img src='../dist/img/profile-leonardoR.jpeg' class='user-image' alt='User Image' style='
     width: 25px;
     height: 25px;
     border-radius: 50%;
     margin-right: 10px;
-    margin-top: -2px;"></i> <span>PERFIL</span>
-            <span class="pull-right-container">
+    margin-top: -2px;'></i> <span>PERFIL</span>
+            <span class='pull-right-container'>
             </span>
           </a>
-        </li>   
+        </li>";
+          }else{
+            echo "<i><img src='../dist/img/perfil.png' class='user-image' alt='User Image' style='
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-top: -2px;'></i> <span>PERFIL</span>
+                    <span class='pull-right-container'>
+                    </span>
+                  </a>
+                </li>";
+          }
+          ?>
 
 
 
