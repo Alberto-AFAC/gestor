@@ -84,7 +84,15 @@ ini_set('date.timezone','America/Mexico_City');
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
+                        <?php
+                                if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+                                    echo "<img class='user-image' src='../dist/img/profile-leonardoR.jpeg' 
+                                    alt='User profile picture'>";
+                                } else{
+                                    echo "<img class='user-image' src='../dist/img/perfil.png'
+                                    alt='User profile picture'>";
+                                }
+                                ?>
                         <!--  <span class="hidden-xs">ADMINISTRADOR</span> -->
                         <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
                     </a>
