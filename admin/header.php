@@ -214,13 +214,22 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <li>
                 <a href="soporte">
-                    <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>
+                    <i class="fa fa-history"></i> <span>Historial de Cambios</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red"></small>
                         <small class="label pull-right bg-blue"></small>
                     </span>
                 </a>
             </li>
+            <!-- <li>
+                <a href="soporte">
+                    <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li> -->
 
              <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
               <li>
