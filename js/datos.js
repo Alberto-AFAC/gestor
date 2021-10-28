@@ -2777,13 +2777,15 @@ function openEdit() {
     document.getElementById('gstClulr').disabled = false; // NUM. DE CELULAR
     document.getElementById('gstExTel').disabled = false; // NUM. DE EXTENCION
     document.getElementById('gstCiuda').disabled = false; // CUIDAD
+    document.getElementById('gstCorro').disabled = false; //correo personal
+    document.getElementById('gstCinst').disabled = false; //correo institucional
+    document.getElementById('gstSpcID').disabled = false; //correo opcion3
 
     //------ DATOS DEL PUESTO
 
 
-
-    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
-    document.getElementById('gstFeing').disabled = false;
+    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO jess
+    document.getElementById('gstFeing').disabled = false; //FECHA DE INGRESO
     document.getElementById('gstSigID').disabled = false;
     document.getElementById('gstCargo').disabled = false;
     document.getElementById('gstNucrt').disabled = false; // NUMERO DE CARTLLA 
@@ -2791,14 +2793,13 @@ function openEdit() {
 
     // //document.getElementById('gstIDCat').disabled = false;
     // //document.getElementById('gstIDSub').disabled = false; //SUBCATEGORIA
-    // document.getElementById('gstCorro').disabled = false;
-    // document.getElementById('gstCinst').disabled = false;
+
 
     // // document.getElementById('gstIDuni').disabled = false;
 
     // document.getElementById('gstAreID').disabled = false; //ID área
     // document.getElementById('gstPstID').disabled = false; //ID puesto
-    // document.getElementById('gstSpcID').disabled = false; //ID especialidad
+     
     // //document.getElementById('gstSigID').disabled=false;//ID siglas
     // document.getElementById('gstIDara').disabled = false; //ID del área
     // document.getElementById('gstAcReg').disabled = false;
@@ -2854,13 +2855,16 @@ function cerrarEdit() {
     document.getElementById('gstClulr').disabled = true; // NUM. DE CELULAR
     document.getElementById('gstExTel').disabled = true; // NUM. DE EXTENCION
     document.getElementById('gstCiuda').disabled = true; // CUIDAD
+    document.getElementById('gstCorro').disabled = true; //correo personal
+    document.getElementById('gstCinst').disabled = true; //correo institucional
+    document.getElementById('gstSpcID').disabled = true; //correo opcion3
 
-    //------ DATOS DEL PUESTO
-    document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
-    document.getElementById('gstFeing').disabled = false;
-    document.getElementById('gstSigID').disabled = false;
-    document.getElementById('gstCargo').disabled = false;
-    document.getElementById('gstNucrt').disabled = false; // NUMERO DE CARTLLA 
+    //------ DATOS DEL PUESTO //28102021
+    document.getElementById('gstNmpld').disabled = true; // NUM. DE EMPLEADO
+    document.getElementById('gstFeing').disabled = true;
+    document.getElementById('gstSigID').disabled = true;
+    document.getElementById('gstCargo').disabled = true;
+    document.getElementById('gstNucrt').disabled = true; // NUMERO DE CARTLLA 
 
     // document.getElementById('gstNmpld').disabled = true; // NUM. DE EMPLEADO
     // document.getElementById('gstIdpst').disabled = true; // NUM. DE EMPLEADO
