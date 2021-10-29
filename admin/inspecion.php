@@ -163,15 +163,26 @@
                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                         <div class="modal-content">
-                            <div class="modal-header">
+<!--                             <div class="modal-header">
                                 <button type="button" onclick="location.href='inspecion'" class="close"
                                     data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
 
+                                <h4 class="modal-title"></h4>
+                            </div>
+ -->
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title">EVALUAR</h4>
                             </div>
+
+
+                            
                             <div class="modal-body">
                                 <form id="Evalua">
+                                    <input type="hidden" name="idspc" id="idspc">
+                                    <input type="hidden" name="reset" id="reset">
                                     <div class="row">
                                         <div class="form-group">
                                             <div class="col-sm-5">
@@ -454,20 +465,26 @@ $(document).ready(function() {
 <script type="text/javascript">
 var dataSet = [
     <?php 
-$query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso FROM personal 
-          INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
-$resultado = mysqli_query($conexion, $query);
+$query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') AS Ingreso,personal.gstIDCat AS IDcat 
+          FROM personal 
+          INNER JOIN 
+          categorias ON categorias.gstIdcat = personal.gstIDCat
+          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 
+          OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 
+          ORDER BY gstIdper DESC";
+            $resultado = mysqli_query($conexion, $query);
 
-      while($data = mysqli_fetch_array($resultado)){ 
-        $fechaActual = date_create(date('d-m-Y')); 
+          while($data = mysqli_fetch_array($resultado)){ 
+            $fechaActual = date_create(date('d-m-Y')); 
 		    $FechaIngreso = date_create($data['gstFeing']); 
 		    $interval = date_diff($FechaIngreso, $fechaActual,false);  
 		    $antiguedad = intval($interval->format('%R%a')); 
 
       $gstIdper = $data['gstIdper'];
       $result = $data['gstIdper'];
+      $IDcat = $data['IDcat'];
 
+        $resul = $IDcat;
 
     $query = "SELECT *
     FROM cursos 
@@ -489,12 +506,10 @@ $resultado = mysqli_query($conexion, $query);
 
                 if($data['gstEvalu'] == 'NO'){
                 
-                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
-
                 echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
 
                     }else if($data['gstEvalu'] == 'SI') {
-                echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
+                echo "<a type='button' title='Evaluado' onclick='resultado({$resul})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
 
                     }?>"],
 

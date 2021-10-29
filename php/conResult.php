@@ -1,11 +1,17 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-	
-	$query = "SELECT * FROM evaluacion 
-			  INNER JOIN parametros ON parametros.gstIdprm = evaluacion.gstIDprm
+		
+	$res = $_POST['result'];
 
-	WHERE evaluacion.estado = 0";
+		$f = explode('.', $res);
+		$gstIDins = intval($f[0]);
+		$gesEvalu = intval($f[1]);
+
+$query = "
+SELECT * FROM evaluacion 
+INNER JOIN parametros ON parametros.gstIdprm = evaluacion.gstIDprm
+WHERE evaluacion.gstIDins = $gstIDins AND evaluacion.gesEvalu = $gesEvalu AND evaluacion.estado = 0";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

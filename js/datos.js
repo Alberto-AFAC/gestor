@@ -1475,7 +1475,7 @@ function inspector(gstIdper) {
         document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/user1-128x128.jpg" style="width: 80px; alt="User Avatar">';
     }
 
-
+// .l.
     $.ajax({
         url: '../php/consulta.php',
         type: 'POST'
@@ -1523,9 +1523,8 @@ function inspector(gstIdper) {
                     for (i = 0; i < res.length; i++) {
 
                         if (obj.data[i].gstIdper == gstIdper) {
-                            //alert(gstIdper);
-
-
+                            $("#Evalua #reset").val(1);
+                            $("#Evalua #idspc").val(obj.data[i].gstIDCat);
                             $("#Evalua #gstIDCate").val(obj.data[i].gstIDCat);
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
@@ -2201,19 +2200,30 @@ function spcialidads(gstIdper) {
         var res = obj.data;
         var ss = 0;
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>TITULO</th><th>ACCIONES</th></thead><tbody>';
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><th>#</th><th>TITULO</th><th>EVALUACIÓN</th><th>ACCIONES</th></thead><tbody>';
         for (s = 0; s < res.length; s++) {
 
 
             if (obj.data[s].gstIDper == gstIdper) {
 
-                datos = gstIdper;
-                dato = gstIdper + '*' + obj.data[s].gstIdspc + '*' + obj.data[s].gstCatgr;
+                datos = obj.data[s].gstIDper+'.'+obj.data[s].gstIDcat;
+                dato = gstIdper + '*' + obj.data[s].gstIDcat + '*' + obj.data[s].gstCatgr;
                 gstID = obj.data[s].gstIDper;
                 if (obj.data[s].gstIdcat != 24) {
                     ss++;
+                    //alert(obj.data[s].gstIDeva);
+                    if(obj.data[s].gstIDeva=='NO'){
+                   
+                        //if(ss===1){
+                    //html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td><a type='button' title='Por evaluación' onclick='inspectores(" + '"' + dato + '"' + ")' class='btn btn-warning'  data-toggle='modal' style='background-color:silver;' ><i class='fa ion-android-clipboard' style='font-size:23px; '></i></a></td><td><a onclick='spcBorrar(" + '"' + dato + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialidad'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                      //  }else{
+                    html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td><a type='button' title='Por evaluación' onclick='inspectores(" + '"' + dato + '"' + ")' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a></td><td><a onclick='spcBorrar(" + '"' + dato + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialidad'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                      //  }
+                    
+                    }else{
+                    html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td><a type='button' title='Evaluado' onclick='resultados("+datos+")' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a></td><td><a onclick='spcBorrar(" + '"' + dato + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialidad'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";                    
+                    }
 
-                    html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td><td><a onclick='spcBorrar(" + '"' + dato + '"' + ")' type='button' style='margin-left:2px' title='Borrar especialidad'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminarspci'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
                 }
             }
         }
@@ -2221,7 +2231,16 @@ function spcialidads(gstIdper) {
         $("#especialidades").html(html);
     })
 }
+////////////////EVALUACIÓN //////////////////
 
+function inspectores(dato){
+
+   // alert(dato);
+    var d = dato.split("*");
+    $("#idspc").val(d[1]);
+    $("#reset").val(0);
+    $('#Evalua #button').show();
+}
 ///////////DATOS PERSONAL FINAL DE CONSULTA/////////////
 
 function consultaCurso(gst) {
@@ -2283,8 +2302,12 @@ function evaluar() {
 
     actuals = actual.substr(1);
     comntr = document.getElementById('comntr').value;
-    //evla = document.getElementById('evla').value;
-    datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actuals + '&comntr=' + comntr + '&opcion=evaluar';
+    idspc = document.getElementById('idspc').value;
+    gstInpct = document.getElementById('gstInspr').value;
+    
+    reset = document.getElementById('reset').value;
+    
+    datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actuals + '&comntr=' + comntr + '&idspc=' + idspc +'&opcion=evaluar';
     //alert(datos);
     if (actual.length >= '12' && '12' >= actual.length) {
 
@@ -2302,7 +2325,7 @@ function evaluar() {
                 type: 'POST',
                 data: datos
             }).done(function(respuesta) {
-
+               // alert(respuesta);
                 // console.log(respuesta);
                 if (respuesta == 0) {
 
@@ -2316,11 +2339,15 @@ function evaluar() {
                     // });
 
                     $('#succe0').toggle('toggle');
+                    $('#Evalua #button').hide();
                     setTimeout(function() {
                         $('#succe0').toggle('toggle');
                     }, 2000);
-
-                    setTimeout("location.href = 'inspecion.php';", 2000);
+                    if(reset==0){
+                    spcialidads(gstInpct);
+                    }else{ 
+                        setTimeout("location.href = 'inspecion.php';", 1500);
+                    }
 
                 } else {
                     $('#danger0').toggle('toggle');
@@ -2343,20 +2370,23 @@ function evaluar() {
 
 }
 
+function resultados(datos){
+    result = datos;
 
-function resultado(result) {
+//    alert(result);
 
     $.ajax({
         url: '../php/conResult.php',
-        type: 'POST'
+        type: 'POST',
+        data : 'result='+result
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
 
         html = '<div class="col-sm-12"><table class="table table-striped table-bordered dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th style="width:70%"><i></i>PARAMETROS</th><th style="width:15%"><i></i>ESTADO</th></tr></thead><tbody>';
         for (i = 0; i < res.length; i++) {
-
-            if (obj.data[i].gstIDins == result) {
+            resul = obj.data[i].gstIDins;
+           // if (obj.data[i].gstIDins == result) {
 
                 if (obj.data[i].gstCmpli == 'NO') {
                     html += "<td>" + obj.data[i].gstOrden + "</td><td>" + obj.data[i].gstPrmtr + "</td><td><span class='label label-danger'>NO CUMPLE</span></td></tr>";
@@ -2364,13 +2394,76 @@ function resultado(result) {
                 if (obj.data[i].gstCmpli == 'SI') {
                     html += "<td>" + obj.data[i].gstOrden + "</td><td>" + obj.data[i].gstPrmtr + "</td><td><span class='label label-success'>CUMPLIO</span></td></tr>";
                 }
-            }
+            //}
         }
         html += '</tbody></table></div>';
         $("#rsltad").html(html);
     })
 
-    id = result;
+     $.ajax({
+        url: '../php/consulta.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+        for (r = 0; r < res.length; r++) {
+
+            if (obj.data[r].gstIdper == resul) {
+
+
+                result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt + '*' + obj.data[r].gstApell + '*' + obj.data[r].gstCsigl + '*' + obj.data[r].adscripcion + '*' + obj.data[r].descripdep;
+                var d = result.split("*");
+
+                $("#Result #pdfIdper").val(d[0]);
+                $("#Result #evalu_nombre").val(d[1]);
+                $("#Result #IDCat").val(d[2]);
+                $("#Result #especialidad").val(d[3]);
+                $("#Result #gstComnt").val(d[4]);
+                $("#Result #apellido").val(d[5]);
+                $("#Result #siglas").val(d[6]);
+                $("#Result #adscripcion").val(d[7]);
+                $("#Result #departamento").val(d[8]);
+
+
+            }
+        }
+    })
+
+
+}
+
+function resultado(result) {
+        
+    $.ajax({
+        url: '../php/conResult.php',
+        type: 'POST',
+        data: 'result='+result
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        html = '<div class="col-sm-12"><table class="table table-striped table-bordered dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th style="width:70%"><i></i>PARAMETROS</th><th style="width:15%"><i></i>ESTADO</th></tr></thead><tbody>';
+        for (i = 0; i < res.length; i++) {
+
+            resul = obj.data[i].gstIDins;
+           // if (obj.data[i].gstIDins == result) {
+
+                if (obj.data[i].gstCmpli == 'NO') {
+                    html += "<td>" + obj.data[i].gstOrden + "</td><td>" + obj.data[i].gstPrmtr + "</td><td><span class='label label-danger'>NO CUMPLE</span></td></tr>";
+                }
+                if (obj.data[i].gstCmpli == 'SI') {
+                    html += "<td>" + obj.data[i].gstOrden + "</td><td>" + obj.data[i].gstPrmtr + "</td><td><span class='label label-success'>CUMPLIO</span></td></tr>";
+                }
+            //}
+        }
+        html += '</tbody></table></div>';
+        $("#rsltad").html(html);
+    })
+
+    
 
     $.ajax({
         url: '../php/consulta.php',
@@ -2382,7 +2475,7 @@ function resultado(result) {
 
         for (r = 0; r < res.length; r++) {
 
-            if (obj.data[r].gstIdper == id) {
+            if (obj.data[r].gstIdper == resul) {
 
 
                 result = obj.data[r].gstIdper + '*' + obj.data[r].gstNombr + '*' + obj.data[r].gstIDCat + '*' + obj.data[r].gstCatgr + '*' + obj.data[r].gstComnt + '*' + obj.data[r].gstApell + '*' + obj.data[r].gstCsigl + '*' + obj.data[r].adscripcion + '*' + obj.data[r].descripdep;
@@ -3072,6 +3165,8 @@ function spcialidad(gstIdper) {
 
 function spcBorrar(dato) {
 
+  //  alert(dato);
+
     var d = dato.split("*");
 
     $("#eliminarspci #spcId").val(d[1]);
@@ -3098,8 +3193,9 @@ function borrarSpc() {
             setTimeout(function() {
                 $('#succe12').toggle('toggle');
             }, 2000);
-            //let gstIdper = spcId;
-            spcialidads(idUsu);
+            let gstInpct = idUsu;
+            // spcialidads(idUsu);
+            spcialidads(gstInpct);
 
         } else {
             $('#danger12').toggle('toggle');
