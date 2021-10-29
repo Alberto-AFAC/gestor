@@ -2143,10 +2143,10 @@ var dataSet = [
     <?php 
 
 
-$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion 
+$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion,gstTipo 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 AND confirmar='CONFIRMADO' ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 AND confirmar='CONFIRMADO' OR cursos.estado = 2 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -2183,7 +2183,9 @@ if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]==
     if($con[10]==0){
     $accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='constancia.php?data={$con[0]}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
     }else{
+
     $accion = "<center><a  type='button' id='myCertificate' target='_blank'    class='datos btn btn-default'>su archivo fue descargado</a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+
     }
 
 }else{
@@ -2231,8 +2233,20 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
 
 
-    <?php }else{ ?>
+    <?php }else{ 
 
+if($data['codigo']=='X' AND $data['gstTipo']=='RECURRENTES'){?>
+
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<span class='badge' style='background-color: green;'><?php echo 'REALIZADO'?></span>",
+
+        "<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-primary '>REALIZADO</a>"
+
+    ],
+
+<?php }else if($data['codigo']!='X'){ ?>
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
@@ -2242,8 +2256,8 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
     ],
 
-
-    <?php } 
+<?php }
+ } 
  
 } 
            }?>
