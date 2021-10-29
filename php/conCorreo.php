@@ -33,7 +33,6 @@ $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
 $mail->addAddress($correo,$nombre);
 $mail->addBCC('jmondragonescamilla@gmail.com');
 $mail->addBCC('angelcanseco.c@gmail.com');
-$mail->addBCC('abr_ar77@hotmail.com');
 $mail->Subject = 'Reestablecer contraseña';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
