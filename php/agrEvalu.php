@@ -73,6 +73,7 @@ $id4 = $_POST['gstInspr'];
 $id1 = $_POST['gstIdprm'];
 $id2 = $_POST['actual'];
 $comntr = $_POST['comntr'];
+$idspc = $_POST['idspc'];
 
 $gstIDprm = explode(",", $id1);
 $gstActul = explode(",", $id2);
@@ -81,13 +82,14 @@ $gstInspr = explode(",", $id4);
 $valor = count($gstIDprm);
 
 	for($i=0; $i<$valor; $i++){
-		if(proEvalue($gstInspr[$i],$gstIDprm[$i],$gstActul[$i],$comntr,$conexion))
+		if(proEvalue($gstInspr[$i],$gstIDprm[$i],$gstActul[$i],$idspc,$comntr,$conexion))
 			{		
 				if($i===1){
 					echo "0";
 				$realizo = 'EVALUÓ AL USUARIO';
 				$gstIdper = $gstInspr[$i];
-				historial($id,$realizo,$gstIdper,$conexion);					
+				historial($id,$realizo,$gstIdper,$conexion);
+				spcialidad($gstInspr[$i],$idspc,$conexion);					
 				}
 		
 			}else{
@@ -117,7 +119,8 @@ $valor = count($gstIDprm);
 		echo "0";
 				$realizo = 'BAJA ESPECIALIDAD';
 				$gstIdper = $idUsu;
-				historial($id,$realizo,$gstIdper,$conexion);		
+				historial($id,$realizo,$gstIdper,$conexion);
+				bajaEva($idUsu,$spcId,$conexion);		
 	}else{
 		echo "1";
 	}	
@@ -125,13 +128,24 @@ $valor = count($gstIDprm);
 }
 
 
-function proEvalue($gstInspr,$gstIDprm,$gstActul,$comntr,$conexion){
 
 
-	$query="SELECT * FROM evaluacion WHERE 	gstIDins='$gstInspr' AND gstIDprm='$gstIDprm' AND estado = 0 ";
-			$resultado= mysqli_query($conexion,$query);
-		if($resultado->num_rows==0){
-			$query="INSERT INTO evaluacion VALUES(0,'$gstInspr','$gstIDprm','$gstActul','$gstActul',0,0);";
+
+
+
+
+
+
+
+
+
+function proEvalue($gstInspr,$gstIDprm,$gstActul,$idspc,$comntr,$conexion){
+
+
+	// $query="SELECT * FROM evaluacion WHERE 	gstIDins='$gstInspr' AND gstIDprm='$gstIDprm' AND estado = 0 ";
+	// 		$resultado= mysqli_query($conexion,$query);
+	// 	if($resultado->num_rows==0){
+			$query="INSERT INTO evaluacion VALUES(0,'$gstInspr','$gstIDprm','$gstActul','$gstActul',$idspc,0);";
 				if(mysqli_query($conexion,$query)){
 
 
@@ -146,9 +160,9 @@ function proEvalue($gstInspr,$gstIDprm,$gstActul,$comntr,$conexion){
 					return false;
 				}
 				$this->conexion->cerrar();
-		}else{
+		// }else{
 
-		}
+		// }
 	}
 
 
@@ -181,7 +195,7 @@ $query="SELECT * FROM especialidadcat WHERE gstIDper=$gstIdper AND gstIDcat=$Ags
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-		$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$AgstIDCat',0);";
+		$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$AgstIDCat','NO',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
@@ -189,6 +203,24 @@ $query="SELECT * FROM especialidadcat WHERE gstIDper=$gstIdper AND gstIDcat=$Ags
 		}
 		$this->conexion->cerrar();
 	}else{}
+}
+
+function spcialidad($gstInspr,$idspc,$conexion){
+
+	$query = "UPDATE especialidadcat 
+			  SET gstIDeva='SI'
+	 		  WHERE gstIDper = '$gstInspr'
+	 		  AND gstIDcat = '$idspc'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+
 }
 
 function obligatorio($gstIdper,$gstObli,$conexion){
@@ -236,13 +268,25 @@ function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDun
 	}
 
 	function bajaSpc($idUsu,$spcId,$conexion){
-	$query="UPDATE especialidadcat SET estado = '1' WHERE gstIdspc = $spcId ";
+	$query="UPDATE especialidadcat SET estado = '1' WHERE gstIDper = $idUsu AND gstIDcat = $spcId ";
 	if(mysqli_query($conexion,$query)){
 		return true;
 	}else{
 		return false;
 	}
 	$this->conexion->cerrar();	
+	}
+
+	function bajaEva($idUsu,$spcId,$conexion){
+
+	$query="DELETE FROM evaluacion WHERE gstIDins = $idUsu AND gesEvalu=$spcId";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
+	$this->conexion->cerrar();	
+
 	}
 
 	function cerrar($conexion){

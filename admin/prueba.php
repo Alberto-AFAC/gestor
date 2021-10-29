@@ -207,38 +207,73 @@ include ("../conexion/conexion.php");
 
 //   echo $res[0];
 
-$gstIdperEli = 1321;
-$idcurs = 1064;
-echo $valor = documentos($idcurs,$conexion);
+// $gstIdperEli = 1321;
+// $idcurs = 1064;
+// echo $valor = documentos($idcurs,$conexion);
 
-function documentos($idcurs,$conexion){
+// function documentos($idcurs,$conexion){
 
-$query = "SELECT *,count(*) AS total FROM temario WHERE idcurso = $idcurs";
-  $result = mysqli_query($conexion,$query);
+// $query = "SELECT *,count(*) AS total FROM temario WHERE idcurso = $idcurs";
+//   $result = mysqli_query($conexion,$query);
 
-if($result->num_rows==0){
+// if($result->num_rows==0){
 
-return 'no hay';
+// return 'no hay';
 
-}else{
-  $res = mysqli_fetch_row($result);
+// }else{
+//   $res = mysqli_fetch_row($result);
 
-  return $res[4];
-}
+//   return $res[4];
+// }
 
-}
-
-
-
-$fecha = '10-14-2021';
-$date = date_create($fecha);
-
-echo '<br>';
-  ini_set('date.timezone','America/Mexico_City');
-echo $newDate = date("Y-m-d", strtotime($fecha));
+// }
 
 
-echo date_format($date, 'Y-m-d');
+
+// $fecha = '10-14-2021';
+// $date = date_create($fecha);
+
+// echo '<br>';
+//   ini_set('date.timezone','America/Mexico_City');
+// echo $newDate = date("Y-m-d", strtotime($fecha));
+
+
+// echo date_format($date, 'Y-m-d');
+
+$correo = 'angel.canseco@sct.gob.mx';
+
+echo $v = conCorreo($correo,$conexion);
+
+//   resultado($res1,$res2);
+    
+//     $res = $res2;
+  
+// echo $res;
+      //echo $res[1];
+$nombre = explode('.',$v);
+echo '<br>'.$c = intval($nombre[1]);
+
+ function conCorreo($correo,$conexion){
+
+$query="SELECT * FROM personal 
+    WHERE gstCorro = '$correo' AND estado = 0 
+    OR gstCinst = '$correo' AND estado = 0
+    OR gstSpcID = '$correo' AND estado = 0
+    ";
+$resultado= mysqli_query($conexion,$query);
+    if($resultado->num_rows==0){
+    return '0';
+    }else{
+       $res = mysqli_fetch_row($resultado);
+
+        return $res[1].''.$res[2].'.'.$res[22];
+    }
+    $this->conexion->cerrar();
+} 
+
+
+
+
 ?>
 </pre>
 
