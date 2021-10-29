@@ -145,11 +145,11 @@
          $excelentes23=0;
 
          //  VARIABLES PREGUNTA 23
-         $deficiente26 = 0;
-         $nosatisfactorio26 = 0;
-         $regular26=0;
-         $satisfactorio26=0;
-         $excelentes26=0;
+      //   $deficiente26 = 0;
+       //  $nosatisfactorio26 = 0;
+       //  $regular26=0;
+       //  $satisfactorio26=0;
+       //  $excelentes26=0;
 
 
 
@@ -476,17 +476,17 @@
           }
 
           // ALGORITMO PREGUNTA 26 (CÓMO FUE EL MATERIAL DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN, TEXTOS, ENLACES) UTILIZADO?)
-          if($row[28] == 'DEFICIENTE'){
-            $deficiente26++;
-          }if($row[28] == 'NO SATISFACTORIO'){
-            $nosatisfactorio26++;
-          }if($row[28] == 'SATISFACTORIO'){
-            $satisfactorio26++;
-          }if($row[28] == 'EXCELENTE'){
-            $excelentes26++;
-          }if($row[28] == 'REGULAR'){
-            $regular26++;
-          }
+         // if($row[28] == 'DEFICIENTE'){
+           // $deficiente26++;
+          //}if($row[28] == 'NO SATISFACTORIO'){
+           // $nosatisfactorio26++;
+          //}if($row[28] == 'SATISFACTORIO'){
+           // $satisfactorio26++;
+         // }if($row[28] == 'EXCELENTE'){
+          //  $excelentes26++;
+          //}if($row[28] == 'REGULAR'){
+          //  $regular26++;
+         // }
           
           if($row[31] == '0'){
             $totalresg++;
@@ -620,7 +620,7 @@
       $pregunta21 = $deficiente21 * 2 / 10 + $nosatisfactorio21 * 4 / 10  + $regular21 * 6 / 10 + $satisfactorio21 * 8 / 10  + $excelentes21 * 10 / 10;
       $pregunta22 = $deficiente22 * 2 / 10 + $nosatisfactorio22 * 4 / 10  + $regular22 * 6 / 10 + $satisfactorio22 * 8 / 10  + $excelentes22 * 10 / 10;
       $pregunta23 = $deficiente23 * 2 / 10 + $nosatisfactorio23 * 4 / 10  + $regular23 * 6 / 10 + $satisfactorio23 * 8 / 10  + $excelentes23 * 10 / 10;
-      $pregunta26 = $deficiente26 * 2 / 10 + $nosatisfactorio26 * 4 / 10  + $regular26 * 6 / 10 + $satisfactorio26 * 8 / 10  + $excelentes26 * 10 / 10;
+      //$pregunta26 = $deficiente26 * 2 / 10 + $nosatisfactorio26 * 4 / 10  + $regular26 * 6 / 10 + $satisfactorio26 * 8 / 10  + $excelentes26 * 10 / 10;
 
 
 
@@ -628,7 +628,7 @@
   //$cantidad = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12; //NUMERO 
  
   //SUMA DE EXCELENTES Y SATISFACTORIOS PARA OBTENER EL NIVEL GENERAL DE SATISFACCIÓN 
-  $cantidad1 = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $excelentes13 + $excelentes14 + $excelentes15 + $excelentes16 + $excelentes17 + $excelentes18 + $excelentes19 + $excelentes20 + $excelentes21 + $excelentes22 + $excelentes23+ $excelentes26+$satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12+$satisfactorio13+$satisfactorio14+$satisfactorio15+$satisfactorio16+$satisfactorio17+$satisfactorio18+$satisfactorio19+$satisfactorio20+$satisfactorio21+$satisfactorio22+$satisfactorio23+$satisfactorio26; 
+  $cantidad1 = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $excelentes13 + $excelentes14 + $excelentes15 + $excelentes16 + $excelentes17 + $excelentes18 + $excelentes19 + $excelentes20 + $excelentes21 + $excelentes22 + $excelentes23+$satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12+$satisfactorio13+$satisfactorio14+$satisfactorio15+$satisfactorio16+$satisfactorio17+$satisfactorio18+$satisfactorio19+$satisfactorio20+$satisfactorio21+$satisfactorio22+$satisfactorio23; 
 
   //sacar el porcentaje
   $totalfull = $totalresg * 24;
@@ -638,7 +638,7 @@
     }
 
   //porcentaje de DEFICIENTE 
-  $cantidadef = $deficiente + $deficiente2 + $deficiente3 + $deficiente4 + $deficiente5 + $deficiente6 + $deficiente7 + $deficiente8 + $deficiente9 + $deficiente10 + $deficiente11 + $deficiente12 + $deficiente13 + $deficiente14 + $deficiente15 + $deficiente16 + $deficiente17 + $deficiente18 + $deficiente20 + $deficiente21 + $deficiente22 + $deficiente23 + $deficiente26; 
+  $cantidadef = $deficiente + $deficiente2 + $deficiente3 + $deficiente4 + $deficiente5 + $deficiente6 + $deficiente7 + $deficiente8 + $deficiente9 + $deficiente10 + $deficiente11 + $deficiente12 + $deficiente13 + $deficiente14 + $deficiente15 + $deficiente16 + $deficiente17 + $deficiente18 + $deficiente20 + $deficiente21 + $deficiente22 + $deficiente23 ; 
   $totalfulldef = $totalresg * 24;
   $totaldeficiente = $cantidadef * 100;
       function porcentajedef($totalfulldef, $totaldeficiente, $redondear = 2) {
@@ -646,36 +646,36 @@
     }
 
     //porcentaje de NO SATISFACTORIO
-  $cantidadnosa = $nosatisfactorio + $nosatisfactorio2 + $nosatisfactorio3 + $nosatisfactorio4 + $nosatisfactorio5 + $nosatisfactorio6 + $nosatisfactorio7 + $nosatisfactorio8 + $nosatisfactorio9 + $nosatisfactorio10 + $nosatisfactorio11 + $nosatisfactorio12 + $nosatisfactorio13+$nosatisfactorio14+$nosatisfactorio15+$nosatisfactorio16+$nosatisfactorio17+$nosatisfactorio18+$nosatisfactorio19+$nosatisfactorio20+$nosatisfactorio21+$nosatisfactorio22+$nosatisfactorio23+$nosatisfactorio26; 
-  $totalfullnosa = $totalresg * 12;
+  $cantidadnosa = $nosatisfactorio + $nosatisfactorio2 + $nosatisfactorio3 + $nosatisfactorio4 + $nosatisfactorio5 + $nosatisfactorio6 + $nosatisfactorio7 + $nosatisfactorio8 + $nosatisfactorio9 + $nosatisfactorio10 + $nosatisfactorio11 + $nosatisfactorio12 + $nosatisfactorio13+$nosatisfactorio14+$nosatisfactorio15+$nosatisfactorio16+$nosatisfactorio17+$nosatisfactorio18+$nosatisfactorio19+$nosatisfactorio20+$nosatisfactorio21+$nosatisfactorio22+$nosatisfactorio23; 
+  $totalfullnosa = $totalresg * 24;
   $totaldnosatisf = $cantidadnosa * 100;
       function porcentaje2($totalfullnosa, $totaldnosatisf, $redondear = 2) {
         return round($totaldnosatisf / $totalfullnosa, $redondear); 
     }
 
     //porcentaje de SATISFACTORIO
-  $cantidadsatis = $satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12; 
-  $totalfullsatis = $totalresg * 12;
+  $cantidadsatis = $satisfactorio + $satisfactorio2 + $satisfactorio3 + $satisfactorio4 + $satisfactorio5 + $satisfactorio6 + $satisfactorio7 + $satisfactorio8 + $satisfactorio9 + $satisfactorio10 + $satisfactorio11 + $satisfactorio12+ $satisfactorio13+ $satisfactorio14+ $satisfactorio15+ $satisfactorio16+ $satisfactorio17+ $satisfactorio18+ $satisfactorio19+ $satisfactorio20+ $satisfactorio21+ $satisfactorio22+ $satisfactorio23; 
+  $totalfullsatis = $totalresg * 24;
   $totalsatis = $cantidadsatis * 100;
       function porcentaje3($totalfullsatis, $totalsatis, $redondear = 2) {
         return round($totalsatis / $totalfullsatis, $redondear); 
     }
 
     //porcentaje de EXCELENTE
-  $cantidadexc = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12; 
-  $totalfullexc = $totalresg * 12;
+  $cantidadexc = $excelentes + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12 + $excelentes13+ $excelentes14+ $excelentes15+ $excelentes16+ $excelentes17+ $excelentes18+ $excelentes19+ $excelentes20+ $excelentes21+ $excelentes22+ $excelentes23; 
+  $totalfullexc = $totalresg * 24;
   $totalexc = $cantidadexc * 100;
       function porcentaje4($totalfullexc, $totalexc, $redondear = 2) {
         return round($totalexc / $totalfullexc, $redondear); 
     }
 
      //porcentaje de REGULAR
-  //$cantidadexc = $regual + $excelentes2 + $excelentes3 + $excelentes4 + $excelentes5 + $excelentes6 + $excelentes7 + $excelentes8 + $excelentes9 + $excelentes10 + $excelentes11 + $excelentes12; 
-  //$totalfullexc = $totalresg * 12;
-  //$totalexc = $cantidadexc * 100;
-    //  function porcentaje4($totalfullexc, $totalexc, $redondear = 2) {
-      //  return round($totalexc / $totalfullexc, $redondear); 
-   // }
+  $cantidadregu = $regular + $regular2 + $regular3 + $regular4 + $regular5 + $regular6 + $regular7 + $regular8 + $regular9 + $regular10 + $regular11 + $regular12+ $regular13+ $regular14+ $regular15+ $regular16+ $regular17+ $regular18+ $regular19+ $regular20+ $regular21+ $regular22+ $regular23; 
+  $totalfullregu = $totalresg * 24;
+  $totalregu = $cantidadregu * 100;
+      function porcentaje5($totalfullregu, $totalregu, $redondear = 2) {
+        return round($totalregu / $totalfullregu, $redondear); 
+    }
 
 
     // $n1 = 255;

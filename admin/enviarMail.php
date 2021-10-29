@@ -10,13 +10,13 @@ require '../php-mailer2/SMTP.php';
 
 	$idcurso = $_POST['gstIdlsc'];
 	
-	$query = "SELECT gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
+	$query = "SELECT gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
 			  WHERE gstIdlsc = $idcurso";
 	$resultado = mysqli_query($conexion, $query);
     while($curso = mysqli_fetch_assoc($resultado)){
-        $to = $curso['gstCorro'];
+        $to = $curso['gstCinst'];
 	 //$curso[1];
 
 $mail = new PHPMailer;
@@ -39,6 +39,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 		$mail->Subject = 'CURSO PROGRAMADO';
 		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+		$mail->CharSet = 'UTF-8';
 		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
 				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>".$curso['gstTitlo']."</span></td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$curso['gstIdlsc']."</td></tr>

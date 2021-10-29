@@ -84,7 +84,15 @@ ini_set('date.timezone','America/Mexico_City');
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
+                        <?php
+                                if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+                                    echo "<img class='user-image' src='../dist/img/profile-leonardoR.jpeg' 
+                                    alt='User profile picture'>";
+                                } else{
+                                    echo "<img class='user-image' src='../dist/img/perfil.png'
+                                    alt='User profile picture'>";
+                                }
+                                ?>
                         <!--  <span class="hidden-xs">ADMINISTRADOR</span> -->
                         <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
                     </a>
@@ -185,6 +193,7 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
                     <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
+                    <li><a href="tareas" style="pointer-events: none;" onclick="return false;"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li>
                     <li><a href="programa"><i class="fa ion-compose"></i> Programar curso</a></li>
                     <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
@@ -214,13 +223,22 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <li>
                 <a href="soporte">
-                    <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>
+                    <i class="fa fa-history"></i> <span>Historial de Cambios</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red"></small>
                         <small class="label pull-right bg-blue"></small>
                     </span>
                 </a>
             </li>
+            <!-- <li>
+                <a href="soporte">
+                    <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li> -->
 
              <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
               <li>

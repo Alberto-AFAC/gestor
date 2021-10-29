@@ -14,7 +14,7 @@
         <div class="row">
 
 
-        <div class="col-sm-offset-0 col-md-3 text-center">
+        <div class="col-sm-offset-0 col-md-2 text-center">
                 <input type="text" class="knob" value=<?php if($totalfulldef == 0 && $totaldeficiente == 0){
                   echo "0";
                 }else{
@@ -25,7 +25,7 @@
                   <div class="knob-label" style="font-size:15px; font-weight: bold;">DEFICIENTE %</div>
                 </div>
           <!-- ./col -->
-          <div class="col-xs-0 col-md-3 text-center">
+          <div class="col-xs-0 col-md-2 text-center">
             <input type="text" class="knob" value=<?php if($totalfullnosa == 0 && $totaldnosatisf == 0){
               echo "0";
             }else {
@@ -37,7 +37,19 @@
           </div>
 
           <!-- ./col -->
-          <div class="col-xs-0 col-md-3 text-center">
+          <div class="col-xs-0 col-md-2 text-center">
+            <input type="text" class="knob" value=<?php if($totalfullregu == 0 && $totalregu == 0){
+              echo "0";
+            } else {
+              echo porcentaje3($totalfullregu, $totalregu,0)."%";
+            }
+           ?> data-width="90" data-height="90" data-fgColor="#1ABC9C" data-readonly="true">
+
+            <div class="knob-label" style="font-size:15px; font-weight: bold;">REGULAR %</div>
+          </div>
+
+          <!-- ./col -->
+          <div class="col-xs-0 col-md-2 text-center">
             <input type="text" class="knob" value=<?php if($totalfullsatis == 0 && $totalsatis == 0){
               echo "0";
             } else {
@@ -48,7 +60,7 @@
             <div class="knob-label" style="font-size:15px; font-weight: bold;">SATISFACTORIO %</div>
           </div>
         <!-- ./col -->
-          <div class="col-xs-0 col-md-3 text-center">
+          <div class="col-xs-0 col-md-2 text-center">
             <input type="text" class="knob" value=<?php if($totalfullexc == 0 && $totalexc == 0){
               echo "0";
             } else {

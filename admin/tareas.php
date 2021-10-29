@@ -84,7 +84,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-        PROGRAMACIÓN DEL CURSO       
+        PROGRAMACIÓN DE TAREAS      
       </h1>
     </section>
     <!-- Main content -->
@@ -203,13 +203,13 @@ include('header.php');
       </div>
     </div>
     <div class="col-sm-4">
-      <label class="label2">CONTRASEÑA DE ACCESO</label>
-      <div class="input-group">
-      <div class="input-group-addon">
+         <label class="label2">CONTRASEÑA DE ACCESO</label>
+         <div class="input-group">
+            <div class="input-group-addon">
                     <i class="fa fa-unlock-alt"></i>
-                  </div>
-      <input type="password" class="form-control inputalta" id="contracceso" name="contracceso">
-    </div>
+            </div>
+          <input type="password" class="form-control inputalta" id="contracceso" name="contracceso">
+         </div>
     </div>
     <div class="col-sm-4">
       <label class="label2">CLASS ROOM</label>
@@ -219,8 +219,13 @@ include('header.php');
                   </div>
             <input type="url" onkeyup="mayus(this);" class="form-control inputalta" id="clasroom" name="clasroom" placeholder="URL ">
       </div>
-      </div>
+    
+
+</div>
+
+
     </div>
+            
       <div id="disocl" style="display: none;" class="form-group">
       <input type="hidden" name="link" id="link">
       <input type="hidden" name="contracceso" id="contracceso">  
@@ -228,14 +233,29 @@ include('header.php');
       </div> 
 
 </div>
+
+<!-- <div class="form-group">
+<div class="col-sm-4">
+      <label class="label2">CLASS ROOM</label>
+      <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-globe"></i>
+                  </div>
+            <input type="url" onkeyup="mayus(this);" class="form-control inputalta" id="clasroom" name="clasroom" placeholder="URL ">
+      </div>
+    </div>
+</div> -->
+
+<!-- <div id="rom1" style="display: none;" class="form-group">
+      <input type="hidden" name="clasroom" id="clasroom">
+</div>  -->
+
 <div class="form-group">
 <div class="col-sm-4">
-<label class="label2">PARTICIPANTES DEL CURSO</label>
 
 </div>                     
 </div>  
 
-<div id="tabcurso"></div> 
 
 <!-- <div class="form-group">
 <div class="col-sm-12">

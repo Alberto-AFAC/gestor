@@ -341,9 +341,7 @@
                                                                 <form name="form1" action="" class="formulario1">
                                                                     <div class="radio">
                                                                         <div class="box-header with-border">
-                                                                            <h3 class="box-title">SE ESPECIFICÓ LOS
-                                                                                OBJETIVOS AL INICIO DEL CURSO,
-                                                                                EN FORMA CLARA Y COMPRENSIBLE? <span
+                                                                            <h3 class="box-title">SE ESPECIFICÓ LOS OBJETIVOS AL INICIO DEL CURSO, EN FORMA CLARA Y COMPRENSIBLE? <span
                                                                                     id="span1">*</span></h3>
                                                                         </div>
                                                                         <form class="form-horizontal">
@@ -1076,10 +1074,7 @@
                                                                 <form name="form13" action="" class="formulario1">
                                                                     <div class="radio">
                                                                         <div class="box-header with-border">
-                                                                            <h3 class="box-title">LOS CONOCIMIENTOS
-                                                                                ADQUIRIDOS SON
-                                                                                APLICABLES A TU PUESTO DE
-                                                                                TRABAJO? <span id="span13">*</span></h3>
+                                                                            <h3 class="box-title">LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE TRABAJO? <span id="span13">*</span></h3>
                                                                         </div>
                                                                         <form class="form-horizontal">
                                                                             <div class="box-body">

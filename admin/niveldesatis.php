@@ -162,6 +162,7 @@ include('header.php');
                                     <tr style="color: gray;">
                                         <th>DEFICIENTE</th>
                                         <th>NO SATISFACTORIO</th>
+                                        <th>REGULAR</th>
                                         <th>SATISFACTORIO</th>
                                         <th>EXCELENTE</th>
 
@@ -530,18 +531,27 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
     type: 'bar',
     data: {
         labels: ["PREGUNTA 1", "PREGUNTA 2", "PREGUNTA 3", "PREGUNTA 4", "PREGUNTA 5", "PREGUNTA 6",
-            "PREGUNTA 7", "PREGUNTA 8", "PREGUNTA 9", "PREGUNTA 10", "PREGUNTA 11", "PREGUNTA 12"
+            "PREGUNTA 7", "PREGUNTA 8", "PREGUNTA 9", "PREGUNTA 10", "PREGUNTA 11", "PREGUNTA 12","PREGUNTA 13",
+            "PREGUNTA 14","PREGUNTA 15","PREGUNTA 16","PREGUNTA 17","PREGUNTA 18","PREGUNTA 19","PREGUNTA 20",
+            "PREGUNTA 21","PREGUNTA 22","PREGUNTA 23"
         ],
         datasets: [{
             label: "PONDERACIÓN",
             backgroundColor: ["#154360", "#1A5276", "#1F618D", "#2471A3", "#2980B9", "#5499C7",
-                "#7FB3D5", "#A9CCE3", "#1ABC9C", "#48C9B0", "#76D7C4", "#A3E4D7"
+                "#7FB3D5", "#A9CCE3", "#1ABC9C", "#48C9B0", "#76D7C4", "#A3E4D7", "#154360","#1A5276",
+                "#1F618D","#2471A3","#2980B9","#5499C7","#7FB3D5","#A9CCE3","#1ABC9C","#48C9B0","#76D7C4",
+                "#A3E4D7","#A3E4D7"
             ],
             borderWidth: 0,
             data: ["<?php echo $pregunta1?>", "<?php echo $pregunta2?>", "<?php echo $pregunta3?>",
                 "<?php echo $pregunta4?>", "<?php echo $pregunta5?>", "<?php echo $pregunta6?>",
                 "<?php echo $pregunta7?>", "<?php echo $pregunta8?>", "<?php echo $pregunta9?>",
-                "<?php echo $pregunta10?>", "<?php echo $pregunta11?>", "<?php echo $pregunta12?>"
+                "<?php echo $pregunta10?>", "<?php echo $pregunta11?>", "<?php echo $pregunta12?>",
+                "<?php echo $pregunta13?>", "<?php echo $pregunta14?>","<?php echo $pregunta15?>",
+                "<?php echo $pregunta16?>","<?php echo $pregunta17?>","<?php echo $pregunta18?>",
+                "<?php echo $pregunta19?>","<?php echo $pregunta20?>","<?php echo $pregunta21?>",
+                "<?php echo $pregunta22?>","<?php echo $pregunta23?>"
+
             ]
         }]
     },
@@ -579,7 +589,7 @@ $('#button').confirm({
     closeAnimation: 'scale',
     animationSpeed: 2000,
     title: 'CONTENIDO DE EVALUACIÓN',
-    content: '<table class="table table-bordered table-condensed table-striped"><tr><th>CONTENIDO</th><th>DESCRIPCIÓN</th></tr><tr><td>PREGUNTA 1</td><td>¿SE ESPECIFICÓ LOS OBJETIVOS AL INICIO DEL CURSO, EN FORMA CLARA Y COMPRENSIBLE?</td></tr><tr><td>PREGUNTA 2</td><td>¿SE EXPLICÓ EL MODO DE EVALUACIÓN AL INICIO DEL CURSO?</td></tr><tr><td>PREGUNTA 3</td><td>¿EL INSTRUCTOR/A CONTESTÓ LAS DUDAS EN TIEMPO Y FORMA?</td></tr><tr><td>PREGUNTA 4</td><td>¿LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE TRABAJO?</td></tr><tr><td>PREGUNTA 5</td><td>¿CONSIDERAS QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE?</td></tr><tr><td>PREGUNTA 6</td><td>¿EL CURSO CUBRIÓ TUS EXPECTATIVAS?</td></tr><tr><td>PREGUNTA 7</td><td>¿EL CONTENIDO DEL CURSO AUMENTÓ TUS CONOCIMIENTOS Y COMPRENSIÓN DE LOS TEMAS REVISADOS?</td></tr><tr><td>PREGUNTA 8</td><td>¿EL TIEMPO PARA ENTREGAR LAS ACTIVIDADES, FUE SUFICIENTE PARA CUMPLIR CON ELLAS??</td></tr><tr><td>PREGUNTA 9</td><td>¿LA PRESENTACIÓN DEL CONTENIDO, FUE FÁCIL DE REVISAR?</td></tr><tr><td>PREGUNTA 10</td><td>¿LA EXPLICACIÓN DE LAS TAREAS, FUERON CLARAS Y SENCILLAS?</td></tr><tr><td>PREGUNTA 11</td><td>¿EL TIEMPO CON EL QUE RECIBIÓ LA INFORMACIÓN (INVITACIÓN, TEMARIO, ETC.) AL CURSO FUE ADECUADO?</td></tr><tr><td>PREGUNTA 12</td><td>¿CÓMO FUE EL MATERIAL DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN, TEXTOS, ENLACES) UTILIZADO?</td></tr></table>',
+    content: '<table class="table table-bordered table-condensed table-striped"><tr><th>CONTENIDO</th><th>DESCRIPCIÓN</th></tr><tr><td>PREGUNTA 1</td><td>¿SE ESPECIFICÓ LOS OBJETIVOS AL INICIO DEL CURSO, EN FORMA CLARA Y COMPRENSIBLE?</td></tr><tr><td>PREGUNTA 2</td><td>¿DEMOSTRÓ DOMINIO ADECUADO DEL TEMA?</td></tr><tr><td>PREGUNTA 3</td><td>¿SE APEGÓ AL TEMARIO?</td></tr><tr><td>PREGUNTA 4</td><td>¿UTILIZÓ UN LENGUAJE SENCILLO Y COMPRENSIBLE DURANTE LA SESIÓN?</td></tr><tr><td>PREGUNTA 5</td><td>¿ATENDIÓ CLARA Y OPORTUNAMENTE LAS DUDAS Y REACTIVOS DE LOS PARTICIPANTES?</td></tr><tr><td>PREGUNTA 6</td><td>¿PLANEÓ Y DIRIGIÓ ADECUADAMENTE LA SESIÓN?</td></tr><tr><td>PREGUNTA 7</td><td>¿DESPERTÓ EL INTERÉS DEL GRUPO CON RESPECTO A LOS CONTENIDOS?</td></tr><tr><td>PREGUNTA 8</td><td>¿FUE PUNTUAL DURANTE LA SESIÓN?</td></tr><tr><td>PREGUNTA 9</td><td>¿PROPICIÓ UN CLIMA DE COLABORACIÓN Y RESPETO ENTRE LOS PARTICIPANTES?</td></tr><tr><td>PREGUNTA 10</td><td>¿EXPLICÓ CON CLARIDAD LAS INSTRUCCIONES DE LAS ACTIVIDADES REALIZADAS?</td></tr><tr><td>PREGUNTA 11</td><td>¿TUVO UN CONTROL ADECUADO DEL GRUPO?</td></tr><tr><td>PREGUNTA 12</td><td>¿EXPLICÓ LOS CRITERIOS DE EVALUACIÓN DE LA SESIÓN?</td></tr><tr><td>PREGUNTA 13</td><td>¿LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE TRABAJO?</td></tr><tr><td>PREGUNTA 14</td><td>¿CONSIDERAS QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE?</td></tr><tr><td>PREGUNTA 15</td><td>¿LA SESIÓN CUBRIÓ TUS EXPECTATIVAS?</td></tr><tr><td>PREGUNTA 16</td><td>¿EL CONTENIDO AUMENTÓ MIS CONOCIMIENTOS Y COMPRENSIÓN DEL TEMA EXPUESTO?</td></tr><tr><td>PREGUNTA 17</td><td>¿LA DURACIÓN DE LA SESIÓN FUE LA MÁS APROPIADA PARA CUMPLIR EL OBJETIVO?</td></tr><tr><td>PREGUNTA 18</td><td>¿EL TIEMPO CON EL QUE RECIBIÓ LA INFORMACIÓN (INVITACIÓN, TEMARIO, ETC.) A LA SESIÓN FUE ADECUADO?</td></tr><tr><td>PREGUNTA 19</td><td>¿CÓMO FUE EL SERVICIO DE CAFÉ PROPORCIONADO?</td></tr><tr><td>PREGUNTA 20</td><td>¿LA DISPONIBILIDAD DEL/A COORDINADOR/A PARA RESPONDER DUDAS SOBRE EL SERVICIO FUE ADECUADA?</td></tr><tr><td>PREGUNTA 21</td><td>¿CÓMO FUE EL MATERIAL DIDÁCTICO (MANUAL, ROTAFOLIOS, AUDIOVISUALES, PRESENTACIÓN) UTILIZADO?</td></tr><tr><td>PREGUNTA 22</td><td>¿SÍ EL MATERIAL DE LA SESIÓN SE ENTREGÓ EN TIEMPO?</td></tr><tr><td>PREGUNTA 23</td><td>¿CÓMO FUERON LAS CONDICIONES DEL AULA PARA LA IMPARTICIÓN DE LA SESIÓN (LUZ, VENTILACIÓN, LIMPIEZA, COMODIDAD ETC.)?</td></tr></table>',
     buttons: {
         Aceptar: {
             keys: ['Y'],

@@ -68,8 +68,16 @@
                         <!-- Profile Image -->
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png"
-                                    alt="User profile picture">
+                                <?php
+                                if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+                                    echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/profile-leonardoR.jpeg' style='width: 120px;' 
+                                    alt='User profile picture'>";
+                                } else{
+                                    echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
+                                    alt='User profile picture'>";
+                                }
+                                ?>
+                                
 
                                 <h3 class="profile-username text-center"><?php echo $datos[2]?></h3>
 
