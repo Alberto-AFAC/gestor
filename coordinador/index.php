@@ -57,7 +57,7 @@
                         <div class="card">
                             <span></span>
                             <div class="content">
-                                <h3>GESTOR DE INSPECTORES</h3>
+                                <h3>CAPACITACIÓN AFAC</h3>
                                 <img class="img-servicios" src="../models/menu/images/piloto.svg" width="75%;" alt="piloto"><br><br>
                                 <a href="inicio.php">Iniciar</a>
                             </div>
