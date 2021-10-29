@@ -50,7 +50,7 @@ $direc = mysqli_query($conexion,$sql);
 
                         </div>
                         <div class="widget-user-image">
-                            <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                            <div id="foto"></div>
                         </div>
                         <div class="box-footer">
                             <div class="row">
