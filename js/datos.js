@@ -1475,7 +1475,7 @@ function inspector(gstIdper) {
         document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/user1-128x128.jpg" style="width: 80px; alt="User Avatar">';
     }
 
-
+// .l.
     $.ajax({
         url: '../php/consulta.php',
         type: 'POST'
