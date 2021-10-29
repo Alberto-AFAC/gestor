@@ -38,6 +38,7 @@ function enviarCorreo() {
 
     correo = document.getElementById('correo').value;
     if (correo != '') {
+        swal.showLoading();
         $.ajax({
             url: 'php/conCorreo.php',
             type: 'POST',
