@@ -13,6 +13,11 @@ require '../php-mailer2/SMTP.php';
 
  if($valor = conCorreo($correo,$conexion)){
 
+		$valores = explode('.',$valor);
+		$nombre = strval($valores[0]);
+		$nmple = intval($valores[1]);
+
+
  	if(actCorreo($valor,$conexion)){	
 	
 	$mail = new PHPMailer;
@@ -25,8 +30,10 @@ $mail->SMTPAuth = true;
 $mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Password = 'Agencia.SCT2021.';
 $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
-$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
+$mail->addAddress($correo,$nombre);
 $mail->addBCC('jmondragonescamilla@gmail.com');
+$mail->addBCC('angelcanseco.c@gmail.com');
+$mail->addBCC('abr_ar77@hotmail.com');
 $mail->Subject = 'Reestablecer contraseña';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
@@ -99,13 +106,13 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
  $msg .= "<tr><td>";
  $msg .= "<div style='font-family: ' Trebuchet MS ', Tahoma, sans-serif'>";
  $msg .= "<div style='font-size: 14px; font-family: ' Montserrat ', 'Trebuchet MS ', 'Lucida Grande ', 'Lucida Sans Unicode ', 'Lucida Sans ', Tahoma, sans-serif; color: #40507a; line-height: 1.2;'>";
- $msg .= "<p style='margin: 0; font-size: 14px;'><span style='font-size:17px;'>Hola (nombre de usuario), tu contraseña de usuario para acceder es la siguiente:</span></p>";
+ $msg .= "<p style='margin: 0; font-size: 14px;'><span style='font-size:17px;'>HOLA $nombre, TU CONTRASEÑA DE USUARIO PARA ACCEDER ES LA SIGUIENTE:</span></p>";
  $msg .= "</div></div></td></tr></table>";
  $msg .= "<table border='0' cellpadding='10' cellspacing='0' class='text_block' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;' width='100%'>";
  $msg .= "<tr><td>";
  $msg .= "<div style='font-family: ' Trebuchet MS ', Tahoma, sans-serif'>";
  $msg .= "<div style='font-size: 14px; font-family: ' Montserrat ', 'Trebuchet MS ', 'Lucida Grande ', 'Lucida Sans Unicode ', 'Lucida Sans ', Tahoma, sans-serif; color: #40507a; line-height: 1.2;'>";
- $msg .= "<p style='margin: 0; font-size: 14px;'><span style='font-size:16px;color:#896200;'><strong>CONTRASEÑA DE ACCESO</strong></span></p>";
+ $msg .= "<p style='margin: 0; font-size: 22px;'><span style='font-size:16px;color:#896200;'><strong>$nmple</strong></span></p>";
  $msg .= "</div></div></td></tr></table>";
  $msg .= "<table border='0' cellpadding='10' cellspacing='0' class='text_block' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;' width='100%'>";
  $msg .= "<tr><td>";
@@ -172,8 +179,8 @@ $resultado= mysqli_query($conexion,$query);
 		return '0';
 		}else{
 			 $res = mysqli_fetch_row($resultado);
-
-			  return $res[22];
+			
+			  return $res[1].' '.$res[2].'.'.$res[22];
 		}
 		$this->conexion->cerrar();
 } 
