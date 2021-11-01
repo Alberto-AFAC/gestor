@@ -22,7 +22,7 @@ require '../php-mailer2/SMTP.php';
 $mail = new PHPMailer;
 $mail->isSMTP();
 $mail->SMTPDebug = 2;
-$mail->Host = 'smtp.zoho.com';
+$mail->Host = 'smtp.hostinger.com';
 $mail->SMTPSecure = 'ssl';                          
 $mail->Port = 465;
 $mail->SMTPAuth = true;
