@@ -51,7 +51,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 				<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$curso['sede']." </td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$curso['modalidad']."</td></tr>
 				<hr><center>
-				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: Este correo es de prueba, por favor ignorarlo.</h2>
+				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: ESTE CORREO ES DE PRUEBA, POR FAVOR IGNORARLO.</h2>
 				</center><hr>
 				</table>";
 			$mail->MsgHTML($msg);
