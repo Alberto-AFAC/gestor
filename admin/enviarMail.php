@@ -8,12 +8,12 @@ require '../php-mailer2/PHPMailer.php';
 require '../php-mailer2/SMTP.php';
 
 
-	$idcurso = $_POST['gstIdlsc'];
+	$idcurso = $_POST['codigoCurso'];
 	
-	$query = "SELECT gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
+	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
-			  WHERE gstIdlsc = $idcurso";
+			  WHERE codigo = '$idcurso'";
 	$resultado = mysqli_query($conexion, $query);
     while($curso = mysqli_fetch_assoc($resultado)){
         $to = $curso['gstCinst'];
@@ -31,7 +31,7 @@ $mail->Password = 'Agencia.SCT2021.';
 $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
 // $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
 $mail->addAddress("{$to}");
-$mail->addBCC('jmondragonescamilla@gmail.com');
+// $mail->addBCC('jmondragonescamilla@gmail.com');
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
@@ -51,7 +51,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 				<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$curso['sede']." </td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$curso['modalidad']."</td></tr>
 				<hr><center>
-				<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo es de prueba, por favor ignorarlo.
+				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: Este correo es de prueba, por favor ignorarlo.</h2>
 				</center><hr>
 				</table>";
 			$mail->MsgHTML($msg);
