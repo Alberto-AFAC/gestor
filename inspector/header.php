@@ -20,7 +20,7 @@
 
 
       $sql = 
-     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo FROM personal 
+     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo,gstNmpld FROM personal 
       WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
     $persona = mysqli_query($conexion,$sql);
     $datos = mysqli_fetch_row($persona);
