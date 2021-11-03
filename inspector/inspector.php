@@ -2240,9 +2240,9 @@ if($data['codigo']=='X' AND $data['gstTipo']=='RECURRENTES'){?>
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-        "<span class='badge' style='background-color: green;'><?php echo 'REALIZADO'?></span>",
+        "<span class='badge' style='background-color: gray;'><?php echo 'REALIZADO'?></span>",
 
-        "<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-primary '>REALIZADO</a>"
+        "PDF"
 
     ],
 
@@ -2264,10 +2264,12 @@ if($data['codigo']=='X' AND $data['gstTipo']=='RECURRENTES'){?>
 ];
 
 var tableGenerarReporte = $('#data-table-completo').DataTable({
+    "order": [[ 5, "asc" ]],
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+
     data: dataSet,
     columns: [{
             title: "CURSO"
