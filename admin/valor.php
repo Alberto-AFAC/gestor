@@ -981,7 +981,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                 </div>
                                 
                                 <div class="box-body">
-                                    <div id="obligados"></div>
+                                    <div id="cursosObligados"></div>
 
                                 </div>
                                 

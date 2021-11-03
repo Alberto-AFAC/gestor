@@ -720,7 +720,7 @@ $direc = mysqli_query($conexion,$sql);
                                     <h3 class="box-title">Cursos obligatorios</h3>
                                 </div>
                                 <div class="box-body">
-                                    <div id="obligados"></div>
+                                    <div id="cursosObligados"></div>
                                 </div>
                             </div>
                         </div>
