@@ -7,7 +7,7 @@
 	$query = "SELECT *,listacursos.gstIdlsc AS list FROM especialidadcat
 	INNER JOIN categorias ON especialidadcat.gstIDcat = categorias.gstIdcat
 	INNER JOIN listacursos ON listacursos.gstPrfil = categorias.gstCsigl
-	WHERE especialidadcat.gstIDper = $idins ";
+	WHERE especialidadcat.gstIDper = $idins AND especialidadcat.estado = 0";
 
 	$resultado = mysqli_query($conexion, $query);
 
@@ -19,7 +19,7 @@
 			$lis = $data['list'];
 	
 			$queri = "
-			SELECT * FROM cursos WHERE 	idinsp = $idins AND idmstr = $lis AND estado = 0 ORDER BY id_curso DESC";
+			SELECT * FROM cursos WHERE idinsp = $idins AND idmstr = $lis AND estado = 0 ORDER BY id_curso DESC";
 			$resul = mysqli_query($conexion, $queri);
 
 

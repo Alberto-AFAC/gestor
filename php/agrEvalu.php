@@ -224,7 +224,7 @@ function spcialidad($gstInspr,$idspc,$conexion){
 }
 
 function obligatorio($gstIdper,$gstObli,$conexion){
-	$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$gstObli',0);";
+	$query="INSERT INTO especialidadcat VALUES(0,'$gstIdper','$gstObli','NO',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

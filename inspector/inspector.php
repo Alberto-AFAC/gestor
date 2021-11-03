@@ -2143,16 +2143,26 @@ var dataSet = [
     <?php 
 
 
-$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion,gstTipo 
+$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion,gstTipo,DATE_FORMAT(fechaf, '%d-%m-%Y') AS fechaf,gstVignc,evaluacion 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 AND confirmar='CONFIRMADO' OR cursos.estado = 2 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 AND confirmar='CONFIRMADO' OR idinsp = $datos[0] AND cursos.estado = 2 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
+
+
+$fechav = date("d-m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));     
+$vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
+ini_set('date.timezone','America/Mexico_City');
+$actual= date("d-m-Y"); 
+$f1 = strtotime($fechav);
+$f2 = strtotime($vencer);
+$f3 = strtotime($actual);
+
+
+
 $id_curso = $data['id_curso'];
-
-
 $fcurso = $data['inicial'];
  $fechaf = $data['final'];
 
@@ -2235,18 +2245,63 @@ $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>"
 
     <?php }else{ 
 
-if($data['codigo']=='X' AND $data['gstTipo']=='RECURRENTES'){?>
+if($data['codigo']=='X' AND $data['gstTipo']=='RECURRENTES'){
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+
+if($f3>=$f1){ //VENCIDO?>
+
+ ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-        "<span class='badge' style='background-color: green;'><?php echo 'REALIZADO'?></span>",
+        "<span class='badge' style='background-color: #AC2925;'><?php echo 'PROGRAMAR'?></span>",
 
-        "<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-primary '>REALIZADO</a>"
+        "<center><a href='<?php echo $data['justifi']?>' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center>"
 
     ],
 
-<?php }else if($data['codigo']!='X'){ ?>
+<?php }else if($f3 <= $f2 && $data['evaluacion'] >= 80){ //VIGENTE ?>
+
+ ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<span class='badge' style='background-color: green;'><?php echo 'VIGENTE'?></span>",
+
+        "<center><a href='<?php echo $data['justifi']?>' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center>"
+
+    ],
+
+<?php }else if($f3 >= $f2){ //POR VENCER?>
+ ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<span class='badge' style='background-color: #D58512;'><?php echo 'POR VENCER'?></span>",
+
+        "<center><a href='<?php echo $data['justifi']?>' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center>"
+
+    ],
+
+<?php }
+    ?>
+
+
+
+   
+
+
+
+<?php }else if($data['codigo']=='X'){ ?>
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+
+        "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
+
+        "<center><a href='<?php echo $data['justifi']?>' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center>"
+
+    ],
+
+<?php }else{ ?>
+
+
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
@@ -2256,8 +2311,9 @@ if($data['codigo']=='X' AND $data['gstTipo']=='RECURRENTES'){?>
 
     ],
 
-<?php }
+<?php 
  } 
+}
  
 } 
            }?>
