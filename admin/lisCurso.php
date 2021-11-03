@@ -928,6 +928,7 @@ $(document).ready(function() {
     });
 
     detalles("#example tbody", table);
+
     agrinspctor("#example tbody", table);
 
 
@@ -955,13 +956,14 @@ $(document).ready(function() {
             url: '../php/lisCurso.php',
             type: 'POST'
         }).done(function(resp) {
+        
+
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-
+         
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
-
                     cursos = 
                           obj.data[i].gstIdlsc + 
                     "*" + obj.data[i].gstTitlo + 
@@ -986,7 +988,7 @@ $(document).ready(function() {
                     var d = cursos.split("*");
 
                      gstIdlsc = d[0];
-
+                    $("#impri #codigoCurso").val(d[15]);
                     $("#impri #gstIdlstc").val(d[0]);
                     $("#impri #gstTitulo").val(d[1]);
                     $("#Dtall #gstTitlo").val(d[1]);
@@ -1070,6 +1072,8 @@ function idcurso(codigo) {
         //TRAE LOS DATOS DE LA TABLA CELDA RECURRENTE
         $(document).ready(function() {
             $("#lstcurs tr").on('click', function() {
+      
+
                 var toma1 = "",
                     toma2 = "",
                     toma3 = "",
@@ -1411,7 +1415,6 @@ function detalles(tbody, table) {
 
     $(tbody).on("click", "a.eliminar", function() {
         var data = table.row($(this).parents("tr")).data();
-
         //var gstIdlsc = $().val(data.gstIdlsc);
         $("#modal-eliminar #codigos").val(data[9]);
         $("#modal-eliminar #cgstTitlo").html(data[1] + '?');

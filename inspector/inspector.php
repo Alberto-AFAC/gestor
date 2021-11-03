@@ -2320,10 +2320,12 @@ if($f3>=$f1){ //VENCIDO?>
 ];
 
 var tableGenerarReporte = $('#data-table-completo').DataTable({
+    "order": [[ 5, "asc" ]],
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+
     data: dataSet,
     columns: [{
             title: "CURSO"
