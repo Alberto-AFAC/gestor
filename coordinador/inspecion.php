@@ -45,7 +45,8 @@
       $ejec = mysqli_query($conexion,$sql);
 
 ?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+
     <div class="wrapper">
 
 <?php
