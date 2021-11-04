@@ -411,6 +411,8 @@ function agrTarea(){
 titulo1  = document.getElementById('titulo1').value;
 descrip1 = document.getElementById('descrip1').value;
   idsubt = document.getElementById('idsubt').value;
+  fechaA = document.getElementById('fechaA').value;
+  fechaT = document.getElementById('fechaT').value;
 
   datos = 'titulo1='+titulo1+'&descrip1='+descrip1+'&idsubt='+idsubt+'&opcion=tareAgr';
 //var gstFslda = document.getElementById('AgstFslda').value;
