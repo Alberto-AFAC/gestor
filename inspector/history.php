@@ -263,6 +263,35 @@ class="btn btn-primary"
  onclick="btnguardar();">GUARDAR</button>
 </form>
 
+<b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos o al adjuntar archivo</p></b>
+
+<b><p class="alert alert-success text-center padding exito" id="exito">¡Se registraron los datos y archivo con éxito!</p></b>
+
+<b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
+
+<b><p class="alert alert-warning text-center padding aviso" id="repetido">¡El grado de estudio ya está registrado!</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="renom">
+Renombre su archivo</p></b>
+
+<b><p class="alert alert-warning text-center padding adjuto" id="adjunta">
+Debes adjuntar archivo</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="error">
+Ocurrio un error</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="forn">
+Formato no valido</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="max">
+Supera el limite permitido</p></b>
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -417,10 +446,8 @@ if($fecs[7]==101){
 
 //{$datas['file']}
 
-$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>"
 
-
-// $conf = "<div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>";      
+$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center> <div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>";      
 
 ?>
 
@@ -435,8 +462,8 @@ $conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size
 //////////////////////////////////
 if($f3>=$f1){
 //$fech = 'vencido';
-$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color:#AC2925;'>REALIZADO</div>";
-
+$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color:silver;'>REALIZADO</div>";
+//#AC2925
 ?>
 
 
@@ -490,7 +517,7 @@ $conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size
 
 }else{  
 
-$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>"  
+$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='Historial' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'><p style='color:red;float:left; '></p>REALIZADO</div>";  
 ?>
 
 ["<?php echo $x?>", "<?php echo $datas['nCurse']?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
@@ -560,7 +587,7 @@ var paqueteDeDatos = new FormData();
         contentType: false,
         processData: false,
         success: function(r) {
-            alert(r);
+            //alert(r);
             if (r == 8) {
                 $('#vacio').toggle('toggle');
                 setTimeout(function() {
@@ -572,7 +599,7 @@ var paqueteDeDatos = new FormData();
                 setTimeout(function() {
                     $('#exito').toggle('toggle');
                 }, 4000);
-
+                setTimeout("location.href = 'history';", 2000);
                 $('#vacia').show('slow');
                 $('#agrega').hide();
 
