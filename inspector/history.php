@@ -263,6 +263,35 @@ class="btn btn-primary"
  onclick="btnguardar();">GUARDAR</button>
 </form>
 
+<b><p class="alert alert-danger text-center padding error" id="falla">Error al registrar datos o al adjuntar archivo</p></b>
+
+<b><p class="alert alert-success text-center padding exito" id="exito">¡Se registraron los datos y archivo con éxito!</p></b>
+
+<b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar los datos que se solicitan </p></b>
+
+<b><p class="alert alert-warning text-center padding aviso" id="repetido">¡El grado de estudio ya está registrado!</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="renom">
+Renombre su archivo</p></b>
+
+<b><p class="alert alert-warning text-center padding adjuto" id="adjunta">
+Debes adjuntar archivo</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="error">
+Ocurrio un error</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="forn">
+Formato no valido</p></b>
+
+<b><p class="alert alert-danger text-center padding adjuto" id="max">
+Supera el limite permitido</p></b>
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -558,7 +587,7 @@ var paqueteDeDatos = new FormData();
         contentType: false,
         processData: false,
         success: function(r) {
-            alert(r);
+            //alert(r);
             if (r == 8) {
                 $('#vacio').toggle('toggle');
                 setTimeout(function() {
@@ -570,7 +599,7 @@ var paqueteDeDatos = new FormData();
                 setTimeout(function() {
                     $('#exito').toggle('toggle');
                 }, 4000);
-
+                setTimeout("location.href = 'history';", 2000);
                 $('#vacia').show('slow');
                 $('#agrega').hide();
 
