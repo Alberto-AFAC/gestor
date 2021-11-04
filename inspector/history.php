@@ -417,10 +417,8 @@ if($fecs[7]==101){
 
 //{$datas['file']}
 
-$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>"
 
-
-// $conf = "<div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>";      
+$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center> <div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>";      
 
 ?>
 
@@ -435,8 +433,8 @@ $conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size
 //////////////////////////////////
 if($f3>=$f1){
 //$fech = 'vencido';
-$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color:#AC2925;'>REALIZADO</div>";
-
+$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color:silver;'>REALIZADO</div>";
+//#AC2925
 ?>
 
 
@@ -490,7 +488,7 @@ $conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size
 
 }else{  
 
-$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='$fecs[0]' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'>  <p style='color:red;float:left; '></p>REALIZADO</div>"  
+$conf = "<center><a href='{$datas['file']}' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center><div title='Historial' style='cursor:pointer; width:100%; text-align:center; color: white; background-color: silver;'><p style='color:red;float:left; '></p>REALIZADO</div>";  
 ?>
 
 ["<?php echo $x?>", "<?php echo $datas['nCurse']?>", "<?php echo $datas['tCurse']?>", "<?php echo $datas['inicio']?>",
