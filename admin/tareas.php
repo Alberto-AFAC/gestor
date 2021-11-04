@@ -179,7 +179,7 @@ include('header.php');
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <H4><i class=""></i>
-                                                            <label> SEGUNDA TAREA </label>
+                                                            <label> SUB-TAREA</label>
                                                         </H4>
                                                     </div>
                                                 </div>
@@ -238,7 +238,7 @@ include('header.php');
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <H4><i class=""></i>
-                                                            <label> SEGUNDA TAREA </label>
+                                                            <label> SUB SUB-TAREA </label>
                                                         </H4>
                                                     </div>
                                                 </div>
