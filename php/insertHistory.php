@@ -1,13 +1,14 @@
 <?php 
 include ('../conexion/conexion.php');
   
-if($_POST['nCurse']=='' || $_POST['tCurse']=='' || $_POST['iCurse']=='' || $_POST['fCurse']=='' || $_POST['mCurse']=='' || $_POST['sCurse']=='' || $_POST['idinsp']==''){
+if($_POST['tCurse']=='' || $_POST['iCurse']=='' || $_POST['fCurse']=='' || $_POST['mCurse']=='' || $_POST['sCurse']=='' || $_POST['idinsp']==''){
 
     echo "8";
 }else{
 
 if(!empty($_FILES['fileDoc']['size'])){
     $nCurse=$_POST['nCurse'];
+    $nameOther=$_POST['nameOther'];
     $tCurse=$_POST['tCurse'];
     $iCurse=$_POST['iCurse'];
     $fCurse=$_POST['fCurse'];
@@ -37,10 +38,10 @@ if(!empty($_FILES['fileDoc']['size'])){
     if(move_uploaded_file($rutaTemporal, $file)){
 
 
-if(acusePDF($idinsp,$nCurse,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion))
+if(acusePDF($idinsp,$nCurse,$nameOther,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion))
         {   echo "0";   
 
-    acuseCurso($idinsp,$nCurse,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion);
+    acuseCurso($idinsp,$nCurse,$nameOther,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion);
 
     // $realizo = 'AGREGO PROFESIÓN';
     // historial($id,$realizo,$AgstIDper,$conexion);
@@ -56,9 +57,9 @@ if(acusePDF($idinsp,$nCurse,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conex
 }
 
 
-function acusePDF($idinsp,$nCurse,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion){
+function acusePDF($idinsp,$nCurse,$nameOther,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion){
 
-$sql="INSERT INTO historyc (id_inspector,nCurse, tCurse, iCurse,fCurse,mCurse,sCurse,file) values ($idinsp,'$nCurse','$tCurse','$iCurse','$fCurse','$mCurse','$sCurse','$file')";
+$sql="INSERT INTO historyc (id_inspector,nCurse, nameOther, tCurse, iCurse,fCurse,mCurse,sCurse,file) values ($idinsp,'$nCurse','$nameOther','$tCurse','$iCurse','$fCurse','$mCurse','$sCurse','$file')";
 if(mysqli_query($conexion,$sql)){
     return true;
 }else{
