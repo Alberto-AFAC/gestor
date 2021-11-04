@@ -228,7 +228,7 @@ $inspector = mysqli_query($conexion,$sql);
             width: 1,
             color: 'blue',
             label: {
-                format: 'Today'
+                format: 'Ahora'
             }
         },
         // min: today.getTime() - (30 * day),
