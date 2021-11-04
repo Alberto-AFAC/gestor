@@ -193,7 +193,7 @@ include('header.php');
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-12">
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip2" name="descrip2" rows="4"
@@ -262,7 +262,7 @@ include('header.php');
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-12">
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip3" name="descrip3" rows="4"
