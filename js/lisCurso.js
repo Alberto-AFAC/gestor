@@ -192,7 +192,7 @@ function evaluar() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-                setTimeout("location.href = 'inspector.php';", 3000);
+                setTimeout("location.href = 'inspector';", 3000);
 
             } else if (respuesta == 2) {
                 $('#aviso').toggle('toggle');
@@ -369,11 +369,11 @@ function canCurso() {
 }
 ////////////ELIMINAR INSPECTOR////////////////
 
-function elInsp(){
+function elInsp() {
 
-idInsp = document.getElementById('idInsp').value;
-codInsp = document.getElementById('codInsp').value;    
-    
+    idInsp = document.getElementById('idInsp').value;
+    codInsp = document.getElementById('codInsp').value;
+
     if (codInsp == '' || idInsp == '') {
 
         $('#emptyy1').toggle('toggle');

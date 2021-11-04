@@ -197,7 +197,7 @@ function confirasict() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-                setTimeout("location.href = 'inspector.php';", 2000);
+                setTimeout("location.href = 'inspector';", 2000);
                 // $('#exito').toggle('toggle');
                 //setTimeout(function() {
                 //  $('#exito').toggle('toggle');
@@ -268,79 +268,79 @@ function limCampos() {
 }
 
 
- function constudios(gstIdper){
-    
-   var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
-   // alert(idpersona1);
-           $.ajax({
-                    url: '../php/conEstudios.php',
-                    type: 'POST'
-                }).done(function(resp) {
-                    obj = JSON.parse(resp);
-                    var res = obj.data;
+function constudios(gstIdper) {
 
-                    //AQUI03
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
-                    var n = 0;
-                    for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
-
-                        if (obj.data[H].gstIDper == idpersona1) {
-                            valor = obj.data[H].gstIDper;
-                            n++;
-                            datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
-
-                            html += "<tr><td>" + n + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td>" + obj.data[H].gstPriod + "</td><td><a class='btn btn-default' title='visualizar el documento' href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a></td> <td>" + obj.data[H].fechar + "</td></tr>";
-                        } else {
-                        
-                        }
-
-                    }
-                    html += '</tbody></table></div></div></div>';
-                    $("#studios").html(html);
-                })    
-               //alert('pruebas')
-}
-
-function conprofesion(){
     var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
-   // alert(idpersona1);
-$.ajax({
- url: '../php/conProfesion.php',
- type: 'POST'
-}).done(function(resp) {
- obj = JSON.parse(resp);
- var res = obj.data;
- var x = 0;
+    // alert(idpersona1);
+    $.ajax({
+            url: '../php/conEstudios.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
 
+            //AQUI03
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+            var n = 0;
+            for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
 
- html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
- for (P = 0; P < res.length; P++) {
+                if (obj.data[H].gstIDper == idpersona1) {
+                    valor = obj.data[H].gstIDper;
+                    n++;
+                    datos = obj.data[H].gstIdstd + "*" + obj.data[H].gstIDper + "*" + obj.data[H].gstInstt + "*" + obj.data[H].gstCiuda + "*" + obj.data[H].gstPriod + "*" + obj.data[H].gstDocmt + "*" + obj.data[H].gstIdstd;
 
-     year = obj.data[P].gstFntra.substring(0, 4);
-     month = obj.data[P].gstFntra.substring(5, 7);
-     day = obj.data[P].gstFntra.substring(8, 10);
-     gstFntra = day + '/' + month + '/' + year;
+                    html += "<tr><td>" + n + "</td><td>" + obj.data[H].gstInstt + "</td><td>" + obj.data[H].gstCiuda + "</td><td>" + obj.data[H].gstPriod + "</td><td><a class='btn btn-default' title='visualizar el documento' href='" + obj.data[H].gstDocmt + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a></td> <td>" + obj.data[H].fechar + "</td></tr>";
+                } else {
 
-     year = obj.data[P].gstFslda.substring(0, 4);
-     month = obj.data[P].gstFslda.substring(5, 7);
-     day = obj.data[P].gstFslda.substring(8, 10);
-     gstFslda = day + '/' + month + '/' + year;
+                }
 
-
-     datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
-
-     if (obj.data[P].gstIDper == idpersona1) {
-         x++;
-         html += "<tr><td>" + x + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default'  href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a></td> </tr>";
-
-     } else {}
- }
- html += '</tbody></table></div></div></div>';
- $("#profsions").html(html);
-})    
+            }
+            html += '</tbody></table></div></div></div>';
+            $("#studios").html(html);
+        })
+        //alert('pruebas')
 }
 
-    
+function conprofesion() {
+    var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
+    // alert(idpersona1);
+    $.ajax({
+        url: '../php/conProfesion.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
+        for (P = 0; P < res.length; P++) {
+
+            year = obj.data[P].gstFntra.substring(0, 4);
+            month = obj.data[P].gstFntra.substring(5, 7);
+            day = obj.data[P].gstFntra.substring(8, 10);
+            gstFntra = day + '/' + month + '/' + year;
+
+            year = obj.data[P].gstFslda.substring(0, 4);
+            month = obj.data[P].gstFslda.substring(5, 7);
+            day = obj.data[P].gstFslda.substring(8, 10);
+            gstFslda = day + '/' + month + '/' + year;
+
+
+            datos = obj.data[P].gstIdpro + "*" + obj.data[P].gstIDper + "*" + obj.data[P].gstPusto + "*" + obj.data[P].gstMpres + "*" + obj.data[P].gstIDpai + "*" + obj.data[P].gstCidua + "*" + obj.data[P].gstActiv + "*" + obj.data[P].gstFntra + "*" + obj.data[P].gstFslda;
+
+            if (obj.data[P].gstIDper == idpersona1) {
+                x++;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[P].gstPusto + "</td><td>" + obj.data[P].gstMpres + "</td><td> " + obj.data[P].gstActiv + "</td><td> " + gstFntra + "</td><td> " + gstFslda + "</td><td><a class='btn btn-default'  href='" + obj.data[P].gstDocep + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a></td> </tr>";
+
+            } else {}
+        }
+        html += '</tbody></table></div></div></div>';
+        $("#profsions").html(html);
+    })
+}
+
+
 
 // SHOW PASSWORD
 $('.toggle-password').click(function() {
@@ -350,7 +350,7 @@ $('.toggle-password').click(function() {
 });
 
 
-function actContr(){
+function actContr() {
 
     idper = document.getElementById('idper').value;
     usu = document.getElementById('usu').value;
@@ -358,38 +358,38 @@ function actContr(){
     pass = document.getElementById('pass').value;
     pass2 = document.getElementById('pass2').value;
 
-   dato = 'idper='+idper+'&usu='+usu+'&password='+password+'&pass='+pass+'&pass2='+pass2+'&opcion=actCont';
+    dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
 
     $.ajax({
-    url: '../php/actContra.php',
-    type:'POST',
-    data:dato
-    }).done(function(respuesta){
-        if(respuesta==7){      
-        $('#echo').toggle('toggle');
-        setTimeout(function(){
-        $('#echo').toggle('toggle');
-        },2000);}
-        else if(respuesta==2){      
-        $('#invalida').toggle('toggle');
-        setTimeout(function(){
-        $('#invalida').toggle('toggle');
-        },2000);}
-        else if(respuesta==3){      
-        $('#falso').toggle('toggle');
-        setTimeout(function(){
-        $('#falso').toggle('toggle');
-        },2000);                   
-        }else if(respuesta==4){      
-        $('#vacios').toggle('toggle');
-        setTimeout(function(){
-        $('#vacios').toggle('toggle');
-        },2000);                   
-        }else if(respuesta==1){      
-        $('#error').toggle('toggle');
-        setTimeout(function(){
-        $('#error').toggle('toggle');
-        },2000); 
+        url: '../php/actContra.php',
+        type: 'POST',
+        data: dato
+    }).done(function(respuesta) {
+        if (respuesta == 7) {
+            $('#echo').toggle('toggle');
+            setTimeout(function() {
+                $('#echo').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 2) {
+            $('#invalida').toggle('toggle');
+            setTimeout(function() {
+                $('#invalida').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 3) {
+            $('#falso').toggle('toggle');
+            setTimeout(function() {
+                $('#falso').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 4) {
+            $('#vacios').toggle('toggle');
+            setTimeout(function() {
+                $('#vacios').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 1) {
+            $('#error').toggle('toggle');
+            setTimeout(function() {
+                $('#error').toggle('toggle');
+            }, 2000);
         }
-        });
-    }    
+    });
+}
