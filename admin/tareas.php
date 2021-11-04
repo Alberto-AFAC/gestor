@@ -193,11 +193,21 @@ include('header.php');
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-4">
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip2" name="descrip2" rows="4"
                                                         disabled=""></textarea>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>FECHA DE ALTA</label>
+                                                    <input type="date" style="text-transform:uppercase;"
+                                                        class="form-control" id="fechaA2" name="fechaA2">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>FECHA LIMITE</label>
+                                                    <input type="date" style="text-transform:uppercase;"
+                                                        class="form-control" id="fechaT2" name="fechaT2">
                                                 </div>
                                             </div>
 
@@ -245,18 +255,28 @@ include('header.php');
                                             </div>
                                             <input type="hidden" name="idsubt3" id="idsubt3">
                                             <div class="form-group">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-4">
                                                     <label>TÍTULO</label>
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo3" name="titulo3" disabled="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-4">
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip3" name="descrip3" rows="4"
                                                         disabled=""></textarea>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>FECHA DE ALTA</label>
+                                                    <input type="date" style="text-transform:uppercase;"
+                                                        class="form-control" id="fechaA3" name="fechaA3">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>FECHA LIMITE</label>
+                                                    <input type="date" style="text-transform:uppercase;"
+                                                        class="form-control" id="fechaT3" name="fechaT3">
                                                 </div>
                                             </div>
 
