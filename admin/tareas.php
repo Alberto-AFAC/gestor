@@ -186,18 +186,10 @@ include('header.php');
                                             </div>
                                             <input type="hidden" name="idsubt2" id="idsubt2">
                                             <div class="form-group">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-4">
                                                     <label>TÍTULO</label>
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo2" name="titulo2" disabled="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <label>DESCRIPCIÓN </label>
-                                                    <textarea type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="descrip2" name="descrip2" rows="4"
-                                                        disabled=""></textarea>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label>FECHA DE ALTA</label>
@@ -209,6 +201,15 @@ include('header.php');
                                                     <input type="date" style="text-transform:uppercase;"
                                                         class="form-control" id="fechaT2" name="fechaT2">
                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <label>DESCRIPCIÓN </label>
+                                                    <textarea type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="descrip2" name="descrip2" rows="4"
+                                                        disabled=""></textarea>
+                                                </div>
+                                               
                                             </div>
 
                                             <div class="form-group" id="butons2"><br>
@@ -260,14 +261,6 @@ include('header.php');
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo3" name="titulo3" disabled="">
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <label>DESCRIPCIÓN </label>
-                                                    <textarea type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="descrip3" name="descrip3" rows="4"
-                                                        disabled=""></textarea>
-                                                </div>
                                                 <div class="col-sm-4">
                                                     <label>FECHA DE ALTA</label>
                                                     <input type="date" style="text-transform:uppercase;"
@@ -278,6 +271,15 @@ include('header.php');
                                                     <input type="date" style="text-transform:uppercase;"
                                                         class="form-control" id="fechaT3" name="fechaT3">
                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <label>DESCRIPCIÓN </label>
+                                                    <textarea type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="descrip3" name="descrip3" rows="4"
+                                                        disabled=""></textarea>
+                                                </div>
+                                               
                                             </div>
 
                                             <div class="form-group" id="butons3"><br>
