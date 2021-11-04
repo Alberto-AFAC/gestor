@@ -620,10 +620,6 @@ var tableGenerarReporte = $('#data-table-historial').DataTable({
 
 //$('#').click(function() {
 function btnguardar() {
-    // var paqueteDeDatos = new FormData();
-    // paqueteDeDatos.append('gstDocmt', $('#gstDocmt')[0].files[0]);
-    // paqueteDeDatos.append('gstIDper', $('#gstIDper').prop('value'));
-
 
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('fileDoc', $('#fileDoc')[0].files[0]);
@@ -643,7 +639,7 @@ function btnguardar() {
         contentType: false,
         processData: false,
         success: function(r) {
-            //alert(r);
+           // alert(r);
             if (r == 8) {
                 $('#vacio').toggle('toggle');
                 setTimeout(function() {

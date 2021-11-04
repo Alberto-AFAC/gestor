@@ -40,8 +40,10 @@ if(!empty($_FILES['fileDoc']['size'])){
 
 if(acusePDF($idinsp,$nCurse,$nameOther,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion))
         {   echo "0";   
+    if($nCurse != 0){
+    acuseCurso($idinsp,$nCurse,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion);        
+    }
 
-    acuseCurso($idinsp,$nCurse,$nameOther,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion);
 
     // $realizo = 'AGREGO PROFESIÓN';
     // historial($id,$realizo,$AgstIDper,$conexion);

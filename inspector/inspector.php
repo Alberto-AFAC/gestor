@@ -2483,11 +2483,6 @@ if($f3>=$f2 && $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='
 ],
 <?php }
 
-
-// else if($data['confirmar']=='CONFIRMADO'){ $valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";?>
-
-<?php //} 
-
 }?>
 ]
 

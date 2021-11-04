@@ -367,6 +367,44 @@ function canCurso() {
         });
     }
 }
+////////////ELIMINAR INSPECTOR////////////////
+
+function elInsp(){
+
+idInsp = document.getElementById('idInsp').value;
+codInsp = document.getElementById('codInsp').value;    
+    
+    if (codInsp == '' || idInsp == '') {
+
+        $('#emptyy1').toggle('toggle');
+        setTimeout(function() {
+            $('#emptyy1').toggle('toggle');
+        }, 2000);
+
+        return;
+    } else {
+        $.ajax({
+            url: '../php/regCurso.php',
+            type: 'POST',
+            data: 'idInsp=' + idInsp + '&opcion=eliInsp'
+        }).done(function(respuesta) {
+            // alert(respuesta);
+            if (respuesta == 0) {
+                $('#succes1').toggle('toggle');
+                setTimeout(function() {
+                    $('#succes1').toggle('toggle');
+                    //location.href = 'lisCurso';
+                }, 1500);
+                idcurso(codInsp);
+            } else {
+                $('#dangere1').toggle('toggle');
+                setTimeout(function() {
+                    $('#dangere1').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
+}
 
 //ELIMINAR DE CATALOGO DE CURSOS
 function eliCurso() {
