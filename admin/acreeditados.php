@@ -271,6 +271,54 @@ $inspector = mysqli_query($conexion,$sql);
         </div>
         </form>
 
+<!---------------------------------------ELIMINAR----------------------------------------->
+
+                    <form class="form-horizontal" action="" method="POST">
+                        <div class="modal fade" id="eliminar-modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">ELIMINAR INSPECTOR </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="codInsp" id="codInsp"><input type="hidden" name="idInspt" id="idInspt">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR:  <span id="nomInsp"></span> 
+                                                    <!-- +'?'<input type="text" name="cgstTitlo"
+             +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
+                                                    style="background: white;border: 1px solid white;"> -->
+                                                </p>
+                                            </div>
+                                            <br>
+                                            <div class="col-sm-5">
+                                                <button id="elimina" type="button" class="btn btn-primary"
+                                                    onclick="elInsp()">ACEPTAR</button>
+                                            </div>
+                                            <b>
+                                                <p class="alert alert-warning text-center padding error" id="dangerr1">
+                                                    Error
+                                                    al eliminar inspector</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-success text-center padding exito" id="succes1">¡Se
+                                                    elimino inspector con éxito !</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-warning text-center padding aviso" id="emptyy1">
+                                                    Elija
+                                                    inspector para eliminar </p>
+                                            </b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+
+        </form>
         <!-- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
         <!-- FIN EVALUACIÓN CURSO -->
 
@@ -1164,6 +1212,7 @@ function idcurso(codigo) {
                 "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj
                 .data[i].confirmar + "*" + obj.data[i].codigo + '*' + obj.data[i].idinsp;
 
+ 
             if (obj.data[i].gstCargo == 'ADMINISTRATIVO') {
                 cargo = obj.data[i].gstCargo;
             } else {
@@ -1272,6 +1321,8 @@ function idcurso(codigo) {
             //---------------VISTA PRINCIPAL DE LA TABLA DETALLE INSPECTOR CURSO---------------//
             if (obj.data[i].codigo == codigo) {
 
+                data = obj.data[i].codigo+'*'+obj.data[i].id_curso+'*'+obj.data[i].gstNombr+'*'+obj.data[i].gstApell;
+
                 if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR' || obj.data[i]
                     .gstCargo == 'ADMINISTRATIVO') {
 
@@ -1284,9 +1335,9 @@ function idcurso(codigo) {
                             "</td><td>" +
                             "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' +
                             cursos + '"' +
-                            ") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><a type='button' title='Eliminar' onclick='eliminar(" +
-                            '"' + obj.data[i].id_curso + '"' +
-                            ")' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a><td style='display:none;'>" +
+                            ") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><a type='button' title='Eliminar inspector' onclick='eliNsp(" +
+                            '"' + data + '"' +
+                            ")' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a><td style='display:none;'>" +
                             obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
                             "</td></td></tr>";
 
@@ -1294,9 +1345,8 @@ function idcurso(codigo) {
                         html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
                             .gstApell + "</td><td>" + cargo + "</td><td> " + confirmar + "</td><td>" +
                             evaluacion + evalcurso + listcer +
-                            "<a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i]
-                            .id_curso + '"' +
-                            ")' class='btn btn-default' data-toggle='modal' style='margin-left:2px' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:15px;'></i></a><td style='display:none;'>" +
+                            "<a type='button' title='Eliminar' onclick='eliNsp(" + '"' + data + '"' +
+                            ")' class='btn btn-default' data-toggle='modal' style='margin-left:2px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px;'></i></a><td style='display:none;'>" +
                             obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
                             "</td></td></tr>";
                     }
@@ -1315,9 +1365,7 @@ function idcurso(codigo) {
                             "</td><td>" +
                             "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' +
                             cursos + '"' +
-                            ") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><a type='button' title='Eliminar' onclick='eliminar(" +
-                            '"' + obj.data[i].id_curso + '"' +
-                            ")' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a><td style='display:none;'>" +
+                            ") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><td style='display:none;'>" +
                             obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
                             "</td></td></tr>";
 
@@ -1326,9 +1374,7 @@ function idcurso(codigo) {
                         html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
                             .gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> " + confirmar +
                             "</td><td>" + evaluacion + evalcurso + listcer +
-                            "<a type='button' title='Eliminar' onclick='eliminar(" + '"' + obj.data[i]
-                            .id_curso + '"' +
-                            ")' class='btn btn-default' data-toggle='modal' style='margin-left:2px' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:15px;'></i></a><td style='display:none;'>" +
+                            "<td style='display:none;'>" +
                             obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
                             "</td></td></tr>";
                     }
@@ -1344,9 +1390,7 @@ function idcurso(codigo) {
                         cursos + '"' +
                         ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" +
                         '"' + cursos + '"' +
-                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> <a type='button' onclick='eliminar(" +
-                        '"' + obj.data[i].id_curso + '"' +
-                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o' style='font-size:15px;'></i></a></td></tr>";
+                        ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> </td></tr>";
                 }
 
                 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO COORDINADOR (PRINCIPAL)---------------//
@@ -1355,8 +1399,7 @@ function idcurso(codigo) {
                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
                         .gstApell + "</td><td>" + obj.data[i].gstCargo +
                         "</td><td><center><img src='../dist/img/coordinador.svg' alt='Coordinador' title='Coordinador' width='50px;'></center></td>" +
-                        "<td>  <a type='button' onclick='eliminar(" + '"' + obj.data[i].id_curso + '"' +
-                        ")' class='btn btn-default' title='eliminar' data-toggle='modal' style='font-size:15px;' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+                        "<td>  </td></tr>";
                 }
 
             } else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
@@ -1376,9 +1419,7 @@ function idcurso(codigo) {
                             '"' + cursos + '"' +
                             ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
                             '"' + cursos + '"' +
-                            ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" +
-                            '"' + obj.data[i].id_curso + '"' +
-                            ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                            ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
                     } else {
                         html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
                             .gstApell + "</td><td>" + cargo +
@@ -1392,9 +1433,7 @@ function idcurso(codigo) {
                             '"' + cursos + '"' +
                             ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
                             '"' + cursos + '"' +
-                            ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" +
-                            '"' + obj.data[i].id_curso + '"' +
-                            ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                            ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
 
                     }
 
@@ -1411,9 +1450,7 @@ function idcurso(codigo) {
                         '"' + cursos + '"' +
                         ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
                         '"' + cursos + '"' +
-                        ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" +
-                        '"' + obj.data[i].id_curso + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
                 }
                 if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
@@ -1425,13 +1462,12 @@ function idcurso(codigo) {
                         '"' + cursos + '"' +
                         ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
                         '"' + cursos + '"' +
-                        ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Eliminar' onclick='eliminar(" +
-                        '"' + obj.data[i].id_curso + '"' +
-                        ")' class='btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger' style='font-size:18px;'></i></a></td></tr>";
+                        ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a></td></tr>";
                 }
             }
 
         }
+
         html += '</tbody></table>';
         $("#proCursos").html(html);
 
@@ -1474,6 +1510,14 @@ function agrinspctor(tbody, table) {
     });
 }
 
+function eliNsp(data){
+
+    var d = data.split("*");
+    $("#nomInsp").html(d[2]+' '+d[3]);
+    $("#eliminar-modal #codInsp").val(d[0]);
+    $("#eliminar-modal #idInspt").val(d[1]);
+
+}
 
 const myFunction = () => {
   const trs = document.querySelectorAll('#lstcurs tr:not(.header)');

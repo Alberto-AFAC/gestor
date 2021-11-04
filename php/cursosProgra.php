@@ -44,9 +44,12 @@
 
 
 		//pendiente POR VENCER
-		if ($factual <= $xvencer && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
+		if ($factual <= $xvencer && 
+			$data["gstTipo"] == "RECURRENTES" && 
+			$data["proceso"] == "FINALIZADO") {
+
 			$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>POR VENCER</span>";
-		$proc = 'POR VENCER';
+			$proc = 'POR VENCER';
 	
 	}
 
