@@ -82,8 +82,8 @@ $resultado= mysqli_query($conexion,$query);
 
 function Tareas($titulo1 ,$descrip1, $idsubt, $conexion){
 
-	ini_set('date.timezone','America/Mexico_City');
-	$factual = date('Y').'/'.date('m').'/'.date('d');
+	// ini_set('date.timezone','America/Mexico_City');
+	// $factual = date('Y').'/'.date('m').'/'.date('d');
 
 	$query="INSERT INTO tareas VALUES(0,'$titulo1','$descrip1','$factual','$idsubt',0);";
 		if(mysqli_query($conexion,$query)){

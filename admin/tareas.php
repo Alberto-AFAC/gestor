@@ -468,7 +468,7 @@ descrip1 = document.getElementById('descrip1').value;
   fechaA = document.getElementById('fechaA').value;
   fechaT = document.getElementById('fechaT').value;
 
-  datos = 'titulo1='+titulo1+'&descrip1='+descrip1+'&idsubt='+idsubt+'&opcion=tareAgr';
+  datos = 'titulo1='+titulo1+'&descrip1='+descrip1+'&idsubt='+idsubt+'&fechaA='+fechaA+'&fechaT='+fechaT+'&opcion=tareAgr';
 //var gstFslda = document.getElementById('AgstFslda').value;
 
 if (titulo1 == '' || descrip1 == '') {
