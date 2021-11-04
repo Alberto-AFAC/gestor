@@ -15,10 +15,12 @@
             header('Location: ../');
         }
       $id = $_SESSION['usuario']['id_usu'];
+      $usu = $_SESSION['usuario']['usuario'];
+      $pass = $_SESSION['usuario']['password'];
 
 
       $sql = 
-     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo FROM personal 
+     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo,gstNmpld FROM personal 
       WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
     $persona = mysqli_query($conexion,$sql);
     $datos = mysqli_fetch_row($persona);
@@ -46,15 +48,26 @@
       $dato[4]="";
       $dato[5]="";
   }
+
+      $sql2 =
+      "SELECT * FROM cursos 
+      INNER JOIN listacursos ON gstIdlsc = idmstr  
+      WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
+      $query = mysqli_query($conexion,$sql2);
+      $datos2 = mysqli_fetch_assoc($query);
+  
+      $datos[0];
+      $sql = "SELECT * FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc asc";
+      $cursos = mysqli_query($conexion,$sql);
 ?>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
   <header class="main-header">
     <!-- Logo -->
     <a href="../inspector" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>AFAC</span>
+      <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>GCapacitación AFAC</b></span>
+      <span class="logo-lg"><b>Capacitación AFAC</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -66,58 +79,14 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning"><div id="noti"></div></span>
-            </a>
- -->
- <!-- LOGO DE LA AFAC-->
-
-
-            <ul class="dropdown-menu">
-              <li class="header"><div id="notif"></div></li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <div id="confirmar"></div>
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li> -->
-<!--                   <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li> -->
-                </ul>
-              </li>
-              <!-- - -->
-            </ul>
-          </li>
+          <!-- Notifications: style can be found in dropdown.less -->     
           <!-- Tasks: style can be found in dropdown.less -->
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $datos[1]?></span>
+              <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
             </a>
             <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
               <!-- User image -->
@@ -128,7 +97,7 @@
        
             
                 <div class="pull-right">
-                  <a href="../../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar sesión</a>
+                  <a href="../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar sesión</a>
 
                 </div>
             
@@ -136,8 +105,13 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-             <img href="#" data-toggle="control-sidebar" src="../../dist/img/AFAC.png" ALIGN=RIGHT class="img" alt="User Image" style="cursor: pointer;padding-right:  0.5em;">
-          </li>
+                <a href="../../conexion/cerrar_session.php">
+                        <i class="fa fa-sign-out" title="Cerrrar sesión"></i>
+                      
+                    </a>
+                    <!-- <img href="../../conexion/cerrar_session.php" src="../../dist/img/AFAC.png" ALIGN=RIGHT class="img"
+                        alt="User Image" style="width: 60px; cursor: pointer;padding-right:  0.5em; padding-bottom: 0.1em;"> -->
+                </li>
         </ul>
       </div>
     </nav>
@@ -174,10 +148,17 @@
             </span>
           </a>
         </li>        
-        <!-- -->
-        <!----> 
-        <!--  -->
-        <!-- -->
+             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
+              <li>
+              <a href='../e-learnning'>
+              <i class='fa fa-internet-explorer'></i> <span>E-learnning</span>
+                <span class='pull-right-container'>
+                  <small class='label pull-right bg-red'></small>
+                  <small class='label pull-right bg-blue'></small>
+                </span>
+              </a>
+            </li>
+            <?php }?>
         <li>
           <a href="calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
@@ -187,6 +168,16 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="../history">
+            <i class="fa fa-archive"></i> <span>Historial</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red"></small>
+              <small class="label pull-right bg-blue"></small>
+            </span>
+          </a>
+        </li>
+
         <!--  -->
         
         <!--  -->

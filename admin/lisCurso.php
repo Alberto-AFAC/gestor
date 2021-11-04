@@ -58,31 +58,32 @@ color: white;
 </style>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
-<?php
-include('header.php');
-?>
+    <div class="wrapper">
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-<!-- Content Header (Page header) -->
+        <?php
+        include('header.php');
+        ?>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
 
 
-<section class="content-header">
-<h1>
-CURSOS PROGRAMADOS
-</h1>
-</section>
-<!-- Main content -->
-<section class="content">
-<div class="row">
-<!-- /.col -->
-<div class="col-md-12">
-<div class="nav-tabs-custom">
+            <section class="content-header">
+                <h1>
+                    CURSOS PROGRAMADOS
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-md-12">
+                        <div class="nav-tabs-custom">
 
-<!--<ul class="nav nav-tabs">
+                            <!--<ul class="nav nav-tabs">
 <li class="active"><a href="#activity" data-toggle="tab">PROGRAMACIÓN DEL CURSO</a></li>
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
 </ul>-->

@@ -153,7 +153,7 @@ unset($_SESSION['consulta']);
         </li>-->
 
         <li class="active">
-          <a href="../inspector.php">
+          <a href="../inspector">
             <i><img src="../../dist/img/perfil.png" class="user-image" alt="User Image" style="
     width: 25px;
     height: 25px;

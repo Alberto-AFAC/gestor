@@ -192,7 +192,7 @@ function evaluar() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-                setTimeout("location.href = 'inspector.php';", 3000);
+                setTimeout("location.href = 'inspector';", 3000);
 
             } else if (respuesta == 2) {
                 $('#aviso').toggle('toggle');

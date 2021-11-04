@@ -71,7 +71,8 @@ unset($_SESSION['consulta']);
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+
 <div class="wrapper">
 
 <?php
@@ -84,7 +85,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-        PROGRAMACIÓN DE TAREAS      
+        PROGRAMACIÓN DE TAREAS   
       </h1>
     </section>
     <!-- Main content -->
@@ -115,19 +116,19 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-4">
-<label class="label2">FECHA INICIO</label>
-<input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
+<label class="label2">NOMBRE DE LA TAREA</label>
+<input type="text" class="form-control inputalta" id="nTask" name="nTask">
 </div>
 
 <div class="col-sm-4">
-<label class="label2">HORA</label>
-<input type="time" class="form-control inputalta" id="hcurso" name="hcurso">
+<label class="label2">DESCRIPCIÓN</label>
+<input type="text" class="form-control inputalta" id="dTask" name="dTask">
 </div>
 
 
 <div class="col-sm-4">
-<label class="label2">FECHA CONCLUCIÓN</label>
-<input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
+<label class="label2">FECHA LIMITE</label>
+<input type="date" class="form-control inputalta" id="lTask" name="lTask">
 </div>
 </div>
 
@@ -252,10 +253,12 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-4">
+<label class="label2">RESPONSABLES DE LA TAREA</label>
 
 </div>                     
 </div>  
 
+<div id="tabcurso"></div> 
 
 <!-- <div class="form-group">
 <div class="col-sm-12">
@@ -364,8 +367,8 @@ $(document).ready(function(){
 //$('#id_mstr').select2();
 $('#idinst').select2();
 $("#idcord").select2();
- $('#selcurso').load('select/buscateg.php');
- $('#tabcurso').load('select/tablacateg.php');
+ $('#selcurso').load('select/buscategTareas.php');
+ $('#tabcurso').load('select/tablacategTareas.php');
  //$('#partici').load('select/tablaoblig.php')
 }); 
 </script>
