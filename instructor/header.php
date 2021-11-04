@@ -30,7 +30,7 @@ unset($_SESSION['consulta']);
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
     <!-- Logo -->
-    <a href="inicio.php" class="logo">
+    <a href="inicio" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size: 12px"><b>C-</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
@@ -148,7 +148,7 @@ unset($_SESSION['consulta']);
         </li>-->
 
         <li class="active">
-          <a href="inicio.php">
+          <a href="inicio">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
@@ -163,8 +163,8 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="instructor.php"><i class="fa ion-document-text"></i> Instructores y Coordinadores</a></li>
+            <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+            <li><a href="instructor"><i class="fa ion-document-text"></i> Instructores y Coordinadores</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -189,7 +189,7 @@ unset($_SESSION['consulta']);
           </ul>
         </li>
         <li>
-          <a href="calendar/calendar.php">
+          <a href="calendar/calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
@@ -198,7 +198,7 @@ unset($_SESSION['consulta']);
           </a>
         </li>
         <li>
-          <a href="cursosgantt.php">
+          <a href="cursosgantt">
           <i class="fa fa-area-chart"></i> <span>Gantt Cursos programados</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
