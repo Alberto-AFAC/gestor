@@ -52,6 +52,19 @@ if(cancelar($codigos,$conexion)){
 	}else{
 		echo "1";
 	}
+}else if($opcion === 'eliInsp'){
+
+$idInsp = $_POST['idInsp'];
+
+if(eliminaInsp($idInsp,$conexion)){
+		echo "0";
+		//$realizo = 'CANCELO CURSO FOLIO: '.$idInsp;
+		//historiCan($idp,$realizo,$idInsp,$conexion);	
+
+	}else{
+		echo "1";
+	}
+
 }
 
 
@@ -124,6 +137,19 @@ function eliminaCur($idp,$EgstIdlsc,$conexion){
 	}else{
 	return false;
 	}
+	}
+
+	function eliminaInsp($idInsp,$conexion){
+
+	$query="DELETE FROM cursos WHERE id_curso = $idInsp";
+	if(mysqli_query($conexion,$query)){
+
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+
 	}
 
 function cerrar($conexion){
