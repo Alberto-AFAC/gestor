@@ -60,7 +60,7 @@
                             <div class="content">
                                 <h3>CAPACITACIÓN AFAC</h3>
                                 <img class="img-servicios" src="../models/menu/images/piloto.svg" width="75%;" alt="piloto"><br><br>
-                                <a href="inspector.php">Iniciar</a>
+                                <a href="inspector">Iniciar</a>
                             </div>
                         </div>
                         <div class="card">

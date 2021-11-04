@@ -31,7 +31,7 @@
 <span aria-hidden="true">&times;</span></button> -->
 
 
-<button type="button" onclick="location.href='./inspector.php'" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<button type="button" onclick="location.href='./inspector'" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
 
 <h4 class="modal-title">CONFIRMAR ASISTENCIA</h4>
