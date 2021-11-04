@@ -458,58 +458,59 @@ document.getElementById('descrip1').disabled = false;
 document.getElementById('titulo2').disabled = false;
 document.getElementById('descrip2').disabled = false;
 document.getElementById('titulo3').disabled = false;
-document.getElementById('descrip3').disabled = false;  
+document.getElementById('descrip3').disabled = false;
 
-function agrTarea(){
+function agrTarea() {
 
-titulo1  = document.getElementById('titulo1').value;
-descrip1 = document.getElementById('descrip1').value;
-  idsubt = document.getElementById('idsubt').value;
-  fechaA = document.getElementById('fechaA').value;
-  fechaT = document.getElementById('fechaT').value;
+    titulo1 = document.getElementById('titulo1').value;
+    descrip1 = document.getElementById('descrip1').value;
+    idsubt = document.getElementById('idsubt').value;
+    fechaA = document.getElementById('fechaA').value;
+    fechaT = document.getElementById('fechaT').value;
 
-  datos = 'titulo1='+titulo1+'&descrip1='+descrip1+'&idsubt='+idsubt+'&fechaA='+fechaA+'&fechaT='+fechaT+'&opcion=tareAgr';
-//var gstFslda = document.getElementById('AgstFslda').value;
+    datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
+        fechaT + '&opcion=tareAgr';
+    //var gstFslda = document.getElementById('AgstFslda').value;
 
-if (titulo1 == '' || descrip1 == '') {
+    if (titulo1 == '' || descrip1 == '') {
 
-$('#vacio').toggle('toggle');
-setTimeout(function() {
-$('#vacio').toggle('toggle');
-}, 2000);
+        $('#vacio').toggle('toggle');
+        setTimeout(function() {
+            $('#vacio').toggle('toggle');
+        }, 2000);
 
-return;
-} else {
-$.ajax({
-url: '../php/regTarea.php',
-type: 'POST',
-data: datos
-}).done(function(respuesta) {
- // alert(respuesta);
-if (respuesta == 0) {
+        return;
+    } else {
+        $.ajax({
+            url: '../php/regTarea.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            // alert(respuesta);
+            if (respuesta == 0) {
 
-$('#danger').toggle('toggle');
-setTimeout(function() {
-$('#danger').toggle('toggle');
-}, 2000);
+                $('#danger').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger').toggle('toggle');
+                }, 2000);
 
-//conprofesion(ActIdpro);
-} else {
+                //conprofesion(ActIdpro);
+            } else {
 
-$("#idsubt2").val(respuesta);
-$('#succe').toggle('toggle');
-setTimeout(function() {
-$('#succe').toggle('toggle');
-}, 2000);
-$("#button1").hide();
-$("#button2").show();
-$("#form2").show();
-document.getElementById('titulo1').disabled = true;
-document.getElementById('descrip1').disabled = true;  
+                $("#idsubt2").val(respuesta);
+                $('#succe').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe').toggle('toggle');
+                }, 2000);
+                $("#button1").hide();
+                $("#button2").show();
+                $("#form2").show();
+                document.getElementById('titulo1').disabled = true;
+                document.getElementById('descrip1').disabled = true;
 
-}
-});
-}
+            }
+        });
+    }
 
 }
 
@@ -518,6 +519,8 @@ function agrTarea2() {
     titulo1 = document.getElementById('titulo2').value;
     descrip1 = document.getElementById('descrip2').value;
     idsubt = document.getElementById('idsubt2').value;
+    fechaA = document.getElementById('fechaA2').value;
+    fechaT = document.getElementById('fechaT2').value;
 
     datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
@@ -570,6 +573,8 @@ function agrTarea3() {
     titulo1 = document.getElementById('titulo3').value;
     descrip1 = document.getElementById('descrip3').value;
     idsubt = document.getElementById('idsubt3').value;
+    fechaA = document.getElementById('fechaA3').value;
+    fechaT = document.getElementById('fechaT3').value;
 
     datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
