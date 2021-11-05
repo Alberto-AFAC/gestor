@@ -13,6 +13,11 @@ $instructor  = mysqli_query($conexion,$sql);
 $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR ' AND estado = 0";
 $cordinador  = mysqli_query($conexion,$sql);
 
+
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo != 'INSTRUCTOR' AND estado = 0 || estado = 0 ";
+$inspector = mysqli_query($conexion,$sql);
+
+
 unset($_SESSION['consulta']);
 
 ?>
@@ -95,6 +100,9 @@ include('header.php');
             <section class="content">
                 <div class="row">
 
+<a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a>
+
+
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" style="font-size: 14px;">
@@ -156,16 +164,16 @@ include('header.php');
 
                                                 </div>
                                                 <b>
-                                                    <p class="alert alert-danger text-center padding error" id="danger">
+                                                    <p class="alert alert-danger text-center padding error" id="danger1">
                                                         Error al agregar tarea </p>
                                                 </b>
                                                 <b>
-                                                    <p class="alert alert-success text-center padding exito" id="succe">
+                                                    <p class="alert alert-success text-center padding exito" id="succe1">
                                                         ¡Se agregaron los datos con éxito!</p>
                                                 </b>
 
                                                 <b>
-                                                    <p class="alert alert-warning text-center padding aviso" id="vacio">
+                                                    <p class="alert alert-warning text-center padding aviso" id="vacio1">
                                                         Es necesario agregar los datos que se solicitan </p>
                                                 </b>
                                             </div>
@@ -402,6 +410,86 @@ include('header.php');
                     </div>
 
 
+<div class="modal fade" id="modal-participnt">
+<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel">
+<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" onclick="location.href='tareas'"
+class="close" data-dismiss="modal" aria-label="Close"><span
+aria-hidden="true">&times;</span></button>
+<h4 class="modal-title">AGREGAR RESPONSABLE</h4>
+</div>
+<div class="modal-body">
+<form class="form-horizontal" id="Prtcpnt">
+<input type="hidden" name="acodigos" id="acodigos">
+<input type="hidden" class="form-control" id="gstIdlsc"
+name="gstIdlsc">
+<!-- <div class="form-group">
+<div class="col-sm-6">
+<label>TÍTULO</label>
+<input type="text" onkeyup="mayus(this);"
+class="form-control" id="gstTitlo" name="gstTitlo"
+disabled="">
+</div>
+<div class="col-sm-3">
+<label>INICIO</label>
+<input type="data" onkeyup="mayus(this);" class="form-control" id="finicio" name="finicio" disabled="">
+</div>
+<div class="col-sm-3">
+<label>DURACIÓN</label>
+<input type="text" onkeyup="mayus(this);"
+class="form-control" id="gstDrcin" name="gstDrcin"
+disabled="">
+</div>
+</div> -->
+<div class="form-group">
+<div class="col-sm-12">
+<label>RESPONSABLE</label>
+<select class="form-control" id="idinsp" name="idinsp"
+style="width: 100%;">
+<option value="">ELIJA RESPONSABLE</option>
+<?php while($inspectors = mysqli_fetch_row($inspector)):?>
+<option value="<?php echo $inspectors[0]?>">
+<?php echo $inspectors[1].' '.$inspectors[2].' ('.$inspectors[3].')'?>
+</option>
+<?php endwhile; ?>
+</select>
+</div>
+</div>
+<!-- <input type="hidden" name="hrcurs" id="hrcurs">
+<input type="hidden" name="finalf" id="finalf">
+<input type="hidden" name="idcord" id="idcord">
+<input type="hidden" name="sede" id="sede">
+<input type="hidden" name="linke" id="linke">
+<input type="hidden" name="modalidad" id="modalidad">
+<input type="hidden" name="contracceso" id="contracceso"> -->
+<div class="form-group">
+<div class="col-sm-5">
+<button type="button" id="buttons" class="btn btn-info"
+onclick="agrIva();">ACEPTAR</button>
+</div>
+<b>
+<p class="alert alert-info text-center padding error"
+id="danger0">El responsable ya está agregado </p>
+</b>
+<b>
+<p class="alert alert-success text-center padding exito"
+id="succe0">¡Se agregó el responsable con éxito!</p>
+</b>
+<b>
+<p class="alert alert-warning text-center padding aviso"
+id="vacio0">Elija responsable </p>
+</b>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
                     <!-- /.col -->
 
                     <!-- <form class="form-horizontal"> -->
@@ -470,10 +558,18 @@ immediately after the control sidebar -->
     <script src="../dist/js/demo.js"></script>
     <script src="../js/proInspc.js"></script>
     <!-- page script -->
-
 </body>
-
 </html>
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function() {
+// $('#id_mstr').select2();
+// $('#idinst').select2();
+$('#idinsp').select2();
+});
+</script>
+<script src="../js/select2.js"></script>
+
 <script type="text/javascript">
 document.getElementById('titulo1').disabled = false;
 document.getElementById('descrip1').disabled = false;
@@ -489,16 +585,16 @@ function agrTarea() {
     idsubt = document.getElementById('idsubt').value;
     fechaA = document.getElementById('fechaA').value;
     fechaT = document.getElementById('fechaT').value;
-
+    idcur = document.getElementById('idcur').value;
     datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
-        fechaT + '&opcion=tareAgr';
+        fechaT + '&idcur=' + idcur +'&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
     if (titulo1 == '' || descrip1 == '') {
 
-        $('#vacio').toggle('toggle');
+        $('#vacio1').toggle('toggle');
         setTimeout(function() {
-            $('#vacio').toggle('toggle');
+            $('#vacio1').toggle('toggle');
         }, 2000);
 
         return;
@@ -511,18 +607,18 @@ function agrTarea() {
             // alert(respuesta);
             if (respuesta == 0) {
 
-                $('#danger').toggle('toggle');
+                $('#danger1').toggle('toggle');
                 setTimeout(function() {
-                    $('#danger').toggle('toggle');
+                    $('#danger1').toggle('toggle');
                 }, 2000);
 
                 //conprofesion(ActIdpro);
             } else {
 
                 $("#idsubt2").val(respuesta);
-                $('#succe').toggle('toggle');
+                $('#succe1').toggle('toggle');
                 setTimeout(function() {
-                    $('#succe').toggle('toggle');
+                    $('#succe1').toggle('toggle');
                 }, 2000);
                 $("#button1").hide();
                 $("#button2").show();
@@ -543,9 +639,9 @@ function agrTarea2() {
     idsubt = document.getElementById('idsubt2').value;
     fechaA = document.getElementById('fechaA2').value;
     fechaT = document.getElementById('fechaT2').value;
-   datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
-        fechaT + '&opcion=tareAgr';
-    //var gstFslda = document.getElementById('AgstFslda').value;
+    idcur = document.getElementById('idcur').value;
+    datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
+        fechaT + '&idcur=' + idcur +'&opcion=tareAgr';    //var gstFslda = document.getElementById('AgstFslda').value;
 
     if (titulo1 == '' || descrip1 == '') {
 
@@ -597,9 +693,9 @@ function agrTarea3() {
     idsubt = document.getElementById('idsubt3').value;
     fechaA = document.getElementById('fechaA3').value;
     fechaT = document.getElementById('fechaT3').value;
-
-   datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
-        fechaT + '&opcion=tareAgr';
+    idcur = document.getElementById('idcur').value;
+    datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
+        fechaT + '&idcur=' + idcur +'&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
     if (titulo1 == '' || descrip1 == '') {
@@ -624,8 +720,6 @@ function agrTarea3() {
                 }, 2000);
 
 
-
-
             } else {
 
 
@@ -640,6 +734,51 @@ function agrTarea3() {
                 document.getElementById('descrip3').disabled = true;
                 //conprofesion(ActIdpro);
 
+
+            }
+        });
+    }
+
+}
+
+function agrIva(){
+
+  idinsp = document.getElementById('idinsp').value;
+
+      datos = 'idinsp='+idinsp+'&opcion=agrIVA';
+
+    if (idinsp == '') {
+
+
+
+
+        $('#vacio0').toggle('toggle');
+        setTimeout(function() {
+            $('#vacio0').toggle('toggle');
+        }, 2000);
+
+        return;
+    } else {
+        $.ajax({
+            url: '../php/regTarea.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            //alert(respuesta);
+            if (respuesta == 0) {
+                $('#danger0').toggle('toggle');
+                setTimeout(function() {
+                    $('#danger0').toggle('toggle');
+                }, 2000);
+
+
+            } else {
+
+
+                $('#succe0').toggle('toggle');
+                setTimeout(function() {
+                    $('#succe0').toggle('toggle');
+                }, 2000);
 
             }
         });
