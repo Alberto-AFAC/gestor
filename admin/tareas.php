@@ -811,4 +811,9 @@ function agrIva(){
     }
 
 }
+$(document).ready(function() {
+    $('select').selectize({
+        sortField: 'text'
+    });
+});
 </script>
