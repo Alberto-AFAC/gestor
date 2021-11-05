@@ -67,9 +67,13 @@ if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
 		];
 		}
 
-		if ($factual > $fcurso && $data["proceso"] == "PENDIENTE" && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
-		$proc = 'VENCIDO';
+if ($factual > $fcurso && 
+
+	$data["gstTipo"] == "RECURRENTES" && 
+	$data["proceso"] == "FINALIZADO") {
+
+$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+$proc = 'VENCIDO';
 			
 
 		$cursos[] = [ 

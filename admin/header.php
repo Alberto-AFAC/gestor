@@ -24,8 +24,7 @@
       "SELECT * FROM cursos WHERE modalidad = 'E-LEARNNING'";
       $query = mysqli_query($conexion,$sql2);
       $datos2 = mysqli_fetch_assoc($query);
-  
-
+    
 //session_start(); 
 unset($_SESSION['consulta']);
 
