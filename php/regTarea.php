@@ -11,7 +11,7 @@ $informacion = [];
 
 if($opcion === 'tareAgr'){
 
-
+  $idcur = $_POST['idcur']; 
   $titulo1 = $_POST['titulo1'];  
   $descrip1 = $_POST['descrip1'];
   $idsubt = $_POST['idsubt'];
@@ -23,7 +23,7 @@ if($opcion === 'tareAgr'){
   }
 //	accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion);
 
-	if(Tareas($titulo1 ,$descrip1, $idsubt, $fechaA, $fechaT, $conexion)){
+	if(Tareas($idcur,$titulo1 ,$descrip1, $idsubt, $fechaA, $fechaT, $conexion)){
 		//$realizo = 'ASIGNO AL USUARIO';
 		//historial($id,$realizo,$gstIdper,$conexion);
 		$valor = conIDtar($conexion);
@@ -83,12 +83,12 @@ $resultado= mysqli_query($conexion,$query);
 // }
 
 
-function Tareas($titulo1 ,$descrip1, $idsubt, $fechaA, $fechaT, $conexion){
+function Tareas($idcur,$titulo1 ,$descrip1, $idsubt, $fechaA, $fechaT, $conexion){
 
 	// ini_set('date.timezone','America/Mexico_City');
 	// $factual = date('Y').'/'.date('m').'/'.date('d');
 
-	$query="INSERT INTO tareas VALUES(0,'$titulo1','$descrip1','$fechaA','$fechaT','$idsubt',0);";
+	$query="INSERT INTO tareas VALUES(0,'$idcur','$titulo1','$descrip1','$fechaA','$fechaT','$idsubt',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
@@ -105,4 +105,3 @@ function Tareas($titulo1 ,$descrip1, $idsubt, $fechaA, $fechaT, $conexion){
 
 }
 ?>
-
