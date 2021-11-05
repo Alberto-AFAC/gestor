@@ -25,9 +25,6 @@
       $query = mysqli_query($conexion,$sql2);
       $datos2 = mysqli_fetch_assoc($query);
     
-      $sqlList = "SELECT * FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc desc";
-      $cursos = mysqli_query($conexion,$sqlList);
-
 //session_start(); 
 unset($_SESSION['consulta']);
 

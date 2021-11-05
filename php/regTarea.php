@@ -110,7 +110,7 @@ function Tareas($idcur, $titulo1 ,$descrip1, $idsubt, $fechaA, $fechaT, $conexio
 
 function agrIvas($idinsp,$conexion){
 
-$query="INSERT INTO tarearealizar(idtarea,idiva,estado) SELECT id_tar,$idinsp,0 FROM tareas WHERE idsubt = 0 ORDER BY id_tar DESC LIMIT 1";
+$query="INSERT INTO tarearealizar(idtarea,idiva,estado) SELECT id_tar,$idinsp,0 FROM tareas ORDER BY id_tar DESC LIMIT 1";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
