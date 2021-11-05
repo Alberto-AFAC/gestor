@@ -11,7 +11,7 @@ $informacion = [];
 
 if($opcion === 'tareAgr'){
 
-
+  $idcur = $_POST['idcur']; 
   $titulo1 = $_POST['titulo1'];  
   $descrip1 = $_POST['descrip1'];
   $idsubt = $_POST['idsubt'];
@@ -125,4 +125,3 @@ $query="INSERT INTO tarearealizar(idtarea,idiva,estado) SELECT id_tar,$idinsp,0 
 
 }
 ?>
-

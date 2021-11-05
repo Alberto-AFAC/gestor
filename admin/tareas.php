@@ -45,6 +45,9 @@ folder instead of downloading all of them to reduce the load. -->
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
+        integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 
     <style>
     .swal-wide {
@@ -126,6 +129,20 @@ include('header.php');
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <label>NOMBRE DEL CURSO</label>
+                                                    <select id="idcur" name="idcur" class="form-control"
+                                                        placeholder="Seleccione...">
+                                                        <option value="0">Seleccione...</option>
+                                                        <?php while($data = mysqli_fetch_row($cursos)):?>
+                                                        <option value="<?php echo $data[0]?>">
+                                                            <?php echo $data[1]?> -
+                                                            <?php echo $data[2]?></option>
+                                                        <?php endwhile; ?>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <input type="hidden" name="idsubt" id="idsubt">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
@@ -136,12 +153,12 @@ include('header.php');
                                                 <div class="col-sm-4">
                                                     <label>FECHA DE ALTA</label>
                                                     <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaA" name="fechaA">
+                                                        class="form-control" id="fechaA" name="fechaA" disabled="">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label>FECHA LIMITE</label>
                                                     <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaT" name="fechaT">
+                                                        class="form-control" id="fechaT" name="fechaT" disabled="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -202,12 +219,12 @@ include('header.php');
                                                 <div class="col-sm-4">
                                                     <label>FECHA DE ALTA</label>
                                                     <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaA2" name="fechaA2">
+                                                        class="form-control" id="fechaA2" name="fechaA2" disabled="">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label>FECHA LIMITE</label>
                                                     <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaT2" name="fechaT2">
+                                                        class="form-control" id="fechaT2" name="fechaT2" disabled="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -217,7 +234,7 @@ include('header.php');
                                                         class="form-control" id="descrip2" name="descrip2" rows="4"
                                                         disabled=""></textarea>
                                                 </div>
-                                               
+
                                             </div>
 
                                             <div class="form-group" id="butons2"><br>
@@ -272,12 +289,12 @@ include('header.php');
                                                 <div class="col-sm-4">
                                                     <label>FECHA DE ALTA</label>
                                                     <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaA3" name="fechaA3">
+                                                        class="form-control" id="fechaA3" name="fechaA3" disabled="">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label>FECHA LIMITE</label>
                                                     <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaT3" name="fechaT3">
+                                                        class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -287,7 +304,7 @@ include('header.php');
                                                         class="form-control" id="descrip3" name="descrip3" rows="4"
                                                         disabled=""></textarea>
                                                 </div>
-                                               
+
                                             </div>
 
                                             <div class="form-group" id="butons3"><br>
@@ -557,6 +574,8 @@ immediately after the control sidebar -->
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <script src="../js/proInspc.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+        integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
     <!-- page script -->
 </body>
 </html>
@@ -577,17 +596,24 @@ document.getElementById('titulo2').disabled = false;
 document.getElementById('descrip2').disabled = false;
 document.getElementById('titulo3').disabled = false;
 document.getElementById('descrip3').disabled = false;
+document.getElementById('fechaA').disabled = false;
+document.getElementById('fechaT').disabled = false;
+document.getElementById('fechaA2').disabled = false;
+document.getElementById('fechaT2').disabled = false;
+document.getElementById('fechaA3').disabled = false;
+document.getElementById('fechaT3').disabled = false;
+
 
 function agrTarea() {
-
+    idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo1').value;
     descrip1 = document.getElementById('descrip1').value;
     idsubt = document.getElementById('idsubt').value;
     fechaA = document.getElementById('fechaA').value;
     fechaT = document.getElementById('fechaT').value;
-    idcur = document.getElementById('idcur').value;
-    datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
-        fechaT + '&idcur=' + idcur +'&opcion=tareAgr';
+
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
+        fechaT + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
     if (titulo1 == '' || descrip1 == '') {
@@ -633,15 +659,15 @@ function agrTarea() {
 }
 
 function agrTarea2() {
-
+    idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo2').value;
     descrip1 = document.getElementById('descrip2').value;
     idsubt = document.getElementById('idsubt2').value;
     fechaA = document.getElementById('fechaA2').value;
     fechaT = document.getElementById('fechaT2').value;
-    idcur = document.getElementById('idcur').value;
-    datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
-        fechaT + '&idcur=' + idcur +'&opcion=tareAgr';    //var gstFslda = document.getElementById('AgstFslda').value;
+    datos = 'idcur=' + idcur +'&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
+        fechaT + '&opcion=tareAgr';
+    //var gstFslda = document.getElementById('AgstFslda').value;
 
     if (titulo1 == '' || descrip1 == '') {
 
@@ -687,15 +713,15 @@ function agrTarea2() {
 
 
 function agrTarea3() {
-
+  idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo3').value;
     descrip1 = document.getElementById('descrip3').value;
     idsubt = document.getElementById('idsubt3').value;
     fechaA = document.getElementById('fechaA3').value;
     fechaT = document.getElementById('fechaT3').value;
-    idcur = document.getElementById('idcur').value;
-    datos = 'titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
-        fechaT + '&idcur=' + idcur +'&opcion=tareAgr';
+
+    datos = 'idcur=' + idcur +'&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' + fechaA + '&fechaT=' +
+        fechaT + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
     if (titulo1 == '' || descrip1 == '') {
