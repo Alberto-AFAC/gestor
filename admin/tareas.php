@@ -651,6 +651,9 @@ function agrTarea() {
                 $("#form2").show();
                 document.getElementById('titulo1').disabled = true;
                 document.getElementById('descrip1').disabled = true;
+                document.getElementById('fechaA').disabled = true;
+                document.getElementById('fechaT').disabled = true;
+
 
             }
         });
@@ -703,6 +706,8 @@ function agrTarea2() {
                 $("#form3").show();
                 document.getElementById('titulo2').disabled = true;
                 document.getElementById('descrip2').disabled = true;
+                document.getElementById('fechaA2').disabled = true;
+                document.getElementById('fechaT2').disabled = true;
 
             }
         });
@@ -758,6 +763,8 @@ function agrTarea3() {
                 $("#button3").hide();
                 document.getElementById('titulo3').disabled = true;
                 document.getElementById('descrip3').disabled = true;
+                document.getElementById('fechaA3').disabled = true;
+                document.getElementById('fechaT3').disabled = true;
                 //conprofesion(ActIdpro);
 
 
