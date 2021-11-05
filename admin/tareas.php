@@ -718,7 +718,7 @@ document.getElementById('descrip2').disabled = true;
 }
 
 
-
+//
 function agrTarea3() {
 idcur = document.getElementById('idcur').value;
 titulo1 = document.getElementById('titulo3').value;
