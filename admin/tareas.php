@@ -904,6 +904,18 @@ function format(d) {
         '<td>' + d.descripcionsub + '</td>' +
         '</tr>' +
         '<tr>' +
+        '<td><strong>INICIO:<strong></td>' +
+        '<td>' + d.iniciosub + '</td>' +
+        '<td><strong>INICIO:<strong></td>' +
+        '<td>' + d.iniciosubsub + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><strong>FINAL:<strong></td>' +
+        '<td>' + d.finalsub + '</td>' +
+        '<td><strong>FINAL:<strong></td>' +
+        '<td>' + d.finalsubsub + '</td>' +
+        '</tr>' +
+        '<tr>' +
         '<td><strong>PARTICIPANTES:<strong></td>' +
         '<td>' + d.participantesub + '</td>' +
         '<td><strong>PARTICIPANTES:<strong></td>' +

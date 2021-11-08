@@ -51,7 +51,8 @@
 			$subtarea = $data2['titulo'];
 			$descripcion = $data2['descripcion'];
 			$participantesub = "<span style='cursor: alias; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data2["participantesub"]." PARTICIPANTE(S)</span>";
-
+			$iniciosub = $data2['fechaA'];
+			$finalsub = $data2['fechaT'];
 
 			$idtar2 = $data2["idtar2"];
 
@@ -70,6 +71,8 @@
 				while($data3 = mysqli_fetch_assoc($resultado3)){
 					$subsubtarea = $data3['titulo'];
 					$descripcionsub = $data3['descripcion'];
+					$iniciosubsub = $data3['fechaA'];
+					$finalsubsub = $data3['fechaT'];
 
 					$participantesubsub = "<span style='cursor: alias; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data3["participantesubsub"]." PARTICIPANTE(S)</span>";
 
@@ -77,7 +80,7 @@
 	 
 
 	//  $tareas[] = [ $id,$data["titulo"],$data["descripcion"],$data["fechaA"],$data["fechaT"],$data["gstPrfil"],$responsables,$notificar];
-	$tareas[] = array('id'=> $contador,'titulo' =>$titulo,'descriprincipal' => $descriprincipal,'inicio' => $inicio,'final' =>$final,'participantes' => $participantes,'participantesub' => $participantesub,'participantesubsub' => $participantesubsub,'subtarea' => $subtarea,'subsubtarea' => $subsubtarea,'descripcion' => $descripcion,'descripcionsub'=> $descripcionsub,'notificar' => $notificar);
+	$tareas[] = array('id'=> $contador,'titulo' =>$titulo,'descriprincipal' => $descriprincipal,'inicio' => $inicio,'final' =>$final,'iniciosub' => $iniciosub, 'iniciosubsub' => $iniciosubsub,'finalsub' => $finalsub,'finalsubsub' => $finalsubsub,'participantes' => $participantes,'participantesub' => $participantesub,'participantesubsub' => $participantesubsub,'subtarea' => $subtarea,'subsubtarea' => $subsubtarea,'descripcion' => $descripcion,'descripcionsub'=> $descripcionsub,'notificar' => $notificar);
 				}
 		}
 	}
