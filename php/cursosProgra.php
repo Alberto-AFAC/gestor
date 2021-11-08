@@ -43,38 +43,39 @@
 			$f2 = strtotime($fin.''.$data['hcurso']); 
 
 
-		//pendiente POR VENCER
-		if ($factual <= $xvencer && 
-			$data["gstTipo"] == "RECURRENTES" && 
-			$data["proceso"] == "FINALIZADO") {
+//PENDIENTE POR VENCER - RECURRENTE
+// if ($factual <= $xvencer && 
+// 	$data["gstTipo"] == "RECURRENTES" && 
+// 	$data["proceso"] == "FINALIZADO")
+// {	
+// 	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>POR VENCER</span>";
+// 	$proc = 'POR VENCER';
 
-			$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>POR VENCER</span>";
-			$proc = 'POR VENCER';
-	
-	}
+// }
 
-// (&& $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='FINALIZADO')
-
-		if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
-		$proc = 'VENCIDO';
-		}
-		
-		//LOS RECURRENTES VENCEN CADA 3 AÑOS 
-		elseif ($factual >= $ftermino && $data["gstTipo"] == "RECURRENTES" && $data["proceso"] == "FINALIZADO") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
-		$proc = 'VENCIDO';
-	} else
-		if($data["proceso"] == 'PENDIENTE'){ //PENDIENTE
-		$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
-		$proc = 'PENDIENTE';
-		}else if($data["proceso"] == 'FINALIZADO'){
-		$proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
-		$proc = 'FINALIZADO';
-		} else if($data["proceso"] == 'EN PROCESO'){
-		$proceso = '<span style="font-weight: bold; height: 50px; color: ##3C8DBC;">EN PROCESO</span>';
-		$proc = 'EN PROCESO';
-		} 
+if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
+	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+	$proc = 'VENCIDO';
+}
+//LOS RECURRENTES VENCEN CADA 3 AÑOS 
+// elseif ($factual >= $ftermino && 
+// 		$data["gstTipo"] == "RECURRENTES" && 
+// 		$data["proceso"] == "FINALIZADO") 
+// {
+// 	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+// 	$proc = 'VENCIDO';
+// } 
+else
+if($data["proceso"] == 'PENDIENTE'){ //PENDIENTE
+$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
+$proc = 'PENDIENTE';
+}else if($data["proceso"] == 'FINALIZADO'){
+$proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
+$proc = 'FINALIZADO';
+} else if($data["proceso"] == 'EN PROCESO'){
+$proceso = '<span style="font-weight: bold; height: 50px; color: ##3C8DBC;">EN PROCESO</span>';
+$proc = 'EN PROCESO';
+} 
 		$cursos[] = [ 
 		$data["codigo"],
 		//$data["codigo"], 
