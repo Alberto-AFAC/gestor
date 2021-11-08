@@ -30,14 +30,20 @@
 
 	 
 
-	 $caledario[] = [ $contador,$data["titulo"],$data["descripcion"],$data["fechaA"],$data["fechaT"],$data["gstPrfil"],$responsables,$notificar];
+	 $tareas[] = [ $contador,$data["titulo"],$data["descripcion"],$data["fechaA"],$data["fechaT"],$data["gstPrfil"],$responsables,$notificar];
 
 		}
 	}
+	if(isset($tareas)&&!empty($tareas)){
 
+		echo json_encode(array( 'data' => $tareas,JSON_UNESCAPED_UNICODE ));
+	}else{
 
-	$json_string = json_encode(array( 'data' => $caledario ));
-	echo $json_string;
+		echo $tareas='Sin datos';
+	}
+
+	// $json_string = json_encode(array( 'data' => $tareas ));
+	// echo $json_string;
 
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);
