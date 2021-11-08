@@ -6,16 +6,14 @@
 
 
 	$query = "SELECT
-    id_tar,
-    titulo,descripcion, fechaA, fechaT,
-    listacursos.gstTitlo,gstTipo, gstPrfil,
-    personal.gstNombr,gstApell,gstCargo
-        
+    id_tar,titulo,descripcion, fechaA, fechaT,
+    listacursos.gstTitlo,gstTipo,gstPrfil,
+    personal.gstNombr,gstApell,gstCargo        
     FROM
-        tareas
-        INNER JOIN tarearealizar ON id_tar = id_tare
-        INNER JOIN listacursos ON gstIdlsc = idcur
-        INNER JOIN personal ON gstIdper = idiva";
+    tareas
+    INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
+    INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
+    INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva";
 	$resultado = mysqli_query($conexion, $query);
 	$contador = 0;
 
