@@ -29,7 +29,7 @@
 			$descriprincipal = $data["descripcion"];
 			$inicio = $data["fechaA"];
 			$final = $data["fechaT"];
-			$participantes = "<span style='cursor: alias; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data["participantes"]." PARTICIPANTE(S)</span>";
+			$participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data["participantes"]." PARTICIPANTE(S)</span>";
 
 
 			$idtar1 = $data["idtar1"];

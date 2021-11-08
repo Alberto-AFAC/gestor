@@ -569,6 +569,25 @@ disabled="">
             </section>
             <!-- /.content -->
         </div>
+        <!-- MODAL UPLOAD DATAS -->
+        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Modal Body</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        <button type="button" class="btn btn-primary">NOTIFICAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -976,4 +995,28 @@ $(document).ready(function() {
         }
     });
 });
+// CONSULTA PARA VERIFICAR CUANTOS PARTICIPANTES SE NECESITAN
+function participantes(id) {
+    $.ajax({
+        url: '',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>#</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idcurso == id) {
+                html += "<tr><td>" + x + "</td><td style='width: 75%;'>" + obj.data[i].id + "</td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#participantes").html(html);
+    })
+}
 </script>
