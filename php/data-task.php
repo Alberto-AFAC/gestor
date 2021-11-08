@@ -37,7 +37,7 @@
 		echo json_encode(array( 'data' => $tareas,JSON_UNESCAPED_UNICODE ));
 	}else{
 
-		echo $tareas='Sin datos';
+		echo $tareas='0';
 	}
 
 	// $json_string = json_encode(array( 'data' => $tareas ));
