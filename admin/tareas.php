@@ -112,7 +112,7 @@ include('header.php');
                             <ul class="nav nav-tabs" style="font-size: 14px;">
                                 <li class="active"><a href="#activity" data-toggle="tab">CREAR TAREA</a></li>
                                 <li><a href="#puesto" data-toggle="tab">ASIGNAR TAREA</a></li>
-                                <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li>
+                                <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
                             </ul>
 
                             <div class="tab-content">
