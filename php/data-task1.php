@@ -3,10 +3,8 @@
     header('Content-Type: application/json');
 	session_start();
 
-
-
 	$query = "SELECT
-    id_tar,titulo,descripcion, fechaA, fechaT,
+    id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar1,
     listacursos.gstTitlo,gstTipo,gstPrfil,
     personal.gstNombr,gstApell,gstCargo        
     FROM
@@ -14,7 +12,7 @@
     INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
     INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
     INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
-	GROUP BY idcur";
+	 WHERE idsubt = 0 GROUP BY idcur";
 	$resultado = mysqli_query($conexion, $query);
 	$contador = 0;
 
@@ -26,9 +24,10 @@
 			$responsables = $data["gstNombr"]." ".$data["gstApell"];
 			$notificar = "<button type='button' class='btn btn-primary'>NOTIFICAR</button>";
 			$titulo = $data["titulo"];
+			$idtar1 = $data["idtar1"];
 
 			$query2 = "	SELECT
-			id_tar,titulo,descripcion, fechaA, fechaT,
+			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,
 			listacursos.gstTitlo,gstTipo,gstPrfil,
 			personal.gstNombr,gstApell,gstCargo        
 			FROM
@@ -36,13 +35,14 @@
 			INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
 			INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
 			INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
-				WHERE idsubt = 7
-				GROUP BY idcur";
+				WHERE idsubt = $idtar1 GROUP BY idcur";
 				$resultado2 = mysqli_query($conexion, $query2);
 				while($data2 = mysqli_fetch_assoc($resultado2)){
 		
 			$subtarea = $data2['titulo'];
 			$descripcion = $data2['descripcion'];
+			$idtar2 = $data2["idtar2"];
+
 			$query3 = "	SELECT
 			id_tar,titulo,descripcion, fechaA, fechaT,
 			listacursos.gstTitlo,gstTipo,gstPrfil,
@@ -52,8 +52,7 @@
 			INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
 			INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
 			INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
-				WHERE idsubt = 8
-				GROUP BY idcur";
+				WHERE idsubt = $idtar2 GROUP BY idcur";
 				$resultado3 = mysqli_query($conexion, $query3);
 				while($data3 = mysqli_fetch_assoc($resultado3)){
 					$subsubtarea = $data3['titulo'];
