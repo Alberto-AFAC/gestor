@@ -388,15 +388,19 @@ include('header.php');
                                             </div>
 
                                         </div>
-                                        <table id="add-task"  class="table display table-striped table-bordered" style="width:100%">
+                                        <table id="add-task" class="table display table-striped table-bordered"
+                                            style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
                                                     <th>TITULO</th>
-                                                    <th>ACCIONES</th>
+                                                    <th>DESCRIPCIÓN</th>
+                                                    <th>FECHA INICIO</th>
+                                                    <th>FECHA TERMINO</th>
+                                                    <th>PARTICIPANTES</th>
                                                 </tr>
                                             </thead>
-                                           
+
                                         </table>
                                         <div class="form-group">
 
@@ -885,7 +889,8 @@ function agrIva() {
 // });
 function format(d) {
     // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+    // class="table display table-striped table-bordered" style="width:100%"
+    return '<table class="table display table-striped table-bordered" style="width:100%">' +
         '<tr>' +
         '<td><strong>SUBTAREA:</strong></td>' +
         '<td>' + d.subtarea + '</td>' +
@@ -900,9 +905,9 @@ function format(d) {
         '</tr>' +
         '<tr>' +
         '<td><strong>PARTICIPANTES:<strong></td>' +
-        '<td></td>' +
+        '<td>' + d.participantesub + '</td>' +
         '<td><strong>PARTICIPANTES:<strong></td>' +
-        '<td></td>' +
+        '<td>' + d.participantesubsub + '</td>' +
         '</tr>' +
         '</table>';
 }
@@ -920,14 +925,23 @@ $(document).ready(function() {
                 "data": null,
                 "defaultContent": ''
             },
-          
+
             {
                 "data": "titulo"
             },
             {
-                "data": "notificar"
+                "data": "descriprincipal"
             },
-           
+            {
+                "data": "inicio"
+            },
+            {
+                "data": "final"
+            },
+            {
+                "data": "participantes"
+            },
+
         ],
         "order": [
             [1, 'asc']
