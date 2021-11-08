@@ -33,16 +33,16 @@
 	$fcurso = strtotime(Date($data["fcurso"]).''.$data['hcurso']);
 
 
-			if ($factualv > $fcursov && $data["proceso"] == "PENDIENTE") {
-			$vencido++;
-			}
+	if($factual>=$fcurso && $data["proceso"] == "PENDIENTE")  {
+	$vencido++;
+	}
 
-			if ($factualv <= $fcursov && $data["proceso"] == "PENDIENTE") {
+	// if ($factualv <= $fcursov && $data["proceso"] == "PENDIENTE") {
 
-			if ($factualv >= $finaliza && $data["proceso"] == "PENDIENTE") {
-			$porvencer++;
-			}
-			}
+	// // if ($factualv >= $finaliza && $data["proceso"] == "PENDIENTE") {
+	// // $porvencer++;
+	// // }
+	// }
 
 	if ($factual <= $fcurso AND $data['proceso']=='PENDIENTE') {
 		$acreditar++;
@@ -57,7 +57,7 @@
 		}
 
 	$data['vencido'] = $vencido;
-	$data['porvencer'] = $porvencer;
+	//$data['porvencer'] = $porvencer;
 	$data['progrmas'] = $progrmas;	
 	$data['finalizado'] = $finalizado;	
 	$data['acreditar'] = $acreditar;

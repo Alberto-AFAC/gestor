@@ -18,21 +18,9 @@
 		$factual = strtotime(Date("Y-m-d"));
 		$fcurso = strtotime(Date($data["fcurso"]));
 
-		if ($factual > $fcurso && $data["proceso"] == "PENDIENTE") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
-		$proc = 'VENCIDO';
-		} else
-
-		if($data["proceso"] == 'PENDIENTE'){
-
-		$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
-		$proc = 'PENDIENTE';
-		} else if($data["proceso"] == 'FINALIZADO'){
+		if($data["proceso"] == 'FINALIZADO'){
 		$proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
 		$proc = 'FINALIZADO';
-		} else if($data["proceso"] == 'EN PROCESO'){
-		$proceso = '<span style="font-weight: bold; height: 50px; color: ##3C8DBC;">EN PROCESO</span>';
-		$proc = 'EN PROCESO';
 		} 
 		$cursos[] = [ 
 		$data["codigo"], 

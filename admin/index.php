@@ -216,7 +216,7 @@ include('header.php');
 
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
-                                <span class="info-box-text">Por vencer y Vencidos</span>
+                                <span class="info-box-text">Vencidos</span>
                                 <span class="info-box-number"><div id="vencer"></div> </span>
                                 <span class="progress-description">
                                     <div class="progress">
