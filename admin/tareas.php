@@ -49,11 +49,22 @@ folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
     <!-- <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
 integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" /> -->
 
     <style>
+    /* datatables */
+    td.details-control {
+        background: url('../dist/img/add.png') no-repeat center center;
+        cursor: pointer;
+    }
+
+    tr.shown td.details-control {
+        background: url('../dist/img/remove.png') no-repeat center center;
+    }
+
     .swal-wide {
         width: 500px !important;
         font-size: 16px !important;
@@ -369,30 +380,26 @@ include('header.php');
                                                         <label> ------- </label>
 
                                                     </H4> -->
-                                                   
 
-                                                    
+
+
                                                 </div>
-                                                
+
                                             </div>
-                                          
+
                                         </div>
-                                        <table id="add-task" class="table table-bordered" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ITEM</th>
-                                                                <th>TAREA</th>
-                                                                <th>DESCRIPCIÓN</th>
-                                                                <th>INICIA</th>
-                                                                <th>FINALIZA</th>
-                                                                <th>DIRIGIDO A:</th>
-                                                                <th>RESPONSABLES</th>
-                                                                <th>ACCIÓN</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
+                                        <table id="add-task"  class="table display table-striped table-bordered" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>TITULO</th>
+                                                    <th>ACCIONES</th>
+                                                </tr>
+                                            </thead>
+                                           
+                                        </table>
                                         <div class="form-group">
-                                        
+
 
                                         </div>
 
@@ -609,7 +616,7 @@ immediately after the control sidebar -->
     <script src="../dist/js/demo.js"></script>
     <script src="../js/proInspc.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
 integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script> -->
     <!-- page script -->
@@ -864,16 +871,83 @@ function agrIva() {
     }
 
 }
+// $(document).ready(function() {
+
+
+//     // INICIALIZE DATATABLES
+//     $('#add-task').DataTable({
+//         "language": {
+//             "searchPlaceholder": "Buscar datos...",
+//             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+//         },
+//         "ajax": '../php/data-task.php'
+//     });
+// });
+function format(d) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<tr>' +
+        '<td><strong>SUBTAREA:</strong></td>' +
+        '<td>' + d.subtarea + '</td>' +
+        '<td><strong>SUB SUBTAREA:</strong></td>' +
+        '<td>' + d.subsubtarea + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><strong>DESCRIPCIÓN:<strong></td>' +
+        '<td>' + d.descripcion + '</td>' +
+        '<td><strong>DESCRIPCIÓN:<strong></td>' +
+        '<td>' + d.descripcionsub + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><strong>PARTICIPANTES:<strong></td>' +
+        '<td></td>' +
+        '<td><strong>PARTICIPANTES:<strong></td>' +
+        '<td></td>' +
+        '</tr>' +
+        '</table>';
+}
+
 $(document).ready(function() {
-
-
-    // INICIALIZE DATATABLES
-    $('#add-task').DataTable({
+    var table = $('#add-task').DataTable({
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        "ajax": '../php/data-task.php'
+        "ajax": "../php/data-task1.php",
+        "columns": [{
+                "className": 'details-control',
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+          
+            {
+                "data": "titulo"
+            },
+            {
+                "data": "notificar"
+            },
+           
+        ],
+        "order": [
+            [1, 'asc']
+        ]
+    });
+
+    // Add event listener for opening and closing details
+    $('#add-task tbody').on('click', 'td.details-control', function() {
+        var tr = $(this).closest('tr');
+        var row = table.row(tr);
+
+        if (row.child.isShown()) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+            // Open this row
+            row.child(format(row.data())).show();
+            tr.addClass('shown');
+        }
     });
 });
 </script>
