@@ -2052,7 +2052,42 @@ include('header.php');
             </section>
             <!-- /.content -->
         </div>
-
+        <!-- MODAL PARA ENTREGAR TAREA -->
+        <form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+        <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <input type="" id="idtarea" name="idtarea">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">ENTREGA DE ACTIVIDADES OJT</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</h3><br>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                        <label class="container">SI
+                            <input type="radio" checked="checked" value="1" name="entrega">
+                            <span class="checkmark"></span>
+                        </label>
+                            </div>
+                            <div class="col-sm-2">
+                        <label class="container">NO
+                            <input type="radio" name="entrega" value="0">
+                            <span class="checkmark"></span>
+                        </label>
+                            </div>
+                            </div>
+                    </div><br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        <button type="button" id="validar" class="btn btn-primary">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+                            </form>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
@@ -2708,7 +2743,8 @@ $id = $datos[0];
 $query = "SELECT
 id_tar,titulo,descripcion, fechaA, fechaT,
 listacursos.gstTitlo,gstTipo,gstPrfil,
-personal.gstNombr,gstApell,gstCargo        
+personal.gstNombr,gstApell,gstCargo,
+tarearealizar.idiva,entrega       
 FROM
 tareas
 INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
@@ -2721,12 +2757,20 @@ WHERE idiva = $id";
 	while($data = mysqli_fetch_assoc($resultado)){
         $contador++;
         $responsables = $data["gstNombr"]." ".$data["gstApell"];
-        $pendiente = "<img src='../dist/img/tarea_pendiente.png' alt='Tarea-Pendiente' style='width: 40px;'>";
-?>
+        $pendiente = "<img onclick='consultarDatos({$id})' data-toggle='modal' data-target='#pendiente' src='../dist/img/tarea_pendiente.png' alt='Tarea-Pendiente' title='Sin entregar' style='width: 40px;'>";
+        $cumplio = "<img src='../dist/img/cumplio.png' alt='Tarea-Pendiente' title='Tarea entregada' style='width: 40px;'>";
 
+    if($data['entrega'] == 0){?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>",
+        "<?php echo $data["titulo"]?>", "<?php echo $data["descripcion"]?>", "<?php echo $data["fechaA"]?>",
+        "<?php echo $data["fechaT"]?>", "<?php echo $pendiente?>"],
+    <?php
+}else{
+    ?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>", "<?php echo $data["titulo"]?>",
+        "<?php echo $data["descripcion"]?>", "<?php echo $data["fechaA"]?>", "<?php echo $data["fechaT"]?>",
+        "<?php echo $cumplio?>"],
+    <?php
+}
 
-    ["<?php echo $contador; ?>","<?php echo $data["gstTitlo"];?>","<?php echo $data["titulo"]?>","<?php echo $data["descripcion"]?>","<?php echo $data["fechaA"]?>","<?php echo $data["fechaT"]?>","<?php echo $pendiente?>"]
-<?php
 }?>
 ]
 
@@ -2759,4 +2803,87 @@ var tableGenerarReporte = $('#data-table-ojt').DataTable({
         }
     ],
 });
+
+
+//VALIDAR DATOS//
+// $(document).ready(function(){
+// 		$('#validar').click(function(){
+//             var entrega  = $("#sientrega").val();
+//             var noentrega  = $("#noentrega").val();
+//             swal.showLoading();
+//                 if(entrega == '' ){
+//                 Swal.fire({
+//                     type: 'info',
+//                     title: 'ATENCIÓN!',
+//                     text: 'No has confirmado entrega',
+//                     showConfirmButton: false,
+//                     customClass: 'swal-wide'
+//                 });
+//                 }else{
+// 			$.ajax({
+// 				type:"POST",
+// 				url:"",
+// 				data: {entrega:entrega,noentrega:noentrega},
+// 				success:function(data){
+//                 Swal.fire({
+//                   type: 'success',
+//                   title: 'AFAC INFORMA',
+//                   text: 'Guardado con éxito',
+//                   showConfirmButton: false,
+//                   timer: 2900,
+//                   showConfirmButton: false,
+//                   customClass: 'swal-wide'
+//                 });
+// 				}
+// 			});
+//         }
+
+// 			return false;
+// 		});
+// 	});
+
+
+function consultarDatos(id) {
+
+ 
+$("#tareas").slideDown("slow");
+$.ajax({
+    url: '../php/tareas-list.php',
+    type: 'POST'
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+    for (i = 0; i < res.length; i++) {
+        if (obj.data[i].idiva == id) {
+                idtarea = $("#pendiente #idtarea").val(obj.data[i].idtarea),
+                opcion = $("#pendiente #opcion").val("modificar");
+        }
+    }
+})
+}
+
+function modificar() {
+var frm = $("#Editar").serialize();
+$.ajax({
+    url: "../php/accesos-update.php",
+    type: 'POST',
+    data: frm + "&opcion=modificar"
+}).done(function(respuesta) {
+    if (respuesta == 0) {
+        Swal.fire({
+            type: 'success',
+            title: 'ÉXITO',
+            text: 'Credenciales actualizadas correctamente',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 2000,
+            backdrop: `
+                rgba(100, 100, 100, 0.4)
+            `
+        });
+        setTimeout("location.href = 'accesos';", 2000);
+    }
+ 
+});
+}
 </script>
