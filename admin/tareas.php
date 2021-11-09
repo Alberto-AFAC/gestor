@@ -580,14 +580,14 @@ disabled="">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                        <h4 class="modal-title" id="myModalLabel"><div id="titulo"></div></h4>
                     </div>
-                    <div class="modal-body">
-                        <h3>Modal Body</h3>
-                    </div>
+                    
+                        <div id="rspnsbls"></div>
+                
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                        <button type="button" class="btn btn-primary">NOTIFICAR</button>
+                        <button type="button" class="btn btn-primary" onclick="notificacion()">NOTIFICAR</button>
                     </div>
                 </div>
             </div>
@@ -862,9 +862,6 @@ function agrIva() {
 
     if (idinsp == '') {
 
-
-
-
         $('#vacio0').toggle('toggle');
         setTimeout(function() {
             $('#vacio0').toggle('toggle');
@@ -1022,5 +1019,73 @@ function participantes(id) {
         html += '</table>';
         $("#participantes").html(html);
     })
+}
+function responsables(idResp){
+
+    //alert(idResp);
+
+    $.ajax({
+        url: "../php/conRespon.php",
+        type: "POST",
+        data: 'idResp=' + idResp
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+
+        $("#titulo").html('TAREA:'+' '+obj.data[0].gstTitlo);
+     
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">NOMBRE </th> </tr></thead><tbody>';
+
+        for (p = 0; p < res.length; p++){
+
+            nombres = obj.data[p].gstNombr+' '+obj.data[p].gstApell;
+               // dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
+                x++;
+
+                html += '<tr><td>' + x + '</td> <td>'+nombres+'</td></tr>';
+
+                 //  $("#titulo").html(obj.data[2].gstTitlo); 
+
+        }
+        html += '</tbody></table></form></div></div>';
+
+        $("#rspnsbls").html(html);
+
+    
+    })
+
+//<a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a>
+}
+
+function notificacion(){
+
+
+    // var notIdper = new Array();
+    // $('input[name="idresp"]').each(function(element) {
+    //     var item = {};
+    //     item.notIdper = this.value;
+    //     item.idresp = this.checked;
+    //     notIdper.push(item);
+    // });
+    // var array1 = JSON.stringify(notIdper);
+
+    // datos = 'valor=' + array1 + '&opcion=ntfccn';
+
+    // $.ajax({
+    //     url: '../php/regTarea.php',
+    //     type: 'POST',
+    //     data: datos
+    // }).done(function(respuesta) {
+    //     alert(respuesta); 
+    //     if (respuesta == 0) {
+
+    //     } else {
+
+    //     }
+    // });
+
+
 }
 </script>

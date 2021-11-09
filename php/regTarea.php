@@ -42,6 +42,15 @@ if($opcion === 'tareAgr'){
 	}else{
 		echo "0";
 	}
+}else if($opcion==='ntfccn'){
+
+$valor = $_POST['valor'];
+$varray1 = json_decode($valor, true);
+$valor = count($varray1);
+
+for($i=0; $i<$valor; $i++){
+echo $idcons = $varray1[$i]["notIdper"];	
+}
 }
 
 
