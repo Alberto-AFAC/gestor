@@ -137,10 +137,7 @@ include('header.php');
                                                     <div class="input-group">
                                                         <H4><i class=""></i>
                                                             <label> TAREA PRINCIPAL </label>
-                                                            <a style="display: none;" type='button' id="resp1"
-                                                                class='asiste btn btn-default' data-toggle='modal'
-                                                                data-target='#modal-participnt'><i
-                                                                    class='fa fa-user-plus text-info'></i></a>
+                                                          
                                                         </H4>
                                                     </div>
                                                 </div>
@@ -182,8 +179,13 @@ include('header.php');
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip1" name="descrip1" rows="4"
-                                                        disabled=""></textarea>
+                                                        disabled=""></textarea></br>
+                                                        <a style="display: none;" type='button' id="resp1"
+                                                                class='asiste btn btn-default' data-toggle='modal'
+                                                                data-target='#modal-participnt'><i
+                                                                    class='fa fa-user-plus text-info'></i> AÑADIR RESPONSABLES</a>
                                                 </div>
+                                                
                                             </div>
 
                                             <div class="form-group" id="butons1"><br>
@@ -225,10 +227,7 @@ include('header.php');
                                                         <H4><i class=""></i>
                                                             <label> SUB-TAREA</label>
 
-                                                            <a style="display: none;" type='button' id="resp2"
-                                                                class='asiste btn btn-default' data-toggle='modal'
-                                                                data-target='#modal-participnt'><i
-                                                                    class='fa fa-user-plus text-info'></i></a>
+                                                         
 
                                                         </H4>
                                                     </div>
@@ -257,7 +256,11 @@ include('header.php');
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip2" name="descrip2" rows="4"
-                                                        disabled=""></textarea>
+                                                        disabled=""></textarea><br>
+                                                        <a style="display: none;" type='button' id="resp2"
+                                                                class='asiste btn btn-default' data-toggle='modal'
+                                                                data-target='#modal-participnt'><i
+                                                                    class='fa fa-user-plus text-info'></i> AÑADIR RESPONSABLE</a>
                                                 </div>
 
                                             </div>
@@ -300,10 +303,7 @@ include('header.php');
                                                     <div class="input-group">
                                                         <H4><i class=""></i>
                                                             <label> SUB SUB-TAREA </label>
-                                                            <a style="display: none;" type='button' id="resp3"
-                                                                class='asiste btn btn-default' data-toggle='modal'
-                                                                data-target='#modal-participnt'><i
-                                                                    class='fa fa-user-plus text-info'></i></a>
+                                                           
 
 
                                                         </H4>
@@ -333,7 +333,11 @@ include('header.php');
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip3" name="descrip3" rows="4"
-                                                        disabled=""></textarea>
+                                                        disabled=""></textarea><br>
+                                                        <a style="display: none;" type='button' id="resp3"
+                                                                class='asiste btn btn-default' data-toggle='modal'
+                                                                data-target='#modal-participnt'><i
+                                                                    class='fa fa-user-plus text-info'></i> AÑADIR RESPONSABLE</a>
                                                 </div>
 
                                             </div>
