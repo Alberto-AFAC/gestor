@@ -29,10 +29,11 @@
 			$descriprincipal = $data["descripcion"];
 			$inicio = $data["fechaA"];
 			$final = $data["fechaT"];
-			$participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data["participantes"]." PARTICIPANTE(S)</span>";
-
-
 			$idtar1 = $data["idtar1"];
+			// $participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'></span>";
+			$participantes = "<a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data["participantes"]." PARTICIPANTE(S)</a>";
+
+			
 
 			$query2 = "	SELECT
 			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,
