@@ -1050,11 +1050,16 @@ function responsables(idResp){
                // dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 x++;
 
-                if(obj.data[p].evalua==0){
-                html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="'+obj.data[p].id_tare+'"><td>' + x + '</td> <td>'+nombres+'</td><td>SI <input type="checkbox" style="width:17px; height:17px;" name="evalsi" id="evalsi" value=""> NO <input type="checkbox" style="width:17px; height:17px;" name="evalno" id="evalno" value=""></td></tr>';
-                }else{
-                html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td>'+obj.data[p].evalua+'</td></tr>';
+            if(obj.data[p].entrega == 1 && obj.data[p].evalua==''){
+            html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="'+obj.data[p].id_tare+'"><td>' + x + '</td> <td>'+nombres+'</td><td>SI <input type="checkbox" style="width:17px; height:17px;" name="evalsi" id="evalsi" value=""> NO <input type="checkbox" style="width:17px; height:17px;" name="evalno" id="evalno" value=""></td></tr>';
+            }else if(obj.data[p].entrega == 0 && obj.data[p].evalua==''){
+            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td>POR ENTREGAR</td></tr>';
+            }else{
+            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td>'+obj.data[p].evalua+'</td></tr>';                
             }
+
+
+
 
                  //  $("#titulo").html(obj.data[2].gstTitlo); 
 
