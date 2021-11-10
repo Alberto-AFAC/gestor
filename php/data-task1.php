@@ -31,7 +31,7 @@
 			$final = $data["fechaT"];
 			$idtar1 = $data["idtar1"];
 			// $participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'></span>";
-			$participantes = "<a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data["participantes"]." PARTICIPANTE(S)</a>";
+			$participantes = "<a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR: ".$data["participantes"]." PARTICIPANTE(S)</a>";
 
 			
 
@@ -51,7 +51,7 @@
 		
 			$subtarea = $data2['titulo'];
 			$descripcion = $data2['descripcion'];
-			$participantesub = "<span style='cursor: alias; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data2["participantesub"]." PARTICIPANTE(S)</span>";
+			$participantesub = "<span style='cursor: alias; font-weight:bold; color: green;'>EVALUAR: ".$data2["participantesub"]." PARTICIPANTE(S)</span>";
 			$iniciosub = $data2['fechaA'];
 			$finalsub = $data2['fechaT'];
 
@@ -75,7 +75,7 @@
 					$iniciosubsub = $data3['fechaA'];
 					$finalsubsub = $data3['fechaT'];
 
-					$participantesubsub = "<span style='cursor: alias; font-weight:bold; color: green;'>POR NOTIFICAR A: ".$data3["participantesubsub"]." PARTICIPANTE(S)</span>";
+					$participantesubsub = "<span style='cursor: alias; font-weight:bold; color: green;'>EVALUAR: ".$data3["participantesubsub"]." PARTICIPANTE(S)</span>";
 
 
 	 

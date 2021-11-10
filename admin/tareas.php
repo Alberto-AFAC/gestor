@@ -582,13 +582,15 @@ disabled="">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel"><div id="titulo"></div></h4>
                     </div>
-                    
+                        <input type="hidden" name="idRtarea" id="idRtarea">
                         <div id="rspnsbls"></div>
                 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                        <button type="button" class="btn btn-primary" onclick="notificacion()">NOTIFICAR</button>
+                        <button type="button" class="btn btn-primary" onclick="notificacion()">EVALUAR</button>
                     </div>
+                    <b><p class="alert alert-success text-center padding exito" id="exito">¡Se actualizaron los datos y archivo con éxito!</p></b>
+
                 </div>
             </div>
         </div>
@@ -783,7 +785,6 @@ function agrTarea2() {
                 document.getElementById('descrip2').disabled = true;
                 document.getElementById('fechaA2').disabled = true;
                 document.getElementById('fechaT2').disabled = true;
-
             }
         });
     }
@@ -846,8 +847,6 @@ function agrTarea3() {
                 document.getElementById('fechaA3').disabled = true;
                 document.getElementById('fechaT3').disabled = true;
                 //conprofesion(ActIdpro);
-
-
             }
         });
     }
@@ -1022,7 +1021,7 @@ function participantes(id) {
 }
 function responsables(idResp){
 
-    //alert(idResp);
+    $("#basicModal #idRtarea").val(idResp);
 
     $.ajax({
         url: "../php/conRespon.php",
@@ -1034,9 +1033,9 @@ function responsables(idResp){
         var res = obj.data;
         var x = 0;
 
-        $("#titulo").html('TAREA:'+' '+obj.data[0].gstTitlo);
+        $("#titulo").html(obj.data[0].gstTitlo);
      
-        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">NOMBRE </th> </tr></thead><tbody>';
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">NOMBRE </th><th>APROBÓ</th> </tr></thead><tbody>';
 
         for (p = 0; p < res.length; p++){
 
@@ -1044,7 +1043,11 @@ function responsables(idResp){
                // dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 x++;
 
-                html += '<tr><td>' + x + '</td> <td>'+nombres+'</td></tr>';
+                if(obj.data[p].evalua==0){
+                html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="'+obj.data[p].id_tare+'"><td>' + x + '</td> <td>'+nombres+'</td><td>SI <input type="checkbox" style="width:17px; height:17px;" name="evalsi" id="evalsi" value=""> NO <input type="checkbox" style="width:17px; height:17px;" name="evalno" id="evalno" value=""></td></tr>';
+                }else{
+                html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td>'+obj.data[p].evalua+'</td></tr>';
+            }
 
                  //  $("#titulo").html(obj.data[2].gstTitlo); 
 
@@ -1061,30 +1064,57 @@ function responsables(idResp){
 
 function notificacion(){
 
+    idtarea = document.getElementById('idRtarea').value;
 
-    // var notIdper = new Array();
-    // $('input[name="idresp"]').each(function(element) {
-    //     var item = {};
-    //     item.notIdper = this.value;
-    //     item.idresp = this.checked;
-    //     notIdper.push(item);
-    // });
-    // var array1 = JSON.stringify(notIdper);
+    var id_tarea = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="idtarea"]').each(function(element) {
+        var item = {};
+        item.id_tarea = this.value;
+        item.idtarea = this.checked;
+        id_tarea.push(item);
+    });
 
-    // datos = 'valor=' + array1 + '&opcion=ntfccn';
+    var evalsi = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="evalsi"]').each(function(element) {
+        var item = {};
+        item.evalsi = this.checked;
+        evalsi.push(item);
+    });
 
-    // $.ajax({
-    //     url: '../php/regTarea.php',
-    //     type: 'POST',
-    //     data: datos
-    // }).done(function(respuesta) {
-    //     alert(respuesta); 
-    //     if (respuesta == 0) {
+    var evalno = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="evalno"]').each(function(element) {
+        var item = {};
+        item.evalno = this.checked;
+        evalno.push(item);
+    });
 
-    //     } else {
 
-    //     }
-    // });
+
+    /*Creamos un objeto para enviarlo al servidor*/
+    var array1 = JSON.stringify(id_tarea);
+    var array2 = JSON.stringify(evalsi);
+    var array3 = JSON.stringify(evalno);
+
+    datos = 'array1=' + array1 + '&array2=' + array2 + '&array3=' + array3 + '&opcion=ntfccn';
+//alert(datos);
+    $.ajax({
+        url: '../php/regTarea.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        alert(respuesta); 
+     
+        if(respuesta==''){
+
+        }else{
+            responsables(idRtarea);            
+        }
+        
+      
+    });
 
 
 }

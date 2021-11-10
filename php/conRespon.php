@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	$idResp = $_POST['idResp'];
-	$query = "SELECT gstNombr,gstApell,gstTitlo,id_tare
+	$query = "SELECT gstNombr,gstApell,gstTitlo,id_tare,evalua
 			  FROM tareas 
 			  INNER JOIN tarearealizar ON idtarea = id_tar  
 			  INNER JOIN personal ON idiva = gstIdper

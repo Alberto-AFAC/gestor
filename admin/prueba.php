@@ -277,3 +277,27 @@ $resultado= mysqli_query($conexion,$query);
 ?>
 </pre>
 
+<input name="checkbox" type="checkbox" id="checkbox" onchange="javascript:hazalgo();" value="1" />
+
+
+<script type="text/javascript">
+  
+
+function hazalgo() {
+    if(document.getElementById('checkbox').checked){
+        objeto1 = document.getElementById('c2');
+        objeto1.style.display='none';
+        objeto2 = document.getElementById('cuota');
+        objeto2.value='30';
+    }else{
+        objeto1 = document.getElementById('c2');
+        objeto1.style.display='';
+        objeto2 = document.getElementById('cuota');
+        objeto2.value='20';
+    }
+    //
+    //alert(' - '+document.getElementById('checkbox').value);
+}
+</script>   
+</script>
+
