@@ -2059,16 +2059,17 @@ include('header.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <input type="" id="idtarea" name="idtarea">
+                    <input type="" id="id_tare" name="id_tare">
+                    <input type="hidden" id="opcion" name="opcion" value="modificar">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">ENTREGA DE ACTIVIDADES OJT</h4>
+                        <div class="modal-title" id="myModalLabel"><span style="font-size: 20px;" id="tituloTarea"></span></div>
                     </div>
                     <div class="modal-body">
                         <h3>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</h3><br>
                         <div class="form-group">
                             <div class="col-sm-2">
                         <label class="container">SI
-                            <input type="radio" checked="checked" value="1" name="entrega">
+                            <input type="radio" value="1" name="entrega">
                             <span class="checkmark"></span>
                         </label>
                             </div>
@@ -2082,7 +2083,7 @@ include('header.php');
                     </div><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                        <button type="button" id="validar" class="btn btn-primary">GUARDAR</button>
+                        <button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
                     </div>
                 </div>
             </div>
@@ -2744,7 +2745,7 @@ $query = "SELECT
 id_tar,titulo,descripcion, fechaA, fechaT,
 listacursos.gstTitlo,gstTipo,gstPrfil,
 personal.gstNombr,gstApell,gstCargo,
-tarearealizar.idiva,entrega       
+tarearealizar.idiva,entrega,id_tare      
 FROM
 tareas
 INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
@@ -2752,12 +2753,13 @@ INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
 INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
 WHERE idiva = $id";
 	$resultado = mysqli_query($conexion, $query);
+   
 	$contador = 0;
 
 	while($data = mysqli_fetch_assoc($resultado)){
         $contador++;
         $responsables = $data["gstNombr"]." ".$data["gstApell"];
-        $pendiente = "<img onclick='consultarDatos({$id})' data-toggle='modal' data-target='#pendiente' src='../dist/img/tarea_pendiente.png' alt='Tarea-Pendiente' title='Sin entregar' style='width: 40px;'>";
+        $pendiente = "<img onclick='consultarDatos({$data["id_tare"]})' data-toggle='modal' data-target='#pendiente' src='../dist/img/tarea_pendiente.png' alt='Tarea-Pendiente' title='Sin entregar' style='width: 40px;'>";
         $cumplio = "<img src='../dist/img/cumplio.png' alt='Tarea-Pendiente' title='Tarea entregada' style='width: 40px;'>";
 
     if($data['entrega'] == 0){?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>",
@@ -2844,8 +2846,6 @@ var tableGenerarReporte = $('#data-table-ojt').DataTable({
 
 
 function consultarDatos(id) {
-
- 
 $("#tareas").slideDown("slow");
 $.ajax({
     url: '../php/tareas-list.php',
@@ -2854,8 +2854,10 @@ $.ajax({
     obj = JSON.parse(resp);
     var res = obj.data;
     for (i = 0; i < res.length; i++) {
-        if (obj.data[i].idiva == id) {
-                idtarea = $("#pendiente #idtarea").val(obj.data[i].idtarea),
+        if (obj.data[i].id_tare == id) {
+                id_tare = $("#pendiente #id_tare").val(obj.data[i].id_tare),
+                titulo = $("#pendiente #titulo").html(obj.data[i].titulo),
+                entrega = $("#pendiente #entrega").val(obj.data[i].entrega),
                 opcion = $("#pendiente #opcion").val("modificar");
         }
     }
@@ -2863,12 +2865,14 @@ $.ajax({
 }
 
 function modificar() {
-var frm = $("#Editar").serialize();
+var frm = $("#tareas").serialize();
+alert(frm);
 $.ajax({
-    url: "../php/accesos-update.php",
+    url: "../php/insert-task.php",
     type: 'POST',
     data: frm + "&opcion=modificar"
 }).done(function(respuesta) {
+    alert(respuesta);
     if (respuesta == 0) {
         Swal.fire({
             type: 'success',
@@ -2881,7 +2885,19 @@ $.ajax({
                 rgba(100, 100, 100, 0.4)
             `
         });
-        setTimeout("location.href = 'accesos';", 2000);
+        setTimeout("location.href = 'inspector';", 2000);
+    }else{
+        Swal.fire({
+            type: 'info',
+            // title: 'ÉXITO',
+            text: 'Necesitas confirmar la entrega de tu OJT',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 2000,
+            backdrop: `
+                rgba(100, 100, 100, 0.4)
+            `
+        });
     }
  
 });
