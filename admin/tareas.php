@@ -397,10 +397,12 @@ include('header.php');
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>CURSO</th>
                                                     <th>TITULO</th>
                                                     <th>DESCRIPCIÓN</th>
                                                     <th>FECHA INICIO</th>
                                                     <th>FECHA TERMINO</th>
+                                                    <th>DIRIGIDO A:</th>
                                                     <th>PARTICIPANTES</th>
                                                 </tr>
                                             </thead>
@@ -956,7 +958,9 @@ $(document).ready(function() {
                 "data": null,
                 "defaultContent": ''
             },
-
+            {
+                "data": "cursoPrinc"
+            },
             {
                 "data": "titulo"
             },
@@ -968,6 +972,9 @@ $(document).ready(function() {
             },
             {
                 "data": "final"
+            },
+            {
+                "data": "perfilPrinc"
             },
             {
                 "data": "participantes"

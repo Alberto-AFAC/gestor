@@ -28,6 +28,8 @@
 			$titulo = $data["titulo"];
 			$descriprincipal = $data["descripcion"];
 			$inicio = $data["fechaA"];
+			$cursoPrinc = $data["gstTitlo"];
+			$perfilPrinc = $data["gstPrfil"];
 			$final = $data["fechaT"];
 			$idtar1 = $data["idtar1"];
 			// $participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'></span>";
@@ -81,7 +83,7 @@
 	 
 
 	//  $tareas[] = [ $id,$data["titulo"],$data["descripcion"],$data["fechaA"],$data["fechaT"],$data["gstPrfil"],$responsables,$notificar];
-	$tareas[] = array('id'=> $contador,'titulo' =>$titulo,'descriprincipal' => $descriprincipal,'inicio' => $inicio,'final' =>$final,'iniciosub' => $iniciosub, 'iniciosubsub' => $iniciosubsub,'finalsub' => $finalsub,'finalsubsub' => $finalsubsub,'participantes' => $participantes,'participantesub' => $participantesub,'participantesubsub' => $participantesubsub,'subtarea' => $subtarea,'subsubtarea' => $subsubtarea,'descripcion' => $descripcion,'descripcionsub'=> $descripcionsub,'notificar' => $notificar);
+	$tareas[] = array('id'=> $contador,'cursoPrinc' => $cursoPrinc,'titulo' =>$titulo,'descriprincipal' => $descriprincipal,'inicio' => $inicio,'final' =>$final,'iniciosub' => $iniciosub, 'iniciosubsub' => $iniciosubsub,'finalsub' => $finalsub,'finalsubsub' => $finalsubsub,'participantes' => $participantes,'participantesub' => $participantesub,'participantesubsub' => $participantesubsub,'subtarea' => $subtarea,'subsubtarea' => $subsubtarea,'descripcion' => $descripcion,'descripcionsub'=> $descripcionsub,'notificar' => $notificar,'perfilPrinc' => $perfilPrinc);
 				}
 		}
 	}

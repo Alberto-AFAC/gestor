@@ -59,6 +59,11 @@
       $datos[0];
       $sql = "SELECT * FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc asc";
       $cursos = mysqli_query($conexion,$sql);
+
+      $sqljt = "SELECT * FROM tarearealizar WHERE estado = 0 AND idiva = '".$id."'";
+      $queryjt = mysqli_query($conexion,$sqljt);
+      $ojt = mysqli_fetch_assoc($queryjt);
+
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
   <header class="main-header">
