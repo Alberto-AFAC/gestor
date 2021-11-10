@@ -27,6 +27,7 @@
         integrity="sha512-2sjxi4MoP9Gn7QE0NhJdxOFVMK/qYsZO6JnO6pngGvck8p5UPwFX2LV5AsAMOQYgvbzMmki6sIqJ90YO3STAnA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
+       
     .swal-wide {
         width: 500px !important;
         font-size: 16px !important;
@@ -2056,16 +2057,16 @@ include('header.php');
         <form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
         <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
             aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
                     <input type="hidden" id="id_tare" name="id_tare">
                     <input type="hidden" id="opcion" name="opcion" value="modificar">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <div class="modal-title" id="myModalLabel"><span style="font-size: 20px;" id="titulo"></span></div>
+                        <div class="modal-title" id="myModalLabel"><span style="font-size: 15px;" id="titulo"></span></div>
                     </div>
                     <div class="modal-body">
-                        <h3>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</h3><br>
+                        <span>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</span><br><br>
                         <div class="form-group">
                             <div class="col-sm-2">
                         <label class="container">SI
@@ -2080,7 +2081,7 @@ include('header.php');
                         </label>
                             </div>
                             </div>
-                    </div><br>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
                         <button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
