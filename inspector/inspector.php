@@ -2059,10 +2059,10 @@ include('header.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <input type="" id="id_tare" name="id_tare">
+                    <input type="hidden" id="id_tare" name="id_tare">
                     <input type="hidden" id="opcion" name="opcion" value="modificar">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <div class="modal-title" id="myModalLabel"><span style="font-size: 20px;" id="tituloTarea"></span></div>
+                        <div class="modal-title" id="myModalLabel"><span style="font-size: 20px;" id="titulo"></span></div>
                     </div>
                     <div class="modal-body">
                         <h3>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</h3><br>
@@ -2866,18 +2866,16 @@ $.ajax({
 
 function modificar() {
 var frm = $("#tareas").serialize();
-alert(frm);
 $.ajax({
     url: "../php/insert-task.php",
     type: 'POST',
     data: frm + "&opcion=modificar"
 }).done(function(respuesta) {
-    alert(respuesta);
     if (respuesta == 0) {
         Swal.fire({
             type: 'success',
-            title: 'ÉXITO',
-            text: 'Credenciales actualizadas correctamente',
+            title: 'FINALIZADO',
+            // text: 'Credenciales actualizadas correctamente',
             showConfirmButton: false,
             customClass: 'swal-wide',
             timer: 2000,
