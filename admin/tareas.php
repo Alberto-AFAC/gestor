@@ -1050,9 +1050,9 @@ function responsables(idResp){
                // dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 x++;
 
-            if(obj.data[p].entrega == 1 && obj.data[p].evalua==''){
+            if(obj.data[p].entrega == 1 && obj.data[p].evalua==0){
             html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="'+obj.data[p].id_tare+'"><td>' + x + '</td> <td>'+nombres+'</td><td><b>SI</b> <input type="checkbox" style="width:17px; height:17px;" name="evalsi" id="evalsi" value=""> <b>NO</b> <input type="checkbox" style="width:17px; height:17px;" name="evalno" id="evalno" value=""></td></tr>';
-            }else if(obj.data[p].entrega == 0 && obj.data[p].evalua==''){
+            }else if(obj.data[p].entrega == 0 && obj.data[p].evalua==0){
             html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span style="border-radius:10px; background:grey;color:white;padding:5px;">POR ENTREGAR</span></td></tr>';
             }else{
                 if(obj.data[p].evalua=='SI'){
