@@ -38,7 +38,7 @@
 			$final = $data["fechaT"];
 			$idtar1 = $data["idtar1"];
 			// $participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'></span>";
-			$participantes = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data["participantes"]."</span> / <a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR</a>";
+			$participantes = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data["participantes"]."</span> / <a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
 
 			
 
@@ -62,7 +62,7 @@
 			$finalsub = $data2['fechaT'];
 			$idtar2 = $data2["idtar2"];
 
-			$participantesub = "<a href='#' onclick='responsables({$idtar2})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR: ".$data2["participantesub"]." PARTICIPANTE(S)</a>";
+			$participantesub = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data2["participantesub"]."</span> / <a href='#' onclick='responsables({$idtar2})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
 
 			$query3 = "	SELECT
 			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar3,entrega,
@@ -83,7 +83,7 @@
 					$finalsubsub = $data3['fechaT'];
 					$idtar3 = $data3['idtar3'];
 
-					$participantesubsub = "<a href='#' onclick='responsables({$idtar3})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR: ".$data3["participantesubsub"]." PARTICIPANTE(S)</a>";
+					$participantesubsub = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data3["participantesubsub"]."</span> / <a href='#' onclick='responsables({$idtar3})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
 
 
 
