@@ -61,18 +61,19 @@ $evalsi = $array2[$i]["evalsi"];
 $evalno = $array3[$i]["evalno"];
 
 
+if($evalsi != '' || $evalno != ''){
 if($evalsi==1){ $eval = 'SI'; }else
 if($evalno==1){ $eval = 'NO'; }else
 if($evalsi==''){ $eval = '0';} else
 if($evalno==''){ $eval = '0';}
 
 if(evaluarinspector($idtar,$eval,$conexion)){
-	echo "0";
-}else{
-	echo "1";
-}
 
-}
+//if($i==1){
+	echo "0";
+//}
+
+}else{ echo "1"; } }else{ if($i==1){ echo "2"; } } }
 
 }
 

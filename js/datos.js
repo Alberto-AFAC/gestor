@@ -1509,9 +1509,7 @@ function inspector(gstIdper) {
                     $("#ocultar2").show();
 
                     document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-
                 }
-
 
                 $.ajax({
                     url: '../php/conDatos.php',

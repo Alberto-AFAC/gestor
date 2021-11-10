@@ -588,10 +588,18 @@ disabled="">
                         <div id="rspnsbls"></div>
                 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<div class="form-group">
+<div class="col-sm-4">
                         <button type="button" class="btn btn-primary" onclick="notificacion()">EVALUAR</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+ 
+</div></div>       
+       <b><p class="alert alert-success text-center padding exito" id="succe">¡Su evaluación se realizó con éxito !</p></b> 
+       <b><p class="alert alert-warning text-center padding aviso" id="aviso">Es necesario llenar campo</p></b>             
                     </div>
-                    <b><p class="alert alert-success text-center padding exito" id="exito">¡Se actualizaron los datos y archivo con éxito!</p></b>
+
+
+             
 
                 </div>
             </div>
@@ -1110,22 +1118,26 @@ function notificacion(){
     var array1 = JSON.stringify(id_tarea);
     var array2 = JSON.stringify(evalsi);
     var array3 = JSON.stringify(evalno);
-
+   
     datos = 'array1=' + array1 + '&array2=' + array2 + '&array3=' + array3 + '&opcion=ntfccn';
-//alert(datos);
+
     $.ajax({
         url: '../php/regTarea.php',
         type: 'POST',
         data: datos
-    }).done(function(respuesta) {
-        alert(respuesta); 
-     
-        if(respuesta==''){
-
+    }).done(function(respuesta) {     
+        if(respuesta=='2'){
+            $('#aviso').toggle('toggle');
+            setTimeout(function() {
+            $('#aviso').toggle('toggle');
+            }, 2000);
         }else{
             responsables(idRtarea);            
-        }
-        
+            $('#succe').toggle('toggle');
+            setTimeout(function() {
+                $('#succe').toggle('toggle');
+            }, 2000);
+        }        
       
     });
 
