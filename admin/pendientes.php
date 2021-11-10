@@ -135,7 +135,7 @@ aria-labelledby="exampleModalLabel">
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" onclick="location.href='lisCurso'"
+<button type="button" onclick="location.href='pendientes'"
 class="close" data-dismiss="modal" aria-label="Close"><span
 aria-hidden="true">&times;</span></button>
 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>

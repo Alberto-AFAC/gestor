@@ -28,12 +28,12 @@ $.ajax({
     obj = JSON.parse(resp);
     var res = obj.data;
 
-    var totalv = obj.data[0].vencido + obj.data[0].porvencer;
+    //var totalv = obj.data[0].vencido + obj.data[0].porvencer;
 
     $("#progrmas").html(obj.data[0].progrmas);
     $("#finalizado").html(obj.data[0].finalizado);
     $("#acreditar").html(obj.data[0].acreditar);
-    $("#vencer").html(totalv);
+    $("#vencer").html(obj.data[0].vencido);
 
 });
 

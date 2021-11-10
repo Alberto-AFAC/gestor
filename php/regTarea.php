@@ -42,6 +42,39 @@ if($opcion === 'tareAgr'){
 	}else{
 		echo "0";
 	}
+}else if($opcion==='ntfccn'){
+
+$valor = $_POST['array1'];
+$varray1 = json_decode($valor, true);
+$valor = count($varray1);
+
+$array2 = $_POST['array2'];
+$array2 = json_decode($array2, true);
+
+$array3 = $_POST['array3'];
+$array3 = json_decode($array3, true);
+
+for($i=0; $i<$valor; $i++){
+$idtar = $varray1[$i]["id_tarea"];
+//$listreg = $varray1[$i]["listregis"];
+$evalsi = $array2[$i]["evalsi"];
+$evalno = $array3[$i]["evalno"];
+
+
+if($evalsi != '' || $evalno != ''){
+if($evalsi==1){ $eval = 'SI'; }else
+if($evalno==1){ $eval = 'NO'; }else
+if($evalsi==''){ $eval = '0';} else
+if($evalno==''){ $eval = '0';}
+
+if(evaluarinspector($idtar,$eval,$conexion)){
+
+//if($i==1){
+	echo "0";
+//}
+
+}else{ echo "1"; } }else{ if($i==1){ echo "2"; } } }
+
 }
 
 
@@ -118,6 +151,18 @@ $query="INSERT INTO tarearealizar(idtarea,idiva,estado) SELECT id_tar,$idinsp,0 
 		}
 		$this->conexion->cerrar();
 }
+
+//EVALUAR INSPECTOR CON FECHA 
+	function evaluarinspector($idtar,$eval,$conexion){
+
+	$query="UPDATE tarearealizar SET evalua = '$eval' WHERE id_tare='$idtar'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
+	}
 
 	function cerrar($conexion){
 
