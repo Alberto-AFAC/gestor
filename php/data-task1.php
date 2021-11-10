@@ -4,6 +4,7 @@
 	session_start();
 
 	$query = "SELECT
+	DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
     id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar1,entrega,
     listacursos.gstTitlo,gstTipo,gstPrfil,
     personal.gstNombr,gstApell,gstCargo,
@@ -27,7 +28,7 @@
 			$notificar = "<button type='button' class='btn btn-primary'>NOTIFICAR</button>";
 			$titulo = $data["titulo"];
 			$descriprincipal = $data["descripcion"];
-			$inicio = $data["fechaA"];
+			$inicio = $data["fechaini"];
 			$cursoPrinc = $data["gstTitlo"];
 			if($data["gstPrfil"] == 0){
 				$perfilPrinc = 'POR ASIGNAR';
@@ -35,11 +36,12 @@
 				$perfilPrinc = $data["gstPrfil"];
 			}
 	
-			$final = $data["fechaT"];
+			$final = $data["fechater"];
 			$idtar1 = $data["idtar1"];
 			// $participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'></span>";
 			$participantes = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data["participantes"]."</span> / <a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
 			$query2 = "	SELECT
+				DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
 			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,entrega,
 			listacursos.gstTitlo,gstTipo,gstPrfil,
 			personal.gstNombr,gstApell,gstCargo,
@@ -55,13 +57,14 @@
 		
 			$subtarea = $data2['titulo'];
 			$descripcion = $data2['descripcion'];
-			$iniciosub = $data2['fechaA'];
-			$finalsub = $data2['fechaT'];
+			$iniciosub = $data2['fechaini'];
+			$finalsub = $data2['fechater'];
 			$idtar2 = $data2["idtar2"];
 
 			$participantesub = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data2["participantesub"]."</span> / <a href='#' onclick='responsables({$idtar2})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
 
 			$query3 = "	SELECT
+				DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
 			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar3,entrega,
 			listacursos.gstTitlo,gstTipo,gstPrfil,
 			personal.gstNombr,gstApell,gstCargo,
@@ -76,8 +79,8 @@
 				while($data3 = mysqli_fetch_assoc($resultado3)){
 					$subsubtarea = $data3['titulo'];
 					$descripcionsub = $data3['descripcion'];
-					$iniciosubsub = $data3['fechaA'];
-					$finalsubsub = $data3['fechaT'];
+					$iniciosubsub = $data3['fechaini'];
+					$finalsubsub = $data3['fechater'];
 					$idtar3 = $data3['idtar3'];
 
 					$participantesubsub = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data3["participantesubsub"]."</span> / <a href='#' onclick='responsables({$idtar3})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
