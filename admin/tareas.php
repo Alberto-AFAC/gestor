@@ -1053,12 +1053,12 @@ function responsables(idResp){
             if(obj.data[p].entrega == 1 && obj.data[p].evalua==0){
             html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="'+obj.data[p].id_tare+'"><td>' + x + '</td> <td>'+nombres+'</td><td><b>SI</b> <input type="checkbox" style="width:17px; height:17px;" name="evalsi" id="evalsi" value=""> <b>NO</b> <input type="checkbox" style="width:17px; height:17px;" name="evalno" id="evalno" value=""></td></tr>';
             }else if(obj.data[p].entrega == 0 && obj.data[p].evalua==0){
-            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span style="border-radius:10px; background:grey;color:white;padding:5px;">POR ENTREGAR</span></td></tr>';
+            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span style="border-radius:10px; background:grey;color:white;padding:5px;width: 102px; display:block;">POR ENTREGAR</span></td></tr>';
             }else{
                 if(obj.data[p].evalua=='SI'){
-            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span class="label label-success" style="font-size:1em;">'+obj.data[p].evalua+'</span></td></tr>';
+            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span class="label label-success" style="font-size:1em;width: 100px; display:block;">'+obj.data[p].evalua+'</span></td></tr>';
                 }else{
-            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span class="label label-danger" style="font-size:1em;">'+obj.data[p].evalua+'</span></td></tr>';
+            html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span class="label label-danger" style="font-size:1em;width: 100px; display:block;">'+obj.data[p].evalua+'</span></td></tr>';
                 }                
             }
 
@@ -1106,9 +1106,6 @@ function notificacion(){
         item.evalno = this.checked;
         evalno.push(item);
     });
-
-
-
     /*Creamos un objeto para enviarlo al servidor*/
     var array1 = JSON.stringify(id_tarea);
     var array2 = JSON.stringify(evalsi);
