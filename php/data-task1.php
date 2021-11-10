@@ -4,7 +4,7 @@
 	session_start();
 
 	$query = "SELECT
-    id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar1,
+    id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar1,entrega,
     listacursos.gstTitlo,gstTipo,gstPrfil,
     personal.gstNombr,gstApell,gstCargo,
 	COUNT(gstNombr)as participantes        
@@ -29,16 +29,21 @@
 			$descriprincipal = $data["descripcion"];
 			$inicio = $data["fechaA"];
 			$cursoPrinc = $data["gstTitlo"];
-			$perfilPrinc = $data["gstPrfil"];
+			if($data["gstPrfil"] == 0){
+				$perfilPrinc = 'POR ASIGNAR';
+			}else{
+				$perfilPrinc = $data["gstPrfil"];
+			}
+	
 			$final = $data["fechaT"];
 			$idtar1 = $data["idtar1"];
 			// $participantes = "<span data-toggle='modal' data-target='#basicModal' style='cursor: alias; font-weight:bold; color: green;'></span>";
-			$participantes = "<a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR: ".$data["participantes"]." PARTICIPANTE(S)</a>";
+			$participantes = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data["participantes"]."</span> / <a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR</a>";
 
 			
 
 			$query2 = "	SELECT
-			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,
+			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,entrega,
 			listacursos.gstTitlo,gstTipo,gstPrfil,
 			personal.gstNombr,gstApell,gstCargo,
 			COUNT(gstNombr)as participantesub         
@@ -53,14 +58,14 @@
 		
 			$subtarea = $data2['titulo'];
 			$descripcion = $data2['descripcion'];
-			$participantesub = "<span style='cursor: alias; font-weight:bold; color: green;'>EVALUAR: ".$data2["participantesub"]." PARTICIPANTE(S)</span>";
 			$iniciosub = $data2['fechaA'];
 			$finalsub = $data2['fechaT'];
-
 			$idtar2 = $data2["idtar2"];
 
+			$participantesub = "<a href='#' onclick='responsables({$idtar2})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR: ".$data2["participantesub"]." PARTICIPANTE(S)</a>";
+
 			$query3 = "	SELECT
-			id_tar,titulo,descripcion, fechaA, fechaT,
+			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar3,entrega,
 			listacursos.gstTitlo,gstTipo,gstPrfil,
 			personal.gstNombr,gstApell,gstCargo,
 			COUNT(gstNombr)as participantesubsub       
@@ -76,8 +81,10 @@
 					$descripcionsub = $data3['descripcion'];
 					$iniciosubsub = $data3['fechaA'];
 					$finalsubsub = $data3['fechaT'];
+					$idtar3 = $data3['idtar3'];
 
-					$participantesubsub = "<span style='cursor: alias; font-weight:bold; color: green;'>EVALUAR: ".$data3["participantesubsub"]." PARTICIPANTE(S)</span>";
+					$participantesubsub = "<a href='#' onclick='responsables({$idtar3})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: green;'>EVALUAR: ".$data3["participantesubsub"]." PARTICIPANTE(S)</a>";
+
 
 
 	 
