@@ -41,7 +41,7 @@
         <select type="text" class="form-control inputalta" id="gstTipo" name="gstTipo" disabled="">
             <option value="0">ELEGIR UNA OPCIÓN</option>
             <option value="INDUCCIÓN">INDUCCIÓN</option>
-            <option value="BÁSICOS">BÁSICO/INICIAL</option>
+            <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
             <option value="TRANSVERSALES">TRANSVERSALE</option>
             <option value="RECURRENTES">RECURRENTE</option>
             <option value="ESPECÍFICOS">ESPECÍFICO</option>

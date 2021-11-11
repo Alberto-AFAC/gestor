@@ -127,8 +127,8 @@
                                     <table class="display table table-striped table-bordered dataTable"
                                         id="data-table-inspectores" style="width:100%">
                                         <thead>
-                                            <tr>
-                                                <th>ID</th>
+                                            <tr><th>#</th>
+                                                <th>N° EMP</th>
                                                 <th>NOMBRE(S)</th>
                                                 <th>APELLIDO(S)</th>
                                                 <th>CATEGORÍA</th>
@@ -597,9 +597,9 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        "order": [
-            [5, "asc"]
-        ],
+        // "order": [
+        //     [5, "asc"]
+        // ],
         "ajax": "../php/data-inspeccion.php",
       
     });
