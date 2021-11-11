@@ -959,7 +959,7 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        "ajax": "../php/data-task1.php",
+        "ajax": "../php/data-task.php",
         "columns": [{
                 "className": 'details-control',
                 "orderable": false,
@@ -1069,13 +1069,9 @@ function responsables(idResp){
             html += '<tr><td>' + x + '</td> <td>'+nombres+'</td><td><span class="label label-danger" style="font-size:1em;width: 100px; display:block;">'+obj.data[p].evalua+'</span></td></tr>';
                 }                
             }
-
-
-
-
                  //  $("#titulo").html(obj.data[2].gstTitlo); 
-
         }
+
         html += '</tbody></table></form></div></div>';
 
         $("#rspnsbls").html(html);
