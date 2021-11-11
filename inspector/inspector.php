@@ -2746,7 +2746,7 @@ $query = "SELECT
 id_tar,titulo,descripcion, fechaA, fechaT,
 listacursos.gstTitlo,gstTipo,gstPrfil,
 personal.gstNombr,gstApell,gstCargo,
-tarearealizar.idiva,entrega,id_tare      
+tarearealizar.idiva,entrega,id_tare,evalua      
 FROM
 tareas
 INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
@@ -2763,17 +2763,33 @@ WHERE idiva = $id";
         $pendiente = "<img onclick='consultarDatos({$data["id_tare"]})' data-toggle='modal' data-target='#pendiente' src='../dist/img/tarea_pendiente.png' alt='Tarea-Pendiente' title='Sin entregar' style='width: 40px;'>";
         $cumplio = "<img src='../dist/img/cumplio.png' alt='Tarea-Pendiente' title='Tarea entregada' style='width: 40px;'>";
 
-    if($data['entrega'] == 0){?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>",
-        "<?php echo $data["titulo"]?>", "<?php echo $data["descripcion"]?>", "<?php echo $data["fechaA"]?>",
-        "<?php echo $data["fechaT"]?>", "<?php echo $pendiente?>"],
+     if($data['entrega'] == 1 && $data['evalua'] == "SI"){
+    ?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>", "<?php echo $data["titulo"]?>",
+        "<?php echo $data["descripcion"]?>", "<?php echo $data["fechaA"]?>", "<?php echo $data["fechaT"]?>",
+        "<?php echo $cumplio?> APROBADO"],
     <?php
+}else if($data['entrega'] == 1 && $data['evalua'] == "0"){
+    ?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>", "<?php echo $data["titulo"]?>",
+        "<?php echo $data["descripcion"]?>", "<?php echo $data["fechaA"]?>", "<?php echo $data["fechaT"]?>",
+        "<?php echo $cumplio?> Sin evaluar"],
+    <?php
+
+    
+}else if($data['entrega'] == 1 && $data['evalua'] == "NO"){
+    ?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>", "<?php echo $data["titulo"]?>",
+        "<?php echo $data["descripcion"]?>", "<?php echo $data["fechaA"]?>", "<?php echo $data["fechaT"]?>",
+        "<center><?php echo $cumplio?><p class='badge'>NO ACRÉDITO</center> "],
+    <?php
+
+    
 }else{
     ?>["<?php echo $contador; ?>", "<?php echo $data["gstTitlo"];?>", "<?php echo $data["titulo"]?>",
         "<?php echo $data["descripcion"]?>", "<?php echo $data["fechaA"]?>", "<?php echo $data["fechaT"]?>",
-        "<?php echo $cumplio?>"],
+        "<?php echo $pendiente?>"],
     <?php
-}
 
+    
+}
 }?>
 ]
 
