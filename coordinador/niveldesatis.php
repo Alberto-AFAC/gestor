@@ -166,6 +166,7 @@ include('header.php');
                                         <th>REGULAR</th>
                                         <th>SATISFACTORIO</th>
                                         <th>EXCELENTE</th>
+
                                     </tr>
                                 </table>
                             </div>
@@ -551,6 +552,7 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
                 "<?php echo $pregunta16?>","<?php echo $pregunta17?>","<?php echo $pregunta18?>",
                 "<?php echo $pregunta19?>","<?php echo $pregunta20?>","<?php echo $pregunta21?>",
                 "<?php echo $pregunta22?>","<?php echo $pregunta23?>"
+
             ]
         }]
     },
