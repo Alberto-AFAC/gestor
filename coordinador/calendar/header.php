@@ -2,7 +2,7 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "INSTRUCTOR"){
+        if($_SESSION['usuario']['privilegios'] != "COORDINADOR"){
             //y se redirecciona al directorio que le corresponde
             header("Location: ../../");
             }
@@ -193,7 +193,7 @@ unset($_SESSION['consulta']);
           </ul>
         </li>
         <li>
-          <a href="calendar/calendar.php">
+          <a href="calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
@@ -202,7 +202,7 @@ unset($_SESSION['consulta']);
           </a>
         </li>
         <li>
-          <a href="cursosgantt.php">
+          <a href="../cursosgantt">
           <i class="fa fa-area-chart"></i> <span>Gantt Cursos programados</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>

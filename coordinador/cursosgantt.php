@@ -4,7 +4,7 @@ $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
 $curso = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
-$instructor = mysqli_query($conexion,$sql);
+$instructor = mysqli_query($conexion,$sql);         
 
 $sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
 $inspector = mysqli_query($conexion,$sql);
@@ -156,6 +156,7 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- page script -->
     <script>
     //       // OPTIONS FOR THE GRAPHICS
+  
     Highcharts.setOptions({
         credits: {
             enabled: false
@@ -166,7 +167,7 @@ $inspector = mysqli_query($conexion,$sql);
                 'Octubre', 'Noviembre', 'Diciembre'
             ],
             weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-            shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nv', 'Dic'],
             exportButtonTitle: "Exportar",
             printButtonTitle: "Importar",
             rangeSelectorFrom: "Desde",
@@ -183,6 +184,13 @@ $inspector = mysqli_query($conexion,$sql);
             decimalPoint: '.'
         },
     });
+
+    var today = new Date(),
+        day = 1000 * 60 * 60 * 24;
+    today.setUTCHours(0);
+    today.setUTCMinutes(0);
+    today.setUTCSeconds(0);
+    today.setUTCMilliseconds(0);
     Highcharts.getJSON('../php/data.php', function(data) {
         let chart = Highcharts.ganttChart('container', {
             title: {
@@ -194,7 +202,7 @@ $inspector = mysqli_query($conexion,$sql);
             },
 
             navigator: {
-                enabled: true,
+                enabled: false,
                 liveRedraw: true,
                 series: {
                     type: 'gantt',
@@ -209,13 +217,22 @@ $inspector = mysqli_query($conexion,$sql);
                 }
             },
             scrollbar: {
-                enabled: true
+                enabled: false
             },
             rangeSelector: {
                 enabled: true,
                 selected: 0
             },
             xAxis: [{
+                currentDateIndicator: {
+            width: 1,
+            color: 'blue',
+            label: {
+                format: 'Ahora'
+            }
+        },
+        // min: today.getTime() - (30 * day),
+        // max: today.getTime() + (30 * day),
             }, {
                 dateTimeLabelFormats: {
                     week: 'Sem %W'
@@ -228,10 +245,10 @@ $inspector = mysqli_query($conexion,$sql);
             }]
 
         });
-
+        chart.xAxis[0].setExtremes(1609480800000, 1640930400000);
         let DATA = chart.series[0].data;
         for (let i = 0; i < DATA.length; i++) {
-            console.log(i, new Date(DATA[i].x).toUTCString())
+            // alert(i, new Date(DATA[i].x).toUTCString())
         }
     });
     </script>

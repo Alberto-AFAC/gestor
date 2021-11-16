@@ -189,7 +189,7 @@ unset($_SESSION['consulta']);
           </ul>
         </li>
         <li>
-          <a href="calendar/calendar">
+          <a href="calendar/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
@@ -198,7 +198,7 @@ unset($_SESSION['consulta']);
           </a>
         </li>
         <li>
-          <a href="cursosgantt.php">
+          <a href="cursosgantt">
           <i class="fa fa-area-chart"></i> <span>Gantt Cursos programados</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>
