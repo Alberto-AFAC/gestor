@@ -21,11 +21,8 @@ $are = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
 
-$sql = "SELECT id_sub,descripsub,id_2_sub FROM subdireccion WHERE estado = 0";
-$subdirec = mysqli_query($conexion,$sql);
-
-$sql = "SELECT id_departamentos,descripdep,id_3_dep FROM departamentos";
-$depart = mysqli_query($conexion,$sql);
+    $sqli = "SELECT gstIdcat,gstCatgr, gstCsigl FROM categorias WHERE estado = 0";
+      $spcialidad = mysqli_query($conexion,$sqli);
 
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
@@ -48,7 +45,7 @@ $depart = mysqli_query($conexion,$sql);
 
                         </div>
                         <div class="widget-user-image">
-                            <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                           <div id="foto"></div>
                         </div>
                         <div class="box-footer">
                             <div class="row">
@@ -130,7 +127,7 @@ $depart = mysqli_query($conexion,$sql);
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
-                            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                            <a href='inspecion' style="font-size: 22px"><i class='fa fa-times'></i></a>
                         </button>
                     </div>
                 </div>
@@ -168,7 +165,8 @@ $depart = mysqli_query($conexion,$sql);
                             <th scope="col">INCISO</th>
                             <th scope="col" style="width: 600px;">DOCUMENTO</th>
                             <th scope="col">CUMPLE</th> 
-                            <th scope="col">ESTATUS</th>
+                            <th scope="col">ARCHIVO</th>
+                            <th scope="col">FECHA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -176,7 +174,9 @@ $depart = mysqli_query($conexion,$sql);
                             <th scope="row">A)</th>
                             <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td></td><td></td>
+
+
 
                         </tr>
                         <tr>
@@ -190,7 +190,8 @@ $depart = mysqli_query($conexion,$sql);
                             <th scope="row">C)</th>
                             <td>CURRICULUM VITAE. (requisitado y firmado)</td>
                             <td><div id="profesions"></div></td>
-                            <td></td>
+                            <td><div id="pro-pdf"> </div></td>
+                            <td><div id="pro-fec"></div> </td>
 
 
                         </tr>
@@ -198,15 +199,28 @@ $depart = mysqli_query($conexion,$sql);
                             <th scope="row">D)</th>
                             <td>CONSTANCIA ACADÉMICA (a.Licenciatura o ingeniería, b.Licencia técnica aeronautica)</td>
                             <td><div id="estudios"></div></td>
-                            <td></td>
+                            <td><div id="std-pdf"> </div></td>
+                            <td><div id="std-fec"></div> </td>
 
                         </tr>
                         <tr>
                             <th scope="row">F)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
-                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td>
+                            <td><div id="ojt"></div></td>
+                            <td><div id="ojt-pdf"> </div></td>
+                            <td><div id="ojt-fec"></div> </td>                            
+                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td> -->
                         </tr>
+                        <tr>
+                            <th scope="row">F)</th>
+                            <td>FORMATO BITÁCORA</td>
+                            <td><div id="btcr"></div></td>
+                            <td><div id="btcr-pdf"> </div></td>
+                            <td><div id="btcr-fec"></div> </td>                            
+                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td> -->
+                        </tr>                        
                         <tr>
                             <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
@@ -218,19 +232,19 @@ $depart = mysqli_query($conexion,$sql);
                             <th scope="row"></th>
                             <td>BÁSICO</td>
                             <td><div id="bscos"></div></td>
-                            <td><div id="Bfecha"></div></td>
+                            <td><div id="Bfecha"></div></td> <td></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>RECURRENTE</td>
                             <td><div id="recurnt"></div></td>
-                            <td><div id="Rfecha"></div></td>
+                            <td><div id="Rfecha"></div></td> <td></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>ESPECIFICOS</td>
                             <td><div id="specifico"></div></td>
-                            <td><div id="Efecha"></div></td>
+                            <td><div id="Efecha"></div></td> <td></td>
                         </tr>
                     </tbody>
                     
@@ -517,7 +531,10 @@ $depart = mysqli_query($conexion,$sql);
                             <label>FECHA INGRESO A LA AFAC</label>
                             <input disabled="" type="date" class="form-control" id="gstFeing" name="gstFeing">
                         </div>
-
+                       <div class="col-sm-4">
+                            <label class="label2">ESTATUS ALTA PERSONAL</label>
+                            <input disabled="" type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
+                        </div>
 
 <!--                         <div class="col-sm-4">
                             <label>CARGO</label>
@@ -580,7 +597,7 @@ $depart = mysqli_query($conexion,$sql);
 
 <div class="col-sm-12" id="nompusto2" style="display: none;">
 <label>NOMBRE DEL PUESTO</label>
-<select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
+<select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
   <option>SELECCIONE NOMBRE DEL PUESTO</option>
 <?php while($pust = mysqli_fetch_row($psto)):?>                      
 <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
@@ -663,7 +680,7 @@ $depart = mysqli_query($conexion,$sql);
 
         <p id="ejecutiva2" style="display: none;">
         <label>DIRECCIÓN EJECUTIVA </label>         
-        <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
+        <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" id="gstAreID" type="text" data-live-search="true" >
         <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
         <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
         <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
@@ -684,7 +701,7 @@ $depart = mysqli_query($conexion,$sql);
                             <p id="adscrip2" style="display: none;">
                                 <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                    disabled="" id="gstIDara" type="text" data-live-search="true">
+                                     id="gstIDara" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
                                     <?php while($ccion = mysqli_fetch_row($are)):?>                      
                                     <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
@@ -696,7 +713,7 @@ $depart = mysqli_query($conexion,$sql);
                     </div>
 
 
-                    <div class="form-group">
+<!--                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion1();">EDITAR
                             SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
@@ -709,27 +726,19 @@ $depart = mysqli_query($conexion,$sql);
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="AgstAcReg"
                                      id="AgstAcReg" type="text" data-live-search="true">
                                     <option>SELECCIONE LA SUBDIRECCIÓN</option>
-                                    <?php while($subdic = mysqli_fetch_row($subdirec)):?>                      
-                    <option value="<?php echo $subdic[0]?>"><?php echo $subdic[1]?></option>
-                    <?php endwhile; ?>
+                                    <?php //while($subdic = mysqli_fetch_row($subdirec)):?>                      
+                    <option value="<?php //echo $subdic[0]?>"><?php //echo $subdic[1]?></option>
+                    <?php //endwhile; ?>
                     </select>
                             </p>
                         </div>
-                    </div>
-                    <!-- <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <label>DEPARTAMENTO</label>
-                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                id="gstIDara" type="text" data-live-search="true" disabled="">
-                                <option value="">SELECCIONE EL DEPARTAMENTO</option>
-                                <?php while($rea = mysqli_fetch_row($are)):?>
-                                <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                                <?php endwhile; ?>
-                            </select>
-                        </div>
                     </div> -->
 
-                    <div class="form-group">
+
+
+    
+
+<!--                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="depart" style="display: none; cursor: pointer;"><a onclick="departamento1();">EDITAR
                             DEPARTAMENTO <i class="fa fa-edit"></i></a></p>
@@ -742,13 +751,46 @@ $depart = mysqli_query($conexion,$sql);
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="departselec"
                                      id="departselec" type="text" data-live-search="true">
                                     <option>SELECCIONE EL DEPARTAMENTO</option>
-                                    <?php while($dep = mysqli_fetch_row($depart)):?>                      
-                                    <option value="<?php echo $dep[0]?>"><?php echo $dep[1]?></option>
-                                    <?php endwhile; ?>
+                                    <?php //while($dep = mysqli_fetch_row($depart)):?>                      
+                                    <option value="<?php //echo $dep[0]?>"><?php //echo $dep[1]?></option>
+                                    <?php //endwhile; ?>
                                 </select>
                             </p>
                         </div>
+                    </div> -->
+
+                    <div class="form-group">
+                    <div class="col-sm-12">
+                            <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion();">EDITAR
+                            SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
+                            <div id="subdirec2">
+                        <label>SUBDIRECCIÓN </label>
+                        <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
+
+                        <label>DEPARTAMENTO </label>
+                        <input type="text" name="departam" id="departam" class="form-control" disabled="">
+
+                            </div>
+                            <div id="subdirec3" style="display: none;">
+
+
+                        <div class="form-group">
+                        <div class="col-sm-12">
+                        <label class="label2">SUBDIRECCIÓN</label>
+                        <div id="subdireact"></div>                            
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="col-sm-12">
+                        <label class="label2">DEPARTAMENTO</label>
+                        <div id="departact"></div> 
+                        </div>   
+                        </div>
+                         </div>
+                        </div>
+
                     </div>
+
                     <div class="form-group">
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -776,19 +818,41 @@ $depart = mysqli_query($conexion,$sql);
      </div>
 
 
-
+     <input type="hidden" name="gstIDuni" id="gstIDuni">
 
 
        <div class="form-group">
     
      <div class="col-sm-12">
-        <label>ESPECIALIDAD</label>     
+        <label>ESPECIALIDAD</label> <a type='button' title='Nueva especialidad' onclick='spcialidad()' class='datos btn btn-default' data-toggle='modal' data-target='#modal-especialidad' style='width:40px; height:35px;padding:0;margin:0;'><img width='25px' style='padding-top:0.3em;' src='../dist/img/anadir.svg'></a>     
               <div id="especialidades"></div>    
 
          </div>          
      </div>
 
 
+
+
+
+<div class="form-group">
+<div class="col-sm-6">
+
+ <p id="oclOJT"><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+
+<div>
+
+ <div id="docInsp"></div>    
+
+<!-- <td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual()" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a> -->
+</div>                            
+</div>
+<div class="col-sm-6">
+ <p id="oclBTC"><label>BITÁCORAS</label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+<div> 
+    <div id="docBita"></div>    
+</div> 
+</div>
+</div>
 <!-- <div class="col-sm-6">
 <label>CATEGORIA</label>
 <select style="width: 100%" class="form-control" disabled="" class="selectpicker"
@@ -871,8 +935,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                     
                     <div class="form-group" id="butons" style="display: none;"><br>
                         <div class="col-sm-offset-0 col-sm-2">
-                            <button type="buttonpuest" id="buttonpuest" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary"
-                                onclick="actPuesto();">ACTUALIZAR</button>
+                              <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actPuesto();">ACTUALIZAR</button>
                         </div>
                         <b>
                             <p class="alert alert-danger text-center padding error" id="danger1">Error al actualizar
@@ -918,7 +981,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                 </div>
                                 
                                 <div class="box-body">
-                                    <div id="obligados"></div>
+                                    <div id="cursosObligados"></div>
 
                                 </div>
                                 
@@ -951,6 +1014,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
 
 </script>
 </div>
+
 <!--FIN DETALLE DECLINA CONVOCATORIA -->
             <!-------------------------------------------->
             <div class="tab-pane" id="curso">
