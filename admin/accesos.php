@@ -118,17 +118,20 @@ include('header.php');
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6"><br>
-                                    <label>SELECCIONE PRIVILEGIOS</label>
-                                    <select style="width: 100%" class="form-control" class="selectpicker"
-                                    name="privilegios" id="privilegios" type="text" data-live-search="true">
-                                    <option value="0" selected>SELECCIONE...</option>
-                                        <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-                                        <option value="DIRECTOR">DIRECTOR</option>
-                                        <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-                                        <option value="INSPECTOR">INSPECTOR</option>
-                            </select>
-                                </div>
+<div class="col-sm-6"><br>
+<label>SELECCIONE PRIVILEGIOS</label>
+<select style="width: 100%" class="form-control" class="selectpicker"
+name="privilegios" id="privilegios" type="text" data-live-search="true">
+<option value="0" selected>SELECCIONE...</option>
+<option value="ADMINISTRADOR">ADMINISTRADOR</option>
+<option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+<option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+<option value="EJECUTIVO">EJECUTIVO</option>
+<option value="DIRECTOR">DIRECTOR</option>
+<option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
+<option value="INSPECTOR">INSPECTOR</option>
+</select>
+</div>
                             </div>
                         </div>
                         <div class="modal-footer">

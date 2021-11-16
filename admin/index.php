@@ -51,7 +51,7 @@ include('header.php');
             <section class="content-header">
                 <h1>
                     Dashboard
-                    <small>Panel de Control</small>
+                    <small>Panel de Control <?php echo $_SESSION['usuario']['privilegios'] ?></small>
                 </h1>
 <!--                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa ion-android-home"></i> Inicio</a></li>

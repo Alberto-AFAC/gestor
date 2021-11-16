@@ -2,15 +2,15 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "ADMINISTRADOR"){
-            //y se redirecciona al directorio que le corresponde
-            header("Location: ../");
-            }
-        }else{
+        if($_SESSION['usuario']['privilegios'] != "SUPER_ADMIN" && $_SESSION['usuario']['privilegios'] != "ADMINISTRADOR"){
+         //   y se redirecciona al directorio que le corresponde
+           header("Location: ../");
+           }        }else{
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
             header('Location: ../');
         }
- 
+       // echo $_SESSION['usuario']['privilegios'];
+
         $id = $_SESSION['usuario']['id_usu'];
       $sql = 
        "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
@@ -175,8 +175,9 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
                     <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
                     <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+                    <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
                     <li><a href="accesos"><i class="fa ion-document-text"></i> Lista de Accesos</a></li>
-
+                    <?php }?>
                     <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
                 </ul>
@@ -221,6 +222,7 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
             </li>
+             <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
             <li>
                 <a href="soporte">
                     <i class="fa fa-history"></i> <span>Historial de Cambios</span>
@@ -230,6 +232,7 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
             </li>
+            <?php } ?>
             <!-- <li>
                 <a href="soporte">
                     <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>

@@ -14,15 +14,15 @@ jQuery(document).on('submit', '#formtec', function(event) {
         .done(function(respuesta) { //espera como parametro una respuesta
             console.log(respuesta); //por consola se pone(respusta)
             if (!respuesta.error) { //*resivimos objeto json desde php para la evaluacion
-                if (respuesta.tipo == 'ADMINISTRADOR') { //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
+                if (respuesta.tipo == 'ADMINISTRADOR' || respuesta.tipo == 'SUPER_ADMIN') { //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
                     location.href = 'admin/'; //*redirecionado al directorio que le toca(carpeta)
                 } else if (respuesta.tipo == 'INSPECTOR' || respuesta.tipo == 'ADMINISTRATIVO') { //*redireccion al manejador si el .tipo es manejador
                     location.href = 'inspector/';
-                } else if (respuesta.tipo == 'DIRECTOR') { //*redireccion al manejador si el .tipo es manejador
+                } else if (respuesta.tipo == 'DIRECTOR' || respuesta.tipo == 'DIRECTOR_CIAAC') { //*redireccion al manejador si el .tipo es manejador
                     location.href = 'director/';
-                } else if (respuesta.tipo == 'INSTRUCTOR') {
-                    location.href = 'instructor/';
-                } else if(respuesta.tipo == 'COORDINADOR'){
+               // } else if (respuesta.tipo == 'INSTRUCTOR') {
+                    //location.href = 'instructor/';
+                } else if(respuesta.tipo == 'COORDINADOR' || respuesta.tipo == 'INSTRUCTOR'){
                     location.href = 'coordinador/';                    
                 }else if (respuesta.tipo == 'HUMANOS') {
                     location.href = 'humanos/';
