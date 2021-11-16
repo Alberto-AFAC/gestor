@@ -48,11 +48,11 @@
 
 		//$caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$antiguedadT, $total];
 	}else if($data['gstEvalu'] == 'SI' && $data['gstCargo']!='DIRECTOR') { 
-		$total2 = "<a type='button' title='Evaluado' onclick='resultado({$resul})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Nueva especialidad' onclick='spcialidad({$gstIdper})' class='datos btn btn-default' data-toggle='modal' data-target='#modal-especialidad' style='width:40px; height:35px;padding:0;margin:0;'><img width='25px' style='padding-top:0.3em;' src='../dist/img/anadir.svg'></a>";
+		$total = "<a type='button' title='Evaluado' onclick='resultado({$resul})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Nueva especialidad' onclick='spcialidad({$gstIdper})' class='datos btn btn-default' data-toggle='modal' data-target='#modal-especialidad' style='width:40px; height:35px;padding:0;margin:0;'><img width='25px' style='padding-top:0.3em;' src='../dist/img/anadir.svg'></a>";
 		//$caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$antiguedadT, $total2];
 
 
-	}$caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$antiguedadT, $total2];
+	}$caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$antiguedadT, $total];
 
 
 		}
