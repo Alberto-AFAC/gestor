@@ -15,14 +15,10 @@ $unidad = mysqli_query($conexion,$sql);
 $sql="SELECT gstIdAir,gstCSigl,gstUnid1,gstUnid2,gstRgion FROM aeropuertos";
 $resulta=mysqli_query($conexion,$sql);
 
-$sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
-$are = mysqli_query($conexion,$sql);
+
 
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
-
-    $sqli = "SELECT gstIdcat,gstCatgr, gstCsigl FROM categorias WHERE estado = 0";
-      $spcialidad = mysqli_query($conexion,$sqli);
 
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
@@ -45,29 +41,27 @@ $psto = mysqli_query($conexion,$sql);
 
                         </div>
                         <div class="widget-user-image">
-                           <div id="foto"></div>
+                            <div id="foto"></div>
                         </div>
                         <div class="box-footer">
                             <div class="row">
                                 <div class="col-sm-4 border-right">
                                     <div class="description-block">
                                         <span class="description-text"></span>
-                                        <h5><input type="text" name="cargopersonal" id="cargopersonal" title="Cargo" class="datas disabled" disabled=""></h5>
+                                        <h5><input type="text" name="cargopersonal" id="cargopersonal"
+                                                class="datas disabled" disabled=""></h5>
                                     </div>
                                     <!-- /.description-block -->
-                                    
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-4">
                                     <div class="description-block">
-    
                                         <span class="description-text"></span>
-                                        <small name="insparea" id="insparea" for="" style="font-size:14px; display:block; text-align:left"></small>
-                                        <!-- <input type="text" name="insparea" id="insparea" title="Cargo" class="datas disabled" style="text-align:center" disabled=""> -->
+                                        <h3><input type="text" style="font-size: 18px;  background:transparent"
+                                                name="insparea" id="insparea" class="datas" disabled=""></h3>
                                     </div>
-
                                     <!-- /.description-block -->
                                 </div>
-                                
+
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
@@ -127,7 +121,7 @@ $psto = mysqli_query($conexion,$sql);
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
-                            <a href='inspecion' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
                         </button>
                     </div>
                 </div>
@@ -165,8 +159,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="col">INCISO</th>
                             <th scope="col" style="width: 600px;">DOCUMENTO</th>
                             <th scope="col">CUMPLE</th> 
-                            <th scope="col">ARCHIVO</th>
-                            <th scope="col">FECHA</th>
+                            <th scope="col">FECHA DE REVISIÓN</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -174,9 +167,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">A)</th>
                             <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td><td></td>
-
-
+                            <td></td>
 
                         </tr>
                         <tr>
@@ -190,8 +181,7 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">C)</th>
                             <td>CURRICULUM VITAE. (requisitado y firmado)</td>
                             <td><div id="profesions"></div></td>
-                            <td><div id="pro-pdf"> </div></td>
-                            <td><div id="pro-fec"></div> </td>
+                            <td></td>
 
 
                         </tr>
@@ -199,28 +189,15 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row">D)</th>
                             <td>CONSTANCIA ACADÉMICA (a.Licenciatura o ingeniería, b.Licencia técnica aeronautica)</td>
                             <td><div id="estudios"></div></td>
-                            <td><div id="std-pdf"> </div></td>
-                            <td><div id="std-fec"></div> </td>
+                            <td></td>
 
                         </tr>
                         <tr>
                             <th scope="row">F)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
-                            <td><div id="ojt"></div></td>
-                            <td><div id="ojt-pdf"> </div></td>
-                            <td><div id="ojt-fec"></div> </td>                            
-                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td> -->
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td>
                         </tr>
-                        <tr>
-                            <th scope="row">F)</th>
-                            <td>FORMATO BITÁCORA</td>
-                            <td><div id="btcr"></div></td>
-                            <td><div id="btcr-pdf"> </div></td>
-                            <td><div id="btcr-fec"></div> </td>                            
-                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
-                            <td></td> -->
-                        </tr>                        
                         <tr>
                             <th scope="row">G)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
@@ -232,19 +209,19 @@ $psto = mysqli_query($conexion,$sql);
                             <th scope="row"></th>
                             <td>BÁSICO</td>
                             <td><div id="bscos"></div></td>
-                            <td><div id="Bfecha"></div></td> <td></td>
+                            <td><div id="Bfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>RECURRENTE</td>
                             <td><div id="recurnt"></div></td>
-                            <td><div id="Rfecha"></div></td> <td></td>
+                            <td><div id="Rfecha"></div></td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>ESPECIFICOS</td>
                             <td><div id="specifico"></div></td>
-                            <td><div id="Efecha"></div></td> <td></td>
+                            <td><div id="Efecha"></div></td>
                         </tr>
                     </tbody>
                     
@@ -270,11 +247,11 @@ $psto = mysqli_query($conexion,$sql);
 <div style="padding-top: 15px;" class="col-md-12">
     <div class="nav-tabs-custom">
         <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+<!--             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
                 <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i
                         class="fa fa-ban"></i> </a>
-            </button>
+            </button> -->
             <!-- <button type="button" class="btn btn-box-tool" data-widget="remove">
 <a onclick="location.href='./'"><i class='fa fa-times'></i></a>
 </button> -->
@@ -490,8 +467,8 @@ $psto = mysqli_query($conexion,$sql);
 
 
                         <div class="form-group" id="buton" style="display: none;"><br>
-                            <div class="col-sm-offset-0 col-sm-2">
-                                <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary"
+                            <div class="col-sm-offset-0 col-sm-5">
+                                <button type="button" id="button" class="btn btn-info btn-lg"
                                     onclick="actDatos();">ACEPTAR</button>
                             </div>
                             <b>
@@ -531,10 +508,7 @@ $psto = mysqli_query($conexion,$sql);
                             <label>FECHA INGRESO A LA AFAC</label>
                             <input disabled="" type="date" class="form-control" id="gstFeing" name="gstFeing">
                         </div>
-                       <div class="col-sm-4">
-                            <label class="label2">ESTATUS ALTA PERSONAL</label>
-                            <input disabled="" type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
-                        </div>
+
 
 <!--                         <div class="col-sm-4">
                             <label>CARGO</label>
@@ -590,14 +564,14 @@ $psto = mysqli_query($conexion,$sql);
 
 <div class="form-group">
 
-<div class="col-sm-12" id="nompusto1">
+<div class="col-sm-5" id="nompusto1">
 <label>NOMBRE DEL PUESTO</label>
 <input type="text" class="form-control" name="nompuesto" id="nompuesto" disabled="" >
 </div>
 
-<div class="col-sm-12" id="nompusto2" style="display: none;">
+<div class="col-sm-5" id="nompusto2" style="display: none;">
 <label>NOMBRE DEL PUESTO</label>
-<select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
+<select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true" disabled="" >
   <option>SELECCIONE NOMBRE DEL PUESTO</option>
 <?php while($pust = mysqli_fetch_row($psto)):?>                      
 <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
@@ -605,21 +579,21 @@ $psto = mysqli_query($conexion,$sql);
 </select>
 </div> 
 
-<!-- <div id="spcialidad1">
-        <div class="col-sm-4">
-          <label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
-          <input type="text" class="form-control" id="spcialidad" name="spcialidad" disabled="" >
-        </div>
-        <div class="col-sm-3">
-          <label>SIGLAS OACI</label>
-          <input type="text" class="form-control" id="sigla" name="sigla" disabled="" >
-        </div> 
+<div id="spcialidad1">
+<div class="col-sm-4">
+<label>ESPECIALIDAD OACI PERSONAL TÉCNICO</label>
+<input type="text" class="form-control" id="spcialidad" name="spcialidad" disabled="" >
+</div>
+<div class="col-sm-3">
+<label>SIGLAS OACI</label>
+<input type="text" class="form-control" id="sigla" name="sigla" disabled="" >
+</div>
 </div>
 
 <div id="spcialidad2" style="display: none;">
-     <div id="actoaci"></div>
-     <div id="siglas"></div>
-</div> -->
+<div id="actoaci"></div>
+<div id="siglas"></div>
+</div>
 </div>
 
 
@@ -680,7 +654,7 @@ $psto = mysqli_query($conexion,$sql);
 
         <p id="ejecutiva2" style="display: none;">
         <label>DIRECCIÓN EJECUTIVA </label>         
-        <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" id="gstAreID" type="text" data-live-search="true" >
+        <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
         <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
         <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
         <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
@@ -690,107 +664,28 @@ $psto = mysqli_query($conexion,$sql);
         </div>
         </div>
 
-        <div class="form-group">
-                    <div class="col-sm-12">
-                            <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="adscripcion2();">EDITAR
-                                    DIRECCIÓN DE ADSCRIPCIÓN <i class="fa fa-edit"></i></a></p>
-                            <p id="adscrip1">
-                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
-                                <input type="text" name="adscripcion" id="adscripcion" class="form-control" disabled="">
-                            </p>
-                            <p id="adscrip2" style="display: none;">
-                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
-                                <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                     id="gstIDara" type="text" data-live-search="true">
-                                    <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
-                                    <?php while($ccion = mysqli_fetch_row($are)):?>                      
-                                    <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
-                                   <?php endwhile; ?>
-                    </select>
-                            </p>
-                        </div>
-
-                    </div>
-
-
-<!--                     <div class="form-group">
-                    <div class="col-sm-12">
-                            <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion1();">EDITAR
-                            SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
-                            <p id="subdirec2">
-                                <label>SUBDIRECCIÓN </label>
-                                <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
-                            </p>
-                            <p id="subdirec3" style="display: none;">
-                                <label>SUBDIRECCIÓN </label>
-                                <select style="width: 100%" class="form-control" class="selectpicker" name="AgstAcReg"
-                                     id="AgstAcReg" type="text" data-live-search="true">
-                                    <option>SELECCIONE LA SUBDIRECCIÓN</option>
-                                    <?php //while($subdic = mysqli_fetch_row($subdirec)):?>                      
-                    <option value="<?php //echo $subdic[0]?>"><?php //echo $subdic[1]?></option>
-                    <?php //endwhile; ?>
-                    </select>
-                            </p>
-                        </div>
-                    </div> -->
-
-
-
-    
-
-<!--                     <div class="form-group">
-                    <div class="col-sm-12">
-                            <p id="depart" style="display: none; cursor: pointer;"><a onclick="departamento1();">EDITAR
-                            DEPARTAMENTO <i class="fa fa-edit"></i></a></p>
-                            <p id="depart1">
-                                <label>DEPARTAMENTO </label>
-                                <input type="text" name="departam" id="departam" class="form-control" disabled="">
-                            </p>
-                            <p id="depart2" style="display: none;">
-                                <label>DEPARTAMENTO </label>
-                                <select style="width: 100%" class="form-control" class="selectpicker" name="departselec"
-                                     id="departselec" type="text" data-live-search="true">
-                                    <option>SELECCIONE EL DEPARTAMENTO</option>
-                                    <?php //while($dep = mysqli_fetch_row($depart)):?>                      
-                                    <option value="<?php //echo $dep[0]?>"><?php //echo $dep[1]?></option>
-                                    <?php //endwhile; ?>
-                                </select>
-                            </p>
-                        </div>
-                    </div> -->
 
                     <div class="form-group">
-                    <div class="col-sm-12">
-                            <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion();">EDITAR
-                            SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
-                            <div id="subdirec2">
-                        <label>SUBDIRECCIÓN </label>
-                        <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
-
-                        <label>DEPARTAMENTO </label>
-                        <input type="text" name="departam" id="departam" class="form-control" disabled="">
-
-                            </div>
-                            <div id="subdirec3" style="display: none;">
-
-
-                        <div class="form-group">
-                        <div class="col-sm-12">
-                        <label class="label2">SUBDIRECCIÓN</label>
-                        <div id="subdireact"></div>                            
+                        <div class="col-sm-offset-0 col-sm-12">
+                            <label>SUBDIRECCIÓN</label>
+                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstsundireccion"
+                                id="gstsundireccion" type="text" data-live-search="true" disabled="">
+                                <option value="">SELECCIONE LA SUBDIRECCIÓN</option>
+                            </select>
                         </div>
-                        </div>
-                        <div class="form-group">
-                        <div class="col-sm-12">
-                        <label class="label2">DEPARTAMENTO</label>
-                        <div id="departact"></div> 
-                        </div>   
-                        </div>
-                         </div>
-                        </div>
-
                     </div>
-
+                    <div class="form-group">
+                        <div class="col-sm-offset-0 col-sm-12">
+                            <label>DEPARTAMENTO</label>
+                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
+                                id="gstIDara" type="text" data-live-search="true" disabled="">
+                                <option value="">SELECCIONE EL DEPARTAMENTO</option>
+                                <?php while($rea = mysqli_fetch_row($are)):?>
+                                <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -818,42 +713,19 @@ $psto = mysqli_query($conexion,$sql);
      </div>
 
 
-     <input type="hidden" name="gstIDuni" id="gstIDuni">
+
 
 
        <div class="form-group">
     
      <div class="col-sm-12">
-        <label>ESPECIALIDAD</label> 
-<!-- <a type='button' title='Nueva especialidad' onclick='spcialidad()' class='datos btn btn-default' data-toggle='modal' data-target='#modal-especialidad' style='width:40px; height:35px;padding:0;margin:0;'><img width='25px' style='padding-top:0.3em;' src='../dist/img/anadir.svg'></a> -->     
+        <label>ESPECIALIDAD</label>     
               <div id="especialidades"></div>    
 
          </div>          
      </div>
 
 
-
-
-
-<div class="form-group">
-<div class="col-sm-6">
-
- <p id="oclOJT"><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
-
-<div>
-
- <div id="docInsp"></div>    
-
-<!-- <td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="adjactual()" data-target="#modal-actualizardoc"><i class="fa fa-refresh text-info"></i></a> -->
-</div>                            
-</div>
-<div class="col-sm-6">
- <p id="oclBTC"><label>BITÁCORAS</label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
-<div> 
-    <div id="docBita"></div>    
-</div> 
-</div>
-</div>
 <!-- <div class="col-sm-6">
 <label>CATEGORIA</label>
 <select style="width: 100%" class="form-control" disabled="" class="selectpicker"
@@ -923,20 +795,20 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
 <div class="col-sm-3">
 
 <label class="label2">UBICACIÓN CENTRAL</label> 
-    <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
-        <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>    
-        <option value="CIAAC">CIAAC</option> 
-        <option value="LAS FLORES">LAS FLORES</option> 
-        <option value="ANGAR 8">ANGAR 8</option> 
-        <option value="LICENCIA">LICENCIAS</option>
+<select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
+<option value="CIAAC">CIAAC</option> 
+<option value="LAS FLORES">LAS FLORES</option> 
+<option value="ANGAR 8">ANGAR 8</option> 
+<option value="LICENCIA">LICENCIAS</option>
 </select>
 </div>
 
 </div>  
                     
                     <div class="form-group" id="butons" style="display: none;"><br>
-                        <div class="col-sm-offset-0 col-sm-2">
-                              <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actPuesto();">ACTUALIZAR</button>
+                        <div class="col-sm-offset-0 col-sm-5">
+                            <button type="button" id="button" class="btn btn-info btn-lg"
+                                onclick="actPuesto();">ACEPTAR</button>
                         </div>
                         <b>
                             <p class="alert alert-danger text-center padding error" id="danger1">Error al actualizar
@@ -980,19 +852,18 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                 <div class="box-header">
                                     <h3 class="box-title">Cursos obligatorios</h3>
                                 </div>
-                                
+
                                 <div class="box-body">
-                                    <div id="cursosObligados"></div>
+                                    <div id="obligados"></div>
 
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-            <!-- modal evaluar -->
-  <!-- DETALLE DECLINA CONVOCATORIA -->
+            <!-------------------------------------------->
+           <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
   <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal1">
   
@@ -1001,12 +872,13 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
     <img class="img-circle1" src="../dist/img/declinado.png">
     </div>
   </div>
+  <!-- <input id="pruebadec" type="text"> -->
   <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
   <label id="cursdeclina" style="font-size: 16px; color:gray"  for=""></label>
   <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
   <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
   <br>
-  <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
+  <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label> 
   <hr>
   <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
   <label readonly id="otrosd" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
@@ -1015,8 +887,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
 
 </script>
 </div>
-
-<!--FIN DETALLE DECLINA CONVOCATORIA -->
+<!--FIN DE CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
             <!-------------------------------------------->
             <div class="tab-pane" id="curso">
                 <section class="content">

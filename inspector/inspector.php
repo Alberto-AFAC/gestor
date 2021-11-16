@@ -2348,6 +2348,8 @@ $vigencia = "<center><span class='badge' style='background-color: silver;'>REALI
 $vigencia = "<center><span class='badge' style='background-color: green;'>VIGENTE</span></center>";
 }else if($f3 >= $f2){ //POR VENCER
 $vigencia = "<center><span class='badge' style='background-color: #D58512;'>POR VENCER</span></center>";
+}else{
+    $vigencia = "<center><span class='badge' style='background-color: silver;'>POR EVALUAR</span></center>";
 }
 
 
@@ -2373,18 +2375,11 @@ $accion = "<center><a title='Descarga Constancia' type='button' id='myCertificat
 }else{
 
 $accion = "<center><a  type='button' id='myCertificate' target='_blank'    class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
-
 }
-
-}else{
-
+    }else{
 
 $accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
-
 }
-
-
-
 ?>
 
 ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",

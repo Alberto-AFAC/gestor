@@ -160,92 +160,86 @@
 
             <?php //include('evaluar.php');?>
             <!-- modal evaluar -->
-            <div class="modal fade" id="modal-evaluar">
-                <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                    <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-                        <div class="modal-content">
-<!--                             <div class="modal-header">
-                                <button type="button" onclick="location.href='inspecion'" class="close"
-                                    data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
+<div class="modal fade" id="modal-evaluar">
+<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
 
-                                <h4 class="modal-title"></h4>
-                            </div>
- -->
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">EVALUAR</h4>
-                            </div>
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title">EVALUAR</h4>
+</div>
+
+<div class="modal-body">
+<form id="Evalua">
+<input type="hidden" name="idspc" id="idspc">
+<input type="hidden" name="reset" id="reset">
+<div class="row">
+<div class="form-group">
+<div class="col-sm-5">
+<label class="label2">NOMBRE</label>
+<input type="text" class="form-control" id="evalu_nombre"
+name="evalu_nombre" disabled="">
+</div>
+
+<div class="col-sm-offset-0 col-sm-7">
+<label class="label2">CATEGORÍA</label>
+<select style="width: 100%" class="form-control" class="selectpicker"
+id="gstIDCate" name="gstIDCate" type="text" data-live-search="true"
+disabled="">
+<?php while($oira = mysqli_fetch_row($categ)):?>
+<option value="<?php echo $oira[0]?>"><?php echo $oira[1]?></option>
+<?php endwhile; ?>
+</select>
+</div>
+
+</div>
+
+<div id="evlacns"></div>
+
+<input type="hidden" id='evla' name='evla' value='<?php echo $datos[0];?>'>
+
+<div class="form-group">
+<div class="col-sm-12" style=" margin-bottom: 1em">
+<label class="label2">COMENTARIOS</label>
+<textarea name="comntr" id="comntr" onkeyup="mayus(this);"
+class="form-control inputalta" rows="2" cols="50"></textarea>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-sm-7">
+<button type="button" id="button" class="btn btn-info altaboton"
+style="font-size:16px; width:110px; height:35px"
+onclick="evaluar();">ACEPTAR</button>
+</div>
+<b>
+<p class="alert alert-success text-center padding exito" id="succe0">¡Se
+ha evaluado con éxito!</p>
+</b>
+<b>
+<p class="alert alert-info text-center padding error" id="danger0">El
+inspector ya esta evaluado </p>
+</b>
+<b>
+<p class="alert alert-warning text-center padding aviso" id="empty0">Es
+necesario agregar los datos que se solicitan </p>
+</b>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-                            
-                            <div class="modal-body">
-                                <form id="Evalua">
-                                    <input type="hidden" name="idspc" id="idspc">
-                                    <input type="hidden" name="reset" id="reset">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-sm-5">
-                                                <label class="label2">NOMBRE</label>
-                                                <input type="text" class="form-control" id="evalu_nombre"
-                                                    name="evalu_nombre" disabled="">
-                                            </div>
-
-                                            <div class="col-sm-offset-0 col-sm-7">
-                                                <label class="label2">CATEGORÍA</label>
-                                                <select style="width: 100%" class="form-control" class="selectpicker"
-                                                    id="gstIDCate" name="gstIDCate" type="text" data-live-search="true"
-                                                    disabled="">
-                                                    <?php while($oira = mysqli_fetch_row($categ)):?>
-                                                    <option value="<?php echo $oira[0]?>"><?php echo $oira[1]?></option>
-                                                    <?php endwhile; ?>
-                                                </select>
-                                            </div>
-
-                                        </div>
-
-                                        <div id="evlacns"></div>
-
-
-                                        <input type="hidden" id='evla' name='evla' value='<?php echo $datos[0];?>'>
-
-                                        <div class="form-group">
-                                            <div class="col-sm-12" style=" margin-bottom: 1em">
-                                                <label class="label2">COMENTARIOS</label>
-                                                <textarea name="comntr" id="comntr" onkeyup="mayus(this);"
-                                                    class="form-control inputalta" rows="2" cols="50"></textarea>
-                                            </div>
-                                        </div>
 
 
 
-                                        <div class="form-group">
-                                            <div class="col-sm-7">
-                                                <button type="button" id="button" class="btn btn-info altaboton"
-                                                    style="font-size:16px; width:110px; height:35px"
-                                                    onclick="evaluar();">ACEPTAR</button>
-                                            </div>
-                                            <b>
-                                                <p class="alert alert-success text-center padding exito" id="succe0">¡Se
-                                                    ha evaluado con éxito!</p>
-                                            </b>
-                                            <b>
-                                                <p class="alert alert-info text-center padding error" id="danger0">El
-                                                    inspector ya esta evaluado </p>
-                                            </b>
-                                            <b>
-                                                <p class="alert alert-warning text-center padding aviso" id="empty0">Es
-                                                    necesario agregar los datos que se solicitan </p>
-                                            </b>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
 
             <div class="modal fade" id="modal-resultado">
