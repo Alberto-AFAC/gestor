@@ -648,7 +648,7 @@ $(document).ready(function() {
                         customClass: 'swal-wide',
                         showConfirmButton: false,
                     });
-                    setTimeout("location.href = '../admin/niveldesatis.php';", 2000);
+                    setTimeout("location.href = 'niveldesatis';", 2000);
                 }
             });
         }

@@ -29,6 +29,11 @@ $subdirec = mysqli_query($conexion,$sql);
 
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $direc = mysqli_query($conexion,$sql);
+
+
+// $sql = "SELECT DISTINCT id_departamentos,descripdep,id_3_dep FROM departamentos";
+// $depart = mysqli_query($conexion,$sql);
+
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
@@ -50,7 +55,7 @@ $direc = mysqli_query($conexion,$sql);
 
                         </div>
                         <div class="widget-user-image">
-                            <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                           <div id="foto"></div>
                         </div>
                         <div class="box-footer">
                             <div class="row">
@@ -127,7 +132,7 @@ $direc = mysqli_query($conexion,$sql);
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
-                            <a href='instructor.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                            <a href='persona.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
                         </button>
                     </div>
                 </div>
@@ -312,7 +317,7 @@ $direc = mysqli_query($conexion,$sql);
                             </div>
                             <div class="col-sm-4">
                                 <label>NÚMERO</label>
-                                <input type="number" disabled="" style="text-transform:uppercase;" class="form-control"
+                                <input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
                                     id="gstNumro" name="gstNumro">
                             </div>
                             <div class="col-sm-4">
@@ -506,7 +511,7 @@ $direc = mysqli_query($conexion,$sql);
                         <div class="col-sm-12" id="nompusto2" style="display: none;">
                             <label>NOMBRE DEL PUESTO</label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID"
-                                id="gstPstID" type="text" data-live-search="true" disabled="">
+                                id="gstPstID" type="text" data-live-search="true">
                                 <option>SELECCIONE NOMBRE DEL PUESTO</option>
                                 <?php while($pust = mysqli_fetch_row($psto)):?>
                                 <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
@@ -550,7 +555,7 @@ $direc = mysqli_query($conexion,$sql);
                             <p id="ejecutiva2" style="display: none;">
                                 <label>DIRECCIÓN EJECUTIVA </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID"
-                                    disabled="" id="gstAreID" type="text" data-live-search="true">
+                                     id="gstAreID" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
                                     <?php while($ejct = mysqli_fetch_row($ejec)):?>
                                     <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
@@ -558,8 +563,8 @@ $direc = mysqli_query($conexion,$sql);
                                 </select>
                             </p>
                         </div>
-
                     </div>
+                    
                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="adscripcion();">EDITAR
@@ -571,7 +576,7 @@ $direc = mysqli_query($conexion,$sql);
                             <p id="adscrip2" style="display: none;">
                                 <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                    disabled="" id="gstIDara" type="text" data-live-search="true">
+                                     id="gstIDara" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
                                     <?php while($ccion = mysqli_fetch_row($direc)):?>                      
                     <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
@@ -582,36 +587,42 @@ $direc = mysqli_query($conexion,$sql);
 
                     </div>
      
+
+                    
+
                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion();">EDITAR
                             SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
-                            <p id="subdirec2">
-                                <label>SUBDIRECCIÓN </label>
-                                <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
-                            </p>
-                            <p id="subdirec3" style="display: none;">
-                                <label>SUBDIRECCIÓN </label>
-                                <select style="width: 100%" class="form-control" class="selectpicker" name="AgstAcReg"
-                                     id="AgstAcReg1" type="text" data-live-search="true">
-                                    <option>SELECCIONE LA SUBDIRECCIÓN</option>
-                                    <?php while($subdic = mysqli_fetch_row($subdirec)):?>                      
-                    <option value="<?php echo $subdic[0]?>"><?php echo $subdic[1]?></option>
-                    <?php endwhile; ?>
-                    </select>
-                            </p>
+                            <div id="subdirec2">
+                        <label>SUBDIRECCIÓN </label>
+                        <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
+
+                        <label>DEPARTAMENTO </label>
+                        <input type="text" name="departam" id="departam" class="form-control" disabled="">
+
+                            </div>
+                            <div id="subdirec3" style="display: none;">
+
+
+                        <div class="form-group">
+                        <div class="col-sm-12">
+                        <label class="label2">SUBDIRECCIÓN</label>
+                        <div id="subdireact"></div>                            
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="col-sm-12">
+                        <label class="label2">DEPARTAMENTO</label>
+                        <div id="departact"></div> 
+                        </div>   
+                        </div>
+                         </div>
                         </div>
 
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <label>DEPARTAMENTO</label>
-                            <select style="width: 100%" class="form-control" class="selectpicker" name="gstdepart"
-                                id="gstdepart" type="text" data-live-search="true" disabled="">
-                                <option value="">SELECCIONE EL DEPARTAMENTO</option>
-                            </select>
-                        </div>
-                    </div>
+
+
                     <div class="form-group">
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -651,8 +662,8 @@ $direc = mysqli_query($conexion,$sql);
 
                     <div class="form-group">
                         <input type="hidden" name="gstIDCat" id="gstIDCat" value="0">
-
-                        <input type="hidden" name="gstIDSub" id="gstIDSub" value="0">
+<!-- 
+                        <input type="hidden" name="gstIDSub" id="gstIDSub" value="0"> -->
 
 
                     </div>
@@ -709,7 +720,7 @@ $direc = mysqli_query($conexion,$sql);
                                     <h3 class="box-title">Cursos obligatorios</h3>
                                 </div>
                                 <div class="box-body">
-                                    <div id="obligados"></div>
+                                    <div id="cursosObligados"></div>
                                 </div>
                             </div>
                         </div>
@@ -786,6 +797,11 @@ $(document).ready(function() {
     $('#siglas').load('select/siglas.php');
     $('#comandancia').load('select/actbuscacom.php');
     $('#select2').load('select/acttablacom.php');
+    $('#subdireact').load('select/buscardepartact.php'); //Subdirección
+    $('#departact').load('select/tabladepact.php'); //departamento
+
+
+
 });
 </script>
 <script src="../js/select2.js"></script>
