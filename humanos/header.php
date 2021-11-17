@@ -188,6 +188,15 @@ unset($_SESSION['consulta']);
             </span>
           </a>
         </li>
+        <li>
+                <a href="cursosgantt">
+                    <i class="fa fa-area-chart"></i> <span>Gantt Cursos programados</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
         <!-- <li>
           <a href="gantt2.php">
             <i class="fa fa-calendar"></i> <span>Bitacora cursos</span>
