@@ -30,23 +30,24 @@
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <style>
-     .swal-wide{
-    width: 500px !important;
-    font-size: 16px !important;
-}
-.a-alert {
-  outline: none;
-  text-decoration: none;
-  padding: 2px 1px 0;
-}
+    .swal-wide {
+        width: 500px !important;
+        font-size: 16px !important;
+    }
 
-.a-alert:link {
-  color: white;
-}
+    .a-alert {
+        outline: none;
+        text-decoration: none;
+        padding: 2px 1px 0;
+    }
 
-.a-alert:visited {
-  color: white;
-}
+    .a-alert:link {
+        color: white;
+    }
+
+    .a-alert:visited {
+        color: white;
+    }
     </style>
 
 
@@ -162,31 +163,35 @@
                 </div>
             </div>
         </form>
-<!-- MODAL PARA AÑADIR UN NUEVO CURSO -->
-<form id="add" class="form-horizontal" action="" method="POST">
+        <!-- MODAL PARA AÑADIR UN NUEVO CURSO -->
+        <form id="add" class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-añadir">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 style="font-size: 20px;" class="modal-title" id="exampleModalLabel">AGREGA TEMARIO SEGÚN EL CASO</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      
-                      <input type="hidden" name="idcurtem" id="idcurtem">
-                      <div class="modal-body">
-                        <span id="add_field" style="color: green;font-size: 20px;cursor: pointer;" class="fa fa-plus-square"></span>
-                      <div id="listas">
-                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div>
-                      </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-info" onclick="agregarMas();" data-dismiss="modal">GUARDAR</button>
-                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                      </div>
+                        <div class="modal-header">
+                            <h5 style="font-size: 20px;" class="modal-title" id="exampleModalLabel">AGREGA TEMARIO SEGÚN
+                                EL CASO</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <input type="hidden" name="idcurtem" id="idcurtem">
+                        <div class="modal-body">
+                            <span id="add_field" style="color: green;font-size: 20px;cursor: pointer;"
+                                class="fa fa-plus-square"></span>
+                            <div id="listas">
+                                <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" onclick="agregarMas();"
+                                data-dismiss="modal">GUARDAR</button>
+                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
         </form>
         <form class="form-horizontal" action="" method="POST">
@@ -255,12 +260,12 @@
                                 <div class="col-sm-4">
                                     <label class="label2">TIPO DE CAPACITACIÓN</label>
                                     <select type="text" class="form-control inputalta" id="AgstTipo" name="AgstTipo">
-                                    <option value="INDUCCIÓN">INDUCCIÓN</option>
-                                    <option value="BÁSICOS/INICIAL">BÁSICO/INICIAL</option>
-                                    <option value="TRANSVERSALES">TRANSVERSALE</option>
-                                    <option value="RECURRENTES">RECURRENTE</option>
-                                    <option value="ESPECÍFICOS">ESPECÍFICO</option>
-                                    <option value="OJT">OJT</option>
+                                        <option value="INDUCCIÓN">INDUCCIÓN</option>
+                                        <option value="BÁSICOS/INICIAL">BÁSICO/INICIAL</option>
+                                        <option value="TRANSVERSALES">TRANSVERSALE</option>
+                                        <option value="RECURRENTES">RECURRENTE</option>
+                                        <option value="ESPECÍFICOS">ESPECÍFICO</option>
+                                        <option value="OJT">OJT</option>
                                     </select>
                                 </div>
 
@@ -362,8 +367,8 @@
 
                                 <div class="col-sm-4">
                                     <label class="label2">CENTRO DE INSTRUCCIÓN</label>
-                                    <input type="text" onkeyup="mayus(this);" class="form-control"
-                                        id="AgstCntro" name="AgstCntro">
+                                    <input type="text" onkeyup="mayus(this);" class="form-control" id="AgstCntro"
+                                        name="AgstCntro">
                                 </div>
 
 
@@ -543,12 +548,16 @@
                 <div class='modal-header'>
                     <h5 style='font-size: 28px;' class='modal-title col-11 text-center'><span
                             style='font-weight: bold;'>TEMARIO</span><br>
-                        
+
                 </div>
-                <div class='modal-body'><div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU REGISTRO FUE ELIMINADO</div><div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">SE ACTUALIZO REGISTRO CON ÉXITO</div>
+                <div class='modal-body'>
+                    <div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU REGISTRO
+                        FUE ELIMINADO</div>
+                    <div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">SE
+                        ACTUALIZO REGISTRO CON ÉXITO</div>
 
 
-                <div id="temario"></div>
+                    <div id="temario"></div>
                 </div>
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-primary' data-dismiss='modal'>CERRAR</button>
@@ -632,18 +641,18 @@ $(document).ready(function() {
             [0, "desc"]
         ],
         "ajax": "../php/consdaTable.php",
-//         "columnDefs": [{
-//             "targets": -1,
-//             "data": null,
-//             "defaultContent": "<a href='#' title='Editar Curso' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
+        //         "columnDefs": [{
+        //             "targets": -1,
+        //             "data": null,
+        //             "defaultContent": "<a href='#' title='Editar Curso' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
 
 
 
-// //<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
+        // //<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
 
 
 
-//         }]
+        //         }]
     });
 
     detalles("#example tbody", table);
@@ -685,21 +694,21 @@ $(document).ready(function() {
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].gstIdlsc == gstIdlsc) {
 
-                datos = 
-                obj.data[i].gstIdlsc + '*' +
-                obj.data[i].gstTitlo + '*' +
-                obj.data[i].gstTipo + '*' +
-                obj.data[i].gstPrfil + '*' +
-                obj.data[i].gstCntnc + '*' +
-                obj.data[i].gstDrcin + '*' +
-                obj.data[i].gstVignc + '*' + 
-                obj.data[i].gstObjtv + '*' +
-                obj.data[i].gstTmrio + '*' + 
-                obj.data[i].gstProvd + '*' + 
-                obj.data[i].gstCntro;                  
+                    datos =
+                        obj.data[i].gstIdlsc + '*' +
+                        obj.data[i].gstTitlo + '*' +
+                        obj.data[i].gstTipo + '*' +
+                        obj.data[i].gstPrfil + '*' +
+                        obj.data[i].gstCntnc + '*' +
+                        obj.data[i].gstDrcin + '*' +
+                        obj.data[i].gstVignc + '*' +
+                        obj.data[i].gstObjtv + '*' +
+                        obj.data[i].gstTmrio + '*' +
+                        obj.data[i].gstProvd + '*' +
+                        obj.data[i].gstCntro;
 
-                    var d = datos.split("*");      
-                     $("#modalVal #AgstCntro").val(d[10]);            
+                    var d = datos.split("*");
+                    $("#modalVal #AgstCntro").val(d[10]);
                     $("#modalVal #AgstIdlsc").val(d[0]);
                     $("#AgstIdlsc #AgstIdlsc").val(d[0]);
                     $("#modalUpdate #Idlsc").val(d[0]);
@@ -719,7 +728,7 @@ $(document).ready(function() {
                     $("#modalVal #AgstTmrio").val(d[8]);
                     $("#modalUpdate #AgstTmrio").val(d[8]);
                     $("#modalVal #AgstProvd").val(d[9]);
-                   
+
                 }
             }
         })
@@ -741,11 +750,11 @@ function detalles(tbody, table) {
 
 function agrtemario(tbody, table) {
 
-$(tbody).on("click", "a.temario", function() {
-    var data = table.row($(this).parents("tr")).data();
+    $(tbody).on("click", "a.temario", function() {
+        var data = table.row($(this).parents("tr")).data();
         //alert(data[0]);
-    $("#modal-añadir #idcurtem").val(data[0]);
-});
+        $("#modal-añadir #idcurtem").val(data[0]);
+    });
 }
 
 
@@ -766,14 +775,15 @@ function temario(gstIdlsc) {
         var x = 0;
 
         for (i = 0; i < res.length; i++) {
- 
+
             if (obj.data[i].idcurso == gstIdlsc) {
 
                 //alert(obj.data[i].idcurso);
-                dato = obj.data[i].idtem+'*'+obj.data[i].idcurso+'*'+obj.data[i].titulo;
+                dato = obj.data[i].idtem + '*' + obj.data[i].idcurso + '*' + obj.data[i].titulo;
 
-            x++;               
-        html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td></tr>";
+                x++;
+                html += "<tr><td>" + x + "</td><td><input class='form-control' id='" + obj.data[i].idtem +
+                    "' name='" + obj.data[i].idtem + "' value='" + obj.data[i].titulo + "' disabled></td></tr>";
             }
         }
         html += '</table>';
@@ -784,16 +794,16 @@ function temario(gstIdlsc) {
 }
 ///////EDITAR////////
 
-    function temact(dato){
+function temact(dato) {
     var d = dato.split("*");
     idcurso = d[0];
     document.getElementById(idcurso).disabled = false;
-    $("#"+idcurso+"ocultar").hide();
-    $("#"+idcurso+"mostrar").show();
+    $("#" + idcurso + "ocultar").hide();
+    $("#" + idcurso + "mostrar").show();
 
-    }
+}
 
-function temagregar(dato){
+function temagregar(dato) {
 
     // alert(dato);
     var d = dato.split("*");
@@ -802,30 +812,30 @@ function temagregar(dato){
     var idcur = d[1];
 
     $.ajax({
-        data: 'idcurso='+idcurso+'&titulo='+titulo+'&idcur='+idcur+'&opcion=agregartem',
-        url:'../php/docCursos.php',
+        data: 'idcurso=' + idcurso + '&titulo=' + titulo + '&idcur=' + idcur + '&opcion=agregartem',
+        url: '../php/docCursos.php',
         type: 'post',
-        beforeSend: function () {
+        beforeSend: function() {
             //
         },
-        success: function (response) {   
-            if(response==0){      
+        success: function(response) {
+            if (response == 0) {
 
                 $('#actualizo').toggle('toggle');
                 setTimeout(function() {
-                $('#actualizo').toggle('toggle');
+                    $('#actualizo').toggle('toggle');
                 }, 2000);
 
-            $("#"+idcurso+"ocultar").show();
-            $("#"+idcurso+"mostrar").hide();
-            document.getElementById(idcurso).disabled = true;
-            //temario(gstIdlsc);            
-            }else{
+                $("#" + idcurso + "ocultar").show();
+                $("#" + idcurso + "mostrar").hide();
+                document.getElementById(idcurso).disabled = true;
+                //temario(gstIdlsc);            
+            } else {
                 // $('#actualizo').toggle('toggle');
                 // setTimeout(function() {
                 // $('#actualizo').toggle('toggle');
                 // }, 2000);            
-            // $('#temario').hide();
+                // $('#temario').hide();
             }
         }
     });
@@ -833,62 +843,62 @@ function temagregar(dato){
 
 
 ///BORRAR REGISTRO////
-function temborrar(dato){
-    
+function temborrar(dato) {
+
     var d = dato.split("*");
 
     idcurso = d[0];
     cursoid = d[1];
 
-$.ajax({
-    data: 'idcurso='+idcurso+'&cursoid='+cursoid+'&opcion=eliminartem',
-    url:'../php/docCursos.php',
-    type: 'post',
-    beforeSend: function () {
-        //
-    },
-    success: function (response) {   
-        if(response!=1){      
+    $.ajax({
+        data: 'idcurso=' + idcurso + '&cursoid=' + cursoid + '&opcion=eliminartem',
+        url: '../php/docCursos.php',
+        type: 'post',
+        beforeSend: function() {
+            //
+        },
+        success: function(response) {
+            if (response != 1) {
 
-            $('#elimino').toggle('toggle');
-            setTimeout(function() {
-            $('#elimino').toggle('toggle');
-            }, 2000);
+                $('#elimino').toggle('toggle');
+                setTimeout(function() {
+                    $('#elimino').toggle('toggle');
+                }, 2000);
 
-        temario(gstIdlsc);            
-        }else{
-            $('#elimino').toggle('toggle');
-            setTimeout(function() {
-            $('#elimino').toggle('toggle');
-            }, 2000);            
-        $('#temario').hide();
-        setTimeout("location.href = 'conCursos.php';", 2100);
+                temario(gstIdlsc);
+            } else {
+                $('#elimino').toggle('toggle');
+                setTimeout(function() {
+                    $('#elimino').toggle('toggle');
+                }, 2000);
+                $('#temario').hide();
+                setTimeout("location.href = 'conCursos.php';", 2100);
+            }
         }
-    }
-});
+    });
 
 }
 
 // FUNCION PARA AÑADIR
 
 // AÑADIR TEMARIO N NUMERO DE REGISTROS
-var campos_max = 30;   
-        var x = 0;
-        $('#add_field').click (function(e) {
-                e.preventDefault();    //chups
-                if (x < campos_max) {
-                        $('#listas').append('<div>\
+var campos_max = 30;
+var x = 0;
+$('#add_field').click(function(e) {
+    e.preventDefault(); //chups
+    if (x < campos_max) {
+        $('#listas').append('<div>\
                                 <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
                                 <a href="#" style="color: red; font-size:20px; cursor:pointer;" class="remover_campo"><span class="fa fa-minus-square"></span></a>\
                                 </div>');
-                        x++;
-                }
-        });
-        $('#listas').on("click",".remover_campo",function(e) {
-                e.preventDefault();
-                $(this).parent('div').remove();
-                x;
-        });
+        x++;
+    }
+});
+$('#listas').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    x;
+});
 </script>
 <style>
 #example input {
