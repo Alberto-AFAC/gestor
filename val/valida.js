@@ -18,7 +18,7 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     location.href = 'admin/'; //*redirecionado al directorio que le toca(carpeta)
                 } else if (respuesta.tipo == 'INSPECTOR' || respuesta.tipo == 'ADMINISTRATIVO') { //*redireccion al manejador si el .tipo es manejador
                     location.href = 'inspector/';
-                } else if (respuesta.tipo == 'DIRECTOR' || respuesta.tipo == 'DIRECTOR_CIAAC') { //*redireccion al manejador si el .tipo es manejador
+                } else if (respuesta.tipo == 'DIRECTOR' || respuesta.tipo == 'DIRECTOR_CIAAC' || respuesta.tipo == 'EJECUTIVO') { //*redireccion al manejador si el .tipo es manejador
                     location.href = 'director/';
                // } else if (respuesta.tipo == 'INSTRUCTOR') {
                     //location.href = 'instructor/';
