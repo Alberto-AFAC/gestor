@@ -81,14 +81,33 @@ $.ajax({
     var res = obj.data;
 
     //var totalv = obj.data[0].vencido + obj.data[0].porvencer;
-    ttalvncr = obj.data[0].VENCER;
+    ttal = obj.data[0].VENCER+obj.data[0].VENCIDO;
+
     $("#VENCIDO").html(obj.data[0].VENCIDO);
-    $("#VENCER").html(obj.data[0].VENCER);
+    $("#VENCER").html(ttal);
     $("#VIGENTE").html(obj.data[0].VIGENTE);
     //$("#vencer").html(obj.data[0].vencido);
-document.getElementById("NOTVCD").innerHTML = "" + '<b>Tiene ' + ttalvncd + ' curso(s) por vencer</b>';
-document.getElementById("NOTVNCR").innerHTML = "" + '<b>Tiene ' + ttalvncr + ' curso(s) por vencer</b>';
-document.getElementById("NOTVGNT").innerHTML = "" + '<b>Tiene ' + ttalvgnt + ' curso(s) por vencer</b>';
+
+    if(obj.data[0].VENCER==0){
+        $("#ocuvncr").hide();
+    }else if(obj.data[0].VENCER==1){
+    document.getElementById("notvencer").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCER + ' curso por vencer</b>';        
+    }else{
+    document.getElementById("notvencer").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCER + ' cursos por vencer</b>';        
+    }
+
+
+    if(obj.data[0].VENCIDO==0){
+        $("#ocuvncd").hide();        
+    }else if(obj.data[0].VENCIDO==1){
+    document.getElementById("notvencdo").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCIDO + ' curso vencido</b>';        
+    }else{
+    document.getElementById("notvencdo").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCIDO + ' cursos vencidos</b>';        
+    }
+
+ //document.getElementById("NOTVCD").innerHTML = "" + '<b>Tiene ' + ttalvncd + ' curso(s) por vencer</b>';
+
+//document.getElementById("NOTVGNT").innerHTML = "" + '<b>Tiene ' + ttalvgnt + ' curso(s) por vencer</b>';
 
 
 });

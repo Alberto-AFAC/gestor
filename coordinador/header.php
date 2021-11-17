@@ -57,7 +57,8 @@ unset($_SESSION['consulta']);
 
 
             <ul class="dropdown-menu">
-              <li class="header"><div id="NOTVNCR"></div></li>
+              <li id="ocuvncr" class="header"><div id="notvencer"></div></li>
+              <li id="ocuvncd" class="header"><div id="notvencdo"></div></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -67,8 +68,8 @@ unset($_SESSION['consulta']);
                     </a>
                   </li> -->
                   <li>
-                    <a href="#">
-                      <div id="confirmar"></div>
+                    <a href="programa" style="text-align: center;">
+                      <b>Programar curso</b>
                     </a>
                   </li>
 <!--                   <li>
