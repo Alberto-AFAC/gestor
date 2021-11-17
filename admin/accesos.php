@@ -123,12 +123,13 @@ include('header.php');
 <select style="width: 100%" class="form-control" class="selectpicker"
 name="privilegios" id="privilegios" type="text" data-live-search="true">
 <option value="0" selected>SELECCIONE...</option>
-<option value="ADMINISTRADOR">ADMINISTRADOR</option>
-<option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
 <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
-<option value="EJECUTIVO">EJECUTIVO</option>
+<option value="ADMINISTRADOR">ADMINISTRADOR</option>
 <option value="DIRECTOR">DIRECTOR</option>
 <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
+<option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+<option value="EJECUTIVO">EJECUTIVO</option>
+<option value="INSTRUCTOR">INSTRUCTOR</option>
 <option value="INSPECTOR">INSPECTOR</option>
 </select>
 </div>
