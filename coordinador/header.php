@@ -50,14 +50,14 @@ unset($_SESSION['consulta']);
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning"><div id="noti"></div></span>
+              <span class="label label-warning"><div id="VENCER"></div></span>
             </a>
 
  <!-- LOGO DE LA AFAC-->
 
 
             <ul class="dropdown-menu">
-              <li class="header"><div id="notif"></div></li>
+              <li class="header"><div id="NOTVNCR"></div></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -163,8 +163,8 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="instructor"><i class="fa ion-document-text"></i> Instructores y Coordinadores</a></li>
+            <li><a href="inspecion"><i class="fa ion-document-text"></i>Lista de inspectores</a></li>
+            <li><a href="instructor"><i class="fa ion-document-text"></i>Instructor y Coordinador</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -179,10 +179,10 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-            <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
-            <li><a href="programa"><i class="fa ion-compose"></i> Programación del Curso</a></li>
-            <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <li><a href="altacurso"><i class="fa ion-ios-plus"></i>Alta de cursos</a></li>
+            <li><a href="conCursos"><i class="fa fa-search"></i>Catálogos de cursos</a></li>
+            <li><a href="programa"><i class="fa ion-compose"></i>Programar Curso</a></li>
+            <li><a href="lisCurso"><i class="fa ion-compose"></i>Cursos Programados</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
             <li><a href="constancias"><i class="fa fa-certificate"></i>Constancias</a></li>
@@ -214,3 +214,4 @@ unset($_SESSION['consulta']);
     </section>
     <!-- /.sidebar -->
   </aside>
+  <script src="../js/status.js"></script>
