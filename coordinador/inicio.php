@@ -33,8 +33,7 @@
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <script src="dist/js/sweetalert2.all.min.js"></script>
-  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+
 
   
 </head>
@@ -300,11 +299,7 @@ include('header.php');
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <script src="../js/status.js"></script>
-    <script src="js/anychart-base.min.js"></script>
-    <script src="js/anychart-ui.min.js"></script>
-    <script src="js/anychart-exports.min.js"></script>
-    <script src="js/anychart-gantt.min.js"></script>
-    <script src="js/anychart-data-adapter.min.js"></script>
+
    
 </body>
 
