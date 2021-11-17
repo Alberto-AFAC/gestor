@@ -592,9 +592,13 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
-<script src="../js/global.js"></script>
 <script src="../js/datos.js"></script>
 <script src="../js/gesInstr.js"></script>
+
+<script src="../js/lisCurso.js"></script>
+    <script src="../js/global.js"></script>
+<script src="../js/datos.js"></script>
+<script type="text/javascript" src="../js/director.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">

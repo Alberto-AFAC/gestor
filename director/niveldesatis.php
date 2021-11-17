@@ -512,6 +512,8 @@ include('header.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
+    <script src="../js/datos.js"></script>
+<script type="text/javascript" src="../js/director.js"></script>
     <!-- page script -->
 
 </body>

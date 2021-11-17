@@ -33,42 +33,6 @@
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <script src="dist/js/sweetalert2.all.min.js"></script>
-  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-
-  <style>
-      #legend {
-      height: 50px;
-      background: #f7f7f7;
-      border-bottom: 1px solid #d6d6d6;
-    }
-
-    .anychart-tooltip {
-      padding: 0;
-      background: white;
-      color: #333;
-      box-shadow: 2px 2px 5px #333;
-      border-radius: 0;
-    }
-
-    .anychart-tooltip-title h5 {
-      background: #455a64;
-      padding: 10px 30px;
-      margin: 0;
-    }
-
-    .anychart-tooltip-title h5.default {
-      color: #fff;
-    }
-
-    .anychart-tooltip hr {
-      margin: 0;
-    }
-
-    .anychart-tooltip .tooltip-content {
-      padding: 0 30px;
-    }
-      </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -337,12 +301,9 @@ include('header.php');
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <script src="../js/status.js"></script>
-    <script src="js/anychart-base.min.js"></script>
-    <script src="js/anychart-ui.min.js"></script>
-    <script src="js/anychart-exports.min.js"></script>
-    <script src="js/anychart-gantt.min.js"></script>
-    <script src="js/anychart-data-adapter.min.js"></script>
-   
+    <script src="../js/global.js"></script>
+<script src="../js/datos.js"></script>
+<script type="text/javascript" src="../js/director.js"></script>
 </body>
 
 </html>

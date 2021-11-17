@@ -153,6 +153,8 @@ $inspector = mysqli_query($conexion,$sql);
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script src="../js/global.js"></script>
+    <script src="../js/datos.js"></script>
+<script type="text/javascript" src="../js/director.js"></script>
     <!-- page script -->
     <script>
     //       // OPTIONS FOR THE GRAPHICS
