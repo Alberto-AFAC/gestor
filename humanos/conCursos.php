@@ -107,7 +107,7 @@
                                                     <th>DOCUMENTO</th>
                                                     <th>VIGENCIA</th>
                                                     <th>TEMARIO</th>
-                                                    <th>ACCIÓN</th>
+                                                    <!-- <th>ACCIÓN</th> -->
                                                 </tr>
                                             </thead>
 
@@ -461,7 +461,6 @@
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label>TEMARIO</label>
-
                                     <input type="file" id="AgstTmrio" name="AgstTmrio"
                                         style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
                                         class="input-file" size="1450">
@@ -549,7 +548,7 @@
                 <div class='modal-body'><div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU REGISTRO FUE ELIMINADO</div><div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">SE ACTUALIZO REGISTRO CON ÉXITO</div>
 
 
-<div id="temario"></div>
+                <div id="temario"></div>
                 </div>
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-primary' data-dismiss='modal'>CERRAR</button>
@@ -633,18 +632,18 @@ $(document).ready(function() {
             [0, "desc"]
         ],
         "ajax": "../php/consdaTable.php",
-        "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<a href='#' title='Editar Curso' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
+//         "columnDefs": [{
+//             "targets": -1,
+//             "data": null,
+//             "defaultContent": "<a href='#' title='Editar Curso' onclick='dato({$gstIdlsc})' type='button' class='btn btn-default' data-toggle='modal' data-target='#modalVal'><i class='fa ion-compose text-info'></i></a>  <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a> <a href='#' type='button' class='temario btn btn-default' data-toggle='modal' onclick='agrtemario({$gstIdlsc})' data-target='#modal-añadir'><i class='fa fa-plus-circle text-info' title='Añadir Temario'></i></a> "
 
 
 
-//<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
+// //<a href='#'  type='button' class='temario btn btn-default' data-toggle='modal' data-target='#modal-temario'><i class='fa fa-trash-o text-danger'></i></a>            
 
 
 
-        }]
+//         }]
     });
 
     detalles("#example tbody", table);
@@ -762,7 +761,7 @@ function temario(gstIdlsc) {
 
 
 
-        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
+        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th>';
 
         var x = 0;
 
@@ -774,7 +773,7 @@ function temario(gstIdlsc) {
                 dato = obj.data[i].idtem+'*'+obj.data[i].idcurso+'*'+obj.data[i].titulo;
 
             x++;               
-        html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td><td><a id='"+obj.data[i].idtem+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='temagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].idtem+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='temact(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";
+        html += "<tr><td>" + x + "</td><td><input class='form-control' id='"+obj.data[i].idtem+"' name='"+obj.data[i].idtem+"' value='"+obj.data[i].titulo+"' disabled></td></tr>";
             }
         }
         html += '</table>';
