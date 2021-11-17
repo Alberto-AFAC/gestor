@@ -5,9 +5,13 @@
 		ini_set('date.timezone','America/Mexico_City');
 
 
- $query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion,gstTipo,DATE_FORMAT(fechaf, '%d-%m-%Y') AS fechaf,gstVignc,evaluacion,idmstr,gstIdlsc,id_curso 
- FROM cursos 
- INNER JOIN listacursos ON idmstr = gstIdlsc WHERE proceso = 'FINALIZADO' GROUP BY codigo";
+ $query = "SELECT *, DATE_FORMAT( cursos.fechaf, '%d/%m/%Y' ) AS final, DATE_FORMAT( cursos.fcurso, '%d/%m/%Y' ) AS inicial, evaluacion, gstTipo, DATE_FORMAT( fechaf, '%d-%m-%Y' ) AS fechaf, gstVignc, evaluacion, idmstr, gstIdlsc, id_curso FROM cursos INNER JOIN listacursos ON idmstr = gstIdlsc WHERE gstVignc != 101 AND proceso = 'FINALIZADO' AND id_curso in (SELECT MAX(id_curso) FROM cursos GROUP BY idmstr) ORDER BY id_curso DESC";
+
+ // "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion,gstTipo,DATE_FORMAT(fechaf, '%d-%m-%Y') AS fechaf,gstVignc,evaluacion,idmstr,gstIdlsc,id_curso 
+ // FROM cursos 
+ // INNER JOIN listacursos ON idmstr = gstIdlsc WHERE proceso = 'FINALIZADO' GROUP BY codigo";
+
+
 // WHERE proceso = 'finalALIZADO' AND confirmar='CONFIRMADO' ORDER BY id_curso DESC";
 
 
