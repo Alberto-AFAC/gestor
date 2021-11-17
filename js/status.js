@@ -84,25 +84,31 @@ $.ajax({
     ttal = obj.data[0].VENCER+obj.data[0].VENCIDO;
 
     $("#VENCIDO").html(obj.data[0].VENCIDO);
-    $("#VENCER").html(ttal);
+    $("#noticurso").html(ttal);
     $("#VIGENTE").html(obj.data[0].VIGENTE);
     //$("#vencer").html(obj.data[0].vencido);
+
+    if(ttal==1){
+    document.getElementById("noticursos").innerHTML = "" + '<b>Tienes ' + ttal + ' notificación.</b>';
+    }else{
+    document.getElementById("noticursos").innerHTML = "" + '<b>Tienes ' + ttal + ' notificaciones.</b>';
+    }
 
     if(obj.data[0].VENCER==0){
         $("#ocuvncr").hide();
     }else if(obj.data[0].VENCER==1){
-    document.getElementById("notvencer").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCER + ' curso por vencer</b>';        
+    document.getElementById("notvencer").innerHTML = "" + '<li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCER + ' curso por vencer';        
     }else{
-    document.getElementById("notvencer").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCER + ' cursos por vencer</b>';        
+    document.getElementById("notvencer").innerHTML = "" + '<li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCER + ' cursos por vencer';        
     }
 
 
     if(obj.data[0].VENCIDO==0){
         $("#ocuvncd").hide();        
     }else if(obj.data[0].VENCIDO==1){
-    document.getElementById("notvencdo").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCIDO + ' curso vencido</b>';        
+    document.getElementById("notvencdo").innerHTML = "" + '<li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCIDO + ' curso vencido';        
     }else{
-    document.getElementById("notvencdo").innerHTML = "" + '<b>Tienes ' + obj.data[0].VENCIDO + ' cursos vencidos</b>';        
+    document.getElementById("notvencdo").innerHTML = "" + '<li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCIDO + ' cursos vencidos';        
     }
 
  //document.getElementById("NOTVCD").innerHTML = "" + '<b>Tiene ' + ttalvncd + ' curso(s) por vencer</b>';

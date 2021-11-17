@@ -28,6 +28,7 @@ unset($_SESSION['consulta']);
 
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<script src="../js/status.js"></script>
   <header class="main-header">
     <!-- Logo -->
     <a href="inicio.php" class="logo">
@@ -47,18 +48,20 @@ unset($_SESSION['consulta']);
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- Notifications: style can be found in dropdown.less -->
+
+
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning"><div id="VENCER"></div></span>
+              <span class="label label-warning"><div id="noticurso"></div></span>
             </a>
 
  <!-- LOGO DE LA AFAC-->
 
 
             <ul class="dropdown-menu">
-              <li id="ocuvncr" class="header"><div id="notvencer"></div></li>
-              <li id="ocuvncd" class="header"><div id="notvencdo"></div></li>
+              <li class="header"><div id="noticursos"></div></li>              
+
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -68,8 +71,9 @@ unset($_SESSION['consulta']);
                     </a>
                   </li> -->
                   <li>
-                    <a href="programa" style="text-align: center;">
-                      <b>Programar curso</b>
+                    <a href="#">
+                      <div id="notvencer"></div>
+                      <div id="notvencdo"></div>  
                     </a>
                   </li>
 <!--                   <li>
@@ -215,4 +219,4 @@ unset($_SESSION['consulta']);
     </section>
     <!-- /.sidebar -->
   </aside>
-  <script src="../js/status.js"></script>
+  
