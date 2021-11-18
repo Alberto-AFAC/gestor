@@ -99,7 +99,7 @@
                                             style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>CÓDIGO DEL CURSO</th>
                                                     <th>TÍTULO</th>
                                                     <th>TIPO</th>
                                                     <th>PERFIL.</th>
