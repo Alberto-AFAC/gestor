@@ -11,7 +11,8 @@ $opcion = $_POST["opcion"];
 $informacion = [];
 
 if($opcion === 'insert'){
-
+	
+$regCurso = $_POST['regCurso'];
 $gstTitlo = $_POST['gstTitlo'];
 $gstTipo= $_POST['gstTipo'];
 $gstVignc = $_POST['gstVignc'];
@@ -25,11 +26,12 @@ $Hfinal=date('H:i:s');
 $gstProvd = $_POST['gstProvd'];
 $gstCntro = $_POST['gstCntro'];
 
+
 // $libro = $_POST['libro'];
 // $numero = $_POST['numero'];
 // $afojas = $_POST['afojas'];
  
-if(cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd
+if(cursos($regCurso,$gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd
 ,$gstCntro,$conexion))
 		{	echo "0";	
 
@@ -124,9 +126,9 @@ function comprobar($gstTitlo,$conexion){
 		$this->conexion->cerrar();	
 	}
 
-function cursos($gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd,
+function cursos($regCurso,$gstTitlo,$gstTipo,$gstVignc,$gstPrfil,$gstTmrio,$gstDrcin,$gstCntnc,$gstObjtv,$gstFalta,$gstProvd,
 $gstCntro,$conexion){
-	$query="INSERT INTO listacursos VALUES(0,'$gstTitlo','$gstTipo','$gstVignc','$gstPrfil','$gstTmrio','$gstDrcin','$gstCntnc','$gstObjtv','$gstFalta','$gstProvd','$gstCntro',0);";
+	$query="INSERT INTO listacursos VALUES(0,'$regCurso','$gstTitlo','$gstTipo','$gstVignc','$gstPrfil','$gstTmrio','$gstDrcin','$gstCntnc','$gstObjtv','$gstFalta','$gstProvd','$gstCntro',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

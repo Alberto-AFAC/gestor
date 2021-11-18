@@ -36,7 +36,7 @@ function conCurso() {
 
 // function dato(gstIdlsc) {
 
-  
+
 //     $.ajax({
 //         url: '../php/conCurso.php',
 //         type: 'POST'
@@ -160,15 +160,15 @@ function agregarMas() {
 
     datos = 'idcurtem=' + idcurtem + '&array=' + array + '&opcion=agretem';
 
-        $.ajax({
-            url: '../php/docCursos.php',
-            type: 'POST',
-            data: datos
-        }).done(function(respuesta) {
-            
-            if(respuesta==2){
+    $.ajax({
+        url: '../php/docCursos.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
 
-         Swal.fire({
+        if (respuesta == 2) {
+
+            Swal.fire({
                 type: 'error',
                 title: '¡ATENCIÓN!',
                 text: 'Verificar campos faltantes',
@@ -178,31 +178,31 @@ function agregarMas() {
 
             });
 
-            }else
-            if (respuesta == 0) {
-                // alert(respuesta);
-                Swal.fire({
-                    type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'GUARDADO CON ÉXITO',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 3000
-                });
-                setTimeout("location.href = 'conCursos.php';", 1500);
+        } else
+        if (respuesta == 0) {
+            // alert(respuesta);
+            Swal.fire({
+                type: 'success',
+                title: 'AFAC INFORMA',
+                text: 'GUARDADO CON ÉXITO',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 3000
+            });
+            setTimeout("location.href = 'conCursos.php';", 1500);
 
-            } else {
-                Swal.fire({
-                    type: 'error',
-                    title: 'OCURRIO UN ERROR',
-                    text: 'Favor de contactar con soporte',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 3000
-                });
-            }
-        });
-  //  }
+        } else {
+            Swal.fire({
+                type: 'error',
+                title: 'OCURRIO UN ERROR',
+                text: 'Favor de contactar con soporte',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 3000
+            });
+        }
+    });
+    //  }
 
 }
 
@@ -245,9 +245,10 @@ function regCurso() {
     var gstCntnc = document.getElementById('gstCntnc').value;
     var gstProvd = document.getElementById('gstProvd').value;
     var gstCntro = document.getElementById('gstCntro').value;
+    var codigoCrso = document.getElementById('codigoCrso').value;
 
-    datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&array=' + array + '&opcion=insert';
-    if (gstPrfil == '' || gstTitlo == '' || gstTipo == '' || gstVignc == '' || gstObjtv == '' || hr == '' || tmp1 == '' || min == '' || tmp2 == '' || gstCntnc == '' || gstProvd == '' || gstCntro == '' || array == '') {
+    datos = 'gstPrfil=' + gstPrfil + '&gstTitlo=' + gstTitlo + '&gstTipo=' + gstTipo + '&gstVignc=' + gstVignc + '&gstObjtv=' + gstObjtv + '&hr=' + hr + '&tmp1=' + tmp1 + '&min=' + min + '&tmp2=' + tmp2 + '&gstCntnc=' + gstCntnc + '&gstProvd=' + gstProvd + '&gstCntro=' + gstCntro + '&codigoCrso=' + codigoCrso + '&array=' + array + '&opcion=insert';
+    if (gstPrfil == '' || gstTitlo == '' || gstTipo == '' || gstVignc == '' || gstObjtv == '' || hr == '' || tmp1 == '' || min == '' || tmp2 == '' || gstCntnc == '' || gstProvd == '' || gstCntro == '' || codigoCrso == '' || array == '') {
         Swal.fire({
             type: 'error',
             title: 'ATENCIÓN!',
@@ -311,7 +312,7 @@ function actCurso() {
 
     var paqueteDeDatos = new FormData();
     //paqueteDeDatos.append('gstPriod', $('#gstPriod').prop('value'));
-     paqueteDeDatos.append('AgstTmrio', AgstTmrio);
+    paqueteDeDatos.append('AgstTmrio', AgstTmrio);
     paqueteDeDatos.append('AgstTitlo', $('#AgstTitlo').prop('value'));
     paqueteDeDatos.append('AgstTipo', $('#AgstTipo').prop('value'));
     paqueteDeDatos.append('AgstVignc', $('#AgstVignc').prop('value'));
