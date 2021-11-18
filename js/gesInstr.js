@@ -326,6 +326,7 @@ function actCurso() {
 
     paqueteDeDatos.append('AgstProvd', $('#AgstProvd').prop('value'));
     paqueteDeDatos.append('AgstCntro', $('#AgstCntro').prop('value'));
+    paqueteDeDatos.append('codigoCrso',$('#codigoCrso').prop('value'));
 
     $.ajax({
         url: '../php/actCursos.php',

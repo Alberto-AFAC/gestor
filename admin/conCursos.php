@@ -99,6 +99,7 @@
                                             style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>CÓDIGO DEL CURSO</th>
                                                     <th>TÍTULO</th>
                                                     <th>TIPO</th>
@@ -366,6 +367,11 @@
                                         id="AgstCntro" name="AgstCntro">
                                 </div>
 
+                                <div class="col-sm-4">
+                                    <label class="label2">CÓDIGO DE CURSO</label>
+                                    <input type="text" onkeyup="mayus(this);" class="form-control"
+                                        id="codigoCrso" name="codigoCrso">
+                                </div>
 
                             </div>
 
