@@ -7,7 +7,7 @@ if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])
 $idp = $_SESSION['usuario']['id_usu'];
 }
 
-if($_POST['AgstProvd']=='' || $_POST['AgstCntro']=='' || $_POST['AgstIdlsc']=='' || $_POST['AgstTitlo']==''|| $_POST['AgstTipo']==''|| $_POST['AgstVignc']==''|| $_POST['AgstObjtv']==''|| $_POST['Ahr']==''|| $_POST['Atmp1']==''|| $_POST['Amin']==''|| $_POST['Atmp2']==''|| $_POST['AgstCntnc']==''){
+if($_POST['codigoCrso']=='' || $_POST['AgstProvd']=='' || $_POST['AgstCntro']=='' || $_POST['AgstIdlsc']=='' || $_POST['AgstTitlo']==''|| $_POST['AgstTipo']==''|| $_POST['AgstVignc']==''|| $_POST['AgstObjtv']==''|| $_POST['Ahr']==''|| $_POST['Atmp1']==''|| $_POST['Amin']==''|| $_POST['Atmp2']==''|| $_POST['AgstCntnc']==''){
 
 	echo "8";
 }else{
@@ -23,12 +23,12 @@ $AgstCntnc = $_POST['AgstCntnc'];
 $AgstObjtv = $_POST['AgstObjtv'];
 $AgstProvd = $_POST['AgstProvd'];
 $AgstCntro = $_POST['AgstCntro'];
-
+$codigoCrso = $_POST['codigoCrso'];
 
 $gstFalta = date('Y').'/'.date('m').'/'.date('d');	
 $Hfinal=date('H:i:s');
 
- if(actCursos($AgstIdlsc,$AgstTitlo,$AgstTipo,$AgstVignc,$AgstPrfil,$AgstTmrio,$AgstDrcin,$AgstCntnc,$AgstObjtv,$AgstProvd,$AgstCntro,$gstFalta,$conexion))
+ if(actCursos($AgstIdlsc,$codigoCrso,$AgstTitlo,$AgstTipo,$AgstVignc,$AgstPrfil,$AgstTmrio,$AgstDrcin,$AgstCntnc,$AgstObjtv,$AgstProvd,$AgstCntro,$gstFalta,$conexion))
 		{	echo "0";	
 
 	$realizo = 'ACTUALIZO CURSO';
@@ -87,12 +87,12 @@ $Hfinal=date('H:i:s');
 // //}else{ echo "7";}
 }
 
-function actCursos($AgstIdlsc,$AgstTitlo,$AgstTipo,$AgstVignc,$AgstPrfil,$AgstTmrio,$AgstDrcin,$AgstCntnc,$AgstObjtv,$AgstProvd,$AgstCntro,$gstFalta,$conexion){
+function actCursos($AgstIdlsc,$codigoCrso,$AgstTitlo,$AgstTipo,$AgstVignc,$AgstPrfil,$AgstTmrio,$AgstDrcin,$AgstCntnc,$AgstObjtv,$AgstProvd,$AgstCntro,$gstFalta,$conexion){
 
 if($AgstPrfil==''){
-$query="UPDATE listacursos SET gstTitlo = '$AgstTitlo',gstTipo='$AgstTipo',gstVignc='$AgstVignc',gstTmrio='$AgstTmrio',gstDrcin='$AgstDrcin',gstCntnc='$AgstCntnc',gstObjtv='$AgstObjtv',gstFalta='$gstFalta',gstProvd='$AgstProvd',gstCntro='$AgstCntro' WHERE gstIdlsc='$AgstIdlsc'";
+$query="UPDATE listacursos SET gstTitlo = '$AgstTitlo',gstTipo='$AgstTipo',gstVignc='$AgstVignc',gstTmrio='$AgstTmrio',gstDrcin='$AgstDrcin',gstCntnc='$AgstCntnc',gstObjtv='$AgstObjtv',gstFalta='$gstFalta',gstProvd='$AgstProvd',gstCntro='$AgstCntro',codigoCrso='$codigoCrso' WHERE gstIdlsc='$AgstIdlsc'";
 }else{
-$query="UPDATE listacursos SET gstTitlo = '$AgstTitlo',gstTipo='$AgstTipo',gstVignc='$AgstVignc',gstPrfil='$AgstPrfil',gstTmrio='$AgstTmrio',gstDrcin='$AgstDrcin',gstCntnc='$AgstCntnc',gstObjtv='$AgstObjtv',gstFalta='$gstFalta',gstProvd='$AgstProvd',gstCntro='$AgstCntro' WHERE gstIdlsc='$AgstIdlsc'";	
+$query="UPDATE listacursos SET gstTitlo = '$AgstTitlo',gstTipo='$AgstTipo',gstVignc='$AgstVignc',gstPrfil='$AgstPrfil',gstTmrio='$AgstTmrio',gstDrcin='$AgstDrcin',gstCntnc='$AgstCntnc',gstObjtv='$AgstObjtv',gstFalta='$gstFalta',gstProvd='$AgstProvd',gstCntro='$AgstCntro',codigoCrso='$codigoCrso' WHERE gstIdlsc='$AgstIdlsc'";	
 }
 
 		if(mysqli_query($conexion,$query)){
