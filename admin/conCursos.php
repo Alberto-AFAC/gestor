@@ -703,7 +703,8 @@ $(document).ready(function() {
                 obj.data[i].gstObjtv + '*' +
                 obj.data[i].gstTmrio + '*' + 
                 obj.data[i].gstProvd + '*' + 
-                obj.data[i].gstCntro;                  
+                obj.data[i].gstCntro + '*' +
+                obj.data[i].codigoCrso;                  
 
                     var d = datos.split("*");      
                      $("#modalVal #AgstCntro").val(d[10]);            
@@ -726,7 +727,7 @@ $(document).ready(function() {
                     $("#modalVal #AgstTmrio").val(d[8]);
                     $("#modalUpdate #AgstTmrio").val(d[8]);
                     $("#modalVal #AgstProvd").val(d[9]);
-                   
+                    $("#modalVal #codigoCrso").val(d[11]);
                 }
             }
         })
