@@ -12,7 +12,6 @@ $informacion = [];
 
 if($opcion === 'insert'){
 	
-$regCurso = $_POST['regCurso'];
 $gstTitlo = $_POST['gstTitlo'];
 $gstTipo= $_POST['gstTipo'];
 $gstVignc = $_POST['gstVignc'];
@@ -25,7 +24,7 @@ $gstFalta = date('Y').'/'.date('m').'/'.date('d');
 $Hfinal=date('H:i:s');
 $gstProvd = $_POST['gstProvd'];
 $gstCntro = $_POST['gstCntro'];
-
+$regCurso = $_POST['codigoCrso'];
 
 // $libro = $_POST['libro'];
 // $numero = $_POST['numero'];
