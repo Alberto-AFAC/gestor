@@ -53,8 +53,9 @@ if($opcion === 'registrar'){
 	$gstIDara = $_POST['gstIDara'];
 	$gstAcReg = $_POST['gstAcReg'];
 	$gstIDuni = $_POST['gstIDuni'];
+	$gstSexo = $_POST['gstSexo'];
 	
-	if(registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion)){
+	if(registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion)){
 		echo "0";
 
 		historial($id,$conexion);
@@ -94,8 +95,9 @@ if($opcion === 'registrar'){
 	$gstCorro = $_POST['gstCorro']; // correo 1 "23092021"
     $gstCinst = $_POST['gstCinst']; //correo 2 
 	$gstSpcID = $_POST['gstSpcID']; //correo 3 
+	$gstSexo = $_POST['gstSexo'];
 
-	if(actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion)){
+	if(actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion)){
 		echo "0";
 		
 		$realizo = 'ACTUALIZO DAT. PERSONALES';
@@ -142,8 +144,8 @@ if($opcion === 'registrar'){
      $gstCargo = $_POST['gstCargo']; //cargo
      $gstIDCat = $_POST['gstIDCat']; //categoria
      $gstIDSub = $_POST['gstIDSub']; //subcategoria
-     $gstCorro = $_POST['gstCorro']; // correo personal "QUITAR"
-     $gstCinst = $_POST['gstCinst']; //correo institicuonal "QUITAR"
+    // $gstCorro = $_POST['gstCorro']; // correo personal "QUITAR"
+    // $gstCinst = $_POST['gstCinst']; //correo institicuonal "QUITAR"
      $gstFeing = $_POST['gstFeing']; // fecha de ingreso 
      $gstIDuni = $_POST['gstIDuni']; //unidad adminisgtrativa
 	 $gstAreID = $_POST['gstAreID']; //area
@@ -154,7 +156,7 @@ if($opcion === 'registrar'){
 	 $gstNucrt = $_POST['gstNucrt']; //ubicacion de la persona 
 	 $gstSigID = $_POST['gstSigID']; //estatus	 
 
-	if(actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$gstSigID,$conexion))
+	if(actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$gstSigID,$conexion))
 		{	echo "0";	
 			$realizo = 'ACTUALIZO DAT. DEL PUESTO';
 			$gstIdper = $pstIdper;
@@ -191,9 +193,9 @@ $resultado= mysqli_query($conexion,$query);
 		$this->conexion->cerrar();
 }
 
-function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion){
+function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstNucrt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstNmpld,$gstIdpst,$gstAreID,$gstPstID,$gstSpcID,$gstSigID,$gstCargo,$gstIDCat,$gstIDSub,$gstCorro,$gstCinst,$gstFeing,$gstIDara,$gstAcReg,$gstIDuni,$conexion){
 
-			$query="INSERT INTO personal VALUES(0,'$gstNombr','$gstApell','$gstLunac','$gstFenac','$gstStcvl','$gstCurp','$gstRfc','$gstNpspr','$gstPsvig','$gstVisa','$gstVignt','$gstNucrt','$gstCalle','$gstNumro','$gstClnia','$gstCpstl','$gstCiuda','$gstStado','$gstCasa','$gstClulr','$gstExTel','$gstNmpld','$gstIdpst','$gstAreID','$gstPstID','$gstSpcID','$gstSigID','$gstCargo','$gstIDCat','$gstIDSub','$gstCorro','$gstCinst','$gstFeing','$gstFeing','$gstIDara','$gstAcReg','$gstIDuni','NO','',0)";
+			$query="INSERT INTO personal VALUES(0,'$gstNombr','$gstApell','$gstLunac','$gstFenac','$gstSexo','$gstStcvl','$gstCurp','$gstRfc','$gstNpspr','$gstPsvig','$gstVisa','$gstVignt','$gstNucrt','$gstCalle','$gstNumro','$gstClnia','$gstCpstl','$gstCiuda','$gstStado','$gstCasa','$gstClulr','$gstExTel','$gstNmpld','$gstIdpst','$gstAreID','$gstPstID','$gstSpcID','$gstSigID','$gstCargo','$gstIDCat','$gstIDSub','$gstCorro','$gstCinst','$gstFeing','$gstFeing','$gstIDara','$gstAcReg','$gstIDuni','NO','',0)";
 				if(mysqli_query($conexion,$query)){
 					return true;
 				}else{
@@ -203,9 +205,9 @@ function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$g
 				}
 
 
-function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion){
+function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstSpcID,$conexion){
 
-	$query = "UPDATE personal SET gstNombr = '$gstNombr',gstApell = '$gstApell',gstLunac = '$gstLunac',gstFenac = '$gstFenac',gstStcvl = '$gstStcvl',gstCurp  = '$gstCurp',gstRfc = '$gstRfc',gstNpspr = '$gstNpspr',gstPsvig = '$gstPsvig',gstVisa = '$gstVisa',gstVignt = '$gstVignt',gstCalle = '$gstCalle',gstNumro = '$gstNumro',gstClnia = '$gstClnia',gstCpstl = '$gstCpstl',gstCiuda = '$gstCiuda',gstStado = '$gstStado',gstCasa = '$gstCasa',gstClulr = '$gstClulr',gstExTel = '$gstExTel',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstSpcID = '$gstSpcID' WHERE gstIdper = '$gstIdper'";
+	$query = "UPDATE personal SET gstNombr = '$gstNombr',gstApell = '$gstApell',gstLunac = '$gstLunac',gstFenac = '$gstFenac',gstSexo = '$gstSexo',gstStcvl = '$gstStcvl',gstCurp  = '$gstCurp',gstRfc = '$gstRfc',gstNpspr = '$gstNpspr',gstPsvig = '$gstPsvig',gstVisa = '$gstVisa',gstVignt = '$gstVignt',gstCalle = '$gstCalle',gstNumro = '$gstNumro',gstClnia = '$gstClnia',gstCpstl = '$gstCpstl',gstCiuda = '$gstCiuda',gstStado = '$gstStado',gstCasa = '$gstCasa',gstClulr = '$gstClulr',gstExTel = '$gstExTel',gstSpcID = '$gstSpcID' WHERE gstIdper = '$gstIdper'";
 	if(mysqli_query($conexion,$query)){
 
 		return true;
@@ -266,7 +268,7 @@ function actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,
 
 function actPrsonl($pstIdper,$gstNmpld,$gstIdpst,$gstCargo,$gstIDCat,$gstIDSub,$gstIDara,$gstAreID,$gstPstID,$gstSpcID,$gstCorro,$gstCinst,$gstFeing,$gstIDuni,$gstAcReg,$gstNucrt,$gstSigID,$conexion){
 
-	$query = "UPDATE personal SET gstNmpld = '$gstNmpld',gstIdpst = '$gstIdpst',gstCargo = '$gstCargo',gstIDCat = '$gstIDCat',gstIDSub = '$gstIDSub',gstIDara='$gstIDara',gstAreID='$gstAreID',gstPstID='$gstPstID',gstSpcID='$gstSpcID',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstFeing = '$gstFeing',gstIDuni = '$gstIDuni', gstAcReg = '$gstAcReg',gstNucrt='$gstNucrt',gstSigID='$gstSigID' WHERE gstIdper = '$pstIdper'";
+	$query = "UPDATE personal SET gstNmpld = '$gstNmpld',gstIdpst = '$gstIdpst',gstCargo = '$gstCargo',gstIDCat = '$gstIDCat',gstIDSub = '$gstIDSub',gstIDara='$gstIDara',gstAreID='$gstAreID',gstPstID='$gstPstID',gstSpcID='$gstSpcID',gstCorro = '$gstCorro',gstCinst = '$gstCinst',gstFeing = '$gstFeing',gstIDuni = '$gstIDuni', gstAcReg = '$gstAcReg',gstNucrt = '$gstNucrt',gstSigID = '$gstSigID' WHERE gstIdper = '$pstIdper'";
 	if(mysqli_query($conexion,$query)){
 
 		return true;

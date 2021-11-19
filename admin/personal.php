@@ -172,10 +172,11 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="date" class="form-control inputalta" id="gstFenac" name="gstFenac" >
                     </div>
 
+
                     <div class="col-sm-4">
                       <label class="label2">SEXO</label>
                       <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo">
-                          <option value="">ELIJA SEXO</option>
+                          <option value="">ELEJIR SEXO</option>
                          <option value="MUJER">MUJER</option>
                          <option value="HOMBRE">HOMBRE</option>
                       </select>
@@ -194,10 +195,11 @@ $psto = mysqli_query($conexion,$sql);
 
                 </div>
                 <div class="form-group">
-
                     <div class="col-sm-4">
                        <label class="label2">CURP</label>
+      
                        <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
+
                     </div>
 
                     <div class="col-sm-4">
@@ -210,13 +212,15 @@ $psto = mysqli_query($conexion,$sql);
                        <label class="label2">PASAPORTE NO.</label>
                        <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstNpspr" name="gstNpspr">
                     </div>
+
                 </div>
                 <div class="form-group">
+
                     <div class="col-sm-4">
                        <label class="label2">PASAPORTE VIGENCIA</label>
                        <input type="date" class="form-control inputalta" id="gstPsvig" name="gstPsvig">
                     </div>
-
+                                      
                     <div class="col-sm-4">
                        <label class="label2">VISA PAIS</label>
                        <input type="text" class="form-control inputalta" id="gstVisa" name="gstVisa">
@@ -423,7 +427,7 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="date" class="form-control inputalta" id="gstFeing" name="gstFeing">
                     </div>  
                     <div class="col-sm-5">
-                    <label class="label2">OBSERVACIONES</label>
+                    <label class="label2">ESTATUS ALTA PERSONAL</label>
                     <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
                     </div>  
                     </div>
