@@ -69,7 +69,7 @@
          <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/perfil.png" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
+              <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
             </a>
             <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
               <!-- User image -->
