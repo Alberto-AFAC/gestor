@@ -197,8 +197,8 @@
     <option value="0">Seleccione...</option>
     <?php while($data = mysqli_fetch_row($cursos)):?>
     <option value="<?php echo $data[0]?>">
-    <?php echo $data[1]?> -
-    <?php echo $data[2]?></option>
+    <?php echo $data[2]?> -
+    <?php echo $data[3]?></option>
     <?php endwhile; ?>  
     </select>
     </p>
