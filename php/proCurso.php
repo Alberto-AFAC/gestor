@@ -24,7 +24,7 @@ $sede = $_POST['sede'];
 $link = $_POST['link'];
 $contracceso = $_POST['contracceso'];
 $modalidad = $_POST['modalidad'];
-$classroom = $_POST['classroom'];
+$classroom = $_POST['classromcur'];
 
 
 $id = $_POST['idinsps'].','.$idinst;
@@ -76,7 +76,7 @@ $modalidad = $_POST['modalidad'];
 $idinsps= $_POST['idinsp'];
 $codigo = $_POST['acodigos'];
 $contracceso = $_POST['contracur'];
-$classroom = $_POST['classroom'];
+$classroom = $_POST['classromcur'];
 
 
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
@@ -149,8 +149,9 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 	$modalidads = $_POST['modalidads'];
 	$linkcur = $_POST['linkcur'];
 	$contracur = $_POST['contracur'];
+	$classromcur = $_POST['classromcur'];
 
-	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$conexion))
+	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$conexion))
 	{	
 		echo "0";		
 		$realizo = 'ACTUALIZO CURSO FOLIO: '.$codigo;
@@ -256,7 +257,7 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 	}
 
-	function cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$conexion){
+	function cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$conexion){
 
 	$query="UPDATE cursos 
 			SET 
@@ -267,6 +268,7 @@ function finalizac($codigo,$conexion){
 			modalidad='$modalidads',
 			link='$linkcur',
 			contracur='$contracur' 
+			classroom='$classromcur',
 			WHERE codigo='$codigo'";
 		if(mysqli_query($conexion,$query)){
 			return true;
@@ -288,53 +290,6 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
-// fin actualia evaluación el curso
-function enviarCorreo($idinsps,$id_mstr,$hcurso,$fcurso,$fechaf,$idinst,$sede,$modalidad,$link, $conexion){
-						$query = "SELECT gstNombr,gstApell,gstCinst, gstCorro, gstTipo, modalidad, gstCargo, link, fcurso FROM personal INNER JOIN cursos	ON cursos.idinsp = personal.gstIdper
-					INNER JOIN listacursos ON cursos.idmstr = listacursos.gstIdlsc WHERE personal.gstIdper = $idinsps AND cursos.estado = 0";
-		$resultado= mysqli_query($conexion,$query);
-		$fila = mysqli_fetch_assoc($resultado);
-
-		$nombre = $fila['gstNombr'];
-		$correo = $fila['gstCorro'];
-		$link = $fila['link'];
-		$modalidad = $fila['modalidad'];	
-		$tipoCurso = $fila['gstTipo'];	
-		$cargo = $fila['gstCargo'];
-		$apellido = $fila['gstApell'];
-		$fcurso   = date("d-m-Y");
-		
-		
-		$mail = new PHPMailer();
-		$mail->IsSMTP();
-		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = "tls";
-		$mail->CharSet = "Content-Type: text/html; charset=utf-8";
-		$mail->Host = "smtp.gmail.com";
-		$mail->Port = 587;
-		$mail->Username ='jmondragonescamilla@gmail.com';
-		$mail->Password = 'ELVIS_wolf97';
-
-		$mail->AddAddress('jmondragonescamilla@gmail.com');
-		$mail->Subject = "NUEVO CURSO PROGRAMADO";
-		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-			<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>INSCRITO CON EXITO!</span></td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$idinsps."</td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Nombre del participante: ".$nombre." ".$apellido."</td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Tipo de curso: ".$tipoCurso."</td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: ".$fcurso."</td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$hcurso." Hrs</td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Cargo: ".$cargo."</td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$sede."</td></tr>
-			<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$modalidad."</td></tr>
-			<hr><center>
-			<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
-			</center><hr>
-			</table>";
-		$mail->MsgHTML($msg);
-		$mail->send();
-}
-
 
 	function historiCur($idp,$realizo,$id_mstr,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
@@ -366,6 +321,4 @@ function cerrar($conexion){
 	mysqli_close($conexion);
 
 }
-?> 
-
-
+?>
