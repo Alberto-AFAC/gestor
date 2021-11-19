@@ -2,7 +2,7 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "COORDINADOR"){
+        if($_SESSION['usuario']['privilegios'] != "INSTRUCTOR"){
             //y se redirecciona al directorio que le corresponde
             header("Location: ../../");
             }
@@ -27,7 +27,7 @@ unset($_SESSION['consulta']);
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <header class="main-header">
     <!-- Logo -->
-    <a href="../inicio.php" class="logo">
+    <a href="../inicio" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
@@ -153,7 +153,7 @@ unset($_SESSION['consulta']);
         </li>-->
 
         <li class="active">
-          <a href="../inicio.php">
+          <a href="../inicio">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
@@ -168,8 +168,8 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../inspecion.php"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
-            <li><a href="../instructor.php"><i class="fa ion-document-text"></i> Instructores y Coordinadores</a></li>
+            <li><a href="../inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+            <li><a href="../instructor"><i class="fa ion-document-text"></i> Instructores y Coordinadores</a></li>
             <!--<li><a href="../"><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href="../"><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
