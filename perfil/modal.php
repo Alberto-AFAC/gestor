@@ -69,6 +69,17 @@
 <td><div id="sede"></div></td>
 <td><div id="modalidad"></div></td>
 </tr>
+<tr>
+<th id="ocul1">LINK</th>
+<th id="ocul2">CONTRASEÑA</th>
+<th id="ocul3">CLASSROOM</th>
+</tr>
+<tr>
+<td><div id="link"></td>
+<td><div id="contracur"></div></td>
+<td><div id="classroom"></div></td>
+</tr>
+
 </table>
 
 

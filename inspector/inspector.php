@@ -2045,7 +2045,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                     </div>
                                 </form>
                                 <script type="text/javascript" src="../js/encuestadatos.js"></script>
-                                <?php include('modal.php');?>
+                                <?php include('../perfil/modal.php');?>
                                 <!-- /.tab-pane -->
                             </div>
                         </div>

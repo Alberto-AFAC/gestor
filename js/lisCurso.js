@@ -250,25 +250,6 @@ function closeCurso() {
 
 }
 
-// function agrPart(cursos) {
-//     var d = cursos.split("*");
-
-//     $("#Prtcpnt #gstIdlsc").val(d[0]);
-//     $("#Prtcpnt #gstTitlo").val(d[1]);
-//     $("#Prtcpnt #finicio").val(d[9]);
-//     $("#Prtcpnt #gstDrcin").val(d[5]);
-
-//     $("#Prtcpnt #hrcurs").val(d[8]);
-//     $("#Prtcpnt #finalf").val(d[10]);
-//     //Solo ID coordinadores 
-//     $("#Prtcpnt #idcord").val(d[11]);
-//     $("#Prtcpnt #sede").val(d[12]);
-//     $("#Prtcpnt #linke").val(d[13]);
-//     $("#Prtcpnt #modalidad").val(d[1]);
-
-// }
-
-
 function agrPartc() {
 
     idinsp = document.getElementById('idinsp').value;

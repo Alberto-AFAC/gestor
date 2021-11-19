@@ -10,41 +10,14 @@
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
             header('Location: ../');
         }
-   $id = $_SESSION['usuario']['id_usu'];
-      $sql = 
-       "SELECT gstIdper,gstAreID,gstNombr,gstApell,gstCargo FROM personal 
-      INNER JOIN accesos ON id_usu = gstIdper
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
 
-      $persona = mysqli_query($conexion,$sql);
-      $datos = mysqli_fetch_row($persona);
-      $datos[1];
-      $datos[2];
-      $datos[3];
+    $id = $_SESSION['usuario']['id_usu'];
+    $usu = $_SESSION['usuario']['usuario'];
+    $pass = $_SESSION['usuario']['password'];
 
-//session_start(); 
+    include("../perfil/index.php");
 
-      $sqli = 
-     "SELECT gstInstt,gstMpres FROM personal 
-       INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
-      INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
-      ";
-
-      $persona = mysqli_query($conexion,$sql);
-      $datos = mysqli_fetch_row($persona);
-
-  
-  if (!empty($dato[4]) || !empty($dato[5])) {
-      $dato[4];
-      $dato[5];
-  }else{
-      $dato[4]="";
-      $dato[5]="";
-  }
-
-
-unset($_SESSION['consulta']);
+  unset($_SESSION['consulta']);
 
 ?>
 

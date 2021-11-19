@@ -20,38 +20,12 @@
 // $datos = mysqli_fetch_row($persona);
 
 
+      $id = $_SESSION['usuario']['id_usu'];
+      $usu = $_SESSION['usuario']['usuario'];
+      $pass = $_SESSION['usuario']['password'];
 
-     $id = $_SESSION['usuario']['id_usu'];
+      include("../perfil/index.php");
 
-
-      $sql = 
-     "SELECT personal.gstIdper,gstAreID,gstNombr,gstApell,gstCargo,gstNmpld FROM personal 
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
-    $persona = mysqli_query($conexion,$sql);
-    $datos = mysqli_fetch_row($persona);
-
-      $datos[1];
-      $datos[2];
-      $datos[3];
-
-      $sqli = 
-     "SELECT gstInstt,gstMpres FROM personal 
-       INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
-      INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
-      ";
-
-      $persona = mysqli_query($conexion,$sql);
-      $datos = mysqli_fetch_row($persona);
-
-  
-  if (!empty($dato[4]) || !empty($dato[5])) {
-      $dato[4];
-      $dato[5];
-  }else{
-      $dato[4]="";
-      $dato[5]="";
-  }
 ?>
 
 <link rel="stylesheet" type="text/css" href="../css/style.css">
