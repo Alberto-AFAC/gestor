@@ -27,7 +27,7 @@ unset($_SESSION['consulta']);
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <header class="main-header">
     <!-- Logo -->
-    <a href="../humanos.php" class="logo">
+    <a href="../humanos" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
@@ -175,8 +175,8 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../personal.php"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
-            <li><a href="../persona.php"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+            <li><a href="../personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
+            <li><a href="../persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
           
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
@@ -203,7 +203,7 @@ unset($_SESSION['consulta']);
         <!--  -->
         <!-- -->
         <li>
-          <a href="calendar.php">
+          <a href="calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"></small>

@@ -427,7 +427,7 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="date" class="form-control inputalta" id="gstFeing" name="gstFeing">
                     </div>  
                     <div class="col-sm-5">
-                    <label class="label2">ESTATUS ALTA PERSONAL</label>
+                    <label class="label2">OBSERVACIONES</label>
                     <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
                     </div>  
                     </div>
