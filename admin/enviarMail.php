@@ -51,7 +51,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 				<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$curso['sede']." </td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$curso['modalidad']."</td></tr>
 				<hr><center>
-				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: ESTE CORREO ES DE PRUEBA, POR FAVOR IGNORARLO.</h2>
+				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: NO RESPONDER, ESTE CORREO SE GENERA AUTOMATICAMENTE.</h2>
 				</center><hr>
 				</table>";
 			$mail->MsgHTML($msg);
@@ -60,35 +60,6 @@ if (!$mail->send()) {
 } else {
     echo 'The email message was sent.';
 }
-
-// SE GENERA SIN PHP MAILER
-    // ini_set( 'display_errors', 1 );
-    // error_reporting( E_ALL );
-    // $from = "notificaciones@afac-avciv.com";
-    // $to = "jmondragonescamilla@gmail.com";
-    // $subject = "Pruebas de correo";
-    // $message = '<html><body>';
-	// $message .= '<center><img src="https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png" width="320px;" alt="imagen de cabezera" disabled></center><table width="100%"><br>';
-	// $message .= '<tr><td bgcolor="#00A7B5" align="center"><span style="font-size: 19px; color: white">'.$curso[0].'</span></td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Folio: '.$curso[1].'</td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Nombre del participante: '.$curso[2].'</td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Tipo de curso: '.$curso[3].'</td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Fecha Inicio: '.$curso[5].'</td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Hora: '.$curso[6].'</td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Cargo: '.$curso[7].' </td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Sede del curso: '.$curso[8].' </td></tr>';
-	// $message .= '<tr><td style="text-align: center; font-size: 15px;">Modalidad: '.$curso[9].'</td></tr>';
-	// $message .= "</body></html>";
-    // $headers = "From:" . $from;
-    // $headers .= "MIME-Version: 1.0\r\n";
-	// $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-    //  if (mail($to, $subject, $message, $headers)) {
-    //           echo 'El mensaje ha sido enviado con exito.';
-    //         } else {
-    //           echo 'El mensaje falló.';
-    //         }
-            
     }
  ?>
   
