@@ -318,6 +318,16 @@ $psto = mysqli_query($conexion,$sql);
                                 <label>FECHA DE NACIMIENTO</label>
                                 <input type="date" disabled="" class="form-control" id="gstFenac" name="gstFenac">
                             </div>
+
+                            <div class="col-sm-4">
+                              <label class="label2">SEXO</label>
+                              <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo" disabled="">
+                                  <option value="">ELEJIR SEXO</option>
+                                 <option value="MUJER">MUJER</option>
+                                 <option value="HOMBRE">HOMBRE</option>
+                              </select>
+                            </div>
+
                             <div class="col-sm-4">
                                 <label>ESTADO CIVIL</label>
                                 <select type="text" disabled="" class="form-control" id="gstStcvl" name="gstStcvl">
@@ -326,14 +336,15 @@ $psto = mysqli_query($conexion,$sql);
                                     <option value="SOLTERO">SOLTERO</option>
                                 </select>
                             </div>
+
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-sm-4">
                                 <label>CURP</label>
                                 <input type="tex" disabled="" style="text-transform:uppercase;" class="form-control"
                                     id="gstCurp" name="gstCurp">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
+                            </div>                            
                             <div class="col-sm-4">
                                 <label>RFC</label>
                                 <input type="tex" disabled="" style="text-transform:uppercase;" class="form-control"
@@ -346,13 +357,14 @@ $psto = mysqli_query($conexion,$sql);
                                     id="gstNpspr" name="gstNpspr">
                             </div>
 
+
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-sm-4">
                                 <label>PASAPORTE VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstPsvig" name="gstPsvig">
                             </div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-sm-4">
                                 <label>VISA PAIS</label>
                                 <input type="text" disabled="" class="form-control" id="gstVisa" name="gstVisa">

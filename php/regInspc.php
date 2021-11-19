@@ -97,6 +97,7 @@ if($opcion === 'registrar'){
 	$gstSpcID = $_POST['gstSpcID']; //correo 3 
 	$gstSexo = $_POST['gstSexo'];
 
+
 	if(actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion)){
 		echo "0";
 		
@@ -205,9 +206,9 @@ function registrar($gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$g
 				}
 
 
-function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstSpcID,$conexion){
+function actualizar($gstIdper,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$gstCorro,$gstCinst,$gstSpcID,$conexion){
 
-	$query = "UPDATE personal SET gstNombr = '$gstNombr',gstApell = '$gstApell',gstLunac = '$gstLunac',gstFenac = '$gstFenac',gstSexo = '$gstSexo',gstStcvl = '$gstStcvl',gstCurp  = '$gstCurp',gstRfc = '$gstRfc',gstNpspr = '$gstNpspr',gstPsvig = '$gstPsvig',gstVisa = '$gstVisa',gstVignt = '$gstVignt',gstCalle = '$gstCalle',gstNumro = '$gstNumro',gstClnia = '$gstClnia',gstCpstl = '$gstCpstl',gstCiuda = '$gstCiuda',gstStado = '$gstStado',gstCasa = '$gstCasa',gstClulr = '$gstClulr',gstExTel = '$gstExTel',gstSpcID = '$gstSpcID' WHERE gstIdper = '$gstIdper'";
+	$query = "UPDATE personal SET gstNombr = '$gstNombr',gstApell = '$gstApell',gstLunac = '$gstLunac',gstFenac = '$gstFenac',gstSexo = '$gstSexo',gstStcvl = '$gstStcvl',gstCurp  = '$gstCurp',gstRfc = '$gstRfc',gstNpspr = '$gstNpspr',gstPsvig = '$gstPsvig',gstVisa = '$gstVisa',gstVignt = '$gstVignt',gstCalle = '$gstCalle',gstNumro = '$gstNumro',gstClnia = '$gstClnia',gstCpstl = '$gstCpstl',gstCiuda = '$gstCiuda',gstStado = '$gstStado',gstCasa = '$gstCasa',gstClulr = '$gstClulr',gstExTel = '$gstExTel',gstSpcID = '$gstSpcID',gstCorro = '$gstCorro',gstCinst = '$gstCinst' WHERE gstIdper = '$gstIdper'";
 	if(mysqli_query($conexion,$query)){
 
 		return true;

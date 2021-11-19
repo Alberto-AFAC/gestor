@@ -462,6 +462,8 @@ function asignacion(gstIdper) {
 
 //////////////DATOS DEL PERSONAL LISTA DE PERSONAS//////////// 
 function perfil(gstIdper) {
+
+ 
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
@@ -597,6 +599,7 @@ function perfil(gstIdper) {
                             $("#Dtall #gstApell").val(obj.data[i].gstApell);
                             $("#Dtall #gstLunac").val(obj.data[i].gstLunac);
                             $("#Dtall #gstFenac").val(obj.data[i].gstFenac);
+                            $("#Dtall #gstSexo").val(obj.data[i].gstSexo);
                             $("#Dtall #gstStcvl").val(obj.data[i].gstStcvl);
                             $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
                             $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
@@ -1469,6 +1472,7 @@ function actualOjt() {
 
 function inspector(gstIdper) {
 
+
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
@@ -1544,6 +1548,9 @@ function inspector(gstIdper) {
                             $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
                             $("#Dtall #gstVignt").val(obj.data[i].gstVignt);
 
+                            $("#Dtall #gstCorro").val(obj.data[i].gstCorro); // correo 1
+                            $("#Dtall #gstCinst").val(obj.data[i].gstCinst); // correo 2
+                            $("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); // correo 3
                             //$("#Dtall #gstNucrt").val(obj.data[i].gstNucrt);
                             $("#Dtall #gstCalle").val(obj.data[i].gstCalle);
                             $("#Dtall #gstNumro").val(obj.data[i].gstNumro);
@@ -2760,7 +2767,7 @@ function actDatos() {
 
     datos = 'gstIdper=' + gstIdper + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstSexo=' + gstSexo + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstSpcID=' + gstSpcID + '&opcion=actualizar'
 
-
+    alert(datos);
 
     if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstSexo == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '') {
 
