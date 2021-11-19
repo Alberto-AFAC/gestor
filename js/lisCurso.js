@@ -283,8 +283,9 @@ function agrPartc() {
     link = document.getElementById('linke').value;
     acodigos = document.getElementById('acodigos').value;
     contracur = document.getElementById('contracur').value;
+    classroom = document.getElementById('classroome').value;
 
-    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&opcion=participante';
+    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&classroom=' + classroom + '&opcion=participante';
     //alert(datos);
     if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '') {
 
@@ -369,11 +370,11 @@ function canCurso() {
 }
 ////////////ELIMINAR INSPECTOR////////////////
 
-function elInspt(){
+function elInspt() {
 
-idInsp = document.getElementById('idInspt').value;
-codInsp = document.getElementById('codInsp').value;    
-    
+    idInsp = document.getElementById('idInspt').value;
+    codInsp = document.getElementById('codInsp').value;
+
     if (codInsp == '' || idInsp == '') {
 
         $('#emptyy1').toggle('toggle');
@@ -992,6 +993,8 @@ function editcurso() {
     document.getElementById('modalidads').disabled = false;
     document.getElementById('linkcur').disabled = false;
     document.getElementById('contracur').disabled = false;
+    document.getElementById('classromcur').disabled = false;
+
 }
 
 //FIN DE LA EDICIÓN DEL CURSO
@@ -1010,6 +1013,8 @@ function cereditcurso() {
     document.getElementById('modalidads').disabled = true;
     document.getElementById('linkcur').disabled = true;
     document.getElementById('contracur').disabled = true;
+    document.getElementById('classromcur').disabled = true;
+
 }
 
 //ACTUALIZACIÓN DE LA EVALUACIÓN INSPECTOR  Y ACEPTAR
@@ -1285,12 +1290,14 @@ function cursoAct() {
     if (modalidads == 'PRESENCIAL') {
         var linkcur = '0';
         var contracur = '0';
+        var classromcur = '0';
     } else {
         var linkcur = document.getElementById('linkcur').value;
         var contracur = document.getElementById('contracur').value;
+        var classromcur = document.getElementById('classromcur').value;
     }
 
-    datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&opcion=cursoAct';
+    datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&classromcur=' + classromcur + '&opcion=cursoAct';
 
     if (codigo == '' || fcurso == '' || hcurso == '' || fechaf == '' || sede == '' || modalidads == '' || linkcur == '' || contracur == '') {
 
