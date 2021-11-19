@@ -179,7 +179,7 @@
                       <div class="modal-body">
                         <span id="add_field" style="color: green;font-size: 20px;cursor: pointer;" class="fa fa-plus-square"></span>
                       <div id="listas">
-                          <div><input class="form-control" placeholder="Ingresa tema" type="text" name="campo[]"></div>
+                          <div><input class="form-control" onkeyup="mayus(this);" placeholder="INGRESA TEMA" type="text" name="campo[]"></div>
                       </div>
                       </div>
                       <div class="modal-footer">
@@ -887,7 +887,7 @@ var campos_max = 30;
                 e.preventDefault();    //chups
                 if (x < campos_max) {
                         $('#listas').append('<div>\
-                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <br><input style="text-transform: uppercase; "placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
                                 <a href="#" style="color: red; font-size:20px; cursor:pointer;" class="remover_campo"><span class="fa fa-minus-square"></span></a>\
                                 </div>');
                         x++;
