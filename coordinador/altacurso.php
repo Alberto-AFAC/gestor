@@ -116,7 +116,7 @@ include ("../conexion/conexion.php");
 
                                                 <link rel="stylesheet" type="text/css" href="advanced.php">
 
-                                                <div class="col-md-4">
+                                                <div style="text-transform: uppercase;" class="col-md-4">
                                                     <label>PERFIL A QUIEN VA DIRIGIDO</label>
                                                     <select multiple="multiple"
                                                         data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
@@ -267,8 +267,8 @@ include ("../conexion/conexion.php");
                                                         </div>
                                                         <div class="modal-body">
                                                             <div id="listas">
-                                                                <div><input class="form-control"
-                                                                        placeholder="Ingresa tema" type="text"
+                                                                <div><input onkeyup="mayus(this);" class="form-control"
+                                                                        placeholder="INGRESA TEMA" type="text"
                                                                         name="campo[]"></div><span id="add_field"
                                                                     style="color: blue;">Añadir</span>
                                                             </div>

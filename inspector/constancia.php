@@ -11,7 +11,8 @@ $tamanio = 5;
 $level = 'H';
 $frameSize = 1;
 // $contenido = $nombre . "FECHA DE SALIDA"  . $data['fecha_salida'] . "AEROLINEA" . $data['aerolinea'];
-$contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE AVIACIÓN CIVIL, OTORGÓ A:". " " .$nombre. " " .$apellido. " " ."UN CERTIFICADO POR HABER PARTICIPADO EN EL CURSO CON FOLIO". " " .$registro. " ". "El DIA"." ".$dateFinal;
+$contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE AVIACIÓN CIVIL, OTORGÓ A:". " " .$nombre. " " .$apellido. " " ."UN CERTIFICADO POR HABER PARTICIPADO EN EL $curso CON FOLIO". " " .$registro. " ". "El DIA"." ".$dateFinal;
+
 
 QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 
@@ -421,7 +422,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
             $dompdf->load_html(ob_get_clean());
             // $dompdf->set_option('enable_font_subsetting', true);
             $dompdf->render();
-            $dompdf->stream("certificate-CIAAC", array("Attachment" => 0));
+            $dompdf->stream($nombre."-".$apellido, array("Attachment" => 0));
             $pdf = $dompdf->output();
             $filename = "certificados/certificate-CIAAC.pdf";
             file_put_contents($filename, $pdf);
