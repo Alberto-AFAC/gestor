@@ -68,7 +68,7 @@ ini_set('date.timezone','America/Mexico_City');
     $EvaluacionF = $con['evaluacion'];
     // $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
-    $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['gstTitlo']." ".$con['id_codigocurso']);
+    $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['id_codigocurso']);
     $nombresCompletos = $con['gstNombr']." ".$con['gstApell'];
     $mes = array("0","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     $hoy= date('d').' de '.$mes[date('n')].' del año '.date('Y');

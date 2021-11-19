@@ -66,7 +66,7 @@ ini_set('date.timezone','America/Mexico_City');
     $dateFinal = $con['fechaf'];
     $registro = $con['id_codigocurso'];
     $EvaluacionF = $con['evaluacion'];
-    $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['gstTitlo']." ".$con['id_codigocurso']);
+    $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['id_codigocurso']);
     // $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
     $nombresCompletos = $con['gstNombr']." ".$con['gstApell'];
