@@ -115,6 +115,103 @@ function proCurso() {
     }
 
 }
+//COORDINADOR
+function proCursoCord() {
+
+    var idInsptr = new Array();
+
+    $("input[name='idinsp[]']:checked").each(function() {
+        idInsptr.push($(this).val());
+    });
+
+    var idInstr = ''
+
+    var selectObject = document.getElementById("idinst");
+
+    for (var i = 0; i < selectObject.options.length; i++) {
+        if (selectObject.options[i].selected == true) {
+
+            idInstr += "," + selectObject.options[i].value;
+
+        }
+    }
+
+
+    // var idcord = document.getElementById('idcord').value;
+
+    var id_mstr = document.getElementById('id_mstr').value;
+
+
+    var hcurso = document.getElementById('hcurso').value;
+    var fcurso = document.getElementById('fcurso').value;
+    //Solo ID coordinadores 
+    var idinst = document.getElementById('idcord').value;
+    var sede = document.getElementById('sede').value;
+
+    var fechaf = document.getElementById('fechaf').value;
+    var modalidad = document.getElementById('modalidad').value;
+
+    if (modalidad == 'PRESENCIAL') {
+        var link = '0';
+        var contracceso = '0';
+        var classroom = '0';
+    } else {
+        var link = document.getElementById('link').value;
+        var contracceso = document.getElementById('contracceso').value;
+        var classroom = document.getElementById('classroom').value;
+
+    }
+    idinsps = idInsptr + '' + idInstr;
+
+    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso + '*' + classroom;
+
+    // alert(datos);
+
+    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+
+
+        $('#empty').toggle('toggle');
+        setTimeout(function() {
+            $('#empty').toggle('toggle');
+        }, 2000);
+
+        return;
+
+    } else {
+        $.ajax({
+            url: '../php/proCurso.php',
+            type: 'POST',
+            data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
+        }).done(function(respuesta) {
+
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'AFAC INFORMA',
+                    text: 'Curso programado correctamente',
+                    // showConfirmButton: false,
+                    showCancelButton: true,
+                    customClass: 'swal-wide',
+                    confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                    cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
+
+                });
+                // setTimeout("location.href = 'inspecion.php';", 2000);
+
+            } else {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'AFAC INFORMA',
+                    text: 'Error al agregar curso',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000
+                });
+            }
+        });
+    }
+
+}
 //HUMANOS
 function proCursoH() {
 
