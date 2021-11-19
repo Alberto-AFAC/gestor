@@ -187,6 +187,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                     <input type="hidden" name="linke" id="linke">
                                                     <input type="hidden" name="modalidad" id="modalidad">
                                                     <input type="hidden" name="contracceso" id="contracceso">
+                                                    <input type="hidden" name="classroom" id="classroom">
                                                     <div class="form-group">
                                                         <div class="col-sm-5">
                                                             <button type="button" id="buttons" class="btn btn-info"
@@ -1505,6 +1506,8 @@ function agrinspctor(tbody, table) {
     $(tbody).on("click", "a.asiste", function() {
         var data = table.row($(this).parents("tr")).data();
 
+
+
         $("#Prtcpnt #gstIdlsc").val(data[15]);
         $("#Prtcpnt #acodigos").val(data[9]);
         $("#Prtcpnt #gstTitlo").val(data[1]);
@@ -1518,6 +1521,7 @@ function agrinspctor(tbody, table) {
         $("#Prtcpnt #linke").val(data[13]);
         $("#Prtcpnt #modalidad").val(data[14]);
         $("#Prtcpnt #contracceso").val(data[19]);
+        $("#Prtcpnt #classroom").val(data[20]);
 
         if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
             $("#buttons").hide();
