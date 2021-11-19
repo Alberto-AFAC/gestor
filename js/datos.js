@@ -2533,6 +2533,7 @@ function registrar() {
     var gstApell = document.getElementById('gstApell').value;
     var gstLunac = document.getElementById('gstLunac').value;
     var gstFenac = document.getElementById('gstFenac').value;
+    var gstSexo = document.getElementById('gstSexo').value;
     var gstStcvl = document.getElementById('gstStcvl').value;
     var gstCurp = document.getElementById('gstCurp').value;
     var gstRfc = document.getElementById('gstRfc').value;

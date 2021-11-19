@@ -34,7 +34,6 @@
       $datos[2];
       $datos[3];
 
-
       $sqli = 
      "SELECT gstInstt,gstMpres FROM personal 
        INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 

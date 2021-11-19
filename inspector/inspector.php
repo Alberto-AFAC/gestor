@@ -2094,12 +2094,71 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> <?php 
+
+
+
+
+            </section>
+        </div>
+    </div>
+</div>
+</div>
+</form>
+<script type="text/javascript" src="../js/encuestadatos.js"></script>
+<?php include('../perfil/modal.php');?>
+<!-- /.tab-pane -->
+</div>
+</div>
+<!-- /.nav-tabs-custom -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- MODAL PARA ENTREGAR TAREA -->
+<form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+<div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
+aria-hidden="true">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+<div class="modal-header">
+<input type="hidden" id="id_tare" name="id_tare">
+<input type="hidden" id="opcion" name="opcion" value="modificar">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<div class="modal-title" id="myModalLabel"><span style="font-size: 15px;" id="titulo"></span></div>
+</div>
+<div class="modal-body">
+<span>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</span><br><br>
+<div class="form-group">
+<div class="col-sm-2">
+<label class="container">SI
+<input type="radio" value="1" name="entrega">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="col-sm-2">
+<label class="container">NO
+<input type="radio" name="entrega" value="0">
+<span class="checkmark"></span>
+</label>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
+</form>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+<div class="pull-right hidden-xs">
+<b>Version</b> <?php 
 $query ="SELECT 
 *
 FROM

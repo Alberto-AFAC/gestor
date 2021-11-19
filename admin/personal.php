@@ -173,6 +173,16 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
 
                     <div class="col-sm-4">
+                      <label class="label2">SEXO</label>
+                      <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo">
+                          <option value="">ELIJA SEXO</option>
+                         <option value="MUJER">MUJER</option>
+                         <option value="HOMBRE">HOMBRE</option>
+                      </select>
+                    </div>
+
+
+                    <div class="col-sm-4">
                       <label class="label2">ESTADO CIVIL</label>
                       <select type="text" class="form-control inputalta" id="gstStcvl" name="gstStcvl">
                           <option value="">ESTADO CIVIL</option>
@@ -182,20 +192,16 @@ $psto = mysqli_query($conexion,$sql);
                       </select>
                     </div>
 
-                    <div class="col-sm-4">
-                       <label class="label2">CURP</label>
-                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalid"  style="display:none;"></i> -->
-                       <!-- <i class="ion-ios-close iconoInput" id="labelinval"  style=" color: #F10C25; display:none;"></i> -->
-                       <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
-                       <!-- <label class="label label-success" id="resultado" style="display:none;"><i class="fa fa-check-circle-o"></i></label>  -->
-                       <!-- <label class="label label-danger" id="resultado1"  style="display:none;">NO VALIDO</label>  -->
-                    </div>
                 </div>
                 <div class="form-group">
+
+                    <div class="col-sm-4">
+                       <label class="label2">CURP</label>
+                       <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
+                    </div>
+
                     <div class="col-sm-4">
                        <label class="label2">RFC</label>
-                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalidrfc"  style="display:none;"></i>
-                       <i class="ion-ios-close iconoInput" id="labelinvarfc"  style=" color: #F10C25; display:none;"></i> -->
                        <input type="tex" maxlength="12" oninput="validarInputRF(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstRfc" name="gstRfc" > 
                        <!-- <label id="resultado1"></label>  -->
                     </div>
@@ -204,13 +210,13 @@ $psto = mysqli_query($conexion,$sql);
                        <label class="label2">PASAPORTE NO.</label>
                        <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstNpspr" name="gstNpspr">
                     </div>
-
+                </div>
+                <div class="form-group">
                     <div class="col-sm-4">
                        <label class="label2">PASAPORTE VIGENCIA</label>
                        <input type="date" class="form-control inputalta" id="gstPsvig" name="gstPsvig">
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-sm-4">
                        <label class="label2">VISA PAIS</label>
                        <input type="text" class="form-control inputalta" id="gstVisa" name="gstVisa">
@@ -417,7 +423,7 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="date" class="form-control inputalta" id="gstFeing" name="gstFeing">
                     </div>  
                     <div class="col-sm-5">
-                    <label class="label2">ESTATUS ALTA PERSONAL</label>
+                    <label class="label2">OBSERVACIONES</label>
                     <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
                     </div>  
                     </div>

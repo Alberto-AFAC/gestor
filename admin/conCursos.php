@@ -256,12 +256,12 @@
                                 <div class="col-sm-4">
                                     <label class="label2">TIPO DE CAPACITACIÓN</label>
                                     <select type="text" class="form-control inputalta" id="AgstTipo" name="AgstTipo">
-                                    <option value="INDUCCIÓN">INDUCCIÓN</option>
-                                    <option value="BÁSICOS/INICIAL">BÁSICO/INICIAL</option>
-                                    <option value="TRANSVERSALES">TRANSVERSALE</option>
-                                    <option value="RECURRENTES">RECURRENTE</option>
-                                    <option value="ESPECÍFICOS">ESPECÍFICO</option>
-                                    <option value="OJT">OJT</option>
+                                        <option value="INDUCCIÓN">INDUCCIÓN</option>
+                                        <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
+                                        <option value="TRANSVERSALES">TRANSVERSALES</option>
+                                        <option value="RECURRENTES">RECURRENTES</option>
+                                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                                        <option value="OJT">OJT</option>
                                     </select>
                                 </div>
 
@@ -706,7 +706,8 @@ $(document).ready(function() {
                 obj.data[i].gstCntro + '*' +
                 obj.data[i].codigoCrso;                  
 
-                    var d = datos.split("*");      
+                    var d = datos.split("*");   
+                    $("#modalVal #codigoCrso").val(d[11]);   
                      $("#modalVal #AgstCntro").val(d[10]);            
                     $("#modalVal #AgstIdlsc").val(d[0]);
                     $("#AgstIdlsc #AgstIdlsc").val(d[0]);
@@ -727,7 +728,7 @@ $(document).ready(function() {
                     $("#modalVal #AgstTmrio").val(d[8]);
                     $("#modalUpdate #AgstTmrio").val(d[8]);
                     $("#modalVal #AgstProvd").val(d[9]);
-                    $("#modalVal #codigoCrso").val(d[11]);
+                    
                 }
             }
         })

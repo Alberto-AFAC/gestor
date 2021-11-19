@@ -14,14 +14,63 @@
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
             header('Location: ../');
         }
-   $id = $_SESSION['usuario']['id_usu'];
+   // $id = $_SESSION['usuario']['id_usu'];
+   //    $sql = 
+   //     "SELECT gstIdper,gstAreID,gstNombr,gstApell,gstCargo FROM personal 
+   //    INNER JOIN accesos ON id_usu = gstIdper
+   //    WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
+
+
+      $id = $_SESSION['usuario']['id_usu'];
+      $usu = $_SESSION['usuario']['usuario'];
+      $pass = $_SESSION['usuario']['password'];
+
+
       $sql = 
-       "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
-      INNER JOIN accesos ON id_usu = gstIdper
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
+     "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo,gstNmpld FROM personal 
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
+    $persona = mysqli_query($conexion,$sql);
+    $datos = mysqli_fetch_row($persona);
+
+      $datos[1];
+      $datos[2];
+      $datos[3];
+
+
+      $sqli = 
+     "SELECT gstInstt,gstMpres FROM personal 
+       INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
+      INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
+      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
+      ";
 
       $persona = mysqli_query($conexion,$sql);
       $datos = mysqli_fetch_row($persona);
+
+  
+  if (!empty($dato[4]) || !empty($dato[5])) {
+      $dato[4];
+      $dato[5];
+  }else{
+      $dato[4]="";
+      $dato[5]="";
+  }
+
+      $sql2 =
+      "SELECT * FROM cursos 
+      INNER JOIN listacursos ON gstIdlsc = idmstr  
+      WHERE modalidad = 'E-LEARNNING' AND idinsp = $id";
+      $query = mysqli_query($conexion,$sql2);
+      $datos2 = mysqli_fetch_assoc($query);
+  
+      $datos[0];
+      $sql = "SELECT * FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc asc";
+      $cursos = mysqli_query($conexion,$sql);
+
+      $sqljt = "SELECT * FROM tarearealizar WHERE estado = 0 AND idiva = '".$id."'";
+      $queryjt = mysqli_query($conexion,$sqljt);
+      $ojt = mysqli_fetch_assoc($queryjt);
+
 
 //session_start(); 
 unset($_SESSION['consulta']);
@@ -152,13 +201,28 @@ unset($_SESSION['consulta']);
           </ul>
         </li>-->
 
-        <li class="active">
+<!--         <li class="active">
           <a href="inicio">
             <i class="fa ion-android-plane"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
           </a>
-        </li>        
+        </li> -->
+        <li class="active">
+          <a href="inspector">
+
+
+        <i><img src='../dist/img/perfil.png' class='user-image' alt='User Image' style='
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin-right: 10px;
+        margin-top: -2px;'></i> <span>PERFIL</span>
+        <span class='pull-right-container'>
+        </span>
+        </a>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="ion-ios-person"></i>
