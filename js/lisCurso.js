@@ -264,9 +264,8 @@ function agrPartc() {
     link = document.getElementById('linke').value;
     acodigos = document.getElementById('acodigos').value;
     contracur = document.getElementById('contracur').value;
-    classroom = document.getElementById('classroome').value;
 
-    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&classroom=' + classroom + '&opcion=participante';
+    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&opcion=participante';
     //alert(datos);
     if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '') {
 
@@ -1276,6 +1275,7 @@ function cursoAct() {
         var linkcur = document.getElementById('linkcur').value;
         var contracur = document.getElementById('contracur').value;
         var classromcur = document.getElementById('classromcur').value;
+
     }
 
     datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&classromcur=' + classromcur + '&opcion=cursoAct';

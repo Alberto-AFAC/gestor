@@ -1066,7 +1066,8 @@ $(document).ready(function() {
                         "*" + obj.data[i].codigo +
                         "*" + obj.data[i].proceso +
                         "*" + obj.data[i].idinsp +
-                        "*" + obj.data[i].contracur;
+                        "*" + obj.data[i].contracur +
+                        "*" + obj.data[i].classroom ;
 
                     var d = cursos.split("*");
 
@@ -1114,6 +1115,7 @@ $(document).ready(function() {
                         $("#editcurs").show();
                         $("#notiocu").show();
                     }
+                    $("#Dtall #classromcur").val(d[19]);
                 }
             }
         })
