@@ -57,13 +57,16 @@ function proCurso() {
     if (modalidad == 'PRESENCIAL') {
         var link = '0';
         var contracceso = '0';
+        var classroom = '0';
     } else {
         var link = document.getElementById('link').value;
         var contracceso = document.getElementById('contracceso').value;
+        var classroom = document.getElementById('classroom').value;
+
     }
     idinsps = idInsptr + '' + idInstr;
 
-    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso;
+    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso + '*' + classroom;
 
     // alert(datos);
 
@@ -81,7 +84,7 @@ function proCurso() {
         $.ajax({
             url: '../php/proCurso.php',
             type: 'POST',
-            data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&opcion=procurso'
+            data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
         }).done(function(respuesta) {
 
             if (respuesta == 0) {

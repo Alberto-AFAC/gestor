@@ -61,6 +61,8 @@ function declina() {
 
 function confirmar(idcurso) {
 
+    alert(idcurso);
+
     $.ajax({
         url: '../php/curConfir.php',
         type: 'POST'
@@ -79,6 +81,8 @@ function confirmar(idcurso) {
                 $("#gstTitlo").html(obj.data[i].gstTitlo);
                 $("#gstTipo").html(obj.data[i].gstTipo);
 
+
+
                 var fechai = new Date(obj.data[i].fcurso);
                 var fcurso = fechai.getDate() + '-' + (fechai.getMonth() + 1) + '-' + fechai.getFullYear();
 
@@ -88,6 +92,9 @@ function confirmar(idcurso) {
                 $("#hcurso").html(obj.data[i].hcurso);
                 $("#fechaf").html(fechaf);
                 $("#sede").html(obj.data[i].sede);
+                $("#link").html(obj.data[i].link);
+                $("#contracur").html(obj.data[i].contracur);
+                $("#classroom").html(obj.data[i].classroom);
                 $("#modalidad").html(obj.data[i].modalidad);
                 $("#nombredeclin").html(obj.data[i].gstTitlo);
                 $("#motivod").html('MOTIVO:' + obj.data[i].confirmar);

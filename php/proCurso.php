@@ -24,6 +24,8 @@ $sede = $_POST['sede'];
 $link = $_POST['link'];
 $contracceso = $_POST['contracceso'];
 $modalidad = $_POST['modalidad'];
+$classroom = $_POST['classroom'];
+
 
 $id = $_POST['idinsps'].','.$idinst;
 
@@ -32,7 +34,7 @@ $val = count($valor);
 $n = 0;
 foreach ($valor as $idinsps) {
 	$n++;
-if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion))
+if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
 		echo "0";	
 		if($n==1){
@@ -74,6 +76,8 @@ $modalidad = $_POST['modalidad'];
 $idinsps= $_POST['idinsp'];
 $codigo = $_POST['acodigos'];
 $contracceso = $_POST['contracur'];
+$classroom = $_POST['classroom'];
+
 
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
 $fcurso = $yi.'-'.$mi.'-'.$di;
@@ -82,7 +86,7 @@ $yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,
 $fechaf = $yf.'-'.$mf.'-'.$df;
 
 contancia($idinsps,$codigo, $conexion);
-if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion))
+if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
 		{	
 
 			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
@@ -173,12 +177,12 @@ $query = "SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON list
 }
 
 
-function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $conexion){
+function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion){
 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso',0);";
+			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
