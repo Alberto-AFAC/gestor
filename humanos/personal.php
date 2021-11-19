@@ -60,7 +60,7 @@ unset($_SESSION['consulta']);
 }
 </style>
       </head>
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+      <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
 <div class="wrapper">
 
@@ -172,6 +172,17 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="date" class="form-control inputalta" id="gstFenac" name="gstFenac" >
                     </div>
 
+
+                    <div class="col-sm-4">
+                      <label class="label2">SEXO</label>
+                      <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo">
+                          <option value="">ELEJIR SEXO</option>
+                         <option value="MUJER">MUJER</option>
+                         <option value="HOMBRE">HOMBRE</option>
+                      </select>
+                    </div>
+
+
                     <div class="col-sm-4">
                       <label class="label2">ESTADO CIVIL</label>
                       <select type="text" class="form-control inputalta" id="gstStcvl" name="gstStcvl">
@@ -182,20 +193,17 @@ $psto = mysqli_query($conexion,$sql);
                       </select>
                     </div>
 
-                    <div class="col-sm-4">
-                       <label class="label2">CURP</label>
-                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalid"  style="display:none;"></i> -->
-                       <!-- <i class="ion-ios-close iconoInput" id="labelinval"  style=" color: #F10C25; display:none;"></i> -->
-                       <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
-                       <!-- <label class="label label-success" id="resultado" style="display:none;"><i class="fa fa-check-circle-o"></i></label>  -->
-                       <!-- <label class="label label-danger" id="resultado1"  style="display:none;">NO VALIDO</label>  -->
-                    </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4">
+                       <label class="label2">CURP</label>
+      
+                       <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
+
+                    </div>
+
+                    <div class="col-sm-4">
                        <label class="label2">RFC</label>
-                       <!-- <i class="ion-ios-checkmark iconoInput" id="labelvalidrfc"  style="display:none;"></i>
-                       <i class="ion-ios-close iconoInput" id="labelinvarfc"  style=" color: #F10C25; display:none;"></i> -->
                        <input type="tex" maxlength="12" oninput="validarInputRF(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstRfc" name="gstRfc" > 
                        <!-- <label id="resultado1"></label>  -->
                     </div>
@@ -205,12 +213,14 @@ $psto = mysqli_query($conexion,$sql);
                        <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstNpspr" name="gstNpspr">
                     </div>
 
+                </div>
+                <div class="form-group">
+
                     <div class="col-sm-4">
                        <label class="label2">PASAPORTE VIGENCIA</label>
                        <input type="date" class="form-control inputalta" id="gstPsvig" name="gstPsvig">
                     </div>
-                </div>
-                <div class="form-group">
+                                      
                     <div class="col-sm-4">
                        <label class="label2">VISA PAIS</label>
                        <input type="text" class="form-control inputalta" id="gstVisa" name="gstVisa">
@@ -242,7 +252,7 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="col-sm-4">
                        <label class="label2">NÚMERO</label>
-                       <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstNumro" name="gstNumro">
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstNumro" name="gstNumro">
                     </div>
 
                     <div class="col-sm-4">
@@ -489,7 +499,7 @@ $psto = mysqli_query($conexion,$sql);
    
                 <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-2">
-                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrarH();">ACEPTAR</button>
+                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrar();">ACEPTAR</button>
                     </div>
                     
                     <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos</p></b>
