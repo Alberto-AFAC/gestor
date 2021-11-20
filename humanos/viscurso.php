@@ -86,8 +86,8 @@
 <div class="form-group">
   <label for=""></label>
 <button type="button" title="Editar Curso" class="btn btn-box-tool" data-widget="collapse">
-     <a href='javascript:editcurso()' id="editcurs" style="font-size:20px; padding-left: 0.5em;"> <i class="fa fa-edit"></i> </a>
-     <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc" style="display:none; font-size:20px;padding-left: 0.5em;"> <i class="fa fa-ban"></i> </a>
+<!--      <a href='javascript:editcurso()' id="editcurs" style="font-size:20px; padding-left: 0.5em;"> <i class="fa fa-edit"></i> </a>
+     <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc" style="display:none; font-size:20px;padding-left: 0.5em;"> <i class="fa fa-ban"></i> </a> -->
   </button>
 </div>
 
@@ -144,7 +144,7 @@
   <input type="hidden" name="codigo" id="codigo">
   <input type="hidden" name="proceso" id="proceso">
   
-  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px;" class="btn btn-block btn-success"  onclick="finalizar();">FINALIZAR CURSO</button>
+ <!--  <button type="button" id="buttonfin" title="Finalizar Curso" style="font-size:15px; width:150px; height:35px;" class="btn btn-block btn-success"  onclick="finalizar();">FINALIZAR CURSO</button> -->
   
   <div id="buttonfin" ></div>
   <b><p class="alert alert-danger text-center padding error" id="error">Error al finalizar el curso </p></b>
