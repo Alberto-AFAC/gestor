@@ -10,9 +10,7 @@ $filename = $dir.'QR.png';
 $tamanio = 5;
 $level = 'H';
 $frameSize = 1;
-// $contenido = $nombre . "FECHA DE SALIDA"  . $data['fecha_salida'] . "AEROLINEA" . $data['aerolinea'];
 $contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE AVIACIÓN CIVIL, OTORGÓ A:". " " .$nombre. " " .$apellido. " " ."UN CERTIFICADO POR HABER PARTICIPADO EN EL $curso CON FOLIO". " " .$registro. " ". "El DIA"." ".$dateFinal;
-
 
 QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 
@@ -253,7 +251,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2'>Director del CIAAC:</p></div>
+        <p class='p-2'>Directora del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -264,9 +262,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
                     Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
                     Adiestramiento de
                     Aviación Civil / SCT-AFAC-CIAAC</span><br>
-                <span style='font-weight: bold;' class='p-2'>Benjamín Romero Fuentes</span><br>
-                <span style='font-weight: bold; line-height:22px;' class='p-2'>Gral. de División P.A. DEMA en
-                    Ret.</span>
+                <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
             </div>
             <div class='column right'>
             <img style='float: right; width: 35%;' src='{$filename}'/>
@@ -286,7 +282,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     Aviación Civil / SCT-AFAC-CIAAC</span>
     </div>
     <div class='footer-constancia'>
-    <span class='p-2'><span style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
     </div>";
 } else if($con['gstCntnc'] == 'CERTIFICADO'){
@@ -302,7 +298,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2'>Director del CIAAC:</p></div>
+        <p class='p-2'>Directora del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -313,9 +309,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
                     Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
                     Adiestramiento de
                     Aviación Civil / SCT-AFAC-CIAAC</span><br>
-                <span style='font-weight: bold;' class='p-2'>Benjamín Romero Fuentes</span><br>
-                <span style='font-weight: bold; line-height:22px;' class='p-2'>Gral. de División P.A. DEMA en
-                    Ret.</span>
+                <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
             </div>
             <div class='column right'>
             <img style='float: right; width: 35%;' src='{$filename}'/>
@@ -335,7 +329,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     Aviación Civil / SCT-AFAC-CIAAC</span>
     </div>
     <div class='footer-constancia'>
-    <span class='p-2'><span style='font-weight:bold;'>Lic. Rebeca Morales Reyes</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
 </div>";
 }else {
@@ -352,7 +346,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
     <span class='p-3'>por la Escuela Militar de Graduados de Sanidad con lo establecido en el Convenio celebrado entre la Agencia Federal de Aviación Civil (AFAC), Dirección General de Protección y Medicina Preventiva (DGPyMPT) y la Secretaría de la Defensa Nacional (SEDENA).
     <span style='padding-bottom: 1px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p style='padding-top: 1px;' class='p-2'>Director del CIAAC:</p></div>
+        <p style='padding-top: 1px;' class='p-2'>Directora del CIAAC:</p></div>
         <div style='padding-top: 5px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -363,9 +357,7 @@ if($con['gstCntnc'] == 'CONSTANCIA'){
                     Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
                     Adiestramiento de
                     Aviación Civil / SCT-AFAC-CIAAC</span><br>
-                <span style='font-weight: bold;' class='p-2'>Benjamín Romero Fuentes</span><br>
-                <span style='font-weight: bold; line-height:22px;' class='p-2'>Gral. de División P.A. DEMA en
-                    Ret.</span>
+                <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
             </div>
             <div class='column right'>
             <img style='float: right; width: 35%;' src='{$filename}'/>
