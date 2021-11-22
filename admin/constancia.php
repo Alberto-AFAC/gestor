@@ -28,7 +28,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,800;1,700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../dist/css/constancias.css">
+<link rel="stylesheet" href="../dist/css/constancias.css">
 </head>
 
 <body>
