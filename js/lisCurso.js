@@ -1184,9 +1184,13 @@ function enviarMail() {
     gstIdlsc = document.getElementById('gstIdlstc').value;
     codigoCurso = document.getElementById('codigoCurso').value;
 
-    swal.showLoading({
-        title: 'Cargando',
-        text: 'Espere por favor...'
+    Swal.fire({
+        html: 'Espera un momento...', // add html attribute if you want or remove
+        allowOutsideClick: false,
+        customClass: 'swal-wide',
+        onBeforeOpen: () => {
+            Swal.showLoading()
+        },
     });
     $.ajax({
         url: '../admin/enviarMail.php',
@@ -1197,6 +1201,7 @@ function enviarMail() {
         Swal.fire({
             type: 'success',
             title: 'ENVIADO CON ÉXITO',
+            showSpinner: true,
             showConfirmButton: false,
             customClass: 'swal-wide',
             timer: 2000,
