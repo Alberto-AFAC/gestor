@@ -376,7 +376,8 @@ include ("../conexion/conexion.php");
                 <?php echo $row['version']?>
             </div>
             <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados AAJ.
+            Todos los derechos Reservados DDE
+.
         </footer>
 
         <?php include('panel.html');?>
