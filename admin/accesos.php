@@ -225,7 +225,7 @@ $id = $data['id_usu'];
 
     //console.log('<?php //echo $gstIdper ?>');
 
-    ["<?php echo $data[1]?>", "<?php echo $data[8]." ".$data[9]?>", "<?php echo $data[29]?>",
+    ["<?php echo $data[1]?>", "<?php echo $data[8]." ".$data[9]?>", "<?php echo $data[30]?>",
         "<?php echo $data[2]?>", "<?php echo base64_encode($data[3])?>",
         "<?php echo $data[4]?>",
         "<?php echo "<a title='Editar técnico' onclick='datos_editar({$id})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
