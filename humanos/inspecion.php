@@ -129,6 +129,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>N° EMPL</th>
                                                 <th>NOMBRE(S)</th>
                                                 <th>APELLIDO(S)</th>
                                                 <th>CATEGORÍA</th>
