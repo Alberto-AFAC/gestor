@@ -66,6 +66,8 @@ ini_set('date.timezone','America/Mexico_City');
     $dateFinal = $con['fechaf'];
     $registro = $con['id_codigocurso'];
     $EvaluacionF = $con['evaluacion'];
+    $tituloPrueba = "LOS VALORES EN LA SCT";
+    $conteoStr = strlen($tituloPrueba);
     // $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
     $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['id_codigocurso']);
