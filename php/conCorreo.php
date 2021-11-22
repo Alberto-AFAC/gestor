@@ -179,7 +179,7 @@ $resultado= mysqli_query($conexion,$query);
 		}else{
 			 $res = mysqli_fetch_row($resultado);
 			
-			  return $res[1].' '.$res[2].'.'.$res[22];
+			  return $res[1].' '.$res[2].'.'.$res[23];
 		}
 		$this->conexion->cerrar();
 } 
