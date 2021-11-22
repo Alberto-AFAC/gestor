@@ -138,7 +138,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
     </div>";
 
-}else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr <= 100){
+}else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
     <span class='otorga'>Otorga el presente</span>
@@ -278,7 +278,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     </div>
 </div>";
 
-}else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100){
+}else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 100){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
     <p class='otorga'>Otorga el presente</p>
