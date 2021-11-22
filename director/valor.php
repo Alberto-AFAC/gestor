@@ -139,6 +139,9 @@ $psto = mysqli_query($conexion,$sql);
 <!-- /FIN DE NUEVO DISEÑO -->
 <div class="col-xs-12">
           <div class="box box-solid">
+           
+
+
             <div class="box-header">
                <i class="fa fa fa-list"></i>
 
@@ -149,6 +152,8 @@ $psto = mysqli_query($conexion,$sql);
                    </button>
                 </div>
             </div>
+
+
             <!-- /.box-header -->
             
             <div class="box-body">

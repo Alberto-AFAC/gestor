@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Capacitación AFAC | Nuevo ingreso</title>
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <title>Capacitación AFAC | Personal</title>
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -20,7 +20,7 @@
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
   <style>
-.swal-wide{
+ .swal-wide{
     width: 500px !important;
     font-size: 16px !important;
 }
@@ -72,12 +72,12 @@ include('header.php');
 
 <section class="content" id="detalles" style="display: none;">
 <div class="row">
-<?php include('ingreso.php'); ?>
+<?php include('valores.php'); ?>
 <!-- /.col -->
 </div>
+
 <!-- /.row -->
 </section>  
-
 <!-- Content Header (Page header) -->
 <section class="content" id="lista">
 
@@ -86,7 +86,8 @@ include('header.php');
      <div class="box">
        <div class="box-header">
 
-         <h3 class="box-title">NUEVO INGRESO</h3>
+       <H4>
+                      <label style="font-size: 20px;">LISTA | PERSONAL</label></H4>
              <div class="pull-right">
                <div class="btn-group">
                <a type="button" href="persona" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
@@ -104,7 +105,7 @@ include('header.php');
 </section>
 </div>
 
-   <div class="modal fade" id='modal-asignar'>
+  <div class="modal fade" id='modal-asignar'>
     <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
         <div class="modal-content">
@@ -173,13 +174,13 @@ include('header.php');
                     <div class="form-group">
                           <div class="col-sm-12">
                             <label class="label2">SUBDIRECCIÓN</label>
-                         <div id="subdire"></div>                            
+                         <div id="subdirect"></div>                            
                         </div>
                         </div>
                     <div class="form-group">
                      <div class="col-sm-12">
                         <label class="label2">DEPARTAMENTO</label>
-                        <div id="depart1"></div> 
+                        <div id="departos1"></div> 
                     </div>   
                                   
                 </div>   
@@ -250,9 +251,7 @@ include('header.php');
 </div>
 </div>
 
-<?php //include('agrStdPro.php');?>
-
-
+<?php// include('agrStdPro.php');?>
 
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
@@ -272,7 +271,7 @@ include('header.php');
                     <?php echo $row['version']?>
 </div>
 
-<strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados DDE
+<strong>AFAC &copy; 2021 <a style="color:#3c8dbc" href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados DDE
 .
 </footer>
 
@@ -302,15 +301,15 @@ include('header.php');
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
 <script src="../js/global.js"></script>
-<script src="../js/datos.js"></script>
-<script type="text/javascript" src="../js/director.js"></script>
-
+<script src="../js/datos.json"></script>
 
 </body>
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function(){
+// $('#gsdirec').select2();
+$('#gstPrfil').select2();
 $('#gstAreID').select2(); 
 $('#gstPstID').select2();
 $('#gstIDpai').select2();
@@ -322,8 +321,11 @@ $('#AgstIDSub').select2();
  $('#select3').load('select/tablacom.php');
  $('#categoria').load('select/buscatego.php');
  $('#subcategoria').load('select/tabsubcat.php');
-$('#subdire').load('select/buscardepart.php'); //Subdirección
-$('#depart1').load('select/tabladep.php'); //departamento
+ $('#subdirect').load('select/buscardepart.php'); //Subdirección
+ $('#departos1').load('select/tabladep.php'); //departamento
+
+ 
+
 }); 
 </script>
 <script src="../js/select2.js"></script> 
@@ -334,7 +336,7 @@ var dataSet = [
 <?php 
 
 //mostra personal asigando por dirección ajecutiva
-$Direje= $datos[1];
+$Direje= $datos[5];
 
 $query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstAreID  = $Direje AND estado = 0 ORDER BY gstCargo DESC";
 $resultado = mysqli_query($conexion, $query);

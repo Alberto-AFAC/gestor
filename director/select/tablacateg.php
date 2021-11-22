@@ -112,6 +112,19 @@ if($fecs = mysqli_fetch_row($fechas)){
  $fecs[1];
  $per[0];
 
+$query2 = "SELECT *
+FROM cursos 
+WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
+$resultado = mysqli_query($conexion, $query2);
+if($curs = mysqli_fetch_row($resultado)){ 
+
+$cursor = "<td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>";
+
+}else{
+$cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</td>";
+}
+
+
 $fechav = date("d-m-Y",strtotime($fecs[0]."+ ".$f." year"));     
 
 $vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
@@ -148,11 +161,12 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[4]?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
         echo $conf;
 }
 
@@ -167,11 +181,12 @@ if($fecs[5] == 'CONFIRMADO'){
 
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
 
         echo "<td style='color: white; background-color:#AC2925;'>REPROGRAMAR</td>";
 
@@ -184,11 +199,12 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[3]?></td>
         <td><?php echo $per[4]?></td>
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
         echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
 
 }else 
@@ -215,11 +231,12 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[4]?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
         echo $conf;
 
 
@@ -233,18 +250,33 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[4]?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
 
         echo "<td style='color: white; background-color: #D58512;'>REPROGRAMAR</td>";
 
 }  
 
 
- }else{ ?>
+ }else{ 
+
+$query2 = "SELECT *
+FROM cursos 
+WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
+$resultado = mysqli_query($conexion, $query2);
+if($curs = mysqli_fetch_row($resultado)){ 
+
+$cursor = "<td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>";
+
+}else{
+$cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</td>";
+}
+
+    ?>
 
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
@@ -253,11 +285,12 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[4]?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso---</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo111</td>";
+        // }
+        echo $cursor;
         echo "<td style='color: #333; background-color: #F4F4F4;'>POR REALIZAR</td>";
 }
 
@@ -310,6 +343,14 @@ $(".idinsp").on("click", function() {
     $("#selectall").prop("checked", false);
   }
 });
-    
+// Buscador de tabla
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 
 </script>

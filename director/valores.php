@@ -139,7 +139,7 @@ $direc = mysqli_query($conexion,$sql);
 <!-- /FIN DE NUEVO DISEÑO -->
 <div class="col-xs-12">
           <div class="box box-solid">
-            <div class="box-header">
+<!--             <div class="box-header">
                <i class="fa fa fa-list"></i>
 
                <h3 class="box-title">Check list</h3>
@@ -148,24 +148,120 @@ $direc = mysqli_query($conexion,$sql);
                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
                    </button>
                 </div>
-            </div>
+            </div> -->
+            <div class="box-header">
+               <i class="fa fa fa-list"></i>
+
+               <h3 class="box-title">Check list</h3>
+
+                 <div class="box-tools pull-right">
+                   <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                   </button>
+                </div>
+            </div>            
             <!-- /.box-header -->
             
             <div class="box-body" style="display: none;">
             <div class="row">
 
-                <!-- ./col -->
+<div style="padding-top: 5px;" class="col-md-12">
+    <div class="nav-tabs-custom">
+            <form id="Dtall" class="form-horizontal" action="" method="POST">
+                <input type="hidden" name="gstIdper" id="gstIdper">
+                <table style="width: 100%;" class="table table-striped table-hover center" >
+                    <thead>
+                        <tr>
+                            <th scope="col">INCISO</th>
+                            <th scope="col" style="width: 600px;">DOCUMENTO</th>
+                            <th scope="col">CUMPLE</th> 
+                            <th scope="col">ARCHIVO</th>
+                            <th scope="col">FECHA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A)</th>
+                            <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td><td></td>
 
 
-                <div id="perdoc"></div>
 
-<!----------------------------------------------------------------->
+                        </tr>
+                        <tr>
+                            <th scope="row">B)</th>
+                            <td>CÉDULA DE EVALUACIÓN DE CAPACIDAD</td>
+                            <td><div id="evaluaciones"></div></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">C)</th>
+                            <td>CURRICULUM VITAE. (requisitado y firmado)</td>
+                            <td><div id="profesions"></div></td>
+                            <td><div id="pro-pdf"> </div></td>
+                            <td><div id="pro-fec"></div> </td>
 
 
+                        </tr>
+                        <tr>
+                            <th scope="row">D)</th>
+                            <td>CONSTANCIA ACADÉMICA (a.Licenciatura o ingeniería, b.Licencia técnica aeronautica)</td>
+                            <td><div id="estudios"></div></td>
+                            <td><div id="std-pdf"> </div></td>
+                            <td><div id="std-fec"></div> </td>
 
-
-
-
+                        </tr>
+                        <tr>
+                            <th scope="row">F)</th>
+                            <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
+                            <td><div id="ojt"></div></td>
+                            <td><div id="ojt-pdf"> </div></td>
+                            <td><div id="ojt-fec"></div> </td>                            
+                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td> -->
+                        </tr>
+                        <tr>
+                            <th scope="row">F)</th>
+                            <td>FORMATO BITÁCORA</td>
+                            <td><div id="btcr"></div></td>
+                            <td><div id="btcr-pdf"> </div></td>
+                            <td><div id="btcr-fec"></div> </td>                            
+                            <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td> -->
+                        </tr>                        
+                        <tr>
+                            <th scope="row">G)</th>
+                            <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
+                            <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td><div id="ccfecha"></div></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>BÁSICO</td>
+                            <td><div id="bscos"></div></td>
+                            <td><div id="Bfecha"></div></td> <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>RECURRENTE</td>
+                            <td><div id="recurnt"></div></td>
+                            <td><div id="Rfecha"></div></td> <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>ESPECIFICOS</td>
+                            <td><div id="specifico"></div></td>
+                            <td><div id="Efecha"></div></td> <td></td>
+                        </tr>
+                    </tbody>
+                    
+                    </table>
+            </form>
+           
+</div>
+</div>
               </div>
               <!-- /.row -->
             </div>
