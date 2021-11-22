@@ -74,7 +74,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-people"></i>
                             </div>
-                            <a href="persona.php" class="small-box-footer">Mas Información <i
+                            <a href="persona" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-person"></i>
                             </div>
-                            <a href="inspecion.php" class="small-box-footer">Mas Información <i
+                            <a href="inspecion" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -109,7 +109,7 @@ include('header.php');
                             <div class="icon">
                                 <i class="ion ion-ios-person"></i>
                             </div>
-                            <a href="instructor.php" class="small-box-footer">Mas Información <i
+                            <a href="instructor" class="small-box-footer">Mas Información <i
                                     class="fa fa-arrow-circle-right"></i></a>
 
                         </div>
@@ -148,7 +148,7 @@ include('header.php');
                                 </div>
                                 <span class="progress-description">
 
-                                    <a link rel="stylesheet" href="lisCurso.php" style="color:white"
+                                    <a link rel="stylesheet" href="lisCurso" style="color:white"
                                         class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
                                 </span>
@@ -173,7 +173,7 @@ include('header.php');
                                     <div class="progress-bar" style="width: 70%"></div>
                                 </div>
                                 <span class="progress-description">
-                                    <a link rel="stylesheet" href="acreeditados.php" style="color:white"
+                                    <a link rel="stylesheet" href="acreeditados" style="color:white"
                                         class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
                                 </span>
@@ -196,7 +196,7 @@ include('header.php');
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
 
-                                    <a link rel="stylesheet" href="pendientes.php" style="color:white"
+                                    <a link rel="stylesheet" href="pendientes" style="color:white"
                                         class="small-box-footer">Información <i
                                             class="fa fa-arrow-circle-right"></i></a>
 
@@ -219,7 +219,7 @@ include('header.php');
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        <a link rel="stylesheet" href="porvencer.php" style="color:white"
+                                        <a link rel="stylesheet" href="porvencer" style="color:white"
                                             class="small-box-footer">Información <i
                                                 class="fa fa-arrow-circle-right"></i></a>
 
