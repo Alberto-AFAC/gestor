@@ -98,13 +98,13 @@
          <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <?php
-            if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+            if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){
               echo "<img src='../dist/img/profile-leonardoR.jpeg' class='user-image' alt='User Image'>";
             } else{
               echo "<img src='../dist/img/perfil.png' class='user-image' alt='User Image'>";
             }
               ?>
-              <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
+              <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
             </a>
             <ul class="dropdown-menu" style="width: 50px;min-width: 5px;">
               <!-- User image -->
@@ -173,7 +173,7 @@
         <li class="active">
           <a href="inspector">
             <?php
-          if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+          if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){
             echo "<i><img src='../dist/img/profile-leonardoR.jpeg' class='user-image' alt='User Image' style='
     width: 25px;
     height: 25px;
