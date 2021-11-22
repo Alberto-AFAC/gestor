@@ -162,14 +162,9 @@ $direc = mysqli_query($conexion,$sql);
                 <!-- ./col -->
 
 
-                <div id="perdoc"></div>
+                <div id="perdocRes"></div>
 
 <!----------------------------------------------------------------->
-
-
-
-
-
 
               </div>
               <!-- /.row -->

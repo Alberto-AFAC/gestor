@@ -944,8 +944,10 @@ function perfil(gstIdper) {
     // $("#arcIdperEli").val(gstIdper); 
 
     consultarDoc(gstIdper);
+    consultarDocRes(gstIdper);
     constudios(gstIdper);
     conprofesion(gstIdper);
+
 
 
 }
@@ -986,6 +988,45 @@ function consultarDoc(gstIdper) {
     })
 
 }
+////RESULTADO DOCUMENTACION/////////////
+
+
+function consultarDocRes(gstIdper) {
+
+  $.ajax({
+        url: '../php/documentos.php',
+        type: 'POST',
+        data: 'gstIdper=' + gstIdper
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 1;
+
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">ID</th><th scope="col" style="width:300px;">DOCUMENTO</th><th scope="col" style="width:150px;">ESTATUS</th> <th scope="col">DOCUMENTO ADJUNTO</th><th scope="col">FECHA DE ACTUALIZACION</th></tr></thead><tbody>';
+
+        for (D = 0; D < res.length; D++) {
+
+            if (obj.data[D].documentos == 'SI EXISTE') {
+                if (obj.data[D].id_doc == 7) {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td>' + obj.data[D].fecactual + '</td></tr>';
+                } else {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>' + obj.data[D].fecactual + '</td></tr>';
+                }
+            } else {
+                if (obj.data[D].id_doc == 7) {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/time.png" alt="YES" width="33px;"></td><td></td><td></td></tr>';
+                } else {
+                    html += '<tr><th scope="row">' + obj.data[D].id_doc + ')</th><td>' + obj.data[D].nombre + '</td><td><img src="../dist/img/time.png" alt="YES" width="33px;"></td><td></td><td></td></tr>';
+                }
+            }
+        }
+        html += '</tbody></table></form></div></div>';
+
+        $("#perdocRes").html(html);
+    })
+
+}
+
 ////////////////////CONSULTA ESTUDIOS//////////////////
 function constudios(gstIdper) {
     $.ajax({
