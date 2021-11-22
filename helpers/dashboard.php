@@ -265,7 +265,8 @@
                     <?php echo $row['version']?>
     </div>
 
-    <strong>AFAC &copy; 2021 <a style="color:#3c8dbc"  href="https://www.gob.mx/afac">Agencia Federal de Aviación Civil</a>.</strong> Todos los derechos Reservados AJ.
+    <strong>AFAC &copy; 2021 <a style="color:#3c8dbc"  href="https://www.gob.mx/afac">Agencia Federal de Aviación Civil</a>.</strong> Todos los derechos Reservados DDE
+.
   </footer>
 
         <!-- Control Sidebar -->
