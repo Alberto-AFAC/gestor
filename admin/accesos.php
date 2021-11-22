@@ -308,8 +308,8 @@ function modificar() {
         if (respuesta == 0) {
             Swal.fire({
                 type: 'success',
-                title: 'ÉXITO',
-                text: 'Credenciales actualizadas correctamente',
+                // title: 'ÉXITO',
+                text: 'CREDENCIALES ACTUALIZADAS CORRECTAMENTE',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
                 timer: 2000,
