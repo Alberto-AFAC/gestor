@@ -89,7 +89,7 @@ include('header.php');
          <h3 class="box-title">NUEVO INGRESO</h3>
              <div class="pull-right">
                <div class="btn-group">
-               <a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
+               <a type="button" href="persona" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
                </div>
              </div>
 </div>
