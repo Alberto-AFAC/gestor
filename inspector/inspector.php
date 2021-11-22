@@ -2766,8 +2766,8 @@ function descaraPDF(v) {
         if (respuesta == 0) {
             Swal.fire({
                 type: 'success',
-                title: 'AFAC INFORMA',
-                text: 'PDF descargado',
+                // title: 'AFAC INFORMA',
+                text: 'PDF DESCARGADO',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
                 timer: 2000,

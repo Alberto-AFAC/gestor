@@ -459,8 +459,8 @@ include('header.php');
                             document.getElementById("uVideo").reset();
                             Swal.fire({
                                 type: 'success',
-                                title: 'AFAC INFORMA',
-                                text: 'Sus datos fueron guardados correctamente',
+                                // title: 'AFAC INFORMA',
+                                text: 'SUS DATOS FUERON GUARDADOS CORRECTAMENTE',
                                 showConfirmButton: false,
                                 timer: 2900,
                                 customClass: 'swal-wide',

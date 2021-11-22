@@ -114,7 +114,7 @@ function agregar() {
                 // alert(respuesta);
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
+                    // title: 'AFAC INFORMA',
                     text: 'CURSO GUARDADO CON ÉXITO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
@@ -183,7 +183,7 @@ function agregarMas() {
             // alert(respuesta);
             Swal.fire({
                 type: 'success',
-                title: 'AFAC INFORMA',
+                // title: 'AFAC INFORMA',
                 text: 'GUARDADO CON ÉXITO',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
@@ -272,7 +272,7 @@ function regCurso() {
                 // alert(respuesta);
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
+                    // title: 'AFAC INFORMA',
                     text: 'CURSO GUARDADO CON ÉXITO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
@@ -327,7 +327,7 @@ function actCurso() {
 
     paqueteDeDatos.append('AgstProvd', $('#AgstProvd').prop('value'));
     paqueteDeDatos.append('AgstCntro', $('#AgstCntro').prop('value'));
-    paqueteDeDatos.append('codigoCrso',$('#codigoCrso').prop('value'));
+    paqueteDeDatos.append('codigoCrso', $('#codigoCrso').prop('value'));
 
     $.ajax({
         url: '../php/actCursos.php',

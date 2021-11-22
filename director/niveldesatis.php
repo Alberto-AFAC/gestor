@@ -644,8 +644,8 @@ $(document).ready(function() {
                     document.getElementById("ponderacion").reset();
                     Swal.fire({
                         type: 'success',
-                        title: 'AFAC INFORMA',
-                        text: 'Ponderación de evaluación actualizada satisfactoriamente',
+                        // title: 'AFAC INFORMA',
+                        text: 'PONDERACIÓN DE EVALUACIÓN ACTUALIZADA SATISFACTORIAMENTE',
                         showConfirmButton: false,
                         timer: 2900,
                         customClass: 'swal-wide',

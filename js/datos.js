@@ -2606,8 +2606,8 @@ function registrar() {
                 //alert(respuesta);
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Sus datos fueron guardados correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'SUS DATOS FUERON GUARDADOS CORRECTAMENTE',
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -2707,8 +2707,8 @@ function registrarH() {
                 //alert(respuesta);
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Sus datos fueron guardados correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'SUS DATOS FUERON GUARDADOS CORRECTAMENTE',
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -2788,8 +2788,8 @@ function actDatos() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'SE ACUALIZO CON EXITO',
+                    // title: 'AFAC INFORMA',
+                    text: 'SE ACTUALIZÓ CON EXITO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 3000
@@ -2853,8 +2853,8 @@ function actPuesto() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'SE ACUALIZO CON EXITO',
+                    // title: 'AFAC INFORMA',
+                    text: 'SE ACTUALIZÓ CON EXITO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 3000
@@ -3123,8 +3123,8 @@ function asignar() {
 
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Sus datos fueron guardados correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'SUS DATOS FUERON GUARDADOS CORRECTAMENTE',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 3000
@@ -3134,8 +3134,8 @@ function asignar() {
             } else if (respuesta == 2) {
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Sus datos fueron guardados correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'SUS DATOS FUERON GUARDADOS CORRECTAMENTE',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 3000
