@@ -189,7 +189,7 @@ unset($_SESSION['consulta']);
           </a>
           <ul class="treeview-menu">
             <li><a href="inspecion"><i class="fa ion-document-text"></i>Lista de inspectores</a></li>
-            <li><a href="instructor"><i class="fa ion-document-text"></i>Instructor y Coordinador</a></li>
+            <li><a href="instructor"><i class="fa ion-document-text"></i>Coordinador/Instructor</a></li>
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
