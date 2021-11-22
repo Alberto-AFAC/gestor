@@ -340,7 +340,8 @@ $('#AgstIDSub').select2();
 
 var dataSet = [
 <?php 
-$Direje= $datos[1];
+$Direje= $datos[5];
+
 $query = "SELECT * FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
 WHERE 
