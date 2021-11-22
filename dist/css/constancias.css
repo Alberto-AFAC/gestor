@@ -61,6 +61,13 @@ p {
     color: #BE0202;
 }
 
+.nombre-Constancia-Min {
+    font-size: 47px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #BE0202;
+}
+
 .titulo-certificador {
     font-family: 'Montserrat', sans-serif;
     font-size: 40px;
@@ -82,6 +89,15 @@ p {
 .nombre-curso {
     font-family: 'Montserrat', sans-serif;
     font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nombre-Curso-Min {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
     font-weight: bold;
     letter-spacing: 5px;
     text-align: center;
