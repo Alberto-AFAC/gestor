@@ -168,12 +168,7 @@ unset($_SESSION['consulta']);
           <a href="inspector">
 
 
-        <i><img src='../dist/img/perfil.png' class='user-image' alt='User Image' style='
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        margin-right: 10px;
-        margin-top: -2px;'></i> <span>PERFIL</span>
+        <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
         <span class='pull-right-container'>
         </span>
         </a>

@@ -62,11 +62,7 @@
 
           <li class="dropdown notifications-menu">
 
-<!-- <a style="cursor: pointer;" onclick="conprofesion();"  data-toggle='modal' > -->
-<!--             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target='#modal-actualizar'>
-              <i class="fa fa-lock"></i><span class="label label-warning"></span>
-            </a>
- -->      
+ 
 
 <a style="cursor: pointer;" data-toggle='modal' data-target='#modal-actualizar'>
     <i class="fa fa-lock"></i><span class="label label-warning"></span>
@@ -115,22 +111,11 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <!--<li class="active treeview">
-          <a href="./">
-            <i class="fa ion-android-plane"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="./"><i class="fa ion-pie-graph"></i> Dashboard</a></li>
-            
-          </ul>
-        </li>-->
+
 
         <li class="active">
           <a href="inspector">
-            <i class="fa ion-android-plane"></i> <span>Inicio</span>
+            <i class="glyphicon glyphicon-user"></i> <span>Inicio</span>
             <span class="pull-right-container">
             </span>
           </a>

@@ -12,13 +12,8 @@
        // echo $_SESSION['usuario']['privilegios'];
 
         $id = $_SESSION['usuario']['id_usu'];
-      $sql = 
-       "SELECT gstIdper,gstAreID,gstNombr,gstApell FROM personal 
-      INNER JOIN accesos ON id_usu = gstIdper
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0";
 
-      $persona = mysqli_query($conexion,$sql);
-      $datos = mysqli_fetch_row($persona);
+        include('../perfil/index.php');
 
       $sql2 =
       "SELECT * FROM cursos WHERE modalidad = 'E-LEARNNING'";
@@ -84,7 +79,7 @@ ini_set('date.timezone','America/Mexico_City');
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?php
-                                if($datos[2] == 'LEONARDO' || $datos[3] == 'MARTINEZ BAUTISTA'){
+                                if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){
                                     echo "<img class='user-image' src='../dist/img/profile-leonardoR.jpeg' 
                                     alt='User profile picture'>";
                                 } else{
@@ -93,7 +88,7 @@ ini_set('date.timezone','America/Mexico_City');
                                 }
                                 ?>
                         <!--  <span class="hidden-xs">ADMINISTRADOR</span> -->
-                        <span class="hidden-xs"><?php echo $datos[2].' '.$datos[3]?></span>
+                        <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
                     </a>
                     <ul class="dropdown-menu" style="width: 200px;">
 
@@ -139,29 +134,26 @@ ini_set('date.timezone','America/Mexico_City');
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Menú</li>
-            <!--<li class="active treeview">
-          <a href="./">
-            <i class="fa ion-android-plane"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="./"><i class="fa ion-pie-graph"></i> Dashboard</a></li>
-            
-          </ul>
-        </li>-->
+        <li class="header">Menú</li>
 
-            <li class="active">
-                <a href="./">
-                    <i class="fa ion-android-plane"></i> <span>Dashboard</span>
-                    <span class="pull-right-container">
-                    </span>
-                </a>
-            </li>
-            <!-- -->
-            <!---->
+            <?php  if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){ ?>
+          <li class="active">
+          <a href="inspector">
+          <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
+          <span class='pull-right-container'>
+          </span>
+          </a>
+          </li>
+      <?php }else{ ?>
+          <li class="active">
+          <a href="inspector">        
+          <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
+          <span class='pull-right-container'>
+          </span>
+          </a>
+          </li>
+          <?php } ?>
+
             <li class="treeview">
                 <a href="#">
                     <i class="ion-ios-person"></i>

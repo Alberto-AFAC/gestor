@@ -149,56 +149,14 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <!--<li class="active treeview">
-          <a href="./">
-            <i class="fa ion-android-plane"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="./"><i class="fa ion-pie-graph"></i> Dashboard</a></li>
-            
-          </ul>
-        </li>-->
 
-<!--         <li class="active">
-          <a href="director.php">
-            <i class="fa ion-android-plane"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-            </span>
+          <li class="active">
+          <a href="inspector">        
+          <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
+          <span class='pull-right-container'>
+          </span>
           </a>
-        </li>   -->      
-        <!-- -->
-        <li class="active">
-          <a href="inspector">
-            <?php
-          if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){
-            echo "<i><img src='../dist/img/profile-leonardoR.jpeg' class='user-image' alt='User Image' style='
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-top: -2px;'></i> <span>PERFIL</span>
-            <span class='pull-right-container'>
-            </span>
-          </a>
-        </li>";
-          }else{
-            echo "<i><img src='../dist/img/perfil.png' class='user-image' alt='User Image' style='
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            margin-right: 10px;
-            margin-top: -2px;'></i> <span>PERFIL</span>
-                    <span class='pull-right-container'>
-                    </span>
-                  </a>
-                </li>";
-          }
-          ?>
-
-
+          </li>
 
         <!----> 
         <li class="treeview">
