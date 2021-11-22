@@ -2,10 +2,10 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "ADMINISTRADOR"){
-            //y se redirecciona al directorio que le corresponde
-            header("Location: ../../");
-            }
+        // if($_SESSION['usuario']['privilegios'] != "ADMINISTRADOR"){
+        //     //y se redirecciona al directorio que le corresponde
+        //     header("Location: ../../");
+        //     }
         }else{
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
             header('Location: ../../');
@@ -155,7 +155,7 @@ ini_set('date.timezone','America/Mexico_City');
 
             <li class="active">
                 <a href="../">
-                    <i class="fa ion-android-plane"></i> <span>Dashboard</span>
+                    <i class="glyphicon glyphicon-user"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
                     </span>
                 </a>
