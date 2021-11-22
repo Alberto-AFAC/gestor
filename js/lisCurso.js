@@ -186,7 +186,7 @@ function evaluar() {
 
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
+                    // title: 'AFAC INFORMA',
                     text: 'SE EVALUO CON EXITO EL CURSO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
@@ -267,7 +267,7 @@ function agrPartc() {
     classroom = document.getElementById('classroom').value;
     datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&classroom=' + classroom + '&opcion=participante';
     //alert(datos);
-    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '' || classromcur=='') {
+    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '' || classromcur == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -282,7 +282,7 @@ function agrPartc() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-             //alert(respuesta);
+            //alert(respuesta);
             console.log(respuesta);
 
             if (respuesta == 0) {
@@ -938,7 +938,7 @@ function generar() {
         if (respuesta == 0) {
             Swal.fire({
                 type: 'success',
-                title: 'AFAC INFORMA',
+                // title: 'AFAC INFORMA',
                 text: 'SE GUARDO CON EXITO',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
@@ -1219,8 +1219,8 @@ function finalizar() {
 
         Swal.fire({
             type: 'error',
-            title: 'AFAC INFORMA',
-            text: 'El curso ya está finalizado',
+            // title: 'AFAC INFORMA',
+            text: 'EL CURSO YA ESTÁ FINALIZADO',
             //text: 'Curso vencido, no puedes finalizar',
             showConfirmButton: false,
             customClass: 'swal-wide',
@@ -1240,8 +1240,8 @@ function finalizar() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Curso finalizado',
+                    // title: 'AFAC INFORMA',
+                    text: 'CURSO FINALIZADO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,
@@ -1284,8 +1284,8 @@ function cursoAct() {
 
         Swal.fire({
             type: 'error',
-            title: 'AFAC INFORMA',
-            text: 'Ingreso datos correctamente',
+            // title: 'AFAC INFORMA',
+            text: 'INGRESO DATOS CORRECTAMENTE',
             showConfirmButton: false,
             customClass: 'swal-wide',
             timer: 3000,
@@ -1304,8 +1304,8 @@ function cursoAct() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Datos del curso actualizado',
+                    // title: 'AFAC INFORMA',
+                    text: 'DATOS DEL CURSO ACTUALIZADOS',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000,

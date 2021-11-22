@@ -90,8 +90,8 @@ function proCurso() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Curso programado correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'CURSO PROGRAMADO CORRECTAMENTE',
                     // showConfirmButton: false,
                     showCancelButton: true,
                     customClass: 'swal-wide',
@@ -104,8 +104,8 @@ function proCurso() {
             } else {
                 Swal.fire({
                     type: 'warning',
-                    title: 'AFAC INFORMA',
-                    text: 'Error al agregar curso',
+                    // title: 'AFAC INFORMA',
+                    text: 'ERROR AL AGREGAR CURSO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000
@@ -187,8 +187,8 @@ function proCursoCord() {
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Curso programado correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'CURSO PROGRAMADO CORRECTAMENTE',
                     // showConfirmButton: false,
                     showCancelButton: true,
                     customClass: 'swal-wide',
@@ -201,8 +201,8 @@ function proCursoCord() {
             } else {
                 Swal.fire({
                     type: 'warning',
-                    title: 'AFAC INFORMA',
-                    text: 'Error al agregar curso',
+                    // title: 'AFAC INFORMA',
+                    text: 'ERROR AL AGREGAR CURSO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000
@@ -285,8 +285,8 @@ function proCursoH() {
                 // $('#vaciar').toggle('toggle');
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Curso programado correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'CURSO PROGRAMADO CORRECTAMENTE',
                     // showConfirmButton: false,
                     showCancelButton: true,
                     customClass: 'swal-wide',
@@ -299,8 +299,8 @@ function proCursoH() {
             } else {
                 Swal.fire({
                     type: 'warning',
-                    title: 'AFAC INFORMA',
-                    text: 'Error al agregar curso',
+                    // title: 'AFAC INFORMA',
+                    text: 'ERROR AL AGREGAR CURSO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000
@@ -384,8 +384,8 @@ function proCursoCoor() {
                 // $('#vaciar').toggle('toggle');
                 Swal.fire({
                     type: 'success',
-                    title: 'AFAC INFORMA',
-                    text: 'Curso programado correctamente',
+                    // title: 'AFAC INFORMA',
+                    text: 'CURSO PROGRAMADO CORRECTAMENTE',
                     // showConfirmButton: false,
                     showCancelButton: true,
                     customClass: 'swal-wide',
@@ -398,8 +398,8 @@ function proCursoCoor() {
             } else {
                 Swal.fire({
                     type: 'warning',
-                    title: 'AFAC INFORMA',
-                    text: 'Error al agregar curso',
+                    // title: 'AFAC INFORMA',
+                    text: 'ERROR AL AGREGAR CURSO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 2000
