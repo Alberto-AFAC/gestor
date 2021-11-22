@@ -129,7 +129,7 @@ name="privilegios" id="privilegios" type="text" data-live-search="true">
 <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
 <option value="EJECUTIVO">EJECUTIVO</option>
-<option value="INSTRUCTOR">INSTRUCTOR</option>
+<option value="INSTRUCTOR">COORDINADOR/INSTRUCTOR</option>
 <option value="INSPECTOR">INSPECTOR</option>
 </select>
 </div>
