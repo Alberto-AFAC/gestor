@@ -2714,9 +2714,9 @@ function registrarH() {
                     focusConfirm: false,
                     confirmButtonColor: "#3C8DBC",
                     customClass: 'swal-wide',
-                    confirmButtonText: '<span style="color: white;"><a class="a-alert" href="personal.php">¿Deseas agregar otro registro?</a></span>',
+                    confirmButtonText: '<span style="color: white;"><a class="a-alert" href="personal">¿Deseas agregar otro registro?</a></span>',
                     confirmButtonAriaLabel: 'Thumbs up, great!',
-                    cancelButtonText: '<a  class="a-alert" href="persona.php"><span style="color: white;">Cerrar</span></a>',
+                    cancelButtonText: '<a  class="a-alert" href="persona"><span style="color: white;">Cerrar</span></a>',
                     cancelButtonAriaLabel: 'Thumbs down'
                         // timer: 2900
                 });
@@ -3140,7 +3140,7 @@ function asignar() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-                setTimeout("location.href = 'persona.php';", 2000);
+                setTimeout("location.href = 'persona';", 2000);
 
             } else if (respuesta == 1) {
                 $('#danger2').toggle('toggle');
@@ -3299,7 +3299,7 @@ function usuBaja() {
             setTimeout(function() {
                 $('#succe11').toggle('toggle');
             }, 2000);
-            setTimeout("location.href = 'persona.php';", 2200);
+            setTimeout("location.href = 'persona';", 2200);
 
         } else {
             $('#danger11').toggle('toggle');
