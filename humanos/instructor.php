@@ -16,7 +16,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-
+  <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <style>
+	.swal-wide {
+        width: 500px !important;
+        font-size: 16px !important;
+    }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
