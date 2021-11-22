@@ -1200,7 +1200,7 @@ function enviarMail() {
 
         Swal.fire({
             type: 'success',
-            title: 'ENVIADO CON ÉXITO',
+            text: 'ENVIADO CON ÉXITO',
             showSpinner: true,
             showConfirmButton: false,
             customClass: 'swal-wide',
