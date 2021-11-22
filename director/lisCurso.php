@@ -60,30 +60,30 @@ color: white;
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
-    <div class="wrapper">
+<div class="wrapper">
 
-        <?php
-        include('header.php');
-        ?>
+<?php
+include('header.php');
+?>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
 
 
-            <section class="content-header">
-                <h1>
-                    CURSOS PROGRAMADOS
-                </h1>
-            </section>
-            <!-- Main content -->
-            <section class="content">
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-md-12">
-                        <div class="nav-tabs-custom">
+<section class="content-header">
+<h1>
+CURSOS PROGRAMADOS
+</h1>
+</section>
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<!-- /.col -->
+<div class="col-md-12">
+<div class="nav-tabs-custom">
 
-                            <!--<ul class="nav nav-tabs">
+<!--<ul class="nav nav-tabs">
 <li class="active"><a href="#activity" data-toggle="tab">PROGRAMACIÓN DEL CURSO</a></li>
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
 </ul>-->
@@ -135,8 +135,8 @@ aria-labelledby="exampleModalLabel">
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" onclick="location.href='lisCurso'"
-class="close" data-dismiss="modal" aria-label="Close"><span
+<button type="button" onclick="location.href='lisCurso'" class="close"
+data-dismiss="modal" aria-label="Close"><span
 aria-hidden="true">&times;</span></button>
 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
 </div>
@@ -154,7 +154,9 @@ disabled="">
 </div>
 <div class="col-sm-3">
 <label>INICIO</label>
-<input type="data" onkeyup="mayus(this);" class="form-control" id="finicio" name="finicio" disabled="">
+<input type="data" onkeyup="mayus(this);"
+class="form-control" id="finicio" name="finicio"
+disabled="">
 </div>
 <div class="col-sm-3">
 <label>DURACIÓN</label>
@@ -185,6 +187,7 @@ CURSO </option>
 <input type="hidden" name="linke" id="linke">
 <input type="hidden" name="modalidad" id="modalidad">
 <input type="hidden" name="contracceso" id="contracceso">
+<input type="hidden" name="classroom" id="classroom">
 <div class="form-group">
 <div class="col-sm-5">
 <button type="button" id="buttons" class="btn btn-info"
@@ -274,10 +277,11 @@ curso para cancelar </p>
 <h4 class="modal-title">ELIMINAR INSPECTOR </h4>
 </div>
 <div class="modal-body">
-<input type="hidden" name="codInsp" id="codInsp"><input type="hidden" name="idInspt" id="idInspt">
+<input type="hidden" name="codInsp" id="codInsp"><input type="hidden"
+name="idInspt" id="idInspt">
 <div class="form-group">
 <div class="col-sm-12">
-<p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR:  <span id="nomInsp"></span> 
+<p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR: <span id="nomInsp"></span>
 <!-- +'?'<input type="text" name="cgstTitlo"
 +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
 style="background: white;border: 1px solid white;"> -->
@@ -294,7 +298,8 @@ Error
 al eliminar inspector</p>
 </b>
 <b>
-<p class="alert alert-success text-center padding exito" id="succes1">¡Se
+<p class="alert alert-success text-center padding exito" id="succes1">
+¡Se
 elimino inspector con éxito !</p>
 </b>
 <b>
@@ -316,44 +321,50 @@ inspector para eliminar </p>
 
 <!-- inicia la evaluación DEL INSTRUCTOR -->
 <form class="form-horizontal" action="" method="POST" id="avaluacion">
-<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel">
 <div class="modal fade" id="modal-evaluar">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
-aria-label="Close">
+<button type="button" class="close" style="font-size: 22px"
+data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
 <p>
-<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE RESULTADOS</b></h4>
+<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE
+RESULTADOS</b></h4>
 </p>
 <input type="hidden" name="ogidoc" id="ogidoc">
 <label>PARTICIPANTE</label>
 <input type="text" disabled=""
 style="text-transform:uppercase; font-size: 14pt; display:none"
 class="form-control " id="idinsev" name="evaNombr">
-<input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt"
-class="form-control" id="evaNombr" name="evaNombr">
+<input type="text" disabled=""
+style="text-transform:uppercase; font-size: 14pt" class="form-control"
+id="evaNombr" name="evaNombr">
 </div>
 <div class="modal-body">
 <div class="box-tools pull-right">
 <button type="button" class="btn btn-box-tool" data-widget="collapse">
-<a href='javascript:openEditeva()' id="abrirev" style="font-size:22px"> <i
-class="fa fa-edit"></i> </a>
+<a href='javascript:openEditeva()' id="abrirev"
+style="font-size:22px"> <i class="fa fa-edit"></i> </a>
 <a href='javascript:cerrarEditeva()' id="cerrareval"
-style="display:none; font-size: 22px"> <i class="fa fa-ban"></i> </a>
+style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
+</a>
 </button>
 </div>
 <div class="form-group">
 <div class="col-sm-2">
 <label>FOLIO:</label>
 <input type="text" name="id_curso" id="id_curso"
-style="text-transform:uppercase;" class="form-control disabled" disabled="">
+style="text-transform:uppercase;" class="form-control disabled"
+disabled="">
 </div>
 <div class="col-sm-12">
 <label>CURSO:</label>
-<input type="text" name="idperon" id="idperon" style="text-transform:uppercase;"
-class="form-control disabled" disabled="">
+<input type="text" name="idperon" id="idperon"
+style="text-transform:uppercase;" class="form-control disabled"
+disabled="">
 </div>
 <div class="col-sm-12">
 <label>FECHA DE LA EVALUACIÓN:</label>
@@ -372,14 +383,18 @@ class="form-control disabled" disabled="" id='fechaev'>
 <tbody>
 <tr>
 <td><input type="number"
-title="el numero no debe ser superior a 100" name="cantidad"
-min="1" max="100" style="text-transform:uppercase;"
-class="form-control disabled" disabled="" id='validoev'
-onchange="cambiartexto()"></td>
-<td><span class='label label-primary' style="font-size:18px;"
-id='PE'>PENDIENTE</span><span class='label label-success'
+title="el numero no debe ser superior a 100"
+name="cantidad" min="1" max="100"
+style="text-transform:uppercase;"
+class="form-control disabled" disabled=""
+id='validoev' onchange="cambiartexto()"></td>
+<td><span class='label label-primary'
+style="font-size:18px;"
+id='PE'>PENDIENTE</span><span
+class='label label-success'
 style="font-size:18px; display:none"
-id='SIe'>APROBADO</span><span class='label label-danger'
+id='SIe'>APROBADO</span><span
+class='label label-danger'
 style="font-size:18px; display:none"
 id='NOE'>REPROBADO</span>
 </td>
@@ -391,8 +406,9 @@ id='NOE'>REPROBADO</span>
 </div>
 
 <div class="col-sm-12">
-<textarea class="col-sm-12" name="comentarios" id="comeneva" rows="4" cols="10"
-onkeyup="mayus(this);" style="font-size: 14px; border-radius: 5px;"
+<textarea class="col-sm-12" name="comentarios" id="comeneva"
+rows="4" cols="10" onkeyup="mayus(this);"
+style="font-size: 14px; border-radius: 5px;"
 placeholder="Comentarios Adicionales" disabled=""></textarea>
 </div>
 </div>
@@ -403,21 +419,25 @@ placeholder="Comentarios Adicionales" disabled=""></textarea>
 onclick="cerrareval()">ACEPTAR</button>
 </div>
 <b>
-<p class="alert alert-warning text-center padding error" id="dangerev">Error al
+<p class="alert alert-warning text-center padding error"
+id="dangerev">Error al
 Evaluar!!
 </b>
 <b>
-<p class="alert alert-success text-center padding exito" id="succeev">¡Se Evaluo
+<p class="alert alert-success text-center padding exito"
+id="succeev">¡Se Evaluo
 con
 exito!</p>
 </b>
 <b>
-<p class="alert alert-warning text-center padding aviso" id="emptyev">Falto
+<p class="alert alert-warning text-center padding aviso"
+id="emptyev">Falto
 Ingresar
 la Puntuación!</p>
 </b>
 <b>
-<p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto
+<p class="alert alert-warning text-center padding aviso"
+id="emptyev1">Falto
 Ingresar la Fecha!</p>
 </b>
 </div>
@@ -435,11 +455,12 @@ Ingresar la Fecha!</p>
 <div class="modal-dialog modal-lg">
 <div class="modal-content" style="width: 1100px;">
 <div class="modal-header">
-<button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
-aria-label="Close">
+<button type="button" class="close" style="font-size: 22px"
+data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
 <p>
-<h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS DE
+<h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS
+DE
 PARTICIPANTES</h4><br>
 <div class="col-sm-12">
 <div id="generacion"></div>
@@ -453,21 +474,25 @@ PARTICIPANTES</h4><br>
 onclick="generar()">ACEPTAR</button>
 </div>
 <b>
-<p class="alert alert-warning text-center padding error" id="dangerev">Error al
+<p class="alert alert-warning text-center padding error"
+id="dangerev">Error al
 Evaluar!!
 </b>
 <b>
-<p class="alert alert-success text-center padding exito" id="succeev">¡Se Evaluo
+<p class="alert alert-success text-center padding exito"
+id="succeev">¡Se Evaluo
 con
 exito!</p>
 </b>
 <b>
-<p class="alert alert-warning text-center padding aviso" id="emptyev">Falto
+<p class="alert alert-warning text-center padding aviso"
+id="emptyev">Falto
 Ingresar
 la Puntuación!</p>
 </b>
 <b>
-<p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto
+<p class="alert alert-warning text-center padding aviso"
+id="emptyev1">Falto
 Ingresar la Fecha!</p>
 </b>
 </div>
@@ -483,11 +508,12 @@ Ingresar la Fecha!</p>
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
-aria-label="Close">
+<button type="button" class="close" style="font-size: 22px"
+data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
 <p>
-<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE RESULTADOS</b></h4>
+<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE
+RESULTADOS</b></h4>
 <br>
 <div class="col-sm-12">
 <div id="evaluacion"></div>
@@ -501,21 +527,25 @@ aria-label="Close">
 onclick="evalresult()">ACEPTAR</button>
 </div>
 <b>
-<p class="alert alert-danger text-center padding error" id="danger1">Error al
+<p class="alert alert-danger text-center padding error"
+id="danger1">Error al
 evaluar!!
 </b>
 <b>
-<p class="alert alert-success text-center padding exito" id="exito1">¡Se evaluo
+<p class="alert alert-success text-center padding exito"
+id="exito1">¡Se evaluo
 con
 exito!</p>
 </b>
 <b>
-<p class="alert alert-warning text-center padding aviso" id="emptyev">Falto
+<p class="alert alert-warning text-center padding aviso"
+id="emptyev">Falto
 Ingresar
 la Puntuación!</p>
 </b>
 <b>
-<p class="alert alert-warning text-center padding aviso" id="emptyev1">Falto
+<p class="alert alert-warning text-center padding aviso"
+id="emptyev1">Falto
 Ingresar la Fecha!</p>
 </b>
 </div>
@@ -545,8 +575,8 @@ aria-label="Close">
 <div class="form-group">
 <div class="col-sm-2">
 <label>FOLIO:</label>
-<input type="text" name="id_cursoc" id="id_cursoc" style="text-transform:uppercase;"
-class="form-control disabled" disabled="">
+<input type="text" name="id_cursoc" id="id_cursoc"
+style="text-transform:uppercase;" class="form-control disabled" disabled="">
 </div>
 <div class="col-sm-10">
 <label>PARTICIPANTE</label>
@@ -558,8 +588,8 @@ class="form-control" id="evaNombrc" name="evaNombrc">
 </div>
 <div class="col-sm-12">
 <label>CURSO:</label>
-<input type="text" name="idperonc" id="idperonc" style="text-transform:uppercase;"
-class="form-control disabled" disabled="">
+<input type="text" name="idperonc" id="idperonc"
+style="text-transform:uppercase;" class="form-control disabled" disabled="">
 <input type="text" disabled=""
 style="text-transform:uppercase; font-size: 14pt; display:none;"
 class="form-control " id="copnum" name="copnum">
@@ -597,7 +627,8 @@ LISTA DE REGISTRO
 </td>
 <td>
 <!-- <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check2c" disabled style="color:green; font-size: 16pt"></i></span>
+<i class="" id="check2c" disabled
+style="color:green; font-size: 16pt"></i></span>
 </td>
 
 </tr>
@@ -607,7 +638,8 @@ LISTA DE ASISTENCIA
 </td>
 <td>
 <!-- <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check3c" disabled style="color:green; font-size: 16pt"></i></span>
+<i class="" id="check3c" disabled
+style="color:green; font-size: 16pt"></i></span>
 </td>
 </tr>
 <tr>
@@ -616,7 +648,8 @@ REPORTES DE INCIDENCIAS
 </td>
 <td>
 <!-- <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check4c" disabled style="color:green; font-size: 16pt"></i></span> 
+<i class="" id="check4c" disabled
+style="color:green; font-size: 16pt"></i></span>
 </td>
 
 </tr>
@@ -626,7 +659,8 @@ CARTAS DESCRIPTIVAS
 </td>
 <td>
 <!-- <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check5c" disabled style="color:green; font-size: 16pt"></i></span> 
+<i class="" id="check5c" disabled
+style="color:green; font-size: 16pt"></i></span>
 </td>
 
 </tr>
@@ -645,7 +679,8 @@ REGISTRO DE PONDERACIÓN
 </td>
 <td>
 <!-- <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check7c" disabled style="color:green; font-size: 16pt"></i></span> 
+<i class="" id="check7c" disabled
+style="color:green; font-size: 16pt"></i></span>
 </td>
 </tr>
 <tr>
@@ -654,7 +689,8 @@ INFORME FINAL
 </td>
 <td>
 <!-- <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check8c" disabled style="color:green; font-size: 16pt"></i></span> 
+<i class="" id="check8c" disabled
+style="color:green; font-size: 16pt"></i></span>
 </td>
 </tr>
 <tr>
@@ -663,7 +699,8 @@ EVALUACIÓN DE REACCIÓN
 </td>
 <td>
 <!-- <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check9c" disabled style="color:green; font-size: 16pt"></i></span> 
+<i class="" id="check9c" disabled
+style="color:green; font-size: 16pt"></i></span>
 <!-- <i class="fa fa-check" id="che91" disabled style="color:green; font-size: 16pt; display:none;"></i></span>         -->
 </td>
 </tr>
@@ -674,11 +711,15 @@ EVALUACIÓN DE REACCIÓN
 
 <div class="form-group">
 <div class="col-sm-5">
-<button type="button" id="guaacredit" onclick="vergenercerf()" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px; display:none;" >ACEPTAR</button>
-<button type="button" id="actacredit" onclick="" class="btn btn-info altaboton" style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
+<button type="button" id="guaacredit" onclick="vergenercerf()"
+class="btn btn-info altaboton"
+style="font-size:16px; width:110px; height:35px; display:none;">ACEPTAR</button>
+<button type="button" id="actacredit" onclick="" class="btn btn-info altaboton"
+style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
 </div>
 <b>
-<p class="alert alert-warning text-center padding error" id="cerdangerev">Error al
+<p class="alert alert-warning text-center padding error" id="cerdangerev">Error
+al
 Acreditar!!
 </b>
 <b>
@@ -936,8 +977,6 @@ immediately after the control sidebar -->
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
 <script src="../js/global.js"></script>
-<script src="../js/datos.js"></script>
-<script type="text/javascript" src="../js/director.js"></script>
 <!-- page script -->
 
 </body>
@@ -960,7 +999,8 @@ var table = $('#example').DataTable({
 "language": {
 "searchPlaceholder": "Buscar datos...",
 "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-},"order": [
+},
+"order": [
 [7, "DESC"]
 ],
 "ajax": "../php/cursosProgra.php",
@@ -1009,26 +1049,27 @@ var x = 0;
 
 for (i = 0; i < res.length; i++) {
 if (obj.data[i].id_curso == data[8]) {
-cursos = 
-obj.data[i].gstIdlsc + 
-"*" + obj.data[i].gstTitlo + 
-"*" + obj.data[i].gstTipo + 
-"*" + obj.data[i].gstPrfil + 
-"*" + obj.data[i].gstCntnc + 
-"*" + obj.data[i].gstDrcin + 
+cursos =
+obj.data[i].gstIdlsc +
+"*" + obj.data[i].gstTitlo +
+"*" + obj.data[i].gstTipo +
+"*" + obj.data[i].gstPrfil +
+"*" + obj.data[i].gstCntnc +
+"*" + obj.data[i].gstDrcin +
 "*" + obj.data[i].gstVignc +
-"*" + obj.data[i].gstObjtv + 
-"*" + obj.data[i].hcurso + 
-"*" + obj.data[i].fcurso + 
-"*" + obj.data[i].fechaf + 
+"*" + obj.data[i].gstObjtv +
+"*" + obj.data[i].hcurso +
+"*" + obj.data[i].fcurso +
+"*" + obj.data[i].fechaf +
 "*" + obj.data[i].idinst +
-"*" + obj.data[i].sede + 
-"*" + obj.data[i].link + 
-"*" + obj.data[i].modalidad + 
-"*" + obj.data[i].codigo + 
+"*" + obj.data[i].sede +
+"*" + obj.data[i].link +
+"*" + obj.data[i].modalidad +
+"*" + obj.data[i].codigo +
 "*" + obj.data[i].proceso +
-"*" + obj.data[i].idinsp + 
-"*" + obj.data[i].contracur;
+"*" + obj.data[i].idinsp +
+"*" + obj.data[i].contracur +
+"*" + obj.data[i].classroom ;
 
 var d = cursos.split("*");
 
@@ -1049,12 +1090,12 @@ $("#Dtall #fechaf").val(d[10]);
 $("#Dtall #idinst").val(d[11]);
 $("#Dtall #sede").val(d[12]);
 $("#Dtall #modalidads").val(d[14]);
-if(d[13]=='0'){
+if (d[13] == '0') {
 $("#Dtall #linkcur").val(d[13]);
 $("#Dtall #contracur").val(d[18]);
 $("#dismod").hide();
 $("#disocl").show();
-}else{
+} else {
 $("#Dtall #linkcur").val(d[13]);
 $("#Dtall #contracur").val(d[18]);
 $("#dismod").show();
@@ -1067,15 +1108,16 @@ $("#Dtall #proceso").val(data[18]);
 codigo = d[15];
 
 idcurso(codigo);
-if(data[18]=='FINALIZADO' || data[18]=='VENCIDO'){
+if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
 $("#buttonfin").hide();
 $("#editcurs").hide();
 $("#notiocu").hide();
-}else{
+} else {
 $("#buttonfin").show();
 $("#editcurs").show();
 $("#notiocu").show();
-}                    
+}
+$("#Dtall #classromcur").val(d[19]);
 }
 }
 })
@@ -1281,7 +1323,8 @@ evalcurso =
 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE INSPECTOR CURSO---------------//
 if (obj.data[i].codigo == codigo) {
 
-data = obj.data[i].codigo+'*'+obj.data[i].id_curso+'*'+obj.data[i].gstNombr+'*'+obj.data[i].gstApell;
+data = obj.data[i].codigo + '*' + obj.data[i].id_curso + '*' + obj.data[i].gstNombr + '*' + obj
+.data[i].gstApell;
 
 if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR' || obj.data[i]
 .gstCargo == 'ADMINISTRATIVO') {
@@ -1431,7 +1474,7 @@ html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.
 html += '</tbody></table>';
 $("#proCursos").html(html);
 // Buscador de tabla
-$(document).ready(function(){
+$(document).ready(function() {
 $("#myInput").on("keyup", function() {
 var value = $(this).val().toLowerCase();
 $("#myTable tr").filter(function() {
@@ -1450,11 +1493,11 @@ var data = table.row($(this).parents("tr")).data();
 $("#modal-eliminar #codigos").val(data[9]);
 $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
-if(data[18]=='FINALIZADO' || data[18]=='VENCIDO'){
+if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
 $("#elimina").hide();
-}else{
-$("#elimina").show();        
-}    
+} else {
+$("#elimina").show();
+}
 
 });
 }
@@ -1463,6 +1506,8 @@ function agrinspctor(tbody, table) {
 
 $(tbody).on("click", "a.asiste", function() {
 var data = table.row($(this).parents("tr")).data();
+
+
 
 $("#Prtcpnt #gstIdlsc").val(data[15]);
 $("#Prtcpnt #acodigos").val(data[9]);
@@ -1477,21 +1522,22 @@ $("#Prtcpnt #sede").val(data[12]);
 $("#Prtcpnt #linke").val(data[13]);
 $("#Prtcpnt #modalidad").val(data[14]);
 $("#Prtcpnt #contracceso").val(data[19]);
+$("#Prtcpnt #classroom").val(data[20]);
 
-if(data[18]=='FINALIZADO' || data[18]=='VENCIDO'){
+if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
 $("#buttons").hide();
-}else{
-$("#buttons").show();        
-}    
+} else {
+$("#buttons").show();
+}
 
 
 });
 }
 
-function eliNsp(data){
+function eliNsp(data) {
 
 var d = data.split("*");
-$("#nomInsp").html(d[2]+' '+d[3]);
+$("#nomInsp").html(d[2] + ' ' + d[3]);
 $("#eliminar-modal #codInsp").val(d[0]);
 $("#eliminar-modal #idInspt").val(d[1]);
 
@@ -1503,7 +1549,10 @@ const filter = document.querySelector('#myInput').value;
 const regex = new RegExp(filter, 'i');
 const isFoundInTds = (td) => regex.test(td.innerHTML);
 const isFound = (childrenArr) => childrenArr.some(isFoundInTds);
-const setTrStyleDisplay = ({ style, children }) => {
+const setTrStyleDisplay = ({
+style,
+children
+}) => {
 style.display = isFound([...children]) ? '' : 'none';
 };
 
