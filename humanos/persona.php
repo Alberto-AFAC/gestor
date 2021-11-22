@@ -93,7 +93,7 @@ include('header.php');
                       <label style="font-size: 20px;">LISTA | PERSONAL</label></H4>
              <div class="pull-right">
                <div class="btn-group">
-               <a type="button" href="persona.php" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
+               <a type="button" href="persona" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
                </div>
              </div>
 </div>
