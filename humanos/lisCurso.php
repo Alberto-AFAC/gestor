@@ -1108,7 +1108,7 @@ var x = 0;
 //
 //TODO AQUI ES
 html =
-'<table id="lstcurs" class="table display table-striped table-bordered" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i>ESPECIALIDAD</th><th><i></i>ASISTENCIA</th><th style="width:18%"><i></i>ACCIONES</th><th style="display:none;"><i></i>MOTIVO</th><th style="display:none;"><i></i>justifi</th></tr></thead><tbody id="myTable">';
+'<table id="lstcurs" class="table display table-striped table-bordered" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i>ESPECIALIDAD</th><th><i></i>ASISTENCIA</th><th style="display:none;"><i></i>MOTIVO</th><th style="display:none;"><i></i>justifi</th></tr></thead><tbody id="myTable">';
 
 
 //TRAE LOS DATOS DE LA TABLA CELDA RECURRENTE
@@ -1289,23 +1289,11 @@ html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.
 "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" +
 '"' + obj.data[i].id_curso + '"' +
 ")' class='circular-button right transition pend'><i class='fa ion-android-time'  style='font-size:18px;'></i>" +
-"</td><td>" +
-"</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' +
-cursos + '"' +
-") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><a type='button' title='Eliminar inspector' onclick='eliNsp(" +
-'"' + data + '"' +
-")' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a><td style='display:none;'>" +
-obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-"</td></td></tr>";
+"</td></tr>";
 
 } else {
 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-.gstApell + "</td><td>" + cargo + "</td><td> " + confirmar + "</td><td>" +
-evaluacion + evalcurso + listcer +
-"<a type='button' title='Eliminar' onclick='eliNsp(" + '"' + data + '"' +
-")' class='btn btn-default' data-toggle='modal' style='margin-left:2px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px;'></i></a><td style='display:none;'>" +
-obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-"</td></td></tr>";
+.gstApell + "</td><td>" + cargo + "</td><td> " + confirmar + "</td></tr>";
 }
 
 
@@ -1319,21 +1307,13 @@ html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.
 "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" +
 '"' + obj.data[i].id_curso + '"' +
 ")' class='circular-button right transition pend'><i class='fa ion-android-time'  style='font-size:18px;'></i>" +
-"</td><td>" +
-"</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' +
-cursos + '"' +
-") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><td style='display:none;'>" +
-obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-"</td></td></tr>";
+"</td></tr>";
 
 } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO' && obj.data[
 i].codigo == codigo && obj.data[i].idinst != obj.data[i].idinsp) {
 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
 .gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> " + confirmar +
-"</td><td>" + evaluacion + evalcurso + listcer +
-"<td style='display:none;'>" +
-obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-"</td></td></tr>";
+"</td></tr>";
 }
 }
 
@@ -1342,12 +1322,7 @@ obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi 
 if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
 .gstApell + "</td><td>" + cargo +
-"</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" +
-"<td><a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval(" + '"' +
-cursos + '"' +
-")' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" +
-'"' + cursos + '"' +
-")' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> </td></tr>";
+"</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td></tr>";
 }
 
 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO COORDINADOR (PRINCIPAL)---------------//
@@ -1355,75 +1330,12 @@ if (obj.data[i].gstCargo == 'COORDINADOR' && obj.data[i].codigo == codigo && obj
 .idinst == obj.data[i].idinsp) {
 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
 .gstApell + "</td><td>" + obj.data[i].gstCargo +
-"</td><td><center><img src='../dist/img/coordinador.svg' alt='Coordinador' title='Coordinador' width='50px;'></center></td>" +
-"<td>  </td></tr>";
+"</td><td><center><img src='../dist/img/coordinador.svg' alt='Coordinador' title='Coordinador' width='50px;'></center></td></tr>";
 }
 
-} else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
+} 
 
-if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
-
-if (obj.data[i].gstCargo == 'COORDINADOR') {
-html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-.gstApell + "</td><td>" + obj.data[i].gstCargo +
-"</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-'"' + obj.data[i].id_curso + '"' +
-")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-"</td><td>" +
-"<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' +
-cursos + '"' +
-")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-'"' + cursos + '"' +
-")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
-'"' + cursos + '"' +
-") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
-} else {
-html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-.gstApell + "</td><td>" + cargo +
-"</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-'"' + obj.data[i].id_curso + '"' +
-")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-"</td><td>" +
-"<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' +
-cursos + '"' +
-")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-'"' + cursos + '"' +
-")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
-'"' + cursos + '"' +
-") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
-
-}
-
-}
-if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
-html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-.gstApell + "</td><td>" + cargo +
-"</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-'"' + obj.data[i].id_curso + '"' +
-")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-"</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" +
-'"' + cursos + '"' +
-")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-'"' + cursos + '"' +
-")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
-'"' + cursos + '"' +
-") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
-}
-if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
-html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-.gstApell + "</td><td>" + cargo +
-"</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" +
-'"' + obj.data[i].id_curso + '"' +
-")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-"</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" +
-'"' + cursos + '"' +
-")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-'"' + cursos + '"' +
-")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a></td></tr>";
-}
-}
-
-}
+}  
 
 html += '</tbody></table>';
 $("#proCursos").html(html);
