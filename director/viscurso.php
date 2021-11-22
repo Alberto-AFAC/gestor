@@ -89,7 +89,7 @@
                                         rows="5" cols="50" disabled=""></textarea>
                                 </div>
                             </div>
-<?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){?>
+                        <?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){?>
                         <div class="form-group">
                         <label for=""></label>
                         <button type="button" title="Editar Curso" class="btn btn-box-tool"
@@ -168,11 +168,11 @@
                             <input type="hidden" name="codigo" id="codigo">
                             <input type="hidden" name="proceso" id="proceso">
 
-<?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){?>
-<button type="button" id="buttonfin" title="Finalizar Curso"
-style="font-size:15px; width:150px; height:35px;" class="btn btn-block btn-success"
-onclick="finalizar();">FINALIZAR CURSO</button>
-<?php }?>
+                            <?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){?>
+                            <button type="button" id="buttonfin" title="Finalizar Curso"
+                            style="font-size:15px; width:150px; height:35px;" class="btn btn-block btn-success"
+                            onclick="finalizar();">FINALIZAR CURSO</button>
+                            <?php }?>
 
                             <div id="buttonfin"></div>
                             <b>

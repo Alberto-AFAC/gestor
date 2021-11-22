@@ -992,8 +992,12 @@ $('#idinsp').select2();
 </script>
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
+
+
 <script type="text/javascript">
 $(document).ready(function() {
+
+<?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){ ?>	
 var table = $('#example').DataTable({
 
 "language": {
@@ -1011,6 +1015,29 @@ var table = $('#example').DataTable({
 
 }]
 });
+
+<?php }else{ ?>
+
+var table = $('#example').DataTable({
+
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+"order": [
+[7, "DESC"]
+],
+"ajax": "../php/cursosProgra.php",
+"columnDefs": [{
+"targets": -1,
+"data": null,
+"defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> "
+
+}]
+});
+
+<?php } ?>
+
 
 detalles("#example tbody", table);
 
@@ -1141,8 +1168,9 @@ dismod.style.display = 'none';
 
 });
 
-function idcurso(codigo) {
 
+
+function idcurso(codigo) {
 $.ajax({
 url: '../php/curLista.php',
 type: 'POST'
@@ -1338,13 +1366,16 @@ html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.
 "</td><td>" +
 "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' +
 cursos + '"' +
-") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><a type='button' title='Eliminar inspector' onclick='eliNsp(" +
+") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){ ?><a type='button' title='Eliminar inspector' onclick='eliNsp(" +
 '"' + data + '"' +
-")' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a><td style='display:none;'>" +
+")' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a><?php }else{ ?>  <?php } ?><td style='display:none;'>" +
 obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
 "</td></td></tr>";
 
 } else {
+
+<?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){ ?>	
+
 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
 .gstApell + "</td><td>" + cargo + "</td><td> " + confirmar + "</td><td>" +
 evaluacion + evalcurso + listcer +
@@ -1352,6 +1383,18 @@ evaluacion + evalcurso + listcer +
 ")' class='btn btn-default' data-toggle='modal' style='margin-left:2px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px;'></i></a><td style='display:none;'>" +
 obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
 "</td></td></tr>";
+
+<?php }else{ ?>
+
+html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
+.gstApell + "</td><td>" + cargo + "</td><td> " + confirmar + "</td><td>" + evalcurso + listcer +
+"<td style='display:none;'>" +
+obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
+"</td></td></tr>";
+
+
+
+<?php } ?>
 }
 
 
@@ -1385,6 +1428,8 @@ obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi 
 
 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO INSTRUCTOR---------------//
 
+<?php if($_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){ ?>	
+
 if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
 .gstApell + "</td><td>" + cargo +
@@ -1396,6 +1441,17 @@ cursos + '"' +
 ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> </td></tr>";
 }
 
+
+<?php }else{ ?>
+
+if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
+html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
+.gstApell + "</td><td>" + cargo +
+"</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td></td></tr>";
+}
+
+
+<?php } ?>
 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO COORDINADOR (PRINCIPAL)---------------//
 if (obj.data[i].gstCargo == 'COORDINADOR' && obj.data[i].codigo == codigo && obj.data[i]
 .idinst == obj.data[i].idinsp) {
@@ -1466,9 +1522,10 @@ html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.
 ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
 '"' + cursos + '"' +
 ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a></td></tr>";
-}
-}
 
+
+}
+}
 }
 
 html += '</tbody></table>';
