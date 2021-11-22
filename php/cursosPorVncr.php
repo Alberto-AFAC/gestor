@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts,cursos.fcurso AS fin 
+	$query = "SELECT *, COUNT(*) AS prtcpnts,cursos.fcurso AS fin,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS finaliza 
 			FROM
 			cursos
 			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
@@ -48,9 +48,9 @@ if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
 		$data["codigo"], 
 		$data["gstTitlo"],
 		$data["gstTipo"],
-		$data["fcurso"],
+		$data["inicio"],
 		$data["gstDrcin"],
-		$data["fechaf"],
+		$data["finaliza"],
 		$data["prtcpnts"],
 		$proceso,
 		$data["id_curso"],

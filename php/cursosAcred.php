@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *,COUNT(*) AS prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE proceso='FINALIZADO' AND cursos.estado = 0 GROUP BY cursos.codigo ORDER BY id_curso DESC";
+	$query = "SELECT *,COUNT(*) AS prtcpnts,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS fin FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE proceso='FINALIZADO' AND cursos.estado = 0 GROUP BY cursos.codigo ORDER BY id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 	$contador=0;
 	if(!$resultado){
@@ -26,9 +26,9 @@
 		$data["codigo"], 
 		$data["gstTitlo"],
 		$data["gstTipo"],
-		$data["fcurso"],
+		$data["inicio"],
 		$data["gstDrcin"],
-		$data["fechaf"],
+		$data["fin"],
 		$data["prtcpnts"],
 		$proceso,
 		$data["id_curso"],
