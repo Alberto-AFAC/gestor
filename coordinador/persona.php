@@ -206,10 +206,10 @@ $resultado = mysqli_query($conexion, $query);
 
 ["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>",
 <?php if($data['gstCargo']=='NUEVO INGRESO'){?>
-  "<a type='button' title='Por Asignar' class='btn btn-warning' data-toggle='modal' data-target='#modal-asignar'>POR ASIGNAR </a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"
+  "<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a><div style='padding-top: 5px;'><span class='label label-warning' style='font-weight: bold; height: 50px; font-size: 13px;'> POR ASIGNAR</span></div></center>"
 <?php }else{?>
 //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-" <a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> "
+"<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a><div style='padding-top: 5px;'><a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a></div></center>"
 
 <?php } ?>
 
