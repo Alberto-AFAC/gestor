@@ -144,7 +144,7 @@ $direc = mysqli_query($conexion,$sql);
 <!-- /FIN DE NUEVO DISEÑO -->
 <div class="col-xs-12">
           <div class="box box-solid">
-            <div class="box-header">
+<!--             <div class="box-header">
                <i class="fa fa fa-list"></i>
 
                <h3 class="box-title">Check list</h3>
@@ -153,7 +153,7 @@ $direc = mysqli_query($conexion,$sql);
                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
                    </button>
                 </div>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             
             <div class="box-body" style="display: none;">
