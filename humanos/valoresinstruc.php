@@ -207,16 +207,14 @@ $direc = mysqli_query($conexion,$sql);
 <div class="col-md-12">
     <div class="nav-tabs-custom">
         <!-- DISEÑO ANTIGUO/.col -->
-        <div class="box-tools pull-right">
+ <!--        <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
                 <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i
                         class="fa fa-ban"></i> </a>
             </button>
-            <!-- <button type="button" class="btn btn-box-tool" data-widget="remove">
-<a onclick="location.href='./'"><i class='fa fa-times'></i></a>
-</button> -->
-        </div>
+    
+        </div> -->
         <ul class="nav nav-tabs" style="font-size: 14px;">
             <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
             <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
