@@ -130,7 +130,7 @@ $depart = mysqli_query($conexion,$sql);
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
-                            <a href='inspecion.php' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                            <a href='inspecion' style="font-size: 22px"><i class='fa fa-times'></i></a>
                         </button>
                     </div>
                 </div>

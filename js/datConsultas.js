@@ -927,7 +927,7 @@ function asignar() {
                 $('#succe2').toggle('toggle');
                 setTimeout(function() {
                     $('#succe2').toggle('toggle');
-                    location.href = 'inspecion.php';
+                    location.href = 'inspecion';
                 }, 2500);
 
 

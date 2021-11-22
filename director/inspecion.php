@@ -83,7 +83,7 @@ include('header.php');
                                 </div>
                                 <div class="pull-right">
                                     <div class="btn-group">
-                                        <a type="button" href="inspecion.php" class="btn btn-default btn-sm"><i
+                                        <a type="button" href="inspecion" class="btn btn-default btn-sm"><i
                                                 class="fa fa-refresh"></i></a>
                                     </div>
                                     <!-- /.btn-group -->

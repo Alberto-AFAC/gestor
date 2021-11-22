@@ -2371,7 +2371,7 @@ function evaluar() {
                     if (reset == 0) {
                         spcialidads(gstInpct);
                     } else {
-                        setTimeout("location.href = 'inspecion.php';", 1500);
+                        setTimeout("location.href = 'inspecion';", 1500);
                     }
 
                 } else {
@@ -3127,7 +3127,7 @@ function asignar() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-                setTimeout("location.href = 'inspecion.php';", 2000);
+                setTimeout("location.href = 'inspecion';", 2000);
 
             } else if (respuesta == 2) {
                 Swal.fire({

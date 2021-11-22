@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="pull-right">
                                     <div class="btn-group">
-                                        <a type="button" href="inspecion.php" class="btn btn-default btn-sm"><i
+                                        <a type="button" href="inspecion" class="btn btn-default btn-sm"><i
                                                 class="fa fa-refresh"></i></a>
                                     </div>
                                     <!-- /.btn-group -->
@@ -165,7 +165,7 @@
                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" onclick="location.href='inspecion.php'" class="close"
+                                <button type="button" onclick="location.href='inspecion'" class="close"
                                     data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
 
