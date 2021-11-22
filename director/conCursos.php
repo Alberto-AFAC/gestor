@@ -100,6 +100,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>CÓDIGO</th>
                                                     <th>TÍTULO</th>
                                                     <th>TIPO</th>
                                                     <th>PERFIL.</th>

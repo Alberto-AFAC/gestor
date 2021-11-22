@@ -145,7 +145,8 @@ include ("../conexion/conexion.php");
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <label>CÓDIGO DEL CURSO</label>
+                                                    <label>CÓDIGO
+</label>
                                                     <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
                                                     <input type="text" onkeyup="mayus(this);" class="form-control"
                                                         id="codigoCrso" name="codigoCrso">
