@@ -212,9 +212,9 @@
 
                                         <div class="form-group">
                                             <div class="col-sm-7">
-                                                <button type="button" id="button" class="btn btn-info altaboton"
+                                               <!--  <button type="button" id="button" class="btn btn-info altaboton"
                                                     style="font-size:16px; width:110px; height:35px"
-                                                    onclick="evaluar();">ACEPTAR</button>
+                                                    onclick="evaluar();">ACEPTAR</button> -->
                                             </div>
                                             <b>
                                                 <p class="alert alert-success text-center padding exito" id="succe0">¡Se
