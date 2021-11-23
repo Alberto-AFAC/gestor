@@ -17,22 +17,32 @@ require '../php-mailer2/SMTP.php';
 			  WHERE codigo = '$idcurso'";
 	$resultado = mysqli_query($conexion, $query);
     while($curso = mysqli_fetch_assoc($resultado)){
-        $to = $curso['gstCinst'];
+		if($curso['gstCinst'] == ''){
+			$to = $curso['gstCorro'];
+		} else{
+			$to = $curso['gstCinst'];
+		}
+       
 	 //$curso[1];
 
 $mail = new PHPMailer;
 $mail->isSMTP();
 $mail->SMTPDebug = 2;
-$mail->Host = 'smtp.hostinger.com';
-$mail->SMTPSecure = 'ssl';                          
-$mail->Port = 465;
+// $mail->Host = 'smtp.hostinger.com';
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPSecure = 'tls';                          
+$mail->Port = 587;
+// $mail->SMTPSecure = 'ssl';                          
+// $mail->Port = 465;
 $mail->SMTPAuth = true;
-$mail->Username = 'notificaciones@afac-avciv.com';
+// $mail->Username = 'notificaciones@afac-avciv.com';
+$mail->Username = 'notificacionesafacmx@gmail.com';
 $mail->Password = 'Agencia.SCT2021.';
-$mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
+// $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
+$mail->setFrom('notificacionesafacmx@gmail.com', 'NOTIFICACIONES AFAC');
 $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
 // $mail->addAddress("{$to}");
-$mail->addBCC("{$correoRs}");
+// $mail->addBCC("{$correoRs}");
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
