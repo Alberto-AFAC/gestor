@@ -53,14 +53,15 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 		$mail->CharSet = 'UTF-8';
 		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
 				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>".$curso['gstTitlo']."</span></td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$curso['gstIdlsc']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Nombre del participante: ".$curso['gstNombr']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Tipo de curso: ".$curso['gstTipo']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: ".$curso['inicia']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$curso['hcurso']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Cargo: ".$curso['gstCargo']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$curso['sede']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$curso['modalidad']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>FOLIO: ".$curso['gstIdlsc']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>TIPO DE CURSO: ".$curso['gstTipo']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>FECHA INICIO: ".$curso['inicia']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>HORA: ".$curso['hcurso']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>CARGO: ".$curso['gstCargo']." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: ".$curso['sede']." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>MODALIDAD: ".$curso['modalidad']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'><a href='http://afac-avciv.com/'>CONFIRMAR ASISTENCIA</a></td></tr>
 				<hr><center>
 				<h2 style='font-color: red; font-size: 13px;'>AQUI VA EL CORREO: ".$correoRs." NOTA IMPORTANTE: NO RESPONDER, ESTE CORREO SE GENERA AUTOMATICAMENTE.</h2>
 				</center><hr>
