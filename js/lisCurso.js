@@ -1197,7 +1197,7 @@ function enviarMail() {
     $.ajax({
         url: '../admin/enviarMail.php',
         type: 'POST',
-        data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso
+        data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
     }).done(function(html) {
 
         Swal.fire({
