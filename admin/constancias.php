@@ -102,7 +102,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    HISTORIAL DE CONSTANCIAS Y CERTIFICADOS
+                    HISTORIAL DE CONSTANCIAS, CERTIFICADOS Y DIPLOMAS.
                 </h1>
             </section>
             <!-- Main content -->
@@ -111,9 +111,8 @@ include('header.php');
                     <div class="col-md-12">
                         <div style="padding-top: 65px;" class="container box box-solid">
                             <ul class="nav nav-tabs" id="myNavTabs">
-                                <li class="active"><a href="#navtabs1" data-toggle="tab">HISTORIAL DE CONSTANCIAS Y
-                                        CERTIFICADOS</a>
-                                <li><a href="#navtabs2" data-toggle="tab">VERIFICAR CONSTANCIAS</a>
+                                <li class="active"><a href="#navtabs1" data-toggle="tab">HISTORIAL</a>
+                                <li><a href="#navtabs2" data-toggle="tab">VERIFICAR CADENA</a>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="navtabs1"> <br><br>
@@ -124,7 +123,7 @@ include('header.php');
                                 <div class="tab-pane fade" id="navtabs2"><br><br>
                                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                                       
-                                        <label for="">INGRESE ID DE CERTIFICADO</label>
+                                        <label for="">INGRESE ID DE CERTIFICADO, CONSTANCIA Ó DIPLOMA.</label>
                                         <input class="form-control" type="text" name="validar" required><br>
                                         <input class="btn btn-info" type="submit" value="VALIDAR" name="submit">
                                     </form><br>
