@@ -226,14 +226,14 @@
                                     <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
                                     <input type="hidden" name="gstTitulo" id="gstTitulo">
                                     <input type="hidden" name="codigoCurso" id="codigoCurso" />
-                                    <div class="form-group">
-                                        <div class="col-sm-3">
-                                            <label>NOTIFICAR A RESPONSABLE</label>
+                                    <!-- <div class="form-group"> -->
+                                        <!-- <div class="col-sm-3"> -->
+                                            <!-- <label>NOTIFICAR A RESPONSABLE</label>
 
                                             <input type="text" class="form-control" id="correoResponsable"
                                                 name="correoResponsable"
                                                 placeholder="Correo electronico del responsable">
-                                        </div>
+                                        </div> -->
                                         <span id="notiocu" data-toggle="modal" data-target="#basicModal"
                                             style="font-size:12px; width:180px; height:30px "
                                             class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
@@ -241,33 +241,39 @@
                                         <!-- <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span> -->
                                         <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                                 </form>
-                            </div>
+                            <!-- </div> -->
                             <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
-                            <!-- <form id="correo" action="" method="POST"> -->
-                            <div class="modal fade" id='basicModal' tabindex="-1" role="dialog"
-                                aria-labelledby="basicModal" aria-hidden="true">
-                                <div class="modal1">
+                            <form id="correo" action="" method="POST">
+                                <div class="modal fade" id='basicModal' tabindex="-1" role="dialog"
+                                    aria-labelledby="basicModal" aria-hidden="true">
+                                    <div class="modal1">
 
-                                    <div id="success-icon">
-                                        <div>
-                                            <img class="img-circle1" src="../dist/img/email.png">
+                                        <div id="success-icon">
+                                            <div>
+                                                <img class="img-circle1" src="../dist/img/email.png">
+                                            </div>
                                         </div>
+                                        <h1 class="modaltitle"><strong>ENVIÓ DE CONVOCATORIA</strong></h1>
+                                        <p class="points">Favor de verificar los datos del curso y de los
+                                            participantes
+                                            antes de enviar el correo.</p>
+
+                                        <hr>
+                                        <label>NOTIFICAR A RESPONSABLE</label>
+
+                                        <input type="text" class="form-control" id="correoResponsable"
+                                            name="correoResponsable" placeholder="Correo electronico del responsable">
+
+                                            <br>
+                                        <button type="button" id="cerrarres" style="font-size:18px"
+                                            class="btn btn-block btn-primary" onclick="enviarMail()"
+                                            data-dismiss="modal">ENVIAR</button>
+                                        <button type="button" id="agregarres" style="font-size:18px"
+                                            class="btn btn-block btn-default btn-sm"
+                                            data-dismiss="modal">CERRAR</button>
                                     </div>
-                                    <h1 class="modaltitle"><strong>ENVIÓ DE CONVOCATORIA</strong></h1>
-                                    <p class="points">Favor de verificar los datos del curso y de los
-                                        participantes
-                                        antes de enviar el correo.</p>
-
-                                    <hr>
-
-                                    <button type="button" id="cerrarres" style="font-size:18px"
-                                        class="btn btn-block btn-primary" onclick="enviarMail()"
-                                        data-dismiss="modal">ENVIAR</button>
-                                    <button type="button" id="agregarres" style="font-size:18px"
-                                        class="btn btn-block btn-default btn-sm" data-dismiss="modal">CERRAR</button>
                                 </div>
-                            </div>
-                            <!-- </form> -->
+                            </form>
 
                             <!--FIN DE CONFIRMACIÓN ENVIÓ -->
 
