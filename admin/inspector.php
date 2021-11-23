@@ -68,16 +68,8 @@ include('header.php');
                         <!-- Profile Image -->
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-
-                                <?php
-                                if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){
-                                    echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/profile-leonardoR.jpeg' 
-                                    alt='User profile picture'>";
-                                } else{
-                                    echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
-                                    alt='User profile picture'>";
-                                }
-                                ?>
+                                <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png"
+                                    alt="User profile picture">
 
                                 <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
 
@@ -107,15 +99,7 @@ include('header.php');
                                             <div id="vencidos"></div>
                                         </a>
                                     </li>
-                                    <li class="list-group-item">
-                                        <a href="history">
-                                            <i class="fa fa-archive"></i> <span>Historial</span>
-                                            <span class="pull-right-container">
-                                                <small class="label pull-right bg-red"></small>
-                                                <small class="label pull-right bg-blue"></small>
-                                            </span>
-                                        </a>
-                                    </li>
+
                                 </ul>
 
                             </div>
@@ -2110,12 +2094,71 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> <?php 
+
+
+
+
+            </section>
+        </div>
+    </div>
+</div>
+</div>
+</form>
+<script type="text/javascript" src="../js/encuestadatos.js"></script>
+<?php include('../perfil/modal.php');?>
+<!-- /.tab-pane -->
+</div>
+</div>
+<!-- /.nav-tabs-custom -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- MODAL PARA ENTREGAR TAREA -->
+<form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+<div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
+aria-hidden="true">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+<div class="modal-header">
+<input type="hidden" id="id_tare" name="id_tare">
+<input type="hidden" id="opcion" name="opcion" value="modificar">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<div class="modal-title" id="myModalLabel"><span style="font-size: 15px;" id="titulo"></span></div>
+</div>
+<div class="modal-body">
+<span>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</span><br><br>
+<div class="form-group">
+<div class="col-sm-2">
+<label class="container">SI
+<input type="radio" value="1" name="entrega">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="col-sm-2">
+<label class="container">NO
+<input type="radio" name="entrega" value="0">
+<span class="checkmark"></span>
+</label>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
+</form>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+<div class="pull-right hidden-xs">
+<b>Version</b> <?php 
 $query ="SELECT 
 *
 FROM
@@ -2132,7 +2175,7 @@ exit;
             </div>
             <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
             Todos los derechos Reservados DDE
-            .
+.
 
         </footer>
 
@@ -2178,7 +2221,7 @@ $resultado = mysqli_query($conexion, $query);
 while($data = mysqli_fetch_array($resultado)){ 
 
 $id_curso = $data['id_curso'];
-
+$modalidad = $data['modalidad'];
 $fcurso = $data['inicial'];
 $fechaf = $data['final'];
 $fin = $data['fin'];
@@ -2203,7 +2246,8 @@ if($f3<=$f2){
         //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
 
     ],
-    <?php } 
+    <?php }
+
 }?>
 ]
 
@@ -2384,11 +2428,12 @@ if($res = mysqli_fetch_array($resul)){
 $query = "SELECT * FROM constancias WHERE id_persona = $datos[0] AND id_codigocurso = '".$data['codigo']."' AND estado_cer = 0";
 $const = mysqli_query($conexion, $query);
 if($con = mysqli_fetch_array($const)){
+$id = base64_encode($con[0]);
 
 if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
 
 if($con[10]==0){
-$accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='constancia.php?data={$con[0]}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+$accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='constancia.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
 
 $accion = "<center><a  type='button' id='myCertificate' target='_blank'    class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
