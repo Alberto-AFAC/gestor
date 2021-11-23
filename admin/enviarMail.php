@@ -32,7 +32,7 @@ $mail->Password = 'Agencia.SCT2021.';
 $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
 $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
 // $mail->addAddress("{$to}");
-$mail->addBCC("{$correoRs}");
+// $mail->addBCC("{$correoRs}");
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
