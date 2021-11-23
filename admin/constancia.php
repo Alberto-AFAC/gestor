@@ -56,7 +56,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2'>Directora del CIAAC:</p></div>
+        <p style='padding-top: 50px;' class='p-2'>Directora del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -103,7 +103,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2'>Directora del CIAAC:</p></div>
+        <p style='padding-top: 50px;' class='p-2'>Directora del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -151,7 +151,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2'>Directora del CIAAC:</p></div>
+        <p class='p-2' style='padding-top: 50px;'>Directora del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -169,7 +169,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
             </div>
         </div>
     </div>
-    <div>
+    <div><br>
     <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
            {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
@@ -198,7 +198,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2'>Directora del CIAAC:</p></div>
+        <p class='p-2' style='padding-top: 50px;'>Directora del CIAAC:</p></div>
         <div style='padding-top: 3px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -246,7 +246,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     <span class='p-3'>por la Escuela Militar de Graduados de Sanidad con lo establecido en el Convenio celebrado entre la Agencia Federal de Aviación Civil (AFAC), Dirección General de Protección y Medicina Preventiva (DGPyMPT) y la Secretaría de la Defensa Nacional (SEDENA).
     <span style='padding-bottom: 1px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p style='padding-top: 1px;' class='p-2'>Directora del CIAAC:</p></div>
+        <p style='padding-top: 50px;' class='p-2'>Directora del CIAAC:</p></div>
         <div style='padding-top: 5px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -292,7 +292,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     <span class='p-3'>por la Escuela Militar de Graduados de Sanidad con lo establecido en el Convenio celebrado entre la Agencia Federal de Aviación Civil (AFAC), Dirección General de Protección y Medicina Preventiva (DGPyMPT) y la Secretaría de la Defensa Nacional (SEDENA).
     <span style='padding-bottom: 1px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p style='padding-top: 1px;' class='p-2'>Directora del CIAAC:</p></div>
+        <p style='padding-top: 50px;' class='p-2'>Directora del CIAAC:</p></div>
         <div style='padding-top: 5px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
