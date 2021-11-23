@@ -193,6 +193,8 @@ include ("../conexion/conexion.php");
 
 <pre>
 <?php 
+
+
    // echo '<strong>$matriz_numeros</strong><br>'; // Mostramos literal con  el nombre del array 
    // print_r($matriz_numeros); //  Imprimir estructura y contenido del array
 //
@@ -240,39 +242,62 @@ include ("../conexion/conexion.php");
 
 // echo date_format($date, 'Y-m-d');
 
-$correo = 'angel.canseco@sct.gob.mx';
+// $correo = 'angel.canseco@sct.gob.mx';
 
-echo $v = conCorreo($correo,$conexion);
+// echo $v = conCorreo($correo,$conexion);
 
-//   resultado($res1,$res2);
+// ---  resultado($res1,$res2);
     
-//     $res = $res2;
+// --    $res = $res2;
   
-// echo $res;
-      //echo $res[1];
-$nombre = explode('.',$v);
-echo '<br>'.$c = intval($nombre[1]);
+// --echo $res;
+      //--echo $res[1];
+// $nombre = explode('.',$v);
+// echo '<br>'.$c = intval($nombre[1]);
 
- function conCorreo($correo,$conexion){
+//  function conCorreo($correo,$conexion){
 
-$query="SELECT * FROM personal 
-    WHERE gstCorro = '$correo' AND estado = 0 
-    OR gstCinst = '$correo' AND estado = 0
-    OR gstSpcID = '$correo' AND estado = 0
-    ";
-$resultado= mysqli_query($conexion,$query);
-    if($resultado->num_rows==0){
-    return '0';
-    }else{
-       $res = mysqli_fetch_row($resultado);
+// $query="SELECT * FROM personal 
+//     WHERE gstCorro = '$correo' AND estado = 0 
+//     OR gstCinst = '$correo' AND estado = 0
+//     OR gstSpcID = '$correo' AND estado = 0
+//     ";
+// $resultado= mysqli_query($conexion,$query);
+//     if($resultado->num_rows==0){
+//     return '0';
+//     }else{
+//        $res = mysqli_fetch_row($resultado);
 
-        return $res[1].''.$res[2].'.'.$res[22];
-    }
-    $this->conexion->cerrar();
-} 
+//         return $res[1].''.$res[2].'.'.$res[22];
+//     }
+//     $this->conexion->cerrar();
+// } 
 
 
 
+
+//$query3 = "SELECT * FROM cursos WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
+
+    $sql = "SELECT * FROM cursos WHERE fcurso AND fechaf";        
+        $person = mysqli_query($conexion,$sql);
+        while ($per = mysqli_fetch_row($person)) {
+
+$query3 = "SELECT gstNombr,gstApell FROM cursos 
+INNER JOIN personal ON idinsp = personal.gstIdper
+WHERE '2021-11-23' BETWEEN fcurso AND '2021-11-26' BETWEEN fechaf ";
+
+
+
+$resultado = mysqli_query($conexion, $query3);
+if($curs = mysqli_fetch_row($resultado)){ 
+
+    echo '<br>'.$curs[0].' '.$curs[1];
+//echo '<br>'.$enCurso = '0';
+
+}else{
+//echo '<br>'.$enCurso = '1';
+}
+}
 
 ?>
 </pre>
