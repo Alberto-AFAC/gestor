@@ -90,7 +90,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
     </div>";
-}else if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr <= 100){
+}else if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr <= 99){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
     <p class='otorga'>Otorga la presente</p>
@@ -185,7 +185,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
 </div>";
-}else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 100){
+}else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
     <span class='otorga'>Otorga el presente</span>
@@ -278,7 +278,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     </div>
 </div>";
 
-}else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 100){
+}else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 99){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
     <p class='otorga'>Otorga el presente</p>
