@@ -1183,6 +1183,8 @@ function enviarMail() {
 
     gstIdlsc = document.getElementById('gstIdlstc').value;
     codigoCurso = document.getElementById('codigoCurso').value;
+    correoResponsable = document.getElementById('correoResponsable').value;
+    alert(correoResponsable);
 
     Swal.fire({
         html: 'Espera un momento...', // add html attribute if you want or remove

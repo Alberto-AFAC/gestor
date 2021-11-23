@@ -9,6 +9,7 @@ require '../php-mailer2/SMTP.php';
 
 
 	$idcurso = $_POST['codigoCurso'];
+	$correoRs = $_POST['correoResponsable'];
 	
 	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
@@ -29,9 +30,9 @@ $mail->SMTPAuth = true;
 $mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Password = 'Agencia.SCT2021.';
 $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
-// $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
+$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
 // $mail->addAddress("{$to}");
-$mail->addBCC('jmondragonescamilla@gmail.com');
+$mail->addBCC("{$correoRs}");
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
