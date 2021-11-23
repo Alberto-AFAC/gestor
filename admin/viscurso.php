@@ -226,22 +226,12 @@
                                     <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
                                     <input type="hidden" name="gstTitulo" id="gstTitulo">
                                     <input type="hidden" name="codigoCurso" id="codigoCurso" />
-                                    <!-- <div class="form-group"> -->
-                                        <!-- <div class="col-sm-3"> -->
-                                            <!-- <label>NOTIFICAR A RESPONSABLE</label>
-
-                                            <input type="text" class="form-control" id="correoResponsable"
-                                                name="correoResponsable"
-                                                placeholder="Correo electronico del responsable">
-                                        </div> -->
                                         <span id="notiocu" data-toggle="modal" data-target="#basicModal"
                                             style="font-size:12px; width:180px; height:30px "
                                             class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
                                                 aria-hidden="true"></i> NOTIFICAR CONVOCATORIA</span>
-                                        <!-- <span style="font-size: 13px; cursor: pointer; float: right;" class="custom-btn btn-5" onclick="imprimir()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> IMPRIMIR LISTA</span> -->
                                         <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                                 </form>
-                            <!-- </div> -->
                             <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
                             <form id="correo" action="" method="POST">
                                 <div class="modal fade" id='basicModal' tabindex="-1" role="dialog"
