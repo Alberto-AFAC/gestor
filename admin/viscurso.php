@@ -95,10 +95,11 @@
                                 <button type="button" title="Editar Curso" class="btn btn-box-tool"
                                     data-widget="collapse">
                                     <a href='javascript:editcurso()' id="editcurs"
-                                        style="font-size:20px; padding-left: 0.5em;"> <i class="fa fa-edit"></i> </a>
+                                        style="font-size:20px; padding-left: 0.5em;"> <i class="fa fa-edit"></i>
+                                        REPROGRAMAR CURSO</a>
                                     <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc"
                                         style="display:none; font-size:20px;padding-left: 0.5em;"> <i
-                                            class="fa fa-ban"></i> </a>
+                                            class="fa fa-ban"></i> REPROGRAMAR CURSO</a>
                                 </button>
                             </div>
 
@@ -191,8 +192,37 @@
                                 <div class="col-sm-offset-0 col-sm-5">
                                     <button type="button"
                                         style="font-size:15px; width:150px; height:35px; background: #0F3F87;"
-                                        id="button" class="btn btn-block btn-info" onclick="cursoAct();">GUARDAR
-                                        CAMBIOS</button>
+                                        class="btn btn-block btn-info" data-toggle="modal"
+                                        data-target="#basicModal">REPROGRAMAR</button>
+                                </div>
+                                <div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="basicModal" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">REPROGRAMACIÓN DE CURSO</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>NO OLVIDES QUE EXISTE UN LIMITE MAXIMO PARA REPROGRAMAR EL CURSO
+                                                </h5>
+                                                <label>¿DESEAS CONFIRMAR ESTA ACCIÓN</label>
+                                                <select type="text" class="form-control" id="reprogramar"
+                                                    name="reprogramar">
+                                                    <option value="" selected>SELECCIONE UNA OPCIÓN</option>
+                                                    <option value="0">NO</option>
+                                                    <option value="1">SI</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="button"
+                                                    style="font-size:15px; width:150px; height:35px; background: #0F3F87;"
+                                                    onclick="cursoAct();"
+                                                    class="btn btn-block btn-info">CONFIRMAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <b>
                                     <p class="alert alert-danger text-center padding error" id="error">Error al agregar
@@ -226,163 +256,180 @@
                                     <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
                                     <input type="hidden" name="gstTitulo" id="gstTitulo">
                                     <input type="hidden" name="codigoCurso" id="codigoCurso" />
-                                        <span id="notiocu" data-toggle="modal" data-target="#basicModal"
-                                            style="font-size:12px; width:180px; height:30px "
-                                            class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
-                                                aria-hidden="true"></i> NOTIFICAR CONVOCATORIA</span>
-                                        <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
+                                    <span id="notiocu" data-toggle="modal" data-target="#notificarConv"
+                                        style="font-size:12px; width:180px; height:30px "
+                                        class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
+                                            aria-hidden="true"></i> NOTIFICAR CONVOCATORIA</span>
+                                    <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                                 </form>
-                            <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
-                            <form id="correo" action="" method="POST">
-                                <div class="modal fade" id='basicModal' tabindex="-1" role="dialog"
+                                <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+                                <form id="correo" action="" method="POST">
+                                    <div class="modal fade" id='notificarConv' tabindex="-1" role="dialog"
+                                        aria-labelledby="notificarConv" aria-hidden="true">
+                                        <div class="modal1">
+
+                                            <div id="success-icon">
+                                                <div>
+                                                    <img class="img-circle1" src="../dist/img/email.png">
+                                                </div>
+                                            </div>
+                                            <h1 class="modaltitle"><strong>ENVIÓ DE CONVOCATORIA</strong></h1>
+                                            <p class="points">Favor de verificar los datos del curso y de los
+                                                participantes
+                                                antes de enviar el correo.</p>
+
+                                            <hr>
+                                            <label>NOTIFICAR A RESPONSABLE</label>
+
+                                            <input type="text" class="form-control" id="correoResponsable"
+                                                name="correoResponsable"
+                                                placeholder="Correo electronico del responsable">
+
+                                            <br>
+                                            <button type="button" id="cerrarres" style="font-size:18px"
+                                                class="btn btn-block btn-primary" onclick="enviarMail()"
+                                                data-dismiss="modal">ENVIAR</button>
+                                            <button type="button" id="agregarres" style="font-size:18px"
+                                                class="btn btn-block btn-default btn-sm"
+                                                data-dismiss="modal">CERRAR</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!--FIN DE CONFIRMACIÓN ENVIÓ -->
+
+                                <!-- CONFIRMACIÓN DE COONVOCATORIA -->
+                                <div class="modal fade" id='modal-declinado1' tabindex="-1" role="dialog"
                                     aria-labelledby="basicModal" aria-hidden="true">
                                     <div class="modal1">
 
                                         <div id="success-icon">
                                             <div>
-                                                <img class="img-circle1" src="../dist/img/email.png">
+                                                <img class="img-circle1" src="../dist/img/declinado.png">
                                             </div>
                                         </div>
-                                        <h1 class="modaltitle"><strong>ENVIÓ DE CONVOCATORIA</strong></h1>
-                                        <p class="points">Favor de verificar los datos del curso y de los
-                                            participantes
-                                            antes de enviar el correo.</p>
-
+                                        <!-- <input id="pruebadec" type="text"> -->
+                                        <h1 class="modaltitle1" style="color:gray"><strong>DETALLES</strong></h1>
+                                        <label id="nomdeclina1" style="font-size: 16px; color:gray" for=""></label>
+                                        <label id="cursdeclina1" style="font-size: 16px; color:gray" for=""></label>
+                                        <label id="declindet1" style="font-size: 18px; color:gray; font-weight: normal;"
+                                            class="points">Declina la convocatoria del curso:</label>
+                                        <label id="motivod1" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"
+                                            for=""></label>
                                         <hr>
-                                        <label>NOTIFICAR A RESPONSABLE</label>
-
-                                        <input type="text" class="form-control" id="correoResponsable"
-                                            name="correoResponsable" placeholder="Correo electronico del responsable">
-
-                                            <br>
-                                        <button type="button" id="cerrarres" style="font-size:18px"
-                                            class="btn btn-block btn-primary" onclick="enviarMail()"
-                                            data-dismiss="modal">ENVIAR</button>
-                                        <button type="button" id="agregarres" style="font-size:18px"
-                                            class="btn btn-block btn-default btn-sm"
-                                            data-dismiss="modal">CERRAR</button>
+                                        <a id="declinpdf1" class="btn btn-block btn-social btn-linkedin" href=""
+                                            id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i>
+                                            VISUALIZAR EL PDF ADJUNTO</a>
+                                        <label readonly id="otrosd1" name="textarea"
+                                            style="font-size: 16px; color:#615B5B; font-weight: normal; display:none"
+                                            rows="3" cols="50"></label>
                                     </div>
+                                    <script>
+
+                                    </script>
                                 </div>
-                            </form>
+                                <!--FIN DE CONFIRMACIÓN DE COONVOCATORIA -->
 
-                            <!--FIN DE CONFIRMACIÓN ENVIÓ -->
-
-                            <!-- CONFIRMACIÓN DE COONVOCATORIA -->
-                            <div class="modal fade" id='modal-declinado1' tabindex="-1" role="dialog"
-                                aria-labelledby="basicModal" aria-hidden="true">
-                                <div class="modal1">
-
-                                    <div id="success-icon">
-                                        <div>
-                                            <img class="img-circle1" src="../dist/img/declinado.png">
-                                        </div>
-                                    </div>
-                                    <!-- <input id="pruebadec" type="text"> -->
-                                    <h1 class="modaltitle1" style="color:gray"><strong>DETALLES</strong></h1>
-                                    <label id="nomdeclina1" style="font-size: 16px; color:gray" for=""></label>
-                                    <label id="cursdeclina1" style="font-size: 16px; color:gray" for=""></label>
-                                    <label id="declindet1" style="font-size: 18px; color:gray; font-weight: normal;"
-                                        class="points">Declina la convocatoria del curso:</label>
-                                    <label id="motivod1" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"
-                                        for=""></label>
-                                    <hr>
-                                    <a id="declinpdf1" class="btn btn-block btn-social btn-linkedin" href=""
-                                        id="pdfdeclin" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i>
-                                        VISUALIZAR EL PDF ADJUNTO</a>
-                                    <label readonly id="otrosd1" name="textarea"
-                                        style="font-size: 16px; color:#615B5B; font-weight: normal; display:none"
-                                        rows="3" cols="50"></label>
+                                <div class="box-body">
+                                    <br>
+                                    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+                                    <div id="proCursos"></div>
                                 </div>
-                                <script>
-
-                                </script>
                             </div>
-                            <!--FIN DE CONFIRMACIÓN DE COONVOCATORIA -->
-
-                            <div class="box-body">
-                                <br>
-                                <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-                                <div id="proCursos"></div>
-                            </div>
+                            <!-- /.box -->
                         </div>
-                        <!-- /.box -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                </div>
-                <form class="form-horizontal" action="" method="POST">
-                    <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel">
-                        <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            style="color: black" aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title" id="exampleModalLabel">TÍTULO </h4>
-                                </div>
-                                <input type="hidden" class="form-control" id="idmstra" name="idmstra">
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label>NOMBRE</label>
-                                            <input type="text" style="text-transform:uppercase;" class="form-control"
-                                                id="titulos" name="titulos">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label>TIPO</label>
-                                            <select type="text" class="form-control" id="tipos" name="tipos">
-                                                <option value="">ELEGIR UNA OPCIÓN</option>
-                                                <option value="basicos">CURSOS BÁSICOS</option>
-                                                <option value="recurrentes">CURSOS RECURRENTES</option>
-                                                <option value="especificos">CURSOS ESPECÍFICOS</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label>MODALIDAD</label>
-                                            <select type="text" class="form-control" id="modalidads" name="modalidads">
-                                                <option value="null">ELEGIR UNA OPCIÓN</option>
-                                                <option value="A DISTANCIA">A DISTANCIA</option>
-                                                <option value="PRESENCIAL">PRESENCIAL</option>
-                                            </select>
-                                        </div>
+                    <form class="form-horizontal" action="" method="POST">
+                        <div class="modal fade" id="modalVal" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span style="color: black"
+                                                aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="exampleModalLabel">TÍTULO </h4>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label>PERFIL A QUIEN VA DIRIGIDO</label>
-                                            <input type="text" style="text-transform:uppercase;" class="form-control"
-                                                id="perfils" name="perfils">
+                                    <input type="hidden" class="form-control" id="idmstra" name="idmstra">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>NOMBRE</label>
+                                                <input type="text" style="text-transform:uppercase;"
+                                                    class="form-control" id="titulos" name="titulos">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>TIPO</label>
+                                                <select type="text" class="form-control" id="tipos" name="tipos">
+                                                    <option value="">ELEGIR UNA OPCIÓN</option>
+                                                    <option value="basicos">CURSOS BÁSICOS</option>
+                                                    <option value="recurrentes">CURSOS RECURRENTES</option>
+                                                    <option value="especificos">CURSOS ESPECÍFICOS</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>MODALIDAD</label>
+                                                <select type="text" class="form-control" id="modalidads"
+                                                    name="modalidads">
+                                                    <option value="null">ELEGIR UNA OPCIÓN</option>
+                                                    <option value="A DISTANCIA">A DISTANCIA</option>
+                                                    <option value="PRESENCIAL">PRESENCIAL</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <label>DOCUMENTO QUE EMITE</label>
-                                            <input type="text" style="text-transform:uppercase;" class="form-control"
-                                                id="constancias" name="constancias">
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>PERFIL A QUIEN VA DIRIGIDO</label>
+                                                <input type="text" style="text-transform:uppercase;"
+                                                    class="form-control" id="perfils" name="perfils">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>DOCUMENTO QUE EMITE</label>
+                                                <input type="text" style="text-transform:uppercase;"
+                                                    class="form-control" id="constancias" name="constancias">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>DURACIÓN</label>
+                                                <input type="time" class="form-control" id="duracions" name="duracions">
+                                            </div>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <label>DURACIÓN</label>
-                                            <input type="time" class="form-control" id="duracions" name="duracions">
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                <label>OBJETIVO</label>
+                                                <textarea name="objetivos" id="objetivos"
+                                                    placeholder="Escribir el Objetivo" style="text-transform:uppercase;"
+                                                    class="form-control" rows="5" cols="50"></textarea>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>TEMARIO</label>
+                                                <input id="adjuntos" type="file" name="adjuntos"
+                                                    style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
+                                                    class="input-file" size="1450">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-8">
-                                            <label>OBJETIVO</label>
-                                            <textarea name="objetivos" id="objetivos" placeholder="Escribir el Objetivo"
-                                                style="text-transform:uppercase;" class="form-control" rows="5"
-                                                cols="50"></textarea>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label>TEMARIO</label>
-                                            <input id="adjuntos" type="file" name="adjuntos"
-                                                style="width: 410px; margin:0 auto;" required accept=".pdf,.doc"
-                                                class="input-file" size="1450">
-                                        </div>
-                                    </div>
-                                    <div class="form-group"><br>
-                                        <div class="col-sm-offset-0 col-sm-5">
+                                        <div class="form-group"><br>
+                                            <div class="col-sm-offset-0 col-sm-5">
 
-                                        </div>
-                                        <b>
-                                            <p class="alert alert-danger text-center padding error" id="error">Error
-                                                al agregar curso </p>
+                                            </div>
+                                            <b>
+                                                <p class="alert alert-danger text-center padding error" id="error">Error
+                                                    al agregar curso </p>
+                                            </b>
+
+                                            <b>
+                                                <p class="alert alert-success text-center padding exito" id="exito">¡Se
+                                                    agrego el curso con éxito!</p>
+                                            </b>
+
+                                            <b>
+                                                <p class="alert alert-warning text-center padding aviso" id="vacio">Es
+                                                    necesario agregar los datos que se solicitan </p>
+                                            </b>
+                                        </div><b>
+                                            <p class="alert alert-danger text-center padding error" id="error">Error al
+                                                agregar curso </p>
                                         </b>
 
                                         <b>
@@ -394,31 +441,17 @@
                                             <p class="alert alert-warning text-center padding aviso" id="vacio">Es
                                                 necesario agregar los datos que se solicitan </p>
                                         </b>
-                                    </div><b>
-                                        <p class="alert alert-danger text-center padding error" id="error">Error al
-                                            agregar curso </p>
-                                    </b>
-
-                                    <b>
-                                        <p class="alert alert-success text-center padding exito" id="exito">¡Se
-                                            agrego el curso con éxito!</p>
-                                    </b>
-
-                                    <b>
-                                        <p class="alert alert-warning text-center padding aviso" id="vacio">Es
-                                            necesario agregar los datos que se solicitan </p>
-                                    </b>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                </form>
+                    </form>
+                </div>
             </div>
+            <!-- /.tab-content -->
         </div>
-        <!-- /.tab-content -->
+        <!-- /.nav-tabs-custom -->
     </div>
-    <!-- /.nav-tabs-custom -->
-</div>
-<!-- /.col -->
+    <!-- /.col -->
 </div>
 
 <!-- /.row -->
