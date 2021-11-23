@@ -102,7 +102,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    HISTORIAL DE CONSTANCIAS Y CERTIFICADOS
+                HISTORIAL DE CONSTANCIAS, CERTIFICADOS Y DIPLOMAS.
                 </h1>
             </section>
             <!-- Main content -->

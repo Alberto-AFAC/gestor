@@ -313,7 +313,7 @@
                             <div class="col-sm-4">
                               <label class="label2">SEXO</label>
                               <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo" disabled="">
-                                  <option value="">ELEJIR SEXO</option>
+                                  <option value="">ELEGIR SEXO</option>
                                  <option value="MUJER">MUJER</option>
                                  <option value="HOMBRE">HOMBRE</option>
                               </select>
