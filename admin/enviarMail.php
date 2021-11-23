@@ -40,8 +40,8 @@ $mail->Username = 'notificacionesafacmx@gmail.com';
 $mail->Password = 'Agencia.SCT2021.';
 // $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
 $mail->setFrom('notificacionesafacmx@gmail.com', 'NOTIFICACIONES AFAC');
-$mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
-// $mail->addAddress("{$to}");
+// $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
+$mail->addAddress("{$to}");
 $mail->addCC("{$correoRs}");
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
@@ -74,5 +74,3 @@ if (!$mail->send()) {
 }
     }
  ?>
-  
-    
