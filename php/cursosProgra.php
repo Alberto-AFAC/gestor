@@ -22,7 +22,7 @@
 			$contador++;
 
 			$codigo= $data["codigo"];
-			$queri = "SELECT * FROM reprogramados WHERE id_curso = '$codigo'";
+			$queri = "SELECT * FROM reprogramados WHERE id_curso = '$codigo' AND reprogramado = 1";
 			$resul = mysqli_query($conexion, $queri);
 
 

@@ -205,8 +205,8 @@
                                                 <h4 class="modal-title" id="myModalLabel">REPROGRAMACIÓN DE CURSO</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h5>NO OLVIDES QUE EXISTE UN LIMITE MAXIMO PARA REPROGRAMAR EL CURSO
-                                                </h5>
+                                                <!-- <h5>NO OLVIDES QUE EXISTE UN LIMITE MAXIMO PARA REPROGRAMAR EL CURSO
+                                                </h5> -->
                                                 <label>¿DESEAS CONFIRMAR ESTA ACCIÓN</label>
                                                 <select type="text" class="form-control" id="reprogramar"
                                                     name="reprogramar">
