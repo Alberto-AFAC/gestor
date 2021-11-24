@@ -290,7 +290,7 @@ function datos_editar(id) {
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_usu == id) {
                 var
-                id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
+                    id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
                     id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
                     privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i]
                         .gstApell),
