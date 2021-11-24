@@ -283,9 +283,9 @@ function datos_editar(id) {
         obj = JSON.parse(resp);
         var res = obj.data;
         for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_accesos == id) {
+            if (obj.data[i].id_usu == id) {
                 var
-                    id_accesos = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
+                id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_usu),
                     id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
                     privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i]
                         .gstApell),

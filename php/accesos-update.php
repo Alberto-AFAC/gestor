@@ -23,7 +23,7 @@ if($opcion === 'modificar'){
 	}
 
 	function modificar($id_usu, $gstNmpld, $password, $idacceso,  $privilegios, $conexion){
-		$query = "UPDATE accesos SET password='$password', privilegios= '$privilegios' WHERE id_accesos = $idacceso";
+		$query = "UPDATE accesos SET password='$password', privilegios= '$privilegios' WHERE id_usu = $idacceso";
 		if (mysqli_query($conexion,$query)) {
 						return true;
 					}else
