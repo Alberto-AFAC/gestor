@@ -103,6 +103,11 @@ include('header.php');
                                         name="nombUser" disabled="">
                                 </div>
                                 <div class="col-sm-6">
+                                    <label>USUARIO</label>
+                                    <input type="text" onkeyup="mayus(this);" class="form-control" id="usuario"
+                                        name="usuario">
+                                </div>
+                                <div class="col-sm-6"><br>
                                     <label>NUMERO DE EMPLEADO</label>
                                     <input type="text" onkeyup="mayus(this);" class="form-control" id="nEmpleado"
                                         name="nEmpleado" disabled="">
@@ -285,12 +290,13 @@ function datos_editar(id) {
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_usu == id) {
                 var
-                id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_usu),
+                id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
                     id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
                     privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i]
                         .gstApell),
                     mEmpleado = $("#editarAccesos #nEmpleado").val(obj.data[i].gstNmpld),
                     password = $("#editarAccesos #password").val(obj.data[i].password),
+                    usuario = $("#editarAccesos #usuario").val(obj.data[i].usuario),
                     password = $("#editarAccesos #privilegios").val(obj.data[i].privilegios),
                     opcion = $("#editarAccesos #opcion").val("modificar");
             }
@@ -300,8 +306,10 @@ function datos_editar(id) {
 
 function modificar() {
     var frm = $("#Editar").serialize();
+    
+    
     $.ajax({
-        url: "../php/accesos-update.php",
+       url: "../php/accesos-update.php",
         type: 'POST',
         data: frm + "&opcion=modificar"
     }).done(function(respuesta) {
