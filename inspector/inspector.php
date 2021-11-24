@@ -26,6 +26,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.2/sweetalert2.min.js"
         integrity="sha512-2sjxi4MoP9Gn7QE0NhJdxOFVMK/qYsZO6JnO6pngGvck8p5UPwFX2LV5AsAMOQYgvbzMmki6sIqJ90YO3STAnA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.css" rel="stylesheet" />
+    <script src="../js/data-image.js"></script>
     <style>
     .swal-wide {
         width: 500px !important;
@@ -53,6 +56,10 @@
 
         <?php
 include('header.php');
+$query = "SELECT * FROM
+picture";
+$generate = mysqli_query($conexion, $query);
+$data = mysqli_fetch_array($generate);
 ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -67,8 +74,9 @@ include('header.php');
 
                         <!-- Profile Image -->
                         <div class="box box-primary">
-                            <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png"
+                            <div data-toggle="modal" data-target="#modalProfile" class="box-body box-profile"
+                                title="ACTUALIZAR IMAGEN DE PERFIL">
+                                <img src="<?php echo $data['base64']?>" class="profile-user-img img-responsive img-circle"
                                     alt="User profile picture">
 
                                 <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
@@ -2098,67 +2106,100 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
 
 
 
-            </section>
+                </section>
+            </div>
+    </div>
+    </div>
+    </div>
+    </form>
+    <script type="text/javascript" src="../js/encuestadatos.js"></script>
+    <?php include('../perfil/modal.php');?>
+    <!-- /.tab-pane -->
+    </div>
+    </div>
+    <!-- /.nav-tabs-custom -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- MODAL PARA ENTREGAR TAREA -->
+    <form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+        <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <input type="hidden" id="id_tare" name="id_tare">
+                        <input type="hidden" id="opcion" name="opcion" value="modificar">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <div class="modal-title" id="myModalLabel"><span style="font-size: 15px;" id="titulo"></span>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <span>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</span><br><br>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label class="container">SI
+                                    <input type="radio" value="1" name="entrega">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="container">NO
+                                    <input type="radio" name="entrega" value="0">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        <button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- TODO MODAL PARA IMAGEN DE PERFIL -->
+    <div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="modalProfile"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">ACTUALIZAR FOTO DE PERFIL</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="pictureCargue" method="POST">
+                    <input type="text" name="idUser" id="idUser" value="<?php echo $datos[0]?>" hidden>
+                        <div style="float: center;">
+                            <input type="file" name="image" id="image">
+                            <input type="datetime" name="date" value="<?php echo date("Y-m-d");?>" id="date" hidden>
+                            <br>
+                            <div style="height:1px; width: 300px;" id="editor"></div>
+                            <canvas style="width: 300px;" id="preview"></canvas>
+
+                            <code name="base64" id="base64" hidden></code>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                    <button type="button" id="btnguardar" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
-</form>
-<script type="text/javascript" src="../js/encuestadatos.js"></script>
-<?php include('../perfil/modal.php');?>
-<!-- /.tab-pane -->
-</div>
-</div>
-<!-- /.nav-tabs-custom -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-
-</section>
-<!-- /.content -->
-</div>
-<!-- MODAL PARA ENTREGAR TAREA -->
-<form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
-<div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
-aria-hidden="true">
-<div class="modal-dialog modal-sm">
-<div class="modal-content">
-<div class="modal-header">
-<input type="hidden" id="id_tare" name="id_tare">
-<input type="hidden" id="opcion" name="opcion" value="modificar">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<div class="modal-title" id="myModalLabel"><span style="font-size: 15px;" id="titulo"></span></div>
-</div>
-<div class="modal-body">
-<span>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</span><br><br>
-<div class="form-group">
-<div class="col-sm-2">
-<label class="container">SI
-<input type="radio" value="1" name="entrega">
-<span class="checkmark"></span>
-</label>
-</div>
-<div class="col-sm-2">
-<label class="container">NO
-<input type="radio" name="entrega" value="0">
-<span class="checkmark"></span>
-</label>
-</div>
-</div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-<button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
-</div>
-</div>
-</div>
-</div>
-</form>
-<!-- /.content-wrapper -->
-<footer class="main-footer">
-<div class="pull-right hidden-xs">
-<b>Version</b> <?php 
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> <?php 
 $query ="SELECT 
 *
 FROM
@@ -2171,21 +2212,21 @@ var_dump(mysqli_error($conexion));
 exit;
 }
 ?>
-                <?php echo $row['version']?>
-            </div>
-            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados DDE
-.
+            <?php echo $row['version']?>
+        </div>
+        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+        Todos los derechos Reservados DDE
+        .
 
-        </footer>
+    </footer>
 
-        <!--  -->
-        <!-- Control Sidebar -->
-        <?php include('../admin/panel.html');?>
-        <!-- /.control-sidebar -->
-        <!-- Add the sidebar's background. This div must be placed
+    <!--  -->
+    <!-- Control Sidebar -->
+    <?php include('../admin/panel.html');?>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
 immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+    <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -2980,4 +3021,49 @@ rgba(100, 100, 100, 0.4)
 
     });
 }
+
+
+
+$(document).ready(function() {
+    $('#btnguardar').click(function() {
+        var date = $("#date").val();
+        // var idUser = $("#idUser").val();
+        var base64 = $("#base64").html();
+        alert(idUser + date + base64);
+        if (base64 == '') {
+            Swal.fire({
+                        type: 'info',
+                        text: 'ADJUNTE FOTO',
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 2000
+                    });;
+        } else {
+            $.ajax({
+                type: "POST",
+                url:"../php/insert-image.php",
+                data: {
+                    date: date,
+                    // idUser: idUser,
+                    base64: base64
+                   
+                },
+                success: function(data) {
+                    document.getElementById("pictureCargue").reset();
+                    Swal.fire({
+                        type: 'success',
+                        // title: 'FINALIZADO',
+                        text: 'FOTO DE PERFIL ACTUALIZADA',
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 2000
+                    });
+                    setTimeout("location.href = 'inspector';", 2000)
+                }
+            });
+        }
+
+        return false;
+    });
+});
 </script>
