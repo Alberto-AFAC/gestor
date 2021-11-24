@@ -10,7 +10,7 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor  = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR ' AND estado = 0";
+$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 OR gstCargo = 'INSTRUCTOR' AND estado = 0";
 $cordinador  = mysqli_query($conexion,$sql);
 
 unset($_SESSION['consulta']);
