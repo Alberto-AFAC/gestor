@@ -2320,11 +2320,11 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
 
     ],
     <?php }else if($data['confirmar']=='CONFIRMADO'){ 
-$valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";
-?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+    $valor="<span  onclick='confirmar1($id_curso)'  style='background-color:green; font-size: 13px; cursor:pointer;' data-toggle='modal' data-target='#modal-detalle' class='badge' title='Ver detalles'>CONFIRMADO</span>"; //23112021
+    ?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
+    "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-        "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
+    "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
 
         //aquies
 
@@ -2545,7 +2545,7 @@ if($f3>=$f1){ //VENCIDO?>
 
         "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
 
-        "<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-primary '>EVALUAR</a>"
+        "<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evalcurso' onclick='cursoeval(<?php echo $id_curso ?>)' class='btn btn-primary '>EVALUARs</a>"
 
     ],
 

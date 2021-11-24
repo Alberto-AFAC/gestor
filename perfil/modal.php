@@ -222,11 +222,10 @@
   <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
   <br>
   <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: bold;"  for=""></label>
-  <hr>
- <div id="arcpdf"></div>
+<hr>
+<div id="arcpdf"></div>
 
-  <label readonly id="otrosdp" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
-
+<label readonly id="otrosdp" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
 
 </div>
 
@@ -270,6 +269,94 @@
 </script>
 </div>
 <!-- !-- FIN DETALLE DE EXPERIENCIA PROFESIONAL --> 
+
+
+
+
+<!-----MODAL DE DETALLES------------------------------------>
+  
+<div class="modal fade" id='modal-detalle'>
+<div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" onclick="location.href='./inspector'" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+<h4 class="modal-title">INFORMACIÓN DEL CURSO</h4>
+</div>
+
+<div class="modal-body">
+<form id="Confirma1" class="form-horizontal" action="" method="POST" >
+<input type="hidden" name="id_curso1" id="id_curso1">
+<input type="hidden" name="idinsp1" id="idinsp1">
+<table class="table table-bordered">
+<tr>
+<th>CURSO</th>
+<th>INCIO</th>
+<th>HORA</th>
+<th>FINALIZA</th>
+</tr>
+<tr>
+<td><div id="gstTitlo1"></div></td>
+<td><div id="fcurso1"></div></td>
+<td><div id="hcurso1"></div></td>
+<td><div id="fechaf1"></div></td>
+</tr>
+</table>
+
+
+
+<table class="table table-bordered">
+<tr>
+<th>TIPO</th>
+<th>SEDE DEL CURSO</th>
+<th>MODALIDAD</th>
+</tr>
+<tr>
+<td><div id="gstTipo1"></div></td>
+<td><div id="sede1"></div></td>
+<td><div id="modalidad1"></div></td>
+</tr>
+<tr>
+<th id="ocul11">LINK</th>
+<th id="ocul22">CONTRASEÑA</th>
+<th id="ocul33">CLASSROOM</th>
+</tr>
+<tr>
+<td><div id="link1"></td>
+<td><div id="contracur1"></div></td>
+<td><div id="classroom1"></div></td>
+</tr>
+
+</table>
+
+                    
+<div class="form-group">
+<div class="col-sm-6">
+<div id="instruc1"></div>
+
+</div>
+</div>
+
+
+<!-- script para validar los lebel de confiam la asistencia -->
+<script>
+    rad = document.getElementById('SI')
+    lab1 = document.getElementById('asiste')
+    if (rad.checked ) {
+        lab1.style.display = '';
+    }
+
+</script>
+</form>    
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
 
 <!------------------PASSWORD------------------------>
 
