@@ -102,7 +102,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                HISTORIAL DE CONSTANCIAS, CERTIFICADOS Y DIPLOMAS.
+                    HISTORIAL DE CONSTANCIAS, CERTIFICADOS Y DIPLOMAS.
                 </h1>
             </section>
             <!-- Main content -->
@@ -110,9 +110,33 @@ include('header.php');
                 <div class="row">
                     <div class="col-md-12">
                         <div style="padding-top: 65px;" class="container box box-solid">
-                            <table id="data-table-ponderacion" class="table table-bordered" width="100%"
-                                cellspacing="0">
-                            </table>
+                            <ul class="nav nav-tabs" id="myNavTabs">
+                                <li class="active"><a href="#navtabs1" data-toggle="tab">HISTORIAL</a>
+                                <li><a href="#navtabs2" data-toggle="tab">VERIFICAR CADENA</a>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="navtabs1"> <br><br>
+                                    <table id="data-table-ponderacion" class="table table-bordered" width="100%"
+                                        cellspacing="0">
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="navtabs2"><br><br>
+                                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                                      
+                                        <label for="">INGRESE ID DE CERTIFICADO, CONSTANCIA Ó DIPLOMA.</label>
+                                        <input class="form-control" type="text" name="validar" required><br>
+                                        <input class="btn btn-info" type="submit" value="VALIDAR" name="submit">
+                                    </form><br>
+                                    <?php 
+                                    if(isset($_POST['submit'])){
+                                        $validar = base64_decode($_POST['validar']);
+                                        echo "<img src='../dist/img/check.gif' style='display: block; margin-left: auto; margin-right: auto; width: 150px;'><br><center><span style='font-size: 24px; color: gray;'>{$validar}</span></center>";
+
+                                    }
+                                        ?>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- /.box -->
                     </div>
@@ -394,7 +418,7 @@ $resultado = mysqli_query($conexion, $query);
 
             ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?>'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf' target='_blank'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?> '><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
                 "<?php echo $data['reaccion']?>"
             ],
 
@@ -462,8 +486,7 @@ $resultado = mysqli_query($conexion, $query);
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
                 </div>
             </div>
         </div>
@@ -486,13 +509,13 @@ function perfil(id) {
         var res = obj.data;
         var x = 0;
         html =
-            '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th><th>ACCIONES</th>';
-     
+            '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>TITULO</th>';
+
 
         for (i = 0; i < res.length; i++) {
             x++;
             if (obj.data[i].idcurso == id) {
-                html += "<tr><td>" + x + "</td><td style='width: 75%;'>" + obj.data[i].titulo + "</td><td><button class='btn btn-default fa fa-pencil-square-o'></button> <button class='btn btn-default fa fa-trash'></button></td></tr>";
+                html += "<tr><td>" + x + "</td><td style='width: 75%;'>" + obj.data[i].titulo + "</td></tr>";
             }
         }
         html += '</table>';
