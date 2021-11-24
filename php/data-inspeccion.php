@@ -15,6 +15,12 @@ $n=0;
 	}else{
 		
 		while($data = mysqli_fetch_assoc($resultado)){
+			if($data['gstCatgr'] == 'CURSO OBLIGATORIO'){
+				$categoria = "";
+			  
+			  }else{
+				$categoria = $data['gstCatgr'];
+			  }
 			
             $fechaActual = date_create(date('d-m-Y')); 
 		    $FechaIngreso = date_create($data['gstFeing']); 
@@ -58,7 +64,7 @@ $n=0;
 
             }
  	
-	 $caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$data["Ingreso"], $cursor, $total];
+	 $caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$categoria,$data["Ingreso"], $cursor, $total];
 
 		}
 	}
