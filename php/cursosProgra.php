@@ -21,6 +21,13 @@
 		while($data = mysqli_fetch_assoc($resultado)){
 			$contador++;
 
+			$codigo= $data["codigo"];
+			$queri = "SELECT * FROM reprogramados WHERE id_curso = '$codigo' AND reprogramado = 1";
+			$resul = mysqli_query($conexion, $queri);
+
+
+
+
 
 		ini_set('date.timezone','America/Mexico_City');
 //-----COMPARACIÓN DE FECHAS DE VENCIMIENTO
@@ -53,30 +60,49 @@
 
 // }
 
+
+if($res = mysqli_fetch_array($resul)){
+$codigor = $res['id_curso'];
+
+if ($f3>=$f2  && $data["proceso"] == "PENDIENTE" AND $codigor = $codigo) {
+$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+$proc = 'VENCIDO';
+}
+elseif($data["proceso"] == 'PENDIENTE' AND $codigor = $codigo){ //PENDIENTE
+$proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">REPROGRAMADO</span>';
+$proc = 'PENDIENTE';
+}
+else if($data["proceso"] == 'FINALIZADO' AND $codigor = $codigo){
+$proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
+$proc = 'FINALIZADO';
+} else if($data["proceso"] == 'EN PROCESO' AND $codigor = $codigo){
+$proceso = '<span style="font-weight: bold; height: 50px; color: ##3C8DBC;">EN PROCESO</span>';
+$proc = 'EN PROCESO';
+} 
+
+
+}else{
+
 if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
 	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 	$proc = 'VENCIDO';
 }
-//LOS RECURRENTES VENCEN CADA 3 AÑOS 
-// elseif ($factual >= $ftermino && 
-// 		$data["gstTipo"] == "RECURRENTES" && 
-// 		$data["proceso"] == "FINALIZADO") 
-// {
-// 	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
-// 	$proc = 'VENCIDO';
-// } 
-else
-if($data["proceso"] == 'PENDIENTE'){ //PENDIENTE
+elseif($data["proceso"] == 'PENDIENTE'){ //PENDIENTE
 $proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';
 $proc = 'PENDIENTE';
-}else if($data["proceso"] == 'FINALIZADO'){
+}
+else if($data["proceso"] == 'FINALIZADO'){
 $proceso = '<span style="font-weight: bold; height: 50px; color:green;">FINALIZADO</span>';
 $proc = 'FINALIZADO';
 } else if($data["proceso"] == 'EN PROCESO'){
 $proceso = '<span style="font-weight: bold; height: 50px; color: ##3C8DBC;">EN PROCESO</span>';
 $proc = 'EN PROCESO';
 } 
-		$cursos[] = [ 
+	
+
+}
+
+	$cursos[] = [ 
 		$data["codigo"],
 		//$data["codigo"], 
 		$data["gstTitlo"],
