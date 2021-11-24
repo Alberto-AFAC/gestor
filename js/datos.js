@@ -539,11 +539,8 @@ $("#Dtall #gstStado").val(obj.data[i].gstStado);
 $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
 $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
 $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-$("#Dtall #gstCorro").val(obj.data[i].gstCorro); // correo 1
-$("#Dtall #gstCinst").val(obj.data[i].gstCinst); // correo 2
-$("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); // correo 3
 
-$("#Pusto #gstSigID").val(obj.data[i].gstSigID); // estatus
+
 $("#Pusto #adscripcion").val(obj.data[i].adscripcion);
 // $("#Pusto #subdir1").val(obj.data[i].gstAcReg); //area de adscripción modificar 
 
@@ -619,7 +616,11 @@ $("#Pusto #departam").val(obj.data[i].descripdep);
                             $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
                             $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
                             $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
+                            $("#Dtall #gstCorro").val(obj.data[i].gstCorro); // correo 1
+                            $("#Dtall #gstCinst").val(obj.data[i].gstCinst); // correo 2
+                            $("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); // correo 3
+                            
+                            $("#Pusto #gstSigID").val(obj.data[i].gstSigID); // Observaciones
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
@@ -640,7 +641,7 @@ $("#Pusto #departam").val(obj.data[i].descripdep);
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
+                            
                             ////////////////////APARTADO PARA ADJUNTAR ARCHIVOS///////////////////////////////
                             $("#Actuliza #Nmplea").val(obj.data[i].gstNmpld);
                             $("#agregardoc #gstNemple").val(obj.data[i].gstNmpld);
@@ -1608,7 +1609,6 @@ function inspector(gstIdper) {
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
 
-                            $("#Pusto #gstNucrt").val(obj.data[i].gstNucrt); //ubicion
                             //alert(obj.data[i].gstIdpst);                           
                             $("#Pusto #Codig").val(obj.data[i].gstCodig);
                             $("#Pusto #Nivel").val(obj.data[i].gstNivel);
@@ -1683,7 +1683,11 @@ function inspector(gstIdper) {
                             $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
                             $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
                             $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
+                            $("#Dtall #gstCorro").val(obj.data[i].gstCorro); // correo 1
+                            $("#Dtall #gstCinst").val(obj.data[i].gstCinst); // correo 2
+                            $("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); // correo 3
+                            
+                            $("#Pusto #gstSigID").val(obj.data[i].gstSigID); // Observaciones
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
                             $("#Pusto #gstIdpst").val(obj.data[i].gstIdpst);
@@ -1694,6 +1698,7 @@ function inspector(gstIdper) {
                             $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
                             $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
+                            $("#Pusto #gstNucrt").val(obj.data[i].gstNucrt); //ubicion
 
                             $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
