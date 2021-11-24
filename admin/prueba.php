@@ -303,29 +303,45 @@ if($curs = mysqli_fetch_row($resultado)){
 
 
 
-    $actual = date("2021-11-27"); 
-    $hactual = date('H:i:s');
-    $fechap = '2021-11-24';
-    $hrs = '10:00:00';
-    $fin = date("d-m-Y",strtotime($fechap."+ 2 days")); 
+    // $actual = date("2021-11-27"); 
+    // $hactual = date('H:i:s');
+    // $fechap = '2021-11-24';
+    // $hrs = '10:00:00';
+    // $fin = date("d-m-Y",strtotime($fechap."+ 2 days")); 
 
-    $f3 = strtotime($actual);
-    $f2 = strtotime($fin); 
+    // $f3 = strtotime($actual);
+    // $f2 = strtotime($fin); 
 
-    if ($f3>$f2){
+    // if ($f3>$f2){
 
-      echo "caducado";
+    //   echo "caducado";
 
-    }else{
-      echo "no caducado";
-    }
-
-
+    // }else{
+    //   echo "no caducado";
+    // }
 
 
 
 
 
+
+
+
+$query3 = "SELECT `idinsp`,`idmstr`,`idinst`,`codigo` FROM cursos 
+           WHERE `idinsp` = 1046 AND `idmstr` = 1 
+           UNION SELECT `idinsp`,`idmstr`,`idinst`,`codigo` FROM cursos 
+           WHERE `idinsp` = 1046 AND `idmstr` = 2 
+           UNION SELECT `idinsp`,`idmstr`,`idinst`,`codigo` FROM cursos 
+           WHERE `idinsp` = 1046 AND `idmstr` = 7 ";
+$resultado = mysqli_query($conexion, $query3);
+$total = 0;
+while($curs = mysqli_fetch_row($resultado)){ 
+
+   echo '<br>'.$curs[0].' '.$curs[1];
+   $total++;
+}
+echo "<br>";
+echo $total;
 
 ?>
 </pre>
