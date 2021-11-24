@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts, DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as cfinal,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as cinicial,cursos.fcurso AS fin,classroom
+	$query = "SELECT *, COUNT(*) AS prtcpnts, DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as cfinal,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as cinicial,cursos.fechaf AS fin,classroom
 			FROM
 			cursos
 			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
@@ -44,11 +44,13 @@
 
 			$actual = date("Y-m-d"); 
 			$hactual = date('H:i:s');
-			$fin = $data['fin'];
+			// $fin = $data['fin'];
+			// $f3 = strtotime($actual.''.$hactual);
+			// $f2 = strtotime($fin.''.$data['hcurso']); 
+		    $fin = date("d-m-Y",strtotime($data['fin']."+ 1 days")); 
 
-			$f3 = strtotime($actual.''.$hactual);
-			$f2 = strtotime($fin.''.$data['hcurso']); 
-
+		    $f3 = strtotime($actual);
+		    $f2 = strtotime($fin); 
 
 //PENDIENTE POR VENCER - RECURRENTE
 // if ($factual <= $xvencer && 
@@ -64,7 +66,7 @@
 if($res = mysqli_fetch_array($resul)){
 $codigor = $res['id_curso'];
 
-if ($f3>=$f2  && $data["proceso"] == "PENDIENTE" AND $codigor = $codigo) {
+if ($f3>$f2  && $data["proceso"] == "PENDIENTE" AND $codigor = $codigo) {
 $proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 $proc = 'VENCIDO';
 }
@@ -83,7 +85,7 @@ $proc = 'EN PROCESO';
 
 }else{
 
-if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
+if ($f3>$f2 && $data["proceso"] == "PENDIENTE") {
 	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 	$proc = 'VENCIDO';
 }

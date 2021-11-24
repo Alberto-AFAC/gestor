@@ -82,6 +82,7 @@ function proCurso() {
             data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
         }).done(function(respuesta) {
 
+            alert(respuesta);
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',

@@ -4,7 +4,7 @@
 	session_start();
 		ini_set('date.timezone','America/Mexico_City');
 
-	$query = "SELECT *,COUNT(*) AS prtcpnts,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS fin FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP BY cursos.codigo ORDER BY id_curso DESC ";
+	$query = "SELECT *,COUNT(*) AS prtcpnts,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS fin,cursos.fechaf AS final FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP BY cursos.codigo ORDER BY id_curso DESC ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -29,11 +29,18 @@
 
 	$hactual = date('H:i:s');
 
-	$factual = strtotime(Date("Y-m-d").''.$hactual);
-	$fcurso = strtotime(Date($data["fcurso"]).''.$data['hcurso']);
+	// $factual = strtotime(Date("Y-m-d").''.$hactual);
+	// $fcurso = strtotime(Date($data["fcurso"]).''.$data['hcurso']);
+
+	$fin = date("d-m-Y",strtotime($data["final"]."+ 1 days")); 
+
+	$factual = strtotime(Date("Y-m-d"));
+	$fcurso = strtotime(Date($fin));
 
 
-	if($factual>=$fcurso && $data["proceso"] == "PENDIENTE")  {
+
+
+	if($factual>$fcurso && $data["proceso"] == "PENDIENTE")  {
 	$vencido++;
 	}
 

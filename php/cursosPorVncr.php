@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts,cursos.fcurso AS fin,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS finaliza 
+	$query = "SELECT *, COUNT(*) AS prtcpnts,cursos.fechaf AS fin,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS finaliza 
 			FROM
 			cursos
 			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
@@ -33,13 +33,17 @@
 
 		$actual = date("Y-m-d"); 
 		$hactual = date('H:i:s');
-		$fin = $data['fin'];
+		// $fin = $data['fin'];
+		// $f3 = strtotime($actual.''.$hactual);
+		// $f2 = strtotime($fin.''.$data['hcurso']); 
 
-		$f3 = strtotime($actual.''.$hactual);
-		$f2 = strtotime($fin.''.$data['hcurso']); 
+		$fechap = $data['fin'];
+		$fin = date("d-m-Y",strtotime($fechap."+ 1 days")); 
 
+		$f3 = strtotime($actual);
+		$f2 = strtotime($fin); 
 
-if ($f3>=$f2  && $data["proceso"] == "PENDIENTE") {
+if ($f3>$f2  && $data["proceso"] == "PENDIENTE") {
 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
 		$proc = 'VENCIDO';
 		
