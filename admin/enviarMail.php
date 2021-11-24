@@ -9,6 +9,7 @@ require '../php-mailer2/SMTP.php';
 
 
 	$idcurso = $_POST['codigoCurso'];
+	$correoRs = $_POST['correoResponsable'];
 	
 	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
@@ -16,22 +17,33 @@ require '../php-mailer2/SMTP.php';
 			  WHERE codigo = '$idcurso'";
 	$resultado = mysqli_query($conexion, $query);
     while($curso = mysqli_fetch_assoc($resultado)){
-        $to = $curso['gstCinst'];
+		if($curso['gstCinst'] == ''){
+			$to = $curso['gstCorro'];
+		} else{
+			$to = $curso['gstCinst'];
+		}
+       
 	 //$curso[1];
 
 $mail = new PHPMailer;
 $mail->isSMTP();
 $mail->SMTPDebug = 2;
 $mail->Host = 'smtp.hostinger.com';
+// $mail->Host = 'smtp.gmail.com';
+// $mail->SMTPSecure = 'tls';                          
+// $mail->Port = 587;
 $mail->SMTPSecure = 'ssl';                          
 $mail->Port = 465;
 $mail->SMTPAuth = true;
-$mail->Username = 'notificaciones@afac-avciv.com';
-$mail->Password = 'Agencia.SCT2021.';
-$mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
+// $mail->Username = 'notificaciones@afac-avciv.com';
+$mail->Username = 'notificaciones@afac.gob.mx';
+$mail->Password = 'Agencia.SCT.2021.';
+// $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
+$mail->setFrom('notificaciones@afac.gob.mx', 'NOTIFICACIONES AFAC');
 // $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
-// $mail->addAddress("{$to}");
-$mail->addBCC('jmondragonescamilla@gmail.com');
+$mail->addAddress("{$to}");
+$mail->addCC("{$correoRs}");
+// $mail->addCC('jmondragonescamilla@gmail.com');
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
@@ -42,14 +54,15 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 		$mail->CharSet = 'UTF-8';
 		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
 				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>".$curso['gstTitlo']."</span></td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$curso['gstIdlsc']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Nombre del participante: ".$curso['gstNombr']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Tipo de curso: ".$curso['gstTipo']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: ".$curso['inicia']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Hora: ".$curso['hcurso']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Cargo: ".$curso['gstCargo']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: ".$curso['sede']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>Modalidad: ".$curso['modalidad']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>FOLIO: ".$curso['gstIdlsc']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>TIPO DE CURSO: ".$curso['gstTipo']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>FECHA INICIO: ".$curso['inicia']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>HORA: ".$curso['hcurso']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>CARGO: ".$curso['gstCargo']." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: ".$curso['sede']." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>MODALIDAD: ".$curso['modalidad']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'><a href='http://afac-avciv.com/'>CONFIRMAR ASISTENCIA</a></td></tr>
 				<hr><center>
 				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: NO RESPONDER, ESTE CORREO SE GENERA AUTOMATICAMENTE.</h2>
 				</center><hr>
@@ -62,5 +75,3 @@ if (!$mail->send()) {
 }
     }
  ?>
-  
-    

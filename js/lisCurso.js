@@ -1183,6 +1183,7 @@ function enviarMail() {
 
     gstIdlsc = document.getElementById('gstIdlstc').value;
     codigoCurso = document.getElementById('codigoCurso').value;
+    correoResponsable = document.getElementById('correoResponsable').value;
 
     Swal.fire({
         html: 'Espera un momento...', // add html attribute if you want or remove
@@ -1195,7 +1196,7 @@ function enviarMail() {
     $.ajax({
         url: '../admin/enviarMail.php',
         type: 'POST',
-        data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso
+        data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
     }).done(function(html) {
 
         Swal.fire({
@@ -1271,6 +1272,8 @@ function cursoAct() {
     var fechaf = document.getElementById('fechaf').value;
     var sede = document.getElementById('sede').value;
     var modalidads = document.getElementById('modalidads').value;
+    var reprogramar = document.getElementById('reprogramar').value;
+
 
     if (modalidads == 'PRESENCIAL') {
         var linkcur = '0';
@@ -1283,18 +1286,17 @@ function cursoAct() {
 
     }
 
-    datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&classromcur=' + classromcur + '&opcion=cursoAct';
+    datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&classromcur=' + classromcur + '&reprogramar=' + reprogramar + '&opcion=cursoAct';
 
-    if (codigo == '' || fcurso == '' || hcurso == '' || fechaf == '' || sede == '' || modalidads == '' || linkcur == '' || contracur == '') {
+    if (codigo == '' || fcurso == '' || hcurso == '' || fechaf == '' || sede == '' || modalidads == '' || linkcur == '' || contracur == '' || reprogramar == '') {
 
         Swal.fire({
-            type: 'error',
+            type: 'warning',
             // title: 'AFAC INFORMA',
-            text: 'INGRESO DATOS CORRECTAMENTE',
+            text: 'SELECCIONE UNA OPCIÓN PARA CONTINUAR',
             showConfirmButton: false,
             customClass: 'swal-wide',
-            timer: 3000,
-            backdrop: `rgba(22, 57, 37, 0.4)`
+            timer: 3000
         });
 
     } else {
@@ -1310,12 +1312,12 @@ function cursoAct() {
                 Swal.fire({
                     type: 'success',
                     // title: 'AFAC INFORMA',
-                    text: 'DATOS DEL CURSO ACTUALIZADOS',
+                    text: 'CURSO REPROGRAMADO',
                     showConfirmButton: false,
                     customClass: 'swal-wide',
-                    timer: 2000,
-                    backdrop: `rgba(100, 100, 100, 0.4)`
+                    timer: 2000
                 });
+                setTimeout("location.href = 'lisCurso';", 2000);
             }
 
         });

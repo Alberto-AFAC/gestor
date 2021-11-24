@@ -1,5 +1,4 @@
-//function listar(){
-//destroy:true,
+
 $.ajax({
     url: '../php/consulta.php',
     type: 'POST'
@@ -39,11 +38,7 @@ function proCurso() {
         }
     }
 
-
-    // var idcord = document.getElementById('idcord').value;
-
     var id_mstr = document.getElementById('id_mstr').value;
-
 
     var hcurso = document.getElementById('hcurso').value;
     var fcurso = document.getElementById('fcurso').value;

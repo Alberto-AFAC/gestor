@@ -56,39 +56,35 @@ require_once "../../conexion/conexion.php";
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                                <?php
-$f = $fecha;
+<?php
+        $f = $fecha;
 
+        foreach ($valor as $id) {
+        if($idcurso!=$id){
+        $sql = "SELECT 
+        personal.gstIdper,
+        personal.gstNombr,
+        personal.gstApell,
+        personal.gstCorro,
+        categorias.gstCatgr,
+        personal.gstIDCat,
+        categorias.gstCsigl,
+        personal.gstFeing,
+        DATE_FORMAT(personal.gstFeing,
+        '%d/%m/%Y') as Feingreso,
+        personal.gstCargo 
+        FROM personal 
+        INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
+        INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE personal.gstCargo!='INSTRUCTOR' AND personal.estado = 0 ORDER BY gstFeing DESC";        
+        $person = mysqli_query($conexion,$sql);
+        while ($per = mysqli_fetch_row($person)) {
+        $fechaActual = date_create(date('Y-m-d')); 
+        $FechaIngreso = date_create($per[7]); 
+        $interval = date_diff($FechaIngreso, $fechaActual,false);  
+        $antiguedad = intval($interval->format('%R%a'));
 
-	foreach ($valor as $id) {
-		if($idcurso!=$id){
-
-    $sql = "SELECT 
-    personal.gstIdper,
-    personal.gstNombr,
-    personal.gstApell,
-    personal.gstCorro,
-    categorias.gstCatgr,
-    personal.gstIDCat,
-    categorias.gstCsigl,
-    personal.gstFeing,
-    DATE_FORMAT(personal.gstFeing,
-    '%d/%m/%Y') as Feingreso,
-    personal.gstCargo 
-    FROM personal 
-    INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
-    INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
-    WHERE personal.gstCargo!='INSTRUCTOR' AND personal.estado = 0 ORDER BY gstFeing DESC";        
-	$person = mysqli_query($conexion,$sql);
-	while ($per = mysqli_fetch_row($person)) {
-		$fechaActual = date_create(date('Y-m-d')); 
-		$FechaIngreso = date_create($per[7]); 
-		$interval = date_diff($FechaIngreso, $fechaActual,false);  
-		$antiguedad = intval($interval->format('%R%a'));
-
-	       
-
-		 if($per[6]==$id){        
+        if($per[6]==$id){        
 	?>
     <tr>
 <?php
@@ -123,6 +119,9 @@ $cursor = "<td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal
 }else{
 $cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</td>";
 }
+
+
+
 
 
 $fechav = date("d-m-Y",strtotime($fecs[0]."+ ".$f." year"));     
