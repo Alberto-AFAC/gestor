@@ -43,7 +43,7 @@ $mail->setFrom('notificaciones@afac.gob.mx', 'NOTIFICACIONES AFAC');
 // $mail->addAddress('jmondragonescamilla@gmail.com', 'Alberto Escamilla');
 $mail->addAddress("{$to}");
 $mail->addCC("{$correoRs}");
-$mail->addCC('jmondragonescamilla@gmail.com');
+// $mail->addCC('jmondragonescamilla@gmail.com');
 $mail->Subject = 'CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
