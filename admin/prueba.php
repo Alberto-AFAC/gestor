@@ -272,29 +272,19 @@ include ("../conexion/conexion.php");
 //     }
 //     $this->conexion->cerrar();
 // } 
-$fcurso = '2021-11-29';
-$fechaf = '2021-11-29';
-$idinsps = 1330;
 
-if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-  echo $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
-}else{
-  echo $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
-}
 
 
 
 //$query3 = "SELECT * FROM cursos WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
 
-function encurso($fcurso,$fechaf,$idinsps,$conexion){
+
 
     $sql = "SELECT * FROM cursos";        
         $person = mysqli_query($conexion,$sql);
         while ($per = mysqli_fetch_row($person)) {
 
-$query3 = "SELECT gstNombr,gstApell FROM cursos 
-           INNER JOIN personal ON idinsp = personal.gstIdper 
-           WHERE proceso = 'PENDIENTE' AND fechaf BETWEEN '$fcurso' AND '$fechaf' AND idinsp = $idinsps";
+$query3 = "SELECT gstNombr,gstApell FROM cursos INNER JOIN personal ON idinsp = personal.gstIdper WHERE '2021-11-24' > fcurso AND fechaf < '2021-11-27' AND `idinsp` = 1046 AND proceso = ''";
 
 //FUERA DEL RANGO
 // SELECT gstNombr,gstApell FROM cursos INNER JOIN personal ON idinsp = personal.gstIdper WHERE fechaf NOT BETWEEN '2021-11-23' AND '2021-11-29' AND `idinsp` = 1046
@@ -303,14 +293,35 @@ $query3 = "SELECT gstNombr,gstApell FROM cursos
 $resultado = mysqli_query($conexion, $query3);
 if($curs = mysqli_fetch_row($resultado)){ 
 
-return '<br>'.$curs[0].' '.$curs[1];
+    echo '<br>'.$curs[0].' '.$curs[1];
 //echo '<br>'.$enCurso = '0';
 
 }else{
-return '<br>NO hay';
+//echo '<br>'.$enCurso = '1';
 }
 }
+
+
+
+
+
+
+
+
+
+$query3 = "SELECT `gstIdlsc`,`gstTitlo`,gstNombr,gstApell FROM cursos INNER JOIN personal ON idinsp = personal.gstIdper INNER JOIN listacursos ON gstIdlsc = idmstr WHERE `idinsp` = 1046 AND `idmstr` = 1 AND `idmstr` = 2 AND `idmstr` = 7";
+
+$resultado = mysqli_query($conexion, $query3);
+if($curs = mysqli_fetch_row($resultado)){ 
+
+  echo $curs[0];
+}else{
+  echo "string";
 }
+
+
+
+
 ?>
 </pre>
 
