@@ -102,7 +102,7 @@
       </select>
       </div>
       <div class="col-sm-4">
-        <label class="label2">FECHA CONCLUCIÓN</label>
+        <label class="label2">FECHA CONCLUSIÓN</label>
         <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf" disabled="">
       </div>
   </div>

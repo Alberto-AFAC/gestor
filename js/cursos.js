@@ -159,6 +159,88 @@ $(document).ready(function() {
     });
 });
 
+//FUNCION PARA DETALLE DEL CURSO (EN PERFIL DE ADMINISTRATIVO)
+function confirmar1(idcurso) {
+    $.ajax({
+        url: '../php/curConfir.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (i = 0; i < res.length; i++) {
+
+            if (obj.data[i].id_curso == idcurso) {
+
+
+                lista = obj.data[i].codigo;
+                $("#id_curso1").val(idcurso);
+                $("#idinsp1").val(obj.data[i].idinsp);
+                $("#gstTitlo1").html(obj.data[i].gstTitlo);
+                $("#gstTipo1").html(obj.data[i].gstTipo);
+
+                var fechai = new Date(obj.data[i].fcurso);
+                var fcurso = fechai.getDate() + '-' + (fechai.getMonth() + 1) + '-' + fechai.getFullYear();
+
+                var fechac = new Date(obj.data[i].fechaf);
+                var fechaf = fechac.getDate() + '-' + (fechac.getMonth() + 1) + '-' + fechac.getFullYear();
+                $("#fcurso1").html(fcurso);
+                $("#hcurso1").html(obj.data[i].hcurso);
+                $("#fechaf1").html(fechaf);
+                $("#sede1").html(obj.data[i].sede);
+
+                $("#modalidad1").html(obj.data[i].modalidad);
+                if (obj.data[i].modalidad == 'PRESENCIAL') {
+                    $("#ocul11").hide();
+                    $("#ocul22").hide();
+                    $("#ocul33").hide();
+
+                    $("#link1").hide();
+                    $("#contracur1").hide();
+                    $("#classroom1").hide();
+                } else {
+                    $("#link1").html(obj.data[i].link);
+                    $("#contracur1").html(obj.data[i].contracur);
+                    $("#classroom1").html(obj.data[i].classroom);
+                }
+                
+            }
+        }
+
+
+        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>NOMBRE</th><th>CARGO</th>';
+        x = 0;
+        for (i = 0; i < res.length; i++) {
+            x++;
+
+
+
+            // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
+            if (obj.data[i].gstCargo == 'COORDINADOR' && obj.data[i].codigo == lista && obj.data[i].idinst == obj.data[i].idinsp || obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == lista) {
+
+                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td></tr>";
+            }
+
+
+
+
+        }
+        html += '</table>';
+        $("#instruc1").html(html);
+
+    })
+
+}
+
+
+    
+
+
+
+
+
+
+
 function confirasict() {
 
     var id_curso = document.getElementById('id_curso').value;
