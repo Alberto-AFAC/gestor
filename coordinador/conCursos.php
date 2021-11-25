@@ -358,6 +358,7 @@
                                     <select type="text" class="form-control inputalta" id="AgstProvd" name="AgstProvd">
                                         <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
                                         <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
+                                        <option value="EXTERNO (NACIONAL)">EXTERNO (NACIONAL)</option>
                                         <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
                                     </select>
                                 </div>

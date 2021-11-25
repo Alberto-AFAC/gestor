@@ -127,7 +127,7 @@ include('header.php');
 
 
 <div class="col-sm-4">
-<label class="label2">FECHA CONCLUCIÓN</label>
+<label class="label2">FECHA CONCLUSIÓN</label>
 <input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
 </div>
 </div>

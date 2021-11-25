@@ -232,6 +232,7 @@
     (AFAC)</option>
     <option value="INTERNO (NACIONAL)">
     INTERNO (NACIONAL)</option>
+    <option value="EXTERNO (NACIONAL)">EXTERNO (NACIONAL)</option>
     <option value="EXTERNO (INTERNACIONAL)">
     EXTERNO (INTERNACIONAL)
     </option>
