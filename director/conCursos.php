@@ -696,7 +696,7 @@ var campos_max = 30;
                 e.preventDefault();    //chups
                 if (x < campos_max) {
                         $('#listas').append('<div>\
-                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
                                 <a href="#" style="color: red; font-size:20px; cursor:pointer;" class="remover_campo"><span class="fa fa-minus-square"></span></a>\
                                 </div>');
                         x++;

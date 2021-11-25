@@ -424,7 +424,7 @@ $('#add_field').click(function(e) {
     e.preventDefault(); //chups
     if (x < campos_max) {
         $('#listas').append('<div>\
-                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
                                 <a href="#" style="color: red;" class="remover_campo">Remover</a>\
                                 </div>');
         x++;
