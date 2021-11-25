@@ -275,7 +275,7 @@ include ("../conexion/conexion.php");
                                                         <div class="modal-body">
                                                             <div id="listas">
                                                                 <div><input class="form-control"
-                                                                        placeholder="Ingresa tema" type="text"
+                                                                onkeyup="mayus(this);" placeholder="Ingresa tema" type="text"
                                                                         name="campo[]"></div><span id="add_field"
                                                                     style="color: blue;">Añadir</span>
                                                             </div>
@@ -423,7 +423,7 @@ $('#add_field').click(function(e) {
     e.preventDefault(); //chups
     if (x < campos_max) {
         $('#listas').append('<div>\
-                                <br><input placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
+                                <br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="campo[]">\
                                 <a href="#" style="color: red;" class="remover_campo">Remover</a>\
                                 </div>');
         x++;
