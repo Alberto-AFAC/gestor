@@ -382,11 +382,12 @@ style="background: white;border: 1px solid white;"> -->
                                                         </thead>
                                                         <tbody>
                                                             <tr>
+                                                                <!-- TODO -->
                                                                 <td><input type="number"
                                                                         title="el numero no debe ser superior a 100"
-                                                                        name="cantidad" min="1" max="100"
+                                                                        name="cantidad" min="0" max="99999" maxlength="3"
                                                                         style="text-transform:uppercase;"
-                                                                        class="form-control disabled" disabled=""
+                                                                        class="evaluacion form-control disabled" disabled=""
                                                                         id='validoev' onchange="cambiartexto()"></td>
                                                                 <td><span class='label label-primary'
                                                                         style="font-size:18px;"
@@ -1559,6 +1560,26 @@ const myFunction = () => {
 
     trs.forEach(setTrStyleDisplay);
 };
+
+
+var inputQuantity = [];
+    $(function() {     
+      $(".evaluacion").on("keyup", function (e) {
+        var $field = $(this),
+            val=this.value,
+            $thisIndex=parseInt($field.data("idx"),10); 
+        if (this.validity && this.validity.badInput || isNaN(val) || $field.is(":invalid") ) {
+            this.value = inputQuantity[$thisIndex];
+            return;
+        } 
+        if (val.length > Number($field.attr("maxlength"))) {
+          val=val.slice(0, 3);
+          $field.val(val);
+        }
+        inputQuantity[$thisIndex]=val;
+      });      
+    });
+
 </script>
 
 <style>
