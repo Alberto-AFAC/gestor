@@ -121,9 +121,6 @@ $cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingr
 }
 
 
-
-
-
 $fechav = date("d-m-Y",strtotime($fecs[0]."+ ".$f." year"));     
 
 $vencer = date("d-m-Y",strtotime($fechav."- 3 month"));

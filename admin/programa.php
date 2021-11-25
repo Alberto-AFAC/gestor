@@ -116,7 +116,7 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-4">
-<label class="label2">FECHA INICIO</label>
+<label class="label2">FECHA INICIO <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="av"></label>
 <input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
 </div>
 
@@ -244,6 +244,8 @@ include('header.php');
 <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b>
 
 <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
+
+<b><p class="alert alert-info text-center padding aviso" id="fechasA">Fecha conclusión es menor a fecha inicio</p></b>
 </div>
 </form>
 </div>
