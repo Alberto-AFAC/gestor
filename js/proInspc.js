@@ -49,6 +49,21 @@ function proCurso() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
+
+// var hoy = new Date();
+// var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
+// var f1 = new Date(hoy.getFullYear(),(hoy.getMonth()+1),hoy.getDate());
+    
+        fvigd = fcurso.substring(8,10);
+        fvigm = fcurso.substring(5,7);
+        fvigy = fcurso.substring(0,4);        
+        var f1 = new Date(fvigy,fvigm,fvigd);
+        fvigd = fechaf.substring(8,10);
+        fvigm = fechaf.substring(5,7);
+        fvigy = fechaf.substring(0,4);
+        var f2 = new Date(fvigy,fvigm,fvigd);
+
+
     if (modalidad == 'PRESENCIAL') {
         var link = '0';
         var contracceso = '0';
@@ -57,7 +72,6 @@ function proCurso() {
         var link = document.getElementById('link').value;
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
-
     }
     idinsps = idInsptr + '' + idInstr;
 
@@ -76,6 +90,22 @@ function proCurso() {
         return;
 
     } else {
+
+        if(f1>f2){
+                $('#fechasA').toggle('toggle');
+                setTimeout(function() {
+                $('#fechasA').toggle('toggle');
+                }, 3000);
+                $('#av').toggle('toggle');
+                setTimeout(function() {
+                $('#av').toggle('toggle');
+                }, 10000);
+                $('#so').toggle('toggle');
+                setTimeout(function() {
+                $('#so').toggle('toggle');
+                }, 10000);
+        }else{
+
         $.ajax({
             url: '../php/proCurso.php',
             type: 'POST',
@@ -108,6 +138,9 @@ function proCurso() {
                 });
             }
         });
+
+        }
+
     }
 
 }
