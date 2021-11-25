@@ -10,7 +10,7 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor  = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR ' AND estado = 0";
+$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 OR gstCargo = 'INSTRUCTOR' AND estado = 0";
 $cordinador  = mysqli_query($conexion,$sql);
 
 unset($_SESSION['consulta']);
@@ -116,7 +116,7 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-4">
-<label class="label2">FECHA INICIO</label>
+<label class="label2">FECHA INICIO <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="av"></label>
 <input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
 </div>
 
@@ -127,7 +127,7 @@ include('header.php');
 
 
 <div class="col-sm-4">
-<label class="label2">FECHA CONCLUSIÓN</label>
+<label class="label2">FECHA CONCLUSIÓN <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="so"></label>
 <input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
 </div>
 </div>
@@ -175,24 +175,6 @@ include('header.php');
       </select>
     </div>
 
-
-
-
-<!--   <div  class="form-group">
-      <div  class="col-sm-4">
-        <label class="label2">LINK DE ACCESO</label>
-        <input type="url" class="form-control inputalta" id="linkcur" name="linkcur" placeholder="URL" disabled="">
-      </div>
-      <div class="col-sm-4">
-        <label class="label2" >CONTRASEÑA DE ACCESO</label>
-        <input type="url" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
-      </div>
-  </div> 
-
-  <div id="disocl" style="display: none;" class="form-group">
-    <input type="hidden" name="linkcur" id="linkcur">
-    <input type="hidden" name="contracur" id="contracur">  
-</div>  -->
     <div id="dismod" style="display: none;">
     <div class="col-sm-4">
       <label class="label2">LINK DE ACCESO</label>
@@ -219,11 +201,8 @@ include('header.php');
                     <i class="fa fa-globe"></i>
                   </div>
             <input type="url" onkeyup="mayus(this);" class="form-control inputalta" id="classroom" name="classroom" placeholder="URL ">
-      </div>
-    
-
+      </div> 
 </div>
-
 
     </div>
             
@@ -235,21 +214,6 @@ include('header.php');
 
 </div>
 
-<!-- <div class="form-group">
-<div class="col-sm-4">
-      <label class="label2">CLASS ROOM</label>
-      <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-globe"></i>
-                  </div>
-            <input type="url" onkeyup="mayus(this);" class="form-control inputalta" id="clasroom" name="clasroom" placeholder="URL ">
-      </div>
-    </div>
-</div> -->
-
-<!-- <div id="rom1" style="display: none;" class="form-group">
-      <input type="hidden" name="clasroom" id="clasroom">
-</div>  -->
 
 <div class="form-group">
 <div class="col-sm-4">
@@ -260,18 +224,13 @@ include('header.php');
 
 <div id="tabcurso"></div> 
 
-<!-- <div class="form-group">
-<div class="col-sm-12">
-
-</div>
-</div> -->
 
 <br>
 
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button" style="font-size:16px" class="btn btn-info altaboton" onclick="proCursoCord();">PROGRAMAR</button>
+<button type="button" id="button" style="font-size:16px" class="btn btn-info altaboton" onclick="proCurso();">PROGRAMAR</button>
 <div id="overlay">
   <div class="cv-spinner">
     <span class="spinner"></span>
@@ -285,6 +244,8 @@ include('header.php');
 <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b>
 
 <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
+
+<b><p class="alert alert-info text-center padding aviso" id="fechasA">Fecha conclusión es menor a fecha inicio</p></b>
 </div>
 </form>
 </div>
