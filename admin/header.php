@@ -11,7 +11,10 @@
         }
        // echo $_SESSION['usuario']['privilegios'];
 
-        $id = $_SESSION['usuario']['id_usu'];
+
+      $id = $_SESSION['usuario']['id_usu'];
+      $usu = $_SESSION['usuario']['usuario'];
+      $pass = $_SESSION['usuario']['password'];
 
         include('../perfil/index.php');
 
@@ -26,95 +29,9 @@ unset($_SESSION['consulta']);
 ini_set('date.timezone','America/Mexico_City');
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<header class="main-header">
-    <!-- Logo -->
-    <a href="./" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini" style="font-size: 12px"><b>C-</b>AFAC</span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Capacitación AFAC</b></span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
 
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
-                <!-- Notifications: style can be found in dropdown.less -->
-                <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">
-                            <div id="noti"></div>
-                        </span>
-                    </a>
-
-                    <!-- LOGO DE LA AFAC-->
-
-
-                    <ul class="dropdown-menu">
-                        <li class="header">
-                            <div id="notif"></div>
-                        </li>
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li>
-                                    <a href="#">
-                                        <div id="confirmar"></div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- <li class="footer"><a href="#">View all</a></li> -->
-                    </ul>
-                </li>
-                <!-- Tasks: style can be found in dropdown.less -->
-
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <?php
-                                if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){
-                                    echo "<img class='user-image' src='../dist/img/profile-leonardoR.jpeg' 
-                                    alt='User profile picture'>";
-                                } else{
-                                    echo "<img class='user-image' src='../dist/img/perfil.png'
-                                    alt='User profile picture'>";
-                                }
-                                ?>
-                        <!--  <span class="hidden-xs">ADMINISTRADOR</span> -->
-                        <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
-                    </a>
-                    <ul class="dropdown-menu" style="width: 200px;">
-
-                        <!-- Menu Footer-->
-                        <li class="user-footer" style="padding: 0; background: #ECF0F5;">
-                            <div class="pull-left">
-
-                            </div>
-                            <div class="pull-right">
-                                <!-- <a href="#" class="btn btn-primary btn-flat">Perfil </a> -->
-                                <a href="../conexion/cerrar_session.php" class="btn btn-primary btn-flat">Cerrar
-                                    sesión</a>
-
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <img href="#" data-toggle="control-sidebar" src="../dist/img/AFAC.png" ALIGN=RIGHT class="img"
-                        alt="User Image" style="cursor: pointer;padding-right:  0.5em;">
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<?php include('../perfil/notificar.php');?>
+    
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
