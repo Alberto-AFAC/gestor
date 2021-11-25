@@ -35,14 +35,11 @@ foreach ($valor as $idinsps) {
 	$n++;
 
 
-if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
 
- //if($idinsps==$enc){
- 	echo "EL PARTICIPANTE ".$enc."ESTA EN CURSO";
-// }
-  //		echo $enc;
-}else{
+//  	echo "EL PARTICIPANTE ".$enc."ESTA EN CURSO";
+// }else{
 
 if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
@@ -60,7 +57,7 @@ if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$
 
 
 
-		}
+		//}
 	}
 }else if($opcion === 'actualizar'){
 
@@ -183,29 +180,29 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 }
 
 
-function encurso($fcurso,$fechaf,$idinsps,$conexion){
+// function encurso($fcurso,$fechaf,$idinsps,$conexion){
 
-    $sql = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
-           INNER JOIN personal ON idinsp = personal.gstIdper WHERE proceso = 'PENDIENTE' AND idinsp = $idinsps ";        
-        $person = mysqli_query($conexion,$sql);
-        while ($per = mysqli_fetch_row($person)) {
+//     $sql = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+//            INNER JOIN personal ON idinsp = personal.gstIdper WHERE proceso = 'PENDIENTE' AND idinsp = $idinsps ";        
+//         $person = mysqli_query($conexion,$sql);
+//         while ($per = mysqli_fetch_row($person)) {
 
-$query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
-           INNER JOIN personal ON idinsp = personal.gstIdper 
-           WHERE proceso = 'PENDIENTE' AND '$fcurso' > fechaf AND idinsp = $idinsps";
-// '2021-11-24' > fcurso AND fechaf < '2021-11-27'
+// $query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+//            INNER JOIN personal ON idinsp = personal.gstIdper 
+//            WHERE proceso = 'PENDIENTE' AND '$fcurso' > fechaf AND idinsp = $idinsps";
+// // '2021-11-24' > fcurso AND fechaf < '2021-11-27'
 
-		$resultado = mysqli_query($conexion, $query3);
-		if($curs = mysqli_fetch_row($resultado)){ 
+// 		$resultado = mysqli_query($conexion, $query3);
+// 		if($curs = mysqli_fetch_row($resultado)){ 
 
-		return false;
-		//echo '<br>'.$enCurso = '0';
+// 		return false;
+// 		//echo '<br>'.$enCurso = '0';
 
-		}else{
-		return $per[0].' '.$per[1].' '.$per[2];
-		}
-	}
-}
+// 		}else{
+// 		return $per[0].' '.$per[1].' '.$per[2];
+// 		}
+// 	}
+// }
 //CONTEO DE CURSO
 //codigo != 'X'
 function consulta($conexion){
