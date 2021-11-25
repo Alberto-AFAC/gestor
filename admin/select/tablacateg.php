@@ -66,19 +66,35 @@ require_once "../../conexion/conexion.php";
         personal.gstNombr,
         personal.gstApell,
         personal.gstCorro,
+      
         categorias.gstCatgr,
         personal.gstIDCat,
         categorias.gstCsigl,
         personal.gstFeing,
         DATE_FORMAT(personal.gstFeing,
         '%d/%m/%Y') as Feingreso,
-        personal.gstCargo 
+        personal.gstCargo,
+          personal.gstCinst
         FROM personal 
         INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
         INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
         WHERE personal.gstCargo!='INSTRUCTOR' AND personal.estado = 0 ORDER BY gstFeing DESC";        
         $person = mysqli_query($conexion,$sql);
         while ($per = mysqli_fetch_row($person)) {
+          if($per[3]== '0'){
+            $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
+          }else if($per[3]== ''){
+            $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
+          }else{
+            $cPersonal = $per[3];
+          }
+          if($per[10]== '0'){
+            $cInstitucional = "<span style='background-color: orange;' class='badge'>Sin correo Institucional</span>";
+          }else if($per[10]== ''){
+            $cInstitucional = "<span style='background-color: orange;' class='badge'>Sin correo Institucional</span>";
+          }else{
+            $cInstitucional = $per[10];
+          }
         $fechaActual = date_create(date('Y-m-d')); 
         $FechaIngreso = date_create($per[7]); 
         $interval = date_diff($FechaIngreso, $fechaActual,false);  
@@ -153,7 +169,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $per[4]?></td>
 
         <?php 
@@ -172,7 +188,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $per[0]?>' class="idinsp" /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $per[4]?></td>
 
 
@@ -192,7 +208,7 @@ if($fecs[5] == 'CONFIRMADO'){
         value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $per[4]?></td>
         <?php 
         // if($antiguedad <=30){
@@ -223,7 +239,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $per[4]?></td>
 
         <?php 
@@ -242,7 +258,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $per[4]?></td>
 
         <?php 
@@ -277,7 +293,7 @@ $cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingr
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $per[4]?></td>
 
         <?php 
