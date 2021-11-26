@@ -171,25 +171,29 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2' style='padding-top: 50px;'>Directora del CIAAC:</p></div>
-        <div style='padding-top: 3px; text-align: center;'>
-        <div class='row'>
-            <div class='column left'>
-            </div>
-            <div class='column middle'>
-                <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-                    class='p-2'>Secretaria de
-                    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-                    Adiestramiento de
-                    Aviación Civil / SCT-AFAC-CIAAC</span><br>
-                <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-            </div>
-            <div class='column right'>
-            <img style='float: right; width: 35%;' src='{$filename}'/>
-            </div>
-        </div>
+        <div class='caja'>
+        <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
+</div>
+
+<div style='padding-top: 9px; text-align: center;'>
+<div class='row'>
+    <div class='column left'>
     </div>
-    <div><br>
+    <div class='column middle'>
+        <br><br>
+        <span style='font-size: 8px; font-weight: bold; color: #996633;'
+            class='p-2'>Secretaria de
+            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+            Adiestramiento de
+            Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
+    </div>
+    <div class='column right'>
+    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
+    </div>
+</div>
+</div>
     <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
            {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
@@ -218,25 +222,29 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
-        <p class='p-2' style='padding-top: 50px;'>Directora del CIAAC:</p></div>
-        <div style='padding-top: 3px; text-align: center;'>
-        <div class='row'>
-            <div class='column left'>
-            </div>
-            <div class='column middle'>
-                <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-                    class='p-2'>Secretaria de
-                    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-                    Adiestramiento de
-                    Aviación Civil / SCT-AFAC-CIAAC</span><br>
-                <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-            </div>
-            <div class='column right'>
-            <img style='float: right; width: 35%;' src='{$filename}'/>
-            </div>
-        </div>
+        <div class='caja'>
+        <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
+</div>
+
+<div style='padding-top: 9px; text-align: center;'>
+<div class='row'>
+    <div class='column left'>
     </div>
-    <div>
+    <div class='column middle'>
+        <br><br>
+        <span style='font-size: 8px; font-weight: bold; color: #996633;'
+            class='p-2'>Secretaria de
+            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+            Adiestramiento de
+            Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
+    </div>
+    <div class='column right'>
+    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
+    </div>
+</div>
+</div>
     <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
            {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
