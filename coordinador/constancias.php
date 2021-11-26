@@ -418,7 +418,7 @@ $resultado = mysqli_query($conexion, $query);
 
             ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo $data['id'] ?>&cod=<?php echo $data['codigo']?> '><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<a href='constancia.php?data=<?php echo base64_encode($data['id']) ?>&cod=<?php echo base64_encode($data['codigo'])?> '><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
                 "<?php echo $data['reaccion']?>"
             ],
 
