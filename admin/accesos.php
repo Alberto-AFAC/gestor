@@ -136,6 +136,7 @@ name="privilegios" id="privilegios" type="text" data-live-search="true">
 <option value="EJECUTIVO">EJECUTIVO</option>
 <option value="INSTRUCTOR">COORDINADOR/INSTRUCTOR</option>
 <option value="INSPECTOR">INSPECTOR</option>
+<option value="HUMANOS">HUMANOS</option>
 </select>
 </div>
                             </div>
