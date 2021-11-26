@@ -33,6 +33,7 @@ $inspector = mysqli_query($conexion,$sql);
     <script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="../dist/css/input-correos.css">
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -978,6 +979,33 @@ immediately after the control sidebar -->
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script src="../js/global.js"></script>
+    <script type="text/javascript">
+        //Plug-in function for the bootstrap version of the multiple email
+        // $(function() {
+        //     //To render the input device to multiple email input using BootStrap icon
+        //     $('#correoResponsable').multiple_emails({
+        //         position: "bottom"
+        //     });
+        //     //OR $('#correoResponsable').multiple_emails("Bootstrap");
+
+        //     //Shows the value of the input device, which is in JSON format
+        //     $('#current_emailsBS').text($('#correoResponsable').val());
+        //     $('#correoResponsable').change(function() {
+        //         $('#current_emailsBS').text($(this).val());
+        //     });
+        // });
+        // //Plug-in function for the bootstrap version of the multiple email
+        // $(function() {
+        //     //To render the input device to multiple email input using a simple hyperlink text
+        //     $('#example_emailB').multiple_emails({
+        //         theme: "Basic"
+        //     });
+        //     $('#current_emailsB').text($('#example_emailB').val());
+        //     $('#example_emailB').change(function() {
+        //         $('#current_emailsB').text($(this).val());
+        //     });
+        // });
+    </script>
     <!-- page script -->
 
 </body>
@@ -1587,3 +1615,4 @@ var inputQuantity = [];
     width: 50% !important;
 }
 </style>
+<script src="../dist/js/multiples-correos.js"></script>
