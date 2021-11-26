@@ -57,7 +57,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
         class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
         <p style='padding-top: 50px;' class='p-2'>Directora del CIAAC:</p></div>
-        <img src='../dist/img/firmas/directora.png'>
+        <img src='../dist/img/firmas/directora.jpg'>
         <div style='padding-top: 3px; text-align: center;'>
         <div class='row'>
             <div class='column left'>
@@ -106,7 +106,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
         {$hoy}</span>
         <div class='caja'>
         <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
-        <center><img src='../dist/img/firmas/directora.png' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
 </div>
 
 <div style='padding-top: 9px; text-align: center;'>
