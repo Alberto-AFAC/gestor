@@ -2651,7 +2651,7 @@ if($f3>=$f2 && $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='
 ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
 "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-"<span class='badge' style='background-color: red; font-size: 14px;'>VENCIDO</span> ",
+"<span class='badge' style='background-color: red; font-size: 14px;'>VENCIDO</span><span title='No se envió respuesta de asistencia.' class='badge' style='background-color: orange; font-size: 14px;'>SIN RESPUESTA</span>",
 "<?php echo $data['confirmar']?>"
 ],
 <?php }
