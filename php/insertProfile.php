@@ -15,6 +15,9 @@ echo mysqli_query($conexion,$sql);
 
 }else if($opciones === 'editar'){
 
+        $sql="UPDATE profile SET id_persona='$id_persona', base64='$base64',date='$date' WHERE id_persona = $id_persona";
+echo mysqli_query($conexion,$sql);
+
 
 }
 
