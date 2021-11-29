@@ -178,6 +178,7 @@ function confirmar1(idcurso) {
                 $("#idinsp1").val(obj.data[i].idinsp);
                 $("#gstTitlo1").html(obj.data[i].gstTitlo);
                 $("#gstTipo1").html(obj.data[i].gstTipo);
+                document.getElementById('asisdetalle').style.display ='';
 
                 var fechai = new Date(obj.data[i].fcurso);
                 var fcurso = fechai.getDate() + '-' + (fechai.getMonth() + 1) + '-' + fechai.getFullYear();
@@ -232,15 +233,7 @@ function confirmar1(idcurso) {
 
 }
 
-
     
-
-
-
-
-
-
-
 function confirasict() {
 
     var id_curso = document.getElementById('id_curso').value;
