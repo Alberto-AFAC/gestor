@@ -70,7 +70,7 @@ include('header.php');
                             <div class="box-body box-profile">
                                 <?php
                                 $data = mysqli_fetch_array($generate);
-                                if($data['base64'] == ''){
+                                if(isset($data['base64']) == ''){
                                    echo $profile = "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
                                     alt='User profile picture'>";
 
