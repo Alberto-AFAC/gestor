@@ -477,11 +477,11 @@ $IDcat = $data['IDcat'];
 
 $resul = $IDcat;
 
-$query = "SELECT *
+$query2 = "SELECT *
 FROM cursos 
 WHERE idinsp  = $gstIdper AND proceso = 'FINALIZADO'";
-$resultado = mysqli_query($conexion, $query);
-if($curs = mysqli_fetch_row($resultado)){ 
+$resultado2 = mysqli_query($conexion, $query2);
+if($curs = mysqli_fetch_row($resultado2)){ 
 
 $cursor = "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
 
