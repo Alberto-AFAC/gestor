@@ -38,13 +38,13 @@ $mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Password = 'Agencia.SCT.2021.';
 // $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
-// $mail->addAddress("{$to}");
-$mail->addAddress("jmondragonescamilla@gmail.com");
-$mail->Subject = 'AQUI ENTRA DE FORMA INDIVIDUAL';
+$mail->addAddress("{$to}");
+// $mail->addAddress("jmondragonescamilla@gmail.com");
+$mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
 	$mail->isHTML(true);                                  //Set email format to HTML
-		$mail->Subject = 'AQUI ENTRA DE FORMA INDIVIDUAL';
+		$mail->Subject = 'NUEVO CURSO PROGRAMADO';
 		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 		$mail->CharSet = 'UTF-8';
@@ -97,11 +97,11 @@ $resultado = mysqli_query($conexion, $query);
 	{
 		$mail->addAddress($address, 'Usuario');
 	}
-	$mail->Subject = 'AQUI ENTRA PARA RESPONSABLES';
+	$mail->Subject = 'NUEVO CURSO PROGRAMADO';
 	$mail->msgHTML(file_get_contents('message.html'), __DIR__);
 	//$mail->addAttachment('test.txt');
 		$mail->isHTML(true);                                  //Set email format to HTML
-			$mail->Subject = 'AQUI ENTRA PARA RESPONSABLES';
+			$mail->Subject = 'NUEVO CURSO PROGRAMADO';
 			$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 			$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 			$mail->CharSet = 'UTF-8';
