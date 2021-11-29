@@ -69,7 +69,7 @@ include('header.php');
                         <div class="box box-primary">
                             <div class="box-body box-profile">
                                 <?php
-                                while($data = mysqli_fetch_array($generate)){
+                                $data = mysqli_fetch_array($generate);
                                 if($data['base64'] == ''){
                                    echo $profile = "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
                                     alt='User profile picture'>";
@@ -77,7 +77,7 @@ include('header.php');
                                 } else{
                                     echo $profile = "<img class='profile-user-img img-responsive img-circle' src='{$data['base64']}'
                                     alt='User profile picture'>";
-                                }}
+                                }
                                 ?>
 
                                 <center><span data-toggle="modal" data-target="#ProfileModal"
@@ -98,6 +98,7 @@ include('header.php');
                                             </div>
                                             <div class="modal-body">
                                                 <form id="Editar" method="POST">
+                                                    <input type="text" name="id_persona" id="id_persona" value="<?php echo $datos[0]?>" hidden>
                                                     <input type="file" name="image"
                                                         accept="image/png, image/gif, image/jpeg" id="image">
                                                     <input type="datetime" name="date"
@@ -117,7 +118,7 @@ include('header.php');
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
                                                     data-dismiss="modal">Close</button>
-                                                <button type="button" onclick="uploadProfile(<?php echo $datos[0]?>)"
+                                                <button type="button" onclick="uploadProfile()"
                                                     class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
@@ -2254,28 +2255,106 @@ immediately after the control sidebar -->
     <script type="text/javascript" src="../js/cursos.js"></script>
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.css" rel="stylesheet" />
     <script src="../js/lisCurso.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Input File
+        const inputImage = document.querySelector('#image');
+        // Nodo donde estará el editor
+        const editor = document.querySelector('#editor');
+        // El canvas donde se mostrará la previa
+        const miCanvas = document.querySelector('#preview');
+        // Contexto del canvas
+        const contexto = miCanvas.getContext('2d');
+        // Ruta de la imagen seleccionada
+        let urlImage = undefined;
+        // Evento disparado cuando se adjunte una imagen
+        inputImage.addEventListener('change', abrirEditor, false);
+
+        /**
+         * Método que abre el editor con la imagen seleccionada
+         */
+        function abrirEditor(e) {
+            // Obtiene la imagen
+            urlImage = URL.createObjectURL(e.target.files[0]);
+
+            // Borra editor en caso que existiera una imagen previa
+            editor.innerHTML = '';
+            let cropprImg = document.createElement('img');
+            cropprImg.setAttribute('id', 'croppr');
+            editor.appendChild(cropprImg);
+
+            // Limpia la previa en caso que existiera algún elemento previo
+            contexto.clearRect(0, 0, miCanvas.width, miCanvas.height);
+
+            // Envia la imagen al editor para su recorte
+            document.querySelector('#croppr').setAttribute('src', urlImage);
+
+            // Crea el editor
+            new Croppr('#croppr', {
+                aspectRatio: 1,
+                startSize: [20, 20],
+                onCropEnd: recortarImagen
+            })
+        }
+
+        /**
+         * Método que recorta la imagen con las coordenadas proporcionadas con croppr.js
+         */
+        function recortarImagen(data) {
+            // Variables
+            const inicioX = data.x;
+            const inicioY = data.y;
+            const nuevoAncho = data.width;
+            const nuevaAltura = data.height;
+            const zoom = 1;
+            let imagenEn64 = '';
+            // La imprimo
+            miCanvas.width = nuevoAncho;
+            miCanvas.height = nuevaAltura;
+            // La declaro
+            let miNuevaImagenTemp = new Image();
+            // Cuando la imagen se carge se procederá al recorte
+            miNuevaImagenTemp.onload = function() {
+                // Se recorta
+                contexto.drawImage(miNuevaImagenTemp, inicioX, inicioY, nuevoAncho * zoom, nuevaAltura *
+                    zoom, 0, 0, nuevoAncho, nuevaAltura);
+                // Se transforma a base64
+                imagenEn64 = miCanvas.toDataURL("image/jpeg");
+                // Mostramos el código generado
+                document.querySelector('#base64').textContent = imagenEn64;
+            }
+            // Proporciona la imagen cruda, sin editarla por ahora
+            miNuevaImagenTemp.src = urlImage;
+        }
+    });
+    </script>
 
     <script>
-    function uploadProfile(idPersonal) {
+    function uploadProfile() {
         var date = $("#date").val();
+        var id_persona = $("#id_persona").val();
         var base64 = $("#base64").html();
-        alert(date + base64);
-        swal.showLoading();
-        if (image == '') {
+        
+        alert(date + id_persona + base64);
+        if (base64 == '') {
             alert("Inserta imagen");
         } else {
             $.ajax({
                 type: "POST",
-                url: "insert.php",
+                url: "../php/insertProfile.php",
                 data: {
+                    id_persona: id_persona,
                     date: date,
                     base64: base64
                 },
                 success: function(data) {
-                    document.getElementById("pictureCargue").reset();
+                    // document.getElementById("pictureCargue").reset();
                     alert("Imagen Insertada con éxito!");
-                    setTimeout("location.href = 'inicio';", 2000);
+                    setTimeout("location.href = 'inspector';", 2000);
                 }
             });
         }

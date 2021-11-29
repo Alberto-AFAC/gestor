@@ -25,7 +25,7 @@
 
       $FotoPerfil = "SELECT *
                 FROM
-        profile";
+        profile WHERE id_persona = $id";
         $generate = mysqli_query($conexion, $FotoPerfil);
         
     
