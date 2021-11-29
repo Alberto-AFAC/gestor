@@ -12,6 +12,8 @@ require '../php-mailer2/SMTP.php';
 	$correoRs = $_POST['correoResponsable'];
 	
 	
+
+if($correoRs == ''){
 	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
@@ -23,39 +25,26 @@ require '../php-mailer2/SMTP.php';
 		} else{
 			$to = $curso['gstCinst'];
 		}
-       
-	 //$curso[1];
 
-$mail = new PHPMailer;
+		$mail = new PHPMailer;
 $mail->isSMTP();
 $mail->SMTPDebug = 2;
 $mail->Host = 'smtp.hostinger.com';
-// $mail->Host = 'smtp.gmail.com';
-// $mail->SMTPSecure = 'tls';                          
-// $mail->Port = 587;
 $mail->SMTPSecure = 'ssl';                          
 $mail->Port = 465;
 $mail->SMTPAuth = true;
 // $mail->Username = 'notificaciones@afac-avciv.com';
-$mail->Username = 'notificaciones@mesa-ayuda.afac-avciv.com';
+$mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Password = 'Agencia.SCT.2021.';
 // $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
-$mail->setFrom('notificaciones@mesa-ayuda.afac-avciv.com', 'NOTIFICACIONES AFAC');
-$mail->addAddress("{$to}");
-
-$to_array = explode(',', $correoRs);
-foreach($to_array as $address)
-{
-    $mail->addCC($address, 'Usuario');
-}
-
-// $mail->addCC("{$correoRs}");
-// $mail->addCC('jmondragonescamilla@gmail.com');
-$mail->Subject = 'CURSO PROGRAMADO';
+$mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
+// $mail->addAddress("{$to}");
+$mail->addAddress("jmondragonescamilla@gmail.com");
+$mail->Subject = 'AQUI ENTRA DE FORMA INDIVIDUAL';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
 	$mail->isHTML(true);                                  //Set email format to HTML
-		$mail->Subject = 'CURSO PROGRAMADO';
+		$mail->Subject = 'AQUI ENTRA DE FORMA INDIVIDUAL';
 		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 		$mail->CharSet = 'UTF-8';
@@ -80,5 +69,56 @@ if (!$mail->send()) {
 } else {
     echo 'The email message was sent.';
 }
-    }
+
+	}
+
+}else{
+
+	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
+	INNER JOIN cursos ON idmstr = gstIdlsc
+	INNER JOIN personal ON gstIdper = idinsp
+	WHERE codigo = '$idcurso'";
+$resultado = mysqli_query($conexion, $query);
+
+
+
+	$mail = new PHPMailer;
+	$mail->isSMTP();
+	$mail->SMTPDebug = 2;
+	$mail->Host = 'smtp.hostinger.com';
+	$mail->SMTPSecure = 'ssl';                          
+	$mail->Port = 465;
+	$mail->SMTPAuth = true;
+	$mail->Username = 'notificaciones@afac-avciv.com';
+	$mail->Password = 'Agencia.SCT.2021.';
+	$mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
+	$to_array = explode(',', $correoRs);
+	foreach($to_array as $address)
+	{
+		$mail->addAddress($address, 'Usuario');
+	}
+	$mail->Subject = 'AQUI ENTRA PARA RESPONSABLES';
+	$mail->msgHTML(file_get_contents('message.html'), __DIR__);
+	//$mail->addAttachment('test.txt');
+		$mail->isHTML(true);                                  //Set email format to HTML
+			$mail->Subject = 'AQUI ENTRA PARA RESPONSABLES';
+			$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+			$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+			$mail->CharSet = 'UTF-8';
+			while($curso = mysqli_fetch_assoc($resultado)){
+				$body .= "NOMBRE DEL CURSO: ".$curso['gstTitlo']."<br>
+						  NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."<br>
+						  TIPO DEL CURSO: ".$curso['gstTipo']."<br>
+						  FECHA DE INICIO: ".$curso['inicia']."<br>
+						  HORA: ".$curso['hcurso']."<br>
+						  SEDE DEL CURSO: ".$curso['sede']."<br>
+						  MODALIDAD: ".$curso['modalidad']."<br>";
+				
+			}
+				$mail->MsgHTML($body);
+			$mail->send();
+			
+
+}
+	    
  ?>
