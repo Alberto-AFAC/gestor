@@ -22,6 +22,12 @@
       "SELECT * FROM cursos WHERE modalidad = 'E-LEARNNING'";
       $query = mysqli_query($conexion,$sql2);
       $datos2 = mysqli_fetch_assoc($query);
+
+      $FotoPerfil = "SELECT *
+                FROM
+        profile";
+        $generate = mysqli_query($conexion, $FotoPerfil);
+        
     
 //session_start(); 
 unset($_SESSION['consulta']);
@@ -31,7 +37,7 @@ ini_set('date.timezone','America/Mexico_City');
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 <?php include('../perfil/notificar.php');?>
-    
+
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -51,25 +57,25 @@ ini_set('date.timezone','America/Mexico_City');
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">Menú</li>
+            <li class="header">Menú</li>
 
             <?php  if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){ ?>
-          <li class="active">
-          <a href="inspector">
-          <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
-          <span class='pull-right-container'>
-          </span>
-          </a>
-          </li>
-      <?php }else{ ?>
-          <li class="active">
-          <a href="inspector">        
-          <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
-          <span class='pull-right-container'>
-          </span>
-          </a>
-          </li>
-          <?php } ?>
+            <li class="active">
+                <a href="inspector">
+                    <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
+                    <span class='pull-right-container'>
+                    </span>
+                </a>
+            </li>
+            <?php }else{ ?>
+            <li class="active">
+                <a href="inspector">
+                    <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
+                    <span class='pull-right-container'>
+                    </span>
+                </a>
+            </li>
+            <?php } ?>
 
             <li class="treeview">
                 <a href="#">
@@ -108,7 +114,8 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
-                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i
+                                class="fa fa-certificate"></i>Historial de Constancias...</a></li>
                 </ul>
             </li>
             <!--  -->
@@ -131,7 +138,7 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
             </li>
-             <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
+            <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
             <li>
                 <a href="soporte">
                     <i class="fa fa-history"></i> <span>Historial de Cambios</span>
@@ -152,15 +159,15 @@ ini_set('date.timezone','America/Mexico_City');
                 </a>
             </li> -->
 
-             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
-              <li>
-              <a href='e-learnning'>
-              <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
-                <span class='pull-right-container'>
-                  <small class='label pull-right bg-red'></small>
-                  <small class='label pull-right bg-blue'></small>
-                </span>
-              </a>
+            <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
+            <li>
+                <a href='e-learnning'>
+                    <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
+                    <span class='pull-right-container'>
+                        <small class='label pull-right bg-red'></small>
+                        <small class='label pull-right bg-blue'></small>
+                    </span>
+                </a>
             </li>
             <?php }?>
 

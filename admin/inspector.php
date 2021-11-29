@@ -68,8 +68,62 @@ include('header.php');
                         <!-- Profile Image -->
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png"
-                                    alt="User profile picture">
+                                <?php
+                                while($data = mysqli_fetch_array($generate)){
+                                if($data['base64'] == ''){
+                                   echo $profile = "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
+                                    alt='User profile picture'>";
+
+                                } else{
+                                    echo $profile = "<img class='profile-user-img img-responsive img-circle' src='{$data['base64']}'
+                                    alt='User profile picture'>";
+                                }}
+                                ?>
+
+                                <center><span data-toggle="modal" data-target="#ProfileModal"
+                                        style="paddint-top: 90px; color: blue; font-size: 10px;">ACTUALIZAR FOTO DE
+                                        PERFIL</span></center>
+
+                                <!-- PROFILE MODAL -->
+                                <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="ProfileModal" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+
+                                                <h5 class="modal-title" id="exampleModalLabel">ACTUALIZAR FOTO DE PERFIL
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="Editar" method="POST">
+                                                    <input type="file" name="image"
+                                                        accept="image/png, image/gif, image/jpeg" id="image">
+                                                    <input type="datetime" name="date"
+                                                        value="<?php echo date("Y-m-d");?>" id="date" hidden>
+                                                    <div class="form-group">
+                                                        <!-- Editor donde se recortará la imagen con la ayuda de croppr.js -->
+                                                        <div class="col-sm">
+                                                            <div style="height:1px; width: 300px;" id="editor"></div>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <canvas style="width: 300px;" id="preview"></canvas>
+                                                        </div>
+                                                        <code name="base64" id="base64" hidden></code>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" onclick="uploadProfile(<?php echo $datos[0]?>)"
+                                                    class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
 
@@ -2102,67 +2156,68 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
 
 
 
-            </section>
-        </div>
+                </section>
+            </div>
     </div>
-</div>
-</div>
-</form>
-<script type="text/javascript" src="../js/encuestadatos.js"></script>
-<?php include('../perfil/modal.php');?>
-<!-- /.tab-pane -->
-</div>
-</div>
-<!-- /.nav-tabs-custom -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
+    </div>
+    </div>
+    </form>
+    <script type="text/javascript" src="../js/encuestadatos.js"></script>
+    <?php include('../perfil/modal.php');?>
+    <!-- /.tab-pane -->
+    </div>
+    </div>
+    <!-- /.nav-tabs-custom -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
 
-</section>
-<!-- /.content -->
-</div>
-<!-- MODAL PARA ENTREGAR TAREA -->
-<form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
-<div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
-aria-hidden="true">
-<div class="modal-dialog modal-sm">
-<div class="modal-content">
-<div class="modal-header">
-<input type="hidden" id="id_tare" name="id_tare">
-<input type="hidden" id="opcion" name="opcion" value="modificar">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<div class="modal-title" id="myModalLabel"><span style="font-size: 15px;" id="titulo"></span></div>
-</div>
-<div class="modal-body">
-<span>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</span><br><br>
-<div class="form-group">
-<div class="col-sm-2">
-<label class="container">SI
-<input type="radio" value="1" name="entrega">
-<span class="checkmark"></span>
-</label>
-</div>
-<div class="col-sm-2">
-<label class="container">NO
-<input type="radio" name="entrega" value="0">
-<span class="checkmark"></span>
-</label>
-</div>
-</div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-<button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
-</div>
-</div>
-</div>
-</div>
-</form>
-<!-- /.content-wrapper -->
-<footer class="main-footer">
-<div class="pull-right hidden-xs">
-<b>Version</b> <?php 
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- MODAL PARA ENTREGAR TAREA -->
+    <form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+        <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <input type="hidden" id="id_tare" name="id_tare">
+                        <input type="hidden" id="opcion" name="opcion" value="modificar">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <div class="modal-title" id="myModalLabel"><span style="font-size: 15px;" id="titulo"></span>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <span>¿DESEAS CONCLUIR CON LAS ACTIVIDADES ASIGNADAS PARA OJT?</span><br><br>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label class="container">SI
+                                    <input type="radio" value="1" name="entrega">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="container">NO
+                                    <input type="radio" name="entrega" value="0">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        <button type="button" onclick="modificar();" class="btn btn-primary">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> <?php 
 $query ="SELECT 
 *
 FROM
@@ -2175,21 +2230,21 @@ var_dump(mysqli_error($conexion));
 exit;
 }
 ?>
-                <?php echo $row['version']?>
-            </div>
-            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados DDE
-.
+            <?php echo $row['version']?>
+        </div>
+        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+        Todos los derechos Reservados DDE
+        .
 
-        </footer>
+    </footer>
 
-        <!--  -->
-        <!-- Control Sidebar -->
-        <?php include('../admin/panel.html');?>
-        <!-- /.control-sidebar -->
-        <!-- Add the sidebar's background. This div must be placed
+    <!--  -->
+    <!-- Control Sidebar -->
+    <?php include('../admin/panel.html');?>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
 immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+    <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -2201,7 +2256,34 @@ immediately after the control sidebar -->
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <script src="../js/lisCurso.js"></script>
 
+    <script>
+    function uploadProfile(idPersonal) {
+        var date = $("#date").val();
+        var base64 = $("#base64").html();
+        alert(date + base64);
+        swal.showLoading();
+        if (image == '') {
+            alert("Inserta imagen");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "insert.php",
+                data: {
+                    date: date,
+                    base64: base64
+                },
+                success: function(data) {
+                    document.getElementById("pictureCargue").reset();
+                    alert("Imagen Insertada con éxito!");
+                    setTimeout("location.href = 'inicio';", 2000);
+                }
+            });
+        }
 
+        return false;
+
+    }
+    </script>
 </body>
 
 </html>
