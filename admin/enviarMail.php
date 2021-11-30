@@ -39,6 +39,8 @@ $mail->Password = 'Agencia.SCT.2021.';
 // $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
 $mail->addAddress("{$to}");
+$mail->addCC("tania.mendoza@sct.gob.mx");
+
 // $mail->addAddress("jmondragonescamilla@gmail.com");
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
