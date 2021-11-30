@@ -103,7 +103,7 @@ include('header.php');
                                                             <div class="col-sm-4">
                                                                 <label>CARGO</label>
                                                                 <input type="text" onkeyup="mayus(this);"
-                                                                    class="form-control" id="cargo" name="cargo">
+                                                                    class="form-control" id="cargo" name="cargo" value="INSTRUCTOR" disabled>
                                                                 <br><button class="btn btn-primary"
                                                                     id="btnguardar">GUARDAR</button>
                                                             </div>
@@ -275,7 +275,7 @@ $x++;
 
     //console.log('<?php //echo $gstIdper ?>');
 
-    ["<?php echo $x ?>", "<?php echo  $data['nombre'];?>", "<?php echo $data['apellido']?>","<?php echo $data['alta']?>",""
+    ["<?php echo $x ?>", "<?php echo  $data['nombre'];?>", "<?php echo $data['apellido']?>","<?php echo $data['alta']?>","<?php echo $data['cargo']?>",""
 
     ],
 
@@ -305,6 +305,9 @@ var tableGenerarReporte = $('#data-table-instructoresExt').DataTable({
         },
         {
             title: "FECHA ALTA"
+        },
+        {
+            title: "CARGO"
         },
         {
             title: "ACCIÓN"
