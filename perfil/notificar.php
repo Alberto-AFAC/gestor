@@ -3,12 +3,17 @@
   <header class="main-header">
     <!-- Logo -->
 
+
+
 <?php if($_SESSION['usuario']['privilegios'] == 'INSPECTOR'){ ?>
           <a href="inspector" class="logo">
 <?php }else if($_SESSION['usuario']['privilegios'] == "DIRECTOR" || $_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC" || $_SESSION['usuario']['privilegios'] == "EJECUTIVO"){ ?>
       <a href="director" class="logo">
 <?php }else if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" || $_SESSION['usuario']['privilegios'] == "ADMINISTRADOR"){ ?>
       <a href="./" class="logo">  
+
+<?php }else if($_SESSION['usuario']['privilegios'] == "HUMANOS"){ ?>
+      <a href="humanos" class="logo">
 <?php }else{ ?>      
       <a href="inicio" class="logo">
 <?php } ?>
