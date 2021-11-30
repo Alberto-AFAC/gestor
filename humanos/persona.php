@@ -20,6 +20,8 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.css" rel="stylesheet" />
   
 <style>
  .swal-wide{
@@ -57,6 +59,19 @@ $direc = mysqli_query($conexion,$sql);
 
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $direc1 = mysqli_query($conexion,$sql);
+
+
+// SEGUNDO QUERY PARA OBTENER EL ID DE LAS PERSONAS
+$queryPerson = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
+$resultado = mysqli_query($conexion, $queryPerson);
+$data = mysqli_fetch_array($resultado);
+$idProfile = $data['gstIdper'];
+
+$FotoPerfil = "SELECT *
+FROM
+profile WHERE id_persona = $idProfile";
+$generate = mysqli_query($conexion, $FotoPerfil);
+$data = mysqli_fetch_array($generate);
 
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
