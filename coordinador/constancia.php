@@ -93,7 +93,8 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     Aviación Civil / SCT-AFAC-CIAAC</span>
     </div>
     <div class='footer-constancia'>
-    <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
+    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
     </div>";
 }else if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr <= 99){
@@ -132,16 +133,6 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
     <p class='p-2'>Esta <span style='font-weight: bold;'><u>constancia</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
            {$con['gstTitlo']}</span>, que a
         continuación se enlistan:</p>
@@ -154,7 +145,8 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     Aviación Civil / SCT-AFAC-CIAAC</span>
     </div>
     <div class='footer-constancia'>
-    <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
+    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
     </div>";
 
@@ -206,9 +198,10 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     Aviación Civil / SCT-AFAC-CIAAC</span>
     </div>
     <div class='footer-constancia'>
-    <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
+    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-</div>";
+    </div>";
 }else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
@@ -257,9 +250,10 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
     Aviación Civil / SCT-AFAC-CIAAC</span>
     </div>
     <div class='footer-constancia'>
-    <span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span>
+    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
+    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
     <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-</div>";
+    </div>";
 }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100){
     echo "<div style='text-align: center;'>
     <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
