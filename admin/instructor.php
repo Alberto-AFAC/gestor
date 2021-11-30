@@ -104,6 +104,8 @@ include('header.php');
                                                                 <label>CARGO</label>
                                                                 <input type="text" onkeyup="mayus(this);"
                                                                     class="form-control" id="cargo" name="cargo" value="INSTRUCTOR" disabled>
+                                                                    <input type="hidden" onkeyup="mayus(this);"
+                                                                    class="form-control" id="detalle" name="detalle" value="EXTERNO">
                                                                 <br><button class="btn btn-primary"
                                                                     id="btnguardar">GUARDAR</button>
                                                             </div>
@@ -322,6 +324,8 @@ $(document).ready(function() {
         var nombre = $("#nombre").val();
         var apellido = $("#apellido").val();
         var cargo = $("#cargo").val();
+        var detalle = $("#detalle").val();
+
         swal.showLoading();
         if (nombre == '' || apellido == '' || cargo == '') {
             Swal.fire({
@@ -339,7 +343,9 @@ $(document).ready(function() {
                     alta: alta,
                     nombre: nombre,
                     apellido: apellido,
-                    cargo: cargo
+                    cargo: cargo,
+                    detalle: detalle
+
                 },
                 success: function(data) {
                     document.getElementById("inspectores-ext").reset();
