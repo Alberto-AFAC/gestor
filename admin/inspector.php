@@ -2358,7 +2358,13 @@ immediately after the control sidebar -->
 
         //alert(date + id_persona + opcion + base64);
         if (base64 == '') {
-            alert("Inserta imagen");
+            Swal.fire({
+                type: 'warning',
+                customClass: 'swal-wide',
+                timer: 2000,
+                text: 'ES NECESARIO CARGAR UNA FOTO',
+                showConfirmButton: false,
+            });
         } else {
             $.ajax({
                 type: "POST",
@@ -2370,11 +2376,14 @@ immediately after the control sidebar -->
                     base64: base64
                 },
                 success: function(data) {
-
-                    alert(data);
-                    // document.getElementById("pictureCargue").reset();
-                    alert("Imagen Insertada con éxito!");
-                    setTimeout("location.href = 'inspector';", 2000);
+                    Swal.fire({
+                type: 'success',
+                customClass: 'swal-wide',
+                timer: 3000,
+                text: 'SE CARGÓ CON ÉXITO',
+                showConfirmButton: false,
+            });
+                    setTimeout("location.href = 'inspector';", 3000);
                 }
             });
         }
