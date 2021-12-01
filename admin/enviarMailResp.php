@@ -52,7 +52,11 @@ $mail->CharSet = 'UTF-8';
         <p>SEDE DEL CURSO: ".$curso['sede']." </p>
         <p>MODALIDAD: ".$curso['modalidad']."</p>";
         
-			$mail->MsgHTML($msg);
-        $mail->send();
+            $mail->MsgHTML($msg);
+            if (!$mail->send()) {
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                echo 'The email message was sent.';
+            }
     }
  ?>
