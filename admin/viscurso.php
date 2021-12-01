@@ -259,12 +259,12 @@
                                     <span id="notiocu" data-toggle="modal" data-target="#notificarConv"
                                         style="font-size:12px; width:280px; height:30px "
                                         class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
-                                            aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA A PARTICIPANTES</span>
+                                            aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A PARTICIPANTES</span>
 
-                                            <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
+                                    <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
                                         style="font-size:12px; width:280px; height:30px "
                                         class="btn btn-info btn-sm altaboton"><i class="fa fa-graduation-cap"
-                                            aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
+                                            aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
                                     <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                                 </form>
                                 <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A PARTICIPANTES-->
@@ -284,7 +284,7 @@
                                                 antes de enviar el correo.</p>
 
                                             <hr>
-                                            
+
                                             <button type="button" id="cerrarres" style="font-size:18px"
                                                 class="btn btn-block btn-primary" onclick="enviarMail()"
                                                 data-dismiss="modal">ENVIAR</button>
@@ -365,7 +365,21 @@
                                 <div class="box-body">
                                     <br>
                                     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-                                    <div id="proCursos"></div>
+                                    <!-- <div id="proCursos"></div> -->
+                                    <table class="display table table-striped table-bordered dataTable"
+                                        id="data-table-cursosProgramados" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>NOMBRE(S)</th>
+                                                <th>APELLIDO(S)</th>
+                                                <th>ESPECIALIDAD</th>
+                                                <th>ASISTENCIA</th>
+                                                <th>ACCIONES</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
                                 </div>
                             </div>
                             <!-- /.box -->
