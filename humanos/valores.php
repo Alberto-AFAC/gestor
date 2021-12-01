@@ -30,7 +30,16 @@ $subdirec = mysqli_query($conexion,$sql);
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $direc = mysqli_query($conexion,$sql);
 
+$queryPerson = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
+$resultado = mysqli_query($conexion, $queryPerson);
+$data = mysqli_fetch_array($resultado);
+$idProfile = $data['gstIdper'];
 
+$FotoPerfil = "SELECT *
+FROM
+profile WHERE id_persona = $idProfile";
+$generate = mysqli_query($conexion, $FotoPerfil);
+$data = mysqli_fetch_array($generate);
 // $sql = "SELECT DISTINCT id_departamentos,descripdep,id_3_dep FROM departamentos";
 // $depart = mysqli_query($conexion,$sql);
 
@@ -55,14 +64,84 @@ $direc = mysqli_query($conexion,$sql);
 
                         </div>
                         <div class="widget-user-image">
-                           <div id="foto"></div>
+                            <!-- <div id="foto"></div> -->
+                            <?php
+                            if(isset($data['base64']) == ''){ ?>
+
+                            <img class='img-circle' src='../dist/img/user1-128x128.jpg'
+                                alt='User profile picture'>
+                            <center><a href="#"><span data-toggle="modal" data-target="#ProfileModal"
+                                        style="paddint-top: 90px; font-size: 10px;">AGREGAR FOTO DE
+                                        PERFIL</span></a></center>
+
+                            <?php } else{ ?>
+                            <img class='img-circle' src='<?php echo $data['base64']?>'
+                                alt='User profile picture'>
+
+                            <center><a href="#"><span data-toggle="modal" data-target="#ProfileModal"
+                                        style="paddint-top: 90px; font-size: 10px;">ACTUALIZAR FOTO DE
+                                        PERFIL</span></a></center>
+
+                            <?php } ?>
                         </div>
+                          <!-- PROFILE MODAL -->
+                          <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="ProfileModal" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+
+                                                <h5 class="modal-title" id="exampleModalLabel">ACTUALIZAR FOTO DE PERFIL
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="Editar" method="POST">
+
+                                                    <?php 
+if(isset($data['base64']) == ''){ ?>
+
+                                                    <input type="hidden" name="opciones" id="opciones" value="agregar">
+                                                    <?php }else{ ?>
+                                                    <input type="hidden" name="opciones" id="opciones" value="editar">
+                                                    <?php } ?>
+
+
+                                                    <input type="text" name="id_persona" id="id_persona"
+                                                        value="<?php echo $idProfile?>" >
+                                                    <input type="file" name="image"
+                                                        accept="image/png, image/gif, image/jpeg" id="image">
+                                                    <input type="datetime" name="date"
+                                                        value="<?php echo date("Y-m-d");?>" id="date" hidden>
+                                                    <div class="form-group">
+                                                        <!-- Editor donde se recortará la imagen con la ayuda de croppr.js -->
+                                                        <div class="col-sm">
+                                                            <div style="height:1px; width: 300px;" id="editor"></div>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <canvas style="width: 300px;" id="preview"></canvas>
+                                                        </div>
+                                                        <code name="base64" id="base64" hidden></code>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" onclick="uploadProfile()"
+                                                    class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         <div class="box-footer">
                             <div class="row">
                                 <div class="col-sm-4 border-right">
                                     <div class="description-block">
                                         <span class="description-text"></span>
-                                        <h5><input type="text" name="cargopersonal" id="cargopersonal" class="datas disabled" disabled=""></h5>
+                                        <h5><input type="text" name="cargopersonal" id="cargopersonal"
+                                                class="datas disabled" disabled=""></h5>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -119,8 +198,8 @@ $direc = mysqli_query($conexion,$sql);
                                 <div id="CANCELADO"></div>
                             </span>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-red" id='porcentaje13' role="progressbar" aria-valuenow="60"
-                                    aria-valuemin="0" aria-valuemax="100" style="">
+                                <div class="progress-bar progress-bar-red" id='porcentaje13' role="progressbar"
+                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
                                     0% </div>
                             </div>
                         </div>
@@ -143,20 +222,20 @@ $direc = mysqli_query($conexion,$sql);
 
 <!-- /FIN DE NUEVO DISEÑO -->
 <div class="col-xs-12">
-          <div class="box box-solid">
-            <div class="box-header">
-               <i class="fa fa fa-list"></i>
+    <div class="box box-solid">
+        <div class="box-header">
+            <i class="fa fa fa-list"></i>
 
-               <h3 class="box-title">Check list</h3>
+            <h3 class="box-title">Check list</h3>
 
-                 <div class="box-tools pull-right">
-                   <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
-                   </button>
-                </div>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
             </div>
-            <!-- /.box-header -->
-            
-            <div class="box-body" style="display: none;">
+        </div>
+        <!-- /.box-header -->
+
+        <div class="box-body" style="display: none;">
             <div class="row">
 
                 <!-- ./col -->
@@ -164,42 +243,46 @@ $direc = mysqli_query($conexion,$sql);
 
                 <div id="perdoc"></div>
 
-<!----------------------------------------------------------------->
+                <!----------------------------------------------------------------->
 
 
 
 
 
 
-              </div>
-              <!-- /.row -->
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <!-- /.row -->
         </div>
-<!-- DETALLE DECLINA CONVOCATORIA -->
-<div class="modal fade" id='modal-declinadop'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal1">
-  
-  <div id="success-icon">
-    <div>
-    <img class="img-circle1" src="../dist/img/declinado.png">
+        <!-- /.box-body -->
     </div>
-  </div>
-  <h1 class="modaltitlep" style="color:gray"><strong>DETALLES</strong></h1>
-  <label id="cursdeclinap" style="font-size: 16px; color:gray"  for=""></label>
-  <label id="declindetp" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
-  <label id="nombredeclinp" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
-  <br>
-  <label id="motivodp" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
-  <hr>
-  <a id="declinpdfp" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclinp" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
-  <label readonly id="otrosdp" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
+    <!-- /.box -->
 </div>
-<script>
+<!-- DETALLE DECLINA CONVOCATORIA -->
+<div class="modal fade" id='modal-declinadop' tabindex="-1" role="dialog" aria-labelledby="basicModal"
+    aria-hidden="true">
+    <div class="modal1">
 
-</script>
+        <div id="success-icon">
+            <div>
+                <img class="img-circle1" src="../dist/img/declinado.png">
+            </div>
+        </div>
+        <h1 class="modaltitlep" style="color:gray"><strong>DETALLES</strong></h1>
+        <label id="cursdeclinap" style="font-size: 16px; color:gray" for=""></label>
+        <label id="declindetp" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la
+            convocatoria del curso:</label>
+        <label id="nombredeclinp" style="font-size: 18px; color:gray; font-weight: normal;" for=""></label>
+        <br>
+        <label id="motivodp" style="font-size: 18px; color:#2B2B2B; font-weight: blod;" for=""></label>
+        <hr>
+        <a id="declinpdfp" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclinp"
+            style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+        <label readonly id="otrosdp" name="textarea"
+            style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
+    </div>
+    <script>
+
+    </script>
 </div>
 <!--FIN DETALLE DECLINA CONVOCATORIA -->
 
@@ -255,12 +338,13 @@ $direc = mysqli_query($conexion,$sql);
                             </div>
 
                             <div class="col-sm-4">
-                              <label class="label2">SEXO</label>
-                              <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo" disabled="">
-                                  <option value="">ELEGIR SEXO</option>
-                                 <option value="MUJER">MUJER</option>
-                                 <option value="HOMBRE">HOMBRE</option>
-                              </select>
+                                <label class="label2">SEXO</label>
+                                <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo"
+                                    disabled="">
+                                    <option value="">ELEGIR SEXO</option>
+                                    <option value="MUJER">MUJER</option>
+                                    <option value="HOMBRE">HOMBRE</option>
+                                </select>
                             </div>
 
                             <div class="col-sm-4">
@@ -274,7 +358,7 @@ $direc = mysqli_query($conexion,$sql);
 
                         </div>
                         <div class="form-group">
-                            
+
                             <div class="col-sm-4">
                                 <label>CURP</label>
                                 <input type="tex" disabled="" style="text-transform:uppercase;" class="form-control"
@@ -299,7 +383,8 @@ $direc = mysqli_query($conexion,$sql);
                             <div class="col-sm-4">
                                 <label>PASAPORTE VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstPsvig" name="gstPsvig">
-                            </div>                            <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-4">
                                 <label>VISA PAIS</label>
                                 <input type="text" disabled="" class="form-control" id="gstVisa" name="gstVisa">
                             </div>
@@ -429,7 +514,9 @@ $direc = mysqli_query($conexion,$sql);
 
                         <div class="form-group" id="buton" style="display: none;"><br>
                             <div class="col-sm-offset-0 col-sm-2">
-                                <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actDatos();"> 
+                                <button type="button" id="button" title="Dar click para guardar los cambios"
+                                    style="background-color:#052E64; border-radius:10px;"
+                                    class="btn btn-block btn-primary" onclick="actDatos();">
                                     ACTUALIZAR</button>
                             </div>
                             <b>
@@ -450,7 +537,7 @@ $direc = mysqli_query($conexion,$sql);
                     </form>
                 </div>
             </div>
-<!--------------------DATOS DEL PUESTO------------------------------->
+            <!--------------------DATOS DEL PUESTO------------------------------->
 
             <div class="tab-pane" id="puesto">
 
@@ -469,7 +556,8 @@ $direc = mysqli_query($conexion,$sql);
 
                         <div class="col-sm-4">
                             <label class="label2">OBSERVACIONES</label>
-                            <input disabled="" type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
+                            <input disabled="" type="text" onkeyup="mayus(this);" class="form-control inputalta"
+                                id="gstSigID" name="gstSigID">
                         </div>
 
                     </div>
@@ -564,7 +652,7 @@ $direc = mysqli_query($conexion,$sql);
                             <p id="ejecutiva2" style="display: none;">
                                 <label>DIRECCIÓN EJECUTIVA </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID"
-                                     id="gstAreID" type="text" data-live-search="true">
+                                    id="gstAreID" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
                                     <?php while($ejct = mysqli_fetch_row($ejec)):?>
                                     <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
@@ -573,9 +661,9 @@ $direc = mysqli_query($conexion,$sql);
                             </p>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
-                    <div class="col-sm-12">
+                        <div class="col-sm-12">
                             <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="adscripcion();">EDITAR
                                     DIRECCIÓN DE ADSCRIPCIÓN <i class="fa fa-edit"></i></a></p>
                             <p id="adscrip1">
@@ -585,48 +673,49 @@ $direc = mysqli_query($conexion,$sql);
                             <p id="adscrip2" style="display: none;">
                                 <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
-                                     id="gstIDara" type="text" data-live-search="true">
+                                    id="gstIDara" type="text" data-live-search="true">
                                     <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
-                                    <?php while($ccion = mysqli_fetch_row($direc)):?>                      
-                    <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
-                    <?php endwhile; ?>
-                    </select>
+                                    <?php while($ccion = mysqli_fetch_row($direc)):?>
+                                    <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
+                                    <?php endwhile; ?>
+                                </select>
                             </p>
                         </div>
 
                     </div>
-     
 
-                    
+
+
 
                     <div class="form-group">
-                    <div class="col-sm-12">
-                            <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion();">EDITAR
-                            SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
+                        <div class="col-sm-12">
+                            <p id="subdirec1" style="display: none; cursor: pointer;"><a
+                                    onclick="subdireccion();">EDITAR
+                                    SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
                             <div id="subdirec2">
-                        <label>SUBDIRECCIÓN </label>
-                        <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
+                                <label>SUBDIRECCIÓN </label>
+                                <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
 
-                        <label>DEPARTAMENTO </label>
-                        <input type="text" name="departam" id="departam" class="form-control" disabled="">
+                                <label>DEPARTAMENTO </label>
+                                <input type="text" name="departam" id="departam" class="form-control" disabled="">
 
                             </div>
                             <div id="subdirec3" style="display: none;">
 
 
-                        <div class="form-group">
-                        <div class="col-sm-12">
-                        <label class="label2">SUBDIRECCIÓN</label>
-                        <div id="subdireact"></div>                            
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <div class="col-sm-12">
-                        <label class="label2">DEPARTAMENTO</label>
-                        <div id="departact"></div> 
-                        </div>   
-                        </div>
-                         </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label class="label2">SUBDIRECCIÓN</label>
+                                        <div id="subdireact"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label class="label2">DEPARTAMENTO</label>
+                                        <div id="departact"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -653,15 +742,16 @@ $direc = mysqli_query($conexion,$sql);
                                 <option value="INSTRUCTOR">INSTRUCTOR</option>
                             </select>
                         </div>
-                      
+
                         <div class="col-sm-6">
-                            <label class="label2">UBICACIÓN CENTRAL</label> 
-                            <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
-                                <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>    
-                                 <option value="CIAAC">CIAAC</option> 
-                               <option value="LAS FLORES">LAS FLORES</option> 
-                               <option value="ANGAR 8">ANGAR 8</option> 
-                               <option value="LICENCIA">LICENCIAS</option>
+                            <label class="label2">UBICACIÓN CENTRAL</label>
+                            <select style="width: 100%" disabled="" class="form-control" class="selectpicker"
+                                id="gstNucrt" name="gstNucrt" type="text" data-live-search="true">
+                                <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>
+                                <option value="CIAAC">CIAAC</option>
+                                <option value="LAS FLORES">LAS FLORES</option>
+                                <option value="ANGAR 8">ANGAR 8</option>
+                                <option value="LICENCIA">LICENCIAS</option>
                             </select>
                         </div>
 
@@ -671,7 +761,7 @@ $direc = mysqli_query($conexion,$sql);
 
                     <div class="form-group">
                         <input type="hidden" name="gstIDCat" id="gstIDCat" value="0">
-<!-- 
+                        <!-- 
                         <input type="hidden" name="gstIDSub" id="gstIDSub" value="0"> -->
 
 
@@ -680,9 +770,11 @@ $direc = mysqli_query($conexion,$sql);
 
                     </div>
 
-                        <div class="form-group" id="butons" style="display: none;"><br>
+                    <div class="form-group" id="butons" style="display: none;"><br>
                         <div class="col-sm-offset-0 col-sm-2">
-                            <button type="button" id="button" title="Dar click para guardar los cambios" style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" onclick="actPuesto();">ACTUALIZAR</button>
+                            <button type="button" id="button" title="Dar click para guardar los cambios"
+                                style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary"
+                                onclick="actPuesto();">ACTUALIZAR</button>
                         </div>
                         <b>
                             <p class="alert alert-danger text-center padding error" id="danger1">Error al actualizar
@@ -700,7 +792,7 @@ $direc = mysqli_query($conexion,$sql);
                     </div>
                 </form>
             </div>
-<!----------------------------------------------------------------------------->            
+            <!----------------------------------------------------------------------------->
             <div class="tab-pane" id="estudios">
                 <form class="form-horizontal">
                     <div class="form-group">
@@ -746,7 +838,7 @@ $direc = mysqli_query($conexion,$sql);
                                     <h3 class="box-title">Cursos programados</h3>
                                     <input id="fecomp1" style='display:none' type="text">
                                 </div>
-<!--                                 <div class="form-group">
+                                <!--                                 <div class="form-group">
                                     <div class="col-sm-2">
                                         <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
                                         <label for="finalizado">FINALIZADO</label><br>
@@ -768,21 +860,21 @@ $direc = mysqli_query($conexion,$sql);
                     </div>
                 </section>
             </div>
-            
+
             <!-- /.tab-pane -->
             <!-- /.tab-pane -->
             <script>
-                            window.onload = function() {
-                            var fecha = new Date(); //Fecha actual
-                            var mes = fecha.getMonth() + 1; //obteniendo mes
-                            var dia = fecha.getDate(); //obteniendo dia
-                            var ano = fecha.getFullYear(); //obteniendo año
-                            if (dia < 10)
-                                dia = '0' + dia; //agrega cero si el menor de 10
-                            if (mes < 10)
-                                mes = '0' + mes //agrega cero si el menor de 10
-                            document.getElementById('fecomp1').value = ano + "-" + mes + "-" + dia;
-                        }
+            window.onload = function() {
+                var fecha = new Date(); //Fecha actual
+                var mes = fecha.getMonth() + 1; //obteniendo mes
+                var dia = fecha.getDate(); //obteniendo dia
+                var ano = fecha.getFullYear(); //obteniendo año
+                if (dia < 10)
+                    dia = '0' + dia; //agrega cero si el menor de 10
+                if (mes < 10)
+                    mes = '0' + mes //agrega cero si el menor de 10
+                document.getElementById('fecomp1').value = ano + "-" + mes + "-" + dia;
+            }
             </script>
         </div>
         <!-- /.tab-content -->
@@ -814,3 +906,122 @@ $(document).ready(function() {
 });
 </script>
 <script src="../js/select2.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Input File
+        const inputImage = document.querySelector('#image');
+        // Nodo donde estará el editor
+        const editor = document.querySelector('#editor');
+        // El canvas donde se mostrará la previa
+        const miCanvas = document.querySelector('#preview');
+        // Contexto del canvas
+        const contexto = miCanvas.getContext('2d');
+        // Ruta de la imagen seleccionada
+        let urlImage = undefined;
+        // Evento disparado cuando se adjunte una imagen
+        inputImage.addEventListener('change', abrirEditor, false);
+
+        /**
+         * Método que abre el editor con la imagen seleccionada
+         */
+        function abrirEditor(e) {
+            // Obtiene la imagen
+            urlImage = URL.createObjectURL(e.target.files[0]);
+
+            // Borra editor en caso que existiera una imagen previa
+            editor.innerHTML = '';
+            let cropprImg = document.createElement('img');
+            cropprImg.setAttribute('id', 'croppr');
+            editor.appendChild(cropprImg);
+
+            // Limpia la previa en caso que existiera algún elemento previo
+            contexto.clearRect(0, 0, miCanvas.width, miCanvas.height);
+
+            // Envia la imagen al editor para su recorte
+            document.querySelector('#croppr').setAttribute('src', urlImage);
+
+            // Crea el editor
+            new Croppr('#croppr', {
+                aspectRatio: 1,
+                startSize: [65, 65],
+                onCropEnd: recortarImagen
+            })
+        }
+
+        /**
+         * Método que recorta la imagen con las coordenadas proporcionadas con croppr.js
+         */
+        function recortarImagen(data) {
+            // Variables
+            const inicioX = data.x;
+            const inicioY = data.y;
+            const nuevoAncho = data.width;
+            const nuevaAltura = data.height;
+            const zoom = 1;
+            let imagenEn64 = '';
+            // La imprimo
+            miCanvas.width = nuevoAncho;
+            miCanvas.height = nuevaAltura;
+            // La declaro
+            let miNuevaImagenTemp = new Image();
+            // Cuando la imagen se carge se procederá al recorte
+            miNuevaImagenTemp.onload = function() {
+                // Se recorta
+                contexto.drawImage(miNuevaImagenTemp, inicioX, inicioY, nuevoAncho * zoom, nuevaAltura *
+                    zoom, 0, 0, nuevoAncho, nuevaAltura);
+                // Se transforma a base64
+                imagenEn64 = miCanvas.toDataURL("image/jpeg");
+                // Mostramos el código generado
+                document.querySelector('#base64').textContent = imagenEn64;
+            }
+            // Proporciona la imagen cruda, sin editarla por ahora
+            miNuevaImagenTemp.src = urlImage;
+        }
+    });
+    </script>
+
+    <script>
+    function uploadProfile() {
+        var date = $("#date").val();
+        var id_persona = $("#id_persona").val();
+        var opciones = $("#opciones").val();
+        var base64 = $("#base64").html();
+        alert(date + base64 + "este es el id de la persona -->" + id_persona);
+
+        //alert(date + id_persona + opcion + base64);
+        if (base64 == '') {
+            Swal.fire({
+                type: 'warning',
+                customClass: 'swal-wide',
+                timer: 2000,
+                text: 'ES NECESARIO CARGAR UNA FOTO',
+                showConfirmButton: false,
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "../php/insertProfile.php",
+                data: {
+                    id_persona: id_persona,
+                    date: date,
+                    opciones: opciones,
+                    base64: base64
+                },
+                success: function(data) {
+                    Swal.fire({
+                type: 'success',
+                customClass: 'swal-wide',
+                timer: 3000,
+                text: 'SE CARGÓ CON ÉXITO',
+                showConfirmButton: false,
+            });
+                    setTimeout("location.href = 'persona';", 3000);
+                }
+            });
+        }
+
+        return false;
+
+    }
+    </script>
