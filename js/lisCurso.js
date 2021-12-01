@@ -1202,11 +1202,11 @@ function enviarMailResp() {
 
         Swal.fire({
             type: 'success',
-            html: `<p><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
+            html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
             showSpinner: true,
             showConfirmButton: false,
             customClass: 'swal-wide',
-            timer: 2000,
+            timer: 3000,
             backdrop: `
                 rgba(100, 100, 100, 0.4)
             `
