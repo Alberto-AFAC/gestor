@@ -227,6 +227,7 @@ $resultado = mysqli_query($conexion, $query);
 while($data = mysqli_fetch_array($resultado)){ 
 
 $id = $data['id_usu'];
+$acceso = $data['id_accesos']
 ?>
 
     //console.log('<?php //echo $gstIdper ?>');
@@ -234,7 +235,7 @@ $id = $data['id_usu'];
     ["<?php echo $data[1]?>", "<?php echo $data[8]." ".$data[9]?>", "<?php echo $data[30]?>",
         "<?php echo $data[2]?>", "<?php echo base64_encode($data[3])?>",
         "<?php echo $data[4]?>",
-        "<?php echo "<a title='Editar técnico' onclick='datos_editar({$id})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
+        "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
     ],
 
 
@@ -278,7 +279,8 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
 
 
 // FUNCTION PARA EDITAR
-function datos_editar(id) {
+function datos_editar(acceso) {
+    // alert(acceso);
 
     $("#Editar").slideDown("slow");
     $("#cuadro1").hide("slow");
@@ -289,7 +291,7 @@ function datos_editar(id) {
         obj = JSON.parse(resp);
         var res = obj.data;
         for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_usu == id) {
+            if (obj.data[i].id_accesos == acceso) {
                 var
                     id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
                     id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),

@@ -173,7 +173,7 @@ $f2 = strtotime($fcurso.''.$datos2['hcurso']);
 
 if($f3>=$f2 && $datos2['proceso']=='PENDIENTE' || $f3>= $f2 && $datos2['proceso']=='FINALIZADO'){
 
-    $ven = "<span style='color: red;' title='".$datos2['final'].' a las '.$datos2['hcurso']."'>VENCIDO</pan>";
+    $ven = "<span style='color: red;' title='".$datos2['final'].' a las '.$datos2['hcurso']."'>VENCIDO</pan>"; //29112021
 }else{
     $ven = "<span style='color: green;'>".$datos2['final'].' a las '.$datos2['hcurso']."</span>";
 }

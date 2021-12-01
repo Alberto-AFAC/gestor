@@ -329,11 +329,14 @@
 </tr>
 
 </table>
-
-                    
+    
 <div class="form-group">
 <div class="col-sm-6">
 <div id="instruc1"></div>
+
+<div class="form-group">
+<div class="col-sm-12">
+<label id="asisdetalle" class="control-label" style="font-size:25px; display: none;" for="inputSuccess"><i class="fa fa-check" style="color: green;"></i>Se confirma la asistencia</label> <!-- 29/11/2021 -->
 
 </div>
 </div>

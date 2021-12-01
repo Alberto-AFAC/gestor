@@ -1179,8 +1179,8 @@ function evalucurs(cursos) {
 //         }
 //     })
 // }
-function enviarMail() {
 
+function enviarMailResp() {
     gstIdlsc = document.getElementById('gstIdlstc').value;
     codigoCurso = document.getElementById('codigoCurso').value;
     correoResponsable = document.getElementById('correoResponsable').value;
@@ -1195,9 +1195,46 @@ function enviarMail() {
         },
     });
     $.ajax({
-        url: '../admin/enviarMail.php',
+        url: '../admin/enviarMailResp.php',
         type: 'POST',
         data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
+    }).done(function(html) {
+
+        Swal.fire({
+            type: 'success',
+            html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
+            showSpinner: true,
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000,
+            backdrop: `
+                rgba(100, 100, 100, 0.4)
+            `
+        });
+
+    });
+}
+
+
+
+function enviarMail() {
+
+    gstIdlsc = document.getElementById('gstIdlstc').value;
+    codigoCurso = document.getElementById('codigoCurso').value;
+
+
+    Swal.fire({
+        html: 'Espera un momento...', // add html attribute if you want or remove
+        allowOutsideClick: false,
+        customClass: 'swal-wide',
+        onBeforeOpen: () => {
+            Swal.showLoading()
+        },
+    });
+    $.ajax({
+        url: '../admin/enviarMail.php',
+        type: 'POST',
+        data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso
     }).done(function(html) {
 
         Swal.fire({
@@ -1216,6 +1253,9 @@ function enviarMail() {
 
 
 }
+
+
+
 
 function finalizar() {
 

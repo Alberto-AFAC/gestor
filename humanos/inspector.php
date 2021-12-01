@@ -2268,7 +2268,7 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
 
 ],
 <?php }else if($data['confirmar']=='CONFIRMADO'){ 
-$valor="<span style='background-color:green; font-size: 13px;' class='badge' title='Ver detalles'>CONFIRMADO</span>";
+$valor="<span  onclick='confirmar1($id_curso)'  style='background-color:green; font-size: 13px; cursor:pointer;' data-toggle='modal' data-target='#modal-detalle' class='badge' title='Ver detalles'>CONFIRMADO</span>"; //23112021
 ?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
 "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
@@ -2651,7 +2651,7 @@ if($f3>=$f2 && $data['proceso']=='PENDIENTE' || $f3>= $f2 && $data['proceso']=='
 ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
 "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
-"<span class='badge' style='background-color: red; font-size: 14px;'>VENCIDO</span> ",
+"<span class='badge' style='background-color: red; font-size: 14px;'>VENCIDO</span><span title='No se envió respuesta de asistencia.' class='badge' style='background-color: orange; font-size: 14px;'>SIN RESPUESTA</span>",
 "<?php echo $data['confirmar']?>"
 ],
 <?php }

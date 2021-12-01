@@ -257,14 +257,47 @@
                                     <input type="hidden" name="gstTitulo" id="gstTitulo">
                                     <input type="hidden" name="codigoCurso" id="codigoCurso" />
                                     <span id="notiocu" data-toggle="modal" data-target="#notificarConv"
-                                        style="font-size:12px; width:180px; height:30px "
+                                        style="font-size:12px; width:280px; height:30px "
                                         class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
-                                            aria-hidden="true"></i> NOTIFICAR CONVOCATORIA</span>
+                                            aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA A PARTICIPANTES</span>
+
+                                            <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
+                                        style="font-size:12px; width:280px; height:30px "
+                                        class="btn btn-info btn-sm altaboton"><i class="fa fa-graduation-cap"
+                                            aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
                                     <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                                 </form>
-                                <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN -->
+                                <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A PARTICIPANTES-->
                                 <form id="correo" action="" method="POST">
                                     <div class="modal fade" id='notificarConv' tabindex="-1" role="dialog"
+                                        aria-labelledby="notificarConv" aria-hidden="true">
+                                        <div class="modal1">
+
+                                            <div id="success-icon">
+                                                <div>
+                                                    <img class="img-circle1" src="../dist/img/email.png">
+                                                </div>
+                                            </div>
+                                            <h1 class="modaltitle"><strong>ENVIÓ DE CONVOCATORIA</strong></h1>
+                                            <p class="points">Favor de verificar los datos del curso y de los
+                                                participantes
+                                                antes de enviar el correo.</p>
+
+                                            <hr>
+                                            
+                                            <button type="button" id="cerrarres" style="font-size:18px"
+                                                class="btn btn-block btn-primary" onclick="enviarMail()"
+                                                data-dismiss="modal">ENVIAR</button>
+                                            <button type="button" id="agregarres" style="font-size:18px"
+                                                class="btn btn-block btn-default btn-sm"
+                                                data-dismiss="modal">CERRAR</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!-- CONFIRMACIÓN ENVIO DE CONVOCATORIA A RESPONSABLES -->
+                                <form id="correo" action="" method="POST">
+                                    <div class="modal fade" id='notificarRespon' tabindex="-1" role="dialog"
                                         aria-labelledby="notificarConv" aria-hidden="true">
                                         <div class="modal1">
 
@@ -286,8 +319,8 @@
                                                 placeholder="Correo electronico del responsable">
 
                                             <br>
-                                            <button type="button" id="cerrarres" style="font-size:18px"
-                                                class="btn btn-block btn-primary" onclick="enviarMail()"
+                                            <button type="button" id="" style="font-size:18px"
+                                                class="btn btn-block btn-primary" onclick="enviarMailResp()"
                                                 data-dismiss="modal">ENVIAR</button>
                                             <button type="button" id="agregarres" style="font-size:18px"
                                                 class="btn btn-block btn-default btn-sm"
@@ -295,7 +328,6 @@
                                         </div>
                                     </div>
                                 </form>
-
                                 <!--FIN DE CONFIRMACIÓN ENVIÓ -->
 
                                 <!-- CONFIRMACIÓN DE COONVOCATORIA -->
