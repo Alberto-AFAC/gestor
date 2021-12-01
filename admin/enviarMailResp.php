@@ -10,10 +10,6 @@ require '../php-mailer2/SMTP.php';
 
 	$idcurso = $_POST['codigoCurso'];
 	$correoRs = $_POST['correoResponsable'];
-	
-	
-
-if($correoRs == ''){
 	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
@@ -33,13 +29,14 @@ $mail->Host = 'smtp.hostinger.com';
 $mail->SMTPSecure = 'ssl';                          
 $mail->Port = 465;
 $mail->SMTPAuth = true;
-// $mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Password = 'Agencia.SCT.2021.';
-// $mail->setFrom('notificaciones@afac-avciv.com', 'Notificaciones AFAC');
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
-$mail->addAddress("{$to}");
-// $mail->addAddress("jmondragonescamilla@gmail.com");
+$to_array = explode(',', $correoRs);
+foreach($to_array as $address)
+{
+    $mail->addAddress($address, 'Usuario');
+}
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
@@ -48,21 +45,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 		$mail->CharSet = 'UTF-8';
-		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>".$curso['gstTitlo']."</span></td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>FOLIO: ".$curso['gstIdlsc']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>TIPO DE CURSO: ".$curso['gstTipo']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>FECHA INICIO: ".$curso['inicia']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>HORA: ".$curso['hcurso']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>CARGO: ".$curso['gstCargo']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: ".$curso['sede']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>MODALIDAD: ".$curso['modalidad']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'><a href='http://afac-avciv.com/'>CONFIRMAR ASISTENCIA</a></td></tr>
-				<hr><center>
-				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: NO RESPONDER, ESTE CORREO SE GENERA AUTOMATICAMENTE.</h2>
-				</center><hr>
-				</table>";
+		$msg .= "AQUI VA EL NOMBRE";
 			$mail->MsgHTML($msg);
 if (!$mail->send()) {
     echo 'Mailer Error: ' . $mail->ErrorInfo;
@@ -72,53 +55,4 @@ if (!$mail->send()) {
 
 	}
 
-}else{
-
-	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
-	INNER JOIN cursos ON idmstr = gstIdlsc
-	INNER JOIN personal ON gstIdper = idinsp
-	WHERE codigo = '$idcurso'";
-$resultado = mysqli_query($conexion, $query);
-
-
-
-	$mail = new PHPMailer;
-	$mail->isSMTP();
-	$mail->SMTPDebug = 2;
-	$mail->Host = 'smtp.hostinger.com';
-	$mail->SMTPSecure = 'ssl';                          
-	$mail->Port = 465;
-	$mail->SMTPAuth = true;
-	$mail->Username = 'notificaciones@afac-avciv.com';
-	$mail->Password = 'Agencia.SCT.2021.';
-	$mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
-	$to_array = explode(',', $correoRs);
-	foreach($to_array as $address)
-	{
-		$mail->addAddress($address, 'Usuario');
-	}
-	$mail->Subject = 'NUEVO CURSO PROGRAMADO';
-	$mail->msgHTML(file_get_contents('message.html'), __DIR__);
-	//$mail->addAttachment('test.txt');
-		$mail->isHTML(true);                                  //Set email format to HTML
-			$mail->Subject = 'NUEVO CURSO PROGRAMADO';
-			$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-			$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-			$mail->CharSet = 'UTF-8';
-			while($curso = mysqli_fetch_assoc($resultado)){
-				$body .= "NOMBRE DEL CURSO: ".$curso['gstTitlo']."<br>
-						  NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."<br>
-						  TIPO DEL CURSO: ".$curso['gstTipo']."<br>
-						  FECHA DE INICIO: ".$curso['inicia']."<br>
-						  HORA: ".$curso['hcurso']."<br>
-						  SEDE DEL CURSO: ".$curso['sede']."<br>
-						  MODALIDAD: ".$curso['modalidad']."<br>";
-				
-			}
-				$mail->MsgHTML($body);
-			$mail->send();
-			
-
-}
-	    
  ?>
