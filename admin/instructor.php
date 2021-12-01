@@ -103,7 +103,9 @@ include('header.php');
                                                             <div class="col-sm-4">
                                                                 <label>CARGO</label>
                                                                 <input type="text" onkeyup="mayus(this);"
-                                                                    class="form-control" id="cargo" name="cargo">
+                                                                    class="form-control" id="cargo" name="cargo" value="INSTRUCTOR" disabled>
+                                                                    <input type="hidden" onkeyup="mayus(this);"
+                                                                    class="form-control" id="detalle" name="detalle" value="EXTERNO">
                                                                 <br><button class="btn btn-primary"
                                                                     id="btnguardar">GUARDAR</button>
                                                             </div>
@@ -275,7 +277,7 @@ $x++;
 
     //console.log('<?php //echo $gstIdper ?>');
 
-    ["<?php echo $x ?>", "<?php echo  $data['nombre'];?>", "<?php echo $data['apellido']?>","<?php echo $data['alta']?>",""
+    ["<?php echo $x ?>", "<?php echo  $data['nombre'];?>", "<?php echo $data['apellido']?>","<?php echo $data['alta']?>","<?php echo $data['cargo']?>",""
 
     ],
 
@@ -307,6 +309,9 @@ var tableGenerarReporte = $('#data-table-instructoresExt').DataTable({
             title: "FECHA ALTA"
         },
         {
+            title: "CARGO"
+        },
+        {
             title: "ACCIÓN"
         }
     ],
@@ -319,6 +324,8 @@ $(document).ready(function() {
         var nombre = $("#nombre").val();
         var apellido = $("#apellido").val();
         var cargo = $("#cargo").val();
+        var detalle = $("#detalle").val();
+
         swal.showLoading();
         if (nombre == '' || apellido == '' || cargo == '') {
             Swal.fire({
@@ -336,7 +343,9 @@ $(document).ready(function() {
                     alta: alta,
                     nombre: nombre,
                     apellido: apellido,
-                    cargo: cargo
+                    cargo: cargo,
+                    detalle: detalle
+
                 },
                 success: function(data) {
                     document.getElementById("inspectores-ext").reset();

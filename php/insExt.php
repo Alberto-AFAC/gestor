@@ -4,10 +4,12 @@
     $nombre=$_POST['nombre'];
     $apellido=$_POST['apellido'];
     $cargo=$_POST['cargo'];
+    $detalle=$_POST['detalle'];
 
 
-	$sql="INSERT into insexternos (nombre, apellido, cargo, alta)
-			values ('$nombre','$apellido','$cargo','$alta')";
+
+	$sql="INSERT into insexternos (nombre, apellido, cargo, alta, detalle)
+			values ('$nombre','$apellido','$cargo','$alta','$detalle')";
 	echo mysqli_query($conexion,$sql);
 
  ?>
