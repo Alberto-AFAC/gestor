@@ -131,10 +131,10 @@ function proCurso() {
                 Swal.fire({
                     type: 'warning',
                     // title: 'AFAC INFORMA',
-                    text: 'ERROR AL AGREGAR CURSO',
+                    html: `<p><code>EL PARTICIPANTE ${respuesta} ESTA EN CURSO</code></p>`,
                     showConfirmButton: false,
                     customClass: 'swal-wide',
-                    timer: 2000
+                    timer: 5000
                 });
             }
         });

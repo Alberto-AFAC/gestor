@@ -38,7 +38,7 @@ foreach ($valor as $idinsps) {
 if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
 
- 	echo "EL PARTICIPANTE ".$enc."ESTA EN CURSO";
+ 	echo $enc;
 }else{
 
 if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
@@ -199,7 +199,7 @@ return false;
 //echo '<br>'.$enCurso = '0';
 
 }else{
-return $per[0].' '.$per[1].' '.$per[2];
+return $per[1].' '.$per[2].',';
 }
 }
 }
