@@ -265,7 +265,7 @@
                                         style="font-size:12px; width:280px; height:30px "
                                         class="btn btn-info btn-sm altaboton"><i class="fa fa-graduation-cap"
                                             aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
-                                    <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
+                                    
                                 </form>
                                 <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A PARTICIPANTES-->
                                 <form id="correo" action="" method="POST">
