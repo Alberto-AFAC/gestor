@@ -42,7 +42,15 @@ $mail->CharSet = 'UTF-8';
             {
                 $mail->addAddress($address, 'Usuario');
             }
-		$msg .= "AQUI VA EL NOMBRE";
+		$msg .= "<p>".$curso['gstTitlo']."</p><br>
+        <p>FOLIO: ".$curso['gstIdlsc']."</p><br>
+        <p>>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</p><br>
+        <p>TIPO DE CURSO: ".$curso['gstTipo']."</p><br>
+        <p>FECHA INICIO: ".$curso['inicia']."</p><br>
+        <p>HORA: ".$curso['hcurso']."</p><br>
+        <p>CARGO: ".$curso['gstCargo']."</p><br>
+        <p>SEDE DEL CURSO: ".$curso['sede']." </p><br>
+        <p>MODALIDAD: ".$curso['modalidad']."</p>";
 			$mail->MsgHTML($msg);
 if (!$mail->send()) {
     echo 'Mailer Error: ' . $mail->ErrorInfo;
