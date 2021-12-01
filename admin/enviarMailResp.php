@@ -15,12 +15,8 @@ require '../php-mailer2/SMTP.php';
 			  INNER JOIN personal ON gstIdper = idinsp
 			  WHERE codigo = '$idcurso'";
 	$resultado = mysqli_query($conexion, $query);
-    while($curso = mysqli_fetch_assoc($resultado)){
-		if($curso['gstCinst'] == ''){
-			$to = $curso['gstCorro'];
-		} else{
-			$to = $curso['gstCinst'];
-		}
+    
+		
 
 		$mail = new PHPMailer;
 $mail->isSMTP();
@@ -32,19 +28,20 @@ $mail->SMTPAuth = true;
 $mail->Username = 'notificaciones@afac-avciv.com';
 $mail->Password = 'Agencia.SCT.2021.';
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
-$to_array = explode(',', $correoRs);
-foreach($to_array as $address)
-{
-    $mail->addAddress($address, 'Usuario');
-}
+
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
-//$mail->addAttachment('test.txt');
-	$mail->isHTML(true);                                  //Set email format to HTML
-		$mail->Subject = 'NUEVO CURSO PROGRAMADO';
-		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-		$mail->CharSet = 'UTF-8';
+$mail->isHTML(true);                                  //Set email format to HTML
+$mail->Subject = 'NUEVO CURSO PROGRAMADO';
+$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+$mail->CharSet = 'UTF-8';
+        while($curso = mysqli_fetch_assoc($resultado)){
+            $to_array = explode(',', $correoRs);
+            foreach($to_array as $address)
+            {
+                $mail->addAddress($address, 'Usuario');
+            }
 		$msg .= "AQUI VA EL NOMBRE";
 			$mail->MsgHTML($msg);
 if (!$mail->send()) {
