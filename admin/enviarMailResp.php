@@ -42,14 +42,14 @@ $mail->CharSet = 'UTF-8';
             {
                 $mail->addAddress($address, 'Usuario');
             }
-		$msg .= "<p>".$curso['gstTitlo']."</p><br>
-        <p>FOLIO: ".$curso['gstIdlsc']."</p><br>
-        <p>>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</p><br>
-        <p>TIPO DE CURSO: ".$curso['gstTipo']."</p><br>
-        <p>FECHA INICIO: ".$curso['inicia']."</p><br>
-        <p>HORA: ".$curso['hcurso']."</p><br>
-        <p>CARGO: ".$curso['gstCargo']."</p><br>
-        <p>SEDE DEL CURSO: ".$curso['sede']." </p><br>
+		$msg .= "<p>".$curso['gstTitlo']."</p>
+        <p>FOLIO: ".$curso['gstIdlsc']."</p>
+        <p>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</p>
+        <p>TIPO DE CURSO: ".$curso['gstTipo']."</p>
+        <p>FECHA INICIO: ".$curso['inicia']."</p>
+        <p>HORA: ".$curso['hcurso']."</p>
+        <p>CARGO: ".$curso['gstCargo']."</p>
+        <p>SEDE DEL CURSO: ".$curso['sede']." </p>
         <p>MODALIDAD: ".$curso['modalidad']."</p>";
 			$mail->MsgHTML($msg);
 if (!$mail->send()) {
