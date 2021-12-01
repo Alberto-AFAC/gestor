@@ -51,8 +51,8 @@ $mail->CharSet = 'UTF-8';
         <p>CARGO: ".$curso['gstCargo']."</p>
         <p>SEDE DEL CURSO: ".$curso['sede']." </p>
         <p>MODALIDAD: ".$curso['modalidad']."</p>";
-        }
+        
 			$mail->MsgHTML($msg);
         $mail->send();
-
+    }
  ?>
