@@ -1185,13 +1185,12 @@ function idcurso(codigo) {
     var id = codigo
    
     
-    alert(id);
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
         "ajax": {
                     "url": "../php/cursosProgramados.php",
                     "type": "GET",
-                    "data": {
-                        id: + id 
+                    "data": function(d){
+                        d.id = id;
                     }
                 },
         
