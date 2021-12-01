@@ -17,10 +17,16 @@
 		
 		while($data = mysqli_fetch_assoc($resultado)){
             $item++;
+            if($data['confirmar'] == "CONFIRMAR"){
+                $confirmar = "<img src='../dist/img/pendiente.png' width='35px;' title='Pendiente por confirmar asistencia'>";
+
+            }else{
+                $confirmar = "<img src='../dist/img/check.svg' width='35px;' title='Confirma asistencia'>";
+            }
 
 	
  	
-	 $caledario[] = [ $item,$data["gstNombr"],$data["gstApell"],$data["gstCargo"],$data['confirmar'],""];
+	 $caledario[] = [ $item,$data["gstNombr"],$data["gstApell"],$data["gstCargo"],$confirmar,""];
 
 		}
 	}
