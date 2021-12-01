@@ -11,22 +11,37 @@ $informacion = [];
 
 if($opcion === 'procurso'){
 
+
+
+// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+
+//  	echo $enc;
+
+// }else{
+// }
+
+
 $n = consulta($conexion);
 //$idcord = $_POST['idcord'];
 $result = $n + 1;
 $codigo = 'FO'.$result;
 $id_mstr = $_POST['id_mstr'];
 $hcurso = $_POST['hcurso'];
-$fcurso = $_POST['fcurso'];
-$fechaf = $_POST['fechaf'];
-$idinst = $_POST['idinst'];
+
+$idcord = $_POST['idcord'];//Coordinador
+$idInstr = $_POST['idInstru'];//Instructor
+
 $sede = $_POST['sede'];
 $link = $_POST['link'];
 $contracceso = $_POST['contracceso'];
 $modalidad = $_POST['modalidad'];
 $classroom = $_POST['classroom'];
 
-$id = $_POST['idinsps'].','.$idinst;
+$fcurso = $_POST['fcurso'];
+$fechaf = $_POST['fechaf'];
+
+$id = $_POST['idinsps'].','.$idcord;
 
 $valor = explode(",", $id);
 $val = count($valor);
@@ -34,14 +49,7 @@ $n = 0;
 foreach ($valor as $idinsps) {
 	$n++;
 
-
-if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
-
- 	echo $enc;
-}else{
-
-if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
 		echo "0";	
 		if($n==1){
@@ -57,7 +65,7 @@ if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$
 
 
 
-		}
+		//}
 	}
 }else if($opcion === 'actualizar'){
 
@@ -96,7 +104,7 @@ $yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,
 $fechaf = $yf.'-'.$mf.'-'.$df;
 
 contancia($idinsps,$codigo, $conexion);
-if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
 		{	
 
 			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
@@ -216,13 +224,12 @@ $query = "SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON list
 	 return $n;
 }
 
-
-function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion){
+function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion){
 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
+$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;

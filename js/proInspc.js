@@ -37,12 +37,15 @@ function proCurso() {
         }
     }
 
+     idInstru = idInstr.substr(1); 
+
     var id_mstr = document.getElementById('id_mstr').value;
 
     var hcurso = document.getElementById('hcurso').value;
     var fcurso = document.getElementById('fcurso').value;
     //Solo ID coordinadores 
-    var idinst = document.getElementById('idcord').value;
+    var idcord = document.getElementById('idcord').value;
+
     var sede = document.getElementById('sede').value;
 
     var fechaf = document.getElementById('fechaf').value;
@@ -72,13 +75,14 @@ function proCurso() {
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
     }
+
     idinsps = idInsptr + '' + idInstr;
 
-    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso + '*' + classroom;
+    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord='+ idcord + '&idInstru='+ idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
 
     // alert(datos);
 
-    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+    if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
 
         $('#empty').toggle('toggle');
@@ -108,8 +112,11 @@ function proCurso() {
             $.ajax({
                 url: '../php/proCurso.php',
                 type: 'POST',
-                data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
+                data: datos
             }).done(function(respuesta) {
+
+
+                //alert(respuesta);    
 
                 if (respuesta == 0) {
                     Swal.fire({
