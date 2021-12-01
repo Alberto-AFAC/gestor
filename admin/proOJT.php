@@ -1,8 +1,20 @@
 <?php 
 include ("../conexion/conexion.php");
 
-      $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0";
-      $categs = mysqli_query($conexion,$sql);
+      $sql = "SELECT id_ojt, tarea, subtarea FROM ojt WHERE estado = 0";
+      $tareas = mysqli_query($conexion,$sql);
+
+      $sql = "SELECT id_ojt, subtarea FROM ojt WHERE estado = 0";
+      $subtarea = mysqli_query($conexion,$sql);
+    
+      $sql = "SELECT id_ojt, subsubtarea FROM ojt WHERE estado = 0";
+      $subsubtarea = mysqli_query($conexion,$sql);
+
+      $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
+      $instructor  = mysqli_query($conexion,$sql);
+
+    $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 ";
+      $cordinador  = mysqli_query($conexion,$sql);
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +89,7 @@ include ("../conexion/conexion.php");
 
             <section class="content-header">
                 <h1>
-                    ALTA OJT
+                    PROGRAMACIÓN OJT
                 </h1>
             </section>
 
@@ -95,20 +107,6 @@ include ("../conexion/conexion.php");
                                         <form id="addcurse" class="form-horizontal" action="" method="POST">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
-                                                    <label>ESPECIALIDAD</label>
-                                                    <select multiple="multiple"
-                                                        data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
-                                                        style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="gstPrfil"
-                                                        name="gstPrfil[]">
-                                                        <?php while($cat = mysqli_fetch_row($categs)):?>
-                                                        <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?> -
-                                                            <?php echo $cat[2]?></option>
-                                                        <?php endwhile; ?>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-sm-4">
                                                     <label>NIVEL</label>
                                                     <select type="text" class="form-control" id="nivel" name="nivel">
                                                         <option value="0">ELEGIR UNA OPCIÓN</option>
@@ -117,28 +115,50 @@ include ("../conexion/conexion.php");
                                                         <option value="NIVEL 3">NIVEL 3</option>
                                                     </select>
                                                 </div>
-
-                                                <link rel="stylesheet" type="text/css" href="advanced.php">
-
-                                                <div class="col-md-4">
+                                                <div class="col-sm-4">
                                                     <label>TAREA</label>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Ingresa tarea..." name="tarea" id="tarea">
+                                                    <select multiple="multiple" data-placeholder="SELECCIONE TAREA"
+                                                        style="width: 100%;color: #000" class="form-control select2"
+                                                        type="text" class="form-control" id="gstPrfil"
+                                                        name="gstPrfil[]">
+                                                        <?php while($cat = mysqli_fetch_row($tareas)):?>
+                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?>
+                                                        </option>
+                                                        <?php endwhile; ?>
+                                                    </select>
                                                 </div>
-
-                                            </div>
-                                            <div class="form-group">
 
                                                 <div class="col-sm-4">
                                                     <label>SUBTAREA</label>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Ingresa subtarea..." name="subtarea" id="subtarea">
+                                                    <select multiple="multiple"
+                                                        data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                                                        style="width: 100%;color: #000" class="form-control select2"
+                                                        type="text" class="form-control" id="subtarea" name="subtarea">
+                                                        <?php while($cat = mysqli_fetch_row($subtarea)):?>
+                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?>
+                                                        </option>
+                                                        <?php endwhile; ?>
+                                                    </select>
                                                 </div>
-                                                <div class="col-sm-4">
+
+                                                <link rel="stylesheet" type="text/css" href="advanced.php">
+
+
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-4">
                                                     <label>SUB-SUBTAREA</label>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Ingresa subtarea..." name="subsubtarea"
-                                                        id="subsubtarea">
+                                                    <select multiple="multiple"
+                                                        data-placeholder="SELECCIONE SUB-SUBTAREA"
+                                                        style="width: 100%;color: #000" class="form-control select2"
+                                                        type="text" class="form-control" id="subsubtarea"
+                                                        name="subsubtarea">
+                                                        <?php while($cat = mysqli_fetch_row($subsubtarea)):?>
+                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?>
+                                                        </option>
+                                                        <?php endwhile; ?>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label>FECHA Y HORA DE INICIO</label>
@@ -146,17 +166,42 @@ include ("../conexion/conexion.php");
                                                         placeholder="Ingresa subtarea..." name="fechaInicio"
                                                         id="fechaInicio">
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-
                                                 <div class="col-sm-4">
                                                     <label>FECHA Y HORA DE TERMINO</label>
                                                     <input type="datetime-local" onkeyup="mayus(this);"
                                                         class="form-control" id="fechaTermino" name="fechaTermino">
                                                 </div>
-
-
                                             </div>
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label>COORDINADOR DEL ÁREA</label>
+                                                    <select multiple="multiple"
+                                                        data-placeholder="SELECCIONE COORDINADOR DEL ÁREA"
+                                                        style="width: 100%;color: #000" class="form-control select2"
+                                                        type="text" class="form-control" id="coordinador"
+                                                        name="coordinador">
+                                                        <option value="0">SELECCIONE COORDINADOR </option> 
+          <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
+          <option value="<?php echo $cordinadors[0]?>"><?php echo $cordinadors[1].' '.$cordinadors[2]?></option>
+          
+          <?php endwhile; ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>INSTRUCTOR OJT</label>
+                                                    <select multiple="multiple"
+                                                        data-placeholder="SELECCIONE INSTRUCTOR OJT"
+                                                        style="width: 100%;color: #000" class="form-control select2"
+                                                        type="text" class="form-control" id="instructor"
+                                                        name="instructor">
+                                                        <?php while($instructors = mysqli_fetch_row($instructor)):?>
+          <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
+          <?php endwhile; ?>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
                                             <div class="form-group"><br>
                                                 <div class="col-sm-offset-0 col-sm-5">
                                                     <button type="button" id="button" class="btn btn-primary"
@@ -282,6 +327,11 @@ include ("../conexion/conexion.php");
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gstPrfil').select2();
+    $('#subtarea').select2();
+    $('#subsubtarea').select2();
+    $('#coordinador').select2();
+    $('#instructor').select2();
+
 
 });
 
@@ -292,7 +342,7 @@ function regOjt() {
     var subsubtarea = $("#subsubtarea").val();
     var fechaInicio = $("#fechaInicio").val();
     var fechaTermino = $("#fechaTermino").val();
-    if (tarea == '' || subtarea == '' || subsubtarea == '' || fechaInicio == '' || fechaTermino == '' ) {
+    if (tarea == '' || subtarea == '' || subsubtarea == '' || fechaInicio == '' || fechaTermino == '') {
         Swal.fire({
             type: 'info',
             text: 'LLENE LOS CAMPOS QUE SE SOLICITAN',
@@ -314,7 +364,7 @@ function regOjt() {
 
             },
             success: function(data) {
-               
+
                 Swal.fire({
                     type: 'success',
                     // title: 'AFAC INFORMA',
@@ -324,7 +374,7 @@ function regOjt() {
                     customClass: 'swal-wide',
                     showConfirmButton: false,
                 });
-                setTimeout("location.href = 'ojt';", 2000);
+                setTimeout("location.href = 'proOJT';", 2000);
             }
         });
     }

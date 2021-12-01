@@ -106,7 +106,6 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="tareas"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li>
                     <li><a href="programa"><i class="fa ion-compose"></i> Programar curso</a></li>
                     <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
-                    <li><a href="ojt"><i class="fa fa-file-text"></i> Programa OJT</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
                     <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
@@ -114,6 +113,20 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <!--  -->
             <!-- -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text"></i>
+                    <span>OJT</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="ojt"><i class="fa fa-file-text"></i> Alta OJT</a></li>
+                    <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
+                    <li><a href="#"><i class="fa fa-file-text"></i> Catálogo OJT</a></li>
+                </ul>
+            </li>
             <li>
                 <a href="calendar/calendar">
                     <i class="fa fa-calendar"></i> <span>Calendario</span>
