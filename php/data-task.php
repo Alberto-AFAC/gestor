@@ -30,11 +30,11 @@
 			$descriprincipal = $data["descripcion"];
 			$inicio = $data["fechaini"];
 			$cursoPrinc = "<span>".$data["gstCatgr"]."</span><span style='font-weight: bold; color: #3C8DBC;'>(".$data["gstCsigl"].")</span>";
-			if($data["gstPrfil"] == 0){
-				$perfilPrinc = 'POR ASIGNAR';
-			}else{
-				$perfilPrinc = $data["gstPrfil"];
-			}
+			// if($data["gstPrfil"] == 0){
+			// 	$perfilPrinc = 'POR ASIGNAR';
+			// }else{
+			// 	$perfilPrinc = $data["gstPrfil"];
+			// }
 	
 			$final = $data["fechater"];
 			$idtar1 = $data["idtar1"];
