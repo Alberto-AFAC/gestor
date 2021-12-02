@@ -43,9 +43,14 @@
                                         <option value="0">ELEGIR UNA OPCIÓN</option>
                                         <option value="INDUCCIÓN">INDUCCIÓN</option>
                                         <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
-                                        <option value="TRANSVERSALES">TRANSVERSALE</option>
-                                        <option value="RECURRENTES">RECURRENTE</option>
-                                        <option value="ESPECÍFICOS">ESPECÍFICO</option>
+                                        <option value="TRANSVERSALES">TRANSVERSALES</option>
+                                        <option value="RECURRENTES">RECURRENTES</option>
+                                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                                        <option value="FORTALECIMIENTO DEL DESEMPEÑO">FORTALECIMIENTO DEL DESEMPEÑO
+                                        </option>
+                                        <option value="SENSIBILIZACIÓN">SENSIBILIZACIÓN</option>
+                                        <option value="CERTIFICACIÓN">CERTIFICACIÓN</option>
+                                        <option value="ACTUALIZACIÓN Y DESARROLLO">ACTUALIZACIÓN Y DESARROLLO</option>
                                         <option value="OJT">OJT</option>
                                     </select>
                                 </div>
@@ -259,12 +264,12 @@
                                     <span id="notiocu" data-toggle="modal" data-target="#notificarConv"
                                         style="font-size:12px; width:280px; height:30px "
                                         class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
-                                            aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA A PARTICIPANTES</span>
+                                            aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A PARTICIPANTES</span>
 
-                                            <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
+                                    <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
                                         style="font-size:12px; width:280px; height:30px "
                                         class="btn btn-info btn-sm altaboton"><i class="fa fa-graduation-cap"
-                                            aria-hidden="true"></i>  NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
+                                            aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
                                     <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                                 </form>
                                 <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A PARTICIPANTES-->
@@ -284,7 +289,7 @@
                                                 antes de enviar el correo.</p>
 
                                             <hr>
-                                            
+
                                             <button type="button" id="cerrarres" style="font-size:18px"
                                                 class="btn btn-block btn-primary" onclick="enviarMail()"
                                                 data-dismiss="modal">ENVIAR</button>

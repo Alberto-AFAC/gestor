@@ -110,6 +110,10 @@ include ("../conexion/conexion.php");
                                                         <option value="TRANSVERSALES">TRANSVERSALES</option>
                                                         <option value="RECURRENTES">RECURRENTES</option>
                                                         <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                                                        <option value="FORTALECIMIENTO DEL DESEMPEÑO">FORTALECIMIENTO DEL DESEMPEÑO</option>
+                                                        <option value="SENSIBILIZACIÓN">SENSIBILIZACIÓN</option>
+                                                        <option value="CERTIFICACIÓN">CERTIFICACIÓN</option>
+                                                        <option value="ACTUALIZACIÓN Y DESARROLLO">ACTUALIZACIÓN Y DESARROLLO</option>
                                                         <option value="OJT">OJT</option>
                                                     </select>
                                                 </div>
