@@ -288,22 +288,27 @@ $direc = mysqli_query($conexion,$sql);
                             </div>
 
                             <div class="col-sm-4">
-                                <label>PASAPORTE NO.</label>
-                                <input type="number" disabled="" style="text-transform:uppercase;" class="form-control"
-                                    id="gstNpspr" name="gstNpspr">
+                               <label class="label2">NÚMERO DE ISSSTE</label>
+                               <input type="type" class="form-control" id="gstisst" name="gstisst" disabled="">
                             </div>
 
                         </div>
                         <div class="form-group">
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
+                                <label>PASAPORTE NO.</label>
+                                <input type="number" disabled="" style="text-transform:uppercase;" class="form-control"
+                                    id="gstNpspr" name="gstNpspr">
+                            </div>
+
+                            <div class="col-sm-3">
                                 <label>PASAPORTE VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstPsvig" name="gstPsvig">
-                            </div>                            <div class="col-sm-4">
+                            </div>                            <div class="col-sm-3">
                                 <label>VISA PAIS</label>
                                 <input type="text" disabled="" class="form-control" id="gstVisa" name="gstVisa">
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <label>VISA VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstVignt" name="gstVignt">
                             </div>
@@ -473,6 +478,21 @@ $direc = mysqli_query($conexion,$sql);
                         </div>
 
                     </div>
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">CODIGO RHnet</label>
+                       <input type="text" class="form-control inputalta" id="sgtCrhnt" name="sgtCrhnt" onkeyup="mayus(this);" disabled="">
+                    </div>
+                    <div class="col-sm-4">
+                       <label class="label2">ID RUSP</label>
+                       <input type="text" class="form-control inputalta" id="gstRusp" name="gstRusp" onkeyup="mayus(this);" disabled="">
+                    </div>  
+                    <div class="col-sm-4">
+                    <label class="label2">ID DE PLAZA</label>
+                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstPlaza" name="gstPlaza" disabled="">
+                    </div>  
+                    </div>                    
 
                     <p id="codigo" style="display: none; cursor: pointer;"><a onclick="codigo();"> EDITAR CÓDIGO
                             PRESUPUESTAL <i class="fa fa-edit"></i></a></p>
