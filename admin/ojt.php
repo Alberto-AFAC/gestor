@@ -96,13 +96,14 @@ include ("../conexion/conexion.php");
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <label>ESPECIALIDAD</label>
-                                                    <select multiple="multiple"
+                                                    <select 
                                                         data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                                                         style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="gstPrfil"
-                                                        name="gstPrfil[]">
+                                                        type="text" class="form-control" id="id_espec"
+                                                        name="id_espec">
+                                                        <option value="">SELECCIONE UNA OPCIÓN...</option>
                                                         <?php while($cat = mysqli_fetch_row($categs)):?>
-                                                        <option value="<?php echo $cat[1]?>"><?php echo $cat[1]?> -
+                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
                                                             <?php echo $cat[2]?></option>
                                                         <?php endwhile; ?>
                                                     </select>
@@ -140,14 +141,14 @@ include ("../conexion/conexion.php");
                                                         placeholder="Ingresa subtarea..." name="subsubtarea"
                                                         id="subsubtarea">
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <!-- <div class="col-sm-4">
                                                     <label>FECHA Y HORA DE INICIO</label>
                                                     <input type="datetime-local" class="form-control"
                                                         placeholder="Ingresa subtarea..." name="fechaInicio"
                                                         id="fechaInicio">
-                                                </div>
+                                                </div> -->
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
 
                                                 <div class="col-sm-4">
                                                     <label>FECHA Y HORA DE TERMINO</label>
@@ -156,7 +157,7 @@ include ("../conexion/conexion.php");
                                                 </div>
 
 
-                                            </div>
+                                            </div> -->
                                             <div class="form-group"><br>
                                                 <div class="col-sm-offset-0 col-sm-5">
                                                     <button type="button" id="button" class="btn btn-primary"
@@ -281,18 +282,20 @@ include ("../conexion/conexion.php");
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#gstPrfil').select2();
+    $('#id_espec').select2();
 
 });
 
 function regOjt() {
+    var id_espec = $("#id_espec").val();
     var nivel = $("#nivel").val();
     var tarea = $("#tarea").val();
     var subtarea = $("#subtarea").val();
     var subsubtarea = $("#subsubtarea").val();
-    var fechaInicio = $("#fechaInicio").val();
-    var fechaTermino = $("#fechaTermino").val();
-    if (tarea == '' || subtarea == '' || subsubtarea == '' || fechaInicio == '' || fechaTermino == '' ) {
+  
+    // var fechaInicio = $("#fechaInicio").val();
+    // var fechaTermino = $("#fechaTermino").val();
+    if (id_espec == '' || tarea == '' || subtarea == '' || subsubtarea == '') {
         Swal.fire({
             type: 'info',
             text: 'LLENE LOS CAMPOS QUE SE SOLICITAN',
@@ -305,26 +308,25 @@ function regOjt() {
             type: "POST",
             url: "../php/insertOJT.php",
             data: {
+                id_espec: id_espec,
                 nivel: nivel,
                 tarea: tarea,
                 subtarea: subtarea,
-                subsubtarea: subsubtarea,
-                fechaInicio: fechaInicio,
-                fechaTermino: fechaTermino
+                subsubtarea: subsubtarea
 
             },
             success: function(data) {
-               
+           
                 Swal.fire({
                     type: 'success',
                     // title: 'AFAC INFORMA',
-                    text: 'OJT PROGRAMADO CON ÉXITO',
+                    html: `<span style='color: gray;'>LA TAREA <b>${tarea}</b> SE HA GUARDADO ÉXITOSAMENTE</span>`,
                     showConfirmButton: false,
-                    timer: 2900,
+                    timer: 8000,
                     customClass: 'swal-wide',
                     showConfirmButton: false,
                 });
-                setTimeout("location.href = 'ojt';", 2000);
+                setTimeout("location.href = 'ojt';", 8000);
             }
         });
     }
