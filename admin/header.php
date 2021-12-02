@@ -113,8 +113,22 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <!--  -->
             <!-- -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text"></i>
+                    <span>OJT</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="ojt"><i class="fa fa-file-text"></i> Alta OJT</a></li>
+                    <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
+                    <li><a href="#"><i class="fa fa-file-text"></i> Catálogo OJT</a></li>
+                </ul>
+            </li>
             <li>
-                <a href="calendar/calendar.php">
+                <a href="calendar/calendar">
                     <i class="fa fa-calendar"></i> <span>Calendario</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red"></small>
