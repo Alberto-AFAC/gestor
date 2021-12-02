@@ -65,13 +65,11 @@ $cursos = $data['gstIdlsc'];
             }else
           // vista cuando se DECLINA POR TRABAJO "DETALLE DEL CURSO"
             if ($data['confirmar'] == 'TRABAJO') {
-                // confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(" +
-                //     '"' + obj.data[i].id_curso + '"' +
-                //     ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
+                // confirmar = "";
                 // evaluacion = "";
                 // evalcurso = "";
                 // listcer = "";
-                $confirmar = "DECLINO CURSO";
+                $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
             }else
             // vista cuando se DECLINA POR ENFERMEDAD "DETALLE DEL CURSO"
             if ($data['confirmar'] == 'ENFERMEDAD') {
@@ -81,7 +79,7 @@ $cursos = $data['gstIdlsc'];
                 // evaluacion = "";
                 // evalcurso = "";
                 // listcer = "";
-                $confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(1046)' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
+                $confirmar = "DECLINO CURSO";
             }else
             // vista cuando se DECLINA POR OTROS "DETALLE DEL CURSO"
             if ($data['confirmar'] == 'OTROS') {
@@ -95,7 +93,7 @@ $cursos = $data['gstIdlsc'];
                 $confirmar = "DECLINO CURSO";
             }else{
 
-                 $confirmar = "CONFIRMADO";
+                 $confirmar = "<a style= 'color:green;' >CONFIRMADO</a>";
             }			
 
 	 $participante = 'PARTICIPANTE';
