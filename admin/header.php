@@ -103,7 +103,7 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
                     <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
                     <!-- <li><a href="tareas" style="pointer-events: none;" onclick="return false;"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
-                    <li><a href="tareas"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li>
+                    <!-- <li><a href="tareas"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
                     <li><a href="programa"><i class="fa ion-compose"></i> Programar curso</a></li>
                     <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
@@ -122,7 +122,7 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="ojt"><i class="fa fa-file-text"></i> Alta OJT</a></li>
+                    <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
                     <li><a href="#"><i class="fa fa-file-text"></i> Catálogo OJT</a></li>
                 </ul>
