@@ -20,6 +20,9 @@ $inspector = mysqli_query($conexion,$sql);
 $sqlList = "SELECT * FROM listacursos WHERE estado = 0 ORDER BY gstIdlsc desc";
 $cursos = mysqli_query($conexion,$sqlList);
 
+$sqlEspecialidad = "SELECT * FROM categorias WHERE estado = 0 ";
+$especialidad = mysqli_query($conexion,$sqlEspecialidad);
+
 unset($_SESSION['consulta']);
 
 ?>
@@ -111,7 +114,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    PROGRAMACIÓN DE TAREAS
+                    OJT PRINCIPAL
                 </h1>
             </section>
             <!-- Main content -->
@@ -135,43 +138,31 @@ include('header.php');
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
-                                                        <H4><i class=""></i>
+                                                        <!-- <H4><i class=""></i>
                                                             <label> TAREA PRINCIPAL </label>
                                                           
-                                                        </H4>
+                                                        </H4> -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <label>NOMBRE DEL CURSO</label>
+                                                <div class="col-sm-6">
+                                                    <label>ESPECIALIDAD OJT</label>
                                                     <select id="idcur" name="idcur" class="form-control"
                                                         placeholder="Seleccione...">
                                                         <option value="0">Seleccione...</option>
-                                                        <?php while($data = mysqli_fetch_row($cursos)):?>
+                                                        <?php while($data = mysqli_fetch_row($especialidad)):?>
                                                         <option value="<?php echo $data[0]?>">
                                                             <?php echo $data[1]?> -
                                                             <?php echo $data[2]?></option>
                                                         <?php endwhile; ?>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <input type="hidden" name="idsubt" id="idsubt">
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label>TÍTULO</label>
+                                                <div class="col-sm-6">
+                                                <input type="hidden" name="idsubt" id="idsubt">
+                                                    <label>OJT PRINCIPAL</label>
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo1" name="titulo1" disabled="">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label>FECHA DE ALTA</label>
-                                                    <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaA" name="fechaA" disabled="">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label>FECHA LIMITE</label>
-                                                    <input type="date" style="text-transform:uppercase;"
-                                                        class="form-control" id="fechaT" name="fechaT" disabled="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -240,16 +231,16 @@ include('header.php');
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo2" name="titulo2" disabled="">
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <!-- <div class="col-sm-4">
                                                     <label>FECHA DE ALTA</label>
                                                     <input type="date" style="text-transform:uppercase;"
                                                         class="form-control" id="fechaA2" name="fechaA2" disabled="">
-                                                </div>
-                                                <div class="col-sm-4">
+                                                </div> -->
+                                                <!-- <div class="col-sm-4">
                                                     <label>FECHA LIMITE</label>
                                                     <input type="date" style="text-transform:uppercase;"
                                                         class="form-control" id="fechaT2" name="fechaT2" disabled="">
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-12">
@@ -317,16 +308,16 @@ include('header.php');
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo3" name="titulo3" disabled="">
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <!-- <div class="col-sm-4">
                                                     <label>FECHA DE ALTA</label>
                                                     <input type="date" style="text-transform:uppercase;"
                                                         class="form-control" id="fechaA3" name="fechaA3" disabled="">
-                                                </div>
-                                                <div class="col-sm-4">
+                                                </div> -->
+                                                <!-- <div class="col-sm-4">
                                                     <label>FECHA LIMITE</label>
                                                     <input type="date" style="text-transform:uppercase;"
                                                         class="form-control" id="fechaT3" name="fechaT3" disabled="">
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-12">
@@ -397,13 +388,9 @@ include('header.php');
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>CURSO</th>
-                                                    <th>TITULO</th>
+                                                    <th>ESPECIALIDAD OJT</th>
+                                                    <th>OJT PRINCIPAL</th>
                                                     <th>DESCRIPCIÓN</th>
-                                                    <th>FECHA INICIO</th>
-                                                    <th>FECHA TERMINO</th>
-                                                    <th>DIRIGIDO A:</th>
-                                                    <th>PARTICIPANTES</th>
                                                 </tr>
                                             </thead>
 
@@ -679,12 +666,12 @@ document.getElementById('titulo2').disabled = false;
 document.getElementById('descrip2').disabled = false;
 document.getElementById('titulo3').disabled = false;
 document.getElementById('descrip3').disabled = false;
-document.getElementById('fechaA').disabled = false;
-document.getElementById('fechaT').disabled = false;
-document.getElementById('fechaA2').disabled = false;
-document.getElementById('fechaT2').disabled = false;
-document.getElementById('fechaA3').disabled = false;
-document.getElementById('fechaT3').disabled = false;
+// document.getElementById('fechaA').disabled = false;
+// document.getElementById('fechaT').disabled = false;
+// document.getElementById('fechaA2').disabled = false;
+// document.getElementById('fechaT2').disabled = false;
+// document.getElementById('fechaA3').disabled = false;
+// document.getElementById('fechaT3').disabled = false;
 
 
 function agrTarea() {
@@ -692,13 +679,13 @@ function agrTarea() {
     titulo1 = document.getElementById('titulo1').value;
     descrip1 = document.getElementById('descrip1').value;
     idsubt = document.getElementById('idsubt').value;
-    fechaA = document.getElementById('fechaA').value;
-    fechaT = document.getElementById('fechaT').value;
+    // fechaA = document.getElementById('fechaA').value;
+    // fechaT = document.getElementById('fechaT').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' +
-        fechaA + '&fechaT=' +
-        fechaT + '&opcion=tareAgr';
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt  + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
+
+    alert(datos);
 
     if (titulo1 == '' || descrip1 == '') {
 
@@ -714,7 +701,7 @@ function agrTarea() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            // alert(respuesta);
+             alert(respuesta);
             if (respuesta == 0) {
 
                 $('#danger1').toggle('toggle');
@@ -736,8 +723,8 @@ function agrTarea() {
                 $("#resp1").show();
                 document.getElementById('titulo1').disabled = true;
                 document.getElementById('descrip1').disabled = true;
-                document.getElementById('fechaA').disabled = true;
-                document.getElementById('fechaT').disabled = true;
+                // document.getElementById('fechaA').disabled = true;
+                // document.getElementById('fechaT').disabled = true;
 
 
             }
@@ -751,13 +738,11 @@ function agrTarea2() {
     titulo1 = document.getElementById('titulo2').value;
     descrip1 = document.getElementById('descrip2').value;
     idsubt = document.getElementById('idsubt2').value;
-    fechaA = document.getElementById('fechaA2').value;
-    fechaT = document.getElementById('fechaT2').value;
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' +
-        fechaA + '&fechaT=' +
-        fechaT + '&opcion=tareAgr';
+    // fechaA = document.getElementById('fechaA2').value;
+    // fechaT = document.getElementById('fechaT2').value;
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt  + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
-
+    
     if (titulo1 == '' || descrip1 == '') {
 
         $('#vacio2').toggle('toggle');
@@ -772,7 +757,7 @@ function agrTarea2() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            //alert(respuesta);
+            alert(respuesta);
             if (respuesta == 0) {
 
                 $('#danger2').toggle('toggle');
@@ -794,8 +779,8 @@ function agrTarea2() {
                 $("#resp2").show();
                 document.getElementById('titulo2').disabled = true;
                 document.getElementById('descrip2').disabled = true;
-                document.getElementById('fechaA2').disabled = true;
-                document.getElementById('fechaT2').disabled = true;
+                // document.getElementById('fechaA2').disabled = true;
+                // document.getElementById('fechaT2').disabled = true;
             }
         });
     }
@@ -809,12 +794,10 @@ function agrTarea3() {
     titulo1 = document.getElementById('titulo3').value;
     descrip1 = document.getElementById('descrip3').value;
     idsubt = document.getElementById('idsubt3').value;
-    fechaA = document.getElementById('fechaA3').value;
-    fechaT = document.getElementById('fechaT3').value;
+    // fechaA = document.getElementById('fechaA3').value;
+    // fechaT = document.getElementById('fechaT3').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&fechaA=' +
-        fechaA + '&fechaT=' +
-        fechaT + '&opcion=tareAgr';
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
     if (titulo1 == '' || descrip1 == '') {
@@ -855,8 +838,8 @@ function agrTarea3() {
 
                 document.getElementById('titulo3').disabled = true;
                 document.getElementById('descrip3').disabled = true;
-                document.getElementById('fechaA3').disabled = true;
-                document.getElementById('fechaT3').disabled = true;
+                // document.getElementById('fechaA3').disabled = true;
+                // document.getElementById('fechaT3').disabled = true;
                 //conprofesion(ActIdpro);
             }
         });
@@ -933,24 +916,6 @@ function format(d) {
         '<td><strong>DESCRIPCIÓN:<strong></td>' +
         '<td>' + d.descripcionsub + '</td>' +
         '</tr>' +
-        '<tr>' +
-        '<td><strong>INICIO:<strong></td>' +
-        '<td>' + d.iniciosub + '</td>' +
-        '<td><strong>INICIO:<strong></td>' +
-        '<td>' + d.iniciosubsub + '</td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td><strong>FINAL:<strong></td>' +
-        '<td>' + d.finalsub + '</td>' +
-        '<td><strong>FINAL:<strong></td>' +
-        '<td>' + d.finalsubsub + '</td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td><strong>PARTICIPANTES:<strong></td>' +
-        '<td>' + d.participantesub + '</td>' +
-        '<td><strong>PARTICIPANTES:<strong></td>' +
-        '<td>' + d.participantesubsub + '</td>' +
-        '</tr>' +
         '</table>';
 }
 
@@ -975,19 +940,7 @@ $(document).ready(function() {
             },
             {
                 "data": "descriprincipal"
-            },
-            {
-                "data": "inicio"
-            },
-            {
-                "data": "final"
-            },
-            {
-                "data": "perfilPrinc"
-            },
-            {
-                "data": "participantes"
-            },
+            }
 
         ],
         "order": [

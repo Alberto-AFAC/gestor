@@ -6,13 +6,13 @@
 	$query = "SELECT
 	DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
     id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar1,entrega,
-    listacursos.gstTitlo,gstTipo,gstPrfil,
+    categorias.gstCatgr,gstCsigl,
     personal.gstNombr,gstApell,gstCargo,
 	COUNT(gstNombr)as participantes        
     FROM
     tareas
     INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
-    INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
+    INNER JOIN categorias ON categorias.gstIdcat  = tareas.idcur
     INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
 	 WHERE idsubt = 0 GROUP BY idcur";
 	$resultado = mysqli_query($conexion, $query);
@@ -29,7 +29,7 @@
 			$titulo = $data["titulo"];
 			$descriprincipal = $data["descripcion"];
 			$inicio = $data["fechaini"];
-			$cursoPrinc = $data["gstTitlo"];
+			$cursoPrinc = "<span>".$data["gstCatgr"]."</span><span style='font-weight: bold; color: #3C8DBC;'>(".$data["gstCsigl"].")</span>";
 			if($data["gstPrfil"] == 0){
 				$perfilPrinc = 'POR ASIGNAR';
 			}else{
@@ -43,13 +43,13 @@
 			$query2 = "	SELECT
 				DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
 			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,entrega,
-			listacursos.gstTitlo,gstTipo,gstPrfil,
+			categorias.gstCatgr,gstCsigl,
 			personal.gstNombr,gstApell,gstCargo,
 			COUNT(gstNombr)as participantesub         
 			FROM
 			tareas
 			INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
-			INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
+			INNER JOIN categorias ON categorias.gstIdcat  = tareas.idcur
 			INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
 				WHERE idsubt = $idtar1 GROUP BY idcur";
 				$resultado2 = mysqli_query($conexion, $query2);
@@ -66,13 +66,13 @@
 			$query3 = "	SELECT
 				DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
 			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar3,entrega,
-			listacursos.gstTitlo,gstTipo,gstPrfil,
+			categorias.gstCatgr,gstCsigl,
 			personal.gstNombr,gstApell,gstCargo,
 			COUNT(gstNombr)as participantesubsub       
 			FROM
 			tareas
 			INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
-			INNER JOIN listacursos ON listacursos.gstIdlsc = tareas.idcur
+			INNER JOIN categorias ON categorias.gstIdcat  = tareas.idcur
 			INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
 				WHERE idsubt = $idtar2 GROUP BY idcur";
 				$resultado3 = mysqli_query($conexion, $query3);
@@ -85,7 +85,7 @@
 
 					$participantesubsub = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data3["participantesubsub"]."</span> / <a href='#' onclick='responsables({$idtar3})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
 	//  $tareas[] = [ $id,$data["titulo"],$data["descripcion"],$data["fechaA"],$data["fechaT"],$data["gstPrfil"],$responsables,$notificar];
-	$tareas[] = array('id'=> $contador,'cursoPrinc' => $cursoPrinc,'titulo' =>$titulo,'descriprincipal' => $descriprincipal,'inicio' => $inicio,'final' =>$final,'iniciosub' => $iniciosub, 'iniciosubsub' => $iniciosubsub,'finalsub' => $finalsub,'finalsubsub' => $finalsubsub,'participantes' => $participantes,'participantesub' => $participantesub,'participantesubsub' => $participantesubsub,'subtarea' => $subtarea,'subsubtarea' => $subsubtarea,'descripcion' => $descripcion,'descripcionsub'=> $descripcionsub,'notificar' => $notificar,'perfilPrinc' => $perfilPrinc);
+	$tareas[] = array('id'=> $contador,'cursoPrinc' => $cursoPrinc,'titulo' =>$titulo,'descriprincipal' => $descriprincipal,'subtarea' => $subtarea,'subsubtarea' => $subsubtarea,'descripcion' => $descripcion,'descripcionsub'=> $descripcionsub,'notificar' => $notificar);
 				}
 		}
 	}
