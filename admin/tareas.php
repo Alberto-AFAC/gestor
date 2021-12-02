@@ -596,7 +596,7 @@ function agrTarea() {
     '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    alert(datos);
+    
 
     if (titulo1 == '' || descrip1 == '') {
 
@@ -612,7 +612,6 @@ function agrTarea() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            alert(respuesta);
             if (respuesta == 0) {
 
                 $('#danger1').toggle('toggle');
@@ -669,7 +668,6 @@ function agrTarea2() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            alert(respuesta);
             if (respuesta == 0) {
 
                 $('#danger2').toggle('toggle');
