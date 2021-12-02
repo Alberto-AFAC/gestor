@@ -106,10 +106,14 @@ include ("../conexion/conexion.php");
                                                         name="gstTipo">
                                                         <option value="0">ELEGIR UNA OPCIÓN</option>
                                                         <option value="INDUCCIÓN">INDUCCIÓN</option>
-                                                        <option value="BÁSICOS">BÁSICO/INICIAL</option>
-                                                        <option value="TRANSVERSALES">TRANSVERSALE</option>
-                                                        <option value="RECURRENTES">RECURRENTE</option>
-                                                        <option value="ESPECÍFICOS">ESPECÍFICO</option>
+                                                        <option value="BÁSICOS/INICIAL">BÁSICOS/INICIAL</option>
+                                                        <option value="TRANSVERSALES">TRANSVERSALES</option>
+                                                        <option value="RECURRENTES">RECURRENTES</option>
+                                                        <option value="ESPECÍFICOS">ESPECÍFICOS</option>
+                                                        <option value="FORTALECIMIENTO DEL DESEMPEÑO">FORTALECIMIENTO DEL DESEMPEÑO</option>
+                                                        <option value="SENSIBILIZACIÓN">SENSIBILIZACIÓN</option>
+                                                        <option value="CERTIFICACIÓN">CERTIFICACIÓN</option>
+                                                        <option value="ACTUALIZACIÓN Y DESARROLLO">ACTUALIZACIÓN Y DESARROLLO</option>
                                                         <option value="OJT">OJT</option>
                                                     </select>
                                                 </div>
