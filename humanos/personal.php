@@ -209,24 +209,29 @@ $psto = mysqli_query($conexion,$sql);
                     </div>
 
                     <div class="col-sm-4">
+                       <label class="label2">NÚMERO DE ISSSTE</label>
+                       <input type="type" class="form-control" id="gstisst" name="gstisst" >
+                    </div>
+ 
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-3">
                        <label class="label2">PASAPORTE NO.</label>
                        <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstNpspr" name="gstNpspr">
                     </div>
 
-                </div>
-                <div class="form-group">
-
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                        <label class="label2">PASAPORTE VIGENCIA</label>
                        <input type="date" class="form-control inputalta" id="gstPsvig" name="gstPsvig">
                     </div>
                                       
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                        <label class="label2">VISA PAIS</label>
                        <input type="text" class="form-control inputalta" id="gstVisa" name="gstVisa">
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                        <label class="label2">VISA VIGENCIA</label>
                        <input type="date" class="form-control inputalta" id="gstVignt" name="gstVignt">
                     </div>
@@ -431,6 +436,22 @@ $psto = mysqli_query($conexion,$sql);
                     <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
                     </div>  
                     </div>
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">CODIGO RHnet</label>
+                       <input type="text" class="form-control inputalta" id="sgtCrhnt" name="sgtCrhnt" onkeyup="mayus(this);">
+                    </div>
+                    <div class="col-sm-4">
+                       <label class="label2">ID RUSP</label>
+                       <input type="text" class="form-control inputalta" id="gstRusp" name="gstRusp" onkeyup="mayus(this);">
+                    </div>  
+                    <div class="col-sm-4">
+                    <label class="label2">ID DE PLAZA</label>
+                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstPlaza" name="gstPlaza">
+                    </div>  
+                    </div>
+
                     <div class="form-group">
           <div class="col-sm-4">
           <label class="label2">CÓDIGO PRESUPUESTAL</label>
@@ -499,7 +520,7 @@ $psto = mysqli_query($conexion,$sql);
    
                 <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-2">
-                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrarH();">ACEPTAR</button>
+                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrar();">ACEPTAR</button>
                     </div>
                     
                     <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos</p></b>
