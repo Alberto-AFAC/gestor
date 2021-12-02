@@ -5,15 +5,11 @@
 
 	$query = "SELECT
 	DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
-    id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar1,entrega,
-    categorias.gstCatgr,gstCsigl,
-    personal.gstNombr,gstApell,gstCargo,
-	COUNT(gstNombr)as participantes        
+    id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar1,
+    categorias.gstCatgr,gstCsigl    
     FROM
     tareas
-    INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
     INNER JOIN categorias ON categorias.gstIdcat  = tareas.idcur
-    INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
 	 WHERE idsubt = 0 GROUP BY idcur";
 	$resultado = mysqli_query($conexion, $query);
 	$contador = 0;
@@ -42,15 +38,11 @@
 			$participantes = "<span style='font-weight:bold; color: green;'>PARTICIPANTE(S): ".$data["participantes"]."</span> / <a href='#' onclick='responsables({$idtar1})' data-toggle='modal' data-target='#basicModal' style='cursor: pointer; font-weight:bold; color: blue;'>EVALUAR</a>";
 			$query2 = "	SELECT
 				DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
-			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,entrega,
-			categorias.gstCatgr,gstCsigl,
-			personal.gstNombr,gstApell,gstCargo,
-			COUNT(gstNombr)as participantesub         
+			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar2,
+			categorias.gstCatgr,gstCsigl      
 			FROM
 			tareas
-			INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
 			INNER JOIN categorias ON categorias.gstIdcat  = tareas.idcur
-			INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
 				WHERE idsubt = $idtar1 GROUP BY idcur";
 				$resultado2 = mysqli_query($conexion, $query2);
 				while($data2 = mysqli_fetch_assoc($resultado2)){
@@ -65,15 +57,11 @@
 
 			$query3 = "	SELECT
 				DATE_FORMAT(fechaA, '%d/%m/%Y') AS fechaini,DATE_FORMAT(fechaT, '%d/%m/%Y') AS fechater,
-			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar3,entrega,
-			categorias.gstCatgr,gstCsigl,
-			personal.gstNombr,gstApell,gstCargo,
-			COUNT(gstNombr)as participantesubsub       
+			id_tar,titulo,descripcion, fechaA, fechaT,id_tar AS idtar3,
+			categorias.gstCatgr,gstCsigl    
 			FROM
 			tareas
-			INNER JOIN tarearealizar ON tarearealizar.idtarea = tareas.id_tar  
 			INNER JOIN categorias ON categorias.gstIdcat  = tareas.idcur
-			INNER JOIN personal ON personal.gstIdper = tarearealizar.idiva
 				WHERE idsubt = $idtar2 GROUP BY idcur";
 				$resultado3 = mysqli_query($conexion, $query3);
 				while($data3 = mysqli_fetch_assoc($resultado3)){
