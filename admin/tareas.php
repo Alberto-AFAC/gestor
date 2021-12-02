@@ -124,8 +124,8 @@ include('header.php');
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" style="font-size: 14px;">
-                                <li class="active"><a href="#activity" data-toggle="tab">CREAR TAREA</a></li>
-                                <li><a href="#puesto" data-toggle="tab">ASIGNAR TAREA</a></li>
+                                <li class="active"><a href="#activity" data-toggle="tab">OJT PRINCIPAL</a></li>
+                                <li><a href="#puesto" data-toggle="tab">CATALOGO OJT</a></li>
                                 <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
                             </ul>
 
