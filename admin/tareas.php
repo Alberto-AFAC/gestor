@@ -161,15 +161,18 @@ include('header.php');
 
                                             </div>
                                             <div class="form-group">
-                                                <div id="ojt-principal" class="col-sm-4">
+                                                <div id="ojt-principal" class="col-sm-3">
                                                     <input type="hidden" name="idsubt" id="idsubt">
                                                     <label><a id="agrega-ojt-principal">OJT PRINCIPAL</a></label>
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo1" placeholder="Escribe OJT..."
                                                         name="pago_parcial[]" disabled=""><br>
                                                 </div>
-                                                <div id="ojt-subtarea" class="col-sm-4">
-                                                <label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></label>
+                                                <div id="ojt-subtarea" class="col-sm-3">
+                                                <label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA">SUBTAREA 1</i></a></label>
+                                                <input type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="titulo1" placeholder="Escribe subtarea 1..."
+                                                        name="pago_parcial[]"><br>
                                                 </div>
                                             </div>
 
@@ -1033,11 +1036,11 @@ $(wrapper).on("click", ".remove_field", function() {
 })
 
 // QUERY PARA LAS SUBTAREAS
-var max_tareas =2;
+var max_tareas =20;
 var wrapper2 = $("#ojt-subtarea");
 var agrega_subtarea = $("#agrega-ojt-subtarea");
 var campoHTML2 =
-    '<div><div id="ojt-actividades1"><a id="agrega-actividad-ojt" title="AÑADIR SUBTAREA">SUBTAREA 1</a></div><input type="text" class="form-control" placeholder="ESCRIBE SUBTAREA..." name="subtarea[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
+    '<div><input type="text" class="form-control" placeholder="ESCRIBE ACTIVIDAD PARA SUBTAREA..." name="subtarea[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
 var y = 1;
 $(agrega_subtarea).click(function(e) {
     e.preventDefault();
@@ -1056,24 +1059,5 @@ $(wrapper2).on("click", ".remove_field", function() {
 
 
 // JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
-var max_actividades =20;
-var wrapper3 = $("#ojt-actividades1");
-var agrega_actividad1 = $("#agrega-actividad-ojt");
-var campoHTML3 =
-    '<div><input type="text" class="form-control" placeholder="ESCRIBE SUBTAREA..." name="subtarea[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
-var z = 1;
-$(agrega_actividad1).click(function(e) {
-    e.preventDefault();
-    if (z < max_actividades) {
-        $(wrapper3).append(campoHTML3);
-        z++;
 
-       
-    }
-});
-
-$(wrapper2).on("click", ".remove_field", function() {
-    $(this).parent("div").remove();
-    z--;
-})
 </script>
