@@ -13,7 +13,7 @@ if($opcion === 'tareAgr'){
 
   $idcur = $_POST['idcur']; 
   $titulo1 = $_POST['titulo1'];  
-  $descrip1 = $_POST['descrip1'];
+  // $descrip1 = $_POST['descrip1'];
   $idsubt = $_POST['idsubt'];
 //   $fechaA = $_POST['fechaA'];
 //   $fechaT = $_POST['fechaT'];
@@ -22,9 +22,11 @@ if($opcion === 'tareAgr'){
   if($idsubt==''){
   	$idsubt = 0;
   }
+
+
 //	accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion);
 
-	if(Tareas($idcur, $titulo1 ,$descrip1, $idsubt,  $conexion)){
+	if(Tareas($idcur, $titulo1, $idsubt, $conexion)){
 		//$realizo = 'ASIGNO AL USUARIO';
 		//historial($id,$realizo,$gstIdper,$conexion);
 		$valor = conIDtar($conexion);
@@ -32,6 +34,44 @@ if($opcion === 'tareAgr'){
 	}else{
 		echo 0;
 	}
+
+
+	$valors = $_POST['array'];
+	$varray1 = json_decode($valors, true);
+	$valor = count($varray1);
+
+ 	 for($i=0; $i<$valor; $i++){
+
+	$titulo = $varray1[$i]['tareauno'];
+
+	if(tarea1($titulo,$conexion)){
+		echo "0";
+
+		}else{
+		echo "1";
+		}
+	}
+
+
+
+	$valors2 = $_POST['array2'];
+	$varray2 = json_decode($valors2, true);
+	$valor2 = count($varray2);
+
+ 	 for($i=0; $i<$valor2; $i++){
+
+	$titulo = $varray2[$i]['tareados'];
+
+	if(tarea1($titulo,$conexion)){
+		echo "0";
+
+		}else{
+		echo "1";
+		}
+	}
+
+
+
 
 }else if($opcion === 'agrIVA'){
 
@@ -126,12 +166,12 @@ $resultado= mysqli_query($conexion,$query);
 // }
 
 
-function Tareas($idcur, $titulo1 ,$descrip1, $idsubt, $conexion){
+function Tareas($idcur, $titulo1, $idsubt, $conexion){
 
 	// ini_set('date.timezone','America/Mexico_City');
 	// $factual = date('Y').'/'.date('m').'/'.date('d');
 
-	$query="INSERT INTO tareas VALUES(0,'$idcur','$titulo1','$descrip1',0,0,'$idsubt',0);";
+	$query="INSERT INTO ojts VALUES(0,'$idcur','$titulo1','$idsubt',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
@@ -140,6 +180,20 @@ function Tareas($idcur, $titulo1 ,$descrip1, $idsubt, $conexion){
 		$this->conexion->cerrar();
 
 }
+
+function tarea1($titulo,$conexion){
+
+	$query="INSERT INTO ojts_subs(idtarea,ojt_subtarea,estado) 
+			SELECT id_ojt,'$titulo',0 FROM ojts ORDER BY id_ojt DESC LIMIT 1";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+
+}
+
 
 function agrIvas($idinsp,$conexion){
 
