@@ -5,23 +5,32 @@ require_once "../../conexion/conexion.php";
       if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
         if($_SESSION['consulta'] > 0){
-          $idSp=$_SESSION['consulta'];
+         echo "string";$idSp=$_SESSION['consulta'];
          
 
-          $sql="SELECT * FROM ojt WHERE id_espec='$idSp' AND estado = 0 ";
+$sql="SELECT * FROM `especialidadcat` 
+      INNER JOIN categorias ON categorias.gstIDcat = especialidadcat.gstIdcat 
+      INNER JOIN personal ON personal.gstIdper = especialidadcat.gstIDper 
+      WHERE especialidadcat.gstIDcat='$idSp' AND especialidadcat.estado = 0 ";
         }
 
     
       $res=mysqli_query($conexion,$sql);
-       $list = mysqli_fetch_assoc($res);
+       
       
     ?>
 
+<select  id="idInspct" class="form-control" class="selectpicker" name="idInspct" type="text" data-live-search="true" style="width: 100%" >
+      <option value="0">SELECIONE ESPECIALIDAD</option> 
+      <?php while($list = mysqli_fetch_assoc($res)):?>                      
+      <option value="<?php echo $list['gstIdper']?>"><?php echo $list['gstNombr'].' '.$list['gstApell']?></option>
+      <?php endwhile; ?>
 
-<div class="form-group">
+      </select>
+<!-- <div class="form-group">
 <div class="col-sm-3">
 <label>NIVEL</label>
-<input type="text" class="form-control" id="nivel" name="nivel" value="<?php echo $list['nivel'];?>" disabled="">
+<input type="text" class="form-control" id="nivel" name="nivel" value="<?php //echo $list['gstIdper'];?>" disabled="">
 </div>
 
 
@@ -30,7 +39,7 @@ require_once "../../conexion/conexion.php";
 
 <div class="col-sm-3">
 <label>TAREA</label>
-<input type="text" class="form-control" id="tarea" name="tarea" value="<?php echo $list['tarea'];?>" disabled="">
+<input type="text" class="form-control" id="tarea" name="tarea" value="<?php //echo $list['gstNombr'];?>" disabled="">
 
 
 
@@ -38,19 +47,13 @@ require_once "../../conexion/conexion.php";
 
 <div class="col-sm-3">
 <label>SUB TAREA</label>
-<input type="text" class="form-control" id="subtarea" name="subtarea" value="<?php echo $list['subtarea'];?>" disabled="">
+<input type="text" class="form-control" id="subtarea" name="subtarea" value="<?php //echo $list['gstApell'];?>" disabled="">
 
 
 </div>
 
-<div class="col-sm-3">
-<label>SUB SUB TAREA</label>
-<input type="text" class="form-control" id="subsubtarea" name="subsubtarea" value="<?php echo $list['subsubtarea'];?>" disabled="">
 
-
-
-</div>
-</div>
+</div> -->
 <!-- <div class="form-group">
 <div class="col-sm-3">
 <label>NIVEL</label>
@@ -109,3 +112,11 @@ name="subsubtarea">
             </select> -->
 
 <?php } ?>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#idInspct').select2();
+
+
+    });
+  </script>
