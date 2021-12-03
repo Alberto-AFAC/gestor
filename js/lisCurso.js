@@ -594,9 +594,13 @@ function evaluarins(cursos) {
 
 function inspeval(cursos) {
 
-    var d = cursos.split("*");
-    $("#cursoc").html(d[1]);
-    $("#folioc").html(d[21]);
+
+    curso = 'FO'+cursos;
+
+    // var d = cursos.split("*");
+    // $("#cursoc").html(d[1]);
+    // $("#folioc").html(d[21]);
+//        html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
 
     $.ajax({
         url: '../php/conProgra.php',
@@ -609,7 +613,7 @@ function inspeval(cursos) {
         var fecha_actual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
 
         //alert(fecha_actual);
-        html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
+        html = '<table id="reacc" class="table table-hover"><tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
         for (G = 0; G < res.length; G++) {
 
             fhoyd = obj.data[G].fnotif.substring(8, 10);
@@ -618,7 +622,7 @@ function inspeval(cursos) {
 
             fnotif = fhoyd + '/' + fhoym + '/' + fhoyy;
 
-            if (obj.data[G].codigo == d[21]) {
+            if (obj.data[G].codigo == curso) {
                 x++;
 
 
@@ -692,11 +696,11 @@ function evalresult() {
 
 function generacion(cursos) { //abre el modal de generacion de constancias 
 
-    var d = cursos.split("*");
-    $("#cursoc").html(d[1]);
-    $("#folioc").html(d[21]);
+    // var d = cursos.split("*");
+    // $("#cursoc").html(d[1]);
+    // $("#folioc").html(d[21]);
 
-
+    curso = 'FO'+cursos;
 
     $.ajax({
             url: '../php/conInsp.php',
@@ -706,14 +710,15 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             var res = obj.data;
             var x = 0;
 
-            html = '<table id="reacc" class="table table-hover"><tr><th colspan="10">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
+            html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
             for (G = 0; G < res.length; G++) {
 
                 //if(obj.data[E].gstCatga == gstIDCat){
 
+
                 //if(obj.data[E].gstOrden==1){
                 // <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
-                if (obj.data[G].id_codigocurso == d[21]) {
+                if (obj.data[G].id_codigocurso == curso) {
                     x++;
 
                     // alert(d[21]);08/10/2021

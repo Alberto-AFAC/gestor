@@ -717,3 +717,16 @@ function hazalgo() {
 // }TODO
 
 </script>
+
+
+<?php
+
+echo'<br>';
+echo'<br>';
+echo'<br>';
+
+$codigo = 'FO89';
+echo $codigos = substr($codigo, 2); 
+
+
+?>

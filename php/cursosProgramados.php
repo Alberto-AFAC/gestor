@@ -18,6 +18,9 @@
 		while($data = mysqli_fetch_assoc($resultado)){
             $item++;
 
+$codigo = substr($data['codigo'], 2); 
+
+
 $cursos = $data['gstIdlsc']; 
 // $data['gstTitlo'].'*'. 
 // $data['gstTipo'].'*'. 
@@ -51,7 +54,7 @@ $cursos = $data['gstIdlsc'];
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
 	 $participante = 'COORDINADOR';
-	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval()' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion()' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a>";
+	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a>";
 	}else if($data['idinst']==$data['idinsp']){
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
