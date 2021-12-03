@@ -114,7 +114,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    OJT PRINCIPAL
+                    <!-- ESPECIALIDAD OJT -->
                 </h1>
             </section>
             <!-- Main content -->
@@ -124,7 +124,7 @@ include('header.php');
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" style="font-size: 14px;">
-                                <li class="active"><a href="#activity" data-toggle="tab">OJT PRINCIPAL</a></li>
+                                <li class="active"><a href="#activity" data-toggle="tab">ESPECIALIDAD OJT</a></li>
                                 <li><a href="#puesto" data-toggle="tab">CATALOGO OJT</a></li>
                                 <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
                             </ul>
@@ -147,7 +147,7 @@ include('header.php');
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <label>ESPECIALIDAD OJT</label>
+                                                    <!-- <label>ESPECIALIDAD OJT</label> -->
                                                     <select id="idcur" name="idcur" class="form-control"
                                                         placeholder="Seleccione...">
                                                         <option value="0">Seleccione...</option>
@@ -158,22 +158,47 @@ include('header.php');
                                                         <?php endwhile; ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-6">
+                                               
+                                            </div>
+                                            <div class="form-group">
+                                            <div class="col-sm-4">
                                                     <input type="hidden" name="idsubt" id="idsubt">
                                                     <label>OJT PRINCIPAL</label>
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo1" name="titulo1" disabled="">
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-2">
+                                                    <input type="hidden" name="idsubt" id="idsubt">
+                                                    <label>SUBTAREA 1</label>
+                                                    <input type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="hidden" name="idsubt" id="idsubt">
+                                                    <label>SUBTAREA 3</label>
+                                                    <input type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="hidden" name="idsubt" id="idsubt">
+                                                    <label>SUBTAREA 3</label>
+                                                    <input type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="hidden" name="idsubt" id="idsubt">
+                                                    <label>SUBTAREA 4</label>
+                                                    <input type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
+                                                </div>
+                                                <!-- <div class="col-sm-12">
                                                     <label>DESCRIPCIÓN </label>
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip1" name="descrip1" rows="4"
                                                         disabled=""></textarea></br>
 
 
-                                                </div>
+                                                </div> -->
 
                                             </div>
 
@@ -571,7 +596,7 @@ $(document).ready(function() {
 
 <script type="text/javascript">
 document.getElementById('titulo1').disabled = false;
-document.getElementById('descrip1').disabled = false;
+// document.getElementById('descrip1').disabled = false;
 document.getElementById('titulo2').disabled = false;
 document.getElementById('descrip2').disabled = false;
 document.getElementById('titulo3').disabled = false;
@@ -587,18 +612,18 @@ document.getElementById('descrip3').disabled = false;
 function agrTarea() {
     idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo1').value;
-    descrip1 = document.getElementById('descrip1').value;
+    // descrip1 = document.getElementById('descrip1').value;
     idsubt = document.getElementById('idsubt').value;
     // fechaA = document.getElementById('fechaA').value;
     // fechaT = document.getElementById('fechaT').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1  + '&idsubt=' + idsubt +
     '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
     
 
-    if (titulo1 == '' || descrip1 == '') {
+    if (titulo1 == '' ) {
 
         $('#vacio1').toggle('toggle');
         setTimeout(function() {
@@ -632,7 +657,7 @@ function agrTarea() {
                 $("#form2").show();
                 $("#resp1").show();
                 document.getElementById('titulo1').disabled = true;
-                document.getElementById('descrip1').disabled = true;
+                // document.getElementById('descrip1').disabled = true;
                 // document.getElementById('fechaA').disabled = true;
                 // document.getElementById('fechaT').disabled = true;
 
@@ -646,15 +671,15 @@ function agrTarea() {
 function agrTarea2() {
     idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo2').value;
-    descrip1 = document.getElementById('descrip2').value;
+    // descrip1 = document.getElementById('descrip2').value;
     idsubt = document.getElementById('idsubt2').value;
     // fechaA = document.getElementById('fechaA2').value;
     // fechaT = document.getElementById('fechaT2').value;
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1  + '&idsubt=' + idsubt +
     '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    if (titulo1 == '' || descrip1 == '') {
+    if (titulo1 == '' ) {
 
         $('#vacio2').toggle('toggle');
         setTimeout(function() {
@@ -702,16 +727,16 @@ function agrTarea2() {
 function agrTarea3() {
     idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo3').value;
-    descrip1 = document.getElementById('descrip3').value;
+    // descrip1 = document.getElementById('descrip3').value;
     idsubt = document.getElementById('idsubt3').value;
     // fechaA = document.getElementById('fechaA3').value;
     // fechaT = document.getElementById('fechaT3').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1  + '&idsubt=' + idsubt +
     '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    if (titulo1 == '' || descrip1 == '') {
+    if (titulo1 == '' ) {
 
         $('#vacio3').toggle('toggle');
         setTimeout(function() {
