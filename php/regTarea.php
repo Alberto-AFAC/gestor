@@ -43,9 +43,9 @@ if($opcion === 'tareAgr'){
  	 for($i=0; $i<$valor; $i++){
 
 	$titulo = $varray1[$i]['tareauno'];
-
-	if(tarea1($titulo,$conexion)){
-		echo "0";
+	$numsubt = 1;
+	if(tarea1($titulo,$numsubt,$conexion)){
+		//echo "0";
 
 		}else{
 		echo "1";
@@ -61,8 +61,9 @@ if($opcion === 'tareAgr'){
  	 for($i=0; $i<$valor2; $i++){
 
 	$titulo = $varray2[$i]['tareados'];
-
-	if(tarea1($titulo,$conexion)){
+	
+	$numsubt = 2;
+	if(tarea1($titulo,$numsubt,$conexion)){
 		echo "0";
 
 		}else{
@@ -70,6 +71,22 @@ if($opcion === 'tareAgr'){
 		}
 	}
 
+	$valors3 = $_POST['array3'];
+	$varray3 = json_decode($valors3, true);
+	$valor3 = count($varray3);
+
+ 	 for($i=0; $i<$valor3; $i++){
+
+	$titulo = $varray3[$i]['tareatre'];
+
+	$numsubt = 3;
+	if(tarea1($titulo,$numsubt,$conexion)){
+		echo "0";
+
+		}else{
+		echo "1";
+		}
+	}
 
 
 
@@ -181,10 +198,10 @@ function Tareas($idcur, $titulo1, $idsubt, $conexion){
 
 }
 
-function tarea1($titulo,$conexion){
+function tarea1($titulo,$numsubt,$conexion){
 
-	$query="INSERT INTO ojts_subs(idtarea,ojt_subtarea,estado) 
-			SELECT id_ojt,'$titulo',0 FROM ojts ORDER BY id_ojt DESC LIMIT 1";
+	$query="INSERT INTO ojts_subs(idtarea,ojt_subtarea,numsubt,estado) 
+			SELECT id_ojt,'$titulo',$numsubt,0 FROM ojts ORDER BY id_ojt DESC LIMIT 1";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

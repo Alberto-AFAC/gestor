@@ -188,13 +188,6 @@ style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"
 </div>
 
 
-<!-- <div id="ojt-subtarea2" class="col-sm-3">
-<label><a id="agrega_ojt_subtarea2" title="AÑADIR SUBTAREA 2">SUB 2</i></a></label>
-<input type="text" style="text-transform:uppercase;"
-class="form-control" id="titulo1" placeholder="Escribe subtarea 2..."
-name="ojt_principal[]"><br>
-</div> -->
-
 <div id="sub2" class="col-sm-3">
 <label>SUB 2</label>
 <div>
@@ -204,14 +197,14 @@ name="tarea2[]"></div><span id="add_sub2"
 style="color: blue;">AÑADIR</span>
 </div>
 
-
-<div id="ojt-subtarea3" class="col-sm-3">
-<label><a id="agrega_ojt_subtarea3" title="AÑADIR SUBTAREA 3">SUB 3</i></a></label>
-<input type="text" style="text-transform:uppercase;"
-class="form-control" id="titulo1" placeholder="Escribe subtarea 3..."
-name="ojt_principal[]"><br>
+<div id="sub3" class="col-sm-3">
+<label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA">SUB 3</i></a></label>
+<div>
+<input class="form-control"
+placeholder="Ingresa tema" type="text"
+name="tarea3[]"></div><span id="add_sub3"
+style="color: blue;">AÑADIR</span>
 </div>
-
 
 </div>
 
@@ -630,6 +623,14 @@ titulo1 = document.getElementById('titulo1').value;
 
  // subtarea = document.getElementById('agrega_ojt_subtarea').value;
 
+    var tareatre = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="tarea3[]"]').each(function(element) {
+        var item = {};
+        item.tareatre = this.value;
+        tareatre.push(item);
+    });
+
     var tareados = new Array();
     /*Agrupamos todos los input con name=cbxEstudiante*/
     $('input[name="tarea2[]"]').each(function(element) {
@@ -637,8 +638,6 @@ titulo1 = document.getElementById('titulo1').value;
         item.tareados = this.value;
         tareados.push(item);
     });
-
-
 
     var tareauno = new Array();
     /*Agrupamos todos los input con name=cbxEstudiante*/
@@ -648,12 +647,14 @@ titulo1 = document.getElementById('titulo1').value;
         tareauno.push(item);
     });
 
+
     var array = JSON.stringify(tareauno);
     var array2 = JSON.stringify(tareados);
+    var array3 = JSON.stringify(tareatre);
 
- alert(array2);
+ alert(array3);
 
-datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt + '&array=' + array + '&array2=' + array2 + '&opcion=tareAgr';
+datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt + '&array=' + array + '&array2=' + array2 + '&array3=' + array3 + '&opcion=tareAgr';
 //var gstFslda = document.getElementById('AgstFslda').value;
 
 
@@ -1186,27 +1187,45 @@ vs2--;
 
 
 
-var max_subtarea3 =21;
-var wrappersub3 = $("#ojt-subtarea3");
-var agrega_subtarea3 = $("#agrega_ojt_subtarea3");
-var campoS3 =
-'<div><input type="text" class="form-control" placeholder="ESCRIBE ACTIVIDAD PARA SUBTAREA 3..." name="subtarea[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
-var vs3 = 1;
-$(agrega_subtarea3).click(function(e) {
-e.preventDefault();
-if (vs3 < max_subtarea3) {
-$(wrappersub3).append(campoS3);
-vs3++;
+// var max_subtarea3 =21;
+// var wrappersub3 = $("#ojt-subtarea3");
+// var agrega_subtarea3 = $("#agrega_ojt_subtarea3");
+// var campoS3 =
+// '<div><input type="text" class="form-control" placeholder="ESCRIBE ACTIVIDAD PARA SUBTAREA 3..." name="subtarea[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
+// var vs3 = 1;
+// $(agrega_subtarea3).click(function(e) {
+// e.preventDefault();
+// if (vs3 < max_subtarea3) {
+// $(wrappersub3).append(campoS3);
+// vs3++;
 
 
-}
+// }
+// });
+
+// $(wrappersub3).on("click", ".remove_field", function() {
+// $(this).parent("div").remove();
+// vs3--;
+// })
+
+var campos_max3 = 10;
+var vojt3 = 0;
+$('#add_sub3').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojt3 < campos_max3) {
+        $('#sub3').append('<div>\
+                                <input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea3[]">\
+                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
+                                </div>');
+                                vojt3++;
+    }
 });
-
-$(wrappersub3).on("click", ".remove_field", function() {
-$(this).parent("div").remove();
-vs3--;
-})
-
+// Remover o div anterior
+$('#sub3').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojt3--;
+});
 
 // JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
 
