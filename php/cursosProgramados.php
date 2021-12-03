@@ -18,81 +18,50 @@
 		while($data = mysqli_fetch_assoc($resultado)){
             $item++;
 
-$codigo = substr($data['codigo'], 2); 
+		$codigo = substr($data['codigo'], 2); 
+		$idcurinp = $data['id_curso'].'.'.$data['idinsp'];
 
-
-$cursos = $data['gstIdlsc']; 
-// $data['gstTitlo'].'*'. 
-// $data['gstTipo'].'*'. 
-// $data['gstPrfil'].'*'. 
-// $data['gstCntnc'].'*'. 
-// $data['gstDrcin'].'*'. 
-// $data['gstVignc'].'*'. 
-// $data['gstObjtv'].'*'. 
-// $data['hcurso'].'*'. 
-// $data['fcurso'].'*'.
-// $data['fechaf'].'*'. 
-// $data['idinst'].'*'. 
-// $data['sede'].'*'. 
-// $data['link'].'*'. 
-// $data['gstNombr'].'*'. 
-// $data['gstApell'].'*'. 
-// $data['idmstr'].'*'.
-// $data['evaluacion'].'*'. 
-// $data['idinsp'].'*'. 
-// $data['id_curso'].'*'. 
-// $data['confirmar'].'*'. 
-// $data['codigo'].'*'. 
-// $data['idinsp'];
-
-
-	
-
-
-
+//COORDINADOR
 	if($data['idcoor']==$data['idinsp']){
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
 	 $participante = 'COORDINADOR';
 	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a>";
+
+//INSTRUCTOR
 	}else if($data['idinst']==$data['idinsp']){
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
 	 $participante = 'INSTRUCTOR';
-	 $evaluacion = '';
+	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a>";
 	}else{
+
+//PARTICIPANTES
+		$evaluacion = "<a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']})' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";	
 
             if($data['confirmar'] == "CONFIRMAR"){
                 $confirmar = "POR CONFIRMAR ";
 
             }else
-          // vista cuando se DECLINA POR TRABAJO "DETALLE DEL CURSO"
+
+//PARTICIPANTES QUE DECLINAN
             if ($data['confirmar'] == 'TRABAJO') {
-                // confirmar = "";
-                // evaluacion = "";
-                // evalcurso = "";
-                // listcer = "";
                 $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
-            }else
-            // vista cuando se DECLINA POR ENFERMEDAD "DETALLE DEL CURSO"
-            if ($data['confirmar'] == 'ENFERMEDAD') {
+            }else if ($data['confirmar'] == 'ENFERMEDAD') {
      
                 $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
-            }else
-            // vista cuando se DECLINA POR OTROS "DETALLE DEL CURSO"
-            if ($data['confirmar'] == 'OTROS') {
+            }else if ($data['confirmar'] == 'OTROS') {
 
-                // evaluacion = "";
-                // evalcurso = "";
-                // listcer = "";
-                 $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
+               $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
+                // $evaluacion = "";						
             }else{
 
+//PARTICIPANTES QUE CONFIRMAN
                  $confirmar = "<a style= 'color:green;' >CONFIRMADO</a>";
+                 $evaluacion = "<a type='button' style='margin-left:2px' title='Generar Certificado' onclick='gencerti({$idcurinp})' class='btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:15px;'></i></a>  <a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']})' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";	
             }			
 
 	 $participante = 'PARTICIPANTE';
-	 $evaluacion = '';
 
 	}
 

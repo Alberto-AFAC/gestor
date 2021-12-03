@@ -281,11 +281,11 @@ curso para cancelar </p>
 <h4 class="modal-title">ELIMINAR INSPECTOR </h4>
 </div>
 <div class="modal-body">
-<input type="hidden" name="codInsp" id="codInsp"><input type="hidden"
+<!-- <input type="hidden" name="codInsp" id="codInsp"> --><input type="hidden"
 name="idInspt" id="idInspt">
 <div class="form-group">
 <div class="col-sm-12">
-<p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR: <span id="nomInsp"></span>
+<p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR? <span id="nomInsp"></span>
 <!-- +'?'<input type="text" name="cgstTitlo"
 +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
 style="background: white;border: 1px solid white;"> -->
@@ -1352,7 +1352,7 @@ if (obj.data[i].id_curso == idp) {
 
 
 
-/*function idcurso(codigo) {
+/*/*function idcurso(codigo) {
 
     $.ajax({
         url: '../php/curLista.php',
@@ -1694,7 +1694,7 @@ if (obj.data[i].id_curso == idp) {
     //         });
     //     });
     // })
-//}
+//}*/
 
 //TODO
 
@@ -1748,14 +1748,14 @@ $("#buttons").show();
 });
 }
 
-function eliNsp(data) {
+// function eliNsp(data) {
 
-var d = data.split("*");
-$("#nomInsp").html(d[2] + ' ' + d[3]);
-$("#eliminar-modal #codInsp").val(d[0]);
-$("#eliminar-modal #idInspt").val(d[1]);
+// var d = data.split("*");
+// $("#nomInsp").html(d[2] + ' ' + d[3]);
+// $("#eliminar-modal #codInsp").val(d[0]);
+// $("#eliminar-modal #idInspt").val(d[1]);
 
-}
+// }
 
 const myFunction = () => {
 const trs = document.querySelectorAll('#lstcurs tr:not(.header)');
@@ -1800,3 +1800,13 @@ width: 50% !important;
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->
+<script type="text/javascript">
+    
+    function eliNsp(idcursop) {
+
+
+ $("#eliminar-modal #idInspt").val(idcursop);
+
+}
+
+</script>
