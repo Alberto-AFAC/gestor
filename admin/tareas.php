@@ -179,11 +179,12 @@ class="form-control" id="titulo1" placeholder="Escribe subtarea 1..." name="ojt_
 
 
 <div id="sub1" class="col-sm-3">
+<label>SUB 1</label>
 <div>
 <input class="form-control"
 placeholder="Ingresa tema" type="text"
-name="tarea1[]"></div><span id="add_sub1"
-style="color: blue;">Añadir</span>
+name="tarea1[]"></div><span class="badge" id="add_sub1"
+style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
 
@@ -195,7 +196,7 @@ name="ojt_principal[]"><br>
 </div> -->
 
 <div id="sub2" class="col-sm-3">
-<label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA">SUB 2</i></a></label>
+<label>SUB 2</label>
 <div>
 <input class="form-control"
 placeholder="Ingresa tema" type="text"
@@ -1106,7 +1107,7 @@ $('#add_sub2').click(function(e) {
     if (vojt2 < campos_max2) {
         $('#sub2').append('<div>\
                                 <input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea2[]">\
-                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
+                                <a href="#" style="color: red;" class="remover_campo">REMOVER</a>\
                                 </div>');
                                 vojt2++;
     }
@@ -1119,24 +1120,24 @@ $('#sub2').on("click", ".remover_campo", function(e) {
 });
 
 
-// var campos_max = 20;
-// var vojt = 0;
-// $('#add_sub1').click(function(e) {
-// e.preventDefault(); //chups
-// if (vojt < campos_max) {
-// $('#sub1').append('<div>\
-// <br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea1[]">\
-// <a href="#" style="color: red;" class="remover_campo">Remover</a>\
-// </div>');
-// vojt++;
-// }
-// });
-// // Remover o div anterior
-// $('#sub1').on("click", ".remover_campo", function(e) {
-// e.preventDefault();
-// $(this).parent('div').remove();
-// vojt--;
-// });
+var campos_max = 20;
+var vojt = 0;
+$('#add_sub1').click(function(e) {
+e.preventDefault(); //chups
+if (vojt < campos_max) {
+$('#sub1').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea1[]">\
+<a href="#" style="color: red;" class="remover_campo">REMOVER</a>\
+</div>');
+vojt++;
+}
+});
+// Remover o div anterior
+$('#sub1').on("click", ".remover_campo", function(e) {
+e.preventDefault();
+$(this).parent('div').remove();
+vojt--;
+});
 
 // // QUERY PARA LAS SUBTAREAS
 // var max_tareas =21;
