@@ -158,48 +158,19 @@ include('header.php');
                                                         <?php endwhile; ?>
                                                     </select>
                                                 </div>
-                                               
+
                                             </div>
                                             <div class="form-group">
-                                            <div class="col-sm-4">
+                                                <div id="ojt-principal" class="col-sm-4">
                                                     <input type="hidden" name="idsubt" id="idsubt">
-                                                    <label>OJT PRINCIPAL</label>
+                                                    <label><a id="agrega-ojt-principal">OJT PRINCIPAL</a></label>
                                                     <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
+                                                        class="form-control" id="titulo1" placeholder="Escribe OJT..."
+                                                        name="pago_parcial[]" disabled=""><br>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <input type="hidden" name="idsubt" id="idsubt">
-                                                    <label>SUBTAREA 1</label>
-                                                    <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
+                                                <div id="ojt-subtarea" class="col-sm-4">
+                                                <label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></label>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <input type="hidden" name="idsubt" id="idsubt">
-                                                    <label>SUBTAREA 3</label>
-                                                    <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <input type="hidden" name="idsubt" id="idsubt">
-                                                    <label>SUBTAREA 3</label>
-                                                    <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <input type="hidden" name="idsubt" id="idsubt">
-                                                    <label>SUBTAREA 4</label>
-                                                    <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
-                                                </div>
-                                                <!-- <div class="col-sm-12">
-                                                    <label>DESCRIPCIÓN </label>
-                                                    <textarea type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="descrip1" name="descrip1" rows="4"
-                                                        disabled=""></textarea></br>
-
-
-                                                </div> -->
-
                                             </div>
 
                                             <div class="form-group" id="butons1"><br>
@@ -617,13 +588,13 @@ function agrTarea() {
     // fechaA = document.getElementById('fechaA').value;
     // fechaT = document.getElementById('fechaT').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1  + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt +
+        '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    
 
-    if (titulo1 == '' ) {
+
+    if (titulo1 == '') {
 
         $('#vacio1').toggle('toggle');
         setTimeout(function() {
@@ -675,11 +646,11 @@ function agrTarea2() {
     idsubt = document.getElementById('idsubt2').value;
     // fechaA = document.getElementById('fechaA2').value;
     // fechaT = document.getElementById('fechaT2').value;
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1  + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt +
+        '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    if (titulo1 == '' ) {
+    if (titulo1 == '') {
 
         $('#vacio2').toggle('toggle');
         setTimeout(function() {
@@ -732,11 +703,11 @@ function agrTarea3() {
     // fechaA = document.getElementById('fechaA3').value;
     // fechaT = document.getElementById('fechaT3').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1  + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt +
+        '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    if (titulo1 == '' ) {
+    if (titulo1 == '') {
 
         $('#vacio3').toggle('toggle');
         setTimeout(function() {
@@ -1038,4 +1009,71 @@ function notificacion() {
 
 
 }
+
+// NUEVA CONFIGURACIÓN DE CAMPOS DINAMITOS//
+
+var max_filas = 21;
+var wrapper = $("#ojt-principal");
+var agrega_ojt = $("#agrega-ojt-principal");
+var campoHTML =
+    '<div><input type="text" class="form-control" placeholder="ESCRIBE ACTIVIDAD..." name="pago_parcial[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
+var x = 1;
+$(agrega_ojt).click(function(e) {
+    e.preventDefault();
+    if (x < max_filas) {
+        $(wrapper).append(campoHTML);
+        x++;
+
+    }
+});
+
+$(wrapper).on("click", ".remove_field", function() {
+    $(this).parent("div").remove();
+    x--;
+})
+
+// QUERY PARA LAS SUBTAREAS
+var max_tareas =2;
+var wrapper2 = $("#ojt-subtarea");
+var agrega_subtarea = $("#agrega-ojt-subtarea");
+var campoHTML2 =
+    '<div><div id="ojt-actividades1"><a id="agrega-actividad-ojt" title="AÑADIR SUBTAREA">SUBTAREA 1</a></div><input type="text" class="form-control" placeholder="ESCRIBE SUBTAREA..." name="subtarea[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
+var y = 1;
+$(agrega_subtarea).click(function(e) {
+    e.preventDefault();
+    if (y < max_tareas) {
+        $(wrapper2).append(campoHTML2);
+        y++;
+
+       
+    }
+});
+
+$(wrapper2).on("click", ".remove_field", function() {
+    $(this).parent("div").remove();
+    y--;
+})
+
+
+// JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
+var max_actividades =20;
+var wrapper3 = $("#ojt-actividades1");
+var agrega_actividad1 = $("#agrega-actividad-ojt");
+var campoHTML3 =
+    '<div><input type="text" class="form-control" placeholder="ESCRIBE SUBTAREA..." name="subtarea[]"/><div class="remove_field"><span style="font-weight: bold;color: red;">REMOVER</span></div></div>';
+var z = 1;
+$(agrega_actividad1).click(function(e) {
+    e.preventDefault();
+    if (z < max_actividades) {
+        $(wrapper3).append(campoHTML3);
+        z++;
+
+       
+    }
+});
+
+$(wrapper2).on("click", ".remove_field", function() {
+    $(this).parent("div").remove();
+    z--;
+})
 </script>
