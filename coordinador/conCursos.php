@@ -361,10 +361,9 @@
                                 <div class="col-sm-4">
                                     <label class="label2">TIPO DE CURSO</label>
                                     <select type="text" class="form-control inputalta" id="AgstProvd" name="AgstProvd">
-                                        <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
-                                        <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
-                                        <option value="EXTERNO (NACIONAL)">EXTERNO (NACIONAL)</option>
-                                        <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
+                                    <option value="0">ELEGIR UNA OPCIÓN</option>
+                                                        <option value="INTERNO">INTERNO</option>
+                                                        <option value="EXTERNO">EXTERNO</option>
                                     </select>
                                 </div>
 
