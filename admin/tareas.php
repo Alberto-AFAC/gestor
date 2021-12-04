@@ -171,19 +171,12 @@ class="form-control" id="titulo1" placeholder="Escribe OJT..."
 name="ojt_principal[]" disabled=""><br>
 </div>
 
-<!-- <div id="ojt-subtarea" class="col-sm-3">
-<label><a id="agrega_ojt_subtarea" title="AÑADIR SUBTAREA">SUB 1</i></a></label>
-<input type="text" style="text-transform:uppercase;"
-class="form-control" id="titulo1" placeholder="Escribe subtarea 1..." name="ojt_principal1[]"><br>
-</div> -->
-
-
 <div id="sub1" class="col-sm-3">
 <label>SUB 1</label>
 <div>
 <input class="form-control"
 placeholder="Ingresa tema" type="text"
-name="tarea1[]"></div><span class="badge" id="add_sub1"
+name="tarea1[]" id="oculsub1" disabled=""></div><span class="badge" id="add_sub1"
 style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
@@ -193,7 +186,7 @@ style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"
 <div>
 <input class="form-control"
 placeholder="Ingresa tema" type="text"
-name="tarea2[]"></div><span id="add_sub2"
+name="tarea2[]" id="oculsub2" disabled=""></div><span id="add_sub2"
 style="color: blue;">AÑADIR</span>
 </div>
 
@@ -202,7 +195,7 @@ style="color: blue;">AÑADIR</span>
 <div>
 <input class="form-control"
 placeholder="Ingresa tema" type="text"
-name="tarea3[]"></div><span id="add_sub3"
+name="tarea3[]" id="oculsub3" disabled=""></div><span id="add_sub3"
 style="color: blue;">AÑADIR</span>
 </div>
 
@@ -215,7 +208,7 @@ style="color: blue;">AÑADIR</span>
 title="Dar click para guardar los cambios"
 style="background-color:#052E64; border-radius:10px;"
 class="btn btn-block btn-primary" onclick="agrTarea();">
-AGREGAR</button>
+GUARDAR</button>
 
 </div>
 <b>
@@ -240,34 +233,47 @@ Es necesario agregar los datos que se solicitan </p>
 
 <form id="form2" style="display: none;" class="form-horizontal" action=""
 method="POST">
-<!--               <input type="hidden" name="gstIdper" id="gstIdper"> -->
-<div class="form-group">
-<div class="col-sm-4">
-<div class="input-group">
-<H4><i class=""></i>
-<label> SUB-TAREA</label>
-</H4>
-</div>
-</div>
-</div>
-<input type="hidden" name="idsubt2" id="idsubt2">
-<div class="form-group">
-<div class="col-sm-4">
-<label>TÍTULO</label>
+
+
+<div id="ojt-principal" class="col-sm-3">
+<input type="hidden" name="idsubt" id="idsubt">
+<!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
+<label>OJT PRINCIPAL N° 1</label>
 <input type="text" style="text-transform:uppercase;"
-class="form-control" id="titulo2" name="titulo2" disabled="">
+class="form-control" id="titulo1" placeholder="Escribe OJT..."
+name="ojt_principal[]" disabled=""><br>
 </div>
+
+<div id="sub1" class="col-sm-3">
+<label>SUB 1</label>
+<div>
+<input class="form-control"
+placeholder="Ingresa tema" type="text"
+name="tarea1[]" id="oculsub1" disabled=""></div><span class="badge" id="add_sub1"
+style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
-<div class="form-group">
-<div class="col-sm-12">
-<label>DESCRIPCIÓN </label>
-<textarea type="text" style="text-transform:uppercase;"
-class="form-control" id="descrip2" name="descrip2" rows="4"
-disabled=""></textarea><br>
+
+
+<div id="sub2" class="col-sm-3">
+<label>SUB 2</label>
+<div>
+<input class="form-control"
+placeholder="Ingresa tema" type="text"
+name="tarea2[]" id="oculsub2" disabled=""></div><span id="add_sub2"
+style="color: blue;">AÑADIR</span>
+</div>
+
+<div id="sub3" class="col-sm-3">
+<label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA">SUB 3</i></a></label>
+<div>
+<input class="form-control"
+placeholder="Ingresa tema" type="text"
+name="tarea3[]" id="oculsub3" disabled=""></div><span id="add_sub3"
+style="color: blue;">AÑADIR</span>
+</div>
 
 </div>
 
-</div>
 
 <div class="form-group" id="butons2"><br>
 <div class="col-sm-offset-0 col-sm-2">
@@ -602,6 +608,9 @@ $('#idcur').select2();
 
 <script type="text/javascript">
 document.getElementById('titulo1').disabled = false;
+document.getElementById('oculsub1').disabled = false;
+document.getElementById('oculsub2').disabled = false;
+document.getElementById('oculsub3').disabled = false;
 // document.getElementById('descrip1').disabled = false;
 document.getElementById('titulo2').disabled = false;
 document.getElementById('descrip2').disabled = false;
@@ -652,13 +661,13 @@ titulo1 = document.getElementById('titulo1').value;
     var array2 = JSON.stringify(tareados);
     var array3 = JSON.stringify(tareatre);
 
- alert(array3);
+ // alert(array3);
 
 datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt + '&array=' + array + '&array2=' + array2 + '&array3=' + array3 + '&opcion=tareAgr';
 //var gstFslda = document.getElementById('AgstFslda').value;
 
 
-if (titulo1 == '') {
+if (titulo1 == '' || idcur == '') {
 
 $('#vacio1').toggle('toggle');
 setTimeout(function() {
@@ -673,9 +682,9 @@ type: 'POST',
 data: datos
 }).done(function(respuesta) {
 
-    alert(respuesta);
+   // alert(respuesta);
 
-if (respuesta == 0) {
+if (respuesta != 0) {
 
 $('#danger1').toggle('toggle');
 setTimeout(function() {
@@ -695,6 +704,11 @@ $("#button2").show();
 $("#form2").show();
 $("#resp1").show();
 document.getElementById('titulo1').disabled = true;
+document.getElementById('oculsub1').disabled = true;
+document.getElementById('oculsub2').disabled = true;
+document.getElementById('oculsub3').disabled = true;
+
+
 // document.getElementById('descrip1').disabled = true;
 // document.getElementById('fechaA').disabled = true;
 // document.getElementById('fechaT').disabled = true;
@@ -1121,13 +1135,14 @@ $('#sub2').on("click", ".remover_campo", function(e) {
 });
 
 
+
 var campos_max = 20;
 var vojt = 0;
 $('#add_sub1').click(function(e) {
 e.preventDefault(); //chups
 if (vojt < campos_max) {
 $('#sub1').append('<div>\
-<br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea1[]">\
+<br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
 <a href="#" style="color: red;" class="remover_campo">REMOVER</a>\
 </div>');
 vojt++;
