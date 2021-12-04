@@ -890,11 +890,13 @@ return '<table class="table display table-striped table-bordered" style="width:1
 '<td><strong>DESCRIPCIÓN:<strong></td>' +
 '<td>' + d.descripcion + '</td>' +
 '<td><strong>DESCRIPCIÓN:<strong></td>' +
-'<td>' + d.descripcionsub + '</td>' +
+'<td>' + d.descripcionsub + '<span onclick="añadir()" class="btn btn-info">EDITAR</span></td>' +
 '</tr>' +
 '</table>';
 }
-
+function añadir(){
+    alert("ACCEPT METHOD");
+}
 $(document).ready(function() {
 var table = $('#add-task').DataTable({
 "language": {
