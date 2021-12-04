@@ -175,9 +175,9 @@ name="ojt_principal[]" disabled=""><br>
 <label>SUB 1</label>
 <div>
 <input class="form-control"
-placeholder="Ingresa tema" type="text"
-name="tarea1[]" id="oculsub1" disabled=""></div><span class="badge" id="add_sub1"
-style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
+placeholder="INGRESA SUB 1..." type="text"
+name="tarea1[]"></div><span class="badge" id="add_sub1"
+style="background-color: #3C8DBC;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
 
@@ -185,18 +185,18 @@ style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"
 <label>SUB 2</label>
 <div>
 <input class="form-control"
-placeholder="Ingresa tema" type="text"
-name="tarea2[]" id="oculsub2" disabled=""></div><span id="add_sub2"
-style="color: blue;">AÑADIR</span>
+placeholder="INGRESA SUB 2..." type="text"
+name="tarea2[]"></div><span class="badge" id="add_sub2"
+style="background-color: #3C8DBC;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
 <div id="sub3" class="col-sm-3">
-<label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA">SUB 3</i></a></label>
+<label>SUB 3</label>
 <div>
 <input class="form-control"
-placeholder="Ingresa tema" type="text"
-name="tarea3[]" id="oculsub3" disabled=""></div><span id="add_sub3"
-style="color: blue;">AÑADIR</span>
+placeholder="INGRESA SUB 3..." type="text"
+name="tarea3[]"></div><span class="badge" id="add_sub3"
+style="background-color: #3C8DBC;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
 </div>
@@ -904,11 +904,13 @@ return '<table class="table display table-striped table-bordered" style="width:1
 '<td><strong>DESCRIPCIÓN:<strong></td>' +
 '<td>' + d.descripcion + '</td>' +
 '<td><strong>DESCRIPCIÓN:<strong></td>' +
-'<td>' + d.descripcionsub + '</td>' +
+'<td>' + d.descripcionsub + '<span onclick="añadir()" class="btn btn-info">EDITAR</span></td>' +
 '</tr>' +
 '</table>';
 }
-
+function añadir(){
+    alert("ACCEPT METHOD");
+}
 $(document).ready(function() {
 var table = $('#add-task').DataTable({
 "language": {
@@ -1121,8 +1123,8 @@ $('#add_sub2').click(function(e) {
     e.preventDefault(); //chups
     if (vojt2 < campos_max2) {
         $('#sub2').append('<div>\
-                                <input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea2[]">\
-                                <a href="#" style="color: red;" class="remover_campo">REMOVER</a>\
+                                <br><input style="text-transform: uppercase;" placeholder="INGRESA..." class="form-control" type="text" name="tarea2[]">\
+                                <a href="#" class="remover_campo"><span style="background-color: gray;" class="badge"><i class="fa fa-trash-o" aria-hidden="true"></i> REMOVER</span></a>\
                                 </div>');
                                 vojt2++;
     }
@@ -1142,8 +1144,8 @@ $('#add_sub1').click(function(e) {
 e.preventDefault(); //chups
 if (vojt < campos_max) {
 $('#sub1').append('<div>\
-<br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
-<a href="#" style="color: red;" class="remover_campo">REMOVER</a>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA..." class="form-control" type="text" name="tarea1[]">\
+<a href="#" style="color: red;" class="remover_campo"><span style="background-color: gray;" class="badge"><i class="fa fa-trash-o" aria-hidden="true"></i> REMOVER</span></a>\
 </div>');
 vojt++;
 }
@@ -1229,8 +1231,8 @@ $('#add_sub3').click(function(e) {
     e.preventDefault(); //chups
     if (vojt3 < campos_max3) {
         $('#sub3').append('<div>\
-                                <input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea3[]">\
-                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
+                                <br><input style="text-transform: uppercase;" placeholder="INGRESA..." class="form-control" type="text" name="tarea3[]">\
+                                <a href="#" style="color: red;" class="remover_campo"><span style="background-color: gray;" class="badge"><i class="fa fa-trash-o" aria-hidden="true"></i> REMOVER</span></a>\
                                 </div>');
                                 vojt3++;
     }
