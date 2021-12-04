@@ -175,9 +175,9 @@ name="ojt_principal[]" disabled=""><br>
 <label>SUB 1</label>
 <div>
 <input class="form-control"
-placeholder="INGRESA SUB 1..." type="text"
-name="tarea1[]"></div><span class="badge" id="add_sub1"
-style="background-color: #3C8DBC;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
+placeholder="Ingresa tema" type="text"
+name="tarea1[]" id="oculsub1" disabled=""></div><span class="badge" id="add_sub1"
+style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
 
@@ -185,18 +185,18 @@ style="background-color: #3C8DBC;"><i class="fa fa-plus-circle" aria-hidden="tru
 <label>SUB 2</label>
 <div>
 <input class="form-control"
-placeholder="INGRESA SUB 2..." type="text"
-name="tarea2[]"></div><span class="badge" id="add_sub2"
-style="background-color: #3C8DBC;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
+placeholder="Ingresa tema" type="text"
+name="tarea2[]" id="oculsub2" disabled=""></div><span id="add_sub2"
+style="color: blue;">AÑADIR</span>
 </div>
 
 <div id="sub3" class="col-sm-3">
-<label>SUB 3</label>
+<label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA">SUB 3</i></a></label>
 <div>
 <input class="form-control"
-placeholder="INGRESA SUB 3..." type="text"
-name="tarea3[]"></div><span class="badge" id="add_sub3"
-style="background-color: #3C8DBC;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
+placeholder="Ingresa tema" type="text"
+name="tarea3[]" id="oculsub3" disabled=""></div><span id="add_sub3"
+style="color: blue;">AÑADIR</span>
 </div>
 
 </div>
@@ -230,76 +230,6 @@ Es necesario agregar los datos que se solicitan </p>
 </div>
 </form>
 
-
-<form id="form2" style="display: none;" class="form-horizontal" action=""
-method="POST">
-
-
-<div id="ojt-principal" class="col-sm-3">
-<input type="hidden" name="idsubt" id="idsubt">
-<!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
-<label>OJT PRINCIPAL N° 1</label>
-<input type="text" style="text-transform:uppercase;"
-class="form-control" id="titulo1" placeholder="Escribe OJT..."
-name="ojt_principal[]" disabled=""><br>
-</div>
-
-<div id="sub1" class="col-sm-3">
-<label>SUB 1</label>
-<div>
-<input class="form-control"
-placeholder="Ingresa tema" type="text"
-name="tarea1[]" id="oculsub1" disabled=""></div><span class="badge" id="add_sub1"
-style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
-</div>
-
-
-<div id="sub2" class="col-sm-3">
-<label>SUB 2</label>
-<div>
-<input class="form-control"
-placeholder="Ingresa tema" type="text"
-name="tarea2[]" id="oculsub2" disabled=""></div><span id="add_sub2"
-style="color: blue;">AÑADIR</span>
-</div>
-
-<div id="sub3" class="col-sm-3">
-<label><a id="agrega-ojt-subtarea" title="AÑADIR SUBTAREA">SUB 3</i></a></label>
-<div>
-<input class="form-control"
-placeholder="Ingresa tema" type="text"
-name="tarea3[]" id="oculsub3" disabled=""></div><span id="add_sub3"
-style="color: blue;">AÑADIR</span>
-</div>
-
-</div>
-
-
-<div class="form-group" id="butons2"><br>
-<div class="col-sm-offset-0 col-sm-2">
-
-<button type="button" id="button2"
-title="Dar click para guardar los cambios"
-style="background-color:#052E64; border-radius:10px;"
-class="btn btn-block btn-primary" onclick="agrTarea2();">
-AGREGAR</button>
-
-</div>
-<b>
-<p class="alert alert-danger text-center padding error"
-id="danger2">Error al agregar tarea </p>
-</b>
-<b>
-<p class="alert alert-success text-center padding exito"
-id="succe2">¡Se agregaron los datos con éxito!</p>
-</b>
-
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="vacio2">Es necesario agregar los datos que se solicitan </p>
-</b>
-</div>
-</form>
 
 
 
@@ -904,13 +834,11 @@ return '<table class="table display table-striped table-bordered" style="width:1
 '<td><strong>DESCRIPCIÓN:<strong></td>' +
 '<td>' + d.descripcion + '</td>' +
 '<td><strong>DESCRIPCIÓN:<strong></td>' +
-'<td>' + d.descripcionsub + '<span onclick="añadir()" class="btn btn-info">EDITAR</span></td>' +
+'<td>' + d.descripcionsub + '</td>' +
 '</tr>' +
 '</table>';
 }
-function añadir(){
-    alert("ACCEPT METHOD");
-}
+
 $(document).ready(function() {
 var table = $('#add-task').DataTable({
 "language": {
@@ -1123,8 +1051,8 @@ $('#add_sub2').click(function(e) {
     e.preventDefault(); //chups
     if (vojt2 < campos_max2) {
         $('#sub2').append('<div>\
-                                <br><input style="text-transform: uppercase;" placeholder="INGRESA..." class="form-control" type="text" name="tarea2[]">\
-                                <a href="#" class="remover_campo"><span style="background-color: gray;" class="badge"><i class="fa fa-trash-o" aria-hidden="true"></i> REMOVER</span></a>\
+                                <input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea2[]">\
+                                <a href="#" style="color: red;" class="remover_campo">REMOVER</a>\
                                 </div>');
                                 vojt2++;
     }
@@ -1144,8 +1072,8 @@ $('#add_sub1').click(function(e) {
 e.preventDefault(); //chups
 if (vojt < campos_max) {
 $('#sub1').append('<div>\
-<br><input style="text-transform: uppercase;" placeholder="INGRESA..." class="form-control" type="text" name="tarea1[]">\
-<a href="#" style="color: red;" class="remover_campo"><span style="background-color: gray;" class="badge"><i class="fa fa-trash-o" aria-hidden="true"></i> REMOVER</span></a>\
+<br><input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="color: red;" class="remover_campo">REMOVER</a>\
 </div>');
 vojt++;
 }
@@ -1231,8 +1159,8 @@ $('#add_sub3').click(function(e) {
     e.preventDefault(); //chups
     if (vojt3 < campos_max3) {
         $('#sub3').append('<div>\
-                                <br><input style="text-transform: uppercase;" placeholder="INGRESA..." class="form-control" type="text" name="tarea3[]">\
-                                <a href="#" style="color: red;" class="remover_campo"><span style="background-color: gray;" class="badge"><i class="fa fa-trash-o" aria-hidden="true"></i> REMOVER</span></a>\
+                                <input style="text-transform: uppercase;" placeholder="Ingresa tema" class="form-control" type="text" name="tarea3[]">\
+                                <a href="#" style="color: red;" class="remover_campo">Remover</a>\
                                 </div>');
                                 vojt3++;
     }
