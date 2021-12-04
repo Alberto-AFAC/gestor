@@ -231,6 +231,62 @@ Es necesario agregar los datos que se solicitan </p>
 </form>
 
 
+<form style="display: none;" class="form-horizontal" action=""
+method="POST">
+<div class="form-group">
+<div class="col-sm-4">
+<div class="input-group">
+<H4><i class=""></i>
+<label> SUB-TAREA</label>
+</H4>
+</div>
+</div>
+</div>
+<input type="hidden" name="idsubt2" id="idsubt2">
+<div class="form-group">
+<div class="col-sm-4">
+<label>TÍTULO</label>
+<input type="text" style="text-transform:uppercase;"
+class="form-control" id="titulo2" name="titulo2" disabled="">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-12">
+<label>DESCRIPCIÓN </label>
+<textarea type="text" style="text-transform:uppercase;"
+class="form-control" id="descrip2" name="descrip2" rows="4"
+disabled=""></textarea><br>
+
+</div>
+
+</div>
+
+<div class="form-group" id="butons2"><br>
+<div class="col-sm-offset-0 col-sm-2">
+
+<button type="button" id="button2"
+title="Dar click para guardar los cambios"
+style="background-color:#052E64; border-radius:10px;"
+class="btn btn-block btn-primary" onclick="agrTarea2();">
+AGREGAR</button>
+
+</div>
+<b>
+<p class="alert alert-danger text-center padding error"
+id="danger2">Error al agregar tarea </p>
+</b>
+<b>
+<p class="alert alert-success text-center padding exito"
+id="succe2">¡Se agregaron los datos con éxito!</p>
+</b>
+
+<b>
+<p class="alert alert-warning text-center padding aviso"
+id="vacio2">Es necesario agregar los datos que se solicitan </p>
+</b>
+</div>
+</form>
+
 
 
 
