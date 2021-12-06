@@ -780,7 +780,7 @@ data: datos
 
 // alert(respuesta);
 
-if (respuesta != 0) {
+// if (respuesta != 0) {
 
 Swal.fire({
 type: 'success',
@@ -793,13 +793,13 @@ showConfirmButton: false,
 });
 
 //conprofesion(ActIdpro);
-} else {
+// } else {
 
-$("#idsubt2").val(respuesta);
-$('#succe1').toggle('toggle');
-setTimeout(function() {
-$('#succe1').toggle('toggle');
-}, 2000);
+// $("#idsubt2").val(respuesta);
+// $('#succe1').toggle('toggle');
+// setTimeout(function() {
+// $('#succe1').toggle('toggle');
+// }, 2000);
 
 $("#button2").show();
 $("#form2").show();
@@ -827,7 +827,7 @@ $("#otra").show();
 // document.getElementById('fechaT').disabled = true;
 
 
-}
+//}
 });
 }
 
