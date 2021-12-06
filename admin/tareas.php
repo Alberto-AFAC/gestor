@@ -114,7 +114,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    OJT PRINCIPAL
+                    <!-- ESPECIALIDAD OJT -->
                 </h1>
             </section>
             <!-- Main content -->
@@ -124,7 +124,7 @@ include('header.php');
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" style="font-size: 14px;">
-                                <li class="active"><a href="#activity" data-toggle="tab">OJT PRINCIPAL</a></li>
+                                <li class="active"><a href="#activity" data-toggle="tab">ESPECIALIDAD OJT</a></li>
                                 <li><a href="#puesto" data-toggle="tab">CATALOGO OJT</a></li>
                                 <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
                             </ul>
@@ -147,7 +147,7 @@ include('header.php');
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <label>ESPECIALIDAD OJT</label>
+                                                    <!-- <label>ESPECIALIDAD OJT</label> -->
                                                     <select id="idcur" name="idcur" class="form-control"
                                                         placeholder="Seleccione...">
                                                         <option value="0">Seleccione...</option>
@@ -158,21 +158,48 @@ include('header.php');
                                                         <?php endwhile; ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <input type="hidden" name="idsubt" id="idsubt">
-                                                    <label>OJT PRINCIPAL</label>
-                                                    <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
-                                                </div>
+
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <label>DESCRIPCIÓN </label>
-                                                    <textarea type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="descrip1" name="descrip1" rows="4"
-                                                        disabled=""></textarea></br>
+
+                                                <div id="ojt-principal" class="col-sm-3">
+                                                    <input type="hidden" name="idsubt" id="idsubt">
+                                                    <!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
+                                                    <label>OJT PRINCIPAL N° 1</label>
+                                                    <input type="text" style="text-transform:uppercase;"
+                                                        class="form-control" id="titulo1" placeholder="Escribe OJT..."
+                                                        name="ojt_principal[]" disabled=""><br>
+                                                </div>
+
+                                                <div id="sub1" class="col-sm-3">
+                                                    <label>SUB 1</label>
+                                                    <div>
+                                                        <input class="form-control" placeholder="INGRESAR..."
+                                                            type="text" name="tarea1[]" id="oculsub1" disabled="">
+                                                    </div><span class="badge" id="add_sub1"
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                                            aria-hidden="true"></i> AÑADIR</span>
+                                                </div>
 
 
+                                                <div id="sub2" class="col-sm-3">
+                                                    <label>SUB 2</label>
+                                                    <div>
+                                                        <input class="form-control" placeholder="INGRESAR..."
+                                                            type="text" name="tarea2[]" id="oculsub2" disabled="">
+                                                    </div><span class="badge" id="add_sub2"
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                                            aria-hidden="true"></i> AÑADIR</span>
+                                                </div>
+
+                                                <div id="sub3" class="col-sm-3">
+                                                    <label>SUB 3</label>
+                                                    <div>
+                                                        <input class="form-control" placeholder="INGRESAR..."
+                                                            type="text" name="tarea3[]" id="oculsub3" disabled="">
+                                                    </div><span class="badge" id="add_sub3"
+                                                        style="cursor: pointer;background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                                            aria-hidden="true"></i> AÑADIR</span>
                                                 </div>
 
                                             </div>
@@ -184,7 +211,7 @@ include('header.php');
                                                         title="Dar click para guardar los cambios"
                                                         style="background-color:#052E64; border-radius:10px;"
                                                         class="btn btn-block btn-primary" onclick="agrTarea();">
-                                                        AGREGAR</button>
+                                                        GUARDAR</button>
 
                                                 </div>
                                                 <b>
@@ -207,9 +234,7 @@ include('header.php');
                                         </form>
 
 
-                                        <form id="form2" style="display: none;" class="form-horizontal" action=""
-                                            method="POST">
-                                            <!--               <input type="hidden" name="gstIdper" id="gstIdper"> -->
+                                        <form style="display: none;" class="form-horizontal" action="" method="POST">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -365,10 +390,11 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                             style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    
                                                     <th>#</th>
                                                     <th>ESPECIALIDAD OJT</th>
                                                     <th>OJT PRINCIPAL</th>
-                                                    <th>DESCRIPCIÓN</th>
+                                                    <th>DETALLES</th>
                                                 </tr>
                                             </thead>
 
@@ -571,34 +597,67 @@ $(document).ready(function() {
 
 <script type="text/javascript">
 document.getElementById('titulo1').disabled = false;
-document.getElementById('descrip1').disabled = false;
+document.getElementById('oculsub1').disabled = false;
+document.getElementById('oculsub2').disabled = false;
+document.getElementById('oculsub3').disabled = false;
+// document.getElementById('descrip1').disabled = false;
 document.getElementById('titulo2').disabled = false;
 document.getElementById('descrip2').disabled = false;
 document.getElementById('titulo3').disabled = false;
 document.getElementById('descrip3').disabled = false;
-// document.getElementById('fechaA').disabled = false;
-// document.getElementById('fechaT').disabled = false;
-// document.getElementById('fechaA2').disabled = false;
-// document.getElementById('fechaT2').disabled = false;
-// document.getElementById('fechaA3').disabled = false;
-// document.getElementById('fechaT3').disabled = false;
 
 
 function agrTarea() {
+
+
+    //ID inspector
     idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo1').value;
-    descrip1 = document.getElementById('descrip1').value;
     idsubt = document.getElementById('idsubt').value;
-    // fechaA = document.getElementById('fechaA').value;
-    // fechaT = document.getElementById('fechaT').value;
+    // // descrip1 = document.getElementById('descrip1').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
+    // // fechaA = document.getElementById('fechaA').value;
+    // // fechaT = document.getElementById('fechaT').value;
+
+    // subtarea = document.getElementById('agrega_ojt_subtarea').value;
+
+    var tareatre = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="tarea3[]"]').each(function(element) {
+        var item = {};
+        item.tareatre = this.value;
+        tareatre.push(item);
+    });
+
+    var tareados = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="tarea2[]"]').each(function(element) {
+        var item = {};
+        item.tareados = this.value;
+        tareados.push(item);
+    });
+
+    var tareauno = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="tarea1[]"]').each(function(element) {
+        var item = {};
+        item.tareauno = this.value;
+        tareauno.push(item);
+    });
+
+
+    var array = JSON.stringify(tareauno);
+    var array2 = JSON.stringify(tareados);
+    var array3 = JSON.stringify(tareatre);
+
+    // alert(array3);
+
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt + '&array=' + array + '&array2=' + array2 +
+        '&array3=' + array3 + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    
 
-    if (titulo1 == '' || descrip1 == '') {
+    if (titulo1 == '' || idcur == '') {
 
         $('#vacio1').toggle('toggle');
         setTimeout(function() {
@@ -612,7 +671,10 @@ function agrTarea() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            if (respuesta == 0) {
+
+            // alert(respuesta);
+
+            if (respuesta != 0) {
 
                 $('#danger1').toggle('toggle');
                 setTimeout(function() {
@@ -632,7 +694,12 @@ function agrTarea() {
                 $("#form2").show();
                 $("#resp1").show();
                 document.getElementById('titulo1').disabled = true;
-                document.getElementById('descrip1').disabled = true;
+                document.getElementById('oculsub1').disabled = true;
+                document.getElementById('oculsub2').disabled = true;
+                document.getElementById('oculsub3').disabled = true;
+
+
+                // document.getElementById('descrip1').disabled = true;
                 // document.getElementById('fechaA').disabled = true;
                 // document.getElementById('fechaT').disabled = true;
 
@@ -646,15 +713,15 @@ function agrTarea() {
 function agrTarea2() {
     idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo2').value;
-    descrip1 = document.getElementById('descrip2').value;
+    // descrip1 = document.getElementById('descrip2').value;
     idsubt = document.getElementById('idsubt2').value;
     // fechaA = document.getElementById('fechaA2').value;
     // fechaT = document.getElementById('fechaT2').value;
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt +
+        '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    if (titulo1 == '' || descrip1 == '') {
+    if (titulo1 == '') {
 
         $('#vacio2').toggle('toggle');
         setTimeout(function() {
@@ -702,16 +769,18 @@ function agrTarea2() {
 function agrTarea3() {
     idcur = document.getElementById('idcur').value;
     titulo1 = document.getElementById('titulo3').value;
-    descrip1 = document.getElementById('descrip3').value;
+    // descrip1 = document.getElementById('descrip3').value;
     idsubt = document.getElementById('idsubt3').value;
     // fechaA = document.getElementById('fechaA3').value;
     // fechaT = document.getElementById('fechaT3').value;
+    subtarea = document.getElementById('ojt-subtarea').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
+
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt +
+        '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    if (titulo1 == '' || descrip1 == '') {
+    if (titulo1 == '') {
 
         $('#vacio3').toggle('toggle');
         setTimeout(function() {
@@ -811,24 +880,7 @@ function agrIva() {
 //         "ajax": '../php/data-task.php'
 //     });
 // });
-function format(d) {
-    // `d` is the original data object for the row
-    // class="table display table-striped table-bordered" style="width:100%"
-    return '<table class="table display table-striped table-bordered" style="width:100%">' +
-        '<tr>' +
-        '<td><strong>SUBTAREA:</strong></td>' +
-        '<td>' + d.subtarea + '</td>' +
-        '<td><strong>SUB SUBTAREA:</strong></td>' +
-        '<td>' + d.subsubtarea + '</td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td><strong>DESCRIPCIÓN:<strong></td>' +
-        '<td>' + d.descripcion + '</td>' +
-        '<td><strong>DESCRIPCIÓN:<strong></td>' +
-        '<td>' + d.descripcionsub + '</td>' +
-        '</tr>' +
-        '</table>';
-}
+
 
 $(document).ready(function() {
     var table = $('#add-task').DataTable({
@@ -837,20 +889,15 @@ $(document).ready(function() {
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
         "ajax": "../php/data-task.php",
-        "columns": [{
-                "className": 'details-control',
-                "orderable": false,
-                "data": null,
-                "defaultContent": ''
+        "columns": [
+            {
+                "data": "id"
             },
             {
-                "data": "cursoPrinc"
+                "data": "categoria"
             },
             {
-                "data": "titulo"
-            },
-            {
-                "data": "descriprincipal"
+                "data": "TaskMain"
             }
 
         ],
@@ -859,21 +906,6 @@ $(document).ready(function() {
         ]
     });
 
-    // Add event listener for opening and closing details
-    $('#add-task tbody').on('click', 'td.details-control', function() {
-        var tr = $(this).closest('tr');
-        var row = table.row(tr);
-
-        if (row.child.isShown()) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        } else {
-            // Open this row
-            row.child(format(row.data())).show();
-            tr.addClass('shown');
-        }
-    });
 });
 // CONSULTA PARA VERIFICAR CUANTOS PARTICIPANTES SE NECESITAN
 function participantes(id) {
@@ -1013,4 +1045,67 @@ function notificacion() {
 
 
 }
+
+var campos_max2 = 10;
+var vojt2 = 0;
+$('#add_sub2').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojt2 < campos_max2) {
+        $('#sub2').append('<div>\
+                                <br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 2" class="form-control" type="text" name="tarea2[]">\
+                                <a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+                                </div>');
+        vojt2++;
+    }
+});
+// Remover o div anterior
+$('#sub2').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojt2--;
+});
+
+
+
+var campos_max = 20;
+var vojt = 0;
+$('#add_sub1').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojt < campos_max) {
+        $('#sub1').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+        vojt++;
+    }
+});
+// Remover o div anterior
+$('#sub1').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojt--;
+});
+
+
+
+var campos_max3 = 10;
+var vojt3 = 0;
+$('#add_sub3').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojt3 < campos_max3) {
+        $('#sub3').append('<div>\
+                                <br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 3" class="form-control" type="text" name="tarea3[]">\
+                                <a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+                                </div>');
+        vojt3++;
+    }
+});
+// Remover o div anterior
+$('#sub3').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojt3--;
+});
+
+// JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
 </script>
