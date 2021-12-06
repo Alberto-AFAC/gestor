@@ -719,11 +719,19 @@ function agrTarea() {
 
 
     if (titulo1 == '' || idcur == '') {
-
-        $('#vacio1').toggle('toggle');
-        setTimeout(function() {
-            $('#vacio1').toggle('toggle');
-        }, 2000);
+        Swal.fire({
+                        type: 'info',
+                        // title: 'AFAC INFORMA',
+                        text: 'LLENE CAMPOS VACÍOS',
+                        showConfirmButton: false,
+                        timer: 2900,
+                        customClass: 'swal-wide',
+                        showConfirmButton: false,
+                    });
+        // $('#vacio1').toggle('toggle');
+        // setTimeout(function() {
+        //     $('#vacio1').toggle('toggle');
+        // }, 2000);
 
         return;
     } else {
@@ -737,10 +745,15 @@ function agrTarea() {
 
             if (respuesta != 0) {
 
-                $('#danger1').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger1').toggle('toggle');
-                }, 2000);
+                Swal.fire({
+                        type: 'success',
+                        // title: 'AFAC INFORMA',
+                        html: `<p>SE HA AGREGADO LA TAREA <b>${titulo1}</b> CORRECTAMENTE</p>`,
+                        showConfirmButton: false,
+                        timer: 3200,
+                        customClass: 'swal-wide',
+                        showConfirmButton: false,
+                    });
 
                 //conprofesion(ActIdpro);
             } else {
