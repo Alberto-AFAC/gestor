@@ -390,10 +390,11 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                             style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
+                                                    
                                                     <th>#</th>
                                                     <th>ESPECIALIDAD OJT</th>
                                                     <th>OJT PRINCIPAL</th>
+                                                    <th>DETALLES</th>
                                                 </tr>
                                             </thead>
 
@@ -879,21 +880,7 @@ function agrIva() {
 //         "ajax": '../php/data-task.php'
 //     });
 // });
-function format(d) {
-    // `d` is the original data object for the row
-    // class="table display table-striped table-bordered" style="width:100%"
-    return '<table class="table display table-striped table-bordered" style="width:100%">' +
-    '<thead>' + 
-    '<tr>' +
-    '<th><strong>SUB 1</strong></th>' +
-    '<th><strong>ACCIONES</strong></th>' +
-    '</thead>' +
-        '<tr>' +
-        '<td>' + d.sub1 + '</td>' +
-        '<td><i class="fa fa-pencil" aria-hidden="true"></i> EDITAR</td>' +
-        '</tr>' +
-        '</table>';
-}
+
 
 $(document).ready(function() {
     var table = $('#add-task').DataTable({
@@ -903,13 +890,6 @@ $(document).ready(function() {
         },
         "ajax": "../php/data-task.php",
         "columns": [
-          
-            {
-                "className": 'details-control',
-                "orderable": false,
-                "data": null,
-                "defaultContent": ''
-            },
             {
                 "data": "id"
             },
@@ -926,21 +906,6 @@ $(document).ready(function() {
         ]
     });
 
-    // Add event listener for opening and closing details
-    $('#add-task tbody').on('click', 'td.details-control', function() {
-        var tr = $(this).closest('tr');
-        var row = table.row(tr);
-
-        if (row.child.isShown()) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        } else {
-            // Open this row
-            row.child(format(row.data())).show();
-            tr.addClass('shown');
-        }
-    });
 });
 // CONSULTA PARA VERIFICAR CUANTOS PARTICIPANTES SE NECESITAN
 function participantes(id) {
