@@ -534,7 +534,7 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                     <div class="modal-header">
 
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                        <h4 class="modal-title" id="myModalLabel">SUB 1</h4>
                     </div>
                     <div class="modal-body">
 
@@ -944,16 +944,6 @@ function agrIva() {
 
 
 $(document).ready(function() {
-    // var table = $('#add-task').DataTable({
-    //     "language": {
-    //         "searchPlaceholder": "Buscar datos...",
-    //         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    //     },
-    //     "ajax": "../php/data-task.php"
-    //     // "order": [
-    //     //     [1, 'asc']
-    //     // ]
-    // });
 
     var dataSet = [
         <?php 
@@ -1023,7 +1013,7 @@ function idsub1(id1) {
         for (i = 0; i < res.length; i++) {
             x++;
             if (obj.data[i].idtarea == id1) {
-                html += "<tr><td>" + '1.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td></td></tr>";
+                html += "<tr><td>" + '1.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td>Editar</td></tr>";
             }
         }
         html += '</table>';
@@ -1049,7 +1039,7 @@ function idsub2(id2) {
         for (i = 0; i < res.length; i++) {
             x++;
             if (obj.data[i].idtarea == id2) {
-                html += "<tr><td>" + '2.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td></td></tr>";
+                html += "<tr><td>" + '2.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td>Editar</td></tr>";
             }
         }
         html += '</table>';
@@ -1075,7 +1065,7 @@ function idsub3(id3) {
         for (i = 0; i < res.length; i++) {
             x++;
             if (obj.data[i].idtarea == id3) {
-                html += "<tr><td>" + '3.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td></td></tr>";
+                html += "<tr><td>" + '3.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td>Editar</td></tr>";
             }
         }
         html += '</table>';
