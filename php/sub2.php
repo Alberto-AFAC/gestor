@@ -3,7 +3,7 @@
 	session_start();
 	$query = "SELECT id_subojt, idtarea, ojt_subtarea, numsubt, ojts_subs.estado from ojts_subs
 	INNER JOIN ojts ON ojts.id_ojt = ojts_subs.idtarea 
-	WHERE ojts_subs.estado = 0 AND numsubt = 1";
+	WHERE ojts_subs.estado = 0 AND numsubt = 2";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

@@ -177,8 +177,9 @@ include('header.php');
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" name="tarea1[]" id="oculsub1" disabled="">
                                                     </div><span class="badge" id="add_sub1"
-                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
-                                                            aria-hidden="true"></i> AÑADIR</span>
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i
+                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                        AÑADIR</span>
                                                 </div>
 
 
@@ -188,8 +189,9 @@ include('header.php');
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" name="tarea2[]" id="oculsub2" disabled="">
                                                     </div><span class="badge" id="add_sub2"
-                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
-                                                            aria-hidden="true"></i> AÑADIR</span>
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i
+                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                        AÑADIR</span>
                                                 </div>
 
                                                 <div id="sub3" class="col-sm-3">
@@ -198,8 +200,9 @@ include('header.php');
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" name="tarea3[]" id="oculsub3" disabled="">
                                                     </div><span class="badge" id="add_sub3"
-                                                        style="cursor: pointer;background-color: #3C8DBC;"><i class="fa fa-plus-circle"
-                                                            aria-hidden="true"></i> AÑADIR</span>
+                                                        style="cursor: pointer;background-color: #3C8DBC;"><i
+                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                        AÑADIR</span>
                                                 </div>
 
                                             </div>
@@ -388,15 +391,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                         </div>
                                         <table id="add-task" class="table display table-striped table-bordered"
                                             style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    
-                                                    <th>#</th>
-                                                    <th>ESPECIALIDAD OJT</th>
-                                                    <th>OJT PRINCIPAL</th>
-                                                    <th>DETALLES</th>
-                                                </tr>
-                                            </thead>
 
                                         </table>
                                         <div class="form-group">
@@ -495,6 +489,7 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
+
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <div id="titulo"></div>
@@ -528,6 +523,72 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
             </div>
         </div>
 
+
+
+
+
+        <div class="modal fade" id="detalleSub1" tabindex="-1" role="dialog" aria-labelledby="detalleSub1"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="ojt"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        <button type="button" class="btn btn-primary">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="detalleSub2" tabindex="-1" role="dialog" aria-labelledby="detalleSub2"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">SUB 2</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="tablasub2"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        <button type="button" class="btn btn-primary">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">SUB 3</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="tablasub3"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        <button type="button" class="btn btn-primary">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
@@ -883,30 +944,147 @@ function agrIva() {
 
 
 $(document).ready(function() {
-    var table = $('#add-task').DataTable({
+    // var table = $('#add-task').DataTable({
+    //     "language": {
+    //         "searchPlaceholder": "Buscar datos...",
+    //         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    //     },
+    //     "ajax": "../php/data-task.php"
+    //     // "order": [
+    //     //     [1, 'asc']
+    //     // ]
+    // });
+
+    var dataSet = [
+        <?php 
+        $query = "	SELECT * FROM ojts
+        INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
+        WHERE ojts.estado = 0";
+        $resultado = mysqli_query($conexion, $query);
+        $contador = 0;
+    	while($data = mysqli_fetch_assoc($resultado)){
+            $id = $data["id_ojt"];
+			$contador++;
+     
+      ?>
+
+        ["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>",
+            "<?php echo  $data['ojt_principal'];?>",
+            "<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1(<?php echo $id?>)' >SUB 1</a> | <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2(<?php echo $id?>)' >SUB 2</a> | <a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3(<?php echo $id?>)' >SUB 3</a>",
+        ],
+
+        <?php  } ?>
+
+    ];
+
+    var tableOJT = $('#add-task').DataTable({
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        "ajax": "../php/data-task.php",
-        "columns": [
-            {
-                "data": "id"
+        // "order": [
+        //     [0, 'desc']
+        // ],
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: "#"
             },
             {
-                "data": "categoria"
+                title: "ESPECIALIDAD OJT"
             },
             {
-                "data": "TaskMain"
+                title: "OJT PRINCIPAL"
+            },
+            {
+                title: "DETALLES"
             }
-
-        ],
-        "order": [
-            [1, 'asc']
         ]
     });
 
 });
+
+
+function idsub1(id1) {
+
+    $.ajax({
+        url: '../php/data-task.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idtarea == id1) {
+                html += "<tr><td>" + '1.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td></td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#ojt").html(html);
+    })
+
+
+}
+
+function idsub2(id2) {
+    $.ajax({
+        url: '../php/sub2.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th>#</th><th>SUB 2</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idtarea == id2) {
+                html += "<tr><td>" + '2.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td></td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#tablasub2").html(html);
+    })
+
+
+}
+
+function idsub3(id3) {
+    $.ajax({
+        url: '../php/sub3.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th>#</th><th>SUB 3</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idtarea == id3) {
+                html += "<tr><td>" + '3.' + x + "</td><td>" + obj.data[i].ojt_subtarea + "</td><td></td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#tablasub3").html(html);
+    })
+
+
+}
+
 // CONSULTA PARA VERIFICAR CUANTOS PARTICIPANTES SE NECESITAN
 function participantes(id) {
     $.ajax({
@@ -958,7 +1136,8 @@ function responsables(idResp) {
             x++;
 
             if (obj.data[p].entrega == 1 && obj.data[p].evalua == 0) {
-                html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="' + obj.data[p].id_tare +
+                html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="' + obj.data[p]
+                    .id_tare +
                     '"><td>' + x + '</td> <td>' + nombres +
                     '</td><td><b>SI</b> <input type="checkbox" style="width:17px; height:17px;" name="evalsi" id="evalsi" value=""> <b>NO</b> <input type="checkbox" style="width:17px; height:17px;" name="evalno" id="evalno" value=""></td></tr>';
             } else if (obj.data[p].entrega == 0 && obj.data[p].evalua == 0) {
