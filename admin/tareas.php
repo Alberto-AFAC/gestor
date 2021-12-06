@@ -390,10 +390,10 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                             style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    <th></th>
                                                     <th>#</th>
                                                     <th>ESPECIALIDAD OJT</th>
                                                     <th>OJT PRINCIPAL</th>
-                                                    <th>DESCRIPCIÓN</th>
                                                 </tr>
                                             </thead>
 
@@ -883,17 +883,14 @@ function format(d) {
     // `d` is the original data object for the row
     // class="table display table-striped table-bordered" style="width:100%"
     return '<table class="table display table-striped table-bordered" style="width:100%">' +
+    '<thead>' + 
+    '<tr>' +
+    '<th><strong>SUB 1</strong></th>' +
+    '<th><strong>ACCIONES</strong></th>' +
+    '</thead>' +
         '<tr>' +
-        '<td><strong>SUBTAREA:</strong></td>' +
-        '<td>' + d.subtarea + '</td>' +
-        '<td><strong>SUB SUBTAREA:</strong></td>' +
-        '<td>' + d.subsubtarea + '</td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td><strong>DESCRIPCIÓN:<strong></td>' +
-        '<td>' + d.descripcion + '</td>' +
-        '<td><strong>DESCRIPCIÓN:<strong></td>' +
-        '<td>' + d.descripcionsub + '</td>' +
+        '<td>' + d.sub1 + '</td>' +
+        '<td><i class="fa fa-pencil" aria-hidden="true"></i> EDITAR</td>' +
         '</tr>' +
         '</table>';
 }
@@ -905,20 +902,22 @@ $(document).ready(function() {
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
         "ajax": "../php/data-task.php",
-        "columns": [{
+        "columns": [
+          
+            {
                 "className": 'details-control',
                 "orderable": false,
                 "data": null,
                 "defaultContent": ''
             },
             {
-                "data": "cursoPrinc"
+                "data": "id"
             },
             {
-                "data": "titulo"
+                "data": "categoria"
             },
             {
-                "data": "descriprincipal"
+                "data": "TaskMain"
             }
 
         ],
