@@ -19,7 +19,7 @@
             $item++;
 
 		$codigo = substr($data['codigo'], 2); 
-		$idcurinp = $data['id_curso'].'.'.$data['idinsp'];
+		$idcurinp = $data['idinsp'].'.'.$codigo;
 
 //COORDINADOR
 	if($data['idcoor']==$data['idinsp']){
@@ -57,8 +57,45 @@
             }else{
 
 //PARTICIPANTES QUE CONFIRMAN
+
+if ($data['evaluacion'] == 0){
+$evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a>";
+} 
+
+//vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
+
+//&& ((obj.data[i].reaccion) == 'SI EXISTE')
+if ((($data['evaluacion']) >= 80) && (($data['evaluacion']) <= 100)){
+
+$evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:16px;'></i></a>";	
+}
+
+//// vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
+//&& ((obj.data[i].reaccion) == 'NO EXISTE')
+// if((($data['evaluacion']) >= 80) && (($data['evaluacion']) <= 100)) {
+
+// $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
+
+// }
+
+// vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
+//&& ((obj.data[i].reaccion) =='NO EXISTE')
+// if ((($data['evaluacion']) < 80) && (($data['evaluacion']) >= 1)) {
+
+// $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
+// }
+// vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
+//&& ((obj.data[i].reaccion) == 'SI EXISTE')
+if ((($data['evaluacion']) < 80) && (($data['evaluacion']) >= 1)) {
+
+$evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
+
+}
+
+
+
                  $confirmar = "<a style= 'color:green;' >CONFIRMADO</a>";
-                 $evaluacion = "<a type='button' style='margin-left:2px' title='Generar Certificado' onclick='gencerti({$idcurinp})' class='btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:15px;'></i></a>  <a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']})' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";	
+                 $evaluacion = $evalua."<a type='button' style='margin-left:2px' title='Generar Certificado' onclick='gencerti({$idcurinp})' class='btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:15px;'></i></a>  <a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']})' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";	
             }			
 
 	 $participante = 'PARTICIPANTE';
