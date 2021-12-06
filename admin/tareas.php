@@ -177,7 +177,7 @@ include('header.php');
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" name="tarea1[]" id="oculsub1" disabled="">
                                                     </div><span class="badge" id="add_sub1"
-                                                        style="background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
                                                             aria-hidden="true"></i> AÑADIR</span>
                                                 </div>
 
@@ -188,7 +188,7 @@ include('header.php');
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" name="tarea2[]" id="oculsub2" disabled="">
                                                     </div><span class="badge" id="add_sub2"
-                                                        style="background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
                                                             aria-hidden="true"></i> AÑADIR</span>
                                                 </div>
 
@@ -198,7 +198,7 @@ include('header.php');
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" name="tarea3[]" id="oculsub3" disabled="">
                                                     </div><span class="badge" id="add_sub3"
-                                                        style="background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                                        style="cursor: pointer;background-color: #3C8DBC;"><i class="fa fa-plus-circle"
                                                             aria-hidden="true"></i> AÑADIR</span>
                                                 </div>
 
