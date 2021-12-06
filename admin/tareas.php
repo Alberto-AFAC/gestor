@@ -186,8 +186,8 @@ style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"
 <div>
 <input class="form-control"
 placeholder="Ingresa tema" type="text"
-name="tarea2[]" id="oculsub2" disabled=""></div><span id="add_sub2"
-style="color: blue;">AÑADIR</span>
+name="tarea2[]" id="oculsub2" disabled=""></div><span class="badge" id="add_sub2"
+style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
 <div id="sub3" class="col-sm-3">
@@ -195,8 +195,8 @@ style="color: blue;">AÑADIR</span>
 <div>
 <input class="form-control"
 placeholder="Ingresa tema" type="text"
-name="tarea3[]" id="oculsub3" disabled=""></div><span id="add_sub3"
-style="color: blue;">AÑADIR</span>
+name="tarea3[]" id="oculsub3" disabled=""></div><span class="badge" id="add_sub3"
+style="background-color: green;"><i class="fa fa-plus-circle" aria-hidden="true"></i> AÑADIR</span>
 </div>
 
 </div>
