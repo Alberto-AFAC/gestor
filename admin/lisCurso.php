@@ -1110,6 +1110,10 @@ gstIdlsc = d[0];
 $("#impri #codigoCurso").val(d[15]);
 $("#impri #gstIdlstc").val(d[0]);
 $("#impri #gstTitulo").val(d[1]);
+
+$("#idperonc").val(d[1]); 
+$("#avaluacion #idperon").val(d[1]);
+
 $("#Dtall #gstTitlo").val(d[1]);
 $("#Dtall #gstTipo").val(d[2]);
 $("#Dtall #gstPrfil").val(d[3]);
@@ -1184,8 +1188,7 @@ function idcurso(codigo) {
 //     currentdate.getHours() + ":" +
 //     currentdate.getMinutes();
 var id = codigo
-
-
+    
 var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
 "ajax": {
 "url": "../php/cursosProgramados.php",
