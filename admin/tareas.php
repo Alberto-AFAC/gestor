@@ -558,7 +558,7 @@ campo</p>
 
 
 
-<!-- <div class="modal fade" id="detalleSub1" tabindex="-1" role="dialog" aria-labelledby="detalleSub1"
+<div class="modal fade" id="detalleSub1" tabindex="-1" role="dialog" aria-labelledby="detalleSub1"
 aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -599,7 +599,7 @@ aria-hidden="true">
 </div>
 </div>
 </div>
- -->
+
 <div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
 aria-hidden="true">
 <div class="modal-dialog">
