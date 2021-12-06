@@ -214,7 +214,8 @@ return $per[1].' '.$per[2].',';
 //CONTEO DE CURSO
 //codigo != 'X'
 function consulta($conexion){
-$query = "SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 OR cursos.estado = 1 GROUP by cursos.codigo";
+// SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 OR cursos.estado = 1 GROUP by cursos.codigo
+$query = "SELECT COUNT(*) as prtcpnts FROM cursos WHERE cursos.estado = 0 OR cursos.estado = 1 GROUP by cursos.codigo";
 	$resultado = mysqli_query($conexion,$query);
 
 	$n=0;

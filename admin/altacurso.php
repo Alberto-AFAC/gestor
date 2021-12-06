@@ -224,10 +224,8 @@ include ("../conexion/conexion.php");
                                                     <select type="text" class="form-control" id="gstProvd"
                                                         name="gstProvd">
                                                         <option value="0">ELEGIR UNA OPCIÓN</option>
-                                                        <option value="INTERNO (AFAC)">INTERNO (AFAC)</option>
-                                                        <option value="INTERNO (NACIONAL)">INTERNO (NACIONAL)</option>
-                                                        <option value="EXTERNO (NACIONAL)">EXTERNO (NACIONAL)</option>
-                                                        <option value="EXTERNO (INTERNACIONAL)">EXTERNO (INTERNACIONAL)</option>
+                                                        <option value="INTERNO">INTERNO</option>
+                                                        <option value="EXTERNO">EXTERNO</option>
                                                     </select>
                                                 </div>
 
