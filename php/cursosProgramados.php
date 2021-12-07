@@ -70,27 +70,27 @@ if ((($data['evaluacion']) >= 80) && (($data['evaluacion']) <= 100)){
 $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:16px;'></i></a>";	
 }
 
-//// vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
-//&& ((obj.data[i].reaccion) == 'NO EXISTE')
-// if((($data['evaluacion']) >= 80) && (($data['evaluacion']) <= 100)) {
+// //// vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
+// //&& ((obj.data[i].reaccion) == 'NO EXISTE')
+// // if((($data['evaluacion']) >= 80) && (($data['evaluacion']) <= 100)) {
 
-// $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
+// // $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
 
-// }
+// // }
 
-// vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
-//&& ((obj.data[i].reaccion) =='NO EXISTE')
+// // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
+// //&& ((obj.data[i].reaccion) =='NO EXISTE')
+// // if ((($data['evaluacion']) < 80) && (($data['evaluacion']) >= 1)) {
+
+// // $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
+// // }
+// // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
+// //&& ((obj.data[i].reaccion) == 'SI EXISTE')
 // if ((($data['evaluacion']) < 80) && (($data['evaluacion']) >= 1)) {
 
 // $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
+
 // }
-// vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
-//&& ((obj.data[i].reaccion) == 'SI EXISTE')
-if ((($data['evaluacion']) < 80) && (($data['evaluacion']) >= 1)) {
-
-$evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
-
-}
 
 
 

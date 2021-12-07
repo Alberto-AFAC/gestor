@@ -267,7 +267,6 @@ curso para cancelar </p>
 </div>
 </div>
 <!-- /.modal-content -->
-
 </form>
 <!---------------------------------------ELIMINAR----------------------------------------->
 
@@ -319,8 +318,7 @@ inspector para eliminar </p>
 <!-- /.modal-content -->
 
 </form>
-<!--
-<!----- EVALUACIÓN CURSO -------------------------------------------------------------------------------------------->
+<!------------EVALUACION DE CURSOS-------------------->
 <!-- FIN EVALUACIÓN CURSO -->
 
 <!-- inicia la evaluación DEL INSTRUCTOR -->
@@ -335,8 +333,7 @@ aria-labelledby="exampleModalLabel">
 data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
 <p>
-<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE
-RESULTADOS</b></h4>
+<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE RESULTADOS</b></h4>
 </p>
 <input type="hidden" name="ogidoc" id="ogidoc">
 <label>PARTICIPANTE</label>
@@ -464,9 +461,7 @@ Ingresar la Fecha!</p>
 data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
 <p>
-<h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS
-DE
-PARTICIPANTES</h4><br>
+<h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS DE PARTICIPANTES</h4><br>
 <div class="col-sm-12">
 <div id="generacion"></div>
 </div>
@@ -773,24 +768,18 @@ Todos los derechos Reservados DDE
 .
 </footer>
 
-<!-- Control Sidebar -->
+<!-- 
 <aside class="control-sidebar control-sidebar-dark">
-<!-- Create the tabs -->
 <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-<!--<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>-->
+
 </ul>
-<!-- Tab panes -->
 <div class="tab-content">
-<!-- Home tab content -->
 <div class="tab-pane" id="control-sidebar-home-tab">
 <h3 class="control-sidebar-heading">Recent Activity</h3>
 <ul class="control-sidebar-menu">
 <li>
 <a href="javascript:void(0)">
 <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-
 </a>
 </li>
 <li>
@@ -827,8 +816,6 @@ Todos los derechos Reservados DDE
 </a>
 </li>
 </ul>
-<!-- /.control-sidebar-menu -->
-
 <h3 class="control-sidebar-heading">Tasks Progress</h3>
 <ul class="control-sidebar-menu">
 <li>
@@ -880,14 +867,8 @@ Back End Framework
 </a>
 </li>
 </ul>
-<!-- /.control-sidebar-menu -->
-
 </div>
-<!-- /.tab-pane -->
-<!-- Stats tab content -->
 <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-<!-- /.tab-pane -->
-<!-- Settings tab content -->
 <div class="tab-pane" id="control-sidebar-settings-tab">
 <form method="post">
 <h3 class="control-sidebar-heading">General Settings</h3>
@@ -902,8 +883,6 @@ Report panel usage
 Some information about this general settings option
 </p>
 </div>
-<!-- /.form-group -->
-
 <div class="form-group">
 <label class="control-sidebar-subheading">
 Allow mail redirect
@@ -914,7 +893,6 @@ Allow mail redirect
 Other sets of options are available
 </p>
 </div>
-<!-- /.form-group -->
 
 <div class="form-group">
 <label class="control-sidebar-subheading">
@@ -926,7 +904,6 @@ Expose author name in posts
 Allow the user to show his name in blog posts
 </p>
 </div>
-<!-- /.form-group -->
 
 <h3 class="control-sidebar-heading">Chat Settings</h3>
 
@@ -936,7 +913,6 @@ Show me as online
 <input type="checkbox" class="pull-right" checked>
 </label>
 </div>
-<!-- /.form-group -->
 
 <div class="form-group">
 <label class="control-sidebar-subheading">
@@ -944,7 +920,6 @@ Turn off notifications
 <input type="checkbox" class="pull-right">
 </label>
 </div>
-<!-- /.form-group -->
 
 <div class="form-group">
 <label class="control-sidebar-subheading">
@@ -952,12 +927,10 @@ Delete chat history
 <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
 </label>
 </div>
-<!-- /.form-group -->
 </form>
 </div>
-<!-- /.tab-pane -->
 </div>
-</aside>
+</aside> -->
 <!-- /.control-sidebar -->
 <!-- Add the sidebar's background. This div must be placed
 immediately after the control sidebar -->
