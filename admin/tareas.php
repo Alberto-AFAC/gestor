@@ -442,192 +442,251 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
 
 
 
-                                        </div>
-                                        <div class="form-group">
+</div>
+<div class="form-group">
 
-                                        </div>
+</div>
 
-                                        <div class="form-group" id="butons" style="display: none;"><br>
-                                            <div class="col-sm-offset-0 col-sm-2">
-                                                <button type="button" id="button"
-                                                    title="Dar click para guardar los cambios"
-                                                    style="background-color:#052E64; border-radius:10px;"
-                                                    class="btn btn-block btn-primary"
-                                                    onclick="actPuesto();">ACTUALIZAR</button>
-                                            </div>
-                                            <b>
-                                                <p class="alert alert-danger text-center padding error" id="danger1">
-                                                    Error al actualizar
-                                                    datos </p>
-                                            </b>
-                                            <b>
-                                                <p class="alert alert-success text-center padding exito" id="succe1">¡Se
-                                                    actualizaron los
-                                                    datos con éxito!</p>
-                                            </b>
+<div class="form-group" id="butons" style="display: none;"><br>
+<div class="col-sm-offset-0 col-sm-2">
+<button type="button" id="button"
+title="Dar click para guardar los cambios"
+style="background-color:#052E64; border-radius:10px;"
+class="btn btn-block btn-primary"
+onclick="actPuesto();">ACTUALIZAR</button>
+</div>
+<b>
+<p class="alert alert-danger text-center padding error" id="danger1">
+Error al actualizar
+datos </p>
+</b>
+<b>
+<p class="alert alert-success text-center padding exito" id="succe1">¡Se
+actualizaron los
+datos con éxito!</p>
+</b>
 
-                                            <b>
-                                                <p class="alert alert-warning text-center padding aviso" id="empty1">Es
-                                                    necesario agregar
-                                                    los datos que se solicitan </p>
-                                            </b>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!----------------------------------------------------------------------------->
-                                <div class="tab-pane" id="estudios">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-sm-4">
-                                                <H4>
-                                                    <label>ULTIMO GRADO DE ESTUDIOS </label>
-                                                </H4>
-                                            </div>
-                                        </div>
-                                        <div id="studios"></div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane" id="experiencia">
-                                    <form class="form-horizontal">
-                                        <div id="profsions"></div>
-                                    </form>
-                                </div>
+<b>
+<p class="alert alert-warning text-center padding aviso" id="empty1">Es
+necesario agregar
+los datos que se solicitan </p>
+</b>
+</div>
+</form>
+</div>
 
 
-                            </div>
-
-                        </div>
-                    </div>
+<!-------------TODAS LAS TAREAS------------->
+<div id="todasTareas" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="todasTareas" aria-hidden="true">
 
 
 
-                    <!-- /.col -->
+<div class="modal-header">
 
-                    <!-- <form class="form-horizontal"> -->
-                    <!-- <div class="form-group">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">OJT PRINCIPAL</h4>
+</div>
+<div class="modal-body">
+
+
+
+<form id="Pusto" class="form-horizontal" action="" method="POST">
+<input type="hidden" name="pstIdper" id="pstIdper">
+<div class="form-group">
+<div class="col-sm-3">
+<div class="input-group">
+<!-- <H4><i class="fa   fa-suitcase"></i>
+<label> ------- </label>
+
+</H4> -->
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<table id="add-ojt" class="table display table-striped table-bordered"
+style="width:100%">
+
+</table>
+
+
+
+</form>
+
+<!-- <div id="tablasub3"></div>
+ -->
+     
+
+ </div>
+
+
+
+
+</div>
+
+<!----------------------------------------------------------------------------->
+<div class="tab-pane" id="estudios">
+<form class="form-horizontal">
+<div class="form-group">
+<div class="col-sm-4">
+<H4>
+<label>ULTIMO GRADO DE ESTUDIOS </label>
+</H4>
+</div>
+</div>
+<div id="studios"></div>
+</form>
+</div>
+<div class="tab-pane" id="experiencia">
+<form class="form-horizontal">
+<div id="profsions"></div>
+</form>
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- /.col -->
+
+<!-- <form class="form-horizontal"> -->
+<!-- <div class="form-group">
 <div class="col-sm-4">
 <label class="label2">RESPONSABLES DE LA TAREA</label>
 </div>                     
 </div> -->
-                    <!-- </form> -->
+<!-- </form> -->
 
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
+<!-- /.col -->
+</div>
+<!-- /.row -->
 
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- MODAL UPLOAD DATAS -->
-        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
+</section>
+<!-- /.content -->
+</div>
+<!-- MODAL UPLOAD DATAS -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
 
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <div id="titulo"></div>
-                        </h4>
-                    </div>
-                    <input type="hidden" name="idRtarea" id="idRtarea">
-                    <div id="rspnsbls"></div>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">
+<div id="titulo"></div>
+</h4>
+</div>
+<input type="hidden" name="idRtarea" id="idRtarea">
+<div id="rspnsbls"></div>
 
-                    <div class="modal-footer">
-                        <div class="form-group">
-                            <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary" onclick="notificacion()">EVALUAR</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<div class="modal-footer">
+<div class="form-group">
+<div class="col-sm-4">
+<button type="button" class="btn btn-primary" onclick="notificacion()">EVALUAR</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
 
-                            </div>
-                        </div>
-                        <b>
-                            <p class="alert alert-success text-center padding exito" id="succe">¡Su evaluación se
-                                realizó con éxito !</p>
-                        </b>
-                        <b>
-                            <p class="alert alert-warning text-center padding aviso" id="aviso">Es necesario llenar
-                                campo</p>
-                        </b>
-                    </div>
-
-
-
-
-                </div>
-            </div>
-        </div>
+</div>
+</div>
+<b>
+<p class="alert alert-success text-center padding exito" id="succe">¡Su evaluación se
+realizó con éxito !</p>
+</b>
+<b>
+<p class="alert alert-warning text-center padding aviso" id="aviso">Es necesario llenar
+campo</p>
+</b>
+</div>
 
 
 
 
+</div>
+</div>
+</div>
 
-        <div class="modal fade" id="detalleSub1" tabindex="-1" role="dialog" aria-labelledby="detalleSub1"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
 
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">SUB 1</h4>
-                    </div>
-                    <div class="modal-body">
 
-                        <div id="ojt"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                        <button type="button" class="btn btn-primary">GUARDAR</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal fade" id="detalleSub2" tabindex="-1" role="dialog" aria-labelledby="detalleSub2"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
 
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">SUB 2</h4>
-                    </div>
-                    <div class="modal-body">
+<div class="modal fade" id="detalleSub1" tabindex="-1" role="dialog" aria-labelledby="detalleSub1"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
 
-                        <div id="tablasub2"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                        <button type="button" class="btn btn-primary">GUARDAR</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">SUB 1</h4>
+</div>
+<div class="modal-body">
 
-        <div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
+<div id="ojt"></div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
 
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">SUB 3</h4>
-                    </div>
-                    <div class="modal-body">
+<div class="modal fade" id="detalleSub2" tabindex="-1" role="dialog" aria-labelledby="detalleSub2"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
 
-                        <div id="tablasub3"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                        <button type="button" class="btn btn-primary">GUARDAR</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> <?php 
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">SUB 2</h4>
+</div>
+<div class="modal-body">
+
+<div id="tablasub2"></div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">SUB 3</h4>
+</div>
+<div class="modal-body">
+
+<div id="tablasub3"></div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+<div class="pull-right hidden-xs">
+<b>Version</b> <?php 
 $query ="SELECT 
 *
 FROM
@@ -1018,79 +1077,87 @@ function agrIva() {
 
 $(document).ready(function() {
 
-    var dataSet = [
-        <?php 
-$query = "	SELECT * FROM ojts
+var dataSet = [
+<?php 
+$query = "SELECT *, count(id_spc) AS ttl FROM ojts
 INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
-WHERE ojts.estado = 0";
+WHERE ojts.estado = 0 GROUP BY id_spc";
 $resultado = mysqli_query($conexion, $query);
 $contador = 0;
 while($data = mysqli_fetch_assoc($resultado)){
 $id = $data["id_ojt"];
+$idspc = $data['id_spc'];
 $contador++;
 
 // if($data["ojt_subtarea"]==''){
 
 // }
 
-
-
+$query2 = "SELECT * FROM ojts INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
+WHERE ojts.estado = 0 AND id_spc = $idspc"; 
+$resultados = mysqli_query($conexion, $query2);
 ?>
 
-        ["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>",
-            "<?php echo  $data['ojt_principal'];?>",
-            "<?php 
-
-
-$queri = "SELECT * FROM ojts_subs WHERE idtarea = $id";
-$resultados = mysqli_query($conexion, $queri);
+["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>","<?php 
+$ttl = 1;
 while($datas = mysqli_fetch_assoc($resultados)){
-
-if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 1){
-echo "<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1($id)' >SUB 1</a>";
-}else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 2){
-echo " || <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2($id)' >SUB 2</a>";
-}else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 3){
-echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)' >SUB 3</a>";
+$ttls = $ttl++;    
+echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)'>TAREA $ttls | </a>";
 }
+
+?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS</a>"?>",
+"<?php 
+
+
+// $queri = "SELECT * FROM ojts_subs WHERE idtarea = $id";
+// $resultados = mysqli_query($conexion, $queri);
+// while($datas = mysqli_fetch_assoc($resultados)){
+
+// if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 1){
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1($id)' >SUB 1</a>";
+// }else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 2){
+// echo " || <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2($id)' >SUB 2</a>";
+// }else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 3){
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)' >SUB 3</a>";
+// }
 
 // |  | 
 
 
-}
+//}
 
 ?>",
-        ],
+],
 
-        <?php  } ?>
+<?php  } ?>
 
-    ];
+];
 
-    var tableOJT = $('#add-task').DataTable({
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        // "order": [
-        //     [0, 'desc']
-        // ],
-        orderCellsTop: true,
-        fixedHeader: true,
-        data: dataSet,
-        columns: [{
-                title: "#"
-            },
-            {
-                title: "ESPECIALIDAD OJT"
-            },
-            {
-                title: "OJT PRINCIPAL"
-            },
-            {
-                title: "DETALLES"
-            }
-        ]
-    });
+var tableOJT = $('#add-task').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+// "order": [
+//     [0, 'desc']
+// ],
+orderCellsTop: true,
+fixedHeader: true,
+data: dataSet,
+columns: [{
+title: "#"
+},
+{
+title: "ESPECIALIDAD OJT"
+},
+{
+title: "OJTS PRINCIPALES"
+},
+{
+title: "DETALLES"
+}
+]
+});
 
 });
 
@@ -1379,4 +1446,77 @@ $('#sub3').on("click", ".remover_campo", function(e) {
 });
 
 // JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
+
+//TODAS LAS TAREAS
+
+function todasT(t){
+
+
+    alert(t);
+
+// var Var_JavaScript = t;        
+
+// alert(Var_JavaScript);
+
+// <?php
+//         $var_PHP = "<script> document.writeln(Var_JavaScript); </script>"; // igualar el valor de la variable JavaScript a PHP 
+
+//         echo $var_PHP;
+// ?>
+
+
+
+    $("#todasTareas").show();
+    $("#puesto").hide();
+
+var dataSet = [
+<?php 
+$query = "SELECT * FROM ojts
+WHERE  id_spc = 3 AND estado = 0";
+$resultado = mysqli_query($conexion, $query);
+$contador = 0;
+while($data = mysqli_fetch_assoc($resultado)){
+$id = $data["id_ojt"];
+$idspc = $data['id_spc'];
+$contador++;
+?>
+
+["<?php echo  $contador;?>", "<?php echo  $data['ojt_principal']?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS</a>"?>",
+"<?php 
+
+?>",
+],
+
+<?php  } ?>
+
+];
+
+var tableOJT = $('#add-ojt').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+// "order": [
+//     [0, 'desc']
+// ],
+orderCellsTop: true,
+fixedHeader: true,
+data: dataSet,
+columns: [{
+title: "#"
+},
+{
+title: "OJT PRINCIPALE"
+},
+{
+title: "DETALLES"
+}
+]
+});
+
+
+
+}
+
 </script>
+
