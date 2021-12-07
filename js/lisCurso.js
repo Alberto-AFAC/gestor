@@ -51,18 +51,7 @@ function vergenercerf() {
         });
     }
 }
-const Buscares = () => {
-    const trs = document.querySelectorAll('#reacc tr:not(.header)');
-    const filter = document.querySelector('#buscador').value;
-    const regex = new RegExp(filter, 'i');
-    const isFoundInTds = (td) => regex.test(td.innerHTML);
-    const isFound = (childrenArr) => childrenArr.some(isFoundInTds);
-    const setTrStyleDisplay = ({ style, children }) => {
-        style.display = isFound([...children]) ? '' : 'none';
-    };
 
-    trs.forEach(setTrStyleDisplay);
-};
 
 function imprimir() {
 
@@ -451,7 +440,7 @@ function cambiartexto() {
 function gencerti(cursos) {
     // var cer = cursos.split("*");
 
-        //alert(cursos);
+    //alert(cursos);
 
     $.ajax({
         url: '../php/conCurcons.php',
@@ -461,20 +450,20 @@ function gencerti(cursos) {
         var res = obj.data;
 
         for (K = 0; K < res.length; K++) {
-            
-            codigoC = obj.data[K].id_codigocurso.substr(2);  
-                         
-            if (obj.data[K].gstIdper+'.'+codigoC == cursos) {
+
+            codigoC = obj.data[K].id_codigocurso.substr(2);
+
+            if (obj.data[K].gstIdper + '.' + codigoC == cursos) {
                 //   alert(cer[22]);
- 
 
-    // //alert(cer[22]);
-    $("#evaNombrc").val(obj.data[K].gstNombr+ " " + obj.data[K].gstApell); //NOMBRE COMPLETO
-    //$("#idperonc").val(obj.data[K].gstTitlo); //NOMBRE DEL CURSO
-    $("#id_cursoc").val(obj.data[K].codigo); //ID DEL CURSO
-    // $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
 
-  //alert(obj.data[K].gstTitlo);
+                // //alert(cer[22]);
+                $("#evaNombrc").val(obj.data[K].gstNombr + " " + obj.data[K].gstApell); //NOMBRE COMPLETO
+                //$("#idperonc").val(obj.data[K].gstTitlo); //NOMBRE DEL CURSO
+                $("#id_cursoc").val(obj.data[K].codigo); //ID DEL CURSO
+                // $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
+
+                //alert(obj.data[K].gstTitlo);
 
                 if (((obj.data[K].evaluacion) >= 80) && ((obj.data[K].evaluacion) <= 100)) {
                     document.getElementById("che6").className = "fa fa-check";
@@ -560,7 +549,7 @@ function gencerti(cursos) {
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
 
-   
+
 
     $.ajax({
         url: '../php/conCurcons.php',
@@ -570,53 +559,53 @@ function evaluarins(cursos) {
         var res = obj.data;
 
         for (C = 0; C < res.length; C++) {
-            
-            codigoC = obj.data[C].id_codigocurso.substr(2);  
-                         
-            if (obj.data[C].gstIdper+'.'+codigoC == cursos) {
+
+            codigoC = obj.data[C].id_codigocurso.substr(2);
+
+            if (obj.data[C].gstIdper + '.' + codigoC == cursos) {
                 //   alert(cer[22]);
                 // alert(obj.data[C].gstNombr);
 
-    // var d = cursos.split("*");
-    //alert(d[23]);
-    $("#avaluacion #evaNombr").val(obj.data[C].gstNombr+ " " + obj.data[C].gstApell); //NOMBRE COMPLETO
-    //$("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
-    $("#avaluacion #id_curso").val(obj.data[C].id_curso); //ID DEL CURSO
-    $("#avaluacion #validoev").val(obj.data[C].evaluacion); //EVALUACIÓN
-    $("#avaluacion #idinsev").val(obj.data[C].idinsp); //EVALUACIÓN
+                // var d = cursos.split("*");
+                //alert(d[23]);
+                $("#avaluacion #evaNombr").val(obj.data[C].gstNombr + " " + obj.data[C].gstApell); //NOMBRE COMPLETO
+                //$("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
+                $("#avaluacion #id_curso").val(obj.data[C].id_curso); //ID DEL CURSO
+                $("#avaluacion #validoev").val(obj.data[C].evaluacion); //EVALUACIÓN
+                $("#avaluacion #idinsev").val(obj.data[C].idinsp); //EVALUACIÓN
 
-    $("#avaluacion #ogidoc").val(obj.data[C].codigo); //EVALUACIÓN
+                $("#avaluacion #ogidoc").val(obj.data[C].codigo); //EVALUACIÓN
 
-    valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-    costOfTicket = document.getElementById("NOE");
-    selectedStand = document.getElementById("SIe");
-    pendiente = document.getElementById("PE");
-    //  statusev = document.getElementById("resuleval"); //resultado texto
-    //if(valor2 >= 80){ //APROBADO
-    if (((valor2) >= 80) && ((valor2) <= 100)) {
-        selectedStand.style.display = '';
-        costOfTicket.style.display = 'none';
-        pendiente.style.display = 'none';
-        //     statusev.value = "APROBADO"
-    }
+                valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
+                costOfTicket = document.getElementById("NOE");
+                selectedStand = document.getElementById("SIe");
+                pendiente = document.getElementById("PE");
+                //  statusev = document.getElementById("resuleval"); //resultado texto
+                //if(valor2 >= 80){ //APROBADO
+                if (((valor2) >= 80) && ((valor2) <= 100)) {
+                    selectedStand.style.display = '';
+                    costOfTicket.style.display = 'none';
+                    pendiente.style.display = 'none';
+                    //     statusev.value = "APROBADO"
+                }
 
-    if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
-        costOfTicket.style.display = '';
-        selectedStand.style.display = 'none';
-        pendiente.style.display = 'none';
-        //  statusev.value = "REPROBADO"
-    }
-    if (valor2 <= 0) { //PENDIENTE 
-        pendiente.style.display = '';
-        costOfTicket.style.display = 'none';
-        selectedStand.style.display = 'none';
-        //    statusev.value = "PENDIENTE"
-    }
+                if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
+                    costOfTicket.style.display = '';
+                    selectedStand.style.display = 'none';
+                    pendiente.style.display = 'none';
+                    //  statusev.value = "REPROBADO"
+                }
+                if (valor2 <= 0) { //PENDIENTE 
+                    pendiente.style.display = '';
+                    costOfTicket.style.display = 'none';
+                    selectedStand.style.display = 'none';
+                    //    statusev.value = "PENDIENTE"
+                }
 
             }
         }
 
-})
+    })
 }
 
 
@@ -624,12 +613,12 @@ function evaluarins(cursos) {
 function inspeval(cursos) {
 
 
-    curso = 'FO'+cursos;
+    curso = 'FO' + cursos;
 
     // var d = cursos.split("*");
     // $("#cursoc").html(d[1]);
     // $("#folioc").html(d[21]);
-//        html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
+    //        html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
 
     $.ajax({
         url: '../php/conProgra.php',
@@ -729,7 +718,7 @@ function generacion(cursos) { //abre el modal de generacion de constancias
     // $("#cursoc").html(d[1]);
     // $("#folioc").html(d[21]);
 
-    curso = 'FO'+cursos;
+    curso = 'FO' + cursos;
 
     $.ajax({
             url: '../php/conInsp.php',
