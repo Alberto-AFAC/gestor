@@ -1025,11 +1025,38 @@ while($data = mysqli_fetch_assoc($resultado)){
 $id = $data["id_ojt"];
 $contador++;
 
+// if($data["ojt_subtarea"]==''){
+
+// }
+
+
+
 ?>
 
 ["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>",
 "<?php echo  $data['ojt_principal'];?>",
-"<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1(<?php echo $id?>)' >SUB 1</a> | <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2(<?php echo $id?>)' >SUB 2</a> | <a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3(<?php echo $id?>)' >SUB 3</a>",
+"<?php 
+
+
+$queri = "SELECT * FROM ojts_subs WHERE idtarea = $id";
+$resultados = mysqli_query($conexion, $queri);
+while($datas = mysqli_fetch_assoc($resultados)){
+
+if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 1){
+echo "<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1($id)' >SUB 1</a>";
+}else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 2){
+echo " | <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2($id)' >SUB 2</a>";
+} 
+if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 3){
+echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)' >SUB 3</a>";
+}
+
+// |  | 
+
+
+}
+
+?>",
 ],
 
 <?php  } ?>
