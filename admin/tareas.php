@@ -481,51 +481,18 @@ los datos que se solicitan </p>
 
 
 
-<div class="modal-header">
+
 
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 <h4 class="modal-title" id="myModalLabel">OJT PRINCIPAL</h4>
-</div>
+
 <div class="modal-body">
 
-
-
-<form id="Pusto" class="form-horizontal" action="" method="POST">
-<input type="hidden" name="pstIdper" id="pstIdper">
-<div class="form-group">
-<div class="col-sm-3">
-<div class="input-group">
-<!-- <H4><i class="fa   fa-suitcase"></i>
-<label> ------- </label>
-
-</H4> -->
-
-
-
-</div>
-
-</div>
-
-</div>
-
-<table id="add-ojt" class="table display table-striped table-bordered"
-style="width:100%">
-
-</table>
-
-
-
-</form>
+<div id="add_ojts"></div>
 
 <!-- <div id="tablasub3"></div>
- -->
-     
-
+ --> 
  </div>
-
-
-
-
 </div>
 
 <!----------------------------------------------------------------------------->
@@ -681,6 +648,7 @@ aria-hidden="true">
 
 
 
+    
 
 
 <!-- /.content-wrapper -->
@@ -1452,68 +1420,81 @@ $('#sub3').on("click", ".remover_campo", function(e) {
 function todasT(t){
 
 
-    alert(t);
-
-// var Var_JavaScript = t;        
-
-// alert(Var_JavaScript);
-
-// <?php
-//         $var_PHP = "<script> document.writeln(Var_JavaScript); </script>"; // igualar el valor de la variable JavaScript a PHP 
-
-//         echo $var_PHP;
-// ?>
-
-
 
     $("#todasTareas").show();
     $("#puesto").hide();
 
-var dataSet = [
-<?php 
-$query = "SELECT * FROM ojts
-WHERE  id_spc = 3 AND estado = 0";
-$resultado = mysqli_query($conexion, $query);
-$contador = 0;
-while($data = mysqli_fetch_assoc($resultado)){
-$id = $data["id_ojt"];
-$idspc = $data['id_spc'];
-$contador++;
-?>
 
-["<?php echo  $contador;?>", "<?php echo  $data['ojt_principal']?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS</a>"?>",
-"<?php 
+  
 
-?>",
-],
+        $.ajax({
+        url: '../php/ojt_tareas.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
 
-<?php  } ?>
+        //AQUI03
 
-];
+        var n = 0;
 
-var tableOJT = $('#add-ojt').DataTable({
-"language": {
-"searchPlaceholder": "Buscar datos...",
-"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-},
-// "order": [
-//     [0, 'desc']
-// ],
-orderCellsTop: true,
-fixedHeader: true,
-data: dataSet,
-columns: [{
-title: "#"
-},
-{
-title: "OJT PRINCIPALE"
-},
-{
-title: "DETALLES"
-}
-]
-});
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row">';
 
+html +='<div class="col-md-6"> <div class="box"> <div class="box-header with-border"> <h3 class="box-title">OJT PRINCIPAL</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>';
+
+        for (H = 0; H < res.length; H++) {
+
+            if (obj.data[H].id_spc == t) {
+             var idojt = obj.data[H].id_ojt;
+                n++;
+
+
+
+
+
+
+          
+
+    
+    //     $.ajax({
+    //     url: '../php/data-task.php',
+    //     type: 'POST'
+    // }).done(function(resp) {
+    //     obj = JSON.parse(resp);
+    //     var res = obj.data;
+
+
+    //       for (SUB = 0; SUB < res.length; SUB++) {
+
+
+    //         if (obj.data[SUB].idtarea == idojt) {
+
+    //            var subOjt = obj.data[SUB].ojt_subtarea;
+    // if(obj.data[H].numsubt==1){
+    // html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>1</td></tr><tr></tr>';  
+    //  }else if(obj.data[H].numsubt==2){
+    // html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>2</td></tr><tr></tr>';          
+    //  }else if(obj.data[H].numsubt==3){
+    html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>3</td></tr><tr></tr>';          
+     // }   
+  //       }
+
+  //   }
+
+
+  // }) 
+
+
+
+
+            } 
+
+        }
+html += '</table></div></div></div>';
+       // html += '</div></div>';
+        $("#add_ojts").html(html);
+      
+    })
 
 
 }
