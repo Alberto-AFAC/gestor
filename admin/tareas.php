@@ -470,6 +470,60 @@ los datos que se solicitan </p>
 </div>
 </form>
 </div>
+
+
+<!-------------TODAS LAS TAREAS------------->
+<div id="todasTareas" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="todasTareas" aria-hidden="true">
+
+
+
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">OJT PRINCIPAL</h4>
+</div>
+<div class="modal-body">
+
+
+
+<form id="Pusto" class="form-horizontal" action="" method="POST">
+<input type="hidden" name="pstIdper" id="pstIdper">
+<div class="form-group">
+<div class="col-sm-3">
+<div class="input-group">
+<!-- <H4><i class="fa   fa-suitcase"></i>
+<label> ------- </label>
+
+</H4> -->
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<table id="add-ojt" class="table display table-striped table-bordered"
+style="width:100%">
+
+</table>
+
+
+
+</form>
+
+<!-- <div id="tablasub3"></div>
+ -->
+     
+
+ </div>
+
+
+
+
+</div>
+
 <!----------------------------------------------------------------------------->
 <div class="tab-pane" id="estudios">
 <form class="form-horizontal">
@@ -620,6 +674,11 @@ aria-hidden="true">
 </div>
 </div>
 </div>
+
+
+
+
+
 <!-- /.content-wrapper -->
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
@@ -1016,44 +1075,52 @@ $(document).ready(function() {
 
 var dataSet = [
 <?php 
-$query = "	SELECT * FROM ojts
+$query = "SELECT *, count(id_spc) AS ttl FROM ojts
 INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
-WHERE ojts.estado = 0";
+WHERE ojts.estado = 0 GROUP BY id_spc";
 $resultado = mysqli_query($conexion, $query);
 $contador = 0;
 while($data = mysqli_fetch_assoc($resultado)){
 $id = $data["id_ojt"];
+$idspc = $data['id_spc'];
 $contador++;
 
 // if($data["ojt_subtarea"]==''){
 
 // }
 
-
-
+$query2 = "SELECT * FROM ojts INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
+WHERE ojts.estado = 0 AND id_spc = $idspc"; 
+$resultados = mysqli_query($conexion, $query2);
 ?>
 
-["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>",
-"<?php echo  $data['ojt_principal'];?>",
+["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>","<?php 
+$ttl = 1;
+while($datas = mysqli_fetch_assoc($resultados)){
+$ttls = $ttl++;    
+echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)'>TAREA $ttls | </a>";
+}
+
+?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS</a>"?>",
 "<?php 
 
 
-$queri = "SELECT * FROM ojts_subs WHERE idtarea = $id";
-$resultados = mysqli_query($conexion, $queri);
-while($datas = mysqli_fetch_assoc($resultados)){
+// $queri = "SELECT * FROM ojts_subs WHERE idtarea = $id";
+// $resultados = mysqli_query($conexion, $queri);
+// while($datas = mysqli_fetch_assoc($resultados)){
 
-if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 1){
-echo "<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1($id)' >SUB 1</a>";
-}else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 2){
-echo " || <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2($id)' >SUB 2</a>";
-}else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 3){
-echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)' >SUB 3</a>";
-}
+// if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 1){
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1($id)' >SUB 1</a>";
+// }else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 2){
+// echo " || <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2($id)' >SUB 2</a>";
+// }else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 3){
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)' >SUB 3</a>";
+// }
 
 // |  | 
 
 
-}
+//}
 
 ?>",
 ],
@@ -1080,7 +1147,7 @@ title: "#"
 title: "ESPECIALIDAD OJT"
 },
 {
-title: "OJT PRINCIPAL"
+title: "OJTS PRINCIPALES"
 },
 {
 title: "DETALLES"
@@ -1372,4 +1439,77 @@ vojt3--;
 });
 
 // JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
+
+//TODAS LAS TAREAS
+
+function todasT(t){
+
+
+    alert(t);
+
+// var Var_JavaScript = t;        
+
+// alert(Var_JavaScript);
+
+// <?php
+//         $var_PHP = "<script> document.writeln(Var_JavaScript); </script>"; // igualar el valor de la variable JavaScript a PHP 
+
+//         echo $var_PHP;
+// ?>
+
+
+
+    $("#todasTareas").show();
+    $("#puesto").hide();
+
+var dataSet = [
+<?php 
+$query = "SELECT * FROM ojts
+WHERE  id_spc = 3 AND estado = 0";
+$resultado = mysqli_query($conexion, $query);
+$contador = 0;
+while($data = mysqli_fetch_assoc($resultado)){
+$id = $data["id_ojt"];
+$idspc = $data['id_spc'];
+$contador++;
+?>
+
+["<?php echo  $contador;?>", "<?php echo  $data['ojt_principal']?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS</a>"?>",
+"<?php 
+
+?>",
+],
+
+<?php  } ?>
+
+];
+
+var tableOJT = $('#add-ojt').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+// "order": [
+//     [0, 'desc']
+// ],
+orderCellsTop: true,
+fixedHeader: true,
+data: dataSet,
+columns: [{
+title: "#"
+},
+{
+title: "OJT PRINCIPALE"
+},
+{
+title: "DETALLES"
+}
+]
+});
+
+
+
+}
+
 </script>
+
