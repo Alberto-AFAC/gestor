@@ -13,6 +13,7 @@ if($opcion === 'tareAgr'){
 
   $idcur = $_POST['idcur']; 
   $titulo1 = $_POST['titulo1'];  
+  $dateR = $_POST['dateR'];  
   // $descrip1 = $_POST['descrip1'];
   $idsubt = $_POST['idsubt'];
 //   $fechaA = $_POST['fechaA'];
@@ -26,7 +27,7 @@ if($opcion === 'tareAgr'){
 
 //	accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion);
 
-	if(Tareas($idcur, $titulo1, $idsubt, $conexion)){
+	if(Tareas($idcur, $titulo1, $idsubt, $dateR, $conexion)){
 		//$realizo = 'ASIGNO AL USUARIO';
 		//historial($id,$realizo,$gstIdper,$conexion);
 		$valor = conIDtar($conexion);
@@ -183,12 +184,12 @@ $resultado= mysqli_query($conexion,$query);
 // }
 
 
-function Tareas($idcur, $titulo1, $idsubt, $conexion){
+function Tareas($idcur, $titulo1, $idsubt, $dateR,$conexion){
 
 	// ini_set('date.timezone','America/Mexico_City');
 	// $factual = date('Y').'/'.date('m').'/'.date('d');
 
-	$query="INSERT INTO ojts VALUES(0,'$idcur','$titulo1','$idsubt',0);";
+	$query="INSERT INTO ojts VALUES(0,'$idcur','$titulo1','$idsubt','$dateR',0);";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
