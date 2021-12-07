@@ -364,6 +364,7 @@ function agrProfsn() {
 
 function inspector(gstIdper) {
 
+
     var d = gstIdper.split("*");
 
     gstIdper = d[0];
