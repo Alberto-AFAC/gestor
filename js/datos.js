@@ -1577,7 +1577,7 @@ function inspector(gstIdper) {
                 }
 
                 $.ajax({
-                    url: '../php/conDatos.php',
+                    url: '../php/conDatosPersonal.php',
                     type: 'POST'
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
