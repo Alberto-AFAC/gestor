@@ -67,7 +67,7 @@ if($res = mysqli_fetch_array($resul)){
 $codigor = $res['id_curso'];
 
 if ($f3>$f2  && $data["proceso"] == "PENDIENTE" AND $codigor = $codigo) {
-$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>PROGRAMACIÓN VENCIDA</span>";
 $proc = 'VENCIDO';
 }
 elseif($data["proceso"] == 'PENDIENTE' AND $codigor = $codigo){ //PENDIENTE
@@ -86,7 +86,7 @@ $proc = 'EN PROCESO';
 }else{
 
 if ($f3>$f2 && $data["proceso"] == "PENDIENTE") {
-	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
+	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>PROGRAMACIÓN VENCIDA</span>";
 	$proc = 'VENCIDO';
 }
 elseif($data["proceso"] == 'PENDIENTE'){ //PENDIENTE
