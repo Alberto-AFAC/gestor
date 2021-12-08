@@ -1,15 +1,14 @@
 <?php
 include ('../conexion/conexion.php');
-    $id_espec=$_POST['id_espec'];
-    $nivel=$_POST['nivel'];
-    $tarea=$_POST['tarea'];
-    $subtarea=$_POST['subtarea'];
-    $subsubtarea=$_POST['subsubtarea'];
-    // $fechaInicio=$_POST['fechaInicio'];
-    // $fechaTermino=$_POST['fechaTermino'];
+    $isSpc=$_POST['isSpc'];
+    $idInspct=$_POST['idInspct'];
+    $fechaInicio=$_POST['fechaInicio'];
+    $fechaTermino=$_POST['fechaTermino'];
+    $coordinador=$_POST['coordinador'];
+    $instructor=$_POST['instructor'];
     
 
-	$sql="INSERT into ojt (id_espec,nivel, tarea, subtarea, subsubtarea) values ('$id_espec','$nivel', '$tarea', '$subtarea', '$subsubtarea')";
+	$sql="INSERT into prog_ojt (id_espc, id_inspc, inicio, termino, coordinador, instructor) values ('$isSpc','$idInspct', '$fechaInicio', '$fechaTermino','$coordinador', '$instructor')";
 	echo mysqli_query($conexion,$sql);
 
 

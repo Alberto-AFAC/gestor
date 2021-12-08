@@ -6,7 +6,7 @@
     ?>
 
 			<select  id="isSpc" class="form-control" class="selectpicker" name="isSpc" type="text" data-live-search="true" style="width: 100%" >
-			<option value="0">SELECIONE ESPECIALIDAD</option> 
+			<option value="">SELECIONE ESPECIALIDAD</option> 
 			<?php while($idcat = mysqli_fetch_row($cat)):?>                      
 			<option value="<?php echo $idcat[0]?>"><?php echo $idcat[1].' &#10143; '.$idcat[2]?></option>
 			<?php endwhile; ?>
