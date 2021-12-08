@@ -183,7 +183,7 @@ include('header.php');
                                                                 title="Dar click para guardar los cambios"
                                                                 style="background-color:#052E64; border-radius:10px;"
                                                                 class="btn btn-block btn-primary"
-                                                                onclick="window.location.href='tareas.php?#puesto'">
+                                                                onclick="window.location.href='tareas'">
                                                                 SALIR</button>
                                                         </div>
                                                     </div>
@@ -197,7 +197,7 @@ include('header.php');
                                                 <div id="ojt-principal" class="col-sm-3">
                                                     <input type="hidden" name="idsubt" id="idsubt">
                                                     <!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
-                                                    <label>OJT PRINCIPAL N° 1</label>
+                                                    <label>OJT PRINCIPAL</label>
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo1" placeholder="Escribe OJT..."
                                                         name="ojt_principal[]" disabled=""><br>
@@ -207,7 +207,7 @@ include('header.php');
                                                     <label>SUB 1</label>
                                                     <div>
                                                         <input class="form-control" placeholder="INGRESAR..."
-                                                            type="text" name="tarea1[]" id="oculsub1" disabled="">
+                                                            type="text" onkeyup="mayus(this);" name="tarea1[]" id="oculsub1" disabled="">
                                                     </div><span class="badge" id="add_sub1"
                                                         style="cursor: pointer; background-color: #3C8DBC;"><i
                                                             class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -219,7 +219,7 @@ include('header.php');
                                                     <label>SUB 2</label>
                                                     <div>
                                                         <input class="form-control" placeholder="INGRESAR..."
-                                                            type="text" name="tarea2[]" id="oculsub2" disabled="">
+                                                            type="text" onkeyup="mayus(this);" name="tarea2[]" id="oculsub2" disabled="">
                                                     </div><span class="badge" id="add_sub2"
                                                         style="cursor: pointer; background-color: #3C8DBC;"><i
                                                             class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -230,7 +230,7 @@ include('header.php');
                                                     <label>SUB 3</label>
                                                     <div>
                                                         <input class="form-control" placeholder="INGRESAR..."
-                                                            type="text" name="tarea3[]" id="oculsub3" disabled="">
+                                                            type="text" onkeyup="mayus(this);" name="tarea3[]" id="oculsub3" disabled="">
                                                     </div><span class="badge" id="add_sub3"
                                                         style="cursor: pointer;background-color: #3C8DBC;"><i
                                                             class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -723,6 +723,7 @@ $(document).ready(function() {
 
 });
 </script>
+<script src="../js/global.js"></script>
 <script src="../js/select2.js"></script>
 
 <script type="text/javascript">
