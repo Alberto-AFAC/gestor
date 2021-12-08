@@ -1,11 +1,10 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-	$query = "SELECT * FROM ojts 
-INNER JOIN ojts_subs ON `id_ojt` = `idtarea`
-";
 
-	//$query = "SELECT * FROM ojts INNER JOIN ojts_subs ON  `id_ojt` = `idtarea` WHERE ojts_subs.estado = 0";
+ 	$query = "SELECT * FROM ojts ";
+
+	// $query = "SELECT * FROM ojts INNER JOIN ojts_subs ON  `id_ojt` = `idtarea` WHERE ojts_subs.estado = 0";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

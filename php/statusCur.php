@@ -18,11 +18,13 @@
 	$finalizado = 0;
 	$vencido = 0;
 	$porvencer = 0;
+	$recuVen = 0;
+	$recuPorv = 0;
 	while($data = mysqli_fetch_assoc($resultado)){
 				
-	$nuevafecha = strtotime ( '-3 month' , strtotime ( $data["fechaf"] ) ) ;
-	$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
-	$finaliza = strtotime(Date($nuevafecha));
+	// $nuevafecha = strtotime ( '-3 month' , strtotime ( $data["fechaf"] ) ) ;
+	// $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+	// $finaliza = strtotime(Date($nuevafecha));
 
 	$factualv = strtotime(Date("Y-m-d"));
 	$fcursov = strtotime(Date($data["fcurso"]));
@@ -34,9 +36,29 @@
 
 	$fin = date("d-m-Y",strtotime($data["final"]."+ 1 days")); 
 
-	$factual = strtotime(Date("Y-m-d"));
+	$actual = date("d-m-Y"); 
+
+	$factual = strtotime(Date("d-m-Y"));
 	$fcurso = strtotime(Date($fin));
 
+
+
+
+	$fechav = date("d-m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));     
+	$vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
+
+	$f1 = strtotime($fechav);
+	$f2 = strtotime($vencer);
+	$f3 = strtotime($actual);
+
+
+if ($f3>=$f1 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101) {
+	$recuVen++;
+
+	}else 
+	if($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101){
+	$recuPorv++;
+	}
 
 
 
@@ -63,7 +85,9 @@
 
 		}
 
-	$data['vencido'] = $vencido;
+		$ttlV = $vencido + $recuPorv + $recuVen;
+
+	$data['vencido'] = $ttlV;
 	//$data['porvencer'] = $porvencer;
 	$data['progrmas'] = $progrmas;	
 	$data['finalizado'] = $finalizado;	
