@@ -5,7 +5,7 @@
       $coman = mysqli_query($conexion,$sql);
     ?>
 
-			<select  id="gstAcReg" class="form-control" class="selectpicker" name="gstAcReg" type="text" data-live-search="true" style="width: 100%" disabled="">
+			<select  id="gstAcReg" class="form-control" class="selectpicker" name="gstAcReg" type="text" data-live-search="true" style="width: 100%" >
 			<?php while($idcoman = mysqli_fetch_row($coman)):?>                      
 			<option value="<?php echo $idcoman[0]?>"><?php echo $idcoman[1].' > '.$idcoman[2]?></option>
 			<?php endwhile; ?>
