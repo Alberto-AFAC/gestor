@@ -636,11 +636,14 @@ aria-hidden="true">
 <div class="modal-header">
 
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<h4 class="modal-title" id="myModalLabel">SUB 3</h4>
+<h4 class="modal-title" id="myModalLabel">SUB TAREAS</h4>
 </div>
 <div class="modal-body">
 
-<div id="tablasub3"></div>
+<div id="1tablasub"></div>
+<div id="2tablasub"></div>
+<div id="3tablasub"></div>
+
 </div>
 <div class="modal-footer">
 <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
@@ -1065,19 +1068,20 @@ $contador++;
 
 // }
 
-$query2 = "SELECT * FROM ojts INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
-WHERE ojts.estado = 0 AND id_spc = $idspc"; 
-$resultados = mysqli_query($conexion, $query2);
+// $query2 = "SELECT * FROM ojts INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
+// WHERE ojts.estado = 0 AND id_spc = $idspc"; 
+// $resultados = mysqli_query($conexion, $query2);
+// "<?php 
+// $ttl = 1;
+// while($datas = mysqli_fetch_assoc($resultados)){
+// $ttls = $ttl++;    
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)'>TAREA $ttls | </a>";
+// }
+
+// 
 ?>
 
-["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>","<?php 
-$ttl = 1;
-while($datas = mysqli_fetch_assoc($resultados)){
-$ttls = $ttl++;    
-echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)'>TAREA $ttls | </a>";
-}
-
-?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS</a>"?>",
+["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS</a>"?>",
 "<?php 
 
 
@@ -1124,9 +1128,6 @@ title: "ESPECIALIDAD OJT"
 },
 {
 title: "OJTS PRINCIPALES"
-},
-{
-title: "DETALLES"
 }
 ]
 });
@@ -1439,7 +1440,9 @@ function todasT(t){
 
         var n = 0;
 
-        html = '<div> ';
+           // html += '<div class="col-sm-6"><div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"> <div class="box"> <div class="box-header with-border"><h3 class="box-title">OJT</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>';      
+  html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">ID</th><th scope="col" style="width:100px;">TAREAS</th><th scope="col" style="width:150px;">SUB TAREAS</th> </tr></thead><tbody>';
+
 
         for (H = 0; H < res.length; H++) {
 
@@ -1449,55 +1452,99 @@ function todasT(t){
                 n++;
 
 
-
-               
-                html += '<div class="col-sm-6"><div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"> <div class="box"> <div class="box-header with-border"><h3 class="box-title">'+obj.data[H].ojt_principal+'</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>';    
-            
-
-
-                html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td></tr><tr></tr></table></div></div></div></div></div></div>';          
-
+        html += '<tr><th scope="row">' + n + ')</th><td>' +obj.data[H].ojt_principal+ '</td><td> <a href="#" data-toggle="modal" data-target="#detalleSub3" onclick="idsubTa('+obj.data[H].id_ojt+')">SUB TAREAS</a></td></tr>'; 
 
             } 
 
         }
 
-html += '</div>';
+   html += '</tbody></table></form></div></div>';
 
-//       html = '<div class="col-sm-6"><div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"> <div class="box"> <div class="box-header with-border"> ';
-
-//         for (H = 0; H < res.length; H++) {
-
-//             if (obj.data[H].id_spc == t) {
-
-//              var idojt = obj.data[H].id_ojt;
-//                 n++;
-
-//                 if(obj.data[H].idtarea==2){
-                    
-//                     if(H==6){
-//                  html += '<h3 class="box-title">'+obj.data[H].ojt_principal+'</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</ th><th>detalles</th></tr>';   
-//                        }     
-//                 html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td></tr><tr></tr>';          
-//                 }
-
-
-//             } 
-
-//         }
-
-// html += '</table></div></div></div></div></div></div>';
-
-
-
-
-       // html += '</div></div>';
         $("#add_ojts1").html(html);
-        // $("#add_ojts2").html(html);
-
-
-      
+ 
     })
+}
+
+function idsubTa(idsub) {
+
+    $.ajax({
+        url: '../php/data-task.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        var y = 0;
+        var w = 0;
+        html =
+            '<table class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            
+            if (obj.data[i].idtarea == idsub) {
+             
+                if(obj.data[i].numsubt==1){
+                x++;
+                html += "<tr><td>" + obj.data[i].numsubt+'. ' + x + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+                }
+
+            }
+        }
+        html += '</table>';
+        $("#1tablasub").html(html);
+
+
+
+        html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 2</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            
+            if (obj.data[i].idtarea == idsub) {
+             
+                if(obj.data[i].numsubt==2){
+                y++;
+                html += "<tr><td>" + obj.data[i].numsubt+'. ' + y + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+                }
+
+            }
+        }
+        html += '</table>';
+        $("#2tablasub").html(html);
+
+
+
+
+
+
+       html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 3</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            
+            if (obj.data[i].idtarea == idsub) {
+             
+               if(obj.data[i].numsubt==3){
+                w++;
+                html += "<tr><td>" + obj.data[i].numsubt+'. ' + w + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+                }
+
+            }
+        }
+        html += '</table>';
+        $("#3tablasub").html(html);
+
+
+
+
+    })
+
+
 }
 
 </script>
