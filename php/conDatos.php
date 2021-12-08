@@ -9,13 +9,13 @@
 			ORDER BY
 	gstIdper DESC";
 	// $query = "SELECT * FROM personal 
-	// // 	INNER JOIN codigo ON personal.gstIdpst = codigo.gstIdpst
-	// // 	INNER JOIN puesto ON personal.gstPstID = puesto.gstIdpus
-    // //     INNER JOIN ejecutiva ON personal.gstAreID = ejecutiva.gstIdeje
-	// // 	INNER JOIN area ON personal.gstIDara = area.id_area
-	// // 	INNER JOIN subdireccion ON personal.gstAcReg = subdireccion.id_sub
-	// // 	INNER JOIN departamentos ON personal.gstIDsub= departamentos.id_departamentos
-	// // 	WHERE personal.estado = 0 ORDER BY gstIdper DESC";
+	// INNER JOIN codigo ON personal.gstIdpst = codigo.gstIdpst
+	// INNER JOIN puesto ON personal.gstPstID = puesto.gstIdpus
+    // INNER JOIN ejecutiva ON personal.gstAreID = ejecutiva.gstIdeje
+	// INNER JOIN area ON personal.gstIDara = area.id_area
+	// INNER JOIN subdireccion ON personal.gstAcReg = subdireccion.id_sub
+	// INNER JOIN departamentos ON personal.gstIDsub= departamentos.id_departamentos
+	// WHERE personal.estado = 0 ORDER BY gstIdper DESC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
