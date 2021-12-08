@@ -125,7 +125,7 @@ folder instead of downloading all of them to reduce the load. -->
 
                                             </div>
 
-
+                                            <div id="tablaPro"></div>
 
 
                                             <div class="form-group">
@@ -305,6 +305,7 @@ $(document).ready(function() {
     $('#instructor').select2();
     $('#idSpecialidad').load('select/buspecialidad.php');
     $('#tabSpcl').load('select/tablaSpc.php');
+    $('#tablaPro').load('select/tablaProgOJT.php');
 });
 
 function regOjt() {
@@ -344,7 +345,7 @@ function regOjt() {
                 Swal.fire({
                     type: 'success',
                     // title: 'AFAC INFORMA',
-                    html: `<span>EL OJT SE HA PROGRAMADO ÉXITOSAMENTE EN EL HORARIO ${fechaInicio}</span>`,
+                    html: `<span>EL OJT SE HA PROGRAMADO ÉXITOSAMENTE EN EL HORARIO <b>${fechaInicio}</b></span>`,
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     showConfirmButton: false,
