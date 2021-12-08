@@ -64,12 +64,15 @@ if($opcion === 'tareAgr'){
 	$titulo = $varray2[$i]['tareados'];
 	
 	$numsubt = 2;
+	if($titulo=='' && $numsubt==2){}else{
+
 	if(tarea1($titulo,$numsubt,$conexion)){
 		echo "0";
 
 		}else{
 		echo "1";
 		}
+	}
 	}
 
 	$valors3 = $_POST['array3'];
@@ -81,12 +84,14 @@ if($opcion === 'tareAgr'){
 	$titulo = $varray3[$i]['tareatre'];
 
 	$numsubt = 3;
+		if($titulo=='' && $numsubt==3){}else{
 	if(tarea1($titulo,$numsubt,$conexion)){
 		echo "0";
 
 		}else{
 		echo "1";
 		}
+	  }	
 	}
 
 

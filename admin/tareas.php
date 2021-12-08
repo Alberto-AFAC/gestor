@@ -483,29 +483,22 @@ los datos que se solicitan </p>
 
 
 
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
 
 
 <div class="modal-body">
 
-<div id="add_ojts1"></div>
-<div id="add_ojts2"></div>
+<!--  -->
 
-
-
-
-
-<!-- <div class="dataTables_wrapper form-inline dt-bootstrap">
+<div class="dataTables_wrapper form-inline dt-bootstrap">
 <div class="row">
-<div class="col-md-6"> 
+<div class="col-md-12"> 
 <div class="box"> 
 <div class="box-header with-border"> 
-<h3 class="box-title">OJT PRINCIPAL</h3>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="salir();">&times;</button>
 </div>
 <div class="box-body">
-<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>
-<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>3</td></tr><tr></tr>
-</table>
+<div id="add_ojts1"></div>
 
 </div>
 </div>
@@ -513,7 +506,7 @@ los datos que se solicitan </p>
 </div>
 
 </div>
-</div> -->
+</div>
 
 <!----------------------------------------------------------------------------->
 
@@ -640,13 +633,13 @@ aria-hidden="true">
 </div>
 <div class="modal-body">
 
-<div id="1tablasub"></div>
-<div id="2tablasub"></div>
-<div id="3tablasub"></div>
+<div id="tablasub01"></div>
+<div id="tablasub02"></div>
+<div id="tablasub03"></div>
 
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" class="btn btn-default" data-dismiss="modal" onclick="vaciar();">CERRAR</button>
 <button type="button" class="btn btn-primary">GUARDAR</button>
 </div>
 </div>
@@ -750,7 +743,7 @@ function agrTarea() {
     dateR = document.getElementById('dateR').value;
     titulo1 = document.getElementById('titulo1').value;
     idsubt = document.getElementById('idsubt').value;
-    alert(dateR);
+    //alert(dateR);
     // // descrip1 = document.getElementById('descrip1').value;
 
     // // fechaA = document.getElementById('fechaA').value;
@@ -1425,11 +1418,9 @@ $('#sub3').on("click", ".remover_campo", function(e) {
 
 function todasT(t){
 
-
-
     $("#todasTareas").show();
     $("#puesto").hide();
-
+    $("#Dtarea").hide();
         $.ajax({
         url: '../php/ojt_tareas.php',
         type: 'POST'
@@ -1466,6 +1457,7 @@ function todasT(t){
     })
 }
 
+
 function idsubTa(idsub) {
 
     $.ajax({
@@ -1478,29 +1470,42 @@ function idsubTa(idsub) {
         var x = 0;
         var y = 0;
         var w = 0;
-        html =
-            '<table class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
+
+
+        for (ii = 0; ii < res.length; ii++) {
+
+        if (obj.data[ii].idtarea == idsub) {
+
+
+    html ='<table  class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
 
 
         for (i = 0; i < res.length; i++) {
+
             
             if (obj.data[i].idtarea == idsub) {
              
                 if(obj.data[i].numsubt==1){
+                // $("#tablasub01").show();                    
                 x++;
                 html += "<tr><td>" + obj.data[i].numsubt+'. ' + x + "</td><td>" + obj.data[i].ojt_subtarea +
                     "</td><td>Editar</td></tr>";
+                            
                 }
 
             }
         }
         html += '</table>';
-        $("#1tablasub").html(html);
+        $("#tablasub01").html(html);
 
 
+
+                if(obj.data[ii].numsubt==2){
+                
+    
+        $("#tablasub02").show();
 
         html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 2</th><th>ACCIONES</th>';
-
 
         for (i = 0; i < res.length; i++) {
             
@@ -1515,13 +1520,17 @@ function idsubTa(idsub) {
             }
         }
         html += '</table>';
-        $("#2tablasub").html(html);
+        $("#tablasub02").html(html);
 
+        }else{
+        
 
+        }
 
+        if(obj.data[ii].numsubt==3){
 
-
-
+        $("#tablasub03").show();
+                
        html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 3</th><th>ACCIONES</th>';
 
 
@@ -1531,6 +1540,7 @@ function idsubTa(idsub) {
              
                if(obj.data[i].numsubt==3){
                 w++;
+
                 html += "<tr><td>" + obj.data[i].numsubt+'. ' + w + "</td><td>" + obj.data[i].ojt_subtarea +
                     "</td><td>Editar</td></tr>";
                 }
@@ -1538,15 +1548,30 @@ function idsubTa(idsub) {
             }
         }
         html += '</table>';
-        $("#3tablasub").html(html);
 
-
-
-
-    })
-
+        $("#tablasub03").html(html);
 
 }
+
+        }
+    }
+})
+
+}
+
+    function vaciar(){
+        // $("#tablasub01").hide();
+        $("#tablasub02").hide();
+        $("#tablasub03").hide();
+    }
+    function salir(){
+
+    $("#todasTareas").hide();
+    $("#puesto").show();
+    $("#Dtarea").show();
+
+    }
+
 
 </script>
 
