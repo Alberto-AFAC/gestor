@@ -813,7 +813,7 @@ function agrTarea() {
             // alert(respuesta);
 
             // if (respuesta != 0) {
-
+                document.getElementById("Dtarea").reset();
             Swal.fire({
                 type: 'success',
                 // title: 'AFAC INFORMA',
