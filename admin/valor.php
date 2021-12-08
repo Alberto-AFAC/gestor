@@ -754,7 +754,7 @@ $direc = mysqli_query($conexion,$sql);
      </div>
 
 
-     <input type="hidden" name="gstIDuni" id="gstIDuni">
+<!--      <input type="hidden" name="gstIDuni" id="gstIDuni"> -->
 
 
        <div class="form-group">
@@ -801,7 +801,7 @@ $direc = mysqli_query($conexion,$sql);
 
 <label>COMANDANCIA</label>
                   
-<select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="AcReg" id="AcReg" type="text" data-live-search="true">
+<select style="width: 100%" class="form-control" disabled="" class="selectpicker" name="AcReg " id="AcReg" type="text" data-live-search="true">
 <?php while($unidads = mysqli_fetch_row($unidad)):?>                      
 <option value="<?php echo $unidads[0]?>"><?php echo $unidads[1].' > '.$unidads[2]?></option>
 <?php endwhile; ?>
