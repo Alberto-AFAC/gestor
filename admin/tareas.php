@@ -475,7 +475,7 @@ los datos que se solicitan </p>
 </form>
 </div>
 
-
+</div>
 <!-------------TODAS LAS TAREAS------------->
 <div id="todasTareas" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="todasTareas" aria-hidden="true">
 
@@ -484,41 +484,45 @@ los datos que se solicitan </p>
 
 
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<h4 class="modal-title" id="myModalLabel">OJT PRINCIPAL</h4>
+
 
 <div class="modal-body">
 
-<div id="add_ojts"></div>
+<div id="add_ojts1"></div>
+<div id="add_ojts2"></div>
 
-<!-- <div id="tablasub3"></div>
- --> 
- </div>
+
+
+
+
+<!-- <div class="dataTables_wrapper form-inline dt-bootstrap">
+<div class="row">
+<div class="col-md-6"> 
+<div class="box"> 
+<div class="box-header with-border"> 
+<h3 class="box-title">OJT PRINCIPAL</h3>
 </div>
+<div class="box-body">
+<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>
+<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>3</td></tr><tr></tr>
+</table>
+
+</div>
+</div>
+
+</div>
+
+</div>
+</div> -->
 
 <!----------------------------------------------------------------------------->
-<div class="tab-pane" id="estudios">
-<form class="form-horizontal">
-<div class="form-group">
-<div class="col-sm-4">
-<H4>
-<label>ULTIMO GRADO DE ESTUDIOS </label>
-</H4>
-</div>
-</div>
-<div id="studios"></div>
-</form>
-</div>
-<div class="tab-pane" id="experiencia">
-<form class="form-horizontal">
-<div id="profsions"></div>
-</form>
-</div>
+
 
 
 </div>
 
 </div>
-</div>
+
 
 
 
@@ -1424,9 +1428,6 @@ function todasT(t){
     $("#todasTareas").show();
     $("#puesto").hide();
 
-
-  
-
         $.ajax({
         url: '../php/ojt_tareas.php',
         type: 'POST'
@@ -1438,65 +1439,65 @@ function todasT(t){
 
         var n = 0;
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row">';
-
-html +='<div class="col-md-6"> <div class="box"> <div class="box-header with-border"> <h3 class="box-title">OJT PRINCIPAL</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>';
+        html = '<div> ';
 
         for (H = 0; H < res.length; H++) {
 
             if (obj.data[H].id_spc == t) {
+
              var idojt = obj.data[H].id_ojt;
                 n++;
 
 
 
+               
+                html += '<div class="col-sm-6"><div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"> <div class="box"> <div class="box-header with-border"><h3 class="box-title">'+obj.data[H].ojt_principal+'</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>';    
+            
 
 
-
-          
-
-    
-    //     $.ajax({
-    //     url: '../php/data-task.php',
-    //     type: 'POST'
-    // }).done(function(resp) {
-    //     obj = JSON.parse(resp);
-    //     var res = obj.data;
-
-
-    //       for (SUB = 0; SUB < res.length; SUB++) {
-
-
-    //         if (obj.data[SUB].idtarea == idojt) {
-
-    //            var subOjt = obj.data[SUB].ojt_subtarea;
-    // if(obj.data[H].numsubt==1){
-    // html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>1</td></tr><tr></tr>';  
-    //  }else if(obj.data[H].numsubt==2){
-    // html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>2</td></tr><tr></tr>';          
-    //  }else if(obj.data[H].numsubt==3){
-    html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td><td>3</td></tr><tr></tr>';          
-     // }   
-  //       }
-
-  //   }
-
-
-  // }) 
-
-
+                html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td></tr><tr></tr></table></div></div></div></div></div></div>';          
 
 
             } 
 
         }
-html += '</table></div></div></div>';
+
+html += '</div>';
+
+//       html = '<div class="col-sm-6"><div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"> <div class="box"> <div class="box-header with-border"> ';
+
+//         for (H = 0; H < res.length; H++) {
+
+//             if (obj.data[H].id_spc == t) {
+
+//              var idojt = obj.data[H].id_ojt;
+//                 n++;
+
+//                 if(obj.data[H].idtarea==2){
+                    
+//                     if(H==6){
+//                  html += '<h3 class="box-title">'+obj.data[H].ojt_principal+'</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</ th><th>detalles</th></tr>';   
+//                        }     
+//                 html += '<tr><td>'+n+'</td><td>'+obj.data[H].ojt_subtarea+'</td></tr><tr></tr>';          
+//                 }
+
+
+//             } 
+
+//         }
+
+// html += '</table></div></div></div></div></div></div>';
+
+
+
+
        // html += '</div></div>';
-        $("#add_ojts").html(html);
+        $("#add_ojts1").html(html);
+        // $("#add_ojts2").html(html);
+
+
       
     })
-
-
 }
 
 </script>

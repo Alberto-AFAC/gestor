@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	$query = "SELECT * FROM ojts 
-INNER JOIN ojts_subs ON `id_ojt` = `idtarea`
+INNER JOIN ojts_subs ON `id_ojt` = `idtarea` GROUP BY idtarea
 ";
 
 	//$query = "SELECT * FROM ojts INNER JOIN ojts_subs ON  `id_ojt` = `idtarea` WHERE ojts_subs.estado = 0";
