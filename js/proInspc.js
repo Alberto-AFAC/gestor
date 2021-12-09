@@ -116,7 +116,7 @@ function proCurso() {
             }).done(function(respuesta) {
 
 
-                //alert(respuesta);    
+                alert(respuesta);    
 
                 if (respuesta == 0) {
                     Swal.fire({

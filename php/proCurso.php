@@ -31,6 +31,8 @@ $hcurso = $_POST['hcurso'];
 
 $idcord = $_POST['idcord'];//Coordinador
 $idInstr = $_POST['idInstru'];//Instructor
+$conteo = explode(",", $idInstr);	
+$ttal = count($conteo);
 
 $sede = $_POST['sede'];
 $link = $_POST['link'];
@@ -51,6 +53,14 @@ foreach ($valor as $idinsps) {
 
 if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
+
+				if($n==$ttal){
+				$Instruc = explode(",", $idInstr);
+				foreach ($Instruc as $idper) {
+				instructor($idper,$codigo,$conexion);
+				}
+			}
+
 		echo "0";	
 		if($n==1){
 		$realizo = 'PROGRAMO CURSO ('.$val.' PART.) FOLIO: '.$codigo;
@@ -243,6 +253,18 @@ $query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','
 				}		
 					}
 
+
+function instructor($idper,$codigo,$conexion){
+
+	$query="INSERT INTO instructor VALUES(0,'$idper','$codigo',0)";
+	if(mysqli_query($conexion,$query)){
+		
+		return true;
+	}
+	else{
+		return false;
+	}	
+}				
 function contancia($idinsps,$codigo,$conexion){
 
 	$query="INSERT INTO constancias VALUES(0,$idinsps,'$codigo','','','','','','','',0,0);";
