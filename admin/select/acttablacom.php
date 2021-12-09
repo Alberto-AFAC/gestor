@@ -27,7 +27,9 @@ require_once "../../conexion/conexion.php";
 
 
  ?>
+	<input id="gstIDuni" class="form-control" class="selectpicker" name="gstIDuni" type="hidden" >
 
-              
+
+		
 
 <?php } ?>

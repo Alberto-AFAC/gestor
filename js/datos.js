@@ -501,7 +501,7 @@ function perfil(gstIdper) {
                 $("#ocultar2").show();
 
                 $.ajax({
-                    url: '../php/conDatos.php',
+                    url: '../php/conDatosPersonal.php',
                     type: 'POST'
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
@@ -658,6 +658,8 @@ function perfil(gstIdper) {
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
+                            $("#Pusto #AcReg").val(obj.data[i].gstComnd);//comandancia
+                            $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             ////////////////////APARTADO PARA ADJUNTAR ARCHIVOS///////////////////////////////
                             $("#Actuliza #Nmplea").val(obj.data[i].gstNmpld);
                             $("#agregardoc #gstNemple").val(obj.data[i].gstNmpld);
@@ -1577,7 +1579,7 @@ function inspector(gstIdper) {
                 }
 
                 $.ajax({
-                    url: '../php/conDatos.php',
+                    url: '../php/conDatosPersonal.php',
                     type: 'POST'
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
@@ -1734,6 +1736,8 @@ function inspector(gstIdper) {
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
+                            $("#Pusto #AcReg").val(obj.data[i].gstComnd);//comandancia
+                            $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             //DATOS ESPECIALIDAD
                             // alert(obj.data[i].gstIdper);
                             // $("#Spcialidad #spcialidadnombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
@@ -2912,15 +2916,15 @@ function actPuesto() {
     var gstCargo = document.getElementById('gstCargo').value;
     var gstNucrt = document.getElementById('gstNucrt').value; //ubicacion de la persona
 
-
     var gstIDuni = document.getElementById('gstIDuni').value; //UNIDAD
+
     var gstIDSub = document.getElementById('depart').value; //DEPARTAMENTO
     var gstSpcID = document.getElementById('gstSpcID').value; //ID especialidad 
 
+    var gstComnd = document.getElementById('gstComnd').value;
     //22092021
-    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstPlaza=' + gstPlaza + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&opcion=actPrsnls';
 
-    // alert(datos);
+    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstPlaza=' + gstPlaza + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&gstComnd=' + gstComnd + '&opcion=actPrsnls';
 
     if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni == '' || gstNucrt == '') {
 

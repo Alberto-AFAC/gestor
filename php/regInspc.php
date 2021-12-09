@@ -167,6 +167,8 @@ if($opcion === 'registrar'){
 	$gstCargo = $_POST['gstCargo']; //Cargo
 	$gstNucrt = $_POST['gstNucrt']; //ubicacion de la persona 
 	$gstIDSub = $_POST['gstIDSub'];
+	$gstComnd = $_POST['gstComnd']; //comandacia
+	$gstIDuni = $_POST['gstIDuni']; //unidad adminisgtrativa
 // $gstIDCat = $_POST['gstIDCat']; //categoria
 //  //subcategoria
 // // $gstCorro = $_POST['gstCorro']; // correo personal "QUITAR"
@@ -185,7 +187,7 @@ if($opcion === 'registrar'){
 
 
 
-	if(actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$conexion))
+	if(actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$conexion))
 		{	echo "0";	
 			$realizo = 'ACTUALIZO DAT. DEL PUESTO';
 			$gstIdper = $pstIdper;
@@ -295,7 +297,7 @@ function actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,
 	}
 
 
-function actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$conexion){
+function actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$conexion){
 
 	$query = "UPDATE personal SET 
 	gstNmpld = '$gstNmpld',
@@ -311,7 +313,9 @@ function actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$g
 	gstAcReg = '$gstAcReg',
 	gstCargo = '$gstCargo',
 	gstNucrt = '$gstNucrt',
-	gstIDSub = '$gstIDSub'
+	gstIDSub = '$gstIDSub',
+	gstIDuni = '$gstIDuni',
+	gstComnd = '$gstComnd'
  WHERE gstIdper = '$pstIdper'";
 	if(mysqli_query($conexion,$query)){
 
