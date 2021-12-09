@@ -113,27 +113,21 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <!--  -->
             <!-- -->
-            <?php 
-            if($datos[1] == 'JORGE ALBERTO ' || $datos[2] == 'MONDRAGON ESCAMILLA'){
-                echo "<li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-file-text'></i>
+        
+              <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text"></i>
                     <span>OJT</span>
-                    <span class='pull-right-container'>
-                        <i class='fa fa-angle-left pull-right'></i>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <ul class='treeview-menu'>
-                    <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
-                    <li><a href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
-                    <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                <ul class="treeview-menu">
+                    <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
+                    <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
+                    <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
                 </ul>
             </li>
-            ";
-            }else{
-                echo "";
-            }
-            ?>
             <li>
                 <a href="calendar/calendar">
                     <i class="fa fa-calendar"></i> <span>Calendario</span>
