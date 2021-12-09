@@ -265,7 +265,7 @@
                                                         <option value="FORTALECIMIENTO DEL DESEMPEÑO">FORTALECIMIENTO DEL DESEMPEÑO</option>
                                                         <option value="SENSIBILIZACIÓN">SENSIBILIZACIÓN</option>
                                                         <option value="CERTIFICACIÓN">CERTIFICACIÓN</option>
-                                                        <option value="ACTUALIZACIÓN Y DESARROLLO">ACTUALIZACIÓN Y DESARROLLO</option>
+                                                        <option value="ACTUALIZACIÓN">ACTUALIZACIÓN</option>
                                                         <option value="OJT">OJT</option>
                                     </select>
                                 </div>
