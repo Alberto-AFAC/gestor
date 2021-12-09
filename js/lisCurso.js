@@ -1083,7 +1083,6 @@ function cerrareval() {
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
-                idcurso(codigo);
 
             } else {
                 Swal.fire({
