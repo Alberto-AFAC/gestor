@@ -97,20 +97,27 @@
             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
           </ul>
         </li>
-        <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-file-text"></i>
+        <?php 
+            if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){
+                echo "<li class='treeview'>
+                <a href='#'>
+                    <i class='fa fa-file-text'></i>
                     <span>OJT</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
+                    <span class='pull-right-container'>
+                        <i class='fa fa-angle-left pull-right'></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
-                    <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
-                    <li><a href="#"><i class="fa fa-file-text"></i> Catálogo OJT</a></li>
+                <ul class='treeview-menu'>
+                    <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
+                    <li><a href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
+                    <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
                 </ul>
             </li>
+            ";
+            }else{
+                echo "";
+            }
+            ?>
         <!--  -->
         <!-- -->
         <li>

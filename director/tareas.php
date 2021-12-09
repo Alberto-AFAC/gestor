@@ -114,7 +114,7 @@ include('header.php');
 
             <section class="content-header">
                 <h1>
-                    OJT PRINCIPAL
+                    <!-- ESPECIALIDAD OJT -->
                 </h1>
             </section>
             <!-- Main content -->
@@ -124,7 +124,7 @@ include('header.php');
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" style="font-size: 14px;">
-                                <li class="active"><a href="#activity" data-toggle="tab">OJT PRINCIPAL</a></li>
+                                <li class="active"><a href="#activity" data-toggle="tab">ESPECIALIDAD OJT</a></li>
                                 <li><a href="#puesto" data-toggle="tab">CATALOGO OJT</a></li>
                                 <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
                             </ul>
@@ -147,9 +147,10 @@ include('header.php');
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <label>ESPECIALIDAD OJT</label>
+                                                    <!-- <label>ESPECIALIDAD OJT</label> -->
+                                                    <input class="form-control" type="hidden" id="dateR" name="dateR" value="<?php echo date("Y-m-d");?>">
                                                     <select id="idcur" name="idcur" class="form-control"
-                                                        placeholder="Seleccione...">
+                                                        placeholder="Seleccione..." disabled="">
                                                         <option value="0">Seleccione...</option>
                                                         <?php while($data = mysqli_fetch_row($especialidad)):?>
                                                         <option value="<?php echo $data[0]?>">
@@ -158,24 +159,88 @@ include('header.php');
                                                         <?php endwhile; ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-6">
+
+                                            </div>
+
+
+                                            <div class="form-group" id="agregarTarea" style="display: none;">
+                                                <div id="ojt-principal" class="col-sm-12">
+                                                    <div id="tareas"></div>
+
+
+                                                    <div class="form-group" id="otra"><br>
+                                                        <div class="col-sm-offset-0 col-sm-2">
+                                                            <button type="button"
+                                                                title="Dar click para guardar los cambios"
+                                                                style="background-color:#052E64; border-radius:10px;"
+                                                                class="btn btn-block btn-primary"
+                                                                onclick="agregarTarea();">
+                                                                AGREGAR OTRA TAREA</button>
+                                                        </div>
+                                                        <div class="col-sm-offset-0 col-sm-2">
+
+                                                            <button type="button" id=""
+                                                                title="Dar click para guardar los cambios"
+                                                                style="background-color:#052E64; border-radius:10px;"
+                                                                class="btn btn-block btn-primary"
+                                                                onclick="window.location.href='tareas'">
+                                                                SALIR</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group" id="formulario">
+                                                <div id="ojt-principal" class="col-sm-3">
                                                     <input type="hidden" name="idsubt" id="idsubt">
+                                                    <!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
                                                     <label>OJT PRINCIPAL</label>
                                                     <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" name="titulo1" disabled="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <label>DESCRIPCIÓN </label>
-                                                    <textarea type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="descrip1" name="descrip1" rows="4"
-                                                        disabled=""></textarea></br>
-
-
+                                                        class="form-control" id="titulo1" placeholder="Escribe OJT..."
+                                                        name="ojt_principal[]" disabled=""><br>
                                                 </div>
 
+                                                <div id="sub1" class="col-sm-3">
+                                                    <label>SUB 1</label>
+                                                    <div>
+                                                        <input class="form-control" placeholder="INGRESAR..."
+                                                            type="text" onkeyup="mayus(this);" name="tarea1[]" id="oculsub1" disabled="">
+                                                    </div><span class="badge" id="add_sub1"
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i
+                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                        AÑADIR</span>
+                                                </div>
+
+
+                                                <div id="sub2" class="col-sm-3">
+                                                    <label>SUB 2</label>
+                                                    <div>
+                                                        <input class="form-control" placeholder="INGRESAR..."
+                                                            type="text" onkeyup="mayus(this);" name="tarea2[]" id="oculsub2" disabled="">
+                                                    </div><span class="badge" id="add_sub2"
+                                                        style="cursor: pointer; background-color: #3C8DBC;"><i
+                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                        AÑADIR</span>
+                                                </div>
+
+                                                <div id="sub3" class="col-sm-3">
+                                                    <label>SUB 3</label>
+                                                    <div>
+                                                        <input class="form-control" placeholder="INGRESAR..."
+                                                            type="text" onkeyup="mayus(this);" name="tarea3[]" id="oculsub3" disabled="">
+                                                    </div><span class="badge" id="add_sub3"
+                                                        style="cursor: pointer;background-color: #3C8DBC;"><i
+                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                        AÑADIR</span>
+                                                </div>
                                             </div>
+
+
+
+
 
                                             <div class="form-group" id="butons1"><br>
                                                 <div class="col-sm-offset-0 col-sm-2">
@@ -184,7 +249,7 @@ include('header.php');
                                                         title="Dar click para guardar los cambios"
                                                         style="background-color:#052E64; border-radius:10px;"
                                                         class="btn btn-block btn-primary" onclick="agrTarea();">
-                                                        AGREGAR</button>
+                                                        GUARDAR</button>
 
                                                 </div>
                                                 <b>
@@ -207,9 +272,7 @@ include('header.php');
                                         </form>
 
 
-                                        <form id="form2" style="display: none;" class="form-horizontal" action=""
-                                            method="POST">
-                                            <!--               <input type="hidden" name="gstIdper" id="gstIdper"> -->
+                                        <form style="display: none;" class="form-horizontal" action="" method="POST">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -363,14 +426,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                         </div>
                                         <table id="add-task" class="table display table-striped table-bordered"
                                             style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>ESPECIALIDAD OJT</th>
-                                                    <th>OJT PRINCIPAL</th>
-                                                    <th>DESCRIPCIÓN</th>
-                                                </tr>
-                                            </thead>
 
                                         </table>
                                         <div class="form-group">
@@ -387,125 +442,219 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
 
 
 
-                                        </div>
-                                        <div class="form-group">
+</div>
+<div class="form-group">
 
-                                        </div>
+</div>
 
-                                        <div class="form-group" id="butons" style="display: none;"><br>
-                                            <div class="col-sm-offset-0 col-sm-2">
-                                                <button type="button" id="button"
-                                                    title="Dar click para guardar los cambios"
-                                                    style="background-color:#052E64; border-radius:10px;"
-                                                    class="btn btn-block btn-primary"
-                                                    onclick="actPuesto();">ACTUALIZAR</button>
-                                            </div>
-                                            <b>
-                                                <p class="alert alert-danger text-center padding error" id="danger1">
-                                                    Error al actualizar
-                                                    datos </p>
-                                            </b>
-                                            <b>
-                                                <p class="alert alert-success text-center padding exito" id="succe1">¡Se
-                                                    actualizaron los
-                                                    datos con éxito!</p>
-                                            </b>
+<div class="form-group" id="butons" style="display: none;"><br>
+<div class="col-sm-offset-0 col-sm-2">
+<button type="button" id="button"
+title="Dar click para guardar los cambios"
+style="background-color:#052E64; border-radius:10px;"
+class="btn btn-block btn-primary"
+onclick="actPuesto();">ACTUALIZAR</button>
+</div>
+<b>
+<p class="alert alert-danger text-center padding error" id="danger1">
+Error al actualizar
+datos </p>
+</b>
+<b>
+<p class="alert alert-success text-center padding exito" id="succe1">¡Se
+actualizaron los
+datos con éxito!</p>
+</b>
 
-                                            <b>
-                                                <p class="alert alert-warning text-center padding aviso" id="empty1">Es
-                                                    necesario agregar
-                                                    los datos que se solicitan </p>
-                                            </b>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!----------------------------------------------------------------------------->
-                                <div class="tab-pane" id="estudios">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-sm-4">
-                                                <H4>
-                                                    <label>ULTIMO GRADO DE ESTUDIOS </label>
-                                                </H4>
-                                            </div>
-                                        </div>
-                                        <div id="studios"></div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane" id="experiencia">
-                                    <form class="form-horizontal">
-                                        <div id="profsions"></div>
-                                    </form>
-                                </div>
+<b>
+<p class="alert alert-warning text-center padding aviso" id="empty1">Es
+necesario agregar
+los datos que se solicitan </p>
+</b>
+</div>
+</form>
+</div>
 
-
-                            </div>
-
-                        </div>
-                    </div>
+</div>
+<!-------------TODAS LAS TAREAS------------->
+<div id="todasTareas" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="todasTareas" aria-hidden="true">
 
 
 
-                    <!-- /.col -->
 
-                    <!-- <form class="form-horizontal"> -->
-                    <!-- <div class="form-group">
+
+
+
+
+<div class="modal-body">
+
+<!--  -->
+
+<div class="dataTables_wrapper form-inline dt-bootstrap">
+<div class="row">
+<div class="col-md-12"> 
+<div class="box"> 
+<div class="box-header with-border"> 
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="salir();">&times;</button>
+</div>
+<div class="box-body">
+<div id="add_ojts1"></div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!----------------------------------------------------------------------------->
+
+
+
+</div>
+
+</div>
+
+
+
+
+<!-- /.col -->
+
+<!-- <form class="form-horizontal"> -->
+<!-- <div class="form-group">
 <div class="col-sm-4">
 <label class="label2">RESPONSABLES DE LA TAREA</label>
 </div>                     
 </div> -->
-                    <!-- </form> -->
+<!-- </form> -->
 
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
+<!-- /.col -->
+</div>
+<!-- /.row -->
 
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- MODAL UPLOAD DATAS -->
-        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <div id="titulo"></div>
-                        </h4>
-                    </div>
-                    <input type="hidden" name="idRtarea" id="idRtarea">
-                    <div id="rspnsbls"></div>
+</section>
+<!-- /.content -->
+</div>
+<!-- MODAL UPLOAD DATAS -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
 
-                    <div class="modal-footer">
-                        <div class="form-group">
-                            <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary" onclick="notificacion()">EVALUAR</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">
+<div id="titulo"></div>
+</h4>
+</div>
+<input type="hidden" name="idRtarea" id="idRtarea">
+<div id="rspnsbls"></div>
 
-                            </div>
-                        </div>
-                        <b>
-                            <p class="alert alert-success text-center padding exito" id="succe">¡Su evaluación se
-                                realizó con éxito !</p>
-                        </b>
-                        <b>
-                            <p class="alert alert-warning text-center padding aviso" id="aviso">Es necesario llenar
-                                campo</p>
-                        </b>
-                    </div>
+<div class="modal-footer">
+<div class="form-group">
+<div class="col-sm-4">
+<button type="button" class="btn btn-primary" onclick="notificacion()">EVALUAR</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+
+</div>
+</div>
+<b>
+<p class="alert alert-success text-center padding exito" id="succe">¡Su evaluación se
+realizó con éxito !</p>
+</b>
+<b>
+<p class="alert alert-warning text-center padding aviso" id="aviso">Es necesario llenar
+campo</p>
+</b>
+</div>
 
 
 
 
-                </div>
-            </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> <?php 
+
+
+
+
+<div class="modal fade" id="detalleSub1" tabindex="-1" role="dialog" aria-labelledby="detalleSub1"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">SUB 1</h4>
+</div>
+<div class="modal-body">
+
+<div id="ojt"></div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="detalleSub2" tabindex="-1" role="dialog" aria-labelledby="detalleSub2"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">SUB 2</h4>
+</div>
+<div class="modal-body">
+
+<div id="tablasub2"></div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+<button type="button" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
+aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title" id="myModalLabel">SUB TAREAS</h4>
+</div>
+<div class="modal-body">
+
+<div id="tablasub01"></div>
+<div id="tablasub02"></div>
+<div id="tablasub03"></div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal" onclick="vaciar();">CERRAR</button>
+<button type="button" class="btn btn-primary">GUARDAR</button>
+</div>
+</div>
+</div>
+</div>
+
+
+
+    
+
+
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+<div class="pull-right hidden-xs">
+<b>Version</b> <?php 
 $query ="SELECT 
 *
 FROM
@@ -567,43 +716,91 @@ $(document).ready(function() {
 
 });
 </script>
+<script src="../js/global.js"></script>
 <script src="../js/select2.js"></script>
 
 <script type="text/javascript">
 document.getElementById('titulo1').disabled = false;
-document.getElementById('descrip1').disabled = false;
+document.getElementById('oculsub1').disabled = false;
+document.getElementById('oculsub2').disabled = false;
+document.getElementById('oculsub3').disabled = false;
+// document.getElementById('descrip1').disabled = false;
 document.getElementById('titulo2').disabled = false;
 document.getElementById('descrip2').disabled = false;
 document.getElementById('titulo3').disabled = false;
 document.getElementById('descrip3').disabled = false;
-// document.getElementById('fechaA').disabled = false;
-// document.getElementById('fechaT').disabled = false;
-// document.getElementById('fechaA2').disabled = false;
-// document.getElementById('fechaT2').disabled = false;
-// document.getElementById('fechaA3').disabled = false;
-// document.getElementById('fechaT3').disabled = false;
+document.getElementById('idcur').disabled = false;
+
+
+let contador = 0;
 
 
 function agrTarea() {
+
+
+    //ID inspector
     idcur = document.getElementById('idcur').value;
+    dateR = document.getElementById('dateR').value;
     titulo1 = document.getElementById('titulo1').value;
-    descrip1 = document.getElementById('descrip1').value;
     idsubt = document.getElementById('idsubt').value;
-    // fechaA = document.getElementById('fechaA').value;
-    // fechaT = document.getElementById('fechaT').value;
+    //alert(dateR);
+    // // descrip1 = document.getElementById('descrip1').value;
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
+    // // fechaA = document.getElementById('fechaA').value;
+    // // fechaT = document.getElementById('fechaT').value;
+
+    // subtarea = document.getElementById('agrega_ojt_subtarea').value;
+
+    var tareatre = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="tarea3[]"]').each(function(element) {
+        var item = {};
+        item.tareatre = this.value;
+        tareatre.push(item);
+    });
+
+    var tareados = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="tarea2[]"]').each(function(element) {
+        var item = {};
+        item.tareados = this.value;
+        tareados.push(item);
+    });
+
+    var tareauno = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="tarea1[]"]').each(function(element) {
+        var item = {};
+        item.tareauno = this.value;
+        tareauno.push(item);
+    });
+
+
+    var array = JSON.stringify(tareauno);
+    var array2 = JSON.stringify(tareados);
+    var array3 = JSON.stringify(tareatre);
+
+    // alert(array3);
+
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&dateR=' + dateR + '&idsubt=' + idsubt + '&array=' + array + '&array2=' + array2 +
+        '&array3=' + array3 + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
-    
 
-    if (titulo1 == '' || descrip1 == '') {
-
-        $('#vacio1').toggle('toggle');
-        setTimeout(function() {
-            $('#vacio1').toggle('toggle');
-        }, 2000);
+    if (titulo1 == '' || idcur == '') {
+        Swal.fire({
+            type: 'info',
+            // title: 'AFAC INFORMA',
+            text: 'LLENE CAMPOS VACÍOS',
+            showConfirmButton: false,
+            timer: 2900,
+            customClass: 'swal-wide',
+            showConfirmButton: false,
+        });
+        // $('#vacio1').toggle('toggle');
+        // setTimeout(function() {
+        //     $('#vacio1').toggle('toggle');
+        // }, 2000);
 
         return;
     } else {
@@ -612,151 +809,185 @@ function agrTarea() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            if (respuesta == 0) {
 
-                $('#danger1').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger1').toggle('toggle');
-                }, 2000);
+            // alert(respuesta);
 
-                //conprofesion(ActIdpro);
-            } else {
+            // if (respuesta != 0) {
+                document.getElementById("Dtarea").reset();
+            Swal.fire({
+                type: 'success',
+                // title: 'AFAC INFORMA',
+                html: `<p>SE HA AGREGADO LA TAREA <b>${titulo1}</b> CORRECTAMENTE</p>`,
+                showConfirmButton: false,
+                timer: 3200,
+                customClass: 'swal-wide',
+                showConfirmButton: false,
+            });
 
-                $("#idsubt2").val(respuesta);
-                $('#succe1').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe1').toggle('toggle');
-                }, 2000);
-                $("#button1").hide();
-                $("#button2").show();
-                $("#form2").show();
-                $("#resp1").show();
-                document.getElementById('titulo1').disabled = true;
-                document.getElementById('descrip1').disabled = true;
-                // document.getElementById('fechaA').disabled = true;
-                // document.getElementById('fechaT').disabled = true;
+            //conprofesion(ActIdpro);
+            // } else {
+
+            // $("#idsubt2").val(respuesta);
+            // $('#succe1').toggle('toggle');
+            // setTimeout(function() {
+            // $('#succe1').toggle('toggle');
+            // }, 2000);
+
+            $("#button2").show();
+            $("#form2").show();
+            $("#resp1").show();
 
 
-            }
+            // document.getElementById('titulo1').disabled = true;
+            // document.getElementById('oculsub1').disabled = true;
+            // document.getElementById('oculsub2').disabled = true;
+            // document.getElementById('oculsub3').disabled = true;
+            // document.getElementById('idcur').disabled = true;
+            $("#agregarTarea").show();
+            $("#formulario").hide();
+            $("#button1").show();
+            $("#button1").hide();
+            contador++;
+            //alert('El contador ahora vale :' + contador);
+            $("#tareas").html(contador + ' TAREA AGREGADA, DESEA AGREGAR LA SIGUIENTE TAREA');
+            $("#otra").show();
+
+            // document.getElementById("formulario").reset();
+
+            // document.getElementById('descrip1').disabled = true;
+            // document.getElementById('fechaA').disabled = true;
+            // document.getElementById('fechaT').disabled = true;
+
+
+            //}
         });
     }
 
 }
 
-function agrTarea2() {
-    idcur = document.getElementById('idcur').value;
-    titulo1 = document.getElementById('titulo2').value;
-    descrip1 = document.getElementById('descrip2').value;
-    idsubt = document.getElementById('idsubt2').value;
-    // fechaA = document.getElementById('fechaA2').value;
-    // fechaT = document.getElementById('fechaT2').value;
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
-    //var gstFslda = document.getElementById('AgstFslda').value;
+function agregarTarea() {
 
-    if (titulo1 == '' || descrip1 == '') {
-
-        $('#vacio2').toggle('toggle');
-        setTimeout(function() {
-            $('#vacio2').toggle('toggle');
-        }, 2000);
-
-        return;
-    } else {
-        $.ajax({
-            url: '../php/regTarea.php',
-            type: 'POST',
-            data: datos
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-
-                $('#danger2').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger2').toggle('toggle');
-                }, 2000);
-                //conprofesion(ActIdpro);
-            } else {
-                $("#idsubt3").val(respuesta);
-                $('#succe2').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe2').toggle('toggle');
-                }, 2000);
-                $("#button1").hide();
-                $("#button2").hide();
-                $("#button3").show();
-                $("#form3").show();
-                $("#resp1").hide();
-                $("#resp2").show();
-                document.getElementById('titulo2').disabled = true;
-                document.getElementById('descrip2').disabled = true;
-                // document.getElementById('fechaA2').disabled = true;
-                // document.getElementById('fechaT2').disabled = true;
-            }
-        });
-    }
+    $("#formulario").show();
+    $("#otra").hide();
+    $("#button1").show();
 
 }
+// function agrTarea2() {
+// idcur = document.getElementById('idcur').value;
+// titulo1 = document.getElementById('titulo2').value;
+// // descrip1 = document.getElementById('descrip2').value;
+// idsubt = document.getElementById('idsubt2').value;
+// // fechaA = document.getElementById('fechaA2').value;
+// // fechaT = document.getElementById('fechaT2').value;
+// datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt +
+// '&opcion=tareAgr';
+// //var gstFslda = document.getElementById('AgstFslda').value;
+
+// if (titulo1 == '') {
+
+// $('#vacio2').toggle('toggle');
+// setTimeout(function() {
+// $('#vacio2').toggle('toggle');
+// }, 2000);
+
+// return;
+// } else {
+// $.ajax({
+// url: '../php/regTarea.php',
+// type: 'POST',
+// data: datos
+// }).done(function(respuesta) {
+// if (respuesta == 0) {
+
+// $('#danger2').toggle('toggle');
+// setTimeout(function() {
+// $('#danger2').toggle('toggle');
+// }, 2000);
+// //conprofesion(ActIdpro);
+// } else {
+// $("#idsubt3").val(respuesta);
+// $('#succe2').toggle('toggle');
+// setTimeout(function() {
+// $('#succe2').toggle('toggle');
+// }, 2000);
+// $("#button1").hide();
+// $("#button2").hide();
+// $("#button3").show();
+// $("#form3").show();
+// $("#resp1").hide();
+// $("#resp2").show();
+// document.getElementById('titulo2').disabled = true;
+// document.getElementById('descrip2').disabled = true;
+// // document.getElementById('fechaA2').disabled = true;
+// // document.getElementById('fechaT2').disabled = true;
+// }
+// });
+// }
+
+// }
 
 
-//
-function agrTarea3() {
-    idcur = document.getElementById('idcur').value;
-    titulo1 = document.getElementById('titulo3').value;
-    descrip1 = document.getElementById('descrip3').value;
-    idsubt = document.getElementById('idsubt3').value;
-    // fechaA = document.getElementById('fechaA3').value;
-    // fechaT = document.getElementById('fechaT3').value;
-
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&descrip1=' + descrip1 + '&idsubt=' + idsubt +
-    '&opcion=tareAgr';
-    //var gstFslda = document.getElementById('AgstFslda').value;
-
-    if (titulo1 == '' || descrip1 == '') {
-
-        $('#vacio3').toggle('toggle');
-        setTimeout(function() {
-            $('#vacio3').toggle('toggle');
-        }, 2000);
-
-        return;
-    } else {
-        $.ajax({
-            url: '../php/regTarea.php',
-            type: 'POST',
-            data: datos
-        }).done(function(respuesta) {
-            //alert(respuesta);
-            if (respuesta == 0) {
-                $('#danger3').toggle('toggle');
-                setTimeout(function() {
-                    $('#danger3').toggle('toggle');
-                }, 2000);
+// //
+// function agrTarea3() {
+// idcur = document.getElementById('idcur').value;
+// titulo1 = document.getElementById('titulo3').value;
+// // descrip1 = document.getElementById('descrip3').value;
+// idsubt = document.getElementById('idsubt3').value;
+// // fechaA = document.getElementById('fechaA3').value;
+// // fechaT = document.getElementById('fechaT3').value;
+// subtarea = document.getElementById('ojt-subtarea').value;
 
 
-            } else {
+// datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&idsubt=' + idsubt +
+// '&opcion=tareAgr';
+// //var gstFslda = document.getElementById('AgstFslda').value;
+
+// if (titulo1 == '') {
+
+// $('#vacio3').toggle('toggle');
+// setTimeout(function() {
+// $('#vacio3').toggle('toggle');
+// }, 2000);
+
+// return;
+// } else {
+// $.ajax({
+// url: '../php/regTarea.php',
+// type: 'POST',
+// data: datos
+// }).done(function(respuesta) {
+// //alert(respuesta);
+// if (respuesta == 0) {
+// $('#danger3').toggle('toggle');
+// setTimeout(function() {
+// $('#danger3').toggle('toggle');
+// }, 2000);
 
 
-                $('#succe3').toggle('toggle');
-                setTimeout(function() {
-                    $('#succe3').toggle('toggle');
-                }, 2000);
-                $("#button1").hide();
-                $("#button2").hide();
-                $("#button3").hide();
-                $("#resp1").hide();
-                $("#resp2").hide();
-                $("#resp3").show();
+// } else {
 
-                document.getElementById('titulo3').disabled = true;
-                document.getElementById('descrip3').disabled = true;
-                // document.getElementById('fechaA3').disabled = true;
-                // document.getElementById('fechaT3').disabled = true;
-                //conprofesion(ActIdpro);
-            }
-        });
-    }
 
-}
+// $('#succe3').toggle('toggle');
+// setTimeout(function() {
+// $('#succe3').toggle('toggle');
+// }, 2000);
+// $("#button1").hide();
+// $("#button2").hide();
+// $("#button3").hide();
+// $("#resp1").hide();
+// $("#resp2").hide();
+// $("#resp3").show();
+
+// document.getElementById('titulo3').disabled = true;
+// document.getElementById('descrip3').disabled = true;
+// // document.getElementById('fechaA3').disabled = true;
+// // document.getElementById('fechaT3').disabled = true;
+// //conprofesion(ActIdpro);
+// }
+// });
+// }
+
+// }
 
 function agrIva() {
 
@@ -811,70 +1042,175 @@ function agrIva() {
 //         "ajax": '../php/data-task.php'
 //     });
 // });
-function format(d) {
-    // `d` is the original data object for the row
-    // class="table display table-striped table-bordered" style="width:100%"
-    return '<table class="table display table-striped table-bordered" style="width:100%">' +
-        '<tr>' +
-        '<td><strong>SUBTAREA:</strong></td>' +
-        '<td>' + d.subtarea + '</td>' +
-        '<td><strong>SUB SUBTAREA:</strong></td>' +
-        '<td>' + d.subsubtarea + '</td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td><strong>DESCRIPCIÓN:<strong></td>' +
-        '<td>' + d.descripcion + '</td>' +
-        '<td><strong>DESCRIPCIÓN:<strong></td>' +
-        '<td>' + d.descripcionsub + '</td>' +
-        '</tr>' +
-        '</table>';
-}
+
 
 $(document).ready(function() {
-    var table = $('#add-task').DataTable({
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        "ajax": "../php/data-task.php",
-        "columns": [{
-                "className": 'details-control',
-                "orderable": false,
-                "data": null,
-                "defaultContent": ''
-            },
-            {
-                "data": "cursoPrinc"
-            },
-            {
-                "data": "titulo"
-            },
-            {
-                "data": "descriprincipal"
-            }
 
-        ],
-        "order": [
-            [1, 'asc']
-        ]
-    });
+var dataSet = [
+<?php 
+$query = "SELECT *, count(id_spc) AS ttl FROM ojts
+INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
+WHERE ojts.estado = 0 GROUP BY id_spc";
+$resultado = mysqli_query($conexion, $query);
+$contador = 0;
+while($data = mysqli_fetch_assoc($resultado)){
+$id = $data["id_ojt"];
+$idspc = $data['id_spc'];
+$contador++;
 
-    // Add event listener for opening and closing details
-    $('#add-task tbody').on('click', 'td.details-control', function() {
-        var tr = $(this).closest('tr');
-        var row = table.row(tr);
+// if($data["ojt_subtarea"]==''){
 
-        if (row.child.isShown()) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        } else {
-            // Open this row
-            row.child(format(row.data())).show();
-            tr.addClass('shown');
-        }
-    });
+// }
+
+// $query2 = "SELECT * FROM ojts INNER JOIN categorias ON categorias.gstIdcat = ojts.id_spc
+// WHERE ojts.estado = 0 AND id_spc = $idspc"; 
+// $resultados = mysqli_query($conexion, $query2);
+// "<?php 
+// $ttl = 1;
+// while($datas = mysqli_fetch_assoc($resultados)){
+// $ttls = $ttl++;    
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)'>TAREA $ttls | </a>";
+// }
+
+// 
+?>
+
+["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>OJTS ASIGNADOS</a>"?>",
+"<?php 
+
+
+// $queri = "SELECT * FROM ojts_subs WHERE idtarea = $id";
+// $resultados = mysqli_query($conexion, $queri);
+// while($datas = mysqli_fetch_assoc($resultados)){
+
+// if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 1){
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub1' onclick='idsub1($id)' >SUB 1</a>";
+// }else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 2){
+// echo " || <a href='#' data-toggle='modal' data-target='#detalleSub2' onclick='idsub2($id)' >SUB 2</a>";
+// }else if($datas['ojt_subtarea']!='' && $datas['numsubt'] == 3){
+// echo "<a href='#' data-toggle='modal' data-target='#detalleSub3' onclick='idsub3($id)' >SUB 3</a>";
+// }
+
+// |  | 
+
+
+//}
+
+?>",
+],
+
+<?php  } ?>
+
+];
+
+var tableOJT = $('#add-task').DataTable({
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+// "order": [
+//     [0, 'desc']
+// ],
+orderCellsTop: true,
+fixedHeader: true,
+data: dataSet,
+columns: [{
+title: "#"
+},
+{
+title: "ESPECIALIDAD OJT"
+},
+{
+title: "OJTS PRINCIPALES"
+}
+]
 });
+
+});
+
+
+function idsub1(id1) {
+
+    $.ajax({
+        url: '../php/data-task.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idtarea == id1) {
+                html += "<tr><td>" + '1.' + x + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#ojt").html(html);
+    })
+
+
+}
+
+function idsub2(id2) {
+    $.ajax({
+        url: '../php/sub2.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th>#</th><th>SUB 2</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idtarea == id2) {
+                html += "<tr><td>" + '2.' + x + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#tablasub2").html(html);
+    })
+
+
+}
+
+function idsub3(id3) {
+    $.ajax({
+        url: '../php/sub3.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table class="table table-bordered"><tr><th>#</th><th>SUB 3</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            if (obj.data[i].idtarea == id3) {
+                html += "<tr><td>" + '3.' + x + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#tablasub3").html(html);
+    })
+
+
+}
+
 // CONSULTA PARA VERIFICAR CUANTOS PARTICIPANTES SE NECESITAN
 function participantes(id) {
     $.ajax({
@@ -926,7 +1262,8 @@ function responsables(idResp) {
             x++;
 
             if (obj.data[p].entrega == 1 && obj.data[p].evalua == 0) {
-                html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="' + obj.data[p].id_tare +
+                html += '<tr><input type="hidden" name="idtarea" id="idtarea" value="' + obj.data[p]
+                    .id_tare +
                     '"><td>' + x + '</td> <td>' + nombres +
                     '</td><td><b>SI</b> <input type="checkbox" style="width:17px; height:17px;" name="evalsi" id="evalsi" value=""> <b>NO</b> <input type="checkbox" style="width:17px; height:17px;" name="evalno" id="evalno" value=""></td></tr>';
             } else if (obj.data[p].entrega == 0 && obj.data[p].evalua == 0) {
@@ -1013,4 +1350,234 @@ function notificacion() {
 
 
 }
+
+var campos_max2 = 10;
+var vojt2 = 0;
+$('#add_sub2').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojt2 < campos_max2) {
+        $('#sub2').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 2" class="form-control" type="text" name="tarea2[]">\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+        vojt2++;
+    }
+});
+// Remover o div anterior
+$('#sub2').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojt2--;
+});
+
+
+
+var campos_max = 20;
+var vojt = 0;
+$('#add_sub1').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojt < campos_max) {
+        $('#sub1').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+        vojt++;
+    }
+});
+// Remover o div anterior
+$('#sub1').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojt--;
+});
+
+
+
+var campos_max3 = 10;
+var vojt3 = 0;
+$('#add_sub3').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojt3 < campos_max3) {
+        $('#sub3').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 3" class="form-control" type="text" name="tarea3[]">\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+        vojt3++;
+    }
+});
+// Remover o div anterior
+$('#sub3').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojt3--;
+});
+
+// JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
+
+//TODAS LAS TAREAS
+
+function todasT(t){
+
+    $("#todasTareas").show();
+    $("#puesto").hide();
+    $("#Dtarea").hide();
+        $.ajax({
+        url: '../php/ojt_tareas.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        //AQUI03
+
+        var n = 0;
+
+           // html += '<div class="col-sm-6"><div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"> <div class="box"> <div class="box-header with-border"><h3 class="box-title">OJT</h3></div><div class="box-body"><table class="table table-bordered"><tr><th style="width: 10px">#</th><th>ojt_principal</th><th>detalles</th></tr>';      
+  html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">ID</th><th scope="col" style="width:100px;">OJTS</th><th scope="col" style="width:150px;">SUB TAREAS</th> </tr></thead><tbody>';
+
+
+        for (H = 0; H < res.length; H++) {
+
+            if (obj.data[H].id_spc == t) {
+
+             var idojt = obj.data[H].id_ojt;
+                n++;
+
+                if(obj.data[H].ojt=='SIN SUB TAREAS'){
+        html += '<tr><th scope="row">' + n + ')</th><td>' +obj.data[H].ojt_principal+ '</td><td>'+obj.data[H].ojt+'</td></tr>'; 
+
+                }else{
+        html += '<tr><th scope="row">' + n + ')</th><td>' +obj.data[H].ojt_principal+ '</td><td> <a href="#" data-toggle="modal" data-target="#detalleSub3" onclick="idsubTa('+obj.data[H].id_ojt+')">'+obj.data[H].ojt+'</a></td></tr>'; 
+
+                }
+
+
+            } 
+
+        }
+
+   html += '</tbody></table></form></div></div>';
+
+        $("#add_ojts1").html(html);
+ 
+    })
+}
+
+
+function idsubTa(idsub) {
+
+    $.ajax({
+        url: '../php/data-task.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        var y = 0;
+        var w = 0;
+
+
+        for (ii = 0; ii < res.length; ii++) {
+
+        if (obj.data[ii].idtarea == idsub) {
+
+
+    html ='<table  class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+
+            
+            if (obj.data[i].idtarea == idsub) {
+             
+                if(obj.data[i].numsubt==1){
+                // $("#tablasub01").show();                    
+                x++;
+                html += "<tr><td>" + obj.data[i].numsubt+'. ' + x + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+                            
+                }
+
+            }
+        }
+        html += '</table>';
+        $("#tablasub01").html(html);
+
+
+
+                if(obj.data[ii].numsubt==2){
+                
+    
+        $("#tablasub02").show();
+
+        html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 2</th><th>ACCIONES</th>';
+
+        for (i = 0; i < res.length; i++) {
+            
+            if (obj.data[i].idtarea == idsub) {
+             
+                if(obj.data[i].numsubt==2){
+                y++;
+                html += "<tr><td>" + obj.data[i].numsubt+'. ' + y + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+                }
+
+            }
+        }
+        html += '</table>';
+        $("#tablasub02").html(html);
+
+        }else{
+        
+
+        }
+
+        if(obj.data[ii].numsubt==3){
+
+        $("#tablasub03").show();
+                
+       html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 3</th><th>ACCIONES</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            
+            if (obj.data[i].idtarea == idsub) {
+             
+               if(obj.data[i].numsubt==3){
+                w++;
+
+                html += "<tr><td>" + obj.data[i].numsubt+'. ' + w + "</td><td>" + obj.data[i].ojt_subtarea +
+                    "</td><td>Editar</td></tr>";
+                }
+
+            }
+        }
+        html += '</table>';
+
+        $("#tablasub03").html(html);
+
+}
+
+        }
+    }
+})
+
+}
+
+    function vaciar(){
+        // $("#tablasub01").hide();
+        $("#tablasub02").hide();
+        $("#tablasub03").hide();
+    }
+    function salir(){
+
+    $("#todasTareas").hide();
+    $("#puesto").show();
+    $("#Dtarea").show();
+
+    }
+
+
 </script>
+
