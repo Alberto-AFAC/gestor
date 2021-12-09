@@ -45,12 +45,14 @@ if($opcion === 'tareAgr'){
 
 	$titulo = $varray1[$i]['tareauno'];
 	$numsubt = 1;
+	if($titulo=='' && $numsubt==1){}else{
 	if(tarea1($titulo,$numsubt,$conexion)){
 		//echo "0";
 
 		}else{
 		echo "1";
 		}
+	  }		
 	}
 
 

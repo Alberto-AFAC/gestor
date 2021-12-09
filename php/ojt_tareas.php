@@ -12,7 +12,23 @@
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
 
-			$arreglo["data"][] = $data; 
+			$idOjt = $data['id_ojt'];
+
+		$query2 = "SELECT * FROM ojts_subs WHERE idtarea = $idOjt AND estado = 0";
+		$result = mysqli_query($conexion, $query2);
+		if($datas = mysqli_fetch_array($result)){
+
+			$data["ojt"] = 'SUB TAREAS';
+
+			}else{
+			$data["ojt"] = 'SIN SUB TAREAS';
+			}
+
+//			$idOjt = $data['ojt'] = 'OK';
+		 	$arreglo["data"][] = $data; 
+
+
+
 		}
 		if(isset($arreglo)&&!empty($arreglo)){
 
