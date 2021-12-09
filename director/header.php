@@ -97,7 +97,7 @@
             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
           </ul>
         </li>
-        <li class="treeview">
+            <li class='treeview'>
                 <a href="#">
                     <i class="fa fa-file-text"></i>
                     <span>OJT</span>
@@ -108,7 +108,7 @@
                 <ul class="treeview-menu">
                     <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
-                    <li><a href="#"><i class="fa fa-file-text"></i> Catálogo OJT</a></li>
+                    <li><a style="pointer-events: none;" onclick="return false;" href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
                 </ul>
             </li>
         <!--  -->
