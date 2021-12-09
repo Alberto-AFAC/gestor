@@ -124,7 +124,7 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
-                    <li><a href="#"><i class="fa fa-file-text"></i> OJT Programados</a></li>
+                    <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
                 </ul>
             </li>
             <li>

@@ -5,7 +5,7 @@
       $coman = mysqli_query($conexion,$sql);
     ?>
 
-			<select  id="gstAcReg" class="form-control" class="selectpicker" name="gstAcReg" type="text" data-live-search="true" style="width: 100%" >
+			<select  id="gstComnd" class="form-control" class="selectpicker" name="gstComnd" type="text" data-live-search="true" style="width: 100%" >
 			<?php while($idcoman = mysqli_fetch_row($coman)):?>                      
 			<option value="<?php echo $idcoman[0]?>"><?php echo $idcoman[1].' > '.$idcoman[2]?></option>
 			<?php endwhile; ?>
@@ -14,12 +14,12 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#gstAcReg').select2();
+			$('#gstComnd').select2();
 
-			$('#gstAcReg').change(function(){
+			$('#gstComnd').change(function(){
 				$.ajax({
 					type:"post",
-					data:'valor=' + $('#gstAcReg').val(),
+					data:'valor=' + $('#gstComnd').val(),
 					url:'session/',
 					success:function(r){
 						$('#select2').load('select/tablacom.php');
