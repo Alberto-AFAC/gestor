@@ -2,12 +2,12 @@
 	include("../conexion/conexion.php");
     header('Content-Type: application/json');
 	session_start();
-    $id = $_GET["id"];
-	//$id = 'FO80';	
+    //$id = $_GET["id"];
+	$id = 'FO81';	
 	$query = "SELECT * FROM cursos 
     INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
     INNER JOIN personal ON idinsp = gstIdper 
-    INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+    -- INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
     WHERE cursos.codigo = '$id' AND cursos.estado=0 ORDER BY id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
     $item = 0;
@@ -18,7 +18,8 @@
 		
 		while($data = mysqli_fetch_assoc($resultado)){
             $item++;
-
+$nombre = $data["gstNombr"];
+$apellidos = $data["gstApell"];
 
 $id_curso = $data['id_curso'];
 
@@ -32,12 +33,45 @@ $reaccion = 'SI EXISTE';
 $reaccion = 'NO EXISTE';
 }
 
-
-
-
 		$codigo = substr($data['codigo'], 2); 
 		$idcurinp = $data['idinsp'].'.'.$codigo;
 
+
+$valore = explode(",", $data['idinst']);
+foreach ($valore as $idI){
+
+
+//$idp = settype($data['idinsp'],integer);
+
+$idInsts = intval($idI);
+
+$idp = intval($data['idinsp']);
+
+
+if($idp==$idInsts){
+	echo 'INSTRUCTOR->'.$idp;
+	echo '/n';
+}else{
+	echo 'INSPECTOR8------->'.$idp;
+	echo '/n';	
+}
+
+}
+
+
+
+$valor = explode(",", $data['idinst']);
+foreach ($valor as $idInst){
+$idInst;
+
+	if($data['idinsp']==$idInst){
+
+		//echo $idInst;
+
+	 $confirmar = "ASISTENCIA OBLIGATORIA";
+	 $participante = 'INSTRUCTOR';
+	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a>";
+	}else
 //COORDINADOR
 	if($data['idcoor']==$data['idinsp']){
 
@@ -45,14 +79,9 @@ $reaccion = 'NO EXISTE';
 	 $participante = 'COORDINADOR';
 	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a>";
 
-//INSTRUCTOR
-	}else if($data['idinst']==$data['idinsp']){
+	}else if($data['idinsp']!=$idInst){
 
-	 $confirmar = "ASISTENCIA OBLIGATORIA";
-	 $participante = 'INSTRUCTOR';
-	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a>";
-	}else{
-
+//echo 'INSPECTOR-->'.$data['idinsp'];
 //PARTICIPANTES
 		$evaluacion = "<a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']})' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";	
 
@@ -107,16 +136,17 @@ $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evalu
 
                  $confirmar = "<a style= 'color:green;' >CONFIRMADO</a>";
                  $evaluacion = $evalua."<a type='button' style='margin-left:2px' title='Generar Certificado' onclick='gencerti({$idcurinp})' class='btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-file-text' style='font-size:15px;'></i></a>  <a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']})' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";	
-            }			
+       }//FINALIZA CONDICION DE PARTICIAPANTES QUE CONFIRMAN			
+
 
 	 $participante = 'PARTICIPANTE';
 
-	}
+	}//instructor finaliza condicion
 
-
+}
  	
 	$consulta[] = 
-	[ $item,$data["gstNombr"],$data["gstApell"],$participante,$confirmar,$evaluacion];
+	[ $item,$nombre,$apellidos,$participante,$confirmar,$evaluacion];
 
 		}
 	}
