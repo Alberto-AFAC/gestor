@@ -687,8 +687,7 @@ $direc = mysqli_query($conexion,$sql);
 
                     </div>
 
-                    <input type="hidden" name="gstComnd" id="gstComnd">
-                    <input type="hidden" name="gstIDuni" id="gstIDuni">
+
 
                     <div class="form-group">
                         <input type="hidden" name="gstIDCat" id="gstIDCat" value="0">
@@ -816,7 +815,7 @@ $(document).ready(function() {
     $('#gstIDara').select2();
     //$('#gstIDCat').select2();
     //$('#gstIDSub').select2();
-    //$('#gstIDuni').select2();
+    $('#gstIDuni').select2();
     $('#gstAreID').select2();
     $('#AgstPstID').select2();
     $('#gstIDpai').select2();
