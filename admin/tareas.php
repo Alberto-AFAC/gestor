@@ -214,26 +214,6 @@ include('header.php');
                                                         AÑADIR</span>
                                                 </div>
 
-                                                <div id="sub1" class="col-sm-3">
-                                                    <label>SUB 1</label>
-                                                    <div>
-                                                        <input class="form-control" placeholder="INGRESAR..."
-                                                            type="text" name="tarea1[]" id="oculsub1" disabled="">
-                                                    </div><span class="badge" id="add_sub1"
-                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
-                                                            aria-hidden="true"></i> AÑADIR</span>
-                                                </div>
-
-
-                                                <div id="sub2" class="col-sm-3">
-                                                    <label>SUB 2</label>
-                                                    <div>
-                                                        <input class="form-control" placeholder="INGRESAR..."
-                                                            type="text" name="tarea2[]" id="oculsub2" disabled="">
-                                                    </div><span class="badge" id="add_sub2"
-                                                        style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
-                                                            aria-hidden="true"></i> AÑADIR</span>
-                                                </div>
 
                                                 <div id="sub2" class="col-sm-3">
                                                     <label>SUB 2</label>
