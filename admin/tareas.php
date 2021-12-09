@@ -1443,8 +1443,14 @@ function todasT(t){
              var idojt = obj.data[H].id_ojt;
                 n++;
 
+                if(obj.data[H].ojt=='SIN SUB TAREAS'){
+        html += '<tr><th scope="row">' + n + ')</th><td>' +obj.data[H].ojt_principal+ '</td><td>'+obj.data[H].ojt+'</td></tr>'; 
 
-        html += '<tr><th scope="row">' + n + ')</th><td>' +obj.data[H].ojt_principal+ '</td><td> <a href="#" data-toggle="modal" data-target="#detalleSub3" onclick="idsubTa('+obj.data[H].id_ojt+')">SUB TAREAS</a></td></tr>'; 
+                }else{
+        html += '<tr><th scope="row">' + n + ')</th><td>' +obj.data[H].ojt_principal+ '</td><td> <a href="#" data-toggle="modal" data-target="#detalleSub3" onclick="idsubTa('+obj.data[H].id_ojt+')">'+obj.data[H].ojt+'</a></td></tr>'; 
+
+                }
+
 
             } 
 
