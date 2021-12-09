@@ -303,9 +303,9 @@ $(document).ready(function() {
     $('#subsubtarea').select2();
     $('#coordinador').select2();
     $('#instructor').select2();
-    $('#idSpecialidad').load('select/buspecialidad.php');
-    $('#tabSpcl').load('select/tablaSpc.php');
-    $('#tablaPro').load('select/tablaProgOJT.php');
+    $('#idSpecialidad').load('../admin/select/buspecialidad.php');
+    $('#tabSpcl').load('../admin/select/tablaSpc.php');
+    $('#tablaPro').load('../admin/select/tablaProgOJT.php');
 });
 
 function regOjt() {
