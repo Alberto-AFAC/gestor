@@ -376,7 +376,7 @@ display: none;
                                                         INSTRUCTORAS/ES:</label>
                                                 </div>
                                                 <div class="col-sm-12">
-<div id="id_instruct"></div>
+                                                <div id="id_instruct"></div>
                                                 </div>
                                             </div>
                                         </div>
