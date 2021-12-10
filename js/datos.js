@@ -2292,7 +2292,7 @@ function spcialidads(gstIdper) {
                 gstID = obj.data[s].gstIDper;
                 if (obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 25 && obj.data[s].gstIdcat != 26 && obj.data[s].gstIdcat != 29 && obj.data[s].gstIdcat != 31) {
                     ss++;
-                    alert(obj.data[s].gstIdcat);
+
                     //alert(obj.data[s].gstIDeva);
                     if (obj.data[s].gstIDeva == 'NO') {
 
@@ -3188,7 +3188,7 @@ function asignar() {
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
     var AgstIDSub = document.getElementById('depart').value;
-    var AgstIDuni = document.getElementById('gstIDuni').value;
+    var AgstIDuni = document.getElementById('gstIDuniAct').value;
     var AgstAcReg = document.getElementById('subdireccion1').value; //subdirección
     var AgstNucrt = document.getElementById('AgstNucrt').value;
     var gstNombr = document.getElementById('gstNombr').value;
@@ -3200,7 +3200,7 @@ function asignar() {
         AgstIDCat = '0';
     } else {}
 
-    alert(AgstIDuni);
+    //alert(AgstIDuni);
 
     datas = 'gstIdper=' + gstIdper + '&gstComnd=' + gstComnd + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&gstNombr=' + gstNombr + '&gstNmpld=' + gstNmpld + '&opcion=asignar';
 
