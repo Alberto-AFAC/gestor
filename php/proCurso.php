@@ -11,17 +11,6 @@ $informacion = [];
 
 if($opcion === 'procurso'){
 
-
-
-// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
-
-//  	echo $enc;
-
-// }else{
-// }
-
-
 $n = consulta($conexion);
 //$idcord = $_POST['idcord'];
 $result = $n + 1;
@@ -48,6 +37,22 @@ $id = $_POST['idinsps'].','.$idcord;
 $valor = explode(",", $id);
 $val = count($valor);
 $n = 0;
+$var= 0;
+$enc = 0;
+ foreach ($valor as $idinsps) {
+
+
+if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+
+ 	$enc;
+
+}else{
+	$var = 'NO HAY';
+}
+}
+
+if($var == 'NO HAY' && $enc==0){
 foreach ($valor as $idinsps) {
 	$n++;
 
@@ -77,6 +82,7 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 
 		//}
 	}
+}else{ $enc; }
 }else if($opcion === 'actualizar'){
 
 	 $idinsps = $_POST['idinsps'];		
