@@ -99,7 +99,15 @@ value="<?php echo $datos[0]?>">
         <div id="vencidos"></div>
     </a>
 </li>
-
+    <li class="list-group-item">
+    <a href="history">
+    <i class="fa fa-archive"></i> <span>Perfil</span>
+    <span class="pull-right-container">
+    <small class="label pull-right bg-red"></small>
+    <small class="label pull-right bg-blue"></small>
+    </span>
+    </a>
+    </li>
 </ul>
 
 </div>
@@ -153,6 +161,9 @@ data-target='#modal-exprofe'>
 <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
 <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
 <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li>
+
+
+
 <?php 
 if($datos[3]== 'ADMINISTRATIVO'){}else{
 
