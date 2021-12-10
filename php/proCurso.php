@@ -39,20 +39,20 @@ $val = count($valor);
 $n = 0;
 $var= 0;
 $enc = 0;
- foreach ($valor as $idinsps) {
+//  foreach ($valor as $idinsps) {
 
 
-if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
 
- 	$enc;
+//  	$enc;
 
-}else{
-	$var = 'NO HAY';
-}
-}
+// }else{
+// 	$var = 'NO HAY';
+// }
+// }
 
-if($var == 'NO HAY' && $enc==0){
+//if($var == 'NO HAY'){
 foreach ($valor as $idinsps) {
 	$n++;
 
@@ -82,7 +82,7 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 
 		//}
 	}
-}else{ $enc; }
+//}
 }else if($opcion === 'actualizar'){
 
 	 $idinsps = $_POST['idinsps'];		

@@ -37,6 +37,18 @@ $inspector = mysqli_query($conexion,$sql);
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+<!-- <link rel="stylesheet" type="text/css" href="../datas/bootstrap.css"> -->
+<link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+<script type="text/javascript" async="" src="../datas/ga.js"></script>
+<script type="text/javascript" src="../datas/site.js"></script>
+<script type="text/javascript" src="../datas/dynamic.php" async=""></script>
+<script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
+<script type="text/javascript" language="javascript" src="../datas/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="../datas/dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
+
     <style>
     #data-table-cursosProgramados input {
         width: 80% !important;
@@ -68,19 +80,13 @@ $inspector = mysqli_query($conexion,$sql);
     <div class="wrapper">
 
         <?php
-include('header.php');
+        include('header.php');
 ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
 
-
-            <section class="content-header">
-                <h1>
-                    CURSOS PROGRAMADOS
-                </h1>
-            </section>
             <!-- Main content -->
             <section class="content">
                 <div class="row">
@@ -95,9 +101,7 @@ include('header.php');
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
-                                    <div style="display: none;">
-                                        <?php include('../html/lisCurso.html');?>
-                                    </div>
+             
                                     <!-- Datatables-->
                                     <!--SEGUNDA TABLA OPTIMIZADA-->
                                     <table class="display table table-striped table-bordered dataTable" id="example"
@@ -281,8 +285,8 @@ curso para cancelar </p>
 <h4 class="modal-title">ELIMINAR INSPECTOR </h4>
 </div>
 <div class="modal-body">
-<!-- <input type="hidden" name="codInsp" id="codInsp"> --><input type="hidden"
-name="idInspt" id="idInspt">
+<!-- <input type="hidden" name="codInsp" id="codInsp"> -->
+<input type="hidden" name="idInspt" id="idInspt">
 <div class="form-group">
 <div class="col-sm-12">
 <p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR? <span id="nomInsp"></span>
@@ -750,9 +754,7 @@ exito!</p>
 <footer class="main-footer">
 <div class="pull-right hidden-xs">
 <b>Version</b> <?php 
-$query ="SELECT 
-*
-FROM
+$query ="SELECT * FROM
 controlvers";
 $resultado = mysqli_query($conexion, $query);
 
@@ -769,172 +771,7 @@ Todos los derechos Reservados DDE
 .
 </footer>
 
-<!-- 
-<aside class="control-sidebar control-sidebar-dark">
-<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
 
-</ul>
-<div class="tab-content">
-<div class="tab-pane" id="control-sidebar-home-tab">
-<h3 class="control-sidebar-heading">Recent Activity</h3>
-<ul class="control-sidebar-menu">
-<li>
-<a href="javascript:void(0)">
-<i class="menu-icon fa fa-birthday-cake bg-red"></i>
-</a>
-</li>
-<li>
-<a href="javascript:void(0)">
-<i class="menu-icon fa fa-user bg-yellow"></i>
-
-<div class="menu-info">
-<h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-<p>New phone +1(800)555-1234</p>
-</div>
-</a>
-</li>
-<li>
-<a href="javascript:void(0)">
-<i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-<div class="menu-info">
-<h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-<p>nora@example.com</p>
-</div>
-</a>
-</li>
-<li>
-<a href="javascript:void(0)">
-<i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-<div class="menu-info">
-<h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-<p>Execution time 5 seconds</p>
-</div>
-</a>
-</li>
-</ul>
-<h3 class="control-sidebar-heading">Tasks Progress</h3>
-<ul class="control-sidebar-menu">
-<li>
-<a href="javascript:void(0)">
-<h4 class="control-sidebar-subheading">
-Custom Template Design
-<span class="label label-danger pull-right">70%</span>
-</h4>
-
-<div class="progress progress-xxs">
-<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-</div>
-</a>
-</li>
-<li>
-<a href="javascript:void(0)">
-<h4 class="control-sidebar-subheading">
-Update Resume
-<span class="label label-success pull-right">95%</span>
-</h4>
-
-<div class="progress progress-xxs">
-<div class="progress-bar progress-bar-success" style="width: 95%"></div>
-</div>
-</a>
-</li>
-<li>
-<a href="javascript:void(0)">
-<h4 class="control-sidebar-subheading">
-Laravel Integration
-<span class="label label-warning pull-right">50%</span>
-</h4>
-
-<div class="progress progress-xxs">
-<div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-</div>
-</a>
-</li>
-<li>
-<a href="javascript:void(0)">
-<h4 class="control-sidebar-subheading">
-Back End Framework
-<span class="label label-primary pull-right">68%</span>
-</h4>
-
-<div class="progress progress-xxs">
-<div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-</div>
-</a>
-</li>
-</ul>
-</div>
-<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-<div class="tab-pane" id="control-sidebar-settings-tab">
-<form method="post">
-<h3 class="control-sidebar-heading">General Settings</h3>
-
-<div class="form-group">
-<label class="control-sidebar-subheading">
-Report panel usage
-<input type="checkbox" class="pull-right" checked>
-</label>
-
-<p>
-Some information about this general settings option
-</p>
-</div>
-<div class="form-group">
-<label class="control-sidebar-subheading">
-Allow mail redirect
-<input type="checkbox" class="pull-right" checked>
-</label>
-
-<p>
-Other sets of options are available
-</p>
-</div>
-
-<div class="form-group">
-<label class="control-sidebar-subheading">
-Expose author name in posts
-<input type="checkbox" class="pull-right" checked>
-</label>
-
-<p>
-Allow the user to show his name in blog posts
-</p>
-</div>
-
-<h3 class="control-sidebar-heading">Chat Settings</h3>
-
-<div class="form-group">
-<label class="control-sidebar-subheading">
-Show me as online
-<input type="checkbox" class="pull-right" checked>
-</label>
-</div>
-
-<div class="form-group">
-<label class="control-sidebar-subheading">
-Turn off notifications
-<input type="checkbox" class="pull-right">
-</label>
-</div>
-
-<div class="form-group">
-<label class="control-sidebar-subheading">
-Delete chat history
-<a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-</label>
-</div>
-</form>
-</div>
-</div>
-</aside> -->
-<!-- /.control-sidebar -->
-<!-- Add the sidebar's background. This div must be placed
-immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
@@ -956,34 +793,6 @@ immediately after the control sidebar -->
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script src="../js/global.js"></script>
-    < <script type="text/javascript">
-        //Plug-in function for the bootstrap version of the multiple email
-        // $(function() {
-        // //To render the input device to multiple email input using BootStrap icon
-        // $('#correoResponsable').multiple_emails({
-        // position: "bottom"
-        // });
-        // //OR $('#correoResponsable').multiple_emails("Bootstrap");
-
-        // //Shows the value of the input device, which is in JSON format
-        // $('#current_emailsBS').text($('#correoResponsable').val());
-        // $('#correoResponsable').change(function() {
-        // $('#current_emailsBS').text($(this).val());
-        // });
-        // });
-        // //Plug-in function for the bootstrap version of the multiple email
-        // $(function() {
-        // //To render the input device to multiple email input using a simple hyperlink text
-        // $('#example_emailB').multiple_emails({
-        // theme: "Basic"
-        // });
-        // $('#current_emailsB').text($('#example_emailB').val());
-        // $('#example_emailB').change(function() {
-        // $('#current_emailsB').text($(this).val());
-        // });
-        // });
-        </script>
-        <!-- page script -->
 
 </body>
 
@@ -1151,15 +960,8 @@ $(document).ready(function() {
 
 });
 
-// TODO AQUI EMPIZA LA PROGRAMACIÓN CON JAVASCRIPT PARA LA TABLA DE CURSOS//
 function idcurso(codigo) {
 
-    // var currentdate = new Date();
-    // var datetime = "Fecha de Impresion: " + currentdate.getDate() + "/" +
-    //     (currentdate.getMonth() + 1) + "/" +
-    //     currentdate.getFullYear() + " - " +
-    //     currentdate.getHours() + ":" +
-    //     currentdate.getMinutes();
     var id = codigo
 
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
@@ -1171,106 +973,16 @@ function idcurso(codigo) {
             }
         },
 
-        // dom: 'Bfrtip',
-        // buttons: [{
-        //         extend: 'copy',
-        //         exportOptions: {
-        //             columns: [0, 1, 2, 3, 4, 5]
-        //         }
-        //     },
-        //     {
-        //         extend: 'pdfHtml5',
-        //         text: 'Generar PDF',
-        //         messageTop: 'LISTA DE cursosProgramados',
-        //         exportOptions: {
-        //             columns: [0, 1, 2, 3, 4, 5]
-        //         },
-        //         download: 'open',
-        //         header: true,
-        //         title: '',
-        //         customize: function(doc) {
-        //             doc.defaultStyle.fontSize = 8;
-        //             doc.styles.tableHeader.fontSize = 8;
-        //             doc['footer'] = (function(page, pages) {
-        //                 return {
-        //                     columns: [
-        //                         datetime,
-        //                         {
-        //                             alignment: 'right',
-        //                             text: [{
-        //                                     text: page.toString(),
-        //                                     italics: false
-        //                                 },
-        //                                 ' de ',
-        //                                 {
-        //                                     text: pages.toString(),
-        //                                     italics: false
-        //                                 }
-        //                             ]
-        //                         }
-        //                     ],
-        //                     margin: [25, 0]
-        //                 }
-        //             });
-
-
-        //         }
-        //     },
-        //     {
-        //         extend: 'excel',
-        //         text: 'Generar Excel',
-        //         exportOptions: {
-        //             columns: [0, 1, 2, 3, 4, 5]
-        //         }
-        //     }
-
-        // ],
-
-
 
         "language": {
-            // buttons: {
-            //     copyTitle: 'Registros copiados',
-            //     copySuccess: {
-            //         _: '%d registros copiados',
-            //         1: '1 registro copiado'
-            //     }
-            // },
+
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        // "order": [
-        //     [5, "asc"]
-        // ],
-
 
     });
 
-
-    // CON ESTO FUNCIONA EL MULTIFILTRO//
-    // $('#data-table-cursosProgramados thead tr').clone(true).appendTo('#data-table-cursosProgramados thead');
-
-    // $('#data-table-cursosProgramados thead tr:eq(1) th').each(function(i) {
-    //     var title = $(this).text(); //es el nombre de la columna
-    //     $(this).html('<input type="text"  placeholder="Buscar" />');
-
-    //     $('input', this).on('keyup change', function() {
-    //         if (tableCursosProgramados.column(i).search() !== this.value) {
-    //             tableCursosProgramados
-    //                 .column(i)
-    //                 .search(this.value)
-    //                 .draw();
-    //         }
-    //     });
-    // });
-    setInterval(function() {
-        tableCursosProgramados.ajax.reload();
-    }, 2000);
-
-    // CON ESTO FUNCIONA EL MULTIFILTRO//
 }
-
-
 
 
 function id_cursos(idp) {
@@ -1324,356 +1036,6 @@ function id_cursos(idp) {
 }
 
 
-
-
-
-
-/*/*function idcurso(codigo) {
-
-    $.ajax({
-        url: '../php/curLista.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;*/
-//
-//TODO AQUI ES
-//     html =
-//         '<table id="lstcurs" class="table display table-striped table-bordered" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th style="width: 20px;"><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDO(S)</th><th><i></i>ESPECIALIDAD</th><th><i></i>ASISTENCIA</th><th style="width:18%"><i></i>ACCIONES</th><th style="display:none;"><i></i>MOTIVO</th><th style="display:none;"><i></i>justifi</th></tr></thead><tbody id="myTable">';
-
-
-//     //TRAE LOS DATOS DE LA TABLA CELDA RECURRENTE
-//     $(document).ready(function() {
-//         $("#lstcurs tr").on('click', function() {
-
-
-//             var toma1 = "",
-//                 toma2 = "",
-//                 toma3 = "",
-//                 toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-//             toma1 += $(this).find('td:eq(1) ').html(); //NOMBRE DEL CURSO  
-//             toma2 += $(this).find('td:eq(2)').html(); //PDF
-//             toma3 += $(this).find('td:eq(6)').html(); //PDF 
-//             toma4 += $(this).find('td:eq(7)').html(); //PDF  
-
-//             $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
-//             $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
-//             $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
-//             //  $("#nombredeclin").text(toma4); // Label esta en valor.php
-//             $("#otrosd1").text(toma4); // Label esta en valor.php
-//             $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
-
-
-//             if (toma3 == 'OTROS') {
-//                 document.getElementById('otrosd1').style.display = '';
-//                 document.getElementById('declinpdf1').style.display = 'none';
-//             }
-//             if (toma3 == 'TRABAJO') {
-//                 document.getElementById('otrosd1').style.display = 'none';
-//                 document.getElementById('declinpdf1').style.display = '';
-//             }
-//             if (toma3 == 'ENFERMEDAD') {
-//                 document.getElementById('otrosd1').style.display = 'none';
-//                 document.getElementById('declinpdf1').style.display = '';
-//             }
-
-//         });
-//         //020920211
-//     });
-
-//     for (i = 0; i < res.length; i++) {
-//         x++;
-
-//         year = obj.data[i].fcurso.substring(0, 4);
-//         month = obj.data[i].fcurso.substring(5, 7);
-//         day = obj.data[i].fcurso.substring(8, 10);
-//         Finicio = day + '/' + month + '/' + year;
-//         year = obj.data[i].fechaf.substring(0, 4);
-//         month = obj.data[i].fechaf.substring(5, 7);
-//         day = obj.data[i].fechaf.substring(8, 10);
-//         Finaliza = day + '/' + month + '/' + year;
-
-//         cursos = obj.data[i].gstIdlsc + "*" + obj.data[i].gstTitlo + "*" + obj.data[i].gstTipo + "*" + obj
-//             .data[i].gstPrfil + "*" + obj.data[i].gstCntnc + "*" + obj.data[i].gstDrcin + "*" + obj.data[i]
-//             .gstVignc + "*" + obj.data[i].gstObjtv + "*" + obj.data[i].hcurso + "*" + obj.data[i].fcurso +
-//             "*" + obj.data[i].fechaf + "*" + obj.data[i].idinst + "*" + obj.data[i].sede + "*" + obj.data[i]
-//             .link + "*" + obj.data[i].gstNombr + "*" + obj.data[i].gstApell + "*" + obj.data[i].idmstr +
-//             "*" + obj.data[i].evaluacion + "*" + obj.data[i].idinsp + "*" + obj.data[i].id_curso + "*" + obj
-//             .data[i].confirmar + "*" + obj.data[i].codigo + '*' + obj.data[i].idinsp;
-
-//         if (obj.data[i].gstCargo == 'ADMINISTRATIVO') {
-//             cargo = obj.data[i].gstCargo;
-//         } else {
-//             cargo = obj.data[i].gstCatgr;
-//         }
-//         //--------------BASE DE VISTA DETALLE CURSO------------------------//
-//         confirmar = "<a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" + '"' +
-//             obj.data[i].id_curso + '"' +
-//             ")' class='circular-button check green transition' ><i class='fa ion-android-done'  style='font-size:15px;'></i></a>";
-//         evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' +
-//             cursos + '"' +
-//             ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
-//         evalcurso =
-//             "<a type='button' style='margin-left:2px' title='Curso por evaluar' onclick='evalucurs(" + '"' +
-//             cursos + '"' +
-//             ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:15px;'></i></a>";
-//         listcer =
-//             "<a type='button' style='margin-left:2px' title='Generar Certificado' onclick='gencerti(" +
-//             '"' + cursos + '"' +
-//             ") ' class='btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:15px;'></i></a>";
-
-//         // vista cuando se confirma "DETALLE DEL CURSO"
-//         if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
-//             confirmar = "<a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-//                 '"' + obj.data[i].id_curso + '"' +
-//                 ")' class='circular-button check green transition' ><i class='fa ion-android-done'  style='font-size:15px;'></i></a>";
-//         }
-//         // vista cuando se confirma "DETALLE DEL CURSO" CON EVALUACIÓN
-//         if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO' && ((obj.data[i]
-//                 .reaccion) == 'SI EXISTE')) {
-//             confirmar = "<a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-//                 '"' + obj.data[i].id_curso + '"' +
-//                 ")' class='circular-button check green transition' ><i class='fa ion-android-done'  style='font-size:15px;'></i></a>";
-//             evalcurso =
-//                 "<a type='button' style='margin-left:2px' title='Curso por evaluar' onclick='evalucurs(" +
-//                 '"' + cursos + '"' +
-//                 ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:15px;'></i></a>";
-//         }
-//         // vista cuando se DECLINA POR TRABAJO "DETALLE DEL CURSO"
-//         if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'TRABAJO') {
-//             confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(" +
-//                 '"' + obj.data[i].id_curso + '"' +
-//                 ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
-//             evaluacion = "";
-//             evalcurso = "";
-//             listcer = "";
-//         }
-//         // vista cuando se DECLINA POR ENFERMEDAD "DETALLE DEL CURSO"
-//         if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'ENFERMEDAD') {
-//             confirmar = "<a type='button' title='Declina la convocatoria' style= 'red' onclick='agregar(" +
-//                 '"' + obj.data[i].id_curso + '"' +
-//                 ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
-//             evaluacion = "";
-//             evalcurso = "";
-//             listcer = "";
-//         }
-//         // vista cuando se DECLINA POR OTROS "DETALLE DEL CURSO"
-//         if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'OTROS') {
-//             confirmar =
-//                 "<a type='button' title='Declina la convocatoria otros' style= 'red' onclick='agregar(" +
-//                 '"' + obj.data[i].id_curso + '"' +
-//                 ")' class='circular-button declin transition pend1' data-toggle='modal' data-target='#modal-declinado1'></a>";
-//             evaluacion = "";
-//             evalcurso = "";
-//             listcer = "";
-//         }
-//         // vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
-//         if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100) && ((obj.data[i]
-//                 .reaccion) == 'SI EXISTE')) {
-//             evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" +
-//                 '"' + cursos + '"' +
-//                 ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:16px;'></i></a>";
-//             evalcurso =
-//                 "<a type='button' style='margin-left:2px' title='Curso Evaluado' onclick='evalucurs(" +
-//                 '"' + cursos + '"' +
-//                 ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:15px;'></i></a>";
-//         }
-//         // vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
-//         if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100) && ((obj.data[i]
-//                 .reaccion) == 'NO EXISTE')) {
-//             evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" +
-//                 '"' + cursos + '"' +
-//                 ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
-//         }
-//         // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
-//         if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1) && ((obj.data[i].reaccion) ==
-//                 'NO EXISTE')) {
-//             evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" +
-//                 '"' + cursos + '"' +
-//                 ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
-//         }
-//         // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
-//         if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1) && ((obj.data[i].reaccion) ==
-//                 'SI EXISTE')) {
-//             evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" +
-//                 '"' + cursos + '"' +
-//                 ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
-//             evalcurso =
-//                 "<a type='button' style='margin-left:2px' title='Curso Evaluado' onclick='evalucurs(" +
-//                 '"' + cursos + '"' +
-//                 ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:15px;'></i></a>";
-//         }
-
-//         //FIN BASE DE VISTA DETALLE CURSO
-
-//         //---------------VISTA PRINCIPAL DE LA TABLA DETALLE INSPECTOR CURSO---------------//
-//         if (obj.data[i].codigo == codigo) {
-
-//             data = obj.data[i].codigo + '*' + obj.data[i].id_curso + '*' + obj.data[i].gstNombr + '*' + obj
-//                 .data[i].gstApell;
-
-//             if (obj.data[i].gstCargo == 'INSPECTOR' || obj.data[i].gstCargo == 'DIRECTOR' || obj.data[i]
-//                 .gstCargo == 'ADMINISTRATIVO') {
-
-//                 if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR') {
-//                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                         .gstApell + "</td><td>" + cargo +
-//                         "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" +
-//                         '"' + obj.data[i].id_curso + '"' +
-//                         ")' class='circular-button right transition pend'><i class='fa ion-android-time'  style='font-size:18px;'></i>" +
-//                         "</td><td>" +
-//                         "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' +
-//                         cursos + '"' +
-//                         ") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><a type='button' title='Eliminar inspector' onclick='eliNsp(" +
-//                         '"' + data + '"' +
-//                         ")' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a><td style='display:none;'>" +
-//                         obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-//                         "</td></td></tr>";
-
-//                 } else {
-//                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                         .gstApell + "</td><td>" + cargo + "</td><td> " + confirmar + "</td><td>" +
-//                         evaluacion + evalcurso + listcer +
-//                         "<a type='button' title='Eliminar' onclick='eliNsp(" + '"' + data + '"' +
-//                         ")' class='btn btn-default' data-toggle='modal' style='margin-left:2px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px;'></i></a><td style='display:none;'>" +
-//                         obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-//                         "</td></td></tr>";
-//                 }
-
-
-//                 //---------------VISTA PRINCIPAL DE LA TABLA DETALLE CURSO CORDINADOR (TOMA EL CURSO)---------------//
-//             } else if (obj.data[i].gstCargo == 'COORDINADOR') {
-
-//                 if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMAR' && obj.data[i]
-//                     .codigo == codigo && obj.data[i].idinst != obj.data[i].idinsp) {
-//                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                         .gstApell + "</td><td>" + obj.data[i].gstCargo +
-//                         "</td><td> <a type='button' title='Pendiente por confirmar asistencia' style= 'red' onclick='agregar(" +
-//                         '"' + obj.data[i].id_curso + '"' +
-//                         ")' class='circular-button right transition pend'><i class='fa ion-android-time'  style='font-size:18px;'></i>" +
-//                         "</td><td>" +
-//                         "</a> <a type='button' title='Generar Certificado' onclick='gencerti(" + '"' +
-//                         cursos + '"' +
-//                         ") ' class='datos btn btn-default' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa-list-ul' style='font-size:14px; color:#060248' ></i></a><td style='display:none;'>" +
-//                         obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-//                         "</td></td></tr>";
-
-//                 } else if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO' && obj.data[
-//                         i].codigo == codigo && obj.data[i].idinst != obj.data[i].idinsp) {
-//                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                         .gstApell + "</td><td>" + obj.data[i].gstCargo + "</td><td> " + confirmar +
-//                         "</td><td>" + evaluacion + evalcurso + listcer +
-//                         "<td style='display:none;'>" +
-//                         obj.data[i].confirmar + "</td><td style='display:none;'>" + obj.data[i].justifi +
-//                         "</td></td></tr>";
-//                 }
-//             }
-
-//             //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO INSTRUCTOR---------------//
-
-//             if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == codigo) {
-//                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                     .gstApell + "</td><td>" + cargo +
-//                     "</td><td><center><img src='../dist/img/inspector.svg' alt='Inspector' title='Instructor' width='50px;'></center></td>" +
-//                     "<td><a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval(" + '"' +
-//                     cursos + '"' +
-//                     ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>  <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion(" +
-//                     '"' + cursos + '"' +
-//                     ")' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa fa-list-ul' style='font-size:15px;'></i></a> </td></tr>";
-//             }
-
-//             //---------------VISTA PRINCIPAL DE LA TABLA DETALLE DEL CURSO COORDINADOR (PRINCIPAL)---------------//
-//             if (obj.data[i].gstCargo == 'COORDINADOR' && obj.data[i].codigo == codigo && obj.data[i]
-//                 .idinst == obj.data[i].idinsp) {
-//                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                     .gstApell + "</td><td>" + obj.data[i].gstCargo +
-//                     "</td><td><center><img src='../dist/img/coordinador.svg' alt='Coordinador' title='Coordinador' width='50px;'></center></td>" +
-//                     "<td>  </td></tr>";
-//             }
-
-//         } else if (obj.data[i].codigo == codigo && obj.data[i].proceso == 'FINALIZADO') {
-
-//             if (obj.data[i].evaluacion == 0 && obj.data[i].confirmar == 'CONFIRMADO') {
-
-//                 if (obj.data[i].gstCargo == 'COORDINADOR') {
-//                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                         .gstApell + "</td><td>" + obj.data[i].gstCargo +
-//                         "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-//                         '"' + obj.data[i].id_curso + '"' +
-//                         ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-//                         "</td><td>" +
-//                         "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' +
-//                         cursos + '"' +
-//                         ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-//                         '"' + cursos + '"' +
-//                         ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
-//                         '"' + cursos + '"' +
-//                         ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
-//                 } else {
-//                     html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                         .gstApell + "</td><td>" + cargo +
-//                         "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-//                         '"' + obj.data[i].id_curso + '"' +
-//                         ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-//                         "</td><td>" +
-//                         "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins(" + '"' +
-//                         cursos + '"' +
-//                         ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-//                         '"' + cursos + '"' +
-//                         ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
-//                         '"' + cursos + '"' +
-//                         ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
-
-//                 }
-
-//             }
-//             if (((obj.data[i].evaluacion) >= 80) && ((obj.data[i].evaluacion) <= 100)) {
-//                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                     .gstApell + "</td><td>" + cargo +
-//                     "</td><td> <a type='button' title='Confirma asistencia' style= 'red' onclick='agregar(" +
-//                     '"' + obj.data[i].id_curso + '"' +
-//                     ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-//                     "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" +
-//                     '"' + cursos + '"' +
-//                     ")' class='btn btn-success' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-//                     '"' + cursos + '"' +
-//                     ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' text-blue' style='font-size:18px;'></i></a><a type='button' title='Generar Certificado' onclick='gencerti(" +
-//                     '"' + cursos + '"' +
-//                     ") ' class='btn btn-primary' data-toggle='modal' data-target='#modal-acreditacion'><i class='fa fa fa-list-ul' style='font-size:18px;'></i></a></td></tr>";
-//             }
-//             if (((obj.data[i].evaluacion) < 80) && ((obj.data[i].evaluacion) >= 1)) {
-//                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i]
-//                     .gstApell + "</td><td>" + cargo +
-//                     "</td><td> <a type='button' title='Confirma asistencia'style= 'red' onclick='agregar(" +
-//                     '"' + obj.data[i].id_curso + '"' +
-//                     ")' class='circular-button check green transition' data-toggle='modal' data-target='#modal-agregar'><i class='fa ion-android-done'  style='font-size:18px;'></i></a>" +
-//                     "</td><td>" + "<a type='button' title='Evaluación Inspector' onclick='evaluarins(" +
-//                     '"' + cursos + '"' +
-//                     ")' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:18px;'></i></a><a type='button' title='Evaluación Curso' onclick='evalucurs(" +
-//                     '"' + cursos + '"' +
-//                     ")' class='btn btn-warning' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-pencil-square-o' style='font-size:18px;'></i></a></td></tr>";
-//             }
-//         }
-
-//     }
-
-//     html += '</tbody></table>';
-//     $("#proCursos").html(html);
-//     // Buscador de tabla
-//     $(document).ready(function() {
-//         $("#myInput").on("keyup", function() {
-//             var value = $(this).val().toLowerCase();
-//             $("#myTable tr").filter(function() {
-//                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-//             });
-//         });
-//     });
-// })
-//}*/
-
-//TODO
-
 function detalles(tbody, table) {
 
     $(tbody).on("click", "a.eliminar", function() {
@@ -1724,14 +1086,6 @@ function agrinspctor(tbody, table) {
     });
 }
 
-// function eliNsp(data) {
-
-// var d = data.split("*");
-// $("#nomInsp").html(d[2] + ' ' + d[3]);
-// $("#eliminar-modal #codInsp").val(d[0]);
-// $("#eliminar-modal #idInspt").val(d[1]);
-
-// }
 
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
@@ -1741,11 +1095,3 @@ function agrinspctor(tbody, table) {
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->
-<script type="text/javascript">
-function eliNsp(idcursop) {
-
-
-    $("#eliminar-modal #idInspt").val(idcursop);
-
-}
-</script>

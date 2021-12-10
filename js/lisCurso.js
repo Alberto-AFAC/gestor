@@ -338,6 +338,12 @@ function canCurso() {
     }
 }
 ////////////ELIMINAR INSPECTOR////////////////
+function eliNsp(idcursop) {
+
+
+    $("#eliminar-modal #idInspt").val(idcursop);
+
+}
 
 function elInspt() {
 
@@ -1072,6 +1078,10 @@ function cerrareval() {
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
+
+                setInterval(function() {
+                tableCursosProgramados.ajax.reload();
+                }, 1000);
 
             } else {
                 Swal.fire({

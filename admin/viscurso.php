@@ -12,9 +12,7 @@ data-widget="remove">
 </div>
 <div class="nav-tabs-custom">
 <ul class="nav nav-tabs">
-<div class="box-tools pull-right">
 
-</div>
 <li class="active"><a href="#activity" data-toggle="tab">INFORMACION DEL CURSO</a></li>
 
 <li><a href="#timeline" data-toggle="tab">PARTICIPANTES</a></li>
@@ -118,7 +116,6 @@ disabled="">
 <label class="label2">HORA</label>
 <input type="time" class="form-control disabled inputalta" id="hcurso" name="hcurso"
 disabled="">
-</select>
 </div>
 <div class="col-sm-4">
 <label class="label2">FECHA CONCLUSIÓN</label>
@@ -254,7 +251,7 @@ agregar los datos que se solicitan </p>
 <!-- The timeline -->
 <div class="row">
 <div class="col-xs-12">
-<div class="box">
+
 <br>
 
 <form id="impri" action="" method="POST">
@@ -361,9 +358,6 @@ VISUALIZAR EL PDF ADJUNTO</a>
 style="font-size: 16px; color:#615B5B; font-weight: normal; display:none"
 rows="3" cols="50"></label>
 </div>
-<script>
-
-</script>
 </div>
 <!--FIN DE CONFIRMACIÓN DE COONVOCATORIA -->
 
@@ -386,7 +380,7 @@ id="data-table-cursosProgramados" style="width:100%">
 
 </table>
 </div>
-</div>
+
 <!-- /.box -->
 </div>
 <!-- /.col -->
