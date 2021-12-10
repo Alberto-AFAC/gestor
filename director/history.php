@@ -199,8 +199,7 @@
 
                                                                                 <a type="button"
                                                                                     style="float: right; cursor: pointer;"
-                                                                                    onclick="cambio();">NO ENCUENTRA EL
-                                                                                    CURSO</a>
+                                                                                    onclick="cambio();">¿NO ENCUENTRA EL CURSO? </a>
 
                                                                                 <!--         <button type="button" style="float: right;" onclick="cambio()">OTRO(S)</button>     -->
 
