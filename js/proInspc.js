@@ -287,7 +287,7 @@ function proCursoH() {
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
 
-    // alert(datos);
+     alert(idinst);
 
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
 
@@ -306,7 +306,7 @@ function proCursoH() {
             data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&opcion=procurso'
         }).done(function(respuesta) {
 
-            console.log(respuesta);
+            alert(respuesta);
 
             if (respuesta == 0) {
                 // $('#succe').toggle('toggle');
