@@ -656,7 +656,7 @@ function perfil(gstIdper) {
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
-                            $("#Pusto #AcReg").val(obj.data[i].gstComnd);//comandancia
+                            $("#Pusto #AcReg").val(obj.data[i].gstComnd); //comandancia
                             $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             ////////////////////APARTADO PARA ADJUNTAR ARCHIVOS///////////////////////////////
                             $("#Actuliza #Nmplea").val(obj.data[i].gstNmpld);
@@ -1733,7 +1733,7 @@ function inspector(gstIdper) {
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
-                            $("#Pusto #AcReg").val(obj.data[i].gstComnd);//comandancia
+                            $("#Pusto #AcReg").val(obj.data[i].gstComnd); //comandancia
                             $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             //DATOS ESPECIALIDAD
                             // alert(obj.data[i].gstIdper);
@@ -2286,7 +2286,7 @@ function spcialidads(gstIdper) {
 
             if (obj.data[s].gstIDper == gstIdper) {
 
-                
+
                 datos = obj.data[s].gstIDper + '.' + obj.data[s].gstIDcat;
                 dato = gstIdper + '*' + obj.data[s].gstIDcat + '*' + obj.data[s].gstCatgr;
                 gstID = obj.data[s].gstIDper;
@@ -3205,7 +3205,7 @@ function asignar() {
     //alert(datas);
     //alert(gstIdper+'/'+AgstCargo+'/'+AgstIDCat+'/'+AgstIDSub+'/'+AgstIDuni+'/'+AgstAcReg);
 
-    if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstIDuni == '' || AgstNucrt == '' || gstNombr == '' || gstNmpld == '') {
+    if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstNucrt == '' || gstNombr == '' || gstNmpld == '') {
 
         //alert('llene');
         $('#empty2').toggle('toggle');
