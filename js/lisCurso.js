@@ -620,8 +620,9 @@ function evaluarins(cursos) {
 function inspeval(cursos) {
 
 
-    curso = 'FO' + cursos;
 
+
+    curso = 'FO' + cursos;
     // var d = cursos.split("*");
     // $("#cursoc").html(d[1]);
     // $("#folioc").html(d[21]);
