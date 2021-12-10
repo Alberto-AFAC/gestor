@@ -3193,16 +3193,17 @@ function asignar() {
     var AgstNucrt = document.getElementById('AgstNucrt').value;
     var gstNombr = document.getElementById('gstNombr').value;
     var gstNmpld = document.getElementById('gstANmpld').value;
+    var gstComnd  = document.getElementById('AgstAcReg').value;
 
 
     if (AgstCargo != 'INSPECTOR') {
         AgstIDCat = '0';
     } else {}
 
+    alert(AgstIDuni);
 
-    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&gstNombr=' + gstNombr + '&gstNmpld=' + gstNmpld + '&opcion=asignar';
+    datas = 'gstIdper=' + gstIdper + '&gstComnd=' + gstComnd + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&gstNombr=' + gstNombr + '&gstNmpld=' + gstNmpld + '&opcion=asignar';
 
-    //alert(datas);
     //alert(gstIdper+'/'+AgstCargo+'/'+AgstIDCat+'/'+AgstIDSub+'/'+AgstIDuni+'/'+AgstAcReg);
 
     if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstNucrt == '' || gstNombr == '' || gstNmpld == '') {
