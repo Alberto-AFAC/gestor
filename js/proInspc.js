@@ -51,7 +51,7 @@ function proCurso() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
-
+    alert(idcord);
     // var hoy = new Date();
     // var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
     // var f1 = new Date(hoy.getFullYear(),(hoy.getMonth()+1),hoy.getDate());
@@ -116,7 +116,7 @@ function proCurso() {
             }).done(function(respuesta) {
 
 
-              //  alert(respuesta);    
+                alert(respuesta);    
 
                 if (respuesta == 0) {
                     Swal.fire({
@@ -287,7 +287,7 @@ function proCursoH() {
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
 
-     alert(idinst);
+    // alert(datos);
 
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
 
@@ -306,7 +306,7 @@ function proCursoH() {
             data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&opcion=procurso'
         }).done(function(respuesta) {
 
-            alert(respuesta);
+            console.log(respuesta);
 
             if (respuesta == 0) {
                 // $('#succe').toggle('toggle');
