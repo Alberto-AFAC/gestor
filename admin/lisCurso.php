@@ -867,10 +867,12 @@ $(document).ready(function() {
                         $("#buttonfin").hide();
                         $("#editcurs").hide();
                         $("#notiocu").hide();
+                        $("#notiocus").hide();
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
                         $("#notiocu").show();
+                        $("#notiocus").show();
                     }
                     $("#Dtall #classromcur").val(d[19]);
                 }
