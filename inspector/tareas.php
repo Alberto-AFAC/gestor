@@ -1473,7 +1473,7 @@ function idsubTa(idsub) {
 
         obj = JSON.parse(resp);
         var res = obj.data;
-        var x = 0;
+        // var x = 0;
         var y = 0;
         var w = 0;
 
@@ -1486,8 +1486,8 @@ function idsubTa(idsub) {
     html ='<table  class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
 
 
-        for (i = 0; i < res.length; i++) {
-
+    for (i = 0; i < res.length; i++) {
+            for (x = 0; i < res.length; i++) {
             
             if (obj.data[i].idtarea == idsub) {
              
@@ -1500,6 +1500,7 @@ function idsubTa(idsub) {
                 }
 
             }
+        }
         }
         html += '</table>';
         $("#tablasub01").html(html);
