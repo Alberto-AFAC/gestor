@@ -99,7 +99,15 @@ value="<?php echo $datos[0]?>">
 <div id="vencidos"></div>
 </a>
 </li>
-
+    <li class="list-group-item">
+    <a href="history">
+    <i class="fa fa-archive"></i> <span>Perfil</span>
+    <span class="pull-right-container">
+    <small class="label pull-right bg-red"></small>
+    <small class="label pull-right bg-blue"></small>
+    </span>
+    </a>
+    </li>
 </ul>
 
 </div>
