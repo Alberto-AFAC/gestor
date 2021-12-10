@@ -388,12 +388,7 @@ display: none;
                                                         INSTRUCTORAS/ES:</label>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <input class="col-sm-12"
-                                                        type="text"
-                                                        name="id_instruct"
-                                                        id="id_instruct"
-                                                        style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
-                                                        disabled="">
+    <div id="id_instruct"></div>
                                                 </div>
                                             </div>
                                         </div>

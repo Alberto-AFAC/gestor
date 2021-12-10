@@ -13,6 +13,23 @@
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
 
+		$idinsp = $data['idinsp'];
+
+			if($data['idcoor']==$data['idinsp']){
+				$data["puesto"] = 'COORDINADOR';
+			}else{
+				$data["puesto"] = 'INSPECTOR';
+			}
+
+			$queriy = "SELECT * FROM instructor WHERE id_per = $idinsp AND estado = 0";
+			$result = mysqli_query($conexion, $queriy);
+
+			if($res = mysqli_fetch_array($result)){
+				$data["puesto"] = 'INSTRUCTOR';
+			}			
+
+
+
 			$arreglo["data"][] = $data; 
 		}
 		if(isset($arreglo)&&!empty($arreglo)){

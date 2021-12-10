@@ -1147,6 +1147,8 @@ function cursoeval(idcurso) {
         obj = JSON.parse(resp);
         var res = obj.data;
         cod = obj.data[i].codigo;
+
+html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead></thead><tbody>';
         for (i = 0; i < res.length; i++) {
 
             if (obj.data[i].id_curso == idcurso) {
@@ -1154,15 +1156,16 @@ function cursoeval(idcurso) {
                 $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
                 $("#codigo").val(obj.data[i].codigo);
-
             }
-            //TRAE AL INSTRUCTOR DEL CURSO
-            if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == cod) {
-                $("#id_instruct").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+            if (obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == cod) {
 
+            html += "<tr><td>" + obj.data[i].gstNombr+' '+obj.data[i].gstApell + "</td></tr>";
             }
 
         }
+             html += '</tbody></table></div></div></div>';
+            $("#id_instruct").html(html);
+
     })
 
 }
