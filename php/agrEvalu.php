@@ -239,7 +239,7 @@ function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDun
 	gstCargo='$AgstCargo',
 	gstIDCat='$AgstIDCat',
 	gstIDSub='$AgstIDSub',
-	gstAcReg='$AgstAcReg',
+	gstComnd='$AgstAcReg',
 	gstIDuni='$AgstIDuni',
 	gstNucrt='$AgstNucrt',
 	gstEvalu='NO'
