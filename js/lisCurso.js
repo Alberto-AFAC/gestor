@@ -254,10 +254,10 @@ function agrPartc() {
     acodigos = document.getElementById('acodigos').value;
     contracur = document.getElementById('contracur').value;
     classroom = document.getElementById('classroom').value;
-    idntrc = document.getElementById('idntrc').value;    
+    idntrc = document.getElementById('idntrc').value;
     datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&idntrc=' + idntrc + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&classroom=' + classroom + '&opcion=participante';
     //alert(datos);
-    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '' || classromcur == '' || idntrc =='') {
+    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '' || classromcur == '' || idntrc == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -734,7 +734,7 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-
+            // TODO AQUI VA LA CONSTANCIA 
             html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
             for (G = 0; G < res.length; G++) {
 
@@ -1081,7 +1081,7 @@ function cerrareval() {
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
 
                 setInterval(function() {
-                tableCursosProgramados.ajax.reload();
+                    tableCursosProgramados.ajax.reload();
                 }, 1000);
 
             } else {
@@ -1159,7 +1159,7 @@ function cursoeval(idcurso) {
         var res = obj.data;
         cod = obj.data[i].codigo;
 
-html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead></thead><tbody>';
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead></thead><tbody>';
         for (i = 0; i < res.length; i++) {
 
             if (obj.data[i].id_curso == idcurso) {
@@ -1170,12 +1170,12 @@ html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row
             }
             if (obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == cod) {
 
-            html += "<tr><td>" + obj.data[i].gstNombr+' '+obj.data[i].gstApell + "</td></tr>";
+                html += "<tr><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
             }
 
         }
-             html += '</tbody></table></div></div></div>';
-            $("#id_instruct").html(html);
+        html += '</tbody></table></div></div></div>';
+        $("#id_instruct").html(html);
 
     })
 
