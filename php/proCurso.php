@@ -103,7 +103,7 @@ $id_mstr = $_POST['gstIdlsc'];
 $hcurso = $_POST['hrcurs'];
 $fcursos = $_POST['finicio'];
 $fechafs = $_POST['finalf'];
-$idinst = $_POST['idcord'];
+$idcord = $_POST['idcord'];
 $sede = $_POST['sede'];
 $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
@@ -111,6 +111,7 @@ $idinsps= $_POST['idinsp'];
 $codigo = $_POST['acodigos'];
 $contracceso = $_POST['contracur'];
 $classroom = $_POST['classroom'];
+$idInstr = $_POST['idntrc'];
 
 
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
@@ -121,6 +122,9 @@ $fechaf = $yf.'-'.$mf.'-'.$df;
 
 contancia($idinsps,$codigo, $conexion);
 if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
+
+// proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion)
+
 		{	
 
 			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
