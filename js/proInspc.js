@@ -51,7 +51,6 @@ function proCurso() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
-    alert(idcord);
     // var hoy = new Date();
     // var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
     // var f1 = new Date(hoy.getFullYear(),(hoy.getMonth()+1),hoy.getDate());
@@ -115,8 +114,6 @@ function proCurso() {
                 data: datos
             }).done(function(respuesta) {
 
-
-                alert(respuesta);    
 
                 if (respuesta == 0) {
                     Swal.fire({
