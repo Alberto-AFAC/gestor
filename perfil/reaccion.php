@@ -58,12 +58,9 @@
                                                 style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
                                                 disabled="">
                                         </div>
-                                        <div class="col-sm-8">
-                                            <label
-                                                style="font-size:16px">NOMBRE
-                                                DE LAS/LOS
-                                                INSTRUCTORAS/ES:</label>
-                                        </div>
+<!--                                         <div class="col-sm-8">
+<label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label>
+                                        </div> -->
                                         <div class="col-sm-12">
 <!--                                             <input class="col-sm-12"
                                                 type="text"

@@ -11,6 +11,7 @@
 	if(!$resultado){
 		die("error");
 	}else{
+		
 		while($data = mysqli_fetch_assoc($resultado)){
 
 		$idinsp = $data['idinsp'];
