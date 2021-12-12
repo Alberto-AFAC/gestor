@@ -61,8 +61,6 @@ function declina() {
 
 function confirmar(idcurso) {
 
-    //  alert(idcurso);
-
     $.ajax({
         url: '../php/curConfir.php',
         type: 'POST'
@@ -119,14 +117,15 @@ function confirmar(idcurso) {
         html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>NOMBRE</th><th>CARGO</th>';
         x = 0;
         for (i = 0; i < res.length; i++) {
-            x++;
-
-
+            
 
             // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
-            if (obj.data[i].gstCargo == 'COORDINADOR' && obj.data[i].codigo == lista && obj.data[i].idinst == obj.data[i].idinsp || obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == lista) {
-
-                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td></tr>";
+            if (obj.data[i].puesto == 'INSTCOOR' && obj.data[i].codigo == lista) {
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + 'INSTRUCTOR/COORDINADOR' + "</td></tr>";
+            }else if(obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == lista){
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].puesto + "</td></tr>";
+            }else if(obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == lista){
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].puesto + "</td></tr>";
             }
 
 

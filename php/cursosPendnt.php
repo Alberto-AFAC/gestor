@@ -57,7 +57,8 @@
 		$data['hcurso'],
 		$proc,
 		$data['contracur'],
-		$data['classroom']
+		$data['classroom'],
+		$data['idcoor']
 	];
 }
 
@@ -90,7 +91,8 @@
 		$data['hcurso'],
 		$proc,
 		$data['contracur'],
-		$data['classroom']
+		$data['classroom'],
+		$data['idcoor']
 	];
 }
 

@@ -17,32 +17,55 @@ $result = $n + 1;
 $codigo = 'FO'.$result;
 $id_mstr = $_POST['id_mstr'];
 $hcurso = $_POST['hcurso'];
-$fcurso = $_POST['fcurso'];
-$fechaf = $_POST['fechaf'];
-$idinst = $_POST['idinst'];
+
+$idcord = $_POST['idcord'];//Coordinador
+$idInstr = $_POST['idInstru'];//Instructor
+$conteo = explode(",", $idInstr);	
+$ttal = count($conteo);
+
 $sede = $_POST['sede'];
 $link = $_POST['link'];
 $contracceso = $_POST['contracceso'];
 $modalidad = $_POST['modalidad'];
 $classroom = $_POST['classroom'];
 
-$id = $_POST['idinsps'].','.$idinst;
+$fcurso = $_POST['fcurso'];
+$fechaf = $_POST['fechaf'];
+
+$id = $_POST['idinsps'].','.$idcord;
 
 $valor = explode(",", $id);
 $val = count($valor);
 $n = 0;
-foreach ($valor as $idinsps) {
-	$n++;
+$var= 0;
+$enc = 0;
+//  foreach ($valor as $idinsps) {
 
 
 // if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
 //   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
 
-//  	echo "EL PARTICIPANTE ".$enc."ESTA EN CURSO";
-// }else{
+//  	$enc;
 
-if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
+// }else{
+// 	$var = 'NO HAY';
+// }
+// }
+
+//if($var == 'NO HAY'){
+foreach ($valor as $idinsps) {
+	$n++;
+
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
+
+				if($n==$ttal){
+				$Instruc = explode(",", $idInstr);
+				foreach ($Instruc as $idper) {
+				instructor($idper,$codigo,$conexion);
+				}
+			}
+
 		echo "0";	
 		if($n==1){
 		$realizo = 'PROGRAMO CURSO ('.$val.' PART.) FOLIO: '.$codigo;
@@ -59,6 +82,7 @@ if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$
 
 		//}
 	}
+//}
 }else if($opcion === 'actualizar'){
 
 	 $idinsps = $_POST['idinsps'];		
@@ -79,7 +103,7 @@ $id_mstr = $_POST['gstIdlsc'];
 $hcurso = $_POST['hrcurs'];
 $fcursos = $_POST['finicio'];
 $fechafs = $_POST['finalf'];
-$idinst = $_POST['idcord'];
+$idcord = $_POST['idcord'];
 $sede = $_POST['sede'];
 $link = $_POST['link'];
 $modalidad = $_POST['modalidad'];
@@ -87,6 +111,7 @@ $idinsps= $_POST['idinsp'];
 $codigo = $_POST['acodigos'];
 $contracceso = $_POST['contracur'];
 $classroom = $_POST['classroom'];
+$idInstr = $_POST['idntrc'];
 
 
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
@@ -96,7 +121,10 @@ $yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,
 $fechaf = $yf.'-'.$mf.'-'.$df;
 
 contancia($idinsps,$codigo, $conexion);
-if(proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
+
+// proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion)
+
 		{	
 
 			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
@@ -180,29 +208,29 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 }
 
 
-// function encurso($fcurso,$fechaf,$idinsps,$conexion){
+function encurso($fcurso,$fechaf,$idinsps,$conexion){
 
-//     $sql = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
-//            INNER JOIN personal ON idinsp = personal.gstIdper WHERE proceso = 'PENDIENTE' AND idinsp = $idinsps ";        
-//         $person = mysqli_query($conexion,$sql);
-//         while ($per = mysqli_fetch_row($person)) {
+$sql = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+INNER JOIN personal ON idinsp = personal.gstIdper WHERE proceso = 'PENDIENTE' AND idinsp = $idinsps ";        
+$person = mysqli_query($conexion,$sql);
+while ($per = mysqli_fetch_row($person)) {
 
-// $query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
-//            INNER JOIN personal ON idinsp = personal.gstIdper 
-//            WHERE proceso = 'PENDIENTE' AND '$fcurso' > fechaf AND idinsp = $idinsps";
-// // '2021-11-24' > fcurso AND fechaf < '2021-11-27'
+$query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+INNER JOIN personal ON idinsp = personal.gstIdper 
+WHERE proceso = 'PENDIENTE' AND '$fcurso' > fechaf AND idinsp = $idinsps";
+// '2021-11-24' > fcurso AND fechaf < '2021-11-27'
 
-// 		$resultado = mysqli_query($conexion, $query3);
-// 		if($curs = mysqli_fetch_row($resultado)){ 
+$resultado = mysqli_query($conexion, $query3);
+if($curs = mysqli_fetch_row($resultado)){ 
 
-// 		return false;
-// 		//echo '<br>'.$enCurso = '0';
+return false;
+//echo '<br>'.$enCurso = '0';
 
-// 		}else{
-// 		return $per[0].' '.$per[1].' '.$per[2];
-// 		}
-// 	}
-// }
+}else{
+return $per[1].' '.$per[2].',';
+}
+}
+}
 //CONTEO DE CURSO
 //codigo != 'X'
 function consulta($conexion){
@@ -217,13 +245,12 @@ $query = "SELECT COUNT(*) as prtcpnts FROM cursos WHERE cursos.estado = 0 OR cur
 	 return $n;
 }
 
-
-function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion){
+function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion){
 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-			$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idinst','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
+$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
@@ -236,6 +263,18 @@ function proCurso($idinsps,$id_mstr,$idinst,$fcurso,$fechaf,$hcurso,$sede,$modal
 				}		
 					}
 
+
+function instructor($idper,$codigo,$conexion){
+
+	$query="INSERT INTO instructor VALUES(0,'$idper','$codigo',0)";
+	if(mysqli_query($conexion,$query)){
+		
+		return true;
+	}
+	else{
+		return false;
+	}	
+}				
 function contancia($idinsps,$codigo,$conexion){
 
 	$query="INSERT INTO constancias VALUES(0,$idinsps,'$codigo','','','','','','','',0,0);";

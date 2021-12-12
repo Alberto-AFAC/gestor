@@ -1,4 +1,3 @@
-
 $.ajax({
     url: '../php/consulta.php',
     type: 'POST'
@@ -38,30 +37,32 @@ function proCurso() {
         }
     }
 
+     idInstru = idInstr.substr(1); 
+
     var id_mstr = document.getElementById('id_mstr').value;
 
     var hcurso = document.getElementById('hcurso').value;
     var fcurso = document.getElementById('fcurso').value;
     //Solo ID coordinadores 
-    var idinst = document.getElementById('idcord').value;
+    var idcord = document.getElementById('idcord').value;
+
     var sede = document.getElementById('sede').value;
 
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
+    // var hoy = new Date();
+    // var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
+    // var f1 = new Date(hoy.getFullYear(),(hoy.getMonth()+1),hoy.getDate());
 
-// var hoy = new Date();
-// var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
-// var f1 = new Date(hoy.getFullYear(),(hoy.getMonth()+1),hoy.getDate());
-    
-        fvigd = fcurso.substring(8,10);
-        fvigm = fcurso.substring(5,7);
-        fvigy = fcurso.substring(0,4);        
-        var f1 = new Date(fvigy,fvigm,fvigd);
-        fvigd = fechaf.substring(8,10);
-        fvigm = fechaf.substring(5,7);
-        fvigy = fechaf.substring(0,4);
-        var f2 = new Date(fvigy,fvigm,fvigd);
+    fvigd = fcurso.substring(8, 10);
+    fvigm = fcurso.substring(5, 7);
+    fvigy = fcurso.substring(0, 4);
+    var f1 = new Date(fvigy, fvigm, fvigd);
+    fvigd = fechaf.substring(8, 10);
+    fvigm = fechaf.substring(5, 7);
+    fvigy = fechaf.substring(0, 4);
+    var f2 = new Date(fvigy, fvigm, fvigd);
 
 
     if (modalidad == 'PRESENCIAL') {
@@ -73,13 +74,14 @@ function proCurso() {
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
     }
+
     idinsps = idInsptr + '' + idInstr;
 
-    datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso + '*' + classroom;
+    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord='+ idcord + '&idInstru='+ idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
 
-    // alert(datos);
+     //alert(datos);
 
-    if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+    if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
 
         $('#empty').toggle('toggle');
@@ -91,53 +93,67 @@ function proCurso() {
 
     } else {
 
-        if(f1>f2){
+        if (f1 > f2) {
+            $('#fechasA').toggle('toggle');
+            setTimeout(function() {
                 $('#fechasA').toggle('toggle');
-                setTimeout(function() {
-                $('#fechasA').toggle('toggle');
-                }, 3000);
+            }, 3000);
+            $('#av').toggle('toggle');
+            setTimeout(function() {
                 $('#av').toggle('toggle');
-                setTimeout(function() {
-                $('#av').toggle('toggle');
-                }, 10000);
+            }, 10000);
+            $('#so').toggle('toggle');
+            setTimeout(function() {
                 $('#so').toggle('toggle');
-                setTimeout(function() {
-                $('#so').toggle('toggle');
-                }, 10000);
-        }else{
+            }, 10000);
+        } else {
 
-        $.ajax({
-            url: '../php/proCurso.php',
-            type: 'POST',
-            data: 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idinst=' + idinst + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
-        }).done(function(respuesta) {
+            $.ajax({
+                url: '../php/proCurso.php',
+                type: 'POST',
+                data: datos
+            }).done(function(respuesta) {
 
-            alert(respuesta);
-            if (respuesta == 0) {
-                Swal.fire({
-                    type: 'success',
-                    // title: 'AFAC INFORMA',
-                    text: 'CURSO PROGRAMADO CORRECTAMENTE',
-                    // showConfirmButton: false,
-                    showCancelButton: true,
-                    customClass: 'swal-wide',
-                    confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                    cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
 
-                });
-                // setTimeout("location.href = 'inspecion.php';", 2000);
+                if (respuesta == 0) {
+                    Swal.fire({
+                        type: 'success',
+                        // title: 'AFAC INFORMA',
+                        text: 'CURSO PROGRAMADO CORRECTAMENTE',
+                        // showConfirmButton: false,
+                        showCancelButton: true,
+                        customClass: 'swal-wide',
+                        confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                        cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
 
-            } else {
-                Swal.fire({
-                    type: 'warning',
-                    // title: 'AFAC INFORMA',
-                    text: 'ERROR AL AGREGAR CURSO',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 2000
-                });
-            }
-        });
+                    });
+                    // setTimeout("location.href = 'inspecion.php';", 2000);
+                    $("#buttonpro").hide();
+                } else {
+                    // Swal.fire({
+                    //     type: 'success',
+                    //     title: 'CURSO PROGRAMADO CORRECTAMENTE',
+                    //     //html: `<p><code>EL PARTICIPANTE ${respuesta} ESTA EN CURSO</code></p>`,
+                    //     showConfirmButton: false,
+                    //     customClass: 'swal-wide',
+                    //     timer: 10000
+                    // });
+                    Swal.fire({
+                        type: 'success',
+                        // title: 'AFAC INFORMA',
+                        text: 'CURSO PROGRAMADO CORRECTAMENTE',
+                        // showConfirmButton: false,
+                        showCancelButton: true,
+                        customClass: 'swal-wide',
+                        confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                        cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
+
+                    });
+
+                    $("#buttonpro").hide();
+
+                }
+            });
 
         }
 

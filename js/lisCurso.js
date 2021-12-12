@@ -51,18 +51,7 @@ function vergenercerf() {
         });
     }
 }
-const Buscares = () => {
-    const trs = document.querySelectorAll('#reacc tr:not(.header)');
-    const filter = document.querySelector('#buscador').value;
-    const regex = new RegExp(filter, 'i');
-    const isFoundInTds = (td) => regex.test(td.innerHTML);
-    const isFound = (childrenArr) => childrenArr.some(isFoundInTds);
-    const setTrStyleDisplay = ({ style, children }) => {
-        style.display = isFound([...children]) ? '' : 'none';
-    };
 
-    trs.forEach(setTrStyleDisplay);
-};
 
 function imprimir() {
 
@@ -265,9 +254,10 @@ function agrPartc() {
     acodigos = document.getElementById('acodigos').value;
     contracur = document.getElementById('contracur').value;
     classroom = document.getElementById('classroom').value;
-    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&classroom=' + classroom + '&opcion=participante';
+    idntrc = document.getElementById('idntrc').value;
+    datos = 'idinsp=' + idinsp + '&acodigos=' + acodigos + '&gstIdlsc=' + gstIdlsc + '&idcord=' + idcord + '&idntrc=' + idntrc + '&finicio=' + finicio + '&finalf=' + finalf + '&hrcurs=' + hrcurs + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&contracur=' + contracur + '&classroom=' + classroom + '&opcion=participante';
     //alert(datos);
-    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '' || classromcur == '') {
+    if (idcord == '' || acodigos == '' || idinsp == '' || gstIdlsc == '' || hrcurs == '' || finalf == '' || sede == '' || modalidad == '' || link == '' || finalf == '' || contracur == '' || classromcur == '' || idntrc == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -349,13 +339,19 @@ function canCurso() {
     }
 }
 ////////////ELIMINAR INSPECTOR////////////////
+function eliNsp(idcursop) {
+
+
+    $("#eliminar-modal #idInspt").val(idcursop);
+
+}
 
 function elInspt() {
 
     idInsp = document.getElementById('idInspt').value;
-    codInsp = document.getElementById('codInsp').value;
+    // codInsp = document.getElementById('codInsp').value;
 
-    if (codInsp == '' || idInsp == '') {
+    if (idInsp == '') {
 
         $('#emptyy1').toggle('toggle');
         setTimeout(function() {
@@ -376,7 +372,7 @@ function elInspt() {
                     $('#succes1').toggle('toggle');
                     //location.href = 'lisCurso';
                 }, 1500);
-                idcurso(codInsp);
+                // idcurso(codInsp);
             } else {
                 $('#dangere1').toggle('toggle');
                 setTimeout(function() {
@@ -449,13 +445,9 @@ function cambiartexto() {
 }
 
 function gencerti(cursos) {
-    var cer = cursos.split("*");
+    // var cer = cursos.split("*");
 
-    //alert(cer[22]);
-    $("#evaNombrc").val(cer[14] + " " + cer[15]); //NOMBRE COMPLETO
-    $("#idperonc").val(cer[1]); //NOMBRE DEL CURSO
-    $("#id_cursoc").val(cer[21]); //ID DEL CURSO
-    $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
+    //alert(cursos);
 
     $.ajax({
         url: '../php/conCurcons.php',
@@ -466,11 +458,21 @@ function gencerti(cursos) {
 
         for (K = 0; K < res.length; K++) {
 
-            if (obj.data[K].gstIdper == cer[22] && obj.data[K].id_codigocurso == cer[21]) {
+            codigoC = obj.data[K].id_codigocurso.substr(2);
+
+            if (obj.data[K].gstIdper + '.' + codigoC == cursos) {
                 //   alert(cer[22]);
 
 
-                if (((cer[17]) >= 80) && ((cer[17]) <= 100)) {
+                // //alert(cer[22]);
+                $("#evaNombrc").val(obj.data[K].gstNombr + " " + obj.data[K].gstApell); //NOMBRE COMPLETO
+                //$("#idperonc").val(obj.data[K].gstTitlo); //NOMBRE DEL CURSO
+                $("#id_cursoc").val(obj.data[K].codigo); //ID DEL CURSO
+                // $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
+
+                //alert(obj.data[K].gstTitlo);
+
+                if (((obj.data[K].evaluacion) >= 80) && ((obj.data[K].evaluacion) <= 100)) {
                     document.getElementById("che6").className = "fa fa-check";
                     document.getElementById("che6").style = "color:green; font-size: 16pt";
                     document.getElementById("guaacredit").disabled = false;
@@ -480,12 +482,12 @@ function gencerti(cursos) {
                     document.getElementById("guaacredit").disabled = false;
                 }
 
-                if (((cer[17]) < 80) && ((cer[17]) > 0)) {
+                if (((obj.data[K].evaluacion) < 80) && ((obj.data[K].evaluacion) > 0)) {
                     document.getElementById("che6").className = "fa fa-times";
                     document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
                     document.getElementById("guaacredit").disabled = false;
                 }
-                if (cer[20] == "CONFIRMADO") {
+                if (obj.data[K].confirmar == "CONFIRMADO") {
                     //che1.style.display = '';
                     document.getElementById("che1").className = "fa fa-check";
                     document.getElementById("che1").style = "color:green; font-size: 16pt";
@@ -553,50 +555,78 @@ function gencerti(cursos) {
 }
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
-    var d = cursos.split("*");
-    //alert(d[23]);
-    $("#avaluacion #evaNombr").val(d[14] + " " + d[15]); //NOMBRE COMPLETO
-    $("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
-    $("#avaluacion #id_curso").val(d[19]); //ID DEL CURSO
-    $("#avaluacion #validoev").val(d[17]); //EVALUACIÓN
-    $("#avaluacion #idinsev").val(d[18]); //EVALUACIÓN
 
-    $("#avaluacion #ogidoc").val(d[21]); //EVALUACIÓN
 
-    valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-    costOfTicket = document.getElementById("NOE");
-    selectedStand = document.getElementById("SIe");
-    pendiente = document.getElementById("PE");
-    //  statusev = document.getElementById("resuleval"); //resultado texto
-    //if(valor2 >= 80){ //APROBADO
-    if (((valor2) >= 80) && ((valor2) <= 100)) {
-        selectedStand.style.display = '';
-        costOfTicket.style.display = 'none';
-        pendiente.style.display = 'none';
-        //     statusev.value = "APROBADO"
-    }
 
-    if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
-        costOfTicket.style.display = '';
-        selectedStand.style.display = 'none';
-        pendiente.style.display = 'none';
-        //  statusev.value = "REPROBADO"
-    }
-    if (valor2 <= 0) { //PENDIENTE 
-        pendiente.style.display = '';
-        costOfTicket.style.display = 'none';
-        selectedStand.style.display = 'none';
-        //    statusev.value = "PENDIENTE"
-    }
+    $.ajax({
+        url: '../php/conCurcons.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (C = 0; C < res.length; C++) {
+
+            codigoC = obj.data[C].id_codigocurso.substr(2);
+
+            if (obj.data[C].gstIdper + '.' + codigoC == cursos) {
+                //   alert(cer[22]);
+                // alert(obj.data[C].gstNombr);
+
+                // var d = cursos.split("*");
+                //alert(d[23]);
+                $("#avaluacion #evaNombr").val(obj.data[C].gstNombr + " " + obj.data[C].gstApell); //NOMBRE COMPLETO
+                //$("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
+                $("#avaluacion #id_curso").val(obj.data[C].id_curso); //ID DEL CURSO
+                $("#avaluacion #validoev").val(obj.data[C].evaluacion); //EVALUACIÓN
+                $("#avaluacion #idinsev").val(obj.data[C].idinsp); //EVALUACIÓN
+
+                $("#avaluacion #ogidoc").val(obj.data[C].codigo); //EVALUACIÓN
+
+                valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
+                costOfTicket = document.getElementById("NOE");
+                selectedStand = document.getElementById("SIe");
+                pendiente = document.getElementById("PE");
+                //  statusev = document.getElementById("resuleval"); //resultado texto
+                //if(valor2 >= 80){ //APROBADO
+                if (((valor2) >= 80) && ((valor2) <= 100)) {
+                    selectedStand.style.display = '';
+                    costOfTicket.style.display = 'none';
+                    pendiente.style.display = 'none';
+                    //     statusev.value = "APROBADO"
+                }
+
+                if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
+                    costOfTicket.style.display = '';
+                    selectedStand.style.display = 'none';
+                    pendiente.style.display = 'none';
+                    //  statusev.value = "REPROBADO"
+                }
+                if (valor2 <= 0) { //PENDIENTE 
+                    pendiente.style.display = '';
+                    costOfTicket.style.display = 'none';
+                    selectedStand.style.display = 'none';
+                    //    statusev.value = "PENDIENTE"
+                }
+
+            }
+        }
+
+    })
 }
 
 
 
 function inspeval(cursos) {
 
-    var d = cursos.split("*");
-    $("#cursoc").html(d[1]);
-    $("#folioc").html(d[21]);
+
+
+
+    curso = 'FO' + cursos;
+    // var d = cursos.split("*");
+    // $("#cursoc").html(d[1]);
+    // $("#folioc").html(d[21]);
+    //        html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
 
     $.ajax({
         url: '../php/conProgra.php',
@@ -609,7 +639,7 @@ function inspeval(cursos) {
         var fecha_actual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
 
         //alert(fecha_actual);
-        html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
+        html = '<table id="reacc" class="table table-hover"><tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
         for (G = 0; G < res.length; G++) {
 
             fhoyd = obj.data[G].fnotif.substring(8, 10);
@@ -618,7 +648,7 @@ function inspeval(cursos) {
 
             fnotif = fhoyd + '/' + fhoym + '/' + fhoyy;
 
-            if (obj.data[G].codigo == d[21]) {
+            if (obj.data[G].codigo == curso) {
                 x++;
 
 
@@ -692,11 +722,11 @@ function evalresult() {
 
 function generacion(cursos) { //abre el modal de generacion de constancias 
 
-    var d = cursos.split("*");
-    $("#cursoc").html(d[1]);
-    $("#folioc").html(d[21]);
+    // var d = cursos.split("*");
+    // $("#cursoc").html(d[1]);
+    // $("#folioc").html(d[21]);
 
-
+    curso = 'FO' + cursos;
 
     $.ajax({
             url: '../php/conInsp.php',
@@ -705,15 +735,16 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-
-            html = '<table id="reacc" class="table table-hover"><tr><th colspan="10">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
+            // TODO AQUI VA LA CONSTANCIA 
+            html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
             for (G = 0; G < res.length; G++) {
 
                 //if(obj.data[E].gstCatga == gstIDCat){
 
+
                 //if(obj.data[E].gstOrden==1){
                 // <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
-                if (obj.data[G].id_codigocurso == d[21]) {
+                if (obj.data[G].id_codigocurso == curso) {
                     x++;
 
                     // alert(d[21]);08/10/2021
@@ -821,8 +852,6 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             });
         });
     });
-
-
 }
 
 function fullchange(curso) {
@@ -1051,7 +1080,10 @@ function cerrareval() {
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
-                idcurso(codigo);
+
+                setInterval(function() {
+                    tableCursosProgramados.ajax.reload();
+                }, 1000);
 
             } else {
                 Swal.fire({
@@ -1119,6 +1151,7 @@ function cerrarEditeva() {
 }
 
 function cursoeval(idcurso) {
+
     //COPEAR
     $.ajax({
         url: '../php/curConfir.php',
@@ -1127,6 +1160,7 @@ function cursoeval(idcurso) {
         obj = JSON.parse(resp);
         var res = obj.data;
         cod = obj.data[i].codigo;
+
         for (i = 0; i < res.length; i++) {
 
             if (obj.data[i].id_curso == idcurso) {
@@ -1135,14 +1169,30 @@ function cursoeval(idcurso) {
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
                 $("#codigo").val(obj.data[i].codigo);
 
-            }
-            //TRAE AL INSTRUCTOR DEL CURSO
-            if (obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == cod) {
-                $("#id_instruct").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                    codcur = obj.data[i].codigo;
 
             }
+
 
         }
+        //alert(codcur);
+        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
+        x = 0;
+        for (i = 0; i < res.length; i++) {
+            
+            // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
+            if (obj.data[i].puesto == 'INSTCOOR' && obj.data[i].codigo == codcur) {
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            }else if(obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == codcur){
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            }else if(obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == codcur){
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#id_instruct").html(html);
+
+
     })
 
 }

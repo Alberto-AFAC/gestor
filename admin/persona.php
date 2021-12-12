@@ -210,11 +210,11 @@ include('header.php');
                         <div class="form-group">
                           <div class="col-sm-4">
                             <label class="label2">SELECCIONE COMANDANCIA</label>
-                         <div id="comandan"></div>                            
+                         <div id="comandancia"></div>                            
                         </div>
                           <div class="col-sm-8">
                             <label class="label2">SELECCIONE AEROPUERTOS</label>
-                              <div id="select3"></div> 
+                              <div id="unidad"></div> 
                               </div>
                           </div>
 
@@ -317,6 +317,9 @@ $('#AgstIDpai').select2();
 $('#AgstIDCat').select2();
 $('#AgstIDuni').select2();
 $('#AgstIDSub').select2();
+$('#comandancia').load('select/buscacomandancia.php');//Comandancia actualizar
+$('#unidad').load('select/tablaunidad.php')
+
  $('#comandan').load('select/buscacom.php');
  $('#select3').load('select/tablacom.php');
  $('#categoria').load('select/buscatego.php');

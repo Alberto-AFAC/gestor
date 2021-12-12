@@ -18,6 +18,7 @@ if($opcion === 'asignar'){
   $AgstAcReg = $_POST['AgstAcReg'];
   $AgstIDuni = $_POST['AgstIDuni'];
   $AgstNucrt = $_POST['AgstNucrt'];
+  $gstComnd = $_POST['gstComnd']; //CONSTANCIA
 
 if($AgstCargo == 'INSPECTOR'){
 
@@ -50,7 +51,7 @@ if($AgstCargo == 'INSPECTOR'){
 
 	accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion);
 
-	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$conexion)){
+	if(perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$gstComnd,$conexion)){
 		
 
 		$realizo = 'ASIGNO AL USUARIO';
@@ -233,7 +234,7 @@ function obligatorio($gstIdper,$gstObli,$conexion){
 		$this->conexion->cerrar();
 }
 
-function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$conexion){
+function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDuni,$AgstNucrt,$gstComnd,$conexion){
 
 	$query = "UPDATE personal SET 
 	gstCargo='$AgstCargo',
@@ -242,6 +243,7 @@ function perAsig($gstIdper,$AgstCargo,$AgstIDCat,$AgstIDSub,$AgstAcReg,$AgstIDun
 	gstAcReg='$AgstAcReg',
 	gstIDuni='$AgstIDuni',
 	gstNucrt='$AgstNucrt',
+	gstComnd='$gstComnd',
 	gstEvalu='NO'
 	 WHERE gstIdper='$gstIdper'";
 	if(mysqli_query($conexion,$query)){

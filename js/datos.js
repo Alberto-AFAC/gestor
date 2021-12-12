@@ -468,7 +468,6 @@ function asignacion(gstIdper) {
 //////////////DATOS DEL PERSONAL LISTA DE PERSONAS//////////// 
 function perfil(gstIdper) {
 
-
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
@@ -583,7 +582,6 @@ function perfil(gstIdper) {
                             $("#Pusto #departam").val(obj.data[i].descripdep);
                             //$("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
-
                         }
                     }
                 })
@@ -658,7 +656,7 @@ function perfil(gstIdper) {
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
-                            $("#Pusto #AcReg").val(obj.data[i].gstComnd);//comandancia
+                            $("#Pusto #AcReg").val(obj.data[i].gstComnd); //comandancia
                             $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             ////////////////////APARTADO PARA ADJUNTAR ARCHIVOS///////////////////////////////
                             $("#Actuliza #Nmplea").val(obj.data[i].gstNmpld);
@@ -684,7 +682,7 @@ function perfil(gstIdper) {
 
                         if (obj.data[s].gstIDper == gstIdper) {
                             gstID = obj.data[s].gstIDper;
-                            if (obj.data[s].gstIdcat != 24) {
+                            if (obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 25 && obj.data[s].gstIdcat != 26 && obj.data[s].gstIdcat != 29 && obj.data[s].gstIdcat != 31) {
                                 html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td></tr>";
                             }
                             // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
@@ -1534,7 +1532,6 @@ function actualOjt() {
 
 function inspector(gstIdper) {
 
-    // alert(gstIdper);
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
@@ -1736,7 +1733,7 @@ function inspector(gstIdper) {
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
 
-                            $("#Pusto #AcReg").val(obj.data[i].gstComnd);//comandancia
+                            $("#Pusto #AcReg").val(obj.data[i].gstComnd); //comandancia
                             $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             //DATOS ESPECIALIDAD
                             // alert(obj.data[i].gstIdper);
@@ -2289,11 +2286,13 @@ function spcialidads(gstIdper) {
 
             if (obj.data[s].gstIDper == gstIdper) {
 
+
                 datos = obj.data[s].gstIDper + '.' + obj.data[s].gstIDcat;
                 dato = gstIdper + '*' + obj.data[s].gstIDcat + '*' + obj.data[s].gstCatgr;
                 gstID = obj.data[s].gstIDper;
-                if (obj.data[s].gstIdcat != 24) {
+                if (obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 25 && obj.data[s].gstIdcat != 26 && obj.data[s].gstIdcat != 29 && obj.data[s].gstIdcat != 31) {
                     ss++;
+
                     //alert(obj.data[s].gstIDeva);
                     if (obj.data[s].gstIDeva == 'NO') {
 
@@ -3189,24 +3188,25 @@ function asignar() {
     var AgstCargo = document.getElementById('AgstCargo').value;
     var AgstIDCat = document.getElementById('AgstIDCat').value;
     var AgstIDSub = document.getElementById('depart').value;
-    var AgstIDuni = document.getElementById('gstIDuni').value;
+    var AgstIDuni = document.getElementById('gstIDuniAct').value;
     var AgstAcReg = document.getElementById('subdireccion1').value; //subdirección
     var AgstNucrt = document.getElementById('AgstNucrt').value;
     var gstNombr = document.getElementById('gstNombr').value;
     var gstNmpld = document.getElementById('gstANmpld').value;
+    var gstComnd  = document.getElementById('AgstAcReg').value;
 
 
     if (AgstCargo != 'INSPECTOR') {
         AgstIDCat = '0';
     } else {}
 
+    //alert(AgstIDuni);
 
-    datas = 'gstIdper=' + gstIdper + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&gstNombr=' + gstNombr + '&gstNmpld=' + gstNmpld + '&opcion=asignar';
+    datas = 'gstIdper=' + gstIdper + '&gstComnd=' + gstComnd + '&AgstCargo=' + AgstCargo + '&AgstIDCat=' + AgstIDCat + '&AgstIDSub=' + AgstIDSub + '&AgstIDuni=' + AgstIDuni + '&AgstAcReg=' + AgstAcReg + '&AgstNucrt=' + AgstNucrt + '&gstNombr=' + gstNombr + '&gstNmpld=' + gstNmpld + '&opcion=asignar';
 
-    //alert(datas);
     //alert(gstIdper+'/'+AgstCargo+'/'+AgstIDCat+'/'+AgstIDSub+'/'+AgstIDuni+'/'+AgstAcReg);
 
-    if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstIDuni == '' || AgstNucrt == '' || gstNombr == '' || gstNmpld == '') {
+    if (AgstCargo == '' || AgstIDCat == '' || AgstIDSub == '' || AgstAcReg == '' || AgstNucrt == '' || gstNombr == '' || gstNmpld == '') {
 
         //alert('llene');
         $('#empty2').toggle('toggle');

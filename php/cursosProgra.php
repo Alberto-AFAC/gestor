@@ -105,7 +105,7 @@ $proc = 'EN PROCESO';
 }
 
 	$cursos[] = [ 
-		$data["codigo"],
+/*0*/	$data["codigo"],
 		//$data["codigo"], 
 		$data["gstTitlo"],
 		$data["gstTipo"],
@@ -126,7 +126,8 @@ $proc = 'EN PROCESO';
 		$data['hcurso'],
 		$proc,
 		$data['contracur'],
-		$data['classroom']
+		$data['classroom'],
+/*21*/	$data['idcoor']
 	];
 
 		}
