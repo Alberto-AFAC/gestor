@@ -131,9 +131,9 @@ function proCurso() {
 
                 } else {
                     Swal.fire({
-                        type: 'warning',
-                        // title: 'AFAC INFORMA',
-                        html: `<p><code>EL PARTICIPANTE ${respuesta} ESTA EN CURSO</code></p>`,
+                        type: 'success',
+                        title: 'CURSO PROGRAMADO CORRECTAMENTE',
+                        //html: `<p><code>EL PARTICIPANTE ${respuesta} ESTA EN CURSO</code></p>`,
                         showConfirmButton: false,
                         customClass: 'swal-wide',
                         timer: 10000

@@ -45,6 +45,14 @@ $respon = 'INSTRUCTOR';
 $respon = 'INSPECTOR';
 }
 
+//INSTRUCTOR Y COORDINADOR
+if($data['idcoor']==$data['idinsp'] && $respon = 'INSTRUCTOR'){
+
+	 $confirmar = "ASISTENCIA OBLIGATORIA";
+	 $participante = 'COORDINADOR/INSTRUCTOR';
+	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a>";
+
+	}else
 //COORDINADOR
 	if($data['idcoor']==$data['idinsp']){
 
