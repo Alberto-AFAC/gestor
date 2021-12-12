@@ -120,7 +120,9 @@ function confirmar(idcurso) {
             x++;
 
             // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
-            if (obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == lista) {
+            if (obj.data[i].puesto == 'INSTCOOR' && obj.data[i].codigo == lista) {
+                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + 'INSTRUCTOR/COORDINADOR' + "</td></tr>";
+            }else if(obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == lista){
                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].puesto + "</td></tr>";
             }else if(obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == lista){
                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].puesto + "</td></tr>";

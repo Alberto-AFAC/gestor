@@ -2054,8 +2054,8 @@ display: none;
     </div>
 </div>
 </form>
-<script type="text/javascript" src="../js/encuestadatos.js"></script>
-<?php include('../perfil/modal.php');?>
+<!-- <script type="text/javascript" src="../js/encuestadatos.js"></script>
+<?php //include('../perfil/modal.php');?> -->
 <!-- /.tab-pane -->
 </div>
 </div>

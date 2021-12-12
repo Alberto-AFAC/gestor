@@ -27,7 +27,9 @@
 			if($res = mysqli_fetch_array($result)){
 				$data["puesto"] = 'INSTRUCTOR';
 			}			
-
+			if($data['idcoor']==$data['idinsp'] && $respon = 'INSTRUCTOR'){
+				$data["puesto"] = 'INSTCOOR';
+			}
 
 
 			$arreglo["data"][] = $data; 
