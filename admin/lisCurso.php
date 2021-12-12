@@ -903,6 +903,9 @@ function idcurso(codigo) {
     var id = codigo
 
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
+        "order": [
+            [3, "asc"]
+        ],
         "ajax": {
             "url": "../php/cursosProgramados.php",
             "type": "GET",
