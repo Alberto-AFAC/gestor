@@ -3,6 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
     $id = $_GET["id"];
+    //$id = 'FO1';
 	$query = "SELECT * FROM cursos 
     INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
     INNER JOIN personal ON idinsp = gstIdper 
@@ -24,7 +25,8 @@ $idinsp = $data['idinsp'];
 
 $queri = "
 SELECT * FROM reaccion WHERE id_curso = $id_curso AND estado = 0 ORDER BY id_curso DESC";
-$resul = mysqli_query($conexion, $queri);
+$resul = mysqli_query($conexion, $queri); 
+
 
 if($res = mysqli_fetch_array($resul)){
 $reaccion = 'SI EXISTE';
@@ -35,18 +37,20 @@ $reaccion = 'NO EXISTE';
 
 		$codigo = substr($data['codigo'], 2); 
 		$idcurinp = $data['idinsp'].'.'.$codigo;
-
+$idper = '';
 $queriy = "SELECT * FROM instructor WHERE id_per = $idinsp AND codigoInst = '$id' AND estado = 0";
 $result = mysqli_query($conexion, $queriy);
 
-if($res = mysqli_fetch_array($result)){
+if($rest = mysqli_fetch_array($result)){
 $respon = 'INSTRUCTOR';
+
+$idper = $rest['id_per'];
+
 }else{
 $respon = 'INSPECTOR';
 }
-
 //INSTRUCTOR Y COORDINADOR
-if($data['idcoor']==$data['idinsp'] && $respon = 'INSTRUCTOR'){
+if($data['idcoor']==$data['idinsp'] && $data['idcoor'] == $idper){
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
 	 $participante = 'COORDINADOR/INSTRUCTOR';
