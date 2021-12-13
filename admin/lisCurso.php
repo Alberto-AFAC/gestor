@@ -396,7 +396,7 @@ Ingresar la Fecha!</p>
 <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal fade" id="modal-masiva">
 <div class="modal-dialog modal-lg">
-<div class="modal-content" style="width: 1100px;">
+<div class="modal-content" style="width:1100px; display: block; padding: 0; margin: 0;"> <!-----13122021------>
 <div class="modal-header">
 <button type="button" class="close" style="font-size: 22px"
 data-dismiss="modal" aria-label="Close">

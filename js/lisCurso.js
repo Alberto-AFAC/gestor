@@ -654,12 +654,12 @@ function inspeval(cursos) {
 
                 if (obj.data[G].confirmar == 'CONFIRMADO') {
                     if (obj.data[G].evaluacion == 0) {
-                        html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='" + obj.data[G].id_curso + "'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td><input type='number'  max='99999' maxlength='3' title='el numero no debe ser superior a 100' name='cantidad' min='0' class='evaluacion disabled' id='validoev'></td><td><span class='label label-primary'id='PE'>PENDIENTE</span></td><td>" + fecha_actual + "</td></tr>";
+                        html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='" + obj.data[G].id_curso + "'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr+" "+obj.data[G].gstApell + "</td><td><input type='number'  max='99999' maxlength='3' title='el numero no debe ser superior a 100' name='cantidad' min='0' class='evaluacion disabled' id='validoev'></td><td><span class='label label-primary'id='PE'>PENDIENTE</span></td><td>" + fecha_actual + "</td></tr>";
                     } else {
                         if (obj.data[G].evaluacion >= 80) {
-                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>APROBADO</span></td><td>" + fnotif + "</td></tr>";
+                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr +" "+obj.data[G].gstApell + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>APROBADO</span></td><td>" + fnotif + "</td></tr>";
                         } else if (obj.data[G].evaluacion < 80) {
-                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-danger' style='font-size:13px;'>REPROBADO</span></td><td>" + fnotif + "</td></tr>";
+                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr +" "+obj.data[G].gstApell + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-danger' style='font-size:13px;'>REPROBADO</span></td><td>" + fnotif + "</td></tr>";
                         }
                     }
                 }
