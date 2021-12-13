@@ -1151,6 +1151,7 @@ function cerrarEditeva() {
 }
 
 function cursoeval(idcurso) {
+
     //COPEAR
     $.ajax({
         url: '../php/curConfir.php',
@@ -1160,7 +1161,6 @@ function cursoeval(idcurso) {
         var res = obj.data;
         cod = obj.data[i].codigo;
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead></thead><tbody>';
         for (i = 0; i < res.length; i++) {
 
             if (obj.data[i].id_curso == idcurso) {
@@ -1168,15 +1168,30 @@ function cursoeval(idcurso) {
                 $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
                 $("#codigo").val(obj.data[i].codigo);
-            }
-            if (obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == cod) {
 
-                html += "<tr><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+                    codcur = obj.data[i].codigo;
+
             }
+
 
         }
-        html += '</tbody></table></div></div></div>';
+        //alert(codcur);
+        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
+        x = 0;
+        for (i = 0; i < res.length; i++) {
+            
+            // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
+            if (obj.data[i].puesto == 'INSTCOOR' && obj.data[i].codigo == codcur) {
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            }else if(obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == codcur){
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            }else if(obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == codcur){
+             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            }
+        }
+        html += '</table>';
         $("#id_instruct").html(html);
+
 
     })
 
