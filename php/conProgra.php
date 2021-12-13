@@ -5,7 +5,7 @@
 	$query = "SELECT gstNombr,gstApell,codigo,gstCargo,gstIdper,evaluacion,fnotif,id_curso,confirmar
 			  FROM cursos 
 			  INNER JOIN personal ON idinsp = gstIdper
-			  WHERE gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'DIRECTOR' OR gstCargo = 'NUEVO INGRESO' OR gstCargo = 'EJECUTIVO' OR gstCargo = 'HUMANOS'";
+			  WHERE gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'DIRECTOR' OR gstCargo = 'NUEVO INGRESO' OR gstCargo = 'EJECUTIVO' OR gstCargo = 'HUMANOS' ORDER BY gstNombr ASC ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
