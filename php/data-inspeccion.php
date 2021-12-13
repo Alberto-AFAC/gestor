@@ -4,10 +4,17 @@
 	session_start();
 
 
+
 $n=0;
-$query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso,personal.gstIDCat AS IDcat  FROM personal 
+$query = "
+SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') AS Ingreso,personal.gstIDCat AS IDcat 
+FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
+WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 
+   OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 
+   OR personal.gstCargo = 'EJECUTIVO' AND  personal.estado = 0
+   -- OR personal.gstCargo = 'COORDINADOR' AND  personal.estado = 0
+ORDER BY gstIdper DESC";
 
 // $query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso,personal.gstIDCat AS IDcat,posix_getgroups()_CONCAT(gstCatgr) AS spcialidds   
 // FROM especialidadcat 
@@ -31,7 +38,7 @@ WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCa
 		
 		while($data = mysqli_fetch_assoc($resultado)){
 
-			$gstIdper = $data['gstIdper'];
+		$gstIdper = $data['gstIdper'];
 
 		$queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
 		FROM especialidadcat 
@@ -46,19 +53,13 @@ WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCa
 
 
 		if($res = mysqli_fetch_array($resul)){
-					$categoria = $res['spcialidds'];
+		$categoria = $res['spcialidds'];
 
-			if($res['spcialidds']==''){	$categoria = 'POR ASIGNAR'; }
-	
+		if($res['spcialidds']==''){	$categoria = 'POR ASIGNAR'; }
+
 		}else{
-					$categoria = 'POR ASIGNAR';
+		$categoria = 'POR ASIGNAR';
 		}
-
-
-
-
-
-
 			// if($data['gstCatgr'] == 'CURSO OBLIGATORIO'){
 			// 	$categoria = "";
 			  

@@ -16,30 +16,64 @@
 	 $datos[3];
 
 	$Direje= $datos[1];
-	$query = "SELECT *,personal.gstIDCat AS IDcat FROM personal 
+	$query = "
+	SELECT *,personal.gstIDCat AS IDcat 
+	FROM personal 
 	INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-	WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 AND gstAreID  = $Direje OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 AND gstAreID  = $Direje ORDER BY personal.gstCargo ASC";
+	WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 AND gstAreID  = $Direje 
+	   OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 AND gstAreID = $Direje
+	   OR personal.gstCargo = 'EJECUTIVO' AND  personal.estado = 0 AND gstAreID = $Direje 
+	   -- OR personal.gstCargo = 'COORDINADOR' AND  personal.estado = 0 AND gstAreID = $Direje  
+
+
+	   ORDER BY personal.gstCargo ASC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
 		die("error");
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
+			
+
+			$gstIdper = $data['gstIdper'];
+
+			$queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+			FROM especialidadcat 
+			INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+			WHERE categorias.gstIdcat != 24 
+			AND categorias.gstIdcat != 25 
+			AND categorias.gstIdcat != 26 
+			AND categorias.gstIdcat != 29 
+			AND categorias.gstIdcat != 31
+			AND especialidadcat.gstIDper = $gstIdper";
+			$resul = mysqli_query($conexion, $queri); 
+
+
+			if($res = mysqli_fetch_array($resul)){
+			$categoria = $res['spcialidds'];
+
+			if($res['spcialidds']==''){	$categoria = 'POR ASIGNAR'; }
+
+			}else{
+			$categoria = 'POR ASIGNAR';
+			}
+
+
 			$fechaActual = date_create(date('Y-m-d')); 
 			$FechaIngreso = date_create($data['gstFeing']); 
 			$interval = date_diff($FechaIngreso, $fechaActual,false);  
 			$antiguedad = intval($interval->format('%R%a')); 
 			$gstIdper = $data['gstIdper'];
 			$result = $data['gstIdper'];
-      $IDcat = $data['IDcat'];
-        $resul = $result.'.'.$IDcat;
+			$IDcat = $data['IDcat'];
+			$resul = $result.'.'.$IDcat;
 
 
-      if($antiguedad <=30){
-        $antiguedadT = '<span style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</span>';
-    }else {
-        $antiguedadT = '<span style="font-weight: bold; height: 50px; color: #3C8DBC;">Personal antiguo</span>';
-    }
+		if($antiguedad <=30){
+		$antiguedadT = '<span style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</span>';
+		}else {
+		$antiguedadT = '<span style="font-weight: bold; height: 50px; color: #3C8DBC;">Personal antiguo</span>';
+		}
 
     $n++;
  
@@ -52,7 +86,7 @@
 		//$caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$antiguedadT, $total2];
 
 
-	}$caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$data["gstCatgr"],$antiguedadT, $total];
+	}$caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"],$data["gstApell"],$categoria,$antiguedadT, $total];
 
 
 		}

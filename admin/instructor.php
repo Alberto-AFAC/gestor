@@ -210,19 +210,44 @@ WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR personal.estado = 0 AND
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
-    if($data['gstCatgr'] == "CURSO"){
-        $categoriaInsp = "SIN ASIGNAR";
+
+    // if($data['gstCatgr'] == "CURSO"){
+    //     $categoriaInsp = "SIN ASIGNAR";
     
-      } else{
-        $categoriaInsp = $data['gstCatgr'];
-      }
-$gstIdper = $data['gstIdper'];
+    //   } else{
+    //     $categoriaInsp = $data['gstCatgr'];
+    //   }
+
+
+        $gstIdper = $data['gstIdper'];
+
+        $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+        FROM especialidadcat 
+        INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE categorias.gstIdcat != 24 
+        AND categorias.gstIdcat != 25 
+        AND categorias.gstIdcat != 26 
+        AND categorias.gstIdcat != 29 
+        AND categorias.gstIdcat != 31
+        AND especialidadcat.gstIDper = $gstIdper";
+        $resul = mysqli_query($conexion, $queri); 
+
+        if($res = mysqli_fetch_array($resul)){
+        $categoria = $res['spcialidds'];
+
+        if($res['spcialidds']==''){ $categoria = 'POR ASIGNAR'; }
+
+        }else{
+        $categoria = 'POR ASIGNAR';
+        }
+
+// $gstIdper = $data['gstIdper'];
 ?>
 
     //console.log('<?php //echo $gstIdper ?>');
 
     ["<?php echo  $data['gstNmpld'];?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
-        "<?php echo $categoriaInsp?>", "<?php echo $data['gstCargo']?>",
+        "<?php echo $categoria ?>", "<?php echo $data['gstCargo']?>",
 
         "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"; ?>"
     ],
