@@ -19,7 +19,7 @@
 			$inicio = date("d-m-Y",strtotime($data['fcurso']));
 			$final = date("d-m-Y",strtotime($data['fechaf']));
 			$fechaFinal = $data["fechaf"];
-			$fechav = date("d-m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));
+			$fechav = date("m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));
 			if($data["gstTipo"] == "BÁSICOS/INICIAL"){
 				$aTomar = "<span style='font-style: italic; color: gray;'>CURSAR RECURRENTE</span>";
 
