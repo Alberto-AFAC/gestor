@@ -173,6 +173,7 @@ immediately after the control sidebar -->
 $(document).ready(function() {
     $('#table-pronosticos').DataTable({
         columnDefs:[{
+            width: 180, targets: 2,
             targets: "_all",
             sortable: false
         }],
