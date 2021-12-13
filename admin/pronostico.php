@@ -45,6 +45,7 @@ unset($_SESSION['consulta']);
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/css/alertas.css">
 
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 </head>
@@ -173,6 +174,7 @@ immediately after the control sidebar -->
 $(document).ready(function() {
     $('#table-pronosticos').DataTable({
         columnDefs:[{
+            width: 220, targets: 3,
             targets: "_all",
             sortable: false
         }],
