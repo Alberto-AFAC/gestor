@@ -93,6 +93,7 @@
             <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
             
             <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+            <li><a href="pronostico"><i class="fa fa-hourglass-half"></i> Pronostico de Cursos</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
           </ul>
@@ -118,6 +119,7 @@
                 echo "";
             }
             ?>
+            
         <!--  -->
         <!-- -->
         <li>
