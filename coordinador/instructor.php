@@ -139,13 +139,19 @@ WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR personal.estado = 0 AND
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
+  if($data['gstCatgr'] == "CURSO"){
+    $categoriaInsp = "SIN ASIGNAR";
+
+  } else{
+    $categoriaInsp = $data['gstCatgr'];
+  }
 
 $gstIdper = $data['gstIdper'];
 ?>
 
 //console.log('<?php //echo $gstIdper ?>');
 
-["<?php echo  $data['gstNmpld'];?>","<?php echo $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $data['gstCargo']?>",
+["<?php echo  $data['gstNmpld'];?>","<?php echo $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $categoriaInsp ?>","<?php echo $data['gstCargo']?>",
 
  "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"; ?>"
 ],

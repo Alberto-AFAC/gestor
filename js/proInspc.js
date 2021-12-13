@@ -128,16 +128,30 @@ function proCurso() {
 
                     });
                     // setTimeout("location.href = 'inspecion.php';", 2000);
-
+                    $("#buttonpro").hide();
                 } else {
+                    // Swal.fire({
+                    //     type: 'success',
+                    //     title: 'CURSO PROGRAMADO CORRECTAMENTE',
+                    //     //html: `<p><code>EL PARTICIPANTE ${respuesta} ESTA EN CURSO</code></p>`,
+                    //     showConfirmButton: false,
+                    //     customClass: 'swal-wide',
+                    //     timer: 10000
+                    // });
                     Swal.fire({
-                        type: 'warning',
+                        type: 'success',
                         // title: 'AFAC INFORMA',
-                        html: `<p><code>EL PARTICIPANTE ${respuesta} ESTA EN CURSO</code></p>`,
-                        showConfirmButton: false,
+                        text: 'CURSO PROGRAMADO CORRECTAMENTE',
+                        // showConfirmButton: false,
+                        showCancelButton: true,
                         customClass: 'swal-wide',
-                        timer: 10000
+                        confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                        cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
+
                     });
+
+                    $("#buttonpro").hide();
+
                 }
             });
 
