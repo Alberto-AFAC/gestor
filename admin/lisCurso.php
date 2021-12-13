@@ -298,7 +298,8 @@ style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
 <div class="form-group">
 <div class="col-sm-2">
 <label>FOLIO:</label>
-<input type="text" name="id_curso" id="id_curso"
+<input type="hidden" name="id_curso" id="id_curso">
+<input type="text" name="codigocurso" id="codigocurso"
 style="text-transform:uppercase;" class="form-control disabled"
 disabled="">
 </div>
@@ -311,7 +312,7 @@ disabled="">
 <div class="col-sm-12">
 <label>FECHA DE LA EVALUACIÓN:</label>
 <input type="date" style="text-transform:uppercase;"
-class="form-control disabled" disabled="" id='fechaev'>
+class="form-control disabled" disabled="" id='fechaev' value="<?php echo date('Y-m-d');?>">
 
 </div>
 <div class="col-sm-12">

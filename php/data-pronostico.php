@@ -20,10 +20,17 @@
 			$final = date("d-m-Y",strtotime($data['fechaf']));
 			$fechaFinal = $data["fechaf"];
 			$fechav = date("d-m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));
+			if($data["gstTipo"] == "BÁSICOS/INICIAL"){
+				$aTomar = "<span style='font-style: italic; color: gray;'>CURSAR RECURRENTE</span>";
+
+			} else{
+			   $aTomar = "<span style='font-style: italic; color: gray;'>REPROGRAMAR RECURRENTE</span>";
+			}
+			$pro = "<span style='font-weight: bold; color: green;'>$fechav</span> <p>$aTomar";
 
 	
  	
-	 $pronostico[] = [$data["gstPrfil"],$inspector,$data['gstTitlo'],$data["gstTipo"],$inicio,$final,$fechav];
+	 $pronostico[] = [$data["gstPrfil"],$inspector,$data['gstTitlo'],$data["gstTipo"],$inicio,$final,$pro];
 
 		}
 	}
