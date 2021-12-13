@@ -123,7 +123,7 @@ function evaluar() {
 
     var preg27 = document.getElementById('preg27').value; //PREGUNTA ABIERTA (comentarios)
 
-    var id_instruct = document.getElementById('id_instruct').value; //PREGUNTA ABIERTA (comentarios)
+    var id_instruct = document.getElementById('codigo').value; //PREGUNTA ABIERTA (comentarios)
 
     //var preg15 = $('input[name=preg15]:checked').val(); //PREGUNTAS RADIO
 
@@ -580,7 +580,7 @@ function evaluarins(cursos) {
                 $("#avaluacion #id_curso").val(obj.data[C].id_curso); //ID DEL CURSO
                 $("#avaluacion #validoev").val(obj.data[C].evaluacion); //EVALUACIÓN
                 $("#avaluacion #idinsev").val(obj.data[C].idinsp); //EVALUACIÓN
-
+                $("#avaluacion #codigocurso").val(obj.data[C].codigo);
                 $("#avaluacion #ogidoc").val(obj.data[C].codigo); //EVALUACIÓN
 
                 valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
@@ -1041,7 +1041,7 @@ function cerrareval() {
     id_curso = document.getElementById('id_curso').value;
     codigo = document.getElementById('ogidoc').value;
 
-    datos = 'idinsp=' + idinsp + '&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
+    datos = 'idinsp=' + idinsp + '&fechaev=' + fechaev +'&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
 
     if (validoev == '') {
         pendiente.style.display = '';
@@ -1104,7 +1104,7 @@ function cerrareval() {
         div1.style.display = '';
         div1 = document.getElementById('cerrareval');
         div1.style.display = 'none';
-        document.getElementById('fechaev').disabled = true; // FECHA
+       // document.getElementById('fechaev').disabled = true; // FECHA
         document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
         document.getElementById('comeneva').disabled = true; // COMENTARIOS  
 
@@ -1133,7 +1133,7 @@ function openEditeva() {
     div = document.getElementById('abrirev');
     div.style.display = 'none';
     //Habilita los campos INICIO
-    document.getElementById('fechaev').disabled = false; // FECHA
+    //document.getElementById('fechaev').disabled = false; // FECHA
     document.getElementById('validoev').disabled = false; // PUNTUACIÓN OBTENIDA
     document.getElementById('comeneva').disabled = false; // COMENTARIOS 
 }
@@ -1145,7 +1145,7 @@ function cerrarEditeva() {
     div1 = document.getElementById('cerrareval');
     div1.style.display = 'none';
     //inhanilita los campos EVALUACIÓN INSPECTOR
-    document.getElementById('fechaev').disabled = true; // FECHA
+    //document.getElementById('fechaev').disabled = true; // FECHA
     document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
     document.getElementById('comeneva').disabled = true; // COMENTARIOS 
 }
