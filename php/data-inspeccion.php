@@ -33,8 +33,7 @@ WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCa
 
 			$gstIdper = $data['gstIdper'];
 
-$queri = "
-SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+$queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
 FROM especialidadcat 
 INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
 WHERE categorias.gstIdcat != 24 
@@ -42,8 +41,7 @@ AND categorias.gstIdcat != 25
 AND categorias.gstIdcat != 26 
 AND categorias.gstIdcat != 29 
 AND categorias.gstIdcat != 31
-AND especialidadcat.gstIDper = $gstIdper
-";
+AND especialidadcat.gstIDper = $gstIdper";
 $resul = mysqli_query($conexion, $queri); 
 
 
@@ -51,7 +49,7 @@ if($res = mysqli_fetch_array($resul)){
 			$categoria = $res['spcialidds'];
 
 }else{
-			$categoria = '';
+			$categoria = 'POR ASIGNAR';
 
 }
 
