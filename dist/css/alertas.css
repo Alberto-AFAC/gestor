@@ -16,3 +16,7 @@
 .a-alert:visited {
     color: white;
 }
+
+#table-pronosticos select {
+    width: 75% !important;
+}

@@ -46,10 +46,12 @@ folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../dist/css/alertas.css">
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-    </head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+</head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
@@ -78,151 +80,29 @@ folder instead of downloading all of them to reduce the load. -->
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activity">
                                     <!-- Post -->
-                                    <div class="post">
+                                    <div class="post"><br><br>
                                         <table id="table-pronosticos" class="display" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Extn.</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th>IVA</th>
+                                                    <th>INSPECTOR</th>
+                                                    <th>CURSO</th>
+                                                    <th>TIPO</th>
+                                                    <th>INICIO</th>
+                                                    <th>TERMINO</th>
+                                                    <th>PRONÓSTICO</th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="filterhead">IVA</th>
+                                                    <th class="filterhead">INSPECTOR</th>
+                                                    <th class="filterhead">CURSO</th>
+                                                    <th class="filterhead">TIPO</th>
+                                                    <th class="filterhead">INICIO</th>
+                                                    <th class="filterhead">TERMINO</th>
+                                                    <th class="filterhead">PRONÓSTICO</th>
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Extn.</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
-                                        <!-- 
-                                        <form id="addcurse" class="form-horizontal" action="" method="POST">
-
-                                            <div class="form-group">
-                                                <div class="col-sm-6">
-                                                    <label>ESPECIALIDAD</label>
-
-                                                    <div id="idSpecialidad"></div>
-
-                                                </div>
-                                                <div class="col-sm-6">
-
-                                                    <div id="tabSpcl"></div>
-                                                </div>
-
-
-                                            </div>
-
-                                            <div id="tablaPro"></div>
-
-
-                                            <div class="form-group">
-
-                                                <div class="col-sm-4">
-                                                    <label>FECHA Y HORA DE INICIO</label>
-                                                    <input type="datetime-local" class="form-control"
-                                                        placeholder="Ingresa subtarea..." name="fechaInicio"
-                                                        id="fechaInicio">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label>FECHA Y HORA DE TERMINO</label>
-                                                    <input type="datetime-local" onkeyup="mayus(this);"
-                                                        class="form-control" id="fechaTermino" name="fechaTermino">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>COORDINADOR DEL ÁREA</label>
-                                                    <select multiple="multiple"
-                                                        data-placeholder="SELECCIONE COORDINADOR DEL ÁREA"
-                                                        style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="coordinador"
-                                                        name="coordinador">
-                                                        <option value="0">SELECCIONE COORDINADOR </option>
-                                                        <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
-                                                        <option value="<?php echo $cordinadors[0]?>">
-                                                            <?php echo $cordinadors[1].' '.$cordinadors[2]?></option>
-
-                                                        <?php endwhile; ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-4">
-                                                    <label>INSTRUCTOR OJT</label>
-                                                    <select multiple="multiple"
-                                                        data-placeholder="SELECCIONE INSTRUCTOR OJT"
-                                                        style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="instructor"
-                                                        name="instructor">
-                                                        <?php while($instructors = mysqli_fetch_row($instructor)):?>
-                                                        <option value="<?php echo $instructors[0]?>">
-                                                            <?php echo $instructors[1].' '.$instructors[2]?></option>
-                                                        <?php endwhile; ?>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group"><br>
-                                                <div class="col-sm-offset-0 col-sm-5">
-                                                    <button type="button" id="button" class="btn btn-primary"
-                                                        onclick="regOjt();">ACEPTAR </button>
-                                                </div>
-                                                <b>
-                                                    <p class="alert alert-danger text-center padding error" id="falla">
-                                                        Error al registrar curso o al adjuntar archivo</p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-success text-center padding exito" id="exito">
-                                                        ¡Se registro curso y archivo con éxito!</p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding aviso" id="vacio">
-                                                        Es necesario agregar los datos que se solicitan </p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding aviso"
-                                                        id="repetido">¡El curso ya está registrado!</p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-danger text-center padding adjuto" id="renom">
-                                                        Renombre su archivo</p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding adjuto"
-                                                        id="adjunta">
-                                                        Debes adjuntar archivo</p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-danger text-center padding adjuto" id="error">
-                                                        Ocurrio un error</p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-danger text-center padding adjuto" id="forn">
-                                                        Formato no valido</p>
-                                                </b>
-
-                                                <b>
-                                                    <p class="alert alert-danger text-center padding adjuto" id="max">
-                                                        Supera el limite permitido</p>
-                                                </b>
-
-                                            </div>
-
-                                        </form> -->
-
                                     </div>
                                     <!-- /.post -->
 
@@ -292,16 +172,21 @@ immediately after the control sidebar -->
 <script type="text/javascript">
 $(document).ready(function() {
     $('#table-pronosticos').DataTable({
+        columnDefs:[{
+            targets: "_all",
+            sortable: false
+        }],
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        "ajax": '',
+        "ajax": '../php/data-pronostico.php',
+        orderCellsTop: true,
         initComplete: function() {
             this.api().columns().every(function() {
                 var column = this;
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo($(column.footer()).empty())
+                var select = $('<select><option value="">Seleccióne...</option></select>')
+                    .appendTo($(column.header()).empty())
                     .on('change', function() {
                         var val = $.fn.dataTable.util.escapeRegex(
                             $(this).val()
@@ -317,6 +202,7 @@ $(document).ready(function() {
                 });
             });
         }
+
     });
 });
 </script>
