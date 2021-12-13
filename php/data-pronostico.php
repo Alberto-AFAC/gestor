@@ -28,9 +28,16 @@
 		}
 	}
 
+		if(isset($pronostico)&&!empty($pronostico)){
 
-	$json_string = json_encode(array( 'data' => $pronostico ));
-	echo $json_string;
+			$json_string = json_encode(array( 'data' => $pronostico ));
+			echo $json_string;
+
+		}else{
+
+			echo $json_string='0';
+		}
+
 
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);

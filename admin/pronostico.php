@@ -32,25 +32,21 @@ unset($_SESSION['consulta']);
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
-    <script src="../dist/js/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../dist/css/alertas.css">
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+
+  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -81,7 +77,10 @@ folder instead of downloading all of them to reduce the load. -->
                                 <div class="active tab-pane" id="activity">
                                     <!-- Post -->
                                     <div class="post"><br><br>
-                                        <table id="table-pronosticos" class="display" style="width:100%">
+
+<table style="width: 100%;" id="table-pronosticos" class="table display table-striped table-bordered table-hover table-responsive">
+<!-- 
+                                        <table id="table-pronosticos" class="display" style="width:100%"> -->
                                             <thead>
                                                 <tr>
                                                     <th>IVA</th>
@@ -150,6 +149,7 @@ exit;
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
 immediately after the control sidebar -->
+<!-- jQuery 3 -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -173,7 +173,6 @@ immediately after the control sidebar -->
 $(document).ready(function() {
     $('#table-pronosticos').DataTable({
         columnDefs:[{
-            width: 180, targets: 2,
             targets: "_all",
             sortable: false
         }],

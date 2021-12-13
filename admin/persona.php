@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
   <title>Capacitación AFAC | Personal</title>
-  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
@@ -19,6 +19,8 @@
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+
+  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <style>
  .swal-wide{
     width: 500px !important;
