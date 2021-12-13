@@ -106,6 +106,7 @@ ini_set('date.timezone','America/Mexico_City');
                     <!-- <li><a href="tareas"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
                     <li><a href="programa"><i class="fa ion-compose"></i> Programar curso</a></li>
                     <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
+                    <li><a href="pronostico"><i class="fa fa-hourglass-half"></i> Pronostico de Cursos</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
                     <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
