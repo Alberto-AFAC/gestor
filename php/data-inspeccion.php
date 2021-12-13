@@ -5,9 +5,24 @@
 
 
 $n=0;
-	$query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso,personal.gstIDCat AS IDcat  FROM personal 
-    INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-    WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
+$query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso,personal.gstIDCat AS IDcat  FROM personal 
+INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
+
+// $query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso,personal.gstIDCat AS IDcat,posix_getgroups()_CONCAT(gstCatgr) AS spcialidds   
+// FROM especialidadcat 
+// INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+// INNER JOIN personal ON personal.gstIdper = especialidadcat.gstIDper 
+// WHERE categorias.gstIdcat != 24 
+// AND categorias.gstIdcat != 25 
+// AND categorias.gstIdcat != 26 
+// AND categorias.gstIdcat != 29 
+// AND categorias.gstIdcat != 31
+// AND personal.estado = 0 ORDER BY personal.gstIdper DESC
+// "; 
+
+
+
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -15,12 +30,43 @@ $n=0;
 	}else{
 		
 		while($data = mysqli_fetch_assoc($resultado)){
-			if($data['gstCatgr'] == 'CURSO OBLIGATORIO'){
-				$categoria = "";
+
+			$gstIdper = $data['gstIdper'];
+
+$queri = "
+SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+FROM especialidadcat 
+INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+WHERE categorias.gstIdcat != 24 
+AND categorias.gstIdcat != 25 
+AND categorias.gstIdcat != 26 
+AND categorias.gstIdcat != 29 
+AND categorias.gstIdcat != 31
+AND especialidadcat.gstIDper = $gstIdper
+";
+$resul = mysqli_query($conexion, $queri); 
+
+
+if($res = mysqli_fetch_array($resul)){
+			$categoria = $res['spcialidds'];
+
+}else{
+			$categoria = '';
+
+}
+
+
+
+
+
+
+			// if($data['gstCatgr'] == 'CURSO OBLIGATORIO'){
+			// 	$categoria = "";
 			  
-			  }else{
-				$categoria = $data['gstCatgr'];
-			  }
+			//   }else{
+			// 	$categoria = $data['gstCatgr'];
+			//   }
+
 			
             $fechaActual = date_create(date('d-m-Y')); 
 		    $FechaIngreso = date_create($data['gstFeing']); 
