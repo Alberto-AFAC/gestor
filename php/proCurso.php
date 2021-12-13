@@ -139,8 +139,9 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 	$evaluacion = $_POST['evaluacion'];
 	$idinsp = $_POST['idinsp'];	
 	$id_curso = $_POST['id_curso'];	
+	$fechaev = $_POST['fechaev'];
 
-	if(actualizarevalu($idinsp, $id_curso, $evaluacion, $conexion)){	
+	if(actualizarevalu($idinsp, $id_curso, $evaluacion,$fechaev, $conexion)){	
 		echo "0";	
 	}else{	
 		echo "1";	}
@@ -303,9 +304,9 @@ function actualizar($idinsp, $nombre, $apellidos, $correo, $idarea, $puesto,$uni
 }
 //actualia evaluación el curso
 
-function actualizarevalu($idinsp, $id_curso, $evaluacion, $conexion){
+function actualizarevalu($idinsp, $id_curso, $evaluacion,$fechaev,$conexion){
 
-	$query="UPDATE cursos SET evaluacion = '$evaluacion' WHERE idinsp='$idinsp' AND id_curso='$id_curso'";
+	$query="UPDATE cursos SET evaluacion = '$evaluacion', fnotif = '$fechaev' WHERE idinsp='$idinsp' AND id_curso='$id_curso'";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{

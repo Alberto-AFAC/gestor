@@ -298,7 +298,8 @@ style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
 <div class="form-group">
 <div class="col-sm-2">
 <label>FOLIO:</label>
-<input type="text" name="id_curso" id="id_curso"
+<input type="hidden" name="id_curso" id="id_curso">
+<input type="text" name="codigocurso" id="codigocurso"
 style="text-transform:uppercase;" class="form-control disabled"
 disabled="">
 </div>
@@ -311,7 +312,7 @@ disabled="">
 <div class="col-sm-12">
 <label>FECHA DE LA EVALUACIÓN:</label>
 <input type="date" style="text-transform:uppercase;"
-class="form-control disabled" disabled="" id='fechaev'>
+class="form-control disabled" disabled="" id='fechaev' value="<?php echo date('Y-m-d');?>">
 
 </div>
 <div class="col-sm-12">
@@ -396,7 +397,7 @@ Ingresar la Fecha!</p>
 <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal fade" id="modal-masiva">
 <div class="modal-dialog modal-lg">
-<div class="modal-content" style="width: 1100px;">
+<div class="modal-content" style="width:1100px; display: block; padding: 0; margin: 0;"> <!-----13122021------>
 <div class="modal-header">
 <button type="button" class="close" style="font-size: 22px"
 data-dismiss="modal" aria-label="Close">
@@ -903,6 +904,9 @@ function idcurso(codigo) {
     var id = codigo
 
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
+        "order": [
+            [3, "asc"]
+        ],
         "ajax": {
             "url": "../php/cursosProgramados.php",
             "type": "GET",
