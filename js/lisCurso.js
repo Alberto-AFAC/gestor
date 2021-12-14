@@ -739,15 +739,8 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
             for (G = 0; G < res.length; G++) {
 
-                //if(obj.data[E].gstCatga == gstIDCat){
-
-
-                //if(obj.data[E].gstOrden==1){
-                // <input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[G].gstIdprm + "'/>
                 if (obj.data[G].id_codigocurso == curso) {
                     x++;
-
-                    // alert(d[21]);08/10/2021
 
                     evalreac1 = "<i class='fa fa-clock-o' id='reac1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'>"
                     confirmaasis1 = "<i class='fa fa-clock-o' id='cov1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'></i>";
@@ -759,18 +752,6 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                     infinal1 = "<input type='checkbox' style='width:17px; height:17px;' name='infinal' id='infinal'/>"
                     evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' name='evreaccion' id='evreaccion' />"
                     fullselect = "<input type='checkbox' onclick='fullchange()' name='fullc1' id='fullc1' />"
-
-                    //if (((d[17]) >= 80) && ((d[17]) <= 100)) {
-                    // evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
-                    //}
-
-                    //      if (((d[17]) < 80) && ((d[17]) <= 100)) {
-                    //       evalreac1="<i class='fa fa-check' id='reac1' disabled style='color:blue; font-size: 16pt'>"  
-                    //  }
-
-                    //    if (obj.data[G].listregis=='SI'){ // columna1
-                    //   lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='"+obj.data[G].id+"'/> "
-                    //     }        
 
                     if (obj.data[G].listregis == 'SI') { // columna1
                         lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' checked='true' name='listregis' value='" + obj.data[G].id + "'/> "
@@ -833,12 +814,6 @@ function generacion(cursos) { //abre el modal de generacion de constancias
 
                 }
 
-
-                // <td>" + obj.data[G].gstApell + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
-                //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-                // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-                //}<td><input id='comntr' name='comntr[]'> </td>
-                //}
             }
             html += '</table>';
             $("#generacion").html(html);
