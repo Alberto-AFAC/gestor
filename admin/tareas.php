@@ -1494,9 +1494,8 @@ function idsubTa(idsub) {
                 if(obj.data[i].numsubt==1){
                 // $("#tablasub01").show();                    
                 x++;
-                html += "<tr><td>" + obj.data[i].idtarea+'. ' + x + "</td><td>" + obj.data[i].ojt_subtarea +
-                    "</td><td>Editar</td></tr>";
-                            
+
+html += "<tr><td>" + obj.data[i].idtarea+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td>Editar</td></tr>";    
                 }
 
             }

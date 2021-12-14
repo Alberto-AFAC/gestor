@@ -5,6 +5,7 @@
 	$query = "SELECT gstNombr,gstApell,codigo,gstCargo,gstIdper,evaluacion,fnotif,id_curso,confirmar,idinsp,idcoor
 		  FROM cursos 
 		  INNER JOIN personal ON personal.gstIdper = cursos.idinsp
+		  ORDER BY gstNombr
 		   ";
 
 	$resultado = mysqli_query($conexion, $query);
