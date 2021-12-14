@@ -110,12 +110,12 @@ $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evalu
 }
 
 // // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
-if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 1 && $reaccion == 'NO EXISTE') {
+if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 0 && $reaccion == 'NO EXISTE') {
 
 $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a><span style='margin-left:2px;padding:0.5em;background:#E08E0B;color:white;' title='Reacción de Curso por Evaluar' ><i class='fa fa-check-circle-o' style='font-size:15px;'></i></span>";
 }
 // // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
-if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 1 && $reaccion == 'SI EXISTE') {
+if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 0 && $reaccion == 'SI EXISTE') {
 
 $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>		
 <span style='margin-left:2px;padding:0.5em;background:green;color:white;' title='Reacción de Curso Evaluado' ><i class='fa fa-check-circle-o' style='font-size:15px;'></i></span>
