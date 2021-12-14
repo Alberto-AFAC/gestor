@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
     $id = $_GET["id"];
-    //$id = 'FO1';
+   // $id = 'FO53';
 	$query = "SELECT * FROM cursos 
     INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
     INNER JOIN personal ON idinsp = gstIdper 
@@ -94,7 +94,7 @@ if($data['idcoor']==$data['idinsp'] && $data['idcoor'] == $idper){
 
 //PARTICIPANTES QUE CONFIRMAN
 
-if ($data['evaluacion'] == 0){
+if ($data['evaluacion'] == 'NULL'){
 $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' stylfont-size:16px;'></i></a><span style='margin-left:2px;padding:0.5em;background:#E08E0B;color:white;' title='Reacción de Curso por Evaluar' ><i class='fa fa-check-circle-o' style='font-size:15px;'></i></span>";
 }
 //vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
