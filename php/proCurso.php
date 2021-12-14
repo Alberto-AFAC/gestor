@@ -120,13 +120,14 @@ $fcurso = $yi.'-'.$mi.'-'.$di;
 $yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,2);
 $fechaf = $yf.'-'.$mf.'-'.$df;
 
-contancia($idinsps,$codigo, $conexion);
+
 if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
 
 // proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion)
 
 		{	
 
+			contancia($idinsps,$codigo, $conexion);
 			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
 			historiCur($idp,$realizo,$id_mstr,$conexion);	
 			echo "0";	
