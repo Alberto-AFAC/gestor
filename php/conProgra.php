@@ -26,8 +26,6 @@
 				$cargo = 'INSTRUCTOR';	
 		}else{
 				$cargo = 'INSPECTOR';
-		
-
 		}
 
 		if($data['idcoor']==$data['idinsp']){	

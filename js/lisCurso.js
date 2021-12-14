@@ -653,7 +653,7 @@ function inspeval(cursos) {
 
 
                 if (obj.data[G].confirmar == 'CONFIRMADO') {
-                    if (obj.data[G].evaluacion == 0) {
+                    if (obj.data[G].evaluacion == 'NULL') {
                         html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='" + obj.data[G].id_curso + "'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr+" "+obj.data[G].gstApell + "</td><td><input type='number'  max='99999' maxlength='3' title='el numero no debe ser superior a 100' name='cantidad' min='0' class='evaluacion disabled' id='validoev'></td><td><span class='label label-primary'id='PE'>PENDIENTE</span></td><td>" + fecha_actual + "</td></tr>";
                     } else {
                         if (obj.data[G].evaluacion >= 80) {
