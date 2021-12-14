@@ -1925,7 +1925,23 @@ function inspector(gstIdper) {
 
                         }
                         if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                            proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span>";
+
+                            
+                            if(obj.data[ii].evaluacion=='NULL'){
+                                valua = 'FALTA EVALUACIÓN';
+                            proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>"+valua+"</span>";
+                            }else if(obj.data[ii].evaluacion>79){
+                                valua = 'APROBO';
+                            proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>"+valua+"</span>";
+                            }else{
+                                valua = 'NO APROBO';
+                            proc12 = "<span style='background-color: red; font-size: 14px;' class='badge'>FINALIZADO<br>"+valua+"</span>";
+
+                            }
+
+
+
+
 
 
                         } else if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
