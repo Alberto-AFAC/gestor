@@ -252,7 +252,7 @@ function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$se
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
+$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;

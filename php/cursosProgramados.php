@@ -88,7 +88,7 @@ if($data['idcoor']==$data['idinsp'] && $data['idcoor'] == $idper){
                 $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
             }else if ($data['confirmar'] == 'OTROS') {
 
-               $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' da/i></a><a type='button' style='margin-left:2px' title='Reacción de Curso Evaluado' onclick='evalucurs()' classwarningtn-success' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-check-circle-o' style='font-size:15px;e='font-size:ta-target='#modal-declinado1'>DECLINO CURSO</a>";
+                $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
                 // $evaluacion = "";						
             }else{
 
