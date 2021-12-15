@@ -703,6 +703,11 @@ immediately after the control sidebar -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
 integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script> -->
 <!-- page script -->
+<style type="text/css">
+textarea {
+resize: none;
+}
+</style>
 </body>
 
 </html>
