@@ -633,20 +633,26 @@ aria-hidden="true">
 </div>
 <div class="modal-body">
 
+
+<div class='modal-body'><div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU REGISTRO FUE ELIMINADO</div><div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">SE ACTUALIZO REGISTRO CON ÉXITO</div>
+
+
 <div id="tablasub01"></div>
 <div id="tablasub02"></div>
 <div id="tablasub03"></div>
 
+
+
 </div>
 <div class="modal-footer">
 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="vaciar();">CERRAR</button>
-<button type="button" class="btn btn-primary">GUARDAR</button>
+<!-- <button type="button" class="btn btn-primary">GUARDAR</button> -->
 </div>
 </div>
 </div>
 </div>
 
-
+</div>
 
     
 
@@ -680,7 +686,7 @@ exit;
         <!-- Add the sidebar's background. This div must be placed
 immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
-    </div>
+    
 
 
     <!-- ./wrapper -->
@@ -1497,9 +1503,7 @@ function idsubTa(idsub) {
 
 dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
 
-html += "<tr><td>" + obj.data[i].id_subojt+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td></tr>";    
-
-// <td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td>
+html += "<tr><td>" + obj.data[i].id_subojt+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";    
 
                 }
 
@@ -1524,8 +1528,12 @@ html += "<tr><td>" + obj.data[i].id_subojt+'. ' + x + "</td><td><textarea class=
              
                 if(obj.data[i].numsubt==2){
                 y++;
-                html += "<tr><td>" + obj.data[i].numsubt+'. ' + y + "</td><td>" + obj.data[i].ojt_subtarea +
-                    "</td><td>Editar</td></tr>";
+
+dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
+
+html += "<tr><td>" + obj.data[i].id_subojt+'. ' + y + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";   
+
+
                 }
 
             }
@@ -1552,8 +1560,9 @@ html += "<tr><td>" + obj.data[i].id_subojt+'. ' + x + "</td><td><textarea class=
                if(obj.data[i].numsubt==3){
                 w++;
 
-                html += "<tr><td>" + obj.data[i].numsubt+'. ' + w + "</td><td>" + obj.data[i].ojt_subtarea +
-                    "</td><td>Editar</td></tr>";
+        dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
+
+        html += "<tr><td>" + obj.data[i].id_subojt+'. ' + w + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";   
                 }
 
             }
@@ -1597,37 +1606,71 @@ $("#"+id_subojt+"mostrar").show();
 function subOjtagregar(dato){
 
 
-// var d = dato.split("*");
-// idcurso = d[0];
-// var titulo = document.getElementById(idcurso).value;
-// var idcur = d[1];
+var d = dato.split("*");
+idojt = d[0];
+var subtarea = document.getElementById(idojt).value;
+var idsub = d[1];
 
-// $.ajax({
-// data: 'idcurso='+idcurso+'&titulo='+titulo+'&idcur='+idcur+'&opcion=agregaojt',
-// url:'../php/regTarea.php',
-// type: 'post',
-// beforeSend: function () {
-// //
-// },
-// success: function (response) {   
-// if(response==0){      
+$.ajax({
+data: 'idojt='+idojt+'&subtarea='+subtarea+'&idsub='+idsub+'&opcion=agregaojt',
+url:'../php/regTarea.php',
+type: 'post',
+beforeSend: function () {
+//
+},
+success: function (response) {   
 
-// $('#actualizo').toggle('toggle');
-// setTimeout(function() {
-// $('#actualizo').toggle('toggle');
-// }, 2000);
+if(response==0){      
 
-// $("#"+idcurso+"ocultar").show();
-// $("#"+idcurso+"mostrar").hide();
-// document.getElementById(idcurso).disabled = true;
+$('#actualizo').toggle('toggle');
+setTimeout(function() {
+$('#actualizo').toggle('toggle');
+}, 2000);
+
+$("#"+idojt+"ocultar").show();
+$("#"+idojt+"mostrar").hide();
+document.getElementById(idojt).disabled = true;
            
-// }else{
+}else{
 
-// }
-// }
-// });
+}
+}
+});
 }
 
+function ojtborrar(dato){
 
+var d = dato.split("*");
+
+idojt = d[0];
+idsub = d[1];
+
+$.ajax({
+data: 'idojt='+idojt+'&idsub='+idsub+'&opcion=eliminartem',
+url:'../php/regTarea.php',
+type: 'post',
+beforeSend: function () {
+//
+},
+success: function (response) {   
+if(response!=1){      
+
+$('#elimino').toggle('toggle');
+setTimeout(function() {
+$('#elimino').toggle('toggle');
+}, 2000);
+
+idsubTa(idsub);            
+}else{
+$('#elimino').toggle('toggle');
+setTimeout(function() {
+$('#elimino').toggle('toggle');
+}, 2000);            
+$('#temario').hide();
+//setTimeout("location.href = 'conCursos.php';", 2100);
+}
+}
+});
+}
 </script>
 
