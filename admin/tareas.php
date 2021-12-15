@@ -1495,7 +1495,12 @@ function idsubTa(idsub) {
                 // $("#tablasub01").show();                    
                 x++;
 
-html += "<tr><td>" + obj.data[i].idtarea+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td>Editar</td></tr>";    
+dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
+
+html += "<tr><td>" + obj.data[i].id_subojt+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td></tr>";    
+
+// <td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='temborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td>
+
                 }
 
             }
@@ -1565,6 +1570,15 @@ html += "<tr><td>" + obj.data[i].idtarea+'. ' + x + "</td><td><textarea class='f
 
 }
 
+
+function subojt(dato){
+var d = dato.split("*");
+id_subojt = d[0];
+document.getElementById(id_subojt).disabled = false;
+$("#"+id_subojt+"ocultar").hide();
+$("#"+id_subojt+"mostrar").show();
+
+}
     function vaciar(){
         // $("#tablasub01").hide();
         $("#tablasub02").hide();
@@ -1577,6 +1591,42 @@ html += "<tr><td>" + obj.data[i].idtarea+'. ' + x + "</td><td><textarea class='f
     $("#Dtarea").show();
 
     }
+
+
+
+function subOjtagregar(dato){
+
+
+// var d = dato.split("*");
+// idcurso = d[0];
+// var titulo = document.getElementById(idcurso).value;
+// var idcur = d[1];
+
+// $.ajax({
+// data: 'idcurso='+idcurso+'&titulo='+titulo+'&idcur='+idcur+'&opcion=agregaojt',
+// url:'../php/regTarea.php',
+// type: 'post',
+// beforeSend: function () {
+// //
+// },
+// success: function (response) {   
+// if(response==0){      
+
+// $('#actualizo').toggle('toggle');
+// setTimeout(function() {
+// $('#actualizo').toggle('toggle');
+// }, 2000);
+
+// $("#"+idcurso+"ocultar").show();
+// $("#"+idcurso+"mostrar").hide();
+// document.getElementById(idcurso).disabled = true;
+           
+// }else{
+
+// }
+// }
+// });
+}
 
 
 </script>

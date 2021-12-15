@@ -140,6 +140,21 @@ if(evaluarinspector($idtar,$eval,$conexion)){
 
 }else{ echo "1"; } }else{ if($i==1){ echo "2"; } } }
 
+}else if($opcion==='agregaojt'){
+
+	$idcurso = $_POST['idcurso'];
+	$subtarea = $_POST['titulo'];
+	$id = $_POST['idcur'];
+
+	if(actualizarojt($idcurso,$subtarea,$conexion)){
+		echo "0";
+
+			$realizo = 'ACTUALIZO TEMARIO '.$titulo;
+			historialT($idp,$realizo,$id,$conexion);
+
+	}else{ echo "1";}
+
+
 }
 
 
@@ -231,6 +246,16 @@ $query="INSERT INTO tarearealizar(idtarea,idiva,estado) SELECT id_tar,$idinsp,0 
 		$this->conexion->cerrar();
 }
 
+
+function actualizarojt($idcurso,$subtarea,$conexion){
+$query="UPDATE ojts_subs SET ojt_subtarea = '$titulo' WHERE id_subojt = $idcurso ";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
+	$this->conexion->cerrar();	
+}
 //EVALUAR INSPECTOR CON FECHA 
 	function evaluarinspector($idtar,$eval,$conexion){
 
