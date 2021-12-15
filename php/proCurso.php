@@ -39,33 +39,35 @@ $val = count($valor);
 $n = 0;
 $var= 0;
 $enc = 0;
-//  foreach ($valor as $idinsps) {
+
+ foreach ($valor as $idinsps) {
+
+if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+
+ 	echo $enc;
 
 
-// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+}else{
+ 	$var++;
 
-//  	$enc;
+}
+}
 
-// }else{
-// 	$var = 'NO HAY';
-// }
-// }
+$var;
 
-//if($var == 'NO HAY'){
+if($val==$var){
 foreach ($valor as $idinsps) {
 	$n++;
-
+$varY = 'HAY';
 if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
-
 				if($n==$ttal){
 				$Instruc = explode(",", $idInstr);
 				foreach ($Instruc as $idper) {
 				instructor($idper,$codigo,$conexion);
 				}
 			}
-
 		echo "0";	
 		if($n==1){
 		$realizo = 'PROGRAMO CURSO ('.$val.' PART.) FOLIO: '.$codigo;
@@ -75,14 +77,12 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 		}else{	
 			echo "1";	
 		}
-
 		contancia($idinsps,$codigo, $conexion);
-
-
-
-		//}
 	}
-//}
+}
+
+
+
 }else if($opcion === 'actualizar'){
 
 	 $idinsps = $_POST['idinsps'];		
