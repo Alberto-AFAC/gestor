@@ -568,10 +568,6 @@ realizó con éxito !</p>
 campo</p>
 </b>
 </div>
-
-
-
-
 </div>
 </div>
 </div>
@@ -601,6 +597,7 @@ aria-hidden="true">
 </div>
 </div>
 
+
 <div class="modal fade" id="detalleSub2" tabindex="-1" role="dialog" aria-labelledby="detalleSub2"
 aria-hidden="true">
 <div class="modal-dialog">
@@ -622,9 +619,10 @@ aria-hidden="true">
 </div>
 </div>
 
+<!---------------------------------------------->
 <div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
 aria-hidden="true">
-<div class="modal-dialog">
+<div class="modal-dialog" style="width: 90%;" >
 <div class="modal-content">
 <div class="modal-header">
 
@@ -633,16 +631,11 @@ aria-hidden="true">
 </div>
 <div class="modal-body">
 
-
 <div class='modal-body'><div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU REGISTRO FUE ELIMINADO</div><div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">SE ACTUALIZO REGISTRO CON ÉXITO</div>
-
 
 <div id="tablasub01"></div>
 <div id="tablasub02"></div>
 <div id="tablasub03"></div>
-
-
-
 </div>
 <div class="modal-footer">
 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="vaciar();">CERRAR</button>
@@ -653,9 +646,7 @@ aria-hidden="true">
 </div>
 
 </div>
-
-    
-
+<!----------------------------------->
 
 <!-- /.content-wrapper -->
 <footer class="main-footer">
@@ -1489,7 +1480,7 @@ function idsubTa(idsub) {
         if (obj.data[ii].idtarea == idsub) {
 
 
-    html ='<table  class="table table-bordered"><tr><th>#</th><th>SUB 1</th><th>ACCIONES</th>';
+    html ='<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUB 1</th><th style="width:10%;">ACCIONES</th>';
 
 
         for (i = 0; i < res.length; i++) {
@@ -1520,7 +1511,7 @@ html += "<tr><td>" + obj.data[i].id_subojt+'. ' + x + "</td><td><textarea class=
     
         $("#tablasub02").show();
 
-        html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 2</th><th>ACCIONES</th>';
+    html ='<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUB 2</th><th style="width:10%;">ACCIONES</th>';
 
         for (i = 0; i < res.length; i++) {
             
@@ -1550,7 +1541,7 @@ html += "<tr><td>" + obj.data[i].id_subojt+'. ' + y + "</td><td><textarea class=
 
         $("#tablasub03").show();
                 
-       html ='<table class="table table-bordered"><tr><th>#</th><th>SUB 3</th><th>ACCIONES</th>';
+    html ='<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUB 3</th><th style="width:10%;">ACCIONES</th>';
 
 
         for (i = 0; i < res.length; i++) {
