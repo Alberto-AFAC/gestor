@@ -703,11 +703,6 @@ immediately after the control sidebar -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
 integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script> -->
 <!-- page script -->
-<style type="text/css">
-textarea {
-resize: none;
-}
-</style>
 </body>
 
 </html>
@@ -1502,8 +1497,9 @@ if(obj.data[i].numsubt==1){
 x++;
 
 dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea+'*'+obj.data[i].numsubt;
+adatos = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
 
-html += "<tr><td>" + num+'.'+obj.data[i].numsubt+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";    
+html += "<tr><td>" + num+'.'+obj.data[i].numsubt+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' style='resize: none;' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";    
 }
 }
 }
@@ -1528,8 +1524,9 @@ if(obj.data[i].numsubt==2){
 y++;
 
 dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea+'*'+obj.data[i].numsubt;
+adatos = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
 
-html += "<tr><td>" + num+'.'+obj.data[i].numsubt+'. ' + y + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";   
+html += "<tr><td>" + num+'.'+obj.data[i].numsubt+'. ' + y + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' style='resize: none;' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";   
 
 
 }
@@ -1559,8 +1556,9 @@ if(obj.data[i].numsubt==3){
 w++;
 
 dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea+'*'+obj.data[i].numsubt;
+adatos = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
 
-html += "<tr><td>" + num+'.'+obj.data[i].numsubt+'. ' + w + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";   
+html += "<tr><td>" + num+'.'+obj.data[i].numsubt+'. ' + w + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' style='resize: none;' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";   
 }
 }
 }
