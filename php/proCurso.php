@@ -219,7 +219,7 @@ while ($per = mysqli_fetch_row($person)) {
 
 $query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
 INNER JOIN personal ON idinsp = personal.gstIdper 
-WHERE proceso = 'PENDIENTE' AND '$fcurso' > fechaf AND idinsp = $idinsps";
+WHERE '$fcurso' > fechaf AND idinsp = $idinsps";
 // '2021-11-24' > fcurso AND fechaf < '2021-11-27'
 
 $resultado = mysqli_query($conexion, $query3);
