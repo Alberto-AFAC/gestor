@@ -40,26 +40,26 @@ $n = 0;
 $var= 0;
 $enc = 0;
 
- foreach ($valor as $idinsps) {
+//  foreach ($valor as $idinsps) {
 
-if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
 
- 	echo $enc;
+//  	echo $enc;
 
 
-}else{
- 	$var++;
+// }else{
+//  	$var++;
 
-}
-}
+// }
+// }
 
-$var;
+// $var;
 
-if($val==$var){
+// if($val==$var){
 foreach ($valor as $idinsps) {
 	$n++;
-$varY = 'HAY';
+//$varY = 'HAY';
 if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
 				if($n==$ttal){
@@ -79,7 +79,7 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 		}
 		contancia($idinsps,$codigo, $conexion);
 	}
-}
+//}
 
 
 
