@@ -28,7 +28,10 @@ unset($_SESSION['consulta']);
 
 ini_set('date.timezone','America/Mexico_City');
 ?>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../js/notificacion.js" ></script>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<script type="text/javascript" src="../js/cursos.js"></script>
 
 <?php include('../perfil/notificar.php');?>
     
@@ -169,7 +172,7 @@ ini_set('date.timezone','America/Mexico_City');
             </li> -->
 
              <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
-              <li>
+<!--               <li>
               <a href='e-learnning'>
               <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
                 <span class='pull-right-container'>
@@ -177,7 +180,7 @@ ini_set('date.timezone','America/Mexico_City');
                   <small class='label pull-right bg-blue'></small>
                 </span>
               </a>
-            </li>
+            </li> -->
             <?php }?>
 
             <!-- <li>
@@ -197,3 +200,9 @@ ini_set('date.timezone','America/Mexico_City');
     </section>
     <!-- /.sidebar -->
 </aside>
+
+<?php
+
+include('../perfil/actualizar.php');
+
+?>

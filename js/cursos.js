@@ -1,4 +1,37 @@
+//destroy:true,
+$.ajax({
+    url: '../php/cursos.php',
+    type: 'POST'
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+    var programados = 0;
+    var completos = 0;
+    var cancelados = 0;
+    var confirmar = 0;
+    var conteo = 0;
+    var fecha = 0;
+    var ffin = 0;
+    for (i = 0; i < res.length; i++) {
 
+        confirma = obj.data[i].confirmar;
+        programados = obj.data[i].proceso;
+        venci = obj.data[i].vencido;
+        cancelados = obj.data[i].declina;
+        completo = obj.data[i].finalizado;
+    }
+
+    $("#confirma").html(confirma);
+    $("#programados").html(programados);
+    $("#cancelados").html(cancelados);
+    $("#completos").html(completo);
+    $("#noti").html(confirma);
+    $("#vencidos").html(venci);
+    document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirma + ' notificaciones.</b>';
+    document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirma + ' cursos que confirmar.';
+
+
+});
 
 //DECLINA ENFERMEDAD
 function declina() {
@@ -188,6 +221,9 @@ function confirmar1(idcurso) {
                 html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td></tr>";
             }
 
+
+
+
         }
         html += '</table>';
         $("#instruc1").html(html);
@@ -366,6 +402,7 @@ function conprofesion() {
         var res = obj.data;
         var x = 0;
 
+
         html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PUESTO</th><th><i></i>EMPRESA</th><th><i></i>ACTIVIDADES</th><th><i></i>FECHA ENTRADA</th><th><i></i>FECHA SALIDA</th><th><i></i>DOCUMENTACIÓN</th></tr></thead><tbody>';
         for (P = 0; P < res.length; P++) {
 
@@ -392,6 +429,8 @@ function conprofesion() {
         $("#profsions").html(html);
     })
 }
+
+
 
 // SHOW PASSWORD
 $('.toggle-password').click(function() {

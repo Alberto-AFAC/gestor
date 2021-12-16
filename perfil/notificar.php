@@ -15,7 +15,6 @@
 <a href="inicio" class="logo">
 <?php } ?>
 
-
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
       <!-- logo for regular state and mobile devices -->
@@ -41,11 +40,21 @@
               <li class="header"><div id="notif"></div></li>
               <li>
                 <ul class="menu">
-                  <li>
+                  <li id="ocucnfir">
                     <a href="#">
                       <div id="confirmar"></div>
                     </a>
                   </li>
+                  <li id="ocuvncr">
+                    <a href="#">
+                      <div id="notvencer"></div>
+                    </a>
+                  </li>
+                  <li id="ocuvncd">
+                    <a href="#">
+                      <div id="notvencdo"></div>
+                    </a>
+                  </li>                  
                 </ul>
               </li>
             </ul>

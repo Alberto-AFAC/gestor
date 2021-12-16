@@ -35,7 +35,6 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <script src="dist/js/sweetalert2.all.min.js"></script>
   <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-
   
 </head>
 
@@ -43,6 +42,7 @@
     <div class="wrapper">
 
         <?php
+
 include('header.php');
 ?>
         <!-- Content Wrapper. Contains page content -->
@@ -264,7 +264,7 @@ include('header.php');
     <!-- ./wrapper -->
 
     <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+ 
     <!-- jQuery UI 1.11.4 -->
     <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -306,6 +306,7 @@ include('header.php');
     <script src="js/anychart-exports.min.js"></script>
     <script src="js/anychart-gantt.min.js"></script>
     <script src="js/anychart-data-adapter.min.js"></script>
+
    
 </body>
 
