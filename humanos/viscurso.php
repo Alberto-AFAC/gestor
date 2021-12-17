@@ -28,13 +28,13 @@ data-widget="remove">
 <form class="form-horizontal" action="" method="POST" id="Dtall">
 
 <div class="form-group">
-<div class="col-sm-4">
+<div class="col-sm-5">
 <label class="label2">NOMBRE</label>
 <input type="text" style="text-transform:uppercase;"
 class="form-control disabled inputalta" id="gstTitlo" name="gstTitlo"
 disabled="">
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 <label class="label2">TIPO DE CAPACITACIÓN</label>
 <select type="text" class="form-control inputalta" id="gstTipo" name="gstTipo"
 disabled="">
@@ -64,12 +64,12 @@ id="gstPrfil" name="gstPrfil" disabled="">
 <input type="text" style="text-transform:uppercase;" class="form-control inputalta"
 id="gstCntnc" name="gstCntnc" disabled="">
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 <label class="label2">DURACIÓN</label>
 <input type="text" class="form-control inputalta" id="gstDrcin" name="gstDrcin"
 disabled="">
 </div>
-<div class="col-sm-offset-0 col-sm-4">
+<div class="col-sm-offset-0 col-sm-3">
 <label class="label2">PERIODO DE VIGENCIA</label>
 <select type="text" class="form-control inputalta" id="gstVignc" name="gstVignc"
 disabled="">
@@ -83,6 +83,12 @@ disabled="">
 <option value="6">6 AÑOS</option>
 </select>
 </div>
+
+<div class="col-sm-2">	
+<label class="label2">CODIGO</label>
+<input type="text" name="codigoIDCuro" id="codigoIDCuro" type="text" style="text-transform:uppercase;" class="form-control inputalta" disabled="">
+</div>
+
 </div>
 <div class="form-group">
 <div class="col-sm-12">
@@ -92,6 +98,7 @@ style="text-transform:uppercase;" class="form-control disabled inputalta"
 rows="5" cols="50" disabled=""></textarea>
 </div>
 </div>
+
 
 <div class="form-group">
 <label for=""></label>

@@ -25,8 +25,8 @@ require_once "../../conexion/conexion.php";
               
 <?php   }else{   ?>
 
-	<select  id="gstIDuni" class="form-control" class="selectpicker" name="gstIDuni" type="text" data-live-search="true" style="width: 100%" >
-			<option value="0">AEROPUERTOS </option> 
-			</select>
+	<input id="gstIDuni" class="form-control" class="selectpicker" name="gstIDuni" type="text" data-live-search="true" style="width: 100%" >
+			<!-- <option value="0">AEROPUERTOS </option>  -->
+			<!-- </select> -->
 
 <?php } ?>

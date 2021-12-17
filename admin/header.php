@@ -33,7 +33,7 @@ ini_set('date.timezone','America/Mexico_City');
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <script type="text/javascript" src="../js/cursos.js"></script>
 
-<?php include('../perfil/notificar.php');?>
+<?php include('../perfil/notificar.php'); ?>
     
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">

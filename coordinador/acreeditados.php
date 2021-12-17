@@ -924,7 +924,7 @@ $(document).ready(function() {
 
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
-
+                    $("#Dtall #codigoIDCuro").val(d[15]);
                     codigo = d[15];
 
                     idcurso(codigo);

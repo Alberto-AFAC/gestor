@@ -32,10 +32,16 @@
 unset($_SESSION['consulta']);
 
 ?>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-<script src="../js/status.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="../css/style.css">
+<script src="../js/status.js"></script> -->
 
-    <?php include('../perfil/notificar.php');?>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../js/notificacion.js" ></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<script type="text/javascript" src="../js/cursos.js"></script>   
+
+
+    <?php include('../perfil/notificar.php'); ?>
 
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -139,4 +145,8 @@ unset($_SESSION['consulta']);
     </section>
     <!-- /.sidebar -->
   </aside>
-  
+  <?php
+
+include('../perfil/actualizar.php');
+
+  ?>
