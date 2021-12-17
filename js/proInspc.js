@@ -37,7 +37,7 @@ function proCurso() {
         }
     }
 
-     idInstru = idInstr.substr(1); 
+    idInstru = idInstr.substr(1);
 
     var id_mstr = document.getElementById('id_mstr').value;
 
@@ -77,9 +77,9 @@ function proCurso() {
 
     idinsps = idInsptr + '' + idInstr;
 
-    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord='+ idcord + '&idInstru='+ idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
+    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
 
-     //alert(datos);
+    //alert(datos);
 
     if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
@@ -121,13 +121,13 @@ function proCurso() {
                         // showConfirmButton: false,
                         showCancelButton: true,
                         customClass: 'swal-wide',
-                        confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                        cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
+                        confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                        cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
 
                     });
                     // setTimeout("location.href = 'inspecion.php';", 2000);
                     $("#buttonpro").hide();
-                }else
+                } else
 
                 if (respuesta == 0) {
                     Swal.fire({
@@ -137,8 +137,8 @@ function proCurso() {
                         // showConfirmButton: false,
                         showCancelButton: true,
                         customClass: 'swal-wide',
-                        confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                        cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
+                        confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                        cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
 
                     });
                     // setTimeout("location.href = 'inspecion.php';", 2000);
@@ -164,7 +164,7 @@ function proCurso() {
 
                     // });
 
-                   // $("#buttonpro").hide();
+                    // $("#buttonpro").hide();
 
                 }
             });
