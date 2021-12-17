@@ -336,9 +336,9 @@ var tableGenerarReporte = $('#data-table-instructoresExt').DataTable({
         {
             title: "CARGO"
         },
-        {
-            title: "ACCIÓN"
-        }
+        // {
+        //     title: "ACCIÓN"
+        // }
     ],
 });
 
@@ -350,7 +350,7 @@ $(document).ready(function() {
         var apellido = $("#apellido").val();
         var cargo = $("#cargo").val();
         var detalle = $("#detalle").val();
-
+        // alert(detalle)
         swal.showLoading();
         if (nombre == '' || apellido == '' || cargo == '') {
             Swal.fire({
