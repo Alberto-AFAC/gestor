@@ -84,6 +84,7 @@ ini_set('date.timezone','America/Mexico_City');
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
+                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta de personal externo</a></li>
                     <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
                     <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
                     <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
