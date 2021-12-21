@@ -18,15 +18,23 @@ require '../php-mailer2/SMTP.php';
     
 		
 
-		$mail = new PHPMailer;
-$mail->isSMTP();
-$mail->SMTPDebug = 2;
-$mail->Host = 'smtp.hostinger.com';
-$mail->SMTPSecure = 'ssl';                          
-$mail->Port = 465;
-$mail->SMTPAuth = true;
-$mail->Username = 'notificaciones@afac-avciv.com';
-$mail->Password = 'Agencia.SCT.2021.';
+// 		$mail = new PHPMailer;
+// $mail->isSMTP();
+// $mail->SMTPDebug = 2;
+// $mail->Host = 'smtp.hostinger.com';
+// $mail->SMTPSecure = 'ssl';                          
+// $mail->Port = 465;
+// $mail->SMTPAuth = true;
+// $mail->Username = 'notificaciones@afac-avciv.com';
+// $mail->Password = 'Agencia.SCT.2021.';
+	$mail = new PHPMailer();
+		$mail->isSMTP();
+		$mail->Host = 'smtp.mailtrap.io';
+		$mail->SMTPAuth = true;
+		$mail->Port = 2525;
+		$mail->Username = '10a376e8596ee9';
+		$mail->Password = 'c2aeed30f4cf96';
+		$mail->SMTPSecure = 'tls'; 
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
 
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
