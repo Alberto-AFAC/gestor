@@ -50,15 +50,7 @@ $mail->CharSet = 'UTF-8';
             {
                 $mail->addAddress($address, 'Usuario');
             }
-		$msg .= "<p>".$curso['gstTitlo']."</p>
-        <p>FOLIO: ".$curso['gstIdlsc']."</p>
-        <p>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</p>
-        <p>TIPO DE CURSO: ".$curso['gstTipo']."</p>
-        <p>FECHA INICIO: ".$curso['inicia']."</p>
-        <p>HORA: ".$curso['hcurso']."</p>
-        <p>CARGO: ".$curso['gstCargo']."</p>
-        <p>SEDE DEL CURSO: ".$curso['sede']." </p>
-        <p>MODALIDAD: ".$curso['modalidad']."</p>";
+		$msg = "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
         
             $mail->MsgHTML($msg);
             if (!$mail->send()) {
