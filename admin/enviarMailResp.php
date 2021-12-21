@@ -10,7 +10,7 @@ require '../php-mailer2/SMTP.php';
 
 	$idcurso = $_POST['codigoCurso'];
 	$correoRs = $_POST['correoResponsable'];
-	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
+	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstApell, gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
 			  WHERE codigo = '$idcurso'";
@@ -49,7 +49,7 @@ $body = '<table style="width: 100%;"><tr><th>PARTICIPANTES DEL CURSO</th></tr>';
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td>".$curso['gstNombr']."</td></tr>"; 
+            $body .= "<tr><td>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
