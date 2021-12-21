@@ -52,7 +52,7 @@ $mail->CharSet = 'UTF-8';
             }
     }
 
-		$msg = "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
+		$msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
         
             $mail->MsgHTML($msg);
             if (!$mail->send()) {
