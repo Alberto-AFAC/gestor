@@ -42,22 +42,19 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->CharSet = 'UTF-8';
-$mail->Body = "<table><tr><th>Name</th><th>IDCourseTax</th><th>TDCourse</th><th>End Date</th><th>Tax   Rate</th><th>Days past due</th></tr>";
+$body = '<table><tr><th>Name</th><th>IDCourseTax</th><th>TDCourse</th><th>End Date</th><th>Tax   Rate</th><th>Days past due</th></tr>';
         while($curso = mysqli_fetch_assoc($resultado)){
             $to_array = explode(',', $correoRs);
             foreach($to_array as $address)
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $mail->Body .= "
-            <tr>
-            <td>AQUI VAN</td>
-            </tr> "; 
+            $body .= "<tr><td>aqui va una columna</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
-    $mail->Body .= "</table>"; //close table
-            $mail->MsgHTML($mail);
+    $mail->Body = $body.'</table>';
+            $mail->MsgHTML($body);
             if (!$mail->send()) {
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
