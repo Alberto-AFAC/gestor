@@ -15,7 +15,7 @@ require '../php-mailer2/SMTP.php';
 			  INNER JOIN personal ON gstIdper = idinsp
 			  WHERE codigo = '$idcurso'";
 	$resultado = mysqli_query($conexion, $query);
-    
+    $x = 0;
 		
 
 // 		$mail = new PHPMailer;
@@ -42,14 +42,15 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->CharSet = 'UTF-8';
-$body = '<table style="width: 100%;"><tr><th>PARTICIPANTES DEL CURSO</th></tr>';
+$body = '<table style="width: 100%;"><tr><th><td>No.</td>PARTICIPANTES DEL CURSO</th></tr>';
         while($curso = mysqli_fetch_assoc($resultado)){
+            $x++;
             $to_array = explode(',', $correoRs);
             foreach($to_array as $address)
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
+            $body .= "<tr><td>".$x."</td><td>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
