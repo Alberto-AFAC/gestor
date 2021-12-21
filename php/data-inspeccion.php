@@ -10,7 +10,7 @@ $query = "
 SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') AS Ingreso,personal.gstIDCat AS IDcat 
 FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 
+WHERE personal.control = 'INTERNO' AND personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 
    OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 
    OR personal.gstCargo = 'EJECUTIVO' AND  personal.estado = 0
    -- OR personal.gstCargo = 'COORDINADOR' AND  personal.estado = 0

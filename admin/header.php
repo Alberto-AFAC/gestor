@@ -84,7 +84,6 @@ ini_set('date.timezone','America/Mexico_City');
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
-                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta de personal externo</a></li>
                     <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
                     <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
                     <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
@@ -105,6 +104,7 @@ ini_set('date.timezone','America/Mexico_City');
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta de personal externo</a></li>
                     <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
                     <!-- <li><a href="tareas" style="pointer-events: none;" onclick="return false;"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
                     <!-- <li><a href="tareas"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->

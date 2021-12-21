@@ -1,19 +1,15 @@
 <?php 
 	include ('../conexion/conexion.php');
-    $nombreExt=$_POST['nombreExt'];
-    $apellidoExt=$_POST['apellidoExt'];
-    $curpExt=$_POST['curpExt'];
-    $rfcExt=$_POST['rfcExt'];
-    $sexoExt=$_POST['sexoExt'];
-    $id_espc=$_POST['id_espc'];
-    $phoneHom=$_POST['phoneHom'];
-    $phone=$_POST['phone'];
-    $emailPer=$_POST['emailPer'];
-    $emailAlt=$_POST['emailAlt'];
+    $gstNombr=$_POST['gstNombr'];
+    $gstApell=$_POST['gstApell'];
+    $gstCurp=$_POST['gstCurp'];
+    $gstRfc=$_POST['gstRfc'];
+    $gstSexo=$_POST['gstSexo'];
+    $gstIDCat=$_POST['gstIDCat'];
 
 
-	$sql="INSERT into personalext (nombreExt, apellidoExt, curpExt, rfcExt, sexoExt,id_espc, phoneHom,phone,emailPer,emailAlt)
-			values ('$nombreExt', '$apellidoExt', '$curpExt', '$rfcExt', '$sexoExt','$id_espc','$phoneHom','$phone','$emailPer','$emailAlt')";
+	$sql="INSERT into personal (gstNombr, gstApell, gstLunac, gstFenac, gstSexo,gstStcvl,gstCurp,gstRfc,gstisst,gstNpspr,gstPsvig,gstVisa,gstVignt,gstNucrt,gstCalle,gstNumro,gstClnia,gstCpstl,gstCiuda,gstStado,gstCasa,gstClulr,gstExTel,gstNmpld,sgtCrhnt,gstRusp,gstPlaza,gstIdpst,gstAreID,gstPstID,gstSpcID,gstSigID,gstCargo,gstIDCat,gstIDSub,gstCorro,gstCinst,gstFeing,gstFtrmn,gstIDara,gstAcReg,gstIDuni,gstEvalu,gstComnd,gstComnt,control,estado,)
+			values ('$gstNombr', '$gstApell', '0', '0000-00-00', '$gstSexo','0','$gstCurp','$gstRfc','0','0','0000-00-00','0','0000-00-00','0','0','0','0',0,'0','0','0','0','0',0,'0','0','0','0',0,0,'0','0',0,'$gstIDCat',0,'0','0','0000-00-00','0000-00-00',0,'0',0,'0','0','EXTERNO',0)";
 	echo mysqli_query($conexion,$sql);
 
  ?>

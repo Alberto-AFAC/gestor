@@ -95,32 +95,32 @@ $psto = mysqli_query($conexion,$sql);
                                                 <div class="col-sm-4">
                                                     <label class="label2">NOMBRE(S)</label>
                                                     <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="nombreExt" name="nombreExt">
+                                                        class="form-control inputalta" id="gstNombr" name="gstNombr">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label class="label2">APELLIDO(S)</label>
                                                     <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta " id="apellidoExt"
-                                                        name="apellidoExt">
+                                                        class="form-control inputalta " id="gstApell"
+                                                        name="gstApell">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label class="label2">CURP</label>
                                                     <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta " id="curpExt" name="curpExt">
+                                                        class="form-control inputalta " id="gstCurp" name="gstCurp">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <label class="label2">RFC</label>
                                                     <input onkeyup="mayus(this);" type="text"
-                                                        class="form-control inputalta" id="rfcExt" name="rfcExt">
+                                                        class="form-control inputalta" id="gstRfc" name="gstRfc">
                                                 </div>
 
 
                                                 <div class="col-sm-4">
                                                     <label class="label2">SEXO</label>
-                                                    <select type="text" class="form-control inputalta" id="sexoExt"
-                                                        name="sexoExt">
+                                                    <select type="text" class="form-control inputalta" id="gstSexo"
+                                                        name="gstSexo">
                                                         <option value="">ELEGIR SEXO</option>
                                                         <option value="MUJER">MUJER</option>
                                                         <option value="HOMBRE">HOMBRE</option>
@@ -131,8 +131,8 @@ $psto = mysqli_query($conexion,$sql);
                                                     <select 
                                                         data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                                                         style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="id_espc"
-                                                        name="id_espc">
+                                                        type="text" class="form-control" id="gstIDCat"
+                                                        name="gstIDCat">
                                                         <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
                                                         <?php while($cat = mysqli_fetch_row($categs)):?>
                                                         <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
@@ -292,7 +292,7 @@ $psto = mysqli_query($conexion,$sql);
                         <script src="../../js/valida.js"></script>
                         <script>
 $(document).ready(function() {
-    $('#id_espc').select2();
+    $('#gstIDCat').select2();
 
 });
                    
@@ -300,19 +300,20 @@ $(document).ready(function() {
 
                         function addPerson() {
 
-                            var nombreExt = $("#nombreExt").val();
-                            var apellidoExt = $("#apellidoExt").val();
-                            var curpExt = $("#curpExt").val();
-                            var rfcExt = $("#rfcExt").val();
-                            var sexoExt = $("#sexoExt").val();
-                            var id_espc = $("#id_espc").val();
-                            var phoneHom = $("#phoneHom").val();
-                            var phone = $("#phone").val();
-                            var emailPer = $("#emailPer").val();
-                            var emailAlt = $("#emailAlt").val();
-                            alert(id_espc);
+                            var gstNombr = $("#gstNombr").val();
+                            var gstApell = $("#gstApell").val();
+                            var gstCurp = $("#gstCurp").val();
+                            var gstRfc = $("#gstRfc").val();
+                            var gstSexo = $("#gstSexo").val();
+                            var gstIDCat = $("#gstIDCat").val();
+                            alert(gstNombr);
+                            alert(gstApell);
+                            alert(gstCurp);
+                            alert(gstRfc);
+                            alert(gstSexo);
+                            alert(gstIDCat);
                             swal.showLoading();
-                            if (nombreExt == '' || apellidoExt == '' || curpExt == '' || rfcExt == '' || sexoExt == '' || id_espc == '' || phoneHom == '' || phone == '' || emailPer == '' || emailAlt == '') {
+                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' || gstIDCat == '' || phoneHom == '' || phone == '' || emailPer == '' || emailAlt == '') {
                                 Swal.fire({
                                     type: 'warning',
                                     text: 'Llene campos vacios!',
@@ -325,16 +326,12 @@ $(document).ready(function() {
                                     type: "POST",
                                     url: "../php/insPerExt.php",
                                     data: {
-                                        nombreExt: nombreExt,
-                                        apellidoExt: apellidoExt,
-                                        curpExt: curpExt,
-                                        rfcExt: rfcExt,
-                                        sexoExt: sexoExt,
-                                        id_espc: id_espc,
-                                        phoneHom: phoneHom,
-                                        phone: phone,
-                                        emailPer: emailPer,
-                                        emailAlt: emailAlt
+                                        gstNombr: gstNombr,
+                                        gstApell: gstApell,
+                                        gstCurp: gstCurp,
+                                        gstRfc: gstRfc,
+                                        gstSexo: gstSexo,
+                                        gstIDCat: gstIDCat
 
 
                                     },
