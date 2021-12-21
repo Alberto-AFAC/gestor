@@ -50,7 +50,7 @@ $body = '<table style="border-collapse: collapse; width: 100%; border: 1px solid
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td>".$x.".-</td><td>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
+            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
