@@ -163,6 +163,7 @@ include('header.php');
                                     <tr style="color: gray;">
                                         <th>DEFICIENTE</th>
                                         <th>NO SATISFACTORIO</th>
+                                        <th>REGULAR</th>
                                         <th>SATISFACTORIO</th>
                                         <th>EXCELENTE</th>
 
@@ -513,8 +514,6 @@ include('header.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
-    <script src="../js/datos.js"></script>
-<script type="text/javascript" src="../js/director.js"></script>
     <!-- page script -->
 
 </body>
@@ -554,6 +553,7 @@ var piechar = new Chart(document.getElementById("piechart-satisfaccion"), {
                 "<?php echo $pregunta16?>","<?php echo $pregunta17?>","<?php echo $pregunta18?>",
                 "<?php echo $pregunta19?>","<?php echo $pregunta20?>","<?php echo $pregunta21?>",
                 "<?php echo $pregunta22?>","<?php echo $pregunta23?>"
+
             ]
         }]
     },
@@ -651,7 +651,7 @@ $(document).ready(function() {
                         customClass: 'swal-wide',
                         showConfirmButton: false,
                     });
-                    setTimeout("location.href = 'niveldesatis.php';", 2000);
+                    setTimeout("location.href = '../admin/niveldesatis.php';", 2000);
                 }
             });
         }

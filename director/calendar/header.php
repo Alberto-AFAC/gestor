@@ -2,7 +2,7 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "DIRECTOR"){
+        if($_SESSION['usuario']['privilegios'] != "DIRECTOR_CIAAC"){
             //y se redirecciona al directorio que le corresponde
             header("Location: ../../");
             }
@@ -198,7 +198,7 @@ unset($_SESSION['consulta']);
             
             <li><a href="../lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <!-- <li><a href="../estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
-            <li><a href="../niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <!-- <li><a href="../niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li> -->
           </ul>
         </li>
         <!--  -->
