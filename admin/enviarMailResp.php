@@ -42,7 +42,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->CharSet = 'UTF-8';
-$body = '<table style="width: 100%;"><tr><th><td>No.</td>PARTICIPANTES DEL CURSO</th></tr>';
+$body = '<table><tr><th>No.</th><th>PARTICIPANTES DEL CURSO</th></tr>';
         while($curso = mysqli_fetch_assoc($resultado)){
             $x++;
             $to_array = explode(',', $correoRs);
