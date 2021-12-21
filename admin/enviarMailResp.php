@@ -50,6 +50,8 @@ $mail->CharSet = 'UTF-8';
             {
                 $mail->addAddress($address, 'Usuario');
             }
+    }
+
 		$msg = "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
         
             $mail->MsgHTML($msg);
@@ -58,5 +60,4 @@ $mail->CharSet = 'UTF-8';
             } else {
                 echo 'The email message was sent.';
             }
-    }
  ?>
