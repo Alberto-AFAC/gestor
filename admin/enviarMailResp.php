@@ -50,10 +50,10 @@ $mail->CharSet = 'UTF-8';
             {
                 $mail->addAddress($address, 'Usuario');
             }
-    }
+  
 
 		$msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
-        
+    }
             $mail->MsgHTML($msg);
             if (!$mail->send()) {
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
