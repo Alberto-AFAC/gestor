@@ -42,7 +42,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->CharSet = 'UTF-8';
-$body = '<table><tr><th>No.</th><th>PARTICIPANTES DEL CURSO</th></tr>';
+$body = '<table border="1"><tr><th>No.</th><th>PARTICIPANTES DEL CURSO</th></tr>';
         while($curso = mysqli_fetch_assoc($resultado)){
             $x++;
             $to_array = explode(',', $correoRs);
@@ -50,7 +50,7 @@ $body = '<table><tr><th>No.</th><th>PARTICIPANTES DEL CURSO</th></tr>';
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td>".$x."</td><td>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
+            $body .= "<tr><td>".$x.".-</td><td>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
