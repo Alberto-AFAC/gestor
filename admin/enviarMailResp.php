@@ -49,11 +49,15 @@ $mail->Body = "<table><tr><th>Name</th><th>IDCourseTax</th><th>TDCourse</th><th>
             {
                 $mail->addAddress($address, 'Usuario');
             }
-  
+            $mail->Body .= "
+            <tr>
+            <td>AQUI VAN</td>
+            </tr> "; 
 
-		$msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
+		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
-            $mail->MsgHTML($msg);
+    $mail->Body .= "</table>"; //close table
+            $mail->MsgHTML(Body);
             if (!$mail->send()) {
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
