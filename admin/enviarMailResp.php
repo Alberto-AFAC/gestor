@@ -41,9 +41,8 @@ $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
-$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 $mail->CharSet = 'UTF-8';
+$mail->Body = "<table><tr><th>Name</th><th>IDCourseTax</th><th>TDCourse</th><th>End Date</th><th>Tax   Rate</th><th>Days past due</th></tr>";
         while($curso = mysqli_fetch_assoc($resultado)){
             $to_array = explode(',', $correoRs);
             foreach($to_array as $address)
