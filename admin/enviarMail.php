@@ -21,6 +21,9 @@ require '../php-mailer2/SMTP.php';
 		} else{
 			$to = $curso['gstCinst'];
 		}
+		if($curso['sede'] == '0'){
+			$sede = "SIN SEDE";
+		}
 		$mail = new PHPMailer();
 		$mail->isSMTP();
 		$mail->Host = 'smtp.mailtrap.io';
@@ -56,7 +59,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 				<tr><td style='text-align: center; font-size: 15px;'>FECHA INICIO: ".$curso['inicia']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>HORA: ".$curso['hcurso']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>CARGO: ".$curso['gstCargo']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: ".$curso['sede']." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: $sede </td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>MODALIDAD: ".$curso['modalidad']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'><a href='http://afac-avciv.com/'>CONFIRMAR ASISTENCIA</a></td></tr>
 				<hr><center>
