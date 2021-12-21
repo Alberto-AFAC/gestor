@@ -29,6 +29,7 @@ require '../php-mailer2/SMTP.php';
 		$mail->Port = 2525;
 		$mail->Username = '10a376e8596ee9';
 		$mail->Password = 'c2aeed30f4cf96';
+		$mail->setFrom('jmondragonescamilla@gmail.com', 'NOTIFICACIONES AFAC');
 // $mail = new PHPMailer;
 // $mail->isSMTP();
 // $mail->SMTPDebug = 2;
