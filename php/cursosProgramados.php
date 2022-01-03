@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 	session_start();
     $id = $_GET["id"];
-    //$id = 'FO1';
+   // $id = 'FO53';
 	$query = "SELECT * FROM cursos 
     INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
     INNER JOIN personal ON idinsp = gstIdper 
@@ -88,15 +88,17 @@ if($data['idcoor']==$data['idinsp'] && $data['idcoor'] == $idper){
                 $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
             }else if ($data['confirmar'] == 'OTROS') {
 
-               $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' da/i></a><a type='button' style='margin-left:2px' title='Reacción de Curso Evaluado' onclick='evalucurs()' classwarningtn-success' data-toggle='modal' data-target='#modal-evalcurso'><i class='fa fa-check-circle-o' style='font-size:15px;e='font-size:ta-target='#modal-declinado1'>DECLINO CURSO</a>";
+                $confirmar = "<a type='button' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='id_cursos({$data['id_curso']})' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
                 // $evaluacion = "";						
             }else{
 
 //PARTICIPANTES QUE CONFIRMAN
 
-if ($data['evaluacion'] == 0){
+if ($data['evaluacion'] == 'NULL' && $data['confirmar'] == "CONFIRMADO"){
 $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-warning' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' stylfont-size:16px;'></i></a><span style='margin-left:2px;padding:0.5em;background:#E08E0B;color:white;' title='Reacción de Curso por Evaluar' ><i class='fa fa-check-circle-o' style='font-size:15px;'></i></span>";
-}
+}else{
+
+
 //vista cuando se APRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
 if ($data['evaluacion'] >= 80 && $data['evaluacion'] <= 100 && $reaccion == 'SI EXISTE'){
 
@@ -110,17 +112,19 @@ $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evalu
 }
 
 // // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" SIN EVALUACIÓN
-if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 1 && $reaccion == 'NO EXISTE') {
+if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 0 && $reaccion == 'NO EXISTE') {
 
 $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a><span style='margin-left:2px;padding:0.5em;background:#E08E0B;color:white;' title='Reacción de Curso por Evaluar' ><i class='fa fa-check-circle-o' style='font-size:15px;'></i></span>";
 }
 // // vista cuando se REPRUEBA AL INSPECTOR "DETALLE DEL CURSO" CON EVALUACIÓN
-if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 1 && $reaccion == 'SI EXISTE') {
+if ($data['evaluacion'] < 80 && $data['evaluacion'] >= 0 && $reaccion == 'SI EXISTE') {
 
 $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evaluarins({$idcurinp})' class='btn btn-danger' data-toggle='modal' data-target='#modal-evaluar'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>		
 <span style='margin-left:2px;padding:0.5em;background:green;color:white;' title='Reacción de Curso Evaluado' ><i class='fa fa-check-circle-o' style='font-size:15px;'></i></span>
 
 ";
+
+}
 
 }
 

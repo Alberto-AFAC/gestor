@@ -137,7 +137,7 @@ include ("../conexion/conexion.php");
                                             </div>
                                             <div class="form-group">
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <label>DOCUMENTO QUE EMITE</label>
                                                     <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
                                                     <select type="text" class="form-control" id="gstCntnc"
@@ -147,6 +147,13 @@ include ("../conexion/conexion.php");
                                                         <option value="CONSTANCIA">CONSTANCIA</option>
                                                         <option value="CERTIFICADO">CERTIFICADO</option>
                                                     </select>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label>CÓDIGO
+</label>
+                                                    <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control"
+                                                        id="codigoCrso" name="codigoCrso">
                                                 </div>
 
 
@@ -193,7 +200,7 @@ include ("../conexion/conexion.php");
 
 
 
-                                                <div class="col-sm-offset-0 col-sm-4">
+                                                <div class="col-sm-offset-0 col-sm-3">
                                                     <label>PERIODO DE VIGENCIA</label>
                                                     <select type="text" class="form-control" id="gstVignc"
                                                         name="gstVignc">
@@ -269,8 +276,8 @@ include ("../conexion/conexion.php");
                                                         </div>
                                                         <div class="modal-body">
                                                             <div id="listas">
-                                                                <div><input class="form-control" onkeyup="mayus(this);"
-                                                                        placeholder="Ingresa tema" type="text"
+                                                                <div><input class="form-control"
+                                                                onkeyup="mayus(this);" placeholder="Ingresa tema" type="text"
                                                                         name="campo[]"></div><span id="add_field"
                                                                     style="color: blue;">Añadir</span>
                                                             </div>

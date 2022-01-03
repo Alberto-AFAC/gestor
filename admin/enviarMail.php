@@ -21,7 +21,17 @@ require '../php-mailer2/SMTP.php';
 		} else{
 			$to = $curso['gstCinst'];
 		}
-
+		if($curso['sede'] == '0'){
+			$sede = "SIN SEDE";
+		}
+		// $mail = new PHPMailer();
+		// $mail->isSMTP();
+		// $mail->Host = 'smtp.mailtrap.io';
+		// $mail->SMTPAuth = true;
+		// $mail->Port = 2525;
+		// $mail->Username = '10a376e8596ee9';
+		// $mail->Password = 'c2aeed30f4cf96';
+		// $mail->SMTPSecure = 'tls';  
 		$mail = new PHPMailer;
 $mail->isSMTP();
 $mail->SMTPDebug = 2;
@@ -41,7 +51,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 		$mail->CharSet = 'UTF-8';
-		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
+		$msg .= "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
 				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>".$curso['gstTitlo']."</span></td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>FOLIO: ".$curso['gstIdlsc']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</td></tr>
@@ -49,7 +59,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 				<tr><td style='text-align: center; font-size: 15px;'>FECHA INICIO: ".$curso['inicia']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>HORA: ".$curso['hcurso']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>CARGO: ".$curso['gstCargo']." </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: ".$curso['sede']." </td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: $sede </td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>MODALIDAD: ".$curso['modalidad']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'><a href='http://afac-avciv.com/'>CONFIRMAR ASISTENCIA</a></td></tr>
 				<hr><center>

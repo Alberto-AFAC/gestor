@@ -298,7 +298,11 @@ var dataSet = [
 <?php 
 $query = "SELECT * FROM personal 
           INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
+          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 
+             OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0
+             OR personal.gstCargo = 'EJECUTIVO' AND  personal.estado = 0
+             -- OR personal.gstCargo = 'COORDINADOR' AND  personal.estado = 0
+             ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
@@ -310,10 +314,34 @@ $resultado = mysqli_query($conexion, $query);
       $gstIdper = $data['gstIdper'];
       $result = $data['gstIdper'];
 
+    $gstIdper = $data['gstIdper'];
+
+    $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+    FROM especialidadcat 
+    INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+    WHERE categorias.gstIdcat != 24 
+    AND categorias.gstIdcat != 25 
+    AND categorias.gstIdcat != 26 
+    AND categorias.gstIdcat != 29 
+    AND categorias.gstIdcat != 31
+    AND especialidadcat.gstIDper = $gstIdper";
+    $resul = mysqli_query($conexion, $queri); 
+
+
+    if($res = mysqli_fetch_array($resul)){
+    $categoria = $res['spcialidds'];
+
+    if($res['spcialidds']==''){ $categoria = 'POR ASIGNAR'; }
+
+    }else{
+    $categoria = 'POR ASIGNAR';
+    }
+
+
 
       ?>
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php 	if($antiguedad <=30){
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $categoria?>","<?php 	if($antiguedad <=30){
 								echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
 							}else {
 								echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";

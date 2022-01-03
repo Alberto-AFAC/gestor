@@ -8,13 +8,12 @@
 <?php }else if($_SESSION['usuario']['privilegios'] == "DIRECTOR" || $_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC" || $_SESSION['usuario']['privilegios'] == "EJECUTIVO"){ ?>
 <a href="director" class="logo">
 <?php }else if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" || $_SESSION['usuario']['privilegios'] == "ADMINISTRADOR"){ ?>
-<a href="./" class="logo">  
+<a href="inicio" class="logo">  
 <?php }else if($_SESSION['usuario']['privilegios'] == 'HUMANOS'){ ?>      
 <a href="humanos" class="logo">
 <?php }else{ ?>
 <a href="inicio" class="logo">
 <?php } ?>
-
 
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size: 12px"><b>C</b>AFAC</span>
@@ -41,11 +40,21 @@
               <li class="header"><div id="notif"></div></li>
               <li>
                 <ul class="menu">
-                  <li>
+                  <li id="ocucnfir">
                     <a href="#">
                       <div id="confirmar"></div>
                     </a>
                   </li>
+                  <li id="ocuvncr">
+                    <a href="#">
+                      <div id="notvencer"></div>
+                    </a>
+                  </li>
+                  <li id="ocuvncd">
+                    <a href="#">
+                      <div id="notvencdo"></div>
+                    </a>
+                  </li>                  
                 </ul>
               </li>
             </ul>

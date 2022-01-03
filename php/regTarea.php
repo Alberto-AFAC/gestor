@@ -140,7 +140,39 @@ if(evaluarinspector($idtar,$eval,$conexion)){
 
 }else{ echo "1"; } }else{ if($i==1){ echo "2"; } } }
 
-}
+}else if($opcion==='agregaojt'){
+
+	$idojt = $_POST['idojt'];
+	$subtarea = $_POST['subtarea'];
+//	$id = $_POST['idcur'];
+
+	if(actualizarojt($idojt,$subtarea,$conexion)){
+		echo "0";
+
+			// $realizo = 'ACTUALIZO TEMARIO '.$titulo;
+			// historialT($idp,$realizo,$id,$conexion);
+
+	}else{ echo "1";}
+
+
+}else if($opcion === 'eliminartem'){
+
+ 	$idojt = $_POST['idojt'];
+ 	//$idsub = $_POST['idsub'];
+
+	// $realizo = 'ELIMINO REG.'.$idcurso.' TEMARIO';
+	// $id = $cursoid;
+	// historialT($idp,$realizo,$id,$conexion);
+
+// 		$ok = eliminarojt($idcurso,$cursoid,$conexion);
+ 	if(eliminarojt($idojt,$conexion)){
+ 		echo '0';
+
+ 	}else{
+ 		echo '1';
+ 	}
+
+ }
 
 
  function conIDtar($conexion){
@@ -231,6 +263,31 @@ $query="INSERT INTO tarearealizar(idtarea,idiva,estado) SELECT id_tar,$idinsp,0 
 		$this->conexion->cerrar();
 }
 
+
+function actualizarojt($idojt,$subtarea,$conexion){
+$query="UPDATE ojts_subs SET ojt_subtarea = '$subtarea' WHERE id_subojt = $idojt ";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
+	$this->conexion->cerrar();	
+}
+
+function eliminarojt($idojt,$conexion){	
+		$query="UPDATE ojts_subs SET estado = 1 WHERE id_subojt = $idojt";
+		if (mysqli_query($conexion,$query)) {	
+
+		$res = mysqli_fetch_row($result);
+		//	return $res[4];	
+		return true;
+		}else{
+		return false;
+		}
+			$this->conexion->cerrar();
+
+			
+	}
 //EVALUAR INSPECTOR CON FECHA 
 	function evaluarinspector($idtar,$eval,$conexion){
 

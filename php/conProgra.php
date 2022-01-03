@@ -2,10 +2,12 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT gstNombr,gstApell,codigo,gstCargo,gstIdper,evaluacion,fnotif,id_curso,confirmar
-			  FROM cursos 
-			  INNER JOIN personal ON idinsp = gstIdper
-			  WHERE gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'DIRECTOR' OR gstCargo = 'NUEVO INGRESO' OR gstCargo = 'EJECUTIVO' OR gstCargo = 'HUMANOS' ORDER BY gstNombr ASC ";
+	$query = "SELECT gstNombr,gstApell,codigo,gstCargo,gstIdper,evaluacion,fnotif,id_curso,confirmar,idinsp,idcoor
+		  FROM cursos 
+		  INNER JOIN personal ON personal.gstIdper = cursos.idinsp
+		  ORDER BY gstNombr
+		   ";
+
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -13,7 +15,27 @@
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
 
-			$arreglo["data"][] = $data; 
+
+
+		$idinsp = $data['idinsp'];
+		$codigoid = $data['codigo'];
+
+		$queriy = "SELECT * FROM instructor WHERE codigoInst = '$codigoid' AND id_per = $idinsp AND estado = 0";
+		$result = mysqli_query($conexion, $queriy);
+
+		if($rest = mysqli_fetch_array($result)){	
+				$cargo = 'INSTRUCTOR';	
+		}else{
+				$cargo = 'INSPECTOR';
+		}
+
+		if($data['idcoor']==$data['idinsp']){	
+
+		}else
+		if($cargo == 'INSPECTOR'){
+				$arreglo["data"][] = $data; 
+			}
+
 		}
 		if(isset($arreglo)&&!empty($arreglo)){
 

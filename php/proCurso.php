@@ -39,33 +39,35 @@ $val = count($valor);
 $n = 0;
 $var= 0;
 $enc = 0;
-//  foreach ($valor as $idinsps) {
+
+ foreach ($valor as $idinsps) {
+
+if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+
+ 	echo $enc;
 
 
-// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+}else{
+ 	$var++;
 
-//  	$enc;
+}
+}
 
-// }else{
-// 	$var = 'NO HAY';
-// }
-// }
+$var;
 
-//if($var == 'NO HAY'){
+if($val==$var){
 foreach ($valor as $idinsps) {
 	$n++;
-
+$varY = 'HAY';
 if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
-
 				if($n==$ttal){
 				$Instruc = explode(",", $idInstr);
 				foreach ($Instruc as $idper) {
 				instructor($idper,$codigo,$conexion);
 				}
 			}
-
 		echo "0";	
 		if($n==1){
 		$realizo = 'PROGRAMO CURSO ('.$val.' PART.) FOLIO: '.$codigo;
@@ -75,14 +77,12 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 		}else{	
 			echo "1";	
 		}
-
 		contancia($idinsps,$codigo, $conexion);
-
-
-
-		//}
 	}
-//}
+}
+
+
+
 }else if($opcion === 'actualizar'){
 
 	 $idinsps = $_POST['idinsps'];		
@@ -120,13 +120,14 @@ $fcurso = $yi.'-'.$mi.'-'.$di;
 $yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,2);
 $fechaf = $yf.'-'.$mf.'-'.$df;
 
-contancia($idinsps,$codigo, $conexion);
+
 if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
 
 // proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion)
 
 		{	
 
+			contancia($idinsps,$codigo, $conexion);
 			$realizo = 'AGREGO AL CURSO (1 PART.) FOLIO: '.$codigo;
 			historiCur($idp,$realizo,$id_mstr,$conexion);	
 			echo "0";	
@@ -218,7 +219,7 @@ while ($per = mysqli_fetch_row($person)) {
 
 $query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
 INNER JOIN personal ON idinsp = personal.gstIdper 
-WHERE proceso = 'PENDIENTE' AND '$fcurso' > fechaf AND idinsp = $idinsps";
+WHERE '$fcurso' > fechaf AND idinsp = $idinsps";
 // '2021-11-24' > fcurso AND fechaf < '2021-11-27'
 
 $resultado = mysqli_query($conexion, $query3);
@@ -251,7 +252,7 @@ function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$se
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,0,'CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
+$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;

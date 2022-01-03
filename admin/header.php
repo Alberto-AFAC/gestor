@@ -28,9 +28,12 @@ unset($_SESSION['consulta']);
 
 ini_set('date.timezone','America/Mexico_City');
 ?>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../js/notificacion.js" ></script>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<script type="text/javascript" src="../js/cursos.js"></script>
 
-<?php include('../perfil/notificar.php');?>
+<?php include('../perfil/notificar.php'); ?>
     
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
@@ -109,7 +112,7 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="pronostico"><i class="fa fa-hourglass-half"></i> Pronostico de Cursos</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
-                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial Constancias...</a></li>
                 </ul>
             </li>
             <!--  -->
@@ -169,7 +172,7 @@ ini_set('date.timezone','America/Mexico_City');
             </li> -->
 
              <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
-              <li>
+<!--               <li>
               <a href='e-learnning'>
               <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
                 <span class='pull-right-container'>
@@ -177,7 +180,7 @@ ini_set('date.timezone','America/Mexico_City');
                   <small class='label pull-right bg-blue'></small>
                 </span>
               </a>
-            </li>
+            </li> -->
             <?php }?>
 
             <!-- <li>
@@ -197,3 +200,9 @@ ini_set('date.timezone','America/Mexico_City');
     </section>
     <!-- /.sidebar -->
 </aside>
+
+<?php
+
+include('../perfil/actualizar.php');
+
+?>

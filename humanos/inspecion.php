@@ -389,49 +389,6 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 
 <script type="text/javascript">
-var dataSet = [
-    <?php 
-$query = "SELECT *, DATE_FORMAT(personal.gstFeing, '%d/%m/%Y') as Ingreso FROM personal 
-          INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 ORDER BY gstIdper DESC";
-$resultado = mysqli_query($conexion, $query);
-
-      while($data = mysqli_fetch_array($resultado)){ 
-        $fechaActual = date_create(date('d-m-Y')); 
-		    $FechaIngreso = date_create($data['gstFeing']); 
-		    $interval = date_diff($FechaIngreso, $fechaActual,false);  
-		    $antiguedad = intval($interval->format('%R%a')); 
-
-      $gstIdper = $data['gstIdper'];
-      $result = $data['gstIdper'];
-
-
-      ?>
-
-    ["<?php echo  $data['gstNmpld']?>", "<?php echo  $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
-        "<?php echo $data['gstCatgr']?>", "<?php echo $data['Ingreso']?>", "<?php 
-							if($antiguedad <=30){
-								echo "<span style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</span>";
-							}else {
-								echo "<span style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</span>";
-							}
-							?>", "<?php
-
-
-                if($data['gstEvalu'] == 'NO'){
-                
-                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
-
-                echo "<a type='button' title='Por evaluación' onclick='inspector({$gstIdper})' class='btn btn-warning'  data-toggle='modal' data-target='#modal-evaluar' ><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
-
-                    }else if($data['gstEvalu'] == 'SI') {
-                echo "<a type='button' title='Evaluado' onclick='resultado({$result})' class='datos btn btn-success'  data-toggle='modal' data-target='#modal-resultado'><i class='fa ion-android-clipboard' style='font-size:23px;'></i></a> <a href='javascript:openDtlls()' title='Perfil' onclick='inspector({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Agregar estudios' onclick='estudio({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-estudio'><i class='fa fa-graduation-cap text-info'></i></a> <a type='button' title='Agregar experiencia profesional' onclick='profesion({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-profesion'><i class='fa fa-suitcase text-info'></i></a>";
-
-                    }?>"],
-
-
-    <?php } ?>
-];
 
 // var tableGenerarReporte = $('#data-table-inspectores').DataTable({
 //     "language": {
