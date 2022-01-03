@@ -43,7 +43,7 @@ require_once "../../conexion/conexion.php";
                     <br><br>
                     <div class="table-responsive mailbox-messages">
 
-                        <table class="table display table-striped table-bordered" role="grid"
+                        <table id="test" class="table display table-striped table-bordered" role="grid"
                             aria-describedby="example_info">
                             <thead>
                                 <tr>
@@ -395,5 +395,16 @@ $(document).ready(function(){
     });
   });
 });
+// REMOVE ROWS IN REGISTER
+var arr = $("#test tr");
 
+$.each(arr, function(i, item) {
+    var currIndex = $("#test tr").eq(i);
+    var matchText = currIndex.find('td:nth-child(3)').text();
+    $(this).nextAll().each(function(i, inItem) {
+        if(matchText===$(this).find('td:nth-child(3)').text()) {
+            $(this).remove();
+        }
+    });
+});
 </script>
