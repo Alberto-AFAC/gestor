@@ -28,18 +28,22 @@ require_once "../../conexion/conexion.php";
             <div class="row">
                 <div class="col-sm-12">
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-success btn-default">VIGENTE</button>
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-warning btn-default">POR VENCER</button>
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-danger btn-default">VENCIDO</button>
+                        <button type="button" style="background-color: green; pointer-events: none; color: white;"
+                            class="btn btn-default">VIGENTE</button>
+                        <button type="button" style="background-color: orange; pointer-events: none; color: white;"
+                            class="btn btn-default">POR VENCER</button>
+                        <button type="button" style="background-color: red; pointer-events: none; color: white;"
+                            class="btn btn-default">VENCIDO</button>
+                            <button type="button" style="background-color: gray; pointer-events: none; color: white;"
+                            class="btn btn-default"># DECLINÓ</button>
+                            <button type="button" style="background-color: black; pointer-events: none; color: white;"
+                            class="btn btn-default">* REPROBÓ</button>
                     </div>
                     <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                     <br><br>
                     <div class="table-responsive mailbox-messages">
 
-                        <table class="table display table-striped table-bordered" role="grid"
+                        <table id="test" class="table display table-striped table-bordered" role="grid"
                             aria-describedby="example_info">
                             <thead>
                                 <tr>
@@ -391,5 +395,16 @@ $(document).ready(function(){
     });
   });
 });
+// REMOVE ROWS IN REGISTER
+var arr = $("#test tr");
 
+$.each(arr, function(i, item) {
+    var currIndex = $("#test tr").eq(i);
+    var matchText = currIndex.find('td:nth-child(3)').text();
+    $(this).nextAll().each(function(i, inItem) {
+        if(matchText===$(this).find('td:nth-child(3)').text()) {
+            $(this).remove();
+        }
+    });
+});
 </script>
