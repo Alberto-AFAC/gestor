@@ -119,6 +119,27 @@ unset($_SESSION['consulta']);
             <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
           </ul>
         </li>
+        <?php 
+            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
+                echo "<li class='treeview'>
+                <a href='#'>
+                    <i class='fa fa-file-text'></i>
+                    <span>OJT</span>
+                    <span class='pull-right-container'>
+                        <i class='fa fa-angle-left pull-right'></i>
+                    </span>
+                </a>
+                <ul class='treeview-menu'>
+                    <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
+                    <li><a style='pointer-events: none;' onclick='return false;' href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
+                    <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                </ul>
+            </li>
+            ";
+            }else{
+                echo "";
+            }
+            ?>
         <li>
           <a href="calendar/calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
