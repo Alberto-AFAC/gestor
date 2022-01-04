@@ -137,7 +137,6 @@ $psto = mysqli_query($conexion,$sql);
                                                         style="width: 100%;color: #000" class="form-control select2"
                                                         type="text" class="form-control" id="gstIDCat" name="gstIDCat">
                                                         <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
-                                                        <option value="0">SIN ESPECIALIDAD</option>
                                                         <?php while($cat = mysqli_fetch_row($categs)):?>
                                                         <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
                                                             <?php echo $cat[2]?></option>
@@ -201,7 +200,7 @@ $psto = mysqli_query($conexion,$sql);
                                                         <span class="input-group-addon"><i
                                                                 class="fa fa-envelope"></i></span>
                                                         <input type="email" class="form-control inputalta"
-                                                            placeholder="correo@sct.gob.mx" id="gstSpcID"
+                                                            placeholder="correo@correo.com" id="gstSpcID"
                                                             name="gstSpcID">
                                                     </div>
                                                 </div>
@@ -348,7 +347,8 @@ $psto = mysqli_query($conexion,$sql);
                                         gstSpcID: gstSpcID
                                     },
                                     success: function(data) {
-                                        document.getElementById("personal-ext").reset();
+                                        // document.getElementById("personal-ext").reset();
+                                        setTimeout("location.href = 'personalExt';",2000);
                                         Swal.fire({
                                             type: 'success',
                                             text: 'SE HA REGISTRADO EXITOSAMENTE',
