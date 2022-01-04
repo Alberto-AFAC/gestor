@@ -51,7 +51,7 @@ include('header.php');
             <section class="content-header">
                 <h1>
                     <i class="fa  ion-android-person"></i>
-                    ALTA / PERSONAL EXTERNO
+                    ALTA / INSTRUCTOR EXTERNO
                 </h1>
             </section>
             <?php
@@ -158,8 +158,8 @@ $psto = mysqli_query($conexion,$sql);
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-phone"></i>
                                                         </div>
-                                                        <input type="text" class="form-control inputalta" id="phoneHom"
-                                                            name="phoneHom" placeholder="(55) 5555-5555"
+                                                        <input type="text" class="form-control inputalta" id="gstCasa"
+                                                            name="gstCasa" placeholder="(55) 5555-5555"
                                                             autocomplete="off">
                                                     </div>
                                                 </div>
@@ -169,8 +169,8 @@ $psto = mysqli_query($conexion,$sql);
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-phone"></i>
                                                         </div>
-                                                        <input type="text" class="form-control inputalta" id="phone"
-                                                            name="phone" placeholder="(52) 55-5555-5555"
+                                                        <input type="text" class="form-control inputalta" id="gstClulr"
+                                                            name="gstClulr" placeholder="(52) 55-5555-5555"
                                                             autocomplete="off">
                                                     </div>
                                                 </div>
@@ -184,8 +184,8 @@ $psto = mysqli_query($conexion,$sql);
                                                         <i class="ion-ios-close iconoInput" id="labelinvarfcor"
                                                             style=" color: #F10C25; display:none;"></i>
                                                         <input type="text" class="form-control inputalta"
-                                                            placeholder="correo@correo.com" id="emailPer"
-                                                            name="emailPer">
+                                                            placeholder="correo@correo.com" id="gstCorro"
+                                                            name="gstCorro">
 
                                                     </div>
                                                 </div>
@@ -197,8 +197,8 @@ $psto = mysqli_query($conexion,$sql);
                                                         <span class="input-group-addon"><i
                                                                 class="fa fa-envelope"></i></span>
                                                         <input type="email" class="form-control inputalta"
-                                                            placeholder="correo@sct.gob.mx" id="emailAlt"
-                                                            name="emailAlt">
+                                                            placeholder="correo@sct.gob.mx" id="gstSpcID"
+                                                            name="gstSpcID">
                                                     </div>
                                                 </div>
 
@@ -306,14 +306,19 @@ $(document).ready(function() {
                             var gstRfc = $("#gstRfc").val();
                             var gstSexo = $("#gstSexo").val();
                             var gstIDCat = $("#gstIDCat").val();
-                            alert(gstNombr);
-                            alert(gstApell);
-                            alert(gstCurp);
-                            alert(gstRfc);
-                            alert(gstSexo);
-                            alert(gstIDCat);
+                            var gstCasa = $("#gstCasa").val();
+                            var gstClulr = $("#gstClulr").val();
+                            var gstCorro = $("#gstCorro").val();
+                            var gstSpcID = $("#gstSpcID").val();
+                            
+                            // alert(gstNombr);
+                            // alert(gstApell);
+                            // alert(gstCurp);
+                            // alert(gstRfc);
+                            // alert(gstSexo);
+                            // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' || gstIDCat == '' || phoneHom == '' || phone == '' || emailPer == '' || emailAlt == '') {
+                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' || gstIDCat == '' ) {
                                 Swal.fire({
                                     type: 'warning',
                                     text: 'Llene campos vacios!',
@@ -331,9 +336,11 @@ $(document).ready(function() {
                                         gstCurp: gstCurp,
                                         gstRfc: gstRfc,
                                         gstSexo: gstSexo,
-                                        gstIDCat: gstIDCat
-
-
+                                        gstIDCat: gstIDCat,
+                                        gstCasa:gstCasa,
+                                        gstClulr:gstClulr,
+                                        gstCorro:gstCorro,
+                                        gstSpcID:gstSpcID
                                     },
                                     success: function(data) {
                                         document.getElementById("personal-ext").reset();
