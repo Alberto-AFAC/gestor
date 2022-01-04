@@ -51,7 +51,7 @@ include('header.php');
             <section class="content-header">
                 <h1>
                     <i class="fa  ion-android-person"></i>
-                    ALTA / INSTRUCTOR EXTERNO
+               INSTRUCTORES EXTERNOS
                 </h1>
             </section>
             <?php
@@ -83,7 +83,7 @@ $psto = mysqli_query($conexion,$sql);
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                <li class="active "><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
+                                <li class="active "><a href="#activity" data-toggle="tab">ALTA</a></li>
                             </ul>
                             <!-- /.col -->
                             <div class="tab-content">

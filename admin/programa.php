@@ -7,8 +7,9 @@ include ("../conexion/conexion.php");
 $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
 $curso = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper, gstNombr, gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR gstCargo = 'COORDINADOR' AND estado = 0 UNION SELECT id, nombre, apellido from insexternos WHERE estado = 0;";
+$sql = "SELECT  gstIdper,gstNombr,gstApell,estado FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR estado = 2 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
 $instructor  = mysqli_query($conexion,$sql);
+
 
 $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 ";
 $cordinador  = mysqli_query($conexion,$sql);
@@ -151,8 +152,14 @@ include('header.php');
     <div class="col-sm-4">
     <label class="label2">INSTRUCTOR</label>
       <select style="width: 100%" class="form-control inputalta" class="selectpicker" id="idinst" name="idinst[]" type="text" multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR" data-live-search="true">
-          <?php while($instructors = mysqli_fetch_row($instructor)):?>
-          <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
+          <?php while($instructors = mysqli_fetch_row($instructor)):
+             if($instructors[3]==2){
+              $estado = "(EXTERNO)";
+  
+            }else{
+              $estado = "";
+            }?>
+          <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2].' '.$estado?></option>
           <?php endwhile; ?>
       </select>
     </div>

@@ -103,9 +103,6 @@ require_once "../../conexion/conexion.php";
             $cInstitucional = $per[10];
           }
 
-
-
-
         $gstIdper = $per[0];
 
         $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
@@ -118,15 +115,29 @@ require_once "../../conexion/conexion.php";
         AND categorias.gstIdcat != 31
         AND especialidadcat.gstIDper = $gstIdper";
         $resul = mysqli_query($conexion, $queri); 
-
         if($res = mysqli_fetch_array($resul)){
         $categoria = $res['spcialidds'];
-
         if($res['spcialidds']==''){ $categoria = $per[9]; }
-
         }else{
         $categoria = $per[9];
         }
+
+
+        $queri = "
+        SELECT * FROM cursos 
+        WHERE idmstr = 1 
+        AND idmstr = 2 
+        AND idmstr = 155 
+        AND idinsp = $gstIdper";
+        $resul = mysqli_query($conexion, $queri); 
+        if($res = mysqli_fetch_array($resul)){
+        $categoria = $res['spcialidds'];
+        if($res['spcialidds']==''){ $categoria = $per[9]; }
+        }else{
+        $categoria = $per[9];
+        }
+
+
 
 
         $fechaActual = date_create(date('Y-m-d')); 
