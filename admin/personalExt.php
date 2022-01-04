@@ -367,18 +367,34 @@ $psto = mysqli_query($conexion,$sql);
                         // TABLA INSPECTORES EXTERNOS//
                         var dataSet = [
                             <?php 
-$query = "SELECT gstNombr, gstApell, gstCorro, gstIDCat, estado FROM personal WHERE estado = 2";
+$query = "SELECT
+personal.gstNombr,
+personal.gstApell,
+personal.gstCorro,
+categorias.gstCatgr,
+personal.estado 
+FROM
+personal 
+INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+WHERE
+personal.estado = 2";
 $resultado = mysqli_query($conexion, $query);
 $x = 0;
 
 while($data = mysqli_fetch_array($resultado)){ 
+    if($data['gstCorro'] == ""){
+        $correo = "SIN CORREO";
+    }else{
+        $correo = $data['gstCorro'];
+    }
 $x++;
 ?>
 
                             //console.log('<?php //echo $gstIdper ?>');
 
-                            ["<?php echo $x ?>", "<?php echo  $data['gstNombr'];?>", "<?php echo $data['gstApell']?>",
-                            
+                            ["<?php echo $x ?>", "<?php echo  $data['gstNombr'];?>",
+                                "<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $correo ?>"
+
 
                             ],
 
@@ -407,14 +423,11 @@ $x++;
                                     title: "APELLIDO(S)"
                                 },
                                 {
-                                    title: "FECHA ALTA"
+                                    title: "ESPECIALIDAD"
                                 },
                                 {
-                                    title: "CARGO"
-                                },
-                                // {
-                                //     title: "ACCIÓN"
-                                // }
+                                    title: "CORREO"
+                                }
                             ],
                         });
                         </script>
