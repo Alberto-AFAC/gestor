@@ -28,7 +28,10 @@
 
 ?>
 
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../js/notificacion.js" ></script>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<script type="text/javascript" src="../js/cursos.js"></script>
   
   <?php include("../perfil/notificar.php");?>
 
@@ -148,3 +151,8 @@
     </section>
     <!-- /.sidebar -->
   </aside>
+<?php
+
+include('../perfil/actualizar.php');
+
+?>

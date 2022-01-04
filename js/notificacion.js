@@ -20,6 +20,22 @@ $.ajax({
         cancelados = obj.data[i].declina;
         completo = obj.data[i].finalizado;
     }
+//destroy:true,
+$.ajax({
+    url: '../php/notidirector.php',
+    type: 'POST'
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+    confirmar = obj.data[0].Nperson;
+
+    // for (i = 0; i < res.length; i++) {
+
+    //     if (obj.data[i].gstCargo == 'NUEVO INGRESO') {
+    //         confirmar++;
+    //     }
+    // }
+
 
     $.ajax({
         url: '../php/vigCursos.php',
@@ -27,13 +43,13 @@ $.ajax({
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-    ttal = obj.data[0].VENCER+obj.data[0].VENCIDO;  
+    ttal = obj.data[0].VENCER+obj.data[0].VENCIDO+obj.data[0].XVNCER;  
     $("#VENCIDO").html(obj.data[0].VENCIDO);
     $("#noticurso").html(ttal);
     $("#VIGENTE").html(obj.data[0].VIGENTE);
-    
+    $("#Xvncer").html(obj.data[0].XVNCER);
 
-    notificacion = ttal+confirma;
+    notificacion = ttal+confirma+confirmar;
 
     $("#confirma").html(notificacion);
     $("#programados").html(programados);
@@ -73,8 +89,35 @@ $.ajax({
     document.getElementById("notvencdo").innerHTML = "" + '<li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCIDO + ' cursos recurrentes vencidos';        
     }
 
+
+    if(obj.data[0].XVNCER==0){
+        $("#ocuxvnc").hide();        
+    }else if(obj.data[0].XVNCER==1){
+    document.getElementById("notxvncer").innerHTML = "" + '<li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].XVNCER + ' curso programado por vencer';        
+    }else{
+    document.getElementById("notxvncer").innerHTML = "" + '<li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].XVNCER + ' cursos programados por vencer';        
+    }
+
+    // $("#confirma").html(confirmar);
+    if(confirmar==0){
+        $("#ocucnfrm").hide();
+    }else if(confirmar==1){
+//    document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirmar + ' notificación.</b>';        
+    document.getElementById("notconfirma").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirmar + ' nuevo personal asignado';
+    }else{
+//    document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirmar + ' notificaciones.</b>';        
+    document.getElementById("notconfirma").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirmar + ' nuevos personales asignados';
+    }
+
 });
 });    
+});
+
+
+
+
+
+
 
 
 /*$.ajax({

@@ -16,10 +16,21 @@
 	if(!$resultado){
 		die("error");
 	}else{
+		$ingreso = 0;
 		while($data = mysqli_fetch_assoc($resultado)){
 
-			$arreglo["data"][] = $data; 
+		if($_SESSION['usuario']['privilegios'] == "DIRECTOR" || $_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC" || $_SESSION['usuario']['privilegios'] == "EJECUTIVO"){
+			$ingreso++;			
+		}else{
+			$ingreso = 0;
+		}	
+
 		}
+
+
+		$data['Nperson'] = $ingreso;
+		$arreglo["data"][] = $data;
+
 		if(isset($arreglo)&&!empty($arreglo)){
 
 			echo json_encode($arreglo);

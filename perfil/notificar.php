@@ -55,6 +55,16 @@
                       <div id="notvencdo"></div>
                     </a>
                   </li>                  
+                  <li id="ocuxvnc">
+                    <a href="pendientes">
+                      <div id="notxvncer"></div>
+                    </a>
+                  </li> 
+                  <li id="ocucnfrm">
+                    <a href="nuevoingreso">
+                      <div id="notconfirma"></div>
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
