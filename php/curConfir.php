@@ -5,7 +5,8 @@
 	$query = "
 		SELECT * FROM cursos 
 		INNER JOIN listacursos ON idmstr = gstIdlsc 
-		INNER JOIN personal ON gstIdper = idinsp ORDER BY id_curso DESC ";
+		INNER JOIN personal ON gstIdper = idinsp 
+		ORDER BY id_curso DESC ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -15,17 +16,18 @@
 		while($data = mysqli_fetch_assoc($resultado)){
 
 		$idinsp = $data['idinsp'];
+		$codigo = $data['codigo'];
 
 
-			if($data['idcoor']==$data['idinsp']){
-			$data["puesto"] = 'COORDINADOR';
-			}else{
-			$data["puesto"] = 'INSPECTOR';
-			}
+			// if($data['idcoor']==$data['idinsp']){
+			// $data["puesto"] = 'COORDINADOR';
+			// }else{
+			// $data["puesto"] = 'INSPECTOR';
+			// }
 		$idper = '';
 
 
-			$queriy = "SELECT * FROM instructor WHERE id_per = $idinsp AND estado = 0";
+			$queriy = "SELECT * FROM instructor WHERE codigoInst = '$codigo' AND id_per = $idinsp AND estado = 0";
 			$result = mysqli_query($conexion, $queriy);
 
 			if($rest = mysqli_fetch_array($result)){
@@ -33,11 +35,14 @@
 				$idper = $rest['id_per'];
 			}			
 
+		
 
 			if($data['idcoor']==$data['idinsp'] && $data['idcoor'] == $idper){
 				$data["puesto"] = 'INSTCOOR';
+			}else
+					if($data['idcoor']==$data['idinsp']){
+			$data["puesto"] = 'COORDINADOR';
 			}
-				
 
 
 			$arreglo["data"][] = $data; 
