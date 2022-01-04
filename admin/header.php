@@ -104,6 +104,7 @@ ini_set('date.timezone','America/Mexico_City');
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
+                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta de personal externo</a></li>
                     <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
                     <!-- <li><a href="tareas" style="pointer-events: none;" onclick="return false;"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
                     <!-- <li><a href="tareas"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
