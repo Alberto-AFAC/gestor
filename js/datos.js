@@ -2135,7 +2135,7 @@ function inspector(gstIdper) {
 
 
                     // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-                   //04012021
+                   //04012022
                     html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CUMPLE</th><th style="width:1%;"><i></i>SI</th><th style="width:1%"><i></i>NO</th></tr></thead><tbody>';
                     for (E = 0; E < res.length; E++) {
                         x++;
@@ -2409,7 +2409,7 @@ function consultaCurso(gst) {
 
 
 function evaluar() {
-    //alert('pruebaevaluacion')
+   // alert('pruebaevaluacion')
     var gstInspr = new Array();
     $("input[name='gstInspr[]']:hidden").each(function() {
         gstInspr.push($(this).val());
@@ -2437,18 +2437,22 @@ function evaluar() {
     reset = document.getElementById('reset').value;
 
     datos = 'gstInspr=' + gstInspr + '&gstIdprm=' + gstIdprm + '&actual=' + actuals + '&comntr=' + comntr + '&idspc=' + idspc + '&opcion=evaluar';
-    //alert(datos);
-    if (actual.length >= '12' && '12' >= actual.length) {
+    //alert(actual);
+    //SE COMENTA 04012022 PARA QUE DEJE GUARDAR ESPECIALIDAD CON DOS PARAMETROS
+   // if (actual.length >= '12' && '12' >= actual.length) {
 
-        if (gstInspr == ',,,' || gstIdprm == ',,,') {
+     //    if (gstInspr == ',' || gstIdprm == ',') { //original de angel
 
-            $('#empty0').toggle('toggle');
-            setTimeout(function() {
-                $('#empty0').toggle('toggle');
-            }, 2000);
+     if (actual==''){ //modificación jessica para que no deje guardar si no esta seleccionado ningun check
 
-            return;
-        } else {
+             $('#empty0').toggle('toggle');
+             setTimeout(function() {
+                 $('#empty0').toggle('toggle');
+             }, 2000);
+
+             return;
+         } else {
+
             $.ajax({
                 url: '../php/agrEvalu.php',
                 type: 'POST',
@@ -2472,32 +2476,35 @@ function evaluar() {
                     setTimeout(function() {
                         $('#succe0').toggle('toggle');
                     }, 2000);
+
+                    
                     if (reset == 0) {
                         spcialidads(gstInpct);
                     } else {
                         setTimeout("location.href = 'inspecion';", 1500);
                     }
 
+
                 } else {
-                    $('#danger0').toggle('toggle');
+                    $('#empty0').toggle('toggle');
                     setTimeout(function() {
-                        $('#danger0').toggle('toggle');
+                        $('#empty0').toggle('toggle');
                     }, 2000);
                 }
             });
         }
-    } else {
+     //} else {
 
-        $('#empty0').toggle('toggle');
-        setTimeout(function() {
-            $('#empty0').toggle('toggle');
-        }, 2000);
+        // $('#empty0').toggle('toggle');
+         //setTimeout(function() {
+           //  $('#empty0').toggle('toggle');
+        //}, 2000);
 
-        return;
+        //return;
 
-    }
+     }
 
-}
+//}
 
 function resultados(datos) {
     result = datos;
