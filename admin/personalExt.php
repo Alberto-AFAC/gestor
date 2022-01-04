@@ -384,6 +384,8 @@ $x = 0;
 while($data = mysqli_fetch_array($resultado)){ 
     if($data['gstCorro'] == ""){
         $correo = "SIN CORREO";
+    }else if($data['gstCorro'] == 0){
+        $correo = "SIN CORREO";
     }else{
         $correo = $data['gstCorro'];
     }
