@@ -7,7 +7,7 @@ include ("../conexion/conexion.php");
 $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
 $curso = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
+$sql = "SELECT gstIdper, gstNombr, gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR gstCargo = 'COORDINADOR' AND estado = 0 UNION SELECT id, nombre, apellido from insexternos WHERE estado = 0;";
 $instructor  = mysqli_query($conexion,$sql);
 
 $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 ";
