@@ -137,6 +137,7 @@ $psto = mysqli_query($conexion,$sql);
                                                         style="width: 100%;color: #000" class="form-control select2"
                                                         type="text" class="form-control" id="gstIDCat" name="gstIDCat">
                                                         <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
+                                                        <option value="0">SIN ESPECIALIDAD</option>
                                                         <?php while($cat = mysqli_fetch_row($categs)):?>
                                                         <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
                                                             <?php echo $cat[2]?></option>
@@ -319,7 +320,7 @@ $psto = mysqli_query($conexion,$sql);
                             // alert(gstCurp);
                             // alert(gstRfc);
                             // alert(gstSexo);
-                            // alert(gstIDCat);
+                            alert(gstIDCat);
                             swal.showLoading();
                             if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' ||
                                 gstIDCat == '') {
@@ -384,7 +385,7 @@ $x = 0;
 while($data = mysqli_fetch_array($resultado)){ 
     if($data['gstCorro'] == ""){
         $correo = "SIN CORREO";
-    }else if($data['gstCorro'] == 0){
+    }else if($data['gstCorro'] == "0"){
         $correo = "SIN CORREO";
     }else{
         $correo = $data['gstCorro'];
