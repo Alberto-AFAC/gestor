@@ -19,7 +19,11 @@
 		while($data = mysqli_fetch_assoc($resultado)){
             $item++;
 
-
+if($data['estado']== 2){
+	$estadoPer = "(EXTERNO)";
+}else{
+	$estadoPer = "";
+}
 $id_curso = $data['id_curso'];
 $idinsp = $data['idinsp'];
 
@@ -139,7 +143,7 @@ $evalua = "<a type='button' id='ev' title='Evaluación Inspector' onclick='evalu
 
  	
 	$consulta[] = 
-	[ $item,$data["gstNombr"],$data["gstApell"],$participante,$confirmar,$evaluacion];
+	[ $item,$data["gstNombr"],$data["gstApell"],$participante.' '.$estadoPer,$confirmar,$evaluacion];
 
 		}
 	}
