@@ -103,7 +103,7 @@ value="<?php echo $datos[0]?>">
 
     <li class="list-group-item">
     <a href="history">
-    <i class="fa fa-archive"></i> <span>Perfil</span>
+    <i class="fa fa-archive"></i> <span>Historial</span>
     <span class="pull-right-container">
     <small class="label pull-right bg-red"></small>
     <small class="label pull-right bg-blue"></small>
