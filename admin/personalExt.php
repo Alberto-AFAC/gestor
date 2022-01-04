@@ -51,7 +51,7 @@ include('header.php');
             <section class="content-header">
                 <h1>
                     <i class="fa  ion-android-person"></i>
-               INSTRUCTORES EXTERNOS
+                    INSTRUCTORES EXTERNOS
                 </h1>
             </section>
             <?php
@@ -82,12 +82,18 @@ $psto = mysqli_query($conexion,$sql);
                     <!-- /.col -->
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
-                                <li class="active "><a href="#activity" data-toggle="tab">ALTA</a></li>
+                            <ul class="nav nav-tabs" id="myNavTabs">
+                                <li class="active"><a href="#tablaExterno" data-toggle="tab">INSTRUCTORES</a>
+                                <li><a href="#altaExterno" data-toggle="tab">ALTA</a>
                             </ul>
                             <!-- /.col -->
                             <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
+                                <div class="tab-pane fade in active" id="tablaExterno"> <br>
+                                    <table style="width: 100%;" id="data-table-instructoresExt"
+                                        class="table table-striped table-hover"></table>
+                                </div>
+
+                                <div class="tab-pane" id="altaExterno">
                                     <!-- Post -->
                                     <div class="post">
                                         <form id="personal-ext" class="form-horizontal" action="" method="POST">
@@ -100,8 +106,7 @@ $psto = mysqli_query($conexion,$sql);
                                                 <div class="col-sm-4">
                                                     <label class="label2">APELLIDO(S)</label>
                                                     <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta " id="gstApell"
-                                                        name="gstApell">
+                                                        class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label class="label2">CURP</label>
@@ -128,11 +133,9 @@ $psto = mysqli_query($conexion,$sql);
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>ESPECIALIDAD</label>
-                                                    <select 
-                                                        data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                                                    <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                                                         style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="gstIDCat"
-                                                        name="gstIDCat">
+                                                        type="text" class="form-control" id="gstIDCat" name="gstIDCat">
                                                         <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
                                                         <?php while($cat = mysqli_fetch_row($categs)):?>
                                                         <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
@@ -291,11 +294,11 @@ $psto = mysqli_query($conexion,$sql);
 
                         <script src="../../js/valida.js"></script>
                         <script>
-$(document).ready(function() {
-    $('#gstIDCat').select2();
+                        $(document).ready(function() {
+                            $('#gstIDCat').select2();
 
-});
-                   
+                        });
+
 
 
                         function addPerson() {
@@ -310,7 +313,7 @@ $(document).ready(function() {
                             var gstClulr = $("#gstClulr").val();
                             var gstCorro = $("#gstCorro").val();
                             var gstSpcID = $("#gstSpcID").val();
-                            
+
                             // alert(gstNombr);
                             // alert(gstApell);
                             // alert(gstCurp);
@@ -318,7 +321,8 @@ $(document).ready(function() {
                             // alert(gstSexo);
                             // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' || gstIDCat == '' ) {
+                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' ||
+                                gstIDCat == '') {
                                 Swal.fire({
                                     type: 'warning',
                                     text: 'Llene campos vacios!',
@@ -337,10 +341,10 @@ $(document).ready(function() {
                                         gstRfc: gstRfc,
                                         gstSexo: gstSexo,
                                         gstIDCat: gstIDCat,
-                                        gstCasa:gstCasa,
-                                        gstClulr:gstClulr,
-                                        gstCorro:gstCorro,
-                                        gstSpcID:gstSpcID
+                                        gstCasa: gstCasa,
+                                        gstClulr: gstClulr,
+                                        gstCorro: gstCorro,
+                                        gstSpcID: gstSpcID
                                     },
                                     success: function(data) {
                                         document.getElementById("personal-ext").reset();
@@ -358,6 +362,61 @@ $(document).ready(function() {
 
                             return false;
                         }
+
+                        // TABLE INSTRUCTORS OUT
+                        // TABLA INSPECTORES EXTERNOS//
+                        var dataSet = [
+                            <?php 
+$query = "SELECT gstNombr, gstApell, gstCorro, gstIDCat, estado FROM personal WHERE estado = 2";
+$resultado = mysqli_query($conexion, $query);
+$x = 0;
+
+while($data = mysqli_fetch_array($resultado)){ 
+$x++;
+?>
+
+                            //console.log('<?php //echo $gstIdper ?>');
+
+                            ["<?php echo $x ?>", "<?php echo  $data['gstNombr'];?>", "<?php echo $data['gstApell']?>",
+                            
+
+                            ],
+
+
+                            <?php } ?>
+                        ];
+
+                        var tableGenerarReporte = $('#data-table-instructoresExt').DataTable({
+                            responsive: true,
+
+
+                            "language": {
+                                "searchPlaceholder": "Buscar datos...",
+                                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                            },
+                            data: dataSet,
+                            columns: [
+
+                                {
+                                    title: "ID"
+                                },
+                                {
+                                    title: "NOMBRES(S)"
+                                },
+                                {
+                                    title: "APELLIDO(S)"
+                                },
+                                {
+                                    title: "FECHA ALTA"
+                                },
+                                {
+                                    title: "CARGO"
+                                },
+                                // {
+                                //     title: "ACCIÓN"
+                                // }
+                            ],
+                        });
                         </script>
 
 </body>
