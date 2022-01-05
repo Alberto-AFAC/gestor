@@ -319,7 +319,7 @@ $psto = mysqli_query($conexion,$sql);
                             // alert(gstCurp);
                             // alert(gstRfc);
                             // alert(gstSexo);
-                            alert(gstIDCat);
+                            // alert(gstIDCat);
                             swal.showLoading();
                             if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' ||
                                 gstIDCat == '') {
