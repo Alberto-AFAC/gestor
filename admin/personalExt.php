@@ -131,18 +131,7 @@ $psto = mysqli_query($conexion,$sql);
                                                         <option value="HOMBRE">HOMBRE</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label>ESPECIALIDAD</label>
-                                                    <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
-                                                        style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="gstIDCat" name="gstIDCat">
-                                                        <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
-                                                        <?php while($cat = mysqli_fetch_row($categs)):?>
-                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
-                                                            <?php echo $cat[2]?></option>
-                                                        <?php endwhile; ?>
-                                                    </select>
-                                                </div>
+                                                <!--  -->
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-4">
@@ -186,7 +175,7 @@ $psto = mysqli_query($conexion,$sql);
                                                             style="display:none;"></i>
                                                         <i class="ion-ios-close iconoInput" id="labelinvarfcor"
                                                             style=" color: #F10C25; display:none;"></i>
-                                                        <input type="text" class="form-control inputalta"
+                                                        <input onkeyup="mayus(this);" type="text" class="form-control inputalta"
                                                             placeholder="correo@correo.com" id="gstCorro"
                                                             name="gstCorro">
 
@@ -199,7 +188,7 @@ $psto = mysqli_query($conexion,$sql);
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i
                                                                 class="fa fa-envelope"></i></span>
-                                                        <input type="email" class="form-control inputalta"
+                                                        <input onkeyup="mayus(this);" type="email" class="form-control inputalta"
                                                             placeholder="correo@correo.com" id="gstSpcID"
                                                             name="gstSpcID">
                                                     </div>
@@ -308,7 +297,7 @@ $psto = mysqli_query($conexion,$sql);
                             var gstCurp = $("#gstCurp").val();
                             var gstRfc = $("#gstRfc").val();
                             var gstSexo = $("#gstSexo").val();
-                            var gstIDCat = $("#gstIDCat").val();
+                            // var gstIDCat = $("#gstIDCat").val();
                             var gstCasa = $("#gstCasa").val();
                             var gstClulr = $("#gstClulr").val();
                             var gstCorro = $("#gstCorro").val();
@@ -321,8 +310,7 @@ $psto = mysqli_query($conexion,$sql);
                             // alert(gstSexo);
                             // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' ||
-                                gstIDCat == '') {
+                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' || gstCorro == '') {
                                 Swal.fire({
                                     type: 'warning',
                                     text: 'Llene campos vacios!',
@@ -340,7 +328,7 @@ $psto = mysqli_query($conexion,$sql);
                                         gstCurp: gstCurp,
                                         gstRfc: gstRfc,
                                         gstSexo: gstSexo,
-                                        gstIDCat: gstIDCat,
+                                        // gstIDCat: gstIDCat,
                                         gstCasa: gstCasa,
                                         gstClulr: gstClulr,
                                         gstCorro: gstCorro,
@@ -368,35 +356,42 @@ $psto = mysqli_query($conexion,$sql);
                         // TABLA INSPECTORES EXTERNOS//
                         var dataSet = [
                             <?php 
-$query = "SELECT
-personal.gstNombr,
-personal.gstApell,
-personal.gstCorro,
-categorias.gstCatgr,
-personal.estado 
-FROM
-personal 
-INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE
-personal.estado = 2";
-$resultado = mysqli_query($conexion, $query);
-$x = 0;
+                                $query = "SELECT
+                                personal.gstNombr,
+                                personal.gstApell,
+                                personal.gstCorro,
+                                personal.estado 
+                            FROM
+                                personal
+                                
+                            WHERE
+                                personal.estado = 2";
+                                        $resultado = mysqli_query($conexion, $query);
+                                        $x = 0;
 
-while($data = mysqli_fetch_array($resultado)){ 
-    if($data['gstCorro'] == ""){
-        $correo = "SIN CORREO";
-    }else if($data['gstCorro'] == "0"){
-        $correo = "SIN CORREO";
-    }else{
-        $correo = $data['gstCorro'];
-    }
-$x++;
+                                        while($data = mysqli_fetch_array($resultado)){ 
+                                            if($data['gstCorro'] == ""){
+                                                $correo = "<span class='badge' style='background-color: orange'>SIN CORREO PERSONAL</span>";
+                                            }else if($data['gstCorro'] == "0"){
+                                                $correo = "<span class='badge' style='background-color: orange'>SIN CORREO PERSONAL</span>";
+                                            }else{
+                                                $correo = $data['gstCorro'];
+                                            }
+        
+                                            if($data['gstSpcID'] == ""){
+                                                $correoAlt = "<span class='badge' style='background-color: orange'>SIN CORREO ALTERNATIVO</span>";
+                                            }else if($data['gstSpcID'] == "0"){
+                                                $correoAlt = "<span class='badge' style='background-color: orange'>SIN CORREO ALTERNATIVO</span>";
+                                            }else{
+                                                $correoAlt = $data['gstSpcID'];
+                                            }
+                                        $x++;
 ?>
 
                             //console.log('<?php //echo $gstIdper ?>');
 
                             ["<?php echo $x ?>", "<?php echo  $data['gstNombr'];?>",
-                                "<?php echo $data['gstApell']?>","<?php echo $data['gstCatgr']?>","<?php echo $correo ?>"
+                                "<?php echo $data['gstApell']?>","<?php echo $correo ?><p><?php echo $correoAlt ?>"
 
 
                             ],
@@ -425,9 +420,9 @@ $x++;
                                 {
                                     title: "APELLIDO(S)"
                                 },
-                                {
-                                    title: "ESPECIALIDAD"
-                                },
+                                // {
+                                //     title: "ESPECIALIDAD"
+                                // },
                                 {
                                     title: "CORREO"
                                 }
