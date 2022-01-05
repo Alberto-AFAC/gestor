@@ -730,3 +730,8 @@ echo $codigos = substr($codigo, 2);
 
 
 ?>
+
+
+<a href="https://www.campusmvp.es/recursos/" title="Al blog de recursos de campusMVP">
+  <img src="/recursos/image.axd?picture=/2017/4T/enlaces-imagenes-campusmvp.png" alt="Enlace con imagen usando el logo de campusMVP" />
+</a>

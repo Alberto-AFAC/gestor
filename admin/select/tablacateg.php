@@ -10,9 +10,8 @@ require_once "../../conexion/conexion.php";
             $idper=$_SESSION['consulta'];
         	
 			$f = explode(',', $idper);
-			$idcurso = intval($f[0]);
-            $fecha = intval($f[2]);
-            $lista = intval($f[3]);
+			$idcurso = intval($f[0]);//ID CURSO
+            $fecha = intval($f[2]);//VIGENCIA
 			$valor = explode(",", $idper);
 
 ?>
@@ -63,8 +62,10 @@ require_once "../../conexion/conexion.php";
 <?php
         $f = $fecha;
 
+
         foreach ($valor as $id) {
         if($idcurso!=$id){
+            //echo $idcurso;
         $sql = "SELECT 
         personal.gstIdper,
         personal.gstNombr,
@@ -115,29 +116,15 @@ require_once "../../conexion/conexion.php";
         AND categorias.gstIdcat != 31
         AND especialidadcat.gstIDper = $gstIdper";
         $resul = mysqli_query($conexion, $queri); 
+
         if($res = mysqli_fetch_array($resul)){
         $categoria = $res['spcialidds'];
+
         if($res['spcialidds']==''){ $categoria = $per[9]; }
+
         }else{
         $categoria = $per[9];
         }
-
-
-        $queri = "
-        SELECT * FROM cursos 
-        WHERE idmstr = 1 
-        AND idmstr = 2 
-        AND idmstr = 155 
-        AND idinsp = $gstIdper";
-        $resul = mysqli_query($conexion, $queri); 
-        if($res = mysqli_fetch_array($resul)){
-        $categoria = $res['spcialidds'];
-        if($res['spcialidds']==''){ $categoria = $per[9]; }
-        }else{
-        $categoria = $per[9];
-        }
-
-
 
 
         $fechaActual = date_create(date('Y-m-d')); 
@@ -159,7 +146,7 @@ evaluacion,
 idmstr,
 confirmar
 FROM cursos 
-WHERE idmstr = $lista AND idinsp = $per[0] 
+WHERE idmstr = $idcurso AND idinsp = $per[0] 
 ORDER BY fcurso DESC LIMIT 1";
 $fechas = mysqli_query($conexion,$sql);
 
