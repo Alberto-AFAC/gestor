@@ -29,12 +29,12 @@ unset($_SESSION['consulta']);
 ini_set('date.timezone','America/Mexico_City');
 ?>
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../js/notificacion.js" ></script>
+<script src="../js/notificacion.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <script type="text/javascript" src="../js/cursos.js"></script>
 
 <?php include('../perfil/notificar.php'); ?>
-    
+
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -54,25 +54,25 @@ ini_set('date.timezone','America/Mexico_City');
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">Menú</li>
+            <li class="header">Menú</li>
 
             <?php  if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){ ?>
-          <li class="active">
-          <a href="inspector">
-          <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
-          <span class='pull-right-container'>
-          </span>
-          </a>
-          </li>
-      <?php }else{ ?>
-          <li class="active">
-          <a href="inspector">        
-          <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
-          <span class='pull-right-container'>
-          </span>
-          </a>
-          </li>
-          <?php } ?>
+            <li class="active">
+                <a href="inspector">
+                    <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
+                    <span class='pull-right-container'>
+                    </span>
+                </a>
+            </li>
+            <?php }else{ ?>
+            <li class="active">
+                <a href="inspector">
+                    <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
+                    <span class='pull-right-container'>
+                    </span>
+                </a>
+            </li>
+            <?php } ?>
 
             <li class="treeview">
                 <a href="#">
@@ -85,8 +85,10 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
                     <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+                    <li><a href="Externo"><i class="fa ion-document-text"></i> Lista de personal externo</a></li>
                     <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
                     <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+                    <li><a href="personalExt"><i class="fa fa-users"></i> Lista de Instructores externos</a></li>
                     <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
                     <li><a href="accesos"><i class="fa ion-document-text"></i> Lista de Accesos</a></li>
                     <?php }?>
@@ -104,7 +106,6 @@ ini_set('date.timezone','America/Mexico_City');
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="altacurso"><i class="fa ion-ios-plus"></i> Alta de cursos</a></li>
-                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta de personal externo</a></li>
                     <li><a href="conCursos"><i class="fa fa-search"></i> Catálogos de cursos</a></li>
                     <!-- <li><a href="tareas" style="pointer-events: none;" onclick="return false;"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
                     <!-- <li><a href="tareas"><i class="fa fa-tasks"></i> Catálogos de tareas</a></li> -->
@@ -113,13 +114,14 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="pronostico"><i class="fa fa-hourglass-half"></i> Pronostico de Cursos</a></li>
                     <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
-                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial Constancias...</a></li>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i
+                                class="fa fa-certificate"></i>Historial Constancias...</a></li>
                 </ul>
             </li>
             <!--  -->
             <!-- -->
-        
-              <li class="treeview">
+
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file-text"></i>
                     <span>OJT</span>
@@ -130,7 +132,8 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
-                    <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
+                    <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i
+                                class="fa fa-file-text"></i> OJT Programados</a></li>
                 </ul>
             </li>
             <li>
@@ -151,7 +154,7 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
             </li>
-             <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
+            <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
             <li>
                 <a href="soporte">
                     <i class="fa fa-history"></i> <span>Historial de Cambios</span>
@@ -172,8 +175,8 @@ ini_set('date.timezone','America/Mexico_City');
                 </a>
             </li> -->
 
-             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
-<!--               <li>
+            <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
+            <!--               <li>
               <a href='e-learnning'>
               <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
                 <span class='pull-right-container'>

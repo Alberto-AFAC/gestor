@@ -6,7 +6,7 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo != 'INSTRUCTOR' AND estado = 0 || estado = 0 ";
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE gstCargo != 'INSTRUCTOR' AND estado = 0 || estado = 3 ";
 $inspector = mysqli_query($conexion,$sql);
 
 ?>

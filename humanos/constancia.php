@@ -377,7 +377,7 @@ if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
        <p class="p-2">PROMEDIO DE APROVECHAMIENTO <strong><?php echo $EvaluacionF ?> %</strong></p>
     </div>
     <div class="afojas1">
-        <span>Registrado bajo el No.<?php echo $con['gstIdlsc'];?></span>
+        <span>Registrado bajo el No.<?php echo $con['id'];?></span>
     </div>
 
     <?php
