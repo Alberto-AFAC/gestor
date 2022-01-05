@@ -34,7 +34,7 @@ ini_set('date.timezone','America/Mexico_City');
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <header class="main-header">
     <!-- Logo -->
-    <a href="../" class="logo">
+    <a href="../inicio" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini" style="font-size: 12px"><b>C-</b>AFAC</span>
         <!-- logo for regular state and mobile devices -->
@@ -154,7 +154,7 @@ ini_set('date.timezone','America/Mexico_City');
         </li>-->
 
             <li class="active">
-                <a href="../">
+                <a href="../inicio">
                     <i class="glyphicon glyphicon-user"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
                     </span>
@@ -173,8 +173,10 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="../personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
                     <li><a href="../persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+                    <li><a href="../Externo"><i class="fa ion-document-text"></i> Lista de personal externo</a></li>
                     <li><a href="../inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
                     <li><a href="../instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+                    <li><a href="../personalExt"><i class="fa fa-users"></i> Lista de Instructores externos</a></li>
                     <li><a href="../accesos"><i class="fa ion-document-text"></i> Lista de Accesos</a></li>
 
                     <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
