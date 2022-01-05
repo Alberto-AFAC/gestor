@@ -295,7 +295,7 @@ include('header.php');
     $resultado = mysqli_query($conexion, $query);
     while($data = mysqli_fetch_array($resultado)){ ?>
 
-            ["<?php echo $data['id_his']?>", "<?php echo $data['gstNombr'].' '.$data['gstApell']?>", "<?php echo $data['proceso']?>","<?php echo $data['registro']?>","<?php echo $data['fecha']?>" ],
+            ['<?php echo $data['id_his']?>', '<?php echo $data['gstNombr'].' '.$data['gstApell']?>', '<?php echo $data['proceso']?>','<?php echo $data['registro']?>','<?php echo $data['fecha']?>' ],
 
             <?php  } ?>
 
