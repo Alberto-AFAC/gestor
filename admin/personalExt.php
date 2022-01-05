@@ -371,17 +371,17 @@ $psto = mysqli_query($conexion,$sql);
 
                                         while($data = mysqli_fetch_array($resultado)){ 
                                             if($data['gstCorro'] == ""){
-                                                $correo = "<span class='badge' style='background-color: orange'>SIN CORREO PERSONAL</span>";
+                                                $correo = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO PERSONAL</span>";
                                             }else if($data['gstCorro'] == "0"){
-                                                $correo = "<span class='badge' style='background-color: orange'>SIN CORREO PERSONAL</span>";
+                                                $correo = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO PERSONAL</span>";
                                             }else{
                                                 $correo = $data['gstCorro'];
                                             }
         
                                             if($data['gstSpcID'] == ""){
-                                                $correoAlt = "<span class='badge' style='background-color: orange'>SIN CORREO ALTERNATIVO</span>";
+                                                $correoAlt = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO ALTERNATIVO</span>";
                                             }else if($data['gstSpcID'] == "0"){
-                                                $correoAlt = "<span class='badge' style='background-color: orange'>SIN CORREO ALTERNATIVO</span>";
+                                                $correoAlt = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO ALTERNATIVO</span>";
                                             }else{
                                                 $correoAlt = $data['gstSpcID'];
                                             }
