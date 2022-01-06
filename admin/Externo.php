@@ -56,7 +56,7 @@ include('header.php');
             </section>
             <?php
  
- $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0";
+ $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
  $categs = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
@@ -83,17 +83,17 @@ $psto = mysqli_query($conexion,$sql);
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" id="myNavTabs">
-                                <li class="active"><a href="#tablaExterno" data-toggle="tab">LISTA PERSONAL</a>
-                                <li><a href="#altaExterno" data-toggle="tab">ALTA</a>
+                                <!-- <li class="active"><a href="#tablaExterno" data-toggle="tab">LISTA PERSONAL</a> -->
+                                <!-- <li><a href="#altaExterno" data-toggle="tab">ALTA</a> -->
                             </ul>
-                            <!-- /.col -->
+                            <!-- /.col --><br><br>
                             <div class="tab-content">
-                                <div class="tab-pane fade in active" id="tablaExterno"> <br>
+                                <div class="tab-pane" id="tablaExterno"> <br>
                                     <table style="width: 100%;" id="data-table-instructoresExt"
                                         class="table table-striped table-hover"></table>
                                 </div>
 
-                                <div class="tab-pane" id="altaExterno">
+                                <div class="tab-pane fade in active" id="altaExterno">
                                     <!-- Post -->
                                     <div class="post">
                                         <form id="personal-ext" class="form-horizontal" action="" method="POST">
@@ -108,14 +108,25 @@ $psto = mysqli_query($conexion,$sql);
                                                     <input type="text" onkeyup="mayus(this);"
                                                         class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="destino col-sm-4">
+                                                    <label class="label2">NACIONALIDAD</label>
+                                                    <select type="text" class="form-control inputalta" id="gstLunac"
+                                                        name="gstLunac">
+                                                        <option value="0" selected>ELEGIR UNA OPCIÓN</option>
+                                                        <option value="NACIONAL">NACIONAL</option>
+                                                        <option value="INTERNACIONAL">INTERNACIONAL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                                <div class="form-group">
+                                                <div class="curp col-sm-4">
                                                     <label class="label2">CURP</label>
                                                     <input type="text" onkeyup="mayus(this);"
                                                         class="form-control inputalta " id="gstCurp" name="gstCurp">
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
+                                            
+                                                <div class="rfc col-sm-4">
                                                     <label class="label2">RFC</label>
                                                     <input onkeyup="mayus(this);" type="text"
                                                         class="form-control inputalta" id="gstRfc" name="gstRfc">
@@ -307,6 +318,7 @@ $psto = mysqli_query($conexion,$sql);
 
                             var gstNombr = $("#gstNombr").val();
                             var gstApell = $("#gstApell").val();
+                            var gstLunac = $("#gstLunac").val();
                             var gstCurp = $("#gstCurp").val();
                             var gstRfc = $("#gstRfc").val();
                             var gstSexo = $("#gstSexo").val();
@@ -323,7 +335,7 @@ $psto = mysqli_query($conexion,$sql);
                             // alert(gstSexo);
                             // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' ||
+                            if (gstNombr == '' || gstApell == '' || gstSexo == '' ||
                                 gstIDCat == '' || gstCorro == '') {
                                 Swal.fire({
                                     type: 'warning',
@@ -339,6 +351,7 @@ $psto = mysqli_query($conexion,$sql);
                                     data: {
                                         gstNombr: gstNombr,
                                         gstApell: gstApell,
+                                        gstLunac:gstLunac,
                                         gstCurp: gstCurp,
                                         gstRfc: gstRfc,
                                         gstSexo: gstSexo,
@@ -446,6 +459,28 @@ $psto = mysqli_query($conexion,$sql);
                                 }
                             ],
                         });
+
+                        if ($('#gstLunac').val() == 0) {
+                            $(".curp").css("display", "none");
+                            $(".rfc").css("display", "none");
+                        };
+
+                        $('#gstLunac').change(function() {
+
+                                    if ($('#gstLunac').val() == 0) {
+                                        $(".curp").css("display", "none");
+                                        $(".rfc").css("display", "none");
+                                    };
+
+                                    if ($('#gstLunac').val() == "NACIONAL") {
+                                        $(".curp").css("display", "block");
+                                        $(".rfc").css("display", "block");
+                                    };
+                                    if ($('#gstLunac').val() == "INTERNACIONAL") {
+                                        $(".curp").css("display", "none");
+                                        $(".rfc").css("display", "none");
+                                    };
+                                });
                         </script>
 
 </body>

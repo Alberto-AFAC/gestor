@@ -83,17 +83,17 @@ $psto = mysqli_query($conexion,$sql);
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" id="myNavTabs">
-                                <li class="active"><a href="#tablaExterno" data-toggle="tab">INSTRUCTORES</a>
-                                <li><a href="#altaExterno" data-toggle="tab">ALTA</a>
+                                <!-- <li class="active"><a href="#tablaExterno" data-toggle="tab">INSTRUCTORES</a> -->
+                                <!-- <li><a href="#altaExterno" data-toggle="tab">ALTA</a> -->
                             </ul>
                             <!-- /.col -->
                             <div class="tab-content">
-                                <div class="tab-pane fade in active" id="tablaExterno"> <br>
+                                <!-- <div class="tab-pane" id="tablaExterno"> <br>
                                     <table style="width: 100%;" id="data-table-instructoresExt"
                                         class="table table-striped table-hover"></table>
-                                </div>
-
-                                <div class="tab-pane" id="altaExterno">
+                                </div> -->
+                                <br><br>
+                                <div class="tab-pane fade in active" id="altaExterno">
                                     <!-- Post -->
                                     <div class="post">
                                         <form id="personal-ext" class="form-horizontal" action="" method="POST">
@@ -464,7 +464,6 @@ $psto = mysqli_query($conexion,$sql);
                             $(".rfc").css("display", "none");
                         };
 
-                        //Detectamos los cambios y mostramos uno u otro form
                         $('#gstLunac').change(function() {
 
                                     if ($('#gstLunac').val() == 0) {

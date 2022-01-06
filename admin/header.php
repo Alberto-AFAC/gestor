@@ -83,12 +83,12 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de personal</a></li>
-                    <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
-                    <li><a href="Externo"><i class="fa ion-document-text"></i> Lista de personal externo</a></li>
-                    <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
+                    <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de Personal</a></li>
+                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
+                    <li><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
+                    <li><a href="persona"><i class="fa ion-document-text"></i> Lista de Personal</a></li>
+                    <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de Inspectores</a></li>
                     <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
-                    <li><a href="personalExt"><i class="fa fa-users"></i> Lista de Instructores externos</a></li>
                     <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
                     <li><a href="accesos"><i class="fa ion-document-text"></i> Lista de Accesos</a></li>
                     <?php }?>
