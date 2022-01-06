@@ -7,7 +7,9 @@
 	$query = "SELECT *,listacursos.gstIdlsc AS list FROM especialidadcat
 	INNER JOIN categorias ON especialidadcat.gstIDcat = categorias.gstIdcat
 	INNER JOIN listacursos ON listacursos.gstPrfil = categorias.gstCsigl
+	INNER JOIN listacursobliga ON listacursobliga.gstIDlsc = listacursos.gstIdlsc 
 	WHERE especialidadcat.gstIDper = $idins AND especialidadcat.estado = 0";
+
 
 	$resultado = mysqli_query($conexion, $query);
 
