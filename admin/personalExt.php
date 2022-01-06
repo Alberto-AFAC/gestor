@@ -108,19 +108,30 @@ $psto = mysqli_query($conexion,$sql);
                                                     <input type="text" onkeyup="mayus(this);"
                                                         class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <label class="label2">CURP</label>
-                                                    <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta " id="gstCurp" name="gstCurp">
+                                                <div class="destino col-sm-4">
+                                                    <label class="label2">NACIONALIDAD</label>
+                                                    <select type="text" class="form-control inputalta" id="gstLunac"
+                                                        name="gstLunac">
+                                                        <option value="0" selected>ELEGIR UNA OPCIÓN</option>
+                                                        <option value="NACIONAL">NACIONAL</option>
+                                                        <option value="INTERNACIONAL">INTERNACIONAL</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label class="label2">RFC</label>
-                                                    <input onkeyup="mayus(this);" type="text"
-                                                        class="form-control inputalta" id="gstRfc" name="gstRfc">
-                                                </div>
+                                            
+                                                    <div class="curp col-sm-4">
+                                                        <label class="label2">CURP</label>
+                                                        <input type="text" onkeyup="mayus(this);"
+                                                            class="form-control inputalta " id="gstCurp" name="gstCurp">
+                                                    </div>
 
+                                                    <div class="rfc col-sm-4">
+                                                        <label class="label2">RFC</label>
+                                                        <input onkeyup="mayus(this);" type="text"
+                                                            class="form-control inputalta" id="gstRfc" name="gstRfc">
+                                                    </div>
+                                               
 
                                                 <div class="col-sm-4">
                                                     <label class="label2">SEXO</label>
@@ -133,6 +144,17 @@ $psto = mysqli_query($conexion,$sql);
                                                 </div>
                                                 <!--  -->
                                             </div>
+                                            <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label class="label2">CENTRO DE INSTRUCCIÓN</label>
+                                            <input type="text" onkeyup="mayus(this);" class="form-control inputalta "
+                                                id="gstNucrt" name="gstNucrt">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="hidden"  onkeyup="mayus(this);" class="form-control inputalta "
+                                                id="gstIDCat" name="gstIDCat" value="33">
+                                        </div>
+                                    </div>
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -175,7 +197,8 @@ $psto = mysqli_query($conexion,$sql);
                                                             style="display:none;"></i>
                                                         <i class="ion-ios-close iconoInput" id="labelinvarfcor"
                                                             style=" color: #F10C25; display:none;"></i>
-                                                        <input onkeyup="mayus(this);" type="text" class="form-control inputalta"
+                                                        <input onkeyup="mayus(this);" type="text"
+                                                            class="form-control inputalta"
                                                             placeholder="correo@correo.com" id="gstCorro"
                                                             name="gstCorro">
 
@@ -188,7 +211,8 @@ $psto = mysqli_query($conexion,$sql);
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i
                                                                 class="fa fa-envelope"></i></span>
-                                                        <input onkeyup="mayus(this);" type="email" class="form-control inputalta"
+                                                        <input onkeyup="mayus(this);" type="email"
+                                                            class="form-control inputalta"
                                                             placeholder="correo@correo.com" id="gstSpcID"
                                                             name="gstSpcID">
                                                     </div>
@@ -294,23 +318,26 @@ $psto = mysqli_query($conexion,$sql);
 
                             var gstNombr = $("#gstNombr").val();
                             var gstApell = $("#gstApell").val();
+                            var gstLunac = $("#gstLunac").val();
                             var gstCurp = $("#gstCurp").val();
                             var gstRfc = $("#gstRfc").val();
                             var gstSexo = $("#gstSexo").val();
-                            // var gstIDCat = $("#gstIDCat").val();
+                            var gstNucrt = $("#gstNucrt").val();
+                            var gstIDCat = $("#gstIDCat").val();
                             var gstCasa = $("#gstCasa").val();
                             var gstClulr = $("#gstClulr").val();
                             var gstCorro = $("#gstCorro").val();
                             var gstSpcID = $("#gstSpcID").val();
 
-                            // alert(gstNombr);
+                            alert(gstIDCat);
                             // alert(gstApell);
                             // alert(gstCurp);
                             // alert(gstRfc);
                             // alert(gstSexo);
                             // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstCurp == '' || gstRfc == '' || gstSexo == '' || gstCorro == '') {
+                            if (gstNombr == '' || gstApell == '' || gstSexo == '' ||
+                                gstCorro == '') {
                                 Swal.fire({
                                     type: 'warning',
                                     text: 'Llene campos vacios!',
@@ -325,10 +352,12 @@ $psto = mysqli_query($conexion,$sql);
                                     data: {
                                         gstNombr: gstNombr,
                                         gstApell: gstApell,
+                                        gstLunac: gstLunac,
                                         gstCurp: gstCurp,
                                         gstRfc: gstRfc,
                                         gstSexo: gstSexo,
-                                        // gstIDCat: gstIDCat,
+                                        gstNucrt:gstNucrt,
+                                        gstIDCat: gstIDCat,
                                         gstCasa: gstCasa,
                                         gstClulr: gstClulr,
                                         gstCorro: gstCorro,
@@ -336,7 +365,7 @@ $psto = mysqli_query($conexion,$sql);
                                     },
                                     success: function(data) {
                                         // document.getElementById("personal-ext").reset();
-                                        setTimeout("location.href = 'personalExt';",2000);
+                                        setTimeout("location.href = 'personalExt';", 2000);
                                         Swal.fire({
                                             type: 'success',
                                             text: 'SE HA REGISTRADO EXITOSAMENTE',
@@ -391,7 +420,7 @@ $psto = mysqli_query($conexion,$sql);
                             //console.log('<?php //echo $gstIdper ?>');
 
                             ["<?php echo $x ?>", "<?php echo  $data['gstNombr'];?>",
-                                "<?php echo $data['gstApell']?>","<?php echo $correo ?><p><?php echo $correoAlt ?>"
+                                "<?php echo $data['gstApell']?>", "<?php echo $correo ?><p><?php echo $correoAlt ?>"
 
 
                             ],
@@ -428,6 +457,30 @@ $psto = mysqli_query($conexion,$sql);
                                 }
                             ],
                         });
+
+
+                        if ($('#gstLunac').val() == 0) {
+                            $(".curp").css("display", "none");
+                            $(".rfc").css("display", "none");
+                        };
+
+                        //Detectamos los cambios y mostramos uno u otro form
+                        $('#gstLunac').change(function() {
+
+                                    if ($('#gstLunac').val() == 0) {
+                                        $(".curp").css("display", "none");
+                                        $(".rfc").css("display", "none");
+                                    };
+
+                                    if ($('#gstLunac').val() == "NACIONAL") {
+                                        $(".curp").css("display", "block");
+                                        $(".rfc").css("display", "block");
+                                    };
+                                    if ($('#gstLunac').val() == "INTERNACIONAL") {
+                                        $(".curp").css("display", "none");
+                                        $(".rfc").css("display", "none");
+                                    };
+                                });
                         </script>
 
 </body>

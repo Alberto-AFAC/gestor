@@ -204,9 +204,18 @@ $(document).ready(function() {
 <script type="text/javascript">
 var dataSet = [
     <?php 
-$query = "SELECT * FROM personal 
-INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR personal.estado = 0 AND gstCargo = 'COORDINADOR'  ORDER BY gstIdper DESC";
+        $query = "SELECT
+        * 
+                 FROM
+        personal
+                INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat 
+                WHERE
+        gstCargo = 'INSTRUCTOR' 
+        OR gstCargo = 'COORDINADOR' 
+        AND personal.estado = 0 
+        OR personal.estado = 2 
+        ORDER BY
+        gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -235,22 +244,40 @@ while($data = mysqli_fetch_array($resultado)){
         if($res = mysqli_fetch_array($resul)){
         $categoria = $res['spcialidds'];
 
-        if($res['spcialidds']==''){ $categoria = 'POR ASIGNAR'; }
+        if($res['spcialidds']==''){ $categoria = 'SIN CATEGORÍA'; }
 
         }else{
-        $categoria = 'POR ASIGNAR';
+        $categoria = 'SIN CATEGORÍA';
         }
-
+        if($data['gstNmpld'] == 0){
+            $empleado = "S/N"; 
+        }else{
+            $empleado = $data['gstNmpld'];
+        }
+        if($data['estado'] == 0){
+            $estado = "INTERNO"; 
+        }else if($data['estado'] == 2){
+            $estado = "EXTERNO";
+        }
 // $gstIdper = $data['gstIdper'];
-?>
 
-    //console.log('<?php //echo $gstIdper ?>');
 
-    ["<?php echo  $data['gstNmpld'];?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
-        "<?php echo $categoria ?>", "<?php echo $data['gstCargo']?>",
+ if($data['estado'] == 0){ ?>
+
+    ["<?php echo  $empleado;?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
+        "<?php echo $categoria ?>", "<?php echo $data['gstCargo']?>","<?php echo $estado?>",
 
         "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"; ?>"
     ],
+
+<?php } else if($data['estado'] == 2){ ?>
+    ["<?php echo  $empleado;?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
+    "<?php echo $categoria ?>", "<?php echo $data['gstCargo']?>","<?php echo $estado?>",
+
+        "SIN DATOS"
+    ],
+<?php } ?>
+   
 
 
     <?php } ?>
@@ -281,6 +308,9 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
         },
         {
             title: "CARGO"
+        },
+        {
+            title: "PERSONAL"
         },
         {
             title: "ACCIÓN"
