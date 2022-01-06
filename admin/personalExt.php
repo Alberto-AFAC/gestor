@@ -151,7 +151,7 @@ $psto = mysqli_query($conexion,$sql);
                                                 id="gstNucrt" name="gstNucrt">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="hidden"  onkeyup="mayus(this);" class="form-control inputalta "
+                                            <input type="hidden"
                                                 id="gstIDCat" name="gstIDCat" value="33">
                                         </div>
                                     </div>
