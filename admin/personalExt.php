@@ -142,7 +142,6 @@ $psto = mysqli_query($conexion,$sql);
                                                         <option value="HOMBRE">HOMBRE</option>
                                                     </select>
                                                 </div>
-                                                <!--  -->
                                             </div>
                                             <div class="form-group">
                                         <div class="col-sm-4">
@@ -307,10 +306,10 @@ $psto = mysqli_query($conexion,$sql);
 
                         <script src="../../js/valida.js"></script>
                         <script>
-                        $(document).ready(function() {
-                            $('#gstIDCat').select2();
+                        // $(document).ready(function() {
+                        //     $('#gstIDCat').select2();
 
-                        });
+                        // });
 
 
 
