@@ -24,10 +24,6 @@
 }
 </style>
 
-
-
-
-
 <div class="modal fade" id='modal-confirma'>
 <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -36,9 +32,7 @@
 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span></button> -->
 
-
 <button type="button" onclick="location.href='./inspector'" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
 
 <h4 class="modal-title">CONFIRMAR ASISTENCIA</h4>
 </div>
@@ -62,8 +56,6 @@
 </tr>
 </table>
 
-
-
 <table class="table table-bordered">
 <tr>
 <th>TIPO</th>
@@ -85,9 +77,7 @@
 <td><div id="contracur"></div></td>
 <td><div id="classroom"></div></td>
 </tr>
-
 </table>
-
 
 <table class="table table-bordered">
 <tr>
@@ -158,11 +148,6 @@
 
 </div>
 </div>
-
-
-
-
-
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
@@ -266,9 +251,235 @@
 
 </script>
 </div>
-<!-- !-- FIN DETALLE DE EXPERIENCIA PROFESIONAL --> 
+<!-- FIN DETALLE DE EXPERIENCIA PROFESIONAL --> 
 
+<!-- DETALLE DE INFORMACIÓN PERSONAL --> 
+<div class="modal fade" id='modal-info'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+          <div class="modal2" style="width: 1300px;">
+            <div id="success-icon">
+              <div>
+                 <img class="img-circle1" src="../dist/img/info.png">
+              </div>
+            </div>
+          <div>
+          <div class="row">
+   
+				<div class="tabbable-line">
+					<ul class="nav nav-tabs ">
+						<li class="active">
+							<a href="#tab_default_1" data-toggle="tab">Datos Personales</a>
+						</li>
+						<li>
+							<a href="#tab_default_2" data-toggle="tab">Datos del puesto</a>
+						</li>
+            <li>
+							<a href="#tab_default_3" id="inspescpecia" data-toggle="tab">Especialidad</a>
+						</li>
+	
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_default_1">
+            <p>
+              
+                                    <div class="col-sm-6">
+                                        <label class="label2">NOMBRE(S)</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta " id="insnombre" disabled="">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="label2">APELLIDOS</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insapellido" disabled="">
+                                    </div>
+             </p>
+             <p>
+                                    <div class="col-sm-4">
+                                    
+                                        <label class="label2">FECHA DE NACIMIENTO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insfecnac" disabled="">
+                                    </div>
+                                
+                                    <div class="col-sm-4">
+                                    
+                                        <label class="label2">NÚMERO DE ISSSTE</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insiss" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                    
+                                        <label class="label2">SEXO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insexo" disabled="">
+                                    </div>
+							</p>
+             <p>
+                                    <div class="col-sm-6">
+                                        <label class="label2">RFC</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insrfc" disabled="">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="label2">CURP</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscurp" disabled="">
+                                    </div>
+							</p>
+              <label style="color:white" for="">-</label>
+              <div class="col-sm-12">
+              
+              <p><span style="font-size: 16px" class="label label-primary">DOMICILIO</span></p>
+              </div>
+              <p>
+                                    <div class="col-sm-4">
+                                 
+                                        <label class="label2">CALLE</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscalle" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                  
+                                        <label class="label2">NÚMERO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insnum" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">COLONIA</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscol" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CÓDIGO POSTAL</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscp" disabled="">
+                                    </div>
+                                    <br>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CIUDAD</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insciud" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">ESTADO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insest" disabled="">
+                                    </div>
+                                    </p>
+                                    <label style="color:white" for="">-</label>
+              <div class="col-sm-12">
+              <p><span style="font-size: 16px" class="label label-primary">CONTACTO</span></p>
+              </div>
+              <p>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CASA</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscasa" disabled="">
+                                    </div>
+                                    <br>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CELULAR</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscel" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">EXTENCIÓN</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insext" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CORREO PERSONAL</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscorreper" disabled="">
+                                    </div>
+                                    <br>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CORREO INSTITUCIONAL</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscorreins" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CORREO ALTERNATIVO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscorrealt" disabled="">
+                                    </div>
+                                    </p>
+            </div>
 
+						<div class="tab-pane" id="tab_default_2">
+							<p>
+                                    <div class="col-sm-4">
+                                        <label class="label2">NÚMERO DE EMPLEADO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insnemple" disabled="">
+                                    </div>
+                                    
+                                    <div class="col-sm-4">
+                                        <label class="label2">FECHA INGRESO A LA AFAC</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insfecini" disabled="">
+                                    </div>
+                                    
+                                    <div class="col-sm-4">
+                                        <label class="label2">CÓDIGO PRESUPUESTAL</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inscodpre" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">PUESTO (GENERICO)</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inspues" disabled="">
+                                    </div>
+                                    
+                                    <div class="col-sm-8">
+                                        <label class="label2">NOMBRE DEL PUESTO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insnomp" disabled="">
+                                    </div>
+                                    <label style="color:white" for="">-</label>
+              <div class="col-sm-12">
+              <p><span style="font-size: 16px" class="label label-primary">INFORMACIÓN DE ADSCRIPCIÓN</span></p>
+              </div>
+                                    <div class="col-sm-12">
+                                        <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insdirec" disabled="">
+                                    </div>
+                                    <div class="col-sm-12">
+                                      <br>
+                                        <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insdireca" disabled="">
+                                    </div>
+                                    <div class="col-sm-12">
+                                    <br>
+                                        <label class="label2">SUBDIRECCIÓN</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="inssub" disabled="">
+                                    </div>
+                                    <div class="col-sm-12">
+                                    <br>
+                                        <label class="label2">DEPARTAMENTO</label>
+                                        <input type="text" onkeyup="mayus(this);"
+                                            class="form-control disabled inputalta" id="insdep" disabled="">
+                                    </div>
+							</p>				
+					</div>
+          <div class="tab-pane" id="tab_default_3">
+          <div id="insespecialidad"></div>
+          </div>
+				</div>
+			</div>
+
+   
+  </div>
+</div> 
+</div>
+</div> 
+<script>
+
+</script>
+
+<!-- FIN DETALLE DE INFORMACIÓN PERSONAL  --> 
 
 
 <!-----MODAL DE DETALLES------------------------------------>

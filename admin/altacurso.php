@@ -235,6 +235,16 @@ include ("../conexion/conexion.php");
                                                         id="gstCntro" name="gstCntro">
                                                 </div>
 
+                                                <div class="col-sm-4">
+                                                    <label>CARACTER DEL CURSO</label>
+                                                    <select type="text" class="form-control" id="gstcaracter"
+                                                        name="gstProvd">
+                                                        <option value="0">ELEGIR UNA OPCIÓN</option>
+                                                        <option value="INTERNO">OBLIGATORIO</option>
+                                                        <option value="EXTERNO">OPCIONAL</option>
+                                                    </select>
+                                                </div>
+
                                                 <div style="padding-top: 25px;" class="col-sm-4">
                                                     <button style="width: 100%;" type="button" id="diploma"
                                                         data-toggle="modal" data-target="#exampleModal"

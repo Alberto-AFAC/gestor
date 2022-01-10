@@ -6,7 +6,7 @@
 
 	$query = "SELECT * FROM cursos 
 	INNER JOIN listacursos ON idmstr = gstIdlsc
-	WHERE idinsp = $id AND cursos.estado = 0 OR idinsp = $id AND cursos.estado = 2 ORDER BY id_curso DESC";
+	WHERE idinsp = $id AND cursos.estado = 0 AND idinsp!=idcoor AND idinsp!=idinst OR idinsp = $id AND cursos.estado = 2 AND idinsp!=idcoor AND idinsp!=idinst ORDER BY id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

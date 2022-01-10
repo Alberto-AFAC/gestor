@@ -11,7 +11,7 @@ $query = "
 SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin  
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -84,7 +84,7 @@ $query = "
 SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'PENDIENTE' AND cursos.estado = 0 || idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'PENDIENTE' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 || idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -116,7 +116,7 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
 
         "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
 
-        //aquies
+        
 
     ],
     <?php }else if($data['confirmar']=='CONFIRMADO'){ 
@@ -126,7 +126,7 @@ $valor="<span  onclick='confirmar1($id_curso)'  style='background-color:green; f
 
         "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
 
-        //aquies
+        
 
     ],
 
@@ -175,7 +175,7 @@ var dataSet = [
 $query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion,gstTipo,DATE_FORMAT(fechaf, '%d-%m-%Y') AS fechaf,gstVignc,evaluacion,idmstr,gstIdlsc,id_curso 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND cursos.estado = 0 AND confirmar='CONFIRMADO' OR idinsp = $datos[0] AND cursos.estado = 2 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 AND confirmar='CONFIRMADO' OR idinsp = $datos[0] AND cursos.estado = 2 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 $cont = 0;
 while($data = mysqli_fetch_array($resultado)){ 
@@ -477,7 +477,7 @@ $query = "
 SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial, cursos.fechaf AS fin,evaluacion
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -503,7 +503,7 @@ $hactual = date('H:i:s');
 $f3 = strtotime($actual);
 $f2 = strtotime($fin); 
 
-if($f3>$f2 && $data['proceso']=='PENDIENTE' || $f3> $f2 && $data['proceso']=='FINALIZADO'){   ?>
+if($f3>$f2 && $data['proceso']=='PENDIENTE' || $f3> $f2 && $data['proceso']=='FINALIZADO'&& $data['idinsp']!= $data['idinst'] && $data['idinsp']!= $data['idcoor']){   ?>
 
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
@@ -784,4 +784,83 @@ rgba(100, 100, 100, 0.4)
 
     });
 }
+
+
+var dataSet = [
+    <?php 
+         $query = "SELECT *,listacursos.gstIdlsc AS list FROM especialidadcat  
+                   INNER JOIN categorias ON especialidadcat.gstIDcat = categorias.gstIdcat
+                   INNER JOIN listacursos ON listacursos.gstPrfil = categorias.gstCsigl
+                   INNER JOIN listacursobliga ON listacursobliga.gstIDlsc = listacursos.gstIdlsc 
+                   WHERE especialidadcat.gstIDper = $datos[0] AND especialidadcat.estado = 0";
+        $resultado = mysqli_query($conexion, $query);
+      
+    while($data = mysqli_fetch_array($resultado)){ 
+         
+            $lis = $data['list'];
+		
+            $queri = "
+			SELECT * FROM cursos WHERE idinsp = $datos[0] AND idmstr = $lis AND idinsp!=idcoor AND idinsp!=idinst AND estado = 0 ORDER BY id_curso DESC";
+			$resul = mysqli_query($conexion, $queri);
+            
+ 
+        if($res = mysqli_fetch_array($resul)){
+            
+        if($res['proceso']=='PENDIENTE' && $res['confirmar']=='CONFIRMADO'){
+        ?>
+            ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+            "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span></td> </tr>"
+            ], <?php 
+        }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='CONFIRMADO' && $res['evaluacion']>=80 ){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td> <span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span></td> </tr>"
+                ], <?php 
+        }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='CONFIRMADO' && $res['evaluacion']<80 ){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td> <span style='background-color:red; font-size: 14px;' class='badge'>REPROBO</span></td> </tr>"
+                ], <?php 
+        }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='CONFIRMAR'){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
+                ], <?php 
+        }
+    }
+    else{
+        ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
+                ], <?php 
+    }
+
+        }?>
+]
+
+var tableGenerarReporte = $('#data-table-obliga').DataTable({
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    data: dataSet,
+    columns: [
+        {
+            title: "TÍTULO"
+        },
+        {
+            title: "TIPO"
+        },
+        {
+            title: "PERFIL"
+        },
+        {
+            title: "DURACIÓN"
+        },
+        {
+            title: "PROCESO"
+        }
+    ],
+});
+
 </script>

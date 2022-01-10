@@ -2374,7 +2374,7 @@ function consultaCurso(gst) {
         var res = obj.data;
         var x = 0;
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="obliga" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>PERFIL</th><th><i></i>DURACIÓN</th><th><i></i>PROCESO</th></tr></thead><tbody>';
         for (o = 0; o < res.length; o++) {
             x++;
             //alert(obj.data[o].gstIDper+' '+obj.data[o].gstCsigl+' '+obj.data[o].proceso);
