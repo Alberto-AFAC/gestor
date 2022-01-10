@@ -391,6 +391,118 @@ function constudios(gstIdper) {
         //alert('pruebas')
 }
 
+function perinsp(gstIdper) {
+    var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
+    // alert(idpersona1);
+    $.ajax({
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+//alert(idpersona1)
+     
+            var n = 0;
+            for (R = 0; R < res.length; R++) { //RASTREAR EL ID DE LA PERSONA
+                if (obj.data[R].gstIdper == idpersona1) {
+               
+                    $("#insnombre").val(obj.data[R].gstNombr);
+                    $("#insapellido").val(obj.data[R].gstApell);
+                    $("#insfecnac").val(obj.data[R].gstFenac);
+                    $("#insiss").val(obj.data[R].gstisst);
+                    $("#insexo").val(obj.data[R].gstSexo);
+                    $("#insrfc").val(obj.data[R].gstRfc);
+                    $("#inscurp").val(obj.data[R].gstCurp);
+
+                    $("#inscalle").val(obj.data[R].gstCalle);
+                    $("#insnum").val(obj.data[R].gstNumro);
+                    $("#inscol").val(obj.data[R].gstClnia);
+                    $("#inscp").val(obj.data[R].gstCpstl);
+                    $("#insciud").val(obj.data[R].gstCiuda);
+                    $("#insest").val(obj.data[R].gstStado);
+                    
+                    $("#inscasa").val(obj.data[R].gstCasa);
+                    $("#inscel").val(obj.data[R].gstClulr);
+                    $("#insext").val(obj.data[R].gstExTel);
+                    $("#inscorreper").val(obj.data[R].gstCorro);
+                    $("#inscorreins").val(obj.data[R].gstCinst);
+                    $("#inscorrealt").val(obj.data[R].gstSpcID);
+                    
+                    $("#insnemple").val(obj.data[R].gstNmpld);
+                    $("#insfecini").val(obj.data[R].gstFeing);
+                }
+            }
+
+        })
+
+        $.ajax({
+            url: '../php/adscripcion.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+//alert("ADSCRIPCIÓN")
+           
+            var n = 0;
+            for (K = 0; K < res.length; K++) { //RASTREAR EL ID DE LA PERSONA
+                if (obj.data[K].gstIdper == idpersona1) {
+               
+                    $("#insdirec").val(obj.data[K].gstAreje);
+                    $("#insdireca").val(obj.data[K].adscripcion);
+                    $("#inssub").val(obj.data[K].descripsub);
+                    $("#insdep").val(obj.data[K].descripdep);
+
+                }
+            }
+
+        })
+        $.ajax({
+            url: '../php/conDatos.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+//alert("PUESTO")
+          
+            var n = 0;
+            for (J = 0; J < res.length; J++) { //RASTREAR EL ID DE LA PERSONA
+                if (obj.data[J].gstIdper == idpersona1) {
+               
+                    $("#inscodpre").val(obj.data[J].gstCodig);
+                    $("#inspues").val(obj.data[J].gstGnric);
+
+                    $("#insnomp").val(obj.data[J].gstNpsto);
+                }
+            }
+
+        })
+
+        $.ajax({
+            url: '../php/inspespecial.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>ESPECIALIDAD</th></tr></thead><tbody>';
+            for (V = 0; V < res.length; V++) {
+    
+    
+                datos = obj.data[V].gstCatgr;
+    
+                if (obj.data[V].gstIDper == idpersona1  ) {
+                    x++;
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[V].gstCatgr + "</td></tr>";
+    
+                } else {}
+            }
+            html += '</tbody></table></div></div></div>';
+            $("#insespecialidad").html(html);
+        })
+        //alert('pruebas')
+}
+
 function conprofesion() {
     var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
     // alert(idpersona1);
