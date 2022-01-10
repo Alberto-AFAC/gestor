@@ -328,7 +328,7 @@
               <label style="color:white" for="">-</label>
               <div class="col-sm-12">
               
-              <p><span style="font-size: 16px" class="label label-primary">DOMICILIO</span></p>
+              <p><span style="font-size: 14px" class="label label-primary">DOMICILIO</span></p>
               </div>
               <p>
                                     <div class="col-sm-4">
@@ -367,7 +367,7 @@
                                     </p>
                                     <label style="color:white" for="">-</label>
               <div class="col-sm-12">
-              <p><span style="font-size: 16px" class="label label-primary">CONTACTO</span></p>
+              <p><span style="font-size: 14px" class="label label-primary">CONTACTO</span></p>
               </div>
               <p>
                                     <div class="col-sm-4">
@@ -437,7 +437,7 @@
                                     </div>
                                     <label style="color:white" for="">-</label>
               <div class="col-sm-12">
-              <p><span style="font-size: 16px" class="label label-primary">INFORMACIÓN DE ADSCRIPCIÓN</span></p>
+              <p><span style="font-size: 14px" class="label label-primary">INFORMACIÓN DE ADSCRIPCIÓN</span></p>
               </div>
                                     <div class="col-sm-12">
                                         <label class="label2">DIRECCIÓN EJECUTIVA</label>
