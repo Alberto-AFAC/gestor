@@ -118,7 +118,7 @@ value="<?php echo $datos[0]?>">
 <!-- About Me Box -->
 <div class="box box-primary">
 <div class="box-header with-border">
-<h3 class="box-title">Competencia</h3>
+<h3 class="box-title">INFORMACIÓN PERSONAL</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
@@ -141,9 +141,13 @@ data-target='#modal-exprofe'>
 </a>
 
 <p class="text-muted"><?php echo $dato[5]; ?></p>
-
-
 <hr>
+<a style="cursor: pointer;" onclick="perinsp();" data-toggle='modal'
+data-target='#modal-info'>
+<strong><i class="ion-briefcase margin-r-5"></i>Datos</strong>
+</a>
+<p class="text-muted"><?php echo $dato[5]; ?></p>
+</hr>
 
 
 </div>
@@ -161,6 +165,7 @@ data-target='#modal-exprofe'>
 <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
 <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
 <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li>
+<li><a href="#obligatorio" data-toggle="tab">Cursos obligatorios</a></li>
 <?php 
 
 if($datos[3]== 'ADMINISTRATIVO'){}else{
@@ -267,6 +272,23 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
         </div>
         <div class="box-body">
             <table style="width: 100%;" id="data-table-vencidos"
+                class="table display table-striped table-bordered"></table>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+</div>
+
+<div class="tab-pane" id="obligatorio">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+        </div>
+        <div class="box-body">
+            <table style="width: 100%;" id="data-table-obliga"
                 class="table display table-striped table-bordered"></table>
         </div>
     </div>

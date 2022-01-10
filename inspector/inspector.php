@@ -110,7 +110,7 @@ value="<?php echo $datos[0]?>">
 <!-- About Me Box -->
 <div class="box box-primary">
 <div class="box-header with-border">
-<h3 class="box-title">Competencia</h3>
+<h3 class="box-title">INFORMACIÓN PERSONAL</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
