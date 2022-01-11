@@ -27,7 +27,7 @@ require '../php-mailer2/SMTP.php';
             INNER JOIN personal ON gstIdper = idinsp 
         WHERE
             codigo = '$idcurso' AND gstCargo = 'INSTRUCTOR'";
-            	$resultado2 = mysqli_query($conexion, $query);
+            	$resultado2 = mysqli_query($conexion, $query2);
                 $coordinador = mysqli_fetch_assoc($resultado2);
     $x = 0;
   
