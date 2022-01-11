@@ -29,7 +29,7 @@ require '../php-mailer2/SMTP.php';
         WHERE
             codigo = '$idcurso' AND gstCargo = 'COORDINADOR' OR gstCargo = 'INSTRUCTOR'";
             	$resultado2 = mysqli_query($conexion, $query2);
-                $instructores = mysqli_fetch_assoc($resultado2);
+              
   
 		
 
