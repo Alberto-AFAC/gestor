@@ -22,9 +22,6 @@ require '../php-mailer2/SMTP.php';
 
             }else if($curso['gstCargo'] == 'INSTRUCTOR'){
                 $coordinador = $curso['gstCargo'];
-            }else if(isset($curso['gstCargo']) == ''){
-                 $coordinador = $curso['gstCargo'];
-
             }
 
         //     $query2 = "SELECT
@@ -71,7 +68,7 @@ $body = '<p>NOMBRE DEL CURSO: <span style="font-weight: bold;">'.$curso['gstTitl
 <p>FECHA DE IMPARTICIÓN: <span style="font-weight: bold;">'.$curso['inicia'].'</span></p>
 <p>MODALIDAD: <span style="font-weight: bold;">'.$curso['modalidad'].'</span></p>
 <p>COORDINADOR: <span style="font-weight: bold;">--> '.$coordinador.'</span></p>
-<p>INSTRUCTOR: <span style="font-weight: bold;">---> ES EL INSTRUCTOR'.$instructor.'</span></p>
+<p>INSTRUCTOR: <span style="font-weight: bold;">'{$instructor}'</span></p>
 EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
 <table style="border-collapse: collapse; width: 100%; border: 1px solid black";><tr><th style="border-collapse: collapse; border: 1px solid black";>No.</th><th style="border-collapse: collapse; border: 1px solid black";>PARTICIPANTES DEL CURSO</th></tr>';
         while($curso = mysqli_fetch_assoc($resultado)){
