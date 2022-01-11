@@ -99,17 +99,17 @@ $psto = mysqli_query($conexion,$sql);
                                         <form id="personal-ext" class="form-horizontal" action="" method="POST">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
-                                                    <label class="label2">NOMBRE(S)</label>
+                                                    <label class="label2">*NOMBRE(S)</label>
                                                     <input type="text" onkeyup="mayus(this);"
                                                         class="form-control inputalta" id="gstNombr" name="gstNombr">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label class="label2">APELLIDO(S)</label>
+                                                    <label class="label2">*APELLIDO(S)</label>
                                                     <input type="text" onkeyup="mayus(this);"
                                                         class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
                                                 <div class="destino col-sm-4">
-                                                    <label class="label2">NACIONALIDAD</label>
+                                                    <label class="label2">TIPO DE PERSONA</label>
                                                     <select type="text" class="form-control inputalta" id="gstLunac"
                                                         name="gstLunac">
                                                         <option value="0" selected>ELEGIR UNA OPCIÓN</option>
@@ -119,7 +119,7 @@ $psto = mysqli_query($conexion,$sql);
                                                 </div>
                                             </div>
 
-                                                <div class="form-group">
+                                            <div class="form-group">
                                                 <div class="curp col-sm-4">
                                                     <label class="label2">CURP</label>
                                                     <input type="text" onkeyup="mayus(this);"
@@ -133,17 +133,71 @@ $psto = mysqli_query($conexion,$sql);
                                                 </div>
 
 
+                                                <div class="rfc col-sm-4">
+                                                    <label class="label2">ESTADO</label>
+                                                    <select type="text" class="form-control inputalta" id="gstStado" name="gstStado">
+                                                         <option value="">SELECCIONA EL ESTADO</option>
+                                                         <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+                                                         <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+                                                         <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+                                                         <option value="CAMPECHE">CAMPECHE</option>
+                                                         <option value="COAHUILA">COAHUILA</option>
+                                                         <option value="COLIMA">COLIMA</option>
+                                                         <option value="CHIAPAS">CHIAPAS</option>
+                                                         <option value="CHIHUAHUA">CHIHUAHUA</option>
+                                                         <option value="DISTRITO FEDERAL">CUIDAD DE MÉXICO</option>
+                                                         <option value="DURANGO">DURANGO</option>
+                                                         <option value="GUANAJUATO">GUANAJUATO</option>
+                                                         <option value="GUERRERO">GUERRERO</option>
+                                                         <option value="HIDALGO">HIDALGO</option>
+                                                         <option value="JALISCO">JALISCO</option>
+                                                         <option value="MÉXICO">MÉXICO</option>
+                                                         <option value="MICHOACÁN">MICHOACÁN</option>
+                                                         <option value="MORELOS">MORELOS</option>
+                                                         <option value="NAYARIT">NAYARIT</option>
+                                                         <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+                                                         <option value="OAXACA">OAXACA</option>
+                                                         <option value="PUEBLA">PUEBLA</option>
+                                                         <option value="QUERÉTARO">QUERÉTARO</option>
+                                                         <option value="QUINTANA ROO">QUINTANA ROO</option>
+                                                         <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+                                                         <option value="SINALOA">SINALOA</option>
+                                                         <option value="SONORA">SONORA</option>
+                                                         <option value="TABASCO">TABASCO</option>
+                                                         <option value="TAMAULIPAS">TAMAULIPAS</option>
+                                                         <option value="TLAXCALA">TLAXCALA</option>
+                                                         <option value="VERACRUZ">VERACRUZ</option>
+                                                         <option value="YUCATÁN">YUCATÁN</option>
+                                                         <option value="ZACATECAS">ZACATECAS</option>
+                                                         <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
+                                                         <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group"> 
                                                 <div class="col-sm-4">
-                                                    <label class="label2">SEXO</label>
+                                                    <label class="label2">*SEXO</label>
                                                     <select type="text" class="form-control inputalta" id="gstSexo"
                                                         name="gstSexo">
                                                         <option value="">ELEGIR SEXO</option>
                                                         <option value="MUJER">MUJER</option>
                                                         <option value="HOMBRE">HOMBRE</option>
                                                     </select>
+                                                </div>                                               
+                                                <div class="col-sm-4">
+                                                    <label class="label2">ORGANIZACIÓN (INSTITUCIÓN)</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="sgtCrhnt" name="sgtCrhnt">
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label>ESPECIALIDAD</label>
+                                                <div class="col-sm-4">
+                                                    <label class="label2">ÁERA DE ADSCRIPCIÓN</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstRusp" name="gstRusp">
+                                                </div>  
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label>*ESPECIALIDAD</label>
                                                     <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
                                                         style="width: 100%;color: #000" class="form-control select2"
                                                         type="text" class="form-control" id="gstIDCat" name="gstIDCat">
@@ -153,7 +207,7 @@ $psto = mysqli_query($conexion,$sql);
                                                             <?php echo $cat[2]?></option>
                                                         <?php endwhile; ?>
                                                     </select>
-                                                </div>
+                                                </div>                                                
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-4">
@@ -189,7 +243,7 @@ $psto = mysqli_query($conexion,$sql);
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4 text-container">
-                                                    <label class="label2">CORREO PERSONAL </label>
+                                                    <label class="label2">*CORREO PERSONAL </label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i
                                                                 class="fa fa-envelope"></i></span>
@@ -316,17 +370,20 @@ $psto = mysqli_query($conexion,$sql);
 
                         function addPerson() {
 
-                            var gstNombr = $("#gstNombr").val();
-                            var gstApell = $("#gstApell").val();
-                            var gstLunac = $("#gstLunac").val();
-                            var gstCurp = $("#gstCurp").val();
-                            var gstRfc = $("#gstRfc").val();
-                            var gstSexo = $("#gstSexo").val();
-                            var gstIDCat = $("#gstIDCat").val();
-                            var gstCasa = $("#gstCasa").val();
-                            var gstClulr = $("#gstClulr").val();
-                            var gstCorro = $("#gstCorro").val();
-                            var gstSpcID = $("#gstSpcID").val();
+                            var gstNombr = $("#gstNombr").val(); //NOMBRE
+                            var gstApell = $("#gstApell").val(); //APELLIDO
+                            var gstLunac = $("#gstLunac").val(); //TIPO DE PERSONA
+                            var gstCurp = $("#gstCurp").val(); //CURP
+                            var gstRfc = $("#gstRfc").val(); //RFC
+                            var gstSexo = $("#gstSexo").val(); //SEXO
+                            var gstIDCat = $("#gstIDCat").val(); //ESPECIALIDAD
+                            var gstCasa = $("#gstCasa").val(); //TEL CASA
+                            var gstClulr = $("#gstClulr").val(); //TEL CELULAR
+                            var gstCorro = $("#gstCorro").val(); //CORREO PERSONAL
+                            var gstSpcID = $("#gstSpcID").val(); //CORREO ALTERNATIVO
+                            var gstStado = $("#gstStado").val(); //ESTADO
+                            var sgtCrhnt = $("#sgtCrhnt").val(); //ORGANIZACIÓN
+                            var gstRusp = $("#gstRusp").val(); //ÁREA DE ADSCRIPCIÓN
 
                             // alert(gstNombr);
                             // alert(gstApell);
@@ -335,8 +392,7 @@ $psto = mysqli_query($conexion,$sql);
                             // alert(gstSexo);
                             // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstSexo == '' ||
-                                gstIDCat == '' || gstCorro == '') {
+                            if (gstNombr == '' || gstApell == '' || gstSexo == '' || gstIDCat == '' || gstCorro == '') {
                                 Swal.fire({
                                     type: 'warning',
                                     text: 'Llene campos vacios!',
@@ -359,7 +415,10 @@ $psto = mysqli_query($conexion,$sql);
                                         gstCasa: gstCasa,
                                         gstClulr: gstClulr,
                                         gstCorro: gstCorro,
-                                        gstSpcID: gstSpcID
+                                        gstSpcID: gstSpcID,
+                                        gstStado: gstStado,
+                                        sgtCrhnt: sgtCrhnt,
+                                        gstRusp: gstRusp
                                     },
                                     success: function(data) {
                                         // document.getElementById("personal-ext").reset();
@@ -466,7 +525,9 @@ $psto = mysqli_query($conexion,$sql);
                         };
 
                         $('#gstLunac').change(function() {
-
+                            var gstCurp = document.getElementById('gstCurp');
+                            var gstRfc = document.getElementById('gstRfc');
+                            var gstStado = document.getElementById('gstStado');
                                     if ($('#gstLunac').val() == 0) {
                                         $(".curp").css("display", "none");
                                         $(".rfc").css("display", "none");
@@ -476,9 +537,14 @@ $psto = mysqli_query($conexion,$sql);
                                         $(".curp").css("display", "block");
                                         $(".rfc").css("display", "block");
                                     };
+                                   
+
                                     if ($('#gstLunac').val() == "INTERNACIONAL") {
                                         $(".curp").css("display", "none");
                                         $(".rfc").css("display", "none");
+                                        gstCurp.value = 0;
+                                        gstRfc.value = 0;
+                                        gstStado.value = "EN OTRO PAÍS";
                                     };
                                 });
                         </script>
