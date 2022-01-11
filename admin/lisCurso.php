@@ -889,7 +889,7 @@ $(document).ready(function() {
         if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
             dismod.style.display = '';
         }
-        if (modalidadcur == "MIXTA (SEMIPRESENCIAL)") { //se visualiza el link y contraseña 
+        if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
             linidismodnpu.style.display = '';
         }
         if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
