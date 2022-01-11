@@ -73,7 +73,7 @@ EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>
+            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr></table>
                      <tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
