@@ -61,6 +61,7 @@ ini_set('date.timezone','America/Mexico_City');
     $mesactual = strftime("%B");
     $nombre = $con['gstNombr'];
     $apellido = $con['gstApell'];
+    $documento = $con['gstCntnc'];
     $curso = $con['gstTitlo'];
     $dateF = $con['fcurso'];
     $dateFinal = $con['fechaf'];

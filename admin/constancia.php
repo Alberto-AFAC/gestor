@@ -5,12 +5,17 @@ $dir = 'temp/';
 
 if(!file_exists($dir))
     mkdir($dir);
+if($con['gstCntnc'] == "CONSTANCIA"){
+    $UN = "UNA";
+}else{
+    $UN = "UN";
+}
 $filename = $dir.'QR.png';
 
 $tamanio = 5;
 $level = 'H';
 $frameSize = 1;
-$contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE AVIACIÓN CIVIL, OTORGÓ A:". " " .$nombre. " " .$apellido. " " ."UN CERTIFICADO POR HABER PARTICIPADO EN EL $curso CON FOLIO". " " .$registro. " ". "El DIA"." ".$dateFinal;
+$contenido = "INSTITUCIÓN: CENTRO INTERNACIONAL DE AVIACIÓN CIVIL, OTORGÓ A:". " " .$nombre. " " .$apellido. " " ."$UN $documento POR HABER PARTICIPADO EN EL CURSO: $curso CON FOLIO". " " .$registro. " ". "El DIA"." ".$dateFinal;
 
 QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 
