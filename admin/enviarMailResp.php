@@ -57,8 +57,7 @@ $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->CharSet = 'UTF-8';
-$body1 = 'AQUI VA EL BODY UNO';
-$body2 = '<p>NOMBRE DEL CURSO: <span style="font-weight: bold;">'.$curso['gstTitlo'].'</span></p>
+$body = '<p>NOMBRE DEL CURSO: <span style="font-weight: bold;">'.$curso['gstTitlo'].'</span></p>
 <p>FECHA DE IMPARTICIÓN: <span style="font-weight: bold;">'.$curso['inicia'].'</span></p>
 <p>MODALIDAD: <span style="font-weight: bold;">'.$curso['modalidad'].'</span></p>
 <p>COORDINADOR: <span style="font-weight: bold;">'.$coordinador['gstNombr']." ".$coordinador['gstApell'].'</span></p>
@@ -72,12 +71,12 @@ EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body2 .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
+            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
-    $mail->Body = $body2.'</table>';
-            $mail->MsgHTML($body2);
+    $mail->Body = $body.'</table>';
+            $mail->MsgHTML($body);
             if (!$mail->send()) {
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
