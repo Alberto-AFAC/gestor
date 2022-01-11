@@ -247,23 +247,15 @@ placeholder="Seleccione...">
 <select type="text" class="form-control"
 id="mCurse" name="mCurse"
 placeholder="Seleccione...">
-<option value="" selected>
-Seleccione...
-</option>
-<option value="A DISTANCIA">A
-DISTANCIA
-</option>
-<option value="PRESENCIAL">
-PRESENCIAL
-</option>
-<option
-value="PRESENCIAL (SEMIPRESENCIAL)">
-MIXTA (SEMIPRESENCIAL)
-</option>
-<option value="E-LEARNNING">
-E-LEARNNING
-</option>
+<option value="" selected> Seleccione...</option>
+<option value="A DISTANCIA">A DISTANCIA</option>
+<option value="AUTOAPRENDIZAJE">AUTOAPRENDIZAJE</option>
+<option value="AUTOGESTIVO">AUTOGESTIVO</option>
+<option value="E-LEARNNING">E-LEARNNING</option>
+<option value="HIBRIDO">HIBRIDO</option>
+<option value="PRESENCIAL">PRESENCIAL</option>
 </select>
+
 </div>
 <div class="col-sm-6">
 <label>INICIO</label>
