@@ -33,8 +33,8 @@ require '../php-mailer2/SMTP.php';
 		$mail->Host = 'smtp.mailtrap.io';
 		$mail->SMTPAuth = true;
 		$mail->Port = 2525;
-		$mail->Username = '10a376e8596ee9';
-		$mail->Password = 'c2aeed30f4cf96';
+		$mail->Username = '0e45915eb4850a';
+		$mail->Password = '6fbe709c81ed85';
 		$mail->SMTPSecure = 'tls'; 
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
 
