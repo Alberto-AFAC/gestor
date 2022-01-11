@@ -109,7 +109,7 @@ $psto = mysqli_query($conexion,$sql);
                                                         class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
                                                 <div class="destino col-sm-4">
-                                                    <label class="label2">TIPO DE PERSONA</label>
+                                                    <label class="label2">*TIPO DE PERSONA</label>
                                                     <select type="text" class="form-control inputalta" id="gstLunac"
                                                         name="gstLunac">
                                                         <option value="0" selected>ELEGIR UNA OPCIÓN</option>
@@ -392,10 +392,10 @@ $psto = mysqli_query($conexion,$sql);
                             // alert(gstSexo);
                             // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstSexo == '' || gstIDCat == '' || gstCorro == '') {
+                            if (gstNombr == '' || gstApell == '' || gstSexo == '' || gstIDCat == '' || gstCorro == ''| gstLunac == '0') {
                                 Swal.fire({
                                     type: 'warning',
-                                    text: 'Llene campos vacios!',
+                                    text: 'Llene campos obligatorios* !',
                                     timer: 2500,
                                     showConfirmButton: false,
                                     customClass: 'swal-wide'
@@ -537,8 +537,6 @@ $psto = mysqli_query($conexion,$sql);
                                         $(".curp").css("display", "block");
                                         $(".rfc").css("display", "block");
                                     };
-                                   
-
                                     if ($('#gstLunac').val() == "INTERNACIONAL") {
                                         $(".curp").css("display", "none");
                                         $(".rfc").css("display", "none");

@@ -109,9 +109,8 @@ $psto = mysqli_query($conexion,$sql);
                                                         class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
                                                 <div class="destino col-sm-4">
-                                                    <label class="label2">NACIONALIDAD</label>
-                                                    <select type="text" class="form-control inputalta" id="gstLunac"
-                                                        name="gstLunac">
+                                                    <label class="label2">*TIPO DE INSTRUCTOR</label>
+                                                    <select type="text" class="form-control inputalta" id="gstLunac" name="gstLunac">
                                                         <option value="0" selected>ELEGIR UNA OPCIÓN</option>
                                                         <option value="NACIONAL">NACIONAL</option>
                                                         <option value="INTERNACIONAL">INTERNACIONAL</option>
@@ -145,7 +144,7 @@ $psto = mysqli_query($conexion,$sql);
                                             </div>
                                             <div class="form-group">
                                         <div class="col-sm-4">
-                                            <label class="label2">CENTRO DE INSTRUCCIÓN</label>
+                                            <label class="label2">NOMBRE DE PROVEEDOR / INSTRUCTOR</label>
                                             <input type="text" onkeyup="mayus(this);" class="form-control inputalta "
                                                 id="gstNucrt" name="gstNucrt">
                                         </div>
@@ -339,7 +338,7 @@ $psto = mysqli_query($conexion,$sql);
                                 gstCorro == '') {
                                 Swal.fire({
                                     type: 'warning',
-                                    text: 'Llene campos vacios!',
+                                    text: 'Llene campos obligatorios* !',
                                     timer: 2500,
                                     showConfirmButton: false,
                                     customClass: 'swal-wide'
@@ -448,9 +447,6 @@ $psto = mysqli_query($conexion,$sql);
                                 {
                                     title: "APELLIDO(S)"
                                 },
-                                // {
-                                //     title: "ESPECIALIDAD"
-                                // },
                                 {
                                     title: "CORREO"
                                 }
@@ -464,6 +460,8 @@ $psto = mysqli_query($conexion,$sql);
                         };
 
                         $('#gstLunac').change(function() {
+                            var gstCurp = document.getElementById('gstCurp');
+                            var gstRfc = document.getElementById('gstRfc');
 
                                     if ($('#gstLunac').val() == 0) {
                                         $(".curp").css("display", "none");
@@ -477,6 +475,8 @@ $psto = mysqli_query($conexion,$sql);
                                     if ($('#gstLunac').val() == "INTERNACIONAL") {
                                         $(".curp").css("display", "none");
                                         $(".rfc").css("display", "none");
+                                        gstCurp.value = 0;
+                                        gstRfc.value = 0;
                                     };
                                 });
                         </script>
