@@ -27,9 +27,9 @@ require '../php-mailer2/SMTP.php';
             INNER JOIN cursos ON idmstr = gstIdlsc
             INNER JOIN personal ON gstIdper = idinsp 
         WHERE
-            codigo = '$idcurso' AND gstCargo = 'COORDINADOR'";
+            codigo = '$idcurso' AND gstCargo = 'COORDINADOR' OR gstCargo = 'INSTRUCTOR'";
             	$resultado2 = mysqli_query($conexion, $query2);
-                $coordinador = mysqli_fetch_assoc($resultado2);
+                $instructores = mysqli_fetch_assoc($resultado2);
   
 		
 
@@ -67,17 +67,19 @@ EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
 <table style="border-collapse: collapse; width: 100%; border: 1px solid black";><tr><th style="border-collapse: collapse; border: 1px solid black";>No.</th><th style="border-collapse: collapse; border: 1px solid black";>PARTICIPANTES DEL CURSO</th></tr>';
 
         while($curso = mysqli_fetch_assoc($resultado)){
+            while($instructores = mysqli_fetch_assoc($resultado2)){
             $x++;
             $to_array = explode(',', $correoRs);
             foreach($to_array as $address)
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr></table>
+            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>
                      <tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>"; 
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
+}
     $mail->Body = $body.'</table>';
             $mail->MsgHTML($body);
             if (!$mail->send()) {
