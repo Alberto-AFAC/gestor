@@ -4,7 +4,7 @@
 	
 	$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as fcursof FROM cursos
 			   INNER JOIN listacursos
-			   ON gstIdlsc = idmstr";
+			   ON gstIdlsc = idmstr WHERE idinsp != idcoor and idinsp != idinst and cursos.estado='0'";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
