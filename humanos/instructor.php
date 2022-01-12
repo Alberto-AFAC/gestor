@@ -73,11 +73,11 @@ include('header.php');
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="padding-top: 10px;" class="container box box-solid">
-                                            <ul class="nav nav-tabs" id="myNavTabs">
+                                            <!-- <ul class="nav nav-tabs" id="myNavTabs">
                                                 <li class="active"><a href="#navtabs1" data-toggle="tab">PERSONAL
                                                         AFAC</a>
                                                 <li><a href="#navtabs2" data-toggle="tab">INSTRUCTORES EXTERNOS</a>
-                                            </ul>
+                                            </ul> -->
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="navtabs1"> <br>
                                                     <table style="width: 100%;" id="data-table-instructores"
