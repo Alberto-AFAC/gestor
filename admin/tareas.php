@@ -198,14 +198,14 @@ include('header.php');
                                                 <div id="ojt-principal" class="col-sm-3">
                                                     <input type="hidden" name="idsubt" id="idsubt">
                                                     <!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
-                                                    <label>OJT PRINCIPAL</label>
+                                                    <label>TAREAS</label>
                                                     <input type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="titulo1" placeholder="Escribe OJT..."
                                                         name="ojt_principal[]" disabled=""><br>
                                                 </div>
 
                                                 <div id="sub1" class="col-sm-3">
-                                                    <label>SUB 1</label>
+                                                    <label>SUBTAREA 1</label>
                                                     <div>
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" onkeyup="mayus(this);" name="tarea1[]"
@@ -218,7 +218,7 @@ include('header.php');
 
 
                                                 <div id="sub2" class="col-sm-3">
-                                                    <label>SUB 2</label>
+                                                    <label>SUBTAREA 2</label>
                                                     <div>
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" onkeyup="mayus(this);" name="tarea2[]"
@@ -230,7 +230,7 @@ include('header.php');
                                                 </div>
 
                                                 <div id="sub3" class="col-sm-3">
-                                                    <label>SUB 3</label>
+                                                    <label>SUBTAREA 3</label>
                                                     <div>
                                                         <input class="form-control" placeholder="INGRESAR..."
                                                             type="text" onkeyup="mayus(this);" name="tarea3[]"
@@ -1503,7 +1503,7 @@ function idsubTa(datos) {
 
 
                 html =
-                    '<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUB ' +
+                    '<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUBTAREA ' +
                     num + '</th><th style="width:10%;">ACCIONES</th>';
 
 
