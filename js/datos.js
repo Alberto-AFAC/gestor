@@ -2383,9 +2383,15 @@ function consultaCurso(gst) {
 if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'EN CURSO') {
     html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td><span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span></td> </tr>";
 } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'PENDIENTE') {
-    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"  + obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"  + obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span></td> </tr>";
 } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'FINALIZADO') {
     html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span></td> </tr>";
+}else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'REPROBO') {
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
+}else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'DECLINO') {
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
+}else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'PENDIENTE1') {
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
 }
 
 //CODIGO ORIGINAL ANGEL 
