@@ -1484,7 +1484,7 @@ for (ii = 0; ii < res.length; ii++) {
 if (obj.data[ii].idtarea == idsub) {
 
 
-html ='<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUB 1</th><th style="width:10%;">ACCIONES</th>';
+html ='<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUB '+ num +'</th><th style="width:10%;">ACCIONES</th>';
 
 
 for (i = 0; i < res.length; i++) {
@@ -1499,7 +1499,7 @@ x++;
 dato = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea+'*'+obj.data[i].numsubt;
 adatos = obj.data[i].id_subojt+'*'+obj.data[i].idtarea+'*'+obj.data[i].ojt_subtarea;
 
-html += "<tr><td>" + num+'.'+obj.data[i].numsubt+'. ' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' style='resize: none;' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";    
+html += "<tr><td>" + num+'.' + x + "</td><td><textarea class='form-control' id='"+obj.data[i].id_subojt+"' name='"+obj.data[i].id_subojt+"' style='resize: none;' disabled>"+obj.data[i].ojt_subtarea+"</textarea></td><td><a id='"+obj.data[i].id_subojt+"mostrar' type='button' title='Agregar registro' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ");' data-target='#modal-actualizardoc'><i class='fa fa-save text-success'></i></a><a id='"+obj.data[i].id_subojt+"ocultar' type='button' title='Actualizar documento' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='subojt(" + '"' + dato + '"' + ");' data-target='#modal-actualizardoc'><i class='fa ion-compose text-info'></i></a> <a onclick='ojtborrar(" + '"' + dato + '"' + ");' type='button' style='margin-left:2px' title='Borrar documento'  class='eliminar btn btn-default' data-toggle='modal' data-target='#eliminararchi'><i class='fa fa-trash-o text-danger'></i></a></td></tr>";    
 }
 }
 }
