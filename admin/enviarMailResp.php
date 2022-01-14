@@ -31,7 +31,7 @@ require '../php-mailer2/SMTP.php';
     $resultado3 = mysqli_query($conexion, $query3);
     $curso3 = mysqli_fetch_assoc($resultado3);
     if($curso3['gstCargo'] == 'INSTRUCTOR'){
-        $instructor  = "<span style='font-weight: bold;'>, {$curso3['gstNombr']} {$curso3['gstApell']}</span>";
+        $instructor  = "<span>, {$curso3['gstCargo']}</span>";
     }else{
         $instructor = "";
     }
