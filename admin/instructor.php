@@ -220,7 +220,7 @@ include('header.php');
 						        <a href="#tab_default_1" data-toggle="tab">CURSOS IMPARTIDOS</a>
 						    </li>
 						    <li>
-							    <a href="#tab_default_2" data-toggle="tab">CURSOS COORDINADOS</a>
+							    <a href="#tab_default_2" data-toggle="tab" type="hidden" name="coordinados" id="coordinados">CURSOS COORDINADOS</a>
 						    </li>
                         </ul>
                         <div class="tab-content">
@@ -228,7 +228,7 @@ include('header.php');
                                 <div id="cursinstructor"></div>
                             </div>   
 
-                            <div class="tab-pane"id="tab_default_2">
+                            <div class="tab-pane" id="tab_default_2">
                                 <div id="curscoord"></div>   
                             </div>  
                         </div>  
@@ -274,7 +274,7 @@ include('header.php');
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extsexo" disabled="">
                             </div>
                         </div>
-                        <div class="form-group" type="hidden" id="nacional">
+                        <div class="form-group" disabled="" type="hidden" name="nacional" id="nacional">
                             <div class="col-sm-6">
                                 <label class="label2">CURP</label>
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extcurp" disabled="">               
@@ -534,7 +534,21 @@ function perinscoord(gstIdper) {
                     $("#extcelular").val(obj.data[R].gstClulr);
                     $("#extcorreo").val(obj.data[R].gstCorro);
                     $("#extalternativo").val(obj.data[R].gstSpcID);
+                   // alert(obj.data[R].gstLunac)
+                    if (obj.data[R].gstLunac == "INTERNACIONAL") {
+                        $("#nacional").hide();
+                    }
+                    if (obj.data[R].gstCargo == "INSTRUCTOR") {
+                        $("#coordinados").hide();
+                    }
+                    if (obj.data[R].gstCargo == "COORDINADOR") {
+                        alert("ento")
+                        $("#coordinados").show();
+                    }
+
                 }
+
+
             }
 
         })
