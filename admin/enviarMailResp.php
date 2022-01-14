@@ -13,8 +13,7 @@ require '../php-mailer2/SMTP.php';
 	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstApell, gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
-			  WHERE codigo = '$idcurso'
-              ORDER BY gstCargo = 'COORDINADOR' desc";
+			  WHERE codigo = '$idcurso'";
 	$resultado = mysqli_query($conexion, $query);
             $curso = mysqli_fetch_assoc($resultado);
              $x = 0;
