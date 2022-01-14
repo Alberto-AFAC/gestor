@@ -99,12 +99,12 @@ $psto = mysqli_query($conexion,$sql);
                                         <form id="personal-ext" class="form-horizontal" action="" method="POST">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
-                                                    <label class="label2">NOMBRE(S)</label>
+                                                    <label class="label2">*NOMBRE(S)</label>
                                                     <input type="text" onkeyup="mayus(this);"
                                                         class="form-control inputalta" id="gstNombr" name="gstNombr">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label class="label2">APELLIDO(S)</label>
+                                                    <label class="label2">*APELLIDO(S)</label>
                                                     <input type="text" onkeyup="mayus(this);"
                                                         class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
@@ -165,7 +165,7 @@ $psto = mysqli_query($conexion,$sql);
 
                                             <div class="form-group">
                                                 <div class="col-sm-4">
-                                                    <label class="label2">CASA</label>
+                                                    <label class="label2">*CASA</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-phone"></i>
@@ -187,7 +187,7 @@ $psto = mysqli_query($conexion,$sql);
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4 text-container">
-                                                    <label class="label2">CORREO PERSONAL </label>
+                                                    <label class="label2">*CORREO PERSONAL </label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i
                                                                 class="fa fa-envelope"></i></span>

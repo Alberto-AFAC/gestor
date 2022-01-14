@@ -1,8 +1,7 @@
 <!DOCTYPE html><?php include ("../conexion/conexion.php");
-ini_set('date.timezone','America/Mexico_City');?>
+ini_set('date.timezone','America/Mexico_City'); ?>
 
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +19,7 @@ ini_set('date.timezone','America/Mexico_City');?>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <style>
     .swal-wide {
@@ -171,7 +171,7 @@ include('header.php');
 
     </div>
     <!-- ./wrapper -->
-
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- jQuery 3 -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
@@ -191,6 +191,139 @@ include('header.php');
     <script src="../js/global.js"></script>
     <script src="../js/datos.js"></script>
 
+<!-- inio modal de instructor y coordinador cursos coordinados y inpartidos -->
+<div class="modal fade" id='modal-cursinstru'>
+    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h3><label>DETALLE DE CURSOS</label></h3>
+            </div>
+            <div class="modal-body">
+                <form id="Dtall" class="form-horizontal" action="" method="POST" >
+                         <div class="form-group">
+                            <div class="col-sm-8">
+                                <form action="instructor.php" method="get">
+                                 <input type="hidden" class="form-control disabled inputalta" name="insperco" id="insperco" value="" >
+                                </form>
+                                 <input type="" class="form-control disabled inputalta" name="gstnomebre" id="gstnomebre" disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                 <input type="" class="form-control disabled inputalta" name="cargoinsco" id="cargoinsco" disabled="">
+                            </div>
+                        </div>    
+                    <div class="tabbable-line">
+					    <ul class="nav nav-tabs ">
+						    <li class="active">
+						        <a href="#tab_default_1" data-toggle="tab">CURSOS IMPARTIDOS</a>
+						    </li>
+						    <li>
+							    <a href="#tab_default_2" data-toggle="tab">CURSOS COORDINADOS</a>
+						    </li>
+                        </ul>
+                        <div class="tab-content">
+						    <div class="tab-pane active" id="tab_default_1">
+                                <div id="cursinstructor"></div>
+                            </div>   
+
+                            <div class="tab-pane"id="tab_default_2">
+                                <div id="curscoord"></div>   
+                            </div>  
+                        </div>  
+
+                    </div>  
+                </form>                         
+            </div>            
+        </div>   
+    </div> 
+    </div>  
+</div>          
+<!--fin modal de instructor y coordinador cursos coordinados y inpartidos -->
+
+<!--modal de instructor y coordinador informacion -->
+<div class="modal fade" id='modal-infoexterno'>
+    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h3><label>INFORMACIÓN</label></h3>
+                </div>
+                <div class="modal-body">
+                    <form id="Dtall" class="form-horizontal" action="" method="POST" >
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">NOMBRE(S)</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extnombre" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">APELLIDOS</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extapellido" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">TIPO DE INSTRUCTOR</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extipo" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">SEXO</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extsexo" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group" type="hidden" id="nacional">
+                            <div class="col-sm-6">
+                                <label class="label2">CURP</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extcurp" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">RFC</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extrfc" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="label2">NOMBRE DE PROVEEDOR / INSTRUCTOR</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extproveedor" disabled="">               
+                            </div>
+                        </div>
+                       <div class="form-group">
+                            <div class="col-sm-12">
+                                <p><span style="font-size:18px" class="label label-primary">CONTACTO</span></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">CASA</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extcasa" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">CELULAR</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extcelular" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">CORREO PERSONAL</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extcorreo" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">CORREO ALTERNATIVO</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="extalternativo" disabled="">
+                            </div>
+                        </div>  
+
+                    </form>                         
+                </div>            
+            </div>
+        </div>       
+    </div>   
+</div>          
+
+<!--fin modal de instructor y coordinador informacion -->
 </body>
 
 </html>
@@ -259,7 +392,7 @@ while($data = mysqli_fetch_array($resultado)){
         }else if($data['estado'] == 2){
             $estado = "EXTERNO";
         }
-// $gstIdper = $data['gstIdper'];
+$gstId5 = $data['gstIdper'];
 
 
  if($data['estado'] == 0){ ?>
@@ -267,14 +400,14 @@ while($data = mysqli_fetch_array($resultado)){
     ["<?php echo  $empleado;?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
         "<?php echo $categoria ?>", "<?php echo $data['gstCargo']?>","<?php echo $estado?>",
 
-        "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"; ?>"
+        "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a><a href='' title='Ver detalle de cursos' onclick='perinscoord({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa ion-easel text-muted'></i></a>";?>"
     ],
 
 <?php } else if($data['estado'] == 2){ ?>
     ["<?php echo  $empleado;?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
     "<?php echo $categoria ?>", "<?php echo $data['gstCargo']?>","<?php echo $estado?>",
 
-        "SIN DATOS"
+    "<?php echo "<a  title='Perfil' onclick='perinscoord({$gstIdper})' class='datos btn btn-default' data-toggle='modal' data-target='#modal-infoexterno'><i class='glyphicon glyphicon-user text-success'></i></a><a href='' title='Ver detalle de cursos' onclick='perinscoord({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa ion-easel text-muted'></i></a>"; ?>"
     ],
 <?php } ?>
    
@@ -304,7 +437,8 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
             title: "APELLIDO(S)"
         },
         {
-            title: "CATEGORIA"
+            title: "CATEGORIA",
+            width: "450px"
         },
         {
             title: "CARGO"
@@ -372,6 +506,101 @@ var tableGenerarReporte = $('#data-table-instructoresExt').DataTable({
     ],
 });
 
+
+
+function perinscoord(gstIdper) {
+    //FUNCION PARA SABER LOS CURSO PROGRAMADOS Y LOS IMPARTIDOS
+    var idpersona1 = document.getElementById('insperco').value =gstIdper;
+        $.ajax({
+            url: '../php/infopersext.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+//alert(idpersona1)
+            var n = 0;
+            for (R = 0; R < res.length; R++) { //RASTREAR EL ID DE LA PERSONA
+                if (obj.data[R].gstIdper == gstIdper) {
+                    $("#gstnomebre").val(obj.data[R].gstNombr + "  " + obj.data[R].gstApell);
+                    $("#cargoinsco").val(obj.data[R].gstCargo);
+                    $("#extnombre").val(obj.data[R].gstNombr);
+                    $("#extapellido").val(obj.data[R].gstApell);
+                    $("#extsexo").val(obj.data[R].gstSexo);
+                    $("#extcurp").val(obj.data[R].gstCurp);
+                    $("#extrfc").val(obj.data[R].gstRfc);
+                    $("#extipo").val(obj.data[R].gstLunac);
+                    $("#extproveedor").val(obj.data[R].gstNucrt);
+                    $("#extcasa").val(obj.data[R].gstCasa);
+                    $("#extcelular").val(obj.data[R].gstClulr);
+                    $("#extcorreo").val(obj.data[R].gstCorro);
+                    $("#extalternativo").val(obj.data[R].gstSpcID);
+                }
+            }
+
+        })
+        //TABLA DE CURSOS COMO INSTRUCTOR
+        $.ajax({
+            url: '../php/instruc_curs.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cursoinstuc" class="table table-bordered table-striped" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CODIGO</th><th style="width:350px"><i></i>CURSO</th><th><i></i>FECHA DE INICIO</th><th><i></i>FECHA FIN</th></tr></thead><tbody>';
+            for (V = 0; V < res.length; V++) {
+    
+                if (obj.data[V].idinst == idpersona1) {
+                    x++;
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[V].codigo + "</td><td>" + obj.data[V].gstTitlo + "</td><td>" + obj.data[V].fcurso + "</td><td>" + obj.data[V].fechaf + "</td></tr>";
+    
+                } else {}
+            }
+            html += '</tbody></table></div></div></div>';
+            $("#cursinstructor").html(html);
+            $('#cursoinstuc').DataTable({
+                  'paging'      : true,
+                  'lengthChange': false,
+                  'searching'   : true,
+                  'ordering'    : true,
+                  'info'        : true,
+                  'autoWidth'   : false
+    });
+            
+        })
+        //alert('pruebas')
+    //TABLA DE CURSOS COMO INSTRUCTOR
+    $.ajax({
+            url: '../php/coord_curs.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cursco" class="table table-bordered table-striped" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CODIGO</th><th style="width:350px"><i></i>CURSO</th><th><i></i>FECHA DE INICIO</th><th><i></i>FECHA FIN</th></tr></thead><tbody>';
+            for (O = 0; O < res.length; O++) {
+    
+                if (obj.data[O].idcoor == idpersona1) {
+                    x++;
+                    html += "<tr><td>" + x + "</td><td>" + obj.data[O].codigo + "</td><td>" + obj.data[O].gstTitlo + "</td><td>" + obj.data[O].fcurso + "</td><td>" + obj.data[O].fechaf + "</td></tr>";
+    
+                } else {}
+            }
+            html += '</tbody></table></div></div></div>';
+            $("#curscoord").html(html);
+            $('#cursco').DataTable({
+                  'paging'      : true,
+                  'lengthChange': false,
+                  'searching'   : true,
+                  'ordering'    : true,
+                  'info'        : true,
+                  'autoWidth'   : false
+    });
+            
+        })
+        
+}
 
 $(document).ready(function() {
     $('#btnguardar').click(function() {
