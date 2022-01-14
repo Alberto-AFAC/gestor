@@ -18,11 +18,7 @@ require '../php-mailer2/SMTP.php';
 	$resultado = mysqli_query($conexion, $query);
             $curso = mysqli_fetch_assoc($resultado);
              $x = 0;
-             if($curso['gstCargo'] == 'COORDINADOR'){
-            $maestro = 'COORDINADOR'; 
-            }else{
-            $maestro = 'PARTICIPANTE';
-            }
+           
               
 
 // $mail = new PHPMailer;
