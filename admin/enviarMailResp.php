@@ -30,6 +30,11 @@ require '../php-mailer2/SMTP.php';
     WHERE codigo = '$idcurso' AND gstCargo = 'INSTRUCTOR'";
     $resultado3 = mysqli_query($conexion, $query3);
     $curso3 = mysqli_fetch_assoc($resultado3);
+    if($curso3['gstCargo'] == 'INSTRUCTOR'){
+        $instructor  = "<span style='font-weight: bold;'>,{$curso3['gstCargo']}</span>";
+    }else{
+        $instructor = "";
+    }
            
               
 
@@ -60,7 +65,7 @@ $mail->CharSet = 'UTF-8';
 $body = '<p>NOMBRE DEL CURSO: <span style="font-weight: bold;">'.$curso['gstTitlo'].'</span></p>
 <p>FECHA DE IMPARTICIÓN: <span style="font-weight: bold;">'.$curso['inicia'].'</span></p>
 <p>MODALIDAD: <span style="font-weight: bold;">'.$curso['modalidad'].'</span></p>
-<p>COORDINADOR E INSTRUCTOR: <span style="font-weight: bold;">'.$curso2['gstNombr']." ".$curso2['gstApell'].'</span><br><span style="font-weight: bold;">'.$curso3['gstNombr']." ".$curso3['gstApell'].'</span></p>
+<p>COORDINADOR E INSTRUCTOR: <span style="font-weight: bold;">'.$curso2['gstNombr']." ".$curso2['gstApell'].'</span><br>'.$instructor.'</p>
 EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
 <table style="border-collapse: collapse; width: 100%; border: 1px solid black";><tr><th style="border-collapse: collapse; border: 1px solid black";>No.</th><th style="border-collapse: collapse; border: 1px solid black";>PARTICIPANTES DEL CURSO</th></tr>';
         while($curso = mysqli_fetch_assoc($resultado)){
@@ -71,7 +76,7 @@ EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']." (".$maestro.")</td></tr>";
+            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>";
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
