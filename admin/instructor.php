@@ -542,13 +542,10 @@ function perinscoord(gstIdper) {
                         $("#coordinados").hide();
                     }
                     if (obj.data[R].gstCargo == "COORDINADOR") {
-                        alert("ento")
                         $("#coordinados").show();
                     }
 
                 }
-
-
             }
 
         })
