@@ -17,23 +17,9 @@ require '../php-mailer2/SMTP.php';
 	$resultado = mysqli_query($conexion, $query);
             $curso = mysqli_fetch_assoc($resultado);
              $x = 0;
-            $query2 = "SELECT
-            codigo,
-            gstIdlsc,
-            gstNombr,
-            gstApell
-        FROM
-            listacursos
-            INNER JOIN cursos ON idmstr = gstIdlsc
-            INNER JOIN personal ON gstIdper = idinsp 
-        WHERE
-            codigo = '$idcurso' AND gstCargo = 'COORDINADOR' OR gstCargo = 'INSTRUCTOR'";
-            	$resultado2 = mysqli_query($conexion, $query2);
               
-  
-		
 
-// 		$mail = new PHPMailer;
+// $mail = new PHPMailer;
 // $mail->isSMTP();
 // $mail->SMTPDebug = 2;
 // $mail->Host = 'smtp.hostinger.com';
@@ -60,12 +46,8 @@ $mail->CharSet = 'UTF-8';
 $body = '<p>NOMBRE DEL CURSO: <span style="font-weight: bold;">'.$curso['gstTitlo'].'</span></p>
 <p>FECHA DE IMPARTICIÓN: <span style="font-weight: bold;">'.$curso['inicia'].'</span></p>
 <p>MODALIDAD: <span style="font-weight: bold;">'.$curso['modalidad'].'</span></p>
-<p>COORDINADOR: <span style="font-weight: bold;">'.$coordinador['gstNombr']." ".$coordinador['gstApell'].'</span></p>
-<p>INSTRUCTOR: <span style="font-weight: bold;">---> ES EL INSTRUCTOR'.$instructor.'</span></p>
 EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
-<table style="border-collapse: collapse; width: 100%; border: 1px solid black";><tr><th style="border-collapse: collapse; border: 1px solid black";>No.</th><th style="border-collapse: collapse; border: 1px solid black";>COORDINADORES E INSTRUCTORES DEL CURSO</th></tr>
-<table style="border-collapse: collapse; width: 100%; border: 1px solid black";><tr><th style="border-collapse: collapse; border: 1px solid black";>No.</th><th style="border-collapse: collapse; border: 1px solid black";>PARTICIPANTES DEL CURSO</th></tr>';
-
+<table style="border-collapse: collapse; width: 100%; border: 1px solid black";><tr><th style="border-collapse: collapse; border: 1px solid black";>No.</th><th style="border-collapse: collapse; border: 1px solid black";>COORDINADORES E INSTRUCTORES DEL CURSO</th></tr>';
         while($curso = mysqli_fetch_assoc($resultado)){
             
             $x++;
