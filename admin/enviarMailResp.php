@@ -13,10 +13,16 @@ require '../php-mailer2/SMTP.php';
 	$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstApell, gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
 			  INNER JOIN cursos ON idmstr = gstIdlsc
 			  INNER JOIN personal ON gstIdper = idinsp
-			  WHERE codigo = '$idcurso'";
+			  WHERE codigo = '$idcurso'
+              ORDER BY gstCargo = 'COORDINADOR' desc";
 	$resultado = mysqli_query($conexion, $query);
             $curso = mysqli_fetch_assoc($resultado);
              $x = 0;
+             if($curso['gstCargo'] == 'COORDINADOR'){
+            $maestro = 'COORDINADOR'; 
+            }else{
+            $maestro = 'PARTICIPANTE';
+            }
               
 
 // $mail = new PHPMailer;
@@ -56,7 +62,7 @@ EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
             {
                 $mail->addAddress($address, 'Usuario');
             }
-            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']."</td></tr>";
+            $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>".$x.".-</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstNombr']." ".$curso['gstApell']." ".($maestro)."</td></tr>";
 
 		// $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
     }
