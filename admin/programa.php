@@ -343,6 +343,7 @@ $("#idcord").select2();
  //$('#partici').load('select/tablaoblig.php')
 }); 
 </script>
+<script src="../js/global.js"></script>
 <script src="../js/select2.js"></script> 
 
 <script>
@@ -373,5 +374,5 @@ var yyyy = today.getFullYear();
 
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("fechaf").setAttribute("min", today);
+
 </script>
-<script src="../js/global.js"></script>

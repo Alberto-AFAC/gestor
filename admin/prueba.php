@@ -719,14 +719,14 @@ function hazalgo() {
 </script>
 
 
-<?php
+<!-- <?php
 
-echo'<br>';
-echo'<br>';
-echo'<br>';
+//echo'<br>';
+//echo'<br>';
+//echo'<br>';
 
-$codigo = 'FO89';
-echo $codigos = substr($codigo, 2); 
+//$codigo = 'FO89';
+//echo $codigos = substr($codigo, 2); 
 
 
 ?>
@@ -734,4 +734,22 @@ echo $codigos = substr($codigo, 2);
 
 <a href="https://www.campusmvp.es/recursos/" title="Al blog de recursos de campusMVP">
   <img src="/recursos/image.axd?picture=/2017/4T/enlaces-imagenes-campusmvp.png" alt="Enlace con imagen usando el logo de campusMVP" />
-</a>
+</a> -->
+
+
+
+
+
+ <?php 
+
+$data = '123';
+
+ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";
+
+
+function detalle($data){
+
+  echo $data;
+
+}
+ ?>

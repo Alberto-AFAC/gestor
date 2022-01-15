@@ -71,7 +71,7 @@ $this->conexion->cerrar();
 }
     
 function acuseCurso($idinsp,$nCurse,$tCurse,$iCurse,$fCurse,$mCurse,$sCurse,$file,$conexion){
-    $sqls = "INSERT INTO cursos VALUES(0,'$idinsp','$nCurse',0,0,'$iCurse','$fCurse',0,'$sCurse','$mCurse','0','FINALIZADO',0,80,'CONFIRMADO','$file','X',0,0,0,2);";
+    $sqls = "INSERT INTO cursos VALUES(0,'$idinsp','$nCurse',0,0,'$iCurse','$fCurse',0,'$sCurse','$mCurse','0','FINALIZADO',0,80,'CONFIRMADO','$file','X',0,0,0,'0',2);";
      mysqli_query($conexion,$sqls);
 }
 
