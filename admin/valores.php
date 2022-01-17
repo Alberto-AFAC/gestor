@@ -656,9 +656,15 @@ $direc = mysqli_query($conexion,$sql);
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <H4><i class="fa   fa-suitcase"></i>
-                                    <label> FUNCIÓN DEL EMPLEADO </label>
+                                    <label> FUNCIÓN DEL EMPLEADO</label>
                                 </H4>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>ESPECIALIDAD</label>     
+                            <div id="especialidades"></div>    
                         </div>
                     </div>
                     <div class="form-group">
@@ -673,7 +679,6 @@ $direc = mysqli_query($conexion,$sql);
                                 <option value="INSTRUCTOR">INSTRUCTOR</option>
                             </select>
                         </div>
-                      
                         <div class="col-sm-6">
                             <label class="label2">UBICACIÓN CENTRAL</label> 
                             <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
@@ -764,23 +769,9 @@ $direc = mysqli_query($conexion,$sql);
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Cursos programados</h3>
+                                    <h3 class="box-title">CURSOS PROGRAMADOS</h3>
                                     <input id="fecomp1" style='display:none' type="text">
                                 </div>
-<!--                                 <div class="form-group">
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
-                                        <label for="finalizado">FINALIZADO</label><br>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="programados" name="cursinfoinsp" value="programados">
-                                        <label for="programados">PROGRAMADOS</label><br>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
-                                        <label for="cancelados">CANCELADOS</label><br>
-                                    </div>
-                                </div> -->
                                 <div class="box-body">
                                     <?php include('../html/gesCurso.html');?>
                                 </div>

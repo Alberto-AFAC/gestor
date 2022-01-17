@@ -94,10 +94,10 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
+            <li><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
             <li><a href="inspecion"><i class="fa ion-document-text"></i>Lista de inspectores</a></li>
             <li><a href="instructor"><i class="fa ion-document-text"></i>Coordinador/Instructor</a></li>
-            <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
-            <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
         </li>
 

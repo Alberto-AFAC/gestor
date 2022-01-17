@@ -1,10 +1,12 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-	
-	$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as fcursof FROM cursos
-			   INNER JOIN listacursos
-			   ON gstIdlsc = idmstr WHERE idinsp != idcoor and idinsp != idinst and cursos.estado='0'";
+	$query = "SELECT * FROM personal P, cursos C, listacursos L
+    WHERE P.gstIdper = C.idcoor
+    AND P.estado in ('2','0','3') 
+    AND C.estado = 0
+    AND C.idmstr= L.gstIdlsc 
+    GROUP BY C.codigo ORDER BY C.codigo ASC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -26,5 +28,3 @@
 		mysqli_close($conexion);
 
 ?>
-
-

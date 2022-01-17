@@ -2,9 +2,9 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as fcursof FROM cursos
-			   INNER JOIN listacursos
-			   ON gstIdlsc = idmstr WHERE idinsp != idcoor and idinsp != idinst and cursos.estado='0'";
+	$query = "SELECT * FROM personal 
+    INNER JOIN categorias on categorias.gstIdcat = personal.gstIDCat
+    WHERE personal.estado = 2 or personal.estado = 0 or personal.estado = 3 ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -26,5 +26,3 @@
 		mysqli_close($conexion);
 
 ?>
-
-

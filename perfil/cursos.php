@@ -824,6 +824,37 @@ var dataSet = [
         }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='CONFIRMAR'){
             ?>
                 ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span></td></tr>"
+                ], <?php 
+        }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='OTROS'){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
+                ], <?php 
+        }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='ENFERMEDAD'){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
+                ], <?php 
+        }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='TRABAJO'){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
+                ], <?php 
+        }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='TRABAJO'){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
+                ], <?php 
+        }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='ENFERMEDAD'){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
+                ], <?php 
+        }
+        if($res['proceso']=='FINALIZADO' && $res['confirmar']=='OTROS'){
+            ?>
+                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }

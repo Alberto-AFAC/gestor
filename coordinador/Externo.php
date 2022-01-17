@@ -51,12 +51,12 @@ include('header.php');
             <section class="content-header">
                 <h1>
                     <i class="fa  ion-android-person"></i>
-                    INSTRUCTORES EXTERNOS
+                    PERSONAL EXTERNO
                 </h1>
             </section>
             <?php
  
- $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0";
+ $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
  $categs = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
@@ -83,16 +83,16 @@ $psto = mysqli_query($conexion,$sql);
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" id="myNavTabs">
-                                <!-- <li class="active"><a href="#tablaExterno" data-toggle="tab">INSTRUCTORES</a> -->
+                                <!-- <li class="active"><a href="#tablaExterno" data-toggle="tab">LISTA PERSONAL</a> -->
                                 <!-- <li><a href="#altaExterno" data-toggle="tab">ALTA</a> -->
                             </ul>
-                            <!-- /.col -->
+                            <!-- /.col --><br><br>
                             <div class="tab-content">
-                                <!-- <div class="tab-pane" id="tablaExterno"> <br>
+                                <div class="tab-pane" id="tablaExterno"> <br>
                                     <table style="width: 100%;" id="data-table-instructoresExt"
                                         class="table table-striped table-hover"></table>
-                                </div> -->
-                                <br><br>
+                                </div>
+
                                 <div class="tab-pane fade in active" id="altaExterno">
                                     <!-- Post -->
                                     <div class="post">
@@ -109,50 +109,106 @@ $psto = mysqli_query($conexion,$sql);
                                                         class="form-control inputalta " id="gstApell" name="gstApell">
                                                 </div>
                                                 <div class="destino col-sm-4">
-                                                    <label class="label2">*TIPO DE INSTRUCTOR</label>
-                                                    <select type="text" class="form-control inputalta" id="gstLunac" name="gstLunac">
+                                                    <label class="label2">*TIPO DE PERSONA</label>
+                                                    <select type="text" class="form-control inputalta" id="gstLunac"
+                                                        name="gstLunac">
                                                         <option value="0" selected>ELEGIR UNA OPCIÓN</option>
                                                         <option value="NACIONAL">NACIONAL</option>
                                                         <option value="INTERNACIONAL">INTERNACIONAL</option>
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="form-group">
+                                                <div class="curp col-sm-4">
+                                                    <label class="label2">CURP</label>
+                                                    <input type="text" onkeyup="mayus(this);"
+                                                        class="form-control inputalta " id="gstCurp" name="gstCurp">
+                                                </div>
                                             
-                                                    <div class="curp col-sm-4">
-                                                        <label class="label2">CURP</label>
-                                                        <input type="text" onkeyup="mayus(this);"
-                                                            class="form-control inputalta " id="gstCurp" name="gstCurp">
-                                                    </div>
+                                                <div class="rfc col-sm-4">
+                                                    <label class="label2">RFC</label>
+                                                    <input onkeyup="mayus(this);" type="text"
+                                                        class="form-control inputalta" id="gstRfc" name="gstRfc">
+                                                </div>
 
-                                                    <div class="rfc col-sm-4">
-                                                        <label class="label2">RFC</label>
-                                                        <input onkeyup="mayus(this);" type="text"
-                                                            class="form-control inputalta" id="gstRfc" name="gstRfc">
-                                                    </div>
-                                               
 
+                                                <div class="rfc col-sm-4">
+                                                    <label class="label2">ESTADO</label>
+                                                    <select type="text" class="form-control inputalta" id="gstStado" name="gstStado">
+                                                         <option value="">SELECCIONA EL ESTADO</option>
+                                                         <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+                                                         <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+                                                         <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+                                                         <option value="CAMPECHE">CAMPECHE</option>
+                                                         <option value="COAHUILA">COAHUILA</option>
+                                                         <option value="COLIMA">COLIMA</option>
+                                                         <option value="CHIAPAS">CHIAPAS</option>
+                                                         <option value="CHIHUAHUA">CHIHUAHUA</option>
+                                                         <option value="DISTRITO FEDERAL">CUIDAD DE MÉXICO</option>
+                                                         <option value="DURANGO">DURANGO</option>
+                                                         <option value="GUANAJUATO">GUANAJUATO</option>
+                                                         <option value="GUERRERO">GUERRERO</option>
+                                                         <option value="HIDALGO">HIDALGO</option>
+                                                         <option value="JALISCO">JALISCO</option>
+                                                         <option value="MÉXICO">MÉXICO</option>
+                                                         <option value="MICHOACÁN">MICHOACÁN</option>
+                                                         <option value="MORELOS">MORELOS</option>
+                                                         <option value="NAYARIT">NAYARIT</option>
+                                                         <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+                                                         <option value="OAXACA">OAXACA</option>
+                                                         <option value="PUEBLA">PUEBLA</option>
+                                                         <option value="QUERÉTARO">QUERÉTARO</option>
+                                                         <option value="QUINTANA ROO">QUINTANA ROO</option>
+                                                         <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+                                                         <option value="SINALOA">SINALOA</option>
+                                                         <option value="SONORA">SONORA</option>
+                                                         <option value="TABASCO">TABASCO</option>
+                                                         <option value="TAMAULIPAS">TAMAULIPAS</option>
+                                                         <option value="TLAXCALA">TLAXCALA</option>
+                                                         <option value="VERACRUZ">VERACRUZ</option>
+                                                         <option value="YUCATÁN">YUCATÁN</option>
+                                                         <option value="ZACATECAS">ZACATECAS</option>
+                                                         <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
+                                                         <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group"> 
                                                 <div class="col-sm-4">
-                                                    <label class="label2">SEXO</label>
+                                                    <label class="label2">*SEXO</label>
                                                     <select type="text" class="form-control inputalta" id="gstSexo"
                                                         name="gstSexo">
                                                         <option value="">ELEGIR SEXO</option>
                                                         <option value="MUJER">MUJER</option>
                                                         <option value="HOMBRE">HOMBRE</option>
                                                     </select>
+                                                </div>                                               
+                                                <div class="col-sm-4">
+                                                    <label class="label2">ORGANIZACIÓN (INSTITUCIÓN)</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="sgtCrhnt" name="sgtCrhnt">
                                                 </div>
+                                                <div class="col-sm-4">
+                                                    <label class="label2">ÁERA DE ADSCRIPCIÓN</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstRusp" name="gstRusp">
+                                                </div>  
                                             </div>
+
                                             <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label class="label2">NOMBRE DE PROVEEDOR / INSTRUCTOR</label>
-                                            <input type="text" onkeyup="mayus(this);" class="form-control inputalta "
-                                                id="gstNucrt" name="gstNucrt">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="hidden"
-                                                id="gstIDCat" name="gstIDCat" value="33">
-                                        </div>
-                                    </div>
+                                                <div class="col-md-6">
+                                                    <label>*ESPECIALIDAD</label>
+                                                    <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                                                        style="width: 100%;color: #000" class="form-control select2"
+                                                        type="text" class="form-control" id="gstIDCat" name="gstIDCat">
+                                                        <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
+                                                        <?php while($cat = mysqli_fetch_row($categs)):?>
+                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
+                                                            <?php echo $cat[2]?></option>
+                                                        <?php endwhile; ?>
+                                                    </select>
+                                                </div>                                                
+                                            </div>
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -165,7 +221,7 @@ $psto = mysqli_query($conexion,$sql);
 
                                             <div class="form-group">
                                                 <div class="col-sm-4">
-                                                    <label class="label2">*CASA</label>
+                                                    <label class="label2">CASA</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-phone"></i>
@@ -305,37 +361,38 @@ $psto = mysqli_query($conexion,$sql);
 
                         <script src="../../js/valida.js"></script>
                         <script>
-                        // $(document).ready(function() {
-                        //     $('#gstIDCat').select2();
+                        $(document).ready(function() {
+                            $('#gstIDCat').select2();
 
-                        // });
+                        });
 
 
 
                         function addPerson() {
 
-                            var gstNombr = $("#gstNombr").val();
-                            var gstApell = $("#gstApell").val();
-                            var gstLunac = $("#gstLunac").val();
-                            var gstCurp = $("#gstCurp").val();
-                            var gstRfc = $("#gstRfc").val();
-                            var gstSexo = $("#gstSexo").val();
-                            var gstNucrt = $("#gstNucrt").val();
-                            var gstIDCat = $("#gstIDCat").val();
-                            var gstCasa = $("#gstCasa").val();
-                            var gstClulr = $("#gstClulr").val();
-                            var gstCorro = $("#gstCorro").val();
-                            var gstSpcID = $("#gstSpcID").val();
+                            var gstNombr = $("#gstNombr").val(); //NOMBRE
+                            var gstApell = $("#gstApell").val(); //APELLIDO
+                            var gstLunac = $("#gstLunac").val(); //TIPO DE PERSONA
+                            var gstCurp = $("#gstCurp").val(); //CURP
+                            var gstRfc = $("#gstRfc").val(); //RFC
+                            var gstSexo = $("#gstSexo").val(); //SEXO
+                            var gstIDCat = $("#gstIDCat").val(); //ESPECIALIDAD
+                            var gstCasa = $("#gstCasa").val(); //TEL CASA
+                            var gstClulr = $("#gstClulr").val(); //TEL CELULAR
+                            var gstCorro = $("#gstCorro").val(); //CORREO PERSONAL
+                            var gstSpcID = $("#gstSpcID").val(); //CORREO ALTERNATIVO
+                            var gstStado = $("#gstStado").val(); //ESTADO
+                            var sgtCrhnt = $("#sgtCrhnt").val(); //ORGANIZACIÓN
+                            var gstRusp = $("#gstRusp").val(); //ÁREA DE ADSCRIPCIÓN
 
-                            alert(gstIDCat);
+                            // alert(gstNombr);
                             // alert(gstApell);
                             // alert(gstCurp);
                             // alert(gstRfc);
                             // alert(gstSexo);
                             // alert(gstIDCat);
                             swal.showLoading();
-                            if (gstNombr == '' || gstApell == '' || gstSexo == '' ||
-                                gstCorro == '') {
+                            if (gstNombr == '' || gstApell == '' || gstSexo == '' || gstIDCat == '' || gstCorro == ''| gstLunac == '0') {
                                 Swal.fire({
                                     type: 'warning',
                                     text: 'Llene campos obligatorios* !',
@@ -346,24 +403,26 @@ $psto = mysqli_query($conexion,$sql);
                             } else {
                                 $.ajax({
                                     type: "POST",
-                                    url: "../php/insPerExt.php",
+                                    url: "../php/insertarPersonal.php",
                                     data: {
                                         gstNombr: gstNombr,
                                         gstApell: gstApell,
-                                        gstLunac: gstLunac,
+                                        gstLunac:gstLunac,
                                         gstCurp: gstCurp,
                                         gstRfc: gstRfc,
                                         gstSexo: gstSexo,
-                                        gstNucrt:gstNucrt,
                                         gstIDCat: gstIDCat,
                                         gstCasa: gstCasa,
                                         gstClulr: gstClulr,
                                         gstCorro: gstCorro,
-                                        gstSpcID: gstSpcID
+                                        gstSpcID: gstSpcID,
+                                        gstStado: gstStado,
+                                        sgtCrhnt: sgtCrhnt,
+                                        gstRusp: gstRusp
                                     },
                                     success: function(data) {
                                         // document.getElementById("personal-ext").reset();
-                                        setTimeout("location.href = 'personalExt';", 2000);
+                                        setTimeout("location.href = 'Externo';", 2000);
                                         Swal.fire({
                                             type: 'success',
                                             text: 'SE HA REGISTRADO EXITOSAMENTE',
@@ -384,41 +443,45 @@ $psto = mysqli_query($conexion,$sql);
                         var dataSet = [
                             <?php 
                                 $query = "SELECT
-                                personal.gstNombr,
-                                personal.gstApell,
-                                personal.gstCorro,
-                                personal.estado 
-                            FROM
-                                personal
-                                
-                            WHERE
-                                personal.estado = 2";
-                                        $resultado = mysqli_query($conexion, $query);
-                                        $x = 0;
+                                            personal.gstNombr,
+                                            personal.gstApell,
+                                            personal.gstCorro,
+                                            personal.gstSpcID,
+                                            categorias.gstCatgr,
+                                            personal.estado 
+                                        FROM
+                                            personal 
+                                        INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
+                                        WHERE
+                                            personal.estado = 3";
+                                            $resultado = mysqli_query($conexion, $query);
+                                            $x = 0;
 
-                                        while($data = mysqli_fetch_array($resultado)){ 
-                                            if($data['gstCorro'] == ""){
-                                                $correo = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO PERSONAL</span>";
-                                            }else if($data['gstCorro'] == "0"){
-                                                $correo = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO PERSONAL</span>";
-                                            }else{
-                                                $correo = $data['gstCorro'];
-                                            }
-        
-                                            if($data['gstSpcID'] == ""){
-                                                $correoAlt = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO ALTERNATIVO</span>";
-                                            }else if($data['gstSpcID'] == "0"){
-                                                $correoAlt = "<span class='badge' style='font-size: 10px; background-color: orange'>SIN CORREO ALTERNATIVO</span>";
-                                            }else{
-                                                $correoAlt = $data['gstSpcID'];
-                                            }
-                                        $x++;
+                                while($data = mysqli_fetch_array($resultado)){ 
+                                    if($data['gstCorro'] == ""){
+                                        $correo = "<span class='badge' style='background-color: orange'>SIN CORREO PERSONAL</span>";
+                                    }else if($data['gstCorro'] == "0"){
+                                        $correo = "<span class='badge' style='background-color: orange'>SIN CORREO PERSONAL</span>";
+                                    }else{
+                                        $correo = $data['gstCorro'];
+                                    }
+
+                                    if($data['gstSpcID'] == ""){
+                                        $correoAlt = "<span class='badge' style='background-color: orange'>SIN CORREO ALTERNATIVO</span>";
+                                    }else if($data['gstSpcID'] == "0"){
+                                        $correoAlt = "<span class='badge' style='background-color: orange'>SIN CORREO ALTERNATIVO</span>";
+                                    }else{
+                                        $correoAlt = $data['gstSpcID'];
+                                    }
+                                    
+                                $x++;
 ?>
 
                             //console.log('<?php //echo $gstIdper ?>');
 
                             ["<?php echo $x ?>", "<?php echo  $data['gstNombr'];?>",
-                                "<?php echo $data['gstApell']?>", "<?php echo $correo ?><p><?php echo $correoAlt ?>"
+                                "<?php echo $data['gstApell']?>", "<?php echo $data['gstCatgr']?>",
+                                "<?php echo $correo ?><p><?php echo $correoAlt ?>"
 
 
                             ],
@@ -448,11 +511,13 @@ $psto = mysqli_query($conexion,$sql);
                                     title: "APELLIDO(S)"
                                 },
                                 {
+                                    title: "ESPECIALIDAD"
+                                },
+                                {
                                     title: "CORREO"
                                 }
                             ],
                         });
-
 
                         if ($('#gstLunac').val() == 0) {
                             $(".curp").css("display", "none");
@@ -462,7 +527,7 @@ $psto = mysqli_query($conexion,$sql);
                         $('#gstLunac').change(function() {
                             var gstCurp = document.getElementById('gstCurp');
                             var gstRfc = document.getElementById('gstRfc');
-
+                            var gstStado = document.getElementById('gstStado');
                                     if ($('#gstLunac').val() == 0) {
                                         $(".curp").css("display", "none");
                                         $(".rfc").css("display", "none");
@@ -477,6 +542,7 @@ $psto = mysqli_query($conexion,$sql);
                                         $(".rfc").css("display", "none");
                                         gstCurp.value = 0;
                                         gstRfc.value = 0;
+                                        gstStado.value = "EN OTRO PAÍS";
                                     };
                                 });
                         </script>

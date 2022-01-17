@@ -710,7 +710,7 @@ function perfil(gstIdper) {
                     insp = 0;
 
 
-                    //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE PERSONAL
+                    //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE PERSONAL 11012022
                     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
                     //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CHECK LIST DOCUMENTACIÓN
                     $(document).ready(function() {
@@ -790,12 +790,12 @@ function perfil(gstIdper) {
                             //console.log(status);
                         }
                         if (obj.data[ii].gstTipo == "INDUCCIÓN") { //UNICA VEZ EN ESTATUS "INDUCCIÓN"
-                            status = "<span style='background-color:green; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                             //console.log(status);
                         }
 
                         if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
-                            status = "<span style='background-color:green; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                             //console.log(status);
                         }
                         if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
@@ -2383,9 +2383,15 @@ function consultaCurso(gst) {
 if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'EN CURSO') {
     html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td><span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span></td> </tr>";
 } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'PENDIENTE') {
-    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"  + obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"  + obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span></td> </tr>";
 } else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'FINALIZADO') {
     html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span></td> </tr>";
+}else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'REPROBO') {
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
+}else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'DECLINO') {
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
+}else if (obj.data[o].gstIDper == gstIdper && obj.data[o].proceso == 'PENDIENTE1') {
+    html += "<tr><td>" + x + "</td><td>" + obj.data[o].gstTitlo + "</td><td>" + obj.data[o].gstTipo + "</td><td>"+ obj.data[o].gstCsigl + "</td><td>" + obj.data[o].gstDrcin + "</td><td> <span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td> </tr>";
 }
 
 //CODIGO ORIGINAL ANGEL 
