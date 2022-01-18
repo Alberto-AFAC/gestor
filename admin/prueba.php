@@ -742,14 +742,39 @@ function hazalgo() {
 
  <?php 
 
-$data = '123';
+// $data = '123';
 
- echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";
+//  echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";
 
 
-function detalle($data){
+// function detalle($data){
 
-  echo $data;
+//   echo $data;
+
+// }
+$idv = '67,99,55,456,987,99';
+$valorv = explode(",", $idv); 
+
+$idv2 = '456,987,99';
+$valorv2 = explode(",", $idv2); 
+
+foreach ($valorv as $compara) {
+
+foreach ($valorv2 as $compara2) {
+
+  if($compara==$compara2){
+    echo "<br>";
+    echo $compara;
+
+  }else{
+        echo "<br>";
+    echo "no trae";
+  }
 
 }
+
+}
+
  ?>
+
+

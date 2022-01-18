@@ -104,28 +104,28 @@
 
 
 
-    // $query3 = "
-    // SELECT SUM(sumidmstr) AS obligatorio FROM 
-    // (SELECT idmstr AS sumidmstr 
-    // FROM cursos WHERE idmstr = 1 AND idinsp = $gstIdper 
-    // UNION 
-    // SELECT idmstr AS sumidmstr 
-    // FROM cursos WHERE idmstr = 2 AND idinsp = $gstIdper 
-    // UNION 
-    // SELECT idmstr AS sumidmstr 
-    // FROM cursos WHERE idmstr = 155 AND idinsp = $gstIdper) X";
-    // $result = mysqli_query($conexion, $query3); 
-    // if($reslt = mysqli_fetch_array($result)){
-    // //       $categoria = $res['spcialidds'];
-    // if($reslt['obligatorio']==158){ 
-    // $obligatorio = 'SÍ CUMPLE'; 
-    // }else{
-    // $obligatorio = 'NO CUMPLE';   
-    // }
+    $query3 = "
+    SELECT SUM(sumidmstr) AS obligatorio FROM 
+    (SELECT idmstr AS sumidmstr 
+    FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 1 AND idinsp = $gstIdper 
+    UNION 
+    SELECT idmstr AS sumidmstr 
+    FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 2 AND idinsp = $gstIdper 
+    UNION 
+    SELECT idmstr AS sumidmstr 
+    FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 155 AND idinsp = $gstIdper) X";
+    $result = mysqli_query($conexion, $query3); 
+    if($reslt = mysqli_fetch_array($result)){
+    //       $categoria = $res['spcialidds'];
+    if($reslt['obligatorio']==158){ 
+    $obligatorio = 'CUMPLE'; 
+    }else{
+    $obligatorio = 'NO CUMPLE';   
+    }
 
-    // }else{
-    // $obligatorio = 'NO CUMPLE';   
-    // }
+    }else{
+    $obligatorio = 'NO CUMPLE';   
+    }
 
         $fechaActual = date_create(date('Y-m-d')); 
         $FechaIngreso = date_create($per[7]); 
@@ -225,20 +225,18 @@ $estancia = '<td style="font-weight: bold; height: 50px; color: #3C8DBC;">Person
 }else{
 $estancia = '<td style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</td>';
 }
-
+if($obligatorio=='CUMPLE'){
     ?>
-
         <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
         <td><?php echo $nombre ?></td>
         <td><?php echo $apellidos ?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $categoria?></td>
         <?php echo $estancia ?>
-        <td style="color: #333; background-color: #F4F4F4;"><?php echo $obligatorio.'POR REALIZAR'?></td></tr>
+        <td style="color: #333; background-color: #F4F4F4;"><?php echo 'POR REALIZAR'?></td></tr>
         <?php 
-
+    }
 }
-
 ?>        
                 <?php 
             

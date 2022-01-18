@@ -40,6 +40,9 @@ $n = 0;
 $var= 0;
 $enc = 0;
 
+//se resta los instructores 
+$resta = $val - $ttal; 
+	
  foreach ($valor as $idinsps) {
 
 if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
@@ -60,7 +63,15 @@ if($val==$var){
 foreach ($valor as $idinsps) {
 	$n++;
 $varY = 'HAY';
-if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
+
+//incrmento sea menor que el total de parcipantes
+	if($n < $resta){
+		$part = 'SI';
+	}else{
+		$part = '';	
+	}
+
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion))
 		{ 
 				if($n==$ttal){
 				$Instruc = explode(",", $idInstr);
@@ -247,12 +258,12 @@ $query = "SELECT COUNT(*) as prtcpnts FROM cursos WHERE cursos.estado = 0 OR cur
 	 return $n;
 }
 
-function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion){
+function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion){
 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom','SI',0);";
+$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom','$part',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;

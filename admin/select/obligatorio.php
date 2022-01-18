@@ -9,13 +9,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" style="background-color: green; pointer-events: none; color: white;"
-                            class="btn btn-default">VIGENTE</button>
-                        <button type="button" style="background-color: orange; pointer-events: none; color: white;"
-                            class="btn btn-default">POR VENCER</button>
-                        <button type="button" style="background-color: red; pointer-events: none; color: white;"
-                            class="btn btn-default">VENCIDO</button>
 
+                            <button type="button" style="background-color: gray; pointer-events: none; color: white;"
+                            class="btn btn-default"># DECLINÓ</button>
+                            <button type="button" style="background-color: black; pointer-events: none; color: white;"
+                            class="btn btn-default">* REPROBÓ</button>
                     </div>
                     <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                     <br><br>
@@ -29,8 +27,8 @@
 <!-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
 </button>  -->                 <input type="checkbox" name="selectall" id="selectall">
                                     </th>
-                                    <th><i></i> APELLIDOS</th>
                                     <th><i></i> NOMBRE(S)</th>
+                                    <th><i></i> APELLIDOS</th>
                                     <th><i></i> CORREO</th>
                                     <th><i></i> ESPECIALIDAD</th>
                                     <th><i></i> DETALLE</th>
@@ -43,7 +41,7 @@
 
 
         foreach ($valor as $id) {
-
+      
             //echo $idcurso;
         $sql = "SELECT 
         personal.gstIdper,
@@ -103,16 +101,16 @@
         }else{
         $categoria = $per[9];
         }
+
         $fechaActual = date_create(date('Y-m-d')); 
         $FechaIngreso = date_create($per[7]); 
         $interval = date_diff($FechaIngreso, $fechaActual,false);  
         $antiguedad = intval($interval->format('%R%a'));
-   
     ?>
-    <tr>
+    
 <?php
 
-$sql = "
+$sql1 = "
 SELECT 
 DATE_FORMAT(fechaf, '%d-%m-%Y') AS fechaf,
 idinsp,
@@ -123,27 +121,15 @@ confirmar
 FROM cursos 
 WHERE idmstr = $idcurso AND idinsp = $per[0] AND prtcpnt = 'SI'
 ORDER BY fcurso DESC LIMIT 1";
-$fechas = mysqli_query($conexion,$sql);
+$fechas = mysqli_query($conexion,$sql1);
 
-$idpar = $per[0];
 $nombre = $per[1];
+// echo '<br>';
 $apellidos = $per[2];
+$idpar = $per[0];
 
 
-if($fecs = mysqli_fetch_row($fechas)){
-
-// $query2 = "SELECT *
-// FROM cursos 
-// WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
-// $resultado = mysqli_query($conexion, $query2);
-// if($curs = mysqli_fetch_row($resultado)){ 
-
-// $cursor = "<td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>";
-
-// }else{
-// $cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</td>";
-// }
-
+if($fecs = mysqli_fetch_row($fechas)){  
 
 $fechav = date("d-m-Y",strtotime($fecs[0]."+ ".$f." year"));     
 
@@ -154,81 +140,76 @@ $actual= date("d-m-Y");
 $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
+
+
 if($fecha==101){  
-if($fecs[3] >= 80 AND $fecs[5] == 'CONFIRMADO' || $fecs[3] == 'NULL' AND $fecs[5] == 'CONFIRMADO'){ //$fech = 'vigente'; ?>
 
-    <td style="width: 5%;"><input disabled="" type='checkbox' 
-    value='<?php echo $idpar ?>' /></td>
-    <td><?php echo $nombre?></td>
-    <td><?php echo $apellidos?></td>
-    <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-    <td><?php echo $categoria?></td>
-    <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
-    <?php if($fecs[2]=='PENDIENTE' && $fecs[3] == 'NULL'){?>
-   <td style='color: white; background-color: blue;'><?php echo 'EN CURSO' ?></td>
- <?php }else if($fecs[2]=='FINALIZADO' && $fecs[3] == 'NULL'){ ?>
-     <td style='color: white; background-color: blue;'><?php echo 'POR EVALUAR' ?></td>
-<?php }else if($fecs[3] >= 80){ ?>
-    <td style='color: white; background-color: #398439;'><?php echo 'REALIZADO'; ?></td>
-<?php } ?>
+if($fecs[3] >= 80){ //$fech = 'vigente'; ?>
 
-<?php 
-    }
-}else if($f3 <= $f2 && $fecs[3] == 'NULL'){ ?>
+<?php }
 
-        <td style="width: 5%;"><input disabled="" type='checkbox' 
-        value='<?php echo $idpar ?>' /></td>
-        <td><?php echo $nombre?></td>
-        <td><?php echo $apellidos?></td>
+if($fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO' && $fecs[5] == 'CONFIRMADO'){ 
+    ?>
+
+        <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'></td>
+        <td><?php echo $nombre ?></td>
+        <td><?php echo $apellidos ?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $categoria?></td>
-        <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
-        <?php if($fecs[2]=='PENDIENTE'){ ?>
-
-        <td style='color: white; background-color: blue;'><?php echo 'EN CURSO' ?></td>
-
-      <?php }else{ ?>
-        <td style='color: white; background-color: blue;'><?php echo 'POR EVALUAR' ?></td>
-      <?php  } ?>
-
-<?php }else if($f3>=$f1){ //$fech = 'vencido'; ?>
-        <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $idpar ?>' class="idinsp" /></td>
-        <td><?php echo $nombre?></td>
-        <td><?php echo $apellidos?></td>
+        <td style="font-weight: bold; height: 50px; color: #3C8DBC;"><?php echo 'Personal antiguo'?></td>
+        <td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p><?php echo 'POR REALIZAR'?></td>
+<?php  
+}else if($fecs[3] == 'NULL' && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO' && $fecs[5] != 'CONFIRMADO')
+{
+?>
+  <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'></td>
+        <td><?php echo $nombre ?></td>
+        <td><?php echo $apellidos ?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $categoria?></td>
-        <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
-        <td style='color: white; background-color:red;'><?php echo 'REPROGRAMAR' ?></td>
-        <?php 
+        <td style="font-weight: bold; height: 50px; color: #3C8DBC;"><?php echo 'Personal antiguo'?></td>
+        <td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>#</p><?php echo 'POR REALIZAR'?></td>
 
-}else if($f3 <= $f2 && $fecs[3] >= 80 ){ //$fech = 'vigente'; ?>
-        <td style="width: 5%;"><input disabled="" type='checkbox' 
-        value='<?php echo $idpar ?>' /></td>
-        <td><?php echo $nombre?></td>
-        <td><?php echo $apellidos?></td>
-        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-        <td><?php echo $categoria?></td>
-        <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
-        <td style='color: white; background-color: #398439;'><?php echo $fechav; ?></td>
-        
-<?php }else if($f3 >= $f2){   //$fech = 'por vencer';   ?>
+<?php }
 
+}else if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
+
+if($fecs[5] == 'CONFIRMADO'){
+   $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p>POR REALIZAR</td>";
+}else{
+  $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>#</p>POR REALIZAR</td>";  
+}
+
+    ?>
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
         <td><?php echo $nombre?></td>
         <td><?php echo $apellidos?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $categoria?></td>
         <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
-        <td style='color: white; background-color: #D58512;'><?php echo 'REPROGRAMAR'; ?></td>        
-<?php 
-     }  
- }
+        <?php 
+        echo $conf;
+}
+
+ }else{ 
+
+    ?>
+        <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
+        <td><?php echo $nombre ?></td>
+        <td><?php echo $apellidos ?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
+        <td style="font-weight: bold; height: 50px; color: green;"><?php echo 'Nuevo ingreso' ?></td>
+        <td style="color: #333; background-color: #F4F4F4;"><?php echo 'POR REALIZAR'?></td></tr>
+        <?php 
+    
+}
 ?>        
-</tr>
-<?php 
+                <?php 
             
         }
-    }  
+    
+}   
 ?>
 
                             </tbody>

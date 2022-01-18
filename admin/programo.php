@@ -109,9 +109,8 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-12">
-<label class="label2">SELECCIONE CURSO / <a href="programo">OBLIGATORIOS</a></label>
-<div id="selcurso"></div>
-                           
+<label class="label2">SELECCIONE CURSO / <a href="programa">TODOS LOS CURSOS</a></label>
+<div id="seloblig"></div>                            
 </div>
 </div>
 <!-- <div id="partici"></div>  -->
@@ -232,7 +231,7 @@ include('header.php');
 </div>                     
 </div>  
 
-<div id="tabcurso"></div>
+<div id="taboblig"></div>
 
 <br>
 
@@ -338,8 +337,8 @@ $(document).ready(function(){
 //$('#id_mstr').select2();
 $('#idinst').select2();
 $("#idcord").select2();
- $('#selcurso').load('select/buscateg.php');
- $('#tabcurso').load('select/tablacateg.php');
+ $('#seloblig').load('select/busoblig.php');
+ $('#taboblig').load('select/tablaobligatorio.php');
  //$('#partici').load('select/tablaoblig.php')
 }); 
 </script>

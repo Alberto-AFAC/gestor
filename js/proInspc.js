@@ -79,7 +79,7 @@ function proCurso() {
 
     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
 
-    //alert(datos);
+    alert(datos);
 
     if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
@@ -534,3 +534,4 @@ function modalidades() {
         $("#dismod").show();
     }
 }
+
