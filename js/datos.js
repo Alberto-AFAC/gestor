@@ -3238,15 +3238,15 @@ function departamento1() {
 
 function asignar() {
 
-    var gstIdper = document.getElementById('gstIdper').value;
-    var AgstCargo = document.getElementById('AgstCargo').value;
-    var AgstIDCat = document.getElementById('AgstIDCat').value;
+    var gstIdper = document.getElementById('gstIdper').value;//ID DE LA PERSONAL
+    var AgstCargo = document.getElementById('AgstCargo').value;//CARGO
+    var AgstIDCat = document.getElementById('AgstIDCat').value;//
     var AgstIDSub = document.getElementById('depart').value;
     var AgstIDuni = document.getElementById('gstIDuniAct').value;
     var AgstAcReg = document.getElementById('subdireccion1').value; //subdirección
     var AgstNucrt = document.getElementById('AgstNucrt').value;
     var gstNombr = document.getElementById('gstNombr').value;
-    var gstNmpld = document.getElementById('gstANmpld').value;
+    var gstNmpld = document.getElementById('gstANmpld').value;//NUMERO DE EMPLEADO
     var gstComnd  = document.getElementById('AgstAcReg').value;
 
 

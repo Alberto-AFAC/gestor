@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+    <script src="dist/js/sweetalert2.all.min.js"></script>
+  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <style>
 	.swal-wide {
@@ -87,8 +89,7 @@ include('header.php');
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">ACTUALIZAR
-                                CREDENCIALES DE ACCESO</h5>
+                            <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">ACTUALIZAR CREDENCIALES DE ACCESO</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -232,7 +233,7 @@ $acceso = $data['id_accesos']
 
     //console.log('<?php //echo $gstIdper ?>');
 
-    ["<?php echo $data[1]?>", "<?php echo $data[8]." ".$data[9]?>", "<?php echo $data[3]?>",
+    ["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[3]?>",
         "<?php echo $data[2]?>", "<?php echo base64_encode($data[3])?>",
         "<?php echo $data[4]?>",
         "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
@@ -280,7 +281,6 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
 
 // FUNCTION PARA EDITAR
 function datos_editar(acceso) {
-    // alert(acceso);
 
     $("#Editar").slideDown("slow");
     $("#cuadro1").hide("slow");
@@ -295,8 +295,7 @@ function datos_editar(acceso) {
                 var
                     id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
                     id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
-                    privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i]
-                        .gstApell),
+                    privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell),
                     mEmpleado = $("#editarAccesos #nEmpleado").val(obj.data[i].gstNmpld),
                     password = $("#editarAccesos #password").val(obj.data[i].password),
                     usuario = $("#editarAccesos #usuario").val(obj.data[i].usuario),
@@ -309,17 +308,14 @@ function datos_editar(acceso) {
 
 function modificar() {
     var frm = $("#Editar").serialize();
-    
-    
-    $.ajax({
-       url: "../php/accesos-update.php",
-        type: 'POST',
-        data: frm + "&opcion=modificar"
-    }).done(function(respuesta) {
-        if (respuesta == 0) {
-            Swal.fire({
+        $.ajax({
+            url: "../php/accesos-update.php",
+            type: 'POST',
+            data: frm + "&opcion=modificar"
+        }).done(function(respuesta) {
+            if (respuesta == 0) {
+                Swal.fire({
                 type: 'success',
-                // title: 'ÉXITO',
                 text: 'CREDENCIALES ACTUALIZADAS CORRECTAMENTE',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
@@ -328,10 +324,9 @@ function modificar() {
                     rgba(100, 100, 100, 0.4)
                 `
             });
-            setTimeout("location.href = 'accesos';", 2000);
-        }
-     
-    });
+                setTimeout("location.href = 'accesos';", 2000);
+            }
+        });
 }
 
 

@@ -20,8 +20,11 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
     <!-- Morris chart -->
     <link rel="stylesheet" href="../bower_components/morris.js/morris.css">
+    <script src="dist/js/sweetalert2.all.min.js"></script>
+  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
     <!-- jvectormap -->
     <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
     <!-- Date Picker -->

@@ -22,7 +22,7 @@
 
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-  
+<link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
     <?php include('../perfil/notificar.php');?>
 
   <!-- Left side column. contains the logo and sidebar -->
@@ -106,3 +106,8 @@
     </section>
     <!-- /.sidebar -->
   </aside>
+  <?php
+
+include('../perfil/actualizar.php');
+
+?>
