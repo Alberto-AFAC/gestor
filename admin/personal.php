@@ -28,6 +28,7 @@ unset($_SESSION['consulta']);
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -607,5 +608,29 @@ $('#gstIDara1').load('select/tabladirec.php');
 // $('#siglas').load('select/siglas.php');
 });
 
+
+var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
+    //alert(idpersona1);
+    $.ajax({
+            url: '../php/accesos-list.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+
+            //AQUI03
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+            var n = 0;
+            for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
+                //alert(obj.data[H].id_usu);
+                if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0' ) {
+                    $('#modal-obligatorio').modal('show'); 
+                    $("#usuarioobl").val(obj.data[H].gstNombr +" "+obj.data[H].gstApell  );
+                }else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1' ) {
+                    $('#modal-obligatorio').modal('hide');  
+                }
+
+        }
+    })
 </script>
 <script src="../js/select2.js"></script>

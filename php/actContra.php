@@ -48,7 +48,7 @@ if($opcion === 'actCont'){
 		function modificar($password, $pass, $usuario, $idper,$conexion){
 		$passwor = $password;
 		$pas = $pass;
-		$query = "UPDATE accesos SET password='$pas' WHERE password='$passwor' and 	id_usu = '$idper'";
+		$query = "UPDATE accesos SET password='$pas', cambio='1' WHERE password='$passwor' and 	id_usu = '$idper'";
 		if (mysqli_query($conexion,$query)) {
 		return true;
 		}else

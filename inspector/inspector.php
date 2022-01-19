@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
 <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
+<link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"
 integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg=="
 crossorigin="anonymous"></script>
@@ -473,7 +474,34 @@ immediately after the control sidebar -->
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 <script src="../js/lisCurso.js"></script>
+<script>
+   // alert("eded")
+   var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
+    //alert(idpersona1);
+    $.ajax({
+            url: '../php/accesos-list.php',
+            type: 'POST'
+        }).done(function(resp) {    
+            obj = JSON.parse(resp);
+            var res = obj.data;
 
+            //AQUI03
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+            var n = 0;
+            for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
+                //alert(obj.data[H].id_usu);
+                if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0' ) {
+                    $('#modal-obligatorio').modal('show'); 
+                    $("#usuarioobl").val(obj.data[H].gstNombr +" "+obj.data[H].gstApell  );
+                }else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1' ) {
+                    $('#modal-obligatorio').modal('hide');  
+                }
+
+        }
+    })
+    //FIN DE ACTUALIZACION
+    
+</script>
 
 </body>
 

@@ -172,7 +172,7 @@ function accesos($gstIdper,$gstNombr,$gstNmpld,$AgstCargo,$conexion){
 $query="SELECT * FROM accesos WHERE password='$gstNmpld' AND usuario='$gstNombr' AND baja = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
-			$query="INSERT INTO accesos VALUES(0,'$gstIdper','$gstNombr','$gstNmpld','$AgstCargo',0,0);";
+			$query="INSERT INTO accesos VALUES(0,'$gstIdper','$gstNombr','$gstNmpld','$AgstCargo',0,0,0);";
 				if(mysqli_query($conexion,$query)){
 
 					return true;

@@ -553,7 +553,7 @@ $('.toggle-password').click(function() {
 
 
 function actContr() {
-
+    
     idper = document.getElementById('idper').value;
     usu = document.getElementById('usu').value;
     password = document.getElementById('password').value;
@@ -595,3 +595,127 @@ function actContr() {
         }
     });
 }
+
+function contraseña(){ 
+    var nMay = 0, nMin = 0, nNum = 0 
+	var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+	var t2 = "abcdefghijklmnopqrstuvwxyz" 
+	var t3 = "0123456789"
+    var password1 =  document.getElementById('password1').value;
+                   if (password1.length < 8) {
+                    $('#validcarac').toggle('toggle');
+                        setTimeout(function() {
+                    $('#validcarac').toggle('toggle');
+                    }, 2500);
+                    document.getElementById('password1').focus();
+                    document.getElementById('password2').disabled =true;
+                            //alert("Su password, debe tener almenos 8 letras");
+                   } else {
+                          //Aqui continua si la variable ya tiene mas de 8 letra
+                          
+               	for (i=0;i<password1.length;i++) { 
+			if ( t1.indexOf(password1.charAt(i)) != -1 ) {nMay++} 
+			if ( t2.indexOf(password1.charAt(i)) != -1 ) {nMin++} 
+			if ( t3.indexOf(password1.charAt(i)) != -1 ) {nNum++} 
+
+
+		} 
+		if ( nMay>0 && nMin>0 && nNum>0 ){
+            //alert("correcto")
+        $('#contraexit').toggle('toggle');
+                        setTimeout(function() {
+                    $('#contraexit').toggle('toggle');
+                    }, 2500);
+                document.getElementById('password2').disabled =false;
+                document.getElementById('password2').focus();
+                form.submit()
+        }else{ 
+            $('#caratesp').toggle('toggle');
+                        setTimeout(function() {
+                    $('#caratesp').toggle('toggle');
+                    }, 2500);
+
+            document.getElementById('password1').focus();
+            document.getElementById('password2').disabled =true;
+            
+        
+        return; }
+}
+} 
+
+
+function actControbli() {
+   //alert(document.getElementById("test1").checked)
+    idper = document.getElementById('idact').value;
+    usu = document.getElementById('usuarioobl').value;
+    password = document.getElementById('usuarcontraseio').value;
+    pass = document.getElementById('password1').value;
+    pass2 = document.getElementById('password2').value;
+
+    
+    /*if (document.getElementById('test1').checked==false) {
+        Swal.fire({
+            type: 'warning',
+            text: 'Se necesita Aceptar el aviso de privacidad!',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 2500,
+            backdrop: `
+                rgba(100, 100, 100, 0.4)`
+        });
+    }else{*/
+        dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
+    $.ajax({
+        url: '../php/actContra.php',
+        type: 'POST',
+        data: dato
+    }).done(function(respuesta) {
+        //alert(respuesta)
+        if (respuesta == 7) {
+            Swal.fire({
+                type: 'success',
+                title: 'SE ACTUALIZO CON EXITO',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 2000,
+                backdrop: `
+                    rgba(100, 100, 100, 0.4)`
+            });
+        $('#modal-obligatorio').modal('hide'); 
+        } else if (respuesta == 2) {
+            Swal.fire({
+                type: 'warning',
+                text: 'Las contraseñas no coiciden!',
+                timer: 2500,
+                showConfirmButton: false,
+                customClass: 'swal-wide'
+            });
+        } else if (respuesta == 3) {
+            Swal.fire({
+                type: 'warning',
+                text: 'Contraseña Actual incorrecta!',
+                timer: 2500,
+                showConfirmButton: false,
+                customClass: 'swal-wide'
+            });
+        } else if (respuesta == 4) {
+            Swal.fire({
+                type: 'warning',
+                text: 'LLENAR TODOS LOS CAMPOS!',
+                timer: 2500,
+                showConfirmButton: false,
+                customClass: 'swal-wide'
+            });
+        } else if (respuesta == 1) {
+            Swal.fire({
+                type: 'error',
+                title: 'ATENCIÓN!',
+                customClass: 'swal-wide',
+                timer: 2300,
+                text: 'Datos no actualizados! comunicarse con el soporte tecnico',
+                showConfirmButton: false,
+            });
+        }
+    });
+}
+//}
