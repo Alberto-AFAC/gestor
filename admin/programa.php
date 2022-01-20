@@ -86,7 +86,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-        PROGRAMACIÓN DEL CURSO       
+        PROGRAMACIÓN DEL CURSO, TODOS LOS CURSOS       
       </h1>
     </section>
     <!-- Main content -->
@@ -109,7 +109,7 @@ include('header.php');
 
 <div class="form-group">
 <div class="col-sm-12">
-<label class="label2">SELECCIONE CURSO / <a href="programo">OBLIGATORIOS</a></label>
+<label class="label2">SELECCIONE CURSO / <a href="programo">OBLIGATORIOS DE INDUCCIÓN</a></label>
 <div id="selcurso"></div>
                            
 </div>
@@ -121,17 +121,20 @@ include('header.php');
 <label class="label2">FECHA INICIO <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="av"></label>
 <input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
 </div>
-
-<div class="col-sm-4">
+<!-- <div class="col-sm-4">
 <label class="label2">HORA</label>
 <input type="time" class="form-control inputalta" id="hcurso" name="hcurso">
-</div>
-
-
+</div> -->
 <div class="col-sm-4">
 <label class="label2">FECHA CONCLUSIÓN <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="so"></label>
 <input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
 </div>
+
+<div class="col-sm-4">
+<label class="label2">HORA</label>
+<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil'>DÍAS HÁBILES </a>
+</div>
+
 </div>
 
 <div class="form-group">
@@ -260,6 +263,8 @@ include('header.php');
 </div>
        
 
+
+
               </div>
               <!-- /.tab-pane 2do panel-->
               <div class="tab-pane" id="timeline">
@@ -279,6 +284,51 @@ include('header.php');
     <!-- /.content -->
   </div>
   
+<div class="modal fade" id='modal-diahabil'>
+<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" style="font-size:19px; color: #000000;">DÍAS HÁBILES</h4>
+</div>
+<div class="modal-body">
+<form id="Dtall" class="form-horizontal" action="" method="POST">
+
+
+
+
+
+
+
+
+
+<!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
+
+
+
+<!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
+<!-- <div class="form-group"><br>
+<div class="col-sm-offset-0 col-sm-5">
+<button type="button" id="button"
+style="font-size:18px; width:120px; height:40px"
+class="btn btn-block btn-primary altaboton"
+onclick="asignar();">ACEPTAR</button>
+</div>
+<b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
+<b><p class="alert alert-success text-center padding exito" id="succe2">¡Se asignó con éxito!</p></b>
+<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b>
+</div> -->
+
+</form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">

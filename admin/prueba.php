@@ -752,29 +752,69 @@ function hazalgo() {
 //   echo $data;
 
 // }
-$idv = '67,99,55,456,987,99';
-$valorv = explode(",", $idv); 
 
-$idv2 = '456,987,99';
-$valorv2 = explode(",", $idv2); 
 
-foreach ($valorv as $compara) {
 
-foreach ($valorv2 as $compara2) {
+    // $actual = date("2021-11-27"); 
+    // $hactual = date('H:i:s');
+    // $fechap = '2021-11-24';
+    // $hrs = '10:00:00';
+    // $fin = date("d-m-Y",strtotime($fechap."+ 2 days")); 
 
-  if($compara==$compara2){
+    // $f3 = strtotime($actual);
+    // $f2 = strtotime($fin); 
+
+    // if ($f3>$f2){
+
+    //   echo "caducado";
+
+    // }else{
+    //   echo "no caducado";
+    // }
+
+
+  $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");    
+    $d = date('d');
+    $m = $meses[date('n')-1];
+    $y = date('Y');
+
+
+$semana = array("LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO","DOMINGO");
+    echo $actual = date("20-01-2022");
     echo "<br>";
-    echo $compara;
+    echo $semana[date("N")-1];
+    echo "<br>";
+  
+echo "la fecha actual es " . date("d") . " del " . date("m") . " de " . date("Y");
 
-  }else{
-        echo "<br>";
-    echo "no trae";
-  }
+echo "<br>";
+$date='2022-01-19';
+echo date('l-d', strtotime($date));
 
+ini_set('date.timezone','America/Mexico_City');
+
+// definimos 2 array uno para los nombre de los dias y otro para los nombres de los meses
+$nombresDias = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado" );
+$nombresMeses = array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+// establecemos la fecha de inicio
+$inicio =  DateTime::createFromFormat('Y-m-d', '2022-01-19');
+// establecemos la fecha final (fecha de inicio + dias que queramos)
+$fin =  DateTime::createFromFormat('Y-m-d', '2022-01-24');
+$fin->modify( '+1 day' );
+
+// creamos el periodo de fechas
+//$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// recorremos las dechas del periodo
+foreach($periodo as $date){
+    // definimos la variables para verlo mejor
+    $nombreDia = $nombresDias[$date->format("w")];
+    $nombreMes = $nombresMeses[$date->format("n")];
+    $numeroDia = $date->format("j");
+    $anyo = $date->format("Y");
+    // mostramos los datos
+    echo $nombreDia.' '.$numeroDia.' de '.$nombreMes.' de '.$anyo.'<br>';
 }
-
-}
-
- ?>
 
 

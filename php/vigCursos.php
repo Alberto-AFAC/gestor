@@ -23,13 +23,17 @@ $total++;
 
 $actual= date("d-m-Y"); 
 $hactual = date('H:i:s');
-$fin = date("d-m-Y",strtotime($data["finaliza"]." -1 days")); 
+$fin1 = date("d-m-Y",strtotime($data["finaliza"]." -1 days")); 
+$fin2 = date($data["finaliza"]);
 
 $factual = strtotime($actual);
-$fcurso = strtotime($fin);
+$fcurso1 = strtotime($fin1);
+$fcurso2 = strtotime($fin2);
 
-if($factual == $fcurso AND $data['proceso'] == 'PENDIENTE'){
+if($factual == $fcurso1 AND $data['proceso'] == 'PENDIENTE'){
 $Xvncer++;
+}else if($factual == $fcurso2 AND $data['proceso'] == 'PENDIENTE'){
+$Xvncer++;	
 }
 
 

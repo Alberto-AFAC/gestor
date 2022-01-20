@@ -122,7 +122,6 @@
     }else{
     $obligatorio = 'NO CUMPLE';   
     }
-
     }else{
     $obligatorio = 'NO CUMPLE';   
     }

@@ -86,7 +86,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-        PROGRAMACIÓN DEL CURSO       
+        PROGRAMACIÓN DEL CURSO, OBLIGATORIOS DE INDUCCIÓN       
       </h1>
     </section>
     <!-- Main content -->

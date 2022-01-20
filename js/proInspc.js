@@ -535,3 +535,39 @@ function modalidades() {
     }
 }
 
+function hrsDias(){
+//alert('ok');
+finicial = document.getElementById('fcurso').value;
+ffinal = document.getElementById('fechaf').value;
+
+    datos = 'finicial='+finicial+'&ffinal='+ffinal;
+
+$.ajax({
+    url: '../php/diasHabiles.php',
+    type: 'POST',
+     data: datos
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+
+
+    for (i = 0; i < res.length; i++){
+    alert(obj.data[i].dias+' '+obj.data[i].numero);        
+    }
+
+    // var x = 0;
+    // html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cnslt" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDOS</th><th><i></i> CORREO</th><th><i></i> CATEGORÍA</th></tr></thead><tbody>';
+    // for (i = 0; i < res.length; i++) {
+    //     x++;
+    //     //            alert(obj.data[i].gstCargo);
+    //     if (obj.data[i].gstCargo == 'INSPECTOR' && obj.data[i].gstEvalu == 'SI' || obj.data[i].gstCargo == 'DIRECTOR' && obj.data[i].gstEvalu == 'SI') {
+    //         html += "<tr><td><input type='checkbox' name='idinsp[]' id='id_insp' value='" + obj.data[i].gstIdper + "' /></td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCorro + "</td><td>" + obj.data[i].gstCatgr + "</td></tr>";
+    //     } else {}
+    // }
+    // html += '</tbody></table></div></div></div>';
+    // $("#conslts").html(html);
+})
+
+}
+
+
