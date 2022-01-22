@@ -537,10 +537,35 @@ function modalidades() {
 
 function hrsDias(){
 //alert('ok');
-finicial = document.getElementById('fcurso').value;
-ffinal = document.getElementById('fechaf').value;
+  finicial = document.getElementById('fcurso').value;
+  ffinal = document.getElementById('fechaf').value;
+
+
+    if(finicial=='' || ffinal==''){
+        //alert('ES NECESARIO AGREGAR FECHA');
+        $("#vacio").show();
+        $("#horario").hide();
+        $("#mosbotn").hide();
+
+    }else{
+         $("#vacio").hide();
+         $("#horario").show();
+         $("#mosbotn").show();
+
+    }
 
     datos = 'finicial='+finicial+'&ffinal='+ffinal;
+
+    diai = finicial.substring(8,10);
+    diaf = ffinal.substring(8,10);
+
+    inici = finicial.substring(5,7);
+    finan = ffinal.substring(5,7);    
+    inicio = inici * 1;
+    final = finan *1;
+
+    anioi = finicial.substring(0,4);
+    aniof = ffinal.substring(0,4);
 
 $.ajax({
     url: '../php/diasHabiles.php',
@@ -549,25 +574,74 @@ $.ajax({
 }).done(function(resp) {
     obj = JSON.parse(resp);
     var res = obj.data;
+    meses = ['0','ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
+       'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE']
+    //$("#titulos").html('DÍAS HÁBILES: DEL '+ diai+'/'+meses[inicio]+'/'+anioi +' AL '+ diaf+'/'+meses[final]+'/'+aniof);
+    document.getElementById("titulos").innerHTML = "" + 'DÍAS HÁBILES: '+ diai+'/'+meses[inicio]+'/'+anioi +' AL '+ diaf+'/'+meses[final]+'/'+aniof;
+    var x = 0;
+    var v = 1;
 
+    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12">';
+   
+       for (m = inicio; m <= final; m++) {
+        x++;
 
-    for (i = 0; i < res.length; i++){
-    alert(obj.data[i].dias+' '+obj.data[i].numero);        
+        html += '<table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><td colspan="7" style="text-align:center;"><b>'+meses[m]+'</b></td></tr><tr><th><i></i>L</th><th><i></i>M</th><th><i></i>M</th><th><i></i>J</th><th><i></i>V</th><th><i></i>S</th><th><i></i>D</th></tr></thead><tbody>';
+         for (i = 0; i < res.length; i++) {
+
+        if(obj.data[i].mes==m){    
+        if(obj.data[i].dias=='Lunes' && obj.data[i].inc==1){
+
+             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+         }else if(obj.data[i].dias=='Lunes'){
+             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+            }
+        if(obj.data[i].dias=='Martes' && obj.data[i].inc==1){
+             html += "<td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+         }else if(obj.data[i].dias=='Martes'){
+             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+            }
+        if(obj.data[i].dias=='Miércoles' && obj.data[i].inc==1){
+             html += "<td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
+         }else if(obj.data[i].dias=='Miércoles'){
+             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+            }
+        if(obj.data[i].dias=='Jueves' && obj.data[i].inc==1){
+             html += "<td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
+        }else if(obj.data[i].dias=='Jueves'){
+             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
+            }
+        if(obj.data[i].dias=='Viernes' && obj.data[i].inc==1){
+            html += "<td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
+        }else if(obj.data[i].dias=='Viernes'){
+             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                   
+            }
+        if(obj.data[i].dias=='Sábado' && obj.data[i].inc==1){
+             html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+         }else if(obj.data[i].dias=='Sábado'){
+             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                                
+            }
+        if(obj.data[i].dias=='Domingo' && obj.data[i].inc==1){
+            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                    
+        }else if(obj.data[i].dias=='Domingo'){
+            html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                                
+            }       
+        }
+
     }
+          html += '</tbody></table>';
 
-    // var x = 0;
-    // html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cnslt" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDOS</th><th><i></i> CORREO</th><th><i></i> CATEGORÍA</th></tr></thead><tbody>';
-    // for (i = 0; i < res.length; i++) {
-    //     x++;
-    //     //            alert(obj.data[i].gstCargo);
-    //     if (obj.data[i].gstCargo == 'INSPECTOR' && obj.data[i].gstEvalu == 'SI' || obj.data[i].gstCargo == 'DIRECTOR' && obj.data[i].gstEvalu == 'SI') {
-    //         html += "<tr><td><input type='checkbox' name='idinsp[]' id='id_insp' value='" + obj.data[i].gstIdper + "' /></td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCorro + "</td><td>" + obj.data[i].gstCatgr + "</td></tr>";
-    //     } else {}
-    // }
-    // html += '</tbody></table></div></div></div>';
-    // $("#conslts").html(html);
+}
+    html += '</div></div></div>';
+
+    $("#diaHabil").html(html);
+
 })
 
 }
 
+function agregarDias(){
+
+    alert('ok');
+}
 

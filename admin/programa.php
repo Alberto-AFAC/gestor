@@ -291,14 +291,38 @@ include('header.php');
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" style="font-size:19px; color: #000000;">DÍAS HÁBILES</h4>
+<h4 class="modal-title" style="font-size:19px; color: #000000;"> <div id="titulos"></div> 
+</h4>
+
+<div class="form-group" id="vacio" style="display: none;">
+<div class="col-sm-12">
+  <label class="label2">¡FAVOR DE AGREGAR FECHA!</label>
+ </div> 
+</div>
+
 </div>
 <div class="modal-body">
 <form id="Dtall" class="form-horizontal" action="" method="POST">
 
+<div class="form-group" id="horario"><br>
+<div class="col-sm-4">
+<label class="label2">HORA DE INICIO</label>
+<input type="time" class="form-control inputalta" id="hora_ini" name="hora_ini">
+</div>
+<div class="col-sm-4">
+<label class="label2">HORA DE CONCLUCIÓN</label>
+<input type="time" class="form-control inputalta" id="hora_fin" name="hora_fin">
+</div>
+<div>
+<label class="label2">¿EL CURSO VA SER DIARIO?
+<input type="checkbox" name="allselect" id="allselect">
+</label>  
+</div>
+</div>
 
 
 
+<div id="diaHabil"></div>
 
 
 
@@ -309,17 +333,17 @@ include('header.php');
 
 
 <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
-<!-- <div class="form-group"><br>
+<div class="form-group" id="mosbotn"><br>
 <div class="col-sm-offset-0 col-sm-5">
 <button type="button" id="button"
 style="font-size:18px; width:120px; height:40px"
 class="btn btn-block btn-primary altaboton"
-onclick="asignar();">ACEPTAR</button>
+onclick="agregarDias();">ACEPTAR</button>
 </div>
-<b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
+<!-- <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
 <b><p class="alert alert-success text-center padding exito" id="succe2">¡Se asignó con éxito!</p></b>
-<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b>
-</div> -->
+<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b> -->
+</div>
 
 </form>
 </div>
@@ -425,4 +449,7 @@ var yyyy = today.getFullYear();
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("fechaf").setAttribute("min", today);
 
+$("#allselect").on("click", function() {
+  $(".idias").prop("checked", this.checked);
+});
 </script>

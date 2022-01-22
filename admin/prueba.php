@@ -773,25 +773,25 @@ function hazalgo() {
     // }
 
 
-  $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");    
-    $d = date('d');
-    $m = $meses[date('n')-1];
-    $y = date('Y');
+// $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");    
+//     $d = date('d');
+//     $m = $meses[date('n')-1];
+//     $y = date('Y');
 
 
-$semana = array("LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO","DOMINGO");
-    echo $actual = date("20-01-2022");
-    echo "<br>";
-    echo $semana[date("N")-1];
-    echo "<br>";
+// $semana = array("LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO","DOMINGO");
+//     echo $actual = date("20-01-2022");
+//     echo "<br>";
+//     echo $semana[date("N")-1];
+//     echo "<br>";
   
-echo "la fecha actual es " . date("d") . " del " . date("m") . " de " . date("Y");
+// echo "la fecha actual es " . date("d") . " del " . date("m") . " de " . date("Y");
 
-echo "<br>";
-$date='2022-01-19';
-echo date('l-d', strtotime($date));
+// echo "<br>";
+// $date='2022-01-19';
+// echo date('l-d', strtotime($date));
 
-ini_set('date.timezone','America/Mexico_City');
+// ini_set('date.timezone','America/Mexico_City');
 
 // definimos 2 array uno para los nombre de los dias y otro para los nombres de los meses
 $nombresDias = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado" );
@@ -818,3 +818,118 @@ foreach($periodo as $date){
 }
 
 
+?>
+
+<!-- <script type="text/javascript">
+  let mes = document.createElement("DIV");
+  mes.className = "mes";
+document.body.appendChild(mes);
+
+let tabla_mes = document.createElement("TABLE");
+tabla_mes.className = "tabla_mes";
+mes.appendChild(tabla_mes);
+
+let titulo = document.createElement("CAPTION");
+titulo.className = "titulo";
+titulo.innerText = "Enero";
+tabla_mes.appendChild(titulo);
+
+var mes_text = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+function estructurar() {
+   for (m = 0; m <= 11; m++) {
+       //Título
+       titulo.innerText = mes_text[m];
+    }
+}
+let cabecera = document.createElement("THEAD");
+tabla_mes.appendChild(cabecera);
+
+let fila = document.createElement("TR");
+cabecera.appendChild(fila);
+
+var dia_text = ["Dom", "Lun", "Mar", "Mie", "Juv", "Vie", "Sab"];
+
+for (d = 0; d < 7; d++) {
+    let dia = document.createElement("TH");
+    dia.innerText = dia_text[d];
+    fila.appendChild(dia);
+}
+
+let cuerpo = document.createElement("TBODY");
+tabla_mes.appendChild(cuerpo);
+
+for (f = 0; f < 6; f++) {
+    let fila = document.createElement("TR");
+    cuerpo.appendChild(fila);
+    for (d = 0; d < 7; d++) {
+        let dia = document.createElement("TD");
+        dia.innerText = "1";
+        fila.appendChild(dia);
+    } 
+}
+
+function fechaPorDia(año, dia) {
+  var date = new Date(año, 0);
+  return new Date(date.setDate(dia));
+}
+
+numerar();
+
+function numerar() {
+    for (i = 1; i < 366; i++) {
+        let fecha = fechaPorDia(2022, i);
+    }
+}
+
+ let mes = fecha.getMonth();
+
+let select_tabla = document.getElementsByClassName('tabla_mes')[mes];
+
+let dia = fecha.getDate();
+let dia_semana = fecha.getDay();
+
+select_tabla.children[1].children[sem].children[dia_semana].innerText = dia;
+
+if (dia == 1) {var sem = 0;}
+if (dia_semana == 6) { sem = sem + 1;}
+
+let dia = document.createElement("TD");
+dia.innerText = "";
+
+
+ // for (m = 0; m == 2; m++) {
+
+ //  alert(m);
+ // }
+
+</script>
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<input type="checkbox" name="selectall" id="selectall">
+<br>
+<td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'>
+</body>
+</html>
+<script type="text/javascript">
+  
+  $("#selectall").on("click", function() {
+  $(".idinsp").prop("checked", this.checked);
+});
+
+// // if all checkbox are selected, check the selectall checkbox and viceversa
+// $(".idinsp").on("click", function() {
+//   if ($(".idinsp").length == $(".idinsp:checked").length) {
+//     $("#selectall").prop("checked", true);
+//   } else {
+//     $("#selectall").prop("checked", false);
+//   }
+// });
+
+</script>
