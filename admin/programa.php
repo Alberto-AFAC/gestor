@@ -106,7 +106,7 @@ include('header.php');
 
 <form class="form-horizontal">
 
-
+<input type="hidden" name="idper" id="idper" value="<?php echo $id ?>">
 <div class="form-group">
 <div class="col-sm-12">
 <label class="label2">SELECCIONE CURSO / <a href="programo">OBLIGATORIOS DE INDUCCIÓN</a></label>
@@ -308,7 +308,7 @@ include('header.php');
 </div>
 <div class="modal-body">
 <form id="Dtall" class="form-horizontal" action="" method="POST">
-
+<input type="hidden" name="perid" id="perid" value="<?php echo $id?>">
 <input type="hidden" name="opcion" id="opcion" class="opcion1" value="prodias">
 <input type="hidden" name="opcion" id="opcion" class="opcion2" value="edidias" style="display: none;">
 

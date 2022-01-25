@@ -540,17 +540,16 @@ function hrsDias(){
   finicial = document.getElementById('fcurso').value;
   ffinal = document.getElementById('fechaf').value;
 
-
     if(finicial=='' || ffinal==''){
         //alert('ES NECESARIO AGREGAR FECHA');
         $("#vacio").show();
         $("#horario").hide();
-//        $("#mosbotn").hide();
+        $("#ocubotn").hide();
 
     }else{
          $("#vacio").hide();
          $("#horario").show();
-//         $("#mosbotn").show();
+         $("#ocubotn").show();
 
     }
 
@@ -662,6 +661,7 @@ function agregarDias(){
   ffinal = document.getElementById('fechaf').value;
   hora_ini = document.getElementById('hora_ini').value;
   hora_fin = document.getElementById('hora_fin').value;
+  idPer = document.getElementById('perid').value;
 
     var diasr = new Array();
     /*Agrupamos todos los input con name=cbxEstudiante*/
@@ -684,7 +684,7 @@ function agregarDias(){
     var array2 = JSON.stringify(mes);
     // alert(array1);
     // alert(array2);
-   datos = 'array1=' + array1 + '&array2=' + array2 + '&finicial=' + finicial + '&ffinal=' + ffinal + '&hora_ini='+ hora_ini + '&hora_fin=' + hora_fin +'&opcion=' +  opcion;
+   datos = 'array1=' + array1 + '&array2=' + array2 + '&finicial=' + finicial + '&ffinal=' + ffinal + '&hora_ini='+ hora_ini + '&hora_fin=' + hora_fin + '&idPer=' + idPer +'&opcion=' +  opcion;
 
         $.ajax({
         url: '../php/proDias.php',
@@ -748,3 +748,18 @@ $.ajax({
 
 }
 
+function reiFec(){
+
+  idPer = document.getElementById('idper').value;
+  datos = 'idPer=' + idPer +'&opcion=eliminar';
+
+        $.ajax({
+        url: '../php/proDias.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        alert(respuesta); 
+  
+    });
+
+}
