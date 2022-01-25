@@ -309,6 +309,7 @@ $psto = mysqli_query($conexion,$sql);
                         //     $('#gstIDCat').select2();
 
                         // });
+                        
 
 
 
