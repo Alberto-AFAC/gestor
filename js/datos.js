@@ -465,6 +465,155 @@ function asignacion(gstIdper) {
 
 }
 
+function perperexter(gstIdper) {
+    var nacional =document.getElementById('nacional');
+    $.ajax({
+        url: '../php/conperext.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (i = 0; i < res.length; i++) {
+
+            if (obj.data[i].gstIdper == gstIdper) {
+                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                $("#gstIdper1").val(obj.data[i].gstIdper);
+                $("#gstNombr1").val(obj.data[i].gstNombr);
+                $("#gstApell1").val(obj.data[i].gstApell);
+                $("#gstLunac1").val(obj.data[i].gstLunac);
+                $("#gstCurp1").val(obj.data[i].gstCurp);
+                $("#gstRfc1").val(obj.data[i].gstRfc);
+                $("#gstStado1").val(obj.data[i].gstStado);
+                $("#gstSexo1").val(obj.data[i].gstSexo);
+                $("#sgtCrhnt2").val(obj.data[i].sgtCrhnt);
+                $("#gstRusp2").val(obj.data[i].gstRusp);
+                $("#gstIDCat1").val(obj.data[i].gstIDCat);
+                $("#gstCasa1").val(obj.data[i].gstCasa);
+                $("#gstClulr1").val(obj.data[i].gstClulr);
+                $("#gstCorro1").val(obj.data[i].gstCorro);
+                $("#gstSpcID1").val(obj.data[i].gstSpcID);
+                
+            }
+            
+            if (obj.data[i].gstLunac == "INTERNACIONAL"){
+                alert("si entra internacional")
+                nacional.style.display='none';
+            }
+
+            if (obj.data[i].gstLunac == "NACIONAL"){
+                alert("si entra internacional")
+                nacional.style.display='';
+            }
+        }
+    })
+}
+
+function opediext(gstIdper){
+    div = document.getElementById('cerreth');
+    div.style.display = '';
+    div1 = document.getElementById('openedth');
+    div1.style.display = 'none';
+    document.getElementById('gstIdper1').disabled='';
+    document.getElementById('gstNombr1').disabled='';
+    document.getElementById('gstApell1').disabled='';
+    document.getElementById('gstLunac1').disabled='';
+    document.getElementById('gstCurp1').disabled='';
+    document.getElementById('gstRfc1').disabled='';
+    document.getElementById('gstStado1').disabled='';
+    document.getElementById('gstSexo1').disabled='';
+    document.getElementById('sgtCrhnt2').disabled='';
+    document.getElementById('gstRusp2').disabled='';
+    document.getElementById('gstIDCat1').disabled='';
+    document.getElementById('gstCasa1').disabled='';
+    document.getElementById('gstClulr1').disabled='';
+    document.getElementById('gstCorro1').disabled='';
+    document.getElementById('gstSpcID1').disabled='';
+    document.getElementById('button1').style.display='';
+
+
+}
+
+function closext(gstIdper){
+    div = document.getElementById('openedth');
+    div.style.display = '';
+    div1 = document.getElementById('cerreth');
+    div1.style.display = 'none';
+    document.getElementById('gstIdper1').disabled='none';
+    document.getElementById('gstNombr1').disabled='none';
+    document.getElementById('gstApell1').disabled='none';
+    document.getElementById('gstLunac1').disabled='none';
+    document.getElementById('gstCurp1').disabled='none';
+    document.getElementById('gstRfc1').disabled='none';
+    document.getElementById('gstStado1').disabled='none';
+    document.getElementById('gstSexo1').disabled='none';
+    document.getElementById('sgtCrhnt2').disabled='none';
+    document.getElementById('gstRusp2').disabled='none';
+    document.getElementById('gstIDCat1').disabled='none';
+    document.getElementById('gstCasa1').disabled='none';
+    document.getElementById('gstClulr1').disabled='none';
+    document.getElementById('gstCorro1').disabled='none';
+    document.getElementById('gstSpcID1').disabled='none';
+    document.getElementById('button1').style.display='none';
+
+}
+
+function edithperext(gstIdper){
+    var gstNombr = $("#gstNombr1").val(); //NOMBRE
+    var gstApell = $("#gstApell1").val(); //APELLIDO
+    var gstLunac = $("#gstLunac1").val(); //TIPO DE PERSONA
+    var gstCurp = $("#gstCurp1").val(); //CURP
+    var gstRfc = $("#gstRfc1").val(); //RFC
+    var gstSexo = $("#gstSexo1").val(); //SEXO
+    var gstIDCat = $("#gstIDCat1").val(); //ESPECIALIDAD
+    var gstCasa = $("#gstCasa1").val(); //TEL CASA
+    var gstClulr = $("#gstClulr1").val(); //TEL CELULAR
+    var gstCorro = $("#gstCorro1").val(); //CORREO PERSONAL
+    var gstSpcID = $("#gstSpcID1").val(); //CORREO ALTERNATIVO
+    var gstStado = $("#gstStado1").val(); //ESTADO
+    var sgtCrhnt = $("#sgtCrhnt2").val(); //ORGANIZACIÓN
+    var gstRusp = $("#gstRusp2").val(); //ÁREA DE ADSCRIPCIÓN
+    var gstIdper = $("#gstIdper1").val();
+   // swal.showLoading();
+    var datos= 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstSexo=' + gstSexo + '&gstIDCat=' + gstIDCat + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstCorro=' + gstCorro + '&gstSpcID=' + gstSpcID + '&gstStado=' + gstStado + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstIdper=' + gstIdper + '&opcion=actualizar';
+    //alert(datos);
+
+    if (gstNombr == '' || gstApell == '' || gstSexo == '' || gstIDCat == '' || gstCorro == ''| gstLunac == '0') {
+        Swal.fire({
+            type: 'warning',
+            text: 'Llene campos obligatorios* !',
+            timer: 2500,
+            showConfirmButton: false,
+            customClass: 'swal-wide'
+        });
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../php/insertarPersonal.php",
+            data:datos
+        }).done(function(respuesta) {
+            if (respuesta==0){
+                    // document.getElementById("personal-ext").reset();
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE HA ACTUALIZADO EXITOSAMENTE',
+                    showConfirmButton: false,
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000
+                });
+                setTimeout("location.href = 'persona';", 2000);
+            }else if (respuesta == 2){
+
+            }else{
+                $('#dangeractu').toggle('toggle');
+                setTimeout(function() {
+                   $('#dangeractu').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
+}
 //////////////DATOS DEL PERSONAL LISTA DE PERSONAS//////////// 
 function perfil(gstIdper) {
 

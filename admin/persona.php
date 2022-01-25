@@ -61,6 +61,9 @@ $direc = mysqli_query($conexion,$sql);
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $direc1 = mysqli_query($conexion,$sql);
 
+$sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
+$categs = mysqli_query($conexion,$sql);
+
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
 }
@@ -282,6 +285,188 @@ include('header.php');
             </div>
         </div>
 
+
+<!-- MODAL PERSONAL EXTERNO PERFLI -->
+
+   <div class="modal fade" id='modal-perexterno'>
+            <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" style="font-size:19px; color: #000000;">DATOS DEL PERSONAL EXTERNOS</h4>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-box-tool" style="float:right" data-widget="collapse">
+                                    <a href='javascript:opediext()' id="openedth" style="font-size:22px;float:right"> <i class="fa fa-edit"></i></a>
+                                    <a href='javascript:closext()' id="cerreth" style="display:none;font-size: 22px;float:right"> <i class="fa fa-ban"></i></a>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form id="perexterna1" class="form-horizontal" action="" method="POST">
+                                <input type="hidden" name="gstIdper1" id="gstIdper1">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label class="label2">*NOMBRE(S)</label>
+                                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstNombr1" name='gstNombr1' disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">*APELLIDO(S)</label>
+                                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstApell1" name='gstApell1' disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">*TIPO DE PERSONA</label>
+                                        <select type="text" class="form-control inputalta" id="gstLunac1" name="gstLunac1" disabled="">
+                                            <option value="">SELECCIONA EL CARGO</option>
+                                            <option value="NACIONAL">NACIONAL</option>
+                                            <option value="INTERNACIONAL">INTERNACIONAL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="nacional" name="nacional">
+                                    <div class="col-sm-4">
+                                        <label class="label2">CURP</label>
+                                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstCurp1" name='gstCurp1' disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">RFC</label>
+                                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstRfc1" name='gstRfc1' disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">ESTADO</label>
+                                        <select type="text" class="form-control inputalta" id="gstStado1" name="gstStado1" disabled="">
+                                            <option value="">SELECCIONA EL ESTADO</option>
+                                            <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+                                            <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+                                            <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+                                            <option value="CAMPECHE">CAMPECHE</option>
+                                            <option value="COAHUILA">COAHUILA</option>
+                                            <option value="COLIMA">COLIMA</option>
+                                            <option value="CHIAPAS">CHIAPAS</option>
+                                            <option value="CHIHUAHUA">CHIHUAHUA</option>
+                                            <option value="DISTRITO FEDERAL">CUIDAD DE MÉXICO</option>
+                                            <option value="DURANGO">DURANGO</option>
+                                            <option value="GUANAJUATO">GUANAJUATO</option>
+                                            <option value="GUERRERO">GUERRERO</option>
+                                            <option value="HIDALGO">HIDALGO</option>
+                                            <option value="JALISCO">JALISCO</option>
+                                            <option value="MÉXICO">MÉXICO</option>
+                                            <option value="MICHOACÁN">MICHOACÁN</option>
+                                            <option value="MORELOS">MORELOS</option>
+                                            <option value="NAYARIT">NAYARIT</option>
+                                            <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+                                            <option value="OAXACA">OAXACA</option>
+                                            <option value="PUEBLA">PUEBLA</option>
+                                            <option value="QUERÉTARO">QUERÉTARO</option>
+                                            <option value="QUINTANA ROO">QUINTANA ROO</option>
+                                            <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+                                            <option value="SINALOA">SINALOA</option>
+                                            <option value="SONORA">SONORA</option>
+                                            <option value="TABASCO">TABASCO</option>
+                                            <option value="TAMAULIPAS">TAMAULIPAS</option>
+                                            <option value="TLAXCALA">TLAXCALA</option>
+                                            <option value="VERACRUZ">VERACRUZ</option>
+                                            <option value="YUCATÁN">YUCATÁN</option>
+                                            <option value="ZACATECAS">ZACATECAS</option>
+                                            <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
+                                            <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label class="label2">*SEXO</label>
+                                        <select type="text" class="form-control inputalta" id="gstSexo1" name="gstSexo1" disabled="">
+                                            <option value="">ELIGIR EL SEXO</option>
+                                            <option value="MUJER">MUJER</option>
+                                            <option value="HOMBRE">HOMBRE</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">ORGANIZACIÓN (INSTITUCIÓN)</label>
+                                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="sgtCrhnt2" name='sgtCrhnt2' disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">ÁERA DE ADSCRIPCIÓN</label>
+                                        <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstRusp2" name='gstRusp2' disabled="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label>*ESPECIALIDAD</label>
+                                        <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO" style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstIDCat1" name="gstIDCat1" disabled="">
+                                        <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
+                                            <?php while($cat = mysqli_fetch_row($categs)):?>
+                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
+                                            <?php echo $cat[2]?></option>
+                                            <?php endwhile; ?>
+                                        </select>
+                                    </div>                                                
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <H4><i style=color:#333 class="fa fa-dot-circle-o"></i>
+                                                <label style=color:#333> CONTACTO</label>
+                                            </H4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label class="label2">CASA</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-phone"></i>
+                                            </div>
+                                            <input type="text" class="form-control inputalta" id="gstCasa1" name="gstCasa1" placeholder="(55) 5555-5555"  autocomplete="off" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="label2">CELULAR</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-phone"></i>
+                                            </div>
+                                            <input type="text" class="form-control inputalta" id="gstClulr1" name="gstClulr1" placeholder="(52) 55-5555-5555" autocomplete="off" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 text-container">
+                                        <label class="label2">*CORREO PERSONAL </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span> <i class="ion-ios-checkmark iconoInput" id="labelvalidcor" style="display:none;" disabled=""></i>                              
+                                                <i class="ion-ios-checkmark iconoInput" id="labelvalidcor" style="display:none;"></i>         
+                                                <i class="ion-ios-close iconoInput" id="labelinvarfcor" style=" color: #F10C25; display:none;"></i>
+                                                <input onkeyup="mayus(this);" type="text" class="form-control inputalta" placeholder="correo@correo.com" id="gstCorro1" name="gstCorro1" disabled="">
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 ">
+                                        <label class="label2">CORREO ALTERNATIVO</label>
+                                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                            <input onkeyup="mayus(this);" type="email" class="form-control inputalta" placeholder="correo@correo.com" id="gstSpcID1" name="gstSpcID1" disabled="">
+                                        </div>
+                                    </div>
+                                </div>                    
+                                <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
+                                <div class="form-group"><br>
+                                    <div class="col-sm-offset-0 col-sm-5">
+                                        <button type="button" id="button1" style="font-size:18px; width:120px; height:40px; display:none;" class="btn btn-block btn-primary altaboton" onclick="edithperext()">ACEPTAR</button>     
+                                    </div>
+                                    <b>
+                                        <p class="alert alert-danger text-center padding error" id="dangeractu">Error al asignar</p>
+                                    </b>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <?php include('agrStdPro.php');?>
 
         <footer class="main-footer">
@@ -405,7 +590,7 @@ if($data['estado'] == 0){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNo
 
     ],
     <?php } else if($data['estado'] == 3){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNombr']?>",
-        "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>", "SIN DATOS"
+        "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>", "<a href='' title='Ver perfil' onclick='perperexter(<?php echo $gstIdper ?>)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-perexterno'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Eliminar' onclick='' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
     ],
 
 
