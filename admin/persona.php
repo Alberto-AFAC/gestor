@@ -456,7 +456,7 @@ include('header.php');
                                         <button type="button" id="button1" style="font-size:18px; width:120px; height:40px; display:none;" class="btn btn-block btn-primary altaboton" onclick="edithperext()">ACEPTAR</button>     
                                     </div>
                                     <b>
-                                        <p class="alert alert-danger text-center padding error" id="dangeractu">Error al asignar</p>
+                                        <p class="alert alert-danger text-center padding error" id="dangeractu">Error al guardar los cambios</p>
                                     </b>
                                 </div>
                             </form>
@@ -590,7 +590,7 @@ if($data['estado'] == 0){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNo
 
     ],
     <?php } else if($data['estado'] == 3){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNombr']?>",
-        "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>", "<a href='' title='Ver perfil' onclick='perperexter(<?php echo $gstIdper ?>)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-perexterno'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Eliminar' onclick='' class='btn btn-default' data-toggle='modal' data-target='#modal-baja'><i class='fa fa-user-times text-red'></i></a>"
+        "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>", "<a href='' title='Ver perfil' onclick='perperexter(<?php echo $gstIdper ?>)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-perexterno'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Eliminar' onclick='deletexter(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-bajaex'><i class='fa fa-user-times text-red'></i></a>"
     ],
 
 

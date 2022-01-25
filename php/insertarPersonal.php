@@ -60,6 +60,16 @@ if($opcion === 'registrar'){
     }else{
         echo "1";
     }
+    
+}else if($opcion === 'eliminar'){
+    $gstIdper=$_POST['gstIdper'];
+
+    if (eliminar($gstIdper,$conexion)){
+    echo "0";
+    histborrar($id,$conexion);
+    }else{
+        echo "1";
+    }
 }
         
 //FUNCIONES-----------------------------------------------------------------------------------
@@ -95,6 +105,16 @@ if($opcion === 'registrar'){
         }
         cerrar($conexion);
     }
+    //funcion para eliminar el registro
+    function eliminar ($gstIdper,$conexion){
+        $query="UPDATE personal SET estado='1' WHERE gstIdper= '$gstIdper'";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+        cerrar($conexion);
+    }
      //funciones para guardar el historico
      function historia($id,$conexion){
         ini_set('date.timezone','America/Mexico_City');
@@ -110,6 +130,16 @@ if($opcion === 'registrar'){
         ini_set('date.timezone','America/Mexico_City');
         $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
         $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'SE ACTUALIZA DAT. PERSONAL EXTERNO',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function histborrar($id,$conexion){
+        ini_set('date.timezone','America/Mexico_City');
+        $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
+        $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'SE BORRAR PERSONA EXTERNA',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
         if(mysqli_query($conexion,$query)){
             return true;
         }else{

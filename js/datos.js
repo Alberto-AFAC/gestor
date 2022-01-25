@@ -497,12 +497,12 @@ function perperexter(gstIdper) {
             }
             
             if (obj.data[i].gstLunac == "INTERNACIONAL"){
-                alert("si entra internacional")
+                //alert("si entra internacional")
                 nacional.style.display='none';
             }
 
             if (obj.data[i].gstLunac == "NACIONAL"){
-                alert("si entra internacional")
+                //alert("si entra internacional")
                 nacional.style.display='';
             }
         }
@@ -613,6 +613,60 @@ function edithperext(gstIdper){
             }
         });
     }
+}
+
+function deletexter(gstIdper) {
+    //alert(gstIdper)
+    document.getElementById('bajaIdex').vale
+    $.ajax({
+        url: '../php/conperext.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (i = 0; i < res.length; i++) {
+
+            if (obj.data[i].gstIdper == gstIdper) {
+                // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
+                $("#bajaIdperex").val(obj.data[i].gstNombr + " " + obj.data[i].gstApell )
+                $("#bajaIdex").val(obj.data[i].gstIdper)
+            }
+        }
+    })
+}
+
+function borrarperext(gstIdper){
+    var gstIdper = $("#bajaIdex").val();
+   // swal.showLoading();
+    var datos= 'gstIdper=' + gstIdper + '&opcion=eliminar';
+    alert(datos);
+        $.ajax({
+            type: "POST",
+            url: "../php/insertarPersonal.php",
+            data:datos
+        }).done(function(respuesta) {
+            if (respuesta==0){
+                    // document.getElementById("personal-ext").reset();
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE HA ACTUALIZADO EXITOSAMENTE',
+                    showConfirmButton: false,
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 2000
+                });
+                setTimeout("location.href = 'persona';", 2000);
+            }else if (respuesta == 2){
+
+            }else{
+                $('#dangerdeext').toggle('toggle');
+                setTimeout(function() {
+                   $('#dangerdeext').toggle('toggle');
+                }, 2000);
+            }
+        });
+    
 }
 //////////////DATOS DEL PERSONAL LISTA DE PERSONAS//////////// 
 function perfil(gstIdper) {
