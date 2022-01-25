@@ -545,12 +545,12 @@ function hrsDias(){
         //alert('ES NECESARIO AGREGAR FECHA');
         $("#vacio").show();
         $("#horario").hide();
-        $("#mosbotn").hide();
+//        $("#mosbotn").hide();
 
     }else{
          $("#vacio").hide();
          $("#horario").show();
-         $("#mosbotn").show();
+//         $("#mosbotn").show();
 
     }
 
@@ -589,42 +589,55 @@ $.ajax({
         html += '<table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><td colspan="7" style="text-align:center;"><b>'+meses[m]+'</b></td></tr><tr><th><i></i>L</th><th><i></i>M</th><th><i></i>M</th><th><i></i>J</th><th><i></i>V</th><th><i></i>S</th><th><i></i>D</th></tr></thead><tbody>';
          for (i = 0; i < res.length; i++) {
 
-        if(obj.data[i].mes==m){    
+        if(obj.data[i].mes==m){   
+
+
         if(obj.data[i].dias=='Lunes' && obj.data[i].inc==1){
 
-             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
+
          }else if(obj.data[i].dias=='Lunes'){
-             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
             }
         if(obj.data[i].dias=='Martes' && obj.data[i].inc==1){
-             html += "<td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+             html += "<td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
          }else if(obj.data[i].dias=='Martes'){
-             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
             }
         if(obj.data[i].dias=='Miércoles' && obj.data[i].inc==1){
-             html += "<td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
+             html += "<td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
          }else if(obj.data[i].dias=='Miércoles'){
-             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
             }
         if(obj.data[i].dias=='Jueves' && obj.data[i].inc==1){
-             html += "<td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
+             html += "<td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
         }else if(obj.data[i].dias=='Jueves'){
-             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
+             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
             }
         if(obj.data[i].dias=='Viernes' && obj.data[i].inc==1){
-            html += "<td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
+            html += "<td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
         }else if(obj.data[i].dias=='Viernes'){
-             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                   
+             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                   
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" />";
             }
         if(obj.data[i].dias=='Sábado' && obj.data[i].inc==1){
-             html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+             html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td>";                                    
          }else if(obj.data[i].dias=='Sábado'){
-             html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                                
+             html += "<td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td>";                                                
             }
         if(obj.data[i].dias=='Domingo' && obj.data[i].inc==1){
-            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                    
+            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                    
         }else if(obj.data[i].dias=='Domingo'){
-            html += "<td><input type='checkbox' name='idias[]' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                                
+            html += "<td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                                
             }       
         }
 
@@ -642,6 +655,96 @@ $.ajax({
 
 function agregarDias(){
 
-    alert('ok');
+    
+  opcion = document.getElementById('opcion').value;
+
+  finicial = document.getElementById('fcurso').value;
+  ffinal = document.getElementById('fechaf').value;
+  hora_ini = document.getElementById('hora_ini').value;
+  hora_fin = document.getElementById('hora_fin').value;
+
+    var diasr = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="idias"]').each(function(element) {
+        var item = {};
+        item.diasr = this.value;
+        item.idias = this.checked;
+        diasr.push(item);
+    });
+
+    var mes = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="mes"]').each(function(element) {
+        var item = {};
+        item.mes = this.value;
+        mes.push(item);
+    });
+
+    var array1 = JSON.stringify(diasr);
+    var array2 = JSON.stringify(mes);
+    // alert(array1);
+    // alert(array2);
+   datos = 'array1=' + array1 + '&array2=' + array2 + '&finicial=' + finicial + '&ffinal=' + ffinal + '&hora_ini='+ hora_ini + '&hora_fin=' + hora_fin +'&opcion=' +  opcion;
+
+        $.ajax({
+        url: '../php/proDias.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        alert(respuesta); 
+  
+        if (respuesta == 0) {
+
+            $('#succed').toggle('toggle');
+            setTimeout(function() {
+            $('#succed').toggle('toggle');
+            }, 4000);            
+            
+            $("#ocubotn").toggle('toggle');
+            $("#mosbotn").toggle('toggle');
+            $(".opcion1").remove();
+            $(".opcion2").toggle('toggle');
+            document.getElementById('fcurso').disabled = true; // FECHA INICIO 
+            document.getElementById('fechaf').disabled = true; // FECHA CONCLUCION
+         
+            // Swal.fire({
+            //     type: 'success',
+            //     // title: 'AFAC INFORMA',
+            //     text: 'SE GUARDO CON EXITO',
+            //     showConfirmButton: false,
+            //     customClass: 'swal-wide',
+            //     timer: 3000
+            // });
+
+        } else {
+            // $('#dange').toggle('toggle');
+            // setTimeout(function() {
+            // $('#dange').toggle('toggle');
+            // }, 2000);
+        }
+    });
+
+}
+
+function consulFecha(){
+//alert('ok');
+$.ajax({
+    url: '../php/conDias.php',
+    type: 'POST'
+     //data: datos
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+
+     if(obj.data[0].folio==0){
+        $("#mosFec").hide();
+        $("#visFec").show();
+     }else{
+        alert('NO HAY');
+     }
+
+
+});
+
 }
 

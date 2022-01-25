@@ -115,8 +115,14 @@ include('header.php');
 </div>
 </div>
 <!-- <div id="partici"></div>  -->
+<div class="form-group" id="visFec" style="display: none;">
+<div class="col-sm-4">
+<!-- <label class="label2">HORA</label> -->
+<button type="button" style="font-size:16px" class="btn btn-default" onclick="reiFec();">REINICIE FECHAS</button>
+</div>
+</div>
 
-<div class="form-group">
+<div class="form-group" id="mosFec">
 <div class="col-sm-4">
 <label class="label2">FECHA INICIO <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="av"></label>
 <input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
@@ -227,7 +233,6 @@ include('header.php');
 
 </div>
 
-
 <div class="form-group">
 <div class="col-sm-4">
 <label class="label2">PARTICIPANTES DEL CURSO</label>
@@ -304,6 +309,10 @@ include('header.php');
 <div class="modal-body">
 <form id="Dtall" class="form-horizontal" action="" method="POST">
 
+<input type="hidden" name="opcion" id="opcion" class="opcion1" value="prodias">
+<input type="hidden" name="opcion" id="opcion" class="opcion2" value="edidias" style="display: none;">
+
+
 <div class="form-group" id="horario"><br>
 <div class="col-sm-4">
 <label class="label2">HORA DE INICIO</label>
@@ -333,16 +342,22 @@ include('header.php');
 
 
 <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
-<div class="form-group" id="mosbotn"><br>
+<div class="form-group" ><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="button"
+<button type="button" id="ocubotn"
 style="font-size:18px; width:120px; height:40px"
 class="btn btn-block btn-primary altaboton"
 onclick="agregarDias();">ACEPTAR</button>
+
+<button type="button" id="mosbotn"
+style="display: none; font-size:18px; width:120px; height:40px"
+class="btn btn-block btn-primary altaboton"
+onclick="agregarDias();">EDITAR</button>
+
 </div>
-<!-- <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>
-<b><p class="alert alert-success text-center padding exito" id="succe2">¡Se asignó con éxito!</p></b>
-<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b> -->
+<!-- <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>-->
+<b><p class="alert alert-success text-center padding exito" id="succed">¡SE GUARDÓ FECHA CON ÉXITO!</p></b>
+<!--<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b> -->
 </div>
 
 </form>
@@ -452,4 +467,6 @@ document.getElementById("fechaf").setAttribute("min", today);
 $("#allselect").on("click", function() {
   $(".idias").prop("checked", this.checked);
 });
+
+consulFecha();
 </script>
