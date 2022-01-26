@@ -15,7 +15,7 @@ require '../php-mailer2/SMTP.php';
 
 		$valores = explode('.',$valor);
 		$nombre = strval($valores[0]);
-		// $nmple = intval($valores[1]);
+		$nmple = intval($valores[1]);
 
 
  	if(actCorreo($valor,$conexion)){	
@@ -183,9 +183,13 @@ INNER JOIN accesos ON id_accesos = personal.gstIdper
 		OR gstSpcID = '$correo' AND estado = 0
 		";
 $resultado= mysqli_query($conexion,$query);
-			 $res = mysqli_fetch_assoc($resultado);
-			$nombre = $res['gstNombr'];
-		
+		if($resultado->num_rows==0){
+		return '0';
+		}else{
+			 $res = mysqli_fetch_row($resultado);
+			
+			  return $res[1].'AQUI CONCATENA'.$res[2].'.'.$res[3];
+		}
 		$this->conexion->cerrar();
 } 
 function actCorreo($valor,$conexion){
