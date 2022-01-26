@@ -139,7 +139,7 @@ if($opcion === 'registrar'){
     function histborrar($id,$conexion){
         ini_set('date.timezone','America/Mexico_City');
         $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
-        $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'SE BORRAR PERSONA EXTERNA',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
+        $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'ELIMINA PERSONA EXTERNA',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
         if(mysqli_query($conexion,$query)){
             return true;
         }else{
