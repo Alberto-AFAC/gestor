@@ -163,7 +163,7 @@ function editarDias($dias,$validar,$mes,$finicial,$ffinal,$hora_ini,$hora_fin,$c
 
 function eliminarDias($idPer,$conexion){
 
-	$query="DELETE FROM semanal WHERE id_per = $idPer";
+	$query="DELETE FROM semanal WHERE id_per = $idPer AND id_curso = 0";
 	if(mysqli_query($conexion,$query)){
 
 			return true;

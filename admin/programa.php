@@ -136,10 +136,16 @@ include('header.php');
 <input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
 </div>
 
+
 <div class="col-sm-4">
 <label class="label2">HORA</label>
-<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil'>DÍAS HÁBILES </a>
+
+<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil' id="modalMost">DÍAS HÁBILES </a>
+<a type='button' title='Días Hábiles' onclick='hrsDiasAct()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil' id="modalOcul" style="display: none;">DÍAS HÁBILES </a>
+
 </div>
+
+
 
 </div>
 
@@ -356,8 +362,8 @@ onclick="agregarDias();">EDITAR</button>
 
 </div>
 <!-- <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>-->
-<b><p class="alert alert-success text-center padding exito" id="succed">¡SE GUARDÓ FECHA CON ÉXITO!</p></b>
-<!--<b><p class="alert alert-warning text-center padding aviso" id="empty2">Es necesario llenar todos los campos</p></b> -->
+<b><p class="alert alert-success text-center padding exito" id="succed">¡Se guardó fecha con éxito!</p></b>
+<b><p class="alert alert-warning text-center padding aviso" id="avisoh">Seleccione hora</p></b> 
 </div>
 
 </form>

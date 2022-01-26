@@ -41,7 +41,7 @@ function proCurso() {
 
     var id_mstr = document.getElementById('id_mstr').value;
 
-    var hcurso = document.getElementById('hcurso').value;
+    var hcurso = document.getElementById('hora_ini').value;
     var fcurso = document.getElementById('fcurso').value;
     //Solo ID coordinadores 
     var idcord = document.getElementById('idcord').value;
@@ -686,12 +686,19 @@ function agregarDias(){
     // alert(array2);
    datos = 'array1=' + array1 + '&array2=' + array2 + '&finicial=' + finicial + '&ffinal=' + ffinal + '&hora_ini='+ hora_ini + '&hora_fin=' + hora_fin + '&idPer=' + idPer +'&opcion=' +  opcion;
 
+if(hora_ini =='' || hora_fin==''){
+
+            $('#avisoh').toggle('toggle');
+            setTimeout(function() {
+            $('#avisoh').toggle('toggle');
+            }, 4000);     
+}else{
         $.ajax({
         url: '../php/proDias.php',
         type: 'POST',
         data: datos
     }).done(function(respuesta) {
-        alert(respuesta); 
+        //alert(respuesta); 
   
         if (respuesta == 0) {
 
@@ -700,30 +707,20 @@ function agregarDias(){
             $('#succed').toggle('toggle');
             }, 4000);            
             
-            $("#ocubotn").toggle('toggle');
-            $("#mosbotn").toggle('toggle');
+            $("#modalMost").hide();
+            $("#modalOcul").show();
+            $("#ocubotn").hide();
+            $("#mosbotn").show();
             $(".opcion1").remove();
             $(".opcion2").toggle('toggle');
             document.getElementById('fcurso').disabled = true; // FECHA INICIO 
             document.getElementById('fechaf').disabled = true; // FECHA CONCLUCION
          
-            // Swal.fire({
-            //     type: 'success',
-            //     // title: 'AFAC INFORMA',
-            //     text: 'SE GUARDO CON EXITO',
-            //     showConfirmButton: false,
-            //     customClass: 'swal-wide',
-            //     timer: 3000
-            // });
-
         } else {
-            // $('#dange').toggle('toggle');
-            // setTimeout(function() {
-            // $('#dange').toggle('toggle');
-            // }, 2000);
+
         }
     });
-
+}
 }
 
 function consulFecha(){
@@ -740,12 +737,10 @@ $.ajax({
         $("#mosFec").hide();
         $("#visFec").show();
      }else{
-        alert('NO HAY');
+       // alert('NO HAY');
      }
 
-
-});
-
+    });
 }
 
 function reiFec(){
@@ -758,8 +753,14 @@ function reiFec(){
         type: 'POST',
         data: datos
     }).done(function(respuesta) {
-        alert(respuesta); 
+
+        if(respuesta==0){
+        $("#mosFec").show();
+        $("#visFec").hide();
+        }
   
     });
 
 }
+
+function hrsDiasAct(){}

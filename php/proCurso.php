@@ -89,6 +89,7 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 			echo "1";	
 		}
 		contancia($idinsps,$codigo, $conexion);
+		semanal($idinsps,$codigo,$fcurso,$fechaf,$hcurso,$conexion);
 	}
 }
 
@@ -420,6 +421,16 @@ function finalizac($codigo,$conexion){
 			}				
 	}
 
+function semanal($idinsps,$codigo,$fcurso,$fechaf,$hcurso,$conexion){
+
+	$query="UPDATE semanal SET id_curso='$codigo' WHERE id_per = '$idinsps' AND fec_inico = '$fcurso' AND fec_fin = '$fechaf' AND hora_ini = '$hcurso'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
+}
 	
 function cerrar($conexion){
 
