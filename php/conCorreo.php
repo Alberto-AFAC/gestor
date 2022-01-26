@@ -15,7 +15,7 @@ require '../php-mailer2/SMTP.php';
 
 		$valores = explode('.',$valor);
 		$nombre = strval($valores[0]);
-		$nmple = intval($valores[51]);
+		$nmple = intval($valores[1]);
 
 
  	if(actCorreo($valor,$conexion)){	
@@ -169,7 +169,7 @@ if (!$mail->send()) {
  function conCorreo($correo,$conexion){
 
 $query="SELECT * FROM personal
-        INNER JOIN accesos ON id_accesos = personal.gstIdper
+INNER JOIN accesos ON id_accesos = personal.gstIdper
 		WHERE gstCorro = '$correo' AND estado = 0 
 		OR gstCinst = '$correo' AND estado = 0
 		OR gstSpcID = '$correo' AND estado = 0
@@ -180,7 +180,7 @@ $resultado= mysqli_query($conexion,$query);
 		}else{
 			 $res = mysqli_fetch_row($resultado);
 			
-			  return $res[1].' '.$res[2].'.'.$res[51];
+			  return $res[1].' '.$res[2].'.'.$res[3];
 		}
 		$this->conexion->cerrar();
 } 
