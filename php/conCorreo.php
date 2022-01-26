@@ -168,7 +168,8 @@ if (!$mail->send()) {
 
  function conCorreo($correo,$conexion){
 
-$query="SELECT * FROM personal 
+$query="SELECT * FROM personal
+        INNER JOIN accesos ON id_accesos = personal.gstIdper
 		WHERE gstCorro = '$correo' AND estado = 0 
 		OR gstCinst = '$correo' AND estado = 0
 		OR gstSpcID = '$correo' AND estado = 0
@@ -179,7 +180,7 @@ $resultado= mysqli_query($conexion,$query);
 		}else{
 			 $res = mysqli_fetch_row($resultado);
 			
-			  return $res[1].' '.$res[2].'.'.$res[23];
+			  return $res[1].' '.$res[2].'.'.$res[51];
 		}
 		$this->conexion->cerrar();
 } 
