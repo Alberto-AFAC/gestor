@@ -21,11 +21,11 @@ require '../php-mailer2/SMTP.php';
  	if(actCorreo($valor,$conexion)){	
 			$mail = new PHPMailer();
 		$mail->isSMTP();
-		$mail->Host = 'smtp.mailtrap.io';
+		$mail->Host = 'smtp1.s.ipzmarketing.com';
 		$mail->SMTPAuth = true;
-		$mail->Port = 2525;
-		$mail->Username = '0e45915eb4850a';
-		$mail->Password = '6fbe709c81ed85';
+		$mail->Port = 587;
+        $mail->Username = 'rbaknrjagwkj';
+		$mail->Password = 'aeQVUr09g0sf';
 		$mail->SMTPSecure = 'tls'; 
 
 	// $mail = new PHPMailer;
