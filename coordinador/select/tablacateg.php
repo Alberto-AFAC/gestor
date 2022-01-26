@@ -10,9 +10,8 @@ require_once "../../conexion/conexion.php";
             $idper=$_SESSION['consulta'];
         	
 			$f = explode(',', $idper);
-			$idcurso = intval($f[0]);
-            $fecha = intval($f[2]);
-            $lista = intval($f[3]);
+			$idcurso = intval($f[0]);//ID CURSO
+            $fecha = intval($f[2]);//VIGENCIA
 			$valor = explode(",", $idper);
 
 ?>
@@ -28,7 +27,7 @@ require_once "../../conexion/conexion.php";
             <div class="row">
                 <div class="col-sm-12">
                     <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" style="background-color: green; pointer-events: none; color: white;"
+                        <button type="button" style="background-color: green; pointer-events: none; color: white;"
                             class="btn btn-default">VIGENTE</button>
                         <button type="button" style="background-color: orange; pointer-events: none; color: white;"
                             class="btn btn-default">POR VENCER</button>
@@ -43,7 +42,7 @@ require_once "../../conexion/conexion.php";
                     <br><br>
                     <div class="table-responsive mailbox-messages">
 
-                        <table class="table display table-striped table-bordered" role="grid"
+                        <table id="test" class="table display table-striped table-bordered" role="grid"
                             aria-describedby="example_info">
                             <thead>
                                 <tr>
@@ -63,8 +62,10 @@ require_once "../../conexion/conexion.php";
 <?php
         $f = $fecha;
 
+
         foreach ($valor as $id) {
         if($idcurso!=$id){
+            //echo $idcurso;
         $sql = "SELECT 
         personal.gstIdper,
         personal.gstNombr,
@@ -102,9 +103,6 @@ require_once "../../conexion/conexion.php";
           }else{
             $cInstitucional = $per[10];
           }
-
-
-
 
         $gstIdper = $per[0];
 
@@ -148,7 +146,7 @@ evaluacion,
 idmstr,
 confirmar
 FROM cursos 
-WHERE idmstr = $lista AND idinsp = $per[0] 
+WHERE idmstr = $idcurso AND idinsp = $per[0] 
 ORDER BY fcurso DESC LIMIT 1";
 $fechas = mysqli_query($conexion,$sql);
 
@@ -395,5 +393,16 @@ $(document).ready(function(){
     });
   });
 });
+// REMOVE ROWS IN REGISTER
+var arr = $("#test tr");
 
+$.each(arr, function(i, item) {
+    var currIndex = $("#test tr").eq(i);
+    var matchText = currIndex.find('td:nth-child(3)').text();
+    $(this).nextAll().each(function(i, inItem) {
+        if(matchText===$(this).find('td:nth-child(3)').text()) {
+            $(this).remove();
+        }
+    });
+});
 </script>
