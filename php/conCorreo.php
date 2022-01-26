@@ -19,28 +19,28 @@ require '../php-mailer2/SMTP.php';
 
 
  	if(actCorreo($valor,$conexion)){	
-			$mail = new PHPMailer();
-		$mail->isSMTP();
-		$mail->Host = 'smtp1.s.ipzmarketing.com';
-		$mail->SMTPAuth = true;
-		$mail->Port = 587;
-        $mail->Username = 'rbaknrjagwkj';
-		$mail->Password = 'aeQVUr09g0sf';
-		$mail->SMTPSecure = 'tls'; 
+		// 	$mail = new PHPMailer();
+		// $mail->isSMTP();
+		// $mail->Host = 'smtp1.s.ipzmarketing.com';
+		// $mail->SMTPAuth = true;
+		// $mail->Port = 587;
+        // $mail->Username = 'rbaknrjagwkj';
+		// $mail->Password = 'aeQVUr09g0sf';
+		// $mail->SMTPSecure = 'tls'; 
 
-	// $mail = new PHPMailer;
-// $mail->isSMTP();
+$mail = new PHPMailer;
+$mail->isSMTP();
 $mail->SMTPDebug = 2;
-// $mail->Host = 'smtp.hostinger.com';
-// $mail->SMTPSecure = 'ssl';                          
-// $mail->Port = 465;
-// $mail->SMTPAuth = true;
-// $mail->Username = 'notificaciones@afac.gob.mx';
-// $mail->Password = 'Agencia.SCT.2021.';
-// $mail->setFrom('notificaciones@afac.gob.mx', 'Notificaciones AFAC');
-$mail->setFrom('blaclcim@blaclim.com', 'Notificaciones AFAC');
+$mail->Host = 'smtp.hostinger.com';
+$mail->SMTPSecure = 'ssl';                          
+$mail->Port = 465;
+$mail->SMTPAuth = true;
+$mail->Username = 'notificaciones@afac.gob.mx';
+$mail->Password = 'Agencia.SCT.2021.';
+$mail->setFrom('notificaciones@afac.gob.mx', 'Notificaciones AFAC');
+// $mail->setFrom('blaclcim@blaclim.com', 'Notificaciones AFAC');
 $mail->addAddress($correo,$nombre);
-// $mail->addBCC('jmondragonescamilla@gmail.com');
+$mail->addBCC('jmondragonescamilla@gmail.com');
 // $mail->addBCC('angelcanseco.c@gmail.com');
 $mail->Subject = 'Reestablecer contraseña';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
