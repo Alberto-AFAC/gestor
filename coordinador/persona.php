@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-  <title>Capacitación AFAC | Personal</title>
+  <title>Capacitación AFAC | Lista Personal externo</title>
   <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -87,7 +87,7 @@ include('header.php');
        <div class="box-header">
 
        <H4>
-                      <label style="font-size: 20px;">LISTA | PERSONAL</label></H4>
+                      <label style="font-size: 20px;">LISTA | PERSONAL EXTERNO</label></H4>
              <div class="pull-right">
                <div class="btn-group">
                <a type="button" href="persona" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
@@ -158,6 +158,7 @@ include('header.php');
 <!-- page script -->
 <script src="../js/global.js"></script>
 <script src="../js/datos.json"></script>
+<?php include('modalex.php');?>
 
 </body>
 </html>
@@ -189,27 +190,37 @@ $('#AgstIDSub').select2();
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";
+$query = "SELECT * FROM personal WHERE estado = 3 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
-      if($data['gstCargo']== '0'){
-        $datosCargo = "SIN ASIGNAR";
-      } else {
-        $datosCargo = $data['gstCargo'];
+        if($data['gstCargo']== '0'){
+          $datosCargo = "SIN ASIGNAR";
+        } else {
+          $datosCargo = $data['gstCargo'];
+        }
+        if($data['estado'] == 0){
+          $estado = "INTERNO"; 
+      }else if($data['estado'] == 3){
+          $estado = "EXTERNO";
       }
+      if($data['gstNmpld'] == 0){
+        $empleado = "S/N"; 
+    }else{
+        $empleado = $data['gstNmpld'];
+    }
       $gstIdper = $data['gstIdper'];
       $gstNmpld = $data['gstNmpld'];
       ?>
 
 //console.log('<?php echo $gstIdper ?>');
 
-["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>",
+["<?php echo  $data['gstNmpld']?>","<?php echo  $data['gstNombr']?>","<?php echo $data['gstApell']?>","<?php echo $datosCargo ?>","<?php echo $estado ?>",
 <?php if($data['gstCargo']=='NUEVO INGRESO'){?>
   "<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a><div style='padding-top: 5px;'><span class='label label-warning' style='font-weight: bold; height: 50px; font-size: 13px;'> POR ASIGNAR</span></div></center>"
 <?php }else{?>
 //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-"<center><a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a><div style='padding-top: 5px;'><a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a></div></center>"
+"<a href='' title='Ver perfil' onclick='perperexter(<?php echo $gstIdper ?>)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-perexterno'><i class='glyphicon glyphicon-user text-success'></i></a>  <a href='' title='Ver detalle de cursos' onclick='perexterna(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-curexten'><i class='fa fa ion-easel text-info'></i></a>  <a type='button' title='Eliminar' onclick='deletexter(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-bajaex'><i class='fa fa-user-times text-red'></i></a>"
 
 <?php } ?>
 
@@ -234,8 +245,80 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
     {title: "NOMBRE(S)"},
     {title: "APELLIDO(S)"},
     {title: "CARGO"},
+    {title: "PERSONAL"},
     {title: "ACCIÓN"}
     ],
     });
+
+    function perexterna(gstIdper) {
+
+var idpersona1 = document.getElementById('insperext').value =gstIdper;
+    $.ajax({
+        url: '../php/infopersext.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        //alert(idpersona1)
+        var n = 0;
+        for (R = 0; R < res.length; R++){
+            if (obj.data[R].gstIdper == gstIdper){
+            $("#inexnomebre").val(obj.data[R].gstNombr + "  " + obj.data[R].gstApell);
+            }
+        }
+    });
+//TABLA DE CURSOS COMO INSTRUCTOR
+
+$.ajax({
+    url: '../php/curosperext.php',  
+    type: 'POST'
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+    var x = 0;
+    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cursextper" class="table table-bordered table-striped" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CODIGO</th><th><i></i>CURSO</th><th><i></i>INICIO</th><th><i></i>FIN</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
+    for (V = 0; V < res.length; V++) {   
+        if (obj.data[V].idinsp == idpersona1) {   
+            x++;
+            html += "<tr><td>" + x + "</td><td>" + obj.data[V].codigo + "</td><td>" + obj.data[V].gstTitlo + "</td><td>" + obj.data[V].fcurso + "</td><td>" + obj.data[V].fechaf + "</td><td>" + obj.data[V].proceso + "</td></td></tr>";
+        } else {}
+    }
+    html += '</tbody></table></div></div></div>';
+    $("#cursextern").html(html);
+    $('#cursextper').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : true,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false,
+        "language": {
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "Ningún dato disponible en esta tabla",
+        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior",
+        },
+        "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"         
+        },
+    },
+});            
+})
+}
+
 
 </script>

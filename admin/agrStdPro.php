@@ -733,6 +733,46 @@
           </div>
         </form> 
       </div>
+<!-- inio modal de cursos -->
+<div class="modal fade" id='modal-curexten'>
+    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+              <h4><label>CURSOS PROGRAMADOS</label></h4>
+            </div>
+            <div class="modal-body">
+              <form id="Dtall" class="form-horizontal" action="" method="POST" >
+                <div class="form-group">
+                  <div class="col-sm-8">
+                    <form action="instructor.php" method="get">
+                        <input type="hidden" class="form-control disabled inputalta" name="insperext" id="insperext" value="" >
+                    </form>
+                    <input type="" class="form-control disabled inputalta" name="inexnomebre" id="inexnomebre" disabled="">
+                    </div>
+
+                  </div>    
+                  <div class="tabbable-line">
+					        <!-- <ul class="nav nav-tabs ">
+						        <li class="active">
+						          <a href="#tab_default_1" data-toggle="tab">CURSOS IMPARTIDOS</a>
+						        </li>
+                  </ul> -->
+                  <div class="tab-content">
+						      <div class="tab-pane active" id="tab_default_1">
+                    <div id="cursextern"></div>
+                  </div>              
+                </div>  
+            </div>  
+              </form>                         
+          </div>            
+        </div>   
+      </div> 
+    </div>  
+</div>          
+<!--fin modal de instructor y coordinador cursos coordinados y inpartidos -->
   
 
 

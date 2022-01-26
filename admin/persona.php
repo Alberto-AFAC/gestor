@@ -590,7 +590,7 @@ if($data['estado'] == 0){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNo
 
     ],
     <?php } else if($data['estado'] == 3){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNombr']?>",
-        "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>", "<a href='' title='Ver perfil' onclick='perperexter(<?php echo $gstIdper ?>)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-perexterno'><i class='glyphicon glyphicon-user text-success'></i></a> <a type='button' title='Eliminar' onclick='deletexter(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-bajaex'><i class='fa fa-user-times text-red'></i></a>"
+        "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>", "<a href='' title='Ver perfil' onclick='perperexter(<?php echo $gstIdper ?>)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-perexterno'><i class='glyphicon glyphicon-user text-success'></i></a>  <a href='' title='Ver detalle de cursos' onclick='perexterna(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-curexten'><i class='fa fa ion-easel text-info'></i></a>  <a type='button' title='Eliminar' onclick='deletexter(<?php echo $gstIdper ?>)' class='btn btn-default' data-toggle='modal' data-target='#modal-bajaex'><i class='fa fa-user-times text-red'></i></a>"
     ],
 
 
@@ -631,4 +631,74 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
         }
     ],
 });
+
+function perexterna(gstIdper) {
+
+var idpersona1 = document.getElementById('insperext').value =gstIdper;
+        $.ajax({
+            url: '../php/infopersext.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            //alert(idpersona1)
+            var n = 0;
+            for (R = 0; R < res.length; R++){
+                if (obj.data[R].gstIdper == gstIdper){
+                $("#inexnomebre").val(obj.data[R].gstNombr + "  " + obj.data[R].gstApell);
+                }
+            }
+        });
+//TABLA DE CURSOS COMO INSTRUCTOR
+
+    $.ajax({
+        url: '../php/curosperext.php',  
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cursextper" class="table table-bordered table-striped" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CODIGO</th><th><i></i>CURSO</th><th><i></i>INICIO</th><th><i></i>FIN</th><th><i></i>ESTATUS</th></tr></thead><tbody>';
+        for (V = 0; V < res.length; V++) {   
+            if (obj.data[V].idinsp == idpersona1) {   
+                x++;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[V].codigo + "</td><td>" + obj.data[V].gstTitlo + "</td><td>" + obj.data[V].fcurso + "</td><td>" + obj.data[V].fechaf + "</td><td>" + obj.data[V].proceso + "</td></td></tr>";
+            } else {}
+        }
+        html += '</tbody></table></div></div></div>';
+        $("#cursextern").html(html);
+        $('#cursextper').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false,
+            "language": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior",
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"         
+            },
+        },
+    });            
+})
+}
 </script>
