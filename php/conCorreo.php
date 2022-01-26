@@ -15,7 +15,7 @@ require '../php-mailer2/SMTP.php';
 
 		$valores = explode('.',$valor);
 		$nombre = strval($valores[0]);
-		$nmple = intval($valores[1]);
+		$nmple = $valores[1];
 
 
  	if(actCorreo($valor,$conexion)){	
