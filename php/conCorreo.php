@@ -15,7 +15,7 @@ require '../php-mailer2/SMTP.php';
 
 		$valores = explode('.',$valor);
 		$nombre = strval($valores[0]);
-		$nmple = intval($valores[2]);
+		$nmple = strval($valores[2]);
 
 
  	if(actCorreo($valor,$conexion)){	
@@ -188,7 +188,7 @@ $resultado= mysqli_query($conexion,$query);
 		}else{
 			 $res = mysqli_fetch_row($resultado);
 			
-			  return $res[1].' '.$res[2].'.'.$res[24];
+			  return $res[1].' '.$res[2].'.'.$res[3];
 		}
 		$this->conexion->cerrar();
 } 
