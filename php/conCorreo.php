@@ -13,8 +13,8 @@ require '../php-mailer2/SMTP.php';
 
  if($valor = conCorreo($correo,$conexion)){
 
-		// $valores = explode('.',$valor);
-		// $nombre = strval($valores[0]);
+		$valores = explode('.',$valor);
+		$nombre = strval($valores[0]);
 		// $nmple = intval($valores[1]);
 
 
