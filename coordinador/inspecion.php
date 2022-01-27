@@ -107,7 +107,7 @@
       </div>
       <!-- /.row -->
       </section>
-
+      <?php include('agrStdPro.php'); ?>
 
 <?php //include('evaluar.php');?>
 
