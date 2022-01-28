@@ -136,7 +136,7 @@ class="table display table-striped table-bordered"></table> -->
                 </div>
                 <!-- /.row -->
             </section>
-
+            <?php include('agrStdPro.php'); ?>
 
             <?php //include('evaluar.php');?>
 

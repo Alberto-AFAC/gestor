@@ -292,7 +292,7 @@ include('header.php');
                         </div>
                        <div class="form-group">
                             <div class="col-sm-12">
-                                <p><span style="font-size:18px" class="label label-primary">CONTACTO</span></p>
+                                <p><span style="font-size:16px" class="label label-primary">CONTACTO</span></p>
                             </div>
                         </div>
                         <div class="form-group">

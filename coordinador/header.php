@@ -97,6 +97,7 @@ unset($_SESSION['consulta']);
             <li><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
             <li><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
             <li><a href="inspecion"><i class="fa ion-document-text"></i>Lista de inspectores</a></li>
+            <li><a href="persona"><i class="fa ion-document-text"></i>Lista de personal externo</a></li>
             <li><a href="instructor"><i class="fa ion-document-text"></i>Coordinador/Instructor</a></li>
           </ul>
         </li>

@@ -15,12 +15,20 @@ require '../php-mailer2/SMTP.php';
 
 		$valores = explode('.',$valor);
 		$nombre = strval($valores[0]);
-		$nmple = intval($valores[1]);
+		$nmple = $valores[1];
 
 
  	if(actCorreo($valor,$conexion)){	
-	
-	$mail = new PHPMailer;
+		// 	$mail = new PHPMailer();
+		// $mail->isSMTP();
+		// $mail->Host = 'smtp1.s.ipzmarketing.com';
+		// $mail->SMTPAuth = true;
+		// $mail->Port = 587;
+        // $mail->Username = 'rbaknrjagwkj';
+		// $mail->Password = 'aeQVUr09g0sf';
+		// $mail->SMTPSecure = 'tls'; 
+
+$mail = new PHPMailer;
 $mail->isSMTP();
 $mail->SMTPDebug = 2;
 $mail->Host = 'smtp.hostinger.com';
@@ -30,6 +38,7 @@ $mail->SMTPAuth = true;
 $mail->Username = 'notificaciones@afac.gob.mx';
 $mail->Password = 'Agencia.SCT.2021.';
 $mail->setFrom('notificaciones@afac.gob.mx', 'Notificaciones AFAC');
+// $mail->setFrom('blaclcim@blaclim.com', 'Notificaciones AFAC');
 $mail->addAddress($correo,$nombre);
 $mail->addBCC('jmondragonescamilla@gmail.com');
 // $mail->addBCC('angelcanseco.c@gmail.com');
@@ -168,7 +177,8 @@ if (!$mail->send()) {
 
  function conCorreo($correo,$conexion){
 
-$query="SELECT * FROM personal 
+$query="SELECT * FROM personal
+INNER JOIN accesos ON id_accesos = personal.gstIdper
 		WHERE gstCorro = '$correo' AND estado = 0 
 		OR gstCinst = '$correo' AND estado = 0
 		OR gstSpcID = '$correo' AND estado = 0
@@ -179,7 +189,7 @@ $resultado= mysqli_query($conexion,$query);
 		}else{
 			 $res = mysqli_fetch_row($resultado);
 			
-			  return $res[1].' '.$res[2].'.'.$res[23];
+			  return $res[1].' '.$res[2].'.'.$res[50];
 		}
 		$this->conexion->cerrar();
 } 

@@ -188,11 +188,11 @@ $psto = mysqli_query($conexion,$sql);
                                                 </div>                                               
                                                 <div class="col-sm-4">
                                                     <label class="label2">ORGANIZACIÓN (INSTITUCIÓN)</label>
-                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="sgtCrhnt" name="sgtCrhnt">
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="sgtCrhnt1" name="sgtCrhnt1">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label class="label2">ÁERA DE ADSCRIPCIÓN</label>
-                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstRusp" name="gstRusp">
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstRusp1" name="gstRusp1">
                                                 </div>  
                                             </div>
 
@@ -213,7 +213,7 @@ $psto = mysqli_query($conexion,$sql);
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
-                                                        <H4><i style=color:#333 class="fa   fa-dot-circle-o"></i>
+                                                        <H4><i style=color:#333 class="fa fa-dot-circle-o"></i>
                                                             <label style=color:#333> CONTACTO</label>
                                                         </H4>
                                                     </div>
@@ -272,17 +272,16 @@ $psto = mysqli_query($conexion,$sql);
                                                             name="gstSpcID">
                                                     </div>
                                                 </div>
-
+                                            
                                                 <br> <br> <br> <br>
                                                 <div class="form-group">
                                                     <div class="col-sm-10">
                                                         <div class="col-sm-offset-0 col-sm-2">
-                                                            <button type="button" title="AGREGAR PERSONA EXTERNA"
-                                                                class="btn btn-block btn-primary botonnet"
-                                                                onclick="addPerson()"><a style="color: #fff;"
-                                                                    data-toggle="tab">ACEPTAR</a></button>
+                                                            <button type="button" title="AGREGAR PERSONA EXTERNA" class="btn btn-block btn-primary botonnet" onclick="addPerson()"><a style="color: #fff;" data-toggle="tab">ACEPTAR</a></button>
                                                         </div>
                                                     </div>
+                                                    <b><p class="alert alert-danger text-center padding error" id="exerr">Error al agregar datos contactar al soporte tecnico</p></b>
+                                                    <b><p class="alert alert-info text-center padding error" id="exduplica">Los datos ya están agregados </p></b>
                                                 </div>
                                         </form>
                                         <br>
@@ -392,7 +391,6 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
     })
 
                         function addPerson() {
-
                             var gstNombr = $("#gstNombr").val(); //NOMBRE
                             var gstApell = $("#gstApell").val(); //APELLIDO
                             var gstLunac = $("#gstLunac").val(); //TIPO DE PERSONA
@@ -405,16 +403,12 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                             var gstCorro = $("#gstCorro").val(); //CORREO PERSONAL
                             var gstSpcID = $("#gstSpcID").val(); //CORREO ALTERNATIVO
                             var gstStado = $("#gstStado").val(); //ESTADO
-                            var sgtCrhnt = $("#sgtCrhnt").val(); //ORGANIZACIÓN
-                            var gstRusp = $("#gstRusp").val(); //ÁREA DE ADSCRIPCIÓN
+                            var sgtCrhnt = $("#sgtCrhnt1").val(); //ORGANIZACIÓN
+                            var gstRusp = $("#gstRusp1").val(); //ÁREA DE ADSCRIPCIÓN
+                           // swal.showLoading();
+                            var datos= 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstSexo=' + gstSexo + '&gstIDCat=' + gstIDCat + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstCorro=' + gstCorro + '&gstSpcID=' + gstSpcID + '&gstStado=' + gstStado + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&opcion=registrar';
+                            //alert(datos);
 
-                            // alert(gstNombr);
-                            // alert(gstApell);
-                            // alert(gstCurp);
-                            // alert(gstRfc);
-                            // alert(gstSexo);
-                            // alert(gstIDCat);
-                            swal.showLoading();
                             if (gstNombr == '' || gstApell == '' || gstSexo == '' || gstIDCat == '' || gstCorro == ''| gstLunac == '0') {
                                 Swal.fire({
                                     type: 'warning',
@@ -427,24 +421,10 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                                 $.ajax({
                                     type: "POST",
                                     url: "../php/insertarPersonal.php",
-                                    data: {
-                                        gstNombr: gstNombr,
-                                        gstApell: gstApell,
-                                        gstLunac:gstLunac,
-                                        gstCurp: gstCurp,
-                                        gstRfc: gstRfc,
-                                        gstSexo: gstSexo,
-                                        gstIDCat: gstIDCat,
-                                        gstCasa: gstCasa,
-                                        gstClulr: gstClulr,
-                                        gstCorro: gstCorro,
-                                        gstSpcID: gstSpcID,
-                                        gstStado: gstStado,
-                                        sgtCrhnt: sgtCrhnt,
-                                        gstRusp: gstRusp
-                                    },
-                                    success: function(data) {
-                                        // document.getElementById("personal-ext").reset();
+                                    data:datos
+                                }).done(function(respuesta) {
+                                    if (respuesta==0){
+                                            // document.getElementById("personal-ext").reset();
                                         setTimeout("location.href = 'Externo';", 2000);
                                         Swal.fire({
                                             type: 'success',
@@ -454,11 +434,19 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                                             showConfirmButton: false,
                                             customClass: 'swal-wide'
                                         });
+                                    }else if (respuesta == 2){
+                                        $('#exduplica').toggle('toggle');
+                                        setTimeout(function() {
+                                           $('#exduplica').toggle('toggle');
+                                        }, 2000);
+                                    }else{
+                                        $('#exerr').toggle('toggle');
+                                        setTimeout(function() {
+                                           $('#exerr').toggle('toggle');
+                                        }, 2000);
                                     }
                                 });
                             }
-
-                            return false;
                         }
 
                         // TABLE INSTRUCTORS OUT
