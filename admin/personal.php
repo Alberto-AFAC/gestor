@@ -74,9 +74,11 @@ include('header.php');
 
    <section class="content-header">
       <h1> 
-      <i class="fa  ion-android-person"></i>
-            ALTA / PERSONAL   
+         <i class="fa  ion-android-person"></i>
+         ALTA / PERSONAL   
+         <a href="implaoyut" type="button"  title="importación masiva" style="float: right;" class="btn bg-navy margin">IMPORTAR LAYOUT</a>
       </h1>
+      
     </section>
 <?php
  
