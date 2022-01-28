@@ -43,26 +43,26 @@ $enc = 0;
 //se resta los instructores 
 $resta = $val - $ttal; 
 	
- foreach ($valor as $idinsps) {
+//  foreach ($valor as $idinsps) {
 
-if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
 
- 	echo $enc;
+//  	echo $enc;
 
 
-}else{
- 	$var++;
+// }else{
+//  	$var++;
 
-}
-}
+// }
+// }
 
 $var;
 
-if($val==$var){
+//if($val==$var){
 foreach ($valor as $idinsps) {
 	$n++;
-$varY = 'HAY';
+// $varY = 'HAY';
 
 //incrmento sea menor que el total de parcipantes
 	if($n < $resta){
@@ -91,7 +91,7 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 		contancia($idinsps,$codigo, $conexion);
 		semanal($idinsps,$codigo,$fcurso,$fechaf,$hcurso,$conexion);
 	}
-}
+//}
 
 
 

@@ -148,7 +148,7 @@ function editarDias($dias,$validar,$mes,$finicial,$ffinal,$hora_ini,$hora_fin,$c
 	fec_fin='$ffinal',
 	hora_ini='$hora_ini',
 	hora_fin ='$hora_fin'
-	WHERE dia_semana='$dias'";
+	WHERE dia_semana='$dias' AND id_curso = '0'";
 	if(mysqli_query($conexion,$query)){
 
 		return true;
@@ -163,7 +163,7 @@ function editarDias($dias,$validar,$mes,$finicial,$ffinal,$hora_ini,$hora_fin,$c
 
 function eliminarDias($idPer,$conexion){
 
-	$query="DELETE FROM semanal WHERE id_per = $idPer AND id_curso = 0";
+	$query="DELETE FROM semanal WHERE id_per = $idPer AND id_curso = '0'";
 	if(mysqli_query($conexion,$query)){
 
 			return true;

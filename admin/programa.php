@@ -253,7 +253,11 @@ include('header.php');
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="buttonpro" style="font-size:16px" class="btn btn-info altaboton" onclick="proCurso();">PROGRAMAR</button>
+
+<!-- <button type="button" id="buttonpro" data-toggle='modal' data-target='#modal-aviso' style="font-size:16px" class="btn btn-info altaboton" onclick="curProgramar();">PROGRAMAR</button> -->
+
+<button type="button" id="buttonpro" style="font-size:16px" class="btn btn-info altaboton" onclick="curProgramar();">PROGRAMAR</button>
+
 <div id="overlay">
   <div class="cv-spinner">
     <span class="spinner"></span>
@@ -268,7 +272,7 @@ include('header.php');
 
 <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
 
-<b><p class="alert alert-info text-center padding aviso" id="fechasA">Fecha conclusión es menor a fecha inicio</p></b>
+
 </div>
 </form>
 </div>
@@ -308,6 +312,12 @@ include('header.php');
 <div class="form-group" id="vacio" style="display: none;">
 <div class="col-sm-12">
   <label class="label2">¡FAVOR DE AGREGAR FECHA!</label>
+ </div> 
+</div>
+
+<div class="form-group" id="avisof" style="display: none;">
+<div class="col-sm-12">
+  <label class="label2" class="alert alert-info text-center padding aviso">¡FECHA CONCLUSIÓN ES MENOR A FECHA INICIO!</label>
  </div> 
 </div>
 
@@ -364,6 +374,7 @@ onclick="agregarDias();">EDITAR</button>
 <!-- <b><p class="alert alert-danger text-center padding error" id="danger2">Error al asignar</p></b>-->
 <b><p class="alert alert-success text-center padding exito" id="succed">¡Se guardó fecha con éxito!</p></b>
 <b><p class="alert alert-warning text-center padding aviso" id="avisoh">Seleccione hora</p></b> 
+
 </div>
 
 </form>
@@ -373,6 +384,33 @@ onclick="agregarDias();">EDITAR</button>
 
 </div>
 </div>
+
+
+<!-- <div class="modal fade" id='modal-aviso'>
+<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" style="font-size:19px; color: #000000;"> <div id="titulos"></div> 
+</h4>
+
+<div class="form-group">
+<div class="col-sm-12">
+  <label class="label2">EL PARTICIPANTE ESTA EN CURSO</label>
+ </div> 
+</div>
+</div>
+<div class="modal-body">
+<form id="Dtall" class="form-horizontal" action="" method="POST">
+<div id="mosModal"></div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div> -->
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">

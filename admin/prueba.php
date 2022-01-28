@@ -794,28 +794,28 @@ function hazalgo() {
 // ini_set('date.timezone','America/Mexico_City');
 
 // definimos 2 array uno para los nombre de los dias y otro para los nombres de los meses
-$nombresDias = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado" );
-$nombresMeses = array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+// $nombresDias = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado" );
+// $nombresMeses = array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
-// establecemos la fecha de inicio
-$inicio =  DateTime::createFromFormat('Y-m-d', '2022-01-19');
-// establecemos la fecha final (fecha de inicio + dias que queramos)
-$fin =  DateTime::createFromFormat('Y-m-d', '2022-01-24');
-$fin->modify( '+1 day' );
+// // establecemos la fecha de inicio
+// $inicio =  DateTime::createFromFormat('Y-m-d', '2022-01-19');
+// // establecemos la fecha final (fecha de inicio + dias que queramos)
+// $fin =  DateTime::createFromFormat('Y-m-d', '2022-01-24');
+// $fin->modify( '+1 day' );
 
-// creamos el periodo de fechas
-//$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
-$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
-// recorremos las dechas del periodo
-foreach($periodo as $date){
-    // definimos la variables para verlo mejor
-    $nombreDia = $nombresDias[$date->format("w")];
-    $nombreMes = $nombresMeses[$date->format("n")];
-    $numeroDia = $date->format("j");
-    $anyo = $date->format("Y");
-    // mostramos los datos
-    echo $nombreDia.' '.$numeroDia.' de '.$nombreMes.' de '.$anyo.'<br>';
-}
+// // creamos el periodo de fechas
+// //$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// $periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// // recorremos las dechas del periodo
+// foreach($periodo as $date){
+//     // definimos la variables para verlo mejor
+//     $nombreDia = $nombresDias[$date->format("w")];
+//     $nombreMes = $nombresMeses[$date->format("n")];
+//     $numeroDia = $date->format("j");
+//     $anyo = $date->format("Y");
+//     // mostramos los datos
+//     echo $nombreDia.' '.$numeroDia.' de '.$nombreMes.' de '.$anyo.'<br>';
+// }
 
 
 ?>
@@ -906,30 +906,328 @@ dia.innerText = "";
 </script>
  -->
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-<input type="checkbox" name="selectall" id="selectall">
-<br>
-<td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'>
-</body>
-</html>
-<script type="text/javascript">
-  
-  $("#selectall").on("click", function() {
-  $(".idinsp").prop("checked", this.checked);
-});
 
-// // if all checkbox are selected, check the selectall checkbox and viceversa
-// $(".idinsp").on("click", function() {
-//   if ($(".idinsp").length == $(".idinsp:checked").length) {
-//     $("#selectall").prop("checked", true);
-//   } else {
-//     $("#selectall").prop("checked", false);
+
+
+
+
+<?php
+
+//$fcurso = '';
+//$fechaf = '';
+
+//function encurso($fcurso,$fechaf,$idinsps,$conexion){
+
+// $sql = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+// INNER JOIN personal ON idinsp = personal.gstIdper WHERE proceso = 'PENDIENTE' AND idinsp = $idinsps ";        
+// $person = mysqli_query($conexion,$sql);
+// while ($per = mysqli_fetch_row($person)) {
+
+// $query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+// INNER JOIN personal ON idinsp = personal.gstIdper 
+// WHERE '$fcurso' > fechaf AND idinsp = $idinsps";
+// // '2021-11-24' > fcurso AND fechaf < '2021-11-27'
+
+// $resultado = mysqli_query($conexion, $query3);
+// if($curs = mysqli_fetch_row($resultado)){ 
+
+// return false;
+// //echo '<br>'.$enCurso = '0';
+
+// }else{
+// return $per[1].' '.$per[2].',';
+// }
+// }
+///}
+
+
+  // $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin FROM semanal INNER JOIN cursos ON codigo = semanal.id_curso WHERE idinsp = 1046";
+  // $resultado = mysqli_query($conexion, $query);
+
+  // if(!$resultado){
+  //   die("error");
+  // }else{
+  //   while($data = mysqli_fetch_assoc($resultado)){
+
+  //     $folio = $data['id_curso'];
+
+  //     $data['folio'] = $folio;
+  //     $arreglo["data"][] = $data; 
+  //   }
+  //   if(isset($arreglo)&&!empty($arreglo)){
+
+  //     echo json_encode($arreglo);
+  //   }else{
+
+  //     echo $arreglo='0';
+  //   }
+  // }
+
+echo "<br>---------------------------------------------------------------------------------------------------------------";
+echo "<br>";
+$id = '1046';
+
+
+
+$valor = explode(",", $id);
+$val = count($valor);
+
+
+foreach ($valor as $idinsps) {
+
+// for($i=1; $i<=$val; $i++){
+// }
+  $prtcpnt = $idinsps;
+  //mostrar($prtcpnt, $conexion);
+mostrarDias($prtcpnt, $conexion);
+
+
+}
+// function mostrar($prtcpnt, $conexion){
+//   $query = "SELECT dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin  FROM semanal WHERE id_curso = '0' AND habil = 'SI'";
+//   $resultado = mysqli_query($conexion, $query);
+
+//   if(!$resultado){
+//     die("error");
+//   }else{
+//     while($data = mysqli_fetch_assoc($resultado)){
+
+
+//       $data['prtcpnt'] = $prtcpnt;
+//       $dia = $data['dia_semana'];
+//       $mes = $data['num_mes'];
+//       $hini = $data['hora_ini'];
+//       $hfin = $data['hora_fin'];
+ 
+
+//   $prtcpn = $data['prtcpnt'];
+      
+//   $queri = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell 
+//   FROM semanal 
+//   INNER JOIN cursos ON codigo = semanal.id_curso
+//   INNER JOIN personal ON gstIdper = id_per 
+//   WHERE 
+//   idinsp = $prtcpn AND 
+//   dia_semana = $dia AND 
+//   num_mes = $mes AND
+//   habil = 'SI' AND 
+//   prtcpnt = 'SI' 
+//   -- AND FORMAT(hora_ini, 'hh:mm') BETWEEN '$hini' AND '$hfin'
+//   ";
+//   $resul = mysqli_query($conexion, $queri);
+
+//   if($res = mysqli_fetch_array($resul)){
+      
+// $hrinipro = strtotime( $res['hora_ini'] ); 
+// $hrfinpro = strtotime( $res['hora_fin'] );
+
+// $hrinicom = strtotime( $hini ); 
+// $hrfincom = strtotime( $hfin ); 
+
+// if($hrinicom<$hrinipro && $hrinipro<$hrfincom || $hrinicom<$hrfinpro && $hrfinpro<$hrfincom){
+      
+//       $data['nombre'] = $res['gstNombr'].' '.$res['gstApell'];
+//       $data['idinsp'] = $res['idinsp'];      
+//       $data['prtcpnt'] = 'Existe';
+//        $arreglo["data"][] = $data; 
+// }else{
+     
+// }
+//   }else{
+
+//       $data['prtcpnt'] = 'NO ex';
 //   }
-// });
 
-</script>
+//       if($data['prtcpnt']=='NO ex'){
+//       }
+      
+
+//     }
+//     if(isset($arreglo)&&!empty($arreglo)){
+
+//       echo json_encode($arreglo);
+//     }else{
+
+//       echo $arreglo='0';
+//     }
+//   }
+
+// }
+
+
+
+function mostrarDias($prtcpnt, $conexion){
+  $query = "SELECT dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin  FROM semanal WHERE id_curso = '0' AND habil = 'SI'";
+  $resultado = mysqli_query($conexion, $query);
+
+  if(!$resultado){
+    die("error");
+  }else{
+    while($data = mysqli_fetch_assoc($resultado)){
+
+      //$data['prtcpnt'] = $prtcpn;
+      $prtcpn = $prtcpnt;
+      $dia = $data['dia_semana'];
+      $mes = $data['num_mes'];
+      $hini = $data['hora_ini'];
+      $hfin = $data['hora_fin'];
+       mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin,$conexion);
+    }
+
+  }
+
+}
+
+
+
+function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
+  echo $dia;
+
+  $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell 
+  FROM semanal 
+  INNER JOIN cursos ON codigo = semanal.id_curso
+  INNER JOIN personal ON gstIdper = id_per 
+  WHERE 
+  idinsp = $prtcpn AND 
+  dia_semana = $dia AND 
+  num_mes = $mes AND
+  habil = 'SI' AND 
+  prtcpnt = 'SI' ";
+
+  $resultado = mysqli_query($conexion, $query);
+
+  if(!$resultado){
+    die("error");
+  }else{
+
+    while($data = mysqli_fetch_assoc($resultado)){
+
+$hrinipro = strtotime( $data['hora_ini'] ); 
+$hrfinpro = strtotime( $data['hora_fin'] );
+
+$hrinicom = strtotime( $hini ); 
+$hrfincom = strtotime( $hfin ); 
+
+ if($hrinicom<=$hrinipro && $hrinipro<=$hrfincom || $hrinicom<=$hrfinpro && $hrfinpro<=$hrfincom){
+      
+     $datas = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].''.$data['num_mes'].' '.$data['dia_semana'];
+     $data['idinsp'] = $data['idinsp'];      
+      $data['prtcpnt'] = 'Existe';
+       $arreglo["data"][] = $datas; 
+
+
+ }else{
+     
+ }
+
+ 
+    }
+    if(isset($arreglo)&&!empty($arreglo)){
+
+      echo json_encode($arreglo);
+    }else{
+
+      echo $arreglo='0';
+    }
+  }
+
+}
+
+
+// function encurso($fcurso,$fechaf,$idinsps,$conexion){
+
+// $sql = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+// INNER JOIN personal ON idinsp = personal.gstIdper WHERE proceso = 'PENDIENTE' AND idinsp = $idinsps ";        
+// $person = mysqli_query($conexion,$sql);
+// while ($per = mysqli_fetch_row($person)) {
+
+// $query3 = "SELECT gstIdper,gstNombr,gstApell FROM cursos 
+// INNER JOIN personal ON idinsp = personal.gstIdper 
+// WHERE '$fcurso' > fechaf AND idinsp = $idinsps";
+// // '2021-11-24' > fcurso AND fechaf < '2021-11-27'
+
+// $resultado = mysqli_query($conexion, $query3);
+// if($curs = mysqli_fetch_row($resultado)){ 
+
+// return false;
+// //echo '<br>'.$enCurso = '0';
+
+// }else{
+// return $per[1].' '.$per[2].',';
+// }
+// }
+// }
+// FORMAT(fechahora, 'dd/MM/yyyy hh:mm:ss tt') >= '2015-03-24 01:29:21.000'
+
+// SELECT idtiempo,
+// FORMAT(fecha, 'dd/MM/yyyy') Fecha, 
+// Convert(Char(8), hora, 108) Hora, --108
+// FORMAT(fechahora, 'dd/MM/yyyy hh:mm:ss tt') 'Fecha y Hora'
+// FROM tiempos t
+// WHERE FORMAT(fechahora, 'dd/MM/yyyy hh:mm:ss tt') >= '2015-03-24 01:29:21.000'
+// AND FORMAT(fechahora, 'dd/MM/yyyy hh:mm:ss tt') <= '2015-12-25 11:29:59.000'
+
+
+// select *
+// from T
+// where time_column between cast(getdate() as time) and cast(dateadd(hour, 16, getdate()) as time);
+
+
+// $hinip = strtotime("11:00");
+// $hfinp = strtotime("12:00");
+
+// $hinia = strtotime("9:00");
+// $hfina = strtotime("10:00");
+
+// if($hinia<$hinip){
+//   echo "ok";
+// }else{
+//   echo "no pasa";
+// }
+
+// $salario = 300000;
+// // Observa los signos de agrupación. Son muy importantes para fijar las condiciones
+// if( ($salario >= 0) && ($salario <= 500000) ) {
+//     echo "SI PERTENECE AL RANGO";
+// } else {
+//     echo "NO PERTENECE AL RANGO"; 
+// }
+
+
+
+
+
+// $fecha_actual = date("11:30:00");
+// //sumo una hora
+// echo '<br>'.date("H:i",strtotime($fecha_actual."+ 0 hour")); 
+// //resto una hora
+
+// if($horario_ini_2<=$hora_compara && $hora_compara<=$horario_fin_2){
+//       echo "La hora está en el horario 2";
+//       return;
+//     }  
+
+// // Create two new DateTime-objects...
+// $date1 = new DateTime('11:00:00');
+// $date2 = new DateTime('13:30:00');
+
+// // The diff-methods returns a new DateInterval-object...
+// $diff = $date2->diff($date1);
+
+// // Call the format method on the DateInterval-object
+// echo '<br>'.$diff->format('%h:%i hours');  
+
+
+// $horario_ini_1 = strtotime( "13:00:00" ); 
+// $horario_fin_1 = strtotime( "14:00:00" );
+
+// $horario_ini_2 = strtotime( "13:30:00" ); 
+// $horario_fin_2 = strtotime( "14:00:00" ); 
+
+// if($horario_ini_2<$horario_ini_1 && $horario_ini_1<$horario_fin_2 || $horario_ini_2<$horario_fin_1 && $horario_fin_1<$horario_fin_2){
+//       echo "<br>La hora está en el horario 1";
+//     }else{
+//     echo "<br>La hora no está en ningún horario";
+//     }
+
+?>

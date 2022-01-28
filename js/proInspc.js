@@ -17,6 +17,152 @@ $.ajax({
     $("#conslts").html(html);
 })
 
+
+function curProgramar(){
+
+
+   var idInsptr = new Array();
+
+    $("input[name='idinsp[]']:checked").each(function() {
+        idInsptr.push($(this).val());
+    });
+
+    var idInstr = ''
+
+    var selectObject = document.getElementById("idinst");
+
+    for (var i = 0; i < selectObject.options.length; i++) {
+        if (selectObject.options[i].selected == true) {
+
+            idInstr += "," + selectObject.options[i].value;
+
+        }
+    }
+
+    idInstru = idInstr.substr(1);
+
+    var id_mstr = document.getElementById('id_mstr').value;
+    var hcurso = document.getElementById('hora_ini').value;
+    var fcurso = document.getElementById('fcurso').value;
+    //Solo ID coordinadores 
+    var idcord = document.getElementById('idcord').value;
+    var sede = document.getElementById('sede').value;
+    var fechaf = document.getElementById('fechaf').value;
+    var modalidad = document.getElementById('modalidad').value;
+
+    if (modalidad == 'PRESENCIAL') {
+        var link = '0';
+        var contracceso = '0';
+        var classroom = '0';
+    } else {
+        var link = document.getElementById('link').value;
+        var contracceso = document.getElementById('contracceso').value;
+        var classroom = document.getElementById('classroom').value;
+    }
+
+    idinsps = idInsptr + '' + idInstr;
+
+     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso';
+
+
+            $.ajax({
+                url: '../php/comDias.php',
+                type: 'POST',
+                data: 'idpart=' + idInsptr
+            }).done(function(resp) {
+                 obj = JSON.parse(resp);
+                    var res = obj.data;
+
+        alert(resp);     
+if(resp==0){
+
+
+//    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=comprobar'
+
+$("#modal-aviso").hide();
+programarCurso(datos);
+
+
+
+
+}else{
+
+// html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i></i>NOMBRE</th></tr></thead><tbody>';
+// for (i = 0; i < res.length; i++){
+// html += "<tr><td><b>"+ obj.data[i].nombre +"</b></td>";
+// }
+// html += '</tbody></table></div></div></div>';
+//$("#mosModal").html(html);
+
+
+Swal.fire({
+type: 'success',
+//title: 'CURSO PROGRAMADO CORRECTAMENTE',
+html: `<p><code>EL PARTICIPANTE ${html} ESTA EN CURSO</code></p>`,
+showConfirmButton: false,
+customClass: 'swal-wide',
+timer: 10000
+});
+    }
+            });
+
+}
+
+
+function programarCurso(datos){
+
+         $.ajax({
+                url: '../php/proCurso.php',
+                type: 'POST',
+                data: datos
+            }).done(function(respuesta) {
+                if (respuesta == 1) {
+                    Swal.fire({
+                        type: 'success',
+                        // title: 'AFAC INFORMA',
+                        text: 'CURSO PROGRAMADO CORRECTAMENTE',
+                        // showConfirmButton: false,
+                        showCancelButton: true,
+                        customClass: 'swal-wide',
+                        confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                        cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
+
+                    });
+                    // setTimeout("location.href = 'inspecion.php';", 2000);
+                    $("#buttonpro").hide();
+                } else
+
+                if (respuesta == 0) {
+                    Swal.fire({
+                        type: 'success',
+                        // title: 'AFAC INFORMA',
+                        text: 'CURSO PROGRAMADO CORRECTAMENTE',
+                        // showConfirmButton: false,
+                        showCancelButton: true,
+                        customClass: 'swal-wide',
+                        confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                        cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
+
+                    });
+                    // setTimeout("location.href = 'inspecion.php';", 2000);
+                    $("#buttonpro").hide();
+                } else {
+                    Swal.fire({
+                        type: 'success',
+                        //title: 'CURSO PROGRAMADO CORRECTAMENTE',
+                        html: `<p><code>EL PARTICIPANTE ${respuesta} ESTA EN CURSO</code></p>`,
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 10000
+                    });
+
+                }
+            });
+
+
+}
+
+
 function proCurso() {
 
     var idInsptr = new Array();
@@ -51,10 +197,6 @@ function proCurso() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
-    // var hoy = new Date();
-    // var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
-    // var f1 = new Date(hoy.getFullYear(),(hoy.getMonth()+1),hoy.getDate());
-
     fvigd = fcurso.substring(8, 10);
     fvigm = fcurso.substring(5, 7);
     fvigy = fcurso.substring(0, 4);
@@ -63,7 +205,6 @@ function proCurso() {
     fvigm = fechaf.substring(5, 7);
     fvigy = fechaf.substring(0, 4);
     var f2 = new Date(fvigy, fvigm, fvigd);
-
 
     if (modalidad == 'PRESENCIAL') {
         var link = '0';
@@ -78,8 +219,6 @@ function proCurso() {
     idinsps = idInsptr + '' + idInstr;
 
     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
-
-    //alert(datos);
 
     if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
@@ -152,19 +291,6 @@ function proCurso() {
                         customClass: 'swal-wide',
                         timer: 10000
                     });
-                    // Swal.fire({
-                    //     type: 'success',
-                    //     // title: 'AFAC INFORMA',
-                    //     text: 'CURSO PROGRAMADO CORRECTAMENTE',
-                    //     // showConfirmButton: false,
-                    //     showCancelButton: true,
-                    //     customClass: 'swal-wide',
-                    //     confirmButtonText: '<a class="a-alert" href="../admin/programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                    //     cancelButtonText: '<a  class="a-alert" href="../admin/lisCurso"><span style="color: white;">Cerrar</span></a>',
-
-                    // });
-
-                    // $("#buttonpro").hide();
 
                 }
             });
@@ -540,17 +666,35 @@ function hrsDias(){
   finicial = document.getElementById('fcurso').value;
   ffinal = document.getElementById('fechaf').value;
 
+    fvigd = finicial.substring(8, 10);
+    fvigm = finicial.substring(5, 7);
+    fvigy = finicial.substring(0, 4);
+    var f1 = new Date(fvigy, fvigm, fvigd);
+    fvigd = ffinal.substring(8, 10);
+    fvigm = ffinal.substring(5, 7);
+    fvigy = ffinal.substring(0, 4);
+    var f2 = new Date(fvigy, fvigm, fvigd);
+
+
+    if (f1 > f2) {
+        $("#avisof").show();
+        $("#vacio").hide();
+        $("#horario").hide();
+        $("#ocubotn").hide();
+    }else
     if(finicial=='' || ffinal==''){
         //alert('ES NECESARIO AGREGAR FECHA');
+        $("#avisof").hide();
         $("#vacio").show();
         $("#horario").hide();
         $("#ocubotn").hide();
 
     }else{
-         $("#vacio").hide();
-         $("#horario").show();
-         $("#ocubotn").show();
 
+        $("#avisof").hide();
+        $("#vacio").hide();
+        $("#horario").show();
+        $("#ocubotn").show();
     }
 
     datos = 'finicial='+finicial+'&ffinal='+ffinal;
@@ -733,12 +877,13 @@ $.ajax({
     obj = JSON.parse(resp);
     var res = obj.data;
 
-     if(obj.data[0].folio==0){
+    for (i = 0; i < res.length; i++){
+     if(obj.data[i].folio==0){
         $("#mosFec").hide();
         $("#visFec").show();
      }else{
-       // alert('NO HAY');
-     }
+            }
+    }
 
     });
 }
@@ -764,3 +909,8 @@ function reiFec(){
 }
 
 function hrsDiasAct(){}
+
+// function proCurso7(){
+
+
+// }
