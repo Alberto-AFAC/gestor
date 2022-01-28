@@ -234,22 +234,7 @@ include('header.php');
 
 <script src="../js/select2.js"></script>
 
-<script>
-  $(document).ready( function (){
- $('input[type="file"]').change(function(){
-        //obtiene el nombre del archivo seleccionado
-        var filename = $("#dataCliente").val();
-        //si es null muestra un mensaje de error
-        if(filename == null)
-             
-        else{// si se eligio un archivo correcto obtiene la extension para vlidarla
-          alert('No ha seleccionado una imagen');           
-
-            
-        }
-    });
-});
-  
+<script>  
     $('#masivo').DataTable({
         'paging'      : true,
         'lengthChange': false,
