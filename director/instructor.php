@@ -204,9 +204,10 @@ $(document).ready(function() {
 <script type="text/javascript">
 var dataSet = [
     <?php 
+$Direje= $datos[5];
 $query = "SELECT * FROM personal 
 INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR personal.estado = 0 AND gstCargo = 'COORDINADOR'  ORDER BY gstIdper DESC";
+WHERE personal.gstIDara = $Direje AND personal.estado = 0 AND gstCargo = 'INSTRUCTOR' OR personal.gstIDara = $Direje AND personal.estado = 0 AND gstCargo = 'COORDINADOR' ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 

@@ -6,7 +6,7 @@
 	$id = $_SESSION['usuario']['id_usu'];
 	$n = 0;
 	$sql = 
-	"SELECT personal.gstIdper,gstAreID,gstNombr,gstApell,gstCargo FROM personal 
+	"SELECT personal.gstIdper,personal.gstIDara,gstNombr,gstApell,gstCargo FROM personal 
 	 WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
    $persona = mysqli_query($conexion,$sql);
    $datos = mysqli_fetch_row($persona);
@@ -20,10 +20,10 @@
 	SELECT *,personal.gstIDCat AS IDcat 
 	FROM personal 
 	INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-	WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 AND gstAreID  = $Direje 
-	   OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 AND gstAreID = $Direje
-	   OR personal.gstCargo = 'EJECUTIVO' AND  personal.estado = 0 AND gstAreID = $Direje 
-	   -- OR personal.gstCargo = 'COORDINADOR' AND  personal.estado = 0 AND gstAreID = $Direje  
+	WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 AND gstIDara  = $Direje 
+	   OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0 AND gstIDara = $Direje
+	   OR personal.gstCargo = 'EJECUTIVO' AND  personal.estado = 0 AND gstIDara = $Direje 
+	   -- OR personal.gstCargo = 'COORDINADOR' AND  personal.estado = 0 AND gstIDara = $Direje  
 
 
 	   ORDER BY personal.gstCargo ASC";

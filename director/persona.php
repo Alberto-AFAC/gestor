@@ -332,6 +332,8 @@ $('#AgstIDSub').select2();
  $('#categoria').load('select/buscatego.php');
  $('#subcategoria').load('select/tabsubcat.php');
 }); 
+
+
 </script>
 <script src="../js/select2.js"></script> 
 
@@ -365,25 +367,13 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
 var dataSet = [
 <?php 
 $Direje= $datos[5];
+//$Direje= '10';
 
-$query = "SELECT * FROM personal 
-INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-WHERE 
-gstCargo = 'INSTRUCTOR' 
-AND gstAreID  = $Direje 
-AND personal.estado = 0
-OR 
-gstCargo = 'COORDINADOR' 
-AND gstAreID  = $Direje 
-AND personal.estado = 0 
-OR 
-gstCargo = 'ADMINISTRATIVO' 
-AND gstAreID  = $Direje 
-AND personal.estado = 0 
-OR 
-gstCargo = 'INSPECTOR' 
-AND gstAreID  = $Direje 
-AND personal.estado = 0 
+$query = "SELECT * FROM personal INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat WHERE 
+gstCargo = 'INSTRUCTOR' AND gstIDara  = $Direje AND personal.estado = 0 
+OR gstCargo = 'COORDINADOR'  AND gstIDara  = $Direje  AND personal.estado = 0 
+OR gstCargo = 'ADMINISTRATIVO' AND gstIDara  = $Direje AND personal.estado = 0 
+OR gstCargo = 'INSPECTOR' AND gstIDara  = $Direje AND personal.estado = 0 
 ORDER BY gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 

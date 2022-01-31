@@ -6,7 +6,7 @@
 
 
 
-	$query = "SELECT * FROM personal WHERE estado = 0 ORDER BY gstIdper DESC";	
+	$query = "SELECT * FROM personal WHERE estado = 0 OR estado = 3 OR estado = 2 ORDER BY gstIdper DESC";	
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

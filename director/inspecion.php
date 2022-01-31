@@ -136,8 +136,8 @@ class="table display table-striped table-bordered"></table> -->
                 </div>
                 <!-- /.row -->
             </section>
+           
             <?php include('agrStdPro.php'); ?>
-
             <?php //include('evaluar.php');?>
 
             <div class="modal fade" id="modal-evaluar">
@@ -496,7 +496,7 @@ $(document).ready(function() {
 
 <script type="text/javascript">
 
-// $Direje= $datos[5];
+ //$Direje= $datos[5];
 
 
 $(document).ready(function() {
