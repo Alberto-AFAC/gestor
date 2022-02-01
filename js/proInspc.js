@@ -69,17 +69,17 @@ function curProgramar(){
                 url: '../php/comDias.php',
                 type: 'POST',
                 data: 'idpart=' + idInsptr
-            }).done(function(resp) {
-                 obj = JSON.parse(resp);
-                    var res = obj.data;
+            }).done(function(resps) {
+                 // obj = JSON.parse(resp);
+                 //    var res = obj.data;
 
-        alert(resp);     
-if(resp==0){
+       // alert(resps);     
+if(resps==0){
 
 
 //    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=comprobar'
 
-$("#modal-aviso").hide();
+// $("#modal-aviso").hide();
 programarCurso(datos);
 
 
@@ -98,7 +98,7 @@ programarCurso(datos);
 Swal.fire({
 type: 'success',
 //title: 'CURSO PROGRAMADO CORRECTAMENTE',
-html: `<p><code>EL PARTICIPANTE ${html} ESTA EN CURSO</code></p>`,
+html: `<p><code>EL PARTICIPANTE ${resps} ESTA EN CURSO</code></p>`,
 showConfirmButton: false,
 customClass: 'swal-wide',
 timer: 10000
@@ -842,7 +842,7 @@ if(hora_ini =='' || hora_fin==''){
         type: 'POST',
         data: datos
     }).done(function(respuesta) {
-        //alert(respuesta); 
+        alert(respuesta); 
   
         if (respuesta == 0) {
 

@@ -965,7 +965,7 @@ dia.innerText = "";
 
 echo "<br>---------------------------------------------------------------------------------------------------------------";
 echo "<br>";
-$id = '1046';
+$id = '1046,1045';
 
 
 
@@ -1057,6 +1057,8 @@ mostrarDias($prtcpnt, $conexion);
 
 
 function mostrarDias($prtcpnt, $conexion){
+  echo $prtcpnt;
+  echo "<br>";
   $query = "SELECT dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin  FROM semanal WHERE id_curso = '0' AND habil = 'SI'";
   $resultado = mysqli_query($conexion, $query);
 
@@ -1071,7 +1073,54 @@ function mostrarDias($prtcpnt, $conexion){
       $mes = $data['num_mes'];
       $hini = $data['hora_ini'];
       $hfin = $data['hora_fin'];
+      $prtcpn;
+
+$feini = '2022-02-01';
+$fefin = '2022-02-05';
+
+$nombresDias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" );
+
+// establecemos la fecha de inicio
+$inicio =  DateTime::createFromFormat('Y-m-d', $feini);
+// establecemos la fecha final (fecha de inicio + dias que queramos)
+$fin =  DateTime::createFromFormat('Y-m-d', $fefin);
+$fin->modify( '+1 day' );
+// creamos el periodo de fechas
+//$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// recorremos las fechas del periodo
+$n=1; 
+
+ foreach($periodo as $date){
+    // definimos la variables para verlo mejor
+echo "<br>";
+echo "----------------";
+ echo $date->format("w");
+}
+//echo $dia;
+echo "<br>";
+
+          // echo $nombreDia = $nombresDias[$date->format("w")];
+
        mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin,$conexion);
+        
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
   }
@@ -1081,12 +1130,13 @@ function mostrarDias($prtcpnt, $conexion){
 
 
 function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
-  echo $dia;
+
+  echo $prtcpn;
 
   $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell 
   FROM semanal 
   INNER JOIN cursos ON codigo = semanal.id_curso
-  INNER JOIN personal ON gstIdper = id_per 
+  INNER JOIN personal ON gstIdper = $prtcpn 
   WHERE 
   idinsp = $prtcpn AND 
   dia_semana = $dia AND 
@@ -1110,10 +1160,14 @@ $hrfincom = strtotime( $hfin );
 
  if($hrinicom<=$hrinipro && $hrinipro<=$hrfincom || $hrinicom<=$hrfinpro && $hrfinpro<=$hrfincom){
       
+  
+
      $datas = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].''.$data['num_mes'].' '.$data['dia_semana'];
      $data['idinsp'] = $data['idinsp'];      
       $data['prtcpnt'] = 'Existe';
        $arreglo["data"][] = $datas; 
+
+      
 
 
  }else{
@@ -1229,5 +1283,28 @@ $hrfincom = strtotime( $hfin );
 //     }else{
 //     echo "<br>La hora no está en ningún horario";
 //     }
+
+// $nombresDias = array("0","Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" );
+
+// // establecemos la fecha de inicio
+// $inicio =  DateTime::createFromFormat('Y-m-d', '2022-02-01');
+// // establecemos la fecha final (fecha de inicio + dias que queramos)
+// $fin =  DateTime::createFromFormat('Y-m-d', '2022-02-05');
+// // creamos el periodo de fechas
+// //$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// $periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// // recorremos las fechas del periodo
+// $n=1; 
+// foreach($periodo as $date){
+//     // definimos la variables para verlo mejor
+// $nombreDia = $nombresDias[$date->format("w")];
+//   }
+
+
+
+echo '<br>';
+echo '<br>';
+echo '<br>';
+
 
 ?>
