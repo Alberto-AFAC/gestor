@@ -1,5 +1,6 @@
 <!-- Main content -->
-
+<!-- KEY TO READ CAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <div class="row" id="detCurso" style="display: none;">
 
 <!-- /.col -->
@@ -330,15 +331,39 @@ name="correoResponsable"
 placeholder="Correo electronico del responsable">
 
 <br>
+<div class="g-recaptcha" data-sitekey="6LejXVAeAAAAAGhif6aYjdPZpWbT26sq9XkqhzLJ"></div>
 <button type="button" id="" style="font-size:18px"
 class="btn btn-block btn-primary" onclick="enviarMailResp()"
 data-dismiss="modal">ENVIAR</button>
+<input type="submit" name="submit" value="SUBMIT">
 <button type="button" id="agregarres" style="font-size:18px"
 class="btn btn-block btn-default btn-sm"
 data-dismiss="modal">CERRAR</button>
+
+<?php
+ if(isset($_POST['submit']) && $_POST['submit'] == 'SUBMIT'){
+  if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))
+  {
+        $secret = '6LejXVAeAAAAAPuUlAUwNHrK9u_UDrSwil_OBe-V';
+        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+        $responseData = json_decode($verifyResponse);
+        if($responseData->success)
+        { ?>
+<div style="color: limegreen;"><b>Your contact request have submitted successfully.</b></div>
+        <?php }
+        else
+        {?>
+            <div style="color: red;"><b>Robot verification failed, please try again.</b></div>
+        <?php }
+   }else{?>
+       <div style="color: red;"><b>Please do the robot verification.</b></div>
+   <?php }
+ }
+?>
 </div>
 </div>
 </form>
+
 <!--FIN DE CONFIRMACIÓN ENVIÓ -->
 
 <!-- CONFIRMACIÓN DE COONVOCATORIA -->
