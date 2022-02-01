@@ -328,7 +328,6 @@ include('header.php');
 <input type="hidden" name="opcion" id="opcion" class="opcion1" value="prodias">
 <input type="hidden" name="opcion" id="opcion" class="opcion2" value="edidias" style="display: none;">
 
-
 <div class="form-group" id="horario"><br>
 <div class="col-sm-4">
 <label class="label2">HORA DE INICIO</label>
@@ -345,18 +344,9 @@ include('header.php');
 </div>
 </div>
 
-
-
 <div id="diaHabil"></div>
 
-
-
-
-
 <!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
-
-
-
 <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
 <div class="form-group" ><br>
 <div class="col-sm-offset-0 col-sm-5">
@@ -384,34 +374,6 @@ onclick="agregarDias();">EDITAR</button>
 
 </div>
 </div>
-
-
-<!-- <div class="modal fade" id='modal-aviso'>
-<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" style="font-size:19px; color: #000000;"> <div id="titulos"></div> 
-</h4>
-
-<div class="form-group">
-<div class="col-sm-12">
-  <label class="label2">EL PARTICIPANTE ESTA EN CURSO</label>
- </div> 
-</div>
-</div>
-<div class="modal-body">
-<form id="Dtall" class="form-horizontal" action="" method="POST">
-<div id="mosModal"></div>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div> -->
-
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">

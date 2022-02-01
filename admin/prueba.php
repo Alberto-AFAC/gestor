@@ -1057,8 +1057,7 @@ mostrarDias($prtcpnt, $conexion);
 
 
 function mostrarDias($prtcpnt, $conexion){
-  echo $prtcpnt;
-  echo "<br>";
+
   $query = "SELECT dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin  FROM semanal WHERE id_curso = '0' AND habil = 'SI'";
   $resultado = mysqli_query($conexion, $query);
 
@@ -1075,51 +1074,11 @@ function mostrarDias($prtcpnt, $conexion){
       $hfin = $data['hora_fin'];
       $prtcpn;
 
-$feini = '2022-02-01';
-$fefin = '2022-02-05';
-
-$nombresDias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" );
-
-// establecemos la fecha de inicio
-$inicio =  DateTime::createFromFormat('Y-m-d', $feini);
-// establecemos la fecha final (fecha de inicio + dias que queramos)
-$fin =  DateTime::createFromFormat('Y-m-d', $fefin);
-$fin->modify( '+1 day' );
-// creamos el periodo de fechas
-//$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
-$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
-// recorremos las fechas del periodo
-$n=1; 
-
- foreach($periodo as $date){
-    // definimos la variables para verlo mejor
-echo "<br>";
-echo "----------------";
- echo $date->format("w");
-}
-//echo $dia;
-echo "<br>";
-
           // echo $nombreDia = $nombresDias[$date->format("w")];
 
        mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin,$conexion);
         
   // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -1131,9 +1090,7 @@ echo "<br>";
 
 function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
 
-  echo $prtcpn;
-
-  $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell 
+  $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell,anio 
   FROM semanal 
   INNER JOIN cursos ON codigo = semanal.id_curso
   INNER JOIN personal ON gstIdper = $prtcpn 
@@ -1142,14 +1099,14 @@ function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
   dia_semana = $dia AND 
   num_mes = $mes AND
   habil = 'SI' AND 
-  prtcpnt = 'SI' ";
+  prtcpnt = 'SI'";
 
   $resultado = mysqli_query($conexion, $query);
 
   if(!$resultado){
     die("error");
   }else{
-
+    
     while($data = mysqli_fetch_assoc($resultado)){
 
 $hrinipro = strtotime( $data['hora_ini'] ); 
@@ -1157,16 +1114,16 @@ $hrfinpro = strtotime( $data['hora_fin'] );
 
 $hrinicom = strtotime( $hini ); 
 $hrfincom = strtotime( $hfin ); 
-
+$n=0;
  if($hrinicom<=$hrinipro && $hrinipro<=$hrfincom || $hrinicom<=$hrfinpro && $hrfinpro<=$hrfincom){
       
   
+  $n++;
+  echo $n;
 
-     $datas = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].''.$data['num_mes'].' '.$data['dia_semana'];
-     $data['idinsp'] = $data['idinsp'];      
-      $data['prtcpnt'] = 'Existe';
-       $arreglo["data"][] = $datas; 
+  $datos = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].'=>'.$data['dia_semana'].'-'.$data['num_mes'].'-'.$data['anio'].' DE '.$data['hora_ini'].' A '.$data['hora_fin'];
 
+       $arreglo[] = $datos; 
       
 
 
@@ -1305,6 +1262,33 @@ $hrfincom = strtotime( $hfin );
 echo '<br>';
 echo '<br>';
 echo '<br>';
+
+// $feini = '2022-02-01';
+// $fefin = '2022-02-05';
+
+// $nombresDias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" );
+
+// // establecemos la fecha de inicio
+// $inicio =  DateTime::createFromFormat('Y-m-d', $feini);
+// // establecemos la fecha final (fecha de inicio + dias que queramos)
+// $fin =  DateTime::createFromFormat('Y-m-d', $fefin);
+// $fin->modify( '+1 day' );
+// // creamos el periodo de fechas
+// //$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// $periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+// // recorremos las fechas del periodo
+// $n=1; 
+
+//  foreach($periodo as $date){
+//     // definimos la variables para verlo mejor
+// echo "<br>";
+// echo "----------------";
+//  echo $date->format("w");
+// $anyo = $date->format("Y");
+// }
+// //echo $dia;
+// echo "<br>";
+// echo $anio = $anyo;
 
 
 ?>

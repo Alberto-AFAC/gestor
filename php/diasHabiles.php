@@ -5,35 +5,33 @@ ini_set('date.timezone','America/Mexico_City');
 $finicial = $_POST['finicial'];
 $ffinal = $_POST['ffinal'];
 
+	//DEFINIMOS 2 ARRAY UNO PARA LOS NOMBRES DE LOS DÍAS Y OTRO PARA LOS NOMBRES DE LOS MESES
+$nomDia = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" );
+$nomMes = array(1=>"1","2","3","4","5","6","7","8","9","10","11","12");
 
-// definimos 2 array uno para los nombre de los dias y otro para los nombres de los meses
-$nombresDias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" );
-$nombresMeses = array(1=>"1","2","3","4","5","6","7","8","9","10","11","12");
-
-// establecemos la fecha de inicio
+	//ESTABLECEMOS LA FECHA DE INICIO 
 $inicio =  DateTime::createFromFormat('Y-m-d', $finicial);
-// establecemos la fecha final (fecha de inicio + dias que queramos)
+	//ESTABLECEMOS LA FECHA FINAL (FECHA DE INICIO + DÍAS QUE QUERAMOS)
 $fin =  DateTime::createFromFormat('Y-m-d', $ffinal);
 $fin->modify( '+1 day' );
 
-// creamos el periodo de fechas
-//$periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
+	//CREAMOS EL PERIODO DE FECHAS
 $periodo = new DatePeriod($inicio, new DateInterval('P1D') ,$fin);
-// recorremos las fechas del periodo
+	//RECORREMOS LAS FECHAS DEL PERIODO
 $n=1;	
 foreach($periodo as $date){
-    // definimos la variables para verlo mejor
-    $nombreDia = $nombresDias[$date->format("w")];
-    $nombreMes = $nombresMeses[$date->format("n")];
-    $numeroDia = $date->format("j");
+    //DEFINIMOS LAS VARIABLES 
+    $nomDias = $nomDia[$date->format("w")];
+    $nomMeses = $nomMes[$date->format("n")];
+    $numDia = $date->format("j");
     $anyo = $date->format("Y");
-  	//si el dia es igual a 1 reicinicar conteo
-  	if($numeroDia==1){	$n=1;	}
-    // mostramos los datos	 
+  	//SI EL DÍA ES IGUAL A 1 REINICIAR CONTEO
+  	if($numDia==1){	$n=1;	}
+    //SE MUESTRA LOS DATOS	 
      $inc = $n++;
-	 $dias = $nombreDia;
-	 $numero = $numeroDia;
-	 $mes = $nombreMes;
+	 $dias = $nomDias;
+	 $numero = $numDia;
+	 $mes = $nomMeses;
 	 $anio = $anyo;
 
 	$data['inc'] = $inc;

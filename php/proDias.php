@@ -25,6 +25,8 @@ $valor = count($varray1);
 $array2 = $_POST['array2'];
 $array2 = json_decode($array2, true);
 
+$array3 = $_POST['array3'];
+$array3 = json_decode($array3, true);
 
 
 for($i=0; $i<$valor; $i++){
@@ -32,6 +34,7 @@ for($i=0; $i<$valor; $i++){
 $dias = $varray1[$i]["diasr"];
 $validar = $varray1[$i]["idias"];
 $mes = $array2[$i]["mes"];
+$anio = $array3[$i]["anio"];
 // $listreportein = $varray3[$i]['listreportein']; 
 // $cartdescrip = $varray4[$i]['cartdescrip']; 
 // $regponde = $varray5[$i]['regponde']; 
@@ -48,7 +51,7 @@ if($validar==1){ $validar = 'SI'; }else{ $validar = 'NO'; }
 // if($evreaccion==1){ $evreaccion = 'SI'; }else{ $evreaccion = 'NO'; }
  
 if(consultar($dias,$mes,$hora_ini,$hora_fin,$conexion)){
-if(programaDias($idPer,$dias,$validar,$mes,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion)){
+if(programaDias($idPer,$dias,$validar,$mes,$anio,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion)){
 	echo "0";
 	}else{
 	echo "1";
@@ -122,9 +125,9 @@ function consultar($dias,$mes,$hora_ini,$hora_fin,$conexion){
 	}
 }
 
-function programaDias($idPer,$dias,$validar,$mes,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion){
+function programaDias($idPer,$dias,$validar,$mes,$anio,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion){
 
-	$query = "INSERT INTO semanal VALUES(0,'$idPer',0,$dias,$mes,'$validar','$finicial','$ffinal','$hora_ini','$hora_fin',0)";
+	$query = "INSERT INTO semanal VALUES(0,'$idPer',0,$dias,$mes,$anio,'$validar','$finicial','$ffinal','$hora_ini','$hora_fin',0)";
 	if(mysqli_query($conexion,$query)){
 
 		return true;
