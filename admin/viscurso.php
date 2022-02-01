@@ -331,7 +331,7 @@ name="correoResponsable"
 placeholder="Correo electronico del responsable">
 
 <br>
-<div class="g-recaptcha" data-sitekey="6LejXVAeAAAAAGhif6aYjdPZpWbT26sq9XkqhzLJ"></div>
+<div id="captcha" class="g-recaptcha" data-sitekey="6LejXVAeAAAAAGhif6aYjdPZpWbT26sq9XkqhzLJ"></div>
 <button type="button" id="" style="font-size:18px"
 class="btn btn-block btn-primary" value="SUBMIT" onclick="enviarMailResp()"
 data-dismiss="modal">ENVIAR</button>
