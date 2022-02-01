@@ -349,14 +349,14 @@ data-dismiss="modal">CERRAR</button>
         $responseData = json_decode($verifyResponse);
         if($responseData->success)
         { ?>
-<div style="color: limegreen;"><b>Your contact request have submitted successfully.</b></div>
+<div style="color: limegreen;"><b>Verificación correcta.</b></div>
         <?php }
         else
         {?>
-            <div style="color: red;"><b>Robot verification failed, please try again.</b></div>
+            <div style="color: red;"><b>El tiempo de verificación a excedido</b></div>
         <?php }
    }else{?>
-       <div style="color: red;"><b>Please do the robot verification.</b></div>
+       <div style="color: red;"><b>Verifica la casilla.</b></div>
    <?php }
  }
 ?>
