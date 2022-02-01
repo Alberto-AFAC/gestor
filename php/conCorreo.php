@@ -18,20 +18,16 @@ require '../php-mailer2/SMTP.php';
 		$nmple = $valores[1];
 
 
- 	if(actCorreo($valor,$conexion)){
-        //  ACCESS SEND MAIL WITH MAILRELAY
-		$mail = new PHPMailer();
-        $mail->SMTPDebug = 2;
+ 	if(actCorreo($valor,$conexion)){	
+			$mail = new PHPMailer();
 		$mail->isSMTP();
-        $mail->SMTPSecure = 'tls'; 
-        $mail->SMTPAuth = true;
-        $mail->Port = 587;
-        $mail->Host = 'smtp1.s.ipzmarketing.com';
-        $mail->Username = 'ovemablvqqkx';
-		$mail->Password = 'UjUe93fyDViAKM2q';
-        $mail->setFrom('notificaciones@afac.gob.mx', 'Notificaciones AFAC');
+		$mail->Host = 'smtp1.s.ipzmarketing.com';
+		$mail->SMTPAuth = true;
+		$mail->Port = 587;
+        $mail->Username = 'rbaknrjagwkj';
+		$mail->Password = 'aeQVUr09g0sf';
+		$mail->SMTPSecure = 'tls'; 
 
-        // ACCESS SEND MAIL WITH HOSTINGER
 // $mail = new PHPMailer;
 // $mail->isSMTP();
 // $mail->SMTPDebug = 2;
@@ -42,7 +38,7 @@ require '../php-mailer2/SMTP.php';
 // $mail->Username = 'notificaciones@afac.gob.mx';
 // $mail->Password = 'Agencia.SCT.2021.';
 // $mail->setFrom('notificaciones@afac.gob.mx', 'Notificaciones AFAC');
-        // END
+$mail->setFrom('blaclcim@blaclim.com', 'Notificaciones AFAC');
 $mail->addAddress($correo,$nombre);
 $mail->addBCC('jmondragonescamilla@gmail.com');
 // $mail->addBCC('angelcanseco.c@gmail.com');
