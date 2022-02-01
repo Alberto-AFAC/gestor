@@ -32,17 +32,25 @@ require '../php-mailer2/SMTP.php';
     $curso3 = mysqli_fetch_assoc($resultado3);
     
            
-              
+    $mail = new PHPMailer();
+    $mail->SMTPDebug = 2;
+    $mail->isSMTP();
+    $mail->Host = 'smtp1.s.ipzmarketing.com';
+    $mail->SMTPAuth = true;
+    $mail->Port = 587;
+    $mail->Username = 'ovemablvqqkx';
+    $mail->Password = 'UjUe93fyDViAKM2q';
+    $mail->SMTPSecure = 'tls';             
 
-$mail = new PHPMailer;
-$mail->isSMTP();
-$mail->SMTPDebug = 2;
-$mail->Host = 'smtp.hostinger.com';
-$mail->SMTPSecure = 'ssl';                          
-$mail->Port = 465;
-$mail->SMTPAuth = true;
-$mail->Username = 'notificaciones@afac-avciv.com';
-$mail->Password = 'Agencia.SCT.2021.';
+// $mail = new PHPMailer;
+// $mail->isSMTP();
+// $mail->SMTPDebug = 2;
+// $mail->Host = 'smtp.hostinger.com';
+// $mail->SMTPSecure = 'ssl';                          
+// $mail->Port = 465;
+// $mail->SMTPAuth = true;
+// $mail->Username = 'notificaciones@afac-avciv.com';
+// $mail->Password = 'Agencia.SCT.2021.';
 	// $mail = new PHPMailer();
 	// 	$mail->isSMTP();
 	// 	$mail->Host = 'smtp.mailtrap.io';
