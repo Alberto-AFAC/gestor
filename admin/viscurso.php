@@ -333,15 +333,15 @@ placeholder="Correo electronico del responsable">
 <br>
 <div class="g-recaptcha" data-sitekey="6LejXVAeAAAAAGhif6aYjdPZpWbT26sq9XkqhzLJ"></div>
 <button type="button" id="" style="font-size:18px"
-class="btn btn-block btn-primary" onclick="enviarMailResp()"
+class="btn btn-block btn-primary" value="SUBMIT" onclick="enviarMailResp()"
 data-dismiss="modal">ENVIAR</button>
-<input type="submit" name="submit" value="SUBMIT">
+<!-- <input type="submit" name="submit" value="SUBMIT"> -->
 <button type="button" id="agregarres" style="font-size:18px"
 class="btn btn-block btn-default btn-sm"
 data-dismiss="modal">CERRAR</button>
 
 <?php
- if(isset($_POST['submit']) && $_POST['submit'] == 'SUBMIT'){
+ if(isset($_POST['button']) && $_POST['button'] == 'SUBMIT'){
   if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))
   {
         $secret = '6LejXVAeAAAAAPuUlAUwNHrK9u_UDrSwil_OBe-V';
