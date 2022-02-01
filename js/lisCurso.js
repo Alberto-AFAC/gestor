@@ -1212,7 +1212,6 @@ function enviarMailResp() {
     gstIdlsc = document.getElementById('gstIdlstc').value;
     codigoCurso = document.getElementById('codigoCurso').value;
     correoResponsable = document.getElementById('correoResponsable').value;
-    captcha = document.getElementById('captcha').value;
     // alert(correoResponsable);
     if (correoResponsable == '') {
 
@@ -1220,16 +1219,6 @@ function enviarMailResp() {
             type: 'info',
             // title: 'AFAC INFORMA',
             text: 'DEBE AGREGAR POR LO MENOS UN RESPONSABLE',
-            showConfirmButton: false,
-            customClass: 'swal-wide',
-            timer: 3000
-        });
-
-    } else if (captcha == '') {
-        Swal.fire({
-            type: 'info',
-            // title: 'AFAC INFORMA',
-            text: 'FALTA VERIFICAR LA CASILLA NO SOY UN ROBOT',
             showConfirmButton: false,
             customClass: 'swal-wide',
             timer: 3000

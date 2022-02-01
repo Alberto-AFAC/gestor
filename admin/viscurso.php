@@ -1,6 +1,5 @@
 <!-- Main content -->
-<!-- KEY TO READ CAPTCHA -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <div class="row" id="detCurso" style="display: none;">
 
 <!-- /.col -->
@@ -331,39 +330,15 @@ name="correoResponsable"
 placeholder="Correo electronico del responsable">
 
 <br>
-<div id="captcha" class="g-recaptcha" data-sitekey="6LejXVAeAAAAAGhif6aYjdPZpWbT26sq9XkqhzLJ"></div>
 <button type="button" id="" style="font-size:18px"
-class="btn btn-block btn-primary" value="SUBMIT" onclick="enviarMailResp()"
+class="btn btn-block btn-primary" onclick="enviarMailResp()"
 data-dismiss="modal">ENVIAR</button>
-<!-- <input type="submit" name="submit" value="SUBMIT"> -->
 <button type="button" id="agregarres" style="font-size:18px"
 class="btn btn-block btn-default btn-sm"
 data-dismiss="modal">CERRAR</button>
-
-<?php
- if(isset($_POST['button']) && $_POST['button'] == 'SUBMIT'){
-  if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))
-  {
-        $secret = '6LejXVAeAAAAAPuUlAUwNHrK9u_UDrSwil_OBe-V';
-        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
-        $responseData = json_decode($verifyResponse);
-        if($responseData->success)
-        { ?>
-<div style="color: limegreen;"><b>Verificación correcta.</b></div>
-        <?php }
-        else
-        {?>
-            <div style="color: red;"><b>El tiempo de verificación a excedido</b></div>
-        <?php }
-   }else{?>
-       <div style="color: red;"><b>Verifica la casilla.</b></div>
-   <?php }
- }
-?>
 </div>
 </div>
 </form>
-
 <!--FIN DE CONFIRMACIÓN ENVIÓ -->
 
 <!-- CONFIRMACIÓN DE COONVOCATORIA -->
