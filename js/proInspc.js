@@ -319,7 +319,9 @@ function curProgramar(){
         var classroom = document.getElementById('classroom').value;
     }
 
-    idinsps = idInsptr + '' + idInstr;
+        idinsps = idInsptr + '' + idInstr;
+
+        ids = idInsptr + '' + idInstr+','+idcord;
 
         var perid = document.getElementById('idper').value;
 
@@ -339,7 +341,7 @@ function curProgramar(){
             $.ajax({
                 url: '../php/comDias.php',
                 type: 'POST',
-                data: 'idpart=' + idInsptr
+                data: 'idpart=' + ids
             }).done(function(resps) {
   
 //SI NO HAY DÍAS REPETIDO, SE MANDA LOS DATOS PARA PROGRAMAR CURSO 
