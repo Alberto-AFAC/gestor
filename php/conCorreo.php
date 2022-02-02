@@ -19,14 +19,16 @@ require '../php-mailer2/SMTP.php';
 
 
  	if(actCorreo($valor,$conexion)){	
-			$mail = new PHPMailer();
-		$mail->isSMTP();
-		$mail->Host = 'smtp1.s.ipzmarketing.com';
-		$mail->SMTPAuth = true;
-		$mail->Port = 587;
-        $mail->Username = 'ovemablvqqkx';
-		$mail->Password = 'UjUe93fyDViAKM2q';
-		$mail->SMTPSecure = 'tls'; 
+    $mail = new PHPMailer();
+    $mail->isSMTP();
+    $mail->SMTPDebug = 2;
+    $mail->Host = 'smtp1.s.ipzmarketing.com';
+    $mail->SMTPSecure = 'tls';  
+    $mail->Port = 587;
+    $mail->SMTPAuth = true;
+    $mail->Username = 'ovemablvqqkx';
+    $mail->Password = 'dR83pVuGkrZHGiQ';
+	
 
 // $mail = new PHPMailer;
 // $mail->isSMTP();
