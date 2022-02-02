@@ -8,7 +8,7 @@ $.ajax({
     html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cnslt" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> NOMBRE(S)</th><th><i></i> APELLIDOS</th><th><i></i> CORREO</th><th><i></i> CATEGORÍA</th></tr></thead><tbody>';
     for (i = 0; i < res.length; i++) {
         x++;
-        //            alert(obj.data[i].gstCargo);
+
         if (obj.data[i].gstCargo == 'INSPECTOR' && obj.data[i].gstEvalu == 'SI' || obj.data[i].gstCargo == 'DIRECTOR' && obj.data[i].gstEvalu == 'SI') {
             html += "<tr><td><input type='checkbox' name='idinsp[]' id='id_insp' value='" + obj.data[i].gstIdper + "' /></td><td>" + obj.data[i].gstNombr + "</td><td>" + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCorro + "</td><td>" + obj.data[i].gstCatgr + "</td></tr>";
         } else {}
@@ -202,7 +202,7 @@ if(hora_ini =='' || hora_fin==''){
             setTimeout(function() {
             $('#avisoh').toggle('toggle');
             }, 4000);     
-}else{
+        }else{
         $.ajax({
         url: '../php/proDias.php',
         type: 'POST',
@@ -321,9 +321,21 @@ function curProgramar(){
 
     idinsps = idInsptr + '' + idInstr;
 
-     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso';
+        var perid = document.getElementById('idper').value;
+
+     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&perid=' + perid + '&opcion=procurso';
+
+    if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
 
+        $('#empty').toggle('toggle');
+        setTimeout(function() {
+            $('#empty').toggle('toggle');
+        }, 2000);
+
+        return;
+
+    }else{
             $.ajax({
                 url: '../php/comDias.php',
                 type: 'POST',
@@ -348,7 +360,7 @@ timer: 20000
 });
     }
             });
-
+        }
 }
 
 
@@ -581,8 +593,6 @@ function proCursoCord() {
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso + '*' + classroom;
 
-    // alert(datos);
-
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
 
@@ -668,8 +678,6 @@ function proCursoH() {
     idinsps = idInsptr + '' + idInstr;
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
-
-    // alert(datos);
 
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
 
@@ -767,8 +775,6 @@ function proCursoCoor() {
     idinsps = idInsptr + '' + idInstr;
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
-
-    // alert(datos);
 
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
 

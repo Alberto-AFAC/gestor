@@ -35,39 +35,22 @@ $dias = $varray1[$i]["diasr"];
 $validar = $varray1[$i]["idias"];
 $mes = $array2[$i]["mes"];
 $anio = $array3[$i]["anio"];
-// $listreportein = $varray3[$i]['listreportein']; 
-// $cartdescrip = $varray4[$i]['cartdescrip']; 
-// $regponde = $varray5[$i]['regponde']; 
-// $infinal = $varray6[$i]['infinal']; 
-// $evreaccion = $varray7[$i]['evreaccion']; 
-
-if($validar==1){ $validar = 'SI'; }else{ $validar = 'NO'; }
-// if($mes==1){ $mes = 'SI'; }else{ $mes = 'NO'; }
-// if($listreportein==1){ $listreportein = 'SI'; }else{ $listreportein = 'NO'; }
-// if($cartdescrip==1){ $cartdescrip = 'SI'; }else{ $cartdescrip = 'NO'; }
-
-// if($regponde==1){ $regponde = 'SI'; }else{ $regponde = 'NO'; }
-// if($infinal==1){ $infinal = 'SI'; }else{ $infinal = 'NO'; }
-// if($evreaccion==1){ $evreaccion = 'SI'; }else{ $evreaccion = 'NO'; }
- 
-if(consultar($dias,$mes,$hora_ini,$hora_fin,$conexion)){
+if($validar==1){ $validar = 'SI'; }else{ $validar = 'NO'; } 
+//if(consultar($dias,$mes,$hora_ini,$hora_fin,$conexion)){
 if(programaDias($idPer,$dias,$validar,$mes,$anio,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion)){
 	echo "0";
 	}else{
 	echo "1";
 	}
-}else{
+// }else{
 
-	echo "si";
-}
+// 	echo "si";
+// }
   }
 
 
 
 }else if($opcion === 'edidias'){
-
-// $id = $_POST['cgstInspr'];
-// $validaris = $_POST['listregis'];
 
 $finicial = $_POST['finicial'];
 $ffinal = $_POST['ffinal'];
@@ -81,16 +64,20 @@ $valor = count($varray1);
 $array2 = $_POST['array2'];
 $array2 = json_decode($array2, true);
 
+$array3 = $_POST['array3'];
+$array3 = json_decode($array3, true);
+
 for($i=0; $i<$valor; $i++){
 
 $dias = $varray1[$i]["diasr"];
 $validar = $varray1[$i]["idias"];
 $mes = $array2[$i]["mes"];
+$anio = $array3[$i]["anio"];
 
 if($validar==1){ $validar = 'SI'; }else{ $validar = 'NO'; }
 
 // if(consultar($dias,$mes,$hora_ini,$hora_fin,$conexion)){
-if(editarDias($dias,$validar,$mes,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion)){
+if(editarDias($dias,$validar,$mes,$anio,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion)){
 	echo "0";
 	}else{
 	echo "1";
@@ -139,13 +126,14 @@ function programaDias($idPer,$dias,$validar,$mes,$anio,$finicial,$ffinal,$hora_i
 	cerrar($conexion);
 }
 
-function editarDias($dias,$validar,$mes,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion){
+function editarDias($dias,$validar,$mes,$anio,$finicial,$ffinal,$hora_ini,$hora_fin,$conexion){
 
 	$query = "UPDATE semanal SET 
 
 	id_curso = '0', 
 	dia_semana='$dias',
 	num_mes='$mes',
+	anio='$anio',
 	habil='$validar',
 	fec_inico='$finicial',
 	fec_fin='$ffinal',
