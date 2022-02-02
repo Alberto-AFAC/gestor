@@ -33,14 +33,15 @@ require '../php-mailer2/SMTP.php';
     
            
     $mail = new PHPMailer();
-    $mail->SMTPDebug = 2;
     $mail->isSMTP();
+    $mail->SMTPDebug = 2;
     $mail->Host = 'smtp1.s.ipzmarketing.com';
-    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';  
     $mail->Port = 587;
+    $mail->SMTPAuth = true;
     $mail->Username = 'ovemablvqqkx';
-    $mail->Password = 'UjUe93fyDViAKM2q';
-    $mail->SMTPSecure = 'tls';             
+    $mail->Password = 'dR83pVuGkrZHGiQ';
+           
 
 // $mail = new PHPMailer;
 // $mail->isSMTP();
