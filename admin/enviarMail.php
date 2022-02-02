@@ -51,7 +51,7 @@ $mail->SMTPAuth = true;
 $mail->Username = 'ovemablvqqkx';
 $mail->Password = 'dR83pVuGkrZHGiQ';
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
-$mail->addAddress("jmondragonescamilla@gmail.com");
+$mail->addAddress("{$to}");
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
 $mail->msgHTML(file_get_contents('message.html'), __DIR__);
 //$mail->addAttachment('test.txt');
