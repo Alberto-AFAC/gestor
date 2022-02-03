@@ -1207,54 +1207,139 @@ function evalucurs(cursos) {
 //         }
 //     })
 // }
+// GOOGLE KEY
+var onloadCallback = function() {
+    grecaptcha.render('google_recaptcha', {
+        'sitekey': '6LejXVAeAAAAAGhif6aYjdPZpWbT26sq9XkqhzLJ'
+    });
+};
 
-function enviarMailResp() {
-    gstIdlsc = document.getElementById('gstIdlstc').value;
-    codigoCurso = document.getElementById('codigoCurso').value;
-    correoResponsable = document.getElementById('correoResponsable').value;
-    // alert(correoResponsable);
-    if (correoResponsable == '') {
 
-        Swal.fire({
-            type: 'info',
-            // title: 'AFAC INFORMA',
-            text: 'DEBE AGREGAR POR LO MENOS UN RESPONSABLE',
-            showConfirmButton: false,
-            customClass: 'swal-wide',
-            timer: 3000
+
+$(function() {
+    function checkifreqfld() {
+        var isFormFilled = true;
+        $("#googlesecurity").find(".form-checkfield:visible").each(function() {
+            var value = $.trim($(this).val());
+            if ($(this).prop('required')) {
+                if (value.length < 1) {
+                    $(this).closest(".field-wrapper").addClass("field-error");
+                    isFormFilled = false;
+                } else {
+                    $(this).closest(".field-wrapper").removeClass("field-error");
+                }
+            } else {
+                $(this).closest(".field-wrapper").removeClass("field-error");
+            }
         });
+        return isFormFilled;
+    }
 
-    } else {
-        Swal.fire({
-            html: 'Espera un momento...', // add html attribute if you want or remove
-            allowOutsideClick: false,
-            customClass: 'swal-wide',
-            onBeforeOpen: () => {
-                Swal.showLoading()
-            },
-        });
-        $.ajax({
-            url: '../admin/enviarMailResp.php',
-            type: 'POST',
-            data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
-        }).done(function(html) {
-
+    $("#enviar-mail-responsable").click(function() {
+        gstIdlsc = document.getElementById('gstIdlstc').value;
+        codigoCurso = document.getElementById('codigoCurso').value;
+        correoResponsable = document.getElementById('correoResponsable').value;
+        if (correoResponsable == '') {
             Swal.fire({
-                type: 'success',
-                html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
-                showSpinner: true,
+                type: 'info',
+                // title: 'AFAC INFORMA',
+                text: 'DEBE AGREGAR POR LO MENOS UN RESPONSABLE',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
-                timer: 3000,
-                backdrop: `
-                rgba(100, 100, 100, 0.4)
-            `
+                timer: 3000
             });
+        } else if (checkifreqfld()) {
+            event.preventDefault();
+            var rcres = grecaptcha.getResponse();
+            if (rcres.length) {
+                grecaptcha.reset();
+                Swal.fire({
+                    html: 'Espera un momento...', // add html attribute if you want or remove
+                    allowOutsideClick: false,
+                    customClass: 'swal-wide',
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                    },
+                });
+                $.ajax({
+                    url: '../admin/enviarMailResp.php',
+                    type: 'POST',
+                    data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
+                }).done(function(html) {
 
-        });
-    }
-}
+                    Swal.fire({
+                        type: 'success',
+                        html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
+                        showSpinner: true,
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 3000,
+                        backdrop: `
+                    rgba(100, 100, 100, 0.4)
+                `
+                    });
 
+                });
+            } else {
+                Swal.fire({
+                    type: 'info',
+                    // title: 'AFAC INFORMA',
+                    text: 'DEBES VERIFICAR EL CAPTCHA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        }
+
+
+
+        // gstIdlsc = document.getElementById('gstIdlstc').value;
+        // codigoCurso = document.getElementById('codigoCurso').value;
+        // correoResponsable = document.getElementById('correoResponsable').value;
+        // // alert(correoResponsable);
+        // if (correoResponsable == '') {
+
+        //     Swal.fire({
+        //         type: 'info',
+        //         // title: 'AFAC INFORMA',
+        //         text: 'DEBE AGREGAR POR LO MENOS UN RESPONSABLE',
+        //         showConfirmButton: false,
+        //         customClass: 'swal-wide',
+        //         timer: 3000
+        //     });
+
+        // } else {
+        //     Swal.fire({
+        //         html: 'Espera un momento...', // add html attribute if you want or remove
+        //         allowOutsideClick: false,
+        //         customClass: 'swal-wide',
+        //         onBeforeOpen: () => {
+        //             Swal.showLoading()
+        //         },
+        //     });
+        //     $.ajax({
+        //         url: '../admin/enviarMailResp.php',
+        //         type: 'POST',
+        //         data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
+        //     }).done(function(html) {
+
+        //         Swal.fire({
+        //             type: 'success',
+        //             html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
+        //             showSpinner: true,
+        //             showConfirmButton: false,
+        //             customClass: 'swal-wide',
+        //             timer: 3000,
+        //             backdrop: `
+        //         rgba(100, 100, 100, 0.4)
+        //     `
+        //         });
+
+        //     });
+        // }
+    });
+});
 
 
 function enviarMail() {
