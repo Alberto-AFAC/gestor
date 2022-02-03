@@ -40,7 +40,7 @@ $mail->Host = 'smtp.hostinger.com';
 $mail->Port = 587;
 $mail->SMTPAuth = true;
 $mail->Username = 'notificaciones@afac-avciv.com';
-$mail->Password = 'Agencia.SCT.2021.';
+$mail->Password = 'Aeronavegabilidad2021.';
 $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
 $mail->addReplyTo('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
 $mail->Subject = 'NUEVO CURSO PROGRAMADO';
