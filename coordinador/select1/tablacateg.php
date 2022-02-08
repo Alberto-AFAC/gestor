@@ -10,9 +10,8 @@ require_once "../../conexion/conexion.php";
             $idper=$_SESSION['consulta'];
         	
 			$f = explode(',', $idper);
-			$idcurso = intval($f[0]);
-            $fecha = intval($f[2]);
-            $lista = intval($f[3]);
+			$idcurso = intval($f[0]);//ID CURSO
+            $fecha = intval($f[2]);//VIGENCIA
 			$valor = explode(",", $idper);
 
 ?>
@@ -28,18 +27,22 @@ require_once "../../conexion/conexion.php";
             <div class="row">
                 <div class="col-sm-12">
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-success btn-default">VIGENTE</button>
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-warning btn-default">POR VENCER</button>
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-danger btn-default">VENCIDO</button>
+                        <button type="button" style="background-color: green; pointer-events: none; color: white;"
+                            class="btn btn-default">VIGENTE</button>
+                        <button type="button" style="background-color: orange; pointer-events: none; color: white;"
+                            class="btn btn-default">POR VENCER</button>
+                        <button type="button" style="background-color: red; pointer-events: none; color: white;"
+                            class="btn btn-default">VENCIDO</button>
+                            <button type="button" style="background-color: gray; pointer-events: none; color: white;"
+                            class="btn btn-default"># DECLINÓ</button>
+                            <button type="button" style="background-color: black; pointer-events: none; color: white;"
+                            class="btn btn-default">* REPROBÓ</button>
                     </div>
                     <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                     <br><br>
                     <div class="table-responsive mailbox-messages">
 
-                        <table class="table display table-striped table-bordered" role="grid"
+                        <table id="test" class="table display table-striped table-bordered" role="grid"
                             aria-describedby="example_info">
                             <thead>
                                 <tr>
@@ -56,39 +59,80 @@ require_once "../../conexion/conexion.php";
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                                <?php
-$f = $fecha;
+<?php
+        $f = $fecha;
 
 
-	foreach ($valor as $id) {
-		if($idcurso!=$id){
+        foreach ($valor as $id) {
+        if($idcurso!=$id){
+            //echo $idcurso;
+        $sql = "SELECT 
+        personal.gstIdper,
+        personal.gstNombr,
+        personal.gstApell,
+        personal.gstCorro,
+        categorias.gstCatgr,
+        personal.gstIDCat,
+        categorias.gstCsigl,
+        personal.gstFeing,
+        DATE_FORMAT(personal.gstFeing,
+        '%d/%m/%Y') AS Feingreso,
+        personal.gstCargo,
+        personal.gstCinst
+        FROM personal 
+        INNER JOIN especialidadcat 
+        ON personal.gstIdper = especialidadcat.gstIDper 
+        INNER JOIN categorias 
+        ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE personal.gstCargo!='INSTRUCTOR' 
+        AND personal.estado = 0 ORDER BY gstFeing DESC";        
+        $person = mysqli_query($conexion,$sql);
+        while ($per = mysqli_fetch_row($person)) {
 
-    $sql = "SELECT 
-    personal.gstIdper,
-    personal.gstNombr,
-    personal.gstApell,
-    personal.gstCorro,
-    categorias.gstCatgr,
-    personal.gstIDCat,
-    categorias.gstCsigl,
-    personal.gstFeing,
-    DATE_FORMAT(personal.gstFeing,
-    '%d/%m/%Y') as Feingreso,
-    personal.gstCargo 
-    FROM personal 
-    INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
-    INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
-    WHERE personal.gstCargo!='INSTRUCTOR' AND personal.estado = 0 ORDER BY gstFeing DESC";        
-	$person = mysqli_query($conexion,$sql);
-	while ($per = mysqli_fetch_row($person)) {
-		$fechaActual = date_create(date('Y-m-d')); 
-		$FechaIngreso = date_create($per[7]); 
-		$interval = date_diff($FechaIngreso, $fechaActual,false);  
-		$antiguedad = intval($interval->format('%R%a'));
+          if($per[3]== '0'){
+            $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
+          }else if($per[3]== ''){
+            $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
+          }else{
+            $cPersonal = $per[3];
+          }
+          if($per[10]== '0'){
+            $cInstitucional = "<span style='background-color: orange;' class='badge'>Sin correo Institucional</span>";
+          }else if($per[10]== ''){
+            $cInstitucional = "<span style='background-color: orange;' class='badge'>Sin correo Institucional</span>";
+          }else{
+            $cInstitucional = $per[10];
+          }
 
-	       
+        $gstIdper = $per[0];
 
-		 if($per[6]==$id){        
+        $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+        FROM especialidadcat 
+        INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE categorias.gstIdcat != 24 
+        AND categorias.gstIdcat != 25 
+        AND categorias.gstIdcat != 26 
+        AND categorias.gstIdcat != 29 
+        AND categorias.gstIdcat != 31
+        AND especialidadcat.gstIDper = $gstIdper";
+        $resul = mysqli_query($conexion, $queri); 
+
+        if($res = mysqli_fetch_array($resul)){
+        $categoria = $res['spcialidds'];
+
+        if($res['spcialidds']==''){ $categoria = $per[9]; }
+
+        }else{
+        $categoria = $per[9];
+        }
+
+
+        $fechaActual = date_create(date('Y-m-d')); 
+        $FechaIngreso = date_create($per[7]); 
+        $interval = date_diff($FechaIngreso, $fechaActual,false);  
+        $antiguedad = intval($interval->format('%R%a'));
+
+        if($per[6]==$id){        
 	?>
     <tr>
 <?php
@@ -102,7 +146,7 @@ evaluacion,
 idmstr,
 confirmar
 FROM cursos 
-WHERE idmstr = $lista AND idinsp = $per[0] 
+WHERE idmstr = $idcurso AND idinsp = $per[0] 
 ORDER BY fcurso DESC LIMIT 1";
 $fechas = mysqli_query($conexion,$sql);
 
@@ -111,6 +155,19 @@ if($fecs = mysqli_fetch_row($fechas)){
  $fecs[0];
  $fecs[1];
  $per[0];
+
+$query2 = "SELECT *
+FROM cursos 
+WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
+$resultado = mysqli_query($conexion, $query2);
+if($curs = mysqli_fetch_row($resultado)){ 
+
+$cursor = "<td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>";
+
+}else{
+$cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</td>";
+}
+
 
 $fechav = date("d-m-Y",strtotime($fecs[0]."+ ".$f." year"));     
 
@@ -124,14 +181,11 @@ $f3 = strtotime($actual);
 
 if($fecha==101){  
 
-
-
 if($fecs[3] >= 80){ //$fech = 'vigente'; ?>
-
 
 <?php }
 
-     if($fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
+if($fecs[3] == 'NULL' && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO' || $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
 
 if($fecs[5] == 'CONFIRMADO'){
    $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p>POR REALIZAR</td>";
@@ -144,15 +198,16 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
         echo $conf;
 }
 
@@ -162,16 +217,17 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $per[0]?>' class="idinsp" /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
 
         echo "<td style='color: white; background-color:#AC2925;'>REPROGRAMAR</td>";
 
@@ -181,14 +237,15 @@ if($fecs[5] == 'CONFIRMADO'){
         value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
         echo "<td style='color: white; background-color: #398439;'>$fechav</td>";
 
 }else 
@@ -211,15 +268,16 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
         echo $conf;
 
 
@@ -229,35 +287,51 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
+        // }
+        echo $cursor; 
 
         echo "<td style='color: white; background-color: #D58512;'>REPROGRAMAR</td>";
 
 }  
 
 
- }else{ ?>
+ }else{ 
+
+$query2 = "SELECT *
+FROM cursos 
+WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
+$resultado = mysqli_query($conexion, $query2);
+if($curs = mysqli_fetch_row($resultado)){ 
+
+$cursor = "<td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>";
+
+}else{
+$cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingreso</td>";
+}
+
+    ?>
 
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
-        if($antiguedad <=30){
-        echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
-        }else {
-        echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo</td>";
-        }
+        // if($antiguedad <=30){
+        // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso---</td>";
+        // }else {
+        // echo "<td style='color: #3C8DBC; font-weight: bold;'>Personal antiguo111</td>";
+        // }
+        echo $cursor;
         echo "<td style='color: #333; background-color: #F4F4F4;'>POR REALIZAR</td>";
 }
 
@@ -310,6 +384,7 @@ $(".idinsp").on("click", function() {
     $("#selectall").prop("checked", false);
   }
 });
+// Buscador de tabla
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -318,6 +393,16 @@ $(document).ready(function(){
     });
   });
 });
-    
+// REMOVE ROWS IN REGISTER
+var arr = $("#test tr");
 
+$.each(arr, function(i, item) {
+    var currIndex = $("#test tr").eq(i);
+    var matchText = currIndex.find('td:nth-child(3)').text();
+    $(this).nextAll().each(function(i, inItem) {
+        if(matchText===$(this).find('td:nth-child(3)').text()) {
+            $(this).remove();
+        }
+    });
+});
 </script>

@@ -113,12 +113,12 @@
   text-align: center;
 }
 
-[type="checkbox"]:not(:checked),
+/*[type="checkbox"]:not(:checked),
 	[type="checkbox"]:checked {
 		position: absolute;
 		left: 0;
 		opacity: 0.01;
-	}
+	}*/
 	[type="checkbox"]:not(:checked) + label,
 	[type="checkbox"]:checked + label {
 		position: relative;

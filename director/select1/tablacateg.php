@@ -28,12 +28,16 @@ require_once "../../conexion/conexion.php";
             <div class="row">
                 <div class="col-sm-12">
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-success btn-default">VIGENTE</button>
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-warning btn-default">POR VENCER</button>
-                        <button type="button" style="pointer-events: none; color: white;"
-                            class="btn btn-danger btn-default">VENCIDO</button>
+                    <button type="button" style="background-color: green; pointer-events: none; color: white;"
+                            class="btn btn-default">VIGENTE</button>
+                        <button type="button" style="background-color: orange; pointer-events: none; color: white;"
+                            class="btn btn-default">POR VENCER</button>
+                        <button type="button" style="background-color: red; pointer-events: none; color: white;"
+                            class="btn btn-default">VENCIDO</button>
+                            <button type="button" style="background-color: gray; pointer-events: none; color: white;"
+                            class="btn btn-default"># DECLINÓ</button>
+                            <button type="button" style="background-color: black; pointer-events: none; color: white;"
+                            class="btn btn-default">* REPROBÓ</button>
                     </div>
                     <input style="float: right;" id="myInput" type="text" placeholder="Búscar...">
                     <br><br>
@@ -56,39 +60,81 @@ require_once "../../conexion/conexion.php";
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                                <?php
-$f = $fecha;
+<?php
+        $f = $fecha;
+
+        foreach ($valor as $id) {
+        if($idcurso!=$id){
+        $sql = "SELECT 
+        personal.gstIdper,
+        personal.gstNombr,
+        personal.gstApell,
+        personal.gstCorro,
+        categorias.gstCatgr,
+        personal.gstIDCat,
+        categorias.gstCsigl,
+        personal.gstFeing,
+        DATE_FORMAT(personal.gstFeing,
+        '%d/%m/%Y') AS Feingreso,
+        personal.gstCargo,
+        personal.gstCinst
+        FROM personal 
+        INNER JOIN especialidadcat 
+        ON personal.gstIdper = especialidadcat.gstIDper 
+        INNER JOIN categorias 
+        ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE personal.gstCargo!='INSTRUCTOR' 
+        AND personal.estado = 0 ORDER BY gstFeing DESC";        
+        $person = mysqli_query($conexion,$sql);
+        while ($per = mysqli_fetch_row($person)) {
+
+          if($per[3]== '0'){
+            $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
+          }else if($per[3]== ''){
+            $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
+          }else{
+            $cPersonal = $per[3];
+          }
+          if($per[10]== '0'){
+            $cInstitucional = "<span style='background-color: orange;' class='badge'>Sin correo Institucional</span>";
+          }else if($per[10]== ''){
+            $cInstitucional = "<span style='background-color: orange;' class='badge'>Sin correo Institucional</span>";
+          }else{
+            $cInstitucional = $per[10];
+          }
 
 
-	foreach ($valor as $id) {
-		if($idcurso!=$id){
 
-    $sql = "SELECT 
-    personal.gstIdper,
-    personal.gstNombr,
-    personal.gstApell,
-    personal.gstCorro,
-    categorias.gstCatgr,
-    personal.gstIDCat,
-    categorias.gstCsigl,
-    personal.gstFeing,
-    DATE_FORMAT(personal.gstFeing,
-    '%d/%m/%Y') as Feingreso,
-    personal.gstCargo 
-    FROM personal 
-    INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
-    INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
-    WHERE personal.gstCargo!='INSTRUCTOR' AND personal.estado = 0 ORDER BY gstFeing DESC";        
-	$person = mysqli_query($conexion,$sql);
-	while ($per = mysqli_fetch_row($person)) {
-		$fechaActual = date_create(date('Y-m-d')); 
-		$FechaIngreso = date_create($per[7]); 
-		$interval = date_diff($FechaIngreso, $fechaActual,false);  
-		$antiguedad = intval($interval->format('%R%a'));
 
-	       
+        $gstIdper = $per[0];
 
-		 if($per[6]==$id){        
+        $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+        FROM especialidadcat 
+        INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE categorias.gstIdcat != 24 
+        AND categorias.gstIdcat != 25 
+        AND categorias.gstIdcat != 26 
+        AND categorias.gstIdcat != 29 
+        AND categorias.gstIdcat != 31
+        AND especialidadcat.gstIDper = $gstIdper";
+        $resul = mysqli_query($conexion, $queri); 
+
+        if($res = mysqli_fetch_array($resul)){
+        $categoria = $res['spcialidds'];
+
+        if($res['spcialidds']==''){ $categoria = $per[9]; }
+
+        }else{
+        $categoria = $per[9];
+        }
+
+
+        $fechaActual = date_create(date('Y-m-d')); 
+        $FechaIngreso = date_create($per[7]); 
+        $interval = date_diff($FechaIngreso, $fechaActual,false);  
+        $antiguedad = intval($interval->format('%R%a'));
+
+        if($per[6]==$id){        
 	?>
     <tr>
 <?php
@@ -137,14 +183,11 @@ $f3 = strtotime($actual);
 
 if($fecha==101){  
 
-
-
 if($fecs[3] >= 80){ //$fech = 'vigente'; ?>
-
 
 <?php }
 
-     if($fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
+if($fecs[3] == 'NULL' && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO' || $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
 
 if($fecs[5] == 'CONFIRMADO'){
    $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p>POR REALIZAR</td>";
@@ -157,8 +200,8 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){
@@ -176,8 +219,8 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' value='<?php echo $per[0]?>' class="idinsp" /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
 
         <?php 
@@ -196,8 +239,8 @@ if($fecs[5] == 'CONFIRMADO'){
         value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
         <?php 
         // if($antiguedad <=30){
         // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
@@ -227,8 +270,8 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){
@@ -246,8 +289,8 @@ if($fecs[5] == 'CONFIRMADO'){
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){
@@ -281,8 +324,8 @@ $cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingr
         <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $per[0]?>' /></td>
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
-        <td><?php echo $per[3]?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){

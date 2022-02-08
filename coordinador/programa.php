@@ -86,7 +86,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-        PROGRAMACIÓN DEL CURSO       
+        PROGRAMACIÓN DEL CURSO, TODOS LOS CURSOS       
       </h1>
     </section>
     <!-- Main content -->
@@ -106,30 +106,37 @@ include('header.php');
 
 <form class="form-horizontal">
 
-
+<input type="hidden" name="idper" id="idper" value="<?php echo $id ?>">
 <div class="form-group">
 <div class="col-sm-12">
-<label class="label2">SELECCIONE CURSO</label>
-<div id="selcurso"></div>                            
+<label class="label2">SELECCIONE CURSO / <a href="programo">OBLIGATORIOS DE INDUCCIÓN</a></label>
+<div id="selcurso"></div>
+                           
 </div>
 </div>
 <!-- <div id="partici"></div>  -->
+<div class="form-group" id="visFec" style="display: none;">
+<div class="col-sm-4">
+<!-- <label class="label2">HORA</label> -->
+<button type="button" style="font-size:16px" class="btn btn-default" onclick="reiFec();">REINICIE FECHAS</button>
+</div>
+</div>
 
-<div class="form-group">
+<div class="form-group" id="mosFec">
 <div class="col-sm-4">
 <label class="label2">FECHA INICIO <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="av"></label>
 <input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
 </div>
 
 <div class="col-sm-4">
-<label class="label2">HORA</label>
-<input type="time" class="form-control inputalta" id="hcurso" name="hcurso">
-</div>
-
-
-<div class="col-sm-4">
 <label class="label2">FECHA CONCLUSIÓN <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="so"></label>
 <input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
+</div>
+
+<div class="col-sm-4">
+<label class="label2">HORA</label>
+<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil' id="modalMost">DÍAS HÁBILES </a>
+<a type='button' title='Días Hábiles' onclick='hrsDiasAct()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil' id="modalOcul" style="display: none;">DÍAS HÁBILES </a>
 </div>
 </div>
 
@@ -223,23 +230,21 @@ include('header.php');
 
 </div>
 
-
 <div class="form-group">
 <div class="col-sm-4">
 <label class="label2">PARTICIPANTES DEL CURSO</label>
 
 </div>                     
 </div>  
-
-<div id="tabcurso"></div> 
-
-
+<div id="tabcurso"></div>
 <br>
-
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-<button type="button" id="buttonpro" style="font-size:16px" class="btn btn-info altaboton" onclick="proCurso();">PROGRAMAR</button>
+
+
+<button type="button" id="buttonpro" style="font-size:16px" class="btn btn-info altaboton" onclick="curProgramar();">PROGRAMAR</button>
+
 <div id="overlay">
   <div class="cv-spinner">
     <span class="spinner"></span>
@@ -254,11 +259,13 @@ include('header.php');
 
 <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
 
-<b><p class="alert alert-info text-center padding aviso" id="fechasA">Fecha conclusión es menor a fecha inicio</p></b>
+
 </div>
 </form>
 </div>
        
+
+
 
               </div>
               <!-- /.tab-pane 2do panel-->
@@ -279,6 +286,7 @@ include('header.php');
     <!-- /.content -->
   </div>
   
+<?php include('dias.php')?>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -343,6 +351,7 @@ $("#idcord").select2();
  //$('#partici').load('select/tablaoblig.php')
 }); 
 </script>
+<script src="../js/global.js"></script>
 <script src="../js/select2.js"></script> 
 
 <script>
@@ -373,5 +382,10 @@ var yyyy = today.getFullYear();
 
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("fechaf").setAttribute("min", today);
+
+$("#allselect").on("click", function() {
+  $(".idias").prop("checked", this.checked);
+});
+
+consulFecha();
 </script>
-<script src="../js/global.js"></script>

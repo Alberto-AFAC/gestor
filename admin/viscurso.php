@@ -37,10 +37,12 @@
 <label class="label2">HORA DE CONCLUCIÓN</label>
 <input type="time" class="form-control inputalta" id="hora_fin" name="hora_fin">
 </div>
-<div>
+<div class="col-sm-4">
+
 <label class="label2">¿EL CURSO VA SER DIARIO?
 <input type="checkbox" name="allselect" id="allselect">
 </label>  
+
 </div>
 </div>
 

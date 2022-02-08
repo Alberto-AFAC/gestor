@@ -1462,6 +1462,7 @@ $.ajax({
     type: 'POST',
      data: datos
 }).done(function(resp) {
+
     obj = JSON.parse(resp);
     var res = obj.data;
     $("#hora_fin").val(obj.data[0].horaf);
