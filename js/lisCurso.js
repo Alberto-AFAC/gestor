@@ -1661,7 +1661,7 @@ function cursoAct() {
 
     }
     datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&classromcur=' + classromcur + '&reprogramar=' + reprogramar + '&array1='+ array1 + '&array2='+ array2 + '&array3='+array3 + '&hora_fin='+ hora_fin + '&opcion=cursoAct';
-    alert(datos);    
+    //alert(datos);    
  if(validar==1){
         Swal.fire({
             type: 'warning',
@@ -1693,7 +1693,7 @@ function cursoAct() {
 
         }).done(function(respuesta) {
 
-            alert(respuesta);
+            //alert(respuesta);
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',

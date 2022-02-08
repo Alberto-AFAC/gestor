@@ -2,15 +2,14 @@
 include("../conexion/conexion.php");
 session_start();
 
-  $codigo = 'FO2';//$_POST['codigo'];
+  $codigo = $_POST['codigo'];
 
-  $hini = '09:00:00';//$_POST['hcurso'];
-  $hfin = '12:00:00';//$_POST['hora_fin'];
+  $hini = $_POST['hcurso'];
+  $hfin = $_POST['hora_fin'];
 
-  $valor = '[{"diasr":"4","idias":true},{"diasr":"7","idias":false},{"diasr":"8","idias":false},{"diasr":"9","idias":false},{"diasr":"10","idias":false},{"diasr":"11","idias":false}]';//$_POST['array1'];
+  $valor = $_POST['array1'];
   $varray1 = json_decode($valor, true);
   $valor = count($varray1);
-
 
 
 for($i=0; $i<$valor; $i++){
@@ -30,7 +29,7 @@ for($i=0; $i<$valor; $i++){
 
 function mostrarDias($codigo,$diasv,$hini,$hfin,$conexion){
   // $query = "SELECT dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin  FROM semanal WHERE id_per = $idpro AND id_curso = '0' AND habil = 'SI'";
-  $query = "SELECT idinsp,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,codigo FROM semanal INNER JOIN cursos ON cursos.codigo = semanal.id_curso WHERE semanal.id_curso = '$codigo' AND habil = 'SI'";
+  $query = "SELECT idinsp,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,codigo FROM semanal INNER JOIN cursos ON cursos.codigo = semanal.id_curso WHERE semanal.id_curso = '$codigo' AND habil = 'SI' GROUP BY idinsp";
   $resultado = mysqli_query($conexion, $query);
 
   if(!$resultado){
@@ -93,7 +92,7 @@ $hrfincom = strtotime( $hfin );
 
     }else{
 
-      echo $arreglo='0';
+//      echo $arreglo='0';
     }
   }
 
