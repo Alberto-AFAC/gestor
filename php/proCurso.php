@@ -195,6 +195,9 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 	}
 }else if($opcion === 'cursoAct'){
 
+
+
+
 	$codigo = $_POST['codigo'];
 	$fcurso = $_POST['fcurso'];
 	$hcurso = $_POST['hcurso'];
@@ -207,15 +210,44 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 	$reprogramar = $_POST['reprogramar'];
 
+	$valor = $_POST['array1'];
+	$varray1 = json_decode($valor, true);
+	$valor = count($varray1);
 
+	$array2 = $_POST['array2'];
+	$array2 = json_decode($array2, true);
+
+	$array3 = $_POST['array3'];
+	$array3 = json_decode($array3, true);
+
+	$hora_fin = $_POST['hora_fin'];
+
+	for($i=0; $i<$valor; $i++){
+
+	$dias = $varray1[$i]["diasr"];
+	$validar = $varray1[$i]["idias"];
+	$mes = $array2[$i]["mes"];
+	$anio = $array3[$i]["anio"];
+
+	  if($validar==1){ $valida = 'SI'; }else{ $valida = 'NO'; } 
+
+
+	if(semanalAct($codigo,$dias,$valida,$mes,$anio,$fcurso,$fechaf,$hcurso,$hora_fin,$conexion)){	
+
+		if($i==1){
 	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$conexion))
-	{	
-
+		{	
 		reprogramar($codigo,$reprogramar,$conexion);
 		echo "0";		
 		$realizo = 'ACTUALIZO CURSO FOLIO: '.$codigo;
 		historiCan($idp,$realizo,$codigo,$conexion);	
-	}else{ echo "1";	}
+		}else{	echo "1";	}
+	}
+
+}else{	echo "1";	}
+	  }
+
+
 
 }else if($opcion === 'PDF'){
 
@@ -432,6 +464,18 @@ function semanal($perid,$codigo,$fcurso,$fechaf,$hcurso,$conexion){
 			return false;
 		}
 		cerrar($conexion);
+}
+
+function semanalAct($codigo,$dias,$valida,$mes,$anio,$fcurso,$fechaf,$hcurso,$hora_fin,$conexion){
+
+	$query="UPDATE semanal SET hora_ini = '$hcurso', hora_fin = '$hora_fin',habil='$valida' WHERE id_curso = '$codigo' AND dia_semana = '$dias' AND num_mes = '$mes' AND anio = '$anio' AND fec_inico = '$fcurso' AND fec_fin = '$fechaf'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);	
+
 }
 	
 function cerrar($conexion){
