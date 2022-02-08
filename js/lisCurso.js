@@ -654,12 +654,12 @@ function inspeval(cursos) {
 
                 if (obj.data[G].confirmar == 'CONFIRMADO') {
                     if (obj.data[G].evaluacion == 'NULL') {
-                        html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='" + obj.data[G].id_curso + "'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr+" "+obj.data[G].gstApell + "</td><td><input type='number'  max='99999' maxlength='3' title='el numero no debe ser superior a 100' name='cantidad' min='0' class='evaluacion disabled' id='validoev'></td><td><span class='label label-primary'id='PE'>PENDIENTE</span></td><td>" + fecha_actual + "</td></tr>";
+                        html += "<tr><td><input type='hidden' id='idperon' name='idperon' value='" + obj.data[G].id_curso + "'></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td><input type='number'  max='99999' maxlength='3' title='el numero no debe ser superior a 100' name='cantidad' min='0' class='evaluacion disabled' id='validoev'></td><td><span class='label label-primary'id='PE'>PENDIENTE</span></td><td>" + fecha_actual + "</td></tr>";
                     } else {
                         if (obj.data[G].evaluacion >= 80) {
-                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr +" "+obj.data[G].gstApell + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>APROBADO</span></td><td>" + fnotif + "</td></tr>";
+                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>APROBADO</span></td><td>" + fnotif + "</td></tr>";
                         } else if (obj.data[G].evaluacion < 80) {
-                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr +" "+obj.data[G].gstApell + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-danger' style='font-size:13px;'>REPROBADO</span></td><td>" + fnotif + "</td></tr>";
+                            html += "<tr><td></td><td>" + x + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td>" + obj.data[G].evaluacion + "</td><td><span class='label label-danger' style='font-size:13px;'>REPROBADO</span></td><td>" + fnotif + "</td></tr>";
                         }
                     }
                 }
@@ -1019,7 +1019,7 @@ function cerrareval() {
     id_curso = document.getElementById('id_curso').value;
     codigo = document.getElementById('ogidoc').value;
 
-    datos = 'idinsp=' + idinsp + '&fechaev=' + fechaev +'&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
+    datos = 'idinsp=' + idinsp + '&fechaev=' + fechaev + '&id_curso=' + id_curso + '&evaluacion=' + valor2 + '&opcion=actualizarevalu'
 
     if (validoev == '') {
         pendiente.style.display = '';
@@ -1082,7 +1082,7 @@ function cerrareval() {
         div1.style.display = '';
         div1 = document.getElementById('cerrareval');
         div1.style.display = 'none';
-       // document.getElementById('fechaev').disabled = true; // FECHA
+        // document.getElementById('fechaev').disabled = true; // FECHA
         document.getElementById('validoev').disabled = true; // PUNTUACIÓN OBTENIDA
         document.getElementById('comeneva').disabled = true; // COMENTARIOS  
 
@@ -1147,7 +1147,7 @@ function cursoeval(idcurso) {
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
                 $("#codigo").val(obj.data[i].codigo);
 
-                    codcur = obj.data[i].codigo;
+                codcur = obj.data[i].codigo;
 
             }
 
@@ -1157,14 +1157,17 @@ function cursoeval(idcurso) {
         html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
         x = 0;
         for (i = 0; i < res.length; i++) {
-            
+
             // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
             if (obj.data[i].puesto == 'INSTCOOR' && obj.data[i].codigo == codcur) {
-             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
-            }else if(obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == codcur){
-             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
-            }else if(obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == codcur){
-             x++;   html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+                x++;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            } else if (obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == codcur) {
+                x++;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
+            } else if (obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == codcur) {
+                x++;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td></tr>";
             }
         }
         html += '</table>';
@@ -1207,42 +1210,139 @@ function evalucurs(cursos) {
 //         }
 //     })
 // }
-
-function enviarMailResp() {
-    gstIdlsc = document.getElementById('gstIdlstc').value;
-    codigoCurso = document.getElementById('codigoCurso').value;
-    correoResponsable = document.getElementById('correoResponsable').value;
-    // alert(correoResponsable);
-
-    Swal.fire({
-        html: 'Espera un momento...', // add html attribute if you want or remove
-        allowOutsideClick: false,
-        customClass: 'swal-wide',
-        onBeforeOpen: () => {
-            Swal.showLoading()
-        },
+// GOOGLE KEY
+var onloadCallback = function() {
+    grecaptcha.render('google_recaptcha', {
+        'sitekey': '6LejXVAeAAAAAGhif6aYjdPZpWbT26sq9XkqhzLJ'
     });
-    $.ajax({
-        url: '../admin/enviarMailResp.php',
-        type: 'POST',
-        data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
-    }).done(function(html) {
+};
 
-        Swal.fire({
-            type: 'success',
-            html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
-            showSpinner: true,
-            showConfirmButton: false,
-            customClass: 'swal-wide',
-            timer: 3000,
-            backdrop: `
-                rgba(100, 100, 100, 0.4)
-            `
+
+
+$(function() {
+    function checkifreqfld() {
+        var isFormFilled = true;
+        $("#googlesecurity").find(".form-checkfield:visible").each(function() {
+            var value = $.trim($(this).val());
+            if ($(this).prop('required')) {
+                if (value.length < 1) {
+                    $(this).closest(".field-wrapper").addClass("field-error");
+                    isFormFilled = false;
+                } else {
+                    $(this).closest(".field-wrapper").removeClass("field-error");
+                }
+            } else {
+                $(this).closest(".field-wrapper").removeClass("field-error");
+            }
         });
+        return isFormFilled;
+    }
 
+    $("#enviar-mail-responsable").click(function() {
+        gstIdlsc = document.getElementById('gstIdlstc').value;
+        codigoCurso = document.getElementById('codigoCurso').value;
+        correoResponsable = document.getElementById('correoResponsable').value;
+        if (correoResponsable == '') {
+            Swal.fire({
+                type: 'info',
+                // title: 'AFAC INFORMA',
+                text: 'DEBE AGREGAR POR LO MENOS UN RESPONSABLE',
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+                timer: 3000
+            });
+        } else if (checkifreqfld()) {
+            event.preventDefault();
+            var rcres = grecaptcha.getResponse();
+            if (rcres.length) {
+                grecaptcha.reset();
+                Swal.fire({
+                    html: 'Espera un momento...', // add html attribute if you want or remove
+                    allowOutsideClick: false,
+                    customClass: 'swal-wide',
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                    },
+                });
+                $.ajax({
+                    url: '../admin/enviarMailResp.php',
+                    type: 'POST',
+                    data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
+                }).done(function(html) {
+
+                    Swal.fire({
+                        type: 'success',
+                        html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
+                        showSpinner: true,
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 3000,
+                        backdrop: `
+                    rgba(100, 100, 100, 0.4)
+                `
+                    });
+
+                });
+            } else {
+                Swal.fire({
+                    type: 'info',
+                    // title: 'AFAC INFORMA',
+                    text: 'DEBES VERIFICAR EL CAPTCHA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        }
+
+
+
+        // gstIdlsc = document.getElementById('gstIdlstc').value;
+        // codigoCurso = document.getElementById('codigoCurso').value;
+        // correoResponsable = document.getElementById('correoResponsable').value;
+        // // alert(correoResponsable);
+        // if (correoResponsable == '') {
+
+        //     Swal.fire({
+        //         type: 'info',
+        //         // title: 'AFAC INFORMA',
+        //         text: 'DEBE AGREGAR POR LO MENOS UN RESPONSABLE',
+        //         showConfirmButton: false,
+        //         customClass: 'swal-wide',
+        //         timer: 3000
+        //     });
+
+        // } else {
+        //     Swal.fire({
+        //         html: 'Espera un momento...', // add html attribute if you want or remove
+        //         allowOutsideClick: false,
+        //         customClass: 'swal-wide',
+        //         onBeforeOpen: () => {
+        //             Swal.showLoading()
+        //         },
+        //     });
+        //     $.ajax({
+        //         url: '../admin/enviarMailResp.php',
+        //         type: 'POST',
+        //         data: 'gstIdlsc=' + gstIdlsc + '&codigoCurso=' + codigoCurso + '&correoResponsable=' + correoResponsable
+        //     }).done(function(html) {
+
+        //         Swal.fire({
+        //             type: 'success',
+        //             html: `<p style='color: green;'><code>Correo enviado exitosamente a ${correoResponsable}</code></p>`,
+        //             showSpinner: true,
+        //             showConfirmButton: false,
+        //             customClass: 'swal-wide',
+        //             timer: 3000,
+        //             backdrop: `
+        //         rgba(100, 100, 100, 0.4)
+        //     `
+        //         });
+
+        //     });
+        // }
     });
-}
-
+});
 
 
 function enviarMail() {
