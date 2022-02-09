@@ -358,10 +358,12 @@ $('#AgstIDSub').select2();
 var dataSet = [
 <?php 
 
-//mostra personal asigando por dirección ajecutiva
+//mostra personal asigando por dirección ajecutiva // Se cambio la sentencia de la plantilla notirectorio.php
 $Direje= $datos[5];
 
-$query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstAreID  = $Direje AND estado = 0 ORDER BY gstCargo DESC";
+// $query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstAreID  = $Direje AND estado = 0 ORDER BY gstCargo DESC";
+$query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstIDara = $Direje AND estado = 0 ORDER BY gstCargo DESC";
+
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
