@@ -55,7 +55,7 @@
                             <div class="content">
                                 <h3>COMPETENCIA LINGÜÍSTICA</h3>
                                 <img class="img-servicios" src="../models/menu/images/" width="75%;" alt="participante"><br><br>
-                                <a href="../../../linguistica">Iniciar</a>
+                                <a href="../../linguistica">Iniciar</a>
                      
                             </div>
                         </div>
