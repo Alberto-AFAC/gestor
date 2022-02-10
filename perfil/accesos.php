@@ -23,6 +23,7 @@
             <li class="layer" data-depth="0.30">
                 <div class="hero">
                     <div class="container">
+                       
                         <div class="card">
                             <span></span>
                             <div class="content">
@@ -47,6 +48,18 @@
                                 <a href="#">Iniciar</a>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <span></span>
+                  
+                            <div class="content">
+                                <h3>COMPETENCIA LINGÜÍSTICA</h3>
+                                <img class="img-servicios" src="../models/menu/images/" width="75%;" alt="participante"><br><br>
+                                <a href="../../../linguistica">Iniciar</a>
+                     
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </li>
@@ -66,7 +79,6 @@
                  <div class="depth-1 flake4">
                     <img alt="flake" src="../models/menu/images/flakes/depth1/flakes4.png">
                 </div>
-
             </li> 
 
             <li class="" data-depth="0.50">
@@ -103,10 +115,10 @@
                 </div>
             </li>  -->
 
-            <li class="" data-depth="1.00">
+  <!--           <li class="" data-depth="1.00">
                 <div class="depth-5">
                     <img alt="flake" src="../models/menu/images/flakes/depth5/flakes.png">
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
