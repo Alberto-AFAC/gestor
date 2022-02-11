@@ -24,6 +24,161 @@
 }
 </style>
 
+<div class="modal fade" id="modal-doc">
+          <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">AGREGAR <span id="ojtbit"></span></h4>
+                
+              </div>
+              <div class="modal-body" id="actForpro">
+              <form class="form-horizontal" id="agregardoc">
+                 
+
+            <div class="form-group">
+              <div class="col-sm-12">              
+              <label class="label2"  for=""></label>
+              <input type="hidden" name="ojtNemple" id="ojtNemple" value="<?php echo $datos[4]?>">
+              <input type="hidden" name="ojtIdper" id="ojtIdper" value="<?php echo $id?>">
+              <input type="hidden" name="ojtdocadjunto" id="ojtdocadjunto" value="OJT">
+              <div class="col-sm-6">
+               <input id="OjtAgra" type="file" name="OjtAgra" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+              </div>
+            </div>
+            </div>
+
+              <div class="form-group">
+                  <div class="col-sm-5">
+                    <button type="button" id="button1" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="adjuntarOjt();">ADJUNTAR</button>
+                  </div>
+                   <b><p class="alert alert-danger text-center padding error" id="fallajt">Error al adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="exitojt">¡Se adjunto archivo con éxito!</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="vaciojt">Es necesario adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="repetidojt">¡El archivo adjunto está registrado!</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="renomjt">Renombre su archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding adjuto" id="adjuntajt">Debes adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="errorjt">Ocurrio un error</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="fornjt">Formato no valido</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="maxjt">Supera el limite permitido</p></b>
+                    </div>
+                </form>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <form class="form-horizontal" action="" method="POST">
+      <div class="modal fade" id="eliminarojt">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">ELIMINAR ARCHIVO</h4>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" name="ojtIdperEli" id="ojtIdperEli">
+                    <input type="hidden" name="ojtidperdoc" id="ojtidperdoc">
+                      <div class="form-group">
+                          <div class="col-sm-12">
+                           <label class="label2" id="titledoc" for=""></label>
+                              <p>¿ESTÁ SEGURO DE ELIMINAR EL ARCHIVO?<span id=""></span> </p>
+                          </div>
+                          <br>
+                          <div class="col-sm-5">
+                              <button type="button" class="btn btn-primary altaboton" style="font-size:14px; width:110px; height:35px" onclick="borrarojt()">ACEPTAR</button>
+                          </div>
+                          <b>
+                              <p class="alert alert-warning text-center padding error" id="dangeri">Error
+                                  al eliminar archivo</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-success text-center padding exito" id="succei">¡Se
+                                  elimino archivo con éxito !</p>
+                          </b>
+                          <b>
+                              <p class="alert alert-danger text-center padding aviso" id="avisoi">Error
+                                  archivo para eliminar </p>
+                          </b>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</form>
+
+<!-----------------ACTUALIZAR OJT--------------->
+
+  <div class="modal fade" id="modal-docactualizar">
+          <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">REMPLAZAR DOCUMENTO</h4>
+                
+              </div>
+              <div class="modal-body" id="actForpro">
+              <form class="form-horizontal" id="actualizardoc">
+                 
+
+            <div class="form-group">
+              <div class="col-sm-12">
+              <input type="hidden" name="ojtNempleact" id="ojtNempleact" value="<?php echo $datos[4]?>" >
+              <input type="hidden" name="ojtIdperact" id="ojtIdperact" value="<?php echo $id ?>">
+              <input type="hidden" name="ojtdocadact" id="ojtdocadact">
+              <label class="label2" id="docadjunto" for=""></label>
+
+              <div class="col-sm-6">
+              <input id="OjtAgraAct" type="file" name="OjtAgraAct" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
+              </div>
+            </div>
+            </div>
+
+              <div class="form-group">
+                  <div class="col-sm-5">
+                    <button type="button" id="button1" class="btn btn-info altaboton" style="font-size:14px; width:110px; height:35px" onclick="actualOjt();">ACTUALIZAR</button>
+                  </div>
+                   <b><p class="alert alert-danger text-center padding error" id="fallabit">Error al adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="exitobit">¡Se adjunto archivo con éxito!</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="vaciobit">Es necesario adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="repetidobit">¡El archivo adjunto está registrado!</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="renombit">Renombre su archivo</p></b>
+
+                    <b><p class="alert alert-warning text-center padding adjuto" id="adjuntabit">Debes adjuntar archivo</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="errorbit">Ocurrio un error</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="fornbit">Formato no valido</p></b>
+
+                    <b><p class="alert alert-danger text-center padding adjuto" id="maxbit">Supera el limite permitido</p></b>
+                    </div>
+                </form>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------------------------------>
+
 <div class="modal fade" id='modal-confirma'>
 <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -566,3 +721,7 @@
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+  //consultaOJT();
+</script>    

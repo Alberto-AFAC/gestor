@@ -159,6 +159,8 @@ data-target='#modal-info'>
 <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
 <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li>
 <li><a href="#obligatorio" data-toggle="tab">Cursos obligatorios</a></li>
+<li><a href="#ojt_insp" data-toggle="tab">OJT</a></li>
+
 <?php 
 
 if($datos[3]== 'ADMINISTRATIVO'){}else{
@@ -288,6 +290,28 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
 </div>
 </div>
 </section>
+</div>
+
+<div class="tab-pane" id="ojt_insp">
+<p id="oclOJT"><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+
+
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+        </div>
+        <div id="docInsp"></div>
+<!--         <div class="box-body">
+            <table style="width: 100%;" id="data-table-ojtinsp"
+                class="table display table-striped table-bordered"></table>
+        </div> -->
+    </div>
+</div>
+</div>
+</section>
+
 </div>
 
 <div class="tab-pane" id="ojt">
