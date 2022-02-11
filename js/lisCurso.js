@@ -1607,7 +1607,8 @@ function adjuntarOjt() {
         var x = 0;
         var y = 0;
 
-        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">DOCUMENTO</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
+html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">OJT</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
+// html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">BITÁCORA</th> </tr></thead><tbody>';
         // html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">OJT - ACTUALIZAR </th> </tr></thead><tbody>';
 
         for (D = 0; D < res.length; D++) {
@@ -1616,10 +1617,6 @@ function adjuntarOjt() {
                 dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 x++;
                 html += '<tr><td>' + x + '<td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
-                //document.getElementById('ojt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
-                // document.getElementById('ojt-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
-                // document.getElementById('ojt-fec').innerHTML = obj.data[D].fecactual;
-                // // $("#oclOJT").hide();
 
             }
 
@@ -1628,7 +1625,28 @@ function adjuntarOjt() {
 
         $("#docInsp").html(html);
 
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">BITÁCORA</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
+
+        for (D = 0; D < res.length; D++) {
+
+            if (obj.data[D].documento === 'BITACORA') {
+                dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
+                y++;
+                html += '<tr><td>' + y + '</td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+
+            }
+
+        }
+        html += '</tbody></table></form></div></div>';
+
+        $("#docBita").html(html);
     })
+
+function adjunojt(v) {
+
+    $("#ojtbit").html(v);
+    $("#modal-doc #ojtdocadjunto").val(v);
+}
 
 function borrarOjt(dato) {
 
@@ -1686,6 +1704,7 @@ function actualOjt() {
 
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('OjtAgraAct', $('#OjtAgraAct')[0].files[0]);
+    paqueteDeDatos.append('docactuali', $('#docactuali').prop('value'));
     paqueteDeDatos.append('ojtIdperact', $('#ojtIdperact').prop('value'));
     paqueteDeDatos.append('ojtdocadact', $('#ojtdocadact').prop('value'));
     paqueteDeDatos.append('ojtNempleact', $('#ojtNempleact').prop('value'));

@@ -1677,11 +1677,12 @@ function adjuntarOjt() {
 
 function actualOjt() {
 
-    ojtIdperact = document.getElementById('ojtIdperact').value;
+    // ojtIdperact = document.getElementById('ojtIdperact').value;
 
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('OjtAgraAct', $('#OjtAgraAct')[0].files[0]);
     paqueteDeDatos.append('ojtIdperact', $('#ojtIdperact').prop('value'));
+    paqueteDeDatos.append('docactuali', $('#docactuali').prop('value'));    
     paqueteDeDatos.append('ojtdocadact', $('#ojtdocadact').prop('value'));
     paqueteDeDatos.append('ojtNempleact', $('#ojtNempleact').prop('value'));
     paqueteDeDatos.append('opcion', 'actdoc');
@@ -2390,7 +2391,7 @@ function consultardocIns(gstIdper) {
             if (obj.data[D].documento === 'OJT') {
                 dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 x++;
-                html += '<tr><td>' + x + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+                html += '<tr><td>' + x + '</td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
                 document.getElementById('ojt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('ojt-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('ojt-fec').innerHTML = obj.data[D].fecactual;
@@ -2422,7 +2423,7 @@ function consultardocIns(gstIdper) {
             if (obj.data[D].documento === 'BITACORA') {
                 dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 y++;
-                html += '<tr><td>' + y + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+                html += '<tr><td>' + y + '</td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
                 document.getElementById('btcr').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('btcr-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('btcr-fec').innerHTML = obj.data[D].fecactual;

@@ -43,7 +43,7 @@
               <label class="label2"  for=""></label>
               <input type="hidden" name="ojtNemple" id="ojtNemple" value="<?php echo $datos[4]?>">
               <input type="hidden" name="ojtIdper" id="ojtIdper" value="<?php echo $id?>">
-              <input type="hidden" name="ojtdocadjunto" id="ojtdocadjunto" value="OJT">
+              <input type="hidden" name="ojtdocadjunto" id="ojtdocadjunto">
               <div class="col-sm-6">
                <input id="OjtAgra" type="file" name="OjtAgra" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
               </div>
@@ -140,6 +140,7 @@
               <div class="col-sm-12">
               <input type="hidden" name="ojtNempleact" id="ojtNempleact" value="<?php echo $datos[4]?>" >
               <input type="hidden" name="ojtIdperact" id="ojtIdperact" value="<?php echo $id ?>">
+              <input type="hidden" name="docactuali" id="docactuali">
               <input type="hidden" name="ojtdocadact" id="ojtdocadact">
               <label class="label2" id="docadjunto" for=""></label>
 
@@ -721,7 +722,3 @@
 </div>
 </div>
 </div>
-
-<script type="text/javascript">
-  //consultaOJT();
-</script>    

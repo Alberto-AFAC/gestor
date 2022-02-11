@@ -17,7 +17,7 @@
       $id = $_SESSION['usuario']['id_usu'];
       $usu = $_SESSION['usuario']['usuario'];
       $pass = $_SESSION['usuario']['password'];
-    
+          $priv = $_SESSION['usuario']['privilegios'];
 
       include("../perfil/index.php");
 
@@ -98,6 +98,18 @@
             </span>
           </a>
         </li>
+
+<?php if($datos[4]== 7137630 || $datos[4]== 7134065 || $datos[4]== 6420278 ||$datos[4]== 7141460 || $datos[4]== 7141551 || $datos[4]== 7134248 || $datos[4]== 7141776 ||$datos[4]== 3100516 ){ ?>
+      <li>
+      <a href="inspecion">
+      <i class="fa fa-users"></i> <span>Lista de inspectores</span>
+      <span class="pull-right-container">
+      <small class="label pull-right bg-red"></small>
+      <small class="label pull-right bg-blue"></small>
+      </span>
+      </a>
+      </li>
+<?php } ?>
 
         <!--  -->
         
