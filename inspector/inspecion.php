@@ -539,7 +539,7 @@ $(document).ready(function() {
         // "order": [
         //     [5, "asc"]
         // ],
-        "ajax": "../php/data-inspeccion.php",
+        "ajax": "../php/data-inspecciones.php",
 
     });
 
