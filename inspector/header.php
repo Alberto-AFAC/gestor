@@ -99,7 +99,7 @@
           </a>
         </li>
 
-<?php if($datos[4]== 7137630 || $datos[4]== 7134065 || $datos[4]== 6420278 ||$datos[4]== 7141460 || $datos[4]== 7141551 || $datos[4]== 7134248 || $datos[4]== 7141776 ||$datos[4]== 3100516 ){ ?>
+<?php if($datos[4]== 7137630 || $datos[4]== 7134065 || $datos[4]== 6420278 ||$datos[4]== 7141460 || $datos[4]== 7141551 || $datos[4]== 7134248 || $datos[4]== 7141776 || $datos[4]== 3100516 || $datos[4]== 7135352){ ?>
       <li>
       <a href="inspecion">
       <i class="fa fa-users"></i> <span>Lista de inspectores</span>
