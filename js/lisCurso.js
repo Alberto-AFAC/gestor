@@ -1555,8 +1555,8 @@ function adjuntarOjt() {
                     $('#exitojt').toggle('toggle');
                 }, 4000);
 
-                consultardocIns(ojtIdper);
-
+                // consultardocIns(ojtIdper);
+            setTimeout("location.href = 'inspector';", 2000);  
             } else if (r == 1) {
                 $('#fallajt').toggle('toggle');
                 setTimeout(function() {
@@ -1674,8 +1674,8 @@ function borrarojt() {
                 $('#succei').toggle('toggle');
             }, 2000);
 
-            consultardocIns(ojtidperdoc);
-
+            //consultardocIns(ojtidperdoc);
+        setTimeout("location.href = 'inspector';", 2000);  
         } else if (respuesta == 1) {
             $('#dangeri').toggle('toggle');
             setTimeout(function() {
@@ -1716,6 +1716,7 @@ function actualOjt() {
         contentType: false,
         processData: false,
         success: function(r) {
+
             if (r == 8) {
                 $('#vaciobit').toggle('toggle');
                 setTimeout(function() {
@@ -1723,6 +1724,8 @@ function actualOjt() {
                 }, 4000);
 
             } else if (r == 0) {
+
+            setTimeout("location.href = 'inspector';", 2000);                
                 $('#exitobit').toggle('toggle');
                 setTimeout(function() {
                     $('#exitobit').toggle('toggle');
