@@ -1633,14 +1633,14 @@ function adjuntarOjt() {
                     $('#vaciojt').toggle('toggle');
                 }, 4000);
 
-                $("#nota").hide('toggle');  
+                $("#nota").hide();  
 
             } else if (r == 0) {
                 $('#exitojt').toggle('toggle');
                 setTimeout(function() {
                     $('#exitojt').toggle('toggle');
                 }, 4000);
-                $("#nota").hide('toggle');  
+                $("#nota").hide();  
                 consultardocIns(ojtIdper);
 
             } else if (r == 1) {
@@ -1648,37 +1648,37 @@ function adjuntarOjt() {
                 setTimeout(function() {
                     $('#fallajt').toggle('toggle');
                 }, 4000);
-                $("#nota").hide('toggle');                  
+                $("#nota").hide();                  
             } else if (r == 2) {
                 $('#errorjt').toggle('toggle');
                 setTimeout(function() {
                     $('#errorjt').toggle('toggle');
                 }, 4000);
-                $("#nota").hide('toggle');                  
+                $("#nota").hide();                  
             } else if (r == 3) {
                 $('#renomjt').toggle('toggle');
                 setTimeout(function() {
                     $('#renomjt').toggle('toggle');
                 }, 4000);
-                $("#nota").hide('toggle');                  
+                $("#nota").hide();                  
             } else if (r == 4) {
                 $('#fornjt').toggle('toggle');
                 setTimeout(function() {
                     $('#fornjt').toggle('toggle');
                 }, 4000);
-                $("#nota").hide('toggle');                  
+                $("#nota").hide();                  
             } else if (r == 6) {
                 $('#adjuntajt').toggle('toggle');
                 setTimeout(function() {
                     $('#adjuntajt').toggle('toggle');
                 }, 4000);
-                $("#nota").hide('toggle');                  
+                $("#nota").hide();                  
             } else if (r == 7) {
                 $('#repetidojt').toggle('toggle');
                 setTimeout(function() {
                     $('#repetidojt').toggle('toggle');
                 }, 4000);
-                $("#nota").hide('toggle');                  
+                $("#nota").hide();                  
             }
         }
     });
