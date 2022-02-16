@@ -79,11 +79,11 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 	}else if($opcion === 'actdoc'){
 
 
-		if($_POST['ojtIdperact']=='' || $_POST['ojtNempleact']=='' || $_POST['ojtdocadact']==''){
+		if($_POST['ojtIdperact']=='' || $_POST['ojtNempleact']=='' || $_POST['ojtdocadact']=='' || $_POST['docactuali'] == ''){
 
 			echo "8";
 		}else{
-
+		$docactuali = $_POST['docactuali'];	
 		$ojtIdperact = $_POST['ojtIdperact'];
 		$ojtdocadjunto = $_POST['ojtdocadact'];
 		$ojtNempleact = $_POST['ojtNempleact'];
@@ -111,7 +111,7 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 
 		if(move_uploaded_file($rutaTemporal, $OjtAgraAct)){
 
-		if(documentoact($ojtIdperact,$OjtAgraAct,$factual,$conexion))
+		if(documentoact($docactuali,$ojtIdperact,$OjtAgraAct,$factual,$conexion))
 				{	echo "0";	
 
 		// $realizo = 'ACTUALIZO DOC';	
@@ -186,9 +186,9 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 				$this->conexion->cerrar();	
 	}
 
-function documentoact($ojtIdperact,$OjtAgraAct,$factual,$conexion){
+function documentoact($docactuali,$ojtIdperact,$OjtAgraAct,$factual,$conexion){
 
-		$query="UPDATE inspectordoc SET docajunto = '$OjtAgraAct', fecactual = '$factual' WHERE idperdoc = $ojtIdperact";
+		$query="UPDATE inspectordoc SET docajunto = '$OjtAgraAct', fecactual = '$factual' WHERE idperdoc = $ojtIdperact AND idi = $docactuali ";
 			if(mysqli_query($conexion,$query)){
 				return true;
 			}else{

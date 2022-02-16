@@ -822,8 +822,11 @@
                   <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">AGREGAR <span id="ojtbit"></span></h4>
                 
+                <b><p class="alert alert-info text-center padding adjuto" style="width: 50%; float: right;padding: 0;margin:0;" id="nota">Cargando documento</p></b>  
+
               </div>
               <div class="modal-body" id="actForpro">
+
               <form class="form-horizontal" id="agregardoc">
                  
 
@@ -834,6 +837,9 @@
               <input type="hidden" name="ojtIdper" id="ojtIdper">
               <input type="hidden" name="ojtdocadjunto" id="ojtdocadjunto">
               <div class="col-sm-6">
+
+
+
                <input id="OjtAgra" type="file" name="OjtAgra" style="width: 410px; margin:0 auto; " required accept=".pdf,.doc" class="input-file" size="1450">
               </div>
             </div>
@@ -860,7 +866,9 @@
                     <b><p class="alert alert-danger text-center padding adjuto" id="fornjt">Formato no valido</p></b>
 
                     <b><p class="alert alert-danger text-center padding adjuto" id="maxjt">Supera el limite permitido</p></b>
-                    </div>
+
+
+                                        </div>
                 </form>  
             </div>
           </div>

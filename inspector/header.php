@@ -17,6 +17,7 @@
       $id = $_SESSION['usuario']['id_usu'];
       $usu = $_SESSION['usuario']['usuario'];
       $pass = $_SESSION['usuario']['password'];
+          $priv = $_SESSION['usuario']['privilegios'];
 
       include("../perfil/index.php");
 
@@ -97,6 +98,47 @@
             </span>
           </a>
         </li>
+
+<?php if(
+   $datos[4] == 6370777 
+|| $datos[4] == 6470394 
+|| $datos[4] == 7132490 
+|| $datos[4] == 7131237 
+|| $datos[4] == 3100869 
+|| $datos[4] == 7132075 
+|| $datos[4] == 3100789 
+|| $datos[4] == 7137630 
+|| $datos[4] == 7134065 
+|| $datos[4] == 6420278 
+|| $datos[4] == 7141460 
+|| $datos[4] == 7141551 
+|| $datos[4] == 7134248 
+|| $datos[4] == 7141776 
+|| $datos[4] == 3100516 
+|| $datos[4] == 7135352
+
+|| $datos[4] == 7141611
+|| $datos[4] == 7141754
+|| $datos[4] == 7131535
+|| $datos[4] == 7136591
+|| $datos[4] == 7141640
+|| $datos[4] == 7131349
+|| $datos[4] == 7131242
+|| $datos[4] == 7132891
+|| $datos[4] == 7131317
+|| $datos[4] == 7138485
+|| $datos[4] == 7131993 ){
+ ?>
+      <li>
+      <a href="inspecion">
+      <i class="fa fa-users"></i> <span>Lista de inspectores</span>
+      <span class="pull-right-container">
+      <small class="label pull-right bg-red"></small>
+      <small class="label pull-right bg-blue"></small>
+      </span>
+      </a>
+      </li>
+<?php } ?>
 
         <!--  -->
         

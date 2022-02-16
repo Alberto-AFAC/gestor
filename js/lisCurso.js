@@ -1744,3 +1744,246 @@ $(function() {
         inputQuantity[$thisIndex] = val;
     });
 });
+
+
+function adjuntarOjt() {
+
+    ojtIdper = document.getElementById('ojtIdper').value;
+
+    var paqueteDeDatos = new FormData();
+    paqueteDeDatos.append('OjtAgra', $('#OjtAgra')[0].files[0]);
+    paqueteDeDatos.append('ojtIdper', $('#ojtIdper').prop('value'));
+    paqueteDeDatos.append('ojtdocadjunto', $('#ojtdocadjunto').prop('value'));
+    paqueteDeDatos.append('ojtNemple', $('#ojtNemple').prop('value'));
+    paqueteDeDatos.append('opcion', 'documento');
+    $.ajax({
+        url: '../php/docInpector.php',
+        data: paqueteDeDatos,
+        type: "POST",
+        contentType: false,
+        processData: false,
+        success: function(r) {
+            if (r == 8) {
+                $('#vaciojt').toggle('toggle');
+                setTimeout(function() {
+                    $('#vaciojt').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 0) {
+                $('#exitojt').toggle('toggle');
+                setTimeout(function() {
+                    $('#exitojt').toggle('toggle');
+                }, 4000);
+
+                // consultardocIns(ojtIdper);
+            setTimeout("location.href = 'inspector';", 2000);  
+            } else if (r == 1) {
+                $('#fallajt').toggle('toggle');
+                setTimeout(function() {
+                    $('#fallajt').toggle('toggle');
+                }, 4000);
+            } else if (r == 2) {
+                $('#errorjt').toggle('toggle');
+                setTimeout(function() {
+                    $('#errorjt').toggle('toggle');
+                }, 4000);
+            } else if (r == 3) {
+                $('#renomjt').toggle('toggle');
+                setTimeout(function() {
+                    $('#renomjt').toggle('toggle');
+                }, 4000);
+            } else if (r == 4) {
+                $('#fornjt').toggle('toggle');
+                setTimeout(function() {
+                    $('#fornjt').toggle('toggle');
+                }, 4000);
+            } else if (r == 6) {
+                $('#adjuntajt').toggle('toggle');
+                setTimeout(function() {
+                    $('#adjuntajt').toggle('toggle');
+                }, 4000);
+            } else if (r == 7) {
+                $('#repetidojt').toggle('toggle');
+                setTimeout(function() {
+                    $('#repetidojt').toggle('toggle');
+                }, 4000);
+            }
+        }
+    });
+}
+
+
+    //alert(gstIdper);
+    
+
+    $.ajax({
+        url: "../php/conOjt.php",
+        type: "POST"
+        // data: 'gstIdper=' + gstIdper
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        var y = 0;
+
+html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">OJT</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
+// html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">BITÁCORA</th> </tr></thead><tbody>';
+        // html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th> <th scope="col">OJT - ACTUALIZAR </th> </tr></thead><tbody>';
+
+        for (D = 0; D < res.length; D++) {
+
+            if (obj.data[D].documento === 'OJT') {
+                dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
+                x++;
+                html += '<tr><td>' + x + '<td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+
+            }
+
+        }
+        html += '</tbody></table></form></div></div>';
+
+        $("#docInsp").html(html);
+
+        html = '<div style="padding-top: 5px;" class="col-md-12"><div class="nav-tabs-custom"><form class="form-horizontal" action="" method="POST"><input type="hidden" name="gstIdper" id="gstIdper"><table style="width: 100%;" id="checkrh" class="table table-striped table-hover center" ><thead><tr><th scope="col">#</th><th scope="col" style="width:100px;">BITÁCORA</th><th scope="col">FECHA</th> <th scope="col">ACCIONES</th> </tr></thead><tbody>';
+
+        for (D = 0; D < res.length; D++) {
+
+            if (obj.data[D].documento === 'BITACORA') {
+                dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
+                y++;
+                html += '<tr><td>' + y + '</td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td>'+obj.data[D].fecactual+'</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+
+            }
+
+        }
+        html += '</tbody></table></form></div></div>';
+
+        $("#docBita").html(html);
+    })
+
+function adjunojt(v) {
+
+    $("#ojtbit").html(v);
+    $("#modal-doc #ojtdocadjunto").val(v);
+}
+
+function borrarOjt(dato) {
+
+    var d = dato.split("*");
+
+    $("#eliminarojt #ojtIdperEli").val(d[0]);
+    $("#eliminarojt #ojtidperdoc").val(d[1]);
+}
+function borrarojt() {
+
+    var ojtIdperEli = document.getElementById('ojtIdperEli').value;
+    var ojtidperdoc = document.getElementById('ojtidperdoc').value;
+    //alert(ojtIdperEli);
+    datos = 'ojtIdperEli=' + ojtIdperEli + '&opcion=elimiarojt';
+
+    $.ajax({
+        url: '../php/docInpector.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        //alert(respuesta);
+        if (respuesta == 0) {
+            $('#succei').toggle('toggle');
+            setTimeout(function() {
+                $('#succei').toggle('toggle');
+            }, 2000);
+
+            //consultardocIns(ojtidperdoc);
+        setTimeout("location.href = 'inspector';", 2000);  
+        } else if (respuesta == 1) {
+            $('#dangeri').toggle('toggle');
+            setTimeout(function() {
+                $('#dangeri').toggle('toggle');
+            }, 2000);
+        } else {
+            $('#avisoi').toggle('toggle');
+            setTimeout(function() {
+                $('#avisoi').toggle('toggle');
+            }, 2000);
+        }
+    });
+
+}
+
+function ctualDoc(dato) {
+
+    d = dato.split('*');
+    $("#docactuali").val(d[0]);
+    $("#ojtdocadact").val(d[2]);
+
+}
+function actualOjt() {
+
+    // ojtIdperact = document.getElementById('ojtIdperact').value;
+
+    var paqueteDeDatos = new FormData();
+    paqueteDeDatos.append('OjtAgraAct', $('#OjtAgraAct')[0].files[0]);
+    paqueteDeDatos.append('docactuali', $('#docactuali').prop('value'));
+    paqueteDeDatos.append('ojtIdperact', $('#ojtIdperact').prop('value'));
+    paqueteDeDatos.append('ojtdocadact', $('#ojtdocadact').prop('value'));
+    paqueteDeDatos.append('ojtNempleact', $('#ojtNempleact').prop('value'));
+    paqueteDeDatos.append('opcion', 'actdoc');
+    $.ajax({
+        url: '../php/docInpector.php',
+        data: paqueteDeDatos,
+        type: "POST",
+        contentType: false,
+        processData: false,
+        success: function(r) {
+
+            if (r == 8) {
+                $('#vaciobit').toggle('toggle');
+                setTimeout(function() {
+                    $('#vaciobit').toggle('toggle');
+                }, 4000);
+
+            } else if (r == 0) {
+
+            setTimeout("location.href = 'inspector';", 2000);                
+                $('#exitobit').toggle('toggle');
+                setTimeout(function() {
+                    $('#exitobit').toggle('toggle');
+                }, 4000);
+
+                consultardocIns(ojtIdperact);
+
+            } else if (r == 1) {
+                $('#fallabit').toggle('toggle');
+                setTimeout(function() {
+                    $('#fallabit').toggle('toggle');
+                }, 4000);
+            } else if (r == 2) {
+                $('#errorbit').toggle('toggle');
+                setTimeout(function() {
+                    $('#errorbit').toggle('toggle');
+                }, 4000);
+            } else if (r == 3) {
+                $('#renombit').toggle('toggle');
+                setTimeout(function() {
+                    $('#renombit').toggle('toggle');
+                }, 4000);
+            } else if (r == 4) {
+                $('#fornbit').toggle('toggle');
+                setTimeout(function() {
+                    $('#fornbit').toggle('toggle');
+                }, 4000);
+            } else if (r == 6) {
+                $('#adjuntabit').toggle('toggle');
+                setTimeout(function() {
+                    $('#adjuntabit').toggle('toggle');
+                }, 4000);
+            } else if (r == 7) {
+                $('#repetidobit').toggle('toggle');
+                setTimeout(function() {
+                    $('#repetidobit').toggle('toggle');
+                }, 4000);
+            }
+        }
+    });
+}
