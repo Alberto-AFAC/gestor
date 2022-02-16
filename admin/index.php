@@ -78,6 +78,18 @@
                                 <a href="#">Iniciar</a>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <span></span>
+                  
+                            <div class="content">
+                                <h3>COMPETENCIA LINGÜÍSTICA</h3> 
+                                <img class="img-servicios" src="../models/menu/images/" width="75%;" alt="participante"><br><br>
+                                <a href="../../linguistica">Iniciar</a>
+                     
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </li>
@@ -133,11 +145,11 @@
                 </div>
             </li>  -->
 
-            <li class="" data-depth="1.00">
+  <!--           <li class="" data-depth="1.00">
                 <div class="depth-5">
                     <img alt="flake" src="../models/menu/images/flakes/depth5/flakes.png">
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
     <script src="../js/menu/js/jquery.js"></script>
