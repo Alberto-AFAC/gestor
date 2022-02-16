@@ -113,7 +113,9 @@ if(constancia($idcons,$listreg,$lisasisten,$listreportein,$cartdescrip,$regponde
 	echo "1";
 	}
 
-  }
+}
+ 
+
 }
 
 

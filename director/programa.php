@@ -7,9 +7,8 @@ include ("../conexion/conexion.php");
 $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
 $curso = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell,estado FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR estado = 2 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
+$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
 $instructor  = mysqli_query($conexion,$sql);
-
 
 $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 ";
 $cordinador  = mysqli_query($conexion,$sql);
@@ -31,6 +30,7 @@ unset($_SESSION['consulta']);
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -86,7 +86,7 @@ include('header.php');
 
     <section class="content-header">
       <h1>
-        PROGRAMACIÓN DEL CURSO, TODOS LOS CURSOS       
+        PROGRAMACIÓN DEL CURSO       
       </h1>
     </section>
     <!-- Main content -->
@@ -106,37 +106,30 @@ include('header.php');
 
 <form class="form-horizontal">
 
-<input type="hidden" name="idper" id="idper" value="<?php echo $id ?>">
+
 <div class="form-group">
 <div class="col-sm-12">
-<label class="label2">SELECCIONE CURSO / <a href="programo">OBLIGATORIOS DE INDUCCIÓN</a></label>
-<div id="selcurso"></div>
-                           
+<label class="label2">SELECCIONE CURSO</label>
+<div id="selcurso"></div>                            
 </div>
 </div>
 <!-- <div id="partici"></div>  -->
-<div class="form-group" id="visFec" style="display: none;">
-<div class="col-sm-4">
-<!-- <label class="label2">HORA</label> -->
-<button type="button" style="font-size:16px" class="btn btn-default" onclick="reiFec();">REINICIE FECHAS</button>
-</div>
-</div>
 
-<div class="form-group" id="mosFec">
+<div class="form-group">
 <div class="col-sm-4">
 <label class="label2">FECHA INICIO <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="av"></label>
 <input type="date" class="form-control inputalta" id="fcurso" name="fcurso">
 </div>
 
 <div class="col-sm-4">
-<label class="label2">FECHA CONCLUSIÓN <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="so"></label>
-<input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
+<label class="label2">HORA</label>
+<input type="time" class="form-control inputalta" id="hcurso" name="hcurso">
 </div>
 
+
 <div class="col-sm-4">
-<label class="label2">HORA</label>
-<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil' id="modalMost">DÍAS HÁBILES </a>
-<a type='button' title='Días Hábiles' onclick='hrsDiasAct()' class='btn btn-info' data-toggle='modal' data-target='#modal-diahabil' id="modalOcul" style="display: none;">DÍAS HÁBILES </a>
+<label class="label2">FECHA CONCLUSIÓN <span class="fa fa-lightbulb-o" style="display: none;color:red;" id="so"></label>
+<input type="date" class="form-control inputalta" id="fechaf" name="fechaf">
 </div>
 </div>
 
@@ -159,14 +152,8 @@ include('header.php');
     <div class="col-sm-4">
     <label class="label2">INSTRUCTOR</label>
       <select style="width: 100%" class="form-control inputalta" class="selectpicker" id="idinst" name="idinst[]" type="text" multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR" data-live-search="true">
-          <?php while($instructors = mysqli_fetch_row($instructor)):
-             if($instructors[3]==2){
-              $estado = "(EXTERNO)";
-  
-            }else{
-              $estado = "";
-            }?>
-          <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2].' '.$estado?></option>
+          <?php while($instructors = mysqli_fetch_row($instructor)):?>
+          <option value="<?php echo $instructors[0]?>"><?php echo $instructors[1].' '.$instructors[2]?></option>
           <?php endwhile; ?>
       </select>
     </div>
@@ -181,13 +168,13 @@ include('header.php');
     <div class="col-sm-4">
       <label class="label2">MODALIDAD</label>
       <select type="text" class="form-control inputalta" id="modalidad" name="modalidad" onChange="modalidades()">
-         <option value="0">ELEGIR UNA OPCIÓN</option>
-         <option value="A DISTANCIA">A DISTANCIA</option>
-         <option value="AUTOAPRENDIZAJE">AUTOAPRENDIZAJE</option>
-         <option value="AUTOGESTIVO">AUTOGESTIVO</option>
-         <option value="E-LEARNNING">E-LEARNNING</option>
-         <option value="HIBRIDO">HIBRIDO</option>
-         <option value="PRESENCIAL">PRESENCIAL</option>         
+           <option value="0">ELEGIR UNA OPCIÓN</option>
+           <option value="A DISTANCIA">A DISTANCIA</option>
+           <option value="AUTOAPRENDIZAJE">AUTOAPRENDIZAJE</option>
+           <option value="AUTOGESTIVO">AUTOGESTIVO</option>
+           <option value="E-LEARNNING">E-LEARNNING</option>
+           <option value="HIBRIDO">HIBRIDO</option>
+           <option value="PRESENCIAL">PRESENCIAL</option>          
       </select>
     </div>
 
@@ -230,21 +217,23 @@ include('header.php');
 
 </div>
 
+
 <div class="form-group">
 <div class="col-sm-4">
 <label class="label2">PARTICIPANTES DEL CURSO</label>
 
 </div>                     
 </div>  
-<div id="tabcurso"></div>
+
+<div id="tabcurso"></div> 
+
+
 <br>
+
 
 <div class="form-group"><br>
 <div class="col-sm-offset-0 col-sm-5">
-
-
-<button type="button" id="buttonpro" style="font-size:16px" class="btn btn-info altaboton" onclick="curProgramar();">PROGRAMAR</button>
-
+<button type="button" id="buttonpro" style="font-size:16px" class="btn btn-info altaboton" onclick="proCurso();">PROGRAMAR</button>
 <div id="overlay">
   <div class="cv-spinner">
     <span class="spinner"></span>
@@ -259,13 +248,11 @@ include('header.php');
 
 <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
 
-
+<b><p class="alert alert-info text-center padding aviso" id="fechasA">Fecha conclusión es menor a fecha inicio</p></b>
 </div>
 </form>
 </div>
        
-
-
 
               </div>
               <!-- /.tab-pane 2do panel-->
@@ -286,7 +273,6 @@ include('header.php');
     <!-- /.content -->
   </div>
   
-<?php include('dias.php')?>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -342,6 +328,30 @@ include('header.php');
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
+  var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
+    //alert(idpersona1);
+    $.ajax({
+            url: '../php/accesos-list.php',
+            type: 'POST'
+        }).done(function(resp) {    
+            obj = JSON.parse(resp);
+            var res = obj.data;
+
+            //AQUI03
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+            var n = 0;
+            for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
+                //alert(obj.data[H].id_usu);
+                if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0' ) {
+                    $('#modal-obligatorio').modal('show'); 
+                    $("#usuarioobl").val(obj.data[H].gstNombr +" "+obj.data[H].gstApell  );
+                }else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1' ) {
+                    $('#modal-obligatorio').modal('hide');  
+                }
+
+        }
+    })
+    //FIN DE ACTUALIZACION
 $(document).ready(function(){
 //$('#id_mstr').select2();
 $('#idinst').select2();
@@ -351,7 +361,6 @@ $("#idcord").select2();
  //$('#partici').load('select/tablaoblig.php')
 }); 
 </script>
-<script src="../js/global.js"></script>
 <script src="../js/select2.js"></script> 
 
 <script>
@@ -382,10 +391,5 @@ var yyyy = today.getFullYear();
 
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("fechaf").setAttribute("min", today);
-
-$("#allselect").on("click", function() {
-  $(".idias").prop("checked", this.checked);
-});
-
-consulFecha();
 </script>
+<script src="../js/global.js"></script>
