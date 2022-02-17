@@ -106,6 +106,7 @@
                                 </div>
                                 <div class="input-group col-md-12">
                                     <!-- <label for="" style="color:#ff0000; font-size: 14px;">*Debe aceptar el Aviso de Privacidad</label> -->
+                                    <label for="" style="color:#165da0; font-size: 14px;">*Su contraseña, debe tener almenos 8 letras conformadas por una mayuscula y un numero</label>
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary pull-left submit" onclick="actControbli();">Aceptar</button>     

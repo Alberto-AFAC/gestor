@@ -115,6 +115,7 @@ unset($_SESSION['consulta']);
             <li><a href="conCursos"><i class="fa fa-search"></i>Catálogos de cursos</a></li>
             <li><a href="programa"><i class="fa ion-compose"></i>Programar Curso</a></li>
             <li><a href="lisCurso"><i class="fa ion-compose"></i>Cursos Programados</a></li>
+            <li><a href="vencidos"><i class="fa ion-easel"></i> Cursos vencidos</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
             <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
