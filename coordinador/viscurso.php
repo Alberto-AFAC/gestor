@@ -267,12 +267,12 @@ agregar los datos que se solicitan </p>
 <input type="hidden" class="form-control" id="gstIdlstc" name="gstIdlstc">
 <input type="hidden" name="gstTitulo" id="gstTitulo">
 <input type="hidden" name="codigoCurso" id="codigoCurso" />
-<span id="notiocu" data-toggle="modal" data-target="#notificarConv"
+<span id="" data-toggle="modal" data-target="#notificarConv"
 style="font-size:12px; width:280px; height:30px "
 class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
 aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A PARTICIPANTES</span>
 
-<span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
+<span id="" data-toggle="modal" data-target="#notificarRespon"
 style="font-size:12px; width:280px; height:30px "
 class="btn btn-info btn-sm altaboton"><i class="fa fa-graduation-cap"
 aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
