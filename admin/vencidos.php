@@ -89,13 +89,13 @@ $inspector = mysqli_query($conexion,$sql);
                                         <thead>
                                             <tr>
                                                 <th style="width:5%;">ID</th>
-                                                <th style="width:7%;">FOLIO CURSO</th>
+                                                <th>FOLIO CURSO</th>
                                                 <th style="width:18%;">INSPECTOR</th>
                                                 <!-- <th style="width:18%;">ESPECIALIDAD</th> -->
                                                 <th style="width:18%;">CURSO</th>
                                                 <th>TIPO</th>
-                                                <th>INICIO</th>
-                                                <th>FIN</th>
+                                                <th>TERMINO</th>
+                                                <th>VIGENCIA</th>
                                                 <th>ESTATUS</th>
                                                 <!-- <th style="width:15%; display: none;">ACCIÓN</th> -->
                                             </tr>
@@ -173,9 +173,6 @@ style="background: white;border: 1px solid white;"> -->
                     </form>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             </section>
-        </div>
-
-
         </section>
         <!-- /.content -->
     </div>
