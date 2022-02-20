@@ -9,7 +9,6 @@ $id = $_SESSION['usuario']['id_usu'];
     $datos = mysqli_fetch_row($persona);
 
       $datos[0];
-
 ?>
 
 <!DOCTYPE html>
