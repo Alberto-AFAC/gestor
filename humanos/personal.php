@@ -27,8 +27,8 @@ unset($_SESSION['consulta']);
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
   <script src="../dist/js/sweetalert2.all.min.js"></script>
   <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -74,9 +74,11 @@ include('header.php');
 
    <section class="content-header">
       <h1> 
-      <i class="fa  ion-android-person"></i>
-            ALTA / PERSONAL   
+         <i class="fa  ion-android-person"></i>
+         ALTA / PERSONAL   
+         <a href="implaoyut" type="button"  title="importación masiva" style="float: right;" class="btn bg-navy margin">IMPORTAR LAYOUT</a>
       </h1>
+      
     </section>
 <?php
  
@@ -118,16 +120,16 @@ $psto = mysqli_query($conexion,$sql);
         <form id="Dtall" class="form-horizontal" action="" method="POST" >
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">NOMBRE(S)</label>
+                       <label class="label2">*NOMBRE(S)</label>
                        <input type="text"onkeyup="mayus(this);"class="form-control inputalta" id="gstNombr" name="gstNombr">
                     </div>
                     <div class="col-sm-4">
-                       <label class="label2">APELLIDO(S)</label>
+                       <label class="label2">*APELLIDO(S)</label>
                        <input type="text" onkeyup="mayus(this);" class="form-control inputalta " id="gstApell" name="gstApell">
                     </div>
 
                     <div class="col-sm-4">
-                     <label class="label2">LUGAR DE NACIMIENTO</label>
+                     <label class="label2">*LUGAR DE NACIMIENTO</label>
                      <select type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstLunac" name="gstLunac">
                          <option value="">LUGAR DE NACIMIENTO</option>
                          <option value="AGUASCALIENTES">AGUASCALIENTES</option>
@@ -169,13 +171,13 @@ $psto = mysqli_query($conexion,$sql);
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">FECHA DE NACIMIENTO</label>
+                       <label class="label2">*FECHA DE NACIMIENTO</label>
                        <input type="date" class="form-control inputalta" id="gstFenac" name="gstFenac" >
                     </div>
 
 
                     <div class="col-sm-4">
-                      <label class="label2">SEXO</label>
+                      <label class="label2">*SEXO</label>
                       <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo">
                           <option value="">ELEGIR SEXO</option>
                          <option value="MUJER">MUJER</option>
@@ -185,7 +187,7 @@ $psto = mysqli_query($conexion,$sql);
 
 
                     <div class="col-sm-4">
-                      <label class="label2">ESTADO CIVIL</label>
+                      <label class="label2">*ESTADO CIVIL</label>
                       <select type="text" class="form-control inputalta" id="gstStcvl" name="gstStcvl">
                           <option value="">ESTADO CIVIL</option>
                          <option value="CASADO">CASADO</option>
@@ -197,20 +199,20 @@ $psto = mysqli_query($conexion,$sql);
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">CURP</label>
+                       <label class="label2">*CURP</label>
       
                        <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
 
                     </div>
 
                     <div class="col-sm-4">
-                       <label class="label2">RFC</label>
+                       <label class="label2">*RFC</label>
                        <input type="tex" maxlength="12" oninput="validarInputRF(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstRfc" name="gstRfc" > 
                        <!-- <label id="resultado1"></label>  -->
                     </div>
 
                     <div class="col-sm-4">
-                       <label class="label2">NÚMERO DE ISSSTE</label>
+                       <label class="label2">*NÚMERO DE ISSSTE</label>
                        <input type="type" class="form-control" id="gstisst" name="gstisst" >
                     </div>
  
@@ -252,34 +254,34 @@ $psto = mysqli_query($conexion,$sql);
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">CALLE</label>
+                       <label class="label2">*CALLE</label>
                        <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstCalle" name="gstCalle">
                     </div>
 
                     <div class="col-sm-4">
-                       <label class="label2">NÚMERO</label>
+                       <label class="label2">*NÚMERO</label>
                        <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstNumro" name="gstNumro">
                     </div>
 
                     <div class="col-sm-4">
-                       <label class="label2">COLONIA</label>
+                       <label class="label2">*COLONIA</label>
                        <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstClnia" name="gstClnia">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">CÓDIGO POSTAL</label>
+                       <label class="label2">*CÓDIGO POSTAL</label>
                        <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstCpstl" name="gstCpstl" maxlength="5" >
                     </div>
                      
                     <div class="col-sm-4">
-                       <label class="label2">CIUDAD</label>
+                       <label class="label2">*CIUDAD</label>
                        <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstCiuda" name="gstCiuda">
                     </div>
 
                     <div class="col-sm-4">
-                       <label class="label2">ESTADO</label>
+                       <label class="label2">*ESTADO</label>
                        <select type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstStado" name="gstStado">
                          <option value="">SELECCIONA EL ESTADO</option>
                          <option value="AGUASCALIENTES">AGUASCALIENTES</option>
@@ -331,7 +333,7 @@ $psto = mysqli_query($conexion,$sql);
 
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">CASA</label>
+                       <label class="label2">*CASA</label>
                        <div class="input-group">
                           <div class="input-group-addon">
                              <i class="fa fa-phone"></i>
@@ -340,7 +342,7 @@ $psto = mysqli_query($conexion,$sql);
                        </div>     
                     </div> 
                     <div class="col-sm-4">
-                       <label class="label2">CELULAR</label>
+                       <label class="label2">*CELULAR</label>
                        <div class="input-group">
                           <div class="input-group-addon">
                              <i class="fa fa-phone"></i>
@@ -361,7 +363,7 @@ $psto = mysqli_query($conexion,$sql);
                    
                     <div class="form-group">
                     <div class="col-sm-4 text-container">
-                         <label class="label2">CORREO PERSONAL </label>
+                         <label class="label2">*CORREO PERSONAL </label>
                           <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                             <i class="ion-ios-checkmark iconoInput" id="labelvalidcor"  style="display:none;"></i>
@@ -371,7 +373,7 @@ $psto = mysqli_query($conexion,$sql);
                            </div>
                     </div>
                     <div class="col-sm-4 ">
-                         <label class="label2">CORREO INSTITUCIONAL</label>
+                         <label class="label2">*CORREO INSTITUCIONAL</label>
                           <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                             <input type="email" class="form-control inputalta" placeholder="correo@sct.gob.mx" id="gstCinst" name="gstCinst">
@@ -425,11 +427,11 @@ $psto = mysqli_query($conexion,$sql);
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">NÚMERO DE EMPLEADO</label>
+                       <label class="label2">*NÚMERO DE EMPLEADO</label>
                        <input type="number" class="form-control inputalta" id="gstNmpld" name="gstNmpld">
                     </div>
                     <div class="col-sm-3">
-                       <label class="label2">FECHA INGRESO A LA AFAC</label>
+                       <label class="label2">*FECHA INGRESO A LA AFAC</label>
                        <input type="date" class="form-control inputalta" id="gstFeing" name="gstFeing">
                     </div>  
                     <div class="col-sm-5">
@@ -463,7 +465,7 @@ $psto = mysqli_query($conexion,$sql);
 
          <div class="form-group">
             <div class="col-sm-12">
-               <label class="label2">NOMBRE DEL PUESTO</label>
+               <label class="label2">*NOMBRE DEL PUESTO</label>
                <select style="width: 100%" class="form-control inputalta selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
                <option value="0">SELECCIONA EL PUESTO</option>
                <?php while($pust = mysqli_fetch_row($psto)):?>                      
@@ -497,7 +499,7 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="form-group">
                           <div class="col-sm-6">
-                            <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                            <label class="label2">*DIRECCIÓN EJECUTIVA</label>
                              <div id="gstAreID1"></div>                            
                           </div>
                     
@@ -506,7 +508,7 @@ $psto = mysqli_query($conexion,$sql);
 
                       <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
 
-                      <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN </label>                    
+                      <label style="color:grey">*DIRECCIÓN DE ADSCRIPCIÓN </label>                    
 
                       <div id="gstIDara1"></div> 
                     
@@ -596,12 +598,25 @@ $psto = mysqli_query($conexion,$sql);
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
-    var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
+$(document).ready(function(){
+$('#gstAreID').select2();
+$('#gstIDara').select2();
+$('#gstPstID').select2();
+$('#buscador').load('select/buscar.php');
+$('#select1').load('select/tabla.php');
+$('#gstAreID1').load('select/buscardirec.php');
+$('#gstIDara1').load('select/tabladirec.php');
+// $('#oaci').load('select/oaci.php');
+// $('#siglas').load('select/siglas.php');
+});
+
+
+var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
     //alert(idpersona1);
     $.ajax({
             url: '../php/accesos-list.php',
             type: 'POST'
-        }).done(function(resp) {    
+        }).done(function(resp) {
             obj = JSON.parse(resp);
             var res = obj.data;
 
@@ -619,18 +634,5 @@ $psto = mysqli_query($conexion,$sql);
 
         }
     })
-    //FIN DE ACTUALIZACION
-$(document).ready(function(){
-$('#gstAreID').select2();
-$('#gstIDara').select2();
-$('#gstPstID').select2();
-$('#buscador').load('select/buscar.php');
-$('#select1').load('select/tabla.php');
-$('#gstAreID1').load('select/buscardirec.php');
-$('#gstIDara1').load('select/tabladirec.php');
-// $('#oaci').load('select/oaci.php');
-// $('#siglas').load('select/siglas.php');
-});
-
 </script>
 <script src="../js/select2.js"></script>
