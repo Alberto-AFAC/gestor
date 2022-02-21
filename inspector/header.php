@@ -60,7 +60,7 @@
             <?php }?>
 
             <?php 
-            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'GUSTAVO' || $datos[2] == 'FELIPE ROSALINO' || $datos[1] == 'DIEGO ISAAC' || $datos[2] == 'RIVERA OCHOA'){
+            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'GUSTAVO' || $datos[2] == 'FELIPE ROSALINO' || $datos[1] == 'DIEGO ISAAC' || $datos[2] == 'RIVERA OCHOA'|| $datos[1] == 'EDGAR'|| $datos[2] == 'GONZALEZ FLORES'|| $datos[1] == 'ALVARO EDGAR'|| $datos[2] == 'PEREZ GALINDO'){
                 echo "<li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-file-text'></i>

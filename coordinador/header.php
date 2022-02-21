@@ -123,7 +123,7 @@ unset($_SESSION['consulta']);
           </ul>
         </li>
         <?php 
-            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
+            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'|| $datos[1] == 'MARCO ANTONIO' || $datos[2] == 'REYES  SOTO'){
                 echo "<li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-file-text'></i>
