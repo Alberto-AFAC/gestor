@@ -63,7 +63,7 @@ $('document').ready(function() {
 
 $('document').ready(function() {
     // name validation
-    var number = /^\d{1,15}$/;
+    var number = /^\d{1,50}$/;
 
     $.validator.addMethod("validnumer", function(value, element) {
         return this.optional(element) || number.test(value);
