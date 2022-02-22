@@ -17,7 +17,6 @@ if($opcion === 'actCont'){
 		$pass = $_POST["pass"];
 		$pass2 = $_POST["pass2"];
 
-			
 		if($password != '' && $pass != '' && $pass2 != '' && $usuario !=''){
 				$existe = existe_usuario($password,$idper, $conexion);
 			
@@ -29,6 +28,7 @@ if($opcion === 'actCont'){
 
 					if(modificar($password, $pass, $usuario, $idper, $conexion)){
 						echo "7";
+						historia($id,$idper,$conexion);
 					}else{	echo "1";	}
 
 				}else{	echo "2";	}
@@ -36,26 +36,38 @@ if($opcion === 'actCont'){
 		}else{	echo "4";	}
 	}
 
-		function existe_usuario($password,$idper,$conexion){
+//-----------------------------------------------------------FUNCIONES -------------------------------------------------------
+	function existe_usuario($password,$idper,$conexion){
 		$passwor; //= md5($password);
 		$passwor = $password;
 		$query = "SELECT id_usu FROM accesos WHERE password='$passwor' and id_usu = '$idper'";
 		$resultado = mysqli_query($conexion, $query);
 		$existe_usuario = mysqli_num_rows($resultado);
 		return $existe_usuario;
-		}
+	}
 
-		function modificar($password, $pass, $usuario, $idper,$conexion){
+	//funciones para guardar en historial cambios de actualización de contraseña
+	function historia($id,$idper,$conexion){
+        ini_set('date.timezone','America/Mexico_City');
+        $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
+        $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'ACTUALIZACION DE CONTRASEÑA OBLIGATORIA',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE gstIdper= $idper";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+	function modificar($password, $pass, $usuario, $idper,$conexion){
 		$passwor = $password;
 		$pas = $pass;
 		$query = "UPDATE accesos SET password='$pas', cambio='1' WHERE password='$passwor' and 	id_usu = '$idper'";
 		if (mysqli_query($conexion,$query)) {
 		return true;
-		}else
-		{
+	}else{
 		return false;
-		}
+	}
 		$this->conexion->cerrar();
 
-		}
+	}
 ?>
