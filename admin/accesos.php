@@ -97,6 +97,7 @@ include('header.php');
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="hidden" id="idAccesos" name="idAccesos">
+                                <input type="hidden" id="idUser" name="idUser">
                                 <input type="hidden" id="opcion" name="opcion" value="modificar">
                                 <div class="col-sm-6">
                                     <label>NOMBRE COMPLETO</label>
@@ -307,6 +308,7 @@ function datos_editar(acceso) {
 }
 
 function modificar() {
+    //alert("pruebas modificacion")
     var frm = $("#Editar").serialize();
         $.ajax({
             url: "../php/accesos-update.php",
