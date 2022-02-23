@@ -240,7 +240,7 @@ $accion = "<center><a  type='button' id='myCertificate' target='_blank'    class
 }
     }else{
 
-$accion = "<center><b style='color:silver;' title='Pendiente' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+$accion = "<center><b style='color:silver;' title='Dar clic para descargar' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }
 ?>
 
