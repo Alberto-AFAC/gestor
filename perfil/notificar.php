@@ -87,7 +87,7 @@
               if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){ ?>
               <img class='user-image' src='../dist/img/profile-leonardoR.jpeg' 
               alt='User profile picture'>
-              <?php } else if($datos[1] == 'CARLOS ANTONIO' || $datos[2] == 'RODRIGUEZ MUNGUIA'){ ?>
+              <?php } else if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){ ?>
               <img class='user-image' src='../dist/img/general.jpeg'
               alt='User profile picture'>
               <!-- <img class='user-image' src='../dist/img/perfil.png'
