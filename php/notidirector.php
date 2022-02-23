@@ -4,7 +4,7 @@
 
 	 	$id = $_SESSION['usuario']['id_usu'];
 
-		$quer = "SELECT gstAreID FROM personal WHERE gstIdper = $id AND estado = 0 ";
+		$quer = "SELECT gstAreID,gstIDara FROM personal WHERE gstIdper = $id AND estado = 0 ";
 		$resul = mysqli_query($conexion, $quer);
 
 		$dato = mysqli_fetch_row($resul);
