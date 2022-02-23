@@ -8,7 +8,7 @@
 		$resul = mysqli_query($conexion, $quer);
 
 		$dato = mysqli_fetch_row($resul);
-		$eje = $dato[0];
+		$eje = $dato[1];
 
 	// $Direje= $datos[1];
 	$query = "SELECT * FROM personal WHERE gstAreID = $eje AND `gstCargo` = 'NUEVO INGRESO' AND estado = 0 ORDER BY gstCargo DESC";
