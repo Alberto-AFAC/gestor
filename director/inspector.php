@@ -68,7 +68,7 @@ include('header.php');
                         <!-- Profile Image -->
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <?php if($datos[2]== "RODRIGUEZ MUNGUIA"){
+                                <?php if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){
                                         echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/general.jpeg'
                                         alt='User profile picture'>";
                                 }else{
