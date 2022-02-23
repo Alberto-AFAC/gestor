@@ -640,7 +640,7 @@ function borrarperext(gstIdper){
     var gstIdper = $("#bajaIdex").val();
    // swal.showLoading();
     var datos= 'gstIdper=' + gstIdper + '&opcion=eliminar';
-    alert(datos);
+    //alert(datos);
         $.ajax({
             type: "POST",
             url: "../php/insertarPersonal.php",

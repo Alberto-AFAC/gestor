@@ -73,7 +73,7 @@
 					<label>Usuario</label>
 						<div class="input-group col-md-12">
 						<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-						<input type="text" class="form-control" onkeyup="mayus(this);" name="tecn" pattern="[A-Z,a-z,0-9,_-,ñ,Ñ]{1,15}" required/>
+						<input type="text" class="form-control" onkeyup="mayus(this);" name="tecn" pattern="[A-Z,a-z,0-9,_-,ñ,Ñ]{1,50}" required/>
 						</div>
 					<span class="help-block" id="error"></span>
 					</div>
@@ -81,7 +81,7 @@
 							<label>Contraseña</label> 
 							<div class="input-group col-md-12">                       
 								<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-								<input type="password" name="pass" class="form-control" pattern="[A-Z,a-z,0-9,_-ñÑ]{1,15}" required />
+								<input type="password" name="pass" class="form-control" pattern="[A-Z,a-z,0-9,_-ñÑ]{1,50}" required />
 							</div> 
 							<span class="help-block" id="error"></span>                     
 						</div>                                  

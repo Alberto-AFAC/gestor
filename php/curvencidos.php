@@ -3,17 +3,16 @@
     header('Content-Type: application/json');
 	session_start();
 	
-	$query = "SELECT *, COUNT(*) AS prtcpnts,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS finaliza 
-			FROM
-			cursos
-			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr
-            INNER JOIN personal ON personal.gstIdper = cursos.idinsp
-			WHERE
-			cursos.estado = 0 AND idinsp!=idcoor AND idinsp!=idinst
-			GROUP BY
-			cursos.id_curso 
-			ORDER BY
-			id_curso DESC";
+	$query = "SELECT *,DATE_FORMAT(a.fcurso, '%d/%m/%Y') AS inicio, DATE_FORMAT(a.fechaf, '%d/%m/%Y') AS finaliza
+	FROM (
+		SELECT *, MAX(fechaf) as ultima_fecha FROM cursos GROUP By cursos.idmstr,cursos.idinsp
+	) a
+	INNER JOIN listacursos b ON b.gstIdlsc = a.idmstr
+	INNER JOIN personal c ON c.gstIdper = a.idinsp
+	WHERE
+				a.estado = 0 AND a.idinsp!=a.idcoor AND a.idinsp!=a.idinst
+	ORDER BY
+				a.id_curso DESC	";
 	$resultado = mysqli_query($conexion, $query);
 	$contador=0;
 	if(!$resultado){
@@ -40,16 +39,30 @@
 		$fechap = $data['fechaf'];
 		$fin = date("d-m-Y",strtotime($fechap."+ 1 days")); 
 
+
+
+
+
 		$f3curso = strtotime($actual);
 		$f2curso = strtotime($fin); 
 
+		$final = date("d-m-Y",strtotime($data['ultima_fecha']));
+		
 
-$fechav = date("d-m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));     
+
+		$vig = date("d-m-Y",strtotime($data['ultima_fecha']."+".$data['gstVignc']." year"));     
+
+
+
+		
+$fechav = date("d-m-Y",strtotime($data['ultima_fecha']."+".$data['gstVignc']." year"));     
 $vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
 
 $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
+
+$vencido = date("d-m-Y",strtotime($f1)); 
 
 if ($f3>=$f1 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101) {
 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>VENCIDO</span>";
@@ -60,8 +73,8 @@ if ($f3>=$f1 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101) {
             $data["gstNombr"]." ".$data["gstApell"],
             $data["gstTitlo"],
             $data["gstTipo"],
-            $data["fcurso"],
-            $data["fechaf"],
+            $final,
+            $vig,
             $proceso
 		];
 	}else 
@@ -78,8 +91,8 @@ if ($f3>=$f1 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101) {
             $data["gstNombr"]." ".$data["gstApell"],
 		    $data["gstTitlo"],
 		    $data["gstTipo"],
-	     	$data["fcurso"],
-	    	$data["fechaf"],
+            $final,
+            $vig,
 	    	$proceso
 		];
 		}

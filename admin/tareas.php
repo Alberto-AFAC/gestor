@@ -1427,7 +1427,7 @@ $('#sub3').on("click", ".remover_campo", function(e) {
 //TODAS LAS TAREAS
 
 function todasT(t) {
-    alert(t);
+    // alert(t);
 
     $("#todasTareas").show();
     $("#puesto").hide();
