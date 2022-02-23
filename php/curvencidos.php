@@ -56,7 +56,7 @@
 
 		
 $fechav = date("d-m-Y",strtotime($data['ultima_fecha']."+".$data['gstVignc']." year"));     
-$vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
+$vencer = date("d-m-Y",strtotime($fechav."- 6 month"));
 
 $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
