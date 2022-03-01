@@ -71,6 +71,9 @@ include('header.php');
                             <?php if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){
                                         echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/general.jpeg'
                                         alt='User profile picture'>";
+                                }else if($datos[1] == 'JACOB' && $datos[2] == 'GONZALEZ MACIAS'){
+                                    echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/JACOB_DDE.png'
+                                    alt='User profile picture'>";
                                 }else{
                                     echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
                                     alt='User profile picture'>";

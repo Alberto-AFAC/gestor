@@ -47,7 +47,7 @@ if(!$resultado) {
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" href="../dist/css/skins/card.css">
+    <link rel="stylesheet" href="../dist/css/card.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap.min.css">
@@ -106,6 +106,7 @@ include('header.php');
                 </h1>
             </section>
             <!-- Main content -->
+            <form id="editarcons" action="" method="POST">
             <section class="content">
                 <div class="row">
                     <div class="col-md-12">
@@ -146,6 +147,8 @@ include('header.php');
             </div>
             <!-- /.content -->
         </div>
+
+        </form>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
@@ -413,13 +416,14 @@ $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
       $id_curso = $data['idmstr'];
+      $curso_id = $data['id_curso'];
      
       ?>
 
             ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo base64_encode($data['id']) ?>&cod=<?php echo base64_encode($data['codigo'])?> ' target='_blank'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
-                "<?php echo $data['reaccion']?>"
+                "<a href='constancia.php?data=<?php echo base64_encode($data['id']) ?>&cod=<?php echo base64_encode($data['codigo'])?> ' target='_blank' title='Dar clic para consultar' onclick='visualcon(<?php echo $curso_id?>)'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<?php echo $data['reaccion']?>","<?php echo $data['codigo']?>"
             ],
 
             <?php  } ?>
@@ -451,13 +455,21 @@ $resultado = mysqli_query($conexion, $query);
                 },
                 {
                     title: "FECHA DE GENERACIÓN"
+                },
+                {
+                    title: "FOLIO DEL CURSO"
                 }
+
             ]
         });
         </script>
-        <div class="control-sidebar-bg"></div>
+        
+        
+    <div class="control-sidebar-bg"></div>
     </div>
-    <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel"
+
+    
+    <!-- <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel"
         aria-hidden="true">
 
         <div class="modal-dialog" role="document">
@@ -490,9 +502,43 @@ $resultado = mysqli_query($conexion, $query);
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- page script -->
+
+    <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A PARTICIPANTES-->
+    <form id="editarcons" action="" method="POST">
+                <div class="modal fade" id='correcionModal' tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel" aria-hidden="true">  
+                    <div class="modal2" style="width:750px;">
+                        <div id="success-icon">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                            <div>
+                                <img class="img-circle1" src="../dist/img/lapiz.png">
+                            </div>
+                        </div>
+
+                        <h5 style="font-size: 20px;" class="modal-title" id="correcionModalLabel">CORRECIÓN DE CONSTANCIAS Y CERTIFICADOS</h5>
+                        <div class="modal-body" style="text-align:left; font-size:16px;">
+                        <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="!">!</span> SI REQUIERE HACER UN CAMBIO EN EL <u>NOMBRE DEL PARTICIPANTE</u> ES IMPORTANTE QUE ACUDA AL AREA DE <span style="font-weight: bold;">RECURSOS HUMANOS.</span><br><br>
+                        <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="!">!</span> TOME EN CUENTA QUE EL SISTEMA AUTOMATIZA LOS DATOS EN LA GENERACIÓN DE LA CONSTANCIA Y/O CERTIFICADOS POR LO QUE UNICAMENTE PUEDE REALIZAR CAMBIOS EN EL TEMARIO.<br><br>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="table-responsive">
+                                   <div id="temariotab"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+                               
+            </form>
+    <!-- page script -->
+
 
 </body>
 
@@ -522,4 +568,27 @@ function perfil(id) {
         $("#temariotab").html(html);
     })
 }
+
+
+function visualcon(idcur){
+    //alert(idcur);
+    var curso_id=idcur
+    //alert(curso_id);
+    
+    var datos= 'curso_id=' + curso_id + '&opcion=descarga';
+   // alert(datos);
+    $.ajax({
+        type:'POST',
+        url: '../php/visulcons.php',
+        data:datos
+    }).done(function(respuesta) {
+        if (respuesta==0){
+           // alert("funciono bien");
+
+        }else{
+            //alert("no funciona suerte");
+        }
+    })
+}
+
 </script>

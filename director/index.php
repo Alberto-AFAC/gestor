@@ -80,7 +80,7 @@ $id = $_SESSION['usuario']['id_usu'];
                             <div class="content">
                                 <h3>MESA DE AYUDA</h3><br>
                                 <img class="img-servicios" src="../models/menu/images/ingenieria.svg" width="75%;" alt="tecnico"><br><br>
-                                <a href="#">Iniciar</a>
+                                <a href="https://mesa-ayuda.afac-avciv.com/">Iniciar</a>
                             </div>
                         </div>
                         <div class="card">

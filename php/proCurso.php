@@ -206,7 +206,12 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 }else if($opcion === 'PDF'){
 
 	 $pdf = $_POST['v'];
- 	if(descPDF($pdf,$conexion)){echo "0";}else{echo "1";}
+ 	if(descPDF($pdf,$conexion)){
+		 echo "0";
+		 historides($idp,$pdf,$conexion);
+	}else{
+		echo "1";
+	}
 }
 
 
@@ -371,6 +376,7 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
+
 // fin actualia evaluación el curso
 	function historiCur($idp,$realizo,$id_mstr,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
@@ -395,6 +401,18 @@ function finalizac($codigo,$conexion){
 	}else{
 	return false;
 	}
+	}
+
+	// FUCIÓN PARA GUARDAR HISTORIAL DE DESGARGA DE PDF
+	function historides($idp,$pdf,$conexion){
+		ini_set('date.timezone','America/Mexico_City');
+		$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+		$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) VALUE ($idp,'DESCARGA PDF',concat('DESCARGA DOCUMENTO QUE ACREDITA EL CURSO: ',(select id_codigocurso from constancias where id='$pdf' )),'$fecha')";
+		if(mysqli_query($conexion,$query)){
+		return true;
+		}else{
+		return false;
+		}
 	}
 
 	function reprogramar($codigo,$reprogramar,$conexion){
