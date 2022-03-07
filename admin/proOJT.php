@@ -12,11 +12,14 @@ $subtarea = mysqli_query($conexion,$sql);
 $sql = "SELECT id_ojt, subsubtarea FROM ojt WHERE estado = 0";
 $subsubtarea = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR PRINCIPAL OJT'  OR instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
 $instructor  = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 ";
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'COORDINADOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
 $cordinador  = mysqli_query($conexion,$sql);
+
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
+$inst2  = mysqli_query($conexion,$sql);
 
 unset($_SESSION['consulta']);
 ?>
@@ -111,18 +114,25 @@ folder instead of downloading all of them to reduce the load. -->
                                         <form id="addcurse" class="form-horizontal" action="" method="POST">
 
                                             <div class="form-group">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-8">
                                                     <label>ESPECIALIDAD</label>
-
                                                     <div id="idSpecialidad"></div>
-
                                                 </div>
-                                                <div class="col-sm-6">
-
+                                                <div class="col-sm-4">
+                                                    <label>UBICACIÓN</label>
+                                                    <select id="uboj" name="uboj" class="form-control inputalta"
+                                                        placeholder="Seleccione la ubicación">
+                                                        <option value="">SELECCIONE LA UBICACIÓN</option>
+                                                        <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
+                                                        <option value="COMANDANCIA">COMANDANCIA</option>
+                                                    </select>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                            <div class="col-sm-12">
                                                     <div id="tabSpcl"></div>
                                                 </div>
-
-
                                             </div>
 
                                             <div id="tablaPro"></div>
@@ -142,7 +152,7 @@ folder instead of downloading all of them to reduce the load. -->
                                                         class="form-control" id="fechaTermino" name="fechaTermino">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label>COORDINADOR DEL ÁREA</label>
+                                                    <label>COORDINADOR DEL OJT</label>
                                                     <select multiple="multiple"
                                                         data-placeholder="SELECCIONE COORDINADOR DEL ÁREA"
                                                         style="width: 100%;color: #000" class="form-control select2"
@@ -172,6 +182,29 @@ folder instead of downloading all of them to reduce the load. -->
                                                     </select>
 
                                                 </div>
+                                                <div class="col-md-4">
+                                                <label>SELECCIONE EL NIVEL</label>
+                                                    <select id="idnivel" name="idnivel" class="form-control inputalta"
+                                                        placeholder="Seleccione la el nivel">
+                                                        <option value="0">SELECCIONE EL NIVEL</option>
+                                                        <option value="NIVEL 1">NIVEL 1</option>
+                                                        <option value="NIVEL 2">NIVEL 2</option>
+                                                        <option value="NIVEL 3">NIVEL 3</option>
+                                                    </select>
+
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="label2">LUGAR</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gestubic">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label class="label2">SEDE</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gestubic">
+                                                </div>
+
                                             </div>
 
                                             <div class="form-group"><br>
@@ -303,6 +336,7 @@ $(document).ready(function() {
     $('#subsubtarea').select2();
     $('#coordinador').select2();
     $('#instructor').select2();
+    $('#instojt').select2();
     $('#idSpecialidad').load('select/buspecialidad.php');
     $('#tabSpcl').load('select/tablaSpc.php');
     $('#tablaPro').load('select/tablaProgOJT.php');
