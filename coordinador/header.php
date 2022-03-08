@@ -139,12 +139,7 @@ unset($_SESSION['consulta']);
                 </ul>
             </li>
             ";
-            }else{
-                echo "";
-            }
-            ?>
-            <?php 
-            if($datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
+            }else if($datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
                 echo "<li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-file-text'></i>
