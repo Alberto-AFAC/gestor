@@ -123,7 +123,7 @@ unset($_SESSION['consulta']);
           </ul>
         </li>
         <?php 
-            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'|| $datos[1] == 'MARCO ANTONIO' || $datos[2] == 'REYES  SOTO'){
+            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'MARCO ANTONIO' || $datos[2] == 'REYES  SOTO'){
                 echo "<li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-file-text'></i>
@@ -136,6 +136,29 @@ unset($_SESSION['consulta']);
                     <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
                     <li><a style='pointer-events: none;' onclick='return false;' href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
                     <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                </ul>
+            </li>
+            ";
+            }else{
+                echo "";
+            }
+            ?>
+            <?php 
+            if($datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
+                echo "<li class='treeview'>
+                <a href='#'>
+                    <i class='fa fa-file-text'></i>
+                    <span>OJT</span>
+                    <span class='pull-right-container'>
+                        <i class='fa fa-angle-left pull-right'></i>
+                    </span>
+                </a>
+                <ul class='treeview-menu'>
+                    <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
+                    <li><a href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
+                    <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                    <li><a href='instojt'><i class='fa fa-plus'></i>Alta coordinador/Instructor OJT</a></li>
+                    <li><a href='coorinsoj'><i class='fa fa-file-text'></i>Lista coordinador/Instructor</a></li>
                 </ul>
             </li>
             ";

@@ -118,9 +118,9 @@ folder instead of downloading all of them to reduce the load. -->
                                                     <label>ESPECIALIDAD</label>
                                                     <div id="idSpecialidad"></div>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div id="ubiojt" style="display:none" class="col-sm-4">
                                                     <label>UBICACIÓN</label>
-                                                    <select id="uboj" name="uboj" class="form-control inputalta"
+                                                    <select onchange="filubi()" id="uboj" name="uboj" class="form-control inputalta"
                                                         placeholder="Seleccione la ubicación">
                                                         <option value="">SELECCIONE LA UBICACIÓN</option>
                                                         <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
@@ -158,7 +158,7 @@ folder instead of downloading all of them to reduce the load. -->
                                                         style="width: 100%;color: #000" class="form-control select2"
                                                         type="text" class="form-control" id="coordinador"
                                                         name="coordinador">
-                                                        <option value="0">SELECCIONE COORDINADOR </option>
+                                                        <option value="">SELECCIONE COORDINADOR </option>
                                                         <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
                                                         <option value="<?php echo $cordinadors[0]?>">
                                                             <?php echo $cordinadors[1].' '.$cordinadors[2]?></option>
@@ -186,10 +186,10 @@ folder instead of downloading all of them to reduce the load. -->
                                                 <label>SELECCIONE EL NIVEL</label>
                                                     <select id="idnivel" name="idnivel" class="form-control inputalta"
                                                         placeholder="Seleccione la el nivel">
-                                                        <option value="0">SELECCIONE EL NIVEL</option>
-                                                        <option value="NIVEL 1">NIVEL 1</option>
-                                                        <option value="NIVEL 2">NIVEL 2</option>
-                                                        <option value="NIVEL 3">NIVEL 3</option>
+                                                        <option value="">SELECCIONE EL NIVEL</option>
+                                                        <option value="1">NIVEL 1</option>
+                                                        <option value="2">NIVEL 2</option>
+                                                        <option value="3">NIVEL 3</option>
                                                     </select>
 
 
@@ -206,6 +206,13 @@ folder instead of downloading all of them to reduce the load. -->
                                                 </div>
 
                                             </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-4">
+                                                    <label class="label2" style="font-size:16px">SELECCIONE LA TAREA</label>
+                                                </div>                     
+                                            </div>
+
+                                            <div id="tabtareas"></div> 
 
                                             <div class="form-group"><br>
                                                 <div class="col-sm-offset-0 col-sm-5">
@@ -340,7 +347,45 @@ $(document).ready(function() {
     $('#idSpecialidad').load('select/buspecialidad.php');
     $('#tabSpcl').load('select/tablaSpc.php');
     $('#tablaPro').load('select/tablaProgOJT.php');
+    //tabla tareas
+   // $('#tabtareas').load('select/tareasojt.php');
+    
 });
+
+function filubi(){
+    var especialidas=document.getElementById('isSpc').value;
+    var ubicacion=document.getElementById('uboj').value;
+			    //alert(especialidas)
+			    $.ajax({
+                    url: '../php/ojt_tareas.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var n = 0;
+                    html ='<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">SUB TAREAS</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
+                    for (H = 0; H < res.length; H++) {
+						if (obj.data[H].id_spc == especialidas && obj.data[H].idarea == ubicacion) {
+                            var idojt = obj.data[H].id_ojt;
+                            n++;
+                            if (obj.data[H].ojt == 'SIN SUB TAREAS') {
+                                html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal +'</td><td>' + obj.data[H].idarea +
+                                '</td><td><a id="" type="button" title="Agregar tarea" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa fa-plus"></i></a>'+
+                                '</td><td style="display:none">' + obj.data[H].id_ojt; +'</td></tr>'
+                            } else {
+                                datos = obj.data[H].id_ojt + "*" + n;
+                                html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal + '</td><td>' + obj.data[H].idarea +
+                                '</td><td> <a title="Seleccionar las subtareas" class="label label-primary" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>' +
+                                '</td><td style="display:none">' + obj.data[H].id_ojt; +'</td></tr>'
+                            }
+                        }
+					}
+                    html += '</tbody></table></form></div></div>';
+                    $("#tabtareas").html(html);
+                    });
+}
+
+
 
 function regOjt() {
     var isSpc = $("#isSpc").val();

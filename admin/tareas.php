@@ -166,7 +166,7 @@ include('header.php');
                                                     <!-- <label>ESPECIALIDAD OJT</label> -->
                                                     <select id="idubuojt" name="idubuojt" class="form-control inputalta"
                                                         placeholder="Seleccione la ubicación">
-                                                        <option value="0">SELECCIONE LA UBICACIÓN</option>
+                                                        <option value="">SELECCIONE LA UBICACIÓN</option>
                                                         <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
                                                         <option value="COMANDANCIA">COMANDANCIA</option>
                                                     </select>
@@ -219,18 +219,12 @@ include('header.php');
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
-
                                             <div class="form-group" id="formulario">
                                                 <div id="ojt-principal" class="col-sm-3">
                                                     <input type="hidden" name="idsubt" id="idsubt">
                                                     <!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
                                                     <label>TAREAS</label>
-                                                    <input type="text" style="text-transform:uppercase;"
-                                                        class="form-control" id="titulo1" placeholder="Escribe OJT..."
-                                                        name="ojt_principal[]" disabled=""><br>
+                                                    <input type="text" onkeyup="mayus(this);" style="text-transform:uppercase;" class="form-control" id="titulo1" placeholder="Escribe OJT..." name="ojt_principal[]" disabled=""><br>
                                                 </div>
 
                                                 <div id="sub1" class="col-sm-3">
@@ -892,7 +886,7 @@ function agrTarea() {
     dateR = document.getElementById('dateR').value;
     titulo1 = document.getElementById('titulo1').value;
     idsubt = document.getElementById('idsubt').value;
-    idarea = document.getElementById('idubi').value;
+    idarea = document.getElementById('idubuojt').value;
     //alert(idarea);
     // // descrip1 = document.getElementById('descrip1').value;
 
@@ -936,7 +930,7 @@ function agrTarea() {
     //var gstFslda = document.getElementById('AgstFslda').value;
 
 
-    if (titulo1 == '' || idcur == '') {
+    if (titulo1 == '' || idcur == '' || idarea == '') {
         Swal.fire({
             type: 'info',
             // title: 'AFAC INFORMA',
@@ -1616,7 +1610,6 @@ function todasT(t) {
                         "'" + datos + "'" + ')">' + obj.data[H].ojt +'</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>'+
                         '</td><td style="display:none">' + obj.data[H].id_ojt; +'</td></tr>'
                 }
-
 
             }
 
