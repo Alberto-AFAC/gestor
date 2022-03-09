@@ -2386,7 +2386,7 @@ if(privilegio==9){
         $("#primera").show();
         $("#segunda").hide();
         $("#tercera").hide();
-        $("#cuarto").show();     
+        $("#cuarto").hide();     
 }
 
     $.ajax({
