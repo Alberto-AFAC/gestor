@@ -49,4 +49,17 @@
       $ojt = mysqli_fetch_assoc($queryjt);
 
 
+    $sqlp = "SELECT perfil,modulo,acceso,n_empleado FROM privilegio WHERE n_empleado = '".$datos[4]."' && estado = 0 ";
+    $permiso = mysqli_query($conexion,$sqlp);
+    $perm = mysqli_fetch_row($permiso);
+
+      if (!empty($perm[0]) || !empty($perm[1]) || !empty($perm[2]) || !empty($perm[3]) ) {
+          $acceso = $perm[2];
+          $nmplea = $perm[3];
+      }else{
+          $perm[2]="";
+          $perm[3]="";      
+      }
+
+
 ?>

@@ -21,6 +21,8 @@
 
       include("../perfil/index.php");
 
+
+
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
