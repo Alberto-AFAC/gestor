@@ -94,7 +94,7 @@ $id = $_SESSION['usuario']['id_usu'];
 
 
 
-                        <?php if($datos[0] == 7141384){
+                        <?php if($datos[0] == 7141384 || $datos[0] == 7141380){
                         ?>
 
                         <div class="card">
