@@ -36,6 +36,9 @@ $direc = mysqli_query($conexion,$sql);
 
 ?>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
+
+<script type="text/javascript" src="../js/accesos.js"></script>
+
 <div class="col-md-12">
     <div class="nav-tabs-custom">
         <div class="conteiner" style="background: #fbfbfb">
@@ -128,7 +131,9 @@ $direc = mysqli_query($conexion,$sql);
                     <!-- /.progress-group -->
                     <!-- /.progress-group -->
                 </div>
-                <div class="box-header">
+
+
+                <div class="box-header" id="perosnas">
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
@@ -136,6 +141,16 @@ $direc = mysqli_query($conexion,$sql);
                         </button>
                     </div>
                 </div>
+
+                <div class="box-header" id="perosnasciaac" style="display: none;">
+                    <h1 class="box-title"></h1>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove">
+                            <a href='personaciaac' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                        </button>
+                    </div>
+                </div>                
+
             </div>
         </div>
     </div>
@@ -144,7 +159,7 @@ $direc = mysqli_query($conexion,$sql);
 <!-- /FIN DE NUEVO DISEÑO -->
 <div class="col-xs-12">
           <div class="box box-solid">
-            <div class="box-header">
+            <div id="check" class="box-header">
                <i class="fa fa fa-list"></i>
 
                <h3 class="box-title">Check list</h3>
@@ -208,7 +223,7 @@ $direc = mysqli_query($conexion,$sql);
     <div class="nav-tabs-custom">
         <!-- DISEÑO ANTIGUO/.col -->
         <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <button id="editarperfil" type="button" class="btn btn-box-tool" data-widget="collapse">
                 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
                 <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i
                         class="fa fa-ban"></i> </a>

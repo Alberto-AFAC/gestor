@@ -15,19 +15,29 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="dist/js/sweetalert2.all.min.js"></script>
-  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+    <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <style>
-	.swal-wide {
+       .swal-wide {
         width: 500px !important;
         font-size: 16px !important;
     }
-    </style>
+    #buton{
+        background: green; 
+        color: white; 
+        float: left; 
+        border-radius: 10px;  
+        border-right: 4px solid white;
+        border-left: 4px solid white;
+        border-top: 4px solid white;
+        border-bottom: 4px solid white;
+    }
+</style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -35,8 +45,8 @@
     <div class="wrapper">
 
         <?php
-include('header.php');
-?>
+        include('header.php');
+        ?>
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -62,29 +72,29 @@ include('header.php');
 
                                     <div class="btn-group">
                                         <a type="button" href="accesos" class="btn btn-default btn-sm"><i
-                                                class="fa fa-refresh"></i></a>
+                                            class="fa fa-refresh"></i></a>
+                                        </div>
+                                        <!-- /.btn-group -->
                                     </div>
-                                    <!-- /.btn-group -->
+                                </div>
+
+
+                                <div class="box-body">
+                                    <table style="width: 100%;" id="data-table-instructores"
+                                    class="table table-striped table-hover"></table>
                                 </div>
                             </div>
-
-
-                            <div class="box-body">
-                                <table style="width: 100%;" id="data-table-instructores"
-                                    class="table table-striped table-hover"></table>
-                            </div>
+                            <!-- /.box -->
                         </div>
-                        <!-- /.box -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </section>
-        </div>
+                    <!-- /.row -->
+                </section>
+            </div>
 
-        <form id="Editar" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+            <form id="Editar" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
 
-            <div class="modal fade" id="editarAccesos" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
+                <div class="modal fade" id="editarAccesos" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -102,781 +112,935 @@ include('header.php');
                                 <div class="col-sm-6">
                                     <label>NOMBRE COMPLETO</label>
                                     <input type="text" onkeyup="mayus(this);" class="form-control" id="nombUser"
-                                        name="nombUser" disabled="">
+                                    name="nombUser" disabled="">
                                 </div>
                                 <div class="col-sm-6">
                                     <label>USUARIO</label>
                                     <input type="text" onkeyup="mayus(this);" class="form-control" id="usuario"
-                                        name="usuario">
+                                    name="usuario">
                                 </div>
                                 <div class="col-sm-6"><br>
                                     <label>NUMERO DE EMPLEADO</label>
                                     <input type="text" onkeyup="mayus(this);" class="form-control" id="nEmpleado"
-                                        name="nEmpleado" disabled="">
+                                    name="nEmpleado" disabled="">
                                 </div>
                                 <div class="col-sm-6"><br>
                                     <label>PASSWORD</label>
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="password" name="password"
-                                            autocomplete="new-password" minlength="6">
+                                        autocomplete="new-password" minlength="6">
                                         <div class="input-group-addon input-group-append toggle-password">
                                             <i class="fa fa-eye toggle-password">
                                             </i>
                                         </div>
                                     </div>
                                 </div>
-<div class="col-sm-6"><br>
-<label>SELECCIONE PRIVILEGIOS</label>
-<select style="width: 100%" class="form-control" class="selectpicker"
-name="privilegios" id="privilegios" type="text" data-live-search="true">
-<option value="0" selected>SELECCIONE...</option>
-<option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
-<option value="ADMINISTRADOR">ADMINISTRADOR</option>
-<option value="DIRECTOR">DIRECTOR</option>
-<option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
-<option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-<option value="EJECUTIVO">EJECUTIVO</option>
-<option value="INSTRUCTOR">COORDINADOR/INSTRUCTOR</option>
-<option value="INSPECTOR">INSPECTOR</option>
-<option value="HUMANOS">HUMANOS</option>
-</select>
-</div>
+                                <div class="col-sm-6"><br>
+                                    <label>SELECCIONE PRIVILEGIOS</label>
+                                    <select style="width: 100%" class="form-control" class="selectpicker"
+                                    name="privilegios" id="privilegios" type="text" data-live-search="true">
+                                    <option value="0" selected>SELECCIONE...</option>
+                                    <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                                    <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                                    <option value="DIRECTOR">DIRECTOR</option>
+                                    <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
+                                    <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+                                    <option value="EJECUTIVO">EJECUTIVO</option>
+                                    <option value="INSTRUCTOR">COORDINADOR/INSTRUCTOR</option>
+                                    <option value="INSPECTOR">INSPECTOR</option>
+                                    <option value="HUMANOS">HUMANOS</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                            <button type="button" onclick="modificar();" class="btn btn-primary">ACEPTAR</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                        <button type="button" onclick="modificar();" class="btn btn-primary">ACEPTAR</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+    </form>
 
 
 
 
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> <?php 
-                                $query ="SELECT 
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> <?php 
+            $query ="SELECT 
                                         *
-                                        FROM
-                                        controlvers";
-                                $resultado = mysqli_query($conexion, $query);
+            FROM
+            controlvers";
+            $resultado = mysqli_query($conexion, $query);
 
-                                $row = mysqli_fetch_assoc($resultado);
-                                if(!$resultado) {
-                                    var_dump(mysqli_error($conexion));
-                                    exit;
-                                }
-                                ?>
-                <?php echo $row['version']?>
-            </div>
+            $row = mysqli_fetch_assoc($resultado);
+            if(!$resultado) {
+                var_dump(mysqli_error($conexion));
+                exit;
+            }
+            ?>
+            <?php echo $row['version']?>
+        </div>
 
-            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados DDE
-.
-        </footer>
+        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+        Todos los derechos Reservados DDE
+        .
+    </footer>
 
-        <!-- Control Sidebar -->
-        <?php include('panel.html');?>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <?php include('panel.html');?>
+    <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+         immediately after the control sidebar -->
+         <div class="control-sidebar-bg"></div>
 
 
-    </div>
+     </div>
 
 
 
-<form id="Editar" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+     <form id="Editar" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
 
-<div class="modal fade" id="mostrarPriv" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<!-- <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">PRIVILEGIOS DE ACCESO</h5> -->
-<h4 style="float: left;"><span class="bg-default">:  Inicio (Dashboard)</span></h4>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+        <div class="modal fade" id="mostrarPriv" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">PRIVILEGIOS DE ACCESO</h5> -->
+<!--                     onclick="window.location.href='accesospriv'"
+ -->                    
+                    <h4 style="float: left;"><span class="bg-default">:  Inicio (Dashboard)</span></h4>
+                    <button type="button" class="close" onclick="vaciar()" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
 
 
-<form>
+                    <form>
 
-    <input type="hidden" name="nemp" id="nemp">
+                        <input type="hidden" name="nemp" id="nemp">
 
-</form>
+                    </form>
 
-</div>
+                </div>
 
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li id="1"><a href="#primera" onclick="uno()" data-toggle="tab">PERSONAL</a></li>
-              <li id="2"><a href="#segunda" onclick="dos()" data-toggle="tab">INSPECTOR</a></li>
-              <li id="3"><a href="#tercera" onclick="tre()" data-toggle="tab">CURSO</a></li>
-              <li id="4"><a href="#cuarto"  onclick="cua()" data-toggle="tab">APARTADOS</a></li>
-            </ul>
-            <div class="tab-content">
-              <div id="primera" >
-                <!-- Post -->
-              <div class="box box-info">
- 
-            <!-- /.box-header -->
-            <div class="box-body" id="uno">
-              <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
-                  <tr>
-                    <th>Personal</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td colspan="2"><li>Alta de personal</li></td>
-                   <td>
-                        <span id="aaltapersonl" class="label label-success"><a href="#" onclick="accesosg('baltapersonl*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>                     
-                        <span id="baltapersonl" class="label label-warning"><a href="#" onclick="accesosg('aaltapersonl*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td  colspan="2"><li>Alta de personal Externo</li></td>
-                   <td>
-                        <span id="aaltapersonlxtrn" class="label label-success"><a href="#" onclick="accesosg('baltapersonlxtrn*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="baltapersonlxtrn" class="label label-warning"><a href="#" onclick="accesosg('aaltapersonlxtrn*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><li>Alta de Instructores Externos</li></td>
-                   <td>
-                        <span id="aaltainstrucxtrn" class="label label-success"><a href="#" onclick="accesosg('baltainstrucxtrn*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="baltainstrucxtrn" class="label label-warning"><a href="#" onclick="accesosg('aaltainstrucxtrn*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><li>Lista de personal</li></td>
-                   <td>
-                        <span id="alistapersonl" class="label label-success"><a href="#" onclick="accesosg('blistapersonl*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="blistapersonl" class="label label-warning"><a href="#" onclick="accesosg('alistapersonl*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">  > Asignación de puesto</td>
-                   <td>
-                        <span id="aasigpuesto" class="label label-success"><a href="#" onclick="accesosg('basigpuesto*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="basigpuesto" class="label label-warning"><a href="#" onclick="accesosg('aasigpuesto*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Editar Perfiles  </td>
-                   <td>
-                        <span id="aeditausu" class="label label-success"><a href="#" onclick="accesosg('beditausu*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="beditausu" class="label label-warning"><a href="#" onclick="accesosg('aeditausu*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Añadir grado de estudios  </td>
-                    <td>
-                        <span id="aanadestudio" class="label label-success"><a href="#" onclick="accesosg('banadestudio*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="banadestudio" class="label label-warning"><a href="#" onclick="accesosg('aanadestudio*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Asignación de puesto </td>
-                    <td>
-                        <span id="aasignapuesto" class="label label-success"><a href="#" onclick="accesosg('basignapuesto*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="basignapuesto" class="label label-warning"><a href="#" onclick="accesosg('aasignapuesto*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Eliminar usuarios </td>
-                    <td>
-                        <span id="aeliminausu" class="label label-success"><a href="#" onclick="accesosg('beliminausu*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="beliminausu" class="label label-warning"><a href="#" onclick="accesosg('aeliminausu*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><li>Lista inspectores</li></td>
-                    <td>
-                        <span id="alistainspctr" class="label label-success"><a href="#" onclick="accesosg('blistainspctr*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="blistainspctr" class="label label-warning"><a href="#" onclick="accesosg('alistainspctr*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">  > Evaluar inspectores</td>
-                    <td>
-                        <span id="aevalinspctor" class="label label-success"><a href="#" onclick="accesosg('bevalinspctor*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bevalinspctor" class="label label-warning"><a href="#" onclick="accesosg('aevalinspctor*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Consultar apéndice E </td>
-                    <td>
-                        <span id="aapendice" class="label label-success"><a href="#" onclick="accesosg('bapendice*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bapendice" class="label label-warning"><a href="#" onclick="accesosg('aapendice*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Editar Perfiles </td>
-                    <td>
-                        <span id="aditarinspctr" class="label label-success"><a href="#" onclick="accesosg('bditarinspctr*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bditarinspctr" class="label label-warning"><a href="#" onclick="accesosg('aditarinspctr*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Añadir grado de estudios </td>
-                    <td>
-                        <span id="agradostudio" class="label label-success"><a href="#" onclick="accesosg('bgradostudio*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bgradostudio" class="label label-warning"><a href="#" onclick="accesosg('agradostudio*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> > Agregar Experiencia profesional </td>
-                    <td>
-                        <span id="axperienciapro" class="label label-success"><a href="#" onclick="accesosg('bxperienciapro*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bxperienciapro" class="label label-warning"><a href="#" onclick="accesosg('axperienciapro*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><li>Lista de instructores</li></td>
-                    <td>
-                        <span id="alistainstc" class="label label-success"><a href="#" onclick="accesosg('blistainstc*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="blistainstc" class="label label-warning"><a href="#" onclick="accesosg('alistainstc*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> >  Editar perfil  </td>
-                    <td>
-                        <span id="aeditaprfil1" class="label label-success"><a href="#" onclick="accesosg('beditaprfil1*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="beditaprfil1" class="label label-warning"><a href="#" onclick="accesosg('aeditaprfil1*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr >
-                    <td colspan="2"><li>Lista de accesos</li></td>
-                    <td>
-                        <span id="aacceso1" class="label label-success"><a href="#" onclick="accesosg('bacceso1*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bacceso1" class="label label-warning"><a href="#" onclick="accesosg('aacceso1*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>                    
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"> >  Editar contraseña  </td>
-                    <td>
-                        <span id="aacceso2" class="label label-success"><a href="#" onclick="accesosg('bacceso2*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bacceso2" class="label label-warning"><a href="#" onclick="accesosg('aacceso2*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                      <li id="1"><a href="#primera" onclick="uno()" data-toggle="tab">PERSONAL</a></li>
+                      <li id="2"><a href="#segunda" onclick="dos()" data-toggle="tab">INSPECTOR</a></li>
+                      <li id="3"><a href="#tercera" onclick="tre()" data-toggle="tab">CURSO</a></li>
+                      <li id="5"><a href="#cuarto"  onclick="cin()" data-toggle="tab">OJT</a></li>                  
+                      <li id="4"><a href="#cuarto"  onclick="cua()" data-toggle="tab">APARTADOS</a></li>
 
-                  <tr>
-                    <td colspan="2"> >  Editar privilegios  </td>
-                    <td>
-                        <span id="aacceso3" class="label label-success"><a href="#" onclick="accesosg('bacceso3*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bacceso3" class="label label-warning"><a href="#" onclick="accesosg('aacceso3*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>                      
-                  </tbody>
-                </table>
-              </div>
+                  </ul>
+                  <div class="tab-content">
+                      <div id="primera" >
+                        <!-- Post -->
+                        <div class="box box-info">
+                           
+                            <!-- /.box-header -->
+                            <div class="box-body" id="uno">
+                              <div class="table-responsive">
+                                <table class="table no-margin">
+                                  <thead>
+                                      <tr>
+                                        <th>Personal</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2"><li>Alta de personal</li></td>
+                                    <td>
+                                        <span id="aaltapersonl" class="label label-success"><a href="#" onclick="accesosg('baltapersonl*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>                     
+                                        <span id="baltapersonl" class="label label-warning"><a href="#" onclick="accesosg('aaltapersonl*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+                                        
+                                        <span id="sin_altapersonl" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                        <span id="con_altapersonl" class="label label-default" style="color:green;" >ACCESO</span>
+
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td  colspan="2"><li>Alta de personal Externo</li></td>
+                                    <td>
+                                        <span id="aaltapersonlxtrn" class="label label-success"><a href="#" onclick="accesosg('baltapersonlxtrn*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                        <span id="baltapersonlxtrn" class="label label-warning"><a href="#" onclick="accesosg('aaltapersonlxtrn*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+                                        <span id="sin_altapersonlxtrn" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                        <span id="con_altapersonlxtrn" class="label label-default" style="color:green;" >ACCESO</span>
+
+
+                                    </td>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><li>Alta de Instructores Externos</li></td>
+                                <td>
+                                    <span id="aaltainstrucxtrn" class="label label-success"><a href="#" onclick="accesosg('baltainstrucxtrn*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                    <span id="baltainstrucxtrn" class="label label-warning"><a href="#" onclick="accesosg('aaltainstrucxtrn*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+                                    <span id="sin_altainstrucxtrn" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                    <span id="con_altainstrucxtrn" class="label label-default" style="color:green;" >ACCESO</span>
+                                </td>
+                            </td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="2"><li>Nuevo ingreso</li></td>
+                            <td>
+                                <span id="anuevoingreso" class="label label-success"><a href="#" onclick="accesosg('bnuevoingreso*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+
+                                <span id="bnuevoingreso" class="label label-warning"><a href="#" onclick="accesosg('anuevoingreso*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                                <span id="sin_nuevoingreso" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                <span id="con_nuevoingreso" class="label label-default" style="color:green;" >ACCESO</span>
+
+                            </td>
+                            <td></td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td colspan="2"><li>Lista de personal</li></td>
+                            <td>
+                                <span id="alistapersonl" class="label label-success"><a href="#" onclick="accesosg('blistapersonl*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                <span id="blistapersonl" class="label label-warning"><a href="#" onclick="accesosg('alistapersonl*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                                <span id="sin_listapersonl" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                <span id="con_listapersonl" class="label label-default" style="color:green;" >ACCESO</span>                        
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">  > Asignación de puesto</td>
+                            <td>
+                                <span id="con_asignacionpuesto" class="label label-default" style="color:green;" >ACCESO</span>
+                                <span id="sin_asignacionpuesto" class="label label-default" style="color:red;" >SIN ACCESO</span>
+                            </td>
+
+                            
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2"> 
+                                <button type="button" onclick="conteiner1()" id="buton"> + </button>
+                                <li style="list-style: none; margin-top: 0.2em; "> Procesos del Perfil</li>  </td>
+
+                                <td>
+                                    <span id="aeditausu" class="label label-success"><a href="#" onclick="accesosg('beditausu*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                    <span id="beditausu" class="label label-warning"><a href="#" onclick="accesosg('aeditausu*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                                    <span id="sin_editausu" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                    <span id="con_editausu" class="label label-default" style="color:green;" >ACCESO</span> 
+                                    
+                                </td>
+
+                                <td></td>
+                            </tr>
+
+                            <tr><td><p id="conteiner1" style="display: none; margin-left: 1em;">
+                                > Añadir grado de estudios <br>
+                                > Añadir experiencia profesional<br>
+                                > Editar usuario<br>
+                                > Eliminar usuario
+                            </p></td></tr>
+                            <tr>
+                                <td colspan="2"><li>Lista inspectores</li></td>
+                                <td>
+                                    <span id="alistainspctr" class="label label-success"><a href="#" onclick="accesosg('blistainspctr*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                    <span id="blistainspctr" class="label label-warning"><a href="#" onclick="accesosg('alistainspctr*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                                    <span id="sin_listainspctr" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                    <span id="con_listainspctr" class="label label-default" style="color:green;" >ACCESO</span>                         
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">  > Evaluar inspectores</td>
+                                <td>
+                                    <span id="aevalinspctor" class="label label-success"><a href="#" onclick="accesosg('bevalinspctor*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                    <span id="bevalinspctor" class="label label-warning"><a href="#" onclick="accesosg('aevalinspctor*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+                                    <span id="sin_evalinspctor" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                    <span id="con_evalinspctor" class="label label-default" style="color:green;" >ACCESO</span>
+
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"> > Consultar apéndice E </td>
+                                <td>
+                                    <span id="aapendice" class="label label-success"><a href="#" onclick="accesosg('bapendice*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                    <span id="bapendice" class="label label-warning"><a href="#" onclick="accesosg('aapendice*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                                    <span id="sin_apendice" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                    <span id="con_apendice" class="label label-default" style="color:green;" >ACCESO</span>
+
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+
+
+
+                              <tr>
+                                <td colspan="2"> 
+                                    <button type="button" onclick="conteiner2()" id="buton"> + </button>
+                                    <li style="list-style: none; margin-top: 0.2em; "> Procesos del inspector</li>  </td>
+
+                                    <td>
+                                        <span id="aditarinspctr" class="label label-success"><a href="#" onclick="accesosg('bditarinspctr*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                        <span id="bditarinspctr" class="label label-warning"><a href="#" onclick="accesosg('aditarinspctr*PERSONAL')" style="color: white" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                                        <span id="sin_ditarinspctr" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                        <span id="con_ditarinspctr" class="label label-default" style="color:green;" >ACCESO</span>
+                                    </td>
+
+                                    <td></td>
+                                </tr>
+
+
+                                <tr><td><p id="conteiner2" style="display: none; margin-left: 1em;">
+                                    > Editar perfil<br>
+                                    > Añadir grado de estudios<br>
+                                    > Agregar experiencia profesional
+                                </p></td></tr>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><li>Lista de instructores</li></td>
+                                <td>
+                                    <span id="alistainstc" class="label label-success"><a href="#" onclick="accesosg('blistainstc*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                    <span id="blistainstc" class="label label-warning"><a href="#" onclick="accesosg('alistainstc*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                                    <span id="sin_listainstc" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                    <span id="con_listainstc" class="label label-default" style="color:green;" >ACCESO</span>
+
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr >
+                                <td colspan="2"><button type="button" onclick="conteiner3()" id="buton"> + </button>
+                                    <li style="list-style: none; margin-top: 0.2em; ">Lista de accesos</li></td>
+                                    <td>
+                                        <span id="aacceso1" class="label label-success"><a href="#" onclick="accesosg('bacceso1*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                        <span id="bacceso1" class="label label-warning"><a href="#" onclick="accesosg('aacceso1*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                                        <span id="sin_acceso1" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                                        <span id="con_acceso1" class="label label-default" style="color:green;" >ACCESO</span>                    
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr><td><p id="conteiner3" style="display: none; margin-left: 1em;">
+                                    > Editar contraseña<br>
+                                    > Editar privilegios
+                                </p></td></tr>                 
+
+    
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
             </div>
-            <!-- /.box-body -->
-<!--             <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-            </div> -->
-            <!-- /.box-footer -->
-          </div>
-                <!-- /.post -->
-                <!-- Post -->  
-                <!-- /.post -->
-              </div>
-              <!-- /.tab-pane -->
-              <div id="segunda">
-                <!-- The timeline -->
-             
-                  <!-- timeline time label -->
-                  <div class="box box-info" id="dos">
-                   <div class="box-body">
+            <!-- /.post -->
+            <!-- Post -->  
+            <!-- /.post -->
+        </div>
+        <!-- /.tab-pane -->
+        <div id="segunda">
+            <!-- The timeline -->
+            
+            <!-- timeline time label -->
+            <div class="box box-info" id="dos">
+             <div class="box-body">
               <div class="table-responsive">
                 <table class="table no-margin">
                   <thead>
-                  <tr>
-                    <th>Inspector</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
+                      <tr>
+                        <th>Inspector</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
                   
                   <tr>
                     <td colspan="2"><li>Consulta educación</li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td  colspan="2"><li>Consulta experiencia laboral</li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>Curso por confirmar</li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <td colspan="2">  > Confirmar curso</td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>Curso en proceso </li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>Cursos completados </li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td colspan="2">  > Evaluación de reacción</td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>Cursos declinados </li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>Cursos vencidos </li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>Historial cursos </li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>                  
+                </tr>                  
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>Cursos Obligatorios </li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
+                </tr>
 
-                  <tr>
+                <tr>
                     <td colspan="2"><li>OJT INDIVIDUAL</li></td>
                     <td><span class="label label-default" style="color:green;" >ACCESO</span></td>
                     <td></td>
-                  </tr>
-<!-- 
-<td>
-<span id="agradostudio" class="label label-success"><a href="#" onclick="accesosg('agradostudio*PERSONAL')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-<span id="bgradostudio" class="label label-warning"><a href="#" onclick="accesosg('bgradostudio*PERSONAL')" style="color:white;" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-</td> -->
+                </tr>
 
-                  <tr>
-                    <td colspan="2"><button type="button" onclick="conteiner()" style="float: left;"> + </button> <li style="list-style: none;"> OJT MASIVO</li></td>
-<!--                     <td>
-                        <span id="aojt" class="label label-success"><a href="#" onclick="accesosg('bojt*INSPECTOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bojt" class="label label-warning"><a href="#" onclick="accesosg('aojt*INSPECTOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td> -->
+                <tr>
+                    <td colspan="2"><button type="button" onclick="conteiner4()" id="buton"> + </button> <li style="list-style: none;margin-top: 0.2em;"> OJT MASIVO</li></td>
 
                     <td>
                         <span id="aojtalt" class="label label-success"><a href="#" onclick="accesosg('bojtalt*INSPECTOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
                         <span id="bojtalt" class="label label-warning"><a href="#" onclick="accesosg('aojtalt*INSPECTOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                        <span id="sin_ojtalt" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                        <span id="con_ojtalt" class="label label-default" style="color:green;" >ACCESO</span>
+
                     </td>
                     <td></td>
-                  </tr>
-               
-                  <tr>
+                </tr>
+                
+                <tr>
                   
-                  <tr><td><p id="conteiner" style="display: none; margin-left: 1em;">
+                  <tr><td><p id="conteiner4" style="display: none; margin-left: 1em;">
                       > Consulta OJT <br>
                       > Alta OJT<br>
                       > Editar OJT<br>
                       > Eliminar OJT
                   </p></td></tr>
 
+              </tr>                      
+
+          </tbody>
+      </table>
+  </div>
+  <!-- /.table-responsive -->
+</div>
+</div>
+
+
+</div>
+
+<!-- /.tab-pane -->
+
+<div id="tercera">
+  
+  <div class="box box-info" id="tres">
+   <div class="box-body">
+      <div class="table-responsive">
+        <table class="table no-margin">
+          <thead>
+              <tr>
+                <th>Curso</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2"><li>Alta de cursos </li></td>
+            <td>
+                <span id="aaltacurso" class="label label-success"><a href="#" onclick="accesosg('baltacurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="baltacurso" class="label label-warning"><a href="#" onclick="accesosg('aaltacurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                <span id="sin_altacurso" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_altacurso" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td  colspan="2"><li>Catálogo de cursos</li></td>
+            <td>
+                <span id="acatalogo" class="label label-success"><a href="#" onclick="accesosg('bcatalogo*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bcatalogo" class="label label-warning"><a href="#" onclick="accesosg('acatalogo*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                <span id="sin_catalogo" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_catalogo" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2"> <button type="button" onclick="conteiner5()" id="buton"> + </button> <li style="list-style: none;margin-top: 0.2em;"> Procesos del curso </li></td>
+            <td>
+                <span id="aeditacurso" class="label label-success"><a href="#" onclick="accesosg('beditacurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="beditacurso" class="label label-warning"><a href="#" onclick="accesosg('aeditacurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                <span id="sin_editacurso" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_editacurso" class="label label-default" style="color:green;" >ACCESO</span>
+
+
+            </td>
+            <td></td>
+        </tr>
+        <tr><td><p id="conteiner5" style="display: none; margin-left: 1em;">
+            > Editar cursos <br>
+            > Eliminar cursos<br>
+            > Añadir temario<br>
+            > editar temario<br>
+            > eliminar temario<br>
+        </p></td></tr>
+
+        <tr>
+            <td colspan="2"><li>Programación de cursos </li></td>
+            <td>
+                <span id="aprocurso" class="label label-success"><a href="#" onclick="accesosg('bprocurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bprocurso" class="label label-warning"><a href="#" onclick="accesosg('aprocurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                <span id="sin_procurso" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_procurso" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2"><li>Cursos programados </li></td>
+            <td>
+                <span id="aprogramados" class="label label-success"><a href="#" onclick="accesosg('bprogramados*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bprogramados" class="label label-warning"><a href="#" onclick="accesosg('aprogramados*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+                <span id="sin_programados" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_programados" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"> <button type="button" onclick="conteiner6()" id="buton"> + </button> <li style="list-style: none;margin-top: 0.2em;"> Procesos del curso programado</li></td>
+            <td>
+                <span id="adetallecurso" class="label label-success"><a href="#" onclick="accesosg('bdetallecurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bdetallecurso" class="label label-warning"><a href="#" onclick="accesosg('adetallecurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+                <span id="sin_detallecurso" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_detallecurso" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
+        <tr><td><p id="conteiner6" style="display: none; margin-left: 1em;">
+            > Detalles del curso<br>
+            > Agregar participantes<br>
+            > Eliminar cursos<br>
+            > Notificar convocatoria
+        </p></td></tr>
+        
+
+        <tr>
+            <td colspan="2"><li>Pronóstico de cursos </li></td>
+            <td>
+                <span id="apronostcurso" class="label label-success"><a href="#" onclick="accesosg('bpronostcurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bpronostcurso" class="label label-warning"><a href="#" onclick="accesosg('apronostcurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                <span id="sin_pronostcurso" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_pronostcurso" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><li>Cursos vencidos </li></td>
+            <td>
+                <span id="acursosvincids" class="label label-success"><a href="#" onclick="accesosg('bcursosvincids*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bcursosvincids" class="label label-warning"><a href="#" onclick="accesosg('acursosvincids*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                <span id="sin_cursosvincids" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_cursosvincids" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
 
 
 
-<!--                     <td colspan="2"> >  Alta OJT  </td>
-                    <td>
-                        <span id="aojtalt" class="label label-success"><a href="#" onclick="accesosg('bojtalt*INSPECTOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bojtalt" class="label label-warning"><a href="#" onclick="accesosg('aojtalt*INSPECTOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td> 
+        <tr>
+            <td colspan="2"><li>Nivel de satisfacción </li></td>
+            <td>
+                <span id="anivelsatisf" class="label label-success"><a href="#" onclick="accesosg('bnivelsatisf*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bnivelsatisf" class="label label-warning"><a href="#" onclick="accesosg('anivelsatisf*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+                <span id="sin_nivelsatisf" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
-                    <td></td>
-                  </tr>
+                <span id="con_nivelsatisf" class="label label-default" style="color:green;" >ACCESO</span>
+            </td>
+            <td></td>
+        </tr>
 
-                  <tr>
-                    <td colspan="2"> > Consulta OJT</td>
-                    <td>
-                    <span id="aojtcons" class="label label-success"><a href="#" onclick="accesosg('bojtcons*INSPECTOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+        <tr>
+            <td colspan="2"> > Modificar ponderación de satisfacción</td>
+            <td>
+                <span id="amodifipondersat" class="label label-success"><a href="#" onclick="accesosg('bmodifipondersat*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bmodifipondersat" class="label label-warning"><a href="#" onclick="accesosg('amodifipondersat*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
 
-                    <span id="bojtcons" class="label label-warning"><a href="#" onclick="accesosg('aojtcons*INSPECTOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
+                <span id="sin_modifipondersat" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
-                  <tr>
-                    <td colspan="2"> > Editar OJT  </td>
-                    <td>
-                    <span id="aojtedit" class="label label-success"><a href="#" onclick="accesosg('bojtedit*INSPECTOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                    <span id="bojtedit" class="label label-warning"><a href="#" onclick="accesosg('aojtedit*INSPECTOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2"> > Eliminar OJT  </td>
-                    <td>
-                        <span id="aojtelim" class="label label-success"><a href="#" onclick="accesosg('bojtelim*INSPECTOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bojtelim" class="label label-warning"><a href="#" onclick="accesosg('aojtelim*INSPECTOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
- -->
+                <span id="con_modifipondersat" class="label label-default" style="color:green;" >ACCESO</span>
 
 
+            </td>
+            <td></td>
+        </tr>                  
+
+        <tr>
+            <td colspan="2"><li>Historial de constancias </li></td>
+            <td>
+                <span id="ahistoriaconstanc" class="label label-success"><a href="#" onclick="accesosg('bhistoriaconstanc*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                <span id="bhistoriaconstanc" class="label label-warning"><a href="#" onclick="accesosg('ahistoriaconstanc*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+
+                <span id="sin_historiaconstanc" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                <span id="con_historiaconstanc" class="label label-default" style="color:green;" >ACCESO</span>
+
+            </td>
+            <td></td>
+        </tr>
+
+    </tbody>
+</table>
+
+</div>
+<!-- /.table-responsive -->
+</div>
+</div>
 
 
+</div>
 
+<div id="cuarto">
 
-
-
-
-
-                   </tr>                      
-   
-                  <tr>
-                    <td colspan="2"><li>Manual de Usuario </li></td>
-                    <td><span class="label label-default" style="color:green;">ACCESO</span></td>
-                    <td></td>
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.table-responsive -->
-            </div>
-     </div>
-
-                
-              </div>
-
-              <!-- /.tab-pane -->
-
-             <div id="tercera">
-          
-          <div class="box box-info" id="tres">
-             <div class="box-body">
-              <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
-                  <tr>
-                    <th>Curso</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td colspan="2"><li>Alta de cursos </li></td>
-                    <td>
-                        <span id="altacurso" class="label label-success"><a href="#" onclick="accesosg('bltacurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bltacurso" class="label label-warning"><a href="#" onclick="accesosg('altacurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td  colspan="2"><li>Catálogo de cursos</li></td>
-                    <td>
-                        <span id="acatalogo" class="label label-success"><a href="#" onclick="accesosg('bcatalogo*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bcatalogo" class="label label-warning"><a href="#" onclick="accesosg('acatalogo*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2"> > Editar cursos </td>
-                    <td>
-                        <span id="aeditacurso" class="label label-success"><a href="#" onclick="accesosg('beditacurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="beditacurso" class="label label-warning"><a href="#" onclick="accesosg('aeditacurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">  > Añadir temario</td>
-                    <td>
-                        <span id="aguartmario" class="label label-success"><a href="#" onclick="accesosg('bguartmario*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bguartmario" class="label label-warning"><a href="#" onclick="accesosg('aguartmario*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">  > Eliminar cursos</td>
-                    <td>
-                        <span id="aeliminacurso" class="label label-success"><a href="#" onclick="accesosg('beliminacurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="beliminacurso" class="label label-warning"><a href="#" onclick="accesosg('aeliminacurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-
-                  <tr>
-                    <td colspan="2"><li>Programación de cursos </li></td>
-                    <td>
-                        <span id="aprocurso" class="label label-success"><a href="#" onclick="accesosg('bprocurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bprocurso" class="label label-warning"><a href="#" onclick="accesosg('aprocurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-
-                  <tr>
-                    <td colspan="2"><li>Cursos programados </li></td>
-                    <td>
-                        <span id="aprogramados" class="label label-success"><a href="#" onclick="accesosg('bprogramados*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bprogramados" class="label label-warning"><a href="#" onclick="accesosg('aprogramados*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2">  > Detalles del curso</td>
-                    <td>
-                        <span id="adetallecurso" class="label label-success"><a href="#" onclick="accesosg('bdetallecurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bdetallecurso" class="label label-warning"><a href="#" onclick="accesosg('adetallecurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-
-                  <tr>
-                    <td colspan="2">  > Agregar participantes</td>
-                    <td>
-                        <span id="aagregapartici" class="label label-success"><a href="#" onclick="accesosg('bagregapartici*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bagregapartici" class="label label-warning"><a href="#" onclick="accesosg('aagregapartici*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2">  > Eliminar cursos</td>
-                     <td>
-                        <span id="aelimincurso" class="label label-success"><a href="#" onclick="accesosg('belimincurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="belimincurso" class="label label-warning"><a href="#" onclick="accesosg('aelimincurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2">  > Notificar convocatoria</td>
-                    <td>
-                        <span id="anotconvocat" class="label label-success"><a href="#" onclick="accesosg('bnotconvocat*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bnotconvocat" class="label label-warning"><a href="#" onclick="accesosg('anotconvocat*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                 <tr>
-                    <td colspan="2"><li>Pronóstico de cursos </li></td>
-                    <td>
-                        <span id="apronostcurso" class="label label-success"><a href="#" onclick="accesosg('bpronostcurso*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bpronostcurso" class="label label-warning"><a href="#" onclick="accesosg('apronostcurso*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2"><li>Nivel de satisfacción </li></td>
-                    <td>
-                        <span id="anivelsatisf" class="label label-success"><a href="#" onclick="accesosg('bnivelsatisf*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bnivelsatisf" class="label label-warning"><a href="#" onclick="accesosg('anivelsatisf*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2"> > Modificar ponderación de satisfacción</td>
-                    <td>
-                        <span id="amodifipondersat" class="label label-success"><a href="#" onclick="accesosg('bmodifipondersat*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bmodifipondersat" class="label label-warning"><a href="#" onclick="accesosg('amodifipondersat*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>                  
-
-                  <tr>
-                    <td colspan="2"><li>Historial de constancias </li></td>
-                    <td>
-                        <span id="ahistoriaconstanc" class="label label-success"><a href="#" onclick="accesosg('bhistoriaconstanc*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bhistoriaconstanc" class="label label-warning"><a href="#" onclick="accesosg('ahistoriaconstanc*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.table-responsive -->
-            </div>
-        </div>
-
-
-
-<!--                     <td>
-                        <span id="aojtelim" class="label label-success"><a href="#" onclick="accesosg('bojtelim*INSPECTOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bojtelim" class="label label-warning"><a href="#" onclick="accesosg('aojtelim*INSPECTOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td> -->
-
-
-
-
-              </div>
-             <div id="cuarto">
-
-            <div class="box box-info" id="otro">
-            <div class="box-body">
-              <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
+    <div class="box box-info" id="otro">
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
                   <tr>
                     <th>OTROS APARTADDOS</th>
                     <th></th>
                     <th></th>
                     <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  
+                </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td colspan="2"><li>Calendario </li></td>
+                <td>
+                    <span id="acalendario" class="label label-success"><a href="#" onclick="accesosg('bcalendario*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    
+                    <span id="bcalendario" class="label label-warning"><a href="#" onclick="accesosg('acalendario*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                    <span id="sin_calendario" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_calendario" class="label label-default" style="color:green;" >ACCESO</span>
+
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td  colspan="2"><li>Gantt </li></td>
+                <td>
+                    <span id="agantt" class="label label-success"><a href="#" onclick="accesosg('bgantt*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    <span id="bgantt" class="label label-warning"><a href="#" onclick="accesosg('agantt*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                    <span id="sin_gantt" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_gantt" class="label label-default" style="color:green;" >ACCESO</span>
+
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"> <li> Historial y monitoreo de cambios </li></td>
+                <td>
+                    <span id="amonitoreo" class="label label-success"><a href="#" onclick="accesosg('bmonitoreo*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    <span id="bmonitoreo" class="label label-warning"><a href="#" onclick="accesosg('amonitoreo*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                    <span id="sin_monitoreo" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_monitoreo" class="label label-default" style="color:green;" >ACCESO</span>
+
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2"><li>Manual de Usuario </li></td>
+                <td>
+                    <span id="sin_manual" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_manual" class="label label-default" style="color:green;" >ACCESO</span>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- /.table-responsive -->
+</div>
+</div>
+</div>
+
+<div id="cinco">
+
+    <div class="box box-info" id="otro">
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
                   <tr>
-                    <td colspan="2"><li>Calendario </li></td>
-                    <td>
-                        <span id="acalendario" class="label label-success"><a href="#" onclick="accesosg('bcalendario*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        
-                        <span id="bcalendario" class="label label-warning"><a href="#" onclick="accesosg('acalendario*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
+                    <th>OJT</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td colspan="2"><li>OJT Principal </li></td>
+                <td>
+                    <span id="aojtprincipal" class="label label-success"><a href="#" onclick="accesosg('bojtprincipal*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    
+                    <span id="bojtprincipal" class="label label-warning"><a href="#" onclick="accesosg('aojtprincipal*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
 
-                  <tr>
-                    <td  colspan="2"><li>Gantt </li></td>
-                    <td>
-                        <span id="agantt" class="label label-success"><a href="#" onclick="accesosg('bgantt*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bgantt" class="label label-warning"><a href="#" onclick="accesosg('agantt*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
+                    <span id="sin_ojtprincipal" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
-                  <tr>
-                    <td colspan="2"> <li> Historial y monitoreo de cambios </li></td>
-                    <td>
-                        <span id="amonitoreo" class="label label-success"><a href="#" onclick="accesosg('bmonitoreo*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                        <span id="bmonitoreo" class="label label-warning"><a href="#" onclick="accesosg('amonitoreo*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
-                    </td>
-                    <td></td>
-                  </tr>
+                    <span id="con_ojtprincipal" class="label label-default" style="color:green;" >ACCESO</span>
 
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.table-responsive -->
-            </div>
-            </div>
+                </td>
+                <td></td>
+            </tr>
 
+            <tr>
+                <td colspan="2"> <button type="button" onclick="conteiner7()" id="buton"> + </button> <li style="list-style: none;margin-top: 0.2em;"> Procesos OJT pricipal</li></td>
+                <td>
+                    <span id="aprocesoojtprin" class="label label-success"><a href="#" onclick="accesosg('bprocesoojtprin*CURSO')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    <span id="bprocesoojtprin" class="label label-warning"><a href="#" onclick="accesosg('aprocesoojtprin*CURSO')" style="color:white;" title="PROPORCIONAR ACCESO">SIN ACCESO</a></span>
+                    <span id="sin_procesoojtprin" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
-              </div>
+                    <span id="con_procesoojtprin" class="label label-default" style="color:green;" >ACCESO</span>
 
-              <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
-          </div>
+                </td>
+                <td></td>
+            </tr>
+            <tr><td><p id="conteiner7" style="display: none; margin-left: 1em;">
+                > Agregar tarea<br>
+                > Editar tarea<br>
+                > Eliminar editar<br>
+                > Agregar sub tarea<br>
+                > Editar sub tarea<br>
+                > Eliminar sub tarea<br>
+                > Catalogo
+            </p></td></tr>
+            
+            <tr>
+                <td colspan="2"> <li> Programación OJT </li></td>
+                <td>
+                    <span id="aprograojt" class="label label-success"><a href="#" onclick="accesosg('bprograojt*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    <span id="bprograojt" class="label label-warning"><a href="#" onclick="accesosg('aprograojt*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
 
+                    <span id="sin_prograojt" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_prograojt" class="label label-default" style="color:green;" >ACCESO</span>
+
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"> <li> OJT Programados</li></td>
+                <td>
+                    <span id="aojtprogramds" class="label label-success"><a href="#" onclick="accesosg('bojtprogramds*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    <span id="bojtprogramds" class="label label-warning"><a href="#" onclick="accesosg('aojtprogramds*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                    <span id="sin_ojtprogramds" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_ojtprogramds" class="label label-default" style="color:green;" >ACCESO</span>
+
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2"> <li> Alta de Coordinadores / Instructores OJT</li></td>
+                <td>
+                    <span id="aaltacorinst" class="label label-success"><a href="#" onclick="accesosg('baltacorinst*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    <span id="baltacorinst" class="label label-warning"><a href="#" onclick="accesosg('aaltacorinst*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                    <span id="sin_altacorinst" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_altacorinst" class="label label-default" style="color:green;" >ACCESO</span>
+
+                </td>
+                <td></td>
+            </tr> 
+
+            <tr>
+                <td colspan="2"> <li> Lista de Coordinadores / Instructores OJT </li></td>
+                <td>
+                    <span id="alistacorinst" class="label label-success"><a href="#" onclick="accesosg('blistacorinst*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                    <span id="blistacorinst" class="label label-warning"><a href="#" onclick="accesosg('alistacorinst*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+
+                    <span id="sin_listacorinst" class="label label-default" style="color:red;" > SIN ACCESO</span>
+
+                    <span id="con_listacorinst" class="label label-default" style="color:green;" >ACCESO</span>
+
+                </td>
+                <td></td>
+            </tr>                  
+        </tbody>
+    </table>
+</div>
+<!-- /.table-responsive -->
+</div>
+</div>
+</div>
+
+<!-- /.tab-pane -->
+<div class="form-group" id="otra">
+<div class="col-sm-offset-0 col-sm-2">
+
+<button type="button"  style="background-color:#052E64; border-radius:10px;" class="btn btn-block btn-primary" class="close" onclick="vaciar()" data-dismiss="modal" aria-label="Close" >
+<span aria-hidden="true">SALIR</span>
+</button>
+
+</div>
+</div>
+
+</div>
+<!-- /.tab-content -->
+</div>
 </div>
 </div>
 </div>
 </form>
 
-    <!-- ./wrapper -->
+<!-- ./wrapper -->
 
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
-    <script src="../js/global.js"></script>
-    <script src="../js/datos.js"></script>
+<!-- jQuery 3 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+<!-- page script -->
+<script src="../js/global.js"></script>
+<script src="../js/datos.js"></script>
 
 </body>
 
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#id_area').select2();
-});
+    $(document).ready(function() {
+        $('#id_area').select2();
+    });
 </script>
 <script src="../js/select2.js"></script>
 <script type="text/javascript">
-var dataSet = [
+    var dataSet = [
     <?php 
-$query = "SELECT * FROM accesos
-INNER JOIN personal ON id_usu = gstIdper";
-$resultado = mysqli_query($conexion, $query);
+    $query = "SELECT * FROM accesos
+    INNER JOIN personal ON id_usu = gstIdper";
+    $resultado = mysqli_query($conexion, $query);
 
-while($data = mysqli_fetch_array($resultado)){ 
+    while($data = mysqli_fetch_array($resultado)){ 
 
-$id = $data['id_usu'];
-$acceso = $data['id_accesos']
-?>
+        $id = $data['id_usu'];
+        $acceso = $data['id_accesos']
+        ?>
 
 
 
@@ -894,33 +1058,27 @@ $acceso = $data['id_accesos']
     //console.log('<?php //echo $gstIdper ?>');
 
     ["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>",
-        "<?php echo $data[2]?>", "<?php echo $data[4]?>",
+    "<?php echo $data[2]?>", "<?php echo $data[4]?>",
 
-        <?php if($data[4]=='SUPER_ADMIN'){ ?>       
+    <?php if($data[4]=='SUPER_ADMIN'){ ?>       
         "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(1.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='ADMINISTRADOR'){ ?>
+    <?php }else if($data[4]=='ADMINISTRADOR'){ ?>
         "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(2.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='EJECUTIVO'){ ?>
+    <?php }else if($data[4]=='EJECUTIVO' || $data[4]=='DIRECTOR'){ ?>
         "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(3.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='DIRECTOR'){ ?>
+    <?php }else if($data[4]=='HUMANOS'){ ?>
         "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(4.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='HUMANOS'){ ?>
+    <?php }else if($data[4]=='ADMINISTRATIVO' || $data[4]=='INSPECTOR' || $data[4]=='NUEVO INGRESO'){ ?>
         "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='ADMINISTRATIVO'){ ?>
+    <?php }else if($data[4]=='INSTRUCTOR'){ ?>    
         "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='INSPECTOR'){ ?>
-        "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(7.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='INSTRUCTOR'){ ?>    
-        "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(8.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php }else if($data[4]=='NUEVO INGRESO'){ ?>
-        "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(9.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-        <?php } ?>
-        ,
-        "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
+    <?php } ?>
+    ,
+    "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
     ],
 
 
-    <?php } ?>
+<?php } ?>
 ];
 
 var tableGenerarReporte = $('#data-table-instructores').DataTable({
@@ -934,28 +1092,28 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
     data: dataSet,
     columns: [
 
-        {
-            title: "ID"
-        },
-        {
-            title: "NOMBRE"
-        },
-        {
-            title: "# EMPLEADO"
-        },
-        {
-            title: "USUARIO"
-        },
+    {
+        title: "ID"
+    },
+    {
+        title: "NOMBRE"
+    },
+    {
+        title: "# EMPLEADO"
+    },
+    {
+        title: "USUARIO"
+    },
 
-        {
-            title: "PRIVILEGIOS"
-        },
-        {
-            title: "MODULOS"
-        },        
-        {
-            title: "ACCIÓN"
-        }
+    {
+        title: "PRIVILEGIOS"
+    },
+    {
+        title: "MODULOS"
+    },        
+    {
+        title: "ACCIÓN"
+    }
     ],
 });
 
@@ -974,64 +1132,73 @@ function datos_editar(acceso) {
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_accesos == acceso) {
                 var
-                    id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
-                    id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
-                    privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell),
-                    mEmpleado = $("#editarAccesos #nEmpleado").val(obj.data[i].gstNmpld),
-                    password = $("#editarAccesos #password").val(obj.data[i].password),
-                    usuario = $("#editarAccesos #usuario").val(obj.data[i].usuario),
-                    password = $("#editarAccesos #privilegios").val(obj.data[i].privilegios),
-                    opcion = $("#editarAccesos #opcion").val("modificar");
+                id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
+                id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
+                privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell),
+                mEmpleado = $("#editarAccesos #nEmpleado").val(obj.data[i].gstNmpld),
+                password = $("#editarAccesos #password").val(obj.data[i].password),
+                usuario = $("#editarAccesos #usuario").val(obj.data[i].usuario),
+                password = $("#editarAccesos #privilegios").val(obj.data[i].privilegios),
+                opcion = $("#editarAccesos #opcion").val("modificar");
             }
         }
     })
 }
 
-function conteiner(){
-
-    $("#conteiner").toggle();
+function conteiner1(){
+   $("#conteiner1").toggle();   
 }
 
+function conteiner2(){
+
+    $("#conteiner2").toggle();
+}
+function conteiner3(){
+   $("#conteiner3").toggle();   
+}
+function conteiner4(){
+   $("#conteiner4").toggle();   
+}
+function conteiner5(){
+   $("#conteiner5").toggle();   
+}
+function conteiner6(){
+   $("#conteiner6").toggle();   
+}
+function conteiner7(){
+   $("#conteiner7").toggle();   
+}
 function modificar() {
     //alert("pruebas modificacion")
     var frm = $("#Editar").serialize();
-        $.ajax({
-            url: "../php/accesos-update.php",
-            type: 'POST',
-            data: frm + "&opcion=modificar"
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-                Swal.fire({
+    $.ajax({
+        url: "../php/accesos-update.php",
+        type: 'POST',
+        data: frm + "&opcion=modificar"
+    }).done(function(respuesta) {
+        if (respuesta == 0) {
+            Swal.fire({
                 type: 'success',
                 text: 'CREDENCIALES ACTUALIZADAS CORRECTAMENTE',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
                 timer: 2000,
                 backdrop: `
-                    rgba(100, 100, 100, 0.4)
+                rgba(100, 100, 100, 0.4)
                 `
             });
-                setTimeout("location.href = 'accesos';", 2000);
-            }
-        });
+            setTimeout("location.href = 'accesos';", 2000);
+        }
+    });
 }
 
-
-$("#bacceso1").hide();
-$("#aacceso1").hide();
-$("#bacceso2").hide();
-$("#aacceso2").hide();
-$("#bacceso3").hide();
-$("#aacceso3").hide();
-
-$("#aeditaprfil1").hide();
-$("#beditaprfil1").hide();
 
 function uno(){
     $("#primera").show();
     $("#segunda").hide();
     $("#tercera").hide();
     $("#cuarto").hide();
+    $("#cinco").hide();
 
 }
 function dos(){
@@ -1039,1355 +1206,768 @@ function dos(){
     $("#segunda").show();
     $("#tercera").hide();
     $("#cuarto").hide();
+    $("#cinco").hide();
+
 }
 function tre(){
     $("#primera").hide();
     $("#segunda").hide();
     $("#tercera").show();
     $("#cuarto").hide();    
+    $("#cinco").hide();
+
 }
 function cua(){
     $("#primera").hide();
     $("#segunda").hide();
     $("#tercera").hide();
     $("#cuarto").show();
+    $("#cinco").hide();
 }
-
+function cin(){
+    $("#primera").hide();
+    $("#segunda").hide();
+    $("#tercera").hide();
+    $("#cuarto").hide();
+    $("#cinco").show();
+}
 function accesosg(v){
-     text = v.toString();
-     nemp = document.getElementById('nemp').value;
-     accesos = text.split("*")[0];
-     perfil = text.split("*")[1];
+   text = v.toString();
+   nemp = document.getElementById('nemp').value;
+   accesos = text.split("*")[0];
+   perfil = text.split("*")[1];
 
-    str = accesos;
-    acces = str.slice(1)
-    activo = str.substring(-1,1);
-    if(activo=='a'){
+   str = accesos;
+   acces = str.slice(1)
+   activo = str.substring(-1,1);
+   if(activo=='a'){
 
     $("#"+activo+acces+"").show();
     acceso = 'b'+acces;
     $("#"+acceso+"").hide();
 
-    }else 
-    if(activo=='b'){
+}else 
+if(activo=='b'){
     $("#"+activo+acces+"").show();
     acceso = 'a'+acces;
     $("#"+acceso+"").hide();
-    }
+}
 
     // alert(accesos);
     $.ajax({
-    url: "../php/privilegio-update.php",
-    type: 'POST',
-    data: 'nemp=' + nemp + '&perfil=' + perfil + '&accesos=' + accesos + "&opcion=modificar"
+        url: "../php/privilegio-update.php",
+        type: 'POST',
+        data: 'nemp=' + nemp + '&perfil=' + perfil + '&accesos=' + accesos + "&opcion=modificar"
     }).done(function(respuesta) {
 
-        //alert(respuesta);
-    if (respuesta == 0) {
-    // Swal.fire({
-    // type: 'success',
-    // text: 'CREDENCIALES ACTUALIZADAS CORRECTAMENTE',
-    // showConfirmButton: false,
-    // customClass: 'swal-wide',
-    // timer: 2000,
-    // backdrop: `
-    // rgba(100, 100, 100, 0.4)
-    // `
-    // });
-    // setTimeout("location.href = 'accesos';", 2000);
-    }
+        if (respuesta == 0) {
+        }
     });
 
+}
+
+$("#aaltapersonl").hide();
+$("#baltapersonl").hide();
+$("#sin_altapersonl").hide();
+$("#con_altapersonl").hide();
+
+$("#aaltapersonlxtrn").hide();
+$("#baltapersonlxtrn").hide();
+$("#sin_altapersonlxtrn").hide();
+$("#con_altapersonlxtrn").hide();
+
+$("#aaltainstrucxtrn").hide();
+$("#baltainstrucxtrn").hide();
+$("#sin_altainstrucxtrn").hide();
+$("#con_altainstrucxtrn").hide();
+
+$("#anuevoingreso").hide();
+$("#bnuevoingreso").hide();
+$("#sin_nuevoingreso").hide();
+$("#con_nuevoingreso").hide();
+
+$("#alistapersonl").hide();
+$("#blistapersonl").hide();
+$("#sin_listapersonl").hide();
+$("#con_listapersonl").hide();
+
+$("#con_asignacionpuesto").hide();
+$("#sin_asignacionpuesto").hide();
+
+
+$("#aeditausu").hide();
+$("#beditausu").hide();
+$("#con_editausu").hide();
+$("#sin_editausu").hide();
+
+$("#alistainspctr").hide();
+$("#blistainspctr").hide();
+$("#con_listainspctr").hide();
+$("#sin_listainspctr").hide();
+
+$("#aevalinspctor").hide();
+$("#bevalinspctor").hide();
+$("#con_evalinspctor").hide();
+$("#sin_evalinspctor").hide();
+
+$("#aapendice").hide();
+$("#bapendice").hide();
+$("#con_apendice").hide();
+$("#sin_apendice").hide();
+
+$("#aditarinspctr").hide();
+$("#bditarinspctr").hide();
+$("#con_ditarinspctr").hide();
+$("#sin_ditarinspctr").hide();
+
+$("#alistainstc").hide();
+$("#blistainstc").hide();
+$("#con_listainstc").hide();
+$("#sin_listainstc").hide();
+
+$("#aacceso1").hide();
+$("#bacceso1").hide();
+$("#con_acceso1").hide();
+$("#sin_acceso1").hide();
+
+//PEROSNAL
+$("#aojtalt").hide();
+$("#bojtalt").hide();
+$("#con_ojtalt").hide();
+$("#sin_ojtalt").hide();
+//CURSOS
+
+$("#aaltacurso").hide();
+$("#baltacurso").hide();
+$("#con_altacurso").hide();
+$("#sin_altacurso").hide();
+
+$("#acatalogo").hide();
+$("#bcatalogo").hide();
+$("#con_catalogo").hide();
+$("#sin_catalogo").hide();
+
+$("#aeditacurso").hide();
+$("#beditacurso").hide();
+$("#con_editacurso").hide();
+$("#sin_editacurso").hide();
+
+$("#aprocurso").hide();
+$("#bprocurso").hide();
+$("#con_procurso").hide();
+$("#sin_procurso").hide();
+
+$("#aprogramados").hide();
+$("#bprogramados").hide();
+$("#con_programados").hide();
+$("#sin_programados").hide();
+
+$("#adetallecurso").hide();
+$("#bdetallecurso").hide();
+$("#con_detallecurso").hide();
+$("#sin_detallecurso").hide();
+
+$("#apronostcurso").hide();
+$("#bpronostcurso").hide();
+$("#con_pronostcurso").hide();
+$("#sin_pronostcurso").hide();
+
+$("#acursosvincids").hide();
+$("#bcursosvincids").hide();
+$("#con_cursosvincids").hide();
+$("#sin_cursosvincids").hide();
+
+$("#anivelsatisf").hide();
+$("#bnivelsatisf").hide();
+$("#con_nivelsatisf").hide();
+$("#sin_nivelsatisf").hide();
+
+$("#amodifipondersat").hide();
+$("#bmodifipondersat").hide();
+$("#con_modifipondersat").hide();
+$("#sin_modifipondersat").hide();
+
+$("#ahistoriaconstanc").hide();
+$("#bhistoriaconstanc").hide();
+$("#con_historiaconstanc").hide();
+$("#sin_historiaconstanc").hide();
+
+//APARTADOS
+$("#acalendario").hide();
+$("#bcalendario").hide();
+$("#con_calendario").hide();
+$("#sin_calendario").hide();
+
+$("#agantt").hide();
+$("#bgantt").hide();
+$("#con_gantt").hide();
+$("#sin_gantt").hide();
+
+$("#amonitoreo").hide();
+$("#bmonitoreo").hide();
+$("#con_monitoreo").hide();
+$("#sin_monitoreo").hide();
+
+$("#con_manual").hide();
+$("#sin_manual").hide();
+
+//OJT
+$("#aojtprincipal").hide();
+$("#bojtprincipal").hide();
+$("#con_ojtprincipal").hide();
+$("#sin_ojtprincipal").hide();
+
+$("#aprocesoojtprin").hide();
+$("#bprocesoojtprin").hide();
+$("#con_procesoojtprin").hide();
+$("#sin_procesoojtprin").hide();
+
+$("#aprograojt").hide();
+$("#bprograojt").hide();
+$("#con_prograojt").hide();
+$("#sin_prograojt").hide();
+
+$("#aojtprogramds").hide();
+$("#bojtprogramds").hide();
+$("#con_ojtprogramds").hide();
+$("#sin_ojtprogramds").hide();
+
+$("#aaltacorinst").hide();
+$("#baltacorinst").hide();
+$("#con_altacorinst").hide();
+$("#sin_altacorinst").hide();
+
+$("#alistacorinst").hide();
+$("#blistacorinst").hide();
+$("#con_listacorinst").hide();
+$("#sin_listacorinst").hide();
+
+function vaciar(){
+$("#aaltapersonl").hide();
+$("#baltapersonl").hide();
+$("#sin_altapersonl").hide();
+$("#con_altapersonl").hide();
+
+$("#aaltapersonlxtrn").hide();
+$("#baltapersonlxtrn").hide();
+$("#sin_altapersonlxtrn").hide();
+$("#con_altapersonlxtrn").hide();
+
+$("#aaltainstrucxtrn").hide();
+$("#baltainstrucxtrn").hide();
+$("#sin_altainstrucxtrn").hide();
+$("#con_altainstrucxtrn").hide();
+
+$("#anuevoingreso").hide();
+$("#bnuevoingreso").hide();
+$("#sin_nuevoingreso").hide();
+$("#con_nuevoingreso").hide();
+
+$("#alistapersonl").hide();
+$("#blistapersonl").hide();
+$("#sin_listapersonl").hide();
+$("#con_listapersonl").hide();
+
+$("#con_asignacionpuesto").hide();
+$("#sin_asignacionpuesto").hide();
+
+
+$("#aeditausu").hide();
+$("#beditausu").hide();
+$("#con_editausu").hide();
+$("#sin_editausu").hide();
+
+$("#alistainspctr").hide();
+$("#blistainspctr").hide();
+$("#con_listainspctr").hide();
+$("#sin_listainspctr").hide();
+
+$("#aevalinspctor").hide();
+$("#bevalinspctor").hide();
+$("#con_evalinspctor").hide();
+$("#sin_evalinspctor").hide();
+
+$("#aapendice").hide();
+$("#bapendice").hide();
+$("#con_apendice").hide();
+$("#sin_apendice").hide();
+
+$("#aditarinspctr").hide();
+$("#bditarinspctr").hide();
+$("#con_ditarinspctr").hide();
+$("#sin_ditarinspctr").hide();
+
+$("#alistainstc").hide();
+$("#blistainstc").hide();
+$("#con_listainstc").hide();
+$("#sin_listainstc").hide();
+
+$("#aacceso1").hide();
+$("#bacceso1").hide();
+$("#con_acceso1").hide();
+$("#sin_acceso1").hide();
+//PEROSNAL
+$("#aojtalt").hide();
+$("#bojtalt").hide();
+$("#con_ojtalt").hide();
+$("#sin_ojtalt").hide();
+//CURSOS
+$("#aaltacurso").hide();
+$("#baltacurso").hide();
+$("#con_altacurso").hide();
+$("#sin_altacurso").hide();
+
+$("#acatalogo").hide();
+$("#bcatalogo").hide();
+$("#con_catalogo").hide();
+$("#sin_catalogo").hide();
+
+$("#aeditacurso").hide();
+$("#beditacurso").hide();
+$("#con_editacurso").hide();
+$("#sin_editacurso").hide();
+
+$("#aprocurso").hide();
+$("#bprocurso").hide();
+$("#con_procurso").hide();
+$("#sin_procurso").hide();
+
+$("#aprogramados").hide();
+$("#bprogramados").hide();
+$("#con_programados").hide();
+$("#sin_programados").hide();
+
+$("#adetallecurso").hide();
+$("#bdetallecurso").hide();
+$("#con_detallecurso").hide();
+$("#sin_detallecurso").hide();
+
+$("#apronostcurso").hide();
+$("#bpronostcurso").hide();
+$("#con_pronostcurso").hide();
+$("#sin_pronostcurso").hide();
+
+$("#acursosvincids").hide();
+$("#bcursosvincids").hide();
+$("#con_cursosvincids").hide();
+$("#sin_cursosvincids").hide();
+
+$("#anivelsatisf").hide();
+$("#bnivelsatisf").hide();
+$("#con_nivelsatisf").hide();
+$("#sin_nivelsatisf").hide();
+
+$("#amodifipondersat").hide();
+$("#bmodifipondersat").hide();
+$("#con_modifipondersat").hide();
+$("#sin_modifipondersat").hide();
+
+$("#ahistoriaconstanc").hide();
+$("#bhistoriaconstanc").hide();
+$("#con_historiaconstanc").hide();
+$("#sin_historiaconstanc").hide();
+
+//APARTADOS
+$("#acalendario").hide();
+$("#bcalendario").hide();
+$("#con_calendario").hide();
+$("#sin_calendario").hide();
+
+$("#agantt").hide();
+$("#bgantt").hide();
+$("#con_gantt").hide();
+$("#sin_gantt").hide();
+
+$("#amonitoreo").hide();
+$("#bmonitoreo").hide();
+$("#con_monitoreo").hide();
+$("#sin_monitoreo").hide();
+
+$("#con_manual").hide();
+$("#sin_manual").hide();
+
+//OJT
+$("#aojtprincipal").hide();
+$("#bojtprincipal").hide();
+$("#con_ojtprincipal").hide();
+$("#sin_ojtprincipal").hide();
+
+$("#aprocesoojtprin").hide();
+$("#bprocesoojtprin").hide();
+$("#con_procesoojtprin").hide();
+$("#sin_procesoojtprin").hide();
+
+$("#aprograojt").hide();
+$("#bprograojt").hide();
+$("#con_prograojt").hide();
+$("#sin_prograojt").hide();
+
+$("#aojtprogramds").hide();
+$("#bojtprogramds").hide();
+$("#con_ojtprogramds").hide();
+$("#sin_ojtprogramds").hide();
+
+$("#aaltacorinst").hide();
+$("#baltacorinst").hide();
+$("#con_altacorinst").hide();
+$("#sin_altacorinst").hide();
+
+$("#alistacorinst").hide();
+$("#blistacorinst").hide();
+$("#con_listacorinst").hide();
+$("#sin_listacorinst").hide();
 }
 
 // FUNCTION PARA EMOSTRAR DATOS
 function mostrar_datos(datos) {
 
-     num = datos;
-     text = num.toString();
-     privilegio = text.split(".", 1);
+   num = datos;
+   text = num.toString();
+   privilegio = text.split(".", 1);
 
-        dato = text.split(".")[1]; 
-        numeroPalabras = dato.length;
-        if(numeroPalabras==6){            
-        $("#nemp").val(dato+0);
-        }else{
-        $("#nemp").val(dato);
-        }
-    
-// 1 SUPER_ADMIN
-// 2 ADMINISTRADOR
-// 3 EJECUTIVO
-// 4 DIRECTOR
-// 5 HUMANOS
-// 6 ADMINISTRATIVO
-// 7 INSPECTOR
-// 8 INSTRUCTOR
-// 9 NUEVO INGRESO
-    
-if(privilegio==1){
-    // $("#uno").show();
+   dato = text.split(".")[1]; 
+   numeroPalabras = dato.length;
+   if(numeroPalabras==6){            
+    $("#nemp").val(dato+0);
+}else{
+    $("#nemp").val(dato);
+}
 
-//Alta de personal
-    $("#aaltapersonl").show();
-    $("#baltapersonl").hide();
 
-//Alta de personal Externo
-    $("#aaltapersonlxtrn").show();
-    $("#baltapersonlxtrn").hide();
+if(privilegio==1){// 1 SUPER_ADMIN
+        //PERSONAL
+        $("#con_altapersonl").show();
+        $("#con_altapersonlxtrn").show();
+        $("#con_altainstrucxtrn").show();
+        $("#con_nuevoingreso").show();
+        $("#con_listapersonl").show();
+        $("#con_asignacionpuesto").show();
+        $("#con_editausu").show();
+        $("#con_listainspctr").show();
+        $("#con_evalinspctor").show();
+        $("#con_apendice").show();
+        $("#con_listainstc").show();
+        $("#con_acceso1").show();
+        $("#con_ditarinspctr").show();
+        //INSPECTOR
+        $("#con_ojtalt").show();
+        //APARTADO
+        $("#con_calendario").show();
+        $("#con_gantt").show();
+        $("#con_monitoreo").show();        
+        $("#con_manual").show();
+        //CURSO
+        $("#con_altacurso").show();
+        $("#con_catalogo").show();
+        $("#con_editacurso").show();
+        $("#con_procurso").show();
+        $("#con_programados").show();
+        $("#con_detallecurso").show();
+        $("#con_pronostcurso").show();
+        $("#con_cursosvincids").show();    
+        $("#con_nivelsatisf").show();
+        $("#con_modifipondersat").show();
+        $("#con_historiaconstanc").show();
+        //OJT
+        $("#con_ojtprincipal").show();
+        $("#con_procesoojtprin").show();
+        $("#con_prograojt").show();
+        $("#con_ojtprogramds").show();
+        $("#con_altacorinst").show();
+        $("#con_listacorinst").show();
 
-    //Alta de Instructores Externos
-    $("#aaltainstrucxtrn").show();
-    $("#baltainstrucxtrn").hide();
+        /////////
+        $("#1").addClass('active');
+        $("#2").removeClass('active');
+        $("#3").removeClass('active');
+        $("#4").removeClass('active');
+        $("#5").removeClass('active');
 
-//Lista de personal
-    $("#alistapersonl").show();
-    $("#blistapersonl").hide();
+        $("#1").show('active');
+        $("#2").show('active');
+        $("#3").show('active');
+        $("#4").show('active');
+        $("#5").show('active');
 
-//Asignación de puesto
-    $("#aasigpuesto").show();
-    $("#basigpuesto").hide();
+        $("#primera").addClass('active tab-pane');
+        $("#primera").show();
+        $("#segunda").hide();
+        $("#tercera").hide();
+        $("#cuarto").hide();  
+        $("#cinco").hide();  
 
-//Editar Perfiles
-    $("#aeditausu").show();
-    $("#beditausu").hide();
 
-    //Añadir grado de estudios 
-    $("#aanadestudio").show();
-    $("#banadestudio").hide();
+    }else
+if(privilegio==2){ // 2 ADMINISTRADOR
 
-//Asignación de puesto
-    $("#aasignapuesto").show();
-    $("#basignapuesto").hide();
+        //PERSONAL
+        $("#aaltapersonl").show();
+        $("#aaltapersonlxtrn").show();
+        $("#aaltainstrucxtrn").show();
+        $("#anuevoingreso").show();
+        $("#con_listapersonl").show();
+        $("#con_asignacionpuesto").show();
+        $("#aeditausu").show();
+        $("#con_listainspctr").show();
+        $("#con_evalinspctor").show();
+        $("#con_apendice").show();
+        $("#alistainstc").show();
+        $("#sin_acceso1").show();
+        $("#aditarinspctr").show();
+        //INSPECTOR
+        $("#con_ojtalt").show();
+        //APARTADO
+        $("#con_calendario").show();
+        $("#con_gantt").show();
+        $("#con_monitoreo").show();    
+        $("#con_manual").show();
 
-//Eliminar usuarios
-    $("#aeliminausu").show();
-    $("#beliminausu").hide();
+        //CURSO
+        $("#con_altacurso").show();
+        $("#con_catalogo").show();
+        $("#con_editacurso").show();
+        $("#con_procurso").show();
+        $("#con_programados").show();
+        $("#con_detallecurso").show();
+        $("#con_pronostcurso").show();
+        $("#con_cursosvincids").show();            
+        $("#con_nivelsatisf").show();
+        $("#con_modifipondersat").show();
+        $("#con_historiaconstanc").show();
+        //OJT
+        $("#con_ojtprincipal").show();
+        $("#con_procesoojtprin").show();
+        $("#con_prograojt").show();
+        $("#con_ojtprogramds").show();
+        $("#con_altacorinst").show();
+        $("#con_listacorinst").show();
 
-//Lista inspectores
-    $("#alistainspctr").show();
-    $("#blistainspctr").hide();
-
-//Evaluar inspectores
-    $("#aevalinspctor").show();
-    $("#bevalinspctor").hide();
-
-//Consultar apéndice E
-    $("#aapendice").show();
-    $("#bapendice").hide();
-
-//Editar Perfiles
-    $("#aditarinspctr").show();
-    $("#bditarinspctr").hide();
-
-//Añadir grado de estudios
-    $("#agradostudio").show();
-    $("#bgradostudio").hide();
-
-    //Agregar Experiencia profesional
-    $("#axperienciapro").show();
-    $("#bxperienciapro").hide();
-
-//Lista de instructores
-    $("#alistainstc").show();
-    $("#blistainstc").hide();
-
-//EDITAR PERDIL
-        $("#aeditaprfil1").show();
-        $("#beditaprfil1").hide();    
-//PERSONAL ACCESOS
-        $("#bacceso1").hide();
-        $("#bacceso2").hide();
-        $("#bacceso3").hide();
-
-        $("#aacceso1").show();
-        $("#aacceso2").show();
-        $("#aacceso3").show();
-    
-//CURSO
-    //Alta de cursos
-    $("#altacurso").show();
-    $("#bltacurso").hide();
-    //Catálogo de cursos
-    $("#acatalogo").show();
-    $("#bcatalogo").hide();
-    //Editar cursos
-    $("#aeditacurso").show();
-    $("#beditacurso").hide();
-    //Añadir temario
-    $("#aguartmario").show();
-    $("#bguartmario").hide();
-    //Eliminar cursos
-    $("#aeliminacurso").show();
-    $("#beliminacurso").hide();
-    //Programación de cursos
-    $("#aprocurso").show();
-    $("#bprocurso").hide();
-    //Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-    //Detalles del curso
-    $("#adetallecurso").show();
-    $("#bdetallecurso").hide();
-    //Agregar participantes
-    $("#aagregapartici").show();
-    $("#bagregapartici").hide();
-    //Eliminar cursos
-    $("#aelimincurso").show();
-    $("#belimincurso").hide();
-    //Notificar convocatoria
-    $("#anotconvocat").show();
-    $("#bnotconvocat").hide();
-    //Pronóstico de cursos
-    $("#apronostcurso").show();
-    $("#bpronostcurso").hide();
-    //Nivel de satisfacción
-    $("#anivelsatisf").show();
-    $("#bnivelsatisf").hide();
-    //Modificar ponderación de satisfacción
-    $("#amodifipondersat").show();
-    $("#bmodifipondersat").hide();
-    //Historial de constancias
-    $("#ahistoriaconstanc").show();
-    $("#bhistoriaconstanc").hide();
-
-//INSPECTOR apartado OJT
-    $("#aojt").show();
-    $("#bojt").hide();
-    $("#aojtalt").show();
-    $("#bojtalt").hide();
-    $("#aojtcons").show();
-    $("#bojtcons").hide();
-    $("#aojtedit").show();
-    $("#bojtedit").hide();
-    $("#aojtelim").show();
-    $("#bojtelim").hide();
-
-//OTROS
-//Calendario
-    $("#acalendario").show();
-    $("#bcalendario").hide();
-//Gantt
-    $("#agantt").show();
-    $("#bgantt").hide();
-//Historial y monitoreo de cambios
-    $("#amonitoreo").show();
-    $("#bmonitoreo").hide();
-
-     $("#1").addClass('active');
-     $("#2").removeClass('active');
-     $("#3").removeClass('active');
-     $("#4").removeClass('active');
-
-       $("#1").show('active');
-       $("#2").show('active');
-       $("#3").show('active');
-       $("#4").show('active');
-
-    $("#primera").addClass('active tab-pane');
-    $("#primera").show();
-    $("#segunda").hide();
-    $("#tercera").hide();
-    $("#cuarto").hide();    
-}else
-if(privilegio==2){
-//    $("#uno").show();
-
-//Alta de personal
-    $("#aaltapersonl").show();
-    $("#baltapersonl").hide();
-
-//Alta de personal Externo
-    $("#aaltapersonlxtrn").show();
-    $("#baltapersonlxtrn").hide();
-
-    //Alta de Instructores Externos
-    $("#aaltainstrucxtrn").show();
-    $("#baltainstrucxtrn").hide();
-
-//Lista de personal
-    $("#alistapersonl").show();
-    $("#blistapersonl").hide();
-
-//Asignación de puesto
-    $("#aasigpuesto").show();
-    $("#basigpuesto").hide();
-
-//Editar Perfiles
-    $("#aeditausu").show();
-    $("#beditausu").hide();
-
-    //Añadir grado de estudios 
-    $("#aanadestudio").show();
-    $("#banadestudio").hide();
-
-//Asignación de puesto
-    $("#aasignapuesto").show();
-    $("#basignapuesto").hide();
-
-//Eliminar usuarios
-    $("#aeliminausu").show();
-    $("#beliminausu").hide();
-
-//Lista inspectores
-    $("#alistainspctr").show();
-    $("#blistainspctr").hide();
-
-//Evaluar inspectores
-    $("#aevalinspctor").show();
-    $("#bevalinspctor").hide();
-
-//Consultar apéndice E
-    $("#aapendice").show();
-    $("#bapendice").hide();
-
-//Editar Perfiles
-    $("#aditarinspctr").show();
-    $("#bditarinspctr").hide();
-
-//Añadir grado de estudios
-    $("#agradostudio").show();
-    $("#bgradostudio").hide();
-
-    //Agregar Experiencia profesional
-    $("#axperienciapro").show();
-    $("#bxperienciapro").hide();
-
-//Lista de instructores
-    $("#alistainstc").show();
-    $("#blistainstc").hide();
-
-//EDITAR PERDIL
-        $("#aeditaprfil1").show();
-        $("#beditaprfil1").hide();    
-//PERSONAL ACCESOS
-        $("#aacceso1").hide();
-        $("#aacceso2").hide();
-        $("#aacceso3").hide();
-
-        $("#bacceso1").show();
-        $("#bacceso2").show();
-        $("#bacceso3").show();
-
-//CURSO
-//Alta de cursos
-    $("#altacurso").show();
-    $("#bltacurso").hide();
-//Catálogo de cursos
-    $("#acatalogo").show();
-    $("#bcatalogo").hide();
-//Editar cursos
-    $("#aeditacurso").show();
-    $("#beditacurso").hide();
-//Añadir temario
-    $("#aguartmario").show();
-    $("#bguartmario").hide();
-//Eliminar cursos
-    $("#aeliminacurso").show();
-    $("#beliminacurso").hide();
-//Programación de cursos
-    $("#aprocurso").show();
-    $("#bprocurso").hide();
-//Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-//Detalles del curso
-    $("#adetallecurso").show();
-    $("#bdetallecurso").hide();
-//Agregar participantes
-    $("#aagregapartici").show();
-    $("#bagregapartici").hide();
-//Eliminar cursos
-    $("#aelimincurso").show();
-    $("#belimincurso").hide();
-//Notificar convocatoria
-    $("#anotconvocat").show();
-    $("#bnotconvocat").hide();
-//Pronóstico de cursos
-    $("#apronostcurso").show();
-    $("#bpronostcurso").hide();
-//Nivel de satisfacción
-    $("#anivelsatisf").show();
-    $("#bnivelsatisf").hide();
-//Modificar ponderación de satisfacción
-    $("#amodifipondersat").show();
-    $("#bmodifipondersat").hide();
-//Historial de constancias
-    $("#ahistoriaconstanc").show();
-    $("#bhistoriaconstanc").hide();
-
-//INSPECTOR apartado OJT
-    $("#aojt").show();
-    $("#bojt").hide();
-    $("#aojtalt").show();
-    $("#bojtalt").hide();
-    $("#aojtcons").show();
-    $("#bojtcons").hide();
-    $("#aojtedit").show();
-    $("#bojtedit").hide();
-    $("#aojtelim").show();
-    $("#bojtelim").hide();
-//OTROS
-//Calendario
-    $("#acalendario").show();
-    $("#bcalendario").hide();
-//Gantt
-    $("#agantt").show();
-    $("#bgantt").hide();
-//Historial y monitoreo de cambios
-    $("#amonitoreo").show();
-    $("#bmonitoreo").hide();
-
+       ////////////
        $("#1").addClass('active');
        $("#2").removeClass('active');
        $("#3").removeClass('active');
        $("#4").removeClass('active');
+       $("#5").removeClass('active');       
 
        $("#1").show('active');
        $("#2").show('active');
        $("#3").show('active');
        $("#4").show('active');
-//    $("#primera").addClass('active tab-pane');
-    // $("#primera").show();
-    // $("#segunda").addClass('tab-pane');
-    // $("#tercera").addClass('tab-pane');
-    // $("#cuarto").addClass('tab-pane');    
+       $("#5").show('active');
+       
+       $("#primera").addClass('active tab-pane');
+       $("#primera").show();
+       $("#segunda").hide();
+       $("#tercera").hide();
+       $("#cuarto").hide(); 
+       $("#cinco").hide(); 
+
+
+   }else
+
+if(privilegio==3){// EJECUTIVO, DIRECTOR
+
+        //PERSONAL
+        $("#sin_altapersonl").show();
+        $("#sin_altapersonlxtrn").show();
+        $("#sin_altainstrucxtrn").show();
+        $("#con_nuevoingreso").show();
+        $("#con_listapersonl").show();
+        $("#con_asignacionpuesto").show();
+        $("#sin_editausu").show();
+        $("#con_listainspctr").show();
+        $("#con_evalinspctor").show();
+        $("#con_apendice").show();
+        $("#con_listainstc").show();
+        $("#sin_acceso1").show();
+        $("#sin_ditarinspctr").show();
+        //INSPECTOR
+        $("#con_ojtalt").show();
+        //APARTADO
+        $("#con_calendario").show();
+        $("#con_gantt").show();
+        $("#sin_monitoreo").show(); 
+        $("#sin_manual").show();
+
+        //CURSO
+        $("#sin_altacurso").show();
+        $("#con_catalogo").show();
+        $("#sin_editacurso").show();
+        $("#con_procurso").show();
+        $("#con_programados").show();
+        $("#sin_detallecurso").show();
+        $("#con_pronostcurso").show();
+        $("#con_cursosvincids").show();        
+        $("#sin_nivelsatisf").show();
+        $("#sin_modifipondersat").show();
+        $("#sin_historiaconstanc").show();
+        //OJT
+        $("#con_ojtprincipal").show();
+        $("#con_procesoojtprin").show();
+        $("#con_prograojt").show();
+        $("#con_ojtprogramds").show();
+        $("#con_altacorinst").show();
+        $("#con_listacorinst").show();
+
+        /////// 
+        $("#1").addClass('active');
+        $("#2").removeClass('active');
+        $("#3").removeClass('active');
+        $("#4").removeClass('active');
+        $("#5").hide('active');
+
+        $("#1").show('active');
+        $("#2").show('active');
+        $("#3").show('active');
+        $("#4").show('active');
+        $("#5").hide('active');
+
         $("#primera").addClass('active tab-pane');
         $("#primera").show();
         $("#segunda").hide();
         $("#tercera").hide();
-        $("#cuarto").hide(); 
+        $("#cuarto").hide();     
+        $("#cinco").hide();     
 
+    }else
+if(privilegio==4){ //  HUMANOS
 
+        //PERSONAL
+        $("#con_altapersonl").show();
+        $("#sin_altapersonlxtrn").show();
+        $("#sin_altainstrucxtrn").show();
+        $("#sin_nuevoingreso").show();
+        $("#con_listapersonl").show();
+        $("#sin_asignacionpuesto").show();
+        $("#con_editausu").show();
+        
+        $("#sin_listainspctr").show();
+        $("#sin_evalinspctor").show();
+        $("#sin_apendice").show();
+        $("#sin_listainstc").show();
+        $("#sin_acceso1").show();
+        $("#sin_ditarinspctr").show();
+        //INSPECTOR
+        $("#sin_ojtalt").show();
+        //APARTADO
+        $("#con_calendario").show();
+        $("#con_gantt").show();
+        $("#sin_monitoreo").show(); 
+        $("#sin_manual").show();
+        //CURSO
+        $("#con_altacurso").show();
+        $("#con_catalogo").show();
+        $("#con_editacurso").show();
+        $("#con_procurso").show();
+        $("#con_programados").show();
+        $("#con_detallecurso").show();
+        $("#sin_pronostcurso").show();
+        $("#sin_cursosvincids").show();        
+        $("#con_nivelsatisf").show();
+        $("#con_modifipondersat").show();
+        $("#sin_historiaconstanc").show();
 
+        $("#1").addClass('active');
+        $("#2").removeClass('active');
+        $("#3").removeClass('active');
+        $("#4").removeClass('active');
+        $("#5").hide('active');
+
+        $("#1").show('active');
+        $("#2").show('active');
+        $("#3").show('active');
+        $("#4").show('active');
+        $("#5").hide('active');
+
+        $("#primera").addClass('active tab-pane');
+        $("#primera").show();
+        $("#segunda").hide();
+        $("#tercera").hide();
+        $("#cuarto").hide();
+        $("#cinco").hide();    
+    }else
+
+if(privilegio==5){ //  ADMINISTRATIVO, INSPECTOR y NUEVO INGRESO
+
+    //INSPECTOR
+    $("#bojtalt").show();
+
+    //APARTADO
+    $("#con_calendario").show();
+    $("#sin_gantt").show();
+    $("#sin_monitoreo").show(); 
+    $("#sin_manual").show();
+    
+    $("#1").hide('active');
+    $("#2").addClass('active');
+    $("#3").hide('active');
+    $("#4").removeClass('active');
+    $("#5").hide('active');
+
+    $("#segunda").addClass('active tab-pane');
+    $("#primera").hide();
+    $("#segunda").show();
+    $("#tercera").hide();
+    $("#cuarto").hide();   
+    $("#cinco").hide();   
 }else
-if(privilegio==3){
 
+if(privilegio==6){//  INSTRUCTOR
 
-//    $("#uno").show();
+        //PERSONAL
+        $("#sin_altapersonl").show();
+        $("#con_altapersonlxtrn").show();
+        $("#con_altainstrucxtrn").show();
+        $("#sin_nuevoingreso").show();
+        $("#con_listapersonl").show();
+        $("#sin_asignacionpuesto").show();
+        $("#sin_editausu").show();
+        $("#con_listainspctr").show();
+        $("#sin_evalinspctor").show();
+        $("#con_apendice").show();
+        $("#con_listainstc").show();
+        $("#sin_acceso1").show();
+        $("#sin_ditarinspctr").show();
+        //INSPECTOR
+        $("#con_ojtalt").show();
+        //CURSO
+        $("#con_altacurso").show();
+        $("#con_catalogo").show();
+        $("#con_editacurso").show();
+        $("#con_procurso").show();
+        $("#con_programados").show();
+        $("#con_detallecurso").show();
+        $("#con_pronostcurso").show();
+        $("#con_nivelsatisf").show();
+        $("#con_modifipondersat").show();
+        $("#con_historiaconstanc").show();
 
-//Alta de personal
-    $("#aaltapersonl").hide();
-    $("#baltapersonl").show();
-
-//Alta de personal Externo
-    $("#aaltapersonlxtrn").hide();
-    $("#baltapersonlxtrn").show();
-
-    //Alta de Instructores Externos
-    $("#aaltainstrucxtrn").hide();
-    $("#baltainstrucxtrn").show();
-
-//Lista de personal
-    $("#alistapersonl").show();
-    $("#blistapersonl").hide();
-
-//Asignación de puesto
-    $("#aasigpuesto").show();
-    $("#basigpuesto").hide();
-
-//Editar Perfiles
-    $("#aeditausu").hide();
-    $("#beditausu").show();
-
-    //Añadir grado de estudios 
-    $("#aanadestudio").hide();
-    $("#banadestudio").show();
-
-//Asignación de puesto
-    $("#aasignapuesto").hide();
-    $("#basignapuesto").show();
-
-//Eliminar usuarios
-    $("#aeliminausu").hide();
-    $("#beliminausu").show();
-
-//Lista inspectores
-    $("#alistainspctr").show();
-    $("#blistainspctr").hide();
-
-//Evaluar inspectores
-    $("#aevalinspctor").show();
-    $("#bevalinspctor").hide();
-
-//Consultar apéndice E
-    $("#aapendice").show();
-    $("#bapendice").hide();
-
-//Editar Perfiles
-    $("#aditarinspctr").hide();
-    $("#bditarinspctr").show();
-
-//Añadir grado de estudios
-    $("#agradostudio").hide();
-    $("#bgradostudio").show();
-
-    //Agregar Experiencia profesional
-    $("#axperienciapro").hide();
-    $("#bxperienciapro").show();
-
-//Lista de instructores
-    $("#alistainstc").show();
-    $("#blistainstc").hide();
-
-//EDITAR PERDIL
-        $("#aeditaprfil1").hide();
-        $("#beditaprfil1").show();    
-//PERSONAL ACCESOS
-        $("#aacceso1").hide();
-        $("#aacceso2").hide();
-        $("#aacceso3").hide();
-
-        $("#bacceso1").show();
-        $("#bacceso2").show();
-        $("#bacceso3").show();
-
-//CURSO
-    //Alta de cursos
-    $("#altacurso").hide();
-    $("#bltacurso").show();
-    //Catálogo de cursos
-    $("#acatalogo").show();
-    $("#bcatalogo").hide();
-    //Editar cursos
-    $("#aeditacurso").hide();
-    $("#beditacurso").show();
-    //Añadir temario
-    $("#aguartmario").hide();
-    $("#bguartmario").show();
-    //Eliminar cursos
-    $("#aeliminacurso").hide();
-    $("#beliminacurso").show();
-    //Programación de cursos
-    $("#aprocurso").hide();
-    $("#bprocurso").show();
-    //Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-    //Detalles del curso
-    $("#adetallecurso").show();
-    $("#bdetallecurso").hide();
-    //Agregar participantes
-    $("#aagregapartici").hide();
-    $("#bagregapartici").show();
-    //Eliminar cursos
-    $("#aelimincurso").hide();
-    $("#belimincurso").show();
-    //Notificar convocatoria
-    $("#anotconvocat").show();
-    $("#bnotconvocat").hide();
-    //Pronóstico de cursos
-    $("#apronostcurso").hide();
-    $("#bpronostcurso").show();
-    //Nivel de satisfacción
-    $("#anivelsatisf").show();
-    $("#bnivelsatisf").hide();
-    //Modificar ponderación de satisfacción
-    $("#amodifipondersat").hide();
-    $("#bmodifipondersat").show();
-    //Historial de constancias
-    $("#ahistoriaconstanc").hide();
-    $("#bhistoriaconstanc").show();
-
-//INSPECTOR apartado OJT
-        $("#aojt").show();
-        $("#bojt").hide();
-        $("#aojtalt").hide();
-        $("#bojtalt").show();
-        $("#aojtcons").hide();
-        $("#bojtcons").show();
-        $("#aojtedit").hide();
-        $("#bojtedit").show();
-        $("#aojtelim").hide();
-        $("#bojtelim").show();
-
-    //OTROS
-    //Calendario
-        $("#acalendario").show();
-        $("#bcalendario").hide();
-    //Gantt
-        $("#agantt").show();
-        $("#bgantt").hide();
-    //Historial y monitoreo de cambios
-        $("#amonitoreo").show();
-        $("#bmonitoreo").hide();
+        //APARTADO
+        $("#con_calendario").show();
+        $("#con_gantt").show();
+        $("#sin_monitoreo").show();
 
         $("#1").addClass('active');
         $("#2").removeClass('active');
         $("#3").removeClass('active');
         $("#4").removeClass('active');
+        $("#5").removeClass('active');
 
         $("#1").show('active');
         $("#2").show('active');
         $("#3").show('active');
         $("#4").show('active');
-
-        $("#primera").addClass('active tab-pane');
-        $("#primera").show();
-        $("#segunda").hide();
-        $("#tercera").hide();
-        $("#cuarto").hide();     
-}
-if(privilegio==4){
-
-//Alta de personal
-    $("#aaltapersonl").hide();
-    $("#baltapersonl").show();
-//Alta de personal Externo
-    $("#aaltapersonlxtrn").hide();
-    $("#baltapersonlxtrn").show();
-//Alta de Instructores Externos
-    $("#aaltainstrucxtrn").hide();
-    $("#baltainstrucxtrn").show();
-//Lista de personal
-    $("#alistapersonl").show();
-    $("#blistapersonl").hide();
-//Asignación de puesto
-    $("#aasigpuesto").show();
-    $("#basigpuesto").hide();
-//Editar Perfiles
-    $("#aeditausu").hide();
-    $("#beditausu").show();
-//Añadir grado de estudios 
-    $("#aanadestudio").hide();
-    $("#banadestudio").show();
-//Asignación de puesto
-    $("#aasignapuesto").hide();
-    $("#basignapuesto").show();
-//Eliminar usuarios
-    $("#aeliminausu").hide();
-    $("#beliminausu").show();
-//Lista inspectores
-    $("#alistainspctr").show();
-    $("#blistainspctr").hide();
-//Evaluar inspectores
-    $("#aevalinspctor").show();
-    $("#bevalinspctor").hide();
-//Consultar apéndice E
-    $("#aapendice").show();
-    $("#bapendice").hide();
-//Editar Perfiles
-    $("#aditarinspctr").hide();
-    $("#bditarinspctr").show();
-//Añadir grado de estudios
-    $("#agradostudio").hide();
-    $("#bgradostudio").show();
-//Agregar Experiencia profesional
-    $("#axperienciapro").hide();
-    $("#bxperienciapro").show();
-//Lista de instructores
-    $("#alistainstc").show();
-    $("#blistainstc").hide();
-//EDITAR PERDIL
-        $("#aeditaprfil1").hide();
-        $("#beditaprfil1").show();    
-//PERSONAL ACCESOS
-        $("#aacceso1").hide();
-        $("#aacceso2").hide();
-        $("#aacceso3").hide();
-
-        $("#bacceso1").show();
-        $("#bacceso2").show();
-        $("#bacceso3").show();
-
-//CURSO
-    //Alta de cursos
-    $("#altacurso").hide();
-    $("#bltacurso").show();
-    //Catálogo de cursos
-    $("#acatalogo").show();
-    $("#bcatalogo").hide();
-    //Editar cursos
-    $("#aeditacurso").hide();
-    $("#beditacurso").show();
-    //Añadir temario
-    $("#aguartmario").hide();
-    $("#bguartmario").show();
-    //Eliminar cursos
-    $("#aeliminacurso").hide();
-    $("#beliminacurso").show();
-    //Programación de cursos
-    $("#aprocurso").hide();
-    $("#bprocurso").show();
-    //Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-    //Detalles del curso
-    $("#adetallecurso").show();
-    $("#bdetallecurso").hide();
-    //Agregar participantes
-    $("#aagregapartici").hide();
-    $("#bagregapartici").show();
-    //Eliminar cursos
-    $("#aelimincurso").hide();
-    $("#belimincurso").show();
-    //Notificar convocatoria
-    $("#anotconvocat").show();
-    $("#bnotconvocat").hide();
-    //Pronóstico de cursos
-    $("#apronostcurso").hide();
-    $("#bpronostcurso").show();
-    //Nivel de satisfacción
-    $("#anivelsatisf").show();
-    $("#bnivelsatisf").hide();
-    //Modificar ponderación de satisfacción
-    $("#amodifipondersat").hide();
-    $("#bmodifipondersat").show();
-    //Historial de constancias
-    $("#ahistoriaconstanc").hide();
-    $("#bhistoriaconstanc").show();
-
-//INSPECTOR apartado OJT
-        $("#aojt").show();
-        $("#bojt").hide();
-        $("#aojtalt").hide();
-        $("#bojtalt").show();
-        $("#aojtcons").hide();
-        $("#bojtcons").show();
-        $("#aojtedit").hide();
-        $("#bojtedit").show();
-        $("#aojtelim").hide();
-        $("#bojtelim").show();
-
-    //OTROS
-    //Calendario
-        $("#acalendario").show();
-        $("#bcalendario").hide();
-    //Gantt
-        $("#agantt").show();
-        $("#bgantt").hide();
-    //Historial y monitoreo de cambios
-        $("#amonitoreo").show();
-        $("#bmonitoreo").hide();
-
-         $("#1").addClass('active');
-         $("#2").removeClass('active');
-         $("#3").removeClass('active');
-         $("#4").removeClass('active');
-
-           $("#1").show('active');
-           $("#2").show('active');
-           $("#3").show('active');
-           $("#4").show('active');
+        $("#5").show('active');
 
         $("#primera").addClass('active tab-pane');
         $("#primera").show();
         $("#segunda").hide();
         $("#tercera").hide();
         $("#cuarto").hide();    
-}
+        $("#cinco").hide();    
 
-if(privilegio==5){
-//Alta de personal
-    $("#aaltapersonl").show();
-    $("#baltapersonl").hide();
-//Alta de personal Externo
-    $("#aaltapersonlxtrn").hide();
-    $("#baltapersonlxtrn").show();
-//Alta de Instructores Externos
-    $("#aaltainstrucxtrn").hide();
-    $("#baltainstrucxtrn").show();
-//Lista de personal
-    $("#alistapersonl").show();
-    $("#blistapersonl").hide();
-//Asignación de puesto
-    $("#aasigpuesto").hide();
-    $("#basigpuesto").show();
-//Editar Perfiles
-    $("#aeditausu").show();
-    $("#beditausu").hide();
-    //Añadir grado de estudios 
-    $("#aanadestudio").show();
-    $("#banadestudio").hide();
-//Asignación de puesto
-    $("#aasignapuesto").show();
-    $("#basignapuesto").hide();
-//Eliminar usuarios
-    $("#aeliminausu").show();
-    $("#beliminausu").hide();
-//Lista inspectores
-    $("#alistainspctr").hide();
-    $("#blistainspctr").show();
-//Evaluar inspectores
-    $("#aevalinspctor").hide();
-    $("#bevalinspctor").show();
-//Consultar apéndice E
-    $("#aapendice").hide();
-    $("#bapendice").show();
-//Editar Perfiles
-    $("#aditarinspctr").show();
-    $("#bditarinspctr").hide();
-//Añadir grado de estudios
-    $("#agradostudio").show();
-    $("#bgradostudio").hide();
-//Agregar Experiencia profesional
-    $("#axperienciapro").show();
-    $("#bxperienciapro").hide();
-//Lista de instructores
-    $("#alistainstc").hide();
-    $("#blistainstc").show();
-//EDITAR PERDIL
-        $("#aeditaprfil1").hide();
-        $("#beditaprfil1").show();    
-//PERSONAL ACCESOS
-        $("#aacceso1").hide();
-        $("#aacceso2").hide();
-        $("#aacceso3").hide();
+    }
 
-        $("#bacceso1").show();
-        $("#bacceso2").show();
-        $("#bacceso3").show();
-
-//CURSO
-    //Alta de cursos
-    $("#altacurso").show();
-    $("#bltacurso").hide();
-    //Catálogo de cursos
-    $("#acatalogo").show();
-    $("#bcatalogo").hide();
-    //Editar cursos
-    $("#aeditacurso").show();
-    $("#beditacurso").hide();
-    //Añadir temario
-    $("#aguartmario").show();
-    $("#bguartmario").hide();
-    //Eliminar cursos
-    $("#aeliminacurso").show();
-    $("#beliminacurso").hide();
-    //Programación de cursos
-    $("#aprocurso").show();
-    $("#bprocurso").hide();
-    //Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-    //Detalles del curso
-    $("#adetallecurso").show();
-    $("#bdetallecurso").hide();
-    //Agregar participantes
-    $("#aagregapartici").show();
-    $("#bagregapartici").hide();
-    //Eliminar cursos
-    $("#aelimincurso").show();
-    $("#belimincurso").hide();
-    //Notificar convocatoria
-    $("#anotconvocat").show();
-    $("#bnotconvocat").hide();
-    //Pronóstico de cursos
-    $("#apronostcurso").hide();
-    $("#bpronostcurso").show();
-    //Nivel de satisfacción
-    $("#anivelsatisf").show();
-    $("#bnivelsatisf").hide();
-    //Modificar ponderación de satisfacción
-    $("#amodifipondersat").show();
-    $("#bmodifipondersat").hide();
-    //Historial de constancias
-    $("#ahistoriaconstanc").hide();
-    $("#bhistoriaconstanc").show();
-
-//INSPECTOR apartado OJT
-        $("#aojt").show();
-        $("#bojt").hide();
-        $("#aojtalt").hide();
-        $("#bojtalt").show();
-        $("#aojtcons").hide();
-        $("#bojtcons").show();
-        $("#aojtedit").hide();
-        $("#bojtedit").show();
-        $("#aojtelim").hide();
-        $("#bojtelim").show();
-    //OTROS
-    //Calendario
-        $("#acalendario").show();
-        $("#bcalendario").hide();
-    //Gantt
-        $("#agantt").show();
-        $("#bgantt").hide();
-    //Historial y monitoreo de cambios
-        $("#amonitoreo").hide();
-        $("#bmonitoreo").show();
-
-        $("#1").addClass('active');
-        $("#2").removeClass('active');
-        $("#3").removeClass('active');
-        $("#4").removeClass('active');
-
-        $("#1").show('active');
-        $("#2").show('active');
-        $("#3").show('active');
-        $("#4").show('active');
-
-        $("#primera").addClass('active tab-pane');
-        $("#primera").show();
-        $("#segunda").hide();
-        $("#tercera").hide();
-        $("#cuarto").hide();     
-}
-if(privilegio==6){
-
-       $("#1").hide('active');
-       $("#2").addClass('active');
-       $("#3").removeClass('active');
-       $("#4").removeClass('active');
-
-//CURSO
-    //Alta de cursos
-    $("#altacurso").hide();
-    $("#bltacurso").show();
-    //Catálogo de cursos
-    $("#acatalogo").hide();
-    $("#bcatalogo").show();
-    //Editar cursos
-    $("#aeditacurso").hide();
-    $("#beditacurso").show();
-    //Añadir temario
-    $("#aguartmario").hide();
-    $("#bguartmario").show();
-    //Eliminar cursos
-    $("#aeliminacurso").hide();
-    $("#beliminacurso").show();
-    //Programación de cursos
-    $("#aprocurso").hide();
-    $("#bprocurso").show();
-    //Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-    //Detalles del curso
-    $("#adetallecurso").hide();
-    $("#bdetallecurso").show();
-    //Agregar participantes
-    $("#aagregapartici").hide();
-    $("#bagregapartici").show();
-    //Eliminar cursos
-    $("#aelimincurso").hide();
-    $("#belimincurso").show();
-    //Notificar convocatoria
-    $("#anotconvocat").hide();
-    $("#bnotconvocat").show();
-    //Pronóstico de cursos
-    $("#apronostcurso").hide();
-    $("#bpronostcurso").show();
-    //Nivel de satisfacción
-    $("#anivelsatisf").hide();
-    $("#bnivelsatisf").show();
-    //Modificar ponderación de satisfacción
-    $("#amodifipondersat").hide();
-    $("#bmodifipondersat").show();
-    //Historial de constancias
-    $("#ahistoriaconstanc").hide();
-    $("#bhistoriaconstanc").show();
-
-//INSPECTOR apartado OJT
-        $("#aojt").show();
-        $("#bojt").hide();
-        $("#aojtalt").hide();
-        $("#bojtalt").show();
-        $("#aojtcons").show();
-        $("#bojtcons").hide();
-        $("#aojtedit").hide();
-        $("#bojtedit").show();
-        $("#aojtelim").hide();
-        $("#bojtelim").show();
-    //OTROS
-    //Calendario
-        $("#acalendario").show();
-        $("#bcalendario").hide();
-    //Gantt
-        $("#agantt").hide();
-        $("#bgantt").show();
-    //Historial y monitoreo de cambios
-        $("#amonitoreo").hide();
-        $("#bmonitoreo").show();
-
-        $("#segunda").addClass('active tab-pane');
-        $("#primera").hide();
-        $("#segunda").show();
-        $("#tercera").hide();
-        $("#cuarto").hide();   
-}
-
-if(privilegio==7){
-       $("#1").hide('active');
-       $("#2").addClass('active');
-       $("#3").removeClass('active');
-       $("#4").removeClass('active');
-
-//CURSO
-    //Alta de cursos
-    $("#altacurso").hide();
-    $("#bltacurso").show();
-    //Catálogo de cursos
-    $("#acatalogo").hide();
-    $("#bcatalogo").show();
-    //Editar cursos
-    $("#aeditacurso").hide();
-    $("#beditacurso").show();
-    //Añadir temario
-    $("#aguartmario").hide();
-    $("#bguartmario").show();
-    //Eliminar cursos
-    $("#aeliminacurso").hide();
-    $("#beliminacurso").show();
-    //Programación de cursos
-    $("#aprocurso").hide();
-    $("#bprocurso").show();
-    //Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-    //Detalles del curso
-    $("#adetallecurso").hide();
-    $("#bdetallecurso").show();
-    //Agregar participantes
-    $("#aagregapartici").hide();
-    $("#bagregapartici").show();
-    //Eliminar cursos
-    $("#aelimincurso").hide();
-    $("#belimincurso").show();
-    //Notificar convocatoria
-    $("#anotconvocat").hide();
-    $("#bnotconvocat").show();
-    //Pronóstico de cursos
-    $("#apronostcurso").hide();
-    $("#bpronostcurso").show();
-    //Nivel de satisfacción
-    $("#anivelsatisf").hide();
-    $("#bnivelsatisf").show();
-    //Modificar ponderación de satisfacción
-    $("#amodifipondersat").hide();
-    $("#bmodifipondersat").show();
-    //Historial de constancias
-    $("#ahistoriaconstanc").hide();
-    $("#bhistoriaconstanc").show();
-
-//INSPECTOR apartado OJT
-        $("#aojt").show();
-        $("#bojt").hide();
-        $("#aojtalt").hide();
-        $("#bojtalt").show();
-        $("#aojtcons").show();
-        $("#bojtcons").hide();
-        $("#aojtedit").hide();
-        $("#bojtedit").show();
-        $("#aojtelim").hide();
-        $("#bojtelim").show();
-    //OTROS
-    //Calendario
-        $("#acalendario").show();
-        $("#bcalendario").hide();
-    //Gantt
-        $("#agantt").hide();
-        $("#bgantt").show();
-    //Historial y monitoreo de cambios
-        $("#amonitoreo").hide();
-        $("#bmonitoreo").show();
-
-        $("#segunda").addClass('active tab-pane');
-        $("#primera").hide();
-        $("#segunda").show();
-        $("#tercera").hide();
-        $("#cuarto").hide();   
-}
-if(privilegio==8){
-
-//Alta de personal
-    $("#aaltapersonl").hide();
-    $("#baltapersonl").show();
-//Alta de personal Externo
-    $("#aaltapersonlxtrn").hide();
-    $("#baltapersonlxtrn").show();
-//Alta de Instructores Externos
-    $("#aaltainstrucxtrn").hide();
-    $("#baltainstrucxtrn").show();
-//Lista de personal
-    $("#alistapersonl").hide();
-    $("#blistapersonl").show();
-//Asignación de puesto
-    $("#aasigpuesto").hide();
-    $("#basigpuesto").show();
-//Editar Perfiles
-    $("#aeditausu").hide();
-    $("#beditausu").show();
-//Añadir grado de estudios 
-    $("#aanadestudio").hide();
-    $("#banadestudio").show();
-//Asignación de puesto
-    $("#aasignapuesto").hide();
-    $("#basignapuesto").show();
-//Eliminar usuarios
-    $("#aeliminausu").hide();
-    $("#beliminausu").show();
-//Lista inspectores
-    $("#alistainspctr").show();
-    $("#blistainspctr").hide();
-//Evaluar inspectores
-    $("#aevalinspctor").show();
-    $("#bevalinspctor").hide();
-//Consultar apéndice E
-    $("#aapendice").show();
-    $("#bapendice").hide();
-//Editar Perfiles
-    $("#aditarinspctr").hide();
-    $("#bditarinspctr").show();
-//Añadir grado de estudios
-    $("#agradostudio").hide();
-    $("#bgradostudio").show();
-//Agregar Experiencia profesional
-    $("#axperienciapro").hide();
-    $("#bxperienciapro").show();
-//Lista de instructores
-    $("#alistainstc").show();
-    $("#blistainstc").hide();
-//EDITAR PERDIL
-        $("#aeditaprfil1").hide();
-        $("#beditaprfil1").show();    
-//PERSONAL ACCESOS
-        $("#aacceso1").hide();
-        $("#aacceso2").hide();
-        $("#aacceso3").hide();
-
-        $("#bacceso1").show();
-        $("#bacceso2").show();
-        $("#bacceso3").show();
-
-//CURSO
-//Alta de cursos
-    $("#altacurso").show();
-    $("#bltacurso").hide();
-//Catálogo de cursos
-    $("#acatalogo").show();
-    $("#bcatalogo").hide();
-//Editar cursos
-    $("#aeditacurso").show();
-    $("#beditacurso").hide();
-//Añadir temario
-    $("#aguartmario").show();
-    $("#bguartmario").hide();
-//Eliminar cursos
-    $("#aeliminacurso").show();
-    $("#beliminacurso").hide();
-//Programación de cursos
-    $("#aprocurso").show();
-    $("#bprocurso").hide();
-//Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-//Detalles del curso
-    $("#adetallecurso").show();
-    $("#bdetallecurso").hide();
-//Agregar participantes
-    $("#aagregapartici").show();
-    $("#bagregapartici").hide();
-//Eliminar cursos
-    $("#aelimincurso").show();
-    $("#belimincurso").hide();
-//Notificar convocatoria
-    $("#anotconvocat").show();
-    $("#bnotconvocat").hide();
-//Pronóstico de cursos
-    $("#apronostcurso").show();
-    $("#bpronostcurso").hide();
-//Nivel de satisfacción
-    $("#anivelsatisf").show();
-    $("#bnivelsatisf").hide();
-//Modificar ponderación de satisfacción
-    $("#amodifipondersat").show();
-    $("#bmodifipondersat").hide();
-//Historial de constancias
-    $("#ahistoriaconstanc").show();
-    $("#bhistoriaconstanc").hide();
-
-//INSPECTOR apartado OJT
-        $("#aojt").show();
-        $("#bojt").hide();
-        
-        $("#aojtalt").show();
-        $("#bojtalt").hide();
-
-        $("#aojtcons").show();
-        $("#bojtcons").hide();
-        
-        $("#aojtedit").show();
-        $("#bojtedit").hide();
-
-        $("#aojtelim").show();
-        $("#bojtelim").hide();    
-
-//OTROS
-//Calendario
-        $("#acalendario").show();
-        $("#bcalendario").hide();
-//Gantt
-        $("#agantt").show();
-        $("#bgantt").hide();
-//Historial y monitoreo de cambios
-        $("#amonitoreo").hide();
-        $("#bmonitoreo").show();
-
-        $("#1").addClass('active');
-        $("#2").removeClass('active');
-        $("#3").removeClass('active');
-        $("#4").removeClass('active');
-
-        $("#1").show('active');
-        $("#2").show('active');
-        $("#3").show('active');
-        $("#4").show('active');
-
-        $("#primera").addClass('active tab-pane');
-        $("#primera").show();
-        $("#segunda").hide();
-        $("#tercera").hide();
-        $("#cuarto").hide();    
-
-}
-
-if(privilegio==9){
-//Alta de personal
-    $("#aaltapersonl").hide();
-    $("#baltapersonl").show();
-//Alta de personal Externo
-    $("#aaltapersonlxtrn").hide();
-    $("#baltapersonlxtrn").show();
-//Alta de Instructores Externos
-    $("#aaltainstrucxtrn").hide();
-    $("#baltainstrucxtrn").show();
-//Lista de personal
-    $("#alistapersonl").hide();
-    $("#blistapersonl").show();
-//Asignación de puesto
-    $("#aasigpuesto").hide();
-    $("#basigpuesto").show();
-//Editar Perfiles
-    $("#aeditausu").hide();
-    $("#beditausu").show();
-//Añadir grado de estudios 
-    $("#aanadestudio").hide();
-    $("#banadestudio").show();
-//Asignación de puesto
-    $("#aasignapuesto").hide();
-    $("#basignapuesto").show();
-//Eliminar usuarios
-    $("#aeliminausu").hide();
-    $("#beliminausu").show();
-//Lista inspectores
-    $("#alistainspctr").show();
-    $("#blistainspctr").hide();
-//Evaluar inspectores
-    $("#aevalinspctor").show();
-    $("#bevalinspctor").hide();
-//Consultar apéndice E
-    $("#aapendice").show();
-    $("#bapendice").hide();
-//Editar Perfiles
-    $("#aditarinspctr").hide();
-    $("#bditarinspctr").show();
-//Añadir grado de estudios
-    $("#agradostudio").hide();
-    $("#bgradostudio").show();
-//Agregar Experiencia profesional
-    $("#axperienciapro").hide();
-    $("#bxperienciapro").show();
-//Lista de instructores
-    $("#alistainstc").show();
-    $("#blistainstc").hide();
-//EDITAR PERDIL
-        $("#aeditaprfil1").hide();
-        $("#beditaprfil1").show();    
-//PERSONAL ACCESOS
-        $("#aacceso1").hide();
-        $("#aacceso2").hide();
-        $("#aacceso3").hide();
-
-        $("#bacceso1").show();
-        $("#bacceso2").show();
-        $("#bacceso3").show();
-
-//CURSO
-//Alta de cursos
-    $("#altacurso").show();
-    $("#bltacurso").hide();
-//Catálogo de cursos
-    $("#acatalogo").show();
-    $("#bcatalogo").hide();
-//Editar cursos
-    $("#aeditacurso").show();
-    $("#beditacurso").hide();
-//Añadir temario
-    $("#aguartmario").show();
-    $("#bguartmario").hide();
-//Eliminar cursos
-    $("#aeliminacurso").show();
-    $("#beliminacurso").hide();
-//Programación de cursos
-    $("#aprocurso").show();
-    $("#bprocurso").hide();
-//Cursos programados
-    $("#aprogramados").show();
-    $("#bprogramados").hide();
-//Detalles del curso
-    $("#adetallecurso").show();
-    $("#bdetallecurso").hide();
-//Agregar participantes
-    $("#aagregapartici").show();
-    $("#bagregapartici").hide();
-//Eliminar cursos
-    $("#aelimincurso").show();
-    $("#belimincurso").hide();
-//Notificar convocatoria
-    $("#anotconvocat").show();
-    $("#bnotconvocat").hide();
-//Pronóstico de cursos
-    $("#apronostcurso").show();
-    $("#bpronostcurso").hide();
-//Nivel de satisfacción
-    $("#anivelsatisf").show();
-    $("#bnivelsatisf").hide();
-//Modificar ponderación de satisfacción
-    $("#amodifipondersat").show();
-    $("#bmodifipondersat").hide();
-//Historial de constancias
-    $("#ahistoriaconstanc").show();
-    $("#bhistoriaconstanc").hide();
-
-//INSPECTOR apartado OJT
-        $("#aojt").show();
-        $("#bojt").hide();
-        $("#aojtalt").hide();
-        $("#bojtalt").show();
-        $("#aojtcons").show();
-        $("#bojtcons").hide();
-        $("#aojtedit").hide();
-        $("#bojtedit").show();
-        $("#aojtelim").hide();
-        $("#bojtelim").show();
-
-    //OTROS
-    //Calendario
-        $("#acalendario").show();
-        $("#bcalendario").hide();
-    //Gantt
-        $("#agantt").hide();
-        $("#bgantt").show();
-    //Historial y monitoreo de cambios
-        $("#amonitoreo").hide();
-        $("#bmonitoreo").show();
-
-        $("#1").addClass('active');
-        $("#2").removeClass('active');
-        $("#3").removeClass('active');
-        $("#4").removeClass('active');
-
-        $("#1").show('active');
-        $("#2").show('active');
-        $("#3").show('active');
-        $("#4").show('active');
-
-        $("#primera").addClass('active tab-pane');
-        $("#primera").show();
-        $("#segunda").hide();
-        $("#tercera").hide();
-        $("#cuarto").hide();     
-}
 
     $.ajax({
         url: '../php/privilegios.php',
@@ -2396,62 +1976,23 @@ if(privilegio==9){
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
+        for (i = 0; i < res.length; i++) {
 
-
-         //alert(resp);
-         for (i = 0; i < res.length; i++) {
-
-            // if(obj.data[i].acceso=='aaltainstrucxtrn'){
-
-                str = obj.data[i].acceso;
-
-                //console.log(obj.data[i].acceso);
-                acces = str.slice(1)
-                
-                activo = str.substring(-1,1);
-
-
-                if(activo=='a'){
-                    
+            str = obj.data[i].acceso;
+            acces = str.slice(1)                
+            activo = str.substring(-1,1);
+            if(activo=='a'){                    
                 $("#"+activo+acces+"").show();
-                    acceso = 'b'+acces;
-                $("#"+acceso+"").hide();
- 
-                }else if(activo=='b'){
+                acceso = 'b'+acces;
+                $("#"+acceso+"").hide(); 
+            }else if(activo=='b'){
                 $("#"+activo+acces+"").show();
-                    acceso = 'a'+acces;
+                acceso = 'a'+acces;
                 $("#"+acceso+"").hide();
-                }
-
-                //$("#baltainstrucxtrn").hide();
-            // }else if(obj.data[i].perfil=='baltainstrucxtrn'){
-            //     $("#aaltainstrucxtrn").show();
-            //     $("#baltainstrucxtrn").hide();
-            // // }
-            // alert(obj.data[i].n_empleado);
-
-            // if(obj.data[i].n_empleado==''){
-                
-            // }
-
-
-        //     if (obj.data[i].n_empleado == datos) {
-                
-        //             // id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
-        //             // id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
-        //             // privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell),
-        //             // mEmpleado = $("#editarAccesos #nEmpleado").val(obj.data[i].gstNmpld),
-        //             // password = $("#editarAccesos #password").val(obj.data[i].password),
-        //             // usuario = $("#editarAccesos #usuario").val(obj.data[i].usuario),
-        //             // password = $("#editarAccesos #privilegios").val(obj.data[i].privilegios),
-        //             // opcion = $("#editarAccesos #opcion").val("modificar");
-        //     }
-         }
+            }
+        }
     })
 }
-
-
-
 
 // SHOW PASSWORD
 $('.toggle-password').click(function() {

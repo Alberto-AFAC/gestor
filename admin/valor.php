@@ -26,6 +26,10 @@ $psto = mysqli_query($conexion,$sql);
 $direc = mysqli_query($conexion,$sql);
 
 ?>
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+    administraodr();
+</script>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
     <div class="nav-tabs-custom">
@@ -124,7 +128,7 @@ $direc = mysqli_query($conexion,$sql);
                 </div>
 
 
-                <div class="box-header">
+                <div class="box-header" id="inspeciones">
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
@@ -132,6 +136,16 @@ $direc = mysqli_query($conexion,$sql);
                         </button>
                     </div>
                 </div>
+
+                <div class="box-header" id="inspecionciaac" style="display: none;">
+                    <h1 class="box-title"></h1>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove">
+                            <a href='inspecionciaac' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -271,7 +285,7 @@ $direc = mysqli_query($conexion,$sql);
 <div style="padding-top: 15px;" class="col-md-12">
     <div class="nav-tabs-custom">
         <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <button id="editinsp" type="button" class="btn btn-box-tool" data-widget="collapse">
                 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
                 <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i
                         class="fa fa-ban"></i> </a>

@@ -22,6 +22,8 @@
       "SELECT * FROM cursos WHERE modalidad = 'E-LEARNNING'";
       $query = mysqli_query($conexion,$sql2);
       $datos2 = mysqli_fetch_assoc($query);
+
+
     
 //session_start(); 
 unset($_SESSION['consulta']);
@@ -83,12 +85,29 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de Personal</a></li>
-                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
-                    <li><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
-                    <li><a href="persona"><i class="fa ion-document-text"></i> Lista de Personal</a></li>
-                    <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de Inspectores</a></li>
-                    <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+
+                    <li id="aaltapersonl1"><a href="personal"><i class="fa ion-android-person-add"></i> Alta de Personal</a></li>
+
+
+                    <li id="aaltapersonlxtrn1"><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
+
+                    <li id="aaltainstrucxtrn1"><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
+
+ 
+
+                    <li id="alistapersonl1"><a href="persona"><i class="fa ion-document-text"></i> Lista de Personal</a></li>
+
+                    <li id="beditausu1"><a href="personaciaac"><i class="fa ion-document-text"></i> Lista de Personal</a></li>
+
+
+                    <li id="alistainspctr1" ><a href="inspecion"><i class="fa ion-document-text"></i> Lista de Inspectores</a></li>
+
+                    <li id="bditarinspctr1" ><a href="inspecionciaac"><i class="fa ion-document-text"></i> Lista de Inspectores</a></li>
+
+
+                    <li id="alistainstc1" ><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+
+
                     <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
                     <li><a href="accesos"><i class="fa ion-document-text"></i> Lista de Accesos</a></li>
                     <?php }?>
@@ -219,3 +238,9 @@ ini_set('date.timezone','America/Mexico_City');
 include('../perfil/actualizar.php');
 
 ?>
+
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+administraodr();
+</script>
+

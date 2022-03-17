@@ -48,7 +48,6 @@ color: white;
 }
 </style>
 </head>
-
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 <div class="wrapper">
 
@@ -542,3 +541,8 @@ immediately after the control sidebar -->
 
 </html>
 <?php include('../perfil/cursos.php'); ?>
+
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+  inspectorAcceso();
+</script>

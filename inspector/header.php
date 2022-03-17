@@ -101,45 +101,7 @@
           </a>
         </li>
 
-<?php if(
-   $datos[4] == 6370777 
-|| $datos[4] == 6470394 
-|| $datos[4] == 7132490 
-|| $datos[4] == 7131237 
-|| $datos[4] == 3100869 
-|| $datos[4] == 7132075 
-|| $datos[4] == 3100789 
-|| $datos[4] == 7137630 
-|| $datos[4] == 7134065 
-|| $datos[4] == 6420278 
-|| $datos[4] == 7141460 
-|| $datos[4] == 7141551 
-|| $datos[4] == 7134248 
-|| $datos[4] == 7141776 
-|| $datos[4] == 3100516 
-|| $datos[4] == 7135352
-
-|| $datos[4] == 7141611
-|| $datos[4] == 7141754
-|| $datos[4] == 7131535
-|| $datos[4] == 7136591
-|| $datos[4] == 7141640
-|| $datos[4] == 7131349
-|| $datos[4] == 7131242
-|| $datos[4] == 7132891
-|| $datos[4] == 7131317
-|| $datos[4] == 7138485
-|| $datos[4] == 7131993 
-|| $datos[4] == 7135505
-|| $datos[4] == 7135436
-|| $datos[4] == 7134239
-|| $datos[4] == 7141780
-|| $datos[4] == 7141811
-|| $datos[4] == 7141777
-|| $datos[4] == 7141416
-){
- ?>
-      <li>
+      <li id="aojtalt1" style="display: none;">
       <a href="inspecion">
       <i class="fa fa-users"></i> <span>Lista de inspectores</span>
       <span class="pull-right-container">
@@ -148,7 +110,6 @@
       </span>
       </a>
       </li>
-<?php } ?>
 
         <!--  -->
         
@@ -163,3 +124,7 @@
 include('../perfil/actualizar.php');
 
 ?>
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+  inspectorAcceso();
+</script>
