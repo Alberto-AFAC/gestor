@@ -27,7 +27,7 @@ require_once "../../conexion/conexion.php";
 <!--PRIMERA DIVISIÓN-->
 <div class="active tab-pane" id="primeract">
 
-<?php include('programar.php'); ?>
+<?php include('obligatorio.php'); ?>
 
 </div><!--FINALIZA PRIMERA DIVISIÓN-->
 
