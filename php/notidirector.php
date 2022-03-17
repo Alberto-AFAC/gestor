@@ -11,7 +11,7 @@
 		$eje = $dato[1];
 
 	// $Direje= $datos[1];
-	$query = "SELECT * FROM personal WHERE gstIDara = $eje AND `gstCargo` = 'NUEVO INGRESO' AND estado = 0 ORDER BY gstCargo DESC";
+	$query = "SELECT * FROM personal WHERE gstAreID = $eje AND `gstCargo` = 'NUEVO INGRESO' AND estado = 0 ORDER BY gstCargo DESC";
 	$resultado = mysqli_query($conexion, $query);
 	if(!$resultado){
 		die("error");

@@ -94,11 +94,12 @@ unset($_SESSION['consulta']);
             </span>
           </a>
           <ul class="treeview-menu">
+          <li><a href="personalafac"><i class="fa ion-android-person-add"></i> Lista de personal</a></li>
             <li><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
             <li><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
             <li><a href="inspecion"><i class="fa ion-document-text"></i>Lista de inspectores</a></li>
             <li><a href="persona"><i class="fa ion-document-text"></i>Lista de personal externo</a></li>
-            <li><a href="instructor"><i class="fa ion-document-text"></i>Coordinador/Instructor</a></li>
+            <li><a href="instructor"><i class="fa ion-document-text"></i>Coordinador/Instructor</a></li>personalafac
           </ul>
         </li>
 
@@ -115,13 +116,14 @@ unset($_SESSION['consulta']);
             <li><a href="conCursos"><i class="fa fa-search"></i>Catálogos de cursos</a></li>
             <li><a href="programa"><i class="fa ion-compose"></i>Programar Curso</a></li>
             <li><a href="lisCurso"><i class="fa ion-compose"></i>Cursos Programados</a></li>
+            <li><a href="vencidos"><i class="fa ion-easel"></i> Cursos vencidos</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
             <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
           </ul>
         </li>
         <?php 
-            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
+            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'MARCO ANTONIO' || $datos[2] == 'REYES  SOTO'){
                 echo "<li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-file-text'></i>
@@ -134,6 +136,24 @@ unset($_SESSION['consulta']);
                     <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
                     <li><a style='pointer-events: none;' onclick='return false;' href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
                     <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                </ul>
+            </li>
+            ";
+            }else if($datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
+                echo "<li class='treeview'>
+                <a href='#'>
+                    <i class='fa fa-file-text'></i>
+                    <span>OJT</span>
+                    <span class='pull-right-container'>
+                        <i class='fa fa-angle-left pull-right'></i>
+                    </span>
+                </a>
+                <ul class='treeview-menu'>
+                    <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
+                    <li><a href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
+                    <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                    <li><a href='instojt'><i class='fa fa-plus'></i>Alta coordinador/Instructor OJT</a></li>
+                    <li><a href='coorinsoj'><i class='fa fa-file-text'></i>Lista coordinador/Instructor</a></li>
                 </ul>
             </li>
             ";

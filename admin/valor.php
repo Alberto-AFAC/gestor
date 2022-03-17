@@ -26,6 +26,10 @@ $psto = mysqli_query($conexion,$sql);
 $direc = mysqli_query($conexion,$sql);
 
 ?>
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+    administraodr();
+</script>
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
     <div class="nav-tabs-custom">
@@ -124,7 +128,7 @@ $direc = mysqli_query($conexion,$sql);
                 </div>
 
 
-                <div class="box-header">
+                <div class="box-header" id="inspeciones">
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
@@ -132,6 +136,16 @@ $direc = mysqli_query($conexion,$sql);
                         </button>
                     </div>
                 </div>
+
+                <div class="box-header" id="inspecionciaac" style="display: none;">
+                    <h1 class="box-title"></h1>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove">
+                            <a href='inspecionciaac' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -271,7 +285,7 @@ $direc = mysqli_query($conexion,$sql);
 <div style="padding-top: 15px;" class="col-md-12">
     <div class="nav-tabs-custom">
         <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <button id="editinsp" type="button" class="btn btn-box-tool" data-widget="collapse">
                 <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
                 <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i
                         class="fa fa-ban"></i> </a>
@@ -773,7 +787,7 @@ $direc = mysqli_query($conexion,$sql);
 <div class="form-group">
 <div class="col-sm-6">
 
- <p id="oclOJT"><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+ <p><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
 
 <div>
 
@@ -783,7 +797,7 @@ $direc = mysqli_query($conexion,$sql);
 </div>                            
 </div>
 <div class="col-sm-6">
- <p id="oclBTC"><label>BITÁCORAS</label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+ <p><label>BITÁCORAS</label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
 <div> 
     <div id="docBita"></div>    
 </div> 
@@ -837,11 +851,24 @@ $direc = mysqli_query($conexion,$sql);
 
 <label class="label2">UBICACIÓN CENTRAL</label> 
     <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
-        <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>    
-        <option value="CIAAC">CIAAC</option> 
-        <option value="LAS FLORES">LAS FLORES</option> 
-        <option value="ANGAR 8">ANGAR 8</option> 
-        <option value="LICENCIA">LICENCIAS</option>
+        <option value="0">SELECCIONE LA UBICACIÓN CENTRAL</option>
+        <option value="AICM T1">AICM T1</option>
+        <option value="AICM T2">AICM T2</option>
+        <option value="ANGAR 8">ANGAR 8</option>
+        <option value="CIACC">CIACC</option>
+        <option value="LICENCIAS">LICENCIAS</option>
+        <option value="FLORESM1">LAS FLORES M1</option>
+        <option value="FLORESM2">LAS FLORES M2</option>
+        <option value="FLORESP1">LAS FLORES PISO 1</option>
+        <option value="FLORESP2">LAS FLORES PISO 2</option>
+        <option value="FLORESP3">LAS FLORES PISO 3</option>
+        <option value="FLORESP4">LAS FLORES PISO 4</option>
+        <option value="FLORESP5">LAS FLORES PISO 5</option>
+        <option value="FLORESP6">LAS FLORES PISO 6</option>
+        <option value="FLORESP7">LAS FLORES PISO 7</option>
+        <option value="FLORESP8">LAS FLORES PISO 8</option>
+        <option value="FLORESPH">LAS FLORES PH</option>
+        <option value="NO APLICA<">NO APLICA</option>
 </select>
 </div>
 

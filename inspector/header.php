@@ -17,8 +17,11 @@
       $id = $_SESSION['usuario']['id_usu'];
       $usu = $_SESSION['usuario']['usuario'];
       $pass = $_SESSION['usuario']['password'];
+          $priv = $_SESSION['usuario']['privilegios'];
 
       include("../perfil/index.php");
+
+
 
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -59,7 +62,7 @@
             <?php }?>
 
             <?php 
-            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'GUSTAVO' || $datos[2] == 'FELIPE ROSALINO' || $datos[1] == 'DIEGO ISAAC' || $datos[2] == 'RIVERA OCHOA'){
+            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'GUSTAVO' || $datos[2] == 'FELIPE ROSALINO' || $datos[1] == 'DIEGO ISAAC' || $datos[2] == 'RIVERA OCHOA'|| $datos[1] == 'EDGAR'|| $datos[2] == 'GONZALEZ FLORES'|| $datos[1] == 'ALVARO EDGAR'|| $datos[2] == 'PEREZ GALINDO'){
                 echo "<li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-file-text'></i>
@@ -98,6 +101,16 @@
           </a>
         </li>
 
+      <li id="aojtalt1" style="display: none;">
+      <a href="inspecion">
+      <i class="fa fa-users"></i> <span>Lista de inspectores</span>
+      <span class="pull-right-container">
+      <small class="label pull-right bg-red"></small>
+      <small class="label pull-right bg-blue"></small>
+      </span>
+      </a>
+      </li>
+
         <!--  -->
         
         <!--  -->
@@ -111,3 +124,7 @@
 include('../perfil/actualizar.php');
 
 ?>
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+  inspectorAcceso();
+</script>

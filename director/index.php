@@ -1,3 +1,16 @@
+<?php
+
+include ("../conexion/conexion.php"); session_start();
+$id = $_SESSION['usuario']['id_usu'];
+
+      $sql = 
+     "SELECT gstNmpld FROM personal WHERE gstIdper = '".$id."' && estado = 0 ";
+    $persona = mysqli_query($conexion,$sql);
+    $datos = mysqli_fetch_row($persona);
+
+      $datos[0];
+?>
+
 <!DOCTYPE html>
 <html lang="es-ES">
 
@@ -67,7 +80,7 @@
                             <div class="content">
                                 <h3>MESA DE AYUDA</h3><br>
                                 <img class="img-servicios" src="../models/menu/images/ingenieria.svg" width="75%;" alt="tecnico"><br><br>
-                                <a href="#">Iniciar</a>
+                                <a href="https://mesa-ayuda.afac-avciv.com/">Iniciar</a>
                             </div>
                         </div>
                         <div class="card">
@@ -78,6 +91,27 @@
                                 <a href="#">Iniciar</a>
                             </div>
                         </div>
+
+
+
+                        <?php if($datos[0] == 7141384 || $datos[0] == 7141380){
+                        ?>
+
+                        <div class="card">
+                        <span></span>
+
+                        <div class="content">
+                        <h3>COMPETENCIA LINGÜÍSTICA</h3> 
+                        <img class="img-servicios" src="../dist/img/linguistica.png" width="75%;" alt="participante"><br><br>
+                        <a href="../../linguistica">Iniciar</a>
+
+                        </div>
+                        </div>
+
+                        <?php } ?>
+
+
+
                     </div>
                 </div>
             </li>
@@ -133,11 +167,11 @@
                 </div>
             </li>  -->
 
-            <li class="" data-depth="1.00">
+<!--             <li class="" data-depth="1.00">
                 <div class="depth-5">
                     <img alt="flake" src="../models/menu/images/flakes/depth5/flakes.png">
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
     <script src="../js/menu/js/jquery.js"></script>

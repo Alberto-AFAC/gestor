@@ -22,6 +22,8 @@
       "SELECT * FROM cursos WHERE modalidad = 'E-LEARNNING'";
       $query = mysqli_query($conexion,$sql2);
       $datos2 = mysqli_fetch_assoc($query);
+
+
     
 //session_start(); 
 unset($_SESSION['consulta']);
@@ -66,7 +68,7 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <?php }else{ ?>
             <li class="active">
-                <a href="inspector">
+                <a href="profile">
                     <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
                     <span class='pull-right-container'>
                     </span>
@@ -83,12 +85,29 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="personal"><i class="fa ion-android-person-add"></i> Alta de Personal</a></li>
-                    <li><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
-                    <li><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
-                    <li><a href="persona"><i class="fa ion-document-text"></i> Lista de Personal</a></li>
-                    <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de Inspectores</a></li>
-                    <li><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+
+                    <li id="aaltapersonl1"><a href="personal"><i class="fa ion-android-person-add"></i> Alta de Personal</a></li>
+
+
+                    <li id="aaltapersonlxtrn1"><a href="Externo"><i class="fa fa-users"></i> Alta de Personal Ext.</a></li>
+
+                    <li id="aaltainstrucxtrn1"><a href="personalExt"><i class="fa fa-users"></i> Alta Instructores Ext.</a></li>
+
+ 
+
+                    <li id="alistapersonl1"><a href="persona"><i class="fa ion-document-text"></i> Lista de Personal</a></li>
+
+                    <li id="beditausu1"><a href="personaciaac"><i class="fa ion-document-text"></i> Lista de Personal</a></li>
+
+
+                    <li id="alistainspctr1" ><a href="inspecion"><i class="fa ion-document-text"></i> Lista de Inspectores</a></li>
+
+                    <li id="bditarinspctr1" ><a href="inspecionciaac"><i class="fa ion-document-text"></i> Lista de Inspectores</a></li>
+
+
+                    <li id="alistainstc1" ><a href="instructor"><i class="fa ion-document-text"></i> Lista de Instructores</a></li>
+
+
                     <?php if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN"){?>
                     <li><a href="accesos"><i class="fa ion-document-text"></i> Lista de Accesos</a></li>
                     <?php }?>
@@ -112,10 +131,9 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="programa"><i class="fa ion-compose"></i> Programar curso</a></li>
                     <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
                     <li><a href="pronostico"><i class="fa fa-hourglass-half"></i> Pronostico de Cursos</a></li>
-                    <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
+                    <li><a href="vencidos"><i class="fa ion-easel"></i> Cursos vencidos</a></li>
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
-                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i
-                                class="fa fa-certificate"></i>Historial Constancias...</a></li>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial Constancias...</a></li>
                 </ul>
             </li>
             <!--  -->
@@ -132,8 +150,10 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
-                    <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i
-                                class="fa fa-file-text"></i> OJT Programados</a></li>
+                    <!-- <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li> -->
+                    <li><a href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
+                    <li><a href="instojt"><i class="fa fa-plus"></i>Alta coordinador/Instructor OJT</a></li>
+                    <li><a href="coorinsoj"><i class="fa fa-file-text"></i>Lista coordinador/Instructor</a></li>
                 </ul>
             </li>
             <li>
@@ -219,3 +239,9 @@ ini_set('date.timezone','America/Mexico_City');
 include('../perfil/actualizar.php');
 
 ?>
+
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+administraodr();
+</script>
+

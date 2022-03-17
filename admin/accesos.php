@@ -15,19 +15,19 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="dist/js/sweetalert2.all.min.js"></script>
-  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+    <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <style>
-	.swal-wide {
+       .swal-wide {
         width: 500px !important;
         font-size: 16px !important;
     }
-    </style>
+</style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -35,8 +35,8 @@
     <div class="wrapper">
 
         <?php
-include('header.php');
-?>
+        include('header.php');
+        ?>
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -62,29 +62,29 @@ include('header.php');
 
                                     <div class="btn-group">
                                         <a type="button" href="accesos" class="btn btn-default btn-sm"><i
-                                                class="fa fa-refresh"></i></a>
+                                            class="fa fa-refresh"></i></a>
+                                        </div>
+                                        <!-- /.btn-group -->
                                     </div>
-                                    <!-- /.btn-group -->
+                                </div>
+
+
+                                <div class="box-body">
+                                    <table style="width: 100%;" id="data-table-instructores"
+                                    class="table table-striped table-hover"></table>
                                 </div>
                             </div>
-
-
-                            <div class="box-body">
-                                <table style="width: 100%;" id="data-table-instructores"
-                                    class="table table-striped table-hover"></table>
-                            </div>
+                            <!-- /.box -->
                         </div>
-                        <!-- /.box -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </section>
-        </div>
+                    <!-- /.row -->
+                </section>
+            </div>
 
-        <form id="Editar" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+            <form id="Editar" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
 
-            <div class="modal fade" id="editarAccesos" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
+                <div class="modal fade" id="editarAccesos" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -97,150 +97,151 @@ include('header.php');
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="hidden" id="idAccesos" name="idAccesos">
+                                <input type="hidden" id="idUser" name="idUser">
                                 <input type="hidden" id="opcion" name="opcion" value="modificar">
                                 <div class="col-sm-6">
                                     <label>NOMBRE COMPLETO</label>
                                     <input type="text" onkeyup="mayus(this);" class="form-control" id="nombUser"
-                                        name="nombUser" disabled="">
+                                    name="nombUser" disabled="">
                                 </div>
                                 <div class="col-sm-6">
                                     <label>USUARIO</label>
                                     <input type="text" onkeyup="mayus(this);" class="form-control" id="usuario"
-                                        name="usuario">
+                                    name="usuario">
                                 </div>
                                 <div class="col-sm-6"><br>
                                     <label>NUMERO DE EMPLEADO</label>
                                     <input type="text" onkeyup="mayus(this);" class="form-control" id="nEmpleado"
-                                        name="nEmpleado" disabled="">
+                                    name="nEmpleado" disabled="">
                                 </div>
                                 <div class="col-sm-6"><br>
                                     <label>PASSWORD</label>
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="password" name="password"
-                                            autocomplete="new-password" minlength="6">
+                                        autocomplete="new-password" minlength="6">
                                         <div class="input-group-addon input-group-append toggle-password">
                                             <i class="fa fa-eye toggle-password">
                                             </i>
                                         </div>
                                     </div>
                                 </div>
-<div class="col-sm-6"><br>
-<label>SELECCIONE PRIVILEGIOS</label>
-<select style="width: 100%" class="form-control" class="selectpicker"
-name="privilegios" id="privilegios" type="text" data-live-search="true">
-<option value="0" selected>SELECCIONE...</option>
-<option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
-<option value="ADMINISTRADOR">ADMINISTRADOR</option>
-<option value="DIRECTOR">DIRECTOR</option>
-<option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
-<option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-<option value="EJECUTIVO">EJECUTIVO</option>
-<option value="INSTRUCTOR">COORDINADOR/INSTRUCTOR</option>
-<option value="INSPECTOR">INSPECTOR</option>
-<option value="HUMANOS">HUMANOS</option>
-</select>
-</div>
+                                <div class="col-sm-6"><br>
+                                    <label>SELECCIONE PRIVILEGIOS</label>
+                                    <select style="width: 100%" class="form-control" class="selectpicker"
+                                    name="privilegios" id="privilegios" type="text" data-live-search="true">
+                                    <option value="0" selected>SELECCIONE...</option>
+                                    <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                                    <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                                    <option value="DIRECTOR">DIRECTOR</option>
+                                    <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
+                                    <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+                                    <option value="EJECUTIVO">EJECUTIVO</option>
+                                    <option value="INSTRUCTOR">COORDINADOR/INSTRUCTOR</option>
+                                    <option value="INSPECTOR">INSPECTOR</option>
+                                    <option value="HUMANOS">HUMANOS</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                            <button type="button" onclick="modificar();" class="btn btn-primary">ACEPTAR</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                        <button type="button" onclick="modificar();" class="btn btn-primary">ACEPTAR</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+    </form>
 
 
 
 
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> <?php 
-                                $query ="SELECT 
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> <?php 
+            $query ="SELECT 
                                         *
-                                        FROM
-                                        controlvers";
-                                $resultado = mysqli_query($conexion, $query);
+            FROM
+            controlvers";
+            $resultado = mysqli_query($conexion, $query);
 
-                                $row = mysqli_fetch_assoc($resultado);
-                                if(!$resultado) {
-                                    var_dump(mysqli_error($conexion));
-                                    exit;
-                                }
-                                ?>
-                <?php echo $row['version']?>
-            </div>
+            $row = mysqli_fetch_assoc($resultado);
+            if(!$resultado) {
+                var_dump(mysqli_error($conexion));
+                exit;
+            }
+            ?>
+            <?php echo $row['version']?>
+        </div>
 
-            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-            Todos los derechos Reservados DDE
-.
-        </footer>
+        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+        Todos los derechos Reservados DDE
+        .
+    </footer>
 
-        <!-- Control Sidebar -->
-        <?php include('panel.html');?>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <?php include('panel.html');?>
+    <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+         immediately after the control sidebar -->
+         <div class="control-sidebar-bg"></div>
 
 
-    </div>
-    <!-- ./wrapper -->
+     </div>
+     <!-- ./wrapper -->
 
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
-    <script src="../js/global.js"></script>
-    <script src="../js/datos.js"></script>
+     <!-- jQuery 3 -->
+     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+     <!-- Bootstrap 3.3.7 -->
+     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+     <!-- DataTables -->
+     <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+     <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+     <!-- SlimScroll -->
+     <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+     <!-- FastClick -->
+     <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+     <!-- AdminLTE App -->
+     <script src="../dist/js/adminlte.min.js"></script>
+     <!-- AdminLTE for demo purposes -->
+     <script src="../dist/js/demo.js"></script>
+     <!-- page script -->
+     <script src="../js/global.js"></script>
+     <script src="../js/datos.js"></script>
 
-</body>
+ </body>
 
-</html>
-<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#id_area').select2();
-});
+ </html>
+ <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $('#id_area').select2();
+    });
 </script>
 <script src="../js/select2.js"></script>
 <script type="text/javascript">
-var dataSet = [
+    var dataSet = [
     <?php 
-$query = "SELECT * FROM accesos
-INNER JOIN personal ON id_usu = gstIdper";
-$resultado = mysqli_query($conexion, $query);
+    $query = "SELECT * FROM accesos
+    INNER JOIN personal ON id_usu = gstIdper";
+    $resultado = mysqli_query($conexion, $query);
 
-while($data = mysqli_fetch_array($resultado)){ 
+    while($data = mysqli_fetch_array($resultado)){ 
 
-$id = $data['id_usu'];
-$acceso = $data['id_accesos']
-?>
+        $id = $data['id_usu'];
+        $acceso = $data['id_accesos']
+        ?>
 
     //console.log('<?php //echo $gstIdper ?>');
 
     ["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>",
-        "<?php echo $data[2]?>", "<?php echo base64_encode($data[3])?>",
-        "<?php echo $data[4]?>",
-        "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
+    "<?php echo $data[2]?>", "<?php echo base64_encode($data[3])?>",
+    "<?php echo $data[4]?>",
+    "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
     ],
 
 
-    <?php } ?>
+<?php } ?>
 ];
 
 var tableGenerarReporte = $('#data-table-instructores').DataTable({
@@ -254,27 +255,27 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
     data: dataSet,
     columns: [
 
-        {
-            title: "ID"
-        },
-        {
-            title: "NOMBRE"
-        },
-        {
-            title: "# EMPLEADO"
-        },
-        {
-            title: "USUARIO"
-        },
-        {
-            title: "PASSWORD"
-        },
-        {
-            title: "PRIVILEGIOS"
-        },
-        {
-            title: "ACCIÓN"
-        }
+    {
+        title: "ID"
+    },
+    {
+        title: "NOMBRE"
+    },
+    {
+        title: "# EMPLEADO"
+    },
+    {
+        title: "USUARIO"
+    },
+    {
+        title: "PASSWORD"
+    },
+    {
+        title: "PRIVILEGIOS"
+    },
+    {
+        title: "ACCIÓN"
+    }
     ],
 });
 
@@ -293,40 +294,41 @@ function datos_editar(acceso) {
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_accesos == acceso) {
                 var
-                    id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
-                    id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
-                    privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell),
-                    mEmpleado = $("#editarAccesos #nEmpleado").val(obj.data[i].gstNmpld),
-                    password = $("#editarAccesos #password").val(obj.data[i].password),
-                    usuario = $("#editarAccesos #usuario").val(obj.data[i].usuario),
-                    password = $("#editarAccesos #privilegios").val(obj.data[i].privilegios),
-                    opcion = $("#editarAccesos #opcion").val("modificar");
+                id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
+                id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
+                privilg = $("#editarAccesos #nombUser").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell),
+                mEmpleado = $("#editarAccesos #nEmpleado").val(obj.data[i].gstNmpld),
+                password = $("#editarAccesos #password").val(obj.data[i].password),
+                usuario = $("#editarAccesos #usuario").val(obj.data[i].usuario),
+                password = $("#editarAccesos #privilegios").val(obj.data[i].privilegios),
+                opcion = $("#editarAccesos #opcion").val("modificar");
             }
         }
     })
 }
 
 function modificar() {
+    //alert("pruebas modificacion")
     var frm = $("#Editar").serialize();
-        $.ajax({
-            url: "../php/accesos-update.php",
-            type: 'POST',
-            data: frm + "&opcion=modificar"
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-                Swal.fire({
+    $.ajax({
+        url: "../php/accesos-update.php",
+        type: 'POST',
+        data: frm + "&opcion=modificar"
+    }).done(function(respuesta) {
+        if (respuesta == 0) {
+            Swal.fire({
                 type: 'success',
                 text: 'CREDENCIALES ACTUALIZADAS CORRECTAMENTE',
                 showConfirmButton: false,
                 customClass: 'swal-wide',
                 timer: 2000,
                 backdrop: `
-                    rgba(100, 100, 100, 0.4)
+                rgba(100, 100, 100, 0.4)
                 `
             });
-                setTimeout("location.href = 'accesos';", 2000);
-            }
-        });
+            setTimeout("location.href = 'accesos';", 2000);
+        }
+    });
 }
 
 

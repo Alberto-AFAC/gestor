@@ -32,8 +32,6 @@ $classroom = $_POST['classroom'];
 $fcurso = $_POST['fcurso'];
 $fechaf = $_POST['fechaf'];
 
-$perid = $_POST['perid'];
-
 $id = $_POST['idinsps'].','.$idcord;
 
 $valor = explode(",", $id);
@@ -42,38 +40,27 @@ $n = 0;
 $var= 0;
 $enc = 0;
 
-//se resta los instructores 
-$resta = $val - $ttal; 
-	
-//  foreach ($valor as $idinsps) {
+ foreach ($valor as $idinsps) {
 
-// if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
-//   $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
+if(encurso($fcurso,$fechaf,$idinsps,$conexion)){
+  $enc = encurso($fcurso,$fechaf,$idinsps,$conexion);
 
-//  	echo $enc;
+ 	echo $enc;
 
 
-// }else{
-//  	$var++;
+}else{
+ 	$var++;
 
-// }
-// }
+}
+}
 
 $var;
 
-//if($val==$var){
+if($val==$var){
 foreach ($valor as $idinsps) {
 	$n++;
-// $varY = 'HAY';
-
-//incrmento sea menor que el total de parcipantes
-	if($n < $resta){
-		$part = 'SI';
-	}else{
-		$part = '';	
-	}
-
-if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion))
+$varY = 'HAY';
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion))
 		{ 
 				if($n==$ttal){
 				$Instruc = explode(",", $idInstr);
@@ -91,9 +78,8 @@ if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$mo
 			echo "1";	
 		}
 		contancia($idinsps,$codigo, $conexion);
-		semanal($perid,$codigo,$fcurso,$fechaf,$hcurso,$conexion);
 	}
-//}
+}
 
 
 
@@ -195,9 +181,6 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 	}
 }else if($opcion === 'cursoAct'){
 
-
-
-
 	$codigo = $_POST['codigo'];
 	$fcurso = $_POST['fcurso'];
 	$hcurso = $_POST['hcurso'];
@@ -210,49 +193,25 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 	$reprogramar = $_POST['reprogramar'];
 
-	$valor = $_POST['array1'];
-	$varray1 = json_decode($valor, true);
-	$valor = count($varray1);
 
-	$array2 = $_POST['array2'];
-	$array2 = json_decode($array2, true);
-
-	$array3 = $_POST['array3'];
-	$array3 = json_decode($array3, true);
-
-	$hora_fin = $_POST['hora_fin'];
-
-	for($i=0; $i<$valor; $i++){
-
-	$dias = $varray1[$i]["diasr"];
-	$validar = $varray1[$i]["idias"];
-	$mes = $array2[$i]["mes"];
-	$anio = $array3[$i]["anio"];
-
-	  if($validar==1){ $valida = 'SI'; }else{ $valida = 'NO'; } 
-
-
-	if(semanalAct($codigo,$dias,$valida,$mes,$anio,$fcurso,$fechaf,$hcurso,$hora_fin,$conexion)){	
-
-		if($i==1){
 	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$conexion))
-		{	
+	{	
+
 		reprogramar($codigo,$reprogramar,$conexion);
 		echo "0";		
 		$realizo = 'ACTUALIZO CURSO FOLIO: '.$codigo;
 		historiCan($idp,$realizo,$codigo,$conexion);	
-		}else{	echo "1";	}
-	}
-
-}else{	echo "1";	}
-	  }
-
-
+	}else{ echo "1";	}
 
 }else if($opcion === 'PDF'){
 
 	 $pdf = $_POST['v'];
- 	if(descPDF($pdf,$conexion)){echo "0";}else{echo "1";}
+ 	if(descPDF($pdf,$conexion)){
+		 echo "0";
+		 historides($idp,$pdf,$conexion);
+	}else{
+		echo "1";
+	}
 }
 
 
@@ -293,12 +252,12 @@ $query = "SELECT COUNT(*) as prtcpnts FROM cursos WHERE cursos.estado = 0 OR cur
 	 return $n;
 }
 
-function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion){
+function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion){
 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom','$part',0);";
+$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
@@ -417,6 +376,7 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
+
 // fin actualia evaluación el curso
 	function historiCur($idp,$realizo,$id_mstr,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
@@ -443,6 +403,18 @@ function finalizac($codigo,$conexion){
 	}
 	}
 
+	// FUCIÓN PARA GUARDAR HISTORIAL DE DESGARGA DE PDF
+	function historides($idp,$pdf,$conexion){
+		ini_set('date.timezone','America/Mexico_City');
+		$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+		$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) VALUE ($idp,'DESCARGA PDF',concat('DESCARGA DOCUMENTO QUE ACREDITA EL CURSO: ',(select id_codigocurso from constancias where id='$pdf' )),'$fecha')";
+		if(mysqli_query($conexion,$query)){
+		return true;
+		}else{
+		return false;
+		}
+	}
+
 	function reprogramar($codigo,$reprogramar,$conexion){
 
 		$query="INSERT INTO reprogramados VALUES(0,'$codigo',$reprogramar,0)";
@@ -455,28 +427,6 @@ function finalizac($codigo,$conexion){
 			}				
 	}
 
-function semanal($perid,$codigo,$fcurso,$fechaf,$hcurso,$conexion){
-
-	$query="UPDATE semanal SET id_curso='$codigo' WHERE id_per = '$perid' AND fec_inico = '$fcurso' AND fec_fin = '$fechaf' AND hora_ini = '$hcurso'";
-		if(mysqli_query($conexion,$query)){
-			return true;
-		}else{
-			return false;
-		}
-		cerrar($conexion);
-}
-
-function semanalAct($codigo,$dias,$valida,$mes,$anio,$fcurso,$fechaf,$hcurso,$hora_fin,$conexion){
-
-	$query="UPDATE semanal SET hora_ini = '$hcurso', hora_fin = '$hora_fin',habil='$valida' WHERE id_curso = '$codigo' AND dia_semana = '$dias' AND num_mes = '$mes' AND anio = '$anio' AND fec_inico = '$fcurso' AND fec_fin = '$fechaf'";
-		if(mysqli_query($conexion,$query)){
-			return true;
-		}else{
-			return false;
-		}
-		cerrar($conexion);	
-
-}
 	
 function cerrar($conexion){
 

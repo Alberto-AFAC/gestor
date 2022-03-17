@@ -19,6 +19,7 @@ $.ajax({
         venci = obj.data[i].vencido;
         cancelados = obj.data[i].declina;
         completo = obj.data[i].finalizado;
+        suma = obj.data[i].finalizado + obj.data[i].confirmar +obj.data[i].proceso +obj.data[i].vencido+ obj.data[i].declina;
     }
 
     $("#confirma").html(confirma);
@@ -26,12 +27,51 @@ $.ajax({
     $("#cancelados").html(cancelados);
     $("#completos").html(completo);
     $("#noti").html(confirma);
+    $("#notpend").html(confirma);
     $("#vencidos").html(venci);
+    $("#sumacur").html(suma);
     document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirma + ' notificaciones.</b>';
     document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirma + ' cursos que confirmar.';
 
+});
+
+$.ajax({
+    url: '../php/ojtinf.php',
+    type: 'POST'
+}).done(function(resp1) {
+    obj = JSON.parse(resp1);
+    var res1 = obj.data;
+    var programados = 0;
+    var completos = 0;
+    var cancelados = 0;
+    var confirmar = 0;
+    var conteo = 0;
+    var fecha = 0;
+    var ffin = 0;
+    for (O = 0; O < res1.length; O++) {
+
+        confirmaOJT = obj.data[O].confirmar;
+        programadosOJT = obj.data[O].proceso;
+        venciOJT = obj.data[O].vencido;
+        canceladosOJT = obj.data[O].declina;
+        completoOJT = obj.data[O].finalizado;
+        sumaOJT = obj.data[O].finalizado + obj.data[O].confirmar +obj.data[O].proceso +obj.data[O].vencido+ obj.data[O].declina;
+    }
+
+    $("#confirma").html(confirmaOJT);
+    $("#programadosOJT").html(programadosOJT);
+    $("#canceladosOJT").html(canceladosOJT);
+    $("#completosOJT").html(completoOJT);
+    $("#noti").html(confirmaOJT);
+    $("#notpend").html(confirmaOJT);
+    $("#vencidos").html(venciOJT);
+    $("#sumacurOJT").html(sumaOJT);
+    //document.getElementById("notif").innerHTML = "" + '<b>Tienes ' + confirma + ' notificaciones.</b>';
+    //document.getElementById("confirmar").innerHTML = "" + '<i class="fa fa-warning text-yellow"></i> Tienes ' + confirma + ' cursos que confirmar.';
 
 });
+
+
 
 //DECLINA ENFERMEDAD
 function declina() {
@@ -361,7 +401,7 @@ function limCampos() {
 function constudios(gstIdper) {
 
     var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
-    // alert(idpersona1);
+    //alert(idpersona1);
     $.ajax({
             url: '../php/conEstudios.php',
             type: 'POST'

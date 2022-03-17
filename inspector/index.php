@@ -1,3 +1,16 @@
+<?php
+
+include ("../conexion/conexion.php"); session_start();
+$id = $_SESSION['usuario']['id_usu'];
+
+      $sql = 
+     "SELECT gstNmpld FROM personal WHERE gstIdper = '".$id."' && estado = 0 ";
+    $persona = mysqli_query($conexion,$sql);
+    $datos = mysqli_fetch_row($persona);
+
+      $datos[0];
+?>
+
 <!DOCTYPE html>
 <html lang="es-ES">
 
@@ -79,6 +92,26 @@
                                 <a href="#">Iniciar</a>
                             </div>
                         </div>
+
+
+<?php if($datos[0] == 7138380 || $datos[0] == 7141571 || $datos[0] == 7141627 || $datos[0] == 7141636){
+ ?>
+
+                        <div class="card">
+                            <span></span>
+                  
+                            <div class="content">
+                                <h3>COMPETENCIA LINGÜÍSTICA</h3> 
+    <img class="img-servicios" src="../dist/img/linguistica.png" width="75%;" alt="participante"><br><br>
+                                <a href="../../linguistica">Iniciar</a>
+                     
+                            </div>
+                        </div>
+
+<?php } ?>
+
+
+
                     </div>
                 </div>
             </li>

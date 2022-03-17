@@ -87,10 +87,22 @@
               if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){ ?>
               <img class='user-image' src='../dist/img/profile-leonardoR.jpeg' 
               alt='User profile picture'>
-              <?php } else{ ?>
-              <img class='user-image' src='../dist/img/perfil.png'
+              <?php } else if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){ ?>
+              <img class='user-image' src='../dist/img/general.jpeg'
               alt='User profile picture'>
-              <?php } ?>              
+              
+              <?php } else if($datos[1] == 'JACOB' && $datos[2] == 'GONZALEZ MACIAS'){ ?>
+              <img class='user-image' src='../dist/img/JACOB_DDE.png'
+              alt='User profile picture'>
+
+              <?php }else{ ?>
+                  <img class='user-image' src='../dist/img/perfil.png'
+              alt='User profile picture'>
+
+
+                
+                <?php } ?>
+
               <!-- <img src="../dist/img/perfil.png" class="user-image" alt="User Image"> -->
               <span class="hidden-xs"><?php echo $datos[1].' '.$datos[2]?></span>
             </a>

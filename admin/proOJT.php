@@ -12,11 +12,14 @@ $subtarea = mysqli_query($conexion,$sql);
 $sql = "SELECT id_ojt, subsubtarea FROM ojt WHERE estado = 0";
 $subsubtarea = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR PRINCIPAL OJT'  OR instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
 $instructor  = mysqli_query($conexion,$sql);
 
-$sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 ";
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'COORDINADOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
 $cordinador  = mysqli_query($conexion,$sql);
+
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
+$inst2  = mysqli_query($conexion,$sql);
 
 unset($_SESSION['consulta']);
 ?>
@@ -112,43 +115,65 @@ folder instead of downloading all of them to reduce the load. -->
 
                                             <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <label>ESPECIALIDAD</label>
-
+                                                    <label>ESPECIALIDAD<span class="text-red">*</span></label>
                                                     <div id="idSpecialidad"></div>
-
                                                 </div>
                                                 <div class="col-sm-6">
-
-                                                    <div id="tabSpcl"></div>
+                                                    <label>SUBESPECIALIDAD<span class="text-red">*</span></label>
+                                                    <select onchange="" id="sub1" name="sub1" class="form-control inputalta" placeholder="Seleccione la ubicación">
+                                                        <option value="">SELECCIONE LA SUBESPECIALIDAD</option>
+                                                    </select>
                                                 </div>
-
-
+                                                
                                             </div>
 
-                                            <div id="tablaPro"></div>
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+                                                    <label>SUB-SUBESPECIALIDAD<span class="text-red">*</span></label>
+                                                    <select onchange="" id="sub" name="sub" class="form-control inputalta" placeholder="Seleccione la ubicación">
+                                                        <option value="">SELECCIONE LA SUB-SUB-ESPECIALIDAD</option>
+                                                    </select>
+                                                </div>
+                                                
 
+                                                <div id="ubiojt" style="display:none" class="col-sm-6">
+                                                    <label>UBICACIÓN<span class="text-red">*</label>
+                                                    <select onchange="filubi()" id="uboj" name="uboj" class="form-control inputalta"
+                                                        placeholder="Seleccione la ubicación">
+                                                        <option value="">SELECCIONE LA UBICACIÓN</option>
+                                                        <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
+                                                        <option value="COMANDANCIA">COMANDANCIA</option>
+                                                    </select>
+                                                </div>
+                                                
+                                            </div>
 
+                                            <div class="form-group">
+                                            <div class="col-sm-12">
+                                                    <div id="tabSpcl"></div>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
 
                                                 <div class="col-sm-4">
-                                                    <label>FECHA Y HORA DE INICIO</label>
+                                                    <label>FECHA Y HORA DE INICIO<span class="text-red">*</label>
                                                     <input type="datetime-local" class="form-control"
                                                         placeholder="Ingresa subtarea..." name="fechaInicio"
                                                         id="fechaInicio">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label>FECHA Y HORA DE TERMINO</label>
+                                                    <label>FECHA Y HORA DE TERMINO<span class="text-red">*</label>
                                                     <input type="datetime-local" onkeyup="mayus(this);"
                                                         class="form-control" id="fechaTermino" name="fechaTermino">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label>COORDINADOR DEL ÁREA</label>
+                                                    <label>COORDINADOR DEL OJT<span class="text-red">*</label>
                                                     <select multiple="multiple"
                                                         data-placeholder="SELECCIONE COORDINADOR DEL ÁREA"
                                                         style="width: 100%;color: #000" class="form-control select2"
                                                         type="text" class="form-control" id="coordinador"
                                                         name="coordinador">
-                                                        <option value="0">SELECCIONE COORDINADOR </option>
+                                                        <option value="">SELECCIONE COORDINADOR </option>
                                                         <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
                                                         <option value="<?php echo $cordinadors[0]?>">
                                                             <?php echo $cordinadors[1].' '.$cordinadors[2]?></option>
@@ -159,7 +184,7 @@ folder instead of downloading all of them to reduce the load. -->
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-4">
-                                                    <label>INSTRUCTOR OJT</label>
+                                                    <label>INSTRUCTOR OJT<span class="text-red">*</label>
                                                     <select multiple="multiple"
                                                         data-placeholder="SELECCIONE INSTRUCTOR OJT"
                                                         style="width: 100%;color: #000" class="form-control select2"
@@ -172,12 +197,42 @@ folder instead of downloading all of them to reduce the load. -->
                                                     </select>
 
                                                 </div>
+                                                <div class="col-md-4">
+                                                <label>SELECCIONE EL NIVEL<span class="text-red">*</label>
+                                                    <select id="idnivel" name="idnivel" class="form-control inputalta"
+                                                        placeholder="Seleccione la el nivel">
+                                                        <option value="">SELECCIONE EL NIVEL</option>
+                                                        <option value="1">NIVEL 1</option>
+                                                        <option value="2">NIVEL 2</option>
+                                                        <option value="3">NIVEL 3</option>
+                                                    </select>
+
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="label2">LUGAR</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="addubic"> 
+                                                </div>
                                             </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label class="label2">SEDE</label>
+                                                    <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta" id="addsede">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-4">
+                                                    <label class="label2" style="font-size:16px">SELECCIONE LA TAREA</label>
+                                                </div>                     
+                                            </div>
+                                            <!-- <div id="tablaPro"></div> -->
+
+                                            <div id="tabtareas"></div> 
 
                                             <div class="form-group"><br>
                                                 <div class="col-sm-offset-0 col-sm-5">
-                                                    <button type="button" id="button" class="btn btn-primary"
-                                                        onclick="regOjt();">ACEPTAR </button>
+                                                    <button type="button" id="button" class="btn btn-success" onclick="regOjt();">FINALIZAR </button>
                                                 </div>
                                                 <b>
                                                     <p class="alert alert-danger text-center padding error" id="falla">
@@ -249,6 +304,40 @@ folder instead of downloading all of them to reduce the load. -->
             </section>
             <!-- /.content -->
         </div>
+
+        <!-------------------------------------------MODAL------------------------------------------------------>
+        <form class="form-horizontal" action="" method="POST">
+        <div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3" aria-hidden="true">
+            <div class="modal-dialog" style="width: 80%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                        <h4 class="modal-title" id="myModalLabel">AGREGAR SUB TAREAS</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class='modal-body'>
+                            <div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU
+                                REGISTRO FUE ELIMINADO</div>
+                            <div id="actualizo" style="display: none;text-align: center;font-size: 14px; color: green">
+                                SE ACTUALIZO REGISTRO CON ÉXITO</div>
+
+                            <div id="tablasub01"></div>
+
+                            <div id="tablasub02"></div>
+                            <div id="tablasub03"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                onclick="vaciar();">CERRAR</button>
+                            <!-- <button type="button" class="btn btn-primary">GUARDAR</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
@@ -303,44 +392,257 @@ $(document).ready(function() {
     $('#subsubtarea').select2();
     $('#coordinador').select2();
     $('#instructor').select2();
+    $('#instojt').select2();
     $('#idSpecialidad').load('select/buspecialidad.php');
     $('#tabSpcl').load('select/tablaSpc.php');
     $('#tablaPro').load('select/tablaProgOJT.php');
+    //tabla tareas
+   // $('#tabtareas').load('select/tareasojt.php');
+    
 });
 
-function regOjt() {
-    var isSpc = $("#isSpc").val();
-    var idInspct = $("#idInspct").val();
-    var fechaInicio = $("#fechaInicio").val();
-    var fechaTermino = $("#fechaTermino").val();
-    var coordinador = $("#coordinador").val();
-    var instructor = $("#instructor").val();
-   
-  
-    if (isSpc == '0' || idInspct == '0' || fechaInicio == '' || fechaTermino == '' || coordinador == '' || instructor == '') {
+function filubi(){
+    var especialidas = document.getElementById('isSpc').value;
+    var ubicacion = document.getElementById('uboj').value;
+    var persona = document.getElementById('idInspct').value;
+		//alert(persona)
+			$.ajax({
+                url: '../php/ojt_tareas.php',
+                type: 'POST'
+            }).done(function(resp) {
+                obj = JSON.parse(resp);
+                var res = obj.data;
+                var n = 0;
+                html ='<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsubtareas" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">ACCIONES</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
+                for (H = 0; H < res.length; H++) {
+					if (obj.data[H].id_spc == especialidas && obj.data[H].idarea == ubicacion) {
+                        var idojt = obj.data[H].id_ojt;
+                        n++;
+                        datos = obj.data[H].id_ojt + "*" + n;
+                        if (obj.data[H].ojt == 'SIN SUB TAREAS') {
+                            subtareas='<a id="" type="button" title="Agregar tarea" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa fa-plus"></i></a>'
+                        } else {
+                            subtareas='<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>'
+                        }
+                            html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal + '</td><td>' + obj.data[H].idarea +
+                            '</td><td>'+ subtareas +
+                            '</td><td style="display:none">' + obj.data[H].id_ojt; +'</td></tr>'
+                    }
+			    }
+                        html += '</tbody></table></form></div></div>';
+                        $("#tabtareas").html(html);
+            });
+}
+
+function tabsub(){
+    $("#tabsubtareas tr").on('click', function() {
+        var espe = "";
+        espe += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
+       // alert(espe);
+
+        var id_esp=espe;
+        //ajax debusqueda
+        $.ajax({
+          url: '../php/data-task.php',
+          type: 'POST'
+      }).done(function(respuesta) {
+          obj = JSON.parse(respuesta);
+          var res = obj.data;
+          var x = 0;
+          html ='<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUBTAREA 1</th><th style="width:10%;">AGREGAR</th>';
+          //html ='<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsub" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">#</th><th scope="col" style="width:650px">SUBTAREA 1</th></th><th scope="col" style="">ACCIONES</th></tr></thead><tbody>';
+          for (ii = 0; ii < res.length; ii++) { 
+              if (obj.data[ii].idtarea == id_esp && obj.data[ii].numsubt == 1 ){
+                
+                    x++;
+                      // $("#tablasub01").show();      
+
+                    dato = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].ojt_subtarea + '*' + obj.data[ii].numsubt;
+                            
+                    adatos = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].ojt_subtarea;
+                    accion= '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>'
+
+                            html += "<tr><th>"  + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt +
+                               "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td><a id='" + obj.data[ii].id_subojt +
+                               "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" +
+                                '"' + adatos + '"' +
+                                ");' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a><a id='" +
+                                obj.data[ii].id_subojt +
+                               "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" +
+                                '"' + dato + '"' +
+                                ");' data-target=''><i class='fa fa-plus' style='color:#3c8dbc '></i></a></td></tr>"
+
+                                //html += '<tr><th scope="row">' + x + ')</th><td>' + obj.data[ii].ojt_subtarea + '</td><td>' + accion +'</td></tr>'
+                        
+            }
+          }
+
+            html += '</tbody></table></form></div></div>';
+            $("#tablasub01").html(html);
+      });
+
+      //segunda función
+
+      $.ajax({
+          url: '../php/data-task.php',
+          type: 'POST'
+      }).done(function(respuesta) {
+          obj = JSON.parse(respuesta);
+          var res = obj.data;
+          var x = 0;
+          html ='<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUB 2</th><th style="width:10%;">AGREGAR</th>';
+          //html ='<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsub" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">#</th><th scope="col" style="width:650px">SUBTAREA 1</th></th><th scope="col" style="">ACCIONES</th></tr></thead><tbody>';
+          for (ii = 0; ii < res.length; ii++) { 
+              if (obj.data[ii].idtarea == id_esp && obj.data[ii].numsubt == 2 ){
+                
+                
+                    x++;
+                      // $("#tablasub01").show();      
+
+                    dato = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].ojt_subtarea + '*' + obj.data[ii].numsubt;
+                            
+                    adatos = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].ojt_subtarea;
+                    accion= '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>'
+
+                            html += "<tr><th>"  + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt +
+                               "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td><a id='" + obj.data[ii].id_subojt +
+                               "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" +
+                                '"' + adatos + '"' +
+                                ");' data-target=''><i class='fa fa-check text-success'></i></a><a id='" +
+                                obj.data[ii].id_subojt +
+                               "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" +
+                                '"' + dato + '"' +
+                                ");' data-target=''><i class='fa fa-plus' style='color:#3c8dbc '></i></a></td></tr>"
+
+                                //html += '<tr><th scope="row">' + x + ')</th><td>' + obj.data[ii].ojt_subtarea + '</td><td>' + accion +'</td></tr>'
+                        
+            }
+          }
+
+            html += '</tbody></table></form></div></div>';
+            $("#tablasub02").html(html);
+      });
+
+      //tercera función
+
+      $.ajax({
+          url: '../php/data-task.php',
+          type: 'POST'
+      }).done(function(respuesta) {
+          obj = JSON.parse(respuesta);
+          var res = obj.data;
+          var x = 0;
+          html ='<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUB 2</th><th style="width:10%;">AGREGAR</th>';
+          //html ='<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsub" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">#</th><th scope="col" style="width:650px">SUBTAREA 1</th></th><th scope="col" style="">ACCIONES</th></tr></thead><tbody>';
+          for (ii = 0; ii < res.length; ii++) { 
+              if (obj.data[ii].idtarea == id_esp && obj.data[ii].numsubt == 3 ){
+                
+                
+                    x++;
+                      // $("#tablasub01").show();      
+
+                    dato = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].ojt_subtarea + '*' + obj.data[ii].numsubt;
+                            
+                    adatos = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].ojt_subtarea;
+                    accion= '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>'
+
+                            html += "<tr><th>"  + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt +
+                               "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td><a id='" + obj.data[ii].id_subojt +
+                               "mostrar' type='' title='Tarea agregarada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='io(" +
+                                '"' + adatos + '"' +
+                                ");' data-target=''><i class='fa fa-check text-success'></i></a><a id='" +
+                                obj.data[ii].id_subojt +
+                               "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" +
+                                '"' + dato + '"' +
+                                ");' data-target=''><i class='fa fa-plus' style='color:#3c8dbc '></i></a></td></tr>"
+
+                                //html += '<tr><th scope="row">' + x + ')</th><td>' + obj.data[ii].ojt_subtarea + '</td><td>' + accion +'</td></tr>'
+                        
+            }
+          }
+
+            html += '</tbody></table></form></div></div>';
+            $("#tablasub03").html(html);
+      });
+ //cuarta función
+
+    })
+} 
+
+//función para que
+function ageg(dato) {
+    //alert("entra agregar");
+   // alert(dato);
+    var a = dato.split("*");
+    id_subojt = a[1];
+    id_tarea = a[0];
+    //alert(id_tarea);
+
+    var isSpc = document.getElementById('isSpc').value;
+    var idInspct = document.getElementById('idInspct').value;
+    var fechaInicio = document.getElementById('fechaInicio').value;
+    var fechaTermino = document.getElementById('fechaTermino').value;
+    var coordinador = document.getElementById('coordinador').value;
+    var instructor = document.getElementById('instructor').value;
+
+    var nivel = document.getElementById('idnivel').value;
+    var ubicacion = document.getElementById('uboj').value;
+    var lugar = document.getElementById('addubic').value;
+    var sede = document.getElementById('addsede').value;
+    var idsubtarea = id_subojt;
+    var idtarea = id_tarea;
+
+    var datos= 'isSpc=' + isSpc + '&idtarea=' + idtarea + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio + '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' + nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&idsubtarea=' + idsubtarea + '&opcion=registraroj';
+
+
+    //alert(datos)
+     
+    //VALIDA QUE LOS CAMPOS D   EBEN DE ESTAR LLENOS PARA AGREGAR LA TAREA
+    if (isSpc == '' || idInspct == '' || fechaInicio == '' || fechaTermino == '' || coordinador == '' || instructor == '' || nivel == '') {
         Swal.fire({
             type: 'info',
-            text: 'LLENE LOS CAMPOS QUE SE SOLICITAN',
+            text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
             timer: 2000,
             customClass: 'swal-wide',
             showConfirmButton: false,
         });
-    } else {
-        $.ajax({
-            type: "POST",
-            url: "../php/insertOJT.php",
-            data: {
-                isSpc: isSpc,
-                idInspct: idInspct,
-                fechaInicio: fechaInicio,
-                fechaTermino: fechaTermino,
-                coordinador: coordinador,
-                instructor: instructor
-
+        return;
+    }else{
+    //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
+    $.ajax({
+            type:"POST",
+            url:"../php/insertOJT.php",
+            data:datos
+          }).done(function(respuesta){
+            if (respuesta==0){
+                //SE MUESTRA EL BOTON DE VALIDACIÓN  
+                $("#" + id_subojt + "ocultar").hide();
+                $("#" + id_subojt + "mostrar").show();
+                document.getElementById(id_subojt).disabled = false;
+            }else if (respuesta == 2) {
+                Swal.fire({
+                type: 'info',
+                text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
+               timer: 2000,
+               customClass: 'swal-wide',
+               showConfirmButton: false,
+            });
+            }else{
                 
+                
+            }
+          });//FIN DE AJAX
+    }
+}
 
-            },
-            success: function(data) {
+
+
+function regOjt() {
+
+    var fechaInicio = $("#fechaInicio").val();
+
+  
+
 
                 Swal.fire({
                     type: 'success',
@@ -350,12 +652,9 @@ function regOjt() {
                     customClass: 'swal-wide',
                     showConfirmButton: false,
                 });
-                setTimeout("location.href = 'proOJT';", 4000);
-            }
-        });
-    }
+                setTimeout("location.href = 'catalogoOJT';", 3500);
+            
 
-    return false;
 }
 </script>
 <script src="../js/select2.js"></script>

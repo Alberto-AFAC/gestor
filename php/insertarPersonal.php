@@ -70,6 +70,47 @@ if($opcion === 'registrar'){
     }else{
         echo "1";
     }
+}else if($opcion === 'insinpojt'){
+    $id_pers=$_POST['id_pers'];
+    $tipo=$_POST['tipo'];
+    $objetivo=$_POST['objetivo'];
+
+    if(comprojt($id_pers,$tipo,$conexion)){
+        $objetivo=$_POST['objetivo'];
+        
+        if(regisojt($id_pers,$tipo,$objetivo,$conexion)){
+            echo "0";
+		    histojt($id,$id_pers,$tipo,$conexion);       
+        }else{
+	    	echo "1";
+	    }
+    }else{
+		echo "2";
+    }
+}else if($opcion === 'deletereg'){
+    $id_inscorojt=$_POST['id_inscorojt'];
+    $tipo=$_POST['tipo'];
+    $nombre=$_POST['nombre'];
+
+    if (delregistro($id_inscorojt,$conexion)){
+    echo "0";
+    histdelreg($id,$id_inscorojt,$tipo,$nombre,$conexion);
+    }else{
+        echo "1";
+    }
+ //funcion que edita el objetivo de los instructores y coordinadores
+}else if($opcion === 'updateins'){
+    $id_inscorojt=$_POST['id_inscorojt'];
+    $tipo=$_POST['tipo'];
+    $objetivo=$_POST['objetivo'];
+    $nombre=$_POST['nombre'];
+
+    if (edithinoj($id_inscorojt,$tipo,$objetivo,$conexion)){
+    echo "0";
+    histupinsoj($id,$id_inscorojt,$tipo,$nombre,$objetivo,$conexion);
+    }else{
+        echo "1";
+    }
 }
         
 //FUNCIONES-----------------------------------------------------------------------------------
@@ -146,7 +187,85 @@ if($opcion === 'registrar'){
             return false;
         }
     }
+//-----------------------------------------------------------------ALTA INSTRUCTOR OJT------------------------------------------------//
+
+    //funcion de comprobación para ver si el inspector o coordinado OJ ya esta en la lista
+    function comprojt ($id_pers,$tipo,$conexion){
+        $query="SELECT * FROM instcoord_ojt WHERE id_pers = '$id_pers' AND tipo = '$tipo' AND estado = 0";
+        $resultado= mysqli_query($conexion,$query);
+        if($resultado->num_rows==0){
+        return true;
+        }else{
+            return false;
+        }
+        $this->conexion->cerrar();
+    }
+    //funcion para guardar el instructor o coordinador ojt
+    function regisojt ($id_pers,$tipo,$objetivo,$conexion){
+        $query="INSERT INTO instcoord_ojt VALUES(0,'$id_pers','$tipo','$objetivo',0)";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+        $this->conexion->cerrar();
+    }
+    //funcion que guarda el historial de la persona
+    function histojt($id,$id_pers,$tipo,$conexion){
+        ini_set('date.timezone','America/Mexico_City');
+        $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
+        $query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'SE AGREGA ' '$tipo',concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE gstIdper=$id_pers";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //funcion para eliminar al instructor o coordinador ojt
+    function delregistro ($id_inscorojt,$conexion){
+        $query="UPDATE instcoord_ojt SET estado='1' WHERE id_inscorojt = '$id_inscorojt'";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+        $this->conexion->cerrar();
+    }
+    //guarda el movimiento de eliminar registro de instrucotres y coodinadores ojt
+    function histdelreg($id,$id_inscorojt,$tipo,$nombre,$conexion){
+        ini_set('date.timezone','America/Mexico_City');
+        $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
+        $query = "INSERT INTO historial VALUES (0,$id,'ELIMINA ' '$tipo','$nombre','$fecha')";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //funcion para editar al instructor o coordinador ojt
+    function edithinoj ($id_inscorojt,$tipo,$objetivo,$conexion){
+        $query="UPDATE instcoord_ojt SET tipo='$tipo', objetivo='$objetivo' WHERE id_inscorojt = '$id_inscorojt'";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+        $this->conexion->cerrar();
+    }
+    //guarda el movimiento de eliminar registro de instrucotres y coodinadores ojt
+    function histupinsoj($id,$id_inscorojt,$tipo,$nombre,$objetivo,$conexion){
+        ini_set('date.timezone','America/Mexico_City');
+        $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
+        $query = "INSERT INTO historial VALUES (0,$id,'ACTUALIZA INFORMACIÓN ', '$nombre' ' TIPO:' '$tipo' ' OBJETIVO:' '$objetivo' ' ID REGISTRO:' ' $id_inscorojt' ,'$fecha')";
+        if(mysqli_query($conexion,$query)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function cerrar($conexion){
         mysqli_close($conexion);
     }
+    
  ?>

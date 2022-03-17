@@ -1,5 +1,10 @@
 <?php
 include("../conexion/conexion.php");
+session_start();
+
+if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
+    $id = $_SESSION['usuario']['id_usu'];
+}
 
 $opcion = $_POST["opcion"];
 $informacion = [];
@@ -48,6 +53,7 @@ if($opcion === 'agreaccion'){
 
 	if(reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$id_instruct,$conexion)){
 		echo "0";
+		historia($id,$idcurso,$conexion);  
 	}else{
 		echo "1";
 	}
@@ -113,7 +119,9 @@ if(constancia($idcons,$listreg,$lisasisten,$listreportein,$cartdescrip,$regponde
 	echo "1";
 	}
 
-  }
+}
+ 
+
 }
 
 
@@ -127,6 +135,17 @@ $resultado= mysqli_query($conexion,$query);
 		return false;	
 		}
 		$this->conexion->cerrar();
+}
+//funciones para guardar en historial cambios de actualización
+function historia($id,$idcurso,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) VALUE ($id,'EVALUA EL CURSO',concat(' FOLIO DEL CURSO: ' ,(select codigo from cursos where id_curso =  $idcurso )),'$fecha')";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
 }
 
 function reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$id_instruct,$conexion){
@@ -169,5 +188,7 @@ function constancia($idcons,$listreg,$lisasisten,$listreportein,$cartdescrip,$re
 	cerrar($conexion);
 
 }
+
+
 ?>
 

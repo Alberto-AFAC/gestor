@@ -2,9 +2,9 @@
 include("../conexion/conexion.php");
 session_start();
 if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
-$id = $_SESSION['usuario']['id_usu'];
+    $id = $_SESSION['usuario']['id_usu'];
 }else{
-$id = '929';
+    $id = '929';
 }
 
 ini_set('date.timezone','America/Mexico_City');
@@ -78,12 +78,11 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 	
 	}else if($opcion === 'actdoc'){
 
-
-		if($_POST['ojtIdperact']=='' || $_POST['ojtNempleact']=='' || $_POST['ojtdocadact']==''){
+		if($_POST['ojtIdperact']=='' || $_POST['ojtNempleact']=='' || $_POST['ojtdocadact']=='' || $_POST['docactuali'] == ''){
 
 			echo "8";
 		}else{
-
+		$docactuali = $_POST['docactuali'];	
 		$ojtIdperact = $_POST['ojtIdperact'];
 		$ojtdocadjunto = $_POST['ojtdocadact'];
 		$ojtNempleact = $_POST['ojtNempleact'];
@@ -106,16 +105,15 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 		  mkdir($ruta, 0777, true);
 		}
 
-
 		$OjtAgraAct=$rutaEnServidor;
 
 		if(move_uploaded_file($rutaTemporal, $OjtAgraAct)){
 
-		if(documentoact($ojtIdperact,$OjtAgraAct,$factual,$conexion))
+		if(documentoact($docactuali,$ojtIdperact,$OjtAgraAct,$factual,$conexion))
 				{	echo "0";	
 
-		// $realizo = 'ACTUALIZO DOC';	
-		// historia($id,$ojtIdperact,$realizo,$docactuali,$conexion);
+		// historial
+		historialact($id,$ojtIdperact,$docactuali,$conexion);
 
 		}else{	echo "1";	}
 		
@@ -144,27 +142,39 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 
 			if(unlink($docadjunto)) {
 
-				if(borraregistro($ojtIdperEli,$conexion)){	echo "0";	}else{	echo "1";	}
+				if(borraregistro($ojtIdperEli,$conexion)){	
+					echo "0";
+					// historial
+			        historialdel($id,$ojtIdperEli,$conexion);	
+				}else{	echo "1";	
+
+
+				}
 
 			}else{
 				echo '2';
 			}
 		}else{
-			if(borraregistro($ojtIdperEli,$conexion)){	echo "0";	}else{	echo "1";	}
+			if(borraregistro($ojtIdperEli,$conexion)){	
+				echo "0";	
+			// historial
+			historialdel($id,$ojtIdperEli,$conexion);
+			}else{	echo "1";	}
 		}
 
 	}
 
-	function consultadoc($ojtIdperEli,$conexion){
+//---------------------------------------FUNCIONES ----------------------------------------------------------
 
+function consultadoc($ojtIdperEli,$conexion){
 	$query = "SELECT * FROM inspectordoc WHERE idi = '$ojtIdperEli' ";
 	  $result = mysqli_query($conexion,$query);
 	  $res = mysqli_fetch_row($result);
 
 	  return $res[3];
-	}
+}
 
-	function comprobar($ojtIdper,$ojtdocadjunto,$conexion){
+function comprobar($ojtIdper,$ojtdocadjunto,$conexion){
 
 	$query="SELECT * FROM inspectordoc WHERE idperdoc = '$ojtIdper' AND idstd != '0'";
 			$resultado= mysqli_query($conexion,$query);
@@ -174,8 +184,8 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 			return false;
 		}
 		$this->conexion->cerrar();
-	}
-	function inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion){
+}
+function inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion){
 
 			$query="INSERT INTO inspectordoc VALUES(0,'$ojtIdper','$ojtdocadjunto','$OjtAgra','$factual',0)";
 				if(mysqli_query($conexion,$query)){
@@ -184,11 +194,11 @@ if(inspectordoc($ojtIdper,$ojtdocadjunto,$OjtAgra,$factual,$conexion))
 					return false;
 				}
 				$this->conexion->cerrar();	
-	}
+}
 
-function documentoact($ojtIdperact,$OjtAgraAct,$factual,$conexion){
+function documentoact($docactuali,$ojtIdperact,$OjtAgraAct,$factual,$conexion){
 
-		$query="UPDATE inspectordoc SET docajunto = '$OjtAgraAct', fecactual = '$factual' WHERE idperdoc = $ojtIdperact";
+		$query="UPDATE inspectordoc SET docajunto = '$OjtAgraAct', fecactual = '$factual' WHERE idperdoc = $ojtIdperact AND idi = $docactuali ";
 			if(mysqli_query($conexion,$query)){
 				return true;
 			}else{
@@ -207,4 +217,42 @@ function borraregistro($ojtIdperEli,$conexion){
 			return false;
 		}
 		$this->conexion->cerrar();
+}
+
+//Funcion para guardar historial de adjuntar ojt y bitacora
+function historial($id,$ojtIdper,$ojtdocadjunto,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha2 = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,'ADJUNTA DOCUMENTO' ' $ojtdocadjunto',concat(`gstNombr`,' ',`gstApell`),'$fecha2' FROM personal WHERE `gstIdper` = $ojtIdper AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
 	}
+}
+
+//Funcion para guardar historial de actualización de documentos
+function historialact($id,$ojtIdperact,$docactuali,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id,CONCAT ('ACTUALIZA DOCUMENTO',' ',(select documento from inspectordoc where idi = $docactuali)),concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $ojtIdperact AND estado = 0";
+	
+
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+//Funcion para guardar historial de actualización de documentos
+function historialdel($id,$ojtIdperEli,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	
+	$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $id, 'ELIMINA ARCHIVO OJ/BITACORAS', concat(`gstNombr`,' ',`gstApell`),'$fecha' FROM personal WHERE `gstIdper` = $ojtIdperEli AND estado = 0";
+	if(mysqli_query($conexion,$query)){
+		return true;
+	}else{
+		return false;
+	}
+}

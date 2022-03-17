@@ -143,17 +143,17 @@ $direc = mysqli_query($conexion,$sql);
 
 <!-- /FIN DE NUEVO DISEÑO -->
 <div class="col-xs-12">
-          <div class="box box-solid">
+          <!-- <div class="box box-solid"> -->
             <div class="box-header">
-               <i class="fa fa fa-list"></i>
-
+               <!-- <i class="fa fa fa-list"></i> -->
+<!-- 
                <h3 class="box-title">Check list</h3>
 
                  <div class="box-tools pull-right">
                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
                    </button>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
             <!-- /.box-header -->
             
             <div class="box-body" style="display: none;">
@@ -652,11 +652,24 @@ $direc = mysqli_query($conexion,$sql);
                         <div class="col-sm-6">
                             <label class="label2">UBICACIÓN CENTRAL</label> 
                             <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="gstNucrt" name="gstNucrt"type="text" data-live-search="true">
-                                <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>    
-                                 <option value="CIAAC">CIAAC</option> 
-                               <option value="LAS FLORES">LAS FLORES</option> 
-                               <option value="ANGAR 8">ANGAR 8</option> 
-                               <option value="LICENCIA">LICENCIAS</option>
+                                <option value="0">SELECCIONE LA UBICACIÓN CENTRAL</option>
+                                <option value="AICM T1">AICM T1</option>
+                                <option value="AICM T2">AICM T2</option>
+                                <option value="ANGAR 8">ANGAR 8</option>
+                                <option value="CIACC">CIACC</option>
+                                <option value="LICENCIAS">LICENCIAS</option>
+                                <option value="FLORESM1">LAS FLORES M1</option>
+                                <option value="FLORESM2">LAS FLORES M2</option>
+                                <option value="FLORESP1">LAS FLORES PISO 1</option>
+                                <option value="FLORESP2">LAS FLORES PISO 2</option>
+                                <option value="FLORESP3">LAS FLORES PISO 3</option>
+                                <option value="FLORESP4">LAS FLORES PISO 4</option>
+                                <option value="FLORESP5">LAS FLORES PISO 5</option>
+                                <option value="FLORESP6">LAS FLORES PISO 6</option>
+                                <option value="FLORESP7">LAS FLORES PISO 7</option>
+                                <option value="FLORESP8">LAS FLORES PISO 8</option>
+                                <option value="FLORESPH">LAS FLORES PH</option>
+                                <option value="NO APLICA<">NO APLICA</option>
                             </select>
                         </div>
 

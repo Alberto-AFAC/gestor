@@ -225,11 +225,24 @@ include('header.php');
                 <div class="col-sm-offset-0 col-sm-12">
                 <label class="label2">UBICACIÓN CENTRAL EN ASIGNACIÓN</label> 
                 <select style="width: 100%" class="form-control" class="selectpicker" id="AgstNucrt" name="AgstNucrt"type="text" data-live-search="true">
-                <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option> 
-                <option value="CIAAC">CIAAC</option> 
-                <option value="LAS FLORES">LAS FLORES</option> 
-                <option value="ANGAR 8">ANGAR 8</option> 
-                <option value="LICENCIA">LICENCIAS</option>
+                    <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option>
+                    <option value="AICM T1">AICM T1</option>
+                    <option value="AICM T2">AICM T2</option>
+                    <option value="ANGAR 8">ANGAR 8</option>
+                    <option value="CIACC">CIACC</option>
+                    <option value="LICENCIAS">LICENCIAS</option>
+                    <option value="FLORESM1">LAS FLORES M1</option>
+                    <option value="FLORESM2">LAS FLORES M2</option>
+                    <option value="FLORESP1">LAS FLORES PISO 1</option>
+                    <option value="FLORESP2">LAS FLORES PISO 2</option>
+                    <option value="FLORESP3">LAS FLORES PISO 3</option>
+                    <option value="FLORESP4">LAS FLORES PISO 4</option>
+                    <option value="FLORESP5">LAS FLORES PISO 5</option>
+                    <option value="FLORESP6">LAS FLORES PISO 6</option>
+                    <option value="FLORESP7">LAS FLORES PISO 7</option>
+                    <option value="FLORESP8">LAS FLORES PISO 8</option>
+                    <option value="FLORESPH">LAS FLORES PH</option>
+                    <option value="NO APLICA<">NO APLICA</option>
                 </select>
                 </div>
                 </div>
@@ -358,12 +371,10 @@ $('#AgstIDSub').select2();
 var dataSet = [
 <?php 
 
-//mostra personal asigando por dirección ajecutiva // Se cambio la sentencia de la plantilla notirectorio.php
+//mostra personal asigando por dirección ajecutiva
 $Direje= $datos[5];
 
-// $query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstAreID  = $Direje AND estado = 0 ORDER BY gstCargo DESC";
-$query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstIDara = $Direje AND estado = 0 ORDER BY gstCargo DESC";
-
+$query = "SELECT * FROM personal WHERE gstCargo = 'NUEVO INGRESO' AND gstAreID  = $Direje AND estado = 0 ORDER BY gstCargo DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 

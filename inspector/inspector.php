@@ -48,7 +48,6 @@ color: white;
 }
 </style>
 </head>
-
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 <div class="wrapper">
 
@@ -159,9 +158,14 @@ data-target='#modal-info'>
 <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
 <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li>
 <li><a href="#obligatorio" data-toggle="tab">Cursos obligatorios</a></li>
-<?php 
+<?php if($datos[3]== 'ADMINISTRATIVO'){ }else{ ?>
+<li><a href="#ojt_insp" data-toggle="tab">OJT</a></li>
 
-if($datos[3]== 'ADMINISTRATIVO'){}else{
+<?php 
+}
+if($datos[3]== 'ADMINISTRATIVO'){
+
+}else{
 
 
 
@@ -289,6 +293,36 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
 </div>
 </section>
 </div>
+
+
+
+<div class="tab-pane" id="ojt_insp">
+<div class="col-sm-6">    
+<p id="oclOJT"><label>OJT   </label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('OJT');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+</div>
+<div class="col-sm-6">
+ <p><label>BITÁCORAS</label> ADJUNTAR DOCUMENTO <a type="button" class="asiste btn btn-default" title="Subir documento" onclick="adjunojt('BITACORA');" data-toggle="modal" data-target="#modal-doc"><i class="fa fa-cloud-upload text-info"></i></a></p>
+
+</div>
+
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+        </div>
+        <div id="docInsp"></div>
+         <div id="docBita"></div>
+<!--         <div class="box-body">
+            <table style="width: 100%;" id="data-table-ojtinsp"
+                class="table display table-striped table-bordered"></table>
+        </div> -->
+    </div>
+</div>
+</div>
+</section>
+</div>
+
 
 <div class="tab-pane" id="ojt">
 <section class="content">
@@ -507,3 +541,8 @@ immediately after the control sidebar -->
 
 </html>
 <?php include('../perfil/cursos.php'); ?>
+
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+  inspectorAcceso();
+</script>

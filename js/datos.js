@@ -640,7 +640,7 @@ function borrarperext(gstIdper){
     var gstIdper = $("#bajaIdex").val();
    // swal.showLoading();
     var datos= 'gstIdper=' + gstIdper + '&opcion=eliminar';
-    alert(datos);
+    //alert(datos);
         $.ajax({
             type: "POST",
             url: "../php/insertarPersonal.php",
@@ -1267,7 +1267,7 @@ function constudios(gstIdper) {
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-
+//alert("aqui es ")
         //AQUI03
         html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
         var n = 0;
@@ -1624,18 +1624,23 @@ function adjuntarOjt() {
         contentType: false,
         processData: false,
         success: function(r) {
+
+            $('#nota').show();    
+
             if (r == 8) {
                 $('#vaciojt').toggle('toggle');
                 setTimeout(function() {
                     $('#vaciojt').toggle('toggle');
                 }, 4000);
 
+                $("#nota").hide();  
+
             } else if (r == 0) {
                 $('#exitojt').toggle('toggle');
                 setTimeout(function() {
                     $('#exitojt').toggle('toggle');
                 }, 4000);
-
+                $("#nota").hide();  
                 consultardocIns(ojtIdper);
 
             } else if (r == 1) {
@@ -1643,31 +1648,37 @@ function adjuntarOjt() {
                 setTimeout(function() {
                     $('#fallajt').toggle('toggle');
                 }, 4000);
+                $("#nota").hide();                  
             } else if (r == 2) {
                 $('#errorjt').toggle('toggle');
                 setTimeout(function() {
                     $('#errorjt').toggle('toggle');
                 }, 4000);
+                $("#nota").hide();                  
             } else if (r == 3) {
                 $('#renomjt').toggle('toggle');
                 setTimeout(function() {
                     $('#renomjt').toggle('toggle');
                 }, 4000);
+                $("#nota").hide();                  
             } else if (r == 4) {
                 $('#fornjt').toggle('toggle');
                 setTimeout(function() {
                     $('#fornjt').toggle('toggle');
                 }, 4000);
+                $("#nota").hide();                  
             } else if (r == 6) {
                 $('#adjuntajt').toggle('toggle');
                 setTimeout(function() {
                     $('#adjuntajt').toggle('toggle');
                 }, 4000);
+                $("#nota").hide();                  
             } else if (r == 7) {
                 $('#repetidojt').toggle('toggle');
                 setTimeout(function() {
                     $('#repetidojt').toggle('toggle');
                 }, 4000);
+                $("#nota").hide();                  
             }
         }
     });
@@ -1677,11 +1688,12 @@ function adjuntarOjt() {
 
 function actualOjt() {
 
-    ojtIdperact = document.getElementById('ojtIdperact').value;
+    // ojtIdperact = document.getElementById('ojtIdperact').value;
 
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('OjtAgraAct', $('#OjtAgraAct')[0].files[0]);
     paqueteDeDatos.append('ojtIdperact', $('#ojtIdperact').prop('value'));
+    paqueteDeDatos.append('docactuali', $('#docactuali').prop('value'));    
     paqueteDeDatos.append('ojtdocadact', $('#ojtdocadact').prop('value'));
     paqueteDeDatos.append('ojtNempleact', $('#ojtNempleact').prop('value'));
     paqueteDeDatos.append('opcion', 'actdoc');
@@ -2390,7 +2402,7 @@ function consultardocIns(gstIdper) {
             if (obj.data[D].documento === 'OJT') {
                 dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 x++;
-                html += '<tr><td>' + x + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+                html += '<tr><td>' + x + '</td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
                 document.getElementById('ojt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('ojt-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('ojt-fec').innerHTML = obj.data[D].fecactual;
@@ -2422,7 +2434,7 @@ function consultardocIns(gstIdper) {
             if (obj.data[D].documento === 'BITACORA') {
                 dato = obj.data[D].idi + '*' + obj.data[D].idperdoc + '*' + obj.data[D].documento;
                 y++;
-                html += '<tr><td>' + y + '</td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
+                html += '<tr><td>' + y + '</td><td><a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a></td><td><a type="button" title="Actualizar documento" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="ctualDoc(' + "'" + dato + "'" + ');" data-target="#modal-docactualizar"><i class="fa fa-refresh text-info"></i></a><a href="#" onclick="borrarOjt(' + "'" + dato + "'" + ')" type="button" style="margin-left:2px" title="Borrar documento"  class="eliminar btn btn-default" data-toggle="modal" data-target="#eliminarojt"><i class="fa fa-trash-o text-danger"></i></a></td></tr>';
                 document.getElementById('btcr').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('btcr-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('btcr-fec').innerHTML = obj.data[D].fecactual;
@@ -2926,7 +2938,7 @@ function registrar() {
 
     datos = 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstSexo=' + gstSexo + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstisst=' + gstisst + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstNucrt=' + gstNucrt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstNmpld=' + gstNmpld + '&gstIdpst=' + gstIdpst + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstPlaza=' + gstPlaza + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstSigID=' + gstSigID + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstFeing=' + gstFeing + '&gstIDara=' + gstIDara + '&gstAcReg=' + gstAcReg + '&gstIDuni=' + gstIDuni + '&opcion=registrar';
 
-    if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstSexo == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstisst == '' || gstNucrt == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '' || gstNmpld == '' || sgtCrhnt == '' || gstRusp == '' || gstPlaza == '' || gstIdpst == '' || gstAreID == '' || gstPstID == '' || gstCargo == '' || gstIDCat == '' || gstIDSub == '' || gstCorro == '' || gstIDara == '' || gstAcReg == '' || gstIDuni == '' || gstCinst == '' || gstFeing == '') {
+    if (gstNombr == '' || gstApell == '' || gstFenac == '' || gstSexo == '' || gstCurp == '' || gstRfc == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstNmpld == '' || gstAreID == '' || gstIDara == '' || gstFeing == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {

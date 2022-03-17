@@ -74,11 +74,15 @@
             </span>
           </a>
           <ul class="treeview-menu">
-           <li><a href="nuevoingreso"><i class="fa ion-document-text"></i> Lista nuevo ingreso</a></li>            
+
+           <li id="anuevoingreso1"><a href="nuevoingreso"><i class="fa ion-document-text"></i> Lista nuevo ingreso</a></li>            
             
             <li><a href="inspecion"><i class="fa ion-document-text"></i> Lista de inspectores</a></li>
     
-           <li><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+           <li id="alistapersonl1"><a href="persona"><i class="fa ion-document-text"></i> Lista de personal</a></li>
+
+           <li id="alistainstc1"><a href="instructor"><i class="fa ion-document-text"></i> Lista de instructor</a></li>
+
             <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
           </ul>
@@ -97,6 +101,7 @@
             <li><a href="programa"><i class="fa ion-compose"></i> Programar curso</a></li>
             <li><a href="lisCurso"><i class="fa ion-compose"></i> Cursos Programados</a></li>
             <li><a href="pronostico"><i class="fa fa-hourglass-half"></i> Pronostico de Cursos</a></li>
+            <li><a href="vencidos"><i class="fa ion-easel"></i> Cursos vencidos</a></li>
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <!-- <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li> -->
           </ul>
@@ -156,3 +161,7 @@
 include('../perfil/actualizar.php');
 
 ?>
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+  directorAcceso();
+</script>
