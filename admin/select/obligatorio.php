@@ -151,24 +151,24 @@ if($fecs[3] >= 80){ //$fech = 'vigente'; ?>
 if($fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO' && $fecs[5] == 'CONFIRMADO'){ 
     ?>
 
-        <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'></td>
+        <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'></td>
         <td><?php echo $nombre ?></td>
         <td><?php echo $apellidos ?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $categoria?></td>
         <td style="font-weight: bold; height: 50px; color: #3C8DBC;"><?php echo 'Personal antiguo'?></td>
-        <td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p><?php echo 'POR REALIZAR'?></td>
+        <td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p><?php echo 'POR REALIZAR'?></td></tr>
 <?php  
 }else if($fecs[3] == 'NULL' && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO' && $fecs[5] != 'CONFIRMADO')
 {
 ?>
-  <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'></td>
+  <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'></td>
         <td><?php echo $nombre ?></td>
         <td><?php echo $apellidos ?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $categoria?></td>
         <td style="font-weight: bold; height: 50px; color: #3C8DBC;"><?php echo 'Personal antiguo'?></td>
-        <td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>#</p><?php echo 'POR REALIZAR'?></td>
+        <td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>#</p><?php echo 'POR REALIZAR'?></td></tr>
 
 <?php }
 
@@ -181,14 +181,14 @@ if($fecs[5] == 'CONFIRMADO'){
 }
 
     ?>
-        <td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
+        <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
         <td><?php echo $nombre?></td>
         <td><?php echo $apellidos?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
         <td><?php echo $categoria?></td>
         <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
         <?php 
-        echo $conf;
+        echo $conf; ?></tr><?php
 }
 
  }else{ 
