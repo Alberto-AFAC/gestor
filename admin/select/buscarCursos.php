@@ -1,3 +1,33 @@
+   
+<?php include ("../conexion/conexion.php");
+
+       // CURSOS OBLIGATORIOS      
+      // $sql = "
+      // SELECT gstIdlsc,gstPrfil,gstTitlo,gstVignc,gstTipo 
+      // FROM listacursos 
+      // WHERE gstIdlsc != 155 AND gstIdlsc != 2 AND gstIdlsc != 1 AND estado = 0 ORDER BY gstIdlsc ASC";
+
+      $sql = "
+      SELECT gstIdlsc,gstPrfil,gstTitlo,gstVignc,gstTipo 
+      FROM listacursos 
+      WHERE estado = 0 ORDER BY gstIdlsc desc";
+      $cat = mysqli_query($conexion,$sql);
+
+while($idcat = mysqli_fetch_row($cat)){
+
+$datos = $idcat[0].','.$idcat[1].','.$idcat[3];
+
+}
+
+            echo $idper=$datos;
+            
+            $f = explode(',', $idper);
+            $idcurso = intval($f[0]);//ID CURSO
+            $fecha = intval($f[2]);//VIGENCIA
+            $valor = explode(",", $idper);
+    ?>
+
+
     <div id="scroll" style="width: 100%; height: 300px; overflow: scroll;">
     <div class="box-body">
         <input type="hidden" name="id_mstr" id="id_mstr" value="<?php echo $idcurso?>">
@@ -100,29 +130,8 @@
             $categoria = $per[9];
         }
 
-
-    //     //ES NECESARIO CUMPLIR CON LOS 3 CURSOS PARA REALIZAR LOS SIGUIENTES
-    //     $query3 = "
-    //     SELECT SUM(sumidmstr) AS obligatorio FROM 
-    //     (SELECT idmstr AS sumidmstr 
-    //     FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 1 AND idinsp = $gstIdper 
-    //     UNION 
-    //     SELECT idmstr AS sumidmstr 
-    //     FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 2 AND idinsp = $gstIdper 
-    //     UNION 
-    //     SELECT idmstr AS sumidmstr 
-    //     FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 155 AND idinsp = $gstIdper) X";
-    //     $result = mysqli_query($conexion, $query3); 
-    //     if($reslt = mysqli_fetch_array($result)){
-    // //       $categoria = $res['spcialidds'];
-    //         if($reslt['obligatorio']==158){ 
-    //             $obligatorio = 'CUMPLE'; 
-    //         }else{
-    //             $obligatorio = 'NO CUMPLE';   
-    //         }
-    //     }else{
             $obligatorio = 'NO CUMPLE';   
-        // }
+ 
 
         $fechaActual = date_create(date('Y-m-d')); 
         $FechaIngreso = date_create($per[7]); 

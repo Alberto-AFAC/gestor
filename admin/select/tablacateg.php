@@ -63,6 +63,17 @@ $(document).ready(function(){
   });
 });
 
+
+    // Buscador de tabla
+$(document).ready(function(){
+  $("#myInpute").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
 $("#selectall").on("click", function() {
   $(".idinsp").prop("checked", this.checked);
 });
