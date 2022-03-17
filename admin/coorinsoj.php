@@ -1,5 +1,14 @@
 <!DOCTYPE html><?php include ("../conexion/conexion.php");
-ini_set('date.timezone','America/Mexico_City'); ?>
+ini_set('date.timezone','America/Mexico_City'); 
+
+$sql = "SELECT gstIdCom,gstRgion,gstNombr FROM comandancia WHERE estado = 0";
+$coman = mysqli_query($conexion,$sql);
+
+$sql2 = "SELECT gstIdAir,gstUnid1,gstUnid2 FROM aeropuertos WHERE estado = 0";
+$aero = mysqli_query($conexion,$sql2);
+?>
+
+
 
 <html>
 <head>
@@ -420,6 +429,155 @@ include('header.php');
         </div>
         </form>      
 
+<!--fin modal evaluaciónn -->
+
+<!--modal de instructor y coordinador informacion -->
+<div class="modal fade" id='modal-infocoinsojt'>
+    <div class="col-xs-12 .col-md-0"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h4><label>INFORMACIÓN</label></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="Dtall" class="form-horizontal" action="" method="POST" >
+                    <input type="hidden" id="idinfoojt" name="idinfoojt">
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">NOMBRE(S)</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtnombre" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">APELLIDOS</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtapellido" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <h4><i class="fa  ion-android-pin"></i>
+                                    <label> INFORMACIÓN DE ADSCRIPCIÓN</label>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojdirejec" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtdiradisc" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group" disabled="" type="hidden" name="nacional" id="nacional">
+                            <div class="col-sm-6">
+                                <label class="label2">SUBDIRECCIÓN</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojsubdire" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">DEPARTAMENTO</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtdepart" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">COMANDANCIA</label>
+                                <!-- <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtcomanda" disabled=""> -->
+                                <select disabled="" class="form-control" class="selectpicker" id="ojtcomanda" name="ojtcomanda" type="text" data-live-search="true" style="width: 100%" >
+			                        <option value="0">SIN COMANDANCIA ASIGANADA</option> 
+			                        <?php while($idcoman = mysqli_fetch_row($coman)):?>                      
+			                            <option value="<?php echo $idcoman[0]?>"><?php echo $idcoman[2]?></option>
+			                        <?php endwhile; ?>
+			                    </select>               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">AEROPUERTO</label>
+                                <!-- <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtaerpuerto" disabled="">                                                -->
+                                <select disabled="" class="form-control" class="selectpicker" id="ojtaerpuerto" name="ojtaerpuerto" type="text" data-live-search="true" style="width: 100%" >
+			                        <option value="0">SIN AEROPUESTO ASIGNADO</option> 
+			                        <?php while($idaero = mysqli_fetch_row($aero)):?>                      
+			                            <option value="<?php echo $idaero[0]?>"><?php echo $idaero[2]?></option>
+			                        <?php endwhile; ?>
+			                    </select>         
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="label2">UBICACIÓN CENTRAL</label>               
+                                <select style="width: 100%" disabled="" class="form-control" class="selectpicker" id="ojtubicacion" name="ojtubicacion" type="text" data-live-search="true">
+                                <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>    
+                                <option value="AICM T1">AICM T1</option>
+                                <option value="AICM T2">AICM T2</option>
+                                <option value="ANGAR 8">ANGAR 8</option>
+                                <option value="CIACC">CIACC</option>
+                                <option value="LICENCIAS">LICENCIAS</option>
+                                <option value="FLORESM1">LAS FLORES M1</option>
+                                <option value="FLORESM2">LAS FLORES M2</option>
+                                <option value="FLORESP1">LAS FLORES PISO 1</option>
+                                <option value="FLORESP2">LAS FLORES PISO 2</option>
+                                <option value="FLORESP3">LAS FLORES PISO 3</option>
+                                <option value="FLORESP4">LAS FLORES PISO 4</option>
+                                <option value="FLORESP5">LAS FLORES PISO 5</option>
+                                <option value="FLORESP6">LAS FLORES PISO 6</option>
+                                <option value="FLORESP7">LAS FLORES PISO 7</option>
+                                <option value="FLORESP8">LAS FLORES PISO 8</option>
+                                <option value="FLORESPH">LAS FLORES PH</option>
+                                <option value="NO APLICA<">NO APLICA</option>
+                            </select>
+                            
+                            </div>
+                        </div>
+                       <div class="form-group">
+                       <div class="col-sm-4">
+                            <div class="input-group">
+                                <h4><i class="fa   fa-dot-circle-o"></i>
+                                <label>CONTACTO</label>
+                                </h4>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">TELEFONO TRABAJO</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojteltrab" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">EXTENSION</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtext" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">CASA</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtcasa" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">CELULAR</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtcelular" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2">CORREO INSTITUCIONAL</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtcorreo" disabled="">               
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">CORREO PERSONAL</label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtalternativo" disabled="">
+                            </div>
+                        </div>  
+
+                    </form>                         
+                </div>            
+            </div>
+        </div>       
+    </div>   
+</div>          
+
 <!--fin modal de instructor y coordinador informacion -->
 </body>
 
@@ -438,17 +596,20 @@ var dataSet = [
     <?php 
 $query = "SELECT * FROM instcoord_ojt 
 INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper 
+INNER JOIN area on personal.gstIDara=area.id_area
 WHERE instcoord_ojt.estado = 0 ORDER BY instcoord_ojt.id_inscorojt ASC";
 $resultado = mysqli_query($conexion, $query);
 $x = 0;
 
 while($data = mysqli_fetch_array($resultado)){ 
+    $idpe=$data['id_pers'];
+    $id=$data['id_inscorojt'];
 $x++;
 ?>
 
     //console.log('<?php //echo $gstIdper ?>');
 
-    ["<?php echo $data['id_inscorojt'];?>", "<?php echo  $data['gstNombr'];?>", "<?php echo $data['gstApell']?>","<?php echo $data['tipo']?>","<?php echo "<a href='' title='Ver evaluación de perfil' onclick='editoinsojt()' class='btn btn-default' data-toggle='modal' data-target='#editarinoj'><i class='fa ion-compose text-info'></i></a> <a href='' title='Ver evaluación de perfil' onclick='foevalu()' class='btn btn-default' data-toggle='modal' data-target='#modal-evaperinsoj1'><i class='fa ion-android-clipboard'></i></a> <a href='#' title='Eliminar' onclick='labeespc()' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminariojt'><i class='fa fa-trash-o text-danger'></i></a>"; ?>",""
+    ["<?php echo $data['id_inscorojt'];?>", "<?php echo  $data['gstNombr'];?>", "<?php echo $data['gstApell']?>","<?php echo $data['adscripcion']?>","<?php echo $data['tipo']?>","<?php echo "<a href='#' title='Ver perfil' onclick='infinsojt($idpe)' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-infocoinsojt'><i class='glyphicon glyphicon-user text-success'></i></a> <a href='' title='Ver evaluación de perfil' onclick='editoinsojt()' class='btn btn-default' data-toggle='modal' data-target='#editarinoj'><i class='fa ion-compose text-info'></i></a> <a href='' title='Ver evaluación de perfil' onclick='foevalu()' class='btn btn-default' data-toggle='modal' data-target='#modal-evaperinsoj1'><i class='fa ion-android-clipboard'></i></a> <a href='#' title='Eliminar' onclick='labeespc()' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminariojt'><i class='fa fa-trash-o text-danger'></i></a>"; ?>",""
 
     ],
 
@@ -475,7 +636,10 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
         },
         {
             title: "APELLIDO(S)"
-        },
+        }, 
+        {
+            title: "ÁREA DE ADSCRIPCIÓN"
+        }, 
         {
             title: "TIPO"
         },
@@ -485,206 +649,8 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
     ],
 });
 
-
-
-function perinscoord(gstIdper) {
-    //FUNCION PARA SABER LOS CURSO PROGRAMADOS Y LOS IMPARTIDOS
-    var idpersona1 = document.getElementById('insperco').value =gstIdper;
-        $.ajax({
-            url: '../php/infopersext.php',
-            type: 'POST'
-        }).done(function(resp) {
-            obj = JSON.parse(resp);
-            var res = obj.data;
-//alert(idpersona1)
-            var n = 0;
-            for (R = 0; R < res.length; R++) { //RASTREAR EL ID DE LA PERSONA
-                if (obj.data[R].gstIdper == gstIdper) {
-                    $("#gstnomebre").val(obj.data[R].gstNombr + "  " + obj.data[R].gstApell);
-                    $("#cargoinsco").val(obj.data[R].gstCargo);
-                    $("#extnombre").val(obj.data[R].gstNombr);
-                    $("#extapellido").val(obj.data[R].gstApell);
-                    $("#extsexo").val(obj.data[R].gstSexo);
-                    $("#extcurp").val(obj.data[R].gstCurp);
-                    $("#extrfc").val(obj.data[R].gstRfc);
-                    $("#extipo").val(obj.data[R].gstLunac);
-                    $("#extproveedor").val(obj.data[R].gstNucrt);
-                    $("#extcasa").val(obj.data[R].gstCasa);
-                    $("#extcelular").val(obj.data[R].gstClulr);
-                    $("#extcorreo").val(obj.data[R].gstCorro);
-                    $("#extalternativo").val(obj.data[R].gstSpcID);
-                   // alert(obj.data[R].gstLunac)
-                    if (obj.data[R].gstLunac == "INTERNACIONAL") {
-                        $("#nacional").hide();
-                    }
-                    if (obj.data[R].gstCargo == "INSTRUCTOR") {
-                        $("#coordinados").hide();
-                    }
-                    if (obj.data[R].gstCargo == "COORDINADOR") {
-                        $("#coordinados").show();
-                    }
-
-                }
-            }
-
-        })
-        //TABLA DE CURSOS COMO INSTRUCTOR
-        $.ajax({
-            url: '../php/instruc_curs.php',
-            type: 'POST'
-        }).done(function(resp) {
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
-
-            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cursoinstuc" class="table table-bordered table-striped" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CODIGO</th><th style="width:350px"><i></i>CURSO</th><th><i></i>FECHA DE INICIO</th><th><i></i>FECHA FIN</th></tr></thead><tbody>';
-            for (V = 0; V < res.length; V++) {
-    
-                if (obj.data[V].idinst == idpersona1) {
-                    x++;
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[V].codigo + "</td><td>" + obj.data[V].gstTitlo + "</td><td>" + obj.data[V].fcurso + "</td><td>" + obj.data[V].fechaf + "</td></tr>";
-    
-                } else {}
-            }
-            html += '</tbody></table></div></div></div>';
-            $("#cursinstructor").html(html);
-            $('#cursoinstuc').DataTable({
-                  'paging'      : true,
-                  'lengthChange': false,
-                  'searching'   : true,
-                  'ordering'    : true,
-                  'info'        : true,
-                  'autoWidth'   : false,
-                  "language": {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar _MENU_ registros",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla",
-                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior",
-                },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },
-            },
-    });
-            
-        })
-        //alert('pruebas')
-    //TABLA DE CURSOS COMO INSTRUCTOR
-    $.ajax({
-            url: '../php/coord_curs.php',
-            type: 'POST'
-    }).done(function(resp) {
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
-
-            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="cursco" class="table table-bordered table-striped" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CODIGO</th><th style="width:350px"><i></i>CURSO</th><th><i></i>FECHA DE INICIO</th><th><i></i>FECHA FIN</th></tr></thead><tbody>';
-            for (O = 0; O < res.length; O++) {
-    
-                if (obj.data[O].idcoor == idpersona1) {
-                    x++;
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[O].codigo + "</td><td>" + obj.data[O].gstTitlo + "</td><td>" + obj.data[O].fcurso + "</td><td>" + obj.data[O].fechaf + "</td></tr>";
-    
-                } else {}
-            }
-            html += '</tbody></table></div></div></div>';
-            $("#curscoord").html(html);
-            $('#cursco').DataTable({
-                  'paging'      : true,
-                  'lengthChange': false,
-                  'searching'   : true,
-                  'ordering'    : true,
-                  'info'        : true,
-                  'autoWidth'   : false,
-                  "language": {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar _MENU_ registros",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla",
-                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior",
-                },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },
-            },
-            });
-            
-    })
-        
-}
-
 $(document).ready(function() {
-    $('#btnguardar').click(function() {
-        var alta = $("#alta").val();
-        var nombre = $("#nombre").val();
-        var apellido = $("#apellido").val();
-        var cargo = $("#cargo").val();
-        var detalle = $("#detalle").val();
-        // alert(detalle)
-        swal.showLoading();
-        if (nombre == '' || apellido == '' || cargo == '') {
-            Swal.fire({
-                type: 'warning',
-                text: 'Llene campos vacios!',
-                timer: 2500,
-                showConfirmButton: false,
-                customClass: 'swal-wide'
-            });
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "../php/insExt.php",
-                data: {
-                    alta: alta,
-                    nombre: nombre,
-                    apellido: apellido,
-                    cargo: cargo,
-                    detalle: detalle
-
-                },
-                success: function(data) {
-                    document.getElementById("inspectores-ext").reset();
-                    Swal.fire({
-                        type: 'success',
-                        text: 'SE HA REGISTRADO EXITOSAMENTE',
-                        showConfirmButton: false,
-                        timer: 2900,
-                        showConfirmButton: false,
-                        customClass: 'swal-wide'
-                    });
-                }
-            });
-        }
-
-        return false;
-    });
+  
 });
 
 function labeespc(){
@@ -697,7 +663,7 @@ function labeespc(){
       id += $(this).find('td:eq(0)').html(); //Toma el id 
       nombre += $(this).find('td:eq(1)').html(); //Toma el nombre
       apellido += $(this).find('td:eq(2)').html(); //Toma el apellido
-      tipo += $(this).find('td:eq(3)').html(); //Toma el tipo
+      tipo += $(this).find('td:eq(4)').html(); //Toma el tipo
       document.getElementById('regelim').innerHTML=nombre + ' ' + apellido;
       document.getElementById('id_inscorojt').value=id;
       document.getElementById('id_tipo').value=tipo;
@@ -747,7 +713,7 @@ function foevalu(){
       var tipo = "";
       nombre += $(this).find('td:eq(1)').html(); //Toma el nombre
       apellido += $(this).find('td:eq(2)').html(); //Toma el apellido
-      tipo += $(this).find('td:eq(3)').html(); //Toma el tipo
+      tipo += $(this).find('td:eq(4)').html(); //Toma el tipo
       document.getElementById('nompoj1').value=nombre + ' ' + apellido;
       document.getElementById('tipooj1').value=tipo;
       //alert(id_tarprin);
@@ -831,5 +797,61 @@ function saveedithin(){
             }
         }
     }); 
+}
+
+function infinsojt(idpe){
+   // alert("entra datos del perfil");
+    //alert(idpe);
+    //trae la información
+    $.ajax({
+          url: '../php/conDatosPersonal.php',
+          type: 'POST'
+      }).done(function(respuesta) {
+          obj = JSON.parse(respuesta);
+          var res = obj.data;
+          var x = 0;
+          for (U = 0; U < res.length; U++) { 
+              if (obj.data[U].gstIdper == idpe){
+                  datos = 
+                  obj.data[U].gstNombr + '*' + //nombre
+                  obj.data[U].gstApell + '*' + //apellifo
+
+                  obj.data[U].gstAreje + '*' + //direccion ejecutiva
+                  obj.data[U].adscripcion + '*' + //direccion de adscripción
+                  obj.data[U].descripsub + '*' + //subdirección
+                  obj.data[U].descripdep + '*' + //departamento
+
+                  obj.data[U].gstComnd + '*' + //comandancia
+                  obj.data[U].gstIDuni + '*' + //aeropuerto
+
+                  obj.data[U].gstNucrt + '*' + //ubicacion
+                  obj.data[U].objetivo + '*' + //teltrabajo
+                  obj.data[U].gstExTel + '*' + //extension
+                  obj.data[U].gstCasa + '*' + //tel casa
+                  obj.data[U].gstClulr + '*' + //tel celular
+                  obj.data[U].gstCorro + '*' + //correo institucional
+                  obj.data[U].gstCinst ;   
+                  var d = datos.split("*");   
+                  $("#ojtnombre").val(d[0]);
+                  $("#ojtapellido").val(d[1]);
+                  $("#ojdirejec").val(d[2]);
+                  $("#ojtdiradisc").val(d[3]);
+                  $("#ojsubdire").val(d[4]);
+                  $("#ojtdepart").val(d[5]);
+                  $("#ojtcomanda").val(d[6]);
+                  $("#ojtaerpuerto").val(d[7]);
+                  $("#ojtubicacion").val(d[8]);
+                  $("#ojteltrab").val(d[9]);
+                  $("#ojtext").val(d[10]);
+                  $("#ojtcasa").val(d[11]);
+                  $("#ojtcelular").val(d[12]);
+                  $("#ojtcorreo").val(d[13]);
+                  $("#ojtalternativo").val(d[14]);
+              }
+          }
+      });
+
+    
+    
 }
 </script>
