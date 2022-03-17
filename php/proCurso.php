@@ -126,6 +126,7 @@ $codigo = $_POST['acodigos'];
 $contracceso = $_POST['contracur'];
 $classroom = $_POST['classroom'];
 $idInstr = $_POST['idntrc'];
+$part = 'SI';
 
 
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
@@ -135,7 +136,7 @@ $yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,
 $fechaf = $yf.'-'.$mf.'-'.$df;
 
 
-if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso, $classroom,$conexion))
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion))
 
 // proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion)
 
