@@ -66,7 +66,7 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <?php }else{ ?>
             <li class="active">
-                <a href="inspector">
+                <a href="profile">
                     <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>
                     <span class='pull-right-container'>
                     </span>
@@ -131,7 +131,8 @@ ini_set('date.timezone','America/Mexico_City');
                 <ul class="treeview-menu">
                     <li><a href="tareas"><i class="fa fa-file-text"></i> OJT Principal</a></li>
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
-                    <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
+                    <!-- <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li> -->
+                    <li><a href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
                     <li><a href="instojt"><i class="fa fa-plus"></i>Alta coordinador/Instructor OJT</a></li>
                     <li><a href="coorinsoj"><i class="fa fa-file-text"></i>Lista coordinador/Instructor</a></li>
                 </ul>
