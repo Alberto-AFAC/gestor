@@ -32,7 +32,7 @@
 		// $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
 		// $finaliza = strtotime(Date($nuevafecha));
 
-		// $actual = date("d-m-Y"); 
+		$actual = date("d-m-Y"); 
 		// $hactual = date('H:i:s');
 		// $fin = $data['fin'];
 		// $f3 = strtotime($actual.''.$hactual);
@@ -57,42 +57,43 @@
 
 
 		
-// $fechav = date("d-m-Y",strtotime($data['ultima_fecha']."+".$data['gstVignc']." year"));     
+// $fechav = date("d-m-Y",strtotime($data['PROTNOSTICO']."+".$data['gstVignc']." year"));     
 $vencer = date("d-m-Y",strtotime($data['PRONOSTICO']."- 6 month"));
 
 // $f1 = strtotime($fechav);
-// $f2 = strtotime($vencer);
-// $f3 = strtotime($actual);
+$f2 = strtotime($vencer);
+$f3 = strtotime($actual);
 
 // $vencido = date("d-m-Y",strtotime($f1)); 
 if($data['ESTATUS'] == 'VIGENTE'){
 	$detalles = "NO APLICA";
+	$acciones ="<a disabled type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-default' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
 
 }else if($data['ESTATUS'] == 'VENCIDO'){
 	$detalles = "REPROGRAMAR";
+	$acciones = "<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
+
+	
+}else if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101) {
+	$detalles = "<span style='font-weight: bold; height: 50px; color:#D73925;'>CURSO POR VENCER</span>";		
 }
 
 	
-		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles];
+		// $cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles,$acciones];
 
 
 
 
 
-   /*if ($f3curso>$f2curso  && $data["proceso"] == "PENDIENTE") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>CURSO POR VENCER</span>";
-		$proc = 'VENCIDO';		
-		$cursos[] = [ 
-		$data["gstIdper"], 
-		$data["codigo"],
-        $data["gstNombr"]." ".$data["gstApell"],
-		$data["gstTitlo"],
-		$data["gstTipo"],
-		$data["fcurso"],
-		$data["fechaf"],
-		$proceso
-		];
-    }*/
+// if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101) {
+// 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>CURSO POR VENCER</span>";		
+// 		$cursos[] =[$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$proceso,$detalles,$acciones];
+//     }else{
+// 		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles,$acciones];
+
+// 	}
+$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles,$acciones];
+
 }
 		
 	}

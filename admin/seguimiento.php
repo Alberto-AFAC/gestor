@@ -98,6 +98,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th>VIGENCIA</th>
                                                 <th>ESTATUS</th>
                                                 <th>DETALLES</th>
+                                                <th>ACCIONES</th>
                                                 <!-- <th style="width:15%; display: none;">ACCIÓN</th> -->
                                             </tr>
                                         </thead>
