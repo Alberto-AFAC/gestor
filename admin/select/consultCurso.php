@@ -1,6 +1,6 @@
     <div id="scroll" style="width: 100%; height: 300px; overflow: scroll;">
     <div class="box-body">
-        <input type="hidden" name="id_mstr" id="id_mstr" value="<?php echo $idcurso?>">
+<!--         <input type="hidden" name="id_mstr" id="id_mstr" value="<?php echo $idcurso?>"> -->
 
         <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 
@@ -15,7 +15,7 @@
                         <button type="button" style="background-color: black; pointer-events: none; color: white;"
                         class="btn btn-default">* REPROBÓ</button>
                     </div>
-                    <input style="float: right;" id="myInpute" type="text" placeholder="Búscar...">
+                    <input style="float: right;" id="myBusqd" type="text" placeholder="Búscar...">
                     <br><br>
                     <div class="table-responsive mailbox-messages">
 
@@ -23,45 +23,60 @@
                         aria-describedby="example_info">
                         <thead>
                             <tr>
-                                <th>
-               <input type="checkbox" name="selectall" id="selectall">
-    </th>
+    <th><i></i> ID</th>
     <th><i></i> NOMBRE(S)</th>
     <th><i></i> APELLIDOS</th>
     <th><i></i> CORREO</th>
     <th><i></i> ESPECIALIDAD</th>
-    <th><i></i> DETALLE</th>
+    <th><i></i> CURSO</th>
     <th style="width: 100px"><i></i> ESTADO</th>
     </tr>
     </thead>
     <tbody id="myTable">
     <?php
-    $f = $fecha;
+//    $f = $fecha;
+
+    $sqlst = "SELECT * FROM listacursos WHERE estado = 0";
+    $rsltcrs = mysqli_query($conexion,$sqlst);
+    while($rslcr = mysqli_fetch_assoc($rsltcrs)) {
+            
+    
+        $valor = explode(",", $rslcr['gstPrfil']);           
+        foreach ($valor as $id) {   
 
 
-    foreach ($valor as $id) {
+            if($titulo==$id){
+    
+            $sql = "SELECT 
+            personal.gstIdper,
+            personal.gstNombr,
+            personal.gstApell,
+            personal.gstCorro,
+            categorias.gstCatgr,
+            personal.gstIDCat,
+            categorias.gstCsigl,
+            personal.gstFeing,
+            DATE_FORMAT(personal.gstFeing,
+            '%d/%m/%Y') AS Feingreso,
+            personal.gstCargo,
+            personal.gstCinst
+            FROM personal 
+            INNER JOIN especialidadcat 
+            ON personal.gstIdper = especialidadcat.gstIDper 
+            INNER JOIN categorias 
+            ON categorias.gstIdcat = especialidadcat.gstIDcat 
+            WHERE categorias.gstCsigl = '$id' AND personal.estado = 0 ORDER BY gstFeing DESC";        
+            $person = mysqli_query($conexion,$sql);
+            $n = 1;
+            while ($per = mysqli_fetch_row($person)) {
+              $idcurso = $rslcr['gstIdlsc']; 
+              $f = $rslcr['gstVignc'];
+              $fecha = $rslcr['gstVignc'];
+              $gstTitlo = $rslcr['gstTitlo'];    
 
-        $sql = "SELECT 
-        personal.gstIdper,
-        personal.gstNombr,
-        personal.gstApell,
-        personal.gstCorro,
-        categorias.gstCatgr,
-        personal.gstIDCat,
-        categorias.gstCsigl,
-        personal.gstFeing,
-        DATE_FORMAT(personal.gstFeing,
-        '%d/%m/%Y') AS Feingreso,
-        personal.gstCargo,
-        personal.gstCinst
-        FROM personal 
-        INNER JOIN especialidadcat 
-        ON personal.gstIdper = especialidadcat.gstIDper 
-        INNER JOIN categorias 
-        ON categorias.gstIdcat = especialidadcat.gstIDcat 
-        WHERE categorias.gstCsigl = '$id' AND personal.estado = 0 ORDER BY gstFeing DESC";        
-        $person = mysqli_query($conexion,$sql);
-        while ($per = mysqli_fetch_row($person)) {
+             // echo '<br>'.$n++.'<>'.$per[0].' '.$per[1].' '.$rslcr['gstTitlo'];
+
+            // echo $rslcr['gstIdlsc'].'<--->'.$rslcr['gstTitlo'].'<--->'.$rslcr['gstPrfil'].'<--->'.$per[1];
 
           if($per[3]== '0'){
             $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
@@ -80,49 +95,11 @@
 
         $gstIdper = $per[0];
 
-        $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
-        FROM especialidadcat 
-        INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
-        WHERE categorias.gstIdcat != 24 
-        AND categorias.gstIdcat != 25 
-        AND categorias.gstIdcat != 26 
-        AND categorias.gstIdcat != 29 
-        AND categorias.gstIdcat != 31
-        AND especialidadcat.gstIDper = $gstIdper";
-        $resul = mysqli_query($conexion, $queri); 
 
-        if($res = mysqli_fetch_array($resul)){
-            $categoria = $res['spcialidds'];
+        $categoria = $per[4];
 
-            if($res['spcialidds']==''){ $categoria = $per[9]; }
-
-        }else{
-            $categoria = $per[9];
-        }
-
-
-    //     //ES NECESARIO CUMPLIR CON LOS 3 CURSOS PARA REALIZAR LOS SIGUIENTES
-    //     $query3 = "
-    //     SELECT SUM(sumidmstr) AS obligatorio FROM 
-    //     (SELECT idmstr AS sumidmstr 
-    //     FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 1 AND idinsp = $gstIdper 
-    //     UNION 
-    //     SELECT idmstr AS sumidmstr 
-    //     FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 2 AND idinsp = $gstIdper 
-    //     UNION 
-    //     SELECT idmstr AS sumidmstr 
-    //     FROM cursos WHERE prtcpnt = 'SI' AND idmstr = 155 AND idinsp = $gstIdper) X";
-    //     $result = mysqli_query($conexion, $query3); 
-    //     if($reslt = mysqli_fetch_array($result)){
-    // //       $categoria = $res['spcialidds'];
-    //         if($reslt['obligatorio']==158){ 
-    //             $obligatorio = 'CUMPLE'; 
-    //         }else{
-    //             $obligatorio = 'NO CUMPLE';   
-    //         }
-    //     }else{
             $obligatorio = 'NO CUMPLE';   
-        // }
+       
 
         $fechaActual = date_create(date('Y-m-d')); 
         $FechaIngreso = date_create($per[7]); 
@@ -141,7 +118,7 @@
         idmstr,
         confirmar
         FROM cursos 
-        WHERE idmstr = $idcurso AND idinsp = $per[0] AND prtcpnt = 'SI'
+        WHERE idmstr = $idcurso AND idinsp = $gstIdper AND prtcpnt = 'SI'
         ORDER BY fcurso DESC LIMIT 1";
         $fechas = mysqli_query($conexion,$sql1);
 
@@ -179,17 +156,31 @@
 
           ?>
 
-          <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>'></td>
+          <tr><td><?php echo $idpar ?></td>
             <td><?php echo $nombre ?></td>
             <td><?php echo $apellidos ?></td>
             <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
             <td><?php echo $categoria?></td>
-            <td style="font-weight: bold; height: 50px; color: #3C8DBC;"><?php echo 'Personal antiguo'?></td>
+            <td style="font-weight: bold; height: 50px; color: #3C8DBC;"><?php echo $gstTitlo ?></td>
             <td style='color: #333; background-color: #F4F4F4;'><?php echo $conf ?></td></tr>
             <?php  
         }
 
-    }else if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
+    }
+
+if($f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'OTROS' || $f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'TRABAJO' || $f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'ENFERMEDAD'){ ?>
+
+            <td><?php echo $idpar ?></td>
+            <td><?php echo $nombre?></td>
+            <td><?php echo $apellidos?></td>
+            <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+            <td><?php echo $categoria?></td>
+            <td style='font-weight: bold; height: 50px; color: #3C8DBC;'><?php echo $gstTitlo ?></td>
+            <td><p style='color:red;float:left; '>#</p>POR REALIZAR</td>
+
+    <?php }
+
+    else if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
 
         if($fecs[5] == 'CONFIRMADO'){
          $conf = "<p style='color:red;float:left; '>*</p>POR REALIZAR";
@@ -198,12 +189,12 @@
     }
 
     ?>
-    <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
+    <tr><td><?php echo $idpar ?></td>
     <td><?php echo $nombre?></td>
     <td><?php echo $apellidos?></td>
     <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
     <td><?php echo $categoria?></td>
-    <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
+    <td style='font-weight: bold; height: 50px; color: #3C8DBC;'><?php echo $gstTitlo ?></td>
     <td style='color: #333; background-color: #F4F4F4;'><?php echo $conf ?></td></tr>
     <?php 
 
@@ -211,26 +202,13 @@
 
     }else{ 
 
-    $query2 = "SELECT *
-    FROM cursos 
-    WHERE idinsp  = $per[0] AND proceso = 'FINALIZADO'";
-    $resultado = mysqli_query($conexion, $query2);
-    if($curs = mysqli_fetch_row($resultado)){ 
-
-        $estancia = '<td style="font-weight: bold; height: 50px; color: #3C8DBC;">Personal antiguo</td>';
-
-    }else{
-        $estancia = '<td style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</td>';
-    }
-    //CONDCION PARA LOS QUE CUMPLEN LOS 3 CURSOS
-    // if($obligatorio=='CUMPLE'){
         ?>
-        <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
+        <tr><td><?php echo $idpar ?></td>
             <td><?php echo $nombre ?></td>
             <td><?php echo $apellidos ?></td>
             <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
             <td><?php echo $categoria?></td>
-            <?php echo $estancia ?>
+            <td style="font-weight: bold; height: 50px; color: #3C8DBC;"><?php echo $gstTitlo ?></td>
             <td style="color: #333; background-color: #F4F4F4;"><?php echo 'POR REALIZAR'?></td></tr>
             <?php 
     //     }
@@ -238,10 +216,16 @@
     ?>        
     <?php 
 
+            }
+
+            }
+
+        }
+
     }
 
-    }   
-    ?>
+
+?>
 
     </tbody>
     </table>

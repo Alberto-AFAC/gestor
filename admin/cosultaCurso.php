@@ -64,12 +64,40 @@
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-md-12">
+
+
+
                         <div class="nav-tabs-custom">
                 <!-- 
                 <?php //include('select/buscarCursos.php'); ?> -->
 
                             <div class="tab-content">
-                                <div class="box-body" id="listCurso">
+
+<div class="tab-content">
+<div class="active tab-pane" id="activity">
+<div class="post">
+<form class="form-horizontal">
+<input type="hidden" name="idper" id="idper" value="<?php echo $id ?>">
+<div class="form-group">
+<div class="col-sm-12">
+<label class="label2">SELECCIONE CURSO
+<!-----------APARTADO DE LOS 3 CURSOS OBLIGATORIS---------> 
+<!--    / <a href="programo">OBLIGATORIOS DE INDUCCIÓN</a> -->
+</label>
+<div id="selcurso"></div>
+</div>
+</div>
+<!-- <div id="partici"></div>  -->
+<div class="form-group">
+<div class="col-sm-12">
+<div id="tabcurso"></div>
+</div></div>
+</form>
+</div>
+</div></div>
+
+
+<!--                                 <div class="box-body" id="listCurso">
                                     <table class="display table table-striped table-bordered dataTable" id="example"
                                         style="width:100%">
                                         <thead>
@@ -77,15 +105,13 @@
                                                 <th style="width:5%;">ID</th>
                                                 <th>NOMBRE</th>
                                                 <th style="width:18%;">APELLIDOS</th>
-                                                <th style="width:18%;">CORREO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>DETALLE</th>
                                                 <th>ESTADO</th>
-                                                <th>----</th>
+                                                <th>DETALLE</th>
                                             </tr>
                                         </thead>
                                     </table>
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- MODAL PENDIENTE  -->
@@ -94,7 +120,7 @@
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
-
+</div>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             </section>
         </section>
@@ -144,59 +170,66 @@
 </body>
 
 </html>
-<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+  <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
+  <script type="text/javascript">
+  $(document).ready(function(){
+  //$('#id_mstr').select2();
+  $('#idinst').select2();
+  $("#idcord").select2();
+   $('#selcurso').load('select/buscarCursos.php');
+   $('#tabcurso').load('select/tablaCurso.php');
+   //$('#partici').load('select/tablaoblig.php')
+  }); 
+  </script>
+  <script src="../js/global.js"></script>
+  <script src="../js/select2.js"></script> 
 <script type="text/javascript">
+// $(document).ready(function() {
+//     var table = $('#example').DataTable({
 
-</script>
-<script src="../js/select2.js"></script>
-<!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
-<script type="text/javascript">
-$(document).ready(function() {
-    var table = $('#example').DataTable({
+//         "language": {
+//             "searchPlaceholder": "Buscar datos...",
+//             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+//         },
+//         "order": [
+//             [5, "DESC"]
+//         ],
+//         "ajax": "../php/consultCurso.php",
+//         "columnDefs": [{
+//           //  "targets": -1,
+//            // "data": null,
+//             //"defaultContent": ""
 
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        "order": [
-            [7, "DESC"]
-        ],
-        "ajax": "../php/consultCurso.php",
-        "columnDefs": [{
-          //  "targets": -1,
-           // "data": null,
-            //"defaultContent": ""
+//         }]
+//     });
 
-        }]
-    });
+//     detalles("#example tbody", table);
 
-    detalles("#example tbody", table);
-
-    agrinspctor("#example tbody", table);
+//     agrinspctor("#example tbody", table);
 
 
-    $('#example thead tr').clone(true).appendTo('#example thead');
+//     $('#example thead tr').clone(true).appendTo('#example thead');
 
-    $('#example thead tr:eq(1) th').each(function(i) {
-        var title = $(this).text(); //es el nombre de la columna
-        $(this).html('<input type="text"  placeholder="Buscar" />');
+//     $('#example thead tr:eq(1) th').each(function(i) {
+//         var title = $(this).text(); //es el nombre de la columna
+//         $(this).html('<input type="text"  placeholder="Buscar" />');
 
-        $('input', this).on('keyup change', function() {
-            if (table.column(i).search() !== this.value) {
-                table
-                    .column(i)
-                    .search(this.value)
-                    .draw();
-            }
-        });
-    });
+//         $('input', this).on('keyup change', function() {
+//             if (table.column(i).search() !== this.value) {
+//                 table
+//                     .column(i)
+//                     .search(this.value)
+//                     .draw();
+//             }
+//         });
+//     });
 
 
-    $('#example tbody').on('click', 'a', function() {
-        var data = table.row($(this).parents('tr')).data();
-    });
+//     $('#example tbody').on('click', 'a', function() {
+//         var data = table.row($(this).parents('tr')).data();
+//     });
 
-});
+// });
 
 
 
