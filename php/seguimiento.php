@@ -58,7 +58,7 @@
 
 		
 // $fechav = date("d-m-Y",strtotime($data['PROTNOSTICO']."+".$data['gstVignc']." year"));     
-$vencer = date("d-m-Y",strtotime($data['PRONOSTICO']."- 6 month"));
+$vencer = date("Y-m-d",strtotime($data['PRONOSTICO']."- 6 month"));
 
 // $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
@@ -66,16 +66,20 @@ $f3 = strtotime($actual);
 
 // $vencido = date("d-m-Y",strtotime($f1)); 
 if($data['ESTATUS'] == 'VIGENTE'){
+	$estatusp = "VIGENTE";
 	$detalles = "NO APLICA";
 	$acciones ="<a disabled type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-default' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
 
 }else if($data['ESTATUS'] == 'VENCIDO'){
+	$estatusp = "VENCIDO";
 	$detalles = "REPROGRAMAR";
 	$acciones = "<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
 
 	
-}else if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101) {
-	$detalles = "<span style='font-weight: bold; height: 50px; color:#D73925;'>CURSO POR VENCER</span>";		
+} if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101 && "FINALIZADO" && $data['ESTATUS']!='VENCIDO' ) {
+	$estatusp = "POR VENCER";
+	$acciones = "<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
+	$detalles =	"REPROGRAMAR";	
 }
 
 	
@@ -92,7 +96,7 @@ if($data['ESTATUS'] == 'VIGENTE'){
 // 		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles,$acciones];
 
 // 	}
-$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles,$acciones];
+$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$estatusp,$detalles,$acciones];
 
 }
 		
