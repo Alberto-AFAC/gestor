@@ -68,7 +68,7 @@ $f3 = strtotime($actual);
 if($data['estatus'] == 'vigente'){
 	$estatusp = "VIGENTE";
 	$detalles = "NO APLICA";
-	$acciones ="<a disabled type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-default' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
+	$acciones ="<a disabled type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-default' data-toggle='modal' data-target='' id='modalMost'>NO APLICA</a>";
 
 }else if($data['estatus'] == 'vencido'){
 	$estatusp = "VENCIDO";
