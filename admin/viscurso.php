@@ -83,10 +83,34 @@ onclick="agregarDias();">EDITAR</button>
 
 <!-- /.col -->
 <div class="col-md-12">
-<div class="box-tools pull-right">
+
+
+
+<div class="box-tools pull-right" id="lisCurso" style="display: none;">
 <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
 data-widget="remove">
 <a href="lisCurso"><i class='fa fa-times'></i></a>
+</button>
+</div>
+
+<div class="box-tools pull-right" id="pendientes" style="display: none;">
+<button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+data-widget="remove">
+<a href="pendientes"><i class='fa fa-times'></i></a>
+</button>
+</div>
+
+<div class="box-tools pull-right" id="acreeditados" style="display: none;">
+<button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+data-widget="remove">
+<a href="acreeditados"><i class='fa fa-times'></i></a>
+</button>
+</div>
+
+<div class="box-tools pull-right" id="porvencer" style="display: none;">
+<button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+data-widget="remove">
+<a href="porvencer"><i class='fa fa-times'></i></a>
 </button>
 </div>
 <div class="nav-tabs-custom">
@@ -358,7 +382,7 @@ aria-hidden="true">&times;</button>
 
                                 <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
                                     style="font-size:12px; width:280px; height:30px "
-                                    class="btn btn-info btn-sm altaboton"><i class="fa fa-graduation-cap"
+                                    class="btn btn-info btn-sm  altaboton"><i class="fa fa-graduation-cap"
                                         aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
 
                             </form>
