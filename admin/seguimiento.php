@@ -253,6 +253,10 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function() {
     var table = $('#example').DataTable({
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
         "ajax": "../php/seguimiento.php",
         initComplete: function() {
             count = 0;
