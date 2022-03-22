@@ -10,7 +10,7 @@
     CASE WHEN DATE_FORMAT(NOW(), '%Y/%m/%d') < (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR)) THEN 'VIGENTE'
              ELSE 'VENCIDO'
     END AS ESTATUS
-    from CURSOS c, personal p, listacursos l, categorias e
+    from cursos c, personal p, listacursos l, categorias e
     WHERE p.gstIdper = c.idinsp
     AND c.idmstr = l.gstIdlsc
     AND e.gstIdcat = p.gstIDCat
