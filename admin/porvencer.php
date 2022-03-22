@@ -856,11 +856,11 @@ $(document).ready(function() {
             url: '../php/lisCurso.php',
             type: 'POST'
         }).done(function(resp) {
-
-
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
+            
+            $("#porvencer").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
@@ -932,6 +932,9 @@ $(document).ready(function() {
                         $("#editcurs").hide();
                         $("#notiocu").hide();
                         $("#notiocus").hide();
+                        $("#ocubotn").hide();
+                        document.getElementById('modalMost').disabled = false;  
+                        document.getElementById('allselect').disabled = true; 
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();

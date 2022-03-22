@@ -858,10 +858,11 @@ $(document).ready(function() {
             type: 'POST'
         }).done(function(resp) {
 
-
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
+            
+            $("#acreeditados").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
