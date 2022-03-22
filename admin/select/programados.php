@@ -219,7 +219,7 @@
             <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
             <td><?php echo $categoria?></td>
             <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
-            <td style='color: white; background-color: #D58512;'><?php echo 'REPROGRAMAR'; ?></td>        
+            <td style='color: white; background-color: orange;'><?php echo 'REPROGRAMAR'; ?></td>        
     <?php 
          }  
      }
