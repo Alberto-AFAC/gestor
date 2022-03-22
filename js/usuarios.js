@@ -1,39 +1,3 @@
-// function enviarCorreo() {
-
-//     correo = document.getElementById('correo').value;
-//     if (correo != '') {
-//         $.ajax({
-//             url: 'php/conCorreo.php',
-//             type: 'POST',
-//             data: 'correo=' + correo
-//         }).done(function(respuesta) {
-//             //alert(respuesta);
-//             if (respuesta == 0) {
-//                 $('#exito').show();
-//                 setTimeout(function() {
-//                     $('#exito').hide();
-//                 }, 4000);
-//                 conprofesion(ActIdpro);
-//             } else if (respuesta == 1) {
-//                 $('#falla').show();
-//                 setTimeout(function() {
-//                     $('#falla').hide();
-//                 }, 4000);
-//             } else if (respuesta == 2) {
-//                 $('#aviso').show();
-//                 setTimeout(function() {
-//                     $('#aviso').hide();
-//                 }, 2000);
-//             }
-//         });
-//     } else {
-//         $('#vacio').show();
-//         setTimeout(function() {
-//             $('#vacio').hide();
-//         }, 2000);
-//     }
-// }
-
 function enviarCorreo() {
 
     correo = document.getElementById('correo').value;
