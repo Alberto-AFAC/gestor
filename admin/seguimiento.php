@@ -12,8 +12,9 @@ $inspector = mysqli_query($conexion,$sql);
 
 ?>
 <html lang="es">
+
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
     <title>Capacitación AFAC | Seguimiento y Control</title>
@@ -49,6 +50,7 @@ $inspector = mysqli_query($conexion,$sql);
     <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
 </head>
+
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
     <div class="wrapper">
@@ -61,9 +63,9 @@ $inspector = mysqli_query($conexion,$sql);
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-              
-            <h1>
-            <i class="glyphicon glyphicon-user"></i>  
+
+                <h1>
+                    <i class="glyphicon glyphicon-user"></i>
                     SEGUIMIENTO Y CONTROL
                 </h1>
             </section>
@@ -88,6 +90,18 @@ $inspector = mysqli_query($conexion,$sql);
                                         style="width:100%">
                                         <thead>
                                             <tr>
+                                                <th>ID</th>
+                                                <th>FOLIO CURSO</th>
+                                                <th>INSPECTOR</th>
+                                                <th>CURSO</th>
+                                                <th>TIPO</th>
+                                                <th>ESPECIALIDAD</th>
+                                                <th>VIGENCIA</th>
+                                                <th>ESTATUS</th>
+                                                <th>DETALLES</th>
+                                                <th>ACCIONES</th>
+                                            </tr>
+                                            <tr>
                                                 <th style="width:5%;">ID</th>
                                                 <th>FOLIO CURSO</th>
                                                 <th style="width:18%;">INSPECTOR</th>
@@ -102,9 +116,12 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <!-- <th style="width:15%; display: none;">ACCIÓN</th> -->
                                             </tr>
                                         </thead>
+                                    
+                                           
+                                      
                                     </table>
                                 </div>
-                            
+
                             </div>
                             <!-- MODAL PENDIENTE  -->
                             <div class="modal fade" id="modal-participnt">
@@ -175,14 +192,14 @@ style="background: white;border: 1px solid white;"> -->
                     </form>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             </section>
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- fin del chechk list para copletar iun certificado -->
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> <?php 
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- fin del chechk list para copletar iun certificado -->
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> <?php 
             $query ="SELECT * FROM controlvers"; $resultado = mysqli_query($conexion, $query);
             $row = mysqli_fetch_assoc($resultado);
             if(!$resultado) {
@@ -190,13 +207,14 @@ style="background: white;border: 1px solid white;"> -->
                 exit;
             }
         ?>
-            <?php echo $row['version']?>
-        </div>
-        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>Todos los derechos Reservados DDE.
-    </footer>
+                <?php echo $row['version']?>
+            </div>
+            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación
+                    Cilvil</a>.</strong>Todos los derechos Reservados DDE.
+        </footer>
 
 
-    <div class="control-sidebar-bg"></div>
+        <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
 
@@ -235,43 +253,120 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function() {
     var table = $('#example').DataTable({
-
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        "order": [
-            [7, "DESC"]
-        ],
         "ajax": "../php/seguimiento.php",
-        "columnDefs": [{
-          //  "targets": -1,
-           // "data": null,
-            //"defaultContent": ""
+        initComplete: function() {
+            count = 0;
+            this.api().columns().every(function() {
+                var title = this.header();
+                //replace spaces with dashes
+                title = $(title).html().replace(/[\W]/g, '-');
+                var column = this;
+                var select = $('<select class="select2" ></select>')
+                    .appendTo($(column.header()).empty())
+                    .on('change', function() {
+                        //Get the "text" property from each selected data 
+                        //regex escape the value and store in array
+                        var data = $.map($(this).select2('data'), function(value, key) {
+                            return value.text ? '^' + $.fn.dataTable.util
+                                .escapeRegex(value.text) + '$' : null;
+                        });
 
-        }]
+                        //if no data selected use ""
+                        if (data.length === 0) {
+                            data = [""];
+                        }
+
+                        //join array into string with regex or (|)
+                        var val = data.join('|');
+
+                        //search for the option(s) selected
+                        column
+                            .search(val ? val : '', true, false)
+                            .draw();
+                    });
+
+                column.data().unique().sort().each(function(d, j) {
+                    select.append('<option value="' + d + '">' + d + '</option>');
+                });
+
+                //use column title as selector and placeholder
+                select.select2({
+                    multiple: true,
+                    closeOnSelect: false,
+                    placeholder: "Selecciona..." 
+                });
+
+                //initially clear select otherwise first option is selected
+                select.val(null).trigger('change');
+            });
+        }
     });
+    // $('#example').DataTable({
+    //     // columnDefs: [{
+    //     //     width: 220,
+    //     //     targets: 3,
+    //     //     targets: "_all",
+    //     //     sortable: false
+    //     // }],
+    //     "language": {
+    //         "searchPlaceholder": "Buscar datos...",
+    //         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    //     },
+    //     "ajax": "../php/seguimiento.php",
+    //     orderCellsTop: true,
+    //     initComplete: function() {
+    //         this.api().columns().every(function() {
+    //             var column = this;
+    //             var select = $('<select><option value="">Seleccióne...</option></select>')
+    //                 .appendTo($(column.header()).empty())
+    //                 .on('change', function() {
+    //                     var val = $.fn.dataTable.util.escapeRegex(
+    //                         $(this).val()
+    //                     );
 
-    detalles("#example tbody", table);
+    //                     column
+    //                         .search(val ? '^' + val + '$' : '', true, false)
+    //                         .draw();
+    //                 });
 
-    agrinspctor("#example tbody", table);
+    //             column.data().unique().sort().each(function(d, j) {
+    //                 select.append('<option value="' + d + '">' + d + '</option>')
+    //             });
+    //         });
+    //     }
 
+    // });
+    // var table = $('#example').DataTable({
 
-    $('#example thead tr').clone(true).appendTo('#example thead');
+    //     "language": {
+    //         "searchPlaceholder": "Buscar datos...",
+    //         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    //     },
+    //     "order": [
+    //         [7, "DESC"]
+    //     ],
+    //     "ajax": "../php/seguimiento.php",
+    //     "columnDefs": [{
+    //       //  "targets": -1,
+    //        // "data": null,
+    //         //"defaultContent": ""
 
-    $('#example thead tr:eq(1) th').each(function(i) {
-        var title = $(this).text(); //es el nombre de la columna
-        $(this).html('<input type="text"  placeholder="Buscar" />');
+    //     }]
+    // });
 
-        $('input', this).on('keyup change', function() {
-            if (table.column(i).search() !== this.value) {
-                table
-                    .column(i)
-                    .search(this.value)
-                    .draw();
-            }
-        });
-    });
+    // $('#example thead tr:eq(1) th').each(function(i) {
+    //     var title = $(this).text(); //es el nombre de la columna
+    //     $(this).html('<input type="text"  placeholder="Buscar" />');
+
+    //     $('input', this).on('keyup change', function() {
+    //         if (table.column(i).search() !== this.value) {
+    //             table
+    //                 .column(i)
+    //                 .search(this.value)
+    //                 .draw();
+    //         }
+    //     });
+    // });
 
 
     $('#example tbody').on('click', 'a', function() {
@@ -487,8 +582,8 @@ function detalles(tbody, table) {
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
-#example input {
-    width: 50% !important;
+#example select {
+    width: 90% !important;
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->
