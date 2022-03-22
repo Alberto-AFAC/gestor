@@ -933,6 +933,10 @@ $(document).ready(function() {
                         $("#editcurs").hide();
                         $("#notiocu").hide();
                         $("#notiocus").hide();
+                        $("#ocubotn").hide();
+                        document.getElementById('modalMost').disabled = false;  
+                        document.getElementById('allselect').disabled = true; 
+
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
@@ -1061,8 +1065,6 @@ function agrinspctor(tbody, table) {
 
     $(tbody).on("click", "a.asiste", function() {
         var data = table.row($(this).parents("tr")).data();
-
-
 
         $("#Prtcpnt #gstIdlsc").val(data[15]);
         $("#Prtcpnt #acodigos").val(data[9]);
