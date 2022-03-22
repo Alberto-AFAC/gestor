@@ -144,7 +144,7 @@ $inspector = mysqli_query($conexion,$sql);
                                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" onclick="location.href='porvencer'" class="close"
+                                                <button type="button" onclick="location.href='acreeditados'" class="close"
                                                     data-dismiss="modal" aria-label="Close"><span
                                                         aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
@@ -362,7 +362,8 @@ style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
 <div class="form-group">
 <div class="col-sm-2">
 <label>FOLIO:</label>
-<input type="text" name="id_curso" id="id_curso"
+<input type="hidden" name="id_curso" id="id_curso">
+<input type="text" name="codigocurso" id="codigocurso"
 style="text-transform:uppercase;" class="form-control disabled"
 disabled="">
 </div>
@@ -375,7 +376,7 @@ disabled="">
 <div class="col-sm-12">
 <label>FECHA DE LA EVALUACIÓN:</label>
 <input type="date" style="text-transform:uppercase;"
-class="form-control disabled" disabled="" id='fechaev'>
+class="form-control disabled" disabled="" id='fechaev' value="<?php echo date('Y-m-d');?>">
 
 </div>
 <div class="col-sm-12">
@@ -818,11 +819,11 @@ $(document).ready(function() {
         "order": [
             [7, "DESC"]
         ],
-        "ajax": "../php/cursosPorVncr.php",
+        "ajax": "../php/cursosAcred.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
         }]
     });
@@ -856,11 +857,11 @@ $(document).ready(function() {
             url: '../php/lisCurso.php',
             type: 'POST'
         }).done(function(resp) {
+
+
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-            
-            $("#porvencer").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
@@ -932,9 +933,6 @@ $(document).ready(function() {
                         $("#editcurs").hide();
                         $("#notiocu").hide();
                         $("#notiocus").hide();
-                        $("#ocubotn").hide();
-                        document.getElementById('modalMost').disabled = false;  
-                        document.getElementById('allselect').disabled = true; 
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
