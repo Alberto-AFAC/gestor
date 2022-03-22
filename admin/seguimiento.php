@@ -587,7 +587,7 @@ function detalles(tbody, table) {
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
 #example select {
-    width: 90% !important;
+    width: 100% !important;
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->
