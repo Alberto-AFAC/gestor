@@ -189,7 +189,23 @@
             <?php  
         }
 
-    }else if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
+    }else
+
+
+if($f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'OTROS' || $f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'TRABAJO' || $f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'ENFERMEDAD'){ ?>
+
+        <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
+            <td><?php echo $nombre?></td>
+            <td><?php echo $apellidos?></td>
+            <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
+            <td><?php echo $categoria?></td>
+            <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
+            <td><p style='color:red;float:left; '>#</p>POR REALIZAR</td>
+
+    <?php }
+
+
+    else if($f3 <= $f2 && $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
 
         if($fecs[5] == 'CONFIRMADO'){
          $conf = "<p style='color:red;float:left; '>*</p>POR REALIZAR";

@@ -174,7 +174,7 @@
 
     <?php 
         }
-    }else if($f3 <= $f2 && $fecs[3] == 'NULL'){ ?>
+    }else if($f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] =='CONFIRMADO' || $f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] =='CONFIRMAR'){ ?>
 
             <td style="width: 5%;"><input disabled="" type='checkbox' 
             value='<?php echo $idpar ?>' /></td>
@@ -183,11 +183,11 @@
             <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
             <td><?php echo $categoria?></td>
             <td style='font-weight: bold; height: 50px; color: #3C8DBC;'>Personal antiguo</td>
-            <?php if($fecs[2]=='PENDIENTE'){ ?>
+            <?php if($fecs[2]=='PENDIENTE' || $fecs[5] =='CONFIRMAR'){ ?>
 
             <td style='color: white; background-color: blue;'><?php echo 'EN CURSO' ?></td>
 
-          <?php }else{ ?>
+          <?php }else if($fecs[2]=='FINALIZADO'|| $fecs[5] =='CONFIRMADO'){ ?>
             <td style='color: white; background-color: blue;'><?php echo 'POR EVALUAR' ?></td>
           <?php  } ?>
 
@@ -201,7 +201,7 @@
             <td style='color: white; background-color:red;'><?php echo 'REPROGRAMAR' ?></td>
             <?php 
 
-    }else if($f3 <= $f2 && $fecs[3] >= 80 ){ //$fech = 'vigente'; ?>
+    }else if($f3 <= $f2 && $fecs[3] >= 80 && $fecs[5] =='CONFIRMADO'){ //$fech = 'vigente'; ?>
             <td style="width: 5%;"><input disabled="" type='checkbox' 
             value='<?php echo $idpar ?>' /></td>
             <td><?php echo $nombre?></td>
