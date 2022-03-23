@@ -1793,7 +1793,7 @@ if(privilegio==3){// EJECUTIVO, DIRECTOR
         $("#sin_altacurso").show();
         $("#con_catalogo").show();
         $("#sin_editacurso").show();
-        $("#con_procurso").show();
+        $("#sin_procurso").show();
         $("#con_programados").show();
         $("#sin_detallecurso").show();
         $("#con_pronostcurso").show();

@@ -45,6 +45,7 @@ $inspector = mysqli_query($conexion,$sql);
 <script type="text/javascript" src="../datas/dynamic.php" async=""></script>
 <script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
 <script type="text/javascript" language="javascript" src="../datas/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
 <script type="text/javascript" language="javascript" src="../datas/dataTables.js"></script>
 <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
 <script src="http://momentjs.com/downloads/moment.min.js"></script>
@@ -137,90 +138,26 @@ $inspector = mysqli_query($conexion,$sql);
 
 
 
-
-                            <div class="modal fade" id="modal-participnt">
+                                <div class="modal fade" id="modal-participnt">
                                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" onclick="location.href='porvencer'" class="close"
-                                                    data-dismiss="modal" aria-label="Close"><span
-                                                        aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="form-horizontal" id="Prtcpnt">
-                                                    <input type="hidden" name="acodigos" id="acodigos">
-                                                    <input type="hidden" class="form-control" id="gstIdlsc"
-                                                        name="gstIdlsc">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-6">
-                                                            <label>TÍTULO</label>
-                                                            <input type="text" onkeyup="mayus(this);"
-                                                                class="form-control" id="gstTitlo" name="gstTitlo"
-                                                                disabled="">
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <label>INICIO</label>
-                                                            <input type="data" onkeyup="mayus(this);"
-                                                                class="form-control" id="finicio" name="finicio"
-                                                                disabled="">
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <label>DURACIÓN</label>
-                                                            <input type="text" onkeyup="mayus(this);"
-                                                                class="form-control" id="gstDrcin" name="gstDrcin"
-                                                                disabled="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <label>PARTICIPANTE</label>
-                                                            <select class="form-control" id="idinsp" name="idinsp"
-                                                                style="width: 100%;">
-                                                                <option value="">ELIJA PARTICIPANTE PARA ASISTIR AL
-                                                                    CURSO </option>
-                                                                <?php while($inspectors = mysqli_fetch_row($inspector)):?>
-                                                                <option value="<?php echo $inspectors[0]?>">
-                                                                    <?php echo $inspectors[1].' '.$inspectors[2].' ('.$inspectors[3].')'?>
-                                                                </option>
-                                                                <?php endwhile; ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <input type="hidden" name="hrcurs" id="hrcurs">
-                                                    <input type="hidden" name="finalf" id="finalf">
-                                                    <input type="hidden" name="idcord" id="idcord">
-                                                    <input type="hidden" name="sede" id="sede">
-                                                    <input type="hidden" name="linke" id="linke">
-                                                    <input type="hidden" name="modalidad" id="modalidad">
-                                                    <input type="hidden" name="contracceso" id="contracceso">
-                                                    <input type="hidden" name="classroom" id="classroom">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-5">
-                                                            <button type="button" id="buttons" class="btn btn-info"
-                                                                onclick="agrPartc();">ACEPTAR</button>
-                                                        </div>
-                                                        <b>
-                                                            <p class="alert alert-info text-center padding error"
-                                                                id="danger">El participante ya está agregado </p>
-                                                        </b>
-                                                        <b>
-                                                            <p class="alert alert-success text-center padding exito"
-                                                                id="succe">¡Se agregó el participante con éxito!</p>
-                                                        </b>
-                                                        <b>
-                                                            <p class="alert alert-warning text-center padding aviso"
-                                                                id="empty">Elija participante </p>
-                                                        </b>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                aria-labelledby="exampleModalLabel">
+                                <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+                                <div class="modal-content">
+
+                                <div class="modal-header">
+                                <button type="button" onclick="location.href='lisCurso'" class="close"
+                                data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
                                 </div>
-                            </div>
+                                <?php include ('../php/modalpart.php')?>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+
+                            
+
                             <!-- /.tab-content
 </div>
 <!- /.nav-tabs-custom -->
@@ -362,7 +299,8 @@ style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
 <div class="form-group">
 <div class="col-sm-2">
 <label>FOLIO:</label>
-<input type="text" name="id_curso" id="id_curso"
+<input type="hidden" name="id_curso" id="id_curso">
+<input type="text" name="codigocurso" id="codigocurso"
 style="text-transform:uppercase;" class="form-control disabled"
 disabled="">
 </div>
@@ -375,7 +313,7 @@ disabled="">
 <div class="col-sm-12">
 <label>FECHA DE LA EVALUACIÓN:</label>
 <input type="date" style="text-transform:uppercase;"
-class="form-control disabled" disabled="" id='fechaev'>
+class="form-control disabled" disabled="" id='fechaev' value="<?php echo date('Y-m-d');?>">
 
 </div>
 <div class="col-sm-12">
@@ -460,7 +398,7 @@ Ingresar la Fecha!</p>
 <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal fade" id="modal-masiva">
 <div class="modal-dialog modal-lg">
-<div class="modal-content" style="width: 1100px;">
+<div class="modal-content" style="width:1100px; display: block; padding: 0; margin: 0;"> <!-----13122021------>
 <div class="modal-header">
 <button type="button" class="close" style="font-size: 22px"
 data-dismiss="modal" aria-label="Close">
@@ -808,6 +746,30 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
+    var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
+    //alert(idpersona1);
+    $.ajax({
+            url: '../php/accesos-list.php',
+            type: 'POST'
+        }).done(function(resp) {    
+            obj = JSON.parse(resp);
+            var res = obj.data;
+
+            //AQUI03
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+            var n = 0;
+            for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
+                //alert(obj.data[H].id_usu);
+                if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0' ) {
+                    $('#modal-obligatorio').modal('show'); 
+                    $("#usuarioobl").val(obj.data[H].gstNombr +" "+obj.data[H].gstApell  );
+                }else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1' ) {
+                    $('#modal-obligatorio').modal('hide');  
+                }
+
+        }
+    })
+    //FIN DE ACTUALIZACION
 $(document).ready(function() {
     var table = $('#example').DataTable({
 
@@ -818,11 +780,11 @@ $(document).ready(function() {
         "order": [
             [7, "DESC"]
         ],
-        "ajax": "../php/cursosPorVncr.php",
+        "ajax": "../php/cursosProgra.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
         }]
     });
@@ -856,11 +818,11 @@ $(document).ready(function() {
             url: '../php/lisCurso.php',
             type: 'POST'
         }).done(function(resp) {
+
+
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-            
-            $("#porvencer").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
@@ -924,6 +886,7 @@ $(document).ready(function() {
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
                     $("#Dtall #codigoIDCuro").val(d[15]);
+
                     codigo = d[15];
 
                     idcurso(codigo);
@@ -932,9 +895,6 @@ $(document).ready(function() {
                         $("#editcurs").hide();
                         $("#notiocu").hide();
                         $("#notiocus").hide();
-                        $("#ocubotn").hide();
-                        document.getElementById('modalMost').disabled = false;  
-                        document.getElementById('allselect').disabled = true; 
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
@@ -970,6 +930,9 @@ function idcurso(codigo) {
     var id = codigo
 
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
+        "order": [
+            [3, "asc"]
+        ],
         "ajax": {
             "url": "../php/cursosProgramados.php",
             "type": "GET",
@@ -1059,37 +1022,6 @@ function detalles(tbody, table) {
     });
 }
 
-function agrinspctor(tbody, table) {
-
-    $(tbody).on("click", "a.asiste", function() {
-        var data = table.row($(this).parents("tr")).data();
-
-
-
-        $("#Prtcpnt #gstIdlsc").val(data[15]);
-        $("#Prtcpnt #acodigos").val(data[9]);
-        $("#Prtcpnt #gstTitlo").val(data[1]);
-        $("#Prtcpnt #finicio").val(data[3]);
-        $("#Prtcpnt #gstDrcin").val(data[10]);
-
-        $("#Prtcpnt #hrcurs").val(data[17]);
-        $("#Prtcpnt #finalf").val(data[5]);
-        $("#Prtcpnt #idcord").val(data[16]);
-        $("#Prtcpnt #sede").val(data[12]);
-        $("#Prtcpnt #linke").val(data[13]);
-        $("#Prtcpnt #modalidad").val(data[14]);
-        $("#Prtcpnt #contracceso").val(data[19]);
-        $("#Prtcpnt #classroom").val(data[20]);
-
-        if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#buttons").hide();
-        } else {
-            $("#buttons").show();
-        }
-
-
-    });
-}
 
 
 </script>
