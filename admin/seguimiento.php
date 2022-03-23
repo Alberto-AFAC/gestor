@@ -100,7 +100,6 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th>CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>INICIO</th>
                                                 <th>TERMINO</th>
                                                 <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
@@ -116,7 +115,6 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th style="width: 70%;">CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>INICIO</th>
                                                 <th>TERMINO</th>
                                                 <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
@@ -273,7 +271,7 @@ $(document).ready(function() {
         currentdate.getHours() + ":" +
         currentdate.getMinutes();
     var table = $('#example').DataTable({
-        "pageLength": 5,
+        "pageLength": 10,
         "lengthMenu": [
             [5, 10, 25, 50],
             [5, 10, 25, 50]

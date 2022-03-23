@@ -55,7 +55,10 @@
 		// $vig = date("d-m-Y",strtotime($data['ultima_fecha']."+".$data['gstVignc']." year"));     
 
 
+$fechaInicial = date("d-m-Y",strtotime($data["fechaf"]));
+$fechaPronostico = date("d-m-Y",strtotime($data["pronostico"]));
 
+// $fin = date("d-m-Y",strtotime($data["finaliza"]." -1 days"));
 		
 // $fechav = date("d-m-Y",strtotime($data['PROTNOSTICO']."+".$data['gstVignc']." year"));     
 $vencer = date("Y-m-d",strtotime($data['pronostico']."- 6 month"));
@@ -96,7 +99,7 @@ if($data['estatus'] == 'vigente'){
 // 		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$data['estatus'],$detalles,$acciones];
 
 // 	}
-$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['fcurso'],$data['fechaf'],$data['pronostico'],$estatusp,$detalles,$acciones];
+$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$fechaInicial,$fechaPronostico,$estatusp,$detalles,$acciones];
 
 }
 		
