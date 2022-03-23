@@ -133,14 +133,18 @@ $.ajax({
             html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
             }
         if(obj.data[i].dias=='Sábado' && obj.data[i].inc==1){
-             html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+            html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
          }else if(obj.data[i].dias=='Sábado'){
-             html += "<td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td>";                                                
+            html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                   
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
             }
         if(obj.data[i].dias=='Domingo' && obj.data[i].inc==1){
-            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                    
+            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td><tr>";
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";            
         }else if(obj.data[i].dias=='Domingo'){
-            html += "<td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                                
+            html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b><tr>";
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
             }       
         }
 
