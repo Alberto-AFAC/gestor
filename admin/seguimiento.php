@@ -96,7 +96,9 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th>CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>VIGENCIA</th>
+                                                <th>INICIO</th>
+                                                <th>TERMINO</th>
+                                                <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
                                                 <th>DETALLES</th>
                                                 <th>ACCIONES</th>
@@ -109,7 +111,9 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th style="width:18%;">CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>VIGENCIA</th>
+                                                <th>INICIO</th>
+                                                <th>TERMINO</th>
+                                                <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
                                                 <th>DETALLES</th>
                                                 <th>ACCIONES</th>

@@ -63,7 +63,7 @@ $vencer = date("Y-m-d",strtotime($data['pronostico']."- 6 month"));
 // $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
-
+$fechaInFin = $data['fcurso'].''.$data['fechaf'];
 // $vencido = date("d-m-Y",strtotime($f1)); 
 if($data['estatus'] == 'vigente'){
 	$estatusp = "VIGENTE";
@@ -96,7 +96,7 @@ if($data['estatus'] == 'vigente'){
 // 		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$data['estatus'],$detalles,$acciones];
 
 // 	}
-$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$estatusp,$detalles,$acciones];
+$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['fcurso'],$data['fechaf'],$data['pronostico'],$estatusp,$detalles,$acciones];
 
 }
 		
