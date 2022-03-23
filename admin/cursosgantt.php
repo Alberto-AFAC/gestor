@@ -33,20 +33,20 @@ $inspector = mysqli_query($conexion,$sql);
     <script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
-    <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
+    <!-- <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> -->
+    <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
+    <script src="js/mobiscroll.javascript.min.js"></script>
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
+    <style>
+        .md-timeline-height .mbsc-timeline-resource,
+        .md-timeline-height .mbsc-timeline-row {
+            min-height: 120px;
+        }
+    </style>
+    </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
@@ -79,7 +79,7 @@ $inspector = mysqli_query($conexion,$sql);
                                 </div>
 
                                 <div id="container"></div>
-
+                                <div id="demo-resource-height" class="md-timeline-height"></div>
                             </div>
 
                             <!-- /.tab-content -->
@@ -158,100 +158,149 @@ $inspector = mysqli_query($conexion,$sql);
     <script>
     //       // OPTIONS FOR THE GRAPHICS
   
-    Highcharts.setOptions({
-        credits: {
-            enabled: false
-        },
-        lang: {
-            loading: 'Cargando...',
-            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
-                'Octubre', 'Noviembre', 'Diciembre'
-            ],
-            weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-            shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nv', 'Dic'],
-            exportButtonTitle: "Exportar",
-            printButtonTitle: "Importar",
-            rangeSelectorFrom: "Desde",
-            rangeSelectorTo: "Hasta",
-            rangeSelectorZoom: "Período",
-            downloadPNG: 'Descargar imagen PNG',
-            downloadJPEG: 'Descargar imagen JPEG',
-            downloadPDF: 'Descargar imagen PDF',
-            downloadSVG: 'Descargar imagen SVG',
-            printChart: 'Imprimir',
-            resetZoom: 'Reiniciar zoom',
-            resetZoomTitle: 'Reiniciar zoom',
-            thousandsSep: ",",
-            decimalPoint: '.'
-        },
-    });
+    // Highcharts.setOptions({
+    //     credits: {
+    //         enabled: false
+    //     },
+    //     lang: {
+    //         loading: 'Cargando...',
+    //         months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+    //             'Octubre', 'Noviembre', 'Diciembre'
+    //         ],
+    //         weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    //         shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nv', 'Dic'],
+    //         exportButtonTitle: "Exportar",
+    //         printButtonTitle: "Importar",
+    //         rangeSelectorFrom: "Desde",
+    //         rangeSelectorTo: "Hasta",
+    //         rangeSelectorZoom: "Período",
+    //         downloadPNG: 'Descargar imagen PNG',
+    //         downloadJPEG: 'Descargar imagen JPEG',
+    //         downloadPDF: 'Descargar imagen PDF',
+    //         downloadSVG: 'Descargar imagen SVG',
+    //         printChart: 'Imprimir',
+    //         resetZoom: 'Reiniciar zoom',
+    //         resetZoomTitle: 'Reiniciar zoom',
+    //         thousandsSep: ",",
+    //         decimalPoint: '.'
+    //     },
+    // });
 
-    var today = new Date(),
-        day = 1000 * 60 * 60 * 24;
-    today.setUTCHours(0);
-    today.setUTCMinutes(0);
-    today.setUTCSeconds(0);
-    today.setUTCMilliseconds(0);
-    Highcharts.getJSON('../php/data.php', function(data) {
-        let chart = Highcharts.ganttChart('container', {
-            title: {
-                text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
-            },
+    // var today = new Date(),
+    //     day = 1000 * 60 * 60 * 24;
+    // today.setUTCHours(0);
+    // today.setUTCMinutes(0);
+    // today.setUTCSeconds(0);
+    // today.setUTCMilliseconds(0);
+    // Highcharts.getJSON('../php/data.php', function(data) {
+    //     let chart = Highcharts.ganttChart('container', {
+    //         title: {
+    //             text: 'CURSOS PROGRAMADOS HASTA LA FECHA'
+    //         },
 
-            yAxis: {
-                uniqueNames: true
-            },
+    //         yAxis: {
+    //             uniqueNames: true
+    //         },
 
-            navigator: {
-                enabled: false,
-                liveRedraw: true,
-                series: {
-                    type: 'gantt',
-                    pointPlacement: 0.5,
-                    pointPadding: 0.25
-                },
-                yAxis: {
-                    min: 0,
-                    max: 3,
-                    reversed: true,
-                    categories: []
-                }
-            },
-            scrollbar: {
-                enabled: false
-            },
-            rangeSelector: {
-                enabled: true,
-                selected: 0
-            },
-            xAxis: [{
-                currentDateIndicator: {
-            width: 1,
-            color: 'blue',
-            label: {
-                format: 'Ahora'
-            }
-        },
-        // min: today.getTime() - (30 * day),
-        // max: today.getTime() + (30 * day),
-            }, {
-                dateTimeLabelFormats: {
-                    week: 'Sem %W'
-                }
-            }],
-            // AQUI EMPIEZA LA CONFIGURACIÓN DE LOS DATOS
-            series: [{
-                name: 'Agencia Federal de Aviación Civil',
-                data: data,
-            }]
+    //         navigator: {
+    //             enabled: false,
+    //             liveRedraw: true,
+    //             series: {
+    //                 type: 'gantt',
+    //                 pointPlacement: 0.5,
+    //                 pointPadding: 0.25
+    //             },
+    //             yAxis: {
+    //                 min: 0,
+    //                 max: 3,
+    //                 reversed: true,
+    //                 categories: []
+    //             }
+    //         },
+    //         scrollbar: {
+    //             enabled: false
+    //         },
+    //         rangeSelector: {
+    //             enabled: true,
+    //             selected: 0
+    //         },
+    //         xAxis: [{
+    //             currentDateIndicator: {
+    //         width: 1,
+    //         color: 'blue',
+    //         label: {
+    //             format: 'Ahora'
+    //         }
+    //     },
+    //     // min: today.getTime() - (30 * day),
+    //     // max: today.getTime() + (30 * day),
+    //         }, {
+    //             dateTimeLabelFormats: {
+    //                 week: 'Sem %W'
+    //             }
+    //         }],
+    //         // AQUI EMPIEZA LA CONFIGURACIÓN DE LOS DATOS
+    //         series: [{
+    //             name: 'Agencia Federal de Aviación Civil',
+    //             data: data,
+    //         }]
 
+    //     });
+    //     chart.xAxis[0].setExtremes(1609480800000, 1640930400000);
+    //     let DATA = chart.series[0].data;
+    //     for (let i = 0; i < DATA.length; i++) {
+    //         // alert(i, new Date(DATA[i].x).toUTCString())
+    //     }
+    // });
+
+    // NUEVO GANTT CONFIGURADO
+   
+    mobiscroll.setOptions({
+            locale: mobiscroll.localeEs,
+            theme: 'ios',
+            themeVariant: 'light'
         });
-        chart.xAxis[0].setExtremes(1609480800000, 1640930400000);
-        let DATA = chart.series[0].data;
-        for (let i = 0; i < DATA.length; i++) {
-            // alert(i, new Date(DATA[i].x).toUTCString())
+
+        var calendar = mobiscroll.eventcalendar('#demo-resource-height', {
+            view: {
+                timeline: {
+                    rowHeight: 'equal',
+                    type: 'week',
+                    timeCellStep: 240,
+                    timeLabelStep: 240
+                }
+            },
+            resources: [{
+                id: 1,
+                name: 'REGISTER 1',
+                color: '#fdf500'
+            }, {
+                id: 2,
+                name: 'REGISTER 2',
+                color: '#ff0101'
+            },
+            //  {
+            //     id: 3,
+            //     name: 'Heroes Square',
+            //     color: '#01adff'
+            // }, {
+            //     id: 4,
+            //     name: 'Thunderdome',
+            //     color: '#239a21'
+            // }, {
+            //     id: 5,
+            //     name: 'King’s Landing',
+            //     color: '#ff4600'
+            // }
+        ]
+        });
+        mobiscroll.util.http.getJson('../php/data.php', function (events) {
+        calendar.setEvents(events);
+    }, 'jsonp');
+
+        function abrir() {
+            alert("HOLA MUNDO");
         }
-    });
     </script>
 
 </body>
