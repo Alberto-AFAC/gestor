@@ -5,7 +5,7 @@
 	
 	$query = "SELECT *,
     CASE WHEN l.gstVignc !=101 THEN (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR))
-    Else 'unica vez'
+    Else 'UNICA VEZ'
     END AS pronostico,
     CASE WHEN DATE_FORMAT(NOW(), '%Y/%m/%d') < (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR)) THEN 'vigente'
              ELSE 'vencido'
@@ -56,7 +56,12 @@
 
 
 $fechaInicial = date("d-m-Y",strtotime($data["fechaf"]));
-$fechaPronostico = date("d-m-Y",strtotime($data["pronostico"]));
+// $fechaPronostico = date("d-m-Y",strtotime($data["pronostico"]));
+if($data["pronostico"] == 'UNICA VEZ'){
+	$fechaPronostico = $data["pronostico"];
+}else{
+	$fechaPronostico = date("d-m-Y",strtotime($data["pronostico"]));
+}
 
 // $fin = date("d-m-Y",strtotime($data["finaliza"]." -1 days"));
 		
