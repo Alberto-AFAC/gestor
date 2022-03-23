@@ -112,7 +112,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th>ID</th>
                                                 <th>FOLIO CURSO</th>
                                                 <th>INSPECTOR</th>
-                                                <th style="width: 70%;">CURSO</th>
+                                                <th>CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
                                                 <th>TERMINO</th>
@@ -271,6 +271,13 @@ $(document).ready(function() {
         currentdate.getHours() + ":" +
         currentdate.getMinutes();
     var table = $('#example').DataTable({
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+
+
+        "ajax": "../php/seguimiento.php",
         "pageLength": 10,
         "lengthMenu": [
             [5, 10, 25, 50],
@@ -278,9 +285,10 @@ $(document).ready(function() {
         ],
         scrollX: true,
         "columnDefs": [{
-            "width": "5px",
-            "targets": 4
+            "width": "20%",
+            "targets": [1, 2, 3]
         }],
+        fixedColumns: true,
         // dom: 'Bfrtip',
         // buttons: [{
         //         extend: 'copy',
@@ -335,13 +343,7 @@ $(document).ready(function() {
         //     }
 
         // ],
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
 
-
-        "ajax": "../php/seguimiento.php",
         initComplete: function() {
             count = 0;
             this.api().columns().every(function() {
@@ -349,7 +351,7 @@ $(document).ready(function() {
                 //replace spaces with dashes
                 title = $(title).html().replace(/[\W]/g, '-');
                 var column = this;
-                var select = $('<select class="select2" ></select>')
+                var select = $('<select style="width: 80%;" class="select2" ></select>')
                     .appendTo($(column.header()).empty())
                     .on('change', function() {
                         //Get the "text" property from each selected data 
@@ -456,222 +458,12 @@ $(document).ready(function() {
     //     });
     // });
 
-
-    $('#example tbody').on('click', 'a', function() {
-        var data = table.row($(this).parents('tr')).data();
-        // alert( "Es el ID: "+ data );
-        $.ajax({
-            url: '../php/lisCurso.php',
-            type: 'POST'
-        }).done(function(resp) {
-
-
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
-
-            for (i = 0; i < res.length; i++) {
-                if (obj.data[i].id_curso == data[8]) {
-                    cursos =
-                        obj.data[i].gstIdlsc +
-                        "*" + obj.data[i].gstTitlo +
-                        "*" + obj.data[i].gstTipo +
-                        "*" + obj.data[i].gstPrfil +
-                        "*" + obj.data[i].gstCntnc +
-                        "*" + obj.data[i].gstDrcin +
-                        "*" + obj.data[i].gstVignc +
-                        "*" + obj.data[i].gstObjtv +
-                        "*" + obj.data[i].hcurso +
-                        "*" + obj.data[i].fcurso +
-                        "*" + obj.data[i].fechaf +
-                        "*" + obj.data[i].idinst +
-                        "*" + obj.data[i].sede +
-                        "*" + obj.data[i].link +
-                        "*" + obj.data[i].modalidad +
-                        "*" + obj.data[i].codigo +
-                        "*" + obj.data[i].proceso +
-                        "*" + obj.data[i].idinsp +
-                        "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
-
-                    var d = cursos.split("*");
-
-                    gstIdlsc = d[0];
-                    $("#impri #codigoCurso").val(d[15]);
-                    $("#impri #gstIdlstc").val(d[0]);
-                    $("#impri #gstTitulo").val(d[1]);
-
-                    $("#idperonc").val(d[1]);
-                    $("#avaluacion #idperon").val(d[1]);
-
-                    $("#Dtall #gstTitlo").val(d[1]);
-                    $("#Dtall #gstTipo").val(d[2]);
-                    $("#Dtall #gstPrfil").val(d[3]);
-                    $("#Dtall #gstCntnc").val(d[4]);
-                    $("#Dtall #gstDrcin").val(d[5]);
-                    $("#Dtall #gstVignc").val(d[6]);
-                    $("#Dtall #gstObjtv").val(d[7]);
-                    $("#Dtall #hcurso").val(d[8]);
-                    $("#Dtall #fcurso").val(d[9]);
-                    $("#Dtall #fechaf").val(d[10]);
-                    $("#Dtall #idinst").val(d[11]);
-                    $("#Dtall #sede").val(d[12]);
-                    $("#Dtall #modalidads").val(d[14]);
-                    if (d[13] == '0') {
-                        $("#Dtall #linkcur").val(d[13]);
-                        $("#Dtall #contracur").val(d[18]);
-                        $("#dismod").hide();
-                        $("#disocl").show();
-                    } else {
-                        $("#Dtall #linkcur").val(d[13]);
-                        $("#Dtall #contracur").val(d[18]);
-                        $("#dismod").show();
-                        $("#disocl").hide();
-                    }
-
-                    $("#Dtall #codigo").val(d[15]);
-                    $("#Dtall #proceso").val(data[18]);
-                    $("#Dtall #codigoIDCuro").val(d[15]);
-
-                    codigo = d[15];
-
-                    idcurso(codigo);
-                    if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-                        $("#buttonfin").hide();
-                        $("#editcurs").hide();
-                        $("#notiocu").hide();
-                        $("#notiocus").hide();
-                    } else {
-                        $("#buttonfin").show();
-                        $("#editcurs").show();
-                        $("#notiocu").show();
-                        $("#notiocus").show();
-                    }
-                    $("#Dtall #classromcur").val(d[19]);
-                }
-            }
-        })
-
-
-        modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
-        dismod = document.getElementById(
-            "dismod"); //variable para el contenedor de el link y la contraseña
-
-        if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
-            dismod.style.display = '';
-        }
-        if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
-            linidismodnpu.style.display = '';
-        }
-        if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
-            dismod.style.display = 'none';
-        }
-
-    });
-
 });
-
-function idcurso(codigo) {
-
-    var id = codigo
-
-    var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
-        "order": [
-            [3, "asc"]
-        ],
-        "ajax": {
-            "url": "../php/cursosProgramados.php",
-            "type": "GET",
-            "data": function(d) {
-                d.id = id;
-            }
-        },
-
-
-        "language": {
-
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-
-    });
-
-}
-
-
-function id_cursos(idp) {
-
-    $.ajax({
-        url: '../php/curLista.php',
-        type: 'POST'
-    }).done(function(resp) {
-
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_curso == idp) {
-
-
-                //DETALLES CURSOS DECLINADOS
-
-                var toma1 = "",
-                    toma2 = "",
-                    toma3 = "",
-                    toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
-                toma2 += obj.data[i].gstApell; //PDF
-                toma3 += obj.data[i].confirmar; //PDF 
-                toma4 += obj.data[i].justifi; //PDF  
-
-                $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
-                $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
-                $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
-                $("#otrosd1").text(toma4); // Label esta en valor.php
-                $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
-
-
-                if (toma3 == 'OTROS') {
-                    document.getElementById('otrosd1').style.display = '';
-                    document.getElementById('declinpdf1').style.display = 'none';
-                }
-                if (toma3 == 'TRABAJO') {
-                    document.getElementById('otrosd1').style.display = 'none';
-                    document.getElementById('declinpdf1').style.display = '';
-                }
-                if (toma3 == 'ENFERMEDAD') {
-                    document.getElementById('otrosd1').style.display = 'none';
-                    document.getElementById('declinpdf1').style.display = '';
-                }
-            }
-        }
-    })
-}
-
-
-function detalles(tbody, table) {
-
-    $(tbody).on("click", "a.eliminar", function() {
-        var data = table.row($(this).parents("tr")).data();
-
-        //var gstIdlsc = $().val(data.gstIdlsc);
-        $("#modal-eliminar #codigos").val(data[9]);
-        $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
-
-        if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").hide();
-        } else {
-            $("#elimina").show();
-        }
-
-    });
-}
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
 #example select {
-    width: 50% !important;
+    /* width: 30px !important; */
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->
