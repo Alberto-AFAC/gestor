@@ -25,10 +25,6 @@ header('Content-Type: application/json');
 		$nombre = $data['gstTitlo'];
         
 
-
-
-
-
 			// $arreglo[] = $data; 
 			//  $arreglo[] = array('id'=> $id,'name'=> $gstTitlo, 'periods'=> [['id'=> $id_curso,'start'=>$start, 'end' => $end]] );
 			

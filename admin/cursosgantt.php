@@ -274,11 +274,7 @@ $inspector = mysqli_query($conexion,$sql);
                 id: 1,
                 name: 'REGISTER 1',
                 color: '#fdf500'
-            }, {
-                id: 2,
-                name: 'REGISTER 2',
-                color: '#ff0101'
-            },
+            }
             //  {
             //     id: 3,
             //     name: 'Heroes Square',
