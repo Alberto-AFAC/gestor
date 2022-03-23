@@ -20,6 +20,9 @@ $inspector = mysqli_query($conexion,$sql);
     <title>Capacitación AFAC | Seguimiento y Control</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"
+        integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg=="
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
@@ -30,6 +33,7 @@ $inspector = mysqli_query($conexion,$sql);
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
     <script src="../dist/jspdf/dist/jspdf.debug.js"></script>
     <script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
@@ -96,22 +100,21 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th>CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>INICIO</th>
                                                 <th>TERMINO</th>
                                                 <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
                                                 <th>DETALLES</th>
                                                 <th>ACCIONES</th>
                                             </tr>
+
+
                                             <tr>
-                                                <th style="width:5%;">ID</th>
+                                                <th>ID</th>
                                                 <th>FOLIO CURSO</th>
-                                                <th style="width:18%;">INSPECTOR</th>
-                                                <!-- <th style="width:18%;">ESPECIALIDAD</th> -->
-                                                <th style="width:18%;">CURSO</th>
+                                                <th>INSPECTOR</th>
+                                                <th style="width: 70%;">CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>INICIO</th>
                                                 <th>TERMINO</th>
                                                 <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
@@ -120,9 +123,8 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <!-- <th style="width:15%; display: none;">ACCIÓN</th> -->
                                             </tr>
                                         </thead>
-                                    
-                                           
-                                      
+
+
                                     </table>
                                 </div>
 
@@ -241,6 +243,12 @@ style="background: white;border: 1px solid white;"> -->
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
     </script>
     <script src="../js/global.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 </body>
 
 </html>
@@ -256,11 +264,83 @@ $(document).ready(function() {
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
 $(document).ready(function() {
+    var currentdate = new Date();
+    var datetime = "Fecha de Impresion: " + currentdate.getDate() + "/" +
+        (currentdate.getMonth() + 1) + "/" +
+        currentdate.getFullYear() + " - " +
+        currentdate.getHours() + ":" +
+        currentdate.getMinutes();
     var table = $('#example').DataTable({
+        "pageLength": 10,
+        "lengthMenu": [
+            [5, 10, 25, 50],
+            [5, 10, 25, 50]
+        ],
+        scrollX: true,
+        "columnDefs": [{
+            "width": "5px",
+            "targets": 4
+        }],
+        // dom: 'Bfrtip',
+        // buttons: [{
+        //         extend: 'copy',
+        //         exportOptions: {
+        //             columns: [0, 2, 3, 4, 5, 6, 7, 8, 9]
+        //         }
+        //     },
+        //     {
+        //         extend: 'pdfHtml5',
+        //         text: 'Generar PDF',
+        //         messageTop: 'SEGUIMIENTO Y CONTROL',
+        //         exportOptions: {
+        //             columns: [0, 2, 3, 4, 5, 6, 7, 8, 9]
+        //         },
+        //         download: 'open',
+        //         header: true,
+        //         title: '',
+        //         customize: function(doc) {
+        //             doc.defaultStyle.fontSize = 8;
+        //             doc.styles.tableHeader.fontSize = 8;
+        //             doc['footer'] = (function(page, pages) {
+        //                 return {
+        //                     columns: [
+        //                         datetime,
+        //                         {
+        //                             alignment: 'right',
+        //                             text: [{
+        //                                     text: page.toString(),
+        //                                     italics: false
+        //                                 },
+        //                                 ' de ',
+        //                                 {
+        //                                     text: pages.toString(),
+        //                                     italics: false
+        //                                 }
+        //                             ]
+        //                         }
+        //                     ],
+        //                     margin: [25, 0]
+        //                 }
+        //             });
+
+
+        //         }
+        //     },
+        //     {
+        //         extend: 'excel',
+        //         text: 'Generar Excel',
+        //         exportOptions: {
+        //             columns: [0, 2, 3, 4, 5, 6, 7, 8, 9]
+        //         }
+        //     }
+
+        // ],
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
+
+
         "ajax": "../php/seguimiento.php",
         initComplete: function() {
             count = 0;
@@ -301,7 +381,7 @@ $(document).ready(function() {
                 select.select2({
                     multiple: true,
                     closeOnSelect: false,
-                    placeholder: "Selecciona..." 
+                    placeholder: "Selecciona..."
                 });
 
                 //initially clear select otherwise first option is selected
@@ -591,7 +671,7 @@ function detalles(tbody, table) {
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
 #example select {
-    width: 100% !important;
+    width: 50% !important;
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->
