@@ -66,21 +66,24 @@ require_once "../../conexion/conexion.php";
         personal.gstNombr,
         personal.gstApell,
         personal.gstCorro,
-      
         categorias.gstCatgr,
         personal.gstIDCat,
         categorias.gstCsigl,
         personal.gstFeing,
         DATE_FORMAT(personal.gstFeing,
-        '%d/%m/%Y') as Feingreso,
+        '%d/%m/%Y') AS Feingreso,
         personal.gstCargo,
-          personal.gstCinst
+        personal.gstCinst
         FROM personal 
-        INNER JOIN especialidadcat ON personal.gstIdper = especialidadcat.gstIDper 
-        INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
-        WHERE personal.gstCargo!='INSTRUCTOR' AND personal.estado = 0 ORDER BY gstFeing DESC";        
+        INNER JOIN especialidadcat 
+        ON personal.gstIdper = especialidadcat.gstIDper 
+        INNER JOIN categorias 
+        ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE personal.gstCargo!='INSTRUCTOR' 
+        AND personal.estado = 0 ORDER BY gstFeing DESC";        
         $person = mysqli_query($conexion,$sql);
         while ($per = mysqli_fetch_row($person)) {
+
           if($per[3]== '0'){
             $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
           }else if($per[3]== ''){
@@ -95,6 +98,33 @@ require_once "../../conexion/conexion.php";
           }else{
             $cInstitucional = $per[10];
           }
+
+
+
+
+        $gstIdper = $per[0];
+
+        $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
+        FROM especialidadcat 
+        INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
+        WHERE categorias.gstIdcat != 24 
+        AND categorias.gstIdcat != 25 
+        AND categorias.gstIdcat != 26 
+        AND categorias.gstIdcat != 29 
+        AND categorias.gstIdcat != 31
+        AND especialidadcat.gstIDper = $gstIdper";
+        $resul = mysqli_query($conexion, $queri); 
+
+        if($res = mysqli_fetch_array($resul)){
+        $categoria = $res['spcialidds'];
+
+        if($res['spcialidds']==''){ $categoria = $per[9]; }
+
+        }else{
+        $categoria = $per[9];
+        }
+
+
         $fechaActual = date_create(date('Y-m-d')); 
         $FechaIngreso = date_create($per[7]); 
         $interval = date_diff($FechaIngreso, $fechaActual,false);  
@@ -149,14 +179,11 @@ $f3 = strtotime($actual);
 
 if($fecha==101){  
 
-
-
 if($fecs[3] >= 80){ //$fech = 'vigente'; ?>
-
 
 <?php }
 
-     if($fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
+if($fecs[3] == 'NULL' && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO' || $fecs[3] < 80 && $idcurso == $fecs[4] && $fecs[2]=='FINALIZADO'){ 
 
 if($fecs[5] == 'CONFIRMADO'){
    $conf = "<td style='color: #333; background-color: #F4F4F4;'><p style='color:red;float:left; '>*</p>POR REALIZAR</td>";
@@ -170,7 +197,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){
@@ -189,7 +216,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $categoria?></td>
 
 
         <?php 
@@ -209,7 +236,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $categoria?></td>
         <?php 
         // if($antiguedad <=30){
         // echo "<td style='color:green; font-weight: bold;'>Nuevo ingreso</td>";
@@ -240,7 +267,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){
@@ -259,7 +286,7 @@ if($fecs[5] == 'CONFIRMADO'){
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){
@@ -294,7 +321,7 @@ $cursor = "<td style='font-weight: bold; height: 50px; color: green;'>Nuevo ingr
         <td><?php echo $per[1]?></td>
         <td><?php echo $per[2]?></td>
         <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>
-        <td><?php echo $per[4]?></td>
+        <td><?php echo $categoria?></td>
 
         <?php 
         // if($antiguedad <=30){

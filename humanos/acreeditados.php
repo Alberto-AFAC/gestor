@@ -858,10 +858,11 @@ $(document).ready(function() {
             type: 'POST'
         }).done(function(resp) {
 
-
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
+            
+            $("#acreeditados").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
@@ -933,6 +934,10 @@ $(document).ready(function() {
                         $("#editcurs").hide();
                         $("#notiocu").hide();
                         $("#notiocus").hide();
+                        $("#ocubotn").hide();
+                        document.getElementById('modalMost').disabled = false;  
+                        document.getElementById('allselect').disabled = true; 
+
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
@@ -1061,8 +1066,6 @@ function agrinspctor(tbody, table) {
 
     $(tbody).on("click", "a.asiste", function() {
         var data = table.row($(this).parents("tr")).data();
-
-
 
         $("#Prtcpnt #gstIdlsc").val(data[15]);
         $("#Prtcpnt #acodigos").val(data[9]);

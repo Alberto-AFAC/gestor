@@ -370,7 +370,7 @@ onclick="agregarDias();">EDITAR</button>
 
                                 <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
                                     style="font-size:12px; width:280px; height:30px "
-                                    class="btn btn-info btn-sm altaboton"><i class="fa fa-graduation-cap"
+                                    class="btn btn-info btn-sm  altaboton"><i class="fa fa-graduation-cap"
                                         aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
 
                             </form>

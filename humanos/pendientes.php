@@ -792,11 +792,11 @@ $(document).ready(function() {
             url: '../php/lisCurso.php',
             type: 'POST'
         }).done(function(resp) {
-
-
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
+
+            $("#pendientes").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
@@ -887,7 +887,7 @@ $(document).ready(function() {
         if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
             dismod.style.display = '';
         }
-        if (modalidadcur == "HIBRIDO) { //se visualiza el link y contraseña 
+        if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
             linidismodnpu.style.display = '';
         }
         if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña

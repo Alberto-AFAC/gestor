@@ -5,12 +5,12 @@
 	
 	$query = "SELECT *,
     CASE WHEN l.gstVignc !=101 THEN (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR))
-    Else 'UNICA VEZ'
-    END AS PRONOSTICO,
-    CASE WHEN DATE_FORMAT(NOW(), '%Y/%m/%d') < (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR)) THEN 'VIGENTE'
-             ELSE 'VENCIDO'
-    END AS ESTATUS
-    from CURSOS c, personal p, listacursos l, categorias e
+    Else 'unica vez'
+    END AS pronostico,
+    CASE WHEN DATE_FORMAT(NOW(), '%Y/%m/%d') < (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR)) THEN 'vigente'
+             ELSE 'vencido'
+    END AS estatus
+    from cursos c, personal p, listacursos l, categorias e
     WHERE p.gstIdper = c.idinsp
     AND c.idmstr = l.gstIdlsc
     AND e.gstIdcat = p.gstIDCat
@@ -58,32 +58,32 @@
 
 		
 // $fechav = date("d-m-Y",strtotime($data['PROTNOSTICO']."+".$data['gstVignc']." year"));     
-$vencer = date("Y-m-d",strtotime($data['PRONOSTICO']."- 6 month"));
+$vencer = date("Y-m-d",strtotime($data['pronostico']."- 6 month"));
 
 // $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
 
 // $vencido = date("d-m-Y",strtotime($f1)); 
-if($data['ESTATUS'] == 'VIGENTE'){
+if($data['estatus'] == 'vigente'){
 	$estatusp = "VIGENTE";
 	$detalles = "NO APLICA";
-	$acciones ="<a disabled type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-default' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
+	$acciones ="<a disabled type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-default' data-toggle='modal' data-target='' id='modalMost'>NO APLICA</a>";
 
-}else if($data['ESTATUS'] == 'VENCIDO'){
+}else if($data['estatus'] == 'vencido'){
 	$estatusp = "VENCIDO";
 	$detalles = "REPROGRAMAR";
 	$acciones = "<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
 
 	
-} if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101 && "FINALIZADO" && $data['ESTATUS']!='VENCIDO' ) {
+} if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101 && "FINALIZADO" && $data['estatus']!='vencido' ) {
 	$estatusp = "POR VENCER";
 	$acciones = "<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
 	$detalles =	"REPROGRAMAR";	
 }
 
 	
-		// $cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles,$acciones];
+		// $cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$data['estatus'],$detalles,$acciones];
 
 
 
@@ -91,12 +91,12 @@ if($data['ESTATUS'] == 'VIGENTE'){
 
 // if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101) {
 // 		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>CURSO POR VENCER</span>";		
-// 		$cursos[] =[$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$proceso,$detalles,$acciones];
+// 		$cursos[] =[$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$proceso,$detalles,$acciones];
 //     }else{
-// 		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$data['ESTATUS'],$detalles,$acciones];
+// 		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$data['estatus'],$detalles,$acciones];
 
 // 	}
-$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['PRONOSTICO'],$estatusp,$detalles,$acciones];
+$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$estatusp,$detalles,$acciones];
 
 }
 		

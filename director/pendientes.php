@@ -792,11 +792,11 @@ $(document).ready(function() {
             url: '../php/lisCurso.php',
             type: 'POST'
         }).done(function(resp) {
-
-
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
+
+            $("#pendientes").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
