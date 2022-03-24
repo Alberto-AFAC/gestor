@@ -51,7 +51,6 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     data: 'resp='+respuesta.tipo
                     }).done(function(respuesta) {
                         console.log();
-                    alert(respuesta);
                     })
 
             }
