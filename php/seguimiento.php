@@ -5,7 +5,7 @@
 	
 	$query = "SELECT *,
     CASE WHEN l.gstVignc !=101 THEN (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR))
-    Else 'unica vez'
+    Else 'UNICA VEZ'
     END AS pronostico,
     CASE WHEN DATE_FORMAT(NOW(), '%Y/%m/%d') < (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR)) THEN 'vigente'
              ELSE 'vencido'
@@ -55,7 +55,15 @@
 		// $vig = date("d-m-Y",strtotime($data['ultima_fecha']."+".$data['gstVignc']." year"));     
 
 
+$fechaInicial = date("d-m-Y",strtotime($data["fechaf"]));
+// $fechaPronostico = date("d-m-Y",strtotime($data["pronostico"]));
+if($data["pronostico"] == 'UNICA VEZ'){
+	$fechaPronostico = $data["pronostico"];
+}else{
+	$fechaPronostico = date("d-m-Y",strtotime($data["pronostico"]));
+}
 
+// $fin = date("d-m-Y",strtotime($data["finaliza"]." -1 days"));
 		
 // $fechav = date("d-m-Y",strtotime($data['PROTNOSTICO']."+".$data['gstVignc']." year"));     
 $vencer = date("Y-m-d",strtotime($data['pronostico']."- 6 month"));
@@ -63,7 +71,7 @@ $vencer = date("Y-m-d",strtotime($data['pronostico']."- 6 month"));
 // $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
-
+$fechaInFin = $data['fcurso'].''.$data['fechaf'];
 // $vencido = date("d-m-Y",strtotime($f1)); 
 if($data['estatus'] == 'vigente'){
 	$estatusp = "VIGENTE";
@@ -96,7 +104,7 @@ if($data['estatus'] == 'vigente'){
 // 		$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$data['estatus'],$detalles,$acciones];
 
 // 	}
-$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$data['pronostico'],$estatusp,$detalles,$acciones];
+$cursos[] = [$contador,$data['codigo'],$data["gstNombr"]." ".$data["gstApell"],$data['gstTitlo'],$data['gstTipo'],$data['gstPrfil'],$fechaInicial,$fechaPronostico,$estatusp,$detalles,$acciones];
 
 }
 		
