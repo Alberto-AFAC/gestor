@@ -118,24 +118,12 @@ folder instead of downloading all of them to reduce the load. -->
                                                     <label>ESPECIALIDAD<span class="text-red">*</span></label>
                                                     <div id="idSpecialidad"></div>
                                                 </div>
-                                                <div class="col-sm-6">
+                                                <!-- <div class="col-sm-6">
                                                     <label>SUBESPECIALIDAD<span class="text-red">*</span></label>
                                                     <select onchange="" id="sub1" name="sub1" class="form-control inputalta" placeholder="Seleccione la ubicación">
                                                         <option value="">SELECCIONE LA SUBESPECIALIDAD</option>
                                                     </select>
-                                                </div>
-                                                
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-sm-6">
-                                                    <label>SUB-SUBESPECIALIDAD<span class="text-red">*</span></label>
-                                                    <select onchange="" id="sub" name="sub" class="form-control inputalta" placeholder="Seleccione la ubicación">
-                                                        <option value="">SELECCIONE LA SUB-SUB-ESPECIALIDAD</option>
-                                                    </select>
-                                                </div>
-                                                
-
+                                                </div> -->
                                                 <div id="ubiojt" style="display:none" class="col-sm-6">
                                                     <label>UBICACIÓN<span class="text-red">*</label>
                                                     <select onchange="filubi()" id="uboj" name="uboj" class="form-control inputalta"
@@ -145,6 +133,27 @@ folder instead of downloading all of them to reduce the load. -->
                                                         <option value="COMANDANCIA">COMANDANCIA</option>
                                                     </select>
                                                 </div>
+                                                
+                                            </div>
+
+                                            <div class="form-group">
+                                                <!-- <div class="col-sm-6">
+                                                    <label>SUB-SUBESPECIALIDAD<span class="text-red">*</span></label>
+                                                    <select onchange="" id="sub" name="sub" class="form-control inputalta" placeholder="Seleccione la ubicación">
+                                                        <option value="">SELECCIONE LA SUB-SUB-ESPECIALIDAD</option>
+                                                    </select>
+                                                </div> -->
+                                                
+
+                                                <!-- <div id="ubiojt" style="display:none" class="col-sm-6">
+                                                    <label>UBICACIÓN<span class="text-red">*</label>
+                                                    <select onchange="filubi()" id="uboj" name="uboj" class="form-control inputalta"
+                                                        placeholder="Seleccione la ubicación">
+                                                        <option value="">SELECCIONE LA UBICACIÓN</option>
+                                                        <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
+                                                        <option value="COMANDANCIA">COMANDANCIA</option>
+                                                    </select>
+                                                </div> -->
                                                 
                                             </div>
 

@@ -128,7 +128,31 @@ data-widget="remove">
 
 <div class="post">
 
-<form class="form-horizontal" action="" method="POST" id="Dtall">
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label class="label2">FECHA INICIO</label>
+                                    <input type="date" class="form-control disabled inputalta" id="fcurso" name="fcurso" disabled="">
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label class="label2">HORA DE INCIO</label>
+                                    <input type="time" class="form-control disabled inputalta" id="hcurso" name="hcurso" disabled="">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="label2">FECHA CONCLUSIÓN</label>
+                                    <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf" disabled="">
+                                    
+                                </div>
+                                <!-- <div class="col-sm-3">
+                                    <label class="label2">HORA DE FINALIZACIÓN</label>
+                                    <input type="time" class="form-control disabled inputalta" id="hcursof" name="hcursof" disabled="">
+                                </div> -->
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <button type='button' title='Días Hábiles' onclick='diasEditar()' class='btn btn-info' data-toggle='modal' data-target='#diahabil-modal' id="modalMost" disabled='disabled'>DÍAS HÁBILES </button>
+                                </div>
+                            </div>
 
 <div class="form-group">
 <div class="col-sm-5">
