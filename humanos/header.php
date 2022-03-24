@@ -103,6 +103,15 @@
                     </span>
                 </a>
             </li>
+            <li>
+                <a href="../dist/img/pdf/MANUAL DE USUARIO DE CAPACITACION AFAC.pdf" target="_blank">
+                    <i class="fa fa-book"></i> <span>Manual</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
             <!-- <li>
           <a href="gantt2.php">
             <i class="fa fa-calendar"></i> <span>Bitacora cursos</span>
