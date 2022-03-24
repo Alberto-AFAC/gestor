@@ -16,13 +16,13 @@ header('Content-Type: application/json');
 
 	$id_curso = $data['id_curso'];
 
-		$fcurso=$data['fcurso'].''.$data['hcurso']; //INICIO DEL CURSO
-        $ffcurso=$data['fechaf']; //FINAL DEL CURSO
+		$fcurso= $data['fcurso'].''.$data['hcurso'];//INICIO DEL CURSO
+        $ffcurso= $data['fechaf']; //FINAL DEL CURSO
 		$hcurso=$data['hcurso']; 
-		$tipo = 1;
+		$tipo = $data['gstTipo'];
 		$id = $data['id_curso'];
 		$sede = $data['sede'];
-		$nombre = $data['gstTitlo'];
+		$nombre = "<span onclick='listview({$id_curso});'>{$data['gstTitlo']}</span>";
         
 
 			// $arreglo[] = $data; 
@@ -32,22 +32,22 @@ header('Content-Type: application/json');
 			 $arreglo[] = array('start'=> $fcurso,'end'=>$ffcurso, 'title'=> $nombre,'resource' => $tipo);
 
 		}
-        if(isset($arreglo)&&!empty($arreglo)){
+        // if(isset($arreglo)&&!empty($arreglo)){
 
-			$json_string = json_encode(array( 'data' => $arreglo ));
-			echo $json_string;
+		// 	$json_string = json_encode(array( 'data' => $arreglo ));
+		// 	echo $json_string;
 
-		}else{
-
-			echo $json_string='0';
-		}
-		// if(isset($arreglo)&&!empty($arreglo)){
-
-		// 	echo json_encode($arreglo, JSON_UNESCAPED_UNICODE);
 		// }else{
 
-		// 	echo $arreglo='0';
+		// 	echo $json_string='0';
 		// }
+		if(isset($arreglo)&&!empty($arreglo)){
+
+			echo json_encode($arreglo, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+		}else{
+
+			echo $arreglo='0';
+		}
 	}
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);

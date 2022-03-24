@@ -36,17 +36,50 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> -->
     <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
-    <script src="js/mobiscroll.javascript.min.js"></script>
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
-        .md-timeline-height .mbsc-timeline-resource,
-        .md-timeline-height .mbsc-timeline-row {
-            min-height: 120px;
+    .md-resource-details .mbsc-timeline-resource,
+    .md-resource-details .mbsc-timeline-resource-col {
+        width: 230px;
+    }
+
+    .md-resource-details .mbsc-timeline-resource-title {
+        padding: 0;
+        height: 100%;
+    }
+
+    .md-resource-details-cont {
+        height: 100%;
+        line-height: 50px;
+    }
+
+    .md-resource-details-name {
+        height: 100%;
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .md-resource-details-seats {
+        border-left: 1px solid #ccc;
+        width: 90px;
+        height: 100%;
+        float: right;
+        padding: 0 5px;
+    }
+
+    @supports (overflow:clip) {
+        .md-resource-details.mbsc-ltr .mbsc-schedule-event-inner {
+            left: 230px;
         }
+
+        .md-resource-details.mbsc-rtl .mbsc-schedule-event-inner {
+            right: 230px;
+        }
+    }
     </style>
-    </head>
+</head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
@@ -66,6 +99,9 @@ $inspector = mysqli_query($conexion,$sql);
                     CURSOS PROGRAMADOS
                 </h1>
             </section>
+
+            <input name="prueba" id="prueba">
+
             <!-- Main content -->
             <section class="content">
                 <div class="row">
@@ -79,7 +115,7 @@ $inspector = mysqli_query($conexion,$sql);
                                 </div>
 
                                 <div id="container"></div>
-                                <div id="demo-resource-height" class="md-timeline-height"></div>
+                                <div id="demo-resource-details"></div>
                             </div>
 
                             <!-- /.tab-content -->
@@ -111,6 +147,8 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- /.content -->
     </div>
 
+
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -131,7 +169,7 @@ $inspector = mysqli_query($conexion,$sql);
         </div>
         <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
         Todos los derechos Reservados DDE
-.
+        .
     </footer>
     <div class="control-sidebar-bg"></div>
     </div>
@@ -139,6 +177,9 @@ $inspector = mysqli_query($conexion,$sql);
 
     <!-- jQuery 3 -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/mobiscroll.javascript.min.js"></script>
+
+
     <!-- Bootstrap 3.3.7 -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->
@@ -157,7 +198,7 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- page script -->
     <script>
     //       // OPTIONS FOR THE GRAPHICS
-  
+
     // Highcharts.setOptions({
     //     credits: {
     //         enabled: false
@@ -254,49 +295,72 @@ $inspector = mysqli_query($conexion,$sql);
     // });
 
     // NUEVO GANTT CONFIGURADO
-   
     mobiscroll.setOptions({
-            locale: mobiscroll.localeEs,
-            theme: 'ios',
-            themeVariant: 'light'
-        });
+        locale: mobiscroll.localeEs,
+        theme: 'ios',
+        themeVariant: 'light'
+    });
 
-        var calendar = mobiscroll.eventcalendar('#demo-resource-height', {
+
+    $(function() {
+        <?php 
+            $query2 = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP by listacursos.gstTitlo,cursos.idmstr,cursos.idinst ORDER BY id_curso DESC ";
+            $resultado2 = mysqli_query($conexion, $query2);
+            while($data2 = mysqli_fetch_assoc($resultado2)){
+                  $tipo = $data2['gstTipo'];
+                  $nombre = $data2['gstTitlo'];
+            }
+        ?>
+        var calendar = $('#demo-resource-details').mobiscroll().eventcalendar({
             view: {
                 timeline: {
-                    rowHeight: 'equal',
-                    type: 'week',
-                    timeCellStep: 240,
-                    timeLabelStep: 240
+                    type: 'month'
                 }
             },
             resources: [{
-                id: 1,
-                name: 'REGISTER 1',
-                color: '#fdf500'
+                "id": "INDUCCIÓN",
+                "name": "INDUCCIÓN",
+                "color": "rgba(0, 58, 146, 0.6)",
+            },{
+                "id": "BÁSICOS\/INICIAL",
+                "name": "BÁSICOS\/INICIAL",
+                "color": "rgba(0, 102, 255, 0.6)",
+               
+            },
+            {
+                "id": "TRANSVERSALES",
+                "name": "TRANSVERSALES",
+                "color": "#ff1717",
+               
+            },
+            {
+                "id": "RECURRENTES",
+                "name": "RECURRENTES",
+                "color": "#ff1717",
+               
+            },
+            {
+                "id": "ESPECÍFICOS",
+                "name": "ESPECÍFICOS",
+                "color": "#ff1717",
+               
+            }],
+            renderResource: function(resource) {
+                return '<div class="md-resource-details-cont">' +
+                    '<div class="md-resource-details-name">' + resource.name + '</div>' +
+                    '</div>';
             }
-            //  {
-            //     id: 3,
-            //     name: 'Heroes Square',
-            //     color: '#01adff'
-            // }, {
-            //     id: 4,
-            //     name: 'Thunderdome',
-            //     color: '#239a21'
-            // }, {
-            //     id: 5,
-            //     name: 'King’s Landing',
-            //     color: '#ff4600'
-            // }
-        ]
-        });
-        mobiscroll.util.http.getJson('../php/data.php', function (events) {
-        calendar.setEvents(events);
-    }, 'jsonp');
+        }).mobiscroll('getInst');
 
-        function abrir() {
-            alert("HOLA MUNDO");
-        }
+        $.getJSON('../php/data.php', function(events) {
+            calendar.setEvents(events);
+        }, 'jsonp');
+    });
+
+    function listview(id) {
+        alert(id);
+
+    }
     </script>
 
 </body>
