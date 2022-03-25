@@ -48,6 +48,7 @@ folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -105,23 +106,21 @@ folder instead of downloading all of them to reduce the load. -->
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-md-12">
-                        <!-- SELECT2 EXAMPLE -->
-                        <div class="box box-default">
+<!------------------------------------------------------------- ESPECIALIDAD Y COMISIÓN-------------------------------------------------------------------------->
+                        <div class="box box-default collapsed-box" >
                             <div class="box-header with-border">
-                                <h3 class="box-title">Especialidad y Comisión</h3>
+                                <h3 class="box-title">ESPECIALIDAD Y COMISIÓN</h3>
 
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                            class="fa fa-minus"></i></button>
+                                            class="fa fa-plus"></i></button>
 
                                 </div>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-
                                     <div class="col-md-6">
-
                                         <div class="form-group">
                                             <form id="addcurse" class="form-horizontal" action="" method="POST">
                                                 <label>ESPECIALIDAD<span class="text-red">*</span></label>
@@ -137,7 +136,7 @@ folder instead of downloading all of them to reduce the load. -->
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-6">
-                                    <div id="ubiojt" style="display:none" class="col-sm-6">
+                                    <div id="ubiojt" style="" class="">
                                         <div class="form-group">
                                             <label>UBICACIÓN<span class="text-red">*</label>
                                             <select onchange="filubi()" id="uboj" name="uboj"
@@ -167,8 +166,7 @@ folder instead of downloading all of them to reduce the load. -->
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <div class="col-md-6">
-                                    </div>
+                                    
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>NIVEL<span class="text-red">*</label>
@@ -206,14 +204,15 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-body -->
                         </div>
 
-                         <!-- SELECT2 EXAMPLE -->
-                         <div class="box box-default">
+<!------------------------------------------------------------- SELECCIÓN DE TAREAS-------------------------------------------------------------------------->
+
+                         <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Seleccion de tareas</h3>
+                                <h3 class="box-title">SELECCIÓN DE TAREAS</h3>
 
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                            class="fa fa-minus"></i></button>
+                                            class="fa fa-plus"></i></button>
 
                                 </div>
                             </div>
@@ -236,14 +235,14 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-body -->
                         </div>
 
-                        <!-- SELECT2 EXAMPLE -->
-                        <div class="box box-default">
+<!------------------------------------------------------------- PROGRAMACIÓN DE TAREAS-------------------------------------------------------------------------->
+                        <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Programación de tareas</h3>
+                                <h3 class="box-title">PROGRAMACIÓN DE TAREAS</h3>
 
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                            class="fa fa-minus"></i></button>
+                                            class="fa fa-plus"></i></button>
 
                                 </div>
                             </div>
@@ -253,22 +252,20 @@ folder instead of downloading all of them to reduce the load. -->
                                     <div class="form-group">
                                         <div class="col-sm-4">
                                             <label>FECHA Y HORA DE INICIO<span class="text-red">*</label>
-                                            <input type="datetime-local" class="form-control"
+                                            <input type="datetime-local" class="form-control inputalta"
                                                 placeholder="Ingresa subtarea..." name="fechaInicio" id="fechaInicio">
                                         </div>
                                         <div class="col-sm-4">
                                             <label>FECHA Y HORA DE TERMINO<span class="text-red">*</label>
-                                            <input type="datetime-local" onkeyup="mayus(this);" class="form-control"
+                                            <input type="datetime-local" onkeyup="mayus(this);" class="form-control inputalta"
                                                 id="fechaTermino" name="fechaTermino">
-                                        </div>
-                                        <div class="col-md-4">
                                         </div>
                                         <div class="col-md-4">
                                             <label>COORDINADOR DEL OJT<span class="text-red">*</label>
                                             <select multiple="multiple"
-                                                data-placeholder="SELECCIONE COORDINADOR DEL ÁREA"
+                                                data-placeholder="SELECCIONE COORDINADOR OJT"
                                                 style="width: 100%;color: #000" class="form-control select2" type="text"
-                                                class="form-control" id="coordinador" name="coordinador">
+                                                id="coordinador" name="coordinador">
                                                 <option value="">SELECCIONE COORDINADOR </option>
                                                 <?php while($cordinadors = mysqli_fetch_row($cordinador)):?>
                                                 <option value="<?php echo $cordinadors[0]?>">
@@ -278,7 +275,8 @@ folder instead of downloading all of them to reduce the load. -->
                                             </select>
                                         </div>
                                     </div>
-                                    <div></div>
+                                    .
+                                    <br>
                                     <div class="form-group">
                                         <div class="col-md-4">
                                         <label>INSTRUCTOR OJT<span class="text-red">*</label>
@@ -299,21 +297,18 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-body -->
                         </div>
 
-                        <!-- SELECT2 EXAMPLE -->
-                        <div class="box box-default">
+<!------------------------------------------------------------- SELECCIÓN DE INSPECTOR -------------------------------------------------------------------------->
+                        <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Seleccion de Inspector</h3>
-
+                                <h3 class="box-title">SELECCIÓN DE INSPECTOR</h3>
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                            class="fa fa-minus"></i></button>
-
+                                            class="fa fa-plus"></i></button>
                                 </div>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                
                                 <div class="col-sm-12">
                                                 <div id="tabSpcl"></div>
                                             </div>
@@ -375,7 +370,7 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-body -->
                         </div>
                          <!-- SELECT2 EXAMPLE -->
-                         <div class="box box-default">
+                         <!-- <div class="box box-default">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Visualizador de Tareas programadas</h3>
 
@@ -385,7 +380,7 @@ folder instead of downloading all of them to reduce the load. -->
 
                                 </div>
                             </div>
-                            <!-- /.box-header -->
+                            
                             <div class="box-body">
                                 <div class="row">
                                 <div class="form-group">
@@ -393,25 +388,17 @@ folder instead of downloading all of them to reduce the load. -->
                                                 <label class="label2" style="font-size:16px">TAREAS ASIGNADAS</label>
                                             </div>
                                         </div>
-                                        <!-- <div id="tablaPro"></div> -->
-
                                         <div id="tareasprogram"></div>
-                                    <!-- /.col -->
                                 </div>
-                                <!-- /.row -->  
                             </div>
-                            <!-- /.box-body -->
-                        </div>
+                        </div> -->
 
                         
 
                         <div class="nav-tabs-custom">
 
                         
-                            <!-- <div class="tab-content"> -->
-                                <!-- <div class="active tab-pane" id="activity"> -->
-                                    <!-- Post -->
-                                    <!-- <div class="post"> -->
+
 
 
 
@@ -420,23 +407,6 @@ folder instead of downloading all of them to reduce the load. -->
 
                                         </form>
 
-                                    <!-- </div> -->
-                                    <!-- /.post -->
-
-                                    <!-- Post -->
-
-                                    <!-- /.post -->
-
-                                    <!-- Post -->
-
-                                    <!-- /.post -->
-                                <!-- </div> -->
-                                <!-- /.tab-pane 2do panel-->
-                                <!-- <div class="tab-pane" id="timeline"> -->
-                                    <!-- The timeline -->
-                                <!-- </div> -->
-                                <!-- /.tab-pane -->
-                                <!-- /.row -->
             </section>
             <!-- /.content -->
         </div>
