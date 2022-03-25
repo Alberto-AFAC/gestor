@@ -388,6 +388,7 @@ function inspector(gstIdper) {
                 $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
                 $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                 $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                $("#nombrecompleto2").html(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                 $("#cargopersonal").val(obj.data[i].gstCargo);
                 $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                 $("#Dtall #gstNombr").val(obj.data[i].gstNombr);

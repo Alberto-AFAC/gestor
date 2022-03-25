@@ -590,3 +590,7 @@ border-radius: 8px;
 .portlet .tabbable-line > .tab-content {
   padding-bottom: 0;
 }
+.font1{
+  font-size: 15px;
+  cursor: pointer;
+}
