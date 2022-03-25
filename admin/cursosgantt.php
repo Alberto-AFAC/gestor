@@ -168,7 +168,7 @@ $inspector = mysqli_query($conexion,$sql);
                 <!-- MODAL CON EL LISTADO DE CADA PARTICIPANTE -->
                 <div class="modal fade" id='ganttPartici' tabindex="-1" role="dialog" aria-labelledby="basicModal"
                     aria-hidden="true">
-                    <div class="modal2" style="width: 1300px;">
+                    <div class="modal2" style="width: 1000px;">
                         <div id="success-icon">
                             <div>
                                 <img class="img-circle1" src="../dist/img/group.png">
@@ -479,7 +479,7 @@ $inspector = mysqli_query($conexion,$sql);
                 x++;
                 if (obj.data[i].codigo == folio) {
                     $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
-                    html += "<tr><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell +
+                    html += "<tr><td style='text-align: left;'>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell +
                         "</td></tr>";
                 }
             }
