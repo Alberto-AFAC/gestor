@@ -370,7 +370,7 @@
       } 
 
   today = yyyy+'-'+mm+'-'+dd;
-  document.getElementById("fcurso").setAttribute("min", today);
+  document.getElementById().setAttribute("min", today);
   //Second date
   var today = new Date();
   var dd = today.getDate();
@@ -384,7 +384,7 @@
       } 
 
   today = yyyy+'-'+mm+'-'+dd;
-  document.getElementById("fechaf").setAttribute("min", today);
+  document.getElementById().setAttribute("min", today);
 
   $("#allselect").on("click", function() {
     $(".idias").prop("checked", this.checked);
