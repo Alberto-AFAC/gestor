@@ -112,7 +112,7 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="accesos"><i class="fa ion-document-text"></i> Lista de Accesos</a></li>
                     <?php }?>
 
-                     <li id="alistainstc1" ><a href="instructor"><i class="fa ion-document-text"></i> Por definir</a></li>
+                     <li><a href="accesoInstr"><i class="fa ion-document-text"></i> Por definir</a></li>
                     <!--<li><a href=""><i class="fa ion-android-remove"></i>Baja de Inspectores</a></li>
             <li><a href=""><i class="fa ion-document-text"></i>Lista de inspectores</a></li>-->
                 </ul>
