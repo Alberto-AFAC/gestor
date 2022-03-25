@@ -1761,7 +1761,7 @@ function inspector(gstIdper) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
     } else {
-        document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/user1-128x128.jpg" style="width: 80px; alt="User Avatar">';
+        document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/AFACPDF.png" style="width: 90px; alt="User Avatar">';
     }
 
     // .l.
