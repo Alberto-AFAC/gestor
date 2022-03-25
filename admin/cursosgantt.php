@@ -99,9 +99,6 @@ $inspector = mysqli_query($conexion,$sql);
                     CURSOS PROGRAMADOS
                 </h1>
             </section>
-
-            <input name="prueba" id="prueba">
-
             <!-- Main content -->
             <section class="content">
                 <div class="row">
@@ -131,7 +128,7 @@ $inspector = mysqli_query($conexion,$sql);
                     <div class="modal2" style="width: 1300px;">
                         <div id="success-icon">
                             <div>
-                                <img class="img-circle1" src="../dist/img/cv.png">
+                                <img class="img-circle1" src="../dist/img/group.png">
                             </div>
                         </div>
                         <p style="font-size: 24px; color:gray"><span id="tituloCurso" name="tituloCurso"></span></p>
