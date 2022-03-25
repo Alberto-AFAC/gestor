@@ -125,7 +125,23 @@ $inspector = mysqli_query($conexion,$sql);
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-
+                <!-- MODAL CON EL LISTADO DE CADA PARTICIPANTE -->
+                <div class="modal fade" id='ganttPartici' tabindex="-1" role="dialog" aria-labelledby="basicModal"
+                    aria-hidden="true">
+                    <div class="modal2" style="width: 1300px;">
+                        <div id="success-icon">
+                            <div>
+                                <img class="img-circle1" src="../dist/img/cv.png">
+                            </div>
+                        </div>
+                        <p style="font-size: 24px; color:gray"><span id="tituloCurso" name="tituloCurso"></span></p>
+                        <div class="table-wrap">
+                            <div class="table-responsive">
+                                <div id="ganttTable"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
         </div>
@@ -318,33 +334,34 @@ $inspector = mysqli_query($conexion,$sql);
                 }
             },
             resources: [{
-                "id": "INDUCCIÓN",
-                "name": "INDUCCIÓN",
-                "color": "rgba(0, 58, 146, 0.6)",
-            },{
-                "id": "BÁSICOS\/INICIAL",
-                "name": "BÁSICOS\/INICIAL",
-                "color": "rgba(0, 102, 255, 0.6)",
-               
-            },
-            {
-                "id": "TRANSVERSALES",
-                "name": "TRANSVERSALES",
-                "color": "#ff1717",
-               
-            },
-            {
-                "id": "RECURRENTES",
-                "name": "RECURRENTES",
-                "color": "#ff1717",
-               
-            },
-            {
-                "id": "ESPECÍFICOS",
-                "name": "ESPECÍFICOS",
-                "color": "#ff1717",
-               
-            }],
+                    "id": "INDUCCIÓN",
+                    "name": "INDUCCIÓN",
+                    "color": "rgba(0, 58, 146, 0.6)",
+                }, {
+                    "id": "BÁSICOS\/INICIAL",
+                    "name": "BÁSICOS\/INICIAL",
+                    "color": "rgba(0, 102, 255, 0.6)",
+
+                },
+                {
+                    "id": "TRANSVERSALES",
+                    "name": "TRANSVERSALES",
+                    "color": "#ff1717",
+
+                },
+                {
+                    "id": "RECURRENTES",
+                    "name": "RECURRENTES",
+                    "color": "#ff1717",
+
+                },
+                {
+                    "id": "ESPECÍFICOS",
+                    "name": "ESPECÍFICOS",
+                    "color": "#ff1717",
+
+                }
+            ],
             renderResource: function(resource) {
                 return '<div class="md-resource-details-cont">' +
                     '<div class="md-resource-details-name">' + resource.name + '</div>' +
@@ -358,7 +375,29 @@ $inspector = mysqli_query($conexion,$sql);
     });
 
     function listview(id) {
-        alert(id);
+
+        folio = 'FO' + id;
+
+        $.ajax({
+            url: '../php/ganttParticipantes.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+            html =
+                '<table class="table table-striped"><tr><th>NOMBRE DEL PARTICIPANTE</th>';
+            for (i = 0; i < res.length; i++) {
+                x++;
+                if (obj.data[i].codigo == folio) {
+                    $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
+                    html += "<tr><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell +
+                        "</td></tr>";
+                }
+            }
+            html += '</table>';
+            $("#ganttTable").html(html);
+        });
 
     }
     </script>

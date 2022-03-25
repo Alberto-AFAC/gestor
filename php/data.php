@@ -15,6 +15,9 @@ header('Content-Type: application/json');
 	$gstTitlo = $data['gstTitlo'];
 
 	$id_curso = $data['id_curso'];
+			
+	$folio = substr($data['codigo'],2);
+	$codigo = $folio;
 
 		$fcurso= $data['fcurso'].''.$data['hcurso'];//INICIO DEL CURSO
         $ffcurso= $data['fechaf']; //FINAL DEL CURSO
@@ -22,7 +25,7 @@ header('Content-Type: application/json');
 		$tipo = $data['gstTipo'];
 		$id = $data['id_curso'];
 		$sede = $data['sede'];
-		$nombre = "<span onclick='listview({$id_curso});'>{$data['gstTitlo']}</span>";
+		$nombre = "<a data-toggle='modal' data-target='#ganttPartici'><span onclick='listview({$codigo});'>{$data['gstTitlo']}</span></a>";
         
 
 			// $arreglo[] = $data; 
