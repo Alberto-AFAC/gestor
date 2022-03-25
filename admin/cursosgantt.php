@@ -40,43 +40,86 @@ $inspector = mysqli_query($conexion,$sql);
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
-    .md-resource-details .mbsc-timeline-resource,
-    .md-resource-details .mbsc-timeline-resource-col {
-        width: 230px;
+    .md-event-listing-cont {
+        position: relative;
+        padding-left: 50px;
     }
 
-    .md-resource-details .mbsc-timeline-resource-title {
-        padding: 0;
-        height: 100%;
+    .md-event-listing-avatar {
+        position: absolute;
+        max-height: 50px;
+        max-width: 50px;
+        top: 21px;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 20px;
     }
 
-    .md-resource-details-cont {
-        height: 100%;
-        line-height: 50px;
+    .md-event-listing-name {
+        font-size: 16px;
     }
 
-    .md-resource-details-name {
-        height: 100%;
-        display: inline-block;
-        padding: 0 5px;
+    .md-event-listing-title {
+        font-size: 12px;
+        margin-top: 5px;
     }
 
-    .md-resource-details-seats {
-        border-left: 1px solid #ccc;
-        width: 90px;
-        height: 100%;
-        float: right;
-        padding: 0 5px;
+    .md-event-listing .mbsc-segmented {
+        max-width: 350px;
+        margin: 0 auto;
+        padding: 1px;
     }
 
-    @supports (overflow:clip) {
-        .md-resource-details.mbsc-ltr .mbsc-schedule-event-inner {
-            left: 230px;
-        }
+    .md-event-listing-picker {
+        flex: 1 0 auto;
+    }
 
-        .md-resource-details.mbsc-rtl .mbsc-schedule-event-inner {
-            right: 230px;
-        }
+    .md-event-listing-nav {
+        width: 320px;
+    }
+
+    /* material header order */
+
+    .mbsc-material.md-event-listing-prev {
+        order: 1;
+    }
+
+    .mbsc-material.md-event-listing-next {
+        order: 2;
+    }
+
+    .mbsc-material.md-event-listing-nav {
+        order: 3;
+    }
+
+    .mbsc-material .md-event-listing-picker {
+        order: 4;
+    }
+
+    .mbsc-material .md-event-listing-today {
+        order: 5;
+    }
+
+    /* windows header order */
+
+    .mbsc-windows.md-event-listing-nav {
+        order: 1;
+    }
+
+    .mbsc-windows.md-event-listing-prev {
+        order: 2;
+    }
+
+    .mbsc-windows.md-event-listing-next {
+        order: 3;
+    }
+
+    .mbsc-windows .md-event-listing-picker {
+        order: 4;
+    }
+
+    .mbsc-windows .md-event-listing-today {
+        order: 5;
     }
     </style>
 </head>
@@ -327,7 +370,9 @@ $inspector = mysqli_query($conexion,$sql);
         var calendar = $('#demo-resource-details').mobiscroll().eventcalendar({
             view: {
                 timeline: {
-                    type: 'month'
+                    type: 'month',
+                    weekNumbers: true,
+                    rowHeight: 'equal',
                 }
             },
             resources: [{
@@ -363,9 +408,55 @@ $inspector = mysqli_query($conexion,$sql);
                 return '<div class="md-resource-details-cont">' +
                     '<div class="md-resource-details-name">' + resource.name + '</div>' +
                     '</div>';
-            }
+            },
+            renderHeader: function() {
+                return '<div mbsc-calendar-nav class="md-event-listing-nav"></div>' +
+                    '<div class="md-event-listing-picker">' +
+                    '<label>Semana<input mbsc-segmented type="radio" name="event-listing-view" value="week" class="event-listing-view-change"></label>' +
+                    '<label>Mes<input mbsc-segmented type="radio" name="event-listing-view" value="month" class="event-listing-view-change" checked></label>' +
+                    '<label>Año<input mbsc-segmented type="radio" name="event-listing-view" value="workweek" class="event-listing-view-change"></label>' +
+                    '</div>' +
+                    '<div mbsc-calendar-prev class="md-event-listing-prev"></div>' +
+                    '<div mbsc-calendar-today class="md-event-listing-today"></div>' +
+                    '<div mbsc-calendar-next class="md-event-listing-next"></div>';
+            },
         }).mobiscroll('getInst');
-
+        $('.event-listing-view-change').change(function(ev) {
+            switch (ev.target.value) {
+                case 'workweek':
+                    calendar.setOptions({
+                        view: {
+                            timeline: {
+                                type: 'month',
+                                size: 12,
+                                eventList: true
+                            }
+                        },
+                        refDate: '2022-01-01'
+                    })
+                    break;
+                case 'week':
+                    calendar.setOptions({
+                        view: {
+                            timeline: {
+                                type: 'week',
+                                eventList: true
+                            }
+                        }
+                    })
+                    break;
+                case 'month':
+                    calendar.setOptions({
+                        view: {
+                            timeline: {
+                                type: 'month',
+                                eventList: true
+                            }
+                        }
+                    })
+                    break;
+            }
+        });
         $.getJSON('../php/data.php', function(events) {
             calendar.setEvents(events);
         }, 'jsonp');
