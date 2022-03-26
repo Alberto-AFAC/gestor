@@ -359,32 +359,32 @@
 
   <script>
   var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1; 
-  var yyyy = today.getFullYear();
-   if(dd<10){
-          dd='0'+dd
-      } 
-      if(mm<10){
-          mm='0'+mm
-      } 
+  // var dd = today.getDate();
+  // var mm = today.getMonth()+1; 
+  // var yyyy = today.getFullYear();
+  //  if(dd<10){
+  //         dd='0'+dd
+  //     } 
+  //     if(mm<10){
+  //         mm='0'+mm
+  //     } 
 
-  today = yyyy+'-'+mm+'-'+dd;
-  document.getElementById().setAttribute("min", today);
+  // today = yyyy+'-'+mm+'-'+dd;
+  document.getElementById("fcurso").setAttribute("min", today);
   //Second date
   var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1; 
-  var yyyy = today.getFullYear();
-   if(dd<10){
-          dd='0'+dd
-      } 
-      if(mm<10){
-          mm='0'+mm
-      } 
+  // var dd = today.getDate();
+  // var mm = today.getMonth()+1; 
+  // var yyyy = today.getFullYear();
+  //  if(dd<10){
+  //         dd='0'+dd
+  //     } 
+  //     if(mm<10){
+  //         mm='0'+mm
+  //     } 
 
-  today = yyyy+'-'+mm+'-'+dd;
-  document.getElementById().setAttribute("min", today);
+  // today = yyyy+'-'+mm+'-'+dd;
+  document.getElementById("fechaf").setAttribute("min", today);
 
   $("#allselect").on("click", function() {
     $(".idias").prop("checked", this.checked);
