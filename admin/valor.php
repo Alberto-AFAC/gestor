@@ -967,23 +967,11 @@ $direc = mysqli_query($conexion,$sql);
                                     <h3 class="box-title">Cursos programados</h3>
                                     <input id="fecomp1" style='display:none' type="text">
                                 </div>
-<!--                                 <div class="form-group">
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
-                                        <label for="finalizado">FINALIZADO</label><br>
-                                    </div>
-                                    
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="programados" name="cursinfoinsp" value="programados">
-                                        <label for="programados">PROGRAMADOS</label><br>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
-                                        <label for="cancelados">CANCELADOS</label><br>
-                                    </div>
-                                </div> -->
+
                                 <div class="box-body">
-                                    <?php include('../html/gesCurso.html');?>
+                                    <?php //include('../html/gesCurso.html');?>
+                                    
+                                <div id="cursos"></div>
                                 </div>
                             </div>
                         </div>
