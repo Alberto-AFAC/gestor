@@ -30,6 +30,39 @@ $direc = mysqli_query($conexion,$sql);
 <script type="text/javascript">
     administraodr();
 </script>
+
+<div style="display: none;">
+
+<div id="FINALIZADO" ></div>
+<div id='porcentaje11' ></div>
+<div id="programado" ></div>
+<div id='porcentaje12' ></div>
+<div id="CANCELADO"></div>    
+<div id="inspecionciaac"></div>    
+<div id='porcentaje13'></div>
+<div id="evaluaciones"></div>
+<div id="profesions"></div>
+<div id="pro-pdf"> </div>
+<div id="pro-fec"></div>
+<div id="estudios"></div>
+<div id="std-pdf"> </div>
+<div id="std-fec"></div>
+<div id="ojt"></div>
+<div id="ojt-pdf"> </div>
+<div id="ojt-fec"></div>
+<div id="btcr"></div>
+<div id="btcr-pdf"> </div>
+<div id="btcr-fec"></div>
+<div id="ccfecha"></div>
+<div id="bscos"></div>
+<div id="Bfecha"></div>
+<div id="recurnt"></div>
+<div id="Rfecha"></div>
+<div id="specifico"></div>
+<div id="Efecha"></div>           
+</div>
+
+
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
     <div class="nav-tabs-custom">
@@ -125,8 +158,10 @@ $direc = mysqli_query($conexion,$sql);
                         <!-- /.box-header -->
                         <div class="box-body">
 
+<input id="fecomp1" style='display:none' type="text">
                         <div class="box-body">
-                                    <?php include('../html/gesCurso.html');?>
+                                    <?php // include('../html/gesCurso.html');?>
+                                    <div id="cursos"></div>
                                 </div>
 
                             <!-- /.table-responsive -->
