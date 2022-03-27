@@ -175,22 +175,22 @@ include('header.php');
                                             </div>
 
 
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <!-- <label>ESPECIALIDAD OJT</label> -->
+                                                    
                                                     <select id="" name="" class="form-control" placeholder="Seleccione la subcategoria..">
                                                         <option value="0">SELECCIONE LA SUB-CATEGORIA DE LA ESPECIALIDAD</option>
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <!-- <label>ESPECIALIDAD OJT</label> -->
+                                                 
                                                     <select id="" name="" class="form-control inputalta" placeholder="Seleccione la sub-sub-categoria..">
                                                         <option value="0">SELECCIONE LA SUB-SUB-CATEGORIA DE LA ESPECIALIDAD</option>
                                                         <option value=""></option>
                                                     </select>
                                                 </div>  
-                                            </div>
+                                            </div> -->
 
 
                                             <div class="form-group" id="agregarTarea" style="display: none;">
