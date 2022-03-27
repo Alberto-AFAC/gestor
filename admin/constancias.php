@@ -571,7 +571,7 @@ function perfil(id) {
 
 
 function visualcon(idcur){
-    alert(idcur);
+    // alert(idcur);
     var curso_id=idcur
     //alert(curso_id);
     
