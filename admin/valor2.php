@@ -147,7 +147,6 @@ $direc = mysqli_query($conexion,$sql);
                         <!-- /.box-header -->
                         <div class="box-body">
                         <div id="cursoespecial"></div>
-
                             <!-- /.table-cursos obligatorios por especialidad -->
                         </div>
 
