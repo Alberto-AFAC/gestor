@@ -421,8 +421,8 @@ $resultado = mysqli_query($conexion, $query);
       ?>
 
             ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
-                "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo base64_encode($data['id']) ?>&cod=<?php echo base64_encode($data['codigo'])?> ' target='_blank' title='Dar clic para consultar' onclick='visualcon(<?php echo $curso_id?>)'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
+                "<?php echo $data['gstTitlo']?>",//TODO AQUI VA
+                "<a href='constancia.php?data=<?php echo base64_encode($data['id_persona'])?>&cod=<?php echo base64_encode($data['gstIdlsc'])?> ' target='_blank' title='Dar clic para consultar' onclick='visualcon(<?php echo $curso_id?>)'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
                 "<?php echo $data['reaccion']?>","<?php echo $data['codigo']?>"
             ],
 
@@ -571,7 +571,7 @@ function perfil(id) {
 
 
 function visualcon(idcur){
-    //alert(idcur);
+    alert(idcur);
     var curso_id=idcur
     //alert(curso_id);
     

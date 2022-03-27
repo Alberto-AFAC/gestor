@@ -233,7 +233,7 @@ if($con = mysqli_fetch_array($const)){
 if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
     $id = base64_encode($con[0]);
 if($con[10]==0){
-$accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constancia.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
+$accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
 
 $accion = "<center><a  type='button' id='myCertificate' target='_blank'    class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
