@@ -175,6 +175,7 @@ $inspector = mysqli_query($conexion,$sql);
                                         <h4 class="modal-title">CANCELAR CURSO </h4>
                                     </div>
                                     <div class="modal-body">
+                                        <input type="hidden" name="liga" id="liga" value="lisCurso">
                                         <input type="hidden" name="codigos" id="codigos">
                                         <div class="form-group">
                                             <div class="col-sm-12">
@@ -753,9 +754,15 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
-$(document).ready(function() {
-    var table = $('#example').DataTable({
 
+$("#lisCurso").show();
+
+$(document).ready(function() {
+    $.fn.dataTableExt.errMode = 'ignore';  
+
+// $valor = "<a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>";
+
+    var table = $('#example').DataTable({
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -767,7 +774,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a>"
 
         }]
     });
@@ -1001,13 +1008,14 @@ function detalles(tbody, table) {
         $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
         if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").hide();
+            $("#elimina").show();
         } else {
             $("#elimina").show();
         }
 
     });
 }
+
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>

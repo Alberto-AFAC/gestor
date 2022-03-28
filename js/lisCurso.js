@@ -1773,7 +1773,7 @@ function adjuntarOjt() {
                 }, 4000);
 
                 // consultardocIns(ojtIdper);
-            setTimeout("location.href = 'inspector';", 2000);  
+            setTimeout("location.href = 'ojtprogramados';", 2000);  
             } else if (r == 1) {
                 $('#fallajt').toggle('toggle');
                 setTimeout(function() {

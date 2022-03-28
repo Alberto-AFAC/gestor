@@ -440,7 +440,7 @@ function inspector(gstIdper) {
         var x = 0;
 
 
-        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>OBSERVACIONES</th><th><i></i>EVALUACIÓN</th></tr></thead><tbody>';
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap rounded table-responsive"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>OBSERVACIONES</th><th><i></i>EVALUACIÓN</th></tr></thead><tbody>';
         for (ii = 0; ii < res.length; ii++) {
             x++;
             if (obj.data[ii].idinsp == gstIdper) {

@@ -96,7 +96,7 @@
                                     <li><a style="cursor: pointer;" onclick="perinsp();" data-toggle='modal' data-target='#modal-info'>INFORMACIÓN PERSONAL <span class="pull-right badge bg-red"></span></a></li>
                                     <li><a style="cursor: pointer;" onclick="constudios();" data-toggle='modal' data-target='#modal-estud'>EDUCACIÓN <span class="pull-right badge bg-aqua"></span></a></li>
                                     <li><a style="cursor: pointer;" onclick="conprofesion();" data-toggle='modal' data-target='#modal-exprofe'>EXPERIENCIA LABORAL <span class="pull-right badge bg-green"></span></a></li>
-                                    <li><a href="#">CONVOCATORIAS PENDIENTES<span class="pull-right badge bg-yellow"><div id="notpend"></div></span></a></li>
+                                    <!-- <li><a href="#">CONVOCATORIAS PENDIENTES<span class="pull-right badge bg-yellow"><div id="notpend"></div></span></a></li> -->
                                 </ul>
                             </div>
                         </div>
