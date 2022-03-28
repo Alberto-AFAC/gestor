@@ -187,6 +187,7 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
             </li>
+  <?php } ?>
             <li>
                 <a href="../dist/img/pdf/MANUAL DE USUARIO DE CAPACITACION AFAC.pdf" target="_blank">
                     <i class="fa fa-book"></i> <span>Manual</span>
@@ -196,7 +197,7 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
             </li>
-            <?php } ?>
+          
             <!-- <li>
                 <a href="soporte">
                     <i class="fa fa-cogs"></i> <span>Ayuda y Soporte</span>

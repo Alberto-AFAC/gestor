@@ -63,8 +63,16 @@ $direc = mysqli_query($conexion,$sql);
 </div>
 
 
+
+
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
+<div class="box-tools pull-right">
+<!-- <input style="" name="id_inspp" id="id_inspp" type="text"> -->
+                        <button type="button" class="btn btn-box-tool" data-widget="remove">
+                            <a href="inspecion2" style="font-size: 22px"><i class="fa fa-times"></i></a>
+                        </button>
+                    </div>
     <div class="nav-tabs-custom">
         <div class="conteiner" style="background: #fbfbfb">
             <!-- Encabezado -->
@@ -75,6 +83,7 @@ $direc = mysqli_query($conexion,$sql);
                         <div class="widget-user-header bg-blue-active">
                             <h3><input type="text" style="font-size: 18px;  background:transparent"
                                     name="nombrecompleto" id="nombrecompleto" class="datas" disabled=""></h3>
+                                   
 
                         </div>
                         <div class="widget-user-image">
@@ -82,19 +91,21 @@ $direc = mysqli_query($conexion,$sql);
                         </div>
                         <div class="box-footer">
                             <div class="row">
-                                <div class="col-sm-4 border-right">
+                                <!-- <div class="col-sm-4 border-right">
                                     <div class="description-block">
                                         <span class="description-text"></span>
                                         <h4><input type="text" name="cargopersonal" id="cargopersonal" title="Cargo" class="datas disabled" disabled=""></h4>
+                                        
                                     </div>
-                                    <!-- /.description-block -->
+                                   
                                     
-                                </div>
-                                <div class="col-sm-8">
+                                </div> -->
+                                <div class="col-sm-12">
                                     <div class="description-block">
     
                                         <span class="description-text"></span>
-                                        <small name="insparea" id="insparea" for="" style="font-size:14px; display:block; text-align:left"></small>
+                                        <div id="seleces"></div>
+                                        <!-- <small name="insparea" id="insparea" for="" style="font-size:14px; display:block; text-align:left"></small> -->
                                         <!-- <input type="text" name="insparea" id="insparea" title="Cargo" class="datas disabled" style="text-align:center" disabled=""> -->
                                     </div>
 
@@ -119,10 +130,6 @@ $direc = mysqli_query($conexion,$sql);
                     </div>
                     
                  </div>
-
-                 
-
-     
         </div>
         
     </div>
@@ -139,8 +146,8 @@ $direc = mysqli_query($conexion,$sql);
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-
-                            <!-- /.table-responsive -->
+                        <div id="cursoespecial"></div>
+                            <!-- /.table-cursos obligatorios por especialidad -->
                         </div>
 
                     </div>
@@ -1050,6 +1057,16 @@ $direc = mysqli_query($conexion,$sql);
                                 mes = '0' + mes //agrega cero si el menor de 10
                             document.getElementById('fecomp1').value = ano + "-" + mes + "-" + dia;
                         }
+//cursos obligatorios
+
+
+
+                        
+</script>
+
+<script>
+
+    
 </script>
 
             <!-- /.tab-pane -->

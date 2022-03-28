@@ -293,9 +293,10 @@ include('header.php');
     INNER JOIN personal
     ON gstIdper = id_usu";
     $resultado = mysqli_query($conexion, $query);
+    $n=1;
     while($data = mysqli_fetch_array($resultado)){ ?>
 
-            ['<?php echo $data['id_his']?>', '<?php echo $data['gstNombr'].' '.$data['gstApell']?>', '<?php echo $data['proceso']?>','<?php echo $data['registro']?>','<?php echo $data['fecha']?>' ],
+            ['<?php echo $n++; ?>', '<?php echo $data['gstNombr'].' '.$data['gstApell']?>', '<?php echo $data['proceso']?>','<?php echo $data['registro']?>','<?php echo $data['fecha']?>' ],
 
             <?php  } ?>
 
