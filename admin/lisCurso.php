@@ -755,6 +755,7 @@ $(document).ready(function() {
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
 $(document).ready(function() {
+    $.fn.dataTableExt.errMode = 'ignore';  
     var table = $('#example').DataTable({
 
         "language": {
