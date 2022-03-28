@@ -50,7 +50,6 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     type: 'POST',
                     data: 'resp='+respuesta.tipo
                     }).done(function(respuesta) {
-
                     })
 
             }
