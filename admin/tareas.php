@@ -175,22 +175,22 @@ include('header.php');
                                             </div>
 
 
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <!-- <label>ESPECIALIDAD OJT</label> -->
+                                                    
                                                     <select id="" name="" class="form-control" placeholder="Seleccione la subcategoria..">
                                                         <option value="0">SELECCIONE LA SUB-CATEGORIA DE LA ESPECIALIDAD</option>
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <!-- <label>ESPECIALIDAD OJT</label> -->
+                                                 
                                                     <select id="" name="" class="form-control inputalta" placeholder="Seleccione la sub-sub-categoria..">
                                                         <option value="0">SELECCIONE LA SUB-SUB-CATEGORIA DE LA ESPECIALIDAD</option>
                                                         <option value=""></option>
                                                     </select>
                                                 </div>  
-                                            </div>
+                                            </div> -->
 
 
                                             <div class="form-group" id="agregarTarea" style="display: none;">
@@ -1600,7 +1600,7 @@ function todasT(t) {
 
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
                     html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal +
-                        '</td><td>' + obj.data[H].ojt + '</td><td>' + obj.data[H].idarea  + '</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>'+
+                        '</td><td>' + obj.data[H].idarea + '</td><td>' + obj.data[H].ojt  + '</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>'+
                         '</td><td style="display:none">' + obj.data[H].id_ojt; +'</td></tr>'
 
                 } else {

@@ -26,38 +26,38 @@
 ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
-    <?php include('../perfil/notificar.php');?>
+<?php include('../perfil/notificar.php');?>
 
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
-   
-      <!-- search form -->
- 
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">Menú</li>
+        <!-- Sidebar user panel -->
+
+        <!-- search form -->
+
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">Menú</li>
 
 
-        <li class="active">
-          <a href="inspector">
-            <i class="glyphicon glyphicon-user"></i> <span>Inicio</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>        
-             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
-              <li>
-              <a href='e-learnning'>
-              <i class='fa fa-internet-explorer'></i> <span>E-learnning</span>
-                <span class='pull-right-container'>
-                  <small class='label pull-right bg-red'></small>
-                  <small class='label pull-right bg-blue'></small>
-                </span>
-              </a>
+            <li class="active">
+                <a href="profile">
+                    <i class="glyphicon glyphicon-user"></i> <span>Inicio</span>
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
+            <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
+            <li>
+                <a href='e-learnning'>
+                    <i class='fa fa-internet-explorer'></i> <span>E-learnning</span>
+                    <span class='pull-right-container'>
+                        <small class='label pull-right bg-red'></small>
+                        <small class='label pull-right bg-blue'></small>
+                    </span>
+                </a>
             </li>
             <?php }?>
 
@@ -82,58 +82,76 @@
                 echo "";
             }
             ?>
-        <li>
-          <a href="calendar/calendar">
-            <i class="fa fa-calendar"></i> <span>Calendario</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red"></small>
-              <small class="label pull-right bg-blue"></small>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="history">
-            <i class="fa fa-archive"></i> <span>Historial</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red"></small>
-              <small class="label pull-right bg-blue"></small>
-            </span>
-          </a>
-        </li>
+            <li>
+                <a href="inspector">
+                    <i class="fa fa ion-easel"></i> <span>Cursos</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="ojtprogramados">
+                    <i class="fa fa ion-easel"></i> <span>OJT</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="calendar/calendar">
+                    <i class="fa fa-calendar"></i> <span>Calendario</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="history">
+                    <i class="fa fa-archive"></i> <span>Historial</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
 
-      <li id="aojtalt1" style="display: none;">
-      <a href="inspecion">
-      <i class="fa fa-users"></i> <span>Lista de inspectores</span>
-      <span class="pull-right-container">
-      <small class="label pull-right bg-red"></small>
-      <small class="label pull-right bg-blue"></small>
-      </span>
-      </a>
-      </li>
-      <li>
-        <a href="../dist/img/pdf/MANUAL DE USUARIO DE CAPACITACION AFAC.pdf" target="_blank">
-            <i class="fa fa-book"></i> <span>Manual</span>
-            <span class="pull-right-container">
-                <small class="label pull-right bg-red"></small>
-                <small class="label pull-right bg-blue"></small>
-            </span>
-        </a>
-      </li>
+            <li id="aojtalt1" style="display: none;">
+                <a href="inspecion">
+                    <i class="fa fa-users"></i> <span>Lista de inspectores</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="../dist/img/pdf/MANUAL DE USUARIO DE CAPACITACION AFAC.pdf" target="_blank">
+                    <i class="fa fa-book"></i> <span>Manual</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
 
-        <!--  -->
-        
-        <!--  -->
-        <!--  -->
-      </ul>
+            <!--  -->
+
+            <!--  -->
+            <!--  -->
+        </ul>
     </section>
     <!-- /.sidebar -->
-  </aside>
-  <?php
+</aside>
+<?php
 
 include('../perfil/actualizar.php');
 
 ?>
 <script type="text/javascript" src="../js/accesos.js"></script>
 <script type="text/javascript">
-  inspectorAcceso();
+inspectorAcceso();
 </script>

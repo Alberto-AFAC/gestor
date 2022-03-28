@@ -914,7 +914,7 @@ function perfil(gstIdper) {
 
 
                     //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE PERSONAL 11012022
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap rounded table-responsive"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
                     //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CHECK LIST DOCUMENTACIÓN
                     $(document).ready(function() {
                         $("#checkrh tr").on('click', function() {
@@ -1788,6 +1788,7 @@ function inspector(gstIdper) {
                 consultaCurso(gstIdper + '*' + gstIDCat);
                 spcialidads(gstIdper);
                 $("#insparea").html(gstCatgr); //especialidad Card
+                
 
                 if (gstEvalu == 'NO') {
                     $("#ocultar1").hide();
@@ -1816,6 +1817,8 @@ function inspector(gstIdper) {
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#cargopersonal").val(obj.data[i].gstCargo);
+                            $("#id_inspp").val(obj.data[i].gstIdper);
+                           
 
                             $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                             $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
@@ -1888,6 +1891,53 @@ function inspector(gstIdper) {
                         }
                     }
                 })
+                $.ajax({
+                    url: '../php/conSpcialidad.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var ss = 0;
+
+                    html = '<select id="especins" name="especins" onchange="cursoespci()" class="form-control" data-placeholder="SELECCIONE A LA ESPECIALIDAD">';
+                    for (s = 0; s < res.length; s++) {
+                        ss++;
+
+                        if (obj.data[s].gstIDper == gstIdper) {
+                            if (obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 25 && obj.data[s].gstIdcat != 26 && obj.data[s].gstIdcat != 29 && obj.data[s].gstIdcat != 31) {
+                                html += "<option value=" + obj.data[s].gstIdcat + ">" + obj.data[s].gstCatgr;
+                            }
+                            // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
+                        }
+                    }
+                    html += '</option>';
+                    $("#seleces").html(html);
+                })
+
+                $.ajax({
+                    url: '../php/curespecial.php',
+                    type: 'POST'
+                  }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 0;
+                    html = '<div class="table-wrapper table-responsive"><table style="width:100%" id="datavaofi1" name="datavaofi1" class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable"><thead><tr><th><i></i>OBLIGATORIOS</th><th><i></i>ESPECIFICOS</th><th><i></i>TRANSVERSALES</th></tr></thead><tbody>';
+                    for (U = 0; U < res.length; U++) {  
+                      if (obj.data[U].especial == document.getElementById('especins').value){
+                        x++;
+                        pruebas="pruebas";
+            
+                        html += "<tr><td>" + obj.data[U].basicos + "</td><td>" + obj.data[U].especificos + "</td><td>" + obj.data[U].transversales  + "</td></tr>"; 
+                                 
+                      }  
+                                
+                    }
+                    html += '</div></tbody></table></div></div>';
+                    $("#cursoespecial").html(html);
+                    'use strict';
+                    
+                })
+
 
                 $.ajax({
                     url: '../php/conPerson.php',
@@ -1905,6 +1955,7 @@ function inspector(gstIdper) {
                             $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#cargopersonal").val(obj.data[i].gstCargo);
+                            $("id_inspp").val(obj.data[i].gstIdper);
                             $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
                             $("#Dtall #gstNombr").val(obj.data[i].gstNombr);
                             $("#Dtall #gstApell").val(obj.data[i].gstApell);
@@ -1976,6 +2027,52 @@ function inspector(gstIdper) {
                         }
                     }
                 })
+                $.ajax({
+                    url: '../php/conSpcialidad.php',
+                    type: 'POST'
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var ss = 0;
+
+                    html = '<select id="especins" name="especins" onchange="cursoespci()" class="form-control" data-placeholder="SELECCIONE A LA ESPECIALIDAD">';
+                    for (s = 0; s < res.length; s++) {
+                        ss++;
+
+                        if (obj.data[s].gstIDper == gstIdper) {
+                            if (obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 25 && obj.data[s].gstIdcat != 26 && obj.data[s].gstIdcat != 29 && obj.data[s].gstIdcat != 31) {
+                                html += "<option value=" + obj.data[s].gstIdcat + ">" + obj.data[s].gstCatgr;
+                            }
+                            // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
+                        }
+                    }
+                    html += '</option>';
+                    $("#seleces").html(html);
+                })
+
+                $.ajax({
+                    url: '../php/curespecial.php',
+                    type: 'POST'
+                  }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    var x = 0;
+                    html = '<div class="table-wrapper table-responsive"><table style="width:100%" id="datavaofi1" name="datavaofi1" class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable"><thead><tr><th><i></i>OBLIGATORIOS</th><th><i></i>ESPECIFICOS</th><th><i></i>TRANSVERSALES</th></tr></thead><tbody>';
+                    for (U = 0; U < res.length; U++) {  
+                      if (obj.data[U].especial == document.getElementById('especins').value){
+                        x++;
+                        pruebas="pruebas";
+            
+                        html += "<tr><td>" + obj.data[U].basicos + "</td><td>" + obj.data[U].especificos + "</td><td>" + obj.data[U].transversales  + "</td></tr>"; 
+                                 
+                      }  
+                                
+                    }
+                    html += '</div></tbody></table></div></div>';
+                    $("#cursoespecial").html(html);
+                    'use strict';
+                    
+                })
 
 
                 $.ajax({
@@ -1995,7 +2092,7 @@ function inspector(gstIdper) {
                     insp = 0;
 
                     //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE INSPECTOR
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap rounded table-responsive"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
                     //26082021
                     //TRAE LOS DATOS DE LA TABLA CELDA
                     $(document).ready(function() {
@@ -2377,7 +2474,36 @@ function inspector(gstIdper) {
     consultardocIns(gstIdper);
 
 }
+//FUNCION PARA FILTRAR ESPECIALIDAD VISTA 2
 
+function cursoespci(){
+
+    $.ajax({
+        url: '../php/curespecial.php',
+        type: 'POST'
+      }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html = '<div class="table-wrapper table-responsive"><table style="width:100%" id="datavaofi1" name="datavaofi1" class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable"><thead><tr><th><i></i>OBLIGATORIOS</th><th><i></i>ESPECIFICOS</th><th><i></i>TRANSVERSALES</th></tr></thead><tbody>';
+        for (U = 0; U < res.length; U++) {  
+          if (obj.data[U].especial == document.getElementById('especins').value){
+            x++;
+            pruebas="pruebas";
+
+            html += "<tr><td>" + obj.data[U].basicos + "</td><td>" + obj.data[U].especificos + "</td><td>" + obj.data[U].transversales  + "</td></tr>"; 
+                     
+          }  
+                    
+        }
+        html += '</div></tbody></table></div></div>';
+        $("#cursoespecial").html(html);
+        'use strict';
+        
+    })
+
+
+}
 
 ////////////////////CONSULTA OJT Y BITACORA///////////////
 
