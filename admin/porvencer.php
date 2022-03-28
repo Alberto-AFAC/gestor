@@ -13,30 +13,30 @@ $inspector = mysqli_query($conexion,$sql);
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-    <title>Capacitación AFAC | Programación</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
-    <script src="../dist/jspdf/dist/jspdf.debug.js"></script>
-    <script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
-    <script src="../dist/js/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../dist/css/input-correos.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+<title>Capacitación AFAC | Programación</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+<link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+<link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+<link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
+<script src="../dist/jspdf/dist/jspdf.debug.js"></script>
+<script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
+<script src="../dist/js/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="../dist/css/input-correos.css">
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <!-- <link rel="stylesheet" type="text/css" href="../datas/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
@@ -49,52 +49,52 @@ $inspector = mysqli_query($conexion,$sql);
     <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
 
-    <style>
-    #data-table-cursosProgramados input {
-        width: 80% !important;
-    }
+<style>
+#data-table-cursosProgramados input {
+width: 80% !important;
+}
 
-    .swal-wide {
-        width: 500px !important;
-        font-size: 16px !important;
-    }
+.swal-wide {
+width: 500px !important;
+font-size: 16px !important;
+}
 
-    .a-alert {
-        outline: none;
-        text-decoration: none;
-        padding: 2px 1px 0;
-    }
+.a-alert {
+outline: none;
+text-decoration: none;
+padding: 2px 1px 0;
+}
 
-    .a-alert:link {
-        color: white;
-    }
+.a-alert:link {
+color: white;
+}
 
-    .a-alert:visited {
-        color: white;
-    }
-    </style>
+.a-alert:visited {
+color: white;
+}
+</style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
-    <div class="wrapper">
+<div class="wrapper">
 
-        <?php
-        include('header.php');
+<?php
+include('header.php');
 ?>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-md-12">
-                        <div class="nav-tabs-custom">
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<!-- /.col -->
+<div class="col-md-12">
+<div class="nav-tabs-custom">
 
-                            <!--<ul class="nav nav-tabs">
+<!--<ul class="nav nav-tabs">
 <li class="active"><a href="#activity" data-toggle="tab">PROGRAMACIÓN DEL CURSO</a></li>
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
 </ul>-->
@@ -224,25 +224,25 @@ $inspector = mysqli_query($conexion,$sql);
                             <!-- /.tab-content
 </div>
 <!- /.nav-tabs-custom -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                    <form class="form-horizontal" action="" method="POST">
-                        <div class="modal fade" id="modal-eliminar">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">CANCELAR CURSO </h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="hidden" name="codigos" id="codigos">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <p> ¿ESTÁ SEGURO DE CANCELAR EL CURSO: <span id="cgstTitlo"></span>
-                                                    <!-- +'?'<input type="text" name="cgstTitlo"
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+<form class="form-horizontal" action="" method="POST">
+<div class="modal fade" id="modal-eliminar">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title">CANCELAR CURSO </h4>
+</div>
+<div class="modal-body">
+<input type="hidden" name="codigos" id="codigos">
+<div class="form-group">
+<div class="col-sm-12">
+<p> ¿ESTÁ SEGURO DE CANCELAR EL CURSO: <span id="cgstTitlo"></span>
+<!-- +'?'<input type="text" name="cgstTitlo"
 +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
 style="background: white;border: 1px solid white;"> -->
                                                 </p>
@@ -775,27 +775,27 @@ exit;
     </footer>
 
 
-    <div class="control-sidebar-bg"></div>
-    </div>
-    <!-- ./wrapper -->
+<div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
 
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
-    <script src="../js/global.js"></script>
+<!-- jQuery 3 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+<!-- page script -->
+<script src="../js/global.js"></script>
 
 </body>
 
@@ -803,302 +803,301 @@ exit;
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#id_mstr').select2();
-    $('#idinst').select2();
-    $('#idinsp').select2();
+$('#id_mstr').select2();
+$('#idinst').select2();
+$('#idinsp').select2();
 });
 </script>
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
 $(document).ready(function() {
-    $.fn.dataTableExt.errMode = 'ignore';   
-    var table = $('#example').DataTable({
+var table = $('#example').DataTable({
 
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        "order": [
-            [7, "DESC"]
-        ],
-        "ajax": "../php/cursosPorVncr.php",
-        "columnDefs": [{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+"language": {
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
+"order": [
+[7, "DESC"]
+],
+"ajax": "../php/cursosPorVncr.php",
+"columnDefs": [{
+"targets": -1,
+"data": null,
+"defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
-        }]
-    });
+}]
+});
 
-    detalles("#example tbody", table);
+detalles("#example tbody", table);
 
-    agrinspctor("#example tbody", table);
-
-
-    $('#example thead tr').clone(true).appendTo('#example thead');
-
-    $('#example thead tr:eq(1) th').each(function(i) {
-        var title = $(this).text(); //es el nombre de la columna
-        $(this).html('<input type="text"  placeholder="Buscar" />');
-
-        $('input', this).on('keyup change', function() {
-            if (table.column(i).search() !== this.value) {
-                table
-                    .column(i)
-                    .search(this.value)
-                    .draw();
-            }
-        });
-    });
+agrinspctor("#example tbody", table);
 
 
-    $('#example tbody').on('click', 'a', function() {
-        var data = table.row($(this).parents('tr')).data();
-        // alert( "Es el ID: "+ data );
-        $.ajax({
-            url: '../php/lisCurso.php',
-            type: 'POST'
-        }).done(function(resp) {
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
+$('#example thead tr').clone(true).appendTo('#example thead');
 
-            $("#porvencer").show();
+$('#example thead tr:eq(1) th').each(function(i) {
+var title = $(this).text(); //es el nombre de la columna
+$(this).html('<input type="text"  placeholder="Buscar" />');
 
-            for (i = 0; i < res.length; i++) {
-                if (obj.data[i].id_curso == data[8]) {
-                    cursos =
-                        obj.data[i].gstIdlsc +
-                        "*" + obj.data[i].gstTitlo +
-                        "*" + obj.data[i].gstTipo +
-                        "*" + obj.data[i].gstPrfil +
-                        "*" + obj.data[i].gstCntnc +
-                        "*" + obj.data[i].gstDrcin +
-                        "*" + obj.data[i].gstVignc +
-                        "*" + obj.data[i].gstObjtv +
-                        "*" + obj.data[i].hcurso +
-                        "*" + obj.data[i].fcurso +
-                        "*" + obj.data[i].fechaf +
-                        "*" + obj.data[i].idinst +
-                        "*" + obj.data[i].sede +
-                        "*" + obj.data[i].link +
-                        "*" + obj.data[i].modalidad +
-                        "*" + obj.data[i].codigo +
-                        "*" + obj.data[i].proceso +
-                        "*" + obj.data[i].idinsp +
-                        "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
-
-                    var d = cursos.split("*");
-
-                    gstIdlsc = d[0];
-                    $("#impri #codigoCurso").val(d[15]);
-                    $("#impri #gstIdlstc").val(d[0]);
-                    $("#impri #gstTitulo").val(d[1]);
-
-                    $("#idperonc").val(d[1]);
-                    $("#avaluacion #idperon").val(d[1]);
-
-                    $("#Dtall #gstTitlo").val(d[1]);
-                    $("#Dtall #gstTipo").val(d[2]);
-                    $("#Dtall #gstPrfil").val(d[3]);
-                    $("#Dtall #gstCntnc").val(d[4]);
-                    $("#Dtall #gstDrcin").val(d[5]);
-                    $("#Dtall #gstVignc").val(d[6]);
-                    $("#Dtall #gstObjtv").val(d[7]);
-                    $("#Dtall #hcurso").val(d[8]);
-                    $("#Dtall #fcurso").val(d[9]);
-                    $("#Dtall #fechaf").val(d[10]);
-                    $("#Dtall #idinst").val(d[11]);
-                    $("#Dtall #sede").val(d[12]);
-                    $("#Dtall #modalidads").val(d[14]);
-                    if (d[13] == '0') {
-                        $("#Dtall #linkcur").val(d[13]);
-                        $("#Dtall #contracur").val(d[18]);
-                        $("#dismod").hide();
-                        $("#disocl").show();
-                    } else {
-                        $("#Dtall #linkcur").val(d[13]);
-                        $("#Dtall #contracur").val(d[18]);
-                        $("#dismod").show();
-                        $("#disocl").hide();
-                    }
-
-                    $("#Dtall #codigo").val(d[15]);
-                    $("#Dtall #proceso").val(data[18]);
-                    $("#Dtall #codigoIDCuro").val(d[15]);
-                    codigo = d[15];
-
-                    idcurso(codigo);
-                    if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-                        $("#buttonfin").hide();
-                        $("#editcurs").hide();
-                        $("#notiocu").hide();
-                        $("#notiocus").hide();
-                        $("#ocubotn").hide();
-                        document.getElementById('modalMost').disabled = false;
-                        document.getElementById('allselect').disabled = true;
-                    } else {
-                        $("#buttonfin").show();
-                        $("#editcurs").show();
-                        $("#notiocu").show();
-                        $("#notiocus").show();
-                    }
-                    $("#Dtall #classromcur").val(d[19]);
-                }
-            }
-        })
+$('input', this).on('keyup change', function() {
+if (table.column(i).search() !== this.value) {
+table
+.column(i)
+.search(this.value)
+.draw();
+}
+});
+});
 
 
-        modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
-        dismod = document.getElementById(
-            "dismod"); //variable para el contenedor de el link y la contraseña
+$('#example tbody').on('click', 'a', function() {
+var data = table.row($(this).parents('tr')).data();
+// alert( "Es el ID: "+ data );
+$.ajax({
+url: '../php/lisCurso.php',
+type: 'POST'
+}).done(function(resp) {
+obj = JSON.parse(resp);
+var res = obj.data;
+var x = 0;
 
-        if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
-            dismod.style.display = '';
-        }
-        if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
-            linidismodnpu.style.display = '';
-        }
-        if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
-            dismod.style.display = 'none';
-        }
+$("#porvencer").show();
 
-    });
+for (i = 0; i < res.length; i++) {
+if (obj.data[i].id_curso == data[8]) {
+cursos =
+obj.data[i].gstIdlsc +
+"*" + obj.data[i].gstTitlo +
+"*" + obj.data[i].gstTipo +
+"*" + obj.data[i].gstPrfil +
+"*" + obj.data[i].gstCntnc +
+"*" + obj.data[i].gstDrcin +
+"*" + obj.data[i].gstVignc +
+"*" + obj.data[i].gstObjtv +
+"*" + obj.data[i].hcurso +
+"*" + obj.data[i].fcurso +
+"*" + obj.data[i].fechaf +
+"*" + obj.data[i].idinst +
+"*" + obj.data[i].sede +
+"*" + obj.data[i].link +
+"*" + obj.data[i].modalidad +
+"*" + obj.data[i].codigo +
+"*" + obj.data[i].proceso +
+"*" + obj.data[i].idinsp +
+"*" + obj.data[i].contracur +
+"*" + obj.data[i].classroom;
+
+var d = cursos.split("*");
+
+gstIdlsc = d[0];
+$("#impri #codigoCurso").val(d[15]);
+$("#impri #gstIdlstc").val(d[0]);
+$("#impri #gstTitulo").val(d[1]);
+
+$("#idperonc").val(d[1]);
+$("#avaluacion #idperon").val(d[1]);
+
+$("#Dtall #gstTitlo").val(d[1]);
+$("#Dtall #gstTipo").val(d[2]);
+$("#Dtall #gstPrfil").val(d[3]);
+$("#Dtall #gstCntnc").val(d[4]);
+$("#Dtall #gstDrcin").val(d[5]);
+$("#Dtall #gstVignc").val(d[6]);
+$("#Dtall #gstObjtv").val(d[7]);
+$("#Dtall #hcurso").val(d[8]);
+$("#Dtall #fcurso").val(d[9]);
+$("#Dtall #fechaf").val(d[10]);
+$("#Dtall #idinst").val(d[11]);
+$("#Dtall #sede").val(d[12]);
+$("#Dtall #modalidads").val(d[14]);
+if (d[13] == '0') {
+$("#Dtall #linkcur").val(d[13]);
+$("#Dtall #contracur").val(d[18]);
+$("#dismod").hide();
+$("#disocl").show();
+} else {
+$("#Dtall #linkcur").val(d[13]);
+$("#Dtall #contracur").val(d[18]);
+$("#dismod").show();
+$("#disocl").hide();
+}
+
+$("#Dtall #codigo").val(d[15]);
+$("#Dtall #proceso").val(data[18]);
+$("#Dtall #codigoIDCuro").val(d[15]);
+codigo = d[15];
+
+idcurso(codigo);
+if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
+$("#buttonfin").hide();
+$("#editcurs").hide();
+$("#notiocu").hide();
+$("#notiocus").hide();
+$("#ocubotn").hide();
+document.getElementById('modalMost').disabled = false;  
+document.getElementById('allselect').disabled = true; 
+} else {
+$("#buttonfin").show();
+$("#editcurs").show();
+$("#notiocu").show();
+$("#notiocus").show();
+}
+$("#Dtall #classromcur").val(d[19]);
+}
+}
+})
+
+
+modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
+dismod = document.getElementById(
+"dismod"); //variable para el contenedor de el link y la contraseña
+
+if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
+dismod.style.display = '';
+}
+if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
+linidismodnpu.style.display = '';
+}
+if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
+dismod.style.display = 'none';
+}
+
+});
 
 });
 
 function idcurso(codigo) {
 
-    var id = codigo
+var id = codigo
 
-    var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
-        "ajax": {
-            "url": "../php/cursosProgramados.php",
-            "type": "GET",
-            "data": function(d) {
-                d.id = id;
-            }
-        },
+var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
+"ajax": {
+"url": "../php/cursosProgramados.php",
+"type": "GET",
+"data": function(d) {
+d.id = id;
+}
+},
 
 
-        "language": {
+"language": {
 
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
+"searchPlaceholder": "Buscar datos...",
+"url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+},
 
-    });
+});
 
 }
 
 
 function id_cursos(idp) {
 
-    $.ajax({
-        url: '../php/curLista.php',
-        type: 'POST'
-    }).done(function(resp) {
+$.ajax({
+url: '../php/curLista.php',
+type: 'POST'
+}).done(function(resp) {
 
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
+obj = JSON.parse(resp);
+var res = obj.data;
+var x = 0;
 
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_curso == idp) {
-
-
-                //DETALLES CURSOS DECLINADOS
-
-                var toma1 = "",
-                    toma2 = "",
-                    toma3 = "",
-                    toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
-                toma2 += obj.data[i].gstApell; //PDF
-                toma3 += obj.data[i].confirmar; //PDF 
-                toma4 += obj.data[i].justifi; //PDF  
-
-                $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
-                $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
-                $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
-                $("#otrosd1").text(toma4); // Label esta en valor.php
-                $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
+for (i = 0; i < res.length; i++) {
+if (obj.data[i].id_curso == idp) {
 
 
-                if (toma3 == 'OTROS') {
-                    document.getElementById('otrosd1').style.display = '';
-                    document.getElementById('declinpdf1').style.display = 'none';
-                }
-                if (toma3 == 'TRABAJO') {
-                    document.getElementById('otrosd1').style.display = 'none';
-                    document.getElementById('declinpdf1').style.display = '';
-                }
-                if (toma3 == 'ENFERMEDAD') {
-                    document.getElementById('otrosd1').style.display = 'none';
-                    document.getElementById('declinpdf1').style.display = '';
-                }
-            }
-        }
-    })
+//DETALLES CURSOS DECLINADOS
+
+var toma1 = "",
+toma2 = "",
+toma3 = "",
+toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
+toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
+toma2 += obj.data[i].gstApell; //PDF
+toma3 += obj.data[i].confirmar; //PDF 
+toma4 += obj.data[i].justifi; //PDF  
+
+$("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
+$("#declinpdf1").attr('href', toma2); // Label esta en valor.php
+$("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
+$("#otrosd1").text(toma4); // Label esta en valor.php
+$("#declinpdf1").attr('href', toma4); // Label esta en valor.php
+
+
+if (toma3 == 'OTROS') {
+document.getElementById('otrosd1').style.display = '';
+document.getElementById('declinpdf1').style.display = 'none';
+}
+if (toma3 == 'TRABAJO') {
+document.getElementById('otrosd1').style.display = 'none';
+document.getElementById('declinpdf1').style.display = '';
+}
+if (toma3 == 'ENFERMEDAD') {
+document.getElementById('otrosd1').style.display = 'none';
+document.getElementById('declinpdf1').style.display = '';
+}
+}
+}
+})
 }
 
 
 function detalles(tbody, table) {
 
-    $(tbody).on("click", "a.eliminar", function() {
-        var data = table.row($(this).parents("tr")).data();
+$(tbody).on("click", "a.eliminar", function() {
+var data = table.row($(this).parents("tr")).data();
 
-        //var gstIdlsc = $().val(data.gstIdlsc);
-        $("#modal-eliminar #codigos").val(data[9]);
-        $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
+//var gstIdlsc = $().val(data.gstIdlsc);
+$("#modal-eliminar #codigos").val(data[9]);
+$("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
-        if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").hide();
-        } else {
-            $("#elimina").show();
-        }
+if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
+$("#elimina").show();
+} else {
+$("#elimina").show();
+}
 
-    });
+});
 }
 
 function agrinspctor(tbody, table) {
 
-    $(tbody).on("click", "a.asiste", function() {
-        var data = table.row($(this).parents("tr")).data();
+$(tbody).on("click", "a.asiste", function() {
+var data = table.row($(this).parents("tr")).data();
 
 
 
-        $("#Prtcpnt #gstIdlsc").val(data[15]);
-        $("#Prtcpnt #acodigos").val(data[9]);
-        $("#Prtcpnt #gstTitlo").val(data[1]);
-        $("#Prtcpnt #finicio").val(data[3]);
-        $("#Prtcpnt #gstDrcin").val(data[10]);
+$("#Prtcpnt #gstIdlsc").val(data[15]);
+$("#Prtcpnt #acodigos").val(data[9]);
+$("#Prtcpnt #gstTitlo").val(data[1]);
+$("#Prtcpnt #finicio").val(data[3]);
+$("#Prtcpnt #gstDrcin").val(data[10]);
 
-        $("#Prtcpnt #hrcurs").val(data[17]);
-        $("#Prtcpnt #finalf").val(data[5]);
-        $("#Prtcpnt #idcord").val(data[16]);
-        $("#Prtcpnt #sede").val(data[12]);
-        $("#Prtcpnt #linke").val(data[13]);
-        $("#Prtcpnt #modalidad").val(data[14]);
-        $("#Prtcpnt #contracceso").val(data[19]);
-        $("#Prtcpnt #classroom").val(data[20]);
+$("#Prtcpnt #hrcurs").val(data[17]);
+$("#Prtcpnt #finalf").val(data[5]);
+$("#Prtcpnt #idcord").val(data[16]);
+$("#Prtcpnt #sede").val(data[12]);
+$("#Prtcpnt #linke").val(data[13]);
+$("#Prtcpnt #modalidad").val(data[14]);
+$("#Prtcpnt #contracceso").val(data[19]);
+$("#Prtcpnt #classroom").val(data[20]);
 
-        if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#buttons").hide();
-        } else {
-            $("#buttons").show();
-        }
+if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
+$("#buttons").hide();
+} else {
+$("#buttons").show();
+}
 
 
-    });
+});
 }
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
 #example input {
-    width: 50% !important;
+width: 50% !important;
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->
