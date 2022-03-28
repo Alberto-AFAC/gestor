@@ -478,9 +478,9 @@ $inspector = mysqli_query($conexion,$sql);
             for (i = 0; i < res.length; i++) {
                 x++;
                 if (obj.data[i].codigo == folio) {
-                var idMast = obj.data[i].idinsp;
+                var idMast = obj.data[i].idinsp;    
                     $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
-                    html += "<tr><td style='text-align: left;'><a href='persona?data="+ idMast +"' onclick='perfilPart("+ obj.data[i].idinsp +");'>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' + 
+                    html += "<tr><td style='text-align: left;'><a href='persona?data="+ idMast +"'| data-target='#modal-estudio' onclick='perfilPart("+ obj.data[i].idinsp +");'>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' + 
                         "</td></tr>";
                 }
             }
