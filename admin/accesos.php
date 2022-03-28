@@ -1765,7 +1765,7 @@ $("#con_ojtalt").show();
 $("#con_calendario").show();
 $("#con_gantt").show();
 $("#sin_monitoreo").show(); 
-$("#sin_manual").show();
+$("#con_manual").show();
 
 //CURSO
 $("#sin_altacurso").show();
@@ -1831,7 +1831,7 @@ $("#sin_ojtalt").show();
 $("#con_calendario").show();
 $("#con_gantt").show();
 $("#sin_monitoreo").show(); 
-$("#sin_manual").show();
+$("#con_manual").show();
 //CURSO
 $("#con_altacurso").show();
 $("#con_catalogo").show();
@@ -1874,7 +1874,7 @@ $("#bojtalt").show();
 $("#con_calendario").show();
 $("#sin_gantt").show();
 $("#sin_monitoreo").show(); 
-$("#sin_manual").show();
+$("#con_manual").show();
 
 $("#1").hide('active');
 $("#2").addClass('active');
@@ -1924,6 +1924,7 @@ $("#con_historiaconstanc").show();
 $("#con_calendario").show();
 $("#con_gantt").show();
 $("#sin_monitoreo").show();
+$("#con_manual").show();
 
 $("#1").addClass('active');
 $("#2").removeClass('active');
