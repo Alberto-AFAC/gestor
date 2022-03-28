@@ -473,13 +473,14 @@ $inspector = mysqli_query($conexion,$sql);
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
+            var idMast = obj.data[i].idinsp;
             html =
                 '<table class="table table-striped"><tr><th>NOMBRE DEL PARTICIPANTE</th>';
             for (i = 0; i < res.length; i++) {
                 x++;
                 if (obj.data[i].codigo == folio) {
                     $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
-                    html += "<tr><td style='text-align: left;'>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell +
+                    html += "<tr><td style='text-align: left;'><a href='persona?data="+ idMast +"' onclick='perfilPart("+ obj.data[i].idinsp +");'>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' + 
                         "</td></tr>";
                 }
             }
@@ -487,6 +488,9 @@ $inspector = mysqli_query($conexion,$sql);
             $("#ganttTable").html(html);
         });
 
+    }
+    function perfilPart(idPart){
+        alert(idPart);
     }
     </script>
 
