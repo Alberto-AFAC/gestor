@@ -1031,19 +1031,15 @@
 <script src="../js/select2.js"></script>
 <script type="text/javascript">
         $(document).ready(function() {
-        $.fn.dataTableExt.errMode = 'ignore';  
+        // $.fn.dataTableExt.errMode = 'ignore';  
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos
     INNER JOIN personal ON id_usu = gstIdper";
     $resultado = mysqli_query($conexion, $query);
-
     while($data = mysqli_fetch_array($resultado)){ 
-
         $id = $data['id_usu'];
-        $acceso = $data['id_accesos']
-        ?>
-
+        $acceso = $data['id_accesos'] ?>
         // 1 SUPER_ADMIN
         // 2 ADMINISTRADOR
         // 3 EJECUTIVO
@@ -1053,7 +1049,6 @@
         // 7 INSPECTOR
         // 8 INSTRUCTOR
         // 9 NUEVO INGRESO
-
 ["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>",
 "<?php echo $data[2]?>", "<?php echo $data[4]?>",
 
@@ -1073,15 +1068,11 @@
 ,
 "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
 ],
-
-
 <?php } ?>
 ];
 
 var tableGenerarReporte = $('#data-table-instructores').DataTable({
     responsive: true,
-
-
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -1145,9 +1136,7 @@ function datos_editar(acceso) {
 function conteiner1(){
     $("#conteiner1").toggle();   
 }
-
 function conteiner2(){
-
     $("#conteiner2").toggle();
 }
 function conteiner3(){
@@ -1173,22 +1162,20 @@ $.ajax({
     type: 'POST',
     data: frm + "&opcion=modificar"
 }).done(function(respuesta) {
-    if (respuesta == 0) {
+        if (respuesta == 0) {
         Swal.fire({
-            type: 'success',
-            text: 'CREDENCIALES ACTUALIZADAS CORRECTAMENTE',
-            showConfirmButton: false,
-            customClass: 'swal-wide',
-            timer: 2000,
-            backdrop: `
-            rgba(100, 100, 100, 0.4)
-            `
+        type: 'success',
+        text: 'CREDENCIALES ACTUALIZADAS CORRECTAMENTE',
+        showConfirmButton: false,
+        customClass: 'swal-wide',
+        timer: 2000,
+        backdrop: `
+        rgba(100, 100, 100, 0.4)`
         });
         setTimeout("location.href = 'accesos';", 2000);
-    }
-});
+        }
+    });
 }
-
 
 function uno(){
     $("#primera").show();
@@ -1196,7 +1183,6 @@ function uno(){
     $("#tercera").hide();
     $("#cuarto").hide();
     $("#cinco").hide();
-
 }
 function dos(){
     $("#primera").hide();
@@ -1204,7 +1190,6 @@ function dos(){
     $("#tercera").hide();
     $("#cuarto").hide();
     $("#cinco").hide();
-
 }
 function tre(){
     $("#primera").hide();
@@ -1212,7 +1197,6 @@ function tre(){
     $("#tercera").show();
     $("#cuarto").hide();    
     $("#cinco").hide();
-
 }
 function cua(){
     $("#primera").hide();
@@ -1290,7 +1274,6 @@ $("#con_listapersonl").hide();
 
 $("#con_asignacionpuesto").hide();
 $("#sin_asignacionpuesto").hide();
-
 
 $("#aeditausu").hide();
 $("#beditausu").hide();
@@ -1407,7 +1390,6 @@ $("#sin_monitoreo").hide();
 
 $("#con_manual").hide();
 $("#sin_manual").hide();
-
 //OJT
 $("#aojtprincipal").hide();
 $("#bojtprincipal").hide();
@@ -1467,7 +1449,6 @@ function vaciar(){
 
     $("#con_asignacionpuesto").hide();
     $("#sin_asignacionpuesto").hide();
-
 
     $("#aeditausu").hide();
     $("#beditausu").hide();
