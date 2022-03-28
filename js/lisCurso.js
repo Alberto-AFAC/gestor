@@ -303,7 +303,9 @@ function eliminar(cursos) {
 //CANCELAR DE CURSOS PROGRAMADOS
 function canCurso() {
 
-    var codigos = document.getElementById('codigos').value;
+    var liga = document.getElementById('liga').value;
+    alert(liga);
+    var codigos = document.getElementById('codigos').value;    
 
     if (codigos == '') {
 
@@ -324,7 +326,7 @@ function canCurso() {
                 $('#succes').toggle('toggle');
                 setTimeout(function() {
                     $('#succes').toggle('toggle');
-                    location.href = 'lisCurso';
+                    location.href = liga;
                 }, 1500);
             } else {
                 $('#dangere').toggle('toggle');

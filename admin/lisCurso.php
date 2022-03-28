@@ -175,6 +175,7 @@ $inspector = mysqli_query($conexion,$sql);
                                         <h4 class="modal-title">CANCELAR CURSO </h4>
                                     </div>
                                     <div class="modal-body">
+                                        <input type="hidden" name="liga" id="liga" value="lisCurso">
                                         <input type="hidden" name="codigos" id="codigos">
                                         <div class="form-group">
                                             <div class="col-sm-12">
@@ -1001,13 +1002,14 @@ function detalles(tbody, table) {
         $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
         if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").hide();
+            $("#elimina").show();
         } else {
             $("#elimina").show();
         }
 
     });
 }
+
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
