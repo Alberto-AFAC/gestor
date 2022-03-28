@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"
         integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg=="
         crossorigin="anonymous"></script>
@@ -67,49 +66,48 @@ include('header.php');
                     <div class="col-md-3">
 
                         <!-- Profile Image -->
+                        
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-circle" src="../dist/img/perfil.png"
-                                    alt="User profile picture">
+                                
+                            <?php if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){
+                                        echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/general.jpeg'
+                                        alt='User profile picture'>";
+                                }else if($datos[1] == 'JACOB' && $datos[2] == 'GONZALEZ MACIAS'){
+                                    echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/JACOB_DDE.png'
+                                    alt='User profile picture'>";
+                                }else{
+                                    echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
+                                    alt='User profile picture'>";
+                                }        
+                            ?>
 
                                 <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
 
-                                <p class="text-muted text-center">RESUMEN DE CURSOS</p>
+                                <p class="text-muted text-center">RESUMEN DE OJT PROGRMADOS</p>
+
                                 <input type="text" style="display:none;" name="f1t1" id="f1t1"
                                     value="<?php echo $datos[0]?>">
-
-
+                                    
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Cursos en Proceso</b> <a class="pull-right">
-                                            <div id="programados"></div>
-                                        </a>
+                                        <b>OJT en Proceso</b> 
+                                        <span class="pull-right badge bg-blue"><div id="programadosOJT"></div></span>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Cursos Completados</b> <a class="pull-right">
-                                            <div id="completos"></div>
-                                        </a>
+                                        <b>OJT Completados</b>   
+                                        <span class="pull-right badge bg-green"><div id="completosOJT"></div></span>
+                                        
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Cursos Declinados</b> <a class="pull-right">
-                                            <div id="cancelados"></div>
+                                        <b>OJT Declinados</b> <a class="pull-right">
+                                            <div id="canceladosOJT"></div>
                                         </a>
                                     </li>
-                                    <li class="list-group-item">
-                                        <b>Cursos Vencidos</b> <a class="pull-right">
-                                            <div id="vencidos"></div>
-                                        </a>
-                                    </li>
-
                                 </ul>
-
                             </div>
                             <!-- /.box-body -->
                         </div>
-                        <!-- /.box -->
-
-                        <!-- About Me Box -->
-                        
                         <!-- /.box -->
                     </div>
                     <!-- /.col -->
@@ -117,16 +115,37 @@ include('header.php');
                         <div class="nav-tabs-custom">
 
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#activity" data-toggle="tab">Cursos por confirmar </a></li>
-                                <li><a href="#curComplet" data-toggle="tab">Cursos en proceso</a></li>
-                                <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
-                                <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
-                                <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li>
-                                <li><a href="#obligatorio" data-toggle="tab">Cursos obligatorios</a></li>
+                                <li class="active"><a href="#ojconfirmar" data-toggle="tab">OJT POR CONFIRMAR </a></li>
+                                <li><a href="#curComplet" data-toggle="tab">OJT EN PROCESO</a></li>
+                                <li><a href="#timeline" data-toggle="tab">OJT COMPLETADOS</a></li>
+                                <li><a href="#settings" data-toggle="tab">OJT DECLINADOS</a></li>
+                                <li><a href="#vencido" data-toggle="tab">OJT CONVOCATORIAS VENCIDAS</a></li>
+                               <?php if($datos[3]== 'ADMINISTRATIVO'){ }else{ ?>
+                                <li><a href="#ojt_insp" data-toggle="tab">OJT</a></li>
 
+                                <?php 
+}
+if($datos[3]== 'ADMINISTRATIVO'){
+
+}else{
+
+
+
+if(isset($ojt['idiva'])&&!empty($ojt['idiva'])){
+
+if($ojt['idiva'] != ''){
+echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
+}else {
+
+}
+}else{
+
+}
+}
+?>
                             </ul>
                             <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
+                                <div class="active tab-pane" id="ojconfirmar">
                                     <!-- Post -->
 
                                     <div class="post">
@@ -138,7 +157,7 @@ include('header.php');
                                                         </div>
                                                         <div class="box-body">
                                                             <div id="refresh">
-                                                                <table style="width: 100%;" id="data-table-confirmar"
+                                                                <table style="width: 100%;" id="data-table-confirmarojt"
                                                                     class="table display table-striped table-bordered">
                                                                 </table>
                                                             </div>
@@ -159,7 +178,7 @@ include('header.php');
                                                     <div class="box-header">
                                                     </div>
                                                     <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-programado"
+                                                        <table style="width: 100%;" id="data-table-programadoojt"
                                                             class="table display table-striped table-bordered"></table>
                                                     </div>
                                                 </div>
@@ -167,78 +186,6 @@ include('header.php');
                                         </div>
                                     </section>
                                 </div>
-
-                                <div class="tab-pane" id="timeline">
-                                    <section class="content">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="box">
-                                                    <div class="box-header">
-                                                    </div>
-                                                    <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-completo"
-                                                            class="table display table-striped table-bordered"></table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <!-- /.tab-pane -->
-
-                                <div class="tab-pane" id="settings">
-                                    <section class="content">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="box">
-                                                    <div class="box-header">
-                                                    </div>
-                                                    <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-cancelado"
-                                                            class="table display table-striped table-bordered"></table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-
-                                <div class="tab-pane" id="vencido">
-                                    <section class="content">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="box">
-                                                    <div class="box-header">
-                                                    </div>
-                                                    <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-vencidos"
-                                                            class="table display table-striped table-bordered"></table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-
-                                <div class="tab-pane" id="obligatorio">
-                                    <section class="content">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="box">
-                                                    <div class="box-header">
-                                                    </div>
-                                                    <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-obliga"
-                                                            class="table display table-striped table-bordered"></table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-
-
-
                                 <div class="tab-pane" id="ojt_insp">
                                     <div class="col-sm-6">
                                         <p id="oclOJT"><label>OJT </label> ADJUNTAR DOCUMENTO <a type="button"
@@ -268,6 +215,75 @@ include('header.php');
             <table style="width: 100%;" id="data-table-ojtinsp"
                 class="table display table-striped table-bordered"></table>
         </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <div class="tab-pane" id="timeline">
+                                    <section class="content">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <table style="width: 100%;" id="data-table-completoOJT"
+                                                            class="table display table-striped table-bordered"></table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                <div class="tab-pane" id="settings">
+                                    <section class="content">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <table style="width: 100%;" id="data-table-canceladoOJT"
+                                                            class="table display table-striped table-bordered"></table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <div class="tab-pane" id="vencido">
+                                    <section class="content">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <table style="width: 100%;" id="data-table-vencidosOJT"
+                                                            class="table display table-striped table-bordered"></table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <div class="tab-pane" id="obligatorio">
+                                    <section class="content">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <table style="width: 100%;" id="data-table-obliga"
+                                                            class="table display table-striped table-bordered"></table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -456,45 +472,15 @@ immediately after the control sidebar -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../dist/js/adminlte.min.js"></script>
     <script src="../dist/js/demo.js"></script>
-    <script type="text/javascript" src="../js/cursos.js"></script>
+
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <script src="../js/lisCurso.js"></script>
-    <script>
-    // alert("eded")
-    var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
-    //alert(idpersona1);
-    $.ajax({
-        url: '../php/accesos-list.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
+    <script src="../js/ojt.js"></script>
 
-        //AQUI03
-        html =
-            '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
-        var n = 0;
-        for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
-            //alert(obj.data[H].id_usu);
-            if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0') {
-                $('#modal-obligatorio').modal('show');
-                $("#usuarioobl").val(obj.data[H].gstNombr + " " + obj.data[H].gstApell);
-            } else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1') {
-                $('#modal-obligatorio').modal('hide');
-            }
 
-        }
-    })
-    //FIN DE ACTUALIZACION
-    </script>
 
 </body>
 
 </html>
-<?php include('../perfil/cursos.php'); ?>
-
-<script type="text/javascript" src="../js/accesos.js"></script>
-<script type="text/javascript">
-inspectorAcceso();
-</script>
+<?php include('../perfil/ojtp.php'); ?>

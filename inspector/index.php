@@ -73,7 +73,7 @@ $id = $_SESSION['usuario']['id_usu'];
                             <div class="content">
                                 <h3>CAPACITACIÓN AFAC</h3>
                                 <img class="img-servicios" src="../models/menu/images/piloto.svg" width="75%;" alt="piloto"><br><br>
-                                <a href="inspector">Iniciar</a>
+                                <a href="profile">Iniciar</a>
                             </div>
                         </div>
                         <div class="card">
