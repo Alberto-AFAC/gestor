@@ -812,6 +812,7 @@ $('#idinsp').select2();
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
+    $("#porvencer").show();
 $(document).ready(function() {
     $.fn.dataTableExt.errMode = 'ignore';  
 var table = $('#example').DataTable({

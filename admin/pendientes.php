@@ -745,6 +745,7 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
+    $("#pendientes").show();
 $(document).ready(function() {
     $.fn.dataTableExt.errMode = 'ignore';  
     var table = $('#example').DataTable({

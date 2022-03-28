@@ -90,12 +90,35 @@ onclick="agregarDias();">EDITAR</button>
 
     <!-- /.col -->
     <div class="col-md-12">
-        <div class="box-tools pull-right">
+        
+        <div class="box-tools pull-right" style="display:none;" id="lisCurso">
             <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
                 data-widget="remove">
                 <a href="lisCurso"><i class='fa fa-times'></i></a>
             </button>
         </div>
+
+        <div class="box-tools pull-right" style="display:none;" id="acreeditados">
+            <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+                data-widget="remove">
+                <a href="acreeditados"><i class='fa fa-times'></i></a>
+            </button>
+        </div>
+
+        <div class="box-tools pull-right" style="display:none;" id="pendientes">
+            <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+                data-widget="remove">
+                <a href="pendientes"><i class='fa fa-times'></i></a>
+            </button>
+        </div>        
+
+        <div class="box-tools pull-right" style="display:none;" id="porvencer">
+            <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+                data-widget="remove">
+                <a href="porvencer"><i class='fa fa-times'></i></a>
+            </button>
+        </div>  
+
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
 
