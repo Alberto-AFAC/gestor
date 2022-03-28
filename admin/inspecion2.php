@@ -148,7 +148,8 @@ include('header.php');
 
             <section class="content" id="detalles" style="display: none;">
                 <div class="row">
-                    <?php include('valor.php'); ?>
+                    <?php include('valor2.php'); ?>
+
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->

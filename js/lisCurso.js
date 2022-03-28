@@ -303,7 +303,9 @@ function eliminar(cursos) {
 //CANCELAR DE CURSOS PROGRAMADOS
 function canCurso() {
 
-    var codigos = document.getElementById('codigos').value;
+    var liga = document.getElementById('liga').value;
+    alert(liga);
+    var codigos = document.getElementById('codigos').value;    
 
     if (codigos == '') {
 
@@ -324,7 +326,7 @@ function canCurso() {
                 $('#succes').toggle('toggle');
                 setTimeout(function() {
                     $('#succes').toggle('toggle');
-                    location.href = 'lisCurso';
+                    location.href = liga;
                 }, 1500);
             } else {
                 $('#dangere').toggle('toggle');
@@ -1519,14 +1521,18 @@ $.ajax({
             html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
             }
         if(obj.data[i].dias=='Sábado' && obj.data[i].inc==1){
-             html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td>";                                    
+            html += "<td></td><td></td><td></td><td></td><td></td><td>"+diasp+" <b>"+ obj.data[i].numero +"</b></td>";           
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
          }else if(obj.data[i].dias=='Sábado'){
-             html += "<td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td>";                                                
+            html += "<td>"+diasp+" <b>"+ obj.data[i].numero +"</b></td>";                                   
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
             }
         if(obj.data[i].dias=='Domingo' && obj.data[i].inc==1){
-            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                    
+            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td>"+diasp+" <b>"+ obj.data[i].numero +"</b></td><tr>";
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
         }else if(obj.data[i].dias=='Domingo'){
-            html += "<td><input type='checkbox' value='" + obj.data[i].numero + "' disabled /> <b>"+ obj.data[i].numero +"</b></td><tr>";                                                
+            html += "<td>"+diasp+" <b>"+ obj.data[i].numero +"</b></td><tr>";                                   
+            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
             }       
         }
 

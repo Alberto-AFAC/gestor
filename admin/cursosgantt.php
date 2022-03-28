@@ -36,17 +36,93 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> -->
     <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
-    <script src="js/mobiscroll.javascript.min.js"></script>
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
-        .md-timeline-height .mbsc-timeline-resource,
-        .md-timeline-height .mbsc-timeline-row {
-            min-height: 120px;
-        }
+    .md-event-listing-cont {
+        position: relative;
+        padding-left: 50px;
+    }
+
+    .md-event-listing-avatar {
+        position: absolute;
+        max-height: 50px;
+        max-width: 50px;
+        top: 21px;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 20px;
+    }
+
+    .md-event-listing-name {
+        font-size: 16px;
+    }
+
+    .md-event-listing-title {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .md-event-listing .mbsc-segmented {
+        max-width: 350px;
+        margin: 0 auto;
+        padding: 1px;
+    }
+
+    .md-event-listing-picker {
+        flex: 1 0 auto;
+    }
+
+    .md-event-listing-nav {
+        width: 320px;
+    }
+
+    /* material header order */
+
+    .mbsc-material.md-event-listing-prev {
+        order: 1;
+    }
+
+    .mbsc-material.md-event-listing-next {
+        order: 2;
+    }
+
+    .mbsc-material.md-event-listing-nav {
+        order: 3;
+    }
+
+    .mbsc-material .md-event-listing-picker {
+        order: 4;
+    }
+
+    .mbsc-material .md-event-listing-today {
+        order: 5;
+    }
+
+    /* windows header order */
+
+    .mbsc-windows.md-event-listing-nav {
+        order: 1;
+    }
+
+    .mbsc-windows.md-event-listing-prev {
+        order: 2;
+    }
+
+    .mbsc-windows.md-event-listing-next {
+        order: 3;
+    }
+
+    .mbsc-windows .md-event-listing-picker {
+        order: 4;
+    }
+
+    .mbsc-windows .md-event-listing-today {
+        order: 5;
+    }
     </style>
-    </head>
+</head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
@@ -79,7 +155,7 @@ $inspector = mysqli_query($conexion,$sql);
                                 </div>
 
                                 <div id="container"></div>
-                                <div id="demo-resource-height" class="md-timeline-height"></div>
+                                <div id="demo-resource-details"></div>
                             </div>
 
                             <!-- /.tab-content -->
@@ -89,7 +165,23 @@ $inspector = mysqli_query($conexion,$sql);
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-
+                <!-- MODAL CON EL LISTADO DE CADA PARTICIPANTE -->
+                <div class="modal fade" id='ganttPartici' tabindex="-1" role="dialog" aria-labelledby="basicModal"
+                    aria-hidden="true">
+                    <div class="modal2" style="width: 1000px;">
+                        <div id="success-icon">
+                            <div>
+                                <img class="img-circle1" src="../dist/img/group.png">
+                            </div>
+                        </div>
+                        <p style="font-size: 24px; color:gray"><span id="tituloCurso" name="tituloCurso"></span></p>
+                        <div class="table-wrap">
+                            <div class="table-responsive">
+                                <div id="ganttTable"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
         </div>
@@ -111,6 +203,8 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- /.content -->
     </div>
 
+
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -131,7 +225,7 @@ $inspector = mysqli_query($conexion,$sql);
         </div>
         <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
         Todos los derechos Reservados DDE
-.
+        .
     </footer>
     <div class="control-sidebar-bg"></div>
     </div>
@@ -139,6 +233,9 @@ $inspector = mysqli_query($conexion,$sql);
 
     <!-- jQuery 3 -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/mobiscroll.javascript.min.js"></script>
+
+
     <!-- Bootstrap 3.3.7 -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->
@@ -157,7 +254,7 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- page script -->
     <script>
     //       // OPTIONS FOR THE GRAPHICS
-  
+
     // Highcharts.setOptions({
     //     credits: {
     //         enabled: false
@@ -254,53 +351,147 @@ $inspector = mysqli_query($conexion,$sql);
     // });
 
     // NUEVO GANTT CONFIGURADO
-   
     mobiscroll.setOptions({
-            locale: mobiscroll.localeEs,
-            theme: 'ios',
-            themeVariant: 'light'
-        });
+        locale: mobiscroll.localeEs,
+        theme: 'ios',
+        themeVariant: 'light'
+    });
 
-        var calendar = mobiscroll.eventcalendar('#demo-resource-height', {
+
+    $(function() {
+        <?php 
+            $query2 = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP by listacursos.gstTitlo,cursos.idmstr,cursos.idinst ORDER BY id_curso DESC ";
+            $resultado2 = mysqli_query($conexion, $query2);
+            while($data2 = mysqli_fetch_assoc($resultado2)){
+                  $tipo = $data2['gstTipo'];
+                  $nombre = $data2['gstTitlo'];
+            }
+        ?>
+        var calendar = $('#demo-resource-details').mobiscroll().eventcalendar({
             view: {
                 timeline: {
+                    type: 'month',
+                    weekNumbers: true,
                     rowHeight: 'equal',
-                    type: 'week',
-                    timeCellStep: 240,
-                    timeLabelStep: 240
                 }
             },
             resources: [{
-                id: 1,
-                name: 'REGISTER 1',
-                color: '#fdf500'
-            }, {
-                id: 2,
-                name: 'REGISTER 2',
-                color: '#ff0101'
-            },
-            //  {
-            //     id: 3,
-            //     name: 'Heroes Square',
-            //     color: '#01adff'
-            // }, {
-            //     id: 4,
-            //     name: 'Thunderdome',
-            //     color: '#239a21'
-            // }, {
-            //     id: 5,
-            //     name: 'King’s Landing',
-            //     color: '#ff4600'
-            // }
-        ]
-        });
-        mobiscroll.util.http.getJson('../php/data.php', function (events) {
-        calendar.setEvents(events);
-    }, 'jsonp');
+                    "id": "INDUCCIÓN",
+                    "name": "INDUCCIÓN",
+                    "color": "rgba(0, 58, 146, 0.6)",
+                }, {
+                    "id": "BÁSICOS\/INICIAL",
+                    "name": "BÁSICOS\/INICIAL",
+                    "color": "rgba(0, 102, 255, 0.6)",
 
-        function abrir() {
-            alert("HOLA MUNDO");
-        }
+                },
+                {
+                    "id": "TRANSVERSALES",
+                    "name": "TRANSVERSALES",
+                    "color": "orange",
+
+                },
+                {
+                    "id": "RECURRENTES",
+                    "name": "RECURRENTES",
+                    "color": "#EDF000",
+
+                },
+                {
+                    "id": "ESPECÍFICOS",
+                    "name": "ESPECÍFICOS",
+                    "color": "#2EE800",
+
+                }
+            ],
+            renderResource: function(resource) {
+                return '<div class="md-resource-details-cont">' +
+                    '<div class="md-resource-details-name">' + resource.name + '</div>' +
+                    '</div>';
+            },
+            renderHeader: function() {
+                return '<div mbsc-calendar-nav class="md-event-listing-nav"></div>' +
+                    '<div class="md-event-listing-picker">' +
+                    '<label>Semana<input mbsc-segmented type="radio" name="event-listing-view" value="week" class="event-listing-view-change" checked></label>' +
+                    '<label>Mes<input mbsc-segmented type="radio" name="event-listing-view" value="month" class="event-listing-view-change"></label>' +
+                    '<label>Año<input mbsc-segmented type="radio" name="event-listing-view" value="workweek" class="event-listing-view-change"></label>' +
+                    '</div>' +
+                    '<div mbsc-calendar-prev class="md-event-listing-prev"></div>' +
+                    '<div mbsc-calendar-today class="md-event-listing-today"></div>' +
+                    '<div mbsc-calendar-next class="md-event-listing-next"></div>';
+            },
+        }).mobiscroll('getInst');
+        $('.event-listing-view-change').change(function(ev) {
+            switch (ev.target.value) {
+                case 'workweek':
+                    calendar.setOptions({
+                        view: {
+                            timeline: {
+                                type: 'month',
+                                size: 12,
+                                eventList: true
+                            }
+                        },
+                        refDate: '2022-01-01'
+                    })
+                    break;
+                case 'week':
+                    calendar.setOptions({
+                        view: {
+                            timeline: {
+                                type: 'week',
+                                eventList: true
+                            }
+                        }
+                    })
+                    break;
+                case 'month':
+                    calendar.setOptions({
+                        view: {
+                            timeline: {
+                                type: 'month',
+                                eventList: true
+                            }
+                        }
+                    })
+                    break;
+            }
+        });
+        $.getJSON('../php/data.php', function(events) {
+            calendar.setEvents(events);
+        }, 'jsonp');
+    });
+
+    function listview(id) {
+
+        folio = 'FO' + id;
+
+        $.ajax({
+            url: '../php/ganttParticipantes.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+            var idMast = obj.data[i].idinsp;
+            html =
+                '<table class="table table-striped"><tr><th>NOMBRE DEL PARTICIPANTE</th>';
+            for (i = 0; i < res.length; i++) {
+                x++;
+                if (obj.data[i].codigo == folio) {
+                    $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
+                    html += "<tr><td style='text-align: left;'><a href='persona?data="+ idMast +"' onclick='perfilPart("+ obj.data[i].idinsp +");'>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' + 
+                        "</td></tr>";
+                }
+            }
+            html += '</table>';
+            $("#ganttTable").html(html);
+        });
+
+    }
+    function perfilPart(idPart){
+        alert(idPart);
+    }
     </script>
 
 </body>

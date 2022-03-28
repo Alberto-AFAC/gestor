@@ -20,6 +20,9 @@ $inspector = mysqli_query($conexion,$sql);
     <title>Capacitación AFAC | Seguimiento y Control</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"
+        integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg=="
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
@@ -30,6 +33,7 @@ $inspector = mysqli_query($conexion,$sql);
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
     <script src="../dist/jspdf/dist/jspdf.debug.js"></script>
     <script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
@@ -96,29 +100,31 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th>CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>VIGENCIA</th>
+                                                <th>TERMINO</th>
+                                                <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
                                                 <th>DETALLES</th>
                                                 <th>ACCIONES</th>
                                             </tr>
+
+
                                             <tr>
-                                                <th style="width:5%;">ID</th>
+                                                <th>ID</th>
                                                 <th>FOLIO CURSO</th>
-                                                <th style="width:18%;">INSPECTOR</th>
-                                                <!-- <th style="width:18%;">ESPECIALIDAD</th> -->
-                                                <th style="width:18%;">CURSO</th>
+                                                <th>INSPECTOR</th>
+                                                <th>CURSO</th>
                                                 <th>TIPO</th>
                                                 <th>ESPECIALIDAD</th>
-                                                <th>VIGENCIA</th>
+                                                <th>TERMINO</th>
+                                                <th>PRONOSTICO</th>
                                                 <th>ESTATUS</th>
                                                 <th>DETALLES</th>
                                                 <th>ACCIONES</th>
                                                 <!-- <th style="width:15%; display: none;">ACCIÓN</th> -->
                                             </tr>
                                         </thead>
-                                    
-                                           
-                                      
+
+
                                     </table>
                                 </div>
 
@@ -237,6 +243,12 @@ style="background: white;border: 1px solid white;"> -->
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
     </script>
     <script src="../js/global.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 </body>
 
 </html>
@@ -252,12 +264,86 @@ $(document).ready(function() {
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
 $(document).ready(function() {
+    var currentdate = new Date();
+    var datetime = "Fecha de Impresion: " + currentdate.getDate() + "/" +
+        (currentdate.getMonth() + 1) + "/" +
+        currentdate.getFullYear() + " - " +
+        currentdate.getHours() + ":" +
+        currentdate.getMinutes();
     var table = $('#example').DataTable({
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
+
+
         "ajax": "../php/seguimiento.php",
+        "pageLength": 10,
+        "lengthMenu": [
+            [5, 10, 25, 50],
+            [5, 10, 25, 50]
+        ],
+        scrollX: true,
+        "columnDefs": [{
+            "width": "20%",
+            "targets": [1, 2, 3]
+        }],
+        fixedColumns: true,
+        // dom: 'Bfrtip',
+        // buttons: [{
+        //         extend: 'copy',
+        //         exportOptions: {
+        //             columns: [0, 2, 3, 4, 5, 6, 7, 8, 9]
+        //         }
+        //     },
+        //     {
+        //         extend: 'pdfHtml5',
+        //         text: 'Generar PDF',
+        //         messageTop: 'SEGUIMIENTO Y CONTROL',
+        //         exportOptions: {
+        //             columns: [0, 2, 3, 4, 5, 6, 7, 8, 9]
+        //         },
+        //         download: 'open',
+        //         header: true,
+        //         title: '',
+        //         customize: function(doc) {
+        //             doc.defaultStyle.fontSize = 8;
+        //             doc.styles.tableHeader.fontSize = 8;
+        //             doc['footer'] = (function(page, pages) {
+        //                 return {
+        //                     columns: [
+        //                         datetime,
+        //                         {
+        //                             alignment: 'right',
+        //                             text: [{
+        //                                     text: page.toString(),
+        //                                     italics: false
+        //                                 },
+        //                                 ' de ',
+        //                                 {
+        //                                     text: pages.toString(),
+        //                                     italics: false
+        //                                 }
+        //                             ]
+        //                         }
+        //                     ],
+        //                     margin: [25, 0]
+        //                 }
+        //             });
+
+
+        //         }
+        //     },
+        //     {
+        //         extend: 'excel',
+        //         text: 'Generar Excel',
+        //         exportOptions: {
+        //             columns: [0, 2, 3, 4, 5, 6, 7, 8, 9]
+        //         }
+        //     }
+
+        // ],
+
         initComplete: function() {
             count = 0;
             this.api().columns().every(function() {
@@ -265,7 +351,7 @@ $(document).ready(function() {
                 //replace spaces with dashes
                 title = $(title).html().replace(/[\W]/g, '-');
                 var column = this;
-                var select = $('<select class="select2" ></select>')
+                var select = $('<select style="width: 80%;" class="select2" ></select>')
                     .appendTo($(column.header()).empty())
                     .on('change', function() {
                         //Get the "text" property from each selected data 
@@ -297,7 +383,7 @@ $(document).ready(function() {
                 select.select2({
                     multiple: true,
                     closeOnSelect: false,
-                    placeholder: "Selecciona..." 
+                    placeholder: "Selecciona..."
                 });
 
                 //initially clear select otherwise first option is selected
@@ -372,222 +458,12 @@ $(document).ready(function() {
     //     });
     // });
 
-
-    $('#example tbody').on('click', 'a', function() {
-        var data = table.row($(this).parents('tr')).data();
-        // alert( "Es el ID: "+ data );
-        $.ajax({
-            url: '../php/lisCurso.php',
-            type: 'POST'
-        }).done(function(resp) {
-
-
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
-
-            for (i = 0; i < res.length; i++) {
-                if (obj.data[i].id_curso == data[8]) {
-                    cursos =
-                        obj.data[i].gstIdlsc +
-                        "*" + obj.data[i].gstTitlo +
-                        "*" + obj.data[i].gstTipo +
-                        "*" + obj.data[i].gstPrfil +
-                        "*" + obj.data[i].gstCntnc +
-                        "*" + obj.data[i].gstDrcin +
-                        "*" + obj.data[i].gstVignc +
-                        "*" + obj.data[i].gstObjtv +
-                        "*" + obj.data[i].hcurso +
-                        "*" + obj.data[i].fcurso +
-                        "*" + obj.data[i].fechaf +
-                        "*" + obj.data[i].idinst +
-                        "*" + obj.data[i].sede +
-                        "*" + obj.data[i].link +
-                        "*" + obj.data[i].modalidad +
-                        "*" + obj.data[i].codigo +
-                        "*" + obj.data[i].proceso +
-                        "*" + obj.data[i].idinsp +
-                        "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
-
-                    var d = cursos.split("*");
-
-                    gstIdlsc = d[0];
-                    $("#impri #codigoCurso").val(d[15]);
-                    $("#impri #gstIdlstc").val(d[0]);
-                    $("#impri #gstTitulo").val(d[1]);
-
-                    $("#idperonc").val(d[1]);
-                    $("#avaluacion #idperon").val(d[1]);
-
-                    $("#Dtall #gstTitlo").val(d[1]);
-                    $("#Dtall #gstTipo").val(d[2]);
-                    $("#Dtall #gstPrfil").val(d[3]);
-                    $("#Dtall #gstCntnc").val(d[4]);
-                    $("#Dtall #gstDrcin").val(d[5]);
-                    $("#Dtall #gstVignc").val(d[6]);
-                    $("#Dtall #gstObjtv").val(d[7]);
-                    $("#Dtall #hcurso").val(d[8]);
-                    $("#Dtall #fcurso").val(d[9]);
-                    $("#Dtall #fechaf").val(d[10]);
-                    $("#Dtall #idinst").val(d[11]);
-                    $("#Dtall #sede").val(d[12]);
-                    $("#Dtall #modalidads").val(d[14]);
-                    if (d[13] == '0') {
-                        $("#Dtall #linkcur").val(d[13]);
-                        $("#Dtall #contracur").val(d[18]);
-                        $("#dismod").hide();
-                        $("#disocl").show();
-                    } else {
-                        $("#Dtall #linkcur").val(d[13]);
-                        $("#Dtall #contracur").val(d[18]);
-                        $("#dismod").show();
-                        $("#disocl").hide();
-                    }
-
-                    $("#Dtall #codigo").val(d[15]);
-                    $("#Dtall #proceso").val(data[18]);
-                    $("#Dtall #codigoIDCuro").val(d[15]);
-
-                    codigo = d[15];
-
-                    idcurso(codigo);
-                    if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-                        $("#buttonfin").hide();
-                        $("#editcurs").hide();
-                        $("#notiocu").hide();
-                        $("#notiocus").hide();
-                    } else {
-                        $("#buttonfin").show();
-                        $("#editcurs").show();
-                        $("#notiocu").show();
-                        $("#notiocus").show();
-                    }
-                    $("#Dtall #classromcur").val(d[19]);
-                }
-            }
-        })
-
-
-        modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
-        dismod = document.getElementById(
-            "dismod"); //variable para el contenedor de el link y la contraseña
-
-        if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
-            dismod.style.display = '';
-        }
-        if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
-            linidismodnpu.style.display = '';
-        }
-        if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
-            dismod.style.display = 'none';
-        }
-
-    });
-
 });
-
-function idcurso(codigo) {
-
-    var id = codigo
-
-    var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
-        "order": [
-            [3, "asc"]
-        ],
-        "ajax": {
-            "url": "../php/cursosProgramados.php",
-            "type": "GET",
-            "data": function(d) {
-                d.id = id;
-            }
-        },
-
-
-        "language": {
-
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-
-    });
-
-}
-
-
-function id_cursos(idp) {
-
-    $.ajax({
-        url: '../php/curLista.php',
-        type: 'POST'
-    }).done(function(resp) {
-
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_curso == idp) {
-
-
-                //DETALLES CURSOS DECLINADOS
-
-                var toma1 = "",
-                    toma2 = "",
-                    toma3 = "",
-                    toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
-                toma2 += obj.data[i].gstApell; //PDF
-                toma3 += obj.data[i].confirmar; //PDF 
-                toma4 += obj.data[i].justifi; //PDF  
-
-                $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
-                $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
-                $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
-                $("#otrosd1").text(toma4); // Label esta en valor.php
-                $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
-
-
-                if (toma3 == 'OTROS') {
-                    document.getElementById('otrosd1').style.display = '';
-                    document.getElementById('declinpdf1').style.display = 'none';
-                }
-                if (toma3 == 'TRABAJO') {
-                    document.getElementById('otrosd1').style.display = 'none';
-                    document.getElementById('declinpdf1').style.display = '';
-                }
-                if (toma3 == 'ENFERMEDAD') {
-                    document.getElementById('otrosd1').style.display = 'none';
-                    document.getElementById('declinpdf1').style.display = '';
-                }
-            }
-        }
-    })
-}
-
-
-function detalles(tbody, table) {
-
-    $(tbody).on("click", "a.eliminar", function() {
-        var data = table.row($(this).parents("tr")).data();
-
-        //var gstIdlsc = $().val(data.gstIdlsc);
-        $("#modal-eliminar #codigos").val(data[9]);
-        $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
-
-        if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").hide();
-        } else {
-            $("#elimina").show();
-        }
-
-    });
-}
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
 #example select {
-    width: 100% !important;
+    /* width: 30px !important; */
 }
 </style>
 <!-- <script src="../dist/js/multiples-correos.js"></script> -->

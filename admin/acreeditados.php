@@ -238,6 +238,7 @@ $inspector = mysqli_query($conexion,$sql);
                                         <h4 class="modal-title">CANCELAR CURSO </h4>
                                     </div>
                                     <div class="modal-body">
+                                        <input type="hidden" name="liga" id="liga" value="acreeditados"> 
                                         <input type="hidden" name="codigos" id="codigos">
                                         <div class="form-group">
                                             <div class="col-sm-12">
@@ -249,7 +250,7 @@ style="background: white;border: 1px solid white;"> -->
 </div>
 <br>
 <div class="col-sm-5">
-<button id="elimina" type="button" class="btn btn-primary"
+<button id="cancela" type="button" class="btn btn-primary"
 onclick="canCurso()">ACEPTAR</button>
 </div>
 <b>
@@ -809,7 +810,9 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
+    $("#acreeditados").show();
 $(document).ready(function() {
+    $.fn.dataTableExt.errMode = 'ignore';  
     var table = $('#example').DataTable({
 
         "language": {
@@ -1054,9 +1057,9 @@ function detalles(tbody, table) {
         $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
         if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").hide();
+            $("#cancela").show();
         } else {
-            $("#elimina").show();
+            $("#cancela").show();
         }
 
     });

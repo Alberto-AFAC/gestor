@@ -13,7 +13,7 @@ jQuery(document).on('submit', '#formtec', function(event) {
         })
         .done(function(respuesta) { //espera como parametro una respuesta
             console.log(respuesta); //por consola se pone(respusta)
-  
+
             if (!respuesta.error) { //*resivimos objeto json desde php para la evaluacion
                 if (respuesta.tipo == 'ADMINISTRADOR' || respuesta.tipo == 'SUPER_ADMIN') { //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
                     location.href = 'admin/'; //*redirecionado al directorio que le toca(carpeta)
@@ -21,21 +21,21 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     location.href = 'inspector/';
                 } else if (respuesta.tipo == 'DIRECTOR' || respuesta.tipo == 'DIRECTOR_CIAAC' || respuesta.tipo == 'EJECUTIVO') { //*redireccion al manejador si el .tipo es manejador
                     location.href = 'director/';
-               // } else if (respuesta.tipo == 'INSTRUCTOR') {
+                    // } else if (respuesta.tipo == 'INSTRUCTOR') {
                     //location.href = 'instructor/';
-                } else if(respuesta.tipo == 'COORDINADOR' || respuesta.tipo == 'INSTRUCTOR'){
-                    location.href = 'coordinador/';                    
-                }else if (respuesta.tipo == 'HUMANOS') {
+                } else if (respuesta.tipo == 'COORDINADOR' || respuesta.tipo == 'INSTRUCTOR') {
+                    location.href = 'coordinador/';
+                } else if (respuesta.tipo == 'HUMANOS') {
                     location.href = 'humanos/';
                 }
-        
-                    $.ajax({
+
+                $.ajax({
                     url: 'php/regSesion.php',
                     type: 'POST',
-                    data: 'resp='+respuesta.tipo
-                    }).done(function(respuesta) {
+                    data: 'resp=' + respuesta.tipo
+                }).done(function(respuesta) {
                     //alert(respuesta);
-                    })
+                })
 
             } else { //*si no se encuentra datos, mecionar que no hay cooincidencia en la base de datos
                 $('.errortec').fadeIn('slow'); //*se mostrara div con classe .error que esta en el formulario haciendo referencia 
@@ -43,14 +43,13 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     $('.errortec').fadeOut('slow'); //*ocultaremos el div con clase error con slideUP
                 }, 3000); //*se ejecutara al rededor de 3 segundos
                 $('.botton').val('Iniciar Sesion'); //*cambiaremos el valor de nuestro boton, que vuelva la estado normal como al principio
-            
-            
-                    $.ajax({
+
+
+                $.ajax({
                     url: 'php/regSesion.php',
                     type: 'POST',
                     data: 'resp='+respuesta.tipo
                     }).done(function(respuesta) {
-                        console.log();
                     })
 
             }

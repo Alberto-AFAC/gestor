@@ -30,21 +30,49 @@ $direc = mysqli_query($conexion,$sql);
 <script type="text/javascript">
     administraodr();
 </script>
+
+<div style="display: none;">
+
+<div id="FINALIZADO" ></div>
+<div id='porcentaje11' ></div>
+<div id="programado" ></div>
+<div id='porcentaje12' ></div>
+<div id="CANCELADO"></div>    
+<div id="inspecionciaac"></div>    
+<div id='porcentaje13'></div>
+<div id="evaluaciones"></div>
+<div id="profesions"></div>
+<div id="pro-pdf"> </div>
+<div id="pro-fec"></div>
+<div id="estudios"></div>
+<div id="std-pdf"> </div>
+<div id="std-fec"></div>
+<div id="ojt"></div>
+<div id="ojt-pdf"> </div>
+<div id="ojt-fec"></div>
+<div id="btcr"></div>
+<div id="btcr-pdf"> </div>
+<div id="btcr-fec"></div>
+<div id="ccfecha"></div>
+<div id="bscos"></div>
+<div id="Bfecha"></div>
+<div id="recurnt"></div>
+<div id="Rfecha"></div>
+<div id="specifico"></div>
+<div id="Efecha"></div>           
+</div>
+
+
 <!-- NUEVA DISEÑO DE PRESENTACION -->
 <div class="col-md-12">
     <div class="nav-tabs-custom">
         <div class="conteiner" style="background: #fbfbfb">
             <!-- Encabezado -->
-            <div class="card-container" style="background: #fbfbfb">
-
-
-                <!-- /.col -->
-                <div class="col-md-6">
-                    <!-- Widget: user widget style 1 -->
-                    <br>
-                    <div class="box box-widget widget-user">
+            <div class="col-md-4">
+            <br>
+            <div class="box box-widget widget-user">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-aqua-active">
+                        <div class="widget-user-header bg-blue-active">
                             <h3><input type="text" style="font-size: 18px;  background:transparent"
                                     name="nombrecompleto" id="nombrecompleto" class="datas" disabled=""></h3>
 
@@ -57,7 +85,7 @@ $direc = mysqli_query($conexion,$sql);
                                 <div class="col-sm-4 border-right">
                                     <div class="description-block">
                                         <span class="description-text"></span>
-                                        <h5><input type="text" name="cargopersonal" id="cargopersonal" title="Cargo" class="datas disabled" disabled=""></h5>
+                                        <h4><input type="text" name="cargopersonal" id="cargopersonal" title="Cargo" class="datas disabled" disabled=""></h4>
                                     </div>
                                     <!-- /.description-block -->
                                     
@@ -77,102 +105,83 @@ $direc = mysqli_query($conexion,$sql);
                             </div>
                             <!-- /.row -->
                         </div>
+                        
                     </div>
-                </div>
-
-                <div class="col-sm-offset-0 col-sm-9" style="background: #fbfbfb">
-
-                    <p class="text-center">
-                        <strong> </strong>
-                    </p><br><br>
-                    <div class="col-sm-offset-1 col-md-10">
-                        <div class="progress-group">
-                            <span class="progress-text">CURSOS COMPLETADOS </span>
-                            <span class="progress-number">
-                            <div id="FINALIZADO"></div>
-                            </span>
-                            <div class="progress">
-                            <div class="progress-bar progress-bar-green" id='porcentaje11' role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="">
-                                0% </div>
-                            </div>
-                        </div>
+                    <div class="box-footer no-padding">
+                        <ul class="nav nav-stacked">
+                            <li><a class="font1" onclick="perinsp();" data-toggle='modal' data-target='#modal-dapersonales'>DATOS PERSONALES</a><span class="pull-right badge bg-red"></span></li>
+                            <li><a class="font1" onclick="perinsp();" data-toggle='modal' data-target='#modal-puesto'>DATOS DEL PUESTO</a></li>
+                            <li><a class="font1" onclick="constudios();" data-toggle='modal' data-target='#modal-hisacademico'>HISTORIAL ACADEMICO</a></li>
+                            <li><a class="font1" onclick="conprofesion();" data-toggle='modal' data-target='#modal-hisprofes'>EXPERIENCIA PROFESIONAL</a></li>
+                            <li><a class="font1" onclick="conprofesion();" data-toggle='modal' data-target='#modal-checklist'>CHECK LIST</a></li>
+                            <li><a class="font1" onclick="conprofesion();" data-toggle='modal' data-target='#modal-cursospro'>CURSOS PROGRAMADOS</a></li>
+                        </ul>
                     </div>
-                    <!-- /.progress-group -->
-                    <div class="col-sm-offset-1 col-md-10">
-                        <div class="progress-group">
-                            <span class="progress-text">CURSOS PROGRAMADOS EN PROCESO</span>
-                            <span class="progress-number">
-                                <div id="programado"></div>
-                            </span>
-                            <div class="progress">
-                            <div class="progress-bar progress-bar-yellow" id='porcentaje12' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
-                             0% </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.progress-group -->
-                    <div class="col-sm-offset-1 col-md-10">
-                        <div class="progress-group">
-                            <span class="progress-text">CURSOS DECLINADOS</span>
-                            <span class="progress-number">
-                            <div id="CANCELADO"></div>
-                            </span>
-                            <div class="progress">
-                            <div class="progress-bar progress-bar-red" id='porcentaje13' role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
-                             0% </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.progress-group -->
-                    <!-- /.progress-group -->
-                </div>
+                    
+                 </div>
 
+                 
 
-                <div class="box-header" id="inspeciones">
-                    <h1 class="box-title"></h1>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="remove">
-                            <a href='inspecion' style="font-size: 22px"><i class='fa fa-times'></i></a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="box-header" id="inspecionciaac" style="display: none;">
-                    <h1 class="box-title"></h1>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="remove">
-                            <a href='inspecionciaac' style="font-size: 22px"><i class='fa fa-times'></i></a>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
+     
         </div>
+        
     </div>
+
+    <div class="col-lg-8 col-xs-4">
+                        <div class="box box-blue">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">CURSO DE ESPECIALIDAD</h4>
+                                <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+
+                            <!-- /.table-responsive -->
+                        </div>
+
+                    </div>
+
+                   
+                        <div class="box box-blue">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">DETALLE DEL CURSO</h4>
+                                <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+
+<input id="fecomp1" style='display:none' type="text">
+                        <div class="box-body">
+                                    <?php // include('../html/gesCurso.html');?>
+                                    <div id="cursos"></div>
+                                </div>
+
+                            <!-- /.table-responsive -->
+                        </div>
+
+                   
 </div>
 
-<!-- /FIN DE NUEVO DISEÑO -->
-<div class="col-xs-12">
-          <div class="box box-solid">
-            <div class="box-header">
-               <i class="fa fa fa-list"></i>
-
-               <h3 class="box-title">Check list</h3>
-
-                 <div class="box-tools pull-right">
-                   <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                   </button>
-                </div>
-            </div>
-            <!-- /.box-header -->
-            
-            <div class="box-body">
-            <div class="row">
-
-                <!-- ./col -->
-<div style="padding-top: 5px;" class="col-md-12">
-    <div class="nav-tabs-custom">
-            <form id="Dtall" class="form-horizontal" action="" method="POST">
+<!-------------------------------------------------------- MODAL CHECK LIST --------------------------------------------------------------------->
+        <div class="modal fade" id='modal-checklist'>
+            <div class="col-xs-20 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/;width:1000px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <h3 class="box-title">Check list</h3>
+                        </div>
+                        <div class="modal-body">
+                        <form id="Dtall" class="form-horizontal" action="" method="POST">
                 <input type="hidden" name="gstIdper" id="gstIdper">
                 <table style="width: 100%;" class="table table-striped table-hover center" >
                     <thead>
@@ -265,51 +274,34 @@ $direc = mysqli_query($conexion,$sql);
                     
                     </table>
             </form>
-           
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-
-
-
-              </div>
-              <!-- /.row -->
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
         </div>
 
+<!-------------------------------------------------------- MODAL DATOS PERSONALES --------------------------------------------------------------------->
 
-<!-- DISEÑO ANTIGUO/.col -->
-<div style="padding-top: 15px;" class="col-md-12">
-    <div class="nav-tabs-custom">
-        <div class="box-tools pull-right">
-            <button id="editinsp" type="button" class="btn btn-box-tool" data-widget="collapse">
-                <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
-                <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i
-                        class="fa fa-ban"></i> </a>
-            </button>
-            <!-- <button type="button" class="btn btn-box-tool" data-widget="remove">
-<a onclick="location.href='./'"><i class='fa fa-times'></i></a>
-</button> -->
-        </div>
-
-        <ul class="nav nav-tabs" style="font-size: 14px;">
-            <li class="active"><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
-            <li><a href="#puesto" data-toggle="tab">DATOS DEL PUESTO</a></li>
-            <li><a href="#lisestudios" data-toggle="tab">HISTORIAL ACADEMICO</a></li>
-            <li><a href="#experiencia" data-toggle="tab">EXPERIENCIA PROFESIONAL</a></li>
-            <li><a href="#obligatorio" data-toggle="tab" id="ocultar1">CURSOS OBLIGATORIOS </a></li>
-            <li><a href="#curso" data-toggle="tab" id="ocultar2">CURSOS PROGRAMADOS</a></li>
-
-        </ul>
- 
-        <div class="tab-content">
-            <div class="active tab-pane" id="activity">
-                <!-- Post -->
-                <div class="post">
-                    <form id="Dtall" class="form-horizontal" action="" method="POST">
+        <div class="modal fade" id='modal-dapersonales'>
+            <div class="col-xs-20 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/;width:1000px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <h3 class="box-title">DATOS PERSONALES</h3>
+                        </div>
+                        <div class="modal-body">
+                        <div class="box-tools pull-right">
+                        <button id="editinsp" type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
+                            <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i class="fa fa-ban"></i> </a>
+                        </button>
+                        </div>
+                        <br>
+                        <br>
+                        <form id="Dtall" class="form-horizontal" action="" method="POST">
                         <input type="hidden" name="gstIdper" id="gstIdper">
                         <div class="form-group">
                             <div class="col-sm-4">
@@ -532,15 +524,34 @@ $direc = mysqli_query($conexion,$sql);
                             </b>
                         </div>
 
-                    </form>
+                
+            </form>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-<!--------------------DATOS DEL PUESTO------------------------------->
-<!--------------------DATOS DEL PUESTO------------------------------->
-
-<div class="tab-pane" id="puesto">
-
-<form id="Pusto" class="form-horizontal" action="" method="POST">
+        </div>
+<!-------------------------------------------------------- MODAL DATOS DEL PUESTO --------------------------------------------------------------------->
+        <div class="modal fade" id='modal-puesto'>
+            <div class="col-xs-20 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/;width:1200px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <h3 class="box-title">DATOS DEL PUESTO</h3>
+                        </div>
+                        <div class="modal-body">
+                        <div class="box-tools pull-right">
+                        <button id="editinsp" type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <a href='javascript:openEdit()' id="cerrar" style="font-size:22px"> <i class="fa fa-edit"></i> </a>
+                            <a href='javascript:cerrarEdit()' id="cerrar1" style="display:none; font-size: 22px"> <i class="fa fa-ban"></i> </a>
+                        </button>
+                        </div>
+                        <br>
+                        <br>
+                        <form id="Pusto" class="form-horizontal" action="" method="POST">
     <input type="hidden" name="pstIdper" id="pstIdper">
     <div class="form-group">
         <div class="col-sm-4">
@@ -893,26 +904,92 @@ $direc = mysqli_query($conexion,$sql);
                         </b>
                     </div>
                 </form>
-            </div>
-            <div class="tab-pane" id="lisestudios">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <H4>
-                                <label>ULTIMO GRADO DE ESTUDIOS </label>
-                            </H4>
                         </div>
                     </div>
+                </div>
+
+            </div>
+        </div>
+<!-------------------------------------------------------- MODAL HISTORIAL ACADEMICO--------------------------------------------------------------------->
+
+<div class="modal fade" id='modal-hisacademico'>
+            <div class="col-xs-20 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/;width:1000px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <h3 class="box-title">HISTORIAL ACADEMICO</h3>
+                        </div>
+                        <div class="modal-body">
+                        <form class="form-horizontal">
                     <div id="studios"></div>
                 </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="tab-pane" id="experiencia">
-                <form class="form-horizontal">
+        </div>
+
+<!-------------------------------------------------------- MODAL HISTORIAL PROFESIONAL--------------------------------------------------------------------->
+<div class="modal fade" id='modal-hisprofes'>
+            <div class="col-xs-20 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document" style="/*margin-top: 7em;*/;width:1000px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <h3 class="box-title">EXPERIENCIA PROFESIONAL</h3>
+                        </div>
+                        <div class="modal-body">
+                        <form class="form-horizontal">
                     <div id="profsions"></div>
                 </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
+<!-------------------------------------------------------- MODAL HISTORIAL CURSOS PROGRAMADOS--------------------------------------------------------------------->
+
+
+                <script>
+    window.onload = function() {
+                            var fecha = new Date(); //Fecha actual
+                            var mes = fecha.getMonth() + 1; //obteniendo mes
+                            var dia = fecha.getDate(); //obteniendo dia
+                            var ano = fecha.getFullYear(); //obteniendo año
+                            if (dia < 10)
+                                dia = '0' + dia; //agrega cero si el menor de 10
+                            if (mes < 10)
+                                mes = '0' + mes //agrega cero si el menor de 10
+                            document.getElementById('fecomp1').value = ano + "-" + mes + "-" + dia;
+                        }
+</script>
+
+            </div>
+        </div>
+
+
+
+
+
+        
+<!-- DISEÑO ANTIGUO/.col -->
+
+   
+
+ 
+        
+           
+<!--------------------DATOS DEL PUESTO------------------------------->
+<!--------------------DATOS DEL PUESTO------------------------------->
+
+
             <!------------------------------------------->
-            <div class="tab-pane" id="obligatorio">
+            <!-- <div class="tab-pane" id="obligatorio">
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
@@ -930,7 +1007,7 @@ $direc = mysqli_query($conexion,$sql);
                         </div>
                     </div>
                 </section>
-            </div>
+            </div> -->
             <!-- modal evaluar -->
   <!-- DETALLE DECLINA CONVOCATORIA -->
   <div class="modal fade" id='modal-declinado'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -958,26 +1035,9 @@ $direc = mysqli_query($conexion,$sql);
 
 <!--FIN DETALLE DECLINA CONVOCATORIA -->
             <!-------------------------------------------->
-            <div class="tab-pane" id="curso">
-                <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Cursos programados</h3>
-                                    <input id="fecomp1" style='display:none' type="text">
-                                </div>
-
-                                <div class="box-body">
-                                    <?php //include('../html/gesCurso.html');?>
-                                    
-                                <div id="cursos"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <!-- <div class="tab-pane" id="curso">
+                
+            </div> -->
             <script>
     window.onload = function() {
                             var fecha = new Date(); //Fecha actual
@@ -994,8 +1054,7 @@ $direc = mysqli_query($conexion,$sql);
 
             <!-- /.tab-pane -->
             <!-- /.tab-pane -->
-        </div>
+        
         <!-- /.tab-content -->
-    </div>
+  
     <!-- /.nav-tabs-custom -->
-</div>

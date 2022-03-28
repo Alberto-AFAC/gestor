@@ -54,14 +54,14 @@
 #invalida,
 #falso,
 #vacios,
-#error
-{
+#error {
     padding: 0.5em;
     margin: 0;
     width: 250px;
     float: right;
     display: none;
 }
+
 
 /*Apartado de reportes*/
 
