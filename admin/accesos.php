@@ -1030,6 +1030,8 @@
 </script>
 <script src="../js/select2.js"></script>
 <script type="text/javascript">
+       $(document).ready(function() {
+        $.fn.dataTableExt.errMode = 'ignore';   
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos
@@ -1116,7 +1118,7 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
     }
     ],
 });
-
+});
 
 // FUNCTION PARA EDITAR
 function datos_editar(acceso) {

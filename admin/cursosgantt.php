@@ -388,19 +388,19 @@ $inspector = mysqli_query($conexion,$sql);
                 {
                     "id": "TRANSVERSALES",
                     "name": "TRANSVERSALES",
-                    "color": "#ff1717",
+                    "color": "orange",
 
                 },
                 {
                     "id": "RECURRENTES",
                     "name": "RECURRENTES",
-                    "color": "#ff1717",
+                    "color": "#EDF000",
 
                 },
                 {
                     "id": "ESPECÍFICOS",
                     "name": "ESPECÍFICOS",
-                    "color": "#ff1717",
+                    "color": "#2EE800",
 
                 }
             ],
