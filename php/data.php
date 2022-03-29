@@ -15,63 +15,38 @@ header('Content-Type: application/json');
 	$gstTitlo = $data['gstTitlo'];
 
 	$id_curso = $data['id_curso'];
+			
+	$folio = substr($data['codigo'],2);
+	$codigo = $folio;
 
-		$fcurso=$data['fcurso'];
+		$fcurso= $data['fcurso'].''.$data['hcurso'];//INICIO DEL CURSO
+        $ffcurso= $data['fechaf']; //FINAL DEL CURSO
 		$hcurso=$data['hcurso']; 
-
-		$Tiempo = new DateTime($hcurso); 
-		$Tiempo->modify('+0 hour'); 
-		$horaEstimada = $Tiempo->format('H:i:s');
-
-		$fechaf=$data['fechaf'];
-
-		$fecha_actual = strtotime(date("Y-m-d"));
-		$fecha_entrada = strtotime(date($fcurso));
-		$fecha_salida = strtotime(date($fechaf));
 		$tipo = $data['gstTipo'];
 		$id = $data['id_curso'];
 		$sede = $data['sede'];
-		$nombre = $data['gstTitlo'];
-
-
-		// owner: 'Peter'
-
-		
-		$start = $data['fcurso'];
-		$end = $data['fechaf'];
-		$start = date("j, n, Y");
-		$end = date("j, n, Y");
-if($fecha_entrada <= $fecha_actual && $fecha_actual <= $fecha_salida){
-$valor = 'event-success';
-$start = strtotime($fcurso.''.$hcurso) * 1000;
-$end = strtotime($fechaf.''.$horaEstimada) * 1000;
-
-}else if($fecha_entrada < $fecha_actual && $fecha_actual > $fecha_salida){
-$valor = '0';
-$start = strtotime($fcurso.''.$hcurso) * 1000;
-$end = strtotime($fechaf.''.$horaEstimada) * 1000;
-
-}else if($fecha_entrada > $fecha_actual && $fecha_actual < $fecha_salida){
-$valor = 'event-info';
-$start = strtotime($fcurso.''.$hcurso) * 1000;
-$end = strtotime($fechaf.''.$horaEstimada) * 1000;
-}
-
-	$start = strtotime($data['fcurso'].''.$data['hcurso']) * 1000;
+		$nombre = "<a data-toggle='modal' data-target='#ganttPartici'><span onclick='listview({$codigo});'>{$data['gstTitlo']}</span></a>";
+        
 
 			// $arreglo[] = $data; 
 			//  $arreglo[] = array('id'=> $id,'name'=> $gstTitlo, 'periods'=> [['id'=> $id_curso,'start'=>$start, 'end' => $end]] );
 			
 			//  $arreglo[] = array('start'=>$start, 'end' => $end,'name'=> $gstTitlo);
-			 $arregl[] = array('name'=> $tipo,'id'=>$tipo, 'owner'=> $sede);
-						$peque[] = array('name'=> $nombre,'parent' => $tipo,'start'=>$start, 'end' => $end);
-
-			$arreglo = array_merge($arregl,$peque);
+			 $arreglo[] = array('start'=> $fcurso,'end'=>$ffcurso, 'title'=> $nombre,'resource' => $tipo);
 
 		}
+        // if(isset($arreglo)&&!empty($arreglo)){
+
+		// 	$json_string = json_encode(array( 'data' => $arreglo ));
+		// 	echo $json_string;
+
+		// }else{
+
+		// 	echo $json_string='0';
+		// }
 		if(isset($arreglo)&&!empty($arreglo)){
 
-			echo json_encode($arreglo, JSON_UNESCAPED_UNICODE);
+			echo json_encode($arreglo, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 		}else{
 
 			echo $arreglo='0';
