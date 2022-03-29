@@ -368,11 +368,20 @@ $inspector = mysqli_query($conexion,$sql);
             }
         ?>
         var calendar = $('#demo-resource-details').mobiscroll().eventcalendar({
+            // view: {
+            //     timeline: {
+            //         type: 'month',
+            //         weekNumbers: true,
+            //         rowHeight: 'equal',
+            //     }
+            // },
             view: {
                 timeline: {
-                    type: 'month',
-                    weekNumbers: true,
-                    rowHeight: 'equal',
+                    type: 'week',
+                    startDay: 1,
+                    endDay: 5,
+                    weekNumbers: false,
+                    eventList: true
                 }
             },
             resources: [{
@@ -412,8 +421,8 @@ $inspector = mysqli_query($conexion,$sql);
             renderHeader: function() {
                 return '<div mbsc-calendar-nav class="md-event-listing-nav"></div>' +
                     '<div class="md-event-listing-picker">' +
-                    '<label>Semana<input mbsc-segmented type="radio" name="event-listing-view" value="week" class="event-listing-view-change" checked></label>' +
-                    '<label>Mes<input mbsc-segmented type="radio" name="event-listing-view" value="month" class="event-listing-view-change"></label>' +
+                    '<label>Semana<input mbsc-segmented type="radio" name="event-listing-view" value="week" class="event-listing-view-change"></label>' +
+                    '<label>Mes<input mbsc-segmented type="radio" name="event-listing-view" value="month" class="event-listing-view-change" checked></label>' +
                     '<label>Año<input mbsc-segmented type="radio" name="event-listing-view" value="workweek" class="event-listing-view-change"></label>' +
                     '</div>' +
                     '<div mbsc-calendar-prev class="md-event-listing-prev"></div>' +
@@ -421,6 +430,7 @@ $inspector = mysqli_query($conexion,$sql);
                     '<div mbsc-calendar-next class="md-event-listing-next"></div>';
             },
         }).mobiscroll('getInst');
+
         $('.event-listing-view-change').change(function(ev) {
             switch (ev.target.value) {
                 case 'workweek':
@@ -440,6 +450,9 @@ $inspector = mysqli_query($conexion,$sql);
                         view: {
                             timeline: {
                                 type: 'week',
+                                startDay: 1,
+                                endDay: 5,
+                                weekNumbers: false,
                                 eventList: true
                             }
                         }
@@ -478,9 +491,11 @@ $inspector = mysqli_query($conexion,$sql);
             for (i = 0; i < res.length; i++) {
                 x++;
                 if (obj.data[i].codigo == folio) {
-                var idMast = obj.data[i].idinsp;    
+                    var idMast = obj.data[i].idinsp;
                     $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
-                    html += "<tr><td style='text-align: left;'><a href='persona?data="+ idMast +"'| data-target='#modal-estudio' onclick='perfilPart("+ obj.data[i].idinsp +");'>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' + 
+                    html += "<tr><td style='text-align: left;'><a href='persona?data=" + idMast +
+                        "'| data-target='#modal-estudio'>" +
+                        obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
                         "</td></tr>";
                 }
             }
@@ -488,9 +503,6 @@ $inspector = mysqli_query($conexion,$sql);
             $("#ganttTable").html(html);
         });
 
-    }
-    function perfilPart(idPart){
-        alert(idPart);
     }
     </script>
 
