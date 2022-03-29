@@ -1030,8 +1030,8 @@
 </script>
 <script src="../js/select2.js"></script>
 <script type="text/javascript">
-        $(document).ready(function() {
-        // $.fn.dataTableExt.errMode = 'ignore';  
+       $(document).ready(function() {
+        $.fn.dataTableExt.errMode = 'ignore';   
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos

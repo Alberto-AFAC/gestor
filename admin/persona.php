@@ -563,8 +563,18 @@ $(document).ready(function() {
 });
 </script>
 <script src="../js/select2.js"></script>
+<?php $id = $_GET['data']; ?>
+<script type="text/javascript">
+    <?php echo "var jsvar ='$id';"; ?>
+    usuarios(jsvar);
+    function usuarios(jsvar){
+        if(jsvar!=''){
+            perfil(jsvar);
+            openDtlls();        
+        }
+    }
 
-
+</script>
 
 <script type="text/javascript">
 var dataSet = [
