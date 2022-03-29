@@ -531,7 +531,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <label>FECHA INGRESO A LA AFAC</label>
+                            <label>FECHA INGRESO A LA SCT</label>
                             <input disabled="" type="date" class="form-control" id="gstFeing" name="gstFeing">
                         </div>
                        <div class="col-sm-4">

@@ -687,7 +687,7 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <label class="label2">FECHA INGRESO A LA AFAC</label>
+                                <label class="label2">FECHA INGRESO A LA SCT</label>
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta"
                                     id="insfecini" disabled="">
                             </div>
