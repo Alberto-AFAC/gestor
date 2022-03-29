@@ -465,7 +465,7 @@ $psto = mysqli_query($conexion,$sql);
 
          <div class="form-group">
             <div class="col-sm-12">
-               <label class="label2">NOMBRE DEL PUESTO</label>
+               <label class="label2">NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span><span class="text-red" style="font-size:20px">*</span></label>
                <select style="width: 100%" class="form-control inputalta selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
                <option value="0">SELECCIONA EL PUESTO</option>
                <?php while($pust = mysqli_fetch_row($psto)):?>                      

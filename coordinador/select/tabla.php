@@ -26,7 +26,7 @@ background: white;
 </div>                                         
 
 <div class="col-sm-4">
-<label>NOMBRE DEL PUESTO (GENERICO)</label>
+<label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span> (GENERICO)</label>
 <input disabled="" type="text" class="form-control disabled" value="<?php echo $ver[2];?>" >
 </div>                  
 

@@ -486,7 +486,7 @@ $direc = mysqli_query($conexion,$sql);
                                 <input type="text" class="form-control" name="Nivel" id="Nivel" disabled="">
                             </div>
                             <div class="col-sm-4">
-                                <label>NOMBRE DEL PUESTO (GENERICO)</label>
+                                <label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span> (GENERICO)</label>
                                 <input type="text" class="form-control" name="Gnric" id="Gnric" disabled="">
                             </div>
                         </div>
@@ -511,15 +511,15 @@ $direc = mysqli_query($conexion,$sql);
                     <div class="form-group">
 
                         <div class="col-sm-12" id="nompusto1">
-                            <label>NOMBRE DEL PUESTO</label>
+                            <label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
                             <input type="text" class="form-control" name="nompuesto" id="nompuesto" disabled="">
                         </div>
 
                         <div class="col-sm-12" id="nompusto2" style="display: none;">
-                            <label>NOMBRE DEL PUESTO</label>
+                            <label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID"
                                 id="gstPstID" type="text" data-live-search="true">
-                                <option>SELECCIONE NOMBRE DEL PUESTO</option>
+                                <option>SELECCIONE NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></option>
                                 <?php while($pust = mysqli_fetch_row($psto)):?>
                                 <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
                                 <?php endwhile; ?>

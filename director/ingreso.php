@@ -571,7 +571,7 @@
 <input type="text" class="form-control" name="Nivel" id="Nivel" disabled="" >
 </div>
 <div class="col-sm-4">
-<label>NOMBRE DEL PUESTO (GENERICO)</label>  
+<label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span> (GENERICO)</label>  
 <input type="text" class="form-control" name="Gnric" id="Gnric" disabled="" >
 </div>
 </div>
@@ -587,14 +587,14 @@
 </div>
 </div>
 
-<p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();"> EDITAR NOMBRE DEL PUESTO <i class="fa fa-edit"></i></a>
+<p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();"> EDITAR NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span> <i class="fa fa-edit"></i></a>
 <b style="margin-left: 19em;"></b>
 <a onclick="especialidads();">EDITAR ESPECIALIDAD OACI PERSONAL TÉCNICO <i class="fa fa-edit"></i></a></p>  
 
 <div class="form-group">
 
 <div class="col-sm-12" id="nompusto1">
-<label>NOMBRE DEL PUESTO</label>
+<label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
 <input type="text" class="form-control" name="nompuesto" id="nompuesto" disabled="" >
 </div>
 
