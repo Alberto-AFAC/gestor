@@ -228,101 +228,22 @@ $inspector = mysqli_query($conexion,$sql);
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
-                    <form class="form-horizontal" action="" method="POST">
-                        <div class="modal fade" id="modal-eliminar">
+      
+<!---------------------------------------ELIMINAR----------------------------------------->
+             <form class="form-horizontal" action="" method="POST">
+                        <div class="modal fade" id="eliminar-modal">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">CANCELAR CURSO </h4>
+                                        <h4 class="modal-title">NO CUENTAS CON PRIVILEGIOS PARA ELIMINAR PARTICIPANTE </h4>
                                     </div>
-                                    <div class="modal-body">
-                                        <input type="hidden" name="codigos" id="codigos">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <p> ¿ESTÁ SEGURO DE CANCELAR EL CURSO: <span id="cgstTitlo"></span>
-                                                    <!-- +'?'<input type="text" name="cgstTitlo"
-+'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
-style="background: white;border: 1px solid white;"> -->
-</p>
-</div>
-<br>
-<div class="col-sm-5">
-<button id="elimina" type="button" class="btn btn-primary"
-onclick="canCurso()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error" id="dangerr">
-Error
-al cancelar curso</p>
-</b>
-<b>
-<p class="alert alert-success text-center padding exito" id="succes">¡Se
-cancelo curso con éxito !</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso" id="emptyy">
-Elija
-curso para cancelar </p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- /.modal-content -->
-</form>
-<!---------------------------------------ELIMINAR----------------------------------------->
-
-<form class="form-horizontal" action="" method="POST">
-<div class="modal fade" id="eliminar-modal">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title">ELIMINAR INSPECTOR </h4>
-</div>
-<div class="modal-body">
-<!-- <input type="hidden" name="codInsp" id="codInsp"> -->
-<input type="hidden" name="idInspt" id="idInspt">
-<div class="form-group">
-<div class="col-sm-12">
-<p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR? <span id="nomInsp"></span>
-<!-- +'?'<input type="text" name="cgstTitlo"
-+'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
-style="background: white;border: 1px solid white;"> -->
-</p>
-</div>
-<br>
-<div class="col-sm-5">
-<button id="elimina" type="button" class="btn btn-primary"
-onclick="elInspt()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error" id="dangerr1">
-Error
-al eliminar inspector</p>
-</b>
-<b>
-<p class="alert alert-success text-center padding exito" id="succes1">
-¡Se
-elimino inspector con éxito !</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso" id="emptyy1">
-Elija
-inspector para eliminar </p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- /.modal-content -->
-
-</form>
+                
+                                </div>
+                            </div>
+                        </div>
+                    </form>
 <!------------EVALUACION DE CURSOS-------------------->
 <!-- FIN EVALUACIÓN CURSO -->
 
@@ -421,34 +342,6 @@ placeholder="Comentarios Adicionales" disabled=""></textarea>
 </div>
 </div>
 
-<div class="form-group">
-<div class="col-sm-5">
-<button type="button" class="btn btn-primary"
-onclick="cerrareval()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error"
-id="dangerev">Error al
-Evaluar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito"
-id="succeev">¡Se Evaluo
-con
-exito!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev">Falto
-Ingresar
-la Puntuación!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev1">Falto
-Ingresar la Fecha!</p>
-</b>
-</div>
 </div>
 </div>
 </div>
@@ -473,36 +366,6 @@ data-dismiss="modal" aria-label="Close">
 </div>
 </p>
 </div>
-<div class="modal-body">
-<div class="form-group">
-<div class="col-sm-5">
-<button type="button" class="btn btn-primary"
-onclick="generar()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error"
-id="dangerev">Error al
-Evaluar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito"
-id="succeev">¡Se Evaluo
-con
-exito!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev">Falto
-Ingresar
-la Puntuación!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev1">Falto
-Ingresar la Fecha!</p>
-</b>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -525,36 +388,6 @@ RESULTADOS</b></h4>
 <div id="evaluacion"></div>
 </div>
 </p>
-</div>
-<div class="modal-body">
-<div class="form-group">
-<div style="margin-left: 3em" class="col-sm-offset-0 col-sm-5">
-<button type="button" class="btn btn-primary"
-onclick="evalresult()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-danger text-center padding error"
-id="danger1">Error al
-evaluar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito"
-id="exito1">¡Se evaluo
-con
-exito!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev">Falto
-Ingresar
-la Puntuación!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev1">Falto
-Ingresar la Fecha!</p>
-</b>
-</div>
 </div>
 </div>
 </div>
@@ -714,30 +547,6 @@ style="color:green; font-size: 16pt"></i></span>
 </table>
 </div>
 </div>
-
-<div class="form-group">
-<div class="col-sm-5">
-<button type="button" id="guaacredit" onclick="vergenercerf()"
-class="btn btn-info altaboton"
-style="font-size:16px; width:110px; height:35px; display:none;">ACEPTAR</button>
-<button type="button" id="actacredit" onclick="" class="btn btn-info altaboton"
-style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error" id="cerdangerev">Error
-al
-Acreditar!!
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso" id="ceravisos">Error al
-Acreditar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito" id="cersucceev">¡Se
-Acredito con
-exito!</p>
-</b>
-</div>
 </div>
 </div>
 </div>
@@ -809,7 +618,9 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
+    $("#acreeditados").show();
 $(document).ready(function() {
+    $.fn.dataTableExt.errMode = 'ignore';  
     var table = $('#example').DataTable({
 
         "language": {
@@ -823,7 +634,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> "
 
         }]
     });
@@ -1054,9 +865,9 @@ function detalles(tbody, table) {
         $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
         if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").hide();
+            $("#cancela").show();
         } else {
-            $("#elimina").show();
+            $("#cancela").show();
         }
 
     });
