@@ -421,8 +421,8 @@ $inspector = mysqli_query($conexion,$sql);
             renderHeader: function() {
                 return '<div mbsc-calendar-nav class="md-event-listing-nav"></div>' +
                     '<div class="md-event-listing-picker">' +
-                    '<label>Semana<input mbsc-segmented type="radio" name="event-listing-view" value="week" class="event-listing-view-change"></label>' +
-                    '<label>Mes<input mbsc-segmented type="radio" name="event-listing-view" value="month" class="event-listing-view-change" checked></label>' +
+                    '<label>Semana<input mbsc-segmented type="radio" name="event-listing-view" value="week" class="event-listing-view-change" checked></label>' +
+                    '<label>Mes<input mbsc-segmented type="radio" name="event-listing-view" value="month" class="event-listing-view-change"></label>' +
                     '<label>Año<input mbsc-segmented type="radio" name="event-listing-view" value="workweek" class="event-listing-view-change"></label>' +
                     '</div>' +
                     '<div mbsc-calendar-prev class="md-event-listing-prev"></div>' +
