@@ -34,11 +34,11 @@ ORDER BY
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->SMTPDebug = 2;
-        $mail->Host = 'smtp.mailtrap.io';
-        $mail->Port = 2525;
+        $mail->Host = 'smtp.hostinger.com';
+        $mail->Port = 587;
         $mail->SMTPAuth = true;
-        $mail->Username = '48f2c0fd8f1380';
-        $mail->Password = 'd82ef1999618b4';
+        $mail->Username = 'notificaciones@afac-avciv.com';
+        $mail->Password = 'Aeronavegabilidad.2021.$';
         $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
         $mail->addReplyTo('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
         $mail->Subject = 'ENTRENAMIENTO OJT';
