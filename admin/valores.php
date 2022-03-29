@@ -133,7 +133,7 @@ $direc = mysqli_query($conexion,$sql);
                 </div>
 
 
-                <div class="box-header" id="perosnas">
+                <div class="box-header" id="perosnas" style="display: none;">
                     <h1 class="box-title"></h1>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
@@ -149,7 +149,16 @@ $direc = mysqli_query($conexion,$sql);
                             <a href='personaciaac' style="font-size: 22px"><i class='fa fa-times'></i></a>
                         </button>
                     </div>
-                </div>                
+                </div>
+
+                <div class="box-header" id="instructor" style="display: none;">
+                    <h1 class="box-title"></h1>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove">
+                            <a href='instructor' style="font-size: 22px"><i class='fa fa-times'></i></a>
+                        </button>
+                    </div>
+                </div>                                
 
             </div>
         </div>

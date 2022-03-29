@@ -567,6 +567,7 @@ $(document).ready(function() {
 
 
 <script type="text/javascript">
+    $("#perosnas").show();
 var dataSet = [
     <?php 
 $query = "SELECT * FROM personal WHERE estado = 0 OR estado = 3 ORDER BY gstIdper DESC";
