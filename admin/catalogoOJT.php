@@ -22,9 +22,7 @@ $especialidad = mysqli_query($conexion,$sqlEspecialidad);
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
-    <script src="dist/js/sweetalert2.all.min.js"></script>
   <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-    <script src="../dist/js/sweetalert2.all.min.js"></script>
     <style>
 	.swal-wide {
         width: 500px !important;
@@ -232,6 +230,8 @@ $especialidad = mysqli_query($conexion,$sqlEspecialidad);
     <!-- page script -->
     <script src="../js/global.js"></script>
     <script src="../js/datos.js"></script>
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+
 
 </body>
 
@@ -726,5 +726,39 @@ function endojt(){
                 
             }
         });//FIN DE AJAX
+}
+function enviarMailOjt(ojt){
+    
+    num = ojt;
+    text = num.toString();
+    idojt = text.split(".")[0];
+    idper = text.split(".")[1];
+    Swal.fire({
+        html: 'Espera un momento...', // add html attribute if you want or remove
+        allowOutsideClick: false,
+        customClass: 'swal-wide',
+        onBeforeOpen: () => {
+            Swal.showLoading()
+        },
+    });
+    $.ajax({
+        url: '../admin/enviarMailOjt.php',
+        type: 'POST',
+        data: 'idojt=' + idojt + '&idper=' + idper 
+    }).done(function(html) {
+        Swal.fire({
+            type: 'success',
+            text: 'ENVIADO CON ÉXITO',
+            showSpinner: true,
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 2000,
+            backdrop: `
+                rgba(100, 100, 100, 0.4)
+            `
+        });
+
+    });
+
 }
 </script>
