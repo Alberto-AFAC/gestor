@@ -41,12 +41,12 @@ ORDER BY
         $mail->Password = 'd82ef1999618b4';
         $mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
         $mail->addReplyTo('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
-        $mail->Subject = 'OJT PENDIENTES';
+        $mail->Subject = 'ENTRENAMIENTO OJT';
         $mail->addAddress("{$to}");
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->CharSet = 'UTF-8';
                 $msg .= "<center><img src='https://afac-avciv.com/dist/img/correo.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 16px; color: white'>TAREA PROGRAMADA</span></td></tr>
+				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 16px; color: white'>PROGRAMACIÓN ENTRENAMIENTO OJT</span></td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>TAREA: ".$prueba['ojt_principal']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>SUBTAREA PROGRAMADA: ".$prueba['ojt_subtarea']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>NIVEL: ".$prueba['nivel']."</td></tr>
