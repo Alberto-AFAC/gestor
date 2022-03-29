@@ -99,7 +99,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">ACTUALIZAR CREDENCIALES DE ACCESO</h5>
+                            <h5 style="font-size: 20px;float: left;" class="modal-title" id="editarAccesosLabel">ACTUALIZAR CREDENCIALES DE ACCESO</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -140,15 +140,16 @@
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="privilegios" id="privilegios" type="text" data-live-search="true">
                                     <option value="0" selected>SELECCIONE...</option>
-                                    <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
-                                    <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-                                    <option value="DIRECTOR">DIRECTOR</option>
-                                    <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
-                                    <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-                                    <option value="EJECUTIVO">EJECUTIVO</option>
-                                    <option value="INSTRUCTOR">COORDINADOR/INSTRUCTOR</option>
-                                    <option value="INSPECTOR">INSPECTOR</option>
-                                    <option value="HUMANOS">HUMANOS</option>
+                                    <option value="SUPER_ADMIN" id="opc1">SUPER ADMINISTRADOR</option>
+                                    <option value="ADMINISTRADOR" id="opc2">ADMINISTRADOR</option>
+                                    <option value="DIRECTOR" id="opc3">DIRECTOR</option>
+                                    <option value="DIRECTOR_CIAAC" id="opc4">DIRECTOR_CIAAC</option>
+                                    <option value="ADMINISTRATIVO" id="opc5">ADMINISTRATIVO</option>
+                                    <option value="EJECUTIVO" id="opc6">EJECUTIVO</option>
+                                    <option value="INSTRUCTOR" id="inst1">INSTRUCTOR</option>
+                                    <option value="COORDINADOR" id="inst2">COORDINADOR</option>
+                                    <option value="INSPECTOR" id="opc7">INSPECTOR</option>
+                                    <option value="HUMANOS" id="opc8">HUMANOS</option>
                                 </select>
                             </div>
                         </div>
@@ -1062,7 +1063,7 @@
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(4.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='ADMINISTRATIVO' || $data[4]=='INSPECTOR' || $data[4]=='NUEVO INGRESO'){ ?>
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-<?php }else if($data[4]=='INSTRUCTOR'){ ?>    
+<?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR'){ ?>    
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php } ?>
 ,
@@ -1109,7 +1110,7 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
 // FUNCTION PARA EDITAR
 function datos_editar(acceso) {
 
-    $("#Editar").slideDown("slow");
+     $("#Editar").slideDown("slow");
     $("#cuadro1").hide("slow");
     $.ajax({
         url: '../php/accesos-list.php',
@@ -1119,6 +1120,38 @@ function datos_editar(acceso) {
         var res = obj.data;
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_accesos == acceso) {
+                
+                   if(obj.data[i].privilegios=='COORDINADOR' || obj.data[i].privilegios=='INSTRUCTOR'){
+                    // $('#privilegios').prop('disabled', true);
+                    if(obj.data[i].privilegios=='INSTRUCTOR'){
+                    $("#inst1").show();
+                    $("#inst2").hide();                        
+                    }else{
+                    $("#inst1").hide();    
+                    $("#inst2").show();
+                    }
+                    $("#opc1").hide();
+                    $("#opc2").hide();
+                    $("#opc3").hide();
+                    $("#opc4").hide();
+                    $("#opc5").hide();
+                    $("#opc6").hide();
+                    $("#opc7").hide();
+                    $("#opc8").hide();
+                   }else{
+                    // $('#privilegios').prop('disabled', false);
+                    $("#inst1").hide();
+                    $("#inst2").hide();
+                    $("#opc1").show();
+                    $("#opc2").show();
+                    $("#opc3").show();
+                    $("#opc4").show();
+                    $("#opc5").show();
+                    $("#opc6").show();
+                    $("#opc7").show();
+                    $("#opc8").show();
+                   }
+
                 var
                 id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
                 id_usu = $("#editarAccesos #idUser").val(obj.data[i].id_usu),
@@ -1173,6 +1206,16 @@ $.ajax({
         rgba(100, 100, 100, 0.4)`
         });
         setTimeout("location.href = 'accesos';", 2000);
+        }else{
+        Swal.fire({
+        type: 'warning',
+        text: 'SELECCIONE PRIVILEGIOS',
+        showConfirmButton: false,
+        customClass: 'swal-wide',
+        timer: 2000,
+        backdrop: `
+        rgba(100, 100, 100, 0.4)`
+        });           
         }
     });
 }

@@ -61,6 +61,8 @@ include('header.php');
                                 <div class="pull-right">
 
                                     <div class="btn-group">
+                                        <a type="button" href="accesoInstr" class="btn btn-info btn-sm"><i
+                                        ></i> CAMBIO O MODIFICACIÓN DE COORDINADOR E INSTRUCTOR</a>  
                                         <a type="button" href="instructor.php" class="btn btn-default btn-sm"><i
                                                 class="fa fa-refresh"></i></a>
                                     </div>
@@ -335,23 +337,34 @@ $(document).ready(function() {
 </script>
 <script src="../js/select2.js"></script>
 <script type="text/javascript">
+    $("#instructor").show();
+// $query = "SELECT
+// * 
+// FROM
+// personal
+// INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat 
+// WHERE
+// gstCargo = 'INSTRUCTOR' 
+// OR gstCargo = 'COORDINADOR' 
+// AND personal.estado = 0 
+// OR personal.estado = 2 
+// ORDER BY
+// gstIdper DESC";
 var dataSet = [
     <?php 
         $query = "SELECT
         * 
-                 FROM
+        FROM
         personal
-                INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat 
-                WHERE
-        gstCargo = 'INSTRUCTOR' 
-        OR gstCargo = 'COORDINADOR' 
-        AND personal.estado = 0 
-        OR personal.estado = 2 
+        INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat 
+        WHERE
+        personal.estado = 0 OR 
+        personal.estado = 2 
         ORDER BY
         gstIdper DESC";
-$resultado = mysqli_query($conexion, $query);
+        $resultado = mysqli_query($conexion, $query);
 
-while($data = mysqli_fetch_array($resultado)){ 
+        while($data = mysqli_fetch_array($resultado)){ 
 
     // if($data['gstCatgr'] == "CURSO"){
     //     $categoriaInsp = "SIN ASIGNAR";
@@ -359,6 +372,15 @@ while($data = mysqli_fetch_array($resultado)){
     //   } else{
     //     $categoriaInsp = $data['gstCatgr'];
     //   }
+
+        $gstIdper = $data['gstIdper'];
+        $quacc = "SELECT * FROM instruacceso WHERE idper = $gstIdper AND estado = 0";
+        $result = mysqli_query($conexion, $quacc);
+        if($rest = mysqli_fetch_array($result)){    
+        $cargo = $rest['cargo'];  
+        }else{
+         $cargo = '';
+         }
 
 
         $gstIdper = $data['gstIdper'];
@@ -395,10 +417,10 @@ while($data = mysqli_fetch_array($resultado)){
 $gstId5 = $data['gstIdper'];
 
 
- if($data['estado'] == 0){ ?>
+ if($cargo == 'INSTRUCTOR' || $cargo == 'COORDINADOR'){ ?>
 
     ["<?php echo  $empleado;?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
-        "<?php echo $categoria ?>", "<?php echo $data['gstCargo']?>","<?php echo $estado?>",
+        "<?php echo $categoria ?>", "<?php echo $cargo ?>","<?php echo $estado?>",
 
         "<?php echo "<a href='javascript:openDtlls()' title='Perfil' onclick='perfil({$gstIdper})' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a><a href='' title='Ver detalle de cursos' onclick='perinscoord({$gstIdper})' class='btn btn-default' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa ion-easel text-muted'></i></a>";?>"
     ],

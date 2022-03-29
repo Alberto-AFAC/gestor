@@ -266,7 +266,7 @@ var dataSet = [
 
 <?php }else if($data['estatus']=='FINALIZADO' && $data['evalu_ojt']=='0'){ 
     $valor="<span  onclick='confirmar1($id_proojt)'  style='background-color:green; font-size: 13px; cursor:pointer;' data-toggle='modal' data-target='#modal-detalle' class='badge' title='Ver detalles del curso'>FINALIZADO</span> <span title='Pendiente por confirmar' style='background-color: grey; font-size: 13px;' class='badge'>EVALUACIÓN PENDIENTE</span>"; //23112021
-    $detalles="<a type='button' style='background-color:' title='Evaluación Curso' data-toggle='modal' data-target='#modal-evaluOJT' onclick='cursoeval' class='btn btn-primary'>EVALUAR</a>";
+    $detalles="<a type='button' style='background-color:' title='Evaluación de OJT' data-toggle='modal' data-target='#modal-evaluOJT' onclick='' class='btn btn-primary'>EVALUAR</a>";
 ?>  ["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo $data['nivel']?>",
 "<?php echo $fcurso?>", "<?php echo $fechaf?>",
 "<?php echo $valor?>","<?php echo $detalles?>"

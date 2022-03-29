@@ -10,13 +10,15 @@ $opcion = $_POST["opcion"];
 	
 if($opcion === 'modificar'){
     $idacceso = $_POST['idAccesos'];
-	$id_usu = $_POST['id_usu'];
-	$gstNmpld = $_POST['gstNmpld'];
+	$id_usu = $_POST['idUser'];
+	// $gstNmpld = $_POST['gstNmpld'];
 	$usuario = $_POST['usuario'];
 	$password = $_POST['password'];
     $privilegios = $_POST['privilegios'];
-		if($password != '' ){
-		    if(modificar($id_usu,$gstNmpld,$usuario,$password,$idacceso,$privilegios,$conexion)){
+
+    if($privilegios==0){ echo "3"; }else{		
+		if($password != ''){
+		    if(modificar($id_usu,$usuario,$password,$idacceso,$privilegios,$conexion)){
 				echo "0";
 				historia($id,$idacceso,$conexion); 
 			}else{
@@ -25,11 +27,12 @@ if($opcion === 'modificar'){
 		}else{
 			echo "1";
 		}	
+	}
 }
 
 //---------------------------------------------------------FUNCIONES---------------------------------------------------//
 	//Funcion para actualiza la contraseña
-    function modificar($id_usu,$gstNmpld,$usuario,$password,$idacceso,$privilegios,$conexion){
+    function modificar($id_usu,$usuario,$password,$idacceso,$privilegios,$conexion){
 		$query = "UPDATE accesos SET usuario='$usuario',password='$password', privilegios= '$privilegios' WHERE id_accesos = $idacceso";
 		if (mysqli_query($conexion,$query)) {
 			return true;

@@ -54,8 +54,8 @@ $instructor = mysqli_query($conexion,$sql);
                                 <h3 class="box-title">INSTRUCTORES Y COORDINADORES</h3>
                                 <div class="pull-right">
                                     <div class="btn-group">
-                                        <a type="button" href="instructor.php" class="btn btn-default btn-sm"><i
-                                            class="fa fa-refresh"></i></a>
+                                        <a type="button" href="instructor" class="btn btn-default btn-sm"><i
+                                            class="fa fa-close"></i></a>
                                         </div>
                                         <!-- /.btn-group -->
                                     </div>
