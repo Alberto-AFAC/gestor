@@ -106,8 +106,8 @@ folder instead of downloading all of them to reduce the load. -->
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-md-12">
-<!------------------------------------------------------------- ESPECIALIDAD Y COMISIÓN-------------------------------------------------------------------------->
-                        <div class="box box-default collapsed-box" >
+                        <!------------------------------------------------------------- ESPECIALIDAD Y COMISIÓN-------------------------------------------------------------------------->
+                        <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">ESPECIALIDAD Y COMISIÓN</h3>
 
@@ -136,16 +136,17 @@ folder instead of downloading all of them to reduce the load. -->
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-6">
-                                    <div id="ubiojt" style="" class="">
-                                        <div class="form-group">
-                                            <label>UBICACIÓN<span class="text-red">*</label>
-                                            <select onchange="filubi()" id="uboj" name="uboj"
-                                                class="form-control inputalta" placeholder="Seleccione la ubicación">
-                                                <option value="">SELECCIONE LA UBICACIÓN</option>
-                                                <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
-                                                <option value="COMANDANCIA">COMANDANCIA</option>
-                                            </select>
-                                        </div>
+                                        <div id="ubiojt" style="" class="">
+                                            <div class="form-group">
+                                                <label>UBICACIÓN<span class="text-red">*</label>
+                                                <select onchange="filubi()" id="uboj" name="uboj"
+                                                    class="form-control inputalta"
+                                                    placeholder="Seleccione la ubicación">
+                                                    <option value="">SELECCIONE LA UBICACIÓN</option>
+                                                    <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
+                                                    <option value="COMANDANCIA">COMANDANCIA</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <!-- /.form-group -->
                                         <div class="form-group">
@@ -166,7 +167,7 @@ folder instead of downloading all of them to reduce the load. -->
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    
+
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>NIVEL<span class="text-red">*</label>
@@ -204,9 +205,9 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-body -->
                         </div>
 
-<!------------------------------------------------------------- SELECCIÓN DE TAREAS-------------------------------------------------------------------------->
+                        <!------------------------------------------------------------- SELECCIÓN DE TAREAS-------------------------------------------------------------------------->
 
-                         <div class="box box-default collapsed-box">
+                        <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">SELECCIÓN DE TAREAS</h3>
 
@@ -219,15 +220,15 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                <div class="form-group">
-                                            <div class="col-sm-4">
-                                                <label class="label2" style="font-size:16px">SELECCIONE LA
-                                                    TAREA</label>
-                                            </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label class="label2" style="font-size:16px">SELECCIONE LA
+                                                TAREA</label>
                                         </div>
-                                        <!-- <div id="tablaPro"></div> -->
+                                    </div>
+                                    <!-- <div id="tablaPro"></div> -->
 
-                                        <div id="tabtareas"></div>
+                                    <div id="tabtareas"></div>
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
@@ -235,7 +236,7 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-body -->
                         </div>
 
-<!------------------------------------------------------------- PROGRAMACIÓN DE TAREAS-------------------------------------------------------------------------->
+                        <!------------------------------------------------------------- PROGRAMACIÓN DE TAREAS-------------------------------------------------------------------------->
                         <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">PROGRAMACIÓN DE TAREAS</h3>
@@ -257,13 +258,12 @@ folder instead of downloading all of them to reduce the load. -->
                                         </div>
                                         <div class="col-sm-4">
                                             <label>FECHA Y HORA DE TERMINO<span class="text-red">*</label>
-                                            <input type="datetime-local" onkeyup="mayus(this);" class="form-control inputalta"
-                                                id="fechaTermino" name="fechaTermino">
+                                            <input type="datetime-local" onkeyup="mayus(this);"
+                                                class="form-control inputalta" id="fechaTermino" name="fechaTermino">
                                         </div>
                                         <div class="col-md-4">
                                             <label>COORDINADOR DEL OJT<span class="text-red">*</label>
-                                            <select multiple="multiple"
-                                                data-placeholder="SELECCIONE COORDINADOR OJT"
+                                            <select multiple="multiple" data-placeholder="SELECCIONE COORDINADOR OJT"
                                                 style="width: 100%;color: #000" class="form-control select2" type="text"
                                                 id="coordinador" name="coordinador">
                                                 <option value="">SELECCIONE COORDINADOR </option>
@@ -279,7 +279,7 @@ folder instead of downloading all of them to reduce the load. -->
                                     <br>
                                     <div class="form-group">
                                         <div class="col-md-4">
-                                        <label>INSTRUCTOR OJT<span class="text-red">*</label>
+                                            <label>INSTRUCTOR OJT<span class="text-red">*</label>
                                             <select multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR OJT"
                                                 style="width: 100%;color: #000" class="form-control select2" type="text"
                                                 class="form-control" id="instructor" name="instructor">
@@ -297,7 +297,7 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-body -->
                         </div>
 
-<!------------------------------------------------------------- SELECCIÓN DE INSPECTOR -------------------------------------------------------------------------->
+                        <!------------------------------------------------------------- SELECCIÓN DE INSPECTOR -------------------------------------------------------------------------->
                         <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">SELECCIÓN DE INSPECTOR</h3>
@@ -309,68 +309,68 @@ folder instead of downloading all of them to reduce the load. -->
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                <div class="col-sm-12">
-                                                <div id="tabSpcl"></div>
-                                            </div>
+                                    <div class="col-sm-12">
+                                        <div id="tabSpcl"></div>
+                                    </div>
                                     <!-- /.col -->
                                 </div>
                                 <div class="form-group"><br>
-                                            <div class="col-sm-offset-0 col-sm-5">
-                                                <button type="button" id="button" class="btn btn-success"
-                                                    onclick="regOjt();">FINALIZAR </button>
-                                            </div>
-                                            <b>
-                                                <p class="alert alert-danger text-center padding error" id="falla">
-                                                    Error al registrar curso o al adjuntar archivo</p>
-                                            </b>
+                                    <div class="col-sm-offset-0 col-sm-5">
+                                        <button type="button" id="button" class="btn btn-success"
+                                            onclick="regOjt();">FINALIZAR </button>
+                                    </div>
+                                    <b>
+                                        <p class="alert alert-danger text-center padding error" id="falla">
+                                            Error al registrar curso o al adjuntar archivo</p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-success text-center padding exito" id="exito">
-                                                    ¡Se registro curso y archivo con éxito!</p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-success text-center padding exito" id="exito">
+                                            ¡Se registro curso y archivo con éxito!</p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-warning text-center padding aviso" id="vacio">
-                                                    Es necesario agregar los datos que se solicitan </p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-warning text-center padding aviso" id="vacio">
+                                            Es necesario agregar los datos que se solicitan </p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-warning text-center padding aviso" id="repetido">
-                                                    ¡El curso ya está registrado!</p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-warning text-center padding aviso" id="repetido">
+                                            ¡El curso ya está registrado!</p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-danger text-center padding adjuto" id="renom">
-                                                    Renombre su archivo</p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-danger text-center padding adjuto" id="renom">
+                                            Renombre su archivo</p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-warning text-center padding adjuto" id="adjunta">
-                                                    Debes adjuntar archivo</p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-warning text-center padding adjuto" id="adjunta">
+                                            Debes adjuntar archivo</p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-danger text-center padding adjuto" id="error">
-                                                    Ocurrio un error</p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-danger text-center padding adjuto" id="error">
+                                            Ocurrio un error</p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-danger text-center padding adjuto" id="forn">
-                                                    Formato no valido</p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-danger text-center padding adjuto" id="forn">
+                                            Formato no valido</p>
+                                    </b>
 
-                                            <b>
-                                                <p class="alert alert-danger text-center padding adjuto" id="max">
-                                                    Supera el limite permitido</p>
-                                            </b>
+                                    <b>
+                                        <p class="alert alert-danger text-center padding adjuto" id="max">
+                                            Supera el limite permitido</p>
+                                    </b>
 
-                                        </div>
+                                </div>
                                 <!-- /.row -->
                             </div>
                             <!-- /.box-body -->
                         </div>
-                         <!-- SELECT2 EXAMPLE -->
-                         <!-- <div class="box box-default">
+                        <!-- SELECT2 EXAMPLE -->
+                        <!-- <div class="box box-default">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Visualizador de Tareas programadas</h3>
 
@@ -393,11 +393,10 @@ folder instead of downloading all of them to reduce the load. -->
                             </div>
                         </div> -->
 
-                        
+
 
                         <div class="nav-tabs-custom">
 
-                        
 
 
 
@@ -405,7 +404,8 @@ folder instead of downloading all of them to reduce the load. -->
 
 
 
-                                        </form>
+
+                            </form>
 
             </section>
             <!-- /.content -->
@@ -413,7 +413,7 @@ folder instead of downloading all of them to reduce the load. -->
 
         <!-------------------------------------------MODAL------------------------------------------------------>
         <form class="form-horizontal" action="" method="POST">
-            <div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
+            <div class="modal fade" data-backdrop="static" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
                 aria-hidden="true">
                 <div class="modal-dialog" style="width: 80%;">
                     <div class="modal-content">
@@ -433,13 +433,12 @@ folder instead of downloading all of them to reduce the load. -->
                                     SE ACTUALIZO REGISTRO CON ÉXITO</div>
 
                                 <div id="tablasub01"></div>
-
                                 <div id="tablasub02"></div>
                                 <div id="tablasub03"></div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal"
-                                    onclick="vaciar();">CERRAR</button>
+                                    onclick="">CERRAR</button>
                                 <!-- <button type="button" class="btn btn-primary">GUARDAR</button> -->
                             </div>
                         </div>
@@ -563,7 +562,7 @@ function tabsub() {
             var res = obj.data;
             var x = 0;
             html =
-                '<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUBTAREA 1</th><th style="width:10%;">AGREGAR</th>';
+                '<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUBTAREA 1</th><th style="width:10%;"> AGREGAR <input type="checkbox" name="selectall" id="selectall"> </th>';
             //html ='<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsub" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">#</th><th scope="col" style="width:650px">SUBTAREA 1</th></th><th scope="col" style="">ACCIONES</th></tr></thead><tbody>';
             for (ii = 0; ii < res.length; ii++) {
                 if (obj.data[ii].idtarea == id_esp && obj.data[ii].numsubt == 1) {
@@ -586,7 +585,8 @@ function tabsub() {
                         .id_subojt +
                         "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" +
                         '"' + adatos + '"' +
-                        ");' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a><a id='" +
+                        ");' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a> <input type='checkbox' name='idinspojt[]' id='id_insp' class='idinsp' value='" +
+                        dato + "'> <a id='" +
                         obj.data[ii].id_subojt +
                         "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" +
                         '"' + dato + '"' +
@@ -718,17 +718,21 @@ function ageg(dato) {
     var fechaTermino = document.getElementById('fechaTermino').value;
     var coordinador = document.getElementById('coordinador').value;
     var instructor = document.getElementById('instructor').value;
-
     var nivel = document.getElementById('idnivel').value;
     var ubicacion = document.getElementById('uboj').value;
     var lugar = document.getElementById('addubic').value;
     var sede = document.getElementById('addsede').value;
+    var comision = document.getElementById('comision').value;
+    var fecincicomi = document.getElementById('comfecini').value;
+    var fecfincomi = document.getElementById('comfecfin').value;
+
     var idsubtarea = id_subojt;
     var idtarea = id_tarea;
 
     var datos = 'isSpc=' + isSpc + '&idtarea=' + idtarea + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio +
         '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
-        nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&idsubtarea=' + idsubtarea +
+        nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
+        '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
         '&opcion=registraroj';
 
 
@@ -777,20 +781,34 @@ function ageg(dato) {
 
 function regOjt() {
 
-    var fechaInicio = $("#fechaInicio").val();
+   
+    var idInsptr = new Array();
 
-
-
-
-    Swal.fire({
-        type: 'success',
-        // title: 'AFAC INFORMA',
-        html: `<span>EL OJT SE HA PROGRAMADO ÉXITOSAMENTE EN EL HORARIO <b>${fechaInicio}</b></span>`,
-        showConfirmButton: false,
-        customClass: 'swal-wide',
-        showConfirmButton: false,
+    $("input[name='idinspojt[]']:checked").each(function() {
+        idInsptr.push($(this).val());
     });
-    setTimeout("location.href = 'catalogoOJT';", 3500);
+
+   
+    var idInstr = ''
+
+    var selectObject = document.getElementById("idinst");
+    alert(selectObject)
+
+    for (var i = 0; i < selectObject.options.length; i++) {
+        if (selectObject.options[i].selected == true) {
+
+            idInstr += "," + selectObject.options[i].value;
+
+        }
+    }
+
+    idInstru = idInstr.substr(1);
+
+    
+
+
+
+
 
 
 }

@@ -17,8 +17,9 @@ session_start();
          $isSpc = $_POST['isSpc'];
          $idInspct = $_POST['idInspct'];
          $idsubtarea = $_POST['idsubtarea'];
+         $comision = $_POST['comision'];
         
-        if (comprobacion ($idsubtarea,$idInspct,$isSpc,$conexion)){
+        if (comprobacion ($comision,$idsubtarea,$idInspct,$isSpc,$conexion)){
             $fechaInicio = $_POST['fechaInicio'];
             $fechaTermino = $_POST['fechaTermino'];
             $coordinador = $_POST['coordinador'];
@@ -28,8 +29,10 @@ session_start();
             $lugar = $_POST['lugar'];
             $sede = $_POST['sede'];
             $idtarea = $_POST['idtarea'];
+            $fecincicomi = $_POST['fecincicomi'];
+            $fecfincomi = $_POST['fecfincomi'];
 
-            if (registrar($isSpc,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion)){
+            if (registrar($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion)){
                 echo "0";
                 
                 historial($id,$isSpc,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion);
@@ -55,8 +58,8 @@ session_start();
 //FUNCIONES-----------------------------------------------------------------------------------
 
 //funcion de comprobación para ver si la persona ya se encuentra con acceso
-function comprobacion ($idsubtarea,$idInspct,$isSpc,$conexion){
-    $query="SELECT * FROM prog_ojt WHERE id_pers = '$idInspct' AND id_esp = '$isSpc' AND id_subtarea= '$idsubtarea' AND estado = 0";
+function comprobacion ($comision,$idsubtarea,$idInspct,$isSpc,$conexion){
+    $query="SELECT * FROM prog_ojt WHERE id_pers = '$idInspct' AND id_esp = '$isSpc' AND id_subtarea= '$idsubtarea' AND estado = 0 AND comision='$comision' ";
     $resultado= mysqli_query($conexion,$query);
     if($resultado->num_rows==0){
         return true;
@@ -67,8 +70,8 @@ function comprobacion ($idsubtarea,$idInspct,$isSpc,$conexion){
 }
 
 //funcion para guardar articulo
-function registrar ($isSpc,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion){
-    $query="INSERT INTO prog_ojt VALUES(0,'$idInspct','$isSpc','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0)";
+function registrar ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion){
+    $query="INSERT INTO prog_ojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0)";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{
