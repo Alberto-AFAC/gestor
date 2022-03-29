@@ -36,6 +36,7 @@
                                 <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>COMISIÓN</th>
                                             <th>TAREA</th>
                                             <th>SUBTAREA PROGRAMADA</th>
                                             <th>FECHA DE INICIO</th>

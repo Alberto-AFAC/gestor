@@ -13,9 +13,7 @@
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
             $item++;
-
 			
-
 			$id_registro = $data["id_proojt"];
 			$id_tarea = $data["id_tarea"];
             $id_subtarea = $data['id_subtarea'];
@@ -87,7 +85,7 @@
                
 		//ESTA ES LA CONSULTA AQUI DEBES DE AGREGAR TODO LO DE LAS COLUMNAS
 		$consulta[] = 
-		[ $item, $tareapri, $subtarea, $data["fec_inioj"], $data["fec_finoj"], $data["nivel"], $asistencia, $estusoojt, $notificar];
+		[ $item, $data["comision"],$tareapri, $subtarea, $data["fec_inioj"], $data["fec_finoj"], $data["nivel"], $asistencia, $estusoojt, $notificar];
 
 
 	

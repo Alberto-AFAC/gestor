@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/skins/card.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"
         integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg=="
         crossorigin="anonymous"></script>
@@ -332,7 +333,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                 </style>
 
 
-                                <?php include('../perfil/reaccion.php');?>
+<?php include('../perfil/reaccion.php');?>
 
                                 <!-- /.tab-pane -->
                             </div>
