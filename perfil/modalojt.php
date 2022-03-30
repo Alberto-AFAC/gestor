@@ -99,7 +99,7 @@
 <!--fin modal de instructor y coordinador cursos coordinados y inpartidos -->
 
   <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A OJT-->
-                            <form id="correo" action="" method="POST">
+                            <form id="enviarOjt" action="" method="POST">
                                 <div class="modal fade" id='notificarConv' tabindex="-1" role="dialog"
                                     aria-labelledby="notificarConv" aria-hidden="true">
                                     <div class="modal1">
@@ -116,7 +116,7 @@
                                         <hr>
 
                                         <button type="button" id="cerrarres" style="font-size:18px"
-                                            class="btn btn-block btn-primary" onclick="enviarMail()"
+                                            class="btn btn-block btn-primary" onclick="enviarMailOjt(<?php echo $perona ?>)"
                                             data-dismiss="modal">ENVIAR</button>
                                         <button type="button" id="agregarres" style="font-size:18px"
                                             class="btn btn-block btn-default btn-sm"

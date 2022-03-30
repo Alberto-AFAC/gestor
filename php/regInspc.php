@@ -160,7 +160,7 @@ if($opcion === 'registrar'){
 	$gstFeing = $_POST['gstFeing']; //fecha de ingreso 
 	$gstSigID = $_POST['gstSigID']; //Observaciones	 
 	$gstIdpst = $_POST['gstIdpst']; //codigo presupuestal
-	$gstPstID = $_POST['gstPstID']; //Nombre del puesto
+	$gstPstID = $_POST['gstPstID']; //NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span>
 	$gstAreID = $_POST['gstAreID']; //Direccion ejecutiva
 	$gstIDara = $_POST['gstIDara']; //Dirección de adscripción 
 	$gstAcReg = $_POST['gstAcReg']; //Subdireccion	

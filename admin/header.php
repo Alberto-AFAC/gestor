@@ -154,8 +154,8 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
                     <!-- <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li> -->
                     <li><a href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
-                    <li><a href="instojt"><i class="fa fa-plus"></i>Alta coordinador/Instructor OJT</a></li>
-                    <li><a href="coorinsoj"><i class="fa fa-file-text"></i>Lista coordinador/Instructor</a></li>
+                    <li><a href="instojt"><i class="fa fa-plus"></i>Alta Coord/Instr OJT</a></li>
+                    <li><a href="coorinsoj"><i class="fa fa-file-text"></i>Lista Coord/Instr</a></li>
                 </ul>
             </li>
             <li>
