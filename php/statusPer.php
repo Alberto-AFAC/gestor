@@ -17,6 +17,7 @@
     $inspectores = 0;
     $instructor = 0;
     $coordinador = 0;
+	$afac = 0;
     $total = 0;
 	while($data = mysqli_fetch_assoc($resultado)){
 				
@@ -29,7 +30,12 @@
 		} else if($data['gstCargo'] == 'COORDINADOR') {
             $coordinador++;
         }
+		 
         $total++;
+		
+		if($data['estado'] == 0) {
+            $afac++;
+        }
 
 		}
 
@@ -37,6 +43,7 @@
 	$data['inspectores'] = $inspectores;
 	$data['instructor'] = $instructor;
 	$data['coordinador'] = $coordinador;
+	$data['afac'] = $afac;
 	$arreglo["data"][] = $data;
 
 		if(isset($arreglo)&&!empty($arreglo)){
