@@ -295,7 +295,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                 </style>
 
 
-                                <?php include('../perfil/reaccion.php');?>
+                                <?php include('../perfil/ojtreaction.php');?>
 
                                 <!-- /.tab-pane -->
                             </div>

@@ -478,7 +478,7 @@ if($rest = mysqli_fetch_array($result)){
 
 //-----------------------
 
-if($f3>$f2 && $data['estatus']=='PENDIENTE' || $f3>$f2 && $data['estatus']=='FINALIZADO'){   ?>
+if($f3>$f2 && $data['confirojt']=='PENDIENTE' || $f3>$f2 && $data['estatus']=='FINALIZADO'){   ?>
 
     ["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo $fcurso?>",
         "<?php echo $fechaf?>", "<?php echo $data['nivel']?>",

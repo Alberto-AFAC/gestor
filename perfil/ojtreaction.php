@@ -1,6 +1,6 @@
 <!-- REACCION DE EVALUACIÓN OJT -->
 <form class="form-horizontal" action="" method="POST">
-    <div class="modal fade" id="modal-evaluOJT2">
+    <div class="modal fade" id="modal-evaluOJT">
         <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
             <div class="modal-content">
                 <div class="modal-header">
@@ -48,8 +48,16 @@
                                                             disabled="">
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <label style="font-size:16px">NOMBRE
-                                                            DEL CURSO:</label>
+                                                        <label style="font-size:16px">NOMBRE DE LA TAREA:</label>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <input class="col-sm-12" type="text" name="nomcursoen"
+                                                            id="nomcursoen"
+                                                            style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
+                                                            disabled="">
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <label style="font-size:16px">NOMBRE DE LA SUBTAREA:</label>
                                                     </div>
                                                     <div class="col-sm-12">
                                                         <input class="col-sm-12" type="text" name="nomcursoen"
@@ -744,7 +752,7 @@
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
-                                            <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg1" value="EXCELENTE" id="ro66">
                                                         <label for="ro66">EXCELENTE</label>
@@ -808,7 +816,7 @@
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
-                                            <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg1" value="EXCELENTE" id="ro72">
                                                         <label for="ro72">EXCELENTE</label>
@@ -869,7 +877,7 @@
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
-                                            <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg1" value="EXCELENTE" id="ro78">
                                                         <label for="ro78">EXCELENTE</label>
@@ -1034,5 +1042,172 @@
             </div>
         </div>
     </div>
+</form>
+<!-- REACCION DE EVALUACIÓN OJT -->
+
+
+
+
+<!-- MODAL CONFIRMA CONVOCATORIA OJT  -->
+<div class="modal fade" id="confirOJT">
+    <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" onclick="location.href='./ojtprogramados'" class="close" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">CONFIRMAR ASISTENCIA</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="ConfirmaOJ" class="form-horizontal" action="" method="POST">
+                        <input type="hidden" name="id_registro" id="id_registrooj1">
+                        <input type="hidden" name="id_persona" id="id_personaoj1">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>TAREA PRINCIPAL</th>
+                                <th>SUBTAREA PROGRAMADA</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="ojtarea"></div>
+                                </td>
+                                <td>
+                                    <div id="ojtsubtarea"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>NIVEL</th>
+                                <th>INICIO</th>
+                                <th>FIN</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="ojnivel"></div>
+                                </td>
+                                <td>
+                                    <div id="ojfecinic"></div>
+                                </td>
+                                <td>
+                                    <div id="ojfecfin"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-offset-0 col-sm-6">
+                                        <h4 class="label2" style="color:#05001E; font-size: 18px; ">CONFIRMAR
+                                            ASISTENCIA:</h4>
+                                        <!--  <input type="text" name="confir" id="confir" value="SI ASISTIRÉ" disabled=""> -->
+                                        <div class="switcher">
+                                            <input type="radio" name="Opc" value="SI" id="SIOJT"
+                                                class="switcher__input switcher__input--yin">
+                                            <label for="SIOJT" class="switcher__label">SI</label>
+                                            <input type="radio" name="Opc" value="NO" id="NOOJT"
+                                                class="switcher__input switcher__input--yang">
+                                            <label for="NOOJT" class="switcher__label">NO</label>
+                                            <span class="switcher__toggle"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-offset-0 col-sm-6">
+                                        <br>
+                                        <p id="confirasojt" style="width: 420px;">
+                                            <i style="color: #D58512; font-size: 25px;"
+                                                class="fa fa-exclamation-triangle"></i>
+                                            <label style="font-size: 25px;">FAVOR DE CONFIRMAR ASISTENCIA </label>
+                                            <input type="hidden" id="confojt" name="confojt">
+                                        </p>
+                                        <p id="asisteojt" style="display: none;">
+                                            <i style="color: green; font-size: 25px;" class="icon fa fa-check"></i>
+                                            <label id="confm1" style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
+                                            <input type="hidden" id="confojt" name="confojt">
+                                        </p>
+                                        <p id="noasisojt" style="display:none;">
+                                            <label class="label2" style="font-size: 16px;">MOTIVOS DE TU
+                                                INASISTENCIA</label>
+                                            <select style="width: 100%" class="form-control inputalta"
+                                                class="selectpicker" type="text" data-live-search="true" id="confirojt"
+                                                name="confirojt" onChange="justificacionojt()">
+                                                <option value="0">SELECCIONE OPCIÓN </option>
+                                                <option value="TRABAJO">TRABAJO</option>
+                                                <option value="ENFERMEDAD">ENFERMEDAD</option>
+                                                <option value="OTROS">OTROS</option>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </th>
+                            </tr>
+                            <th>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input id="archivoojt" type="file" name="archivoojt"
+                                            style="display: none; width: 410px;" required accept=".pdf,.doc"
+                                            class="input-file" size="1450">
+                                        <textarea style="display: none; font-size: 15px;" id="obserojt" name="obserojt"
+                                            class="form-control is-invalid inputalta"
+                                            placeholder="MOTIVO PORQUE NO VA ASISTIR AL CURSO" rows="2"
+                                            required></textarea>
+                                    </div>
+                                </div>
+                            </th>
+                        </table>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <div id="coorojt"></div>
+                                <div id="instrucojt"></div>
+                            </div>
+                        </div>
+                        <div class="form-group"><br>
+                            <div class="col-sm-offset-0 col-sm-5">
+                                <button type="button" id="button" class="btn btn-info altaboton" style=""
+                                    onclick="confirasictojt();">ACEPTAR</button>
+                            </div>
+                            <b>
+                                <p class="alert alert-danger text-center padding error" id="falla">Error al registrar su
+                                    asistencia</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-success text-center padding exito" id="exito">¡Se registraron la
+                                    asistencia con éxito!</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar
+                                    los datos que se solicitan </p>
+                            </b>
+                            <b>
+                                <p class="alert alert-danger text-center padding adjuto" id="renom">Renombre su archivo
+                                </p>
+                            </b>
+                            <b>
+                                <p class="alert alert-warning text-center padding adjuto" id="adjunta">Debes adjuntar
+                                    archivo</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-danger text-center padding adjuto" id="error">Ocurrio un error</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-danger text-center padding adjuto" id="forn">Formato no valido</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-danger text-center padding adjuto" id="max">Supera el limite
+                                    permitido</p>
+                            </b>
+                        </div>
+                        <!-- script para validar los lebel de confiam la asistencia -->
+                        <script>
+                        rad = document.getElementById('SIOJT')
+                        lab1 = document.getElementById('asisteojt')
+                        if (rad.checked) {
+                            lab1.style.display = '';
+                        }
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </form>
 <!-- REACCION DE EVALUACIÓN OJT -->
