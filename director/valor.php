@@ -533,7 +533,7 @@ $psto = mysqli_query($conexion,$sql);
                         </div>
 
                         <div class="col-sm-4">
-                            <label>FECHA INGRESO A LA AFAC</label>
+                            <label>FECHA INGRESO A LA SCT</label>
                             <input disabled="" type="date" class="form-control" id="gstFeing" name="gstFeing">
                         </div>
                        <div class="col-sm-4">
@@ -573,7 +573,7 @@ $psto = mysqli_query($conexion,$sql);
 <input type="text" class="form-control" name="Nivel" id="Nivel" disabled="" >
 </div>
 <div class="col-sm-4">
-<label>NOMBRE DEL PUESTO (GENERICO)</label>  
+<label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span> (GENERICO)</label>  
 <input type="text" class="form-control" name="Gnric" id="Gnric" disabled="" >
 </div>
 </div>
@@ -589,21 +589,21 @@ $psto = mysqli_query($conexion,$sql);
 </div>
 </div>
 
-<p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();"> EDITAR NOMBRE DEL PUESTO <i class="fa fa-edit"></i></a>
+<p id="nompusto" style="display: none; cursor: pointer;"><a onclick="nompusto();"> EDITAR NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span> <i class="fa fa-edit"></i></a>
 <b style="margin-left: 19em;"></b>
 <a onclick="especialidads();">EDITAR ESPECIALIDAD OACI PERSONAL TÉCNICO <i class="fa fa-edit"></i></a></p>  
 
 <div class="form-group">
 
 <div class="col-sm-12" id="nompusto1">
-<label>NOMBRE DEL PUESTO</label>
+<label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
 <input type="text" class="form-control" name="nompuesto" id="nompuesto" disabled="" >
 </div>
 
 <div class="col-sm-12" id="nompusto2" style="display: none;">
-<label>NOMBRE DEL PUESTO</label>
+<label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
 <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
-  <option>SELECCIONE NOMBRE DEL PUESTO</option>
+  <option>SELECCIONE NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></option>
 <?php while($pust = mysqli_fetch_row($psto)):?>                      
 <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
 <?php endwhile; ?>
@@ -630,7 +630,7 @@ $psto = mysqli_query($conexion,$sql);
 
 <!--                     <div class="form-group">
                         <div class="col-sm-5">
-                            <label>NOMBRE DEL PUESTO</label>
+                            <label>NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
                             <select style="width: 100%" class="form-control" class="selectpicker" name="gstPstID"
                                 id="gstPstID" type="text" data-live-search="true" disabled="">
                                 <?php //while($pust = mysqli_fetch_row($psto)):?>
