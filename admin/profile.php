@@ -49,22 +49,19 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-
+    <div class="wrapper">
         <?php include('header.php'); ?>
         <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-       
-        
-        <section class="content-header">
-            <h1>Dashboard<small>PERFIL</small></h1>
-        </section>
-                
-        <section class="content">
-        <div class="row">
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>Dashboard<small>PERFIL</small></h1>
+            </section>
+            <section class="content">
+                <div class="row">
                     <div class="col-md-4">
-                    <!-- Widget: user widget style 1 -->
+                        <!-- Widget: user widget style 1 -->
                         <div class="box box-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
                             <div class="widget-user-header bg-blue">
                                 <div class="widget-user-image">
 
@@ -86,17 +83,25 @@
                                 <h5 id="" class="widget-user-desc"><?php echo $datos[3]?></h5>
                                 <input type="text" style="display:none;" name="f1t1" id="f1t1"
                                     value="<?php echo $datos[0]?>">
-                                    <input type="text" style="display:none;" name="ojt" id="ojt"
+                                <input type="text" style="display:none;" name="ojt" id="ojt"
                                     value="<?php echo $datos[3]?>">
 
                             </div>
                             <div class="box-footer no-padding">
                                 <ul class="nav nav-stacked">
                                     <!-- <li><a style="cursor: pointer;" onclick="perinsp();" data-toggle='modal' data-target='#modal-datpersonales'>INFORMACION PERSONAL <span class="pull-right badge bg-blue"></span></a></li> -->
-                                    <li><a style="cursor: pointer;" onclick="perinsp();" data-toggle='modal' data-target='#modal-info'>INFORMACIÓN PERSONAL <span class="pull-right badge bg-red"></span></a></li>
-                                    <li><a style="cursor: pointer;" onclick="constudios();" data-toggle='modal' data-target='#modal-estud'>EDUCACIÓN <span class="pull-right badge bg-aqua"></span></a></li>
-                                    <li><a style="cursor: pointer;" onclick="conprofesion();" data-toggle='modal' data-target='#modal-exprofe'>EXPERIENCIA LABORAL <span class="pull-right badge bg-green"></span></a></li>
-                                    <li><a href="#">CONVOCATORIAS PENDIENTES<span class="pull-right badge bg-yellow"><div id="notpend"></div></span></a></li>
+                                    <li><a style="cursor: pointer;" onclick="perinsp();" data-toggle='modal'
+                                            data-target='#modal-info'>INFORMACIÓN PERSONAL <span
+                                                class="pull-right badge bg-red"></span></a></li>
+                                    <li><a style="cursor: pointer;" onclick="constudios();" data-toggle='modal'
+                                            data-target='#modal-estud'>EDUCACIÓN <span
+                                                class="pull-right badge bg-aqua"></span></a></li>
+                                    <li><a style="cursor: pointer;" onclick="conprofesion();" data-toggle='modal'
+                                            data-target='#modal-exprofe'>EXPERIENCIA LABORAL <span
+                                                class="pull-right badge bg-green"></span></a></li>
+                                    <li><a href="#">CONVOCATORIAS PENDIENTES<span class="pull-right badge bg-yellow">
+                                                <div id="notpend"></div>
+                                            </span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -104,51 +109,47 @@
                     <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3><div id="sumacur"></div></h3>
+                                <h3>
+                                    <div id="sumacur"></div>
+                                </h3>
                                 <p>CURSOS PROGRAMADOS</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa ion-easel"></i>
                             </div>
-                            <a href="inspector"  class="small-box-footer"> Mas información <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="inspector" class="small-box-footer"> Mas información <i
+                                    class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
 
-                    <?php 
-
-if($datos[3]== 'INSPECTOR'){
-
-    echo "<div class='col-lg-4 col-xs-6'>
-    <div class='small-box bg-blue'>
-        <div class='inner'>
-            <h3><div id='sumacurOJT'></h3>
-            <p>OJT PROGRAMADOS</p>
-        </div>
-        <div class='icon'>
-            <i class='fa fa ion-easel'></i>
-        </div>
-        <a style='cursor: pointer;' href='ojtprogramados' class='small-box-footer'> Mas información <i class='fa fa-arrow-circle-right'></i></a>
-    </div>
-</div>";
-}else{
-    echo "<div class='col-lg-4 col-xs-6'>
-    <div class='small-box bg-aqua-active' style='background-color: #afd9ee;'>
-        <div class='inner'>
-            <h3>3</h3>
-            <p>CURSOS OBLIGATORIOS </p>
-        </div>
-        <div class='icon'>
-            <i class='fa fa ion-easel'></i>
-        </div>
-        <a style='' disable onclick='' class='small-box-footer'>.</a>
-    </div>
-</div>";
-
-}
-?>
-        
-
-                    
+                    <?php if($datos[3]== 'INSPECTOR'){
+                        echo "<div class='col-lg-4 col-xs-6'>
+                                <div class='small-box bg-blue'>
+                                    <div class='inner'>
+                                        <h3><div id='sumacurOJT'></h3>
+                                            <p>OJT PROGRAMADOS</p>
+                                        </div>
+                                        <div class='icon'>
+                                            <i class='fa fa ion-easel'></i>
+                                        </div>
+                                        <a style='cursor: pointer;' href='ojtprogramados' class='small-box-footer'> Mas información <i class='fa fa-arrow-circle-right'></i></a>
+                                    </div>
+                                </div>";
+                    }else{
+                        echo "<div class='col-lg-4 col-xs-6'>
+                            <div class='small-box bg-aqua-active' style='background-color: #afd9ee;'>
+                                <div class='inner'>
+                                    <h3>3</h3>
+                                    <p>CURSOS OBLIGATORIOS </p>
+                                </div>
+                            <div class='icon'>
+                                <i class='fa fa ion-easel'></i>
+                            </div>
+                                <a style='' disable onclick='' class='small-box-footer'>.</a>
+                            </div>
+                        </div>";
+                    }
+                    ?>
                     <!-- <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-blue">
                             <div class="inner">
@@ -161,43 +162,32 @@ if($datos[3]== 'INSPECTOR'){
                             <a style="cursor: pointer;" onclick="prf();" class="small-box-footer"> Mas información <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div> -->
-
                     <div class="col-lg-8 col-xs-4">
                         <div class="box box-info collapsed-box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Cursos obligatorios</h3>
                                 <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                                <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table style="width: 100%;" id="data-table-obliga"
+                                        class="table display table-striped ">
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="table-responsive">
-                               <table style="width: 100%;" id="data-table-obliga" class="table display table-striped "></table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-
                     </div>
-                
-                    
-                    
-       
-                   
-                    </div>    
-                    
-    <!-- /.content-wrapper -->
-    </section>
-    
-   
-    
-    </div>
-    
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> <?php 
+                </div>
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> <?php 
                 $query ="SELECT * FROM controlvers";
                 $resultado = mysqli_query($conexion, $query);
                 $row = mysqli_fetch_assoc($resultado);
@@ -206,44 +196,41 @@ if($datos[3]== 'INSPECTOR'){
                 exit;
             }
             ?>
-            <?php echo $row['version']?>
-        </div>
-        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-        Todos los derechos Reservados DDE.
+                <?php echo $row['version']?>
+            </div>
+            <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+            Todos los derechos Reservados DDE.
 
-    </footer>
-    <?php include('../perfil/modal.php');?>
-                    <?php include('../admin/panel.html');?>
-    <!--  -->
-    <!-- Control Sidebar -->
+        </footer>
+        <?php include('../perfil/modal.php');?>
+        <?php include('../admin/panel.html');?>
+        <!--  -->
+        <!-- Control Sidebar -->
 
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-    <!-- <div class="control-sidebar-bg"></div> -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+        <!-- <div class="control-sidebar-bg"></div> -->
 
-    <!-- ./wrapper -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../dist/js/adminlte.min.js"></script>
-    <script src="../dist/js/demo.js"></script>
+        <!-- ./wrapper -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../dist/js/demo.js"></script>
 
-    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <script src="../js/lisCurso.js"></script>
-    <script type="text/javascript" src="../js/cursos.js"></script>
-    <!-- <script type="text/javascript" src="../js/ojt.js"></script> -->
-
-
-    <?php include('../perfil/cursos.php'); ?>
+        <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+        <script src="../js/lisCurso.js"></script>
+        <script type="text/javascript" src="../js/cursos.js"></script>
+        <!-- <script type="text/javascript" src="../js/ojt.js"></script> -->
+        <?php include('../perfil/cursos.php'); ?>
 </body>
 <script>
-    function prf(){
-    
-        alert("dded");
-        var fechaf = document.getElementById('ojt').value;
-        alert(fechaf);
-    }
-    
+function prf() {
+
+    alert("dded");
+    var fechaf = document.getElementById('ojt').value;
+    alert(fechaf);
+}
 </script>
-                
+
 </html>

@@ -527,9 +527,8 @@ dato = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].
 adatos = obj.data[ii].idtarea + '*' + obj.data[ii].id_subojt + '*' + obj.data[ii].ojt_subtarea;
 accion ='<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>';
 
-html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt + "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td><a id='" + obj.data[ii].id_subojt + "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ")' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a> <input type='checkbox' name='idinsp[]' id='id_insp' class='idinsp' value='" + obj.data[ii].id_subojt + "'></td></tr>";
-
-// <a id='" +obj.data[ii].id_subojt + "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" + '"' + dato + '"' +")' data-target=''><i class='fa fa-plus' style='color:#3c8dbc'></i></a>
+html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt + "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td><a id='" + obj.data[ii].id_subojt + "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ")' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a> <input type='checkbox' name='idinsp[]' id='id_insp' class='idinsp' value='" + obj.data[ii].id_subojt + "'><a id='" +obj.data[ii].id_subojt + "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" + '"' + dato + '"' +")' data-target=''><i class='fa fa-plus' style='color:#3c8dbc'></i></a></td></tr>";
+ 
 
 }
 }

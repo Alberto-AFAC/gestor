@@ -66,11 +66,11 @@ include('header.php');
                     <div class="col-md-3">
 
                         <!-- Profile Image -->
-                        
+
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                
-                            <?php if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){
+
+                                <?php if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){
                                         echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/general.jpeg'
                                         alt='User profile picture'>";
                                 }else if($datos[1] == 'JACOB' && $datos[2] == 'GONZALEZ MACIAS'){
@@ -88,16 +88,20 @@ include('header.php');
 
                                 <input type="text" style="display:none;" name="f1t1" id="f1t1"
                                     value="<?php echo $datos[0]?>">
-                                    
+
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>OJT en Proceso</b> 
-                                        <span class="pull-right badge bg-blue"><div id="programadosOJT"></div></span>
+                                        <b>OJT en Proceso</b>
+                                        <span class="pull-right badge bg-blue">
+                                            <div id="programadosOJT"></div>
+                                        </span>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>OJT Completados</b>   
-                                        <span class="pull-right badge bg-green"><div id="completosOJT"></div></span>
-                                        
+                                        <b>OJT Completados</b>
+                                        <span class="pull-right badge bg-green">
+                                            <div id="completosOJT"></div>
+                                        </span>
+
                                     </li>
                                     <li class="list-group-item">
                                         <b>OJT Declinados</b> <a class="pull-right">
@@ -113,7 +117,6 @@ include('header.php');
                     <!-- /.col -->
                     <div class="col-md-9">
                         <div class="nav-tabs-custom">
-
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#ojconfirmar" data-toggle="tab">OJT POR CONFIRMAR </a></li>
                                 <li><a href="#curComplet" data-toggle="tab">OJT EN PROCESO</a></li>
@@ -123,23 +126,16 @@ include('header.php');
                                 <!-- <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li> -->
                                 <!-- <li><a href="#obligatorio" data-toggle="tab">Cursos obligatorios</a></li> -->
                                 <?php 
-
-if($datos[3]== 'ADMINISTRATIVO'){}else{
-
-
-
-if(isset($ojt['idiva'])&&!empty($ojt['idiva'])){
-
-if($ojt['idiva'] != ''){
-echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
-}else {
-
-}
-}else{
-
-}
-}
-?>
+                                if($datos[3]== 'ADMINISTRATIVO'){}else{
+                                    if(isset($ojt['idiva'])&&!empty($ojt['idiva'])){
+                                        if($ojt['idiva'] != ''){
+                                            echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
+                                        }else {
+                                        }
+                                    }else{
+                                    }
+                                }
+                                ?>
                             </ul>
                             <div class="tab-content">
                                 <div class="active tab-pane" id="ojconfirmar">
@@ -356,10 +352,10 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
         <script type="text/javascript" src="../js/encuestadatos.js"></script>
         <?php include('../perfil/modal.php');?>
         <!-- /.tab-pane -->
-    </div>
+
 
     <!-- /.content -->
-    </div>
+
     <!-- MODAL PARA ENTREGAR TAREA -->
     <form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
         <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
@@ -421,7 +417,7 @@ exit;
         .
 
     </footer>
-
+    </div>
     <!--  -->
     <!-- Control Sidebar -->
     <?php include('../admin/panel.html');?>
@@ -435,13 +431,10 @@ immediately after the control sidebar -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../dist/js/adminlte.min.js"></script>
     <script src="../dist/js/demo.js"></script>
+    <script src="../js/ojt.js"></script>
 
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <script src="../js/lisCurso.js"></script>
-    <script src="../js/ojt.js"></script>
-
-
 
 </body>
 

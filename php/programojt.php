@@ -17,7 +17,7 @@
 			$id_registro = $data["id_proojt"];
 			$id_tarea = $data["id_tarea"];
             $id_subtarea = $data['id_subtarea'];
-            $notificar="<a  title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#modal-evaluarojt'><i class='glyphicon glyphicon-send'></i></a>";
+            $notificar="<a title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#modal-evaluarojt'><i class='glyphicon glyphicon-send'></i></a>";
 
             // TAREAS OJT
 			$queri = "SELECT * FROM ojts  WHERE id_ojt=$id_tarea ORDER BY id_ojt DESC";
@@ -50,40 +50,35 @@
 			}else{
 				$subtarea = "NO HAY SUBTAREAS LIGAS";
 			}
-
             //ASISTENCIA DEL PARTICIPANTE OJT
 		    if($data['confirojt']== 'PENDIENTE'){
 				$asistencia = "<span class='label label-warning' style=''>PENDIENTE</span>";
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
-
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a>";
 			}else if($data['confirojt']=='CONFIRMADO' && $data['nivel']=='1'){
 				$asistencia = "<span class='label label-success' style='height: 50px; color:green;'>CONFIRMADO</span>";
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a> <a type='button' id='ev' title='Evaluación nivel 1' onclick='evalun1($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojt'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
 		    }else if($data['confirojt']=='CONFIRMADO' && $data['nivel']=='2'){
 				$asistencia = "<span class='label label-success' style='height: 50px; color:green;'>CONFIRMADO</span>";
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a  title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a> <a type='button' id='ev' title='Evaluación nivel 2' onclick='evalun2($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojtII'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
 		    }else if($data['confirojt']=='CONFIRMADO' && $data['nivel']=='3'){
 				$asistencia = "<span class='label label-success' style='height: 50px; color:green;'>CONFIRMADO</span>";
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a  title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a> <a type='button' id='ev' title='Evaluación' onclick='evalun3($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojtIII'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
 		    }else if($data['confirojt']=='TRABAJO'){
 			    $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a>";
 			}else if ($data['confirojt'] == 'ENFERMEDAD') {
                 $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a>";
 			}else if ($data['confirojt'] == 'OTROS') {
                 $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";						
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a>";
 			}
 
             //ESTATUS
 			if($data['estatus'] == "PENDIENTE"){
 				$estusoojt = "<span style='font-weight: bold; height: 50px; color:orange;'>PENDIENTE</span>";
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
 			}else if ($data['estatus'] == 'FINALIZADO') {
-                $estusoojt = "<span style='font-weight: bold; height: 50px; color:green;'>FINALIZADO</span>";	
-				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt($id);' class='datos btn btn-default' disabled><i class='glyphicon glyphicon-send'></i></a>";
-
+                $estusoojt = "<span style='font-weight: bold; height: 50px; color:green;'>FINALIZADO</span>";						
             }
                
 		//ESTA ES LA CONSULTA AQUI DEBES DE AGREGAR TODO LO DE LAS COLUMNAS

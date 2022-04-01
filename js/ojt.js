@@ -36,16 +36,127 @@ $.ajax({
 });
 
 
-function infdecOJT(pruebas){
-    //alert(pruebas);
+
+function evaojt(ideval){
     
+    $.ajax({
+        url:'../php/conproojt.php',
+        type:'POST'
+    }).done(function(respuesta) {
+        obj = JSON.parse(respuesta);
+        var res = obj.data;
+        var a = 0;
+        for (A = 0; A < res.length; A++) { 
+            if (obj.data[A].id_proojt == ideval){
+                //alert(ideval);
+                datos = 
+                obj.data[A].gstCatgr + '*' +
+                obj.data[A].comision + '*' +
+                obj.data[A].ojt_principal    + '*' +
+                obj.data[A].feini_comision    + '*' +
+                obj.data[A].lugar  + '*' +
+                obj.data[A].id_proojt  + '*' +
+                obj.data[A].ojt_subtarea;    
+                var d = datos.split("*");   
+                $("#modal-evaluOJT #especOJTreac").val(d[0]);   
+                $("#modal-evaluOJT #comisionOJTrec").val(d[1]);            
+                $("#modal-evaluOJT #tareprinOJTrec").val(d[2]);
+                $("#modal-evaluOJT #fecOJTreac").val(d[3]);
+                $("#modal-evaluOJT #lugOJTreac").val(d[4]);
+                $("#modal-evaluOJT #idregevalOJT").val(d[5]);
+                $("#modal-evaluOJT #subtareOJtreac").val(d[6]);
 
+                html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
+                
+                   
+                html += '</table>';
+                $("#id_instructOJ").html(html);
+            }
+        }
+    });
+    //LLENADO DE TABLA DE INSTRUCTOR Y COORDINADOR
+}
 
+//TODO EVALUACIÓN OJT 
+function evaluarOJT1(idojt) {
+    var idojt = document.getElementById('idregevalOJT').value; //ID OJT 
+    alert(idojt);
+    var preg1 = $('input[name=preg1]:checked').val(); //  -
+    var preg2 = $('input[name=preg2]:checked').val(); //    -
+    var preg3 = $('input[name=preg3]:checked').val(); //      -
+    var preg4 = $('input[name=preg4]:checked').val(); //        -
+    var preg5 = $('input[name=preg5]:checked').val(); //          -
+    var preg6 = $('input[name=preg6]:checked').val(); //            -
+    var preg7 = $('input[name=preg7]:checked').val(); //             - PREGUNTAS RADIO
+    var preg8 = $('input[name=preg8]:checked').val(); //            -
+    var preg9 = $('input[name=preg9]:checked').val(); //          -
+    var preg10 = $('input[name=preg10]:checked').val(); //      -
+    var preg11 = $('input[name=preg11]:checked').val(); //     -    
+    var preg12 = $('input[name=preg12]:checked').val(); //   -   
+    var preg13 = $('input[name=preg13]:checked').val(); //  -
+    var preg14 = $('input[name=preg14]:checked').val(); //-
+    
+    var preg15 = document.getElementById('preg15').value; //PREGUNTA ABIERTA 
+    var preg16 = document.getElementById('preg16').value; //PREGUNTA ABIERTA 
+    var preg17 = document.getElementById('preg17').value; //PREGUNTA ABIERTA 
+    var comision = document.getElementById('comisionOJTrec').value; //PREGUNTA ABIERTA 
 
+    datos = 'idojt=' + idojt + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&preg8=' + preg8 + '&preg9=' + preg9 + '&preg10=' + preg10 + '&preg11=' + preg11 + '&preg12=' + preg12 + '&preg13=' + preg13 + '&preg14=' + preg14 + '&preg15=' + preg15 + '&preg16=' + preg16 + '&preg17=' + preg17 + '&comision=' + comision + '&opcion=addevalojt';
 
+    if (idojt == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || !document.querySelector('input[name=preg13]:checked') || !document.querySelector('input[name=preg14]:checked') || preg15 == '' || preg16 == '' || preg17 == '') {
 
+        if (!document.querySelector('input[name=preg1]:checked')) { $('#span1').show('toggle'); } else { $('#span1').hide('toggle'); }
+        if (!document.querySelector('input[name=preg2]:checked')) { $('#span2').show('toggle'); } else { $('#span2').hide('toggle'); }
+        if (!document.querySelector('input[name=preg3]:checked')) { $('#span3').show('toggle'); } else { $('#span3').hide('toggle'); }
+        if (!document.querySelector('input[name=preg4]:checked')) { $('#span4').show('toggle'); } else { $('#span4').hide('toggle'); }
+        if (!document.querySelector('input[name=preg5]:checked')) { $('#span5').show('toggle'); } else { $('#span5').hide('toggle'); }
+        if (!document.querySelector('input[name=preg6]:checked')) { $('#span6').show('toggle'); } else { $('#span6').hide('toggle'); }
+        if (!document.querySelector('input[name=preg7]:checked')) { $('#span7').show('toggle'); } else { $('#span7').hide('toggle'); }
+        if (!document.querySelector('input[name=preg8]:checked')) { $('#span8').show('toggle'); } else { $('#span8').hide('toggle'); }
+        if (!document.querySelector('input[name=preg9]:checked')) { $('#span9').show('toggle'); } else { $('#span9').hide('toggle'); }
+        if (!document.querySelector('input[name=preg10]:checked')) { $('#span10').show('toggle'); } else { $('#span10').hide('toggle'); }
+        if (!document.querySelector('input[name=preg11]:checked')) { $('#span11').show('toggle'); } else { $('#span11').hide('toggle'); }
+        if (!document.querySelector('input[name=preg12]:checked')) { $('#span12').show('toggle'); } else { $('#span12').hide('toggle'); }
+        if (!document.querySelector('input[name=preg13]:checked')) { $('#span13').show('toggle'); } else { $('#span13').hide('toggle'); }
+        if (!document.querySelector('input[name=preg14]:checked')) { $('#span14').show('toggle'); } else { $('#span14').hide('toggle'); }
+        if (preg15 == '') { $('#span13').show('toggle'); } else { $('#span15').hide('toggle'); }
+        if (preg16 == '') { $('#span16').show('toggle'); } else { $('#span16').hide('toggle'); }
+        if (preg17 == '') { $('#span17').show('toggle'); } else { $('#span17').hide('toggle'); }
 
+        $('#pregunta').toggle('toggle');
+        setTimeout(function() { $('#pregunta').toggle('toggle'); }, 2000);
+    }else{
 
+        $.ajax({
+            url: '../php/reaccion.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE EVALUO CON EXITO EL ENTRENAMIENTO OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                setTimeout("location.href = 'ojtprogramados';", 3000);
+
+            } else if (respuesta == 2) {
+                $('#aviso').toggle('toggle');
+                setTimeout(function() {
+                    $('#aviso').toggle('toggle');
+                }, 2000);
+            } else {
+
+                $('#peligro').toggle('toggle');
+                setTimeout(function() {
+                    $('#peligro').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
 }
 
 
@@ -90,7 +201,6 @@ function confirmarojt(idprogram) {
         }
         html = '<table class="table table-bordered"><tr>';
         x = 0;
-
         $.ajax({
             url: '../php/conDatosPersonal.php',
             type: 'POST'
@@ -104,17 +214,12 @@ function confirmarojt(idprogram) {
                     y++;
                     var nombrecoord=obj.data[D].gstNombr;
                     var apellido=obj.data[D].gstApell;
-                    
                     html += "<tr><td>" + y + "</td><td>" + nombrecoord + ' ' + apellido + "</td><td>" + 'COORDINADOR' + "</td></tr>";
                 }
-            
             }
-
         html += '</table>';
         $("#coorojt").html(html);
-            
         });
-
         html1 = '<table class="table table-bordered"><tr>';
         x = 0;   
         $.ajax({
@@ -135,15 +240,9 @@ function confirmarojt(idprogram) {
                 }
             
             }
-
         html1 += '</table>';
         $("#instrucojt").html(html1);
-            
         });
-
-        
-        
-        
     })
 }
 
@@ -167,7 +266,6 @@ $(document).ready(function() {
 });
 
 function justificacionojt() {
-
     var seleccion = document.getElementById('confirojt');
     valor = seleccion.options[seleccion.selectedIndex].value;
     if (valor == 'TRABAJO' || valor == 'ENFERMEDAD') {
@@ -181,7 +279,6 @@ function justificacionojt() {
     }
 
 }
-
 function limCampos() {
     $("#obser").val('');
     $("#archivo").val('');
@@ -206,7 +303,6 @@ function confirasictojt() {
         var confir = conf;
         var justifi = 0;
     }
-
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('archivo', $('#archivoojt')[0].files[0]);
     paqueteDeDatos.append('confir', confir);
@@ -272,6 +368,42 @@ function confirasictojt() {
                 setTimeout(function() {
                     $('#repetido').toggle('toggle');
                 }, 4000);
+            }
+        }
+    });
+}
+//FUNCIÓN PARA TRAER EL DETALLE DEL ENTRENAMOENTO OJT
+function inforenojt(idresgistro){
+    alert(idresgistro);
+    $.ajax({
+        url:'../php/conproojt.php',
+        type:'POST'
+    }).done(function(respuesta) {
+        obj = JSON.parse(respuesta);
+        var res = obj.data;
+        var a = 0;
+        for (A = 0; A < res.length; A++) { 
+            if (obj.data[A].id_proojt == idresgistro){
+                //alert(ideval);
+                datos = 
+                obj.data[A].comision + '*' +
+                obj.data[A].feini_comision + '*' +
+                obj.data[A].ojt_principal    + '*' +
+                obj.data[A].ojt_subtarea    + '*' +
+                obj.data[A].lugar  + '*' +
+                obj.data[A].id_proojt  + '*' +
+                obj.data[A].ojt_subtarea;    
+                var d = datos.split("*");   
+                $("#modal-detalleojt #gstcomision").html(d[0]);   
+                $("#modal-detalleojt #fcurso1ojt").html(d[1]);               
+                $("#modal-detalleojt #tareprinOJTinf").val(d[2]);
+                $("#modal-detalleojt #subtareOJtreacinf").val(d[3]);
+                $("#modal-detalleojt #lugOJTreac").val(d[4]);
+                $("#modal-detalleojt #idregevalOJT").val(d[5]);
+                $("#modal-detalleojt #subtareOJtreac").val(d[6]);
+                html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
+                html += '</table>';
+                $("#id_instructOJ").html(html);
             }
         }
     });

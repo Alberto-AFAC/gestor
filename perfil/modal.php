@@ -241,7 +241,6 @@
     </div>
 </div>
 <!------------------------------------>
-
 <div class="modal fade" id='modal-confirma'>
     <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -482,18 +481,12 @@
 
         <label readonly id="otrosdp" name="textarea"
             style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
-
     </div>
-
-    <script>
-
-    </script>
 </div>
 
 <!-- !-- DETALLE DE EDUCACION -->
 <div class="modal fade" id='modal-estud' tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal2" style="width: 1100px;">
-
         <div id="success-icon">
             <div>
                 <img class="img-circle1" src="../dist/img/estudios.png">
@@ -502,16 +495,12 @@
         <h1 class="modaltitle" style="color:gray"><strong>EDUCACIÓN</strong></h1>
         <div id="studios"></div>
     </div>
-    <script>
-
-    </script>
 </div>
 <!-- !-- FIN DETALLE DE EDUCACION -->
 
 <!-- !-- DETALLE DE EXPERIENCIA PROFESIONAL -->
 <div class="modal fade" id='modal-exprofe' tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal2" style="width: 1300px;">
-
         <div id="success-icon">
             <div>
                 <img class="img-circle1" src="../dist/img/cv.png">
@@ -520,9 +509,6 @@
         <h1 class="modaltitle" style="color:gray"><strong>EXPERIENCIA LABORAL</strong></h1>
         <div id="profsions"></div>
     </div>
-    <script>
-
-    </script>
 </div>
 <!-- FIN DETALLE DE EXPERIENCIA PROFESIONAL -->
 
@@ -536,7 +522,6 @@
         </div>
         <div>
             <div class="row">
-
                 <div class="tabbable-line">
                     <ul class="nav nav-tabs ">
                         <li class="active">
@@ -704,7 +689,8 @@
                             </div>
 
                             <div class="col-sm-8">
-                                <label class="label2">NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
+                                <label class="label2">NOMBRE DEL PUESTO<span class="text-red"
+                                        style="font-size:20px">*</span></label>
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta"
                                     id="insnomp" disabled="">
                             </div>
@@ -743,15 +729,10 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
-<script>
-
-</script>
 
 <!-- FIN DETALLE DE INFORMACIÓN PERSONAL  -->
 
@@ -778,15 +759,33 @@
             style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
 
     </div>
-
 </div>
 
+<!-- DETALLE DECLINA CONVOCATORIA OJT -->
+<div class="modal fade" id='modal-infoojt' tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal1">
 
+        <div id="success-icon">
+            <div>
+                <img class="img-circle1" src="../dist/img/declinado.png">
+            </div>
+        </div>
+        <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+        <label id="cursdeclinaOJT" style="font-size: 16px; color:gray" for=""></label>
+        <label id="declindetOJT" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declinas la
+            convocatoria OJT:</label>
+        <label id="nombredeclinOJT" style="font-size: 18px; color:gray; font-weight: normal;" for=""></label>
+        <br>
+        <label id="motivodOJT" style="font-size: 18px; color:#2B2B2B; font-weight: bold;" for=""></label>
+        <hr>
+        <div id="arcpdfOJT"></div>
+        <label readonly id="otrosdpOJT" name="otrosdpOJT"
+            style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
 
-
+    </div>
+</div>
 
 <!-----MODAL DE DETALLES------------------------------------>
-
 <div class="modal fade" id='modal-detalle'>
     <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -794,10 +793,8 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-
                     <h4 class="modal-title">INFORMACIÓN DEL CURSO</h4>
                 </div>
-
                 <div class="modal-body">
                     <form id="Confirma1" class="form-horizontal" action="" method="POST">
                         <input type="hidden" name="id_curso1" id="id_curso1">
@@ -824,9 +821,6 @@
                                 </td>
                             </tr>
                         </table>
-
-
-
                         <table class="table table-bordered">
                             <tr>
                                 <th>TIPO</th>
@@ -860,13 +854,10 @@
                                     <div id="classroom1"></div>
                                 </td>
                             </tr>
-
                         </table>
-
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <div id="instruc1"></div>
-
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <label id="asisdetalle" class="control-label"
@@ -876,8 +867,6 @@
 
                                     </div>
                                 </div>
-
-
                                 <script src="../js/global.js"></script>
                                 <!-- script para validar los lebel de confiam la asistencia -->
                                 <script>
@@ -887,6 +876,92 @@
                                     lab1.style.display = '';
                                 }
                                 </script>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-----MODAL DE DETALLES------------------------------------>
+<div class="modal fade" id='modal-detalleojt'>
+    <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">INFORMACIÓN DE ENTRENAMIENTO OJT</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="Confirma1" class="form-horizontal" action="" method="POST">
+                        <input type="hidden" name="id_curso1ojt" id="id_curso1ojt">
+                        <input type="hidden" name="idinsp1ojt" id="idinsp1ojt">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>COMISION</th>
+                                <th>INICIO</th>
+                                <th>HORARIO</th>
+                                <th>FINALIZA</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="gstcomision"></div>
+                                </td>
+                                <td>
+                                    <div id="fcurso1ojt"></div>
+                                </td>
+                                <td>
+                                    <div id="hcurso1ojt"></div>
+                                </td>
+                                <td>
+                                    <div id="fechaf1ojt"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label style="font-size:16px">NOMBRE DE LA TAREA:</label>
+                            </div>
+                            <div class="col-sm-12">
+                                <textarea disabled="" class="col-sm-12" name="tareprinOJTinf" id="tareprinOJTinf"
+                                    cols="30" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label style="font-size:16px">NOMBRE DE LA SUBTAREA:</label>
+                            </div>
+                            <div class="col-sm-12">
+                                <textarea disabled="" class="col-sm-12" name="subtareOJtreacinf" id="subtareOJtreacinf"
+                                    cols="30" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <div id="instruc1"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label id="asisdetalle" class="control-label"
+                                            style="font-size:25px; display: none;" for="inputSuccess"><i
+                                                class="fa fa-check" style="color: green;"></i>Se confirma la
+                                            asistencia</label> <!-- 29/11/2021 -->
+
+                                    </div>
+                                </div>
+                                <script src="../js/global.js"></script>
+                                <!-- script para validar los lebel de confiam la asistencia -->
+                                <script>
+                                rad = document.getElementById('SI')
+                                lab1 = document.getElementById('asiste')
+                                if (rad.checked) {
+                                    lab1.style.display = '';
+                                }
+                                </script>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
