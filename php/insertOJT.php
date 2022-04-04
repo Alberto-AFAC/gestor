@@ -53,8 +53,49 @@ session_start();
         } else {
             echo "1";
         }
+        //OJT INSERTARDA EN TABLA TEMPORAL
+    }else if ($opcion === 'regisojtemp'){
+        //se pone los valores que se van a comparar
+         $isSpc = $_POST['isSpc'];
+         $idInspct = $_POST['idInspct'];
+         $arr = $_POST['arr'];
+         //$valor = $_POST['array1'];
+         $comision = $_POST['comision'];
+         $tareaprin = $_POST['tareaprin'];
+         //$varray1 = json_decode($valor, true);
+         //$valor = count($varray1);
+         $valor = explode(",", $arr);
+         $val = count($valor);
+         $n = 0;
+         $var= 0;
+         $enc = 0;
+         $var;
+         foreach ($valor as $idinsps) {
+             $n++;
+            if (comprobaciontem ($comision,$idinsps,$idInspct,$isSpc,$tareaprin,$conexion)){
+            $fechaInicio = $_POST['fechaInicio'];
+            $fechaTermino = $_POST['fechaTermino'];
+            $coordinador = $_POST['coordinador'];
+            $instructor = $_POST['instructor'];
+            $nivel = $_POST['nivel'];
+            $ubicacion = $_POST['ubicacion'];
+            $lugar = $_POST['lugar'];
+            $sede = $_POST['sede'];
+            $fecincicomi = $_POST['fecincicomi'];
+            $fecfincomi = $_POST['fecfincomi'];
+            
+            if (registrarpru($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$tareaprin,$idinsps,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion)){
+                echo "0";
+                
+                historial($id,$isSpc,$idInspct,$idinsps,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion);
+            }else{
+                echo "1";
+            }
+        }else{
+            echo "2";
+        }
     }
-
+}
 //FUNCIONES-----------------------------------------------------------------------------------
 
 //funcion de comprobación para ver si la persona ya se encuentra con acceso
@@ -69,9 +110,33 @@ function comprobacion ($comision,$idsubtarea,$idInspct,$isSpc,$conexion){
     $this->conexion->cerrar();
 }
 
-//funcion para guardar articulo
+//funcion de comprobación para ver si la persona ya se encuentra con acceso
+function comprobaciontem ($comision,$idinsps,$idInspct,$isSpc,$tareaprin,$conexion){
+    $query="SELECT * FROM tem_progojt WHERE id_esp = '$isSpc' AND id_subtarea= '$idinsps' AND estado = 0 AND comision='$comision' ";
+    $resultado= mysqli_query($conexion,$query);
+    if($resultado->num_rows==0){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
+//funcion para guardar PROGRAMACIÓN
 function registrar ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion){
     $query="INSERT INTO prog_ojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0)";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
+
+//funcion para guardar PROGRAMACIÓN TEMPORAL
+function registrarpru ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$tareaprin,$idinsps,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion){
+    $query="INSERT INTO tem_progojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0','$tareaprin','$idinsps','PENDIENTE',0,'PENDIENTE',0)";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{

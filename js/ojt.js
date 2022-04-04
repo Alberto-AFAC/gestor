@@ -80,7 +80,7 @@ function evaojt(ideval){
 //TODO EVALUACIÓN OJT 
 function evaluarOJT1(idojt) {
     var idojt = document.getElementById('idregevalOJT').value; //ID OJT 
-    alert(idojt);
+    //alert(idojt);
     var preg1 = $('input[name=preg1]:checked').val(); //  -
     var preg2 = $('input[name=preg2]:checked').val(); //    -
     var preg3 = $('input[name=preg3]:checked').val(); //      -
@@ -411,5 +411,167 @@ function inforenojt(idresgistro){
         }
     });
 }
+//FUNCION DE MARCAR TODOS LOS INPUTS DE SUBTAREAS
+function marcarojt(source) {
+    checkboxes = document.getElementsByName('ojtname[]');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = source.checked;
+    }  
+}
+//FUNCION PARA GUARDAR TEMPORALMENTE LAS SUBTAREAS
+function insersubt() {
+    alert("entraguaradar");
+    var arr = new Array();
+    $("input[name='ojtname[]']:checked").each(function() {
+        arr.push($(this).val());
+    });
+   // alert(arr);
+    var isSpc = document.getElementById('isSpc').value;
+    var idInspct = document.getElementById('idInspct').value;
+    var fechaInicio = document.getElementById('fechaInicio').value;
+    var fechaTermino = document.getElementById('fechaTermino').value;
+    var coordinador = document.getElementById('coordinador').value;
+    var instructor = document.getElementById('instructor').value;
+    var nivel = document.getElementById('idnivel').value;
+    var ubicacion = document.getElementById('uboj').value;
+    var lugar = document.getElementById('addubic').value;
+    var sede = document.getElementById('addsede').value;
+    var comision = document.getElementById('comision').value;
+    var fecincicomi = document.getElementById('comfecini').value;
+    var fecfincomi = document.getElementById('comfecfin').value;
+    var tareaprin = document.getElementById('tareaprin').value;
+    //var idsubtarea = id_subojt;
+    var idtarea = '1';
+    var datos = 'isSpc=' + isSpc + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio +
+    '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
+    nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
+    '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&tareaprin=' + tareaprin + '&arr=' + arr +
+    '&opcion=regisojtemp';
+    
+    if (nivel == '') {
+        Swal.fire({
+        type: 'info',
+        text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+    return;
+}else{
+    //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
+    $.ajax({
+        type: "POST",
+        url: "../php/insertOJT.php",
+        data: datos
+    }).done(function(respuesta) {
+    if (respuesta == 0) {
+        //SE MUESTRA EL BOTON DE VALIDACIÓN  
+        Swal.fire({
+            type: 'success',
+            text: 'SE GUARDO CON EXITO LA PROGRAMACIÓN',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+        });
+        $('#detalleSub3').modal('hide');
+    }else if (respuesta == 2) {
+        Swal.fire({
+        type: 'info',
+        text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+}else{
+    alert("error");
+    Swal.fire({
+        type: 'info',
+        text: 'YA SE ENCUENTRA PROGRAMADA ALGUNA SUBTAREA SI PERCISTE CONTACTAR A SOPORTE TECNICO',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+    
+}
+}); //FIN DE AJAX
+}
+
+}
+
+//función para que
+function ageg2(dato) {
+    // alert(dato);
+    var a = dato.split("*");
+    id_subojt = a[1];
+    id_tarea = a[0];
+    //alert(id_tarea);
+    var isSpc = document.getElementById('isSpc').value;
+    var idInspct = document.getElementById('idInspct').value;
+    var fechaInicio = document.getElementById('fechaInicio').value;
+    var fechaTermino = document.getElementById('fechaTermino').value;
+    var coordinador = document.getElementById('coordinador').value;
+    var instructor = document.getElementById('instructor').value;
+    var nivel = document.getElementById('idnivel').value;
+    var ubicacion = document.getElementById('uboj').value;
+    var lugar = document.getElementById('addubic').value;
+    var sede = document.getElementById('addsede').value;
+    var comision = document.getElementById('comision').value;
+    var fecincicomi = document.getElementById('comfecini').value;
+    var fecfincomi = document.getElementById('comfecfin').value;
+    var idsubtarea = id_subojt;
+    var idtarea = id_tarea;
+    var datos = 'isSpc=' + isSpc + '&idtarea=' + idtarea + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio +
+    '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
+    nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
+    '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
+    '&opcion=registraroj';
+    //alert(datos)
+    //VALIDA QUE LOS CAMPOS D   EBEN DE ESTAR LLENOS PARA AGREGAR LA TAREA
+    if (isSpc == '' || idInspct == '' || fechaInicio == '' || fechaTermino == '' || coordinador == '' || instructor ==
+    '' || nivel == '') {
+        Swal.fire({
+        type: 'info',
+        text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+    return;
+}else{
+    //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
+    $.ajax({
+        type: "POST",
+        url: "../php/insertOJT.php",
+        data: datos
+    }).done(function(respuesta) {
+    if (respuesta == 0) {
+        //SE MUESTRA EL BOTON DE VALIDACIÓN  
+        $("#" + id_subojt + "ocultar").hide();
+        $("#" + id_subojt + "mostrar").show();
+        document.getElementById(id_subojt).disabled = false;
+    }else if (respuesta == 2) {
+        Swal.fire({
+        type: 'info',
+        text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+}else{}
+}); //FIN DE AJAX
+}
+}
+
+
+function regOjtfin() {
+    alert("entra finalizar");
+
+    
+
+
+
+
+}
+
 
 
