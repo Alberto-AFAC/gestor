@@ -159,10 +159,8 @@ function evaluarOJT1(idojt) {
     }
 }
 
-
 function confirmarojt(idprogram) {
 //alert(idprogram)
-
     $("#data-table-confirmarojt tr").on('click', function() {
         var id_tare = "";
         var id_subtarea = "";
@@ -171,19 +169,15 @@ function confirmarojt(idprogram) {
         document.getElementById('ojtarea').innerHTML=id_tare
         document.getElementById('ojtsubtarea').innerHTML=id_subtarea
     }) 
-
     $.ajax({
         url: '../php/conproojt.php',
         type: 'POST'
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-
         for (i = 0; i < res.length; i++) {
-
             if (obj.data[i].id_proojt == idprogram) {
-
-                var id_coordojt=obj.data[i].id_coorojt;
+                var id_coordojtdd=obj.data[i].id_coorojt;
                 var id_insojt1=obj.data[i].id_insojt;
                 $("#ojnivel").html(obj.data[i].nivel);
                 $("#ojfecinic").html(obj.data[i].fec_inioj);
@@ -374,7 +368,9 @@ function confirasictojt() {
 }
 //FUNCIÓN PARA TRAER EL DETALLE DEL ENTRENAMOENTO OJT
 function inforenojt(idresgistro){
-    alert(idresgistro);
+
+    var asistencia = document.getElementById('asisdetalleojt');
+    //alert(idresgistro);
     $.ajax({
         url:'../php/conproojt.php',
         type:'POST'
@@ -388,11 +384,14 @@ function inforenojt(idresgistro){
                 datos = 
                 obj.data[A].comision + '*' +
                 obj.data[A].feini_comision + '*' +
-                obj.data[A].ojt_principal    + '*' +
-                obj.data[A].ojt_subtarea    + '*' +
-                obj.data[A].lugar  + '*' +
-                obj.data[A].id_proojt  + '*' +
-                obj.data[A].ojt_subtarea;    
+                obj.data[A].ojt_principal + '*' +
+                obj.data[A].ojt_subtarea + '*' +
+                obj.data[A].lugar + '*' +
+                obj.data[A].id_proojt + '*' +
+                obj.data[A].ojt_subtarea + '*' +
+                obj.data[A].fec_inioj + '*' +
+                obj.data[A].fec_finoj + '*' +
+                obj.data[A].fecfin_comision;    
                 var d = datos.split("*");   
                 $("#modal-detalleojt #gstcomision").html(d[0]);   
                 $("#modal-detalleojt #fcurso1ojt").html(d[1]);               
@@ -401,10 +400,16 @@ function inforenojt(idresgistro){
                 $("#modal-detalleojt #lugOJTreac").val(d[4]);
                 $("#modal-detalleojt #idregevalOJT").val(d[5]);
                 $("#modal-detalleojt #subtareOJtreac").val(d[6]);
-                html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
-                html += '</table>';
-                $("#id_instructOJ").html(html);
+                $("#modal-detalleojt #finiojttar").html(d[7]);
+                $("#modal-detalleojt #fifinojttar").html(d[8]);
+                $("#modal-detalleojt #fin1ojt").html(d[9]);
+
+                if (obj.data[A].confirojt == 'CONFIRMADO'){
+                    asistencia.style.display='';
+                }             
             }
         }
     });
 }
+
+

@@ -156,7 +156,7 @@ var dataSet = [
         "<?php echo $valor?>"
     ],
     <?php }else if($data['confirojt']=='CONFIRMADO'){ 
-        $valor="<span  onclick='confirmar1($id_proojt)'  style='background-color:green; font-size: 13px; cursor:pointer;' data-toggle='modal' data-target='#modal-detalle' class='badge' title='Ver detalles del curso'>CONFIRMADO</span>"; //23112021
+        $valor="<span  onclick='inforenojt($id_proojt)'  style='background-color:green; font-size: 13px; cursor:pointer;' data-toggle='modal' data-target='#modal-detalleojt' class='badge' title='Ver detalles del curso'>CONFIRMADO</span>"; //23112021
 
 ?>["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo $data['nivel']?>",
         "<?php echo $fcurso?>", "<?php echo $fechaf?>",

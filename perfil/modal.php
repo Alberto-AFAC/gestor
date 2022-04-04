@@ -903,7 +903,6 @@
                             <tr>
                                 <th>COMISION</th>
                                 <th>INICIO</th>
-                                <th>HORARIO</th>
                                 <th>FINALIZA</th>
                             </tr>
                             <tr>
@@ -914,10 +913,7 @@
                                     <div id="fcurso1ojt"></div>
                                 </td>
                                 <td>
-                                    <div id="hcurso1ojt"></div>
-                                </td>
-                                <td>
-                                    <div id="fechaf1ojt"></div>
+                                    <div id="fin1ojt"></div>
                                 </td>
                             </tr>
                         </table>
@@ -939,16 +935,36 @@
                                     cols="30" rows="4"></textarea>
                             </div>
                         </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>INICIO DE LA TAREA</th>
+                                <th>FIN DE LA TAREA</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="finiojttar"></div>
+                                </td>
+                                <td>
+                                    <div id="fifinojttar"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label style="font-size:16px">INSTRUCTOR(S) Y COORDINADOR(S):</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <div id="instrucojt"></div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-6">
-                                <div id="instruc1"></div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label id="asisdetalle" class="control-label"
+                                        <label id="asisdetalleojt" class="control-label"
                                             style="font-size:25px; display: none;" for="inputSuccess"><i
                                                 class="fa fa-check" style="color: green;"></i>Se confirma la
                                             asistencia</label> <!-- 29/11/2021 -->
-
                                     </div>
                                 </div>
                                 <script src="../js/global.js"></script>
