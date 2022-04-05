@@ -143,14 +143,16 @@ unset($_SESSION['consulta']);
                                                 <div class="form-group">
                                                     <label>FECHA INICIO</label>
                                                     <input type="date" onkeyup="mayus(this);"
-                                                        class="form-control disabled inputalta" id="comfecini">
+                                                        class="form-control disabled inputalta" onchange="bloqueoojt()"
+                                                        id="comfecini">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>FECHA FIN</label>
                                                     <input type="date" onkeyup="mayus(this);"
-                                                        class="form-control disabled inputalta" id="comfecfin">
+                                                        class="form-control disabled inputalta"
+                                                        onchange="blodatetarea()" id="comfecfin">
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +220,7 @@ unset($_SESSION['consulta']);
                         <!------------------------------------------------------------- PROGRAMACIÓN DE TAREAS-------------------------------------------------------------------------->
                         <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">PROGRAMACIÓN DE TAREAS</h3>
+                                <h3 class="box-title">SELECCION DE COORDINADOR(S) E INSTRUCTOR(S)</h3>
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                             class="fa fa-plus"></i></button>
@@ -228,17 +230,7 @@ unset($_SESSION['consulta']);
                             <div class="box-body">
                                 <div class="row">
                                     <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label>FECHA Y HORA DE INICIO<span class="text-red">*</label>
-                                            <input type="datetime-local" class="form-control inputalta"
-                                                placeholder="Ingresa subtarea..." name="fechaInicio" id="fechaInicio">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label>FECHA Y HORA DE TERMINO<span class="text-red">*</label>
-                                            <input type="datetime-local" onkeyup="mayus(this);"
-                                                class="form-control inputalta" id="fechaTermino" name="fechaTermino">
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <label>COORDINADOR DEL OJT<span class="text-red">*</label>
                                             <select multiple="multiple" data-placeholder="SELECCIONE COORDINADOR OJT"
                                                 style="width: 100%;color: #000" class="form-control select2" type="text"
@@ -251,11 +243,7 @@ unset($_SESSION['consulta']);
                                                 <?php endwhile; ?>
                                             </select>
                                         </div>
-                                    </div>
-                                    .
-                                    <br>
-                                    <div class="form-group">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <label>INSTRUCTOR OJT<span class="text-red">*</label>
                                             <select multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR OJT"
                                                 style="width: 100%;color: #000" class="form-control select2" type="text"
@@ -327,8 +315,10 @@ unset($_SESSION['consulta']);
             <!-- /.content -->
         </div>
         <!-------------------------------------------MODAL------------------------------------------------------>
+
+
         <form class="form-horizontal" action="" method="POST">
-            <div class="modal fade" data-backdrop="static" id="detalleSub3" tabindex="-1" role="dialog"
+            <div class="modal fade" data-backdrop="static" id="detalleSub3" data-keyboard="false" tabindex="-1" role="dialog"
                 aria-labelledby="detalleSub3" aria-hidden="true">
                 <div class="modal-dialog" style="width: 80%;">
                     <div class="modal-content">
@@ -344,7 +334,7 @@ unset($_SESSION['consulta']);
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                                <button type="button" onclick="insersubt();" class="btn btn-primary">GUARDAR</button>
+                                <!-- <button type="button" onclick="insersubt();" class="btn btn-primary">GUARDAR</button> -->
                             </div>
                         </div>
                     </div>
@@ -352,9 +342,37 @@ unset($_SESSION['consulta']);
             </div>
         </form>
 
-
-
-
+        <!-- MODAL DE SELECCION DE HORARIO -->
+        <form class="form-horizontal" action="" method="POST">
+            <div class="modal fade" data-backdrop="static" id="horariosubtar" tabindex="-1" data-keyboard="false" role="dialog"
+                aria-labelledby="detalleSub3" aria-hidden="true">
+                <div class="modal-dialog" style="width: 60%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">SELECCIONAR HORARIO DE LA TAREA</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label>FECHA Y HORA DE INICIO<span class="text-red">*</label>
+                                    <input type="datetime-local" class="form-control inputalta"
+                                        placeholder="Ingresa subtarea..." name="fechaInicio" id="fechaInicio">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>FECHA Y HORA DE TERMINO<span class="text-red">*</label>
+                                    <input type="datetime-local" onkeyup="mayus(this);" class="form-control inputalta"
+                                        id="fechaTermino" name="fechaTermino">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                                <button type="button" onclick="insersubt();" class="btn btn-primary">GUARDAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -405,6 +423,27 @@ unset($_SESSION['consulta']);
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
+    //FUNCION PARA ABRIR UN MODAL SOBRE OTRO
+    $(document).on({
+        'show.bs.modal': function() {
+            var zIndex = 1040 + (10 * $('.modal:visible').length);
+            $(this).css('z-index', zIndex);
+            setTimeout(function() {
+                $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+            }, 0);
+        },
+        'hidden.bs.modal': function() {
+            if ($('.modal:visible').length > 0) {
+                // restore the modal-open class to the body element, so that scrolling works
+                // properly after de-stacking a modal.
+                setTimeout(function() {
+                    $(document.body).addClass('modal-open');
+                }, 0);
+            }
+        }
+        }, '.modal');
+    //FIN PARA LA FUNCION PARA ABRIR UN MODAL SOBRE OTRO
+
 $(document).ready(function() {
     $('#gstPrfil').select2();
     $('#subtarea').select2();
@@ -461,6 +500,7 @@ function tabsub() {
 
         var id_esp = espe;
         document.getElementById('tareaprin').value = espe
+        
         //ajax debusqueda
         $.ajax({
             url: '../php/data-task.php',
@@ -469,8 +509,9 @@ function tabsub() {
             obj = JSON.parse(respuesta);
             var res = obj.data;
             var x = 0;
+            //html ='<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUBTAREA 1</th><th style="width:10%;">AGREGAR <input style="width:16px;height:16px;" type="checkbox" onclick="marcarojt(this)" name="selecojtall" id="selecojtall"> </th>'; //checkbox
             html =
-                '<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUBTAREA 1</th><th style="width:10%;">AGREGAR <input style="width:16px;height:16px;" type="checkbox" onclick="marcarojt(this)" name="selecojtall" id="selecojtall"> </th>';
+                '<table  class="table table-bordered"><tr><th style="width:5%;">#</th><th style="width:80%;">SUBTAREA 1</th><th style="width:10%;">AGREGAR</th>';
             for (ii = 0; ii < res.length; ii++) {
                 if (obj.data[ii].idtarea == id_esp && obj.data[ii].numsubt == 1) {
                     x++;
@@ -484,14 +525,14 @@ function tabsub() {
                         '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>';
 
                     //html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt + "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td><a id='" + obj.data[ii].id_subojt + "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ")' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a> <input type='checkbox' name='ojtname[]' id='ojtname' value='" + obj.data[ii].id_subojt + "'><a id='" +obj.data[ii].id_subojt + "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" + '"' + dato + '"' +")' data-target=''><i class='fa fa-plus' style='color:#3c8dbc'></i></a></td></tr>";
+                    //html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt + "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td> <input type='checkbox' style='width:16px;height:16px;' name='ojtname[]' id='ojtname' value='" + obj.data[ii].id_subojt + "'> <a id='" + obj.data[ii].id_subojt + "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ")' data-target='#modal-actualizardoc'><i class='fa fa-plus text-success'></i></a></td></tr>";
                     html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[
                             ii].id_subojt + "' name='" + obj.data[ii].id_subojt +
                         "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea +
-                        "</textarea></td><td><a id='" + obj.data[ii].id_subojt +
-                        "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" +
+                        "</textarea></td><td> <a id='" + obj.data[ii].id_subojt +
+                        "mostrar' type='button' title='Agregar subtarea' class='btn btn-default' data-toggle='modal' data-target='#horariosubtar' style='display:;a margin-left:2px' onclick='subOjtagregar(" +
                         '"' + adatos + '"' +
-                        ")' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a> <input type='checkbox' style='width:16px;height:16px;' name='ojtname[]' id='ojtname' value='" +
-                        obj.data[ii].id_subojt + "'></td></tr>";
+                        ")' data-target='#modal-actualizardoc'><i class='fa fa-plus text-success'></i></a></td></tr>";
 
                 }
             }
@@ -646,8 +687,5 @@ function ageg(dato) {
 //$("#allselect").on("click", function() {
 //  $(".idinsp").prop("checked", this.checked);
 //});
-
-
-
 </script>
 <script src="../js/select2.js"></script>

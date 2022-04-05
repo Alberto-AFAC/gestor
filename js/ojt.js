@@ -448,7 +448,7 @@ function insersubt() {
     '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&tareaprin=' + tareaprin + '&arr=' + arr +
     '&opcion=regisojtemp';
     
-    if (nivel == '') {
+    if (nivel == ''||fecincicomi == ''||fecfincomi == ''||isSpc==''||ubicacion==''||comision =='') {
         Swal.fire({
         type: 'info',
         text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
@@ -561,17 +561,51 @@ function ageg2(dato) {
 }); //FIN DE AJAX
 }
 }
+//FUNCION PARA BLOQUEAR FECHA DE FIN DE COMISION
+function bloqueoojt(){
+    var fechamin=document.getElementById('comfecini').value;
+    let mindate= document.getElementById('comfecfin');
+    mindate.min = fechamin;
+}
 
-
-function regOjtfin() {
-    alert("entra finalizar");
-
-    
-
-
-
+function closeojtmod(){
+    $('#detalleSub3').modal('hide');
 
 }
+
+//FUNCION PARA BLOQUEAR PERIODO DE TIEMPO DE A TAREA EN BASE A LA COMISION
+function blodatetarea(){
+    //alert("kmdkc");
+    var fecmintarea=document.getElementById('comfecini').value;
+    var fecmaxtarea=document.getElementById('comfecfin').value;
+    //FECHA INICIO TAREA
+    let mindatetarea= document.getElementById('fechaInicio');
+    mindatetarea.min = fecmintarea + 'T08:30';
+    mindatetarea.max = fecmaxtarea + 'T08:30';
+    //FECHA FIN TAREA
+    let findaetarea= document.getElementById('fechaTermino');
+    findaetarea.min = fecmintarea + 'T08:30';
+    findaetarea.max = fecmaxtarea + 'T08:30';
+}
+
+function traerdatos(){
+    //alert("kmdkc");
+    var fecmintarea=document.getElementById('comfecini').value;
+    var fecmaxtarea=document.getElementById('comfecfin').value;
+    //FECHA INICIO TAREA
+    let mindatetarea= document.getElementById('fechaInicio');
+    mindatetarea.min = fecmintarea + 'T08:30';
+    mindatetarea.max = fecmaxtarea + 'T08:30';
+    //FECHA FIN TAREA
+    let findaetarea= document.getElementById('fechaTermino');
+    findaetarea.min = fecmintarea + 'T08:30';
+    findaetarea.max = fecmaxtarea + 'T08:30';
+}
+
+
+
+
+
 
 
 
