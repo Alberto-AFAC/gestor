@@ -49,6 +49,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
     <link href="../models/menu/css/style.css" rel="stylesheet" type="text/css">
     <link href="../models/menu/css/cards.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
 </head>
 
 <body>
@@ -68,7 +69,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                 <div class="background">
                 </div>
             </li>
-            <li class="layer" data-depth="0.20">
+            <li id="tema" class="layer" data-depth="0.20">
                 <div class="title">
                     <h3 style="color: black; font-size: 24px;">
                         AGENCIA FEDERAL DE AVIACIÓN CIVIL
@@ -152,36 +153,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                     <img alt="flake" src="../models/menu/images/flakes/depth2/flakes2.png">
                 </div>
             </li>
- <!--  
-            <li class="layer" data-depth="0.60">
-                <div class="depth-3 flake1">
-                    <img alt="flake" src="images/flakes/depth3/flakes1.png">
-                </div>
-
-                <div class="depth-3 flake2">
-                    <img alt="flake" src="images/flakes/depth3/flakes2.png">
-                </div>
-
-                <div class="depth-3 flake3">
-                    <img alt="flake" src="images/flakes/depth3/flakes3.png">
-                </div>
-
-                <div class="depth-3 flake4">
-                    <img alt="flake" src="images/flakes/depth3/flakes4.png">
-                </div>
-            </li> 
-
-             <li class="layer" data-depth="0.80">
-                <div class="depth-4">
-                    <img alt="flake" src="images/flakes/depth4/flakes.png">
-                </div>
-            </li>  -->
-
-  <!--           <li class="" data-depth="1.00">
-                <div class="depth-5">
-                    <img alt="flake" src="../models/menu/images/flakes/depth5/flakes.png">
-                </div>
-            </li> -->
+ 
         </ul>
     </div>
     <script src="../js/menu/js/jquery.js"></script>

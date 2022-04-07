@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="val/valida.js"></script>
 	<link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
 <style>
 	.swal-wide {
         width: 500px !important;

@@ -1,0 +1,60 @@
+
+#inicio,
+#report,
+#histor{
+  display: none;
+}
+@media (max-width: 700px) {
+  .caja__trase-Login {
+    display: block;
+  }
+  .caja__trasera-register{
+    width:100%; 
+      }
+
+  .formulario__tecnico{
+    width:100%;
+    padding: 0;
+    margin-bottom: -10em; 
+  }
+  .caja__trasera{
+    float: left;
+  }
+  .formulario__registro{
+
+    margin-bottom: -40em;
+  }
+  .caja__trasera-register h3,.caja__trasera-register p{
+    display: none;
+  }
+  .caja__trase-Login h3{
+    display: none;
+  }
+
+/*menu*/
+  .wrapper ul{
+   overflow: scroll;
+   padding-top: 40em;
+  }
+  #tema h3{
+    margin-top: -30em;
+  }
+
+/*  MESA DE AYUDA USUARIO*/
+#respons{
+  display: block;
+}
+#icon-usu{
+  width:170px;
+}
+/*#inicio,
+#report,
+#histor{
+  display: block;
+}*/
+#equi_asig table{
+  font-size: 11px;
+  padding: 0;
+  margin: 0;
+}
+}
