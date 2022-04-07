@@ -291,7 +291,6 @@ unset($_SESSION['consulta']);
                                         <p class="alert alert-warning text-center padding aviso" id="vacio">
                                             Es necesario agregar los datos que se solicitan </p>
                                     </b>
-
                                     <b>
                                         <p class="alert alert-warning text-center padding aviso" id="repetido">
                                             ¡El entrenamiento OJT ya está registrado!</p>
@@ -318,8 +317,8 @@ unset($_SESSION['consulta']);
 
 
         <form class="form-horizontal" action="" method="POST">
-            <div class="modal fade" data-backdrop="static" id="detalleSub3" data-keyboard="false" tabindex="-1" role="dialog"
-                aria-labelledby="detalleSub3" aria-hidden="true">
+            <div class="modal fade" data-backdrop="static" id="detalleSub3" data-keyboard="false" tabindex="-1"
+                role="dialog" aria-labelledby="detalleSub3" aria-hidden="true">
                 <div class="modal-dialog" style="width: 80%;">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -344,15 +343,22 @@ unset($_SESSION['consulta']);
 
         <!-- MODAL DE SELECCION DE HORARIO -->
         <form class="form-horizontal" action="" method="POST">
-            <div class="modal fade" data-backdrop="static" id="horariosubtar" tabindex="-1" data-keyboard="false" role="dialog"
-                aria-labelledby="detalleSub3" aria-hidden="true">
+            <div class="modal fade" data-backdrop="static" id="horariosubtar" tabindex="-1" data-keyboard="false"
+                role="dialog" aria-labelledby="detalleSub3" aria-hidden="true">
                 <div class="modal-dialog" style="width: 60%;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">SELECCIONAR HORARIO DE LA TAREA</h4>
                         </div>
                         <div class="modal-body">
+                           
+                            <textarea type="text" onkeyup="mayus(this);" cols="2" rows="2" class="form-control inputalta" disabled
+                                id="namesubtare" name="namesubtare"></textarea>
+                            <br>
                             <div class="form-group">
+                                <input style="display: none;" id="tareaprinhora" type="text">
+                                <input style="display: none;" id="subtarehora" type="text">
+
                                 <div class="col-sm-6">
                                     <label>FECHA Y HORA DE INICIO<span class="text-red">*</label>
                                     <input type="datetime-local" class="form-control inputalta"
@@ -366,7 +372,7 @@ unset($_SESSION['consulta']);
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                                <button type="button" onclick="insersubt();" class="btn btn-primary">GUARDAR</button>
+                                <button type="button" onclick="insersubt2();" class="btn btn-primary">GUARDAR</button>
                             </div>
                         </div>
                     </div>
@@ -423,26 +429,27 @@ unset($_SESSION['consulta']);
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
-    //FUNCION PARA ABRIR UN MODAL SOBRE OTRO
-    $(document).on({
-        'show.bs.modal': function() {
-            var zIndex = 1040 + (10 * $('.modal:visible').length);
-            $(this).css('z-index', zIndex);
+//FUNCION PARA ABRIR UN MODAL SOBRE OTRO
+$(document).on({
+    'show.bs.modal': function() {
+        var zIndex = 1040 + (10 * $('.modal:visible').length);
+        $(this).css('z-index', zIndex);
+        setTimeout(function() {
+            $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass(
+                'modal-stack');
+        }, 0);
+    },
+    'hidden.bs.modal': function() {
+        if ($('.modal:visible').length > 0) {
+            // restore the modal-open class to the body element, so that scrolling works
+            // properly after de-stacking a modal.
             setTimeout(function() {
-                $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+                $(document.body).addClass('modal-open');
             }, 0);
-        },
-        'hidden.bs.modal': function() {
-            if ($('.modal:visible').length > 0) {
-                // restore the modal-open class to the body element, so that scrolling works
-                // properly after de-stacking a modal.
-                setTimeout(function() {
-                    $(document.body).addClass('modal-open');
-                }, 0);
-            }
         }
-        }, '.modal');
-    //FIN PARA LA FUNCION PARA ABRIR UN MODAL SOBRE OTRO
+    }
+}, '.modal');
+//FIN PARA LA FUNCION PARA ABRIR UN MODAL SOBRE OTRO
 
 $(document).ready(function() {
     $('#gstPrfil').select2();
@@ -460,7 +467,7 @@ function filubi() {
     var especialidas = document.getElementById('isSpc').value;
     var ubicacion = document.getElementById('uboj').value;
     var persona = document.getElementById('idInspct').value;
-    //alert(persona)
+    //alert(persona)06042022
     $.ajax({
         url: '../php/ojt_tareas.php',
         type: 'POST'
@@ -500,7 +507,7 @@ function tabsub() {
 
         var id_esp = espe;
         document.getElementById('tareaprin').value = espe
-        
+
         //ajax debusqueda
         $.ajax({
             url: '../php/data-task.php',
@@ -523,17 +530,15 @@ function tabsub() {
                         .ojt_subtarea;
                     accion =
                         '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>';
-
                     //html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt + "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td><a id='" + obj.data[ii].id_subojt + "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:none;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ")' data-target='#modal-actualizardoc'><i class='fa fa-check text-success'></i></a> <input type='checkbox' name='ojtname[]' id='ojtname' value='" + obj.data[ii].id_subojt + "'><a id='" +obj.data[ii].id_subojt + "ocultar' type='button' title='Agregar subtarea' class='asiste btn btn-default' data-toggle='modal' style='margin-left:2px' onclick='ageg(" + '"' + dato + '"' +")' data-target=''><i class='fa fa-plus' style='color:#3c8dbc'></i></a></td></tr>";
                     //html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[ii].id_subojt + "' name='" + obj.data[ii].id_subojt + "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea + "</textarea></td><td> <input type='checkbox' style='width:16px;height:16px;' name='ojtname[]' id='ojtname' value='" + obj.data[ii].id_subojt + "'> <a id='" + obj.data[ii].id_subojt + "mostrar' type='button' title='Tarea Agregada' class='btn btn-default' data-toggle='modal' style='display:;a margin-left:2px' onclick='subOjtagregar(" + '"' + adatos + '"' + ")' data-target='#modal-actualizardoc'><i class='fa fa-plus text-success'></i></a></td></tr>";
                     html += "<tr><th>" + x + "</th><td><textarea class='form-control' id=' " + obj.data[
                             ii].id_subojt + "' name='" + obj.data[ii].id_subojt +
                         "' style='resize: none;' disabled>" + obj.data[ii].ojt_subtarea +
                         "</textarea></td><td> <a id='" + obj.data[ii].id_subojt +
-                        "mostrar' type='button' title='Agregar subtarea' class='btn btn-default' data-toggle='modal' data-target='#horariosubtar' style='display:;a margin-left:2px' onclick='subOjtagregar(" +
+                        "mostrar' type='button' title='Agregar subtarea' class='btn btn-default' data-toggle='modal' data-target='#horariosubtar' style='display:;a margin-left:2px' onclick='prohorario(" +
                         '"' + adatos + '"' +
                         ")' data-target='#modal-actualizardoc'><i class='fa fa-plus text-success'></i></a></td></tr>";
-
                 }
             }
             html += '</tbody></table></form></div></div>';

@@ -95,12 +95,89 @@ session_start();
             echo "2";
         }
     }
+}else if($opcion === 'registraroj1'){
+    //se pone los valores que se van a comparar
+     $isSpc = $_POST['isSpc'];
+     $idInspct = $_POST['idInspct'];
+     $idsubtarea = $_POST['idsubtarea'];
+     $comision = $_POST['comision'];
+    
+    if (comprobacion ($comision,$idsubtarea,$idInspct,$isSpc,$conexion)){
+        $fechaInicio = $_POST['fechaInicio'];
+        $fechaTermino = $_POST['fechaTermino'];
+        $coordinador = $_POST['coordinador'];
+        $instructor = $_POST['instructor'];
+        $nivel = $_POST['nivel'];
+        $ubicacion = $_POST['ubicacion'];
+        $lugar = $_POST['lugar'];
+        $sede = $_POST['sede'];
+        $idtarea = $_POST['idtarea'];
+        $fecincicomi = $_POST['fecincicomi'];
+        $fecfincomi = $_POST['fecfincomi'];
+
+        if (registrarsub($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion)){
+            echo "0";
+            
+            historial($id,$isSpc,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion);
+        }else{
+            echo "1";
+        }
+    }else{
+
+        echo "2";
+    }
+//CONDICIÓN  A FINALIZAR LA TAREA
+}else if($opcion === 'finojtpro1'){
+    //se pone los valores que se van a comparar
+     $isSpc = $_POST['isSpc'];
+     $idInspct = $_POST['idInspct'];
+     $idsubtarea = $_POST['idsubtarea'];
+     $comision = $_POST['comision'];
+     $fecincicomi = $_POST['fecincicomi'];
+     $fecfincomi = $_POST['fecfincomi'];
+    
+    if (disponibilidad ($comision,$idsubtarea,$idInspct,$isSpc,$fecincicomi,$fecfincomi,$conexion)){
+        $fechaInicio = $_POST['fechaInicio'];
+        $fechaTermino = $_POST['fechaTermino'];
+        $coordinador = $_POST['coordinador'];
+        $instructor = $_POST['instructor'];
+        $nivel = $_POST['nivel'];
+        $ubicacion = $_POST['ubicacion'];
+        $lugar = $_POST['lugar'];
+        $sede = $_POST['sede'];
+        $idtarea = $_POST['idtarea'];
+    
+        if (llenado($comision,$idInspct,$coordinador,$instructor,$conexion)){
+            echo "0";
+            finalizar($comision,$conexion);
+            historial($id,$isSpc,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion);
+            borrorojt($comision,$conexion);
+        }else{
+            echo "1";
+        }
+    }else{
+
+        echo "2";
+    }
+//CONDICIÓN  A FINALIZAR LA TAREA
 }
+
 //FUNCIONES-----------------------------------------------------------------------------------
 
-//funcion de comprobación para ver si la persona ya se encuentra con acceso
+//FUNCION PARA COMPROBRAR SI EL ISNPECTOR YA SE ENCUENTRA PROGRAMADA EN ESA COMISION
 function comprobacion ($comision,$idsubtarea,$idInspct,$isSpc,$conexion){
     $query="SELECT * FROM prog_ojt WHERE id_pers = '$idInspct' AND id_esp = '$isSpc' AND id_subtarea= '$idsubtarea' AND estado = 0 AND comision='$comision' ";
+    $resultado= mysqli_query($conexion,$query);
+    if($resultado->num_rows==0){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+//FUNCION QUE HACE EL COMPRATIVO EN LA TABLA DE CURSOS PARA VER SI SE ENCUENTRA DISPONNIBLE ESA FECHA
+function disponibilidad ($comision,$idsubtarea,$idInspct,$isSpc,$fecincicomi,$fecfincomi,$conexion){
+    $query="SELECT * FROM cursos WHERE idinsp = '$idInspct' AND fcurso BETWEEN '$fecincicomi' and '$fecfincomi' or idinsp = '$idInspct' and fechaf BETWEEN '$fecincicomi' and '$fecfincomi'";
     $resultado= mysqli_query($conexion,$query);
     if($resultado->num_rows==0){
         return true;
@@ -125,6 +202,52 @@ function comprobaciontem ($comision,$idinsps,$idInspct,$isSpc,$tareaprin,$conexi
 //funcion para guardar PROGRAMACIÓN
 function registrar ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion){
     $query="INSERT INTO prog_ojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0)";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
+//funcion para guardar PROGRAMACIÓN
+function registrarsub ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion){
+    $query="INSERT INTO tem_progojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0)";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
+
+
+//FUNCION PARA FINALIZAR LA PROGRAMACIÓN
+function llenado($comision,$idInspct,$coordinador,$instructor,$conexion){
+    $query="UPDATE tem_progojt SET id_pers='$idInspct',id_coorojt='$coordinador',id_insojt='$instructor' WHERE comision ='$comision' ";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
+//FUNCION PARA FINALIZAR LA PROGRAMACIÓN
+function finalizar ($comision,$conexion){
+    $query="INSERT INTO prog_ojt SELECT * FROM tem_progojt WHERE comision='$comision' ";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
+//FUNCION PARA FINALIZAR LA PROGRAMACIÓN
+function borrorojt ($comision,$conexion){
+    $query="DELETE FROM tem_progojt WHERE comision='$comision' ";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{

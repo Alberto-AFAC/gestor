@@ -697,12 +697,12 @@ function evalresult() {
         type: 'POST',
         data: datos
     }).done(function(respuesta) {
-
         if (respuesta == 0) {
             $('#exito1').toggle('toggle');
             setTimeout(function() {
                 $('#exito1').toggle('toggle');
             }, 2000);
+            updaviscurs ();//07/04/2022 AQUI REVISAR
         } else {
             $('#danger1').toggle('toggle');
             setTimeout(function() {
@@ -710,7 +710,24 @@ function evalresult() {
             }, 2000);
         }
     });
+}
+//ACTUALIZA LA PAGINA
+function updaviscurs(){
+    var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
+        "ajax": {
+            "url": "../php/cursosProgramados.php",
+            "type": "GET",
+            "data": function(d) {
+                d.id = id;
+            }
+        },
+        "language": {
 
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+
+    });
 }
 
 function generacion(cursos) { //abre el modal de generacion de constancias 
