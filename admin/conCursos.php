@@ -346,6 +346,7 @@ value="MIN.">
 <select type="text" class="form-control inputalta" id="AgstVignc" name="AgstVignc">
 <!-- <option value="100">RECURRENTE</option> -->
 <option value="101">UNICA VEZ</option>
+<option value="0">SIN VIGENCIA</option>
 <option value="1">1 AÑO</option>
 <option value="2">2 AÑOS</option>
 <option value="3">3 AÑOS</option>

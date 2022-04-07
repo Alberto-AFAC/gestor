@@ -7,11 +7,11 @@
   $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
   $curso = mysqli_query($conexion,$sql);
 
-  $sql = "SELECT  gstIdper,gstNombr,gstApell,estado FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0 OR estado = 2 OR  gstCargo = 'COORDINADOR' AND estado = 0 ";
+  $sql = "SELECT p.gstIdper,p.gstNombr,p.gstApell, i.* FROM personal p, instruacceso i WHERE p.gstIdper=i.idper AND i.cargo='COORDINADOR' and p.estado = 0 or p.gstIdper=i.idper AND i.cargo='INSTRUCTOR' and p.estado = 0";
   $instructor  = mysqli_query($conexion,$sql);
 
 
-  $sql = "SELECT  gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'COORDINADOR' AND estado = 0 ";
+  $sql = "SELECT p.gstIdper,p.gstNombr,p.gstApell, i.* FROM personal p, instruacceso i WHERE p.gstIdper=i.idper AND i.cargo='COORDINADOR' and p.estado = 0";
   $cordinador  = mysqli_query($conexion,$sql);
 
   unset($_SESSION['consulta']);
