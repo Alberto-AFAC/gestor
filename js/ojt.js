@@ -588,7 +588,6 @@ function regOjtfin(){
     '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
     '&opcion=finojtpro1';
     //alert(datos);
-
     if (fecincicomi == ''||fecfincomi == ''||comision == ''||nivel == ''||coordinador == ''||instructor == ''||idInspct == '') {
         Swal.fire({
         type: 'info',
@@ -725,7 +724,6 @@ function closeojtmod(){
     $('#detalleSub3').modal('hide');
 
 }
-
 //FUNCION PARA BLOQUEAR PERIODO DE TIEMPO DE A TAREA EN BASE A LA COMISION
 function blodatetarea(){
     //alert("kmdkc");
@@ -740,7 +738,7 @@ function blodatetarea(){
     findaetarea.min = fecmintarea + 'T08:30';
     findaetarea.max = fecmaxtarea + 'T08:30';
 }
-
+//FUNCION QUE BLOQUEA EL PEDIO DE TIEMPO DE LAS TAREAS CON BASE A LA COMISION
 function traerdatos(){
     //alert("kmdkc");
     var fecmintarea=document.getElementById('comfecini').value;
@@ -754,7 +752,38 @@ function traerdatos(){
     findaetarea.min = fecmintarea + 'T08:30';
     findaetarea.max = fecmaxtarea + 'T08:30';
 }
+//FUNCION QUE TRAE EL DETALLE DE UN ENTRENAMIENTO OJT DECLINADO
+function infdecOJT(iddelinaojt){
+   // alert(iddelinaojt);
+    $.ajax({
+        url: '../php/conproojt.php',
+        type: 'POST'
+    }).done(function(respuesta) {
+        obj = JSON.parse(respuesta);
+        var res = obj.data;
+        var x = 0;
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == iddelinaojt){
+                datos = 
+                obj.data[U].ojt_principal + '*' +
+                obj.data[U].ojt_subtarea + '*' +
+                obj.data[U].confirojt;    
+                var d = datos.split("*");   
+                //$("#modal-nosurtido #arsurvof").val(d[0]);   
+                $("#nombredeclinOJT").html('TAREA: ' + d[0]);        
+                $("#subtars1OJT").html('SUBTAREA: ' + d[1]);    
+                $("#modal-declinadoOJT #motivodOJT").html('MOTIVO: ' + d[2]);
 
+                if (obj.data[U].confirojt == 'OTROS') {
+                    $("#arcpdfOJT").html("<p style='text-align: center;font-size:20px;'>" + obj.data[U].justifojt + "</p>");
+                } else {
+                    $("#arcpdfOJT").html("<a class='btn btn-block btn-social btn-linkedin' href='" + obj.data[U].justifojt + "' style='text-align: center;' target='_blanck'> <i class='fa fa-file-pdf-o'></i> VISUALIZAR EL PDF ADJUNTO</a>");
+                }
+
+            }
+        }
+    });
+}
 
 
 

@@ -171,9 +171,10 @@
                         </p>
                     </div>
                     <div class="modal-body">
-                    <div class="form-group">
+                        <div class="form-group">
                             <div class="col-sm-2">
-                            <button title="Descargar el PDF" type="button" style="float: right;" class="btn btn-block btn-primary">Imprimir PDF</button>
+                                <button title="Descargar el PDF" type="button" style="float: right;"
+                                    class="btn btn-block btn-primary">Imprimir PDF</button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -836,3 +837,28 @@
         </div>
     </div>
 </form>
+
+<!-- DETALLE DECLINA CONVOCATORIA OJT -->
+<div class="modal fade" id='modal-declinadoOJT' tabindex="-1" role="dialog" aria-labelledby="basicModal"
+    aria-hidden="true">
+    <div class="modal1">
+        <div id="success-icon">
+            <div>
+                <img class="img-circle1" src="../dist/img/declinado.png">
+            </div>
+        </div>
+        <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+        <label id="cursdeclinaOJT" style="font-size: 16px; color:gray" for=""></label>
+        <label id="declindetOJT" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declinas la
+            convocatoria OJT:</label>
+        <label id="nombredeclinOJT" style="font-size: 18px; color:gray; font-weight: normal;" for=""></label>
+        <label id="subtars1OJT" style="font-size: 18px; color:gray; font-weight: normal;" for=""></label>
+        <br>
+        <label id="motivodOJT" style="font-size: 18px; color:#2B2B2B; font-weight: bold;" for=""></label>
+        <hr>
+        <div id="arcpdfOJT"></div>
+        <label readonly id="otrosdpOJT" name="otrosdpOJT"
+            style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
+
+    </div>
+</div>

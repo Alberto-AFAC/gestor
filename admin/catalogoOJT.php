@@ -169,6 +169,7 @@ $especialidad = mysqli_query($conexion,$sqlEspecialidad);
         </div>
         
         <?php include('../perfil/modalojt.php');?>
+        
 
         
 
@@ -230,6 +231,7 @@ $especialidad = mysqli_query($conexion,$sqlEspecialidad);
     <!-- page script -->
     <script src="../js/global.js"></script>
     <script src="../js/datos.js"></script>
+    <script src="../js/ojt.js"></script>
     <script src="../dist/js/sweetalert2.all.min.js"></script>
 
 

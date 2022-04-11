@@ -751,6 +751,7 @@
         <label id="declindetOJT" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declinas la
             convocatoria OJT:</label>
         <label id="nombredeclinOJT" style="font-size: 18px; color:gray; font-weight: normal;" for=""></label>
+        <label id="subtars1OJT" style="font-size: 18px; color:gray; font-weight: normal;" for=""></label>
         <br>
         <label id="motivodOJT" style="font-size: 18px; color:#2B2B2B; font-weight: bold;" for=""></label>
         <hr>
