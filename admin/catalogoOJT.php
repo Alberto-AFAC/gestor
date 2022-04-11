@@ -388,8 +388,8 @@ function evalun1(registro){
     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
         var subtarea = "";
-        tareas += $(this).find('td:eq(1)').html(); //Toma el id de la persona 
-        subtarea += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
         document.getElementById('taroj').value=tareas
         document.getElementById('suboj').value=subtarea
     })
@@ -404,17 +404,17 @@ function evalun1(registro){
             if (obj.data[U].id_proojt == registro){
                 idpersonaOJTE1 = obj.data[U].id_pers; //id persona
                 idinstruOJTE2= obj.data[U].id_insojt; // id instructor
-                // alert(id_persona);
                 datos = 
                 obj.data[U].id_coorojt  + '*' +
-                obj.data[U].id_insojt;    
+                obj.data[U].id_insojt  + '*' +
+                obj.data[U].comision;    
                 var d = datos.split("*");   
                 $("#modal-evaluarojt #idinspo").val(d[0]);   
-                $("#modal-evaluarojt #idintucco").val(d[1]);              
+                $("#modal-evaluarojt #idintucco").val(d[1]);  
+                $("#modal-evaluarojt #evcomision").val(d[2]);   
+                          
             }    
         }
-    }); 
-
     //TRAE A LA PERSONA
         $.ajax({
             url: '../php/conPerson.php',
@@ -451,6 +451,7 @@ function evalun1(registro){
                 }
             }
         }); 
+    }); 
 }
 //FUNCIÓN DE EVALUACIÓN NIVEL 2 ---------------------------------------------------------------------------
 function evalun2(registro){
@@ -478,7 +479,6 @@ function evalun2(registro){
             }    
         }
     }); 
-
     //TRAE A LA PERSONA
         $.ajax({
             url: '../php/conPerson.php',
@@ -542,7 +542,6 @@ function evalun3(registro){
             }    
         }
     }); 
-
     //TRAE A LA PERSONA
         $.ajax({
             url: '../php/conPerson.php',
@@ -580,18 +579,16 @@ function evalun3(registro){
             }
         }); 
 }
-
 //FUNCION PARA TRAER INFO DE OJT PROGRAMADO
 function ojtprogram(idregistro){
     //alert(idregistro);
     document.getElementById('idinfregistro').value=idregistro;
     var fin =document.getElementById('buttofnojt');
-
     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
         var subtarea = "";
-        tareas += $(this).find('td:eq(1)').html(); //Toma el id de la persona 
-        subtarea += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
         document.getElementById('inftarepromojt').value=tareas;
         document.getElementById('infsubtareojt').value=subtarea; 
     })
@@ -615,7 +612,10 @@ function ojtprogram(idregistro){
                 obj.data[U].nivel  + '*' +
                 obj.data[U].lugar  + '*' +
                 obj.data[U].sede  + '*' +
-                obj.data[U].id_esp;    
+                obj.data[U].id_esp  + '*' +
+                obj.data[U].comision  + '*' +
+                obj.data[U].feini_comision  + '*' +
+                obj.data[U].fecfin_comision;    
                 var d = datos.split("*");   
                 $("#modal-proojt #inftipojt").val(d[0]); 
                 $("#modal-proojt #infinicioojt").val(d[1]);
@@ -624,6 +624,9 @@ function ojtprogram(idregistro){
                 $("#modal-proojt #influgarojt").val(d[4]);
                 $("#modal-proojt #infsedeojt").val(d[5]);  
                 $("#modal-proojt #infespeojt").val(d[6]);
+                $("#modal-proojt #infcomision").val(d[7]);
+                $("#modal-proojt #infiniciocom").val(d[8]);
+                $("#modal-proojt #infincomi").val(d[9]);
                 
             }
         }
@@ -657,7 +660,7 @@ function ojtprogram(idregistro){
             var x = 0;
             for (C = 0; C < perss.length; C++) { 
                 if (obj2.data[C].gstIdper == idcoordina){
-                    datos3 = 
+                    datos3 =        
                     obj2.data[C].gstNombr  + '*' +
                     obj2.data[C].gstApell;    
                     var o = datos3.split("*");   

@@ -12,13 +12,13 @@ $subtarea = mysqli_query($conexion,$sql);
 $sql = "SELECT id_ojt, subsubtarea FROM ojt WHERE estado = 0";
 $subsubtarea = mysqli_query($conexion,$sql);
 
-$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR PRINCIPAL OJT'  OR instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE personal.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR PRINCIPAL OJT'  OR instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
 $instructor  = mysqli_query($conexion,$sql);
 
-$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'COORDINADOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE personal.estado = 0 AND instcoord_ojt.tipo = 'COORDINADOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
 $cordinador  = mysqli_query($conexion,$sql);
 
-$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE instcoord_ojt.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
+$sql = "SELECT id_pers, gstNombr,gstApell FROM instcoord_ojt INNER JOIN personal on instcoord_ojt.id_pers=personal.gstIdper WHERE personal.estado = 0 AND instcoord_ojt.tipo = 'INSTRUCTOR OJT'  ORDER BY instcoord_ojt.id_inscorojt ASC";
 $inst2  = mysqli_query($conexion,$sql);
 
 unset($_SESSION['consulta']);

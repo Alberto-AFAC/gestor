@@ -35,8 +35,6 @@ $.ajax({
 
 });
 
-
-
 function evaojt(ideval){
     
     $.ajax({
@@ -544,7 +542,7 @@ function insersubt2(){
                         customClass: 'swal-wide',
                         timer: 3000
                     });
-                    $('#detalleSub3').modal('hide');
+                   // $('#detalleSub3').modal('hide');
                 }else if (respuesta == 2) {
                     Swal.fire({
                         type: 'info',
