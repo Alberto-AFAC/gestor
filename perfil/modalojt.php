@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <label class="label2" for="">FIN:</label>
-                                <input type="" class="form-control disabled inputalta" name="infincomi" id="infinstrojt"
+                                <input type="" class="form-control disabled inputalta" name="infincomi" id="infincomi"
                                     disabled="">
                             </div>
                         </div>
