@@ -233,7 +233,7 @@ $inspector = mysqli_query($conexion,$sql);
 
     <!-- jQuery 3 -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="js/mobiscroll.javascript.min.js"></script>
+    <script src="js/mobiscroll.jquery.min.js"></script>
 
 
     <!-- Bootstrap 3.3.7 -->
