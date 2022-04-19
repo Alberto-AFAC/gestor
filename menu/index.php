@@ -103,14 +103,6 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                           <!--       <button onclick="acceso(<?php echo $id_usu ?>);">BUTON</button> -->
                             </div>
                         </div>
-                        <div class="card">
-                            <span></span>
-                            <div class="content">
-                                <h3>COCODI</h3>
-                                <img class="img-servicios" src="../models/menu/images/cocodi.svg" width="75%;" alt="tecnico"><br><br>
-                                <a href="#">Iniciar</a>
-                            </div>
-                        </div>
 
                         <div class="card">
                             <span></span>
@@ -122,6 +114,14 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                      
                             </div>
                         </div>
+                        <div class="card" style="background: silver">
+                            <span></span>
+                            <div class="content">
+                                <h3>DETyCA</h3>
+                                <img class="img-servicios" src="../models/menu/images/cocodi.svg" width="75%;" alt="tecnico"><br><br>
+                                <!-- <a href="#">Iniciar</a> -->
+                            </div>
+                        </div>                        
 
                     </div>
                 </div>

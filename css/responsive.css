@@ -1,4 +1,5 @@
 
+#perfil .habilitado,
 #inicio,
 #report,
 #histor{
@@ -47,14 +48,132 @@
 #icon-usu{
   width:170px;
 }
-/*#inicio,
+#icon-not{
+  float: right;
+  width:130px;
+}
+#inicio,
 #report,
 #histor{
   display: block;
-}*/
+}
 #equi_asig table{
   font-size: 11px;
   padding: 0;
   margin: 0;
 }
+
+/*CONSULTA REPORTE E HISTORIAL*/
+#conslt{
+overflow: auto;
+}
+/*MODAL*/
+/*#modalDtll .modal-body,#modalAtndr .modal-body,#modalVal .modal-body{
+  width:46%;
+}*/
+
+#modalDtll .width,#modalAtndr .width{
+margin: 0 auto;
+width: 100%;
+font-size: 13px;
+}
+#modalDtll .width label,#modalDtll .width input,#modalAtndr .width label,#modalAtndr .width input,#modalAtndr select{
+font-size: 10px;
+}
+#modalDtll input,#modalDtll textarea, #modalAtndr input, #modalAtndr textarea, #modalAtndr select{
+  width: 340%;
+}
+/*#modalDtll .width{
+margin: 0 auto;
+width: 100%;
+}*/
+#modalEvalCancelado{
+  border: 1px solid blue;
+  overflow: auto;
+}
+
+#modalEval{
+  border: 1px solid blue;
+  overflow: auto;
+}
+/*TÉCNICO*/
+.navbar-brand{
+  position: absolute;
+  max-width: 85%;
+}
+#overflow,#profile,#finalizados,#poratender,#pendiente,#cancelado,#cuadro2,#eqpos{
+  overflow: auto;
+  width:100%;
+}
+#titulo-consulta h1,
+#titulo-consulta img,
+#header img{
+display: none;
+}
+#Frmdupli table,#Frminvet table{
+  width: 100%;
+  font-size: 12px;
+}
+#perfil .inhabilitado{
+  display: none;
+}
+#perfil .habilitado{
+  display: block;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+#notifi b{
+ font-size: 12px;
+ width: 100%;
+ text-align: right;
+}
+#con_arr{
+border: 1px solid blue;
+}
+#con_abj{
+border: 1px solid red;
+}
+}
+@media (max-width: 450px){
+
+/*  #modalDtll .modal-body,#modalAtndr .modal-body,#modalVal .modal-body{
+  width:35%;
+}*/
+#perfil .inhabilitado{
+  display: none;
+}
+#perfil .habilitado{
+  display: block;
+  font-size: 12px;
+  width: 100%;
+  text-align: right;
+}
+#header h1{
+  text-align: center;
+}
+#equi_asig{
+  overflow: auto;
+}
+/*MODAL*/
+
+#modalDtll .width,#modalAtndr .width{
+margin: 0 auto;
+width: 100%;
+font-size: 13px;
+}
+#modalDtll .width label,#modalDtll .width input,#modalAtndr .width label,#modalAtndr .width input,#modalAtndr select{
+font-size: 10px;
+}
+#modalDtll input,#modalDtll textarea, #modalAtndr input, #modalAtndr textarea, #modalAtndr select{
+  width: 340%;
+}
+.dataTables_info{
+  overflow: auto;
+  width: 100%;
+}
+#icon-usu{
+  margin-top: 1em;
+}
+/*x*/
 }
