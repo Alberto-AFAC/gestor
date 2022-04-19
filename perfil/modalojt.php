@@ -339,9 +339,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="">
                                         <td>Habilidades del aprendiz</td>
-                                        <td><input value="SI" type="radio" class="iCheck-helper" name="pregunt20"
+                                        <td><input value="SI" type="radio" class="option-input radio" name="pregunt20"
                                                 id="si1II" /><label for="si1II"></label></td>
                                         <td><input value="NO" type="radio" name="pregunt20" id="no1II" /><label
                                                 for="no1II"></label></td>

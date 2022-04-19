@@ -455,8 +455,8 @@ function evalun1(registro){
         }); 
     }); 
 }
-//FUNCIÓN DE EVALUACIÓN NIVEL 2 ---------------------------------------------------------------------------
-function evalun2(registro){
+//FUNCIÓN DE EVALUACIÓN NIVEL 2 19042022 ---------------------------------------------------------------------------
+function evalun2(registro){ 
     //alert(registro);
     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
@@ -480,8 +480,8 @@ function evalun2(registro){
                 // alert(id_persona);           
             }    
         }
-    }); 
-    //TRAE A LA PERSONA
+
+        //TRAE A LA PERSONA
         $.ajax({
             url: '../php/conPerson.php',
             type: 'POST'
@@ -517,6 +517,8 @@ function evalun2(registro){
                 }
             }
         }); 
+    }); 
+    
 }
 //FUNCIÓN DE EVALUACIÓN NIVEL 3 ------------------------------------------------
 function evalun3(registro){
@@ -543,8 +545,8 @@ function evalun3(registro){
                 // alert(id_persona);           
             }    
         }
-    }); 
-    //TRAE A LA PERSONA
+
+        //TRAE A LA PERSONA
         $.ajax({
             url: '../php/conPerson.php',
             type: 'POST'
@@ -580,6 +582,8 @@ function evalun3(registro){
                 }
             }
         }); 
+    }); 
+    
 }
 //FUNCION PARA TRAER INFO DE OJT PROGRAMADO
 function ojtprogram(idregistro){
