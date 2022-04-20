@@ -290,6 +290,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                         </div>
                                     </section>
                                 </div>
+                                <?php include('../perfil/ojtreaction.php');?>
 
 
                                 <div class="tab-pane" id="ojt">
