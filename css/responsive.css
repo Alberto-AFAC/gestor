@@ -1,4 +1,3 @@
-
 #perfil .habilitado,
 #inicio,
 #report,
@@ -83,10 +82,6 @@ font-size: 10px;
 #modalDtll input,#modalDtll textarea, #modalAtndr input, #modalAtndr textarea, #modalAtndr select{
   width: 340%;
 }
-/*#modalDtll .width{
-margin: 0 auto;
-width: 100%;
-}*/
 #modalEvalCancelado{
   border: 1px solid blue;
   overflow: auto;
@@ -136,6 +131,47 @@ border: 1px solid red;
 }
 }
 @media (max-width: 450px){
+
+
+.caja__trasera{
+  background: transparent;
+}
+.caja__trase-Login #btn__tecnicosesion{
+  font-size: 0px;
+}
+.caja__trase-Login #btn__tecnicosesion span{
+  font-size: 18px;
+}
+.caja__trasera-register #btn__registrar{
+  font-size: 0px;  
+}
+.caja__trasera-register #btn__registrar span{
+  font-size: 18px;
+}
+
+/*.caja__trasera{
+width: 0%;
+}*/
+
+/*  .formulario__registro{
+
+    margin-bottom: -40em;
+  }
+  .caja__trasera-register h3,.caja__trasera-register p{
+    display: none;
+  }
+  .caja__trase-Login h3{
+    display: none;
+  }*/
+
+/*menu*/
+/*  .wrapper ul{
+   overflow: scroll;
+   padding-top: 40em;
+  }
+  #tema h3{
+    margin-top: -30em;
+  }*/
 
 /*  #modalDtll .modal-body,#modalAtndr .modal-body,#modalVal .modal-body{
   width:35%;

@@ -31,9 +31,6 @@
 <!--contenedor de botones-->
 <div class="contenedor__todo" >
     <div class="caja__trasera">        
-       
-
-
 
         <div class="caja__trase-Login">
             <h3>Ya tienes una cuenta?</h3>           
@@ -41,17 +38,12 @@
             Iniciar sesión</button>
         </div>
 
-
-
-     
         <div class="caja__trasera-register">
             <h3>¿Olvidaste tu contraseña? </h3>
             <p>¡Envía correo para restablecer tu contraseña!</p>
             <button id="btn__registrar"><span class="glyphicon glyphicon-envelope"></span>
             Restablecer contraseña</button>
         </div>
-
-
 
 
         </div>
