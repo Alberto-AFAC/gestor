@@ -41,11 +41,7 @@
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <div class="wrapper">
-
-        <?php
-
-include('header.php');
-?>
+        <?php include('header.php'); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
