@@ -211,6 +211,7 @@ function regCurso() {
     var tPrfil = ''
 
     var selectObject = document.getElementById("gstPrfil");
+    
 
     for (var i = 0; i < selectObject.options.length; i++) {
         if (selectObject.options[i].selected == true) {
@@ -219,14 +220,6 @@ function regCurso() {
 
         }
     }
-
-    var campo = new Array();
-    /*Agrupamos todos los input con name=cbxEstudiante*/
-    $('input[name="campo[]"]').each(function(element) {
-        var item = {};
-        item.campo = this.value;
-        campo.push(item);
-    });
 
     var array = JSON.stringify(campo);
 

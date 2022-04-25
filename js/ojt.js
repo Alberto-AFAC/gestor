@@ -567,6 +567,32 @@ function insersubt2(){
 //FUNCION BOTÓN FINALIZAR
 function regOjtfin(){ 
     //alert("pruebsass");
+    var tinst = ''
+
+    var selectObject = document.getElementById("instructor");
+
+    for (var i = 0; i < selectObject.options.length; i++) {
+        if (selectObject.options[i].selected == true) {
+
+            tinst += ',' + selectObject.options[i].value;
+
+        }
+    }
+    var campo = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="campo[]"]').each(function(element) {
+        var item = {};
+        item.campo = this.value;
+        campo.push(item);
+    });
+
+    var array = JSON.stringify(campo);
+
+    gstinstruojt = tinst.substr(1);
+
+    var instructor = gstinstruojt;
+alert(instructor);
+
     var isSpc = document.getElementById('isSpc').value;
     var idInspct = document.getElementById('idInspct').value;
     var fecincicomi = document.getElementById('comfecini').value;
@@ -574,7 +600,7 @@ function regOjtfin(){
     var fechaInicio = document.getElementById('fechaInicio').value;
     var fechaTermino = document.getElementById('fechaTermino').value;
     var coordinador = document.getElementById('coordinador').value;
-    var instructor = document.getElementById('instructor').value;
+    //var instructor = document.getElementById('instructor').value;
     var nivel = document.getElementById('idnivel').value;
     var ubicacion = document.getElementById('uboj').value;
     var lugar = document.getElementById('addubic').value;

@@ -65,13 +65,13 @@
 				$asistencia = "<span class='label label-success' style='height: 50px; color:green;'>CONFIRMADO</span>";
 				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
 		    }else if($data['confirojt']=='TRABAJO'){
-			    $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
+			    $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='infdecOJT($id_registro)' data-toggle='modal' data-target='#modal-declinadoOJT'>DECLINO ENTRANAMIENTO</a>";
 				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
 			}else if ($data['confirojt'] == 'ENFERMEDAD') {
-                $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";
+                $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='infdecOJT($id_registro)' data-toggle='modal' data-target='#modal-declinadoOJT'>DECLINO ENTRANAMIENTO</a>";
 				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
 			}else if ($data['confirojt'] == 'OTROS') {
-                $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='' data-toggle='modal' data-target='#modal-declinado1'>DECLINO CURSO</a>";						
+                $asistencia = "<a type='button' class='label label-danger' title='Declina la convocatoria' style= 'color:red;cursor:pointer;' onclick='infdecOJT($id_registro)' data-toggle='modal' data-target='#modal-declinadoOJT'>DECLINO ENTRANAMIENTO</a>";
 				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
 			}
 

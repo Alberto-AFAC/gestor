@@ -1146,7 +1146,7 @@
                                         <p id="asisteojt" style="display: none;">
                                             <i style="color: green; font-size: 25px;" class="icon fa fa-check"></i>
                                             <label id="confm1" style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
-                                            <input type="hidden" id="confojt" name="confojt">
+                                            <!-- <input type="hidden" id="confojt" name="confojt"> -->
                                         </p>
                                         <p id="noasisojt" style="display:none;">
                                             <label class="label2" style="font-size: 16px;">MOTIVOS DE TU

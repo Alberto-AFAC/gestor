@@ -247,7 +247,7 @@ unset($_SESSION['consulta']);
                                             <label>INSTRUCTOR OJT<span class="text-red">*</label>
                                             <select multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR OJT"
                                                 style="width: 100%;color: #000" class="form-control select2" type="text"
-                                                class="form-control" id="instructor" name="instructor">
+                                                class="form-control" id="instructor" name="instructor[]">
                                                 <?php while($instructors = mysqli_fetch_row($instructor)):?>
                                                 <option value="<?php echo $instructors[0]?>">
                                                     <?php echo $instructors[1].' '.$instructors[2]?></option>
