@@ -894,7 +894,7 @@ function modalidades() {
     var seleccion = document.getElementById('modalidad');
     valor = seleccion.options[seleccion.selectedIndex].value;
 
-    if (valor == 'PRESENCIAL') {
+    if (valor == 'PRESENCIAL' || valor=='AUTOGESTIVO') {
         $("#dismod").hide();
         $("#disocl").show();
 
