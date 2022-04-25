@@ -310,7 +310,7 @@ var tableGenerarReporte = $('#data-table-completoOJT').DataTable({
 //FUNCION DE CURSOS DECLINADOS
 var dataSet = [
     <?php 
-$query = "SELECT *,DATE_FORMAT(prog_ojt.fec_finoj, '%d/%m/%Y') as final,DATE_FORMAT(prog_ojt.fec_inioj, '%d/%m/%Y') as inicial,prog_ojt.fec_finoj AS fin  
+$query = "SELECT *,DATE_FORMAT(prog_ojt.fec_finoj, '%d/%m/%Y') as final, DATE_FORMAT(prog_ojt.fec_inioj, '%d/%m/%Y') as inicial,prog_ojt.fec_finoj AS fin  
     FROM prog_ojt 
     WHERE id_pers =$datos[0] AND prog_ojt.estado = 0 ORDER BY id_proojt DESC";
 $resultado = mysqli_query($conexion, $query);
@@ -319,7 +319,7 @@ while($data = mysqli_fetch_array($resultado)){
 
 $id_curso = $data['id_proojt'];
 
-$fcurso = $data['inicial'];
+$fojt = $data["inicial"];
 $fechaf = $data['final'];
 $id_tarea = $data["id_tarea"];
 $id_subtarea = $data['id_subtarea'];
@@ -365,7 +365,7 @@ if($data['confirojt']=='ENFERMEDAD'){
 $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadoOJT' onclick='infdecOJT($id_curso)'>DECLINADO</span>";
 
 
-?>["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo  $fcurso?>",
+?>["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo $fojt?>",
         "<?php echo $fechaf?>", "<?php echo $data['nivel']?>",
         "<?php echo $valor ?>"
     ],
@@ -373,7 +373,7 @@ $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer
     <?php }else if($data['confirojt']=='TRABAJO'){ 
         $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadoOJT' onclick='infdecOJT($id_curso)'>DECLINADO</span>"; ?>
 
-    ["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo  $fcurso?>",
+    ["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo $fojt?>",
         "<?php echo $fechaf?>", "<?php echo $data['nivel']?>",
         "<?php echo $valor ?>"
     ],
@@ -381,7 +381,7 @@ $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer
     <?php }else if($data['confirojt']=='OTROS'){
         $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadoOJT' onclick='infdecOJT($id_curso)'>DECLINADO</span>";?>
 
-    ["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo  $fcurso?>",
+    ["<?php echo $tareapri?>", "<?php echo $subtarea?>", "<?php echo $fojt?>",
         "<?php echo $fechaf?>", "<?php echo $data['nivel']?>",
         "<?php echo $valor ?>"
     ],
