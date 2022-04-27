@@ -752,6 +752,47 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            
+
+                            <table id="evalinscooj3" class="table table-striped table-bordered dataTable">
+                                    <thead style="background-color:#001C6E; color:white">
+                                        <tr>
+                                            <th>Hallazgo</th>
+                                            <th>SI</th>
+                                            <th>NO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Habilidades del aprendiz</td>
+                                            <td><input value="SI" type="radio" name="pregunII28" id="si1II" /><label
+                                                    for="si1II"></label></td>
+                                            <td><input value="NO" type="radio" name="pregunII28" id="no1II" /><label
+                                                    for="no1II"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Debilidades del aprendiz</td>
+                                            <td><input value="SI" type="radio" name="pregunII29" id="si2II" /><label
+                                                    for="si2II"></label></td>
+                                            <td><input value="NO" type="radio" name="pregunII29" id="no2II" /><label
+                                                    for="no2II"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Problemas de desempeño</td>
+                                            <td><input value="SI" type="radio" name="pregunII30" id="si3II" /><label
+                                                    for="si3II"></label></td>
+                                            <td><input value="NO" type="radio" name="pregunII30" id="no3II" /><label
+                                                    for="no3II"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Problemas de actitud</td>
+                                            <td><input value="SI" type="radio" name="pregunII31" id="si4II" /><label
+                                                    for="si4II"></label></td>
+                                            <td><input value="NO" type="radio" name="pregunII31" id="no4II" /><label
+                                                    for="no4II"></label></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
                             <div class="col-sm-12">
@@ -761,64 +802,18 @@
                                         <tr>
                                             <th>Hallazgo</th>
                                             <th>Resumen</th>
-                                            <th>SI</th>
-                                            <th>NO</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Habilidades del aprendiz</td>
-                                            <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
-                                                    rows="3"></textarea></td>
-                                            <td><input value="SI" type="checkbox" id="si13" /><label for="si13"></label>
-                                            </td>
-                                            <td><input value="NO" type="checkbox" id="no13" /><label for="no13"></label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Debilidades del aprendiz</td>
-                                            <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
-                                                    rows="3"></textarea></td>
-                                            <td><input value="SI" type="checkbox" id="si23" /><label for="si23"></label>
-                                            </td>
-                                            <td><input value="NO" type="checkbox" id="no23" /><label for="no23"></label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Problemas de desempeño</td>
-                                            <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
-                                                    rows="3"></textarea></td>
-                                            <td><input value="SI" type="checkbox" id="si33" /><label for="si33"></label>
-                                            </td>
-                                            <td><input value="NO" type="checkbox" id="no33" /><label for="no33"></label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Problemas de actitud</td>
-                                            <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
-                                                    rows="3"></textarea></td>
-                                            <td><input value="SI" type="checkbox" id="si43" /><label for="si43"></label>
-                                            </td>
-                                            <td><input value="NO" type="checkbox" id="no43" /><label for="no43"></label>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>Acciones correctivas recomendadas</td>
                                             <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
                                                     rows="3"></textarea></td>
-                                            <td><input value="SI" type="checkbox" id="si53" /><label for="si53"></label>
-                                            </td>
-                                            <td><input value="NO" type="checkbox" id="no53" /><label for="no53"></label>
-                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Observaciones y/o comentarios</td>
                                             <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
                                                     rows="3"></textarea></td>
-                                            <td><input value="SI" type="checkbox" id="si63" /><label for="si63"></label>
-                                            </td>
-                                            <td><input value="NO" type="checkbox" id="no63" /><label for="no63"></label>
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
