@@ -481,6 +481,7 @@ immediately after the control sidebar -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../dist/js/adminlte.min.js"></script>
     <script src="../dist/js/demo.js"></script>
+    <script src="../js/notificacion.js"></script>
 
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">

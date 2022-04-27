@@ -221,6 +221,7 @@
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
         <script src="../js/lisCurso.js"></script>
         <script type="text/javascript" src="../js/cursos.js"></script>
+        <script src="../js/notificacion.js"></script>
         <!-- <script type="text/javascript" src="../js/ojt.js"></script> -->
         <?php include('../perfil/cursos.php'); ?>
 </body>
