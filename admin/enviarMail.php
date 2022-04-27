@@ -37,36 +37,29 @@ while($curso = mysqli_fetch_assoc($resultado)){
 		$sede = "SIN SEDE";
 	}
 $mail->addAddress("{$to}");
-}
-
 // $mail->addAddress("jorge.mondragon@sct.gob.mx");
 // $mail->addCC("jmondragonescamilla@gmail.com");
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->CharSet = 'UTF-8';
-$curso2 = mysqli_fetch_assoc($resultado2);
-		$msg .= "<center><img src='https://afac-avciv.com/dist/img/correo.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>".$curso2['gstTitlo']."</span></td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>FOLIO: ".$curso2['gstIdlsc']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>NOMBRE DEL PARTICIPANTE: ".$curso2['gstNombr']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>TIPO DE CURSO2: ".$curso2['gstTipo']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>FECHA INICIO: ".$curso2['inicia']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>HORA: ".$curso2['hcurso2']."</td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>CARGO: ".$curso2['gstCargo']." </td></tr>
+		$msg = "<center><img src='https://afac-avciv.com/dist/img/correo.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
+				<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>".$curso['gstTitlo']."</span></td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>FOLIO: ".$curso['gstIdlsc']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>NOMBRE DEL PARTICIPANTE: ".$curso['gstNombr']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>TIPO DE CURSO: ".$curso['gstTipo']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>FECHA INICIO: ".$curso['inicia']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>HORA: ".$curso['hcurso']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>CARGO: ".$curso['gstCargo']." </td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'>SEDE DEL CURSO: $sede </td></tr>
-				<tr><td style='text-align: center; font-size: 15px;'>MODALIDAD: ".$curso2['modalidad']."</td></tr>
+				<tr><td style='text-align: center; font-size: 15px;'>MODALIDAD: ".$curso['modalidad']."</td></tr>
 				<tr><td style='text-align: center; font-size: 15px;'><a href='http://afac-avciv.com/'>CONFIRMAR ASISTENCIA</a></td></tr>
 				<hr><center>
 				<h2 style='font-color: red; font-size: 13px;'>NOTA IMPORTANTE: NO RESPONDER, ESTE CORREO SE GENERA AUTOMATICAMENTE.</h2>
 				</center><hr>
 				</table>";
 			$mail->MsgHTML($msg);
-if (!$mail->send()) {
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'The email message was sent.';
+			$mail->send();
+			$mail->clearAddresses();
 }
-
-
 
 	    
  ?>
