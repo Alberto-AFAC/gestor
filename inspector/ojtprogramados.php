@@ -122,7 +122,8 @@ include('header.php');
                                 <li><a href="#settings" data-toggle="tab">OJT DECLINADOS</a></li>
                                 <li><a href="#vencido" data-toggle="tab">OJT CONVOCATORIAS VENCIDAS</a></li>
                                <?php if($datos[3]== 'ADMINISTRATIVO'){ }else{ ?>
-                                <li><a href="#ojt_insp" data-toggle="tab">OJT</a></li>
+                                <!-- DESCOMENTAR EN CASO DE QUE EL INSTRUCTOR PUEDE SUBIR SUS DOCUMENTOS OJT
+                                <li><a href="#ojt_insp" data-toggle="tab">OJT</a></li>   -->
 
                                 <?php 
 }
