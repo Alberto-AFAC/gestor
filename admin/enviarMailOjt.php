@@ -58,7 +58,7 @@ ORDER BY
         $mail->addAddress("{$to}");
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->CharSet = 'UTF-8';
-                $msg .="<body style=' background-size: 100%; background-image: url('../dist/img/fondocoree.png');'><div>
+                $msg .="<body style=' background-size: 100%; background-image: url('https://afac-avciv.com/images-web/fondocoree.png');'><div>
                 <img src='../dist/img/logoafac.png' alt='' srcset=''>
         
                 <img src='../dist/img/CIAAC logo.png' align='right' alt='' srcset=''>
