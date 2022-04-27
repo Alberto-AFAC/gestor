@@ -16,7 +16,7 @@ if($opcion === 'modificar'){
 	$password = $_POST['password'];
     $privilegios = $_POST['privilegios'];
 
-    if($privilegios==0){ echo "3"; }else{		
+    if($privilegios=="0"){ echo "3"; }else{		
 		if($password != ''){
 		    if(modificar($id_usu,$usuario,$password,$idacceso,$privilegios,$conexion)){
 				echo "0";
