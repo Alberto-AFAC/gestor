@@ -109,6 +109,12 @@ include('header.php');
                                         </a>
                                     </li>
                                 </ul>
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <!-- <b>RESUMEN DE AVANCE OJT</b> -->
+                                        <a href="">RESUMEN DE AVANCE OJT</a>
+                                    </li>
+                                </ul>
                             </div>
                             <!-- /.box-body -->
                         </div>
