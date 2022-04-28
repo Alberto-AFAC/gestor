@@ -13,7 +13,8 @@ require_once "../../conexion/conexion.php";
             $f = explode(',', $idper);
             $idcurso = intval($f[0]);//ID CURSO
             $fecha = intval($f[2]);//VIGENCIA
-            $valor = explode(",", $idper);
+                         $idp = $idper.',S/N';
+            $valor = explode(",", $idp);
 
 ?>
 <div class="col-md-12">

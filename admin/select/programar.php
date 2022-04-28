@@ -50,18 +50,31 @@
         personal.gstIDCat,
         categorias.gstCsigl,
         personal.gstFeing,
-        DATE_FORMAT(personal.gstFeing,
-        '%d/%m/%Y') AS Feingreso,
+        DATE_FORMAT(personal.gstFeing,'%d/%m/%Y') AS Feingreso,
         personal.gstCargo,
-        personal.gstCinst
+        personal.gstCinst,
+        personal.estado
         FROM personal 
         INNER JOIN especialidadcat 
         ON personal.gstIdper = especialidadcat.gstIDper 
         INNER JOIN categorias 
         ON categorias.gstIdcat = especialidadcat.gstIDcat 
-        WHERE categorias.gstCsigl = '$id' AND personal.estado = 0 ORDER BY gstFeing DESC";        
+        WHERE categorias.gstCsigl = '$id' AND personal.estado = 0 || categorias.gstCsigl = '$id' AND personal.estado = 3 ORDER BY gstFeing DESC";        
         $person = mysqli_query($conexion,$sql);
         while ($per = mysqli_fetch_row($person)) {
+
+
+
+        // $qys = "SELECT * 
+        // FROM personal
+        // WHERE estado = 3";
+        // $rsltd = mysqli_query($conexion, $qys); 
+        // while($restd = mysqli_fetch_array($rsltd)){
+        //     echo $restd[1];
+        //     echo "<br>";
+        // }
+
+
 
           if($per[3]== '0'){
             $cPersonal = "<span style='background-color: orange;' class='badge'>Sin correo Personal</span>";
@@ -94,7 +107,14 @@
         if($res = mysqli_fetch_array($resul)){
             $categoria = $res['spcialidds'];
 
-            if($res['spcialidds']==''){ $categoria = $per[9]; }
+            if($res['spcialidds']==''){ 
+
+                if($per[9]=='NUEVO INGRESO'){
+                $categoria = '<p style="color:red;">FALTA ASIGNAR PUESTO</p>';                    
+                }else{
+                $categoria = $per[9]; 
+                }
+            }
 
         }else{
             $categoria = $per[9];
@@ -236,12 +256,24 @@ if($f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'OTROS' || $f3 <= $f2 && $fec
         $estancia = '<td style="font-weight: bold; height: 50px; color: #3C8DBC;">Personal antiguo</td>';
 
     }else{
-        $estancia = '<td style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</td>';
+
+        if($per[11]==3){
+        $estancia = '<td style="font-weight: bold; height: 50px; color: silver;">Externo</td>';        
+        }else{
+        $estancia = '<td style="font-weight: bold; height: 50px; color: green;">Nuevo ingreso</td>';        
+        }
     }
+
+    if($per[9]=='NUEVO INGRESO'){
+        $ingreso = "<input type='checkbox' disabled/>";
+    }else{
+        $ingreso = "<input type='checkbox' name='idinsp[]' id='id_insp' class='idinsp' value='<?php echo $idpar ?>' />";
+    }
+
     //CONDCION PARA LOS QUE CUMPLEN LOS 3 CURSOS
     // if($obligatorio=='CUMPLE'){
         ?>
-        <tr><td style="width: 5%;"><input type='checkbox' name='idinsp[]' id='id_insp' class="idinsp" value='<?php echo $idpar ?>' /></td>
+        <tr><td style="width: 5%;"><?php echo $ingreso?></td>
             <td><?php echo $nombre ?></td>
             <td><?php echo $apellidos ?></td>
             <td><?php echo $cPersonal?><br><?php echo $cInstitucional?></td>

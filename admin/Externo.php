@@ -57,8 +57,8 @@ include('header.php');
             </section>
             <?php
  
- $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
- $categs = mysqli_query($conexion,$sql);
+ // $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
+ // $categs = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
 $sub1 = mysqli_query($conexion,$sql);
@@ -198,15 +198,16 @@ $psto = mysqli_query($conexion,$sql);
 
                                             <div class="form-group">
                                                 <div class="col-md-6">
-                                                    <label>*ESPECIALIDAD</label>
-                                                    <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO"
+                                                    <label>*PERFIL</label>
+                                                    <select data-placeholder="SELECCIONE "
                                                         style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="gstIDCat" name="gstIDCat">
-                                                        <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
-                                                        <?php while($cat = mysqli_fetch_row($categs)):?>
-                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
-                                                            <?php echo $cat[2]?></option>
-                                                        <?php endwhile; ?>
+                                                        type="text" class="form-control" id="gstIDCat" name="gstIDCat" disabled="">
+
+                                                        <option value="33" selected>EXTERNO</option>
+                                                        <!-- <?php //while($cat = mysqli_fetch_row($categs)):?>
+                                                        <option value="<?php //echo $cat[0]?>"><?php //echo $cat[1]?> -
+                                                            <?php //echo $cat[2]?></option>
+                                                        <?php //endwhile; ?> -->
                                                     </select>
                                                 </div>                                                
                                             </div>
