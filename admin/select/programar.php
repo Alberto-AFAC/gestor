@@ -267,7 +267,7 @@ if($f3 <= $f2 && $fecs[3] == 'NULL' && $fecs[5] == 'OTROS' || $f3 <= $f2 && $fec
     if($per[9]=='NUEVO INGRESO'){
         $ingreso = "<input type='checkbox' disabled/>";
     }else{
-        $ingreso = "<input type='checkbox' name='idinsp[]' id='id_insp' class='idinsp' value='<?php echo $idpar ?>' />";
+        $ingreso = "<input type='checkbox' name='idinsp[]' id='id_insp' class='idinsp' value='$idpar' />";
     }
 
     //CONDCION PARA LOS QUE CUMPLEN LOS 3 CURSOS
