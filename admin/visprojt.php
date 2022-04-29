@@ -10,22 +10,20 @@
             </button>
         </div>
         <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-            
+            <ul class="nav nav-tabs">          
                 <li class="active"><a href="#activity" data-toggle="tab">INFORMACION DEL OJTS PROGRAMADOS</a></li>
-                <h4><label id="nominsp" name="nominsp" for="" style="color:#0B007A"></label></h4>
-            
-                <!-- <li><a href="#timeline" data-toggle="tab">PARTICIPANTES</a></li> -->
             </ul>
+            
             <form action="" method="get">
+            
                 <input type="hidden" class="form-control disabled inputalta" name="inspercooj" id="inspercooj" value="" >
             </form>
             <div class="tab-content">
-                
-                    <div class="active tab-pane" id="activity">
+            <h4><label id="nominsp" name="nominsp" for="" style="color:#0B007A"></label></h4>
+            <div class="active tab-pane" id="activity">
                         <!-- Post -->
                         <div class="post">
-                            <form class="form-horizontal" action="" method="POST" id="Dtall">
+                            <form class="form-horizontal" action=   "" method="POST" id="Dtall">
                                 <!-- <div id="curscoord"></div> -->
                                 <div class="box-body">
                                 <br>
