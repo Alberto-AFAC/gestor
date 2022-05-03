@@ -127,9 +127,11 @@ if($opcion === 'registrar'){
         $this->conexion->cerrar();
     }
     //funcion para guardar el registro
-    function registrar ($gstNombr,$gstApell,$gstLunac,$gstCurp,$gstRfc,$gstSexo,$gstIDCat,$gstCasa,$gstClulr,$gstCorro,$gstSpcID,$gstStado,$sgtCrhnt,$gstRusp,$conexion){
+    function registrar($gstNombr,$gstApell,$gstLunac,$gstCurp,$gstRfc,$gstSexo,$gstIDCat,$gstCasa,$gstClulr,$gstCorro,$gstSpcID,$gstStado,$sgtCrhnt,$gstRusp,$conexion){
         $query="INSERT INTO personal VALUES(0,'$gstNombr','$gstApell','$gstLunac','0','$gstSexo','0','$gstCurp','$gstRfc','0','0','0','0','0','0','0','0','0','0','0','$gstStado','$gstCasa','$gstClulr','0','0','$sgtCrhnt','$gstRusp','0','0','0','0','$gstSpcID','0','INSPECTOR','$gstIDCat','0','$gstCorro','0','0','0','0','0','0','NO',0,'0',3)";
         if(mysqli_query($conexion,$query)){
+        $queri = "INSERT INTO especialidadcat(gstIDper,gstIDcat,gstIDeva) SELECT gstIdper,33,0 FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
+        mysqli_query($conexion,$queri);
             return true;
         }else{
             return false;

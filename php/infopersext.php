@@ -2,9 +2,14 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT * FROM personal 
-    INNER JOIN categorias on categorias.gstIdcat = personal.gstIDCat
-    WHERE personal.estado = 2 or personal.estado = 0 or personal.estado = 3 ";
+	$query = "
+	SELECT * FROM personal 
+    WHERE personal.estado = 2 or personal.estado = 0 or personal.estado = 3 
+    
+ --    SELECT * FROM personal 
+ --    INNER JOIN categorias on categorias.gstIdcat = personal.gstIDCat
+ --    WHERE personal.estado = 2 or personal.estado = 0 or personal.estado = 3 
+    ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

@@ -23,13 +23,13 @@ unset($_SESSION['consulta']);
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../../plugins/iCheck/all.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
     <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
@@ -57,8 +57,8 @@ include('header.php');
             </section>
             <?php
  
- // $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
- // $categs = mysqli_query($conexion,$sql);
+ $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
+ $categs = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdsub,gstSubcat,gstSigls FROM subcategorias WHERE estado = 0";
 $sub1 = mysqli_query($conexion,$sql);
@@ -198,16 +198,13 @@ $psto = mysqli_query($conexion,$sql);
 
                                             <div class="form-group">
                                                 <div class="col-md-6">
-                                                    <label>*PERFIL</label>
-                                                    <select data-placeholder="SELECCIONE "
-                                                        style="width: 100%;color: #000" class="form-control select2"
-                                                        type="text" class="form-control" id="gstIDCat" name="gstIDCat" disabled="">
-
-                                                        <option value="33" selected>EXTERNO</option>
-                                                        <!-- <?php //while($cat = mysqli_fetch_row($categs)):?>
-                                                        <option value="<?php //echo $cat[0]?>"><?php //echo $cat[1]?> -
-                                                            <?php //echo $cat[2]?></option>
-                                                        <?php //endwhile; ?> -->
+                                                    <label>*ESPECIALIDAD</label>
+                                                    <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO" style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstIDCat" name="gstIDCat">
+                                                        <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
+                                                        <?php while($cat = mysqli_fetch_row($categs)):?>
+                                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
+                                                            <?php echo $cat[2]?></option>
+                                                        <?php endwhile; ?>
                                                     </select>
                                                 </div>                                                
                                             </div>
@@ -273,12 +270,15 @@ $psto = mysqli_query($conexion,$sql);
                                                             name="gstSpcID">
                                                     </div>
                                                 </div>
-                                            
+
                                                 <br> <br> <br> <br>
                                                 <div class="form-group">
                                                     <div class="col-sm-10">
                                                         <div class="col-sm-offset-0 col-sm-2">
-                                                            <button type="button" title="AGREGAR PERSONA EXTERNA" class="btn btn-block btn-primary botonnet" onclick="addPerson()"><a style="color: #fff;" data-toggle="tab">ACEPTAR</a></button>
+                                                            <button type="button" title="AGREGAR PERSONA EXTERNA"
+                                                                class="btn btn-block btn-primary botonnet"
+                                                                onclick="addPerson()"><a style="color: #fff;"
+                                                                    data-toggle="tab">ACEPTAR</a></button>
                                                         </div>
                                                     </div>
                                                     <b><p class="alert alert-danger text-center padding error" id="exerr">Error al agregar datos contactar al soporte tecnico</p></b>
@@ -367,12 +367,12 @@ $psto = mysqli_query($conexion,$sql);
 
                         });
 
-var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
+                        var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
     //alert(idpersona1);
     $.ajax({
             url: '../php/accesos-list.php',
             type: 'POST'
-        }).done(function(resp) {    
+        }).done(function(resp) {
             obj = JSON.parse(resp);
             var res = obj.data;
 
@@ -390,6 +390,8 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
 
         }
     })
+
+
 
                         function addPerson() {
                             var gstNombr = $("#gstNombr").val(); //NOMBRE
@@ -426,7 +428,7 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                                 }).done(function(respuesta) {
                                     if (respuesta==0){
                                             // document.getElementById("personal-ext").reset();
-                                        setTimeout("location.href = 'Externo';", 2000);
+                                        setTimeout("location.href = 'personalExt';", 2000);
                                         Swal.fire({
                                             type: 'success',
                                             text: 'SE HA REGISTRADO EXITOSAMENTE',
@@ -449,6 +451,7 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                                 });
                             }
                         }
+
 
                         // TABLE INSTRUCTORS OUT
                         // TABLA INSPECTORES EXTERNOS//
@@ -558,5 +561,7 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                                     };
                                 });
                         </script>
+
 </body>
+
 </html>
