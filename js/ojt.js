@@ -816,9 +816,9 @@ function infdecOJT(iddelinaojt){
 
 
 function nivel1(){
-    alert("entro");
+    //alert("entro");
     var person = document.getElementById('idinspo').value;
-    alert(person);
+    //alert(person);
 
 
 }
@@ -1482,9 +1482,9 @@ function infoeval3(registroev){
                          document.getElementById('no4III').checked ="true"; 
                      }    
                      //pregunta 5
-                     if (obj1.data[A].pregunta4 == 20){
+                     if (obj1.data[A].pregunta5 == 20){
                         document.getElementById('si5III').checked ="true"; 
-                    }else if (obj1.data[A].pregunta4 == 5){
+                    }else if (obj1.data[A].pregunta5 == 5){
                         document.getElementById('no6III').checked ="true"; 
                     }               
                  }
