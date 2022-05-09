@@ -173,15 +173,17 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <button title="Descargar el PDF" type="button" style="float: right;"
-                                    class="btn btn-block btn-primary">Imprimir PDF</button>
+
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="hidden" id="idtarpre" name="idtarpre">
+                            <input style="" type="hidden" id="idtarpre" name="idtarpre">
                             <div class="col-sm-6">
                                 <label>INSPECTOR:</label>
-                                <input type="hidden" id="idinspo" name="idinspo">
+                                <form action="pdfprubas.php" method="post">
+                                    <input style="display:none;" type="text" id="idinspo" name="idinspo">
+
+                                </form>
                                 <input type="text" name="nompoj1" id="nompoj1" style="text-transform:uppercase;"
                                     class="form-control disabled" disabled="">
                             </div>
@@ -189,6 +191,13 @@
                                 <label>INSTRUCTOR:</label>
                                 <input type="hidden" id="idintucco" name="idintucco">
                                 <input type="text" name="tipooj1" id="tipooj1" style="text-transform:uppercase;"
+                                    class="form-control disabled" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label>ESPECILIDAD:</label>
+                                <input type="text" name="espoj1" id="espoj1" style="text-transform:uppercase;"
                                     class="form-control disabled" disabled="">
                             </div>
                         </div>
@@ -211,7 +220,7 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <table id="evalinscooj" class="table table-striped table-bordered dataTable">
-                                    <thead style="background-color:#001C6E; color:white">
+                                    <thead style="background-color:#FFFFFF; color:black">
                                         <tr>
                                             <th>#</th>
                                             <th>PARAMETROS</th>
@@ -223,182 +232,230 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>El aprendiz puede identificar apropiadamente los materiales asociados
-                                                con la tarea (reglas, órdenes, formas, equipamiento, etc.</td>
+                                            <td>El aprendiz identifica apropiadamente los materiales asociados con la
+                                                tarea (reglas, órdenes, formas, equipamiento, etc.)</td>
                                             <td>
-                                                <div><input type="checkbox" id="test1" name="preg1" value="1" /><label
-                                                        for="test1">No puede identificar los materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test1" name="preg1"
+                                                        value="0" /><label class="radio-custom-label" for="test1">No
+                                                        identifica los materiales.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test2" name="preg1" value="2" /><label
-                                                        for="test2">Identifica algunos materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test2" name="preg1"
+                                                        value="10" /><label class="radio-custom-label"
+                                                        for="test2">Identifica algunos materiales.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test3" name="preg1" value="3" /><label
-                                                        for="test3">Identifica casi todos los materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test3" name="preg1"
+                                                        value="15" /><label class="radio-custom-label"
+                                                        for="test3">Identifica casi todos los materiales.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test4" name="preg1" value="4" /><label
-                                                        for="test4">Identifica todos los materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test4" name="preg1"
+                                                        value="20" /><label class="radio-custom-label"
+                                                        for="test4">Identifica todos los materiales.</label></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>El aprendiz puede definir los términos y definiciones clave asociados
-                                                con la tarea.</td>
+                                            <td>El aprendiz entiende los términos y definiciones clave asociados con la
+                                                tarea.</td>
                                             <td>
-                                                <div><input type="checkbox" id="test5" /><label for="test5">No puede
-                                                        definir los términos</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test5" name="preg2"
+                                                        value="0" /><label class="radio-custom-label" for="test5">No
+                                                        entiende los términos.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test6" /><label for="test6">Define
-                                                        algunos términos</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test6" name="preg2"
+                                                        value="10" /><label class="radio-custom-label"
+                                                        for="test6">Entiende algunos términos.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test7" /><label for="test7">Define casi
-                                                        todos los términos</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test7" name="preg2"
+                                                        value="15" /><label class="radio-custom-label"
+                                                        for="test7">Entiende casi todos los términos.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test8" /><label for="test8">Define todos
-                                                        los términos</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test8" name="preg2"
+                                                        value="20" /><label class="radio-custom-label"
+                                                        for="test8">Entiende todos los términos.</label></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>El aprendiz puede explicar cómo se inicia la tarea..</td>
+                                            <td>El aprendiz explica cómo se inicia la tarea.</td>
                                             <td>
-                                                <div><input type="checkbox" id="test9" /><label for="test9">No puede
-                                                        explicar los recursos para iniciar la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test9" name="preg3"
+                                                        value="0" /><label class="radio-custom-label" for="test9">No
+                                                        explica los recursos para iniciar la tarea.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test10" /><label for="test10">Explica
-                                                        algunos recursos para iniciar la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test10" name="preg3"
+                                                        value="10" /><label class="radio-custom-label"
+                                                        for="test10">Explica algunos recursos para iniciar la
+                                                        tarea</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test11" /><label for="test11">Explica la
-                                                        mayoría de los recursos para iniciar la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test11" name="preg3"
+                                                        value="15" /><label class="radio-custom-label"
+                                                        for="test11">Explica la mayoría de los recursos para iniciar la
+                                                        tarea.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test12" /><label for="test12">Explica
-                                                        todos los recursos para iniciar la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test12" name="preg3"
+                                                        value="20" /><label class="radio-custom-label"
+                                                        for="test12">Explica todos los recursos para iniciar la
+                                                        tarea.</label></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>El aprendiz puede explicar los resultados de la tarea (ej. Emisión de
+                                            <td>El aprendiz explica los resultados de la tarea (ej. Emisión de
                                                 Certificados y/o Especificaciones de Operaciones,
-                                                aprobaciones/desaprobaciones.</td>
+                                                aprobaciones/desaprobaciones).</td>
                                             <td>
-                                                <div><input type="checkbox" id="test13" /><label for="test13">No puede
-                                                        explicar los resultados de la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test13" name="preg4"
+                                                        value="0" /><label class="radio-custom-label" for="test13">No
+                                                        explica los resultados de la tarea.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test14" /><label for="test14">No puede
-                                                        explicar los resultados de la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test14" name="preg4"
+                                                        value="10" /><label class="radio-custom-label"
+                                                        for="test14">Explica algunos posibles resultados de la
+                                                        tarea.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test15" /><label for="test15">Explica la
-                                                        mayoría de los posibles resultados de la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test15" name="preg4"
+                                                        value="15" /><label class="radio-custom-label"
+                                                        for="test15">Explica la mayoría de los posibles resultados de la
+                                                        tarea.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test16" /><label for="test16">Explica
-                                                        todos los posibles resultados de la tarea</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test16" name="preg4"
+                                                        value="20" /><label class="radio-custom-label"
+                                                        for="test16">Explica todos los posibles resultados de la
+                                                        tarea.</label></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td>El aprendiz puede describir como se cierra la tarea y documentarla en el
-                                                registro del seguimiento del trabajo, archivo del operador, etc.</td>
+                                            <td>El aprendiz describe como se cierra la tarea y documentarla en el
+                                                registro del seguimiento del programa en el puesto de trabajo.</td>
                                             <td>
-                                                <div><input type="checkbox" id="test18" /><label for="test18">No puede
-                                                        explicar la documentación de la tarea.</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test18" name="preg5"
+                                                        value="0" /><label class="radio-custom-label" for="test18">No
+                                                        describe la documentación de la tarea.</label></div>
                                             </td>
                                             <td>
-                                                <div></div>
-                                            </td>
-                                            <td>
-                                                <div><input type="checkbox" id="test19" /><label for="test19">Describe
-                                                        algunos métodos o formas de documentación.</label></div>
-                                            </td>
-                                            <td><input type="checkbox" id="test20" /><label for="test20">DESCRIBE TODOS
-                                                    LOS MÉTODOS O FORMAS DE DOCUMENTACIÓN.</label>
+                                                <div><input class="radio-custom" type="radio" id="test19" name="preg5"
+                                                        value="10" /><label class="radio-custom-label"
+                                                        for="test19">Describe algunos de los documentos de la
+                                                        tarea.</label></div>
                             </div>
                             </td>
+                            <td>
+                                <div><input class="radio-custom" type="radio" id="test20" name="preg5"
+                                        value="15" /><label class="radio-custom-label" for="test20">Describe algunos
+                                        métodos o formas de documentación.</label></div>
                             </td>
-                            </tr>
+                            <td><input class="radio-custom" type="radio" id="test21" name="preg5" value="20" /><label
+                                    class="radio-custom-label" for="test21">Describe todos los métodos o formas de
+                                    documentación.</label>
+                        </div>
+                        </td>
+                        </td>
+                        </tr>
 
+                        </tbody>
+                        </table>
+                        <!-- <br>
+                        <table id="evalinscooj3" class="table table-striped table-bordered dataTable">
+                            <thead style="background-color:#001C6E; color:white">
+                                <tr>
+                                    <th>Hallazgo</th>
+                                    <th>SI</th>
+                                    <th>NO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="">
+                                    <td>Habilidades del aprendiz</td>
+                                    <td><input value="SI" type="radio" class="option-input radio" name="pregunt20"
+                                            id="si1II" /><label for="si1II"></label></td>
+                                    <td><input value="NO" type="radio" name="pregunt20" id="no1II" /><label
+                                            for="no1II"></label></td>
+                                </tr>
+                                <tr>
+                                    <td>Debilidades del aprendiz</td>
+                                    <td><input value="SI" type="radio" name="pregunt21" id="si2II" /><label
+                                            for="si2II"></label></td>
+                                    <td><input value="NO" type="radio" name="pregunt21" id="no2II" /><label
+                                            for="no2II"></label></td>
+                                </tr>
+                                <tr>
+                                    <td>Problemas de desempeño</td>
+                                    <td><input value="SI" type="radio" name="pregunt22" id="si3II" /><label
+                                            for="si3II"></label></td>
+                                    <td><input value="NO" type="radio" name="pregunt22" id="no3II" /><label
+                                            for="no3II"></label></td>
+                                </tr>
+                                <tr>
+                                    <td>Problemas de actitud</td>
+                                    <td><input value="SI" type="radio" name="pregunt23" id="si4II" /><label
+                                            for="si4II"></label></td>
+                                    <td><input value="NO" type="radio" name="pregunt23" id="no4II" /><label
+                                            for="no4II"></label></td>
+                                </tr>
                             </tbody>
-                            </table>
-                            <br>
-                            <table id="evalinscooj3" class="table table-striped table-bordered dataTable">
-                                <thead style="background-color:#001C6E; color:white">
-                                    <tr>
-                                        <th>Hallazgo</th>
-                                        <th>SI</th>
-                                        <th>NO</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="">
-                                        <td>Habilidades del aprendiz</td>
-                                        <td><input value="SI" type="radio" class="option-input radio" name="pregunt20"
-                                                id="si1II" /><label for="si1II"></label></td>
-                                        <td><input value="NO" type="radio" name="pregunt20" id="no1II" /><label
-                                                for="no1II"></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Debilidades del aprendiz</td>
-                                        <td><input value="SI" type="radio" name="pregunt21" id="si2II" /><label
-                                                for="si2II"></label></td>
-                                        <td><input value="NO" type="radio" name="pregunt21" id="no2II" /><label
-                                                for="no2II"></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Problemas de desempeño</td>
-                                        <td><input value="SI" type="radio" name="pregunt22" id="si3II" /><label
-                                                for="si3II"></label></td>
-                                        <td><input value="NO" type="radio" name="pregunt22" id="no3II" /><label
-                                                for="no3II"></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Problemas de actitud</td>
-                                        <td><input value="SI" type="radio" name="pregunt23" id="si4II" /><label
-                                                for="si4II"></label></td>
-                                        <td><input value="NO" type="radio" name="pregunt23" id="no4II" /><label
-                                                for="no4II"></label></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        </table>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-sm-12">
+                        <h4 for="">Informe de calificación / Instructor OJT</h4>
+                        <table id="evalinscooj2" class="table table-striped table-bordered dataTable">
+                            <thead style="background-color:#001C6E; color:white">
+                                <tr>
+                                    <th>Hallazgo</th>
+                                    <th>Resumen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Acciones correctivas recomendadas</td>
+                                    <td><textarea onkeyup="mayus(this);" name="" id="" cols="120" rows="3"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Observaciones y/o comentarios</td>
+                                    <td><textarea onkeyup="mayus(this);" name="" id="" cols="120" rows="3"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> -->
+                        <div name="resultadonI" id="resultadonI" class="form-group" style="display:none;">
+                            <div class="col-sm-6">
+                                <label>RESUlTADOS DE LA EVALUACIÓN:</label>
+                                <input type="text" name="resulnI" id="resulnI" style="text-transform:uppercase;"
+                                    class="form-control disabled" disabled="">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>ESTATUS:</label>
+                                <input type="text" name="estatusnI" id="estatusnI" style="text-transform:uppercase;"
+                                    class="form-control disabled" disabled="">
+                            </div>
                         </div>
-                        <br>
-                        <br>
-                        <div class="col-sm-12">
-                            <h4 for="">Informe de calificación / Instructor OJT</h4>
-                            <table id="evalinscooj2" class="table table-striped table-bordered dataTable">
-                                <thead style="background-color:#001C6E; color:white">
-                                    <tr>
-                                        <th>Hallazgo</th>
-                                        <th>Resumen</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Acciones correctivas recomendadas</td>
-                                        <td><textarea onkeyup="mayus(this);" name="" id="" cols="120"
-                                                rows="3"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Observaciones y/o comentarios</td>
-                                        <td><textarea onkeyup="mayus(this);" name="" id="" cols="120"
-                                                rows="3"></textarea></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-sm-2">
-                            <!-- <button type="button" id="button" title="AGREGAR EVALUACIÓN" style="font-size:14px" class="btn btn-block btn-primary altaboton" onclick="">ACEPTAR</button> -->
-                            <button type="button" title="Agregar Evaluación" class="btn btn-block btn-primary"
-                                onclick="">EVALUAR</button>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <!-- <button type="button" id="button" title="AGREGAR EVALUACIÓN" style="font-size:14px" class="btn btn-block btn-primary altaboton" onclick="">ACEPTAR</button> -->
+                                <a id="evalucI" name="evalucI" type="button" onclick="evalnivelI()"
+                                    title="Agregar Evaluación" class="btn btn-block btn-primary" onclick="">EVALUAR</a>
+                            </div>
+                            <div style="float:right;" class="col-sm-2">
+                                <a href="../evaluacion/PDF_evaluacion_nivel_I.php" id="descargapdfI" name="descargapdfI"
+                                    style="display:none;" onclick="nivel1()" title="Descargar el PDF" type="button"
+                                    class="btn btn-block btn-primary">Imprimir PDF</a>
+                            </div>
                         </div>
                     </div>
 
@@ -443,6 +500,13 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
+                                <label>ESPECILIDAD:</label>
+                                <input type="text" name="espoj2" id="espoj2" style="text-transform:uppercase;"
+                                    class="form-control disabled" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
                                 <label>TAREA:</label>
                                 <textarea type="text" cols="30" rows="2" name="tarojII" id="tarojII"
                                     style="text-transform:uppercase;" class="form-control disabled"
@@ -460,7 +524,7 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <table id="evalinscooj" class="table table-striped table-bordered dataTable">
-                                    <thead style="background-color:#001C6E; color:white">
+                                    <thead style="background-color:#FFFFFF; color:black">
                                         <tr>
                                             <th>#</th>
                                             <th>PARAMETROS</th>
@@ -475,20 +539,28 @@
                                             <td>El aprendiz puede describir la secuencia de pasos para completar la
                                                 tarea.</td>
                                             <td>
-                                                <div><input type="checkbox" id="test1II" /><label for="test1II">No puede
-                                                        describir la secuencia de pasos</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test1II"
+                                                        name="preg1II" value="0" /><label class="radio-custom-label"
+                                                        for="test1II">No puede describir la secuencia de pasos.</label>
+                                                </div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test2II" /><label for="test2II">Describe
-                                                        algunos pasos de la secuencia</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test2II"
+                                                        name="preg1II" value="10" /><label class="radio-custom-label"
+                                                        for="test2II">Describe algunos pasos de la secuencia.</label>
+                                                </div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test3II" /><label for="test3II">Describe
-                                                        la mayoría de pasos de la secuencia</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test3II"
+                                                        name="preg1II" value="15" /><label class="radio-custom-label"
+                                                        for="test3II">Describe la mayoría de pasos de la
+                                                        secuencia.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test4II" /><label for="test4II">Describe
-                                                        la secuencia de pasos adecuadamente</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test4II"
+                                                        name="preg1II" value="20" /><label class="radio-custom-label"
+                                                        for="test4II">Describe la secuencia de pasos
+                                                        adecuadamente.</label></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -496,20 +568,27 @@
                                             <td>El aprendiz puede describir apropiadamente los materiales como formas y
                                                 equipamiento usados durante la realización de la tarea.</td>
                                             <td>
-                                                <div><input type="checkbox" id="test5II" /><label for="test5II">No puede
-                                                        describir el uso de los materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test5II"
+                                                        name="preg2II" value="0" /><label class="radio-custom-label"
+                                                        for="test5II">No puede describir el uso de los
+                                                        materiales.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test6II" /><label for="test6II">Describe
-                                                        algunos usos de materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test6II"
+                                                        name="preg2II" value="10" /><label class="radio-custom-label"
+                                                        for="test6II">Describe algunos usos de materiales.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test7II" /><label for="test7II">Describe
-                                                        la mayoría de usos de materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test7II"
+                                                        name="preg2II" value="15" /><label class="radio-custom-label"
+                                                        for="test7II">Describe la mayoría de usos de materiales.</label>
+                                                </div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test8II" /><label for="test8II">Describe
-                                                        adecuadamente el adecuado uso de los materiales</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test8II"
+                                                        name="preg2II" value="20" /><label class="radio-custom-label"
+                                                        for="test8II">Describe adecuadamente el adecuado uso de los
+                                                        materiales.</label></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -517,24 +596,28 @@
                                             <td>El aprendiz puede describir las interacciones con otro personal de la
                                                 autoridad requerido para completar la tarea.</td>
                                             <td>
-                                                <div><input type="checkbox" id="test9II" /><label for="test9II">No puede
-                                                        describir las interacciones entre el personal de la
-                                                        autoridad</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test9II"
+                                                        name="preg3II" value="0" /><label class="radio-custom-label"
+                                                        for="test9II">No puede describir las interacciones entre el
+                                                        personal de la autoridad.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test10II" /><label
+                                                <div><input class="radio-custom" type="radio" id="test10II"
+                                                        name="preg3II" value="10" /><label class="radio-custom-label"
                                                         for="test10II">Describe algunas interacciones
-                                                        adecuadamente</label></div>
+                                                        adecuadamente.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test11II" /><label
+                                                <div><input class="radio-custom" type="radio" id="test11II"
+                                                        name="preg3II" value="15" /><label class="radio-custom-label"
                                                         for="test11II">Describe la mayoría de interacciones
-                                                        adecuadamente</label></div>
+                                                        adecuadamente.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test12II" /><label
+                                                <div><input class="radio-custom" type="radio" id="test12II"
+                                                        name="preg3II" value="20" /><label class="radio-custom-label"
                                                         for="test12II">Describe todas las posibles interacciones
-                                                        adecuadamente</label></div>
+                                                        adecuadamente.</label></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -542,31 +625,35 @@
                                             <td>El aprendiz puede describir la coordinación con el operador que es
                                                 necesario para completar la tarea.</td>
                                             <td>
-                                                <div><input type="checkbox" id="test13II" /><label for="test13II">No
-                                                        puede describir las actividades de coordinación con el
-                                                        operador</label></div>
+                                                <div><input class="radio-custom" type="radio" id="test13II"
+                                                        name="preg4II" value="0" /><label class="radio-custom-label"
+                                                        for="test13II">No puede describir las actividades de
+                                                        coordinación con el operador.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test14II" /><label
+                                                <div><input class="radio-custom" type="radio" id="test14II"
+                                                        name="preg4II" value="10" /><label class="radio-custom-label"
                                                         for="test14II">Explica algunas actividades de coordinación con
-                                                        el operador</label></div>
+                                                        el operador.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test15II" /><label
+                                                <div><input class="radio-custom" type="radio" id="test15II"
+                                                        name="preg4II" value="15" /><label class="radio-custom-label"
                                                         for="test15II">Explica la mayoría de actividades de coordinación
-                                                        con el operador</label></div>
+                                                        con el operador.</label></div>
                                             </td>
                                             <td>
-                                                <div><input type="checkbox" id="test16II" /><label
+                                                <div><input class="radio-custom" type="radio" id="test16II"
+                                                        name="preg4II" value="20" /><label class="radio-custom-label"
                                                         for="test16II">Explica todas las actividades de coordinación con
-                                                        el operador adecuadamente</label></div>
+                                                        el operador adecuadamente.</label></div>
                                             </td>
                                         </tr>
 
 
                                     </tbody>
                                 </table>
-                                <br>
+                                <!-- <br>
                                 <table id="evalinscooj3" class="table table-striped table-bordered dataTable">
                                     <thead style="background-color:#001C6E; color:white">
                                         <tr>
@@ -631,19 +718,40 @@
                                     </tbody>
                                 </table>
 
+                            </div> -->
+                                <div name="resultadonII" id="resultadonII" class="form-group" style="display:none;">
+                                    <div class="col-sm-6">
+                                        <label>RESUlTADOS DE LA EVALUACIÓN:</label>
+                                        <input type="text" name="resulnII" id="resulnII"
+                                            style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>ESTATUS:</label>
+                                        <input type="text" name="estatusnII" id="estatusnII"
+                                            style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-2">
+                                        <!-- <button type="button" id="button" title="AGREGAR EVALUACIÓN" style="font-size:14px" class="btn btn-block btn-primary altaboton" onclick="">ACEPTAR</button> -->
+                                        <a id="evalucII" name="evalucII" type="button" onclick="evalnivelII()"
+                                            title="Agregar Evaluación" class="btn btn-block btn-primary"
+                                            onclick="">EVALUAR</a>
+                                    </div>
+                                    <div style="float:right;" class="col-sm-2">
+                                        <a href="../evaluacion/PDF_evaluacion_nivel_II.php" target="_blank"
+                                            id="descargapdfII" name="descargapdfII" style="display:none;"
+                                            onclick="nivel1()" title="Descargar el PDF" type="button"
+                                            class="btn btn-block btn-primary">Imprimir PDF</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-2">
-                                <!-- <button type="button" id="button" title="AGREGAR EVALUACIÓN" style="font-size:14px" class="btn btn-block btn-primary altaboton" onclick="">ACEPTAR</button> -->
-                                <button type="button" title="Agregar Evaluación" class="btn btn-block btn-primary"
-                                    onclick="">EVALUAR</button>
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </form>
 
 <!----------------------------------------------------MODAL EVALUACIÓN NIVEL 3------------------------------------------------------>
@@ -680,6 +788,13 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
+                                <label>ESPECILIDAD:</label>
+                                <input type="text" name="espoj3" id="espoj3" style="text-transform:uppercase;"
+                                    class="form-control disabled" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
                                 <label>TAREA:</label>
                                 <textarea type="text" cols="30" rows="2" name="tarojII3" id="tarojII3"
                                     style="text-transform:uppercase;" class="form-control disabled"
@@ -697,7 +812,7 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <table id="evalinscooj" class="table table-striped table-bordered dataTable">
-                                    <thead style="background-color:#001C6E; color:white">
+                                    <thead style="background-color:#FFFFFF; color:black">
                                         <tr>
                                             <th>#</th>
                                             <th>DESCRIPCIÓN</th>
@@ -711,50 +826,60 @@
                                             <td>1</td>
                                             <td>¿Demostró el aprendiz suficiente conocimiento para completar con
                                                 precisión la tarea?</td>
-                                            <td><input value="SI" type="checkbox" id="si1III" /><label
+                                            <td><input class="radio-custom" type="radio" id="si1III" value="20"
+                                                    name="preg1III" /><label class="radio-custom-label"
                                                     for="si1III"></label></td>
-                                            <td><input value="NO" type="checkbox" id="no1III" /><label
+                                            <td><input class="radio-custom" type="radio" id="no1III" value="5"
+                                                    name="preg1III" /><label class="radio-custom-label"
                                                     for="no1III"></label></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>¿Demostró el aprendiz todos los pasos necesarios para completar la tarea
                                                 de manera competente?</td>
-                                            <td><input value="SI" type="checkbox" id="si2III" /><label
+                                            <td><input class="radio-custom" type="radio" value="20" id="si2III"
+                                                    name="preg2III" /><label class="radio-custom-label"
                                                     for="si2III"></label></td>
-                                            <td><input value="NO" type="checkbox" id="no2III" /><label
+                                            <td><input class="radio-custom" type="radio" value="5" id="no2III"
+                                                    name="preg2III" /><label class="radio-custom-label"
                                                     for="no2III"></label></td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>¿Se completaron los pasos en el orden adecuado?</td>
-                                            <td><input value="SI" type="checkbox" id="si3III" /><label
+                                            <td><input class="radio-custom" value="20" type="radio" id="si3III"
+                                                    name="preg3III" /><label class="radio-custom-label"
                                                     for="si3III"></label></td>
-                                            <td><input value="NO" type="checkbox" id="no3III" /><label
+                                            <td><input class="radio-custom" value="5" type="radio" id="no3III"
+                                                    name="preg3III" /><label class="radio-custom-label"
                                                     for="no3III"></label></td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
                                             <td>¿El aprendiz realizó la tarea de manera oportuna y sin ayuda?</td>
-                                            <td><input value="SI" type="checkbox" id="si4III" /><label
+                                            <td><input class="radio-custom" value="20" type="radio" id="si4III"
+                                                    name="preg4III" /><label class="radio-custom-label"
                                                     for="si4III"></label></td>
-                                            <td><input value="NO" type="checkbox" id="no4III" /><label
+                                            <td><input class="radio-custom" value="5" type="radio" id="no4III"
+                                                    name="preg4III" /><label class="radio-custom-label"
                                                     for="no4III"></label></td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
                                             <td>¿El aprendiz juzgó adecuadamente el resultado de la tarea y lo cerró de
                                                 la manera correcta?</td>
-                                            <td><input value="SI" type="checkbox" id="si5III" /><label
+                                            <td><input class="radio-custom" value="20" type="radio" id="si5III"
+                                                    name="preg5III" /><label class="radio-custom-label"
                                                     for="si5III"></label></td>
-                                            <td><input value="NO" type="checkbox" id="no6III" /><label
+                                            <td><input class="radio-custom" value="5" type="radio" id="no6III"
+                                                    name="preg5III" /><label class="radio-custom-label"
                                                     for="no6III"></label></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            
 
-                            <table id="evalinscooj3" class="table table-striped table-bordered dataTable">
+
+                                <!-- <table id="evalinscooj3" class="table table-striped table-bordered dataTable">
                                     <thead style="background-color:#001C6E; color:white">
                                         <tr>
                                             <th>Hallazgo</th>
@@ -816,21 +941,41 @@
                                                     rows="3"></textarea></td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
 
-                            </div>
-                            <div class="col-sm-2">
-                                <!-- <button type="button" id="button" title="AGREGAR EVALUACIÓN" style="font-size:14px" class="btn btn-block btn-primary altaboton" onclick="">ACEPTAR</button> -->
-                                <button type="button" title="Agregar Evaluación" onclick="endojt()"
-                                    class="btn btn-block btn-primary" onclick="">EVALUAR</button>
+                                <!-- </div> -->
+                                <div name="resultadonIII" id="resultadonIII" class="form-group" style="display:none;">
+                                    <div class="col-sm-6">
+                                        <label>RESUlTADOS DE LA EVALUACIÓN:</label>
+                                        <input type="text" name="resulnIII" id="resulnIII"
+                                            style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>ESTATUS:</label>
+                                        <input type="text" name="estatusnIII" id="estatusnIII"
+                                            style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-2">
+                                        <!-- <button type="button" id="button" title="AGREGAR EVALUACIÓN" style="font-size:14px" class="btn btn-block btn-primary altaboton" onclick="">ACEPTAR</button> -->
+                                        <a id="evalucIII" name="evalucIII" type="button" onclick="evalnivelIII()"
+                                            title="Agregar Evaluación" class="btn btn-block btn-primary"
+                                            onclick="">EVALUAR</a>
+                                    </div>
+                                    <div style="float:right;" class="col-sm-2">
+                                        <a href="../evaluacion/PDF_evaluacion_nivel_III.php" onclick=""
+                                            title="Descargar el PDF" type="button" target="_blank" id="descargapdfIII"
+                                            name="descargapdfIII" style="display:none;"
+                                            class="btn btn-block btn-primary">Imprimir PDF</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </form>
 
 <!-- DETALLE DECLINA CONVOCATORIA OJT -->
@@ -857,3 +1002,7 @@
 
     </div>
 </div>
+
+<script>
+
+</script>

@@ -1,3 +1,5 @@
+const { Alert } = require("bootstrap");
+
 //FIN DE RESUMEN DE OJT
 $.ajax({
     url: '../php/ojtinf.php',
@@ -813,7 +815,679 @@ function infdecOJT(iddelinaojt){
 
 
 
+function nivel1(){
+    alert("entro");
+    var person = document.getElementById('idinspo').value;
+    alert(person);
 
 
+}
 
+function nivel2(){
+    alert("entro");
+    var nombre22 = document.getElementById('idinspo').value;
+    alert(nombre22);
+    document.getElementById('nompoj1').innerHTML="pruebas";
+}
 
+//TODO FORMATO DE EVALUACIÓN NIVEL 1 OJT--------------------------------------------------------NIVEL1 
+function evalnivelI() {
+    //alert("entra evaluacion");
+    var idpregunta = document.getElementById('idtarpre').value; //ID DE LA PREGUNTA
+    var idinspector = document.getElementById('idinspo').value; //ID DEL INSPECTOR 
+    //alert(idojt); 
+    var preg1ojtI = $('input[name=preg1]:checked').val(); // -
+    var preg2ojtI = $('input[name=preg2]:checked').val(); //  -
+    var preg3ojtI = $('input[name=preg3]:checked').val(); //   -PREGUNTAS RADIO
+    var preg4ojtI = $('input[name=preg4]:checked').val(); //  -
+    var preg5ojtI = $('input[name=preg5]:checked').val(); // -
+
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTI';
+    //alert(datos);
+    if (idpregunta == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked')) {
+
+        Swal.fire({
+            type: 'warning',
+            text: 'CONTESTAR TODAS LOS REACTIVOS',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+        });
+    }else{
+        $.ajax({
+            url: '../php/insertOJT.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE EVALUO CON EXITO EL ENTRENAMIENTO OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                //actualiza la tabla
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'warning',
+                    text: 'EL INSPECTOR YA SE ENCUENTRA EVALUADO EN ESTA TAREA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'NO SE PUEDE EVALUAR CONTACTAR CON SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        });
+    }
+}
+
+//FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
+function infoeval1(registroev){
+    //alert(registroev);
+    //alert("entroevaluacion1");
+    document.getElementById('descargapdfI').style.display=""; //boton para descargar formato OJT
+    document.getElementById('resultadonI').style.display="";  //input que muestra el resultado
+    document.getElementById('evalucI').style.display="none";
+    document.getElementById('idtarpre').value =registroev;
+
+    //bloqueo de radiobutton
+    document.getElementById('test1').disabled ="true";
+    document.getElementById('test2').disabled ="true";
+    document.getElementById('test3').disabled ="true";
+    document.getElementById('test4').disabled ="true";
+    document.getElementById('test5').disabled ="true";
+    document.getElementById('test6').disabled ="true";
+    document.getElementById('test7').disabled ="true";
+    document.getElementById('test8').disabled ="true";
+    document.getElementById('test9').disabled ="true";
+    document.getElementById('test10').disabled ="true";
+    document.getElementById('test11').disabled ="true";
+    document.getElementById('test12').disabled ="true";
+    document.getElementById('test13').disabled ="true";
+    document.getElementById('test14').disabled ="true";
+    document.getElementById('test15').disabled ="true";
+    document.getElementById('test16').disabled ="true";
+    document.getElementById('test18').disabled ="true";
+    document.getElementById('test19').disabled ="true";
+    document.getElementById('test20').disabled ="true";
+    document.getElementById('test21').disabled ="true";
+
+    
+    //bloquear todo los CHECHK BOX DE EVALUACIÖN
+
+    $("#data-table-OJTProgramados tr").on('click', function() {
+        var tareas = "";
+        var subtarea = "";
+        tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
+        document.getElementById('taroj').value=tareas
+        document.getElementById('suboj').value=subtarea
+    })
+    $.ajax({
+        url: '../php/conproojt.php',
+        type: 'POST'
+    }).done(function(respuesta) {
+        obj = JSON.parse(respuesta);
+        var res = obj.data;
+        var x = 0;
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == registroev){
+                idpersonaOJTE1 = obj.data[U].id_pers; //id persona
+                idinstruOJTE2= obj.data[U].id_insojt; // id instructor
+                datos = 
+                obj.data[U].id_pers + '*' +
+                obj.data[U].id_insojt  + '*' +
+                obj.data[U].comision  + '*' +
+                obj.data[U].gstCatgr;    
+                var d = datos.split("*");   
+                $("#modal-evaluarojt #idinspo").val(d[0]); 
+                $("#modal-evaluarojt #idintucco").val(d[1]);  
+                $("#modal-evaluarojt #evcomision").val(d[2]); 
+                $("#modal-evaluarojt #espoj1").val(d[3]);    
+                          
+            }    
+        }
+    //TRAE A LA PERSONA
+        $.ajax({
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idpersonaOJTE1){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojt #nompoj1").val(s[0]+' '+ s[1] );         
+                }
+            }
+        }); 
+        //TRAE A INSTRUCTOR
+        $.ajax({
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idinstruOJTE2){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojt #tipooj1").val(s[0]+' '+ s[1] );         
+                }
+            }
+        }); 
+
+        //TRAE LA EVALUACIÓN
+        $.ajax({
+            url: '../php/conevalojt.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].id_ojt == registroev){
+
+                    pregunta1=Number(obj1.data[A].pregunta1);
+                    pregunta2=Number(obj1.data[A].pregunta2);
+                    pregunta3=Number(obj1.data[A].pregunta3);
+                    pregunta4=Number(obj1.data[A].pregunta4);
+                    pregunta5=Number(obj1.data[A].pregunta5);
+                    resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4 +pregunta5;
+                    document.getElementById('resulnI').value=resultado + "%";       
+
+                    if (resultado > 80){
+                        document.getElementById('estatusnI').value="APROBADO";   
+                        document.getElementById('estatusnI').style.color="green"; 
+                    }else if (resultado < 80) {
+                        document.getElementById('estatusnI').value="NO APROBO";   
+                        document.getElementById('estatusnI').style.color="red"; 
+                    }
+                     //pregunta 1
+                    if (obj1.data[A].pregunta1 == 20){
+                        document.getElementById('test4').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 15){
+                        document.getElementById('test3').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 10){
+                        document.getElementById('test2').checked ="true"; 
+                    }else{
+                        document.getElementById('test1').checked ="true"; 
+                    }
+                     //pregunta 2
+                     if (obj1.data[A].pregunta2 == 20){
+                        document.getElementById('test8').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 15){
+                        document.getElementById('test7').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 10){
+                        document.getElementById('test6').checked ="true"; 
+                    }else{
+                        document.getElementById('test5').checked ="true"; 
+                    }
+                    //pregunta 3
+                    if (obj1.data[A].pregunta3 == 20){
+                        document.getElementById('test12').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 15){
+                        document.getElementById('test11').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 10){
+                        document.getElementById('test10').checked ="true"; 
+                    }else{
+                        document.getElementById('test9').checked ="true"; 
+                    }
+                    //pregunta 4
+                    if (obj1.data[A].pregunta4 == 20){
+                        document.getElementById('test16').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 15){
+                        document.getElementById('test15').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 10){
+                        document.getElementById('test14').checked ="true"; 
+                    }else{
+                        document.getElementById('test13').checked ="true"; 
+                    }
+                     //pregunta 5
+                     if (obj1.data[A].pregunta5 == 20){
+                        document.getElementById('test21').checked ="true"; 
+                    }else if (obj1.data[A].pregunta5 == 15){
+                        document.getElementById('test20').checked ="true"; 
+                    }else if (obj1.data[A].pregunta5 == 10){
+                        document.getElementById('test19').checked ="true"; 
+                    }else{
+                        document.getElementById('test18').checked ="true"; 
+                    }
+                    
+                }
+            }
+        });
+    }); 
+}
+//TODO FORMATO DE EVALUACIÓN NIVEL 2 OJT----------------------------------------------------------------------------------------
+function evalnivelII() {
+    //alert("entra evaluacion");
+    var idpregunta = document.getElementById('idtarpreII').value; //ID DE LA PREGUNTA
+    var idinspector = document.getElementById('idinspoII').value; //ID DEL INSPECTOR 
+    //alert(idpregunta); 
+    var preg1ojtI = $('input[name=preg1II]:checked').val(); // -
+    var preg2ojtI = $('input[name=preg2II]:checked').val(); //  -
+    var preg3ojtI = $('input[name=preg3II]:checked').val(); //   -PREGUNTAS RADIO
+    var preg4ojtI = $('input[name=preg4II]:checked').val(); //  -
+    var preg5ojtI = "0";
+
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTII';
+    alert(datos);
+    if (idpregunta == '' || !document.querySelector('input[name=preg1II]:checked') || !document.querySelector('input[name=preg2II]:checked') || !document.querySelector('input[name=preg3II]:checked') || !document.querySelector('input[name=preg4II]:checked')) {
+
+        Swal.fire({
+            type: 'warning',
+            text: 'CONTESTAR TODOS LOS REACTIVOS',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+        });
+    }else{
+        $.ajax({
+            url: '../php/insertOJT.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE EVALUO CON EXITO EL ENTRENAMIENTO OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                //actualiza la tabla
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'warning',
+                    text: 'EL INSPECTOR YA SE ENCUENTRA EVALUADO EN ESTA TAREA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'NO SE PUEDE EVALUAR CONTACTAR CON SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        });
+    }
+}
+//FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
+function infoeval2(registroev){
+   //alert(registroev);
+    //alert("entroevaluacion1");
+    document.getElementById('descargapdfII').style.display=""; //boton para descargar formato OJT
+    document.getElementById('resultadonII').style.display="";  //input que muestra el resultado
+    document.getElementById('evalucII').style.display="none";
+    document.getElementById('idtarpreII').value =registroev;
+    //bloqueo de radiobutton
+    document.getElementById('test1II').disabled ="true";
+    document.getElementById('test2II').disabled ="true";
+    document.getElementById('test3II').disabled ="true";
+    document.getElementById('test4II').disabled ="true";
+    document.getElementById('test5II').disabled ="true";
+    document.getElementById('test6II').disabled ="true";
+    document.getElementById('test7II').disabled ="true";
+    document.getElementById('test8II').disabled ="true";
+    document.getElementById('test9II').disabled ="true";
+    document.getElementById('test10II').disabled ="true";
+    document.getElementById('test11II').disabled ="true";
+    document.getElementById('test12II').disabled ="true";
+    document.getElementById('test13II').disabled ="true";
+    document.getElementById('test14II').disabled ="true";
+    document.getElementById('test15II').disabled ="true";
+    document.getElementById('test16II').disabled ="true";
+    //bloquear todo los CHECHK BOX DE EVALUACIÖN
+    $("#data-table-OJTProgramados tr").on('click', function() {
+        var tareas = "";
+        var subtarea = "";
+        tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
+        document.getElementById('tarojII').value=tareas
+        document.getElementById('subojII').value=subtarea
+    })
+    $.ajax({
+        url: '../php/conproojt.php',
+        type: 'POST'
+    }).done(function(respuesta) {
+        obj = JSON.parse(respuesta);
+        var res = obj.data;
+        var x = 0;
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == registroev){
+                idpersonaOJTE1 = obj.data[U].id_pers; //id persona
+                idinstruOJTE2= obj.data[U].id_insojt; // id instructor
+                document.getElementById('espoj2').value=obj.data[U].gstCatgr;
+                document.getElementById('idinspoII').value=obj.data[U].id_pers;
+            }    
+        }
+        //TRAE A LA PERSONA
+        $.ajax({
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idpersonaOJTE1){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtII #nompoj1II").val(s[0]+' '+ s[1] );         
+                }
+            }
+        }); 
+        //TRAE A INSTRUCTOR
+        $.ajax({
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idinstruOJTE2){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtII #tipooj1II").val(s[0]+' '+ s[1] );         
+                }
+            }
+        }); 
+    });
+        //TRAE LA EVALUACIÓN
+        $.ajax({
+            url: '../php/conevalojt.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].id_ojt == registroev){
+
+                    pregunta1=Number(obj1.data[A].pregunta1);
+                    pregunta2=Number(obj1.data[A].pregunta2);
+                    pregunta3=Number(obj1.data[A].pregunta3);
+                    pregunta4=Number(obj1.data[A].pregunta4);
+                    resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4;
+                    resultado2 = Number (resultado) * 100 / 80;
+                    document.getElementById('resulnII').value=resultado2 + "%";   
+                    //alert(resultado2);
+                    if (resultado2 > 80){
+                        document.getElementById('estatusnII').value="APROBADO";   
+                        document.getElementById('estatusnII').style.color="green"; 
+                    }else if (resultado2 < 80) {
+                        document.getElementById('estatusnII').value="NO APROBO";   
+                        document.getElementById('estatusnII').style.color="red"; 
+                    }
+                     //pregunta 1
+                    if (obj1.data[A].pregunta1 == 20){
+                        document.getElementById('test4II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 15){
+                        document.getElementById('test3II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 10){
+                        document.getElementById('test2II').checked ="true"; 
+                    }else{
+                        document.getElementById('test1II').checked ="true"; 
+                    }
+                     //pregunta 2
+                     if (obj1.data[A].pregunta2 == 20){
+                        document.getElementById('test8II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 15){
+                        document.getElementById('test7II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 10){
+                        document.getElementById('test6II').checked ="true"; 
+                    }else{
+                        document.getElementById('test5II').checked ="true"; 
+                    }
+                    //pregunta 3
+                    if (obj1.data[A].pregunta3 == 20){
+                        document.getElementById('test12II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 15){
+                        document.getElementById('test11II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 10){
+                        document.getElementById('test10II').checked ="true"; 
+                    }else{
+                        document.getElementById('test9II').checked ="true"; 
+                    }
+                    //pregunta 4
+                    if (obj1.data[A].pregunta4 == 20){
+                        document.getElementById('test16II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 15){
+                        document.getElementById('test15II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 10){
+                        document.getElementById('test14II').checked ="true"; 
+                    }else{
+                        document.getElementById('test13II').checked ="true"; 
+                    }                    
+                }
+            }
+        });
+}
+//TODO FORMATO DE EVALUACIÓN NIVEL 3 OJT----------------------------------------------------------------------------------------
+function evalnivelIII() {
+    //alert("entra evaluacion");
+    var idpregunta = document.getElementById('idtarpreII3').value; //ID DE LA PREGUNTA
+    var idinspector = document.getElementById('idinspoII3').value; //ID DEL INSPECTOR 
+    //alert(idpregunta); 
+    var preg1ojtI = $('input[name=preg1III]:checked').val(); // -
+    var preg2ojtI = $('input[name=preg2III]:checked').val(); //  -
+    var preg3ojtI = $('input[name=preg3III]:checked').val(); //   -PREGUNTAS RADIO
+    var preg4ojtI = $('input[name=preg4III]:checked').val(); //  -
+    var preg5ojtI = $('input[name=preg5III]:checked').val();
+
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIII';
+    alert(datos);
+    if (idpregunta == '' || !document.querySelector('input[name=preg1III]:checked') || !document.querySelector('input[name=preg2III]:checked') || !document.querySelector('input[name=preg3III]:checked') || !document.querySelector('input[name=preg4III]:checked')|| !document.querySelector('input[name=preg5III]:checked') ) {
+
+        Swal.fire({
+            type: 'warning',
+            text: 'CONTESTAR TODOS LOS REACTIVOS',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+        });
+    }else{
+        $.ajax({
+            url: '../php/insertOJT.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE EVALUO CON EXITO EL ENTRENAMIENTO OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                //actualiza la tabla
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'warning',
+                    text: 'EL INSPECTOR YA SE ENCUENTRA EVALUADO EN ESTA TAREA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'NO SE PUEDE EVALUAR CONTACTAR CON SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        });
+    }
+}
+//FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
+function infoeval3(registroev){
+    //alert(registroev);
+    //alert("entra la evaluacion3");
+     document.getElementById('descargapdfIII').style.display=""; //boton para descargar formato OJT
+     document.getElementById('resultadonIII').style.display="";  //input que muestra el resultado
+     document.getElementById('evalucIII').style.display="none";
+     document.getElementById('idtarpreII3').value =registroev;
+     //bloqueo de radiobutton
+     document.getElementById('si1III').disabled ="true";
+     document.getElementById('no1III').disabled ="true";
+     document.getElementById('si2III').disabled ="true";
+     document.getElementById('no2III').disabled ="true";
+     document.getElementById('si3III').disabled ="true";
+     document.getElementById('no3III').disabled ="true";
+     document.getElementById('si4III').disabled ="true";
+     document.getElementById('no4III').disabled ="true";
+     document.getElementById('si5III').disabled ="true";
+     document.getElementById('no6III').disabled ="true";
+     //bloquear todo los CHECHK BOX DE EVALUACIÖN
+     $("#data-table-OJTProgramados tr").on('click', function() {
+        var tareas = "";
+        var subtarea = "";
+        tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
+        document.getElementById('tarojII3').value=tareas
+        document.getElementById('subojII3').value=subtarea
+    })
+    $.ajax({
+        url: '../php/conproojt.php',
+        type: 'POST'
+    }).done(function(respuesta) {
+        obj = JSON.parse(respuesta);
+        var res = obj.data;
+        var x = 0;
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == registroev){
+                idpersonaOJTE3 = obj.data[U].id_pers; //id persona
+                idinstruOJTE3= obj.data[U].id_insojt; // id instructor
+                // alert(id_persona);           
+                document.getElementById('espoj3').value=obj.data[U].gstCatgr;
+                document.getElementById('idinspoII3').value=obj.data[U].id_pers;
+            }    
+        }
+
+        //TRAE A LA PERSONA
+        $.ajax({
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idpersonaOJTE3){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtIII #nompoj1II3").val(s[0]+' '+ s[1] );         
+                }
+            }
+        }); 
+        //TRAE A INSTRUCTOR
+        $.ajax({
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idinstruOJTE3){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtIII #tipooj1II3").val(s[0]+' '+ s[1] );         
+                }
+            }
+        }); 
+    });
+         //TRAE LA EVALUACIÓN
+         $.ajax({
+             url: '../php/conevalojt.php',
+             type: 'POST'
+         }).done(function(respuesta) {
+             obj1 = JSON.parse(respuesta);
+             var perss = obj1.data;
+             var x = 0;
+             for (A = 0; A < perss.length; A++) { 
+                 if (obj1.data[A].id_ojt == registroev){
+ 
+                     pregunta1=Number(obj1.data[A].pregunta1);
+                     pregunta2=Number(obj1.data[A].pregunta2);
+                     pregunta3=Number(obj1.data[A].pregunta3);
+                     pregunta4=Number(obj1.data[A].pregunta4);
+                     pregunta5=Number(obj1.data[A].pregunta5);
+                     resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4 + pregunta5;
+                     document.getElementById('resulnIII').value=resultado + "%";   
+                     //alert(resultado2);
+                     if (resultado > 80){
+                         document.getElementById('estatusnIII').value="APROBADO";   
+                         document.getElementById('estatusnIII').style.color="green"; 
+                     }else if (resultado < 80) {
+                         document.getElementById('estatusnIII').value="NO APROBO";   
+                         document.getElementById('estatusnIII').style.color="red"; 
+                     }
+                      //pregunta 1
+                     if (obj1.data[A].pregunta1 == 20){
+                         document.getElementById('si1III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta1 == 5){
+                         document.getElementById('no1III').checked ="true"; 
+                     }
+                      //pregunta 2
+                      if (obj1.data[A].pregunta2 == 20){
+                         document.getElementById('si2III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta2 == 5){
+                         document.getElementById('no2III').checked ="true"; 
+                     }
+                     //pregunta 3
+                     if (obj1.data[A].pregunta3 == 20){
+                         document.getElementById('si3III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta3 == 5){
+                         document.getElementById('no3III').checked ="true"; 
+                     }
+                     //pregunta 4
+                     if (obj1.data[A].pregunta4 == 20){
+                         document.getElementById('si4III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta4 == 5){
+                         document.getElementById('no4III').checked ="true"; 
+                     }    
+                     //pregunta 5
+                     if (obj1.data[A].pregunta4 == 20){
+                        document.getElementById('si5III').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 5){
+                        document.getElementById('no6III').checked ="true"; 
+                    }               
+                 }
+             }
+         });
+ }

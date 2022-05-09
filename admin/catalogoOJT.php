@@ -29,87 +29,49 @@ $especialidad = mysqli_query($conexion,$sqlEspecialidad);
         font-size: 16px !important;
     }
     /* Base for label styling */
-	[type="checkbox"]:not(:checked),
-	[type="checkbox"]:checked {
-		position: absolute;
-		left: 0;
-		opacity: 0.01;
-	}
-	[type="checkbox"]:not(:checked) + label,
-	[type="checkbox"]:checked + label {
-		position: relative;
-		padding-left: 2.3em;
-		font-size: 1.05em;
-		line-height: 1.7;
-		cursor: pointer;
-	}
+	.checkbox-custom, .radio-custom {
+    opacity: 0;
+    position: absolute;   
+}
 
-	/* checkbox aspect */
-	[type="checkbox"]:not(:checked) + label:before,
-	[type="checkbox"]:checked + label:before {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 1.4em;
-		height: 1.4em;
-		border: 1px solid #aaa;
-		background: #FFF;
-		border-radius: .2em;
-		box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 rgba(66, 154, 236, .2);
-		-webkit-transition: all .275s;
-				transition: all .275s;
-	}
+.checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
 
-	/* checked mark aspect */
-	[type="checkbox"]:not(:checked) + label:after,
-	[type="checkbox"]:checked + label:after {
-		content: '✔';
-		position: absolute;
-		top: .525em;
-		left: .18em;
-		font-size: 1.375em;
-		color: #074899;
-		line-height: 0;
-		-webkit-transition: all .2s;
-				transition: all .2s;
-	}
+.checkbox-custom-label, .radio-custom-label {
+    position: relative;
+}
 
-	/* checked mark aspect changes */
-	[type="checkbox"]:not(:checked) + label:after {
-		opacity: 0;
-		-webkit-transform: scale(0) rotate(45deg);
-				transform: scale(0) rotate(45deg);
-	}
+.checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #3c8dbc;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    margin-right: 10px;
+    text-align: center;
+}
 
-	[type="checkbox"]:checked + label:after {
-		opacity: 1;
-		-webkit-transform: scale(1) rotate(0);
-				transform: scale(1) rotate(0);
-	}
+.radio-custom + .radio-custom-label:before {
+    border-radius: 50%;
+}
 
-	/* Disabled checkbox */
-	[type="checkbox"]:disabled:not(:checked) + label:before,
-	[type="checkbox"]:disabled:checked + label:before {
-		box-shadow: none;
-		border-color: #bbb;
-		background-color: #e9e9e9;
-	}
+.radio-custom:checked + .radio-custom-label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    color: #fff;
+    background: #3c8dbc;
+}
 
-	[type="checkbox"]:disabled:checked + label:after {
-		color: #777;
-	}
-
-	[type="checkbox"]:disabled + label {
-		color: #aaa;
-	}
-
-	/* Accessibility */
-	[type="checkbox"]:checked:focus + label:before,
-	[type="checkbox"]:not(:checked):focus + label:before {
-		box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(66, 154, 236, .2);
-	}
-
+.checkbox-custom:focus + .checkbox-custom-label, .radio-custom:focus + .radio-custom-label {
+ 
+}
     
     </style>
 </head>
@@ -387,6 +349,7 @@ function openOJT(perona) {
 //FUNCION PARA TRAER NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
 function evalun1(registro){
     //alert(registro);
+    document.getElementById('idtarpre').value =registro;
     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
         var subtarea = "";
@@ -407,13 +370,15 @@ function evalun1(registro){
                 idpersonaOJTE1 = obj.data[U].id_pers; //id persona
                 idinstruOJTE2= obj.data[U].id_insojt; // id instructor
                 datos = 
-                obj.data[U].id_coorojt  + '*' +
+                obj.data[U].id_pers + '*' +
                 obj.data[U].id_insojt  + '*' +
-                obj.data[U].comision;    
+                obj.data[U].comision  + '*' +
+                obj.data[U].gstCatgr;    
                 var d = datos.split("*");   
-                $("#modal-evaluarojt #idinspo").val(d[0]);   
+                $("#modal-evaluarojt #idinspo").val(d[0]); 
                 $("#modal-evaluarojt #idintucco").val(d[1]);  
-                $("#modal-evaluarojt #evcomision").val(d[2]);   
+                $("#modal-evaluarojt #evcomision").val(d[2]); 
+                $("#modal-evaluarojt #espoj1").val(d[3]);    
                           
             }    
         }
@@ -458,11 +423,12 @@ function evalun1(registro){
 //FUNCIÓN DE EVALUACIÓN NIVEL 2 19042022 ---------------------------------------------------------------------------
 function evalun2(registro){ 
     //alert(registro);
+    document.getElementById('idtarpreII').value =registro;
     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
         var subtarea = "";
-        tareas += $(this).find('td:eq(1)').html(); //Toma el id de la persona 
-        subtarea += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
         document.getElementById('tarojII').value=tareas
         document.getElementById('subojII').value=subtarea
     })
@@ -477,7 +443,9 @@ function evalun2(registro){
             if (obj.data[U].id_proojt == registro){
                 idpersonaOJTE1 = obj.data[U].id_pers; //id persona
                 idinstruOJTE2= obj.data[U].id_insojt; // id instructor
-                // alert(id_persona);           
+                document.getElementById('espoj2').value=obj.data[U].gstCatgr;
+                document.getElementById('idinspoII').value=obj.data[U].id_pers;
+       
             }    
         }
 
@@ -523,11 +491,12 @@ function evalun2(registro){
 //FUNCIÓN DE EVALUACIÓN NIVEL 3 ------------------------------------------------
 function evalun3(registro){
     //alert(registro);
+    document.getElementById('idtarpreII3').value =registro;
     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
         var subtarea = "";
-        tareas += $(this).find('td:eq(1)').html(); //Toma el id de la persona 
-        subtarea += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
+        subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
         document.getElementById('tarojII3').value=tareas
         document.getElementById('subojII3').value=subtarea
     })
@@ -543,6 +512,8 @@ function evalun3(registro){
                 idpersonaOJTE3 = obj.data[U].id_pers; //id persona
                 idinstruOJTE3= obj.data[U].id_insojt; // id instructor
                 // alert(id_persona);           
+                document.getElementById('espoj3').value=obj.data[U].gstCatgr;
+                document.getElementById('idinspoII3').value=obj.data[U].id_pers;
             }    
         }
 
@@ -770,4 +741,6 @@ function enviarMailOjt(ojt){
     });
 
 }
+
+
 </script>

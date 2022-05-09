@@ -159,9 +159,78 @@ session_start();
 
         echo "2";
     }
-//CONDICIÓN  A FINALIZAR LA TAREA
-}
+//CONDICIÓN PARA EVALUA NIVEL 1
+}else if($opcion === 'evaluOJTI'){
+    //se pone los valores que se van a comparar
+     $idpregunta = $_POST['idpregunta'];
+     $idinspector = $_POST['idinspector'];
 
+    if (compnivelI ($idpregunta,$idinspector,$conexion)){
+        $preg1ojtI = $_POST['preg1ojtI'];
+        $preg2ojtI = $_POST['preg2ojtI'];
+        $preg3ojtI = $_POST['preg3ojtI'];
+        $preg4ojtI = $_POST['preg4ojtI'];
+        $preg5ojtI = $_POST['preg5ojtI'];
+
+        if (evaluarI($idpregunta,$idinspector,$preg1ojtI,$preg2ojtI,$preg3ojtI,$preg4ojtI,$preg5ojtI,$conexion)){
+            echo "0";
+            updateevalu($idpregunta,$idinspector,$conexion);
+            //hiseval($id,$idpregunta,$idinspector,$conexion);
+        }else{
+            echo "1";
+        }
+    }else{
+
+        echo "2";
+    }
+//CONDICIÓN PARA EVALUA NIVEL 2
+}else if($opcion === 'evaluOJTII'){
+    //se pone los valores que se van a comparar
+     $idpregunta = $_POST['idpregunta'];
+     $idinspector = $_POST['idinspector'];
+
+    if (compnivelI ($idpregunta,$idinspector,$conexion)){
+        $preg1ojtI = $_POST['preg1ojtI'];
+        $preg2ojtI = $_POST['preg2ojtI'];
+        $preg3ojtI = $_POST['preg3ojtI'];
+        $preg4ojtI = $_POST['preg4ojtI'];
+        $preg5ojtI = $_POST['preg5ojtI'];
+
+        if (evaluarI($idpregunta,$idinspector,$preg1ojtI,$preg2ojtI,$preg3ojtI,$preg4ojtI,$preg5ojtI,$conexion)){
+            echo "0";
+            updateevalu($idpregunta,$idinspector,$conexion);
+            //hiseval($id,$idpregunta,$idinspector,$conexion);
+        }else{
+            echo "1";
+        }
+    }else{
+
+        echo "2";
+    }
+}else if($opcion === 'evaluOJTIII'){
+    //se pone los valores que se van a comparar
+     $idpregunta = $_POST['idpregunta'];
+     $idinspector = $_POST['idinspector'];
+
+    if (compnivelI ($idpregunta,$idinspector,$conexion)){
+        $preg1ojtI = $_POST['preg1ojtI'];
+        $preg2ojtI = $_POST['preg2ojtI'];
+        $preg3ojtI = $_POST['preg3ojtI'];
+        $preg4ojtI = $_POST['preg4ojtI'];
+        $preg5ojtI = $_POST['preg5ojtI'];
+
+        if (evaluarI($idpregunta,$idinspector,$preg1ojtI,$preg2ojtI,$preg3ojtI,$preg4ojtI,$preg5ojtI,$conexion)){
+            echo "0";
+            updateevalu($idpregunta,$idinspector,$conexion);
+            //hiseval($id,$idpregunta,$idinspector,$conexion);
+        }else{
+            echo "1";
+        }
+    }else{
+
+        echo "2";
+    }
+}
 //FUNCIONES-----------------------------------------------------------------------------------
 
 //FUNCION PARA COMPROBRAR SI EL ISNPECTOR YA SE ENCUENTRA PROGRAMADA EN ESA COMISION
@@ -279,6 +348,38 @@ function finalojt ($id_proojt, $conexion){
     $this->conexion->cerrar();
 }
 
+//FUNCION PARA COMPROBRAR SI EL ISNPECTOR YA SE ENCUENTRA EVALUADO 09052022
+function compnivelI ($idpregunta,$idinspector,$conexion){
+    $query="SELECT * FROM evaluacion_ojt WHERE id_persona = '$idinspector' AND id_ojt = '$idpregunta' AND estado = 0";
+    $resultado= mysqli_query($conexion,$query);
+    if($resultado->num_rows==0){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+//Evaluación de resultados EN EVALUACION NIVEL 1
+function evaluarI ($idpregunta,$idinspector,$preg1ojtI,$preg2ojtI,$preg3ojtI,$preg4ojtI,$preg5ojtI,$conexion){
+    $query="INSERT INTO evaluacion_ojt VALUES(0,'$idpregunta','$idinspector','$preg1ojtI','$preg2ojtI','$preg3ojtI','$preg4ojtI','$preg5ojtI',0)";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+//FUNCION PARA FINALIZAR LA PROGRAMACIÓN
+function updateevalu($idpregunta,$idinspector,$conexion){
+    $query="UPDATE prog_ojt SET evalu_ojt='SI' WHERE id_pers ='$idinspector' AND id_proojt='$idpregunta' ";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
 //funcion para registra cambios
 function historial($id,$isSpc,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion){
     ini_set('date.timezone','America/Mexico_City');
@@ -308,5 +409,8 @@ function historialOJT($id,$id_proojt,$conexion){
         return false;
     }
 }
+
+//funcion para registra EL HISTORIAL DE LA EVALUACION 
+
 
 ?>

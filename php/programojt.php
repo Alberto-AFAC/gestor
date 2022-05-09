@@ -91,6 +91,17 @@
                 $estusoojt = "<span style='font-weight: bold; height: 50px; color:green;'>FINALIZADO</span>";	
 				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a type='button' id='ev' title='Evaluación nivel 3' onclick='evalun3($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojtIII'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
             }
+
+			//ESTATUS
+			if($data['evalu_ojt'] == "SI" && $data['estatus'] == "PENDIENTE" && $data['nivel']=='1' || $data['evalu_ojt'] == "SI" && $data['estatus'] == "FINALIZADO" && $data['nivel']=='1' ){
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a>  <a type='button' id='ev' title='Ver evaluación' onclick='infoeval1($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojt'><i class='fa ion-clipboard' style='font-size:15px; color:blue;'></i></a>";
+				//$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' ><i class='glyphicon glyphicon-send'></i></a>";
+			}else if ($data['evalu_ojt'] == "SI" && $data['estatus'] == "PENDIENTE" && $data['nivel']=='2' || $data['evalu_ojt'] == "SI" && $data['estatus'] == "FINALIZADO" && $data['nivel']=='2') {	
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a>  <a type='button' id='ev' title='Ver evaluación' onclick='infoeval2($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojtII'><i class='fa ion-clipboard' style='font-size:15px; color:blue;'></i></a>";
+				//$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a> <a title='Notificar' onclick='enviarMailOjt({$id_registro}.{$id})' class='datos btn btn-default' data-toggle='modal' data-target='#notificarConv'><i class='glyphicon glyphicon-send'></i></a> <a type='button' id='ev' title='Evaluación nivel 2' onclick='evalun2($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojtII'><i class='fa ion-clipboard' style='font-size:15px;'></i></a>";
+            }else if ($data['evalu_ojt'] == "SI" && $data['estatus'] == "PENDIENTE" && $data['nivel']=='3' || $data['evalu_ojt'] == "SI" && $data['estatus'] == "FINALIZADO" && $data['nivel']=='3') {
+				$notificar = "<a title='Información de la programación' onclick='ojtprogram($id_registro)' class='datos btn btn-default' data-toggle='modal' data-target='#modal-proojt'><i class='fa fa-info'></i></a>  <a type='button' id='ev' title='Ver evaluación' onclick='infoeval3($id_registro)' class='btn btn-default' data-toggle='modal' data-target='#modal-evaluarojtIII'><i class='fa ion-clipboard' style='font-size:15px; color:blue;'></i></a>";
+            }
                
 		//ESTA ES LA CONSULTA AQUI DEBES DE AGREGAR TODO LO DE LAS COLUMNAS
 		$consulta[] = 
