@@ -230,6 +230,25 @@ session_start();
 
         echo "2";
     }
+    //evaluOJTIact
+}else if($opcion === 'evaluOJTIact'){
+    //se pone los valores que se van a comparar
+     $idpregunta = $_POST['idpregunta'];
+     $idinspector = $_POST['idinspector'];
+
+     $preg1ojtI = $_POST['preg1ojtI'];
+        $preg2ojtI = $_POST['preg2ojtI'];
+        $preg3ojtI = $_POST['preg3ojtI'];
+        $preg4ojtI = $_POST['preg4ojtI'];
+        $preg5ojtI = $_POST['preg5ojtI'];
+
+        if (updatevalI($idpregunta,$idinspector,$preg1ojtI,$preg2ojtI,$preg3ojtI,$preg4ojtI,$preg5ojtI,$conexion)){
+            echo "0";
+            //hiseval($id,$idpregunta,$idinspector,$conexion);
+        }else{
+            echo "1";
+        }
+   
 }
 //FUNCIONES-----------------------------------------------------------------------------------
 
@@ -362,6 +381,16 @@ function compnivelI ($idpregunta,$idinspector,$conexion){
 //Evaluación de resultados EN EVALUACION NIVEL 1
 function evaluarI ($idpregunta,$idinspector,$preg1ojtI,$preg2ojtI,$preg3ojtI,$preg4ojtI,$preg5ojtI,$conexion){
     $query="INSERT INTO evaluacion_ojt VALUES(0,'$idpregunta','$idinspector','$preg1ojtI','$preg2ojtI','$preg3ojtI','$preg4ojtI','$preg5ojtI',0)";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+//Evaluación de resultados EN EVALUACION NIVEL 1
+function updatevalI ($idpregunta,$idinspector,$preg1ojtI,$preg2ojtI,$preg3ojtI,$preg4ojtI,$preg5ojtI,$conexion){
+    $query="UPDATE evaluacion_ojt SET pregunta1='$preg1ojtI', pregunta2='$preg2ojtI', pregunta3='$preg3ojtI', pregunta4='$preg4ojtI', pregunta5='$preg5ojtI' WHERE id_ojt='$idpregunta'";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{

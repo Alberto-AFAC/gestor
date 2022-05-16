@@ -217,6 +217,13 @@
                                     disabled=""></textarea>
                             </div>
                         </div>
+                        <div style="float:right;" class="col-sm-1">
+                            <a id="editarevalojt" name="editarevalojt" onclick="openojteth()" title="Editar Evaluación"
+                                style="font-size:22px; display:none;float:right;"> <i class="fa fa-edit"></i> </a>
+                            <a id="editarevalojtclose" name="editarevalojtclose" onclick="cerrarojeva()"
+                                title="Editar Evaluación" style="font-size:22px; display:none;float:right;"> <i
+                                    class="fa fa-ban"></i> </a>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <table id="evalinscooj" class="table table-striped table-bordered dataTable">
@@ -450,6 +457,9 @@
                                 <!-- <button type="button" id="button" title="AGREGAR EVALUACIÓN" style="font-size:14px" class="btn btn-block btn-primary altaboton" onclick="">ACEPTAR</button> -->
                                 <a id="evalucI" name="evalucI" type="button" onclick="evalnivelI()"
                                     title="Agregar Evaluación" class="btn btn-block btn-primary" onclick="">EVALUAR</a>
+                                <a id="atuevalI" name="atuevalI" type="button" onclick="udateevalI()"
+                                    title="Agregar Evaluación" style="display:none;" class="btn btn-block btn-primary"
+                                    onclick="">ACTUALIZAR</a>
                             </div>
                             <div style="float:right;" class="col-sm-2">
                                 <a href="../evaluacion/PDF_evaluacion_nivel_I.php" id="descargapdfI" name="descargapdfI"
@@ -520,6 +530,14 @@
                                     style="text-transform:uppercase;" class="form-control disabled"
                                     disabled=""></textarea>
                             </div>
+                        </div>
+                        <div style="float:right;" class="col-sm-1">
+                            <a id="editarevalojtII" name="editarevalojtII" onclick="openojtethII()"
+                                title="Editar Evaluación" style="font-size:22px; display:none;float:right;"> <i
+                                    class="fa fa-edit"></i> </a>
+                            <a id="editarevalojtcloseII" name="editarevalojtcloseII" onclick="cerrarojevaII()"
+                                title="Editar Evaluación" style="font-size:22px; display:none;float:right;"> <i
+                                    class="fa fa-ban"></i> </a>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
@@ -737,6 +755,9 @@
                                         <a id="evalucII" name="evalucII" type="button" onclick="evalnivelII()"
                                             title="Agregar Evaluación" class="btn btn-block btn-primary"
                                             onclick="">EVALUAR</a>
+                                        <a id="atuevalII" name="atuevalII" type="button" onclick="udateevalII()"
+                                            title="Agregar Evaluación" style="display:none;"
+                                            class="btn btn-block btn-primary" onclick="">ACTUALIZAR</a>
                                     </div>
                                     <div style="float:right;" class="col-sm-2">
                                         <a href="../evaluacion/PDF_evaluacion_nivel_II.php" target="_blank"
@@ -808,6 +829,14 @@
                                     style="text-transform:uppercase;" class="form-control disabled"
                                     disabled=""></textarea>
                             </div>
+                        </div>
+                        <div style="float:right;" class="col-sm-1">
+                            <a id="editarevalojtIII" name="editarevalojtIII" onclick="openojtethIII()"
+                                title="Editar Evaluación" style="font-size:22px; display:none;float:right;"> <i
+                                    class="fa fa-edit"></i> </a>
+                            <a id="editarevalojtcloseIII" name="editarevalojtcloseIII" onclick="cerrarojevaIII()"
+                                title="Editar Evaluación" style="font-size:22px; display:none;float:right;"> <i
+                                    class="fa fa-ban"></i> </a>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
@@ -962,6 +991,9 @@
                                         <a id="evalucIII" name="evalucIII" type="button" onclick="evalnivelIII()"
                                             title="Agregar Evaluación" class="btn btn-block btn-primary"
                                             onclick="">EVALUAR</a>
+                                            <a id="atuevalIII" name="atuevalIII" type="button" onclick="udateevalIII()"
+                                            title="Agregar Evaluación" style="display:none;"
+                                            class="btn btn-block btn-primary" onclick="">ACTUALIZAR</a>
                                     </div>
                                     <div style="float:right;" class="col-sm-2">
                                         <a href="../evaluacion/PDF_evaluacion_nivel_III.php" onclick=""

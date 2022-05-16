@@ -1,4 +1,4 @@
-const { Alert } = require("bootstrap");
+//const { Alert } = require("bootstrap");
 
 //FIN DE RESUMEN DE OJT
 $.ajax({
@@ -203,7 +203,7 @@ function confirmarojt(idprogram) {
             var res = obj.data;
             var y = 0;
             for (D = 0; D < res.length; D++) { 
-                if (obj.data[D].gstIdper == id_coordojt){
+                if (obj.data[D].gstIdper == id_coordojtdd){
                     // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
                     y++;
                     var nombrecoord=obj.data[D].gstNombr;
@@ -834,18 +834,15 @@ function nivel2(){
 function evalnivelI() {
     //alert("entra evaluacion");
     var idpregunta = document.getElementById('idtarpre').value; //ID DE LA PREGUNTA
-    var idinspector = document.getElementById('idinspo').value; //ID DEL INSPECTOR 
-    //alert(idojt); 
+    var idinspector = document.getElementById('idinspo').value; //ID DEL INSPECTOR  
     var preg1ojtI = $('input[name=preg1]:checked').val(); // -
     var preg2ojtI = $('input[name=preg2]:checked').val(); //  -
     var preg3ojtI = $('input[name=preg3]:checked').val(); //   -PREGUNTAS RADIO
     var preg4ojtI = $('input[name=preg4]:checked').val(); //  -
     var preg5ojtI = $('input[name=preg5]:checked').val(); // -
-
     datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTI';
     //alert(datos);
     if (idpregunta == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked')) {
-
         Swal.fire({
             type: 'warning',
             text: 'CONTESTAR TODAS LOS REACTIVOS',
@@ -889,7 +886,6 @@ function evalnivelI() {
         });
     }
 }
-
 //FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
 function infoeval1(registroev){
     //alert(registroev);
@@ -898,7 +894,8 @@ function infoeval1(registroev){
     document.getElementById('resultadonI').style.display="";  //input que muestra el resultado
     document.getElementById('evalucI').style.display="none";
     document.getElementById('idtarpre').value =registroev;
-
+    document.getElementById('editarevalojt').style.display=""; 
+    document.getElementById('editarevalojtclose').style.display="none";
     //bloqueo de radiobutton
     document.getElementById('test1').disabled ="true";
     document.getElementById('test2').disabled ="true";
@@ -1075,6 +1072,163 @@ function infoeval1(registroev){
         });
     }); 
 }
+function openojteth(){
+   // alert("abrir");
+    document.getElementById('editarevalojt').style.display="none"; 
+    document.getElementById('editarevalojtclose').style.display="";
+    document.getElementById('atuevalI').style.display="";
+    document.getElementById('test1').disabled ="";
+    document.getElementById('test2').disabled ="";
+    document.getElementById('test3').disabled ="";
+    document.getElementById('test4').disabled ="";
+    document.getElementById('test5').disabled ="";
+    document.getElementById('test6').disabled ="";
+    document.getElementById('test7').disabled ="";
+    document.getElementById('test8').disabled ="";
+    document.getElementById('test9').disabled ="";
+    document.getElementById('test10').disabled ="";
+    document.getElementById('test11').disabled ="";
+    document.getElementById('test12').disabled ="";
+    document.getElementById('test13').disabled ="";
+    document.getElementById('test14').disabled ="";
+    document.getElementById('test15').disabled ="";
+    document.getElementById('test16').disabled ="";
+    document.getElementById('test18').disabled ="";
+    document.getElementById('test19').disabled ="";
+    document.getElementById('test20').disabled ="";
+    document.getElementById('test21').disabled ="";
+}
+
+function cerrarojeva(){
+    //alert("cerras");
+    document.getElementById('editarevalojt').style.display=""; 
+    document.getElementById('editarevalojtclose').style.display="none";
+    document.getElementById('atuevalI').style.display="none";
+    document.getElementById('test1').disabled ="true";
+    document.getElementById('test2').disabled ="true";
+    document.getElementById('test3').disabled ="true";
+    document.getElementById('test4').disabled ="true";
+    document.getElementById('test5').disabled ="true";
+    document.getElementById('test6').disabled ="true";
+    document.getElementById('test7').disabled ="true";
+    document.getElementById('test8').disabled ="true";
+    document.getElementById('test9').disabled ="true";
+    document.getElementById('test10').disabled ="true";
+    document.getElementById('test11').disabled ="true";
+    document.getElementById('test12').disabled ="true";
+    document.getElementById('test13').disabled ="true";
+    document.getElementById('test14').disabled ="true";
+    document.getElementById('test15').disabled ="true";
+    document.getElementById('test16').disabled ="true";
+    document.getElementById('test18').disabled ="true";
+    document.getElementById('test19').disabled ="true";
+    document.getElementById('test20').disabled ="true";
+    document.getElementById('test21').disabled ="true";
+}
+
+function udateevalI(){ //16052022
+    //alert("ENTRA LA ACTUALIZACION DE EVALUACIÓN");
+    var idpregunta = document.getElementById('idtarpre').value; //ID DE LA PREGUNTA
+    var idinspector = document.getElementById('idinspo').value; //ID DEL INSPECTOR  
+    var preg1ojtI = $('input[name=preg1]:checked').val(); // -
+    var preg2ojtI = $('input[name=preg2]:checked').val(); //  -
+    var preg3ojtI = $('input[name=preg3]:checked').val(); //   -PREGUNTAS RADIO
+    var preg4ojtI = $('input[name=preg4]:checked').val(); //  -
+    var preg5ojtI = $('input[name=preg5]:checked').val(); // -
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIact';
+    //alert(datos);
+    if (idpregunta == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked')) {
+        Swal.fire({
+            type: 'warning',
+            text: 'CONTESTAR TODAS LOS REACTIVOS',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+        });
+    }else{
+        $.ajax({
+            url: '../php/insertOJT.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE ACTUALIZO CON EXITO LA EVALUACIÓN OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                
+                $('#modal-evaluarojt').modal('hide');
+                //actualiza la tabla
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'warning',
+                    text: 'EL INSPECTOR YA SE ENCUENTRA EVALUADO EN ESTA TAREA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'NO SE PUEDE ACTUALIZAR CONTACTAR CON SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        });
+    }
+}
+//
+function openojtethII(){
+    //alert("abrir");
+     document.getElementById('editarevalojtII').style.display="none"; 
+     document.getElementById('editarevalojtcloseII').style.display="";
+     document.getElementById('atuevalII').style.display="";
+     document.getElementById('test1II').disabled ="";
+     document.getElementById('test2II').disabled ="";
+     document.getElementById('test3II').disabled ="";
+     document.getElementById('test4II').disabled ="";
+     document.getElementById('test5II').disabled ="";
+     document.getElementById('test6II').disabled ="";
+     document.getElementById('test7II').disabled ="";
+     document.getElementById('test8II').disabled ="";
+     document.getElementById('test9II').disabled ="";
+     document.getElementById('test10II').disabled ="";
+     document.getElementById('test11II').disabled ="";
+     document.getElementById('test12II').disabled ="";
+     document.getElementById('test13II').disabled ="";
+     document.getElementById('test14II').disabled ="";
+     document.getElementById('test15II').disabled ="";
+     document.getElementById('test16II').disabled ="";
+ }
+ 
+ function cerrarojevaII(){
+     //alert("cerras");
+     document.getElementById('editarevalojtII').style.display=""; 
+     document.getElementById('editarevalojtcloseII').style.display="none";
+     document.getElementById('atuevalII').style.display="none";
+     document.getElementById('test1II').disabled ="true";
+     document.getElementById('test2II').disabled ="true";
+     document.getElementById('test3II').disabled ="true";
+     document.getElementById('test4II').disabled ="true";
+     document.getElementById('test5II').disabled ="true";
+     document.getElementById('test6II').disabled ="true";
+     document.getElementById('test7II').disabled ="true";
+     document.getElementById('test8II').disabled ="true";
+     document.getElementById('test9II').disabled ="true";
+     document.getElementById('test10II').disabled ="true";
+     document.getElementById('test11II').disabled ="true";
+     document.getElementById('test12II').disabled ="true";
+     document.getElementById('test13II').disabled ="true";
+     document.getElementById('test14II').disabled ="true";
+     document.getElementById('test15II').disabled ="true";
+     document.getElementById('test16II').disabled ="true";
+ }
 //TODO FORMATO DE EVALUACIÓN NIVEL 2 OJT----------------------------------------------------------------------------------------
 function evalnivelII() {
     //alert("entra evaluacion");
@@ -1134,6 +1288,65 @@ function evalnivelII() {
         });
     }
 }
+//
+function udateevalII(){ //16052022
+    //alert("ENTRA LA ACTUALIZACION DE EVALUACIÓN");
+    var idpregunta = document.getElementById('idtarpreII').value; //ID DE LA PREGUNTA
+    var idinspector = document.getElementById('idinspoII').value; //ID DEL INSPECTOR 
+    //alert(idpregunta); 
+    var preg1ojtI = $('input[name=preg1II]:checked').val(); // -
+    var preg2ojtI = $('input[name=preg2II]:checked').val(); //  -
+    var preg3ojtI = $('input[name=preg3II]:checked').val(); //   -PREGUNTAS RADIO
+    var preg4ojtI = $('input[name=preg4II]:checked').val(); //  -
+    var preg5ojtI = "0";
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIact';
+    //alert(datos);
+    if (idpregunta == '' || !document.querySelector('input[name=preg1II]:checked') || !document.querySelector('input[name=preg2II]:checked') || !document.querySelector('input[name=preg3II]:checked') || !document.querySelector('input[name=preg4II]:checked')) {
+        Swal.fire({
+            type: 'warning',
+            text: 'CONTESTAR TODAS LOS REACTIVOS',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+        });
+    }else{
+        $.ajax({
+            url: '../php/insertOJT.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE ACTUALIZO CON EXITO LA EVALUACIÓN OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                
+                $('#modal-evaluarojtII').modal('hide');
+                //actualiza la tabla
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'warning',
+                    text: 'EL INSPECTOR YA SE ENCUENTRA EVALUADO EN ESTA TAREA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'NO SE PUEDE ACTUALIZAR CONTACTAR CON SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        });
+    }
+}
 //FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
 function infoeval2(registroev){
    //alert(registroev);
@@ -1142,6 +1355,9 @@ function infoeval2(registroev){
     document.getElementById('resultadonII').style.display="";  //input que muestra el resultado
     document.getElementById('evalucII').style.display="none";
     document.getElementById('idtarpreII').value =registroev;
+    document.getElementById('editarevalojtII').style.display=""; 
+    document.getElementById('editarevalojtcloseII').style.display="none";
+    document.getElementById('atuevalII').style.display="none";
     //bloqueo de radiobutton
     document.getElementById('test1II').disabled ="true";
     document.getElementById('test2II').disabled ="true";
@@ -1349,6 +1565,101 @@ function evalnivelIII() {
         });
     }
 }
+
+function udateevalIII(){ //16052022
+    //alert("ENTRA LA ACTUALIZACION DE EVALUACIÓN");
+    var idpregunta = document.getElementById('idtarpreII3').value; //ID DE LA PREGUNTA
+    var idinspector = document.getElementById('idinspoII3').value; //ID DEL INSPECTOR 
+    //alert(idpregunta); 
+    var preg1ojtI = $('input[name=preg1III]:checked').val(); // -
+    var preg2ojtI = $('input[name=preg2III]:checked').val(); //  -
+    var preg3ojtI = $('input[name=preg3III]:checked').val(); //   -PREGUNTAS RADIO
+    var preg4ojtI = $('input[name=preg4III]:checked').val(); //  -
+    var preg5ojtI = $('input[name=preg5III]:checked').val();
+
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIact';
+    //alert(datos);
+    if (idpregunta == '' || !document.querySelector('input[name=preg1III]:checked') || !document.querySelector('input[name=preg2III]:checked') || !document.querySelector('input[name=preg3III]:checked') || !document.querySelector('input[name=preg4III]:checked')|| !document.querySelector('input[name=preg5III]:checked') ) {
+        Swal.fire({
+            type: 'warning',
+            text: 'CONTESTAR TODAS LOS REACTIVOS',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
+        });
+    }else{
+        $.ajax({
+            url: '../php/insertOJT.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE ACTUALIZO CON EXITO LA EVALUACIÓN OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                
+                $('#modal-evaluarojtIII').modal('hide');
+                //actualiza la tabla
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'warning',
+                    text: 'EL INSPECTOR YA SE ENCUENTRA EVALUADO EN ESTA TAREA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'NO SE PUEDE ACTUALIZAR CONTACTAR CON SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+            }
+        });
+    }
+}
+function openojtethIII(){
+    // alert("abrir");
+     document.getElementById('editarevalojtIII').style.display="none"; 
+     document.getElementById('editarevalojtcloseIII').style.display="";
+     document.getElementById('atuevalIII').style.display="";
+
+     document.getElementById('si1III').disabled ="";
+     document.getElementById('no1III').disabled ="";
+     document.getElementById('si2III').disabled ="";
+     document.getElementById('no2III').disabled ="";
+     document.getElementById('si3III').disabled ="";
+     document.getElementById('no3III').disabled ="";
+     document.getElementById('si4III').disabled ="";
+     document.getElementById('no4III').disabled ="";
+     document.getElementById('si5III').disabled ="";
+     document.getElementById('no6III').disabled ="";
+ }
+ 
+ function cerrarojevaIII(){
+     //alert("cerras");
+     document.getElementById('editarevalojtIII').style.display=""; 
+     document.getElementById('editarevalojtcloseIII').style.display="none";
+     document.getElementById('atuevalIII').style.display="none";
+
+     document.getElementById('si1III').disabled ="true";
+     document.getElementById('no1III').disabled ="true";
+     document.getElementById('si2III').disabled ="true";
+     document.getElementById('no2III').disabled ="true";
+     document.getElementById('si3III').disabled ="true";
+     document.getElementById('no3III').disabled ="true";
+     document.getElementById('si4III').disabled ="true";
+     document.getElementById('no4III').disabled ="true";
+     document.getElementById('si5III').disabled ="true";
+     document.getElementById('no6III').disabled ="true";
+ }
 //FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
 function infoeval3(registroev){
     //alert(registroev);
@@ -1357,6 +1668,9 @@ function infoeval3(registroev){
      document.getElementById('resultadonIII').style.display="";  //input que muestra el resultado
      document.getElementById('evalucIII').style.display="none";
      document.getElementById('idtarpreII3').value =registroev;
+     document.getElementById('editarevalojtIII').style.display=""; 
+     document.getElementById('editarevalojtcloseIII').style.display="none";
+     document.getElementById('atuevalIII').style.display="none";
      //bloqueo de radiobutton
      document.getElementById('si1III').disabled ="true";
      document.getElementById('no1III').disabled ="true";

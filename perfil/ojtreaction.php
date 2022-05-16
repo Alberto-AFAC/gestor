@@ -1073,6 +1073,7 @@
 
 
 <!-- MODAL CONFIRMA CONVOCATORIA OJT  -->
+<!-- MODAL CONFIRMA CONVOCATORIA OJT  -->
 <div class="modal fade" id="confirOJT">
     <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -1146,7 +1147,7 @@
                                         <p id="asisteojt" style="display: none;">
                                             <i style="color: green; font-size: 25px;" class="icon fa fa-check"></i>
                                             <label id="confm1" style="font-size: 25px;">CONFIRMAS TU ASISTENCIA</label>
-                                            <!-- <input type="hidden" id="confojt" name="confojt"> -->
+                                            <input type="hidden" id="confojt" name="confojt">
                                         </p>
                                         <p id="noasisojt" style="display:none;">
                                             <label class="label2" style="font-size: 16px;">MOTIVOS DE TU
@@ -1185,37 +1186,37 @@
                         </div>
                         <div class="form-group"><br>
                             <div class="col-sm-offset-0 col-sm-5">
-                                <button type="button" id="button2" class="btn btn-info altaboton" style=""
-                                onclick="confirasictojt()">ACEPTAR</button>
+                                <button type="button" id="button" class="btn btn-info altaboton" style=""
+                                    onclick="confirasictojt();">ACEPTAR</button>
                             </div>
                             <b>
-                                <p class="alert alert-danger text-center padding error" id="fallaoj">Error al registrar su
+                                <p class="alert alert-danger text-center padding error" id="falla">Error al registrar su
                                     asistencia</p>
                             </b>
                             <b>
-                                <p class="alert alert-success text-center padding exito" id="exitooj">¡Se registraron la
+                                <p class="alert alert-success text-center padding exito" id="exito">¡Se registraron la
                                     asistencia con éxito!</p>
                             </b>
                             <b>
-                                <p class="alert alert-warning text-center padding aviso" id="vaciooj">Es necesario agregar
+                                <p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario agregar
                                     los datos que se solicitan </p>
                             </b>
                             <b>
-                                <p class="alert alert-danger text-center padding adjuto" id="renomoj">Renombre su archivo
+                                <p class="alert alert-danger text-center padding adjuto" id="renom">Renombre su archivo
                                 </p>
                             </b>
                             <b>
-                                <p class="alert alert-warning text-center padding adjuto" id="adjuntaoj">Debes adjuntar
+                                <p class="alert alert-warning text-center padding adjuto" id="adjunta">Debes adjuntar
                                     archivo</p>
                             </b>
                             <b>
-                                <p class="alert alert-danger text-center padding adjuto" id="erroroj">Ocurrio un error</p>
+                                <p class="alert alert-danger text-center padding adjuto" id="error">Ocurrio un error</p>
                             </b>
                             <b>
-                                <p class="alert alert-danger text-center padding adjuto" id="fornoj">Formato no valido</p>
+                                <p class="alert alert-danger text-center padding adjuto" id="forn">Formato no valido</p>
                             </b>
                             <b>
-                                <p class="alert alert-danger text-center padding adjuto" id="maxoj">Supera el limite
+                                <p class="alert alert-danger text-center padding adjuto" id="max">Supera el limite
                                     permitido</p>
                             </b>
                         </div>
