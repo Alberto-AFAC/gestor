@@ -818,7 +818,7 @@ function infdecOJT(iddelinaojt){
 function nivel1(){
 
     var Idevalua=document.getElementById('idtarpre').value;
-    alert("entro");
+    //alert("entro");
         url = '../evaluacion/PDF_evaluacion_nivel_I.php'
         window.open(url + "?data=" + Idevalua, '_black');
 
@@ -826,10 +826,17 @@ function nivel1(){
 }
 
 function nivel2(){
-    alert("entro");
-    var nombre22 = document.getElementById('idinspo').value;
-    alert(nombre22);
-    document.getElementById('nompoj1').innerHTML="pruebas";
+    var Idevalua=document.getElementById('idtarpreII').value;
+    //alert("entro");
+        url = '../evaluacion/PDF_evaluacion_nivel_II.php'
+        window.open(url + "?data=" + Idevalua, '_black');
+}
+
+function nivel3(){
+    var Idevalua=document.getElementById('idtarpreII3').value;
+    //alert("entro");
+        url = '../evaluacion/PDF_evaluacion_nivel_III.php'
+        window.open(url + "?data=" + Idevalua, '_black');
 }
 
 //TODO FORMATO DE EVALUACIÓN NIVEL 1 OJT--------------------------------------------------------NIVEL1 

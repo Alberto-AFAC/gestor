@@ -671,72 +671,7 @@
 
                                     </tbody>
                                 </table>
-                                <!-- <br>
-                                <table id="evalinscooj3" class="table table-striped table-bordered dataTable">
-                                    <thead style="background-color:#001C6E; color:white">
-                                        <tr>
-                                            <th>Hallazgo</th>
-                                            <th>SI</th>
-                                            <th>NO</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Habilidades del aprendiz</td>
-                                            <td><input value="SI" type="radio" name="pregunII28" id="si1II" /><label
-                                                    for="si1II"></label></td>
-                                            <td><input value="NO" type="radio" name="pregunII28" id="no1II" /><label
-                                                    for="no1II"></label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Debilidades del aprendiz</td>
-                                            <td><input value="SI" type="radio" name="pregunII29" id="si2II" /><label
-                                                    for="si2II"></label></td>
-                                            <td><input value="NO" type="radio" name="pregunII29" id="no2II" /><label
-                                                    for="no2II"></label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Problemas de desempeño</td>
-                                            <td><input value="SI" type="radio" name="pregunII30" id="si3II" /><label
-                                                    for="si3II"></label></td>
-                                            <td><input value="NO" type="radio" name="pregunII30" id="no3II" /><label
-                                                    for="no3II"></label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Problemas de actitud</td>
-                                            <td><input value="SI" type="radio" name="pregunII31" id="si4II" /><label
-                                                    for="si4II"></label></td>
-                                            <td><input value="NO" type="radio" name="pregunII31" id="no4II" /><label
-                                                    for="no4II"></label></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="col-sm-12">
-                                <h4 for="">Informe de calificación / Instructor OJT</h4>
-                                <table id="evalinscooj2" class="table table-striped table-bordered dataTable">
-                                    <thead style="background-color:#001C6E; color:white">
-                                        <tr>
-                                            <th>Hallazgo</th>
-                                            <th>Resumen</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Acciones correctivas recomendadas</td>
-                                            <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
-                                                    rows="3"></textarea></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Observaciones y/o comentarios</td>
-                                            <td><textarea onkeyup="mayus(this);" name="" id="" cols="100"
-                                                    rows="3"></textarea></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div> -->
+                                
                                 <div name="resultadonII" id="resultadonII" class="form-group" style="display:none;">
                                     <div class="col-sm-6">
                                         <label>RESUlTADOS DE LA EVALUACIÓN:</label>
@@ -760,10 +695,14 @@
                                             class="btn btn-block btn-primary" onclick="">ACTUALIZAR</a>
                                     </div>
                                     <div style="float:right;" class="col-sm-2">
-                                        <a href="../evaluacion/PDF_evaluacion_nivel_II.php" target="_blank"
+                                        <!-- <a href="../evaluacion/PDF_evaluacion_nivel_II.php" target="_blank"
                                             id="descargapdfII" name="descargapdfII" style="display:none;"
                                             onclick="nivel1()" title="Descargar el PDF" type="button"
-                                            class="btn btn-block btn-primary">Imprimir PDF</a>
+                                            class="btn btn-block btn-primary">Imprimir PDF</a> -->
+
+                                            <a id="descargapdfII" name="descargapdfII"
+                                    style="display:none;" onclick="nivel2()" title="Descargar el PDF" type="button"
+                                    class="btn btn-block btn-primary">Imprimir PDF</a>
                                     </div>
                                 </div>
                             </div>
@@ -996,10 +935,14 @@
                                             class="btn btn-block btn-primary" onclick="">ACTUALIZAR</a>
                                     </div>
                                     <div style="float:right;" class="col-sm-2">
-                                        <a href="../evaluacion/PDF_evaluacion_nivel_III.php" onclick=""
+                                        <!-- <a href="../evaluacion/PDF_evaluacion_nivel_III.php" onclick=""
                                             title="Descargar el PDF" type="button" target="_blank" id="descargapdfIII"
                                             name="descargapdfIII" style="display:none;"
-                                            class="btn btn-block btn-primary">Imprimir PDF</a>
+                                            class="btn btn-block btn-primary">Imprimir PDF</a> -->
+
+                                            <a id="descargapdfIII" name="descargapdfIII"
+                                    style="display:none;" onclick="nivel3()" title="Descargar el PDF" type="button"
+                                    class="btn btn-block btn-primary">Imprimir PDF</a>
                                     </div>
                                 </div>
                             </div>

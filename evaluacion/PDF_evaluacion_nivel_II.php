@@ -1,6 +1,67 @@
 <?php
 ob_start();
 
+$Idevalua = $_GET['data'];
+include("../conexion/conexion.php");
+$query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as instructor FROM prog_ojt p, ojts o, ojts_subs s, categorias c, personal i, evaluacion_ojt e, personal a where p.id_tarea=o.id_ojt and p.id_subtarea=s.id_subojt and p.id_esp=c.gstIdcat and i.gstIdper=p.id_insojt and a.gstIdper=p.id_pers and e.id_ojt=p.id_proojt and e.id_ojt='$Idevalua'";
+
+
+	$resultado = mysqli_query($conexion, $query);
+    $data = mysqli_fetch_array($resultado);
+    
+    $fechaActual = date('d-m-Y');
+    
+    if($data['pregunta1'] ==20 ){
+        $pregunta20 ='X';
+    }else if ($data['pregunta1'] ==15 ){
+        $pregunta15 ='X';
+    }else if ($data['pregunta1'] ==10 ){
+        $pregunta10 ='X';
+    }else if ($data['pregunta1'] ==0 ){
+        $pregunta0 ='X';
+    }
+    
+    if($data['pregunta2'] ==20 ){
+        $preguntaII20 ='X';
+    }else if ($data['pregunta2'] ==15 ){
+        $preguntaII15 ='X';
+    }else if ($data['pregunta2'] ==10 ){
+        $preguntaII10 ='X';
+    }else if ($data['pregunta2'] ==0 ){
+        $preguntaII0 ='X';
+    }
+    
+    if($data['pregunta3'] ==20 ){
+        $preguntaIII20 ='X';
+    }else if ($data['pregunta3'] ==15 ){
+        $preguntaIII15 ='X';
+    }else if ($data['pregunta3'] ==10 ){
+        $preguntaIII10 ='X';
+    }else if ($data['pregunta3'] ==0 ){
+        $preguntaIII0 ='X';
+    }
+    
+    if($data['pregunta4'] ==20 ){
+        $preguntaIV20 ='X';
+    }else if ($data['pregunta4'] ==15 ){
+        $preguntaIV15 ='X';
+    }else if ($data['pregunta4'] ==10 ){
+        $preguntaIV10 ='X';
+    }else if ($data['pregunta4'] ==0 ){
+        $preguntaIV0 ='X';
+    }
+    
+    if($data['pregunta5'] ==20 ){
+        $preguntaV20 ='X';
+    }else if ($data['pregunta5'] ==15 ){
+        $preguntaV15 ='X';
+    }else if ($data['pregunta5'] ==10 ){
+        $preguntaV10 ='X';
+    }else if ($data['pregunta5'] ==0 ){
+        $preguntaV0 ='X';
+    }
+
+
 ?>
  
 <!DOCTYPE html>
@@ -106,6 +167,10 @@ ob_start();
     .dento{
       padding-left: 2%;
        padding-top: 0%;
+    }
+    .palomita{
+        line-height:28px;
+        font-size:35px;
     }
     .recfirmaintr{
         margin: 20px auto 40px auto;
@@ -221,12 +286,12 @@ ob_start();
     </div>
     <div class="dentoiz1">
         <div class="rectangulo2">
-            <span style="font-size:18px;font-size:16px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:16px; margin-top: 2%;"><?php echo $data['gstNombr']?> <?php echo $data['gstApell']?></span>
         </div>
     </div>
     <div class="dentoiz2">
         <div class="rectangulo2">
-            <span style="font-size:18px;font-size:16px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:16px; margin-top: 2%;"><?php echo $data['instructor']?></span>
         </div>
     </div>
     <div class="dentoizfec">
@@ -241,12 +306,12 @@ ob_start();
     </div>
     <div class="dentoizfec3">
         <div class="rectangulo4">
-            <span style="font-size:18px;font-size:22px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:22px; margin-top: 2%;"><?php echo $fechaActual?></span>
         </div>
     </div>
     <div class="dentoizfec4">
         <div class="rectangulo4">
-            <span style="font-size:18px;font-size:22px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:22px; margin-top: 2%;"><?php echo $data['gstCsigl']?></span>
         </div>
     </div>
     <br>
@@ -261,31 +326,31 @@ ob_start();
         </tr>
         <tr>
             <td height="50">El aprendiz puede describir la secuencia de pasos para completar la tarea.</td>
-            <td height="16">No puede describir la secuencia de pasos.<div class="cuadradito"></div></td>
-            <td height="16">Describe algunos pasos de la secuencia.<div class="cuadradito"></div></td>
-            <td height="16">Describe la mayoría de pasos de la secuencia.<div class="cuadradito"></div></td>
-            <td height="16">Describe la secuencia de pasos adecuadamente.<div class="cuadradito"></div></td>
+            <td height="16">No puede describir la secuencia de pasos.<div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $pregunta0?></div></td>
+            <td height="16">Describe algunos pasos de la secuencia.<div class="cuadradito"><span id="idprguI10" name="idprguI10" class="palomita"><?php echo $pregunta10?></span></div></td>
+            <td height="16">Describe la mayoría de pasos de la secuencia.<div class="cuadradito"><span id="idprguI15" name="idprguI15" class="palomita"><?php echo $pregunta15?></span></div></td>
+            <td height="16">Describe la secuencia de pasos adecuadamente.<div class="cuadradito"><span id="idprguI20" name="idprguI20" class="palomita"><?php echo $pregunta20?></span></div></td>
         </tr>
         <tr>
            <td height="16">El aprendiz puede describir apropiadamente los materiales como formas y equipamiento usados durante la realización de la tarea.</td>
-           <td height="16">No puede describir el uso de los materiales.<div class="cuadradito"></div></td>
-           <td height="16">Describe algunos usos de materiales.<div class="cuadradito"></div></td>
-           <td height="16">Describe la mayoría de usos de materiales.<div class="cuadradito"></div></td>
-           <td height="16">Describe adecuadamente el adecuado uso de los materiales.<div class="cuadradito"></div></td>
+           <td height="16">No puede describir el uso de los materiales.<div class="cuadradito"><span id="idprguII5" name="idprguII5" class="palomita"><?php echo $preguntaII0?></span></div></td>
+           <td height="16">Describe algunos usos de materiales.<div class="cuadradito"></div><span id="idprguII10" name="idprguII10" class="palomita"><?php echo $preguntaII10?></span></td>
+           <td height="16">Describe la mayoría de usos de materiales.<div class="cuadradito"><span id="idprguII15" name="idprguII15" class="palomita"><?php echo $preguntaII15?></span></div></td>
+           <td height="16">Describe adecuadamente el adecuado uso de los materiales.<div class="cuadradito"><span id="idprguII20" name="idprguII20" class="palomita"><?php echo $preguntaII20?></span></div></td>
         </tr>
         <tr>
             <td height="16">El aprendiz puede describir las interacciones con otro personal de la autoridad requerido para completar la tarea.</td>
-            <td height="16">No puede describir las interacciones entre el personal de la autoridad.<div class="cuadradito"></div></td>
-            <td height="16">Describe algunas interacciones adecuadamente.<div class="cuadradito"></div></td>
-            <td height="16">Describe la mayoría de interacciones adecuadamente.<div class="cuadradito"></div></td>
-            <td height="16">Describe todas las posibles interacciones adecuadamente.<div class="cuadradito"></div></td>
+            <td height="16">No puede describir las interacciones entre el personal de la autoridad.<div class="cuadradito"><span id="idprguIII5" name="idprguIII5" class="palomita"><?php echo $preguntaIII0?></span></div></td>
+            <td height="16">Describe algunas interacciones adecuadamente.<div class="cuadradito"><span id="idprguIIII10" name="idprguIIII10" class="palomita"><?php echo $preguntaIII10?></span></div></td>
+            <td height="16">Describe la mayoría de interacciones adecuadamente.<div class="cuadradito"><span id="idprguIII15" name="idprguIII15" class="palomita"><?php echo $preguntaIII15?></span></div></td>
+            <td height="16">Describe todas las posibles interacciones adecuadamente.<div class="cuadradito"><span id="idprguIII20" name="idprguIII20" class="palomita"><?php echo $preguntaIII20?></span></div></td>
         </tr>
         <tr>
             <td height="16">El aprendiz puede describir la coordinación con el operador que es necesario para completar la tarea.</div></td>
-            <td>No puede describir las actividades de coordinación con el operador.<div class="cuadradito"></div></td>
-            <td>Explica algunas actividades de coordinación con el operador.<div class="cuadradito"></div></td>
-            <td>Explica la mayoría de actividades de coordinación con el operador.<div class="cuadradito"></div></td>
-            <td>Explica todas las actividades de coordinación con el operador adecuadamente.<div class="cuadradito"></div></td>
+            <td>No puede describir las actividades de coordinación con el operador.<div class="cuadradito"><span id="idprguIV" name="idprguIV5" class="palomita"><?php echo $preguntaIV0?></span></div></td>
+            <td>Explica algunas actividades de coordinación con el operador.<div class="cuadradito"><span id="idprguIV10" name="idprguIV10" class="palomita"><?php echo $preguntaIV10?></span></div></td>
+            <td>Explica la mayoría de actividades de coordinación con el operador.<div class="cuadradito"><span id="idprguIV15" name="idprguIV15" class="palomita"><?php echo $preguntaIV15?></span></div></td>
+            <td>Explica todas las actividades de coordinación con el operador adecuadamente.<div class="cuadradito"><span id="idprguIV20" name="idprguIV20" class="palomita"><?php echo $preguntaIV20?></span></div></td>
         </tr>
     </table>
     </div>
@@ -326,9 +391,7 @@ ob_start();
     <th style=" background-color: #FFFFFF;border:white 1px solid; color:blak; font-size:14px;text-align: left;">F – CIAAC - SEPT – 07 – R00</th>
   </tr>
 </table>
-
-   
-    <?php
+<?php
             require_once '../dist/dompdf/autoload.inc.php';
             use Dompdf\Dompdf;
             $dompdf = new DOMPDF();

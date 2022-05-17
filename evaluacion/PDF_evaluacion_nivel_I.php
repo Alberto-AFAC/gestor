@@ -8,15 +8,66 @@ $query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as inst
 
 	$resultado = mysqli_query($conexion, $query);
     $data = mysqli_fetch_array($resultado);
-
-
+    
+    $fechaActual = date('d-m-Y');
+    
+    if($data['pregunta1'] ==20 ){
+        $pregunta20 ='X';
+    }else if ($data['pregunta1'] ==15 ){
+        $pregunta15 ='X';
+    }else if ($data['pregunta1'] ==10 ){
+        $pregunta10 ='X';
+    }else if ($data['pregunta1'] ==0 ){
+        $pregunta0 ='X';
+    }
+    
+    if($data['pregunta2'] ==20 ){
+        $preguntaII20 ='X';
+    }else if ($data['pregunta2'] ==15 ){
+        $preguntaII15 ='X';
+    }else if ($data['pregunta2'] ==10 ){
+        $preguntaII10 ='X';
+    }else if ($data['pregunta2'] ==0 ){
+        $preguntaII0 ='X';
+    }
+    
+    if($data['pregunta3'] ==20 ){
+        $preguntaIII20 ='X';
+    }else if ($data['pregunta3'] ==15 ){
+        $preguntaIII15 ='X';
+    }else if ($data['pregunta3'] ==10 ){
+        $preguntaIII10 ='X';
+    }else if ($data['pregunta3'] ==0 ){
+        $preguntaIII0 ='X';
+    }
+    
+    if($data['pregunta4'] ==20 ){
+        $preguntaIV20 ='X';
+    }else if ($data['pregunta4'] ==15 ){
+        $preguntaIV15 ='X';
+    }else if ($data['pregunta4'] ==10 ){
+        $preguntaIV10 ='X';
+    }else if ($data['pregunta4'] ==0 ){
+        $preguntaIV0 ='X';
+    }
+    
+    if($data['pregunta5'] ==20 ){
+        $preguntaV20 ='X';
+    }else if ($data['pregunta5'] ==15 ){
+        $preguntaV15 ='X';
+    }else if ($data['pregunta5'] ==10 ){
+        $preguntaV10 ='X';
+    }else if ($data['pregunta5'] ==0 ){
+        $preguntaV0 ='X';
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMATO DE EVALUACION NIVEL 1</title>
@@ -87,7 +138,7 @@ $query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as inst
         line-height: 38px;
     }
     .palomita{
-        line-height: 5px;
+        line-height:28px;
         font-size:35px;
     }
 
@@ -222,11 +273,6 @@ $query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as inst
 <img src="../dist/img/afaclogo.jpg" style="opacity: 0.5;" width="134.4" height="113.4" alt="">
 </div>
 <body>
-    <input type="text" id="idpreg1" name="idpreg1" style="display:none" value="<?php echo $data['pregunta1']?>">
-    <input type="text" id="idpreg2" name="idpreg2" style="display:none" value="<?php echo $data['pregunta2']?>">
-    <input type="text" id="idpreg3" name="idpreg3" style="display:none" value="<?php echo $data['pregunta3']?>">
-    <input type="text" id="idpreg4" name="idpreg4" style="display:none" value="<?php echo $data['pregunta4']?>">
-    <input type="text" id="idpreg5" name="idpreg5" style="display:none" value="<?php echo $data['pregunta5']?>">
     <p style="font-weight:bold; font-size:30px; text-align:center;">FORMATOS DE APOYO PARA LA EVALUACIÓN</p>
     <p style="font-weight:bold; font-size:30px; text-align:center; padding-top: -2%;">NIVEL I </p>
     <div class="dento">
@@ -261,7 +307,7 @@ $query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as inst
     </div>
     <div class="dentoizfec3">
         <div class="rectangulo4">
-            <span style="font-size:18px;font-size:22px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:22px; margin-top: 2%;"><?php echo $fechaActual?></span>
         </div>
     </div>
     <div class="dentoizfec4">
@@ -281,39 +327,39 @@ $query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as inst
         </tr>
         <tr>
             <td height="50">El aprendiz identifica apropiadamente los materiales asociados con la tarea (reglas, órdenes, formas, equipamiento, etc.)</td>
-            <td height="16">No identifica los materiales.<div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span></div></td>
-            <td height="16">Identifica algunos materiales.<div class="cuadradito"><span id="idprguI10" name="idprguI10" class="palomita"></span></div></td>
-            <td height="16">Identifica casi todos los materiales.<div class="cuadradito"><span id="idprguI15" name="idprguI15" class="palomita"></span></div></td>
-            <td height="16">Identifica todos los materiales.<div class="cuadradito"><span id="idprguI20" name="idprguI20" class="palomita"></span></div></td>
+            <td height="16">No identifica los materiales.<div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $pregunta0?></div></td>
+            <td height="16">Identifica algunos materiales.<div class="cuadradito"><span id="idprguI10" name="idprguI10" class="palomita"><?php echo $pregunta10?></span></div></td>
+            <td height="16">Identifica casi todos los materiales.<div class="cuadradito"><span id="idprguI15" name="idprguI15" class="palomita"><?php echo $pregunta15?></span></div></td>
+            <td height="16">Identifica todos los materiales.<div class="cuadradito"><span id="idprguI20" name="idprguI20" class="palomita"><?php echo $pregunta20?></span></div></td>
         </tr>
         <tr>
            <td height="16">El aprendiz entiende los términos y definiciones clave asociados con la tarea.</td>
-           <td height="16">No entiende los términos.<div class="cuadradito"><span id="idprguII5" name="idprguII5" class="palomita"></span></div></td>
-           <td height="16">Entiende algunos términos.<div class="cuadradito"><span id="idprguII10" name="idprguII10" class="palomita"></span></div></td>
-           <td height="16">Entiende casi todos los términos.<div class="cuadradito"><span id="idprguII15" name="idprguII15" class="palomita"></span></div></td>
-           <td height="16">Entiende todos los términos.<div class="cuadradito"><span id="idprguII20" name="idprguII20" class="palomita"></span></div></td>
+           <td height="16">No entiende los términos.<div class="cuadradito"><span id="idprguII5" name="idprguII5" class="palomita"><?php echo $preguntaII0?></span></div></td>
+           <td height="16">Entiende algunos términos.<div class="cuadradito"><span id="idprguII10" name="idprguII10" class="palomita"><?php echo $preguntaII10?></span></div></td>
+           <td height="16">Entiende casi todos los términos.<div class="cuadradito"><span id="idprguII15" name="idprguII15" class="palomita"><?php echo $preguntaII15?></span></div></td>
+           <td height="16">Entiende todos los términos.<div class="cuadradito"><span id="idprguII20" name="idprguII20" class="palomita"><?php echo $preguntaII20?></span></span></div></td>
         </tr>
         <tr>
             <td height="16">El aprendiz explica cómo se inicia la tarea</td>
-            <td height="16">No explica los recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIII5" name="idprguIII5" class="palomita"></span></div></td>
-            <td height="16">Explica algunos recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIIII10" name="idprguIIII10" class="palomita"></span></div></td>
-            <td height="16">Explica la mayoría de los recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIII15" name="idprguIII15" class="palomita"></span></div></td>
-            <td height="16">Explica todos los recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIII20" name="idprguIII20" class="palomita"></span></div></td>
+            <td height="16">No explica los recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIII5" name="idprguIII5" class="palomita"><?php echo $preguntaIII0?></span></div></td>
+            <td height="16">Explica algunos recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIIII10" name="idprguIIII10" class="palomita"><?php echo $preguntaIII10?></span></div></td>
+            <td height="16">Explica la mayoría de los recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIII15" name="idprguIII15" class="palomita"><?php echo $preguntaIII15?></span></div></td>
+            <td height="16">Explica todos los recursos para iniciar la tarea.<div class="cuadradito"><span id="idprguIII20" name="idprguIII20" class="palomita"><?php echo $preguntaIII20?></span></div></td>
         </tr>
-        <tr>
+        <tr> 
             <td height="16">El aprendiz explica los resultados de la tarea (ej. Emisión de Certificados y/o Especificaciones de Operaciones, aprobaciones/desaprobaciones).</div></td>
-            <td>No explica los resultados de la tarea.<div class="cuadradito"><span id="idprguIV5" name="idprguIV5" class="palomita"></span></div></td>
-            <td>Explica algunos posibles resultados de la tarea.<div class="cuadradito"><span id="idprguIV10" name="idprguIV10" class="palomita"></span></div></td>
-            <td>Explica la mayoría de los posibles resultados de la tarea.<div class="cuadradito"><span id="idprguIV15" name="idprguIV15" class="palomita"></span></div></td>
-            <td>Explica todos los posibles resultados de la tarea.<div class="cuadradito"><span id="idprguIV20" name="idprguIV20" class="palomita"></span></div></td>
+            <td>No explica los resultados de la tarea.<div class="cuadradito"><span id="idprguIV" name="idprguIV5" class="palomita"><?php echo $preguntaIV0?></span></div></td>
+            <td>Explica algunos posibles resultados de la tarea.<div class="cuadradito"><span id="idprguIV10" name="idprguIV10" class="palomita"><?php echo $preguntaIV10?></span></div></td>
+            <td>Explica la mayoría de los posibles resultados de la tarea.<div class="cuadradito"><span id="idprguIV15" name="idprguIV15" class="palomita"><?php echo $preguntaIV15?></span></div></td>
+            <td>Explica todos los posibles resultados de la tarea.<div class="cuadradito"><span id="idprguIV20" name="idprguIV20" class="palomita"><?php echo $preguntaIV20?></span></div></td>
             
         </tr>
         <tr>
             <td height="16">El aprendiz describe como se cierra la tarea y documentarla en el registro del seguimiento del programa en el puesto de trabajo.</td>
-            <td>No describe la documentación de la tarea.<div class="cuadradito"><span id="idprguV5" name="idprguV5" class="palomita"></span></div></td>
-            <td>Describe algunos de los documentos de la tarea<div class="cuadradito"><span id="idprguV10" name="idprguV10" class="palomita"></span></div></td>
-            <td>Describe algunos métodos o formas de documentación<div class="cuadradito"><span id="idprguV15" name="idprguV15" class="palomita"></span></div></td>
-            <td>Describe todos los métodos o formas de documentación<div class="cuadradito"><span id="idprguV20" name="idprguV20" class="palomita"></span></div></td>
+            <td>No describe la documentación de la tarea.<div class="cuadradito"><span id="idprguV5" name="idprguV5" class="palomita"><?php echo $preguntaV0?></span></div></td>
+            <td>Describe algunos de los documentos de la tarea<div class="cuadradito"><span id="idprguV10" name="idprguV10" class="palomita"><?php echo $pregunta10?></span></div></td>
+            <td>Describe algunos métodos o formas de documentación<div class="cuadradito"><span id="idprguV15" name="idprguV15" class="palomita"><?php echo $preguntaV15?></span></div></td>
+            <td>Describe todos los métodos o formas de documentación<div class="cuadradito"><span id="idprguV20" name="idprguV20" class="palomita"><?php echo $preguntaV20?></span></div></td>
         </tr>
     </table>
     </div>
@@ -356,10 +402,9 @@ $query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as inst
 <?php
             require_once '../dist/dompdf/autoload.inc.php';
             use Dompdf\Dompdf;
-            $dompdf = new DOMPDF();
+            $dompdf = new DOMPDF('1.0', 'utf-8');
             $dompdf->set_paper('A4', 'portrait');
             $dompdf->load_html(ob_get_clean());
-            // $dompdf->set_option('enable_font_subsetting', true);
             $dompdf->render();
             $dompdf->stream("Evaluación de Nivel I", array("Attachment" => 0));
             $pdf = $dompdf->output();
@@ -368,65 +413,7 @@ $query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as inst
             //$dompdf->stream($filename);
         ?>
 <script>
-    //pregunta 1
-   var idpreg=document.getElementById('idpreg1').value;
-   //alert(idpreg);
-   if (idpreg=="0"){
-    document.getElementById('idprguI5').innerHTML ="✓";
-   }else if (idpreg=="10"){
-    document.getElementById('idprguI10').innerHTML ="✓";
-   }else if (idpreg=="15"){
-    document.getElementById('idprguI15').innerHTML ="✓";
-   }else if (idpreg=="20"){
-    document.getElementById('idprguI20').innerHTML ="✓";
-   }
-   //pregunta 2
-   var idpreg2=document.getElementById('idpreg2').value;
-   //alert(idpreg2);
-   if (idpreg2=="0"){
-    document.getElementById('idprguII5').innerHTML ="✓";
-   }else if (idpreg2=="10"){
-    document.getElementById('idprguII10').innerHTML ="✓";
-   }else if (idpreg2=="15"){
-    document.getElementById('idprguII15').innerHTML ="✓";
-   }else if (idpreg2=="20"){
-    document.getElementById('idprguII20').innerHTML ="✓";
-   }
-    //pregunta 3
-    var idpreg3=document.getElementById('idpreg3').value;
-   //alert(idpreg3);
-   if (idpreg3=="0"){
-    document.getElementById('idprguIII5').innerHTML ="✓";
-   }else if (idpreg3=="10"){
-    document.getElementById('idprguIII10').innerHTML ="✓";
-   }else if (idpreg3=="15"){
-    document.getElementById('idprguIII15').innerHTML ="✓";
-   }else if (idpreg3=="20"){
-    document.getElementById('idprguIII20').innerHTML ="✓";
-   }
-     //pregunta 4
-    var idpreg4=document.getElementById('idpreg4').value;
-   if (idpreg4=="0"){
-    document.getElementById('idprguIV5').innerHTML ="✓";
-   }else if (idpreg4=="10"){
-    document.getElementById('idprguIV10').innerHTML ="✓";
-   }else if (idpreg4=="15"){
-    document.getElementById('idprguIV15').innerHTML ="✓";
-   }else if (idpreg4=="20"){
-    document.getElementById('idprguIV20').innerHTML ="✓";
-   }
 
-    //pregunta 5
-    var idpreg5=document.getElementById('idpreg5').value;
-   if (idpreg5=="0"){
-    document.getElementById('idprguV5').innerHTML ="✓";
-   }else if (idpreg5=="10"){
-    document.getElementById('idprguV10').innerHTML ="✓";
-   }else if (idpreg5=="15"){
-    document.getElementById('idprguV15').innerHTML ="✓";
-   }else if (idpreg5=="20"){
-    document.getElementById('idprguV20').innerHTML ="✓";
-   }
 
 
 </script>

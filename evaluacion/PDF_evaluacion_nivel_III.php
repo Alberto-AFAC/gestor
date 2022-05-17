@@ -1,5 +1,44 @@
 <?php
 ob_start();
+$Idevalua = $_GET['data'];
+include("../conexion/conexion.php");
+$query = "SELECT p.*,o.*,s.*,c.*,e.*, a.gstNombr, a.gstApell, i.gstNombr as instructor FROM prog_ojt p, ojts o, ojts_subs s, categorias c, personal i, evaluacion_ojt e, personal a where p.id_tarea=o.id_ojt and p.id_subtarea=s.id_subojt and p.id_esp=c.gstIdcat and i.gstIdper=p.id_insojt and a.gstIdper=p.id_pers and e.id_ojt=p.id_proojt and e.id_ojt='$Idevalua'";
+
+
+	$resultado = mysqli_query($conexion, $query);
+    $data = mysqli_fetch_array($resultado);
+    
+    $fechaActual = date('d-m-Y');
+    
+    if($data['pregunta1'] ==20 ){
+        $pregunta20 ='X';
+    }else if ($data['pregunta1'] ==5 ){
+        $pregunta5 ='X';
+    }
+    
+    if($data['pregunta2'] ==20 ){
+        $preguntaII20 ='X';
+    }else if ($data['pregunta2'] ==5 ){
+        $preguntaII15 ='X';
+    }
+    
+    if($data['pregunta3'] ==20 ){
+        $preguntaIII20 ='X';
+    }else if ($data['pregunta3'] ==5 ){
+        $preguntaIII15 ='X';
+    }
+    
+    if($data['pregunta4'] ==20 ){
+        $preguntaIV20 ='X';
+    }else if ($data['pregunta4'] ==5 ){
+        $preguntaIV15 ='X';
+    }
+    
+    if($data['pregunta5'] ==20 ){
+        $preguntaV20 ='X';
+    }else if ($data['pregunta5'] ==5 ){
+        $preguntaV15 ='X';
+    }
 
 ?>
  
@@ -86,6 +125,10 @@ ob_start();
         border:1px solid black;
         text-align:center;
         line-height: 38px;
+    }
+    .palomita{
+        line-height:6px;
+        font-size:45px;
     }
     .firinspec{
       padding-left: 2%;
@@ -222,12 +265,12 @@ ob_start();
     </div>
     <div class="dentoiz1">
         <div class="rectangulo2">
-            <span style="font-size:18px;font-size:16px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:16px; margin-top: 2%;"><?php echo $data['gstNombr']?> <?php echo $data['gstApell']?></span>
         </div>
     </div>
     <div class="dentoiz2">
         <div class="rectangulo2">
-            <span style="font-size:18px;font-size:16px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:16px; margin-top: 2%;"><?php echo $data['instructor']?></span>
         </div>
     </div>
     <div class="dentoizfec">
@@ -242,12 +285,12 @@ ob_start();
     </div>
     <div class="dentoizfec3">
         <div class="rectangulo4">
-            <span style="font-size:18px;font-size:22px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:22px; margin-top: 2%;"><?php echo $fechaActual?></span>
         </div>
     </div>
     <div class="dentoizfec4">
         <div class="rectangulo4">
-            <span style="font-size:18px;font-size:22px; margin-top: 2%;"></span>
+            <span style="font-size:18px;font-size:22px; margin-top: 2%;"><?php echo $data['gstCsigl']?></span>
         </div>
     </div>
     <br>
@@ -262,28 +305,28 @@ ob_start();
         </tr>
         <tr>
             <td height="50">¿Demostró el aprendiz suficiente conocimiento para completar con precisión la tarea?</td>
-            <td height="16"><div class="cuadradito"></div></td>
-            <td height="16"><div class="cuadradito"></div></td>
+            <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $pregunta20?></div></td>
+            <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $pregunta5?></div></td>
         </tr>
         <tr>
            <td height="16">¿Demostró el aprendiz todos los pasos necesarios para completar la tarea de manera competente?</td>
-           <td height="16"><div class="cuadradito"></div></td>
-           <td height="16"><div class="cuadradito"></div></td>
+           <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaII20?></div></td>
+           <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaII5?></div></td>
         </tr>
         <tr>
            <td height="16">¿Se completaron los pasos en el orden adecuado?</td>
-           <td height="16"><div class="cuadradito"></div></td>
-           <td height="16"><div class="cuadradito"></div></td>
+           <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaIII20?></div></td>
+           <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaIII5?></div></td>
         </tr>
         <tr>
             <td height="16">¿El aprendiz realizó la tarea de manera oportuna y sin ayuda?</div></td>
-            <td height="16"><div class="cuadradito"></div></td>
-           <td height="16"><div class="cuadradito"></div></td>
+            <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaIV20?></div></td>
+           <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaIV5?></div></td>
         </tr>
         <tr>
             <td height="16">¿El aprendiz juzgó adecuadamente el resultado de la tarea y lo cerró de la manera correcta?</div></td>
-            <td height="16"><div class="cuadradito"></div></td>
-           <td height="16"><div class="cuadradito"></div></td>
+            <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaV20?></div></td>
+           <td height="16"><div class="cuadradito"><span id="idprguI5" name="idprguI5" class="palomita"></span><?php echo $preguntaV5?></div></td>
         </tr>
     </table>
     </div>
@@ -325,8 +368,7 @@ ob_start();
   </tr>
 </table>
 
-   
-    <?php
+<?php
             require_once '../dist/dompdf/autoload.inc.php';
             use Dompdf\Dompdf;
             $dompdf = new DOMPDF();
@@ -340,6 +382,9 @@ ob_start();
             //file_put_contents($filename, $pdf);
             //$dompdf->stream($filename);
         ?>
+
+   
+    
 </body>
 
 </html>
