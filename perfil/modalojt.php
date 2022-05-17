@@ -462,7 +462,7 @@
                                     onclick="">ACTUALIZAR</a>
                             </div>
                             <div style="float:right;" class="col-sm-2">
-                                <a href="../evaluacion/PDF_evaluacion_nivel_I.php" id="descargapdfI" name="descargapdfI"
+                                <a id="descargapdfI" name="descargapdfI"
                                     style="display:none;" onclick="nivel1()" title="Descargar el PDF" type="button"
                                     class="btn btn-block btn-primary">Imprimir PDF</a>
                             </div>

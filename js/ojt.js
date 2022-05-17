@@ -816,11 +816,13 @@ function infdecOJT(iddelinaojt){
 
 
 function nivel1(){
-    //alert("entro");
-    var person = document.getElementById('idinspo').value;
-    //alert(person);
 
+    var Idevalua=document.getElementById('idtarpre').value;
+    alert("entro");
+        url = '../evaluacion/PDF_evaluacion_nivel_I.php'
+        window.open(url + "?data=" + Idevalua, '_black');
 
+   
 }
 
 function nivel2(){
