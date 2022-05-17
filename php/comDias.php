@@ -43,7 +43,8 @@ function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
   idinsp = $prtcpn AND 
   dia_semana = $dia AND 
   num_mes = $mes AND
-  habil = 'SI'";
+  habil = 'SI' AND
+  prtcpnt = 'SI'  ";
 
   $resultado = mysqli_query($conexion, $query);
 
