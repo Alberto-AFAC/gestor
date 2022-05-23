@@ -493,10 +493,10 @@ $inspector = mysqli_query($conexion,$sql);
                 if (obj.data[i].codigo == folio) {
                     var idMast = obj.data[i].idinsp;
                     $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
-                    html += "<tr><td style='text-align: left;'><a href='persona?data=" + idMast +
-                        "'| data-target='#modal-estudio'>" +
-                        obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
-                        "</td></tr>";
+                        html += "<tr><td style='text-align: left;'><a href='persona?data=" + idMast +
+                            "'| data-target='#modal-estudio'>" +
+                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
+                            "</td></tr>";
                 }
             }
             html += '</table>';
