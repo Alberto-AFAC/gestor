@@ -40,12 +40,16 @@ if(eliminar($EgstIdlsc,$conexion)){
 	}else{
 		echo "1";
 	}
-}else if($opcion === 'canCurso'){
+}else if($opcion === 'canCurso'){  //SE REPARA26052022 JESSICA SOTO
 
 $codigos = $_POST['codigos'];
 
 if(cancelar($codigos,$conexion)){
 		echo "0";
+		cancelarseman($codigos,$conexion); 
+		cancelaconstancia($codigos,$conexion); 
+		cancelainstructor($codigos,$conexion);
+		cancelareaccion($codigos,$conexion);
 		$realizo = 'CANCELO CURSO FOLIO: '.$codigos;
 		historiCan($idp,$realizo,$codigos,$conexion);	
 
@@ -95,7 +99,7 @@ function eliminar($EgstIdlsc,$conexion){
 		}
 	cerrar($conexion);
 }
-
+//---------------------------------------------------------CANCELAR CURSO
 function cancelar($codigos,$conexion){
 
 	$query = "UPDATE cursos SET proceso='CANCELADO',estado=1 WHERE codigo='$codigos'";
@@ -109,6 +113,63 @@ function cancelar($codigos,$conexion){
 		}
 	cerrar($conexion);
 }
+
+function cancelarseman($codigos,$conexion){
+
+	$query = "UPDATE semanal SET estado=1 WHERE id_curso='$codigos'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+}
+
+function cancelaconstancia($codigos,$conexion){
+	$query = "UPDATE constancias SET estado_cer=1 WHERE id_codigocurso='$codigos'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+}
+
+function cancelainstructor($codigos,$conexion){
+	$query = "UPDATE instructor SET estado=1 WHERE codigoInst='$codigos'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+}
+
+function cancelareaccion($codigos,$conexion){
+	$query = "UPDATE reaccion SET estado=1 WHERE id_instruct='$codigos'";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+}
+
+
+//-----------------------------------------------------FIN CANCELAR CURSO
+
 
 function eliminaCur($idp,$EgstIdlsc,$conexion){
 	ini_set('date.timezone','America/Mexico_City');

@@ -231,10 +231,9 @@ onclick="agregarDias();">EDITAR</button>
                                     <select type="text" class="form-control inputalta" id="modalidads" name="modalidads"
                                         onChange="modalidades()" disabled="">
                                         <option value="0">ELEGIR UNA OPCIÓN</option>
-                                        <option value="A DISTANCIA">A DISTANCIA</option>
+                                        <option value="A DISTANCIA (E-LEARNNING)">A DISTANCIA (E-LEARNNING)</option>
                                         <option value="AUTOAPRENDIZAJE">AUTOAPRENDIZAJE</option>
                                         <option value="AUTOGESTIVO">AUTOGESTIVO</option>
-                                        <option value="E-LEARNNING">E-LEARNNING</option>
                                         <option value="HIBRIDO">HIBRIDO</option>
                                         <option value="PRESENCIAL">PRESENCIAL</option>
                                     </select>

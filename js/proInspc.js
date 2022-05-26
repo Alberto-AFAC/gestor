@@ -313,7 +313,7 @@ function curProgramar(){
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
-    if (modalidad == 'PRESENCIAL') {
+   /* if (modalidad == 'PRESENCIAL') {
         var link = '0';
         var contracceso = '0';
         var classroom = '0';
@@ -321,15 +321,35 @@ function curProgramar(){
         var link = document.getElementById('link').value;
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
+    }*/
+
+    if (modalidad == 'PRESENCIAL') {
+        var link = '0';
+        var contracceso = '0';
+        var classroom = '0';
+    } else if (modalidad == 'A DISTANCIA (E-LEARNNING)') {
+        var link = document.getElementById('link').value;
+        var contracceso = document.getElementById('contracceso').value;
+        var classroom = document.getElementById('classroom').value;
+        var sede ='NO APLICA';
+    } else if (modalidad == 'AUTOGESTIVO') {
+        var link = '0';
+        var contracceso = '0';
+        var classroom = document.getElementById('classroom').value;
+    }else if (modalidad == 'HIBRIDO') {
+        var link = document.getElementById('link').value;
+        var contracceso = document.getElementById('contracceso').value;
+        var classroom = document.getElementById('classroom').value;
     }
 
-        idinsps = idInsptr + '' + idInstr;
 
-        ids = idInsptr + '' + idInstr+','+idcord;
+    idinsps = idInsptr + '' + idInstr;
 
-        var perid = document.getElementById('idper').value;
+    ids = idInsptr + '' + idInstr+','+idcord;
 
-     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&perid=' + perid + '&opcion=procurso';
+    var perid = document.getElementById('idper').value;
+
+    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&perid=' + perid + '&opcion=procurso';
 
     if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
@@ -890,19 +910,30 @@ function actualizar() {
 }
 
 function modalidades() {
-
+    //alert("modalida2");
+    var sedecurso = document.getElementById('sede');
     var seleccion = document.getElementById('modalidad');
     valor = seleccion.options[seleccion.selectedIndex].value;
-
-    // || valor=='AUTOGESTIVO'
-    
     if (valor == 'PRESENCIAL') {
-        $("#dismod").hide();
-        $("#disocl").show();
-
-    } else {
-        $("#disocl").hide();
-        $("#dismod").show();
+        $("#camlink").hide();
+        $("#camcontra").hide();
+        $("#camclass").hide();
+        $("#camsede").show();
+    }else if (valor === 'AUTOGESTIVO'){
+        $("#camlink").hide();
+        $("#camcontra").hide();
+        $("#camsede").show();
+        $("#camclass").show();
+    }else if (valor === 'A DISTANCIA (E-LEARNNING)'){
+        $("#camlink").show();
+        $("#camcontra").show();
+        $("#camclass").show();
+        $("#camsede").hide();
+    }else if (valor === 'HIBRIDO'){
+        $("#camlink").show();
+        $("#camcontra").show();
+        $("#camclass").show();
+        $("#camsede").show();
     }
 }
 

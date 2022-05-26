@@ -521,7 +521,7 @@ function actualizar() {
 }
 
 function modalidades() {
-
+    alert("modalida3");
     var seleccion = document.getElementById('modalidad');
     valor = seleccion.options[seleccion.selectedIndex].value;
 

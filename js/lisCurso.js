@@ -76,13 +76,10 @@ function imprimir() {
         });
         setTimeout("location.href = '../php/listapdf.php';", 1000);  */
     });
-
-
-
 }
 //TODO EVALUACIN
 function evaluar() {
-    //alert("fkeofkef")
+    //alert("fkeofkef")  //AQUI26052022
     var idcursoen = document.getElementById('idcursoen').value; //ID CURSO 
     var preg1 = $('input[name=preg1]:checked').val(); //-
     var preg2 = $('input[name=preg2]:checked').val(); // -
@@ -549,8 +546,6 @@ function gencerti(cursos) {
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
 
-
-
     $.ajax({
         url: '../php/conCurcons.php',
         type: 'POST'
@@ -746,7 +741,7 @@ function generacion(cursos) { //abre el modal de generacion de constancias
             var res = obj.data;
             var x = 0;
             // TODO AQUI VA LA CONSTANCIA 
-            html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th>LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th>REPORTES DE INCIDENCIAS</th><th>CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th>REGISTRO DE PONDERACIÓN</th><th>INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
+            html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID<input title="Marcar todo" type="checkbox" onclick="marcar(this)" name="fullc" id="fullc" /></th><th>PARTICIPANTE</th><th>CONVOCATORIA Y CONFIRMACIÓN</th><th style="display:none;">LISTA DE REGISTRO</th><th>LISTA DE ASISTENCIA </th><th style="display:none;">REPORTES DE INCIDENCIAS</th><th style="display:none;">CARTAS DESCRIPTIVAS</th><th>EVALUACIÓN PARTICIPANTE</th><th style="display:none;">REGISTRO DE PONDERACIÓN</th><th style="display:none;">INFORME FINAL</th><th>EVALUACIÓN DE REACCIÓN</th> </tr>';
             for (G = 0; G < res.length; G++) {
 
                 if (obj.data[G].id_codigocurso == curso) {
@@ -754,12 +749,12 @@ function generacion(cursos) { //abre el modal de generacion de constancias
 
                     evalreac1 = "<i class='fa fa-clock-o' id='reac1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'>"
                     confirmaasis1 = "<i class='fa fa-clock-o' id='cov1' disabled style='color:rgb(205, 135, 4); font-size: 16pt'></i>";
-                    lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' name='listregis' value='" + obj.data[G].id + "'/> ";
+                    lista1 = "<input type='checkbox' id='listregis' style='width:17px; height:17px;' name='listregis' value='" + obj.data[G].id + "'/> "; //ocultar
                     asistencia1 = "<input type='checkbox' style='width:17px; height:17px;' name='lisasisten' id='lisasisten' />"
-                    lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' name='listreportein' id='listreportein'/>"
-                    cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' name='cartdescrip' id='cartdescrip'/>"
-                    regponde1 = "<input type='checkbox' style='width:17px; height:17px;' name='regponde' id='regponde'/>"
-                    infinal1 = "<input type='checkbox' style='width:17px; height:17px;' name='infinal' id='infinal'/>"
+                    lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' name='listreportein' id='listreportein' value='SI'/>"
+                    cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' name='cartdescrip' id='cartdescrip' value='SI'/>"
+                    regponde1 = "<input type='checkbox' style='width:17px; height:17px;' name='regponde' id='regponde' value='SI'/>"
+                    infinal1 = "<input type='checkbox' style='width:17px; height:17px;' name='infinal' id='infinal' value='SI'/>"
                     evreaccion1 = "<input type='checkbox' style='width:17px; height:17px;' name='evreaccion' id='evreaccion' />"
                     fullselect = "<input type='checkbox' onclick='fullchange()' name='fullc1' id='fullc1' />"
 
@@ -772,19 +767,19 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                     }
 
                     if (obj.data[G].listreportein == 'SI') { // columna3    
-                        lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='listreportein' id='listreportein'/> "
+                        lisreport1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='listreportein' id='listreportein' value='SI'/> "
                     }
 
                     if (obj.data[G].cartdescrip == 'SI') { // columna4    
-                        cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='cartdescrip' id='cartdescrip'/> "
+                        cartdescrip1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='cartdescrip' id='cartdescrip' value='SI'/> "
                     }
 
                     if (obj.data[G].regponde == 'SI') { // columna5    
-                        regponde1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='regponde' id='regponde'/> "
+                        regponde1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='regponde' id='regponde' value='SI'/> "
                     }
 
                     if (obj.data[G].infinal == 'SI') { // columna6   
-                        infinal1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal'/>"
+                        infinal1 = "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal' value='SI'/>"
                     }
 
                     if (obj.data[G].evreaccion == 'SI') { // columna7   
@@ -819,7 +814,7 @@ function generacion(cursos) { //abre el modal de generacion de constancias
                         evalreac1 = "<i class='fa fa-times id='reac1' disabled style='color:red; font-size: 16pt'>"
                     }
 
-                    html += "<tr><td>" + x + fullselect + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td>" + confirmaasis1 + "</td><td>" + lista1 + "</td><td><form id='form2'>" + asistencia1 + "</td><td>" + lisreport1 + "</td><td>" + cartdescrip1 + "</td><td>" + evalreac1 + "</i></span></td><td>" + regponde1 + "</td><td>" + infinal1 + "</td><td>" + evreaccion1 + "</td></form></tr>";
+                    html += "<tr><td>" + x + fullselect + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td>" + confirmaasis1 + "</td><td style='display:none'>" + lista1 + "</td><td><form id='form2'>" + asistencia1 + "</td><td style='display:none'>" + lisreport1 + "</td><td style='display:none'>" + cartdescrip1 + "</td><td>" + evalreac1 + "</i></span></td><td style='display:none'>" + regponde1 + "</td><td style='display:none'>" + infinal1 + "</td><td>" + evreaccion1 + "</td></form></tr>";
                     //  html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + "</td><td>"+confirmaasis1+"</td><td><input type='checkbox' id='listregis' name='listregis' value='"+obj.data[G].id+"'/> </td><td><input type='checkbox' name='lisasisten' id='lisasisten' /></td><td><input type='checkbox' name='listreportein' id='listreportein'/></td><td><input type='checkbox' name='cartdescrip' id='cartdescrip'/></td><td><i class='fa fa-check' id='reac1' disabled style='color:green; font-size: 16pt'></i></span></td><td><input type='checkbox' name='regponde' id='regponde'/></td><td><input type='checkbox' name='infinal' id='infinal'/></td><td><input type='checkbox' name='evreaccion' id='evreaccion' /></td></tr>";
 
                 }
@@ -958,6 +953,8 @@ function generar() {
                 customClass: 'swal-wide',
                 timer: 3000
             });
+            
+            $('#modal-masiva').modal('hide');
 
         } else {
             // $('#dange').toggle('toggle');
@@ -1728,15 +1725,18 @@ function cursoAct() {
 }
 
 function modalidades() {
-
+//alert("modalida");
     var seleccion = document.getElementById('modalidads');
+    var sedecurso= document.getElementById('modalidads');
     valor = seleccion.options[seleccion.selectedIndex].value;
 
     if (valor == 'PRESENCIAL') {
         $("#dismod").hide();
         $("#disocl").show();
-
-    } else {
+    }else if (valor == 'AUTOGESTIVO'){
+        $("#link").hide();
+        $("#contracceso").hide();
+    }else {
         $("#disocl").hide();
         $("#dismod").show();
     }

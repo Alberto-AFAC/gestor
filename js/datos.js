@@ -1790,9 +1790,9 @@ function inspector(gstIdper) {
                 $("#insparea").html(gstCatgr); //especialidad Card
 
 
-                if (gstEvalu == 'NO') {
-                    $("#ocultar1").hide();
-                    $("#ocultar2").hide();
+                if (gstEvalu == 'NO') { //SE QUITA LA VALIDACIÓN26052022
+                    $("#ocultar1").show();
+                    $("#ocultar2").show();
                     //                    document.getElementById('evaluaciones').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
                 } else {
                     $("#ocultar1").show();

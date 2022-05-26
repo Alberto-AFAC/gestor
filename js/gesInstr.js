@@ -206,7 +206,15 @@ function agregarMas() {
 
 }
 
+
+
 function regCurso() {
+    let exteno = document.getElementById("gstProvd").value;
+
+    //funcíón que se genera al agregara el externo  
+    if (exteno=="EXTERNO"){
+        document.getElementById("codigoCrso").value="NO APLICA";
+    }
 
     var tPrfil = ''
 
@@ -220,6 +228,13 @@ function regCurso() {
 
         }
     }
+    var campo = new Array();
+    /*Agrupamos todos los input con name=cbxEstudiante*/
+    $('input[name="campo[]"]').each(function(element) {
+        var item = {};
+        item.campo = this.value;
+        campo.push(item);
+    });
 
     var array = JSON.stringify(campo);
 
