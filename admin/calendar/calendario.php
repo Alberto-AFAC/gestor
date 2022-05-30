@@ -99,7 +99,6 @@
 
 		$folio = substr($data['codigo'],2);
 		$codigo = $folio;
-
 		$gstTitlo = "<a data-toggle='modal' style='cursor:pointer;' data-target='#ganttPartici'><span onclick='listview({$codigo});'>".$data['codigo'].' -> '.$data['gstTitlo']."</span></a>";
 
 		$gstTipo=$data['gstTipo'];
