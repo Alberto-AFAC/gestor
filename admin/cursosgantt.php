@@ -1,15 +1,15 @@
-<!DOCTYPE html><?php include ("../conexion/conexion.php");
+<!DOCTYPE html><?php include("../conexion/conexion.php");
 
-$sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
-$curso = mysqli_query($conexion,$sql);
+                $sql = "SELECT gstIdlsc, gstTitlo,gstTipo FROM listacursos WHERE estado = 0";
+                $curso = mysqli_query($conexion, $sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
-$instructor = mysqli_query($conexion,$sql);         
+                $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
+                $instructor = mysqli_query($conexion, $sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
-$inspector = mysqli_query($conexion,$sql);
+                $sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo = 'INSPECTOR' AND gstEvalu = 'SI' AND estado = 0 || gstCargo = 'DIRECTOR' AND estado = 0 ";
+                $inspector = mysqli_query($conexion, $sql);
 
-?>
+                ?>
 <html>
 
 <head>
@@ -208,20 +208,20 @@ $inspector = mysqli_query($conexion,$sql);
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> <?php 
-                                $query ="SELECT 
+            <b>Version</b> <?php
+                            $query = "SELECT 
                                         *
                                         FROM
                                         controlvers";
-                                $resultado = mysqli_query($conexion, $query);
+                            $resultado = mysqli_query($conexion, $query);
 
-                                $row = mysqli_fetch_assoc($resultado);
-                                if(!$resultado) {
-                                    var_dump(mysqli_error($conexion));
-                                    exit;
-                                }
-                                ?>
-            <?php echo $row['version']?>
+                            $row = mysqli_fetch_assoc($resultado);
+                            if (!$resultado) {
+                                var_dump(mysqli_error($conexion));
+                                exit;
+                            }
+                            ?>
+            <?php echo $row['version'] ?>
         </div>
         <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
         Todos los derechos Reservados DDE
@@ -359,14 +359,14 @@ $inspector = mysqli_query($conexion,$sql);
 
 
     $(function() {
-        <?php 
+        <?php
             $query2 = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP by listacursos.gstTitlo,cursos.idmstr,cursos.idinst ORDER BY id_curso DESC ";
             $resultado2 = mysqli_query($conexion, $query2);
-            while($data2 = mysqli_fetch_assoc($resultado2)){
-                  $tipo = $data2['gstTipo'];
-                  $nombre = $data2['gstTitlo'];
+            while ($data2 = mysqli_fetch_assoc($resultado2)) {
+                $tipo = $data2['gstTipo'];
+                $nombre = $data2['gstTitlo'];
             }
-        ?>
+            ?>
         var calendar = $('#demo-resource-details').mobiscroll().eventcalendar({
             // view: {
             //     timeline: {
@@ -452,6 +452,7 @@ $inspector = mysqli_query($conexion,$sql);
                                 type: 'week',
                                 startDay: 1,
                                 endDay: 5,
+                                labels: 'all',
                                 weekNumbers: false,
                                 eventList: true
                             }
@@ -487,16 +488,17 @@ $inspector = mysqli_query($conexion,$sql);
             var res = obj.data;
             var x = 0;
             html =
-                '<table class="table table-striped"><tr><th>NOMBRE DEL PARTICIPANTE</th>';
+                '<table class="table table-striped"><tr><th>#</th><th>NOMBRE DEL PARTICIPANTE</th><th>INICIO</th><th>FIN</th>';
             for (i = 0; i < res.length; i++) {
-                x++;
                 if (obj.data[i].codigo == folio) {
+                    x++;
                     var idMast = obj.data[i].idinsp;
                     $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
-                        html += "<tr><td style='text-align: left;'><a href='persona?data=" + idMast +
-                            "'| data-target='#modal-estudio'>" +
-                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
-                            "</td></tr>";
+                    html += "<tr><td>" + x + "</td><td style='text-align: left;'><a href='persona?data=" +
+                        idMast +
+                        "'| data-target='#modal-estudio'>" +
+                        obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
+                        "</td><td>" + obj.data[i].hcurso + "</td></tr>";
                 }
             }
             html += '</table>';
