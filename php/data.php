@@ -24,7 +24,8 @@ header('Content-Type: application/json');
 	
 	if($data2 = mysqli_fetch_assoc($resultado2)){
 		
-		$fcurso = $data2['fec_inico'].''.$data2['hora_ini'];//INICIO DEL CURSO
+		$fcurso = $data2['fec_inico'].'T'.$data2['hora_ini'].'Z'.'';
+		$ffcurso= $data2['fec_fin'].'T'.$data2['hora_fin'].'Z'.'';
 
 	}
 
@@ -32,8 +33,7 @@ header('Content-Type: application/json');
 	$codigo = $folio;
 
 	
-        $ffcurso= $data['fechaf']; //FINAL DEL CURSO
-		$hcurso=$data['hcurso']; 
+		// $hcurso=$data['hcurso']; 
 		$tipo = $data['gstTipo'];
 		$id = $data['id_curso'];
 	
