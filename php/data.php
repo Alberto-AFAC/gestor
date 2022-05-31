@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP by listacursos.gstTitlo,cursos.idmstr,cursos.idinst ORDER BY id_curso DESC ";
+	$query = "SELECT *,COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP by listacursos.gstTitlo,cursos.idmstr,cursos.idinst ORDER BY cursos.id_curso DESC ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -15,16 +15,28 @@ header('Content-Type: application/json');
 	$gstTitlo = $data['gstTitlo'];
 
 	$id_curso = $data['id_curso'];
-			
+
+	$codigo = $data['codigo'];
+	
+
+	$query2 = "SELECT *,COUNT(*) as prtcpnts FROM semanal WHERE semanal.id_curso = '$codigo' AND estado = 0 GROUP by id_curso ORDER BY semanal.id_curso DESC ";
+	$resultado2 = mysqli_query($conexion, $query2);
+	
+	if($data2 = mysqli_fetch_assoc($resultado2)){
+		
+		$fcurso = $data2['fec_inico'].''.$data2['hora_ini'];//INICIO DEL CURSO
+
+	}
+
 	$folio = substr($data['codigo'],2);
 	$codigo = $folio;
 
-		$fcurso= $data['fcurso'].''.$data['hcurso'];//INICIO DEL CURSO
+	
         $ffcurso= $data['fechaf']; //FINAL DEL CURSO
 		$hcurso=$data['hcurso']; 
 		$tipo = $data['gstTipo'];
 		$id = $data['id_curso'];
-		$sede = $data['sede'];
+	
 		$nombre = "<a data-toggle='modal' data-target='#ganttPartici'><span onclick='listview({$codigo});'>{$data['gstTitlo']}</span></a>";
         
 
