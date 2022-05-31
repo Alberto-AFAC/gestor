@@ -114,16 +114,19 @@
 	    	$("#calender").hide();
 
         folio = 'FO' + id;
-
         $.ajax({
             url: '../../php/ganttParticipantes.php',
             type: 'POST'
+            // data: 'folio='+folio
         }).done(function(resp) {
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
+
             html =
                 '<table class="table table-striped"><tr><th>#</th><th>NOMBRE DEL PARTICIPANTE</th>';
+// <th>HORA INICIO</th><th>HORA FIN</th>
+                
             for (i = 0; i < res.length; i++) {
 
                 if (obj.data[i].codigo == folio) {
@@ -134,6 +137,7 @@
                             "'| data-target='#modal-estudio'>" +
                             obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
                             "</td></tr>";
+// <td>"+ obj.data[i].hora_inicio +"</td><td>"+ obj.data[i].hora_fin +"</td>
                 }
             }
             html += '</table>';
