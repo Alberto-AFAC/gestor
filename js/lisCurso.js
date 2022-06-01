@@ -538,24 +538,17 @@ function gencerti(cursos) {
 }
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
-
+//alert(cursos);
     $.ajax({
-        url: '../php/conCurcons.php',
+        url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
 
         for (C = 0; C < res.length; C++) {
+            if (obj.data[C].id_curso == cursos) {
 
-            codigoC = obj.data[C].id_codigocurso.substr(2);
-
-            if (obj.data[C].gstIdper + '.' + codigoC == cursos) {
-                //   alert(cer[22]);
-                // alert(obj.data[C].gstNombr);
-
-                // var d = cursos.split("*");
-                //alert(d[23]);
                 $("#avaluacion #evaNombr").val(obj.data[C].gstNombr + " " + obj.data[C].gstApell); //NOMBRE COMPLETO
                 //$("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
                 $("#avaluacion #id_curso").val(obj.data[C].id_curso); //ID DEL CURSO
