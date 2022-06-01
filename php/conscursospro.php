@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "SELECT * FROM cursos c, personal p where c.idinsp = p.gstIdper and c.estado='0'";
+	$query = "SELECT * FROM cursos c, personal p where c.idinsp = p.gstIdper and c.estado='0' and c.idinsp!=c.idcoor and c.idinsp!=c.idinst";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
