@@ -254,7 +254,32 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 	 $pdf = $_POST['v'];
  	if(descPDF($pdf,$conexion)){echo "0";}else{echo "1";}
+}else if($opcion === 'confasiten'){
+
+	$idperson = $_POST['idperson'];
+
+	if (siasistio($idperson,$conexion)){
+		echo "0";
+		//$realizo = 'CONFIRMA CONVOCATORIA DE CURSO';
+	   //histasis($idp,$idperson,$realizo,$conexion);
+	}else{
+		echo "1";
+	}
+}else if($opcion === 'confnoasiste'){
+
+	$idperson = $_POST['idperson'];
+
+	if (noasistio($idperson,$conexion)){
+		echo "0";
+		//$realizo = 'CONFIRMA CONVOCATORIA DE CURSO';
+	   //histasis($idp,$idperson,$realizo,$conexion);
+	}else{
+		echo "1";
+	}
 }
+
+
+
 
 
 function encurso($fcurso,$fechaf,$idinsps,$conexion){
@@ -292,6 +317,31 @@ $query = "SELECT COUNT(*) as prtcpnts FROM cursos WHERE cursos.estado = 0 OR cur
 	 	$n++;
 	 } 
 	 return $n;
+}
+
+function siasistio($idperson,$conexion){
+	// SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 OR cursos.estado = 1 GROUP by cursos.codigo
+	$query = "UPDATE cursos SET confirmar='CONFIRMADO' WHERE id_curso='$idperson'";
+		$resultado = mysqli_query($conexion,$query);
+	
+		if($resultado->num_rows==0){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
+}
+
+function noasistio($idperson,$conexion){
+	// SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 OR cursos.estado = 1 GROUP by cursos.codigo
+	$query = "UPDATE cursos SET confirmar='OTROS', justifi='NO ASISTIO' WHERE id_curso='$idperson'";
+		$resultado = mysqli_query($conexion,$query);
+		if($resultado->num_rows==0){
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();
 }
 
 function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion){
@@ -442,6 +492,18 @@ function finalizac($codigo,$conexion){
 	}else{
 	return false;
 	}
+	}
+
+	function histasis($idp,$idperson,$realizo,$conexion){
+		ini_set('date.timezone','America/Mexico_City');
+		$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+		$query = "INSERT INTO historial(id_usu,proceso,registro,fecha) SELECT $idp,'$realizo',gstTitlo,'$fecha' FROM listacursos INNER JOIN cursos ON 	idmstr = gstIdlsc
+				  WHERE `codigo` = '$codigo' AND cursos.estado = 0 LIMIT 1";			  
+		if(mysqli_query($conexion,$query)){
+		return true;
+		}else{
+		return false;
+		}
 	}
 
 	function reprogramar($codigo,$reprogramar,$conexion){
