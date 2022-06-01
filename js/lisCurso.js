@@ -98,27 +98,20 @@ function evaluar() {
     var preg15 = $('input[name=preg15]:checked').val(); //       -
     var preg16 = $('input[name=preg16]:checked').val(); //      -
     var preg17 = $('input[name=preg17]:checked').val(); //     -
-    var preg18 = $('input[name=preg18]:checked').val(); //    -
-    var preg19 = $('input[name=preg19]:checked').val(); //   -
-    var preg20 = $('input[name=preg20]:checked').val(); //  -
-    var preg21 = $('input[name=preg21]:checked').val(); // -
-    var preg22 = $('input[name=preg22]:checked').val(); //-
-    var preg23 = $('input[name=preg23]:checked').val(); //-
-
-
-    var preg24 = document.getElementById('preg24').value; //PREGUNTA ABIERTA 
-    var preg25 = document.getElementById('preg25').value; //PREGUNTA ABIERTA 
-
-
-
-    var preg26 = $('input[name=preg26]:checked').val(); //PREGUNTAS RADIO 
-    if ($('input[name=preg26]:checked').val() == 'OTROS') {
-
-        preg14 = document.getElementById('otro').value;
-
-    }
-
-    var preg27 = document.getElementById('preg27').value; //PREGUNTA ABIERTA (comentarios)
+    var preg18 = $('input[name=pregPEN]:checked').val(); //    -
+    var preg19 = $('input[name=preg18]:checked').val(); //   -
+    var preg20 = $('input[name=preg19]:checked').val(); //  -
+    var preg21 = $('input[name=preg20]:checked').val(); // -
+    var preg22 = $('input[name=pregPEN2]:checked').val(); //-
+    var preg23 = $('input[name=preg21]:checked').val(); //-
+    var preg24 = $('input[name=preg22]:checked').val(); //-
+    var preg25 = $('input[name=preg23]:checked').val(); //-
+    var preg26 = $('input[name=pregPEN3]:checked').val(); //-
+    var preg27 = document.getElementById('preg24').value; //PREGUNTA ABIERTA 
+    var preg28 = document.getElementById('preg25').value;
+    var preg29 = $('input[name=preg26]:checked').val(); //-
+    var preg30 = document.getElementById('preg27').value;
+     //PREGUNTA ABIERTA 
 
     var id_instruct = document.getElementById('codigo').value; //PREGUNTA ABIERTA (comentarios)
 
@@ -126,10 +119,10 @@ function evaluar() {
 
 
 
-    datos = 'idcursoen=' + idcursoen + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&preg8=' + preg8 + '&preg9=' + preg9 + '&preg10=' + preg10 + '&preg11=' + preg11 + '&preg12=' + preg12 + '&preg13=' + preg13 + '&preg14=' + preg14 + '&preg15=' + preg15 + '&preg16=' + preg16 + '&preg17=' + preg17 + '&preg18=' + preg18 + '&preg19=' + preg19 + '&preg20=' + preg20 + '&preg21=' + preg21 + '&preg22=' + preg22 + '&preg23=' + preg23 + '&preg24=' + preg24 + '&preg25=' + preg25 + '&preg26=' + preg26 + '&preg27=' + preg27 + '&id_instruct=' + id_instruct + '&opcion=agreaccion';
+    datos = 'idcursoen=' + idcursoen + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&preg8=' + preg8 + '&preg9=' + preg9 + '&preg10=' + preg10 + '&preg11=' + preg11 + '&preg12=' + preg12 + '&preg13=' + preg13 + '&preg14=' + preg14 + '&preg15=' + preg15 + '&preg16=' + preg16 + '&preg17=' + preg17 + '&preg18=' + preg18 + '&preg19=' + preg19 + '&preg20=' + preg20 + '&preg21=' + preg21 + '&preg22=' + preg22 + '&preg23=' + preg23 + '&preg24=' + preg24 + '&preg25=' + preg25 + '&preg26=' + preg26 + '&preg27=' + preg27+ '&preg28=' + preg28 + '&preg29=' + preg29 + '&preg30=' + preg30 + '&id_instruct=' + id_instruct + '&opcion=agreaccion';
 
 
-    if (idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || !document.querySelector('input[name=preg13]:checked') || !document.querySelector('input[name=preg14]:checked') || !document.querySelector('input[name=preg15]:checked') || !document.querySelector('input[name=preg16]:checked') || !document.querySelector('input[name=preg17]:checked') || !document.querySelector('input[name=preg18]:checked') || !document.querySelector('input[name=preg19]:checked') || !document.querySelector('input[name=preg20]:checked') || !document.querySelector('input[name=preg21]:checked') || !document.querySelector('input[name=preg22]:checked') || !document.querySelector('input[name=preg23]:checked') || preg24 == '' || preg25 == '' || !document.querySelector('input[name=preg26]:checked') || preg27 == '') {
+    if (idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || !document.querySelector('input[name=preg13]:checked') || !document.querySelector('input[name=preg14]:checked') || !document.querySelector('input[name=preg15]:checked') || !document.querySelector('input[name=preg16]:checked') || !document.querySelector('input[name=preg17]:checked') || !document.querySelector('input[name=preg18]:checked') || !document.querySelector('input[name=preg19]:checked') || !document.querySelector('input[name=preg20]:checked') || !document.querySelector('input[name=preg21]:checked') || !document.querySelector('input[name=preg22]:checked') || !document.querySelector('input[name=preg23]:checked') || !document.querySelector('input[name=pregPEN2]:checked') || !document.querySelector('input[name=pregPEN]:checked') || !document.querySelector('input[name=pregPEN3]:checked') || preg27 == '' || preg28 == '' || !document.querySelector('input[name=pregPEN]:checked') || preg30 == '') {
 
         if (!document.querySelector('input[name=preg1]:checked')) { $('#span1').show('toggle'); } else { $('#span1').hide('toggle'); }
         if (!document.querySelector('input[name=preg2]:checked')) { $('#span2').show('toggle'); } else { $('#span2').hide('toggle'); }

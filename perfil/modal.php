@@ -640,7 +640,7 @@
                                     id="inscel" disabled="">
                             </div>
                             <div class="col-sm-4">
-                                <label class="label2">EXTENCIÓN</label>
+                                <label class="label2">EXTENSIÓN</label>
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta"
                                     id="insext" disabled="">
                             </div>

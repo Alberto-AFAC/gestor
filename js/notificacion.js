@@ -77,16 +77,16 @@ $.ajax({
     if(obj.data[0].VENCER==0){
         $("#ocuvncr").hide();
     }else if(obj.data[0].VENCER==1){
-    document.getElementById("notvencer").innerHTML = "" + '<a href="inspector"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCER + ' curso recurrente por vencer.</a>';        
+    document.getElementById("notvencer").innerHTML = "" + '<a href="porvencer.php"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCER + ' curso recurrente por vencer.</a>';        
     }else{
-    document.getElementById("notvencer").innerHTML = "" + '<a href="inspector"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCER + ' cursos recurrentes por vencer.</a>';        
+    document.getElementById("notvencer").innerHTML = "" + '<a href="porvencer.php"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCER + ' cursos recurrentes por vencer.</a>';        
     }
     if(obj.data[0].VENCIDO==0){
         $("#ocuvncd").hide();        
     }else if(obj.data[0].VENCIDO==1){
-    document.getElementById("notvencdo").innerHTML = "" + '<a href="inspector"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCIDO + ' curso recurrente vencido.</a>';        
+    document.getElementById("notvencdo").innerHTML = "" + '<a href="porvencer.php"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCIDO + ' curso recurrente vencido.</a>';        
     }else{
-    document.getElementById("notvencdo").innerHTML = "" + '<a href="inspector"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCIDO + ' cursos recurrentes vencidos.</a>';        
+    document.getElementById("notvencdo").innerHTML = "" + '<a href="porvencer.php"><li class="fa fa-warning text-yellow"></li> Tienes ' + obj.data[0].VENCIDO + ' cursos recurrentes vencidos.</a>';        
     }
 
 

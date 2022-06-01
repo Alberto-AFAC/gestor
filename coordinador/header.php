@@ -76,7 +76,7 @@ unset($_SESSION['consulta']);
           </a>
         </li> -->
         <li class="active">
-          <a href="inspector">
+          <a href="profile">
 
 
         <i class="glyphicon glyphicon-user"></i> <span>PERFIL</span>

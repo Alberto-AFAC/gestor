@@ -334,7 +334,7 @@ function siasistio($idperson,$conexion){
 
 function noasistio($idperson,$conexion){
 	// SELECT COUNT(*) as prtcpnts FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 OR cursos.estado = 1 GROUP by cursos.codigo
-	$query = "UPDATE cursos SET confirmar='OTROS', justifi='NO ASISTIO' WHERE id_curso='$idperson'";
+	$query = "UPDATE cursos SET confirmar='OTROS', justifi='NO ASISTIÓ' WHERE id_curso='$idperson'";
 		$resultado = mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 			return true;

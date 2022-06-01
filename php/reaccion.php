@@ -47,11 +47,14 @@ if($opcion === 'agreaccion'){
 	$preg25 = $_POST['preg25'];
 	$preg26 = $_POST['preg26'];
 	$preg27 = $_POST['preg27'];
+	$preg28 = $_POST['preg28'];
+	$preg29 = $_POST['preg29'];
+	$preg30 = $_POST['preg30'];
 	$id_instruct = $_POST['id_instruct'];
 
 
 
-	if(reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$id_instruct,$conexion)){
+	if(reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30,$id_instruct,$conexion)){
 		echo "0";
 		historia($id,$idcurso,$conexion);  
 	}else{
@@ -184,8 +187,8 @@ function historiaOJT($id,$idojt,$conexion){
 	}
 }
 //FUNCIÓN PARA REGISTRAR LA EVALUACIÓN DE REACCIÓN DEL CURSO
-function reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$id_instruct,$conexion){
-	$query="INSERT INTO reaccion VALUES(0,'$idcurso','$fechareac','$preg1','$preg2','$preg3','$preg4','$preg5','$preg6','$preg7','$preg8','$preg9','$preg10','$preg11','$preg12','$preg13','$preg14','$preg15','$preg16','$preg17','$preg18','$preg19','$preg20','$preg21','$preg22','$preg23','$preg24','$preg25','$preg26','$preg27','$id_instruct',0)";
+function reaccion($idcurso,$fechareac,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30,$id_instruct,$conexion){
+	$query="INSERT INTO reaccion VALUES(0,'$idcurso','$fechareac','$preg1','$preg2','$preg3','$preg4','$preg5','$preg6','$preg7','$preg8','$preg9','$preg10','$preg11','$preg12','$preg13','$preg14','$preg15','$preg16','$preg17','$preg18','$preg19','$preg20','$preg21','$preg22','$preg23','$preg24','$preg25','$preg26','$preg27','$preg28','$preg29','$preg30','$id_instruct',0)";
 	if(mysqli_query($conexion,$query)){
 		return true;
 	}else{
