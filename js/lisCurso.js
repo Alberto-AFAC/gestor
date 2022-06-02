@@ -873,10 +873,10 @@ function siasiste(idperson){
         data:datos
       }).done(function(respuesta){
         if (respuesta==0){
-          //alert("exito");
+         // alert("exito");
           asistmasivo();
         }else{
-            //alert("error");
+           // alert(respuesta);
         }
     });
 }
@@ -892,9 +892,9 @@ function noasiste(idpersonno){
       }).done(function(respuesta){
         if (respuesta==0){
           //alert("exito");
-          asistmasivo();
+        asistmasivo();
         }else{
-            //alert("error");
+          //  alert(respuesta);
         }
     });
 }
