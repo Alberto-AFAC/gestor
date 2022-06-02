@@ -79,138 +79,72 @@ include('header.php');
                                 }else{
                                     echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/perfil.png'
                                     alt='User profile picture'>";
-                                }
-                                    
-                                    
-                                    ?>
+                                }        
+                            ?>
 
                                 <h3 class="profile-username text-center"><?php echo $datos[1]?></h3>
 
-                                <p class="text-muted text-center">RESUMEN DE CURSOS</p>
+                                <p class="text-muted text-center">RESUMEN DE OJT PROGRMADOS</p>
 
                                 <input type="text" style="display:none;" name="f1t1" id="f1t1"
                                     value="<?php echo $datos[0]?>">
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Cursos en Proceso</b>
+                                        <b>OJT en Proceso</b>
                                         <span class="pull-right badge bg-blue">
-                                            <div id="programados"></div>
+                                            <div id="programadosOJT"></div>
                                         </span>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Cursos Completados</b>
+                                        <b>OJT Completados</b>
                                         <span class="pull-right badge bg-green">
-                                            <div id="completos"></div>
+                                            <div id="completosOJT"></div>
                                         </span>
 
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Cursos Declinados</b> <a class="pull-right">
-                                            <div id="cancelados"></div>
+                                        <b>OJT Declinados</b> <a class="pull-right">
+                                            <div id="canceladosOJT"></div>
                                         </a>
                                     </li>
-                                    <li class="list-group-item">
-                                        <b>Cursos Vencidos</b> <a class="pull-right">
-                                            <div id="vencidos"></div>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Cursos obligatorios</b> <a class="pull-right">
-                                            <div id="obligatorios"></div>
-                                        </a>
-                                    </li>
-
-
-
-                                    <li class="list-group-item">
-                                        <a href="history">
-                                            <i class="fa fa-archive"></i> <span>Agregar historial</span>
-                                            <span class="pull-right-container">
-                                                <small class="label pull-right bg-red"></small>
-                                                <small class="label pull-right bg-blue"></small>
-                                            </span>
-                                        </a>
-                                    </li>
-
                                 </ul>
-
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <!-- <b>RESUMEN DE AVANCE OJT</b> -->
+                                        <a href="resumenojt">RESUMEN DE AVANCE OJT</a>
+                                    </li>
+                                </ul>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
-
-                        <!-------------------------- About BANER DE INFORMACIÓN PERONAL SE COMETA Me Box ----------------------->
-                        <!-- <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">INFORMACIÓN PERSONAL</h3>
-                            </div>
-                            <div class="box-body">
-                                <a style="cursor: pointer;" onclick="constudios();" data-toggle='modal'
-                                    data-target='#modal-estud'>
-                                    <strong><i class="fa fa-book margin-r-5"></i>Educación</strong>
-
-                                </a>
-
-                                
-                                <p class="text-muted">
-
-                                    <?php echo $dato[4];?>
-                                </p>
-
-                                <hr>
-                                <a style="cursor: pointer;" onclick="conprofesion();" data-toggle='modal'
-                                    data-target='#modal-exprofe'>
-                                    <strong><i class="ion-briefcase margin-r-5"></i>Experiencia Laboral</strong>
-                                </a>
-
-                                <p class="text-muted"><?php echo $dato[5]; ?></p>
-
-                                <hr>
-                                <a style="cursor: pointer;" onclick="perinsp();" data-toggle='modal'
-                                    data-target='#modal-info'>
-                                    <strong><i class="ion-briefcase margin-r-5"></i>Datos</strong>
-                                </a>
-                                <p class="text-muted"><?php echo $dato[5]; ?></p>
-                                </hr>
-
-                            </div>
-                         
-                        </div> -->
-                        <!-----------------------FIN--- About BANER DE INFORMACIÓN PERONAL SE COMETA Me Box ----------------------->
                     </div>
                     <!-- /.col -->
                     <div class="col-md-9">
                         <div class="nav-tabs-custom">
-
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#activity" data-toggle="tab">Cursos por confirmar </a></li>
-                                <li><a href="#curComplet" data-toggle="tab">Cursos en proceso</a></li>
-                                <li><a href="#timeline" data-toggle="tab">Cursos completados</a></li>
-                                <li><a href="#settings" data-toggle="tab">Cursos declinados</a></li>
-                                <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li>
-                                <li><a href="#obligatorio" data-toggle="tab">Cursos obligatorios</a></li>
+                                <li class="active"><a href="#ojconfirmar" data-toggle="tab">OJT POR CONFIRMAR </a></li>
+                                <li><a href="#curComplet" data-toggle="tab">OJT EN PROCESO</a></li>
+                                <li><a href="#timeline" data-toggle="tab">OJT COMPLETADOS</a></li>
+                                <li><a href="#settings" data-toggle="tab">OJT DECLINADOS</a></li>
+                                <li><a href="#vencido" data-toggle="tab">OJT CONVOCATORIAS VENCIDAS</a></li>
+                                <!-- <li><a href="#vencido" data-toggle="tab">Cursos vencidos</a></li> -->
+                                <!-- <li><a href="#obligatorio" data-toggle="tab">Cursos obligatorios</a></li> -->
                                 <?php 
-
-if($datos[3]== 'ADMINISTRATIVO'){}else{
-
-
-
-if(isset($ojt['idiva'])&&!empty($ojt['idiva'])){
-
-if($ojt['idiva'] != ''){
-echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
-}else {
-
-}
-}else{
-
-}
-}
-?>
+                                if($datos[3]== 'ADMINISTRATIVO'){}else{
+                                    if(isset($ojt['idiva'])&&!empty($ojt['idiva'])){
+                                        if($ojt['idiva'] != ''){
+                                            echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
+                                        }else {
+                                        }
+                                    }else{
+                                    }
+                                }
+                                ?>
                             </ul>
                             <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
+                                <div class="active tab-pane" id="ojconfirmar">
                                     <!-- Post -->
 
                                     <div class="post">
@@ -222,7 +156,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                                         </div>
                                                         <div class="box-body">
                                                             <div id="refresh">
-                                                                <table style="width: 100%;" id="data-table-confirmar"
+                                                                <table style="width: 100%;" id="data-table-confirmarojt"
                                                                     class="table display table-striped table-bordered">
                                                                 </table>
                                                             </div>
@@ -243,7 +177,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                                     <div class="box-header">
                                                     </div>
                                                     <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-programado"
+                                                        <table style="width: 100%;" id="data-table-programadoojt"
                                                             class="table display table-striped table-bordered"></table>
                                                     </div>
                                                 </div>
@@ -260,7 +194,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                                     <div class="box-header">
                                                     </div>
                                                     <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-completo"
+                                                        <table style="width: 100%;" id="data-table-completoOJT"
                                                             class="table display table-striped table-bordered"></table>
                                                     </div>
                                                 </div>
@@ -278,7 +212,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                                     <div class="box-header">
                                                     </div>
                                                     <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-cancelado"
+                                                        <table style="width: 100%;" id="data-table-canceladoOJT"
                                                             class="table display table-striped table-bordered"></table>
                                                     </div>
                                                 </div>
@@ -295,7 +229,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                                     <div class="box-header">
                                                     </div>
                                                     <div class="box-body">
-                                                        <table style="width: 100%;" id="data-table-vencidos"
+                                                        <table style="width: 100%;" id="data-table-vencidosOJT"
                                                             class="table display table-striped table-bordered"></table>
                                                     </div>
                                                 </div>
@@ -363,7 +297,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                 </style>
 
 
-                                <?php include('../perfil/reaccion.php');?>
+                                <?php include('../perfil/ojtreaction.php');?>
 
                                 <!-- /.tab-pane -->
                             </div>
@@ -424,6 +358,10 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
         <script type="text/javascript" src="../js/encuestadatos.js"></script>
         <?php include('../perfil/modal.php');?>
         <!-- /.tab-pane -->
+
+
+    <!-- /.content -->
+
     <!-- MODAL PARA ENTREGAR TAREA -->
     <form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
         <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"
@@ -485,7 +423,7 @@ exit;
         .
 
     </footer>
-
+    </div>
     <!--  -->
     <!-- Control Sidebar -->
     <?php include('../admin/panel.html');?>
@@ -499,14 +437,14 @@ immediately after the control sidebar -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../dist/js/adminlte.min.js"></script>
     <script src="../dist/js/demo.js"></script>
+    <script src="../js/lisCurso.js"></script>
+    <script src="../js/ojt.js"></script>
+    <script src="../js/notificacion.js"></script>
 
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <script src="../js/lisCurso.js"></script>
-
-
 
 </body>
 
 </html>
-<?php include('../perfil/cursos.php'); ?>
+<?php include('../perfil/ojtp.php'); ?>

@@ -451,6 +451,58 @@ style="background: white;border: 1px solid white;"> -->
                                 </div>
                             </div>
                     </form>
+                    <!-- MODAL DE ASITENCIA 30052022-->
+                    <form class="form-horizontal" action="" method="POST" id="avaluacion">
+                        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal fade" id="modal-asitmasiva" data-backdrop="static">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <!-----13122021------>
+                                        <div class="modal-header">
+                                            <button type="button" class="close" style="font-size: 22px"
+                                                data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                                            <p>
+                                            <h4 class="modal-title" style="text-align:center;">CONFIRMAR ASISTENCIA</h4><br>
+                                            <div class="col-sm-12">
+                                                <div id="asistenciamasiva"></div>
+                                            </div>
+                                            </p>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">
+                                                    <a href="lisCurso.php" type="button" class="btn btn-primary"
+                                                        onclick="g">ACEPTAR</a>
+                                                </div>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding error"
+                                                        id="dangerev">Error al
+                                                        Evaluar!!
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-success text-center padding exito"
+                                                        id="succeev">¡Se Evaluo
+                                                        con
+                                                        exito!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev">Falto
+                                                        Ingresar
+                                                        la Puntuación!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev1">Falto
+                                                        Ingresar la Fecha!</p>
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
 
                     <form class="form-horizontal" action="" method="POST" id="avaluacion">
                         <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

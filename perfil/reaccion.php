@@ -776,8 +776,7 @@
                                 <form name="form15" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">LA CURSO CUBRIÓ SUS
-                                                EXPECTATIVAS<span id="span15">*</span>
+                                            <h3 class="box-title">EL CURSO CUBRIÓ SUS EXPECTATIVAS<span id="span15">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
