@@ -47,7 +47,7 @@ if(!$resultado) {
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" href="../dist/css/skins/card.css">
+    <link rel="stylesheet" href="../dist/css/card.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap.min.css">
@@ -106,6 +106,7 @@ include('header.php');
                 </h1>
             </section>
             <!-- Main content -->
+            <form id="editarcons" action="" method="POST">
             <section class="content">
                 <div class="row">
                     <div class="col-md-12">
@@ -146,6 +147,8 @@ include('header.php');
             </div>
             <!-- /.content -->
         </div>
+
+        </form>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
@@ -388,38 +391,87 @@ include('header.php');
         <script>
         var dataSet = [
             <?php 
-$query = "SELECT
-*,
-DATE_FORMAT(reaccion.fechareac, '%d/%m/%Y') as reaccion
+$query = "
+SELECT
+*
+,DATE_FORMAT(reaccion.fechareac, '%d/%m/%Y') as reaccion
 FROM
 cursos
-INNER JOIN constancias ON id_persona = idinsp
+-- INNER JOIN constancias ON id_persona = idinsp
 INNER JOIN personal ON idinsp = gstIdper
 INNER JOIN reaccion ON cursos.id_curso = reaccion.id_curso
-INNER JOIN listacursos ON idmstr = listacursos.gstIdlsc 
+-- INNER JOIN listacursos ON idmstr = listacursos.gstIdlsc 
 WHERE
 proceso = 'Finalizado' 
 AND confirmar = 'CONFIRMADO' 
 AND evaluacion >= 70 
-AND listregis = 'SI' 
-AND lisasisten = 'SI' 
-AND listreportein = 'SI' 
-AND cartdescrip = 'SI' 
-AND regponde = 'SI' 
-AND infinal = 'SI' 
-AND evreaccion = 'SI'
-GROUP BY cursos.id_curso";
+GROUP BY cursos.id_curso
+";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
-      $id_curso = $data['idmstr'];
-     
+       
+       $idperson = $data['idinsp'];
+       $idmstr = $data['idmstr'];
+       $idcuro = $data['id_curso'];
+       $codigo = $data['codigo'];
+       $id_reac = $data['id_reac'];
+       $fec_reac = $data['reaccion'];
+
+       $query1 = "SELECT * FROM listacursos WHERE gstIdlsc = '$idmstr'";
+        $resultado1 = mysqli_query($conexion, $query1);
+
+        if($data1 = mysqli_fetch_assoc($resultado1)){
+            $idlist = $data1['gstIdlsc'];
+            $titulo = $data1['gstTitlo'];
+        }
+
+
+        $query2 = "SELECT * FROM constancias 
+        WHERE id_persona = $idperson
+        AND listregis = 'SI' 
+        AND lisasisten = 'SI' 
+        AND listreportein = 'SI' 
+        AND cartdescrip = 'SI' 
+        AND regponde = 'SI' 
+        AND infinal = 'SI' 
+        AND evreaccion = 'SI'
+        ";
+        $resultado2 = mysqli_query($conexion, $query2);
+
+        if($data2 = mysqli_fetch_assoc($resultado2)){
+            $constancia = $data2['id_codigocurso'];
+            $id_persona = $data2['id_persona'];
+        }else{
+            $constancia = 'SIN CONST';
+            $id_persona = 'SIN ID';
+        }
+
+
+       // $query3 = "SELECT *,DATE_FORMAT(reaccion.fechareac, '%d/%m/%Y') as reaccion FROM reaccion WHERE id_curso = '$idcuro'";
+       //  $resultado3 = mysqli_query($conexion, $query3);
+
+       //  // if($data3 = mysqli_fetch_assoc($resultado3)){
+            // $id_reac = $data['id_reac'];
+            // $fec_reac = $data['reaccion'];
+        // }else{
+        //     $id_reac = 'SIN FECHA';
+        //     $fec_reac = 'NO HAY FECHA';
+
+        // }        
+       $encrypidpersona = base64_encode($id_persona);
+       $encryidlist = base64_encode($idlist);     
       ?>
 
-            ["<?php echo $data['id_reac']?>", "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
-                "<?php echo $data['gstTitlo']?>",
-                "<a href='constancia.php?data=<?php echo base64_encode($data['id']) ?>&cod=<?php echo base64_encode($data['codigo'])?> '><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' onclick='perfil(<?php echo $id_curso?>)' class='btn-info badge'>REALIZAR CORRECIÓN</span></center>",
-                "<?php echo $data['reaccion']?>"
+
+            ["<?php echo $id_reac ?>", 
+                "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
+                "<?php echo $titulo ?>",//TODO AQUI VA
+                "<?php echo "<a href='constancia.php?data={$encrypidpersona}&cod={$encryidlist} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
+
+
+                "<?php echo $fec_reac ?>",
+                "<?php echo $codigo?>"
             ],
 
             <?php  } ?>
@@ -451,13 +503,21 @@ $resultado = mysqli_query($conexion, $query);
                 },
                 {
                     title: "FECHA DE GENERACIÓN"
+                },
+                {
+                    title: "FOLIO DEL CURSO"
                 }
+
             ]
         });
         </script>
-        <div class="control-sidebar-bg"></div>
+        
+        
+    <div class="control-sidebar-bg"></div>
     </div>
-    <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel"
+
+    
+    <!-- <div class="modal fade" id="correcionModal" tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel"
         aria-hidden="true">
 
         <div class="modal-dialog" role="document">
@@ -490,9 +550,43 @@ $resultado = mysqli_query($conexion, $query);
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- page script -->
+
+    <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A PARTICIPANTES-->
+    <form id="editarcons" action="" method="POST">
+                <div class="modal fade" id='correcionModal' tabindex="-1" role="dialog" aria-labelledby="correcionModalLabel" aria-hidden="true">  
+                    <div class="modal2" style="width:750px;">
+                        <div id="success-icon">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                            <div>
+                                <img class="img-circle1" src="../dist/img/lapiz.png">
+                            </div>
+                        </div>
+
+                        <h5 style="font-size: 20px;" class="modal-title" id="correcionModalLabel">CORRECIÓN DE CONSTANCIAS Y CERTIFICADOS</h5>
+                        <div class="modal-body" style="text-align:left; font-size:16px;">
+                        <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="!">!</span> SI REQUIERE HACER UN CAMBIO EN EL <u>NOMBRE DEL PARTICIPANTE</u> ES IMPORTANTE QUE ACUDA AL AREA DE <span style="font-weight: bold;">RECURSOS HUMANOS.</span><br><br>
+                        <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="!">!</span> TOME EN CUENTA QUE EL SISTEMA AUTOMATIZA LOS DATOS EN LA GENERACIÓN DE LA CONSTANCIA Y/O CERTIFICADOS POR LO QUE UNICAMENTE PUEDE REALIZAR CAMBIOS EN EL TEMARIO.<br><br>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="table-responsive">
+                                   <div id="temariotab"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+                               
+            </form>
+    <!-- page script -->
+
 
 </body>
 
@@ -522,4 +616,27 @@ function perfil(id) {
         $("#temariotab").html(html);
     })
 }
+
+
+function visualcon(idcur){
+    // alert(idcur);
+    var curso_id=idcur
+    //alert(curso_id);
+    
+    var datos= 'curso_id=' + curso_id + '&opcion=descarga';
+   // alert(datos);
+    $.ajax({
+        type:'POST',
+        url: '../php/visulcons.php',
+        data:datos
+    }).done(function(respuesta) {
+        if (respuesta==0){
+           // alert("funciono bien");
+
+        }else{
+            //alert("no funciona suerte");
+        }
+    })
+}
+
 </script>
