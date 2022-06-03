@@ -6,7 +6,7 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE	gstCargo = 'INSTRUCTOR' OR 	gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE  gstCargo = 'INSTRUCTOR' OR  gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
 $inspector = mysqli_query($conexion,$sql);
 
 ?>
@@ -73,10 +73,6 @@ $inspector = mysqli_query($conexion,$sql);
     .a-alert:visited {
         color: white;
     }
-
-    
-
-    
     </style>
 </head>
 
@@ -455,7 +451,7 @@ style="background: white;border: 1px solid white;"> -->
                                 </div>
                             </div>
                     </form>
-                     <!-- MODAL DE ASITENCIA 30052022-->
+                    <!-- MODAL DE ASITENCIA 30052022-->
                     <form class="form-horizontal" action="" method="POST" id="avaluacion">
                         <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                             <div class="modal fade" id="modal-asitmasiva" data-backdrop="static">
@@ -565,6 +561,7 @@ style="background: white;border: 1px solid white;"> -->
             <!-- /.content -->
         </div>
 
+        <!-- inicio de el check list para generar un certificado -->
         <!-- inicio de el check list para generar un certificado -->
         <form class="form-horizontal" action="" method="POST" id="acreditacion">
             <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -760,8 +757,10 @@ $("#lisCurso").show();
 
 $(document).ready(function() {
     $.fn.dataTableExt.errMode = 'ignore';  
-    var table = $('#example').DataTable({
 
+// $valor = "<a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>";
+
+    var table = $('#example').DataTable({
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -773,7 +772,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a>"
 
         }]
     });
@@ -847,7 +846,7 @@ $(document).ready(function() {
                     $("#idperonc").val(d[1]);
                     $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
-                
+
                     $("#Dtall #gstTitlo").val(d[1]);
                     $("#Dtall #gstTipo").val(d[2]);
                     $("#Dtall #gstPrfil").val(d[3]);
@@ -949,7 +948,7 @@ function idcurso(codigo) {
 
 function id_cursos(idp) {
 //alert(idp);
-    $.ajax({
+$.ajax({
         url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {

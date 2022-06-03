@@ -6,7 +6,7 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE	gstCargo = 'INSTRUCTOR' OR 	gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo FROM personal WHERE gstCargo != 'INSTRUCTOR' AND estado = 0 || estado = 0 ";
 $inspector = mysqli_query($conexion,$sql);
 
 ?>
@@ -49,7 +49,6 @@ $inspector = mysqli_query($conexion,$sql);
     <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
 
-
     <style>
     #data-table-cursosProgramados input {
         width: 80% !important;
@@ -73,10 +72,6 @@ $inspector = mysqli_query($conexion,$sql);
     .a-alert:visited {
         color: white;
     }
-
-    
-
-    
     </style>
 </head>
 
@@ -142,14 +137,14 @@ $inspector = mysqli_query($conexion,$sql);
 
 
 
+
                             <div class="modal fade" id="modal-participnt">
                                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel">
                                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                                         <div class="modal-content">
-
                                             <div class="modal-header">
-                                                <button type="button" onclick="location.href='lisCurso'" class="close"
+                                                <button type="button" onclick="location.href='pendientes'" class="close"
                                                     data-dismiss="modal" aria-label="Close"><span
                                                         aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
@@ -159,9 +154,6 @@ $inspector = mysqli_query($conexion,$sql);
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <!-- /.tab-content
 </div>
 <!- /.nav-tabs-custom -->
@@ -179,7 +171,7 @@ $inspector = mysqli_query($conexion,$sql);
                                         <h4 class="modal-title">CANCELAR CURSO </h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="hidden" name="liga" id="liga" value="lisCurso">
+                                        <input type="hidden" name="liga" id="liga" value="pendientes">
                                         <input type="hidden" name="codigos" id="codigos">
                                         <div class="form-group">
                                             <div class="col-sm-12">
@@ -400,15 +392,15 @@ style="background: white;border: 1px solid white;"> -->
                             </div>
                     </form>
 
+
+
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
                     <form class="form-horizontal" action="" method="POST" id="avaluacion">
                         <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                             <div class="modal fade" id="modal-masiva">
                                 <div class="modal-dialog modal-lg">
-                                    <div class="modal-content"
-                                        style="width:1100px; display: block; padding: 0; margin: 0;">
-                                        <!-----13122021------>
+                                    <div class="modal-content" style="width: 1100px;">
                                         <div class="modal-header">
                                             <button type="button" class="close" style="font-size: 22px"
                                                 data-dismiss="modal" aria-label="Close">
@@ -426,58 +418,6 @@ style="background: white;border: 1px solid white;"> -->
                                                 <div class="col-sm-5">
                                                     <button type="button" class="btn btn-primary"
                                                         onclick="generar()">ACEPTAR</button>
-                                                </div>
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding error"
-                                                        id="dangerev">Error al
-                                                        Evaluar!!
-                                                </b>
-                                                <b>
-                                                    <p class="alert alert-success text-center padding exito"
-                                                        id="succeev">¡Se Evaluo
-                                                        con
-                                                        exito!</p>
-                                                </b>
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding aviso"
-                                                        id="emptyev">Falto
-                                                        Ingresar
-                                                        la Puntuación!</p>
-                                                </b>
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding aviso"
-                                                        id="emptyev1">Falto
-                                                        Ingresar la Fecha!</p>
-                                                </b>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                     <!-- MODAL DE ASITENCIA 30052022-->
-                    <form class="form-horizontal" action="" method="POST" id="avaluacion">
-                        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                            <div class="modal fade" id="modal-asitmasiva" data-backdrop="static">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <!-----13122021------>
-                                        <div class="modal-header">
-                                            <button type="button" class="close" style="font-size: 22px"
-                                                data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-                                            <p>
-                                            <h4 class="modal-title" style="text-align:center;">CONFIRMAR ASISTENCIA</h4><br>
-                                            <div class="col-sm-12">
-                                                <div id="asistenciamasiva"></div>
-                                            </div>
-                                            </p>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <div class="col-sm-5">
-                                                    <a href="lisCurso.php" type="button" class="btn btn-primary"
-                                                        onclick="g">ACEPTAR</a>
                                                 </div>
                                                 <b>
                                                     <p class="alert alert-warning text-center padding error"
@@ -565,6 +505,7 @@ style="background: white;border: 1px solid white;"> -->
             <!-- /.content -->
         </div>
 
+        <!-- inicio de el check list para generar un certificado -->
         <!-- inicio de el check list para generar un certificado -->
         <form class="form-horizontal" action="" method="POST" id="acreditacion">
             <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -738,9 +679,8 @@ exit;
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-    </script>
     <script src="../js/global.js"></script>
+
 </body>
 
 </html>
@@ -755,11 +695,9 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
-
-$("#lisCurso").show();
-
+$("#pendientes").show();
 $(document).ready(function() {
-    $.fn.dataTableExt.errMode = 'ignore';  
+    $.fn.dataTableExt.errMode = 'ignore';
     var table = $('#example').DataTable({
 
         "language": {
@@ -769,11 +707,11 @@ $(document).ready(function() {
         "order": [
             [7, "DESC"]
         ],
-        "ajax": "../php/cursosProgra.php",
+        "ajax": "../php/cursosPendnt.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a>"
 
         }]
     });
@@ -810,8 +748,8 @@ $(document).ready(function() {
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-            
-            $("#lisCurso").show();
+
+            $("#pendientes").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
@@ -847,7 +785,7 @@ $(document).ready(function() {
                     $("#idperonc").val(d[1]);
                     $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
-                
+
                     $("#Dtall #gstTitlo").val(d[1]);
                     $("#Dtall #gstTipo").val(d[2]);
                     $("#Dtall #gstPrfil").val(d[3]);
@@ -876,7 +814,6 @@ $(document).ready(function() {
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
                     $("#Dtall #codigoIDCuro").val(d[15]);
-
                     codigo = d[15];
 
                     idcurso(codigo);
@@ -885,10 +822,6 @@ $(document).ready(function() {
                         $("#editcurs").hide();
                         $("#notiocu").hide();
                         $("#notiocus").hide();
-                        $("#ocubotn").hide();
-                        document.getElementById('modalMost').disabled = false;  
-                        document.getElementById('allselect').disabled = true; 
-
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
@@ -924,9 +857,6 @@ function idcurso(codigo) {
     var id = codigo
 
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
-        "order": [
-            [3, "asc"]
-        ],
         "ajax": {
             "url": "../php/cursosProgramados.php",
             "type": "GET",
@@ -948,7 +878,7 @@ function idcurso(codigo) {
 
 
 function id_cursos(idp) {
-//alert(idp);
+    //alert(idp);
     $.ajax({
         url: '../php/conscursospro.php',
         type: 'POST'
@@ -976,10 +906,10 @@ function id_cursos(idp) {
                 if (toma3 == 'OTROS') {
                     document.getElementById('otrosd1').style.display = '';
                     document.getElementById('declinpdf1').style.display = 'none';
-                }else if(toma3 == 'TRABAJO') {
+                } else if (toma3 == 'TRABAJO') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
-                }else if (toma3 == 'ENFERMEDAD') {
+                } else if (toma3 == 'ENFERMEDAD') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
                 }
@@ -1006,7 +936,6 @@ function detalles(tbody, table) {
 
     });
 }
-
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>

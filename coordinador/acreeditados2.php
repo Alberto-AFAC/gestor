@@ -6,8 +6,10 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE	gstCargo = 'INSTRUCTOR' OR 	gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE  gstCargo = 'INSTRUCTOR' OR  gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
 $inspector = mysqli_query($conexion,$sql);
+
+
 
 ?>
 <html>
@@ -49,7 +51,6 @@ $inspector = mysqli_query($conexion,$sql);
     <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
 
-
     <style>
     #data-table-cursosProgramados input {
         width: 80% !important;
@@ -73,10 +74,6 @@ $inspector = mysqli_query($conexion,$sql);
     .a-alert:visited {
         color: white;
     }
-
-    
-
-    
     </style>
 </head>
 
@@ -142,26 +139,90 @@ $inspector = mysqli_query($conexion,$sql);
 
 
 
+
                             <div class="modal fade" id="modal-participnt">
                                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel">
                                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                                         <div class="modal-content">
-
                                             <div class="modal-header">
-                                                <button type="button" onclick="location.href='lisCurso'" class="close"
-                                                    data-dismiss="modal" aria-label="Close"><span
+                                                <button type="button" onclick="location.href='acreeditados'"
+                                                    class="close" data-dismiss="modal" aria-label="Close"><span
                                                         aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title">AGREGAR PARTICIPANTE</h4>
                                             </div>
-                                            <?php include ('../php/modalpart.php')?>
+                                            <div class="modal-body">
+                                                <form class="form-horizontal" id="Prtcpnt">
+                                                    <input type="hidden" name="acodigos" id="acodigos">
+                                                    <input type="hidden" class="form-control" id="gstIdlsc"
+                                                        name="gstIdlsc">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-6">
+                                                            <label>TÍTULO</label>
+                                                            <input type="text" onkeyup="mayus(this);"
+                                                                class="form-control" id="gstTitlo" name="gstTitlo"
+                                                                disabled="">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>INICIO</label>
+                                                            <input type="data" onkeyup="mayus(this);"
+                                                                class="form-control" id="finicio" name="finicio"
+                                                                disabled="">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label>DURACIÓN</label>
+                                                            <input type="text" onkeyup="mayus(this);"
+                                                                class="form-control" id="gstDrcin" name="gstDrcin"
+                                                                disabled="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <label>PARTICIPANTE</label>
+                                                            <select class="form-control" id="idinsp" name="idinsp"
+                                                                style="width: 100%;">
+                                                                <option value="">ELIJA PARTICIPANTE PARA ASISTIR AL
+                                                                    CURSO </option>
+                                                                <?php while($inspectors = mysqli_fetch_row($inspector)):?>
+                                                                <option value="<?php echo $inspectors[0]?>">
+                                                                    <?php echo $inspectors[1].' '.$inspectors[2].' ('.$inspectors[3].')'?>
+                                                                </option>
+                                                                <?php endwhile; ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="hrcurs" id="hrcurs">
+                                                    <input type="hidden" name="finalf" id="finalf">
+                                                    <input type="hidden" name="idcord" id="idcord">
+                                                    <input type="hidden" name="sede" id="sede">
+                                                    <input type="hidden" name="linke" id="linke">
+                                                    <input type="hidden" name="modalidad" id="modalidad">
+                                                    <input type="hidden" name="contracceso" id="contracceso">
+                                                    <input type="hidden" name="classroom" id="classroom">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-5">
+                                                            <button type="button" id="buttons" class="btn btn-info"
+                                                                onclick="agrPartc();">ACEPTAR</button>
+                                                        </div>
+                                                        <b>
+                                                            <p class="alert alert-info text-center padding error"
+                                                                id="danger">El participante ya está agregado </p>
+                                                        </b>
+                                                        <b>
+                                                            <p class="alert alert-success text-center padding exito"
+                                                                id="succe">¡Se agregó el participante con éxito!</p>
+                                                        </b>
+                                                        <b>
+                                                            <p class="alert alert-warning text-center padding aviso"
+                                                                id="empty">Elija participante </p>
+                                                        </b>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <!-- /.tab-content
 </div>
 <!- /.nav-tabs-custom -->
@@ -179,7 +240,7 @@ $inspector = mysqli_query($conexion,$sql);
                                         <h4 class="modal-title">CANCELAR CURSO </h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="hidden" name="liga" id="liga" value="lisCurso">
+                                        <input type="hidden" name="liga" id="liga" value="acreeditados">
                                         <input type="hidden" name="codigos" id="codigos">
                                         <div class="form-group">
                                             <div class="col-sm-12">
@@ -191,7 +252,7 @@ style="background: white;border: 1px solid white;"> -->
                                             </div>
                                             <br>
                                             <div class="col-sm-5">
-                                                <button id="elimina" type="button" class="btn btn-primary"
+                                                <button id="cancela" type="button" class="btn btn-primary"
                                                     onclick="canCurso()">ACEPTAR</button>
                                             </div>
                                             <b>
@@ -406,9 +467,7 @@ style="background: white;border: 1px solid white;"> -->
                         <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                             <div class="modal fade" id="modal-masiva">
                                 <div class="modal-dialog modal-lg">
-                                    <div class="modal-content"
-                                        style="width:1100px; display: block; padding: 0; margin: 0;">
-                                        <!-----13122021------>
+                                    <div class="modal-content" style="width: 1100px;">
                                         <div class="modal-header">
                                             <button type="button" class="close" style="font-size: 22px"
                                                 data-dismiss="modal" aria-label="Close">
@@ -426,58 +485,6 @@ style="background: white;border: 1px solid white;"> -->
                                                 <div class="col-sm-5">
                                                     <button type="button" class="btn btn-primary"
                                                         onclick="generar()">ACEPTAR</button>
-                                                </div>
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding error"
-                                                        id="dangerev">Error al
-                                                        Evaluar!!
-                                                </b>
-                                                <b>
-                                                    <p class="alert alert-success text-center padding exito"
-                                                        id="succeev">¡Se Evaluo
-                                                        con
-                                                        exito!</p>
-                                                </b>
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding aviso"
-                                                        id="emptyev">Falto
-                                                        Ingresar
-                                                        la Puntuación!</p>
-                                                </b>
-                                                <b>
-                                                    <p class="alert alert-warning text-center padding aviso"
-                                                        id="emptyev1">Falto
-                                                        Ingresar la Fecha!</p>
-                                                </b>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                     <!-- MODAL DE ASITENCIA 30052022-->
-                    <form class="form-horizontal" action="" method="POST" id="avaluacion">
-                        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                            <div class="modal fade" id="modal-asitmasiva" data-backdrop="static">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <!-----13122021------>
-                                        <div class="modal-header">
-                                            <button type="button" class="close" style="font-size: 22px"
-                                                data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-                                            <p>
-                                            <h4 class="modal-title" style="text-align:center;">CONFIRMAR ASISTENCIA</h4><br>
-                                            <div class="col-sm-12">
-                                                <div id="asistenciamasiva"></div>
-                                            </div>
-                                            </p>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <div class="col-sm-5">
-                                                    <a href="lisCurso.php" type="button" class="btn btn-primary"
-                                                        onclick="g">ACEPTAR</a>
                                                 </div>
                                                 <b>
                                                     <p class="alert alert-warning text-center padding error"
@@ -565,6 +572,7 @@ style="background: white;border: 1px solid white;"> -->
             <!-- /.content -->
         </div>
 
+        <!-- inicio de el check list para generar un certificado -->
         <!-- inicio de el check list para generar un certificado -->
         <form class="form-horizontal" action="" method="POST" id="acreditacion">
             <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -738,9 +746,8 @@ exit;
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-    </script>
     <script src="../js/global.js"></script>
+
 </body>
 
 </html>
@@ -755,11 +762,9 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
-
-$("#lisCurso").show();
-
+$("#acreeditados").show();
 $(document).ready(function() {
-    $.fn.dataTableExt.errMode = 'ignore';  
+    $.fn.dataTableExt.errMode = 'ignore';
     var table = $('#example').DataTable({
 
         "language": {
@@ -769,7 +774,7 @@ $(document).ready(function() {
         "order": [
             [7, "DESC"]
         ],
-        "ajax": "../php/cursosProgra.php",
+        "ajax": "../php/cursosAcred.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
@@ -807,11 +812,12 @@ $(document).ready(function() {
             url: '../php/lisCurso.php',
             type: 'POST'
         }).done(function(resp) {
+
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-            
-            $("#lisCurso").show();
+
+            $("#acreeditados").show();
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
@@ -845,9 +851,9 @@ $(document).ready(function() {
                     $("#impri #gstTitulo").val(d[1]);
 
                     $("#idperonc").val(d[1]);
-                    $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
-                
+                    $("#id_cursoc").val(d[15]);
+                    
                     $("#Dtall #gstTitlo").val(d[1]);
                     $("#Dtall #gstTipo").val(d[2]);
                     $("#Dtall #gstPrfil").val(d[3]);
@@ -876,7 +882,6 @@ $(document).ready(function() {
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
                     $("#Dtall #codigoIDCuro").val(d[15]);
-
                     codigo = d[15];
 
                     idcurso(codigo);
@@ -886,8 +891,8 @@ $(document).ready(function() {
                         $("#notiocu").hide();
                         $("#notiocus").hide();
                         $("#ocubotn").hide();
-                        document.getElementById('modalMost').disabled = false;  
-                        document.getElementById('allselect').disabled = true; 
+                        document.getElementById('modalMost').disabled = false;
+                        document.getElementById('allselect').disabled = true;
 
                     } else {
                         $("#buttonfin").show();
@@ -924,9 +929,6 @@ function idcurso(codigo) {
     var id = codigo
 
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
-        "order": [
-            [3, "asc"]
-        ],
         "ajax": {
             "url": "../php/cursosProgramados.php",
             "type": "GET",
@@ -949,7 +951,7 @@ function idcurso(codigo) {
 
 function id_cursos(idp) {
 //alert(idp);
-    $.ajax({
+$.ajax({
         url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {
@@ -999,14 +1001,43 @@ function detalles(tbody, table) {
         $("#modal-eliminar #cgstTitlo").html(data[1] + '?');
 
         if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
-            $("#elimina").show();
+            $("#cancela").show();
         } else {
-            $("#elimina").show();
+            $("#cancela").show();
         }
 
     });
 }
 
+function agrinspctor(tbody, table) {
+
+    $(tbody).on("click", "a.asiste", function() {
+        var data = table.row($(this).parents("tr")).data();
+
+        $("#Prtcpnt #gstIdlsc").val(data[15]);
+        $("#Prtcpnt #acodigos").val(data[9]);
+        $("#Prtcpnt #gstTitlo").val(data[1]);
+        $("#Prtcpnt #finicio").val(data[3]);
+        $("#Prtcpnt #gstDrcin").val(data[10]);
+
+        $("#Prtcpnt #hrcurs").val(data[17]);
+        $("#Prtcpnt #finalf").val(data[5]);
+        $("#Prtcpnt #idcord").val(data[16]);
+        $("#Prtcpnt #sede").val(data[12]);
+        $("#Prtcpnt #linke").val(data[13]);
+        $("#Prtcpnt #modalidad").val(data[14]);
+        $("#Prtcpnt #contracceso").val(data[19]);
+        $("#Prtcpnt #classroom").val(data[20]);
+
+        if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
+            $("#buttons").hide();
+        } else {
+            $("#buttons").show();
+        }
+
+
+    });
+}
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>
