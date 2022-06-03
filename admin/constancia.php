@@ -58,8 +58,6 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p class='otorga'>Por haber aprobado satisfactoriamente el curso:</p>
         <p class='nombre-Constancia'>{$con['gstTitlo']}</p> 
         <p class='nombre-grupo-max'><span style='color:black;'>Grupo:</span>{$con['codigo']}</p>
-
-
         </p><span class='p-2'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
         al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br><br>
 
