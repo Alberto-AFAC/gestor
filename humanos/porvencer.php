@@ -38,16 +38,16 @@ $inspector = mysqli_query($conexion,$sql);
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-<!-- <link rel="stylesheet" type="text/css" href="../datas/bootstrap.css"> -->
-<link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-<script type="text/javascript" async="" src="../datas/ga.js"></script>
-<script type="text/javascript" src="../datas/site.js"></script>
-<script type="text/javascript" src="../datas/dynamic.php" async=""></script>
-<script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
-<script type="text/javascript" language="javascript" src="../datas/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="../datas/dataTables.js"></script>
-<script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
-<script src="http://momentjs.com/downloads/moment.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="../datas/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <script type="text/javascript" async="" src="../datas/ga.js"></script>
+    <script type="text/javascript" src="../datas/site.js"></script>
+    <script type="text/javascript" src="../datas/dynamic.php" async=""></script>
+    <script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
+    <script type="text/javascript" language="javascript" src="../datas/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="../datas/dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
 
     <style>
     #data-table-cursosProgramados input {
@@ -101,7 +101,7 @@ $inspector = mysqli_query($conexion,$sql);
                             <div class="tab-content">
 
                                 <div class="box-body" id="listCurso">
-             
+
                                     <!-- Datatables-->
                                     <!--SEGUNDA TABLA OPTIMIZADA-->
                                     <table class="display table table-striped table-bordered dataTable" id="example"
@@ -245,515 +245,463 @@ $inspector = mysqli_query($conexion,$sql);
                                                     <!-- +'?'<input type="text" name="cgstTitlo"
 +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
 style="background: white;border: 1px solid white;"> -->
-</p>
-</div>
-<br>
-<div class="col-sm-5">
-<button id="elimina" type="button" class="btn btn-primary"
-onclick="canCurso()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error" id="dangerr">
-Error
-al cancelar curso</p>
-</b>
-<b>
-<p class="alert alert-success text-center padding exito" id="succes">¡Se
-cancelo curso con éxito !</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso" id="emptyy">
-Elija
-curso para cancelar </p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- /.modal-content -->
-</form>
-<!---------------------------------------ELIMINAR----------------------------------------->
+                                                </p>
+                                            </div>
+                                            <br>
+                                            <div class="col-sm-5">
+                                                <button id="elimina" type="button" class="btn btn-primary"
+                                                    onclick="canCurso()">ACEPTAR</button>
+                                            </div>
+                                            <b>
+                                                <p class="alert alert-warning text-center padding error" id="dangerr">
+                                                    Error
+                                                    al cancelar curso</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-success text-center padding exito" id="succes">¡Se
+                                                    cancelo curso con éxito !</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-warning text-center padding aviso" id="emptyy">
+                                                    Elija
+                                                    curso para cancelar </p>
+                                            </b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </form>
+                    <!---------------------------------------ELIMINAR----------------------------------------->
 
-<form class="form-horizontal" action="" method="POST">
-<div class="modal fade" id="eliminar-modal">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title">ELIMINAR INSPECTOR </h4>
-</div>
-<div class="modal-body">
-<!-- <input type="hidden" name="codInsp" id="codInsp"> -->
-<input type="hidden" name="idInspt" id="idInspt">
-<div class="form-group">
-<div class="col-sm-12">
-<p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR? <span id="nomInsp"></span>
-<!-- +'?'<input type="text" name="cgstTitlo"
+                    <form class="form-horizontal" action="" method="POST">
+                        <div class="modal fade" id="eliminar-modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">ELIMINAR INSPECTOR </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- <input type="hidden" name="codInsp" id="codInsp"> -->
+                                        <input type="hidden" name="idInspt" id="idInspt">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR? <span id="nomInsp"></span>
+                                                    <!-- +'?'<input type="text" name="cgstTitlo"
 +'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
 style="background: white;border: 1px solid white;"> -->
-</p>
-</div>
-<br>
-<div class="col-sm-5">
-<button id="elimina" type="button" class="btn btn-primary"
-onclick="elInspt()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error" id="dangerr1">
-Error
-al eliminar inspector</p>
-</b>
-<b>
-<p class="alert alert-success text-center padding exito" id="succes1">
-¡Se
-elimino inspector con éxito !</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso" id="emptyy1">
-Elija
-inspector para eliminar </p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- /.modal-content -->
+                                                </p>
+                                            </div>
+                                            <br>
+                                            <div class="col-sm-5">
+                                                <button id="elimina" type="button" class="btn btn-primary"
+                                                    onclick="elInspt()">ACEPTAR</button>
+                                            </div>
+                                            <b>
+                                                <p class="alert alert-warning text-center padding error" id="dangerr1">
+                                                    Error
+                                                    al eliminar inspector</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-success text-center padding exito" id="succes1">
+                                                    ¡Se
+                                                    elimino inspector con éxito !</p>
+                                            </b>
+                                            <b>
+                                                <p class="alert alert-warning text-center padding aviso" id="emptyy1">
+                                                    Elija
+                                                    inspector para eliminar </p>
+                                            </b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
 
-</form>
-<!------------EVALUACION DE CURSOS-------------------->
-<!-- FIN EVALUACIÓN CURSO -->
+                    </form>
+                    <!------------EVALUACION DE CURSOS-------------------->
+                    <!-- FIN EVALUACIÓN CURSO -->
 
-<!-- inicia la evaluación DEL INSTRUCTOR -->
-<form class="form-horizontal" action="" method="POST" id="avaluacion">
-<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalLabel">
-<div class="modal fade" id="modal-evaluar">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" style="font-size: 22px"
-data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-<p>
-<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE RESULTADOS</b></h4>
-</p>
-<input type="hidden" name="ogidoc" id="ogidoc">
-<label>PARTICIPANTE</label>
-<input type="text" disabled=""
-style="text-transform:uppercase; font-size: 14pt; display:none"
-class="form-control " id="idinsev" name="evaNombr">
-<input type="text" disabled=""
-style="text-transform:uppercase; font-size: 14pt" class="form-control"
-id="evaNombr" name="evaNombr">
-</div>
-<div class="modal-body">
-<div class="box-tools pull-right">
-<button type="button" class="btn btn-box-tool" data-widget="collapse">
-<a href='javascript:openEditeva()' id="abrirev"
-style="font-size:22px"> <i class="fa fa-edit"></i> </a>
-<a href='javascript:cerrarEditeva()' id="cerrareval"
-style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
-</a>
-</button>
-</div>
-<div class="form-group">
-<div class="col-sm-2">
-<label>FOLIO:</label>
-<input type="text" name="id_curso" id="id_curso"
-style="text-transform:uppercase;" class="form-control disabled"
-disabled="">
-</div>
-<div class="col-sm-12">
-<label>CURSO:</label>
-<input type="text" name="idperon" id="idperon"
-style="text-transform:uppercase;" class="form-control disabled"
-disabled="">
-</div>
-<div class="col-sm-12">
-<label>FECHA DE LA EVALUACIÓN:</label>
-<input type="date" style="text-transform:uppercase;"
-class="form-control disabled" disabled="" id='fechaev'>
+                    <!-- inicia la evaluación DEL INSTRUCTOR -->
+                    <form class="form-horizontal" action="" method="POST" id="avaluacion">
+                        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel">
+                            <div class="modal fade" id="modal-evaluar">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" style="font-size: 22px"
+                                                data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                                            <p>
+                                            <h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE
+                                                    RESULTADOS</b></h4>
+                                            </p>
+                                            <input type="hidden" name="ogidoc" id="ogidoc">
+                                            <label>PARTICIPANTE</label>
+                                            <input type="text" disabled=""
+                                                style="text-transform:uppercase; font-size: 14pt; display:none"
+                                                class="form-control " id="idinsev" name="evaNombr">
+                                            <input type="text" disabled=""
+                                                style="text-transform:uppercase; font-size: 14pt" class="form-control"
+                                                id="evaNombr" name="evaNombr">
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <a href='javascript:openEditeva()' id="abrirev"
+                                                        style="font-size:22px"> <i class="fa fa-edit"></i> </a>
+                                                    <a href='javascript:cerrarEditeva()' id="cerrareval"
+                                                        style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
+                                                    </a>
+                                                </button>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-2">
+                                                    <label>FOLIO:</label>
+                                                    <input type="text" name="id_curso" id="id_curso"
+                                                        style="text-transform:uppercase;" class="form-control disabled"
+                                                        disabled="">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <label>CURSO:</label>
+                                                    <input type="text" name="idperon" id="idperon"
+                                                        style="text-transform:uppercase;" class="form-control disabled"
+                                                        disabled="">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <label>FECHA DE LA EVALUACIÓN:</label>
+                                                    <input type="date" style="text-transform:uppercase;"
+                                                        class="form-control disabled" disabled="" id='fechaev'>
 
-</div>
-<div class="col-sm-12">
-<table class="content-table">
-<thead>
-<tr>
-<th>RESULTADOS</th>
-<th>ESTATUS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<!-- TODO -->
-<td><input type="number"
-title="el numero no debe ser superior a 100"
-name="cantidad" min="0" max="99999" maxlength="3"
-style="text-transform:uppercase;"
-class="evaluacion form-control disabled" disabled=""
-id='validoev' onchange="cambiartexto()"></td>
-<td><span class='label label-primary'
-style="font-size:18px;"
-id='PE'>PENDIENTE</span><span
-class='label label-success'
-style="font-size:18px; display:none"
-id='SIe'>APROBADO</span><span
-class='label label-danger'
-style="font-size:18px; display:none"
-id='NOE'>REPROBADO</span>
-</td>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <table class="content-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>RESULTADOS</th>
+                                                                <th>ESTATUS</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <!-- TODO -->
+                                                                <td><input type="number"
+                                                                        title="el numero no debe ser superior a 100"
+                                                                        name="cantidad" min="0" max="99999"
+                                                                        maxlength="3" style="text-transform:uppercase;"
+                                                                        class="evaluacion form-control disabled"
+                                                                        disabled="" id='validoev'
+                                                                        onchange="cambiartexto()"></td>
+                                                                <td><span class='label label-primary'
+                                                                        style="font-size:18px;"
+                                                                        id='PE'>PENDIENTE</span><span
+                                                                        class='label label-success'
+                                                                        style="font-size:18px; display:none"
+                                                                        id='SIe'>APROBADO</span><span
+                                                                        class='label label-danger'
+                                                                        style="font-size:18px; display:none"
+                                                                        id='NOE'>REPROBADO</span>
+                                                                </td>
 
-</tr>
-</tbody>
-</table>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
 
-</div>
+                                                </div>
 
-<div class="col-sm-12">
-<textarea class="col-sm-12" name="comentarios" id="comeneva"
-rows="4" cols="10" onkeyup="mayus(this);"
-style="font-size: 14px; border-radius: 5px;"
-placeholder="Comentarios Adicionales" disabled=""></textarea>
-</div>
-</div>
+                                                <div class="col-sm-12">
+                                                    <textarea class="col-sm-12" name="comentarios" id="comeneva"
+                                                        rows="4" cols="10" onkeyup="mayus(this);"
+                                                        style="font-size: 14px; border-radius: 5px;"
+                                                        placeholder="Comentarios Adicionales" disabled=""></textarea>
+                                                </div>
+                                            </div>
 
-<div class="form-group">
-<div class="col-sm-5">
-<button type="button" class="btn btn-primary"
-onclick="cerrareval()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error"
-id="dangerev">Error al
-Evaluar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito"
-id="succeev">¡Se Evaluo
-con
-exito!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev">Falto
-Ingresar
-la Puntuación!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev1">Falto
-Ingresar la Fecha!</p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-</form>
+                                            <div class="form-group">
+                                                <div class="col-sm-5">
+                                                    <button type="button" class="btn btn-primary"
+                                                        onclick="cerrareval()">ACEPTAR</button>
+                                                </div>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding error"
+                                                        id="dangerev">Error al
+                                                        Evaluar!!
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-success text-center padding exito"
+                                                        id="succeev">¡Se Evaluo
+                                                        con
+                                                        exito!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev">Falto
+                                                        Ingresar
+                                                        la Puntuación!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev1">Falto
+                                                        Ingresar la Fecha!</p>
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<form class="form-horizontal" action="" method="POST" id="avaluacion">
-<div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<div class="modal fade" id="modal-masiva">
-<div class="modal-dialog modal-lg">
-<div class="modal-content" style="width: 1100px;">
-<div class="modal-header">
-<button type="button" class="close" style="font-size: 22px"
-data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-<p>
-<h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS DE PARTICIPANTES</h4><br>
-<div class="col-sm-12">
-<div id="generacion"></div>
-</div>
-</p>
-</div>
-<div class="modal-body">
-<div class="form-group">
-<div class="col-sm-5">
-<button type="button" class="btn btn-primary"
-onclick="generar()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error"
-id="dangerev">Error al
-Evaluar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito"
-id="succeev">¡Se Evaluo
-con
-exito!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev">Falto
-Ingresar
-la Puntuación!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev1">Falto
-Ingresar la Fecha!</p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-</form>
+                    <form class="form-horizontal" action="" method="POST" id="avaluacion">
+                        <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal fade" id="modal-masiva">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content" style="width: 1100px;">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" style="font-size: 22px"
+                                                data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                                            <p>
+                                            <h4 class="modal-title" style="text-align:center;">GENERACIÓN DE CONSTANCIAS
+                                                DE PARTICIPANTES</h4><br>
+                                            <div class="col-sm-12">
+                                                <div id="generacion"></div>
+                                            </div>
+                                            </p>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">
+                                                    <button type="button" class="btn btn-primary"
+                                                        onclick="generar()">ACEPTAR</button>
+                                                </div>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding error"
+                                                        id="dangerev">Error al
+                                                        Evaluar!!
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-success text-center padding exito"
+                                                        id="succeev">¡Se Evaluo
+                                                        con
+                                                        exito!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev">Falto
+                                                        Ingresar
+                                                        la Puntuación!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev1">Falto
+                                                        Ingresar la Fecha!</p>
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
 
-<form class="form-horizontal" action="" method="POST" id="avaluacion">
-<div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<div class="modal fade" id="modal-evalua">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" style="font-size: 22px"
-data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-<p>
-<h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE
-RESULTADOS</b></h4>
-<br>
-<div class="col-sm-12">
-<div id="evaluacion"></div>
-</div>
-</p>
-</div>
-<div class="modal-body">
-<div class="form-group">
-<div style="margin-left: 3em" class="col-sm-offset-0 col-sm-5">
-<button type="button" class="btn btn-primary"
-onclick="evalresult()">ACEPTAR</button>
-</div>
-<b>
-<p class="alert alert-danger text-center padding error"
-id="danger1">Error al
-evaluar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito"
-id="exito1">¡Se evaluo
-con
-exito!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev">Falto
-Ingresar
-la Puntuación!</p>
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso"
-id="emptyev1">Falto
-Ingresar la Fecha!</p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-</form>
-<!-- /.content -->
-</section>
-<!-- /.content -->
-</div>
+                    <form class="form-horizontal" action="" method="POST" id="avaluacion">
+                        <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal fade" id="modal-evalua">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" style="font-size: 22px"
+                                                data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                                            <p>
+                                            <h4 class="modal-title" style="text-align:center;"><b>EVALUACIÓN DE
+                                                    RESULTADOS</b></h4>
+                                            <br>
+                                            <div class="col-sm-12">
+                                                <div id="evaluacion"></div>
+                                            </div>
+                                            </p>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <div style="margin-left: 3em" class="col-sm-offset-0 col-sm-5">
+                                                    <button type="button" class="btn btn-primary"
+                                                        onclick="evalresult()">ACEPTAR</button>
+                                                </div>
+                                                <b>
+                                                    <p class="alert alert-danger text-center padding error"
+                                                        id="danger1">Error al
+                                                        evaluar!!
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-success text-center padding exito"
+                                                        id="exito1">¡Se evaluo
+                                                        con
+                                                        exito!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev">Falto
+                                                        Ingresar
+                                                        la Puntuación!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev1">Falto
+                                                        Ingresar la Fecha!</p>
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                    <!-- /.content -->
+            </section>
+            <!-- /.content -->
+        </div>
 
-<!-- inicio de el check list para generar un certificado -->
-<form class="form-horizontal" action="" method="POST" id="acreditacion">
-<div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<div class="modal fade" id="modal-acreditacion">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
-aria-label="Close">
-<span aria-hidden="true" style="font-size: 22px">&times;</span></button>
-<p>
-<h4 class="modal-title" style="text-align:Center;">GENERACIÓN DE CONSTANCIAS</h4>
-</p>
-<div class="form-group">
-<div class="col-sm-2">
-<label>FOLIO:</label>
-<input type="text" name="id_cursoc" id="id_cursoc"
-style="text-transform:uppercase;" class="form-control disabled" disabled="">
-</div>
-<div class="col-sm-10">
-<label>PARTICIPANTE</label>
-<input type="text" disabled=""
-style="text-transform:uppercase; font-size: 14pt; display:none;"
-class="form-control " id="idinsevc1" name="idinsevc1">
-<input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt"
-class="form-control" id="evaNombrc" name="evaNombrc">
-</div>
-<div class="col-sm-12">
-<label>CURSO:</label>
-<input type="text" name="idperonc" id="idperonc"
-style="text-transform:uppercase;" class="form-control disabled" disabled="">
-<input type="text" disabled=""
-style="text-transform:uppercase; font-size: 14pt; display:none;"
-class="form-control " id="copnum" name="copnum">
-</div>
+        <!-- inicio de el check list para generar un certificado -->
+        <form class="form-horizontal" action="" method="POST" id="acreditacion">
+            <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal fade" id="modal-acreditacion">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" style="font-size: 22px" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                                <p>
+                                <h4 class="modal-title" style="text-align:Center;">GENERACIÓN DE CONSTANCIAS</h4>
+                                </p>
+                                <div class="form-group">
+                                    <div class="col-sm-2">
+                                        <label>FOLIO:</label>
+                                        <input type="text" name="id_cursoc" id="id_cursoc"
+                                            style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <label>PARTICIPANTE</label>
+                                        <input type="text" disabled=""
+                                            style="text-transform:uppercase; font-size: 14pt; display:none;"
+                                            class="form-control " id="idinsevc1" name="idinsevc1">
+                                        <input type="text" disabled="" style="text-transform:uppercase; font-size: 14pt"
+                                            class="form-control" id="evaNombrc" name="evaNombrc">
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label>CURSO:</label>
+                                        <input type="text" name="idperonc" id="idperonc"
+                                            style="text-transform:uppercase;" class="form-control disabled" disabled="">
+                                        <input type="text" disabled=""
+                                            style="text-transform:uppercase; font-size: 14pt; display:none;"
+                                            class="form-control " id="copnum" name="copnum">
+                                    </div>
 
-</div>
-</div>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped table-bordered dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>PARAMETROS</th>
+                                                    <th>ESTATUS</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        CONVOCATORIA Y CONFIRMACIÓN
+                                                    </td>
+                                                    <td>
 
-<div class="modal-body">
-<div class="form-group">
-<div class="col-sm-12">
-<table class="table table-striped table-bordered dataTable">
-<thead>
-<tr>
-<th>PARAMETROS</th>
-<th>ESTATUS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-CONVOCATORIA Y CONFIRMACIÓN
-</td>
-<td>
+                                                        <i class="" id="che1" disabled
+                                                            style="color:green; font-size: 16pt"></i></span>
+                                                        <!-- <i class="fa fa-exclamation" id="chep1" disabled style="color:#CD8704; font-size: 16pt"></i></span> -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        LISTA DE ASISTENCIA
+                                                    </td>
+                                                    <td>
+                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span> -->
+                                                        <i class="" id="check3c" disabled
+                                                            style="color:green; font-size: 16pt"></i></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        EVALUACIÓN POR PARTICIPANTE
+                                                    </td>
+                                                    <td>
+                                                        <i class="fa fa-check" id="che6" disabled
+                                                            style="color:green; font-size: 16pt"></i></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        EVALUACIÓN DE REACCIÓN
+                                                    </td>
+                                                    <td>
+                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span> -->
+                                                        <i class="" id="check9c" disabled
+                                                            style="color:green; font-size: 16pt"></i></span>
+                                                        <!-- <i class="fa fa-check" id="che91" disabled style="color:green; font-size: 16pt; display:none;"></i></span>         -->
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
-<i class="" id="che1" disabled
-style="color:green; font-size: 16pt"></i></span>
-<!-- <i class="fa fa-exclamation" id="chep1" disabled style="color:#CD8704; font-size: 16pt"></i></span> -->
-</td>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <button type="button" id="guaacredit" onclick="vergenercerf()"
+                                            class="btn btn-info altaboton"
+                                            style="font-size:16px; width:110px; height:35px; display:none;">ACEPTAR</button>
+                                        <button type="button" id="actacredit" onclick="" class="btn btn-info altaboton"
+                                            style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
+                                    </div>
+                                    <b>
+                                        <p class="alert alert-warning text-center padding error" id="cerdangerev">Error
+                                            al
+                                            Acreditar!!
+                                    </b>
+                                    <b>
+                                        <p class="alert alert-warning text-center padding aviso" id="ceravisos">Error al
+                                            Acreditar!!
+                                    </b>
+                                    <b>
+                                        <p class="alert alert-success text-center padding exito" id="cersucceev">¡Se
+                                            Acredito con
+                                            exito!</p>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+        <!-- /.content -->
 
-</tr>
-<tr>
-<td>
-LISTA DE REGISTRO
-</td>
-<td>
-<!-- <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check2c" disabled
-style="color:green; font-size: 16pt"></i></span>
-</td>
+        </section>
+        <!-- /.content -->
+    </div>
 
-</tr>
-<tr>
-<td>
-LISTA DE ASISTENCIA
-</td>
-<td>
-<!-- <input style="width:16px; height:16px;" value="SI" id="check3c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check3c" disabled
-style="color:green; font-size: 16pt"></i></span>
-</td>
-</tr>
-<tr>
-<td>
-REPORTES DE INCIDENCIAS
-</td>
-<td>
-<!-- <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check4c" disabled
-style="color:green; font-size: 16pt"></i></span>
-</td>
+    <!-- fin del chechk list para copletar iun certificado -->
 
-</tr>
-<tr>
-<td>
-CARTAS DESCRIPTIVAS
-</td>
-<td>
-<!-- <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check5c" disabled
-style="color:green; font-size: 16pt"></i></span>
-</td>
-
-</tr>
-<tr>
-<td>
-EVALUACIÓN POR PARTICIPANTE
-</td>
-<td>
-<i class="fa fa-check" id="che6" disabled
-style="color:green; font-size: 16pt"></i></span>
-</td>
-</tr>
-<tr>
-<td>
-REGISTRO DE PONDERACIÓN
-</td>
-<td>
-<!-- <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check7c" disabled
-style="color:green; font-size: 16pt"></i></span>
-</td>
-</tr>
-<tr>
-<td>
-INFORME FINAL
-</td>
-<td>
-<!-- <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check8c" disabled
-style="color:green; font-size: 16pt"></i></span>
-</td>
-</tr>
-<tr>
-<td>
-EVALUACIÓN DE REACCIÓN
-</td>
-<td>
-<!-- <input style="width:16px; height:16px;" value="SI" id="check9c" type="checkbox" name="check-box" /> <span></span> -->
-<i class="" id="check9c" disabled
-style="color:green; font-size: 16pt"></i></span>
-<!-- <i class="fa fa-check" id="che91" disabled style="color:green; font-size: 16pt; display:none;"></i></span>         -->
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div class="form-group">
-<div class="col-sm-5">
-<button type="button" id="guaacredit" onclick="vergenercerf()"
-class="btn btn-info altaboton"
-style="font-size:16px; width:110px; height:35px; display:none;">ACEPTAR</button>
-<button type="button" id="actacredit" onclick="" class="btn btn-info altaboton"
-style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
-</div>
-<b>
-<p class="alert alert-warning text-center padding error" id="cerdangerev">Error
-al
-Acreditar!!
-</b>
-<b>
-<p class="alert alert-warning text-center padding aviso" id="ceravisos">Error al
-Acreditar!!
-</b>
-<b>
-<p class="alert alert-success text-center padding exito" id="cersucceev">¡Se
-Acredito con
-exito!</p>
-</b>
-</div>
-</div>
-</div>
-</div>
-</div>
-</form>
-<!-- /.content -->
-
-</section>
-<!-- /.content -->
-</div>
-
-<!-- fin del chechk list para copletar iun certificado -->
-
-<!-- /.content-wrapper -->
-<footer class="main-footer">
-<div class="pull-right hidden-xs">
-<b>Version</b> <?php 
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> <?php 
 $query ="SELECT * FROM
 controlvers";
 $resultado = mysqli_query($conexion, $query);
@@ -764,12 +712,12 @@ var_dump(mysqli_error($conexion));
 exit;
 }
 ?>
-<?php echo $row['version']?>
-</div>
-<strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
-Todos los derechos Reservados DDE
-.
-</footer>
+            <?php echo $row['version']?>
+        </div>
+        <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
+        Todos los derechos Reservados DDE
+        .
+    </footer>
 
 
     <div class="control-sidebar-bg"></div>
@@ -859,7 +807,7 @@ $(document).ready(function() {
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-            
+
             $("#porvencer").show();
 
             for (i = 0; i < res.length; i++) {
@@ -894,6 +842,7 @@ $(document).ready(function() {
                     $("#impri #gstTitulo").val(d[1]);
 
                     $("#idperonc").val(d[1]);
+                    $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
 
                     $("#Dtall #gstTitlo").val(d[1]);
@@ -933,8 +882,8 @@ $(document).ready(function() {
                         $("#notiocu").hide();
                         $("#notiocus").hide();
                         $("#ocubotn").hide();
-                        document.getElementById('modalMost').disabled = false;  
-                        document.getElementById('allselect').disabled = true; 
+                        document.getElementById('modalMost').disabled = false;
+                        document.getElementById('allselect').disabled = true;
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
@@ -991,47 +940,38 @@ function idcurso(codigo) {
 
 
 function id_cursos(idp) {
-
+    //alert(idp);
     $.ajax({
-        url: '../php/curLista.php',
+        url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {
-
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
-
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_curso == idp) {
-
-
                 //DETALLES CURSOS DECLINADOS
-
                 var toma1 = "",
                     toma2 = "",
                     toma3 = "",
                     toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
-                toma2 += obj.data[i].gstApell; //PDF
-                toma3 += obj.data[i].confirmar; //PDF 
-                toma4 += obj.data[i].justifi; //PDF  
-
+                toma1 += obj.data[i].gstNombr; //NOMBRE
+                toma2 += obj.data[i].gstApell; //APELLIDO
+                toma3 += obj.data[i].confirmar; //CONFIRMAR 
+                toma4 += obj.data[i].justifi; //JUSTIFICACION  
                 $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
                 $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
                 $("#otrosd1").text(toma4); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
 
-
                 if (toma3 == 'OTROS') {
                     document.getElementById('otrosd1').style.display = '';
                     document.getElementById('declinpdf1').style.display = 'none';
-                }
-                if (toma3 == 'TRABAJO') {
+                } else if (toma3 == 'TRABAJO') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
-                }
-                if (toma3 == 'ENFERMEDAD') {
+                } else if (toma3 == 'ENFERMEDAD') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
                 }
@@ -1090,8 +1030,6 @@ function agrinspctor(tbody, table) {
 
     });
 }
-
-
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>

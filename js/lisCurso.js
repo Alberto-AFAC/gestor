@@ -294,7 +294,7 @@ function eliminar(cursos) {
 function canCurso() {
 
     var liga = document.getElementById('liga').value;
-    alert(liga);
+    //alert(liga);
     var codigos = document.getElementById('codigos').value;
 
     if (codigos == '') {
@@ -434,27 +434,21 @@ function cambiartexto() {
 
 function gencerti(cursos) {
     // var cer = cursos.split("*");
-
+    //alert(cursos);
     $.ajax({
-        url: '../php/conCurcons.php',
+        url: '../php/consconst.php',
         type: 'POST'
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-
         for (K = 0; K < res.length; K++) {
-
-            codigoC = obj.data[K].id_codigocurso.substr(2);
-
-            if (obj.data[K].gstIdper + '.' + codigoC == cursos) {
-
-                $("#evaNombrc").val(obj.data[K].gstNombr + " " + obj.data[K].gstApell); //NOMBRE COMPLETO
-                //$("#idperonc").val(obj.data[K].gstTitlo); //NOMBRE DEL CURSO
-                $("#id_cursoc").val(obj.data[K].codigo); //ID DEL CURSO
-                // $("#idinsevc1").val(cer[22]); //ID DEL LA PERSONA
-
-                //alert(obj.data[K].gstTitlo);
-
+            //codigoC = obj.data[K].id_codigocurso.substr(2);
+            if (obj.data[K].id_curso == cursos) {
+                document.getElementById("evaNombrc").value=obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO;
+               // $("#evaNombrc").val(obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO); //NOMBRE COMPLETO
+                //$("#idperonc").val(obj.data[K].NOMBRE_CURSO); //NOMBRE DEL CURSO
+                //$("#id_cursoc").val(obj.data[K].codigo); //ID DEL CURSO
+                
                 if (((obj.data[K].evaluacion) >= 80) && ((obj.data[K].evaluacion) <= 100)) {
                     document.getElementById("che6").className = "fa fa-check";
                     document.getElementById("che6").style = "color:green; font-size: 16pt";
@@ -464,7 +458,6 @@ function gencerti(cursos) {
                     document.getElementById("che6").style = "color:#CD8704; font-size: 16pt";
                     document.getElementById("guaacredit").disabled = false;
                 }
-
                 if (((obj.data[K].evaluacion) < 80) && ((obj.data[K].evaluacion) > 0)) {
                     document.getElementById("che6").className = "fa fa-times";
                     document.getElementById("che6").style = "color:#C52808; font-size: 16pt";
@@ -481,48 +474,12 @@ function gencerti(cursos) {
                     document.getElementById("che1").style = "color:#CD8704; font-size: 16pt";
                     document.getElementById("guaacredit").disabled = false;
                 }
-                if (obj.data[K].listregis == 'SI') {
-                    document.getElementById("check2c").className = "fa fa-check";
-                    document.getElementById("check2c").style = "color:green; font-size: 16pt";
-                } else {
-                    document.getElementById("check2c").className = "fa fa-clock-o";
-                    document.getElementById("check2c").style = "color:#CD8704; font-size: 16pt";
-
-                }
                 if (obj.data[K].lisasisten == 'SI') {
                     document.getElementById("check3c").className = "fa fa-check";
                     document.getElementById("check3c").style = "color:green; font-size: 16pt";
                 } else {
                     document.getElementById("check3c").className = "fa fa-clock-o";
                     document.getElementById("check3c").style = "color:#CD8704; font-size: 16pt";
-                }
-                if (obj.data[K].listreportein == 'SI') {
-                    document.getElementById("check4c").className = "fa fa-check";
-                    document.getElementById("check4c").style = "color:green; font-size: 16pt";
-                } else {
-                    document.getElementById("check4c").className = "fa fa-clock-o";
-                    document.getElementById("check4c").style = "color:#CD8704; font-size: 16pt";
-                }
-                if (obj.data[K].cartdescrip == 'SI') {
-                    document.getElementById("check5c").className = "fa fa-check";
-                    document.getElementById("check5c").style = "color:green; font-size: 16pt";
-                } else {
-                    document.getElementById("check5c").className = "fa fa-clock-o";
-                    document.getElementById("check5c").style = "color:#CD8704; font-size: 16pt";
-                }
-                if (obj.data[K].regponde == 'SI') {
-                    document.getElementById("check7c").className = "fa fa-check";
-                    document.getElementById("check7c").style = "color:green; font-size: 16pt";
-                } else {
-                    document.getElementById("check7c").className = "fa fa-clock-o";
-                    document.getElementById("check7c").style = "color:#CD8704; font-size: 16pt";
-                }
-                if (obj.data[K].infinal == 'SI') {
-                    document.getElementById("check8c").className = "fa fa-check";
-                    document.getElementById("check8c").style = "color:green; font-size: 16pt";
-                } else {
-                    document.getElementById("check8c").className = "fa fa-clock-o";
-                    document.getElementById("check8c").style = "color:#CD8704; font-size: 16pt";
                 }
                 if (obj.data[K].evreaccion == 'SI') {
                     document.getElementById("check9c").className = "fa fa-check";
@@ -873,10 +830,10 @@ function siasiste(idperson){
         data:datos
       }).done(function(respuesta){
         if (respuesta==0){
-          //alert("exito");
+         // alert("exito");
           asistmasivo();
         }else{
-            //alert("error");
+           // alert(respuesta);
         }
     });
 }
@@ -892,9 +849,9 @@ function noasiste(idpersonno){
       }).done(function(respuesta){
         if (respuesta==0){
           //alert("exito");
-          asistmasivo();
+        asistmasivo();
         }else{
-            //alert("error");
+          //  alert(respuesta);
         }
     });
 }

@@ -408,7 +408,6 @@ $inspector = mysqli_query($conexion,$sql);
 
                                 </div>
                             </div>
-
                             <div class="modal-body">
                                 <div class="form-group">
                                     <div class="col-sm-12">
@@ -430,18 +429,6 @@ $inspector = mysqli_query($conexion,$sql);
                                                             style="color:green; font-size: 16pt"></i></span>
                                                         <!-- <i class="fa fa-exclamation" id="chep1" disabled style="color:#CD8704; font-size: 16pt"></i></span> -->
                                                     </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        LISTA DE REGISTRO
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check2c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -455,52 +442,10 @@ $inspector = mysqli_query($conexion,$sql);
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        REPORTES DE INCIDENCIAS
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check4c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        CARTAS DESCRIPTIVAS
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check5c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
                                                         EVALUACIÓN POR PARTICIPANTE
                                                     </td>
                                                     <td>
                                                         <i class="fa fa-check" id="che6" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        REGISTRO DE PONDERACIÓN
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check7c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        INFORME FINAL
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check8c" disabled
                                                             style="color:green; font-size: 16pt"></i></span>
                                                     </td>
                                                 </tr>
@@ -520,7 +465,29 @@ $inspector = mysqli_query($conexion,$sql);
                                     </div>
                                 </div>
 
-                               
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <button type="button" id="guaacredit" onclick="vergenercerf()"
+                                            class="btn btn-info altaboton"
+                                            style="font-size:16px; width:110px; height:35px; display:none;">ACEPTAR</button>
+                                        <button type="button" id="actacredit" onclick="" class="btn btn-info altaboton"
+                                            style="font-size:16px; width:110px; height:35px; display:none;">ACTUALIZAR</button>
+                                    </div>
+                                    <b>
+                                        <p class="alert alert-warning text-center padding error" id="cerdangerev">Error
+                                            al
+                                            Acreditar!!
+                                    </b>
+                                    <b>
+                                        <p class="alert alert-warning text-center padding aviso" id="ceravisos">Error al
+                                            Acreditar!!
+                                    </b>
+                                    <b>
+                                        <p class="alert alert-success text-center padding exito" id="cersucceev">¡Se
+                                            Acredito con
+                                            exito!</p>
+                                    </b>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -683,6 +650,7 @@ $(document).ready(function() {
                     $("#impri #gstTitulo").val(d[1]);
 
                     $("#idperonc").val(d[1]);
+                    $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
 
                     $("#Dtall #gstTitlo").val(d[1]);
@@ -785,47 +753,38 @@ function idcurso(codigo) {
 
 
 function id_cursos(idp) {
-
-    $.ajax({
-        url: '../php/curLista.php',
+//alert(idp);
+$.ajax({
+        url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {
-
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
-
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_curso == idp) {
-
-
                 //DETALLES CURSOS DECLINADOS
-
                 var toma1 = "",
                     toma2 = "",
                     toma3 = "",
                     toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
-                toma2 += obj.data[i].gstApell; //PDF
-                toma3 += obj.data[i].confirmar; //PDF 
-                toma4 += obj.data[i].justifi; //PDF  
-
+                toma1 += obj.data[i].gstNombr; //NOMBRE
+                toma2 += obj.data[i].gstApell; //APELLIDO
+                toma3 += obj.data[i].confirmar; //CONFIRMAR 
+                toma4 += obj.data[i].justifi; //JUSTIFICACION  
                 $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
                 $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
                 $("#otrosd1").text(toma4); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
 
-
                 if (toma3 == 'OTROS') {
                     document.getElementById('otrosd1').style.display = '';
                     document.getElementById('declinpdf1').style.display = 'none';
-                }
-                if (toma3 == 'TRABAJO') {
+                }else if(toma3 == 'TRABAJO') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
-                }
-                if (toma3 == 'ENFERMEDAD') {
+                }else if (toma3 == 'ENFERMEDAD') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
                 }
