@@ -506,13 +506,41 @@
                     if (obj.data[i].codigo == folio) {
                         x++;
                         var idMast = obj.data[i].idinsp;
-                        $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
-                        html += "<tr><td>" + x +
+
+                        if (obj.data[i].idinsp == obj.data[i].idcoor && obj.data[i].idinst!=obj.data[i].idcoor){
+                            $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo + ' / ' +obj.data[i].codigo);
+                            html += "<tr><td>" + x +
                             "</td><td style='text-align: left;'><a href='persona?data=" +
                             idMast +
                             "'| data-target='#modal-estudio'>" +
-                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
+                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + ' (COORDINADOR)'+'</a>' +
                             "</td></tr>";
+                        }else if (obj.data[i].idinsp == obj.data[i].idinst && obj.data[i].idinst!=obj.data[i].idcoor){
+                            $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo + ' / ' +obj.data[i].codigo);
+                            html += "<tr><td>" + x +
+                            "</td><td style='text-align: left;'><a href='persona?data=" +
+                            idMast +
+                            "'| data-target='#modal-estudio'>" +
+                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + ' (INSTRUCTOR)'+'</a>' +
+                            "</td></tr>";
+                        }else if (obj.data[i].idinsp == obj.data[i].idcoor && obj.data[i].idinst == obj.data[i].idcoor){
+                            $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo + ' / ' +obj.data[i].codigo);
+                            html += "<tr><td>" + x +
+                            "</td><td style='text-align: left;'><a href='persona?data=" +
+                            idMast +
+                            "'| data-target='#modal-estudio'>" +
+                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + ' (COORDINADOR/INSTRUCTOR)'+'</a>' +
+                            "</td></tr>";
+                        }else{
+                            $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo + ' / ' +obj.data[i].codigo);
+                            html += "<tr><td>" + x +
+                            "</td><td style='text-align: left;'><a href='persona?data=" +
+                            idMast +
+                            "'| data-target='#modal-estudio'>" +
+                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + ' (PARTICIPANTE)'+'</a>' +
+                            "</td></tr>";
+                        }
+                        
                     }
                 }
                 html += '</table>';

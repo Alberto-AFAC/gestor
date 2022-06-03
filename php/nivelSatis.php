@@ -1,6 +1,5 @@
 <?php 
-      $query ="SELECT * FROM
-      reaccion";
+      $query ="SELECT * FROM reaccion";
          $resultado = mysqli_query($conexion, $query);
         //  VARIABLES PREGUNTA 1
          $deficiente = 0;
@@ -185,7 +184,7 @@
             $satisfactorio2++;
           }if($row[4] == 'EXCELENTE'){
             $excelentes2++;
-          }if($row[4] == 'REGULAR'){
+          }if($row[4] == 'NO APLICA'){
             $regular2++;
           }
 
@@ -200,7 +199,7 @@
             $satisfactorio3++;
           }if($row[5] == 'EXCELENTE'){
             $excelentes3++;
-          }if($row[5] == 'REGULAR'){
+          }if($row[5] == 'NO APLICA'){
             $regular3++;
           }
           // ALGORITMO PREGUNTA 4 (LOS CONOCIMIENTOS ADQUIRIDOS SON APLICABLES A TU PUESTO DE TRABAJO?)
@@ -213,7 +212,7 @@
             $satisfactorio4++;
           }if($row[6] == 'EXCELENTE'){
             $excelentes4++;
-          }if($row[6] == 'REGULAR'){
+          }if($row[6] == 'NO APLICA'){
             $regular4++;
           }
            // ALGORITMO PREGUNTA 5 (CONSIDERAS QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE?)
@@ -226,7 +225,7 @@
             $satisfactorio5++;
           }if($row[7] == 'EXCELENTE'){
             $excelentes5++;
-          }if($row[7] == 'REGULAR'){
+          }if($row[7] == 'NO APLICA'){
             $regular5++;
           }
            // ALGORITMO PREGUNTA 6 (EL CURSO CUBRIÓ TUS EXPECTATIVAS?)
@@ -239,7 +238,7 @@
             $satisfactorio6++;
           }if($row[8] == 'EXCELENTE'){
             $excelentes6++;
-          }if($row[8] == 'REGULAR'){
+          }if($row[8] == 'NO APLICA'){
             $regular6++;
           }
           // ALGORITMO PREGUNTA 7 (EL CURSO CUBRIÓ TUS EXPECTATIVAS?)
@@ -252,7 +251,7 @@
             $satisfactorio7++;
           }if($row[9] == 'EXCELENTE'){
             $excelentes7++;
-          }if($row[9] == 'REGULAR'){
+          }if($row[9] == 'NO APLICA'){
             $regular7++;
           }
           // ALGORITMO PREGUNTA 8 (EL CONTENIDO DEL CURSO AUMENTÓ TUS CONOCIMIENTOS Y COMPRENSIÓN DE LOS TEMAS REVISADOS?)
@@ -265,7 +264,7 @@
             $satisfactorio8++;
           }if($row[10] == 'EXCELENTE'){
             $excelentes8++;
-          }if($row[10] == 'REGULAR'){
+          }if($row[10] == 'NO APLICA'){
             $regular8++;
           }
           // ALGORITMO PREGUNTA 9 (EL TIEMPO PARA ENTREGAR LAS ACTIVIDADES, FUE SUFICIENTE PARA CUMPLIR CON ELLAS?)
@@ -278,7 +277,7 @@
             $satisfactorio9++;
           }if($row[11] == 'EXCELENTE'){
             $excelentes9++;
-          }if($row[11] == 'REGULAR'){
+          }if($row[11] == 'NO APLICA'){
             $regular9++;
           }
           // ALGORITMO PREGUNTA 10 (LA PRESENTACIÓN DEL CONTENIDO, FUE FÁCIL DE REVISAR?)
@@ -291,7 +290,7 @@
             $satisfactorio10++;
           }if($row[12] == 'EXCELENTE'){
             $excelentes10++;
-          }if($row[12] == 'REGULAR'){
+          }if($row[12] == 'NO APLICA'){
             $regular10++;
           }
            // ALGORITMO PREGUNTA 11 (LA EXPLICACIÓN DE LAS TAREAS, FUERON CLARAS Y SENCILLAS?)
@@ -304,7 +303,7 @@
             $satisfactorio11++;
           }if($row[13] == 'EXCELENTE'){
             $excelentes11++;
-          }if($row[13] == 'REGULAR'){
+          }if($row[13] == 'NO APLICA'){
             $regular11++;
           }
            // ALGORITMO PREGUNTA 12 (CÓMO FUE EL MATERIAL DIDÁCTICO (AUDIOVISUALES, PRESENTACIÓN, TEXTOS, ENLACES) UTILIZADO?)
@@ -317,7 +316,7 @@
             $satisfactorio12++;
           }if($row[14] == 'EXCELENTE'){
             $excelentes12++;
-          }if($row[14] == 'REGULAR'){
+          }if($row[14] == 'NO APLICA'){
             $regular12++;
           }
 
@@ -331,7 +330,7 @@
             $satisfactorio13++;
           }if($row[15] == 'EXCELENTE'){
             $excelentes13++;
-          }if($row[15] == 'REGULAR'){
+          }if($row[15] == 'NO APLICA'){
             $regular13++;
           }
           
@@ -345,7 +344,7 @@
             $satisfactorio14++;
           }if($row[16] == 'EXCELENTE'){
             $excelentes14++;
-          }if($row[16] == 'REGULAR'){
+          }if($row[16] == 'NO APLICA'){
             $regular14++;
           }
           
@@ -359,7 +358,7 @@
             $satisfactorio15++;
           }if($row[17] == 'EXCELENTE'){
             $excelentes15++;
-          }if($row[17] == 'REGULAR'){
+          }if($row[17] == 'NO APLICA'){
             $regular15++;
           }
 
@@ -373,7 +372,7 @@
             $satisfactorio16++;
           }if($row[18] == 'EXCELENTE'){
             $excelentes16++;
-          }if($row[18] == 'REGULAR'){
+          }if($row[18] == 'NO APLICA'){
             $regular16++;
           }          
 
@@ -387,7 +386,7 @@
             $satisfactorio17++;
           }if($row[19] == 'EXCELENTE'){
             $excelentes17++;
-          }if($row[19] == 'REGULAR'){
+          }if($row[19] == 'NO APLICA'){
             $regular17++;
           }
 
@@ -401,7 +400,7 @@
             $satisfactorio18++;
           }if($row[20] == 'EXCELENTE'){
             $excelentes18++;
-          }if($row[20] == 'REGULAR'){
+          }if($row[20] == 'NO APLICA'){
             $regular18++;
           }
 
@@ -415,7 +414,7 @@
             $satisfactorio19++;
           }if($row[21] == 'EXCELENTE'){
             $excelentes19++;
-          }if($row[21] == 'REGULAR'){
+          }if($row[21] == 'NO APLICA'){
             $regular19++;
           }
 
@@ -429,7 +428,7 @@
             $satisfactorio20++;
           }if($row[22] == 'EXCELENTE'){
             $excelentes20++;
-          }if($row[22] == 'REGULAR'){
+          }if($row[22] == 'NO APLICA'){
             $regular20++;
           }
 
@@ -443,7 +442,7 @@
             $satisfactorio21++;
           }if($row[23] == 'EXCELENTE'){
             $excelentes21++;
-          }if($row[23] == 'REGULAR'){
+          }if($row[23] == 'NO APLICA'){
             $regular21++;
           }
 
@@ -457,7 +456,7 @@
             $satisfactorio22++;
           }if($row[24] == 'EXCELENTE'){
             $excelentes22++;
-          }if($row[24] == 'REGULAR'){
+          }if($row[24] == 'NO APLICA'){
             $regular22++;
           }
 
@@ -471,7 +470,7 @@
             $satisfactorio23++;
           }if($row[25] == 'EXCELENTE'){
             $excelentes23++;
-          }if($row[25] == 'REGULAR'){
+          }if($row[25] == 'NO APLICA'){
             $regular23++;
           }
 
@@ -488,7 +487,7 @@
           //  $regular26++;
          // }
           
-          if($row[31] == '0'){
+          if($row[34] == '0'){
             $totalresg++;
           }
           // if($row[4] == 'DEFICIENTE'){
