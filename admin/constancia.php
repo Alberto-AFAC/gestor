@@ -105,6 +105,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 222px; width: 200px; position: absolute; left: 13%;'>
         <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+    <   p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
         </div>";
     }else if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr <= 99){
 
@@ -159,6 +160,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; left: 13%;'>
         <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
         </div>
         ";
     }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100){
@@ -219,6 +221,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; left: 13%;'>
         <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
         </div>";
     }else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99){
         echo "<div style='text-align: center;'>
@@ -278,6 +281,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; left: 13%;'>
         <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
         </div>";
     }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100){
         echo "<div style='text-align: center;'>
