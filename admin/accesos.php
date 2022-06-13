@@ -140,16 +140,16 @@
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="privilegios" id="privilegios" type="text" data-live-search="true">
                                     <option value="0" selected>SELECCIONE...</option>
-                                    <option value="SUPER_ADMIN" id="opc1">SUPER ADMINISTRADOR</option>
-                                    <option value="ADMINISTRADOR" id="opc2">ADMINISTRADOR</option>
-                                    <option value="DIRECTOR" id="opc3">DIRECTOR</option>
-                                    <option value="DIRECTOR_CIAAC" id="opc4">DIRECTOR_CIAAC</option>
-                                    <option value="ADMINISTRATIVO" id="opc5">ADMINISTRATIVO</option>
-                                    <option value="EJECUTIVO" id="opc6">EJECUTIVO</option>
-                                    <option value="INSTRUCTOR" id="inst1">INSTRUCTOR</option>
-                                    <option value="COORDINADOR" id="inst2">COORDINADOR</option>
-                                    <option value="INSPECTOR" id="opc7">INSPECTOR</option>
-                                    <option value="HUMANOS" id="opc8">HUMANOS</option>
+                                    <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                                    <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+                                    <option value="COORDINADOR">COORDINADOR</option>
+                                    <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
+                                    <option value="DIRECTOR">DIRECTOR</option>
+                                    <option value="EJECUTIVO">EJECUTIVO</option>
+                                    <option value="HUMANOS">HUMANOS</option>    
+                                    <option value="INSTRUCTOR">INSTRUCTOR</option>
+                                    <option value="INSPECTOR">INSPECTOR</option>                
+                                    <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
                                 </select>
                             </div>
                         </div>
@@ -1050,8 +1050,7 @@
         // 7 INSPECTOR
         // 8 INSTRUCTOR
         // 9 NUEVO INGRESO
-["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>",
-"<?php echo $data[2]?>", "<?php echo $data[4]?>",
+["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>","<?php echo $data[2]?>","<?php echo $data[41]?>", "<?php echo $data[4]?>",
 
 <?php if($data[4]=='SUPER_ADMIN'){ ?>       
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(1.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
@@ -1093,7 +1092,9 @@ var tableGenerarReporte = $('#data-table-instructores').DataTable({
     {
         title: "USUARIO"
     },
-
+    {
+        title: "CARGO"
+    },
     {
         title: "PRIVILEGIOS"
     },
