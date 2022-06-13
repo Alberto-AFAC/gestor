@@ -33,20 +33,21 @@ unset($_SESSION['consulta']);
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-  <script src="../dist/js/sweetalert2.all.min.js"></script>
-  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-  <link rel="stylesheet" href="../dist/css/alertas.css">
+    <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/css/alertas.css">
 
-  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -78,8 +79,9 @@ unset($_SESSION['consulta']);
                                     <!-- Post -->
                                     <div class="post"><br><br>
 
-<table style="width: 100%;" id="table-pronosticos" class="table display table-striped table-bordered table-hover table-responsive">
-<!-- 
+                                        <table style="width: 100%;" id="table-pronosticos"
+                                            class="table display table-striped table-bordered table-hover table-responsive">
+                                            <!-- 
                                         <table id="table-pronosticos" class="display" style="width:100%"> -->
                                             <thead>
                                                 <tr>
@@ -103,22 +105,11 @@ unset($_SESSION['consulta']);
                                             </thead>
                                         </table>
                                     </div>
-                                    <!-- /.post -->
-
-                                    <!-- Post -->
-
-                                    <!-- /.post -->
-
-                                    <!-- Post -->
-
-                                    <!-- /.post -->
                                 </div>
                                 <!-- /.tab-pane 2do panel-->
                                 <div class="tab-pane" id="timeline">
                                     <!-- The timeline -->
                                 </div>
-                                <!-- /.tab-pane -->
-                                <!-- /.row -->
             </section>
             <!-- /.content -->
         </div>
@@ -149,7 +140,7 @@ exit;
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
 immediately after the control sidebar -->
-<!-- jQuery 3 -->
+        <!-- jQuery 3 -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -172,8 +163,9 @@ immediately after the control sidebar -->
 <script type="text/javascript">
 $(document).ready(function() {
     $('#table-pronosticos').DataTable({
-        columnDefs:[{
-            width: 220, targets: 3,
+        columnDefs: [{
+            width: 220,
+            targets: 3,
             targets: "_all",
             sortable: false
         }],

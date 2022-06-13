@@ -9,7 +9,7 @@
     END AS pronostico,
     CASE WHEN DATE_FORMAT(NOW(), '%Y/%m/%d') < (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR)) THEN 'vigente'
              ELSE 'vencido'
-    END AS estatus
+    END AS estatus, (SELECT MAX(cursos.fcurso) FROM cursos where cursos.idmstr=c.idmstr and cursos.idinsp=c.idinsp GROUP By cursos.idmstr,cursos.idinsp ) as recursado
     from cursos c, personal p, listacursos l, categorias e
     WHERE p.gstIdper = c.idinsp
     AND c.idmstr = l.gstIdlsc
@@ -73,21 +73,42 @@ $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
 $fechaInFin = $data['fcurso'].''.$data['fechaf'];
 // $vencido = date("d-m-Y",strtotime($f1)); 
-if($data['estatus'] == 'vigente'){
+if($data['estatus'] == 'vigente' && $data['fcurso'] == $data['recursado']){
 	$estatusp = "VIGENTE";
 	$detalles = "NO APLICA";
 	$acciones ="<a disabled type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-default' data-toggle='modal' data-target='' id='modalMost'>NO APLICA</a>";
+}
 
-}else if($data['estatus'] == 'vencido'){
+if($data['estatus'] == 'vigente' && $data['recursado'] > $data['fcurso']){
+	$estatusp = "CURSADO";
+	$detalles = "NO APLICA";
+	$acciones ="NO APLICA";
+}
+
+
+if($data['estatus'] == 'vencido' && $data['fcurso'] <= $data['recursado']){
 	$estatusp = "VENCIDO";
 	$detalles = "REPROGRAMAR";
 	$acciones = "<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
+} 
 
-	
-} if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101 && "FINALIZADO" && $data['estatus']!='vencido' ) {
+if($data['estatus'] == 'vencido' && $data['recursado'] > $data['fcurso']){
+	$estatusp = "CURSADO";
+	$detalles = "SIN ACCIONES";
+	$acciones = "SIN ACCIONES";
+} 
+
+
+if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101 && "FINALIZADO" && $data['estatus']!='vencido' && $data['fcurso']<= $data['recursado']) {
 	$estatusp = "POR VENCER";
 	$acciones = "<a type='button' title='Días Hábiles' onclick='hrsDias()' class='btn btn-info' data-toggle='modal' data-target='' id='modalMost'>NOTIFICAR</a>";
 	$detalles =	"REPROGRAMAR";	
+}
+
+if ($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc']  != 101 && "FINALIZADO" && $data['estatus']!='vencido' && $data['recursado'] > $data['fcurso']) {
+	$estatusp = "CURSADO";
+	$acciones = "SIN ACCIONES";
+	$detalles =	"SIN ACCIONES";	
 }
 
 	
