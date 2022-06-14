@@ -1980,7 +1980,7 @@ $("#1").show('active');
 $("#2").show('active');
 $("#3").show('active');
 $("#4").show('active');
-$("#5").show('active');
+$("#5").hide('active');
 
 $("#primera").addClass('active tab-pane');
 $("#primera").show();
