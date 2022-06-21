@@ -1,0 +1,215 @@
+#perfil .habilitado,
+#inicio,
+#report,
+#histor{
+  display: none;
+}
+@media (max-width: 700px) {
+  .caja__trase-Login {
+    display: block;
+  }
+  .caja__trasera-register{
+    width:100%; 
+      }
+
+  .formulario__tecnico{
+    width:100%;
+    padding: 0;
+    margin-bottom: -10em; 
+  }
+  .caja__trasera{
+    float: left;
+  }
+  .formulario__registro{
+
+    margin-bottom: -40em;
+  }
+  .caja__trasera-register h3,.caja__trasera-register p{
+    display: none;
+  }
+  .caja__trase-Login h3{
+    display: none;
+  }
+
+/*menu*/
+  .wrapper ul{
+   overflow: scroll;
+   padding-top: 40em;
+  }
+  #tema h3{
+    margin-top: -30em;
+  }
+
+/*  MESA DE AYUDA USUARIO*/
+#respons{
+  display: block;
+}
+#icon-usu{
+  width:170px;
+}
+#icon-not{
+  float: right;
+  width:130px;
+}
+#inicio,
+#report,
+#histor{
+  display: block;
+}
+#equi_asig table{
+  font-size: 11px;
+  padding: 0;
+  margin: 0;
+}
+
+/*CONSULTA REPORTE E HISTORIAL*/
+#conslt{
+overflow: auto;
+}
+/*MODAL*/
+/*#modalDtll .modal-body,#modalAtndr .modal-body,#modalVal .modal-body{
+  width:46%;
+}*/
+
+#modalDtll .width,#modalAtndr .width{
+margin: 0 auto;
+width: 100%;
+font-size: 13px;
+}
+#modalDtll .width label,#modalDtll .width input,#modalAtndr .width label,#modalAtndr .width input,#modalAtndr select{
+font-size: 10px;
+}
+#modalDtll input,#modalDtll textarea, #modalAtndr input, #modalAtndr textarea, #modalAtndr select{
+  width: 340%;
+}
+#modalEvalCancelado{
+  border: 1px solid blue;
+  overflow: auto;
+}
+
+#modalEval{
+  border: 1px solid blue;
+  overflow: auto;
+}
+/*TÉCNICO*/
+.navbar-brand{
+  position: absolute;
+  max-width: 85%;
+}
+#overflow,#profile,#finalizados,#poratender,#pendiente,#cancelado,#cuadro2,#eqpos{
+  overflow: auto;
+  width:100%;
+}
+#titulo-consulta h1,
+#titulo-consulta img,
+#header img{
+display: none;
+}
+#Frmdupli table,#Frminvet table{
+  width: 100%;
+  font-size: 12px;
+}
+#perfil .inhabilitado{
+  display: none;
+}
+#perfil .habilitado{
+  display: block;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+#notifi b{
+ font-size: 12px;
+ width: 100%;
+ text-align: right;
+}
+#con_arr{
+border: 1px solid blue;
+}
+#con_abj{
+border: 1px solid red;
+}
+}
+@media (max-width: 450px){
+
+
+.caja__trasera{
+  background: transparent;
+}
+.caja__trase-Login #btn__tecnicosesion{
+  font-size: 0px;
+}
+.caja__trase-Login #btn__tecnicosesion span{
+  font-size: 18px;
+}
+.caja__trasera-register #btn__registrar{
+  font-size: 0px;  
+}
+.caja__trasera-register #btn__registrar span{
+  font-size: 18px;
+}
+
+/*.caja__trasera{
+width: 0%;
+}*/
+
+/*  .formulario__registro{
+
+    margin-bottom: -40em;
+  }
+  .caja__trasera-register h3,.caja__trasera-register p{
+    display: none;
+  }
+  .caja__trase-Login h3{
+    display: none;
+  }*/
+
+/*menu*/
+/*  .wrapper ul{
+   overflow: scroll;
+   padding-top: 40em;
+  }
+  #tema h3{
+    margin-top: -30em;
+  }*/
+
+/*  #modalDtll .modal-body,#modalAtndr .modal-body,#modalVal .modal-body{
+  width:35%;
+}*/
+#perfil .inhabilitado{
+  display: none;
+}
+#perfil .habilitado{
+  display: block;
+  font-size: 12px;
+  width: 100%;
+  text-align: right;
+}
+#header h1{
+  text-align: center;
+}
+#equi_asig{
+  overflow: auto;
+}
+/*MODAL*/
+
+#modalDtll .width,#modalAtndr .width{
+margin: 0 auto;
+width: 100%;
+font-size: 13px;
+}
+#modalDtll .width label,#modalDtll .width input,#modalAtndr .width label,#modalAtndr .width input,#modalAtndr select{
+font-size: 10px;
+}
+#modalDtll input,#modalDtll textarea, #modalAtndr input, #modalAtndr textarea, #modalAtndr select{
+  width: 340%;
+}
+.dataTables_info{
+  overflow: auto;
+  width: 100%;
+}
+#icon-usu{
+  margin-top: 1em;
+}
+/*x*/
+}

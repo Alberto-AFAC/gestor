@@ -239,7 +239,7 @@ if($f3>=$f2 && $datos2['proceso']=='PENDIENTE' || $f3>= $f2 && $datos2['proceso'
 
 
                     <script type="text/javascript" src="../js/encuestadatos.js"></script>
-                    <?php include('modal.php');?>
+                    <?php include('../perfil/modal.php');?>
                     <!-- /.tab-pane -->
                 </div>
 

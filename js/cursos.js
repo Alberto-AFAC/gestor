@@ -599,7 +599,6 @@ function actContr() {
     password = document.getElementById('password').value;
     pass = document.getElementById('pass').value;
     pass2 = document.getElementById('pass2').value;
-
     dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
 
     $.ajax({
@@ -607,6 +606,53 @@ function actContr() {
         type: 'POST',
         data: dato
     }).done(function(respuesta) {
+
+            alert(respuesta);
+
+        if (respuesta == 7) {
+            $('#echo').toggle('toggle');
+            setTimeout(function() {
+                $('#echo').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 2) {
+            $('#invalida').toggle('toggle');
+            setTimeout(function() {
+                $('#invalida').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 3) {
+            $('#falso').toggle('toggle');
+            setTimeout(function() {
+                $('#falso').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 4) {
+            $('#vacios').toggle('toggle');
+            setTimeout(function() {
+                $('#vacios').toggle('toggle');
+            }, 2000);
+        } else if (respuesta == 1) {
+            $('#error').toggle('toggle');
+            setTimeout(function() {
+                $('#error').toggle('toggle');
+            }, 2000);
+        }
+    });
+}
+
+function actContrMeay() {
+    
+    idper = document.getElementById('idper').value;
+    usu = document.getElementById('usu').value;
+    password = document.getElementById('password').value;
+    pass = document.getElementById('pass').value;
+    pass2 = document.getElementById('pass2').value;
+    dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
+
+    $.ajax({
+        url: '../../gestor/php/actContra.php',
+        type: 'POST',
+        data: dato
+    }).done(function(respuesta) {
+
         if (respuesta == 7) {
             $('#echo').toggle('toggle');
             setTimeout(function() {

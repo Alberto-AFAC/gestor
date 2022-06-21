@@ -1,6 +1,6 @@
 
 
-function administraodr(){
+function administrador(){
 $("#aaltapersonl1").show();
 $("#aaltapersonlxtrn1").show();
 $("#aaltainstrucxtrn1").show();

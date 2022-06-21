@@ -16,17 +16,17 @@ jQuery(document).on('submit', '#formtec', function(event) {
 
             if (!respuesta.error) { //*resivimos objeto json desde php para la evaluacion
                 if (respuesta.tipo == 'ADMINISTRADOR' || respuesta.tipo == 'SUPER_ADMIN') { //*primera evaluacion si se encontraron datos, si la respuesta .tipo de usuario es verdad = admin,se redirecciona
-                    location.href = 'admin/'; //*redirecionado al directorio que le toca(carpeta)
+                    location.href = 'menu/'; //*redirecionado al directorio que le toca(carpeta)
                 } else if (respuesta.tipo == 'INSPECTOR' || respuesta.tipo == 'ADMINISTRATIVO') { //*redireccion al manejador si el .tipo es manejador
-                    location.href = 'inspector/';
+                    location.href = 'menu/';
                 } else if (respuesta.tipo == 'DIRECTOR' || respuesta.tipo == 'DIRECTOR_CIAAC' || respuesta.tipo == 'EJECUTIVO') { //*redireccion al manejador si el .tipo es manejador
-                    location.href = 'director/';
+                    location.href = 'menu/';
                     // } else if (respuesta.tipo == 'INSTRUCTOR') {
                     //location.href = 'instructor/';
                 } else if (respuesta.tipo == 'COORDINADOR' || respuesta.tipo == 'INSTRUCTOR') {
-                    location.href = 'coordinador/';
+                    location.href = 'menu/';
                 } else if (respuesta.tipo == 'HUMANOS') {
-                    location.href = 'humanos/';
+                    location.href = 'menu/';
                 }
 
                 $.ajax({

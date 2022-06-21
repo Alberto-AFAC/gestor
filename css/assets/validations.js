@@ -82,7 +82,7 @@ $('document').ready(function() {
             correo: {
                 required: true,
                 validnumer: false,
-                minlength: 50
+                minlength: 5
             },
 
         },

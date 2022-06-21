@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="val/valida.js"></script>
 	<link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
 <style>
 	.swal-wide {
         width: 500px !important;
@@ -30,9 +31,6 @@
 <!--contenedor de botones-->
 <div class="contenedor__todo" >
     <div class="caja__trasera">        
-       
-
-
 
         <div class="caja__trase-Login">
             <h3>Ya tienes una cuenta?</h3>           
@@ -40,17 +38,12 @@
             Iniciar sesión</button>
         </div>
 
-
-
-     
         <div class="caja__trasera-register">
             <h3>¿Olvidaste tu contraseña? </h3>
             <p>¡Envía correo para restablecer tu contraseña!</p>
             <button id="btn__registrar"><span class="glyphicon glyphicon-envelope"></span>
             Restablecer contraseña</button>
         </div>
-
-
 
 
         </div>

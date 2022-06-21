@@ -1191,11 +1191,14 @@ function conteiner7(){
 function modificar() {
 //alert("pruebas modificacion")
 var frm = $("#Editar").serialize();
+
+alert(frm);
 $.ajax({
     url: "../php/accesos-update.php",
     type: 'POST',
     data: frm + "&opcion=modificar"
 }).done(function(respuesta) {
+
         if (respuesta == 0) {
         Swal.fire({
         type: 'success',
