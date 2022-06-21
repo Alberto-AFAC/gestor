@@ -8,7 +8,7 @@ $.ajax({
 
     var resultado = obj.data[0].instructor + obj.data[0].coordinador;
 
-    $("#persona").html(obj.data[0].persona);
+    $("#persona").html(obj.data[0].afac);
     $("#inspectores").html(obj.data[0].inspectores);
     $("#instructor").html(resultado);
     // $("#coordinador").html(obj.data[0].resultado);

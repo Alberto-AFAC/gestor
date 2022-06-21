@@ -106,6 +106,12 @@ include('header.php');
                                         </a>
                                     </li>
                                 </ul>
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <!-- <b>RESUMEN DE AVANCE OJT</b> -->
+                                        <a href="">RESUMEN DE AVANCE OJT</a>
+                                    </li>
+                                </ul>
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -122,7 +128,8 @@ include('header.php');
                                 <li><a href="#settings" data-toggle="tab">OJT DECLINADOS</a></li>
                                 <li><a href="#vencido" data-toggle="tab">OJT CONVOCATORIAS VENCIDAS</a></li>
                                <?php if($datos[3]== 'ADMINISTRATIVO'){ }else{ ?>
-                                <li><a href="#ojt_insp" data-toggle="tab">OJT</a></li>
+                                <!-- DESCOMENTAR EN CASO DE QUE EL INSTRUCTOR PUEDE SUBIR SUS DOCUMENTOS OJT
+                                <li><a href="#ojt_insp" data-toggle="tab">OJT</a></li>   -->
 
                                 <?php 
 }
@@ -290,6 +297,7 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
                                         </div>
                                     </section>
                                 </div>
+                                <?php include('../perfil/ojtreaction.php');?>
 
 
                                 <div class="tab-pane" id="ojt">
@@ -473,6 +481,7 @@ immediately after the control sidebar -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../dist/js/adminlte.min.js"></script>
     <script src="../dist/js/demo.js"></script>
+    <script src="../js/notificacion.js"></script>
 
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">

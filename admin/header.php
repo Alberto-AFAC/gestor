@@ -136,6 +136,8 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="seguimiento"><i class="fa ion-easel"></i> Seguimiento y control</a></li>
                     <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
                     <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial Constancias...</a></li>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="exporcurs"><i class="fa fa-certificate"></i>Exportar/Base Cursos</a></li>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="exporeaccion"><i class="fa fa-certificate"></i>Exportar/Evaluacion</a></li>
                 </ul>
             </li>
             <!--  -->

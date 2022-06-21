@@ -110,7 +110,8 @@ include ("../conexion/conexion.php");
                                                         <option value="TRANSVERSALES">TRANSVERSALES</option>
                                                         <option value="RECURRENTES">RECURRENTES</option>
                                                         <option value="ESPECÍFICOS">ESPECÍFICOS</option>
-                                                        <option value="FORTALECIMIENTO DEL DESEMPEÑO">FORTALECIMIENTO DEL DESEMPEÑO</option>
+                                                        <option value="FORTALECIMIENTO DEL DESEMPEÑO">FORTALECIMIENTO
+                                                            DEL DESEMPEÑO</option>
                                                         <option value="SENSIBILIZACIÓN">SENSIBILIZACIÓN</option>
                                                         <option value="CERTIFICACIÓN">CERTIFICACIÓN</option>
                                                         <option value="ACTUALIZACIÓN">ACTUALIZACIÓN</option>
@@ -150,7 +151,7 @@ include ("../conexion/conexion.php");
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label>CÓDIGO
-</label>
+                                                    </label>
                                                     <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
                                                     <input type="text" onkeyup="mayus(this);" class="form-control"
                                                         id="codigoCrso" name="codigoCrso">
@@ -286,8 +287,8 @@ include ("../conexion/conexion.php");
                                                         </div>
                                                         <div class="modal-body">
                                                             <div id="listas">
-                                                                <div><input class="form-control"
-                                                                onkeyup="mayus(this);" placeholder="Ingresa tema" type="text"
+                                                                <div><input class="form-control" onkeyup="mayus(this);"
+                                                                        placeholder="Ingresa tema" type="text"
                                                                         name="campo[]"></div><span id="add_field"
                                                                     style="color: blue;">Añadir</span>
                                                             </div>
@@ -396,7 +397,7 @@ include ("../conexion/conexion.php");
             </div>
             <strong>AFAC &copy; 2021 <a href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong>
             Todos los derechos Reservados DDE
-.
+            .
         </footer>
 
         <?php include('panel.html');?>

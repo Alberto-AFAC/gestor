@@ -61,8 +61,8 @@ $direc = mysqli_query($conexion,$sql);
 $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
 $direc1 = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
-$categs = mysqli_query($conexion,$sql);
+// $sql = "SELECT gstIdcat, gstCsigl,gstCatgr FROM categorias WHERE estado = 0 OR estado = 2";
+// $categs = mysqli_query($conexion,$sql);
 
 if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 unset($_SESSION['consulta']);
@@ -407,14 +407,16 @@ include('header.php');
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <label>*ESPECIALIDAD</label>
-                                        <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO" style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstIDCat1" name="gstIDCat1" disabled="">
+                                        <label>*PERFIL</label>
+                                        <input type="text" class="form-control" value="EXTERNO" disabled="">
+                                        <input type="hidden" onkeyup="mayus(this);" class="form-control disabled inputalta" id="gstIDCat1" name='gstIDCat1'>                                        
+                                        <!-- <select data-placeholder="SELECCIONE A QUIEN VA DIRIGIDO" style="width: 100%;color: #000" class="form-control select2" type="text" class="form-control" id="gstIDCat1" name="gstIDCat1" disabled="">
                                         <option value="" selected>SELECCIONE ESPECIALIDAD</option><br>
-                                            <?php while($cat = mysqli_fetch_row($categs)):?>
-                                        <option value="<?php echo $cat[0]?>"><?php echo $cat[1]?> -
-                                            <?php echo $cat[2]?></option>
-                                            <?php endwhile; ?>
-                                        </select>
+                                            <?php //while($cat = mysqli_fetch_row($categs)):?>
+                                        <option value="<?php //echo $cat[0]?>"><?php //echo $cat[1]?> -
+                                            <?php //echo $cat[2]?></option>
+                                            <?php// endwhile; ?>
+                                        </select> -->
                                     </div>                                                
                                 </div>
                                 <div class="form-group">
@@ -659,6 +661,7 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
 function perexterna(gstIdper) {
 
 var idpersona1 = document.getElementById('insperext').value =gstIdper;
+
         $.ajax({
             url: '../php/infopersext.php',
             type: 'POST'

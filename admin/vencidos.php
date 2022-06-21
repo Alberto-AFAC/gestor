@@ -317,6 +317,7 @@ $(document).ready(function() {
                     $("#impri #gstTitulo").val(d[1]);
 
                     $("#idperonc").val(d[1]);
+                    $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
 
                     $("#Dtall #gstTitlo").val(d[1]);
@@ -415,47 +416,38 @@ function idcurso(codigo) {
 
 
 function id_cursos(idp) {
-
-    $.ajax({
-        url: '../php/curLista.php',
+//alert(idp);
+$.ajax({
+        url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {
-
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
-
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_curso == idp) {
-
-
                 //DETALLES CURSOS DECLINADOS
-
                 var toma1 = "",
                     toma2 = "",
                     toma3 = "",
                     toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
-                toma2 += obj.data[i].gstApell; //PDF
-                toma3 += obj.data[i].confirmar; //PDF 
-                toma4 += obj.data[i].justifi; //PDF  
-
+                toma1 += obj.data[i].gstNombr; //NOMBRE
+                toma2 += obj.data[i].gstApell; //APELLIDO
+                toma3 += obj.data[i].confirmar; //CONFIRMAR 
+                toma4 += obj.data[i].justifi; //JUSTIFICACION  
                 $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
                 $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
                 $("#otrosd1").text(toma4); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
 
-
                 if (toma3 == 'OTROS') {
                     document.getElementById('otrosd1').style.display = '';
                     document.getElementById('declinpdf1').style.display = 'none';
-                }
-                if (toma3 == 'TRABAJO') {
+                }else if(toma3 == 'TRABAJO') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
-                }
-                if (toma3 == 'ENFERMEDAD') {
+                }else if (toma3 == 'ENFERMEDAD') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
                 }

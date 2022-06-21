@@ -66,11 +66,11 @@ include('header.php');
                     <div class="col-md-3">
 
                         <!-- Profile Image -->
-                        
+
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                
-                            <?php if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){
+
+                                <?php if($datos[1] == 'CARLOS ANTONIO' && $datos[2] == 'RODRIGUEZ MUNGUIA'){
                                         echo "<img class='profile-user-img img-responsive img-circle' src='../dist/img/general.jpeg'
                                         alt='User profile picture'>";
                                 }else if($datos[1] == 'JACOB' && $datos[2] == 'GONZALEZ MACIAS'){
@@ -90,16 +90,20 @@ include('header.php');
 
                                 <input type="text" style="display:none;" name="f1t1" id="f1t1"
                                     value="<?php echo $datos[0]?>">
-                                    
+
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Cursos en Proceso</b> 
-                                        <span class="pull-right badge bg-blue"><div id="programados"></div></span>
+                                        <b>Cursos en Proceso</b>
+                                        <span class="pull-right badge bg-blue">
+                                            <div id="programados"></div>
+                                        </span>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Cursos Completados</b>   
-                                        <span class="pull-right badge bg-green"><div id="completos"></div></span>
-                                        
+                                        <b>Cursos Completados</b>
+                                        <span class="pull-right badge bg-green">
+                                            <div id="completos"></div>
+                                        </span>
+
                                     </li>
                                     <li class="list-group-item">
                                         <b>Cursos Declinados</b> <a class="pull-right">
@@ -420,10 +424,6 @@ echo "<li><a href='#ojt' data-toggle='tab'>OJT</a></li>";
         <script type="text/javascript" src="../js/encuestadatos.js"></script>
         <?php include('../perfil/modal.php');?>
         <!-- /.tab-pane -->
-    </div>
-
-    <!-- /.content -->
-    </div>
     <!-- MODAL PARA ENTREGAR TAREA -->
     <form id="tareas" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
         <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="pendiente"

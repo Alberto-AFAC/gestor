@@ -24,7 +24,7 @@ if($opcion === 'registro'){
 		echo "0";
 		$proceso = 'QUITO CARGO / '.$cargo;
 		historia($id,$idperson,$proceso,$conexion);
-		modAcceso($idperson,$cargos,$conexion);	 
+		// modAcceso($idperson,$cargos,$conexion);	 
 	}else{
 		echo "1";
 	}

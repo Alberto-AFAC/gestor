@@ -301,7 +301,7 @@ $instructor = mysqli_query($conexion,$sql);
             ["<?php echo  $empleado;?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
             "<?php echo $categoria ?>","<?php echo $acceso ?>",
 
-            "<?php echo "<a href='' title='Ver detalle de cursos' onclick='perinscoord({$gstIdper})' class='btn btn-default text-red' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa-times-circle-o'></i></a> <a href='' title='Actualizar cargo' onclick='percargo({$gstIdper})' class='btn btn-default text-info' data-toggle='modal' data-target='#modal-accesoact'><i class='fa fa-exchange'></i></a>";?>"
+            "<?php echo "<a href='' title='Ver detalles' onclick='perinscoord({$gstIdper})' class='btn btn-default text-red' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa-times-circle-o'></i></a> <a href='' title='Actualizar cargos' onclick='percargo({$gstIdper})' class='btn btn-default text-info' data-toggle='modal' data-target='#modal-accesoact'><i class='fa fa-exchange'></i></a>";?>"
             ],
         <?php } ?>
         ];

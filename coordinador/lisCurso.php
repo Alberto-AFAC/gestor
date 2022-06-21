@@ -6,7 +6,7 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE	gstCargo = 'INSTRUCTOR' OR 	gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'NUEVO INGRESO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE	gstCargo = 'INSTRUCTOR' OR 	gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
 $inspector = mysqli_query($conexion,$sql);
 
 ?>
@@ -73,6 +73,10 @@ $inspector = mysqli_query($conexion,$sql);
     .a-alert:visited {
         color: white;
     }
+
+    
+
+    
     </style>
 </head>
 
@@ -451,6 +455,58 @@ style="background: white;border: 1px solid white;"> -->
                                 </div>
                             </div>
                     </form>
+                     <!-- MODAL DE ASITENCIA 30052022-->
+                    <form class="form-horizontal" action="" method="POST" id="avaluacion">
+                        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal fade" id="modal-asitmasiva" data-backdrop="static">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <!-----13122021------>
+                                        <div class="modal-header">
+                                            <button type="button" class="close" style="font-size: 22px"
+                                                data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" style="font-size: 22px">&times;</span></button>
+                                            <p>
+                                            <h4 class="modal-title" style="text-align:center;">CONFIRMAR ASISTENCIA</h4><br>
+                                            <div class="col-sm-12">
+                                                <div id="asistenciamasiva"></div>
+                                            </div>
+                                            </p>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <div class="col-sm-5">
+                                                    <a href="lisCurso.php" type="button" class="btn btn-primary"
+                                                        onclick="g">ACEPTAR</a>
+                                                </div>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding error"
+                                                        id="dangerev">Error al
+                                                        Evaluar!!
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-success text-center padding exito"
+                                                        id="succeev">¡Se Evaluo
+                                                        con
+                                                        exito!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev">Falto
+                                                        Ingresar
+                                                        la Puntuación!</p>
+                                                </b>
+                                                <b>
+                                                    <p class="alert alert-warning text-center padding aviso"
+                                                        id="emptyev1">Falto
+                                                        Ingresar la Fecha!</p>
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
 
                     <form class="form-horizontal" action="" method="POST" id="avaluacion">
                         <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -547,7 +603,6 @@ style="background: white;border: 1px solid white;"> -->
 
                                 </div>
                             </div>
-
                             <div class="modal-body">
                                 <div class="form-group">
                                     <div class="col-sm-12">
@@ -569,18 +624,6 @@ style="background: white;border: 1px solid white;"> -->
                                                             style="color:green; font-size: 16pt"></i></span>
                                                         <!-- <i class="fa fa-exclamation" id="chep1" disabled style="color:#CD8704; font-size: 16pt"></i></span> -->
                                                     </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        LISTA DE REGISTRO
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check2c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check2c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -594,52 +637,10 @@ style="background: white;border: 1px solid white;"> -->
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        REPORTES DE INCIDENCIAS
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check4c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check4c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        CARTAS DESCRIPTIVAS
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check5c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check5c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
                                                         EVALUACIÓN POR PARTICIPANTE
                                                     </td>
                                                     <td>
                                                         <i class="fa fa-check" id="che6" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        REGISTRO DE PONDERACIÓN
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check7c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check7c" disabled
-                                                            style="color:green; font-size: 16pt"></i></span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        INFORME FINAL
-                                                    </td>
-                                                    <td>
-                                                        <!-- <input style="width:16px; height:16px;" value="SI" id="check8c" type="checkbox" name="check-box" /> <span></span> -->
-                                                        <i class="" id="check8c" disabled
                                                             style="color:green; font-size: 16pt"></i></span>
                                                     </td>
                                                 </tr>
@@ -759,10 +760,8 @@ $("#lisCurso").show();
 
 $(document).ready(function() {
     $.fn.dataTableExt.errMode = 'ignore';  
-
-// $valor = "<a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>";
-
     var table = $('#example').DataTable({
+
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -774,7 +773,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a>"
+            "defaultContent": "<a href='javascript:openCurso()' id='example' title='Detalle del curso' class='datos btn btn-default' ><i class='fa fa-list-alt text-success'></i></a> <a type='button' class='asiste btn btn-default' data-toggle='modal' data-target='#modal-participnt'><i class='fa fa-user-plus text-info'></i></a> <a href='#' onclick='eliminar({$gstIdlsc})' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminar'><i class='fa fa-trash-o text-danger'></i></a>"
 
         }]
     });
@@ -846,8 +845,9 @@ $(document).ready(function() {
                     $("#impri #gstTitulo").val(d[1]);
 
                     $("#idperonc").val(d[1]);
+                    $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
-
+                
                     $("#Dtall #gstTitlo").val(d[1]);
                     $("#Dtall #gstTipo").val(d[2]);
                     $("#Dtall #gstPrfil").val(d[3]);
@@ -948,47 +948,38 @@ function idcurso(codigo) {
 
 
 function id_cursos(idp) {
-
+//alert(idp);
     $.ajax({
-        url: '../php/curLista.php',
+        url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {
-
         obj = JSON.parse(resp);
         var res = obj.data;
         var x = 0;
-
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_curso == idp) {
-
-
                 //DETALLES CURSOS DECLINADOS
-
                 var toma1 = "",
                     toma2 = "",
                     toma3 = "",
                     toma4 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                toma1 += obj.data[i].gstNombr; //NOMBRE DEL CURSO  
-                toma2 += obj.data[i].gstApell; //PDF
-                toma3 += obj.data[i].confirmar; //PDF 
-                toma4 += obj.data[i].justifi; //PDF  
-
+                toma1 += obj.data[i].gstNombr; //NOMBRE
+                toma2 += obj.data[i].gstApell; //APELLIDO
+                toma3 += obj.data[i].confirmar; //CONFIRMAR 
+                toma4 += obj.data[i].justifi; //JUSTIFICACION  
                 $("#nomdeclina1").text(toma1 + " " + toma2); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma2); // Label esta en valor.php
                 $("#motivod1").text('Motivo:' + toma3); // Label esta en valor.php
                 $("#otrosd1").text(toma4); // Label esta en valor.php
                 $("#declinpdf1").attr('href', toma4); // Label esta en valor.php
 
-
                 if (toma3 == 'OTROS') {
                     document.getElementById('otrosd1').style.display = '';
                     document.getElementById('declinpdf1').style.display = 'none';
-                }
-                if (toma3 == 'TRABAJO') {
+                }else if(toma3 == 'TRABAJO') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
-                }
-                if (toma3 == 'ENFERMEDAD') {
+                }else if (toma3 == 'ENFERMEDAD') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
                 }

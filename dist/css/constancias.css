@@ -13,6 +13,7 @@ body {
 .CIAAC {
     font-family: 'Montserrat', sans-serif;
     font-size: 38px;
+
 }
 
 .otorga {
@@ -51,21 +52,26 @@ p {
     font-size: 42px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #BE0202;
+    color:blue;
+    /*color: #BE0202;*/
 }
 
 .nombre-pConstancia {
     font-size: 37px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #BE0202;
+    color:blue;
+    /*color: #BE0202;*/
 }
 
 .nombre-Constancia-Min {
     font-size: 47px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #BE0202;
+    color:blue;
+    padding:0;
+    /*color: #BE0202;*/
+        /*border:1px solid orange;*/
 }
 
 .titulo-certificador {
@@ -75,6 +81,7 @@ p {
     letter-spacing: 5px;
     text-align: center;
     text-transform: uppercase;
+    /*border:1px solid blue;*/
 }
 
 .titulo-certificador {
@@ -84,8 +91,12 @@ p {
     letter-spacing: 5px;
     text-align: center;
     text-transform: uppercase;
+    /*border:1px solid red;*/
 }
-
+.titulo-certificado{
+    /*border:1px solid blue;*/
+    padding:0;
+}
 .nombre-curso {
     font-family: 'Montserrat', sans-serif;
     font-size: 28px;
@@ -97,11 +108,22 @@ p {
 
 .nombre-Curso-Min {
     font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
     letter-spacing: 5px;
     text-align: center;
     text-transform: uppercase;
+}
+
+.nombre-grupo-Min {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-align: center;
+    color: red;
+    text-transform: uppercase;
+     line-height: 1.2px;
 }
 
 .nombre-Constancia {
@@ -111,6 +133,16 @@ p {
     letter-spacing: 5px;
     text-align: center;
     text-transform: uppercase;
+}
+.nombre-grupo-max{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-align: center;
+    color: red;
+    text-transform: uppercase;
+     line-height: 1.2px;    
 }
 
 #watermark {
@@ -134,17 +166,18 @@ p {
 
 .footer-constancia-gold {
     position: fixed;
-    bottom: 195px;
+    bottom: 180px;
     left: 80px;
     right: 40px;
     height: 50px;
     text-align: center;
     line-height: 35px;
+    width:35.5%;
 }
 
 .afojas1 {
     position: fixed;
-    bottom: 300px;
+    bottom: 800px;
     left: 80px;
     font-size: 20px;
     right: 40px;
@@ -153,17 +186,22 @@ p {
     line-height: 35px;
     font-family: 'Montserrat', sans-serif;
 }
-
+.fecha-emision {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
 .footer-constancia {
     position: fixed;
     bottom: 160px;
     left: 80px;
     font-size: 20px;
     right: 40px;
-    height: 50px;
-    text-align: center;
+    height: 30px;
+    /*text-align: center;*/
     line-height: 35px;
     font-family: 'Montserrat', sans-serif;
+    padding:0;
+
 }
 
 footer {
@@ -203,7 +241,19 @@ footer {
     display: table;
     clear: both;
 }
-
+.codigo-curso{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    /*float:left;*/
+}
+.caja1 {
+    position: relative;
+    width: 38%;
+    text-align:center;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    /* display: inline-block; */
+}
 .caja {
     position: relative;
     /* display: inline-block; */
