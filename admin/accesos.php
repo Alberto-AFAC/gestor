@@ -1192,7 +1192,6 @@ function modificar() {
 //alert("pruebas modificacion")
 var frm = $("#Editar").serialize();
 
-alert(frm);
 $.ajax({
     url: "../php/accesos-update.php",
     type: 'POST',

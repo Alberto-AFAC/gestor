@@ -56,7 +56,7 @@ ini_set('date.timezone','America/Mexico_City');
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Menú</li>
+            <li class="header"><a href="../menu">Menú</a></li>
 
             <?php  if($datos[1] == 'LEONARDO' || $datos[2] == 'MARTINEZ BAUTISTA'){ ?>
             <li class="active">
