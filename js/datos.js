@@ -1756,14 +1756,14 @@ function actualOjt() {
 //////////////DATOS DEL PERSONAL INSPECTOR//////////// 
 
 function inspector(gstIdper) {
-
+    let id_perinsp = gstIdper;
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
     } else {
         document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/AFACPDF.png" style="width: 90px; alt="User Avatar">';
     }
-
+    opendellcursins(id_perinsp);
     // .l.
     $.ajax({
         url: '../php/consulta.php',
@@ -1818,6 +1818,7 @@ function inspector(gstIdper) {
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#cargopersonal").val(obj.data[i].gstCargo);
                             $("#id_inspp").val(obj.data[i].gstIdper);
+                            $("#id_persinsp").val(obj.data[i].gstIdper);
 
 
                             $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
@@ -2191,53 +2192,101 @@ function inspector(gstIdper) {
 
                         var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
 
-
-                        if (factual >= finaliza) {
+                        //ESTATUS UNICA VEZ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    
+                        if (obj.data[ii].gstVignc == 101 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
+                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS VENCIDO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        //vencido todos menos basicos
+                        if (factual >= finaliza && obj.data[ii].fcurso <= obj.data[ii].recursado && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo != "BÁSICOS/INICIAL") {
                             status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
                             //console.log(status);
-                        } else
-                        if (factual <= ftermino) {
-                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                        }
+                        //vencido basicos
+                        if (factual >= finaliza && obj.data[ii].fcurso <= obj.data[ii].recurrente && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo == "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+                        }
+
+                        //ESTATUS CURSADO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual >= finaliza && obj.data[ii].fcurso < obj.data[ii].recursado && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo != "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color:#083368; font-size: 14px;' class='badge'>RENOVADO</span>";
                             //console.log(status);
-                        } else
-                        if (factual >= ftermino) {
+                        }
+                        //cursado basicos
+                        if (factual >= finaliza && obj.data[ii].fcurso < obj.data[ii].recurrente && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo == "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS POR VENCER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual >= ftermino && obj.data[ii].fcurso <= obj.data[ii].recursado && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo != "BÁSICOS/INICIAL") {
                             status = "<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         }
-                        if (obj.data[ii].gstTipo == "INDUCCIÓN") { //UNICA VEZ EN ESTATUS "INDUCCIÓN"
-                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                        //cursado basicos
+                        if (factual >= ftermino && obj.data[ii].fcurso <= obj.data[ii].recurrente && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo == "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         }
-                        if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
-                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                        //ESTATUS REENOVADO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual >= ftermino && obj.data[ii].fcurso < obj.data[ii].recursado && obj.data[ii].gstTipo != 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color: #083368; font-size: 14px;' class='badge'>RENOVADO</span>";
                             //console.log(status);
                         }
-                        // alert(obj.data[ii].confirmar);
+                        //cursos básicos
+                        if (factual >= finaliza && obj.data[ii].fcurso < obj.data[ii].recurrente && obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS VIGENTE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual <= ftermino && obj.data[ii].fcurso == obj.data[ii].recursado && obj.data[ii].gstTipo != 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                            //console.log(status);
+                        }
+                        //cursos básicos
+                        if (factual <= ftermino && obj.data[ii].fcurso == obj.data[ii].recurrente && obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS REPROBADO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+                        if (obj.data[ii].evaluacion <= 79 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].proceso == 'FINALIZADO') {
+                            status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+                        }
+                        //ESTATUS PENDIENTE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (obj.data[ii].evaluacion == 'NULL') {
+                            status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS DE ASISTENCIA **********************************************************
                         if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
-
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
-
-
                         } else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
-
-                        } else if (obj.data[ii].confirmar == 'OTROS') {
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                        } else if (obj.data[ii].confirmar == 'OTROS' && obj.data[ii].justifi != 'NO ASISTIÓ') {
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
+                        } else if (obj.data[ii].confirmar == 'OTROS' && obj.data[ii].justifi == 'NO ASISTIÓ' && obj.data[ii].proceso == 'FINALIZADO') {
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>NO ACREDITO</span>";
+                            proc12 = "<span style='color:green; font-size: 14px;'>FINALIZADO</span>";
+                        } else if (obj.data[ii].confirmar == 'OTROS' && obj.data[ii].justifi == 'NO ASISTIÓ' && obj.data[ii].proceso == 'PENDIENTE') {
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>NO ACREDITO</span>";
+                            proc12 = "<span style='color:grey; font-size: 14px;'>PENDIENTE</span>";
                         }
+
 
                         if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
-                            confirmar = "<span title='Confirma su asistencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
+                            confirmar = "<span title='Confirma su asistencia' style='color: green;'>CONFIRMADO</span>";
                         }
+                        //ESTATUS DE ASISTENCIA **********************************************************
+
 
                         if (obj.data[ii].confirmar == 'CONFIRMAR') {
                             status1 = "<span style='font-weight: bold; color: grey;'>PENDIENTE</span>";
@@ -2251,13 +2300,13 @@ function inspector(gstIdper) {
 
                             if (obj.data[ii].evaluacion == 'NULL') {
                                 valua = 'FALTA EVALUACIÓN';
-                                proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+                                proc12 = "<span style='color: grey; font-size: 14px;'>FINALIZADO<br>" + valua + "</span>";
                             } else if (obj.data[ii].evaluacion > 79) {
                                 valua = 'APROBO';
-                                proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+                                proc12 = "<span style='color: green; font-size: 14px;'>FINALIZADO<br>" + valua + "</span>";
                             } else {
                                 valua = 'NO APROBO';
-                                proc12 = "<span style='background-color: red; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+                                proc12 = "<span style='color: red; font-size: 14px;'>FINALIZADO<br>" + valua + "</span>";
 
                             }
 
@@ -2360,6 +2409,7 @@ function inspector(gstIdper) {
                     }
                     html += '</tbody></table></div></div></div>';
                     $("#cursos").html(html);
+
                 })
 
 
@@ -3812,4 +3862,28 @@ function usuBaja() {
             }, 2000);
         }
     });
+}
+
+
+
+function opendellcursins(id_perinsp) {
+    // var id_perinsp = document.getElementById('id_persinsp').value;
+    alert(id_perinsp);
+    var tableCursosProgramados = $('#data-table-cursosProgramados2').DataTable({
+        "order": [
+            [3, "asc"]
+        ],
+        "ajax": {
+            "url": "../php/detallescurper.php",
+            "type": "GET",
+            "data": function(d) {
+                d.id_perinsp = id_perinsp;
+            }
+        },
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+    });
+
 }
