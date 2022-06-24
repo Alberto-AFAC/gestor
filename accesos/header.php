@@ -8,6 +8,7 @@
            }        }else{
             //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
             header('Location: ../');
+
         }
        // echo $_SESSION['usuario']['privilegios'];
 
@@ -119,14 +120,6 @@ ini_set('date.timezone','America/Mexico_City');
              <img href="#" data-toggle="control-sidebar" src="../dist/img/AFAC.png" ALIGN=RIGHT class="img" alt="User Image" style="cursor: pointer;padding-right:  0.5em;">
           </li>
         </ul>
-
-
-
-
-
-
-
-
       </div>
     </nav>
   </header>
@@ -164,7 +157,9 @@ ini_set('date.timezone','America/Mexico_City');
                     </span>
                 </a>
             </li>
-
+            <li>
+                <a class="tooltipped" data-position="right" data-tooltip="CERRAR SESIÓN" href="../conexion/cerrar_session.php"><i class="fa fa-sign-out"></i><span>SALIR</span></a>
+            </li>
          
         </ul>
     </section>

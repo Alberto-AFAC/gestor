@@ -62,6 +62,7 @@ if($opcion === 'modificar'){
 	$privi_gestor = $_POST['privi_gestor'];
 	$privi_lingui = $_POST['privi_lingui'];
 	$privi_mesa = $_POST['privi_mesa'];
+	$privi_acces = $_POST['privi_acces'];
 
 	if(privi_gestor($id_usu,$privi_gestor,$conexion)){
 		echo "0";
@@ -69,6 +70,18 @@ if($opcion === 'modificar'){
 		echo "1";
 		}		
 
+	if($privi_lingui=='x'){
+
+			if(privi_linguiConsult($id_usu,$conexion)){}else{			
+			if(privi_linguiUpdate($id_usu,$privi_mesa,$conexion)){
+					echo "0";
+				}else{
+					echo "1";
+				}
+			}
+
+	}else{	
+	
 	if(privi_linguiConsult($id_usu,$conexion)){
 		if(privi_linguiSave($id_usu,$privi_lingui,$conexion)){
 			echo "0";
@@ -82,6 +95,7 @@ if($opcion === 'modificar'){
 			echo "1";
 			}
 	}
+}
 
 	if($privi_mesa=='x'){
 
@@ -111,6 +125,32 @@ if($opcion === 'modificar'){
 			}
 		}
 	}	
+
+	if($privi_acces=='x'){
+
+			if(privi_accesConsult($id_usu,$conexion)){}else{			
+			if(privi_accesUpdate($id_usu,$privi_acces,$conexion)){
+					echo "0";
+				}else{
+					echo "1";
+				}
+			}
+	}else{
+			if(privi_accesConsult($id_usu,$conexion)){
+			
+			if(privi_accesSave($id_usu,$privi_acces,$conexion)){
+				echo "0";
+			}else{
+				echo "1";
+			}
+	}else{
+			// if(privi_acces($id_usu,$privi_mesa,$conexion)){
+			// 	echo "0";
+			// }else{
+			// 	echo "1";
+			// }
+		}
+	}
 }
 
 //---------------------------------------------------------FUNCIONES---------------------------------------------------//
@@ -180,6 +220,15 @@ if($opcion === 'modificar'){
 		cerrar($conexion);									 		
 	}
 
+	function privi_linguiUpdate($id_usu,$privi_mesa,$conexion){
+			$query = "UPDATE formatoacceso SET estado = 1 WHERE id_acc = $id_usu";
+			if (mysqli_query($conexion,$query)) {
+				return true;
+			}else{
+				return false;
+			}
+			cerrar($conexion2);									 					
+	}	
 //PRIVILEGIOS MESA
 	function privi_mesaConsult($id_usu,$conexion2){
 			$query="SELECT * FROM tecnico WHERE id_usu = $id_usu AND baja = 0";
@@ -211,6 +260,7 @@ if($opcion === 'modificar'){
 		cerrar($conexion2);									 		
 	}
 
+
 	function privi_mesaUpdate($id_usu,$privi_mesa,$conexion2){
 		$query = "UPDATE tecnico SET baja = 1 WHERE id_usu = $id_usu";
 		if (mysqli_query($conexion2,$query)) {
@@ -220,6 +270,52 @@ if($opcion === 'modificar'){
 		}
 		cerrar($conexion2);									 				
 	}
+
+//PRIVILEGIOS DE ACCESO
+
+	function privi_accesConsult($id_usu,$conexion2){
+			$query="SELECT * FROM privilegio WHERE n_empleado = $id_usu AND estado = 0";
+			$resultado= mysqli_query($conexion2,$query);
+			if($resultado->num_rows==0){
+				return true;								 	
+			}else{	
+				return false;
+			}
+		}
+
+	function privi_accesSave($id_usu,$privi_acces,$conexion2){
+	$query = "INSERT INTO privilegio VALUES(0,'$privi_acces','ACCESOS','ACCESO','$id_usu',0);";
+    if(mysqli_query($conexion2,$query)){
+        return true;
+    }else{
+        return false;
+    }							 		       
+	}
+
+	// function privi_acces($id_usu,$privi_acces,$conexion2){
+	// 	$query = "UPDATE tecnico SET privilegios = '$privi_acces' WHERE id_usu = $id_usu";
+	// 	if (mysqli_query($conexion2,$query)) {
+	// 		return true;
+	// 	}else{
+	// 		return false;
+	// 	}
+	// 	cerrar($conexion2);									 		
+	// }
+
+
+	function privi_accesUpdate($id_usu,$privi_acces,$conexion2){
+		$query = "DELETE FROM privilegio WHERE modulo = 'ACCESOS' AND n_empleado = $id_usu";
+		if (mysqli_query($conexion2,$query)) {
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion2);									 				
+	}
+
+
+
+
 
 
 	//funciones para guardar en historial cambios de actualización

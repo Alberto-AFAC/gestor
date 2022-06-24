@@ -195,13 +195,11 @@ $.ajax({
     var res = obj.data;
     for (i = 0; i < res.length; i++) {
 
-         // alert(obj.data[i].privi_mesa);
 
         if(obj.data[i].privi_gestor=='SUPER_ADMIN'){
 
             $("#gestor").show();
             $("#mesa").show();
-            $("#accesos").show();
             $("#detyca").show();
 
         }else{
@@ -209,11 +207,18 @@ $.ajax({
             $("#detyca").hide();
         }
 
-        if(obj.data[i].privi_lingui==0){
+        if(obj.data[i].privi_lingui=='x'){
             $("#linguistica").hide();
         }else{
             $("#linguistica").show();
         }
+
+        if(obj.data[i].privi_acces == 'x'){
+           $("#accesos").hide();
+        }else if(obj.data[i].privi_acces == 'super_admin'){
+           $("#accesos").show();
+        }
+
 
     }
 })

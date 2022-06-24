@@ -1,5 +1,25 @@
 <!DOCTYPE html>
-<?php include ("../conexion/conexion.php");?>
+<?php include ("../conexion/conexion.php");
+session_start();
+
+    if (isset($_SESSION['usuario'])) {
+
+
+    }else{
+            //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
+         //   header('Location: ../');
+        }
+
+        $id = $_SESSION['usuario']['id_usu'];
+        $query="SELECT * FROM privilegio WHERE n_empleado = $id AND estado = 0";
+        $resultado= mysqli_query($conexion,$query);
+        if($resultado->num_rows==0){
+        // header('Location: ../');
+
+        }else{  
+        }
+
+?>
 
 <html>
 
@@ -228,6 +248,7 @@
         <li id="1"><a href="#primera" onclick="uno()" data-toggle="tab">GESTOR</a></li>
         <li id="2"><a href="#segunda" onclick="dos()" data-toggle="tab">LINGÜISTICA</a></li>
         <li id="3"><a href="#tercera" onclick="tre()" data-toggle="tab">MESA DE AYUDA</a></li>
+        <li id="4"><a href="#cuarto" onclick="cua()" data-toggle="tab">ACCESOS</a></li>        
     </ul>
     <div class="tab-content">
         <div id="primera" >
@@ -269,7 +290,7 @@
                 <label>SELECCIONE PRIVILEGIOS</label>
                 <select style="width: 100%" class="form-control" class="selectpicker"
                 name="privi_lingui" id="privi_lingui" type="text" data-live-search="true">
-                <option value="0" selected>SELECCIONE...</option>
+                <option value="x" selected>SIN ACCESO</option>
                 <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
                 <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                 <option value="EVALUADOR">EVALUADOR</option>
@@ -302,6 +323,23 @@
                     </div>                
                 </div>            
             </div>
+
+            <div id="cuarto">
+                <div class="box box-info">
+                    <div class="box-body" id="cuatro">
+                        <div class="col-sm-12"><br>
+                        <label>SELECCIONE PRIVILEGIOS</label>
+                        <select style="width: 100%" class="form-control" class="selectpicker"
+                        name="privi_acces" id="privi_acces" type="text" data-live-search="true">
+                        <option value="x" selected>SIN ACCESO</option>
+                        <option value="super_admin">SUPER ADMINISTRADOR</option>
+                        </select>
+                        </div>
+                    </div>                
+                </div>            
+            </div>
+
+
             <!-- /.tab-pane -->
 
         <div class="modal-footer">
@@ -365,7 +403,7 @@
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos
-    INNER JOIN personal ON id_usu = gstIdper";
+    INNER JOIN personal ON id_usu = gstIdper WHERE personal.estado = 0";
     $resultado = mysqli_query($conexion, $query);
     while($data = mysqli_fetch_array($resultado)){ 
         $id = $data['id_usu'];
@@ -459,7 +497,6 @@ function datos_editar(acceso) {
 function acceso(){
 
     var frmAcc = $("#EditAcceso").serialize();
-
     $.ajax({
         url: "../php/accesos-update.php",
         type: 'POST',
@@ -531,18 +568,26 @@ function uno(){
     $("#primera").show();
     $("#segunda").hide();
     $("#tercera").hide();
+    $("#cuarto").hide();    
 }
 function dos(){
     $("#primera").hide();
     $("#segunda").show();
     $("#tercera").hide();
+    $("#cuarto").hide();    
 }
 function tre(){
     $("#primera").hide();
     $("#segunda").hide();
     $("#tercera").show();
+    $("#cuarto").hide();    
 }
-
+function cua(){
+    $("#primera").hide();
+    $("#segunda").hide();
+    $("#tercera").hide();
+    $("#cuarto").show();        
+}
 // FUNCTION PARA EMOSTRAR DATOS
 function mostrar_datos(datos) {
 
@@ -550,12 +595,13 @@ $("#id_usua").val(datos);
 $("#1").addClass('active');
 $("#2").removeClass('active');
 $("#3").removeClass('active');
+$("#4").removeClass('active');
 $("#1").show('active');
 $("#primera").addClass('active tab-pane');
 $("#primera").show();
 $("#segunda").hide();
 $("#tercera").hide();
-
+$("#cuarto").hide();    
     // alert('ES: '+datos);
 
 $.ajax({
@@ -567,14 +613,17 @@ $.ajax({
     var res = obj.data;
     for (i = 0; i < res.length; i++) {
 
-
-    $("#privi_gestor").val(obj.data[i].privi_gestor);
+    $("#privi_gestor").val(obj.data[i].privi_gestor);    
     $("#privi_lingui").val(obj.data[i].privi_lingui);
     $("#privi_mesa").val(obj.data[i].privi_mesa);    
+    $("#privi_acces").val(obj.data[i].privi_acces);    
 
     }
 })
 }
+
+
+
 
 // SHOW PASSWORD
 $('.toggle-password').click(function() {
