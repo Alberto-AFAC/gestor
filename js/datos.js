@@ -670,13 +670,17 @@ function borrarperext(gstIdper) {
 }
 //////////////DATOS DEL PERSONAL LISTA DE PERSONAS//////////// 
 function perfil(gstIdper) {
-
+    let id_perinsp = gstIdper;
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
     } else {
         document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/user1-128x128.jpg" style="width: 80px; alt="User Avatar">';
     }
+    //LLAMA A LA TABLA DE CURSOS DE EL INSPECTOR 
+    opendellcursins(id_perinsp);
+    //FUNCION DE PORCENTAJES 27062022
+    porcenperso(id_perinsp);
 
     $.ajax({
         url: '../php/conPerson.php',
@@ -896,7 +900,7 @@ function perfil(gstIdper) {
                 })
 
 
-                $.ajax({
+                /*$.ajax({
                     url: '../php/gesCurso.php',
                     type: 'POST'
                 }).done(function(resp) {
@@ -1166,7 +1170,7 @@ function perfil(gstIdper) {
                     }
                     html += '</tbody></table></div>';
                     $("#evlacns").html(html);
-                })
+                })*/
             }
         }
     })
@@ -1761,9 +1765,12 @@ function inspector(gstIdper) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
     } else {
-        document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/AFACPDF.png" style="width: 90px; alt="User Avatar">';
+        document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/user1-128x128.jpg" style="width: 80px; alt="User Avatar">';
     }
+    //LLAMA A LA TABLA DE CURSOS DE EL INSPECTOR 
     opendellcursins(id_perinsp);
+    //FUNCION DE PORCENTAJES 27062022
+    porceninsp(id_perinsp);
     // .l.
     $.ajax({
         url: '../php/consulta.php',
@@ -2075,8 +2082,9 @@ function inspector(gstIdper) {
 
                 })
 
+                //comentar de aqui antigua tablas
 
-                $.ajax({
+                /*$.ajax({
                     url: '../php/gesCurso.php',
                     type: 'POST'
                 }).done(function(resp) {
@@ -2410,7 +2418,7 @@ function inspector(gstIdper) {
                     html += '</tbody></table></div></div></div>';
                     $("#cursos").html(html);
 
-                })
+                })*/
 
 
                 $.ajax({
@@ -2524,8 +2532,255 @@ function inspector(gstIdper) {
     consultardocIns(gstIdper);
 
 }
-//FUNCION PARA FILTRAR ESPECIALIDAD VISTA 2
+//FUNCION PARA VER EL DETALLE DE NO ASISTIO
+function modaldeclin(id_curso) {
+    //alert(id_curso);
+    //alert("MODAL NO ASISTIO");
+    $.ajax({
+        url: '../php/consporce.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        for (ii = 0; ii < res.length; ii++) {
+            x++;
+            if (id_curso == obj.data[ii].id_curso) {
+                //alert(obj.data[ii].justifi);
+                let toma1 = obj.data[ii].gstTitlo; //NOMBRE DEL CURSO  
+                let toma2 = obj.data[ii].justifi; //JUSTIFICACIÓN
+                let toma3 = obj.data[ii].confirmar; //MOTIVO     
+                $("#nombredeclin").text(toma1); // Label esta en valor.php
+                $("#declinpdf").attr('href', toma2); // Label esta en valor.php
+                $("#motivod").text('Motivo:' + toma3); // Label esta en valor.php
+                $("#otrosd").text(toma2); // Label esta en valor.php
 
+                if (toma3 == 'OTROS' && toma2 != 'NO ASISTIÓ') {
+                    document.getElementById('otrosd').style.display = '';
+                    document.getElementById('declinpdf').style.display = 'none';
+                }
+                if (toma3 == 'OTROS' && toma2 == 'NO ASISTIÓ') {
+                    document.getElementById('otrosd').style.display = 'none';
+                    document.getElementById('declinpdf').style.display = 'none';
+                    $("#motivod").text('Motivo:' + ' NO ASISTIÓ');
+                }
+                if (toma3 == 'TRABAJO') {
+                    document.getElementById('otrosd').style.display = 'none';
+                    document.getElementById('declinpdf').style.display = '';
+                }
+                if (toma3 == 'ENFERMEDAD') {
+                    document.getElementById('otrosd').style.display = 'none';
+                    document.getElementById('declinpdf').style.display = '';
+                }
+
+            }
+        }
+    })
+
+}
+//FUNCION PARA VER EL DETALLE DE PORCENTAJE DE LOS CURSOS 
+function porceninsp(id_perinsp) {
+    //alert(id_perinsp);
+    //alert("PORCENTAJE");
+    $.ajax({
+        url: '../php/consporce.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        //30082021
+        programados = 0;
+        programados1 = 0;
+        DECLINADOS = 0;
+        FINALIZADO = 0;
+        CANCELADO = 0;
+        OTROS = 0;
+        insp = 0;
+
+        for (ii = 0; ii < res.length; ii++) {
+            x++;
+            if (id_perinsp == obj.data[ii].idinsp) {
+                //BÁSICOS CHECK LIST INSPECTOR
+                if (obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                    document.getElementById('bscos').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                    $("#Bfecha").html(obj.data[ii].fcursof);
+                }
+                if (obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                    document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                    $("#Bfecha").html(obj.data[ii].fcursof);
+                }
+                if (obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].proceso == 'PENDIENTE') {
+                    document.getElementById('bscos').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                    $("#Bfecha").html('PENDIENTE');
+                }
+                //RECURRENTES CHECK LIST INSPECTOR
+                if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                    document.getElementById('recurnt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                    $("#Rfecha").html(obj.data[ii].fcursof);
+
+                } else if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                    document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                    $("#Rfecha").html(obj.data[ii].fcursof);
+                } else
+                if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'PENDIENTE') {
+                    document.getElementById('recurnt').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                    $("#Rfecha").html('PENDIENTE');
+                }
+                //ESPECIFICOS CHECK LIST INSPECTOR
+                if (obj.data[ii].gstTipo == 'ESPECÍFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                    document.getElementById('specifico').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                    $("#Efecha").html(obj.data[ii].fcursof);
+
+                } else if (obj.data[ii].gstTipo == 'ESPECÍFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                    document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                    $("#Efecha").html(obj.data[ii].fcursof);
+                } else
+                if (obj.data[ii].gstTipo == 'ESPECÍFICOS' && obj.data[ii].proceso == 'PENDIENTE') {
+                    document.getElementById('specifico').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                    $("#Efecha").html('PENDIENTE');
+                }
+
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    programados++;
+                }
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
+                    programados1++;
+                }
+
+
+                if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    FINALIZADO++;
+                }
+                if (obj.data[ii].confirmar == 'TRABAJO') {
+                    CANCELADO++;
+                }
+                if (obj.data[ii].confirmar == 'ENFERMEDAD') {
+                    DECLINADOS++;
+                }
+                if (obj.data[ii].confirmar == 'OTROS') {
+                    OTROS++;
+                }
+                if (obj.data[ii].estado == '0') {
+                    insp++;
+                }
+
+                document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
+                document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
+                document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
+                //PORCENTAJE DE COMPLETADOS
+
+                var porcentaje1 = document.getElementById("porcentaje11");
+                resultado3 = ((FINALIZADO * 100) / insp);
+                var resFinal3 = resultado3.toFixed(0);
+                porcentaje1.style.width = (resFinal3 + "%");
+                porcentaje11.innerHTML = (resFinal3 + "%");
+                document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE PROGRAMADOS
+                var porcentaje12 = document.getElementById("porcentaje12");
+                resultado = (((programados + programados1) * 100) / insp);
+
+                var resFinal = resultado.toFixed(0);
+                porcentaje12.style.width = (resFinal + "%");
+                porcentaje12.innerHTML = (resFinal + "%"); //VALOR
+                document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE CANCELADO
+                var porcentaje13 = document.getElementById("porcentaje13");
+                resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
+                var resFinal1 = resultado1.toFixed(0);
+
+                porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
+                porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
+                document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
+
+            }
+        }
+    })
+}
+//FUNCION PARA VER EL DETALLE DE PORCENTAJE DE LOS CURSOS 
+function porcenperso(id_perinsp) {
+    //alert(id_perinsp);
+    //alert("PORCENTAJE PERSONAS");
+    $.ajax({
+        url: '../php/consporce.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        //30082021
+        programados = 0;
+        programados1 = 0;
+        DECLINADOS = 0;
+        FINALIZADO = 0;
+        CANCELADO = 0;
+        OTROS = 0;
+        insp = 0;
+
+        for (ii = 0; ii < res.length; ii++) {
+            x++;
+            if (id_perinsp == obj.data[ii].idinsp) {
+
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    programados++;
+                }
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
+                    programados1++;
+                }
+
+                if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    FINALIZADO++;
+                }
+                if (obj.data[ii].confirmar == 'TRABAJO') {
+                    CANCELADO++;
+                }
+                if (obj.data[ii].confirmar == 'ENFERMEDAD') {
+                    DECLINADOS++;
+                }
+                if (obj.data[ii].confirmar == 'OTROS') {
+                    OTROS++;
+                }
+                if (obj.data[ii].estado == '0') {
+                    insp++;
+                }
+
+                document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
+                document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
+                document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
+                //PORCENTAJE DE COMPLETADOS
+
+                var porcentaje1 = document.getElementById("porcentaje11");
+                resultado3 = ((FINALIZADO * 100) / insp);
+                var resFinal3 = resultado3.toFixed(0);
+                porcentaje1.style.width = (resFinal3 + "%");
+                porcentaje11.innerHTML = (resFinal3 + "%");
+                document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE PROGRAMADOS
+                var porcentaje12 = document.getElementById("porcentaje12");
+                resultado = (((programados + programados1) * 100) / insp);
+
+                var resFinal = resultado.toFixed(0);
+                porcentaje12.style.width = (resFinal + "%");
+                porcentaje12.innerHTML = (resFinal + "%"); //VALOR
+                document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE CANCELADO
+                var porcentaje13 = document.getElementById("porcentaje13");
+                resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
+                var resFinal1 = resultado1.toFixed(0);
+
+                porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
+                porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
+                document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
+
+            }
+        }
+    })
+}
+//FUNCION PARA FILTRAR ESPECIALIDAD VISTA 2
 function cursoespci() {
 
     $.ajax({
@@ -3868,7 +4123,7 @@ function usuBaja() {
 
 function opendellcursins(id_perinsp) {
     // var id_perinsp = document.getElementById('id_persinsp').value;
-    alert(id_perinsp);
+    //alert(id_perinsp);
     var tableCursosProgramados = $('#data-table-cursosProgramados2').DataTable({
         "order": [
             [3, "asc"]

@@ -74,10 +74,12 @@
     if(!$resultado){
 		die("error");
 	}else{
+        
         while($data = mysqli_fetch_assoc($resultado)){
             $item++;
         //--------------------------------------------------------------FUNCIONES--------------------------------------------------------------------------------------
-            //Asistencia++++++++++++++++++++++++++++++++++++
+            //Asistencia++++++++++++++++++++++++++++++++++++  
+            $confr=$data["id_curso"];
             if ($data["confirmar"] == 'CONFIRMAR'){ 
                 $confirmar = "<span style='color: grey;'>PENDIENTE</span>";
             }
@@ -85,28 +87,28 @@
                $confirmar ="<span title='Confirma su asistencia' style='color: green;'>CONFIRMADO</span>";
             }
             if ($data["confirmar"] == "TRABAJO"){
-                $confirmar ="<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                $confirmar ="<a type'button' onclick='modaldeclin(". $confr . ")' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                 $status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                 $proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
             }
             if ($data["confirmar"] == "ENFERMEDAD"){
-                $confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                $confirmar = "<a type'button' onclick='modaldeclin(" . $confr . ")' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                 $status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                 $proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
             }
             if ($data["confirmar"] == "OTROS" && $data["justifi"] != 'NO ASISTIÓ'){
-                $confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                $confirmar = "<a type'button' onclick='modaldeclin(" . $confr . ")' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                 $status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                 $proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
             }
             if ($data["confirmar"] == "OTROS" && $data["justifi"] == 'NO ASISTIÓ' && $data["proceso"] == 'FINALIZADO'){
-                $confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
+                $confirmar = "<a type'button' onclick='modaldeclin(" . $confr . ")' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
                 $status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                 $proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                 $valua = "";
             }
             if ($data["confirmar"] == "OTROS" && $data["justifi"] == 'NO ASISTIÓ' && $data["proceso"] == 'PENDIENTE'){
-                $confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
+                $confirmar = "<a type'button' onclick='modaldeclin(" . $confr . ")' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
                 $status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>NO ACREDITO</span>";
                 $proc12 = "<span style='color:grey; font-size: 14px;'>PENDIENTE</span>";
                 $valua = "";
@@ -136,9 +138,6 @@
             if ($data["evaluacion"] == 'NULL' && $data["confirmar"] == 'CONFIRMADO'  && $data["proceso"] == 'FINALIZADO'|| $data["evaluacion"] == "" && $data["confirmar"] == 'CONFIRMADO'  && $data["proceso"] == 'FINALIZADO'){
                 $valua = "<p style='font-weight: bold; color: grey; font-size: 14px;'>FALTA EVALUACIÓN</p>";
             }
-            /*if ($data["evaluacion"] == 'NULL' && $data["confirmar"] == 'CONFIRMADO' || $data["evaluacion"] == "" && $data["confirmar"] == 'CONFIRMAR'){
-                $valua = "<p style='font-weight: bold; color: grey; font-size: 14px;'>PENDIENTE</p>";
-            }*/
             if ($data["evaluacion"] >= 80 && $data["evaluacion"] != 0 && $data["evaluacion"] != "NULL" && $data["confirmar"] == 'CONFIRMADO'){
                 $valua = "<p style='color: green; font-size: 14px;'>APROBO</p>";
             }
@@ -149,114 +148,144 @@
                 $valua = "<p style='color: grey; font-size: 14px;'>PENDIENTE</p>";
             }            
             //Vigencia++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			$facnow = date('d-m-Y'); //fecha actual
-            $ftermino = date("d-m-Y",strtotime($data['fechaf'])); //fecha final
-            $vence = date("d-m-Y",strtotime($data["pronostico"])); //fecha vence
-            $xpencer = date("d-m-Y",strtotime($pronostico."- 6 month")); //porvencer
-            
+            ini_set('date.timezone','America/Mexico_City');
+            //-----COMPARACIÓN DE FECHAS DE VENCIMIENTO
+		    $facnow = strtotime(Date("Y-m-d"));
+            $ftermino = strtotime(Date($data["fechaf"]));
+            $vence = strtotime(Date($data["pronostico"]));
+            $xpencer = strtotime(Date($vence."- 6 month"));
+            //--UNICA VEZ ¡¡¡¡¡
             if ($data["gstVignc"] == 101){
                // $status = 'UNICA VEZ';
-                if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] >= 80){
-                    $status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>".$data["gstVignc"];
+                if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] >= 80 && $data["pronostico"]=="UNICA VEZ"){
+                    $status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
                 }//unica vez (101)
-                if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] <= 79){
+                if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] <= 79 && $data["pronostico"]=="UNICA VEZ"){
                     $status ="<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
                 }//unica vez no acreditado
+                //PENDIENTE  ¡¡¡¡¡
+                if ($data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
+                    $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                }
+                if ($data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '0'){
+                    $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                }
+                if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL'){
+                    $status = "<span style='backgrou    nd-color:grey; font-size: 14px;' class='badge'>PENDIENTE3</span>";
+                }
             }else{
-                if ($data["gstTipo"] == 'BÁSICOS/INICIAL'){
-                    if ($facnow < $xpencer && $data["fcurso"] == $data["recurrente"] && $data["evaluacion"] > 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
-                        $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";//vigente básicos iguales
-                    } 
-                    if ($facnow < $xpencer && $data["recurrente"] === NULL && $data["gstTipo"] === 'BÁSICOS/INICIAL' && $data["evaluacion"] > 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
-                        $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";//vigente básicos null
+                //VIGENTES ¡¡¡¡¡
+                if ($facnow < $vence){
+                    if ($data["gstTipo"] == 'BÁSICOS/INICIAL'){
+                        if ($facnow > $xpencer && $data["fcurso"] == $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                        }
+                        if ($facnow > $xpencer && $data["recurrente"]==NULL && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                        }
+                        //NO ACREDITO ¡¡¡¡
+                        if ($data["evaluacion"] <= 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+                        }
+                        //POR VENCER ¡¡¡¡¡
+                        if ($facnow <= $xpencer && $data["recurrente"]== NULL && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = $vence."<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
+                        }
+                        //PENDIENTE ¡¡¡¡¡¡
+                        if ($data["recurrente"]== NULL && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                        }
+                        if ($data["recurrente"]== NULL && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE3</span>";
+                        }
+                        if ($data["recurrente"]== NULL && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                        }
+                        if ($data["recurrente"]== NULL && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                        }
+                        //TOMA RECURRENCIA  ¡¡¡¡¡
+                        if ($data["fcurso"] < $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO') {
+                            //$recurrente = strtotime(Date($data["recurrente"]));
+                            $recurrente = date("d-m-Y",strtotime($data["recurrente"]));
+                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
+                            $status = $recurrente.$span;
+                        }
+                    }else{
+                        if ($facnow > $xpencer && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                        }
+                        //NO ACREDITO ¡¡¡¡
+                        if ($data["evaluacion"] <= 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+                        }
+                        //POR VENCER ¡¡¡¡¡
+                        if ($facnow <= $xpencer && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = $vence."<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
+                        }
+                        //PENDIENTE  ¡¡¡¡¡
+                        if ($data["fcurso"] == $data["recursado"] && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                        }
+                        if ($data["fcurso"] == $data["recursado"] && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                        }
+                        if ($data["fcurso"] == $data["recursado"] && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                        }
+                        if ($data["fcurso"] == $data["recursado"] && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                        }
+                        //RENUEVA RECURRENCIA ¡¡¡¡
+                        if ($data["fcurso"] < $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"]  == 'CONFIRMADO') {
+                           // $recursado = strtotime(Date($data["recursado"]));
+                            $recursado = date("d-m-Y",strtotime($data["recursado"]));
+                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RENOVADO</span>";
+                            $status = $recursado.$span;
+                        }
+                    }    
+                //VENCIDOS
+                }else if ($facnow > $vence){
+                    /*if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] >= 80){
+                        $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+                    }//VENCIDO  */
+                    if ($data["evaluacion"] <= 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                        $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
                     }
-                    //pendiente 
-                    if ($data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == NULL || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
-                        $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
-                    }//pendiente status sin evaluar y sin finalizar
-                    if ($data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == NULL || $data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
-                        $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
-                    }//pendiente status sin evaluar y finalizado 
-                    if ($facnow >= $vence && $facnow > $xpencer && $data["fcurso"] == $data["recurrente"] && $data["evaluacion"] >= 80 && $data["proceso"] == 'FINALIZADO' && $data["confirmar"] == 'CONFIRMADO') {
-                        $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO2</span>";
-                    }//vencido basicos sin recurrencia
-                    if ($facnow >= $vence && $data["recurrente"] == NULL && $data["evaluacion"] >= 80 && $data["proceso"] == 'FINALIZADO' && $data["confirmar"] == 'CONFIRMADO') {
-                        $status = $facnow.$vence."<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO3</span>";
-                    }//vencido basicos sin recurrencia
-                }else{
-                    if ($facnow < $xpencer && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] > 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
-                        $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>".$xpencer;//vigente sin básicos
-                    }   
-                    //pendiente
-                    if ($data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == NULL || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
-                        $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
-                    }//pendiente status sin evaluar y sin finalizar
-                    if ($data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == NULL || $data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
-                        $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
-                    }//pendiente status sin evaluar y finalizado 
+                    if ($data["gstTipo"] == 'BÁSICOS/INICIAL'){
 
-                    if ($facnow >= $vence && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["proceso"] == 'FINALIZADO' && $data["confirmar"] == 'CONFIRMADO') {
-                        $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO1</span>";
-                    }//vencido sin basicos
+                        if ($data["fcurso"] == $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+                        }
+                        if ($data["recurrente"]==NULL && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+                        }
+                        if ($data["recurrente"]== NULL && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+                        }
+                        if ($data["fcurso"] < $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO') {
+                            //$recurrente = strtotime(Date($data["recurrente"]));
+                            $recurrente = date("d-m-Y",strtotime($data["recurrente"]));
+                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
+                            $status = $recurrente.$span;
+                        }
+                    
+                    }else{
+                        if ($data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+                            $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+                        }
+                        if ($data["fcurso"] < $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"]  == 'CONFIRMADO') {
+                            // $recursado = strtotime(Date($data["recursado"]));
+                             $recursado = date("d-m-Y",strtotime($data["recursado"]));
+                             $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RENOVADO</span>";
+                             $status = $recursado.$span;
+                        }
+                        if ($data["fcurso"] == $data["recursado"] && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+                            $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+                        }
+                    }
                 }
             }
-            
-
-
-           /* if($data["gstVignc"] == 101){
-            //unica vez""""""""""""""""""""
-            if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] >= 80 && $data["pronostico"] == "UNICA VEZ"){
-                $status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>".$data["gstVignc"];
-            }//unica vez (101)
-
-
-            if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] <= 79){
-                $status ="<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>".$data["gstVignc"];
-            }//unica vez no acreditado
-                
-            }else{
-
-            //vigente"""""""""""""""""""""""
-            if ($facnow < $xpencer && $facnow < $vence && $data["fcurso"] == $data["recursado"] && $data["gstTipo"] != 'BÁSICOS/INICIAL' && $data["evaluacion"] > 79 && $data["confirmar"] == 'CONFIRMADO' && $data["gstVignc"] != 101 && $data["proceso"] == "FINALIZADO") {
-                $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";//vigente sin básicos
-            }
-            if ($facnow < $xpencer && $facnow < $vence && $data["fcurso"] == $data["recurrente"] && $data["gstTipo"] == 'BÁSICOS/INICIAL' && $data["evaluacion"] > 79 && $data["confirmar"] == 'CONFIRMADO' && $data["gstVignc"] != 101 && $data["proceso"] == "FINALIZADO") {
-                $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";//vigente básicos iguales
-            } 
-
-
-            if ($facnow < $xpencer && $facnow < $vence && $data["recurrente"] === NULL && $data["gstTipo"] === 'BÁSICOS/INICIAL' && $data["evaluacion"] > 79 && $data["confirmar"] == 'CONFIRMADO' && $data["gstVignc"] != 101 && $data["proceso"] == "FINALIZADO") {
-                $status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";//vigente básicos null
-            }
-            
-            //pendiente""""""""""""""""""""
-            if ($data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == NULL || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
-                $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
-            }//pendiente status sin evaluar y sin finalizar
-            if ($data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == NULL || $data["proceso"] == "FINALIZADO" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
-                $status = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
-            }//pendiente status sin evaluar y finalizado 
-
-            //vencido""""""""""""""""""""""
-            if ($facnow >= $vence && $facnow > $xpencer && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["proceso"] == 'FINALIZADO' && $data["confirmar"] == 'CONFIRMADO' && $data["gstVignc"] != 101 && $data["gstTipo"] != 'BÁSICOS/INICIAL') {
-                $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO1</span>";
-            }//vencido sin basicos
-            if ($facnow >= $vence && $facnow > $xpencer && $data["fcurso"] == $data["recurrente"] && $data["evaluacion"] >= 80 && $data["proceso"] == 'FINALIZADO' && $data["confirmar"] == 'CONFIRMADO' && $data["gstVignc"] != 101 && $data["gstTipo"] === 'BÁSICOS/INICIAL') {
-                $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO2</span>";
-            }//vencido basicos sin recurrencia
-            if ($facnow >= $vence && $facnow > $xpencer && $data["recurrente"] == NULL && $data["evaluacion"] >= 80 && $data["proceso"] == 'FINALIZADO' && $data["confirmar"] == 'CONFIRMADO' && $data["gstVignc"] != 101 && $data["gstTipo"] === 'BÁSICOS/INICIAL') {
-                $status = $facnow.$vence."<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO3</span>";
-            }//vencido basicos sin recurrencia
-
-            }*/
-            
-
-
-        
-
-            
-            
-
             //contenido de la tabla--------------------------------------------------------------------------
             $cursos[] = [ 
                 $item,
