@@ -208,8 +208,9 @@
                         if ($data["fcurso"] < $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO') {
                             //$recurrente = strtotime(Date($data["recurrente"]));
                             $recurrente = date("d-m-Y",strtotime($data["recurrente"]));
-                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
-                            $status = $recurrente.$span;
+                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+                            //$status = $recurrente.$span;
+                            $status = $span;
                         }
                     }else{
                         if ($facnow > $xpencer && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
@@ -240,8 +241,9 @@
                         if ($data["fcurso"] < $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"]  == 'CONFIRMADO') {
                            // $recursado = strtotime(Date($data["recursado"]));
                             $recursado = date("d-m-Y",strtotime($data["recursado"]));
-                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RENOVADO</span>";
-                            $status = $recursado.$span;
+                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+                            //$status = $recursado.$span;
+                            $status = $span;
                         }
                     }    
                 //VENCIDOS
@@ -266,8 +268,9 @@
                         if ($data["fcurso"] < $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO') {
                             //$recurrente = strtotime(Date($data["recurrente"]));
                             $recurrente = date("d-m-Y",strtotime($data["recurrente"]));
-                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
-                            $status = $recurrente.$span;
+                            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+                            //$status = $recurrente.$span;
+                            $status = $span;
                         }
                     
                     }else{
@@ -277,8 +280,9 @@
                         if ($data["fcurso"] < $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"]  == 'CONFIRMADO') {
                             // $recursado = strtotime(Date($data["recursado"]));
                              $recursado = date("d-m-Y",strtotime($data["recursado"]));
-                             $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>RENOVADO</span>";
-                             $status = $recursado.$span;
+                             $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+                             //$status = $recursado.$span;
+                             $status = $span;
                         }
                         if ($data["fcurso"] == $data["recursado"] && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
                             $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
