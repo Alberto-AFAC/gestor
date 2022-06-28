@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION['usuario'])) 
     { }else{ header('Location: ../'); }
 
-    $id_usu = $_SESSION['usuario']['id_usu'];
+$id_usu = $_SESSION['usuario']['id_usu'];
 
 //ACCESOS ADMINISTRADORES     
 if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" || 
@@ -61,6 +61,8 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
             <span class="progress"></span>
         </div>
     </div>
+
+
     <div class="wrapper">
         <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" id="scene">
             <li class="layer" data-depth="0.00">
@@ -86,7 +88,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
             <li class="layer" data-depth="0.30">
                 <div class="hero">
                     <div class="container">
-                        <div class="card">
+                        <div class="card" id="gestor">
                             <span></span>
                             <div class="content">
                                 <h3>CAPACITACIÓN AFAC</h3>
@@ -94,7 +96,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                                 <a href="../<?php echo $acceso ?>">Iniciar</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" id="mesa">
                             <span></span>
                             <div class="content">
                                 <h3>MESA DE AYUDA</h3><br>
@@ -104,7 +106,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card" id="linguistica">
                             <span></span>
                   
                             <div class="content">
@@ -114,14 +116,25 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                      
                             </div>
                         </div>
-                        <div class="card" style="background: silver">
+
+                        <div class="card" id="accesos">
+                            <span></span>
+                            <div class="content">
+                                <h3>ACCESOS</h3> 
+                                <img class="img-servicios" src="../dist/img/accesos.png" width="75%;" alt="ACCESO"><br><br>
+                                <a href="../accesos/">Iniciar</a>                    
+                            </div>
+                        </div>     
+
+                        
+                        <div class="card" style="background: silver" id="detyca">
                             <span></span>
                             <div class="content">
                                 <h3>DETyCA</h3>
                                 <img class="img-servicios" src="../models/menu/images/cocodi.svg" width="75%;" alt="tecnico"><br><br>
                                 <!-- <a href="#">Iniciar</a> -->
                             </div>
-                        </div>                        
+                        </div>                          
 
                     </div>
                 </div>
@@ -156,6 +169,9 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
  
         </ul>
     </div>
+
+    <input type="text" name="id_usua" id="id_usua" value="<?php echo $id_usu ?>">
+
     <script src="../js/menu/js/jquery.js"></script>
     <script src="../js/menu/js/main.js"></script>
 
@@ -164,3 +180,47 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 </body>
 
 </html>
+
+<script type="text/javascript">
+    
+
+var datos = document.getElementById('id_usua').value;
+    
+$.ajax({
+    url: '../php/control-accesos.php',
+    type: 'POST',
+    data: 'datos='+datos
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
+    for (i = 0; i < res.length; i++) {
+
+
+        if(obj.data[i].privi_gestor=='SUPER_ADMIN'){
+
+            $("#gestor").show();
+            $("#mesa").show();
+            $("#detyca").show();
+
+        }else{
+            $("#accesos").hide();            
+            $("#detyca").hide();
+        }
+
+        if(obj.data[i].privi_lingui=='x'){
+            $("#linguistica").hide();
+        }else{
+            $("#linguistica").show();
+        }
+
+        if(obj.data[i].privi_acces == 'x'){
+           $("#accesos").hide();
+        }else if(obj.data[i].privi_acces == 'super_admin'){
+           $("#accesos").show();
+        }
+
+
+    }
+})
+
+</script>
