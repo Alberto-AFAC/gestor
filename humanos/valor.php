@@ -975,21 +975,23 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
                                     <h3 class="box-title">Cursos programados</h3>
                                     <input id="fecomp1" style='display:none' type="text">
                                 </div>
-<!--                                 <div class="form-group">
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
-                                        <label for="finalizado">FINALIZADO</label><br>
-                                    </div>
-                                    
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="programados" name="cursinfoinsp" value="programados">
-                                        <label for="programados">PROGRAMADOS</label><br>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
-                                        <label for="cancelados">CANCELADOS</label><br>
-                                    </div>
-                                </div> -->
+                                <table class="display table table-striped table-bordered dataTable"
+                                    id="data-table-cursosProgramados2" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>FOLIO</th>
+                                            <th>TÍTULO</th>
+                                            <th>TIPO</th>
+                                            <th>INICIO</th>
+                                            <th>HORA</th>
+                                            <th>FINAL</th>
+                                            <th>ASISTENCIA</th>
+                                            <th>VIGENCIA</th>
+                                            <th>PROCESO</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                                 <div class="box-body">
                                     <?php include('../html/gesCurso.html');?>
                                 </div>

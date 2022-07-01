@@ -375,13 +375,31 @@ $('#select2').load('select/acttablacom.php');
 
 var dataSet = [
 <?php 
-$query = "SELECT * FROM personal 
-          INNER JOIN categorias ON categorias.gstIdcat = personal.gstIDCat
-          WHERE personal.gstCargo = 'INSPECTOR' AND  personal.estado = 0 
-             OR personal.gstCargo = 'DIRECTOR' AND  personal.estado = 0
-             OR personal.gstCargo = 'EJECUTIVO' AND  personal.estado = 0
-             -- OR personal.gstCargo = 'COORDINADOR' AND  personal.estado = 0
-             ORDER BY gstIdper DESC";
+$query = " SELECT
+*,
+DATE_FORMAT( p.gstFeing, '%d/%m/%Y' ) AS Ingreso,
+p.gstIDCat AS IDcat,
+(
+SELECT
+  GROUP_CONCAT( g.gstCatgr ) AS spcialidds 
+FROM
+  especialidadcat e,
+  categorias g 
+WHERE
+  g.gstIdcat = e.gstIDcat 
+  AND g.gstIdcat NOT IN (24, 25, 26, 39, 31) 
+  AND e.gstIDper = p.gstIdper 
+  AND p.gstCargo='INSPECTOR'
+) AS spcialidds
+FROM
+personal p,
+categorias c
+WHERE
+c.gstIdcat = p.gstIDCat 
+AND p.gstCargo IN ('INSPECTOR', 'DIRECTOR', 'EJECUTIVO') 
+AND p.estado = 0 
+ORDER BY
+p.gstIdper DESC";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
@@ -395,19 +413,10 @@ $resultado = mysqli_query($conexion, $query);
 
     $gstIdper = $data['gstIdper'];
 
-    $queri = "SELECT *,GROUP_CONCAT(gstCatgr) AS spcialidds 
-    FROM especialidadcat 
-    INNER JOIN categorias ON categorias.gstIdcat = especialidadcat.gstIDcat 
-    WHERE categorias.gstIdcat != 24 
-    AND categorias.gstIdcat != 25 
-    AND categorias.gstIdcat != 26 
-    AND categorias.gstIdcat != 29 
-    AND categorias.gstIdcat != 31
-    AND especialidadcat.gstIDper = $gstIdper";
-    $resul = mysqli_query($conexion, $queri); 
+   
 
 
-    if($res = mysqli_fetch_array($resul)){
+    if($res = mysqli_fetch_array($resultado)){
     $categoria = $res['spcialidds'];
 
     if($res['spcialidds']==''){ $categoria = 'POR ASIGNAR'; }
@@ -453,7 +462,7 @@ var tableGenerarReporte = $('#data-table-inspectores').DataTable({
     fixedHeader: true,
     data: dataSet,
     columns: [
-    {title: "ID"},
+    {title: "N° EMP:"},
     {title: "NOMBRE(S)"},
     {title: "APELLIDO(S)"},
     {title: "CATEGORÍA"},

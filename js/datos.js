@@ -670,13 +670,17 @@ function borrarperext(gstIdper) {
 }
 //////////////DATOS DEL PERSONAL LISTA DE PERSONAS//////////// 
 function perfil(gstIdper) {
-
+    let id_perinsp = gstIdper;
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
     } else {
         document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/user1-128x128.jpg" style="width: 80px; alt="User Avatar">';
     }
+    //LLAMA A LA TABLA DE CURSOS DE EL INSPECTOR 
+    opendellcursins(id_perinsp);
+    //FUNCION DE PORCENTAJES 27062022
+    porcenperso(id_perinsp);
 
     $.ajax({
         url: '../php/conPerson.php',
@@ -896,7 +900,7 @@ function perfil(gstIdper) {
                 })
 
 
-                $.ajax({
+                /*$.ajax({
                     url: '../php/gesCurso.php',
                     type: 'POST'
                 }).done(function(resp) {
@@ -1166,7 +1170,7 @@ function perfil(gstIdper) {
                     }
                     html += '</tbody></table></div>';
                     $("#evlacns").html(html);
-                })
+                })*/
             }
         }
     })
@@ -1756,14 +1760,17 @@ function actualOjt() {
 //////////////DATOS DEL PERSONAL INSPECTOR//////////// 
 
 function inspector(gstIdper) {
-
+    let id_perinsp = gstIdper;
     if (gstIdper === 1203) {
         document.getElementById('foto').innerHTML = '<span><img class="img-circle" src="../dist/img/profile-leonardoR.jpeg" alt="User Avatar" style="width: 80px;"></span>';
 
     } else {
-        document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/AFACPDF.png" style="width: 90px; alt="User Avatar">';
+        document.getElementById('foto').innerHTML = '<img class="img-circle" src="../dist/img/user1-128x128.jpg" style="width: 80px; alt="User Avatar">';
     }
-
+    //LLAMA A LA TABLA DE CURSOS DE EL INSPECTOR 
+    opendellcursins(id_perinsp);
+    //FUNCION DE PORCENTAJES 27062022
+    porceninsp(id_perinsp);
     // .l.
     $.ajax({
         url: '../php/consulta.php',
@@ -1818,6 +1825,7 @@ function inspector(gstIdper) {
                             $("#nombrecompleto").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             $("#cargopersonal").val(obj.data[i].gstCargo);
                             $("#id_inspp").val(obj.data[i].gstIdper);
+                            $("#id_persinsp").val(obj.data[i].gstIdper);
 
 
                             $("#Dtall #gstIdper").val(obj.data[i].gstIdper);
@@ -2074,8 +2082,9 @@ function inspector(gstIdper) {
 
                 })
 
+                //comentar de aqui antigua tablas
 
-                $.ajax({
+                /*$.ajax({
                     url: '../php/gesCurso.php',
                     type: 'POST'
                 }).done(function(resp) {
@@ -2191,53 +2200,101 @@ function inspector(gstIdper) {
 
                         var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
 
-
-                        if (factual >= finaliza) {
+                        //ESTATUS UNICA VEZ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    
+                        if (obj.data[ii].gstVignc == 101 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
+                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS VENCIDO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        //vencido todos menos basicos
+                        if (factual >= finaliza && obj.data[ii].fcurso <= obj.data[ii].recursado && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo != "BÁSICOS/INICIAL") {
                             status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
                             //console.log(status);
-                        } else
-                        if (factual <= ftermino) {
-                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                        }
+                        //vencido basicos
+                        if (factual >= finaliza && obj.data[ii].fcurso <= obj.data[ii].recurrente && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo == "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+                        }
+
+                        //ESTATUS CURSADO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual >= finaliza && obj.data[ii].fcurso < obj.data[ii].recursado && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo != "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color:#083368; font-size: 14px;' class='badge'>RENOVADO</span>";
                             //console.log(status);
-                        } else
-                        if (factual >= ftermino) {
+                        }
+                        //cursado basicos
+                        if (factual >= finaliza && obj.data[ii].fcurso < obj.data[ii].recurrente && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo == "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS POR VENCER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual >= ftermino && obj.data[ii].fcurso <= obj.data[ii].recursado && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo != "BÁSICOS/INICIAL") {
                             status = "<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         }
-                        if (obj.data[ii].gstTipo == "INDUCCIÓN") { //UNICA VEZ EN ESTATUS "INDUCCIÓN"
-                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                        //cursado basicos
+                        if (factual >= ftermino && obj.data[ii].fcurso <= obj.data[ii].recurrente && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101 && obj.data[ii].gstTipo == "BÁSICOS/INICIAL") {
+                            status = "<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
                             //console.log(status);
                         }
-                        if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
-                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                        //ESTATUS REENOVADO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual >= ftermino && obj.data[ii].fcurso < obj.data[ii].recursado && obj.data[ii].gstTipo != 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color: #083368; font-size: 14px;' class='badge'>RENOVADO</span>";
                             //console.log(status);
                         }
-                        // alert(obj.data[ii].confirmar);
+                        //cursos básicos
+                        if (factual >= finaliza && obj.data[ii].fcurso < obj.data[ii].recurrente && obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color:#083368; font-size: 14px;' class='badge'>RECURRENCIA</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS VIGENTE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (factual <= ftermino && obj.data[ii].fcurso == obj.data[ii].recursado && obj.data[ii].gstTipo != 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                            //console.log(status);
+                        }
+                        //cursos básicos
+                        if (factual <= ftermino && obj.data[ii].fcurso == obj.data[ii].recurrente && obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].evaluacion >= 80 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].gstVignc != 101) {
+                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS REPROBADO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+                        if (obj.data[ii].evaluacion <= 79 && obj.data[ii].confirmar == 'CONFIRMADO' && obj.data[ii].proceso == 'FINALIZADO') {
+                            status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+                        }
+                        //ESTATUS PENDIENTE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        if (obj.data[ii].evaluacion == 'NULL') {
+                            status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>PENDIENTE</span>";
+                            //console.log(status);
+                        }
+                        //ESTATUS DE ASISTENCIA **********************************************************
                         if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
-
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
-
-
                         } else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
-
-                        } else if (obj.data[ii].confirmar == 'OTROS') {
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                        } else if (obj.data[ii].confirmar == 'OTROS' && obj.data[ii].justifi != 'NO ASISTIÓ') {
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>DECLINADO</a>";
                             status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
+                        } else if (obj.data[ii].confirmar == 'OTROS' && obj.data[ii].justifi == 'NO ASISTIÓ' && obj.data[ii].proceso == 'FINALIZADO') {
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>NO ACREDITO</span>";
+                            proc12 = "<span style='color:green; font-size: 14px;'>FINALIZADO</span>";
+                        } else if (obj.data[ii].confirmar == 'OTROS' && obj.data[ii].justifi == 'NO ASISTIÓ' && obj.data[ii].proceso == 'PENDIENTE') {
+                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' style='color: #BB2303; cursor: pointer;'>NO ASISTIO</a>";
+                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>NO ACREDITO</span>";
+                            proc12 = "<span style='color:grey; font-size: 14px;'>PENDIENTE</span>";
                         }
+
 
                         if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
-                            confirmar = "<span title='Confirma su asistencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
+                            confirmar = "<span title='Confirma su asistencia' style='color: green;'>CONFIRMADO</span>";
                         }
+                        //ESTATUS DE ASISTENCIA **********************************************************
+
 
                         if (obj.data[ii].confirmar == 'CONFIRMAR') {
                             status1 = "<span style='font-weight: bold; color: grey;'>PENDIENTE</span>";
@@ -2251,13 +2308,13 @@ function inspector(gstIdper) {
 
                             if (obj.data[ii].evaluacion == 'NULL') {
                                 valua = 'FALTA EVALUACIÓN';
-                                proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+                                proc12 = "<span style='color: grey; font-size: 14px;'>FINALIZADO<br>" + valua + "</span>";
                             } else if (obj.data[ii].evaluacion > 79) {
                                 valua = 'APROBO';
-                                proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+                                proc12 = "<span style='color: green; font-size: 14px;'>FINALIZADO<br>" + valua + "</span>";
                             } else {
                                 valua = 'NO APROBO';
-                                proc12 = "<span style='background-color: red; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+                                proc12 = "<span style='color: red; font-size: 14px;'>FINALIZADO<br>" + valua + "</span>";
 
                             }
 
@@ -2360,7 +2417,8 @@ function inspector(gstIdper) {
                     }
                     html += '</tbody></table></div></div></div>';
                     $("#cursos").html(html);
-                })
+
+                })*/
 
 
                 $.ajax({
@@ -2474,8 +2532,255 @@ function inspector(gstIdper) {
     consultardocIns(gstIdper);
 
 }
-//FUNCION PARA FILTRAR ESPECIALIDAD VISTA 2
+//FUNCION PARA VER EL DETALLE DE NO ASISTIO
+function modaldeclin(id_curso) {
+    //alert(id_curso);
+    //alert("MODAL NO ASISTIO");
+    $.ajax({
+        url: '../php/consporce.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        for (ii = 0; ii < res.length; ii++) {
+            x++;
+            if (id_curso == obj.data[ii].id_curso) {
+                //alert(obj.data[ii].justifi);
+                let toma1 = obj.data[ii].gstTitlo; //NOMBRE DEL CURSO  
+                let toma2 = obj.data[ii].justifi; //JUSTIFICACIÓN
+                let toma3 = obj.data[ii].confirmar; //MOTIVO     
+                $("#nombredeclin").text(toma1); // Label esta en valor.php
+                $("#declinpdf").attr('href', toma2); // Label esta en valor.php
+                $("#motivod").text('Motivo:' + toma3); // Label esta en valor.php
+                $("#otrosd").text(toma2); // Label esta en valor.php
 
+                if (toma3 == 'OTROS' && toma2 != 'NO ASISTIÓ') {
+                    document.getElementById('otrosd').style.display = '';
+                    document.getElementById('declinpdf').style.display = 'none';
+                }
+                if (toma3 == 'OTROS' && toma2 == 'NO ASISTIÓ') {
+                    document.getElementById('otrosd').style.display = 'none';
+                    document.getElementById('declinpdf').style.display = 'none';
+                    $("#motivod").text('Motivo:' + ' NO ASISTIÓ');
+                }
+                if (toma3 == 'TRABAJO') {
+                    document.getElementById('otrosd').style.display = 'none';
+                    document.getElementById('declinpdf').style.display = '';
+                }
+                if (toma3 == 'ENFERMEDAD') {
+                    document.getElementById('otrosd').style.display = 'none';
+                    document.getElementById('declinpdf').style.display = '';
+                }
+
+            }
+        }
+    })
+
+}
+//FUNCION PARA VER EL DETALLE DE PORCENTAJE DE LOS CURSOS 
+function porceninsp(id_perinsp) {
+    //alert(id_perinsp);
+    //alert("PORCENTAJE");
+    $.ajax({
+        url: '../php/consporce.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        //30082021
+        programados = 0;
+        programados1 = 0;
+        DECLINADOS = 0;
+        FINALIZADO = 0;
+        CANCELADO = 0;
+        OTROS = 0;
+        insp = 0;
+
+        for (ii = 0; ii < res.length; ii++) {
+            x++;
+            if (id_perinsp == obj.data[ii].idinsp) {
+                //BÁSICOS CHECK LIST INSPECTOR
+                if (obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                    document.getElementById('bscos').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                    $("#Bfecha").html(obj.data[ii].fcursof);
+                }
+                if (obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                    document.getElementById('bscos').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                    $("#Bfecha").html(obj.data[ii].fcursof);
+                }
+                if (obj.data[ii].gstTipo == 'BÁSICOS/INICIAL' && obj.data[ii].proceso == 'PENDIENTE') {
+                    document.getElementById('bscos').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                    $("#Bfecha").html('PENDIENTE');
+                }
+                //RECURRENTES CHECK LIST INSPECTOR
+                if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                    document.getElementById('recurnt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                    $("#Rfecha").html(obj.data[ii].fcursof);
+
+                } else if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                    document.getElementById('recurnt').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                    $("#Rfecha").html(obj.data[ii].fcursof);
+                } else
+                if (obj.data[ii].gstTipo == 'RECURRENTES' && obj.data[ii].proceso == 'PENDIENTE') {
+                    document.getElementById('recurnt').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                    $("#Rfecha").html('PENDIENTE');
+                }
+                //ESPECIFICOS CHECK LIST INSPECTOR
+                if (obj.data[ii].gstTipo == 'ESPECÍFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion >= 80) {
+                    document.getElementById('specifico').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
+                    $("#Efecha").html(obj.data[ii].fcursof);
+
+                } else if (obj.data[ii].gstTipo == 'ESPECÍFICOS' && obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].evaluacion < 80) {
+                    document.getElementById('specifico').innerHTML = '<img src="../dist/img/uncheked.svg" alt="NO" width="25px;">';
+                    $("#Efecha").html(obj.data[ii].fcursof);
+                } else
+                if (obj.data[ii].gstTipo == 'ESPECÍFICOS' && obj.data[ii].proceso == 'PENDIENTE') {
+                    document.getElementById('specifico').innerHTML = '<img src="../dist/img/pendientes.svg" alt="NO" width="25px;">';
+                    $("#Efecha").html('PENDIENTE');
+                }
+
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    programados++;
+                }
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
+                    programados1++;
+                }
+
+
+                if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    FINALIZADO++;
+                }
+                if (obj.data[ii].confirmar == 'TRABAJO') {
+                    CANCELADO++;
+                }
+                if (obj.data[ii].confirmar == 'ENFERMEDAD') {
+                    DECLINADOS++;
+                }
+                if (obj.data[ii].confirmar == 'OTROS') {
+                    OTROS++;
+                }
+                if (obj.data[ii].estado == '0') {
+                    insp++;
+                }
+
+                document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
+                document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
+                document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
+                //PORCENTAJE DE COMPLETADOS
+
+                var porcentaje1 = document.getElementById("porcentaje11");
+                resultado3 = ((FINALIZADO * 100) / insp);
+                var resFinal3 = resultado3.toFixed(0);
+                porcentaje1.style.width = (resFinal3 + "%");
+                porcentaje11.innerHTML = (resFinal3 + "%");
+                document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE PROGRAMADOS
+                var porcentaje12 = document.getElementById("porcentaje12");
+                resultado = (((programados + programados1) * 100) / insp);
+
+                var resFinal = resultado.toFixed(0);
+                porcentaje12.style.width = (resFinal + "%");
+                porcentaje12.innerHTML = (resFinal + "%"); //VALOR
+                document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE CANCELADO
+                var porcentaje13 = document.getElementById("porcentaje13");
+                resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
+                var resFinal1 = resultado1.toFixed(0);
+
+                porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
+                porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
+                document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
+
+            }
+        }
+    })
+}
+//FUNCION PARA VER EL DETALLE DE PORCENTAJE DE LOS CURSOS 
+function porcenperso(id_perinsp) {
+    //alert(id_perinsp);
+    //alert("PORCENTAJE PERSONAS");
+    $.ajax({
+        url: '../php/consporce.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        //30082021
+        programados = 0;
+        programados1 = 0;
+        DECLINADOS = 0;
+        FINALIZADO = 0;
+        CANCELADO = 0;
+        OTROS = 0;
+        insp = 0;
+
+        for (ii = 0; ii < res.length; ii++) {
+            x++;
+            if (id_perinsp == obj.data[ii].idinsp) {
+
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    programados++;
+                }
+                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
+                    programados1++;
+                }
+
+                if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                    FINALIZADO++;
+                }
+                if (obj.data[ii].confirmar == 'TRABAJO') {
+                    CANCELADO++;
+                }
+                if (obj.data[ii].confirmar == 'ENFERMEDAD') {
+                    DECLINADOS++;
+                }
+                if (obj.data[ii].confirmar == 'OTROS') {
+                    OTROS++;
+                }
+                if (obj.data[ii].estado == '0') {
+                    insp++;
+                }
+
+                document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
+                document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
+                document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
+                //PORCENTAJE DE COMPLETADOS
+
+                var porcentaje1 = document.getElementById("porcentaje11");
+                resultado3 = ((FINALIZADO * 100) / insp);
+                var resFinal3 = resultado3.toFixed(0);
+                porcentaje1.style.width = (resFinal3 + "%");
+                porcentaje11.innerHTML = (resFinal3 + "%");
+                document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE PROGRAMADOS
+                var porcentaje12 = document.getElementById("porcentaje12");
+                resultado = (((programados + programados1) * 100) / insp);
+
+                var resFinal = resultado.toFixed(0);
+                porcentaje12.style.width = (resFinal + "%");
+                porcentaje12.innerHTML = (resFinal + "%"); //VALOR
+                document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
+
+                // PORCENTAJE DE CANCELADO
+                var porcentaje13 = document.getElementById("porcentaje13");
+                resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
+                var resFinal1 = resultado1.toFixed(0);
+
+                porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
+                porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
+                document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
+
+            }
+        }
+    })
+}
+//FUNCION PARA FILTRAR ESPECIALIDAD VISTA 2
 function cursoespci() {
 
     $.ajax({
@@ -3812,4 +4117,28 @@ function usuBaja() {
             }, 2000);
         }
     });
+}
+
+
+
+function opendellcursins(id_perinsp) {
+    // var id_perinsp = document.getElementById('id_persinsp').value;
+    //alert(id_perinsp);
+    var tableCursosProgramados = $('#data-table-cursosProgramados2').DataTable({
+        "order": [
+            [3, "asc"]
+        ],
+        "ajax": {
+            "url": "../php/detallescurper.php",
+            "type": "GET",
+            "data": function(d) {
+                d.id_perinsp = id_perinsp;
+            }
+        },
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+    });
+
 }

@@ -174,28 +174,33 @@ $direc = mysqli_query($conexion,$sql);
           <!-- /.box -->
         </div>
 <!-- DETALLE DECLINA CONVOCATORIA -->
-<div class="modal fade" id='modal-declinadop'  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal1">
-  
-  <div id="success-icon">
-    <div>
-    <img class="img-circle1" src="../dist/img/declinado.png">
-    </div>
-  </div>
-  <h1 class="modaltitlep" style="color:gray"><strong>DETALLES</strong></h1>
-  <label id="cursdeclinap" style="font-size: 16px; color:gray"  for=""></label>
-  <label id="declindetp" style="font-size: 18px; color:gray; font-weight: normal;" class="points">Declina la convocatoria del curso:</label>
-  <label id="nombredeclinp" style="font-size: 18px; color:gray; font-weight: normal;"  for=""></label>
-  <br>
-  <label id="motivodp" style="font-size: 18px; color:#2B2B2B; font-weight: blod;"  for=""></label>
-  <hr>
-  <a id="declinpdfp" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclinp" style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
-  <label readonly id="otrosdp" name="textarea" style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3" cols="50"></label>
-</div>
-<script>
+<div class="modal fade" id='modal-declinado' tabindex="-1" role="dialog" aria-labelledby="basicModal"
+                aria-hidden="true">
+                <div class="modal1">
 
-</script>
-</div>
+                    <div id="success-icon">
+                        <div>
+                            <img class="img-circle1" src="../dist/img/declinado.png">
+                        </div>
+                    </div>
+                    <h1 class="modaltitle" style="color:gray"><strong>DETALLES</strong></h1>
+                    <label id="cursdeclina" style="font-size: 16px; color:gray" for=""></label>
+                    <label id="declindet" style="font-size: 18px; color:gray; font-weight: normal;"
+                        class="points">Declina la convocatoria del curso:</label>
+                    <label id="nombredeclin" style="font-size: 18px; color:gray; font-weight: normal;" for=""></label>
+                    <br>
+                    <label id="motivod" style="font-size: 18px; color:#2B2B2B; font-weight: blod;" for=""></label>
+                    <hr>
+                    <a id="declinpdf" class="btn btn-block btn-social btn-linkedin" href="" id="pdfdeclin"
+                        style="text-align: center;"> <i class="fa fa-file-pdf-o"></i> VISUALIZAR EL PDF ADJUNTO</a>
+                    <label readonly id="otrosd" name="textarea"
+                        style="font-size: 16px; color:#615B5B; font-weight: normal; display:none" rows="3"
+                        cols="50"></label>
+                </div>
+                <script>
+
+                </script>
+            </div>
 <!--FIN DETALLE DECLINA CONVOCATORIA -->
 
 <!-- DISEÑO ANTIGUO/.col -->
@@ -754,20 +759,23 @@ $direc = mysqli_query($conexion,$sql);
                                     <h3 class="box-title">Cursos programados</h3>
                                     <input id="fecomp1" style='display:none' type="text">
                                 </div>
-<!--                                 <div class="form-group">
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="finalizado" name="cursinfoinsp" value="finalizado">
-                                        <label for="finalizado">FINALIZADO</label><br>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="programados" name="cursinfoinsp" value="programados">
-                                        <label for="programados">PROGRAMADOS</label><br>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="radio" id="cancelados" name="cursinfoinsp" value="cancelados">
-                                        <label for="cancelados">CANCELADOS</label><br>
-                                    </div>
-                                </div> -->
+                                <table class="display table table-striped table-bordered dataTable"
+                                        id="data-table-cursosProgramados2" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>FOLIO</th>
+                                                <th>TÍTULO</th>
+                                                <th>TIPO</th>
+                                                <th>INICIO</th>
+                                                <th>HORA</th>
+                                                <th>FINAL</th>
+                                                <th>ASISTENCIA</th>
+                                                <th>VIGENCIA</th>
+                                                <th>PROCESO</th>
+                                            </tr>
+                                        </thead>
+                                </table>
                                 <div class="box-body">
                                     <?php include('../html/gesCurso.html');?>
                                 </div>
