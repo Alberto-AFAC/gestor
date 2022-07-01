@@ -648,7 +648,7 @@ function actContrMeay() {
     dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
 
     $.ajax({
-        url: '../../gestor/php/actContra.php',
+        url: '../../php/actContra.php',
         type: 'POST',
         data: dato
     }).done(function(respuesta) {

@@ -101,7 +101,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                             <div class="content">
                                 <h3>MESA DE AYUDA</h3><br>
                                 <img class="img-servicios" src="../models/menu/images/ingenieria.svg" width="75%;" alt="tecnico"><br><br>
-                                <a href="../../Mesa-Ayuda/php/acceso.php">Iniciar</a>
+                                <a href="../../mesa-ayuda/php/acceso.php">Iniciar</a>
                           <!--       <button onclick="acceso(<?php echo $id_usu ?>);">BUTON</button> -->
                             </div>
                         </div>
