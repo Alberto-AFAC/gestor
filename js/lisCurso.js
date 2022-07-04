@@ -435,15 +435,19 @@ function cambiartexto() {
 function gencerti(cursos) {
     // var cer = cursos.split("*");
     //alert(cursos);
+    let id_curso = cursos;
     $.ajax({
         url: '../php/consconst.php',
-        type: 'POST'
+        type: 'GET',
+        data: 'id_curso=' + id_curso
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
         for (K = 0; K < res.length; K++) {
             //codigoC = obj.data[K].id_codigocurso.substr(2);
+            //alert("ento ajax");
             if (obj.data[K].id_curso == cursos) {
+                //alert("ento ajax");
                 document.getElementById("evaNombrc").value = obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO;
                 // $("#evaNombrc").val(obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO); //NOMBRE COMPLETO
                 //$("#idperonc").val(obj.data[K].NOMBRE_CURSO); //NOMBRE DEL CURSO
@@ -496,53 +500,50 @@ function gencerti(cursos) {
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
     //alert(cursos);
+    let id_curso = cursos;
     $.ajax({
-        url: '../php/conscursospro.php',
-        type: 'POST'
+        url: '../php/evalindiv.php',
+        type: 'GET',
+        data: 'id_curso=' + id_curso
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
 
         for (C = 0; C < res.length; C++) {
-            if (obj.data[C].id_curso == cursos) {
-
-                $("#avaluacion #evaNombr").val(obj.data[C].gstNombr + " " + obj.data[C].gstApell); //NOMBRE COMPLETO
-                //$("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
-                $("#avaluacion #id_curso").val(obj.data[C].id_curso); //ID DEL CURSO
-                $("#avaluacion #validoev").val(obj.data[C].evaluacion); //EVALUACIÓN
-                $("#avaluacion #idinsev").val(obj.data[C].idinsp); //EVALUACIÓN
-                $("#avaluacion #codigocurso").val(obj.data[C].codigo);
-                $("#avaluacion #ogidoc").val(obj.data[C].codigo); //EVALUACIÓN
-
-                valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
-                costOfTicket = document.getElementById("NOE");
-                selectedStand = document.getElementById("SIe");
-                pendiente = document.getElementById("PE");
-                //  statusev = document.getElementById("resuleval"); //resultado texto
-                //if(valor2 >= 80){ //APROBADO
-                if (((valor2) >= 80) && ((valor2) <= 100)) {
-                    selectedStand.style.display = '';
-                    costOfTicket.style.display = 'none';
-                    pendiente.style.display = 'none';
-                    //     statusev.value = "APROBADO"
-                }
-
-                if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
-                    costOfTicket.style.display = '';
-                    selectedStand.style.display = 'none';
-                    pendiente.style.display = 'none';
-                    //  statusev.value = "REPROBADO"
-                }
-                if (valor2 <= 0) { //PENDIENTE 
-                    pendiente.style.display = '';
-                    costOfTicket.style.display = 'none';
-                    selectedStand.style.display = 'none';
-                    //    statusev.value = "PENDIENTE"
-                }
-
+            //if (obj.data[C].id_curso == cursos) {
+            $("#avaluacion #evaNombr").val(obj.data[C].gstNombr + " " + obj.data[C].gstApell); //NOMBRE COMPLETO
+            //$("#avaluacion #idperon").val(d[1]); //NOMBRE DEL CURSO
+            $("#avaluacion #id_curso").val(obj.data[C].id_curso); //ID DEL CURSO
+            $("#avaluacion #validoev").val(obj.data[C].evaluacion); //EVALUACIÓN
+            $("#avaluacion #idinsev").val(obj.data[C].idinsp); //EVALUACIÓN
+            $("#avaluacion #codigocurso").val(obj.data[C].codigo);
+            $("#avaluacion #ogidoc").val(obj.data[C].codigo); //EVALUACIÓN
+            valor2 = document.getElementById('validoev').value; //VALIDACIÓN DE RESULTADO
+            costOfTicket = document.getElementById("NOE");
+            selectedStand = document.getElementById("SIe");
+            pendiente = document.getElementById("PE");
+            //  statusev = document.getElementById("resuleval"); //resultado texto
+            //if(valor2 >= 80){ //APROBADO
+            if (((valor2) >= 80) && ((valor2) <= 100)) {
+                selectedStand.style.display = '';
+                costOfTicket.style.display = 'none';
+                pendiente.style.display = 'none';
+                //     statusev.value = "APROBADO"
             }
+            if (((valor2) < 80) && ((valor2) >= 1)) { //REPROBADO 
+                costOfTicket.style.display = '';
+                selectedStand.style.display = 'none';
+                pendiente.style.display = 'none';
+                //  statusev.value = "REPROBADO"
+            }
+            if (valor2 <= 0) { //PENDIENTE 
+                pendiente.style.display = '';
+                costOfTicket.style.display = 'none';
+                selectedStand.style.display = 'none';
+                //    statusev.value = "PENDIENTE"
+            }
+            //}
         }
-
     })
 }
 
@@ -1105,10 +1106,9 @@ function cerrareval() {
                 });
                 $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
                 $('#modal-evaluar').modal('hide'); // CIERRA EL MODAL
+                //04072022
+                updaviscurs();
 
-                setInterval(function() {
-                    tableCursosProgramados.ajax.reload();
-                }, 1000);
 
             } else {
                 Swal.fire({

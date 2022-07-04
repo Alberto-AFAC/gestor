@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 	session_start();
 	$id_curso = $_GET["id_curso"];
-	$query = "SELECT c.*,u.*, concat((select gstNombr from personal where gstIdper = c.id_persona)) AS PARTICIPANTE_NOMBRE,concat((select gstApell from personal where gstIdper = c.id_persona)) AS PARTICIPANTE_APELLIDO,concat((select gstTitlo from listacursos where gstIdlsc = u.idmstr)) AS NOMBRE_CURSO FROM constancias c, cursos u where c.id_persona=u.idinsp and c.id_codigocurso=u.codigo and u.estado=0 and u.id_curso='$id_curso'";
+	$query = "SELECT * FROM cursos c, personal p where c.idinsp = p.gstIdper and c.estado='0' and c.idinsp!=c.idcoor and c.idinsp!=c.idinst and c.id_curso='$id_curso'";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
