@@ -1,10 +1,11 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-	
+	$codigocur = $_GET["codigocur"];
 	$query = "SELECT gstNombr,gstApell,codigo,gstCargo,gstIdper,evaluacion,fnotif,id_curso,confirmar,idinsp,idcoor
 		  FROM cursos 
-		  INNER JOIN personal ON personal.gstIdper = cursos.idinsp
+		  INNER JOIN personal ON personal.gstIdper = cursos.idinsp 
+		  WHERE cursos.codigo='$codigocur'
 		  ORDER BY gstNombr
 		   ";
 

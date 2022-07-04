@@ -1,11 +1,12 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-	
+	$id_codigo = $_GET["id_codigo"];
 	$query = "SELECT gstNombr,gstApell,id_codigocurso,gstCargo,gstIdper,id,listregis,lisasisten,listreportein,cartdescrip,regponde,infinal,evreaccion,confirmar,evaluacion,codigo,idinsp,idcoor FROM constancias 
 	INNER JOIN personal ON gstIdper=id_persona 
 	INNER JOIN cursos ON cursos.idinsp=constancias.id_persona and cursos.codigo=constancias.id_codigocurso
-	  ORDER BY gstNombr ASC ";
+	WHERE cursos.codigo='$id_codigo' 
+	ORDER BY gstNombr ASC ";
 
 	$resultado = mysqli_query($conexion, $query);
 

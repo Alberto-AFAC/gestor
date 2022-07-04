@@ -172,10 +172,74 @@ var dataSet = [
     <?php 
 
 
-$query = "SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,evaluacion,gstTipo,DATE_FORMAT(fechaf, '%d-%m-%Y') AS fechaf,gstVignc,evaluacion,idmstr,gstIdlsc,id_curso 
-FROM cursos 
-INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'FINALIZADO' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 AND confirmar='CONFIRMADO' OR idinsp = $datos[0] AND cursos.estado = 2 ORDER BY id_curso DESC";
+$query = "SELECT
+c.*,
+l.gstIdlsc,
+l.codigoCrso,
+l.gstTitlo,
+l.gstTipo,
+l.gstVignc,
+l.gstPrfil,
+l.gstTmrio,
+l.gstDrcin,
+l.gstCntnc,
+l.gstObjtv,
+l.gstFalta,
+l.gstProvd,
+l.gstCntro,
+DATE_FORMAT( c.fechaf, '%d/%m/%Y' ) AS fcursof,
+(
+SELECT
+    MAX( cursos.fcurso ) 
+FROM
+    cursos 
+WHERE
+    cursos.idmstr = c.idmstr 
+    AND cursos.idinsp = c.idinsp 
+    AND l.gstVignc != 101 
+    AND c.proceso = 'FINALIZADO' 
+    AND c.confirmar = 'CONFIRMADO' 
+    AND cursos.evaluacion >= 80 
+    AND c.evaluacion >= 80 
+    AND c.prtcpnt='SI'
+    ) AS recursado,(
+SELECT
+    MAX(s.fcurso) 
+FROM
+    cursos s,
+    listacursos a 
+WHERE
+    s.idinsp = c.idinsp 
+    AND s.idmstr = a.gstIdlsc 
+    AND l.gstVignc != 101 
+    AND c.proceso = 'FINALIZADO' 
+    AND c.confirmar = 'CONFIRMADO' 
+    AND s.evaluacion >= 80 
+    AND l.gstTipo = 'BÁSICOS/INICIAL' 
+    AND a.gstTipo = 'RECURRENTES' 
+    AND a.gstPrfil = l.gstPrfil 
+    AND c.evaluacion >= 80
+    AND c.prtcpnt='SI'
+) AS recurrente,
+CASE WHEN l.gstVignc !=101 THEN (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR))
+Else 'UNICA VEZ'
+END AS pronostico,
+    CASE WHEN DATE_FORMAT(NOW(), '%Y/%m/%d') < (select DATE_ADD(c.fechaf, INTERVAL l.gstVignc YEAR)) THEN 'vigente'
+         ELSE 'vencido'
+END AS estatus
+FROM
+cursos c,
+listacursos l 
+WHERE
+l.gstIdlsc = c.idmstr 
+AND c.idinsp != c.idcoor 
+AND c.idinsp != c.idinst 
+AND c.estado in (0,2)
+AND c.proceso = 'FINALIZADO'
+AND c.confirmar = 'CONFIRMADO'
+and  c.idinsp=$datos[0]
+ORDER BY c.fcurso DESC
+";
 $resultado = mysqli_query($conexion, $query);
 $cont = 0;
 while($data = mysqli_fetch_array($resultado)){ 
@@ -188,6 +252,12 @@ $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
 $f3 = strtotime($actual);
 
+
+//-----COMPARACIÓN DE FECHAS DE VENCIMIENTO
+$facnow = strtotime(Date("Y-m-d"));
+$ftermino = strtotime(Date($data["fechaf"]));
+$vence = strtotime(Date($data["pronostico"]));
+$xpencer = strtotime(Date($vence."- 3 month"));
 
 
 $id_curso = $data['id_curso'];
@@ -202,8 +272,8 @@ $Evaluacion = "FALTA EVALUAR";
 } else {
 $Evaluacion = "EVALUADO";
 }
-
-if($f3>=$f1){ //VENCIDO?
+//-------------------------------------INICIO DE ESTATUS------------------------------------------------
+/*if($f3>=$f1){ //VENCIDO?
 $vigencia = "<center><span class='badge' style='background-color: silver;'>REALIZADO</span></center>";
 }else if($f3 <= $f2 && $data['evaluacion'] >= 80){ //VIGENTE 
 $vigencia = "<center><span class='badge' style='background-color: green;'>VIGENTE</span></center>";
@@ -211,10 +281,128 @@ $vigencia = "<center><span class='badge' style='background-color: green;'>VIGENT
 $vigencia = "<center><span class='badge' style='background-color: #D58512;'>POR VENCER</span></center>";
 }else{
     $vigencia = "<center><span class='badge' style='background-color: silver;'>POR EVALUAR</span></center>";
+}*/
+
+if ($facnow < $vence){
+    if ($data["gstTipo"] == 'BÁSICOS/INICIAL'){
+        if ($facnow > $xpencer && $data["fcurso"] == $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+        }
+        if ($facnow > $xpencer && $data["recurrente"]==NULL && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+        }
+        //NO ACREDITO ¡¡¡¡
+        if ($data["evaluacion"] <= 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+        }
+        //POR VENCER ¡¡¡¡¡
+        if ($facnow <= $xpencer && $data["recurrente"]== NULL && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = $vence."<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
+        }
+        //PENDIENTE ¡¡¡¡¡¡
+        if ($data["recurrente"]== NULL && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+        }
+        if ($data["recurrente"]== NULL && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE3</span>";
+        }
+        if ($data["recurrente"]== NULL && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+        }
+        if ($data["recurrente"]== NULL && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+        }
+        //TOMA RECURRENCIA  ¡¡¡¡¡
+        if ($data["fcurso"] < $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO') {
+            //$recurrente = strtotime(Date($data["recurrente"]));
+            $recurrente = date("d-m-Y",strtotime($data["recurrente"]));
+            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+            //$status = $recurrente.$span;
+            $vigencia = $span;
+        }
+    }else{
+        if ($facnow > $xpencer && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+        }
+        //NO ACREDITO ¡¡¡¡
+        if ($data["evaluacion"] <= 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+        }
+        //POR VENCER ¡¡¡¡¡
+        if ($facnow <= $xpencer && $data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = $vence."<span style='background-color: orange; font-size: 14px;' class='badge'>POR VENCER</span>";
+        }
+        //PENDIENTE  ¡¡¡¡¡
+        if ($data["fcurso"] == $data["recursado"] && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMADO' && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+        }
+        if ($data["fcurso"] == $data["recursado"] && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+        }
+        if ($data["fcurso"] == $data["recursado"] && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+        }
+        if ($data["fcurso"] == $data["recursado"] && $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '' || $data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == 'NULL'||$data["proceso"] == "PENDIENTE" && $data["confirmar"] == 'CONFIRMAR' && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:grey; font-size: 14px;' class='badge'>PENDIENTE</span>";
+        }
+        //RENUEVA RECURRENCIA ¡¡¡¡
+        if ($data["fcurso"] < $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"]  == 'CONFIRMADO') {
+           // $recursado = strtotime(Date($data["recursado"]));
+            $recursado = date("d-m-Y",strtotime($data["recursado"]));
+            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+            //$status = $recursado.$span;
+            $vigencia = $span;
+        }
+    }    
+//VENCIDOS
+}else if ($facnow > $vence){
+    /*if ($data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] >= 80){
+        $status = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+    }//VENCIDO  */
+    if ($data["evaluacion"] <= 79 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+        $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+    }
+    if ($data["gstTipo"] == 'BÁSICOS/INICIAL'){
+
+        if ($data["fcurso"] == $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+        }
+        if ($data["recurrente"]==NULL && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia= "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+        }
+        if ($data["recurrente"]== NULL && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+        }
+        if ($data["fcurso"] < $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO') {
+            //$recurrente = strtotime(Date($data["recurrente"]));
+            $recurrente = date("d-m-Y",strtotime($data["recurrente"]));
+            $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+            //$status = $recurrente.$span;
+            $vigencia = $span;
+        }
+    
+    }else{
+        if ($data["fcurso"] == $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
+            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+        }
+        if ($data["fcurso"] < $data["recursado"] && $data["evaluacion"] >= 80 && $data["confirmar"]  == 'CONFIRMADO') {
+            // $recursado = strtotime(Date($data["recursado"]));
+             $recursado = date("d-m-Y",strtotime($data["recursado"]));
+             $span="<br><span style='background-color:#083368; font-size: 14px;' class='badge'>CURSADO</span>";
+             //$status = $recursado.$span;
+             $vigencia = $span;
+        }
+        if ($data["fcurso"] == $data["recursado"] && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
+            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
+        }
+    }
 }
 
 
 
+//---------------------             ----FIN DE ESTATUS----------------------------
+$Fechainicur = date("d/m/Y",strtotime($data["fcurso"]));
+$Fechafincur = date("d/m/Y",strtotime($data["fechaf"]));
 
 
 $queri = "
@@ -235,7 +423,7 @@ if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]==
 if($con[10]==0){
 $accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }else{
-
+ 
 $accion = "<center><a  type='button' id='myCertificate' target='_blank'    class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
 }
     }else{
@@ -244,10 +432,10 @@ $accion = "<center><b style='color:silver;' title='Dar clic para descargar' oncl
 }
 ?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
-        "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
+    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $Fechainicur?>",
+        "<?php echo $data['hcurso']?>", "<?php echo $Fechafincur?>",
         <?php if($data['gstVignc']!=101){ ?> "<span class='badge' style='background-color: green; font-size: 14px;'><?php //echo $valor?></span><?php echo $vigencia?>",
-        <?php }else{ ?> "<center><span class='badge' style='background-color: silver;'>REALIZADO</span></center>",
+        <?php }else{ ?> "<center><span class='badge' style='background-color: silver;'>REALIZADO/UNICA VEZ</span></center>",
         // "<span class='badge' style='background-color: silver; font-size: 14px;'>REALIZADO</span>",
 
         <?php }?>
@@ -295,7 +483,7 @@ if($f3>=$f1){ //VENCIDO?>
 
     ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
-        "<span class='badge' style='background-color: silver;'><?php echo 'REALIZADO' ?></span>",
+        "<span class='badge' style='background-color: silver;'><?php echo 'REALIZADO/UNICA VEZ' ?></span>",
 
 
         "<center><a href='<?php echo $data['justifi']?>' style='text-align: center; font-size:20px;color:red; ' target='_blanck'> <i class='fa fa-file-pdf-o'></i></a></center>"

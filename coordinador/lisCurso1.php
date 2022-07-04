@@ -472,8 +472,8 @@ style="background: white;border: 1px solid white;"> -->
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <div class="col-sm-5">
-                                                    <a href="lisCurso.php" type="button" class="btn btn-primary"
-                                                        onclick="g">ACEPTAR</a>
+                                                    <a href="javascript:closeasist()" type="button" class="btn btn-primary"
+                                                        onclick="updaviscurs()">ACEPTAR</a>
                                                 </div>
                                                 <b>
                                                     <p class="alert alert-warning text-center padding error"

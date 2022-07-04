@@ -111,7 +111,7 @@ function evaluar() {
     var preg28 = document.getElementById('preg25').value;
     var preg29 = $('input[name=preg26]:checked').val(); //-
     var preg30 = document.getElementById('preg27').value;
-     //PREGUNTA ABIERTA 
+    //PREGUNTA ABIERTA 
 
     var id_instruct = document.getElementById('codigo').value; //PREGUNTA ABIERTA (comentarios)
 
@@ -119,7 +119,7 @@ function evaluar() {
 
 
 
-    datos = 'idcursoen=' + idcursoen + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&preg8=' + preg8 + '&preg9=' + preg9 + '&preg10=' + preg10 + '&preg11=' + preg11 + '&preg12=' + preg12 + '&preg13=' + preg13 + '&preg14=' + preg14 + '&preg15=' + preg15 + '&preg16=' + preg16 + '&preg17=' + preg17 + '&preg18=' + preg18 + '&preg19=' + preg19 + '&preg20=' + preg20 + '&preg21=' + preg21 + '&preg22=' + preg22 + '&preg23=' + preg23 + '&preg24=' + preg24 + '&preg25=' + preg25 + '&preg26=' + preg26 + '&preg27=' + preg27+ '&preg28=' + preg28 + '&preg29=' + preg29 + '&preg30=' + preg30 + '&id_instruct=' + id_instruct + '&opcion=agreaccion';
+    datos = 'idcursoen=' + idcursoen + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&preg8=' + preg8 + '&preg9=' + preg9 + '&preg10=' + preg10 + '&preg11=' + preg11 + '&preg12=' + preg12 + '&preg13=' + preg13 + '&preg14=' + preg14 + '&preg15=' + preg15 + '&preg16=' + preg16 + '&preg17=' + preg17 + '&preg18=' + preg18 + '&preg19=' + preg19 + '&preg20=' + preg20 + '&preg21=' + preg21 + '&preg22=' + preg22 + '&preg23=' + preg23 + '&preg24=' + preg24 + '&preg25=' + preg25 + '&preg26=' + preg26 + '&preg27=' + preg27 + '&preg28=' + preg28 + '&preg29=' + preg29 + '&preg30=' + preg30 + '&id_instruct=' + id_instruct + '&opcion=agreaccion';
 
 
     if (idcursoen == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked') || !document.querySelector('input[name=preg6]:checked') || !document.querySelector('input[name=preg7]:checked') || !document.querySelector('input[name=preg8]:checked') || !document.querySelector('input[name=preg9]:checked') || !document.querySelector('input[name=preg10]:checked') || !document.querySelector('input[name=preg11]:checked') || !document.querySelector('input[name=preg12]:checked') || !document.querySelector('input[name=preg13]:checked') || !document.querySelector('input[name=preg14]:checked') || !document.querySelector('input[name=preg15]:checked') || !document.querySelector('input[name=preg16]:checked') || !document.querySelector('input[name=preg17]:checked') || !document.querySelector('input[name=preg18]:checked') || !document.querySelector('input[name=preg19]:checked') || !document.querySelector('input[name=preg20]:checked') || !document.querySelector('input[name=preg21]:checked') || !document.querySelector('input[name=preg22]:checked') || !document.querySelector('input[name=preg23]:checked') || !document.querySelector('input[name=pregPEN2]:checked') || !document.querySelector('input[name=pregPEN]:checked') || !document.querySelector('input[name=pregPEN3]:checked') || preg27 == '' || preg28 == '' || !document.querySelector('input[name=pregPEN]:checked') || preg30 == '') {
@@ -444,11 +444,11 @@ function gencerti(cursos) {
         for (K = 0; K < res.length; K++) {
             //codigoC = obj.data[K].id_codigocurso.substr(2);
             if (obj.data[K].id_curso == cursos) {
-                document.getElementById("evaNombrc").value=obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO;
-               // $("#evaNombrc").val(obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO); //NOMBRE COMPLETO
+                document.getElementById("evaNombrc").value = obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO;
+                // $("#evaNombrc").val(obj.data[K].PARTICIPANTE_NOMBRE + " " + obj.data[K].PARTICIPANTE_APELLIDO); //NOMBRE COMPLETO
                 //$("#idperonc").val(obj.data[K].NOMBRE_CURSO); //NOMBRE DEL CURSO
                 //$("#id_cursoc").val(obj.data[K].codigo); //ID DEL CURSO
-                
+
                 if (((obj.data[K].evaluacion) >= 80) && ((obj.data[K].evaluacion) <= 100)) {
                     document.getElementById("che6").className = "fa fa-check";
                     document.getElementById("che6").style = "color:green; font-size: 16pt";
@@ -495,7 +495,7 @@ function gencerti(cursos) {
 }
 //MOSTRAR LOS DATOS EN EVALUACIÓN INSPECTOR
 function evaluarins(cursos) {
-//alert(cursos);
+    //alert(cursos);
     $.ajax({
         url: '../php/conscursospro.php',
         type: 'POST'
@@ -549,19 +549,19 @@ function evaluarins(cursos) {
 
 
 function inspeval(cursos) {
-
-
-
-
     curso = 'FO' + cursos;
     // var d = cursos.split("*");
     // $("#cursoc").html(d[1]);
     // $("#folioc").html(d[21]);
     //        html = '<table id="reacc" class="table table-hover"><tr><th colspan="5">CURSO: <label>' + d[1] + '</label></th><th colspan="2">FOLIO: <label>' + d[21] + ' <input type="hidden" name="idcod" id="idcod" value=' + d[21] + '></label></th></tr><tr style="font-size: 12px;"><th></th><th>ID</th><th>PARTICIPANTE</th><th>RESULTADO</th><th>ESTATUS</th><th style="width:150px;">FECHA EVALUACIÓN </th> </tr>';
 
+
+    let codigocur = document.getElementById('codigoIDCuro').value
+        //alert(codigocur);
     $.ajax({
         url: '../php/conProgra.php',
-        type: 'POST'
+        type: 'GET',
+        data: 'codigocur=' + codigocur
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
@@ -603,7 +603,7 @@ function inspeval(cursos) {
         $("#evaluacion").html(html);
     })
 }
-
+//FUNCIÓN PARA EVALUAR MASIVAMENTE CURSO PROGRAMADO 
 function evalresult() {
 
     var idperon = new Array();
@@ -640,7 +640,8 @@ function evalresult() {
             setTimeout(function() {
                 $('#exito1').toggle('toggle');
             }, 2000);
-            updaviscurs ();//07/04/2022 AQUI REVISAR
+            updaviscurs(); //07/04/2022 AQUI REVISAR
+            closeeval();
         } else {
             $('#danger1').toggle('toggle');
             setTimeout(function() {
@@ -649,9 +650,14 @@ function evalresult() {
         }
     });
 }
-//ACTUALIZA LA PAGINA
-function updaviscurs(){
+//ACTUALIZA LA TABLA DE CURSOS PROGRAMADOS
+function updaviscurs() {
+    $("#data-table-cursosProgramados").dataTable().fnDestroy();
+    let id = document.getElementById('codigoIDCuro').value;
     var tableCursosProgramados = $('#data-table-cursosProgramados').DataTable({
+        "order": [
+            [3, "asc"]
+        ],
         "ajax": {
             "url": "../php/cursosProgramados.php",
             "type": "GET",
@@ -664,8 +670,17 @@ function updaviscurs(){
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-
     });
+}
+//CIERRA EL MODAL DE ASISTENCIA MASIVA
+function closeasist() {
+    //alert("entro");
+    $('#modal-asitmasiva').modal('hide');
+}
+
+function closeeval() {
+    //alert("cerrar evaluacion");
+    $('#modal-evalua').modal('hide');
 }
 
 function generacion(cursos) { //abre el modal de generacion de constancias 
@@ -673,9 +688,11 @@ function generacion(cursos) { //abre el modal de generacion de constancias
     // $("#cursoc").html(d[1]);
     // $("#folioc").html(d[21]);
     curso = 'FO' + cursos;
+    let id_codigo = document.getElementById('codigoIDCuro').value;
     $.ajax({
             url: '../php/conInsp.php',
-            type: 'POST'
+            type: 'GET',
+            data: 'id_codigo=' + id_codigo
         }).done(function(resp) {
             obj = JSON.parse(resp);
             var res = obj.data;
@@ -775,83 +792,84 @@ function generacion(cursos) { //abre el modal de generacion de constancias
 }
 
 //función para confirmar asitencia masiva 3152022---------------------------------------------------------------
-function asistmasivo(cursos) { 
+function asistmasivo(cursos) {
     //alert("pruebas asistencia masiva");
     cursos1 = document.getElementById("codigoIDCuro").value;
     //alert(cursos1);
     $.ajax({
-            url: '../php/conscursospro.php',
-            type: 'POST'
-        }).done(function(resp) {
-            obj = JSON.parse(resp);
-            var res = obj.data;
-            var x = 0;
-            // TODO AQUI VA LA CONSTANCIA 
-            html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID</th><th>PARTICIPANTE</th><th style="display:none">ID_PERSONA</th><th>RESPUESTA DE CONVOCATORIA</th><th>ACCIONES</th></tr>';
-            for (G = 0; G < res.length; G++) {
+        url: '../php/asismasiv.php',
+        type: 'GET',
+        data: 'cursos1=' + cursos1
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        // TODO AQUI VA LA CONSTANCIA 
+        html = '<table id="reacc" class="table table-hover"><tr></tr><tr style="font-size: 12px;"><th>ID</th><th>PARTICIPANTE</th><th style="display:none">ID_PERSONA</th><th>RESPUESTA DE CONVOCATORIA</th><th>ACCIONES</th></tr>';
+        for (G = 0; G < res.length; G++) {
 
-                //adatos = obj.data[G].id_curso + '*' + obj.data[G].id_subojt + '*' + obj.data[G].ojt_subtarea;
+            //adatos = obj.data[G].id_curso + '*' + obj.data[G].id_subojt + '*' + obj.data[G].ojt_subtarea;
 
-                if (obj.data[G].codigo == cursos1) {
-                    x++;
-                    if (obj.data[G].confirmar == 'CONFIRMADO') { // columna4    
-                        confirma="<span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>CONFIRMADO</span>"
-                    }
-                    if (obj.data[G].confirmar == 'CONFIRMAR') { // columna4    
-                        confirma="<span class='label label-primary' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>PENDIENTE</span>"
-                    }
-                    if (obj.data[G].confirmar == 'TRABAJO') { // columna4    
-                        confirma="<span class='label label-danger' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>DECLINA</span>"
-                    }
-                    if (obj.data[G].confirmar == 'OTROS') { // columna4    
-                        confirma="<span class='label label-danger' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>DECLINA</span>"
-                    }
-                    if (obj.data[G].confirmar == 'ENFERMEDAD') { // columna4    
-                        confirma="<span class='label label-danger' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>DECLINA</span>"
-                    }
-                   // asiste = "<div class='col-sm-6'><input style='' type='radio' id='" + obj.data[G].id_curso + "si" +"' name='"+obj.data[G].id_curso+"' value='CONFIRMADO'> <label style='font-size:16px' for='"+ obj.data[G].id_curso +  "si" +"'>ASISTE</label>"  + "</div><div class='col-sm-6'>" + "<input type='radio' id='" + obj.data[G].id_curso + "no" + "' name='"+obj.data[G].id_curso+"' value='OTROS'> <label style='font-size:16px' for='"+ obj.data[G].id_curso + "no" + "'>NO ASISTE</label></div>"
-                    asiste="<a id='" + obj.data[G].id_curso + "si" +"' name='"+obj.data[G].id_curso + "si"+"' type='button' title='Asistio' class='btn btn-default' onclick='siasiste("+ obj.data[G].id_curso  +");' style='margin-left:2px'><i class='fa fa-check text-success'></i></a>  <a id='" + obj.data[G].id_curso + "no" +"' name='"+obj.data[G].id_curso+ 'no'+ "' type='button' title='No asistio' class='btn btn-default' style='display:;margin-left:2px' onclick='noasiste("+ obj.data[G].id_curso  +");'><i class='fa fa-times text-danger'></i></a>"
-                    idpersona="<input type='text' id='" + obj.data[G].id_curso +"' name='"+obj.data[G].id_curso +"' value='" + obj.data[G].id_curso +"'>"
-                    
-                    html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell +"</td><td style='display:none'>" + idpersona + "</td><td>" + confirma + "</td><td><form id='form2'>" + asiste +"</td></form></tr>";
+            if (obj.data[G].codigo == cursos1) {
+                x++;
+                if (obj.data[G].confirmar == 'CONFIRMADO') { // columna4    
+                    confirma = "<span class='label label-success' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>CONFIRMADO</span>"
                 }
+                if (obj.data[G].confirmar == 'CONFIRMAR') { // columna4    
+                    confirma = "<span class='label label-primary' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>PENDIENTE</span>"
+                }
+                if (obj.data[G].confirmar == 'TRABAJO') { // columna4    
+                    confirma = "<span class='label label-danger' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>DECLINA</span>"
+                }
+                if (obj.data[G].confirmar == 'OTROS') { // columna4    
+                    confirma = "<span class='label label-danger' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>DECLINA</span>"
+                }
+                if (obj.data[G].confirmar == 'ENFERMEDAD') { // columna4    
+                    confirma = "<span class='label label-danger' style='font-size:13px; padding-right:0.8em; padding-left:0.8em;'>DECLINA</span>"
+                }
+                // asiste = "<div class='col-sm-6'><input style='' type='radio' id='" + obj.data[G].id_curso + "si" +"' name='"+obj.data[G].id_curso+"' value='CONFIRMADO'> <label style='font-size:16px' for='"+ obj.data[G].id_curso +  "si" +"'>ASISTE</label>"  + "</div><div class='col-sm-6'>" + "<input type='radio' id='" + obj.data[G].id_curso + "no" + "' name='"+obj.data[G].id_curso+"' value='OTROS'> <label style='font-size:16px' for='"+ obj.data[G].id_curso + "no" + "'>NO ASISTE</label></div>"
+                asiste = "<a id='" + obj.data[G].id_curso + "si" + "' name='" + obj.data[G].id_curso + "si" + "' type='button' title='Asistio' class='btn btn-default' onclick='siasiste(" + obj.data[G].id_curso + ");' style='margin-left:2px'><i class='fa fa-check text-success'></i></a>  <a id='" + obj.data[G].id_curso + "no" + "' name='" + obj.data[G].id_curso + 'no' + "' type='button' title='No asistio' class='btn btn-default' style='display:;margin-left:2px' onclick='noasiste(" + obj.data[G].id_curso + ");'><i class='fa fa-times text-danger'></i></a>"
+                idpersona = "<input type='text' id='" + obj.data[G].id_curso + "' name='" + obj.data[G].id_curso + "' value='" + obj.data[G].id_curso + "'>"
+
+                html += "<tr><td>" + x + "</td><td>" + obj.data[G].gstNombr + " " + obj.data[G].gstApell + "</td><td style='display:none'>" + idpersona + "</td><td>" + confirma + "</td><td><form id='form2'>" + asiste + "</td></form></tr>";
             }
-            html += '</table>';
-            $("#asistenciamasiva").html(html);
-        })
+        }
+        html += '</table>';
+        $("#asistenciamasiva").html(html);
+    })
 }
 //función de que si asite
-function siasiste(idperson){
+function siasiste(idperson) {
     //alert(idperson);
-    var datos= 'idperson=' + idperson + '&opcion=confasiten';
+    var datos = 'idperson=' + idperson + '&opcion=confasiten';
     $.ajax({
-        type:"POST",
-        url:"../php/proCurso.php",
-        data:datos
-      }).done(function(respuesta){
-        if (respuesta==0){
-         // alert("exito");
-          asistmasivo();
-        }else{
-           // alert(respuesta);
+        type: "POST",
+        url: "../php/proCurso.php",
+        data: datos
+    }).done(function(respuesta) {
+        if (respuesta == 0) {
+            // alert("exito");
+            asistmasivo();
+        } else {
+            // alert(respuesta);
         }
     });
 }
 
 //función de que no asiste
-function noasiste(idpersonno){
+function noasiste(idpersonno) {
     //alert(idperson);
-    var datos= 'idperson=' + idpersonno + '&opcion=confnoasiste';
+    var datos = 'idperson=' + idpersonno + '&opcion=confnoasiste';
     $.ajax({
-        type:"POST",
-        url:"../php/proCurso.php",
-        data:datos
-      }).done(function(respuesta){
-        if (respuesta==0){
-          //alert("exito");
-        asistmasivo();
-        }else{
-          //  alert(respuesta);
+        type: "POST",
+        url: "../php/proCurso.php",
+        data: datos
+    }).done(function(respuesta) {
+        if (respuesta == 0) {
+            //alert("exito");
+            asistmasivo();
+        } else {
+            //  alert(respuesta);
         }
     });
 }
@@ -976,7 +994,7 @@ function generar() {
                 customClass: 'swal-wide',
                 timer: 3000
             });
-            
+
             $('#modal-masiva').modal('hide');
 
         } else {
@@ -1748,18 +1766,18 @@ function cursoAct() {
 }
 
 function modalidades() {
-//alert("modalida");
+    //alert("modalida");
     var seleccion = document.getElementById('modalidads');
-    var sedecurso= document.getElementById('modalidads');
+    var sedecurso = document.getElementById('modalidads');
     valor = seleccion.options[seleccion.selectedIndex].value;
 
     if (valor == 'PRESENCIAL') {
         $("#dismod").hide();
         $("#disocl").show();
-    }else if (valor == 'AUTOGESTIVO'){
+    } else if (valor == 'AUTOGESTIVO') {
         $("#link").hide();
         $("#contracceso").hide();
-    }else {
+    } else {
         $("#disocl").hide();
         $("#dismod").show();
     }
