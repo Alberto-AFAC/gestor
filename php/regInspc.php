@@ -94,7 +94,7 @@ if($opcion === 'registrar'){
     $gstNumro = $_POST['gstNumro']; // NUMERO DE DOMICILIO
     $gstClnia = $_POST['gstClnia']; // COLONIA
     $gstCpstl = $_POST['gstCpstl']; // CODIGO POSTAL
-    $gstCiuda = $_POST['gstCiuda']; // CUIDAD
+    $gstCiuda = $_POST['gstCiuda']; // CIUDAD
     $gstStado = $_POST['gstStado']; // ESTADO
     $gstCasa  = $_POST['gstCasa']; // NUM. DE CASA
     $gstClulr = $_POST['gstClulr']; // NUM. DE CELULAR

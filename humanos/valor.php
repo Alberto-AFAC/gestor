@@ -862,7 +862,7 @@ name="gstIDSub" id="gstIDSub" type="text" data-live-search="true">
         <option value="0">SIN ASIGNAR UBICACIÓN CENTRAL</option>    
         <option value="AICM T1">AICM T1</option>
         <option value="AICM T2">AICM T2</option>
-        <option value="ANGAR 8">ANGAR 8</option>
+        <option value="HANGAR 8">HANGAR 8</option>
         <option value="CIACC">CIACC</option>
         <option value="LICENCIAS">LICENCIAS</option>
         <option value="FLORESM1">LAS FLORES M1</option>
