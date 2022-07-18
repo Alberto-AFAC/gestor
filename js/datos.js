@@ -32,11 +32,11 @@ function closeDtlls() {
     document.getElementById('gstNumro').disabled = true; // NUMERO DE DOMICILIO
     document.getElementById('gstClnia').disabled = true; // COLONIA
     document.getElementById('gstCpstl').disabled = true; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled = true; // CUIDAD
+    document.getElementById('gstStado').disabled = true; // CIUDAD
     document.getElementById('gstCasa').disabled = true; // NUM. DE CASA
     document.getElementById('gstClulr').disabled = true; // NUM. DE CELULAR
     document.getElementById('gstExTel').disabled = true; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled = true; // CUIDAD
+    document.getElementById('gstCiuda').disabled = true; // CIUDAD
 
     document.getElementById('gstNmpld').disabled = true; // NUM. DE EMPLEADO
     document.getElementById('sgtCrhnt').disabled = true;
@@ -3551,7 +3551,7 @@ function actDatos() {
     var gstNumro = document.getElementById('gstNumro').value; // NUMERO DE DOMICILIO
     var gstClnia = document.getElementById('gstClnia').value; // COLONIA
     var gstCpstl = document.getElementById('gstCpstl').value; // CODIGO POSTAL
-    var gstCiuda = document.getElementById('gstCiuda').value; // CUIDAD
+    var gstCiuda = document.getElementById('gstCiuda').value; // CIUDAD
     var gstStado = document.getElementById('gstStado').value; // ESTADO
     var gstCasa = document.getElementById('gstCasa').value; // NUM. DE CASA
     var gstClulr = document.getElementById('gstClulr').value; // NUM. DE CELULAR
@@ -3708,11 +3708,11 @@ function openEdit() {
     document.getElementById('gstNumro').disabled = false; // NUMERO DE DOMICILIO
     document.getElementById('gstClnia').disabled = false; // COLONIA
     document.getElementById('gstCpstl').disabled = false; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled = false; // CUIDAD
+    document.getElementById('gstStado').disabled = false; // CIUDAD
     document.getElementById('gstCasa').disabled = false; // NUM. DE CASA
     document.getElementById('gstClulr').disabled = false; // NUM. DE CELULAR
     document.getElementById('gstExTel').disabled = false; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled = false; // CUIDAD
+    document.getElementById('gstCiuda').disabled = false; // CIUDAD
     document.getElementById('gstCorro').disabled = false; //correo personal
     document.getElementById('gstCinst').disabled = false; //correo institucional
     document.getElementById('gstSpcID').disabled = false; //correo opcion3
@@ -3792,11 +3792,11 @@ function cerrarEdit() {
     document.getElementById('gstNumro').disabled = true; // NUMERO DE DOMICILIO
     document.getElementById('gstClnia').disabled = true; // COLONIA
     document.getElementById('gstCpstl').disabled = true; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled = true; // CUIDAD
+    document.getElementById('gstStado').disabled = true; // CIUDAD
     document.getElementById('gstCasa').disabled = true; // NUM. DE CASA
     document.getElementById('gstClulr').disabled = true; // NUM. DE CELULAR
     document.getElementById('gstExTel').disabled = true; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled = true; // CUIDAD
+    document.getElementById('gstCiuda').disabled = true; // CIUDAD
     document.getElementById('gstCorro').disabled = true; //correo personal
     document.getElementById('gstCinst').disabled = true; //correo institucional
     document.getElementById('gstSpcID').disabled = true; //correo opcion3

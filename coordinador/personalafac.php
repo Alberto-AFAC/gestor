@@ -358,7 +358,7 @@ include('header.php');
                                             <option value="COLIMA">COLIMA</option>
                                             <option value="CHIAPAS">CHIAPAS</option>
                                             <option value="CHIHUAHUA">CHIHUAHUA</option>
-                                            <option value="DISTRITO FEDERAL">CUIDAD DE MÉXICO</option>
+                                            <option value="DISTRITO FEDERAL">CIUDAD DE MÉXICO</option>
                                             <option value="DURANGO">DURANGO</option>
                                             <option value="GUANAJUATO">GUANAJUATO</option>
                                             <option value="GUERRERO">GUERRERO</option>

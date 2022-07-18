@@ -249,7 +249,7 @@ include('header.php');
                                             <option value="">SELECCIONE LA UBICACIÓN CENTRAL</option>
                                             <option value="AICM T1">AICM T1</option>
                                             <option value="AICM T2">AICM T2</option>
-                                            <option value="ANGAR 8">ANGAR 8</option>
+                                            <option value="HANGAR 8">HANGAR 8</option>
                                             <option value="CIACC">CIACC</option>
                                             <option value="LICENCIAS">LICENCIAS</option>
                                             <option value="FLORESM1">LAS FLORES M1</option>
@@ -358,7 +358,7 @@ include('header.php');
                                             <option value="COLIMA">COLIMA</option>
                                             <option value="CHIAPAS">CHIAPAS</option>
                                             <option value="CHIHUAHUA">CHIHUAHUA</option>
-                                            <option value="DISTRITO FEDERAL">CUIDAD DE MÉXICO</option>
+                                            <option value="DISTRITO FEDERAL">CIUDAD DE MÉXICO</option>
                                             <option value="DURANGO">DURANGO</option>
                                             <option value="GUANAJUATO">GUANAJUATO</option>
                                             <option value="GUERRERO">GUERRERO</option>

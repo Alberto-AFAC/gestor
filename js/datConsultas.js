@@ -90,11 +90,11 @@ function closeDtlls() {
     document.getElementById('gstNumro').disabled = true; // NUMERO DE DOMICILIO
     document.getElementById('gstClnia').disabled = true; // COLONIA
     document.getElementById('gstCpstl').disabled = true; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled = true; // CUIDAD
+    document.getElementById('gstStado').disabled = true; // CIUDAD
     document.getElementById('gstCasa').disabled = true; // NUM. DE CASA
     document.getElementById('gstClulr').disabled = true; // NUM. DE CELULAR
     document.getElementById('gstExTel').disabled = true; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled = true; // CUIDAD
+    document.getElementById('gstCiuda').disabled = true; // CIUDAD
 
     document.getElementById('gstNmpld').disabled = true; // NUM. DE EMPLEADO
     document.getElementById('gstIdpst').disabled = true; // NUM. DE EMPLEADO
@@ -636,7 +636,7 @@ function resultado(result) {
         html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th style="width:5%"><i></i>ESTADO</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
         for (E = 0; E < res.length; E++) {
             x++;
-            
+
             if (obj.data[E].gstIDins == gstIdper) {
                 //if(obj.data[E].gstOrden==1){    
                 if (obj.data[E].gstCmpli == 'NO') {
@@ -648,7 +648,7 @@ function resultado(result) {
                 // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
                 //}
             }
-        
+
         }
         html += '</tbody></table></div>';
         $("#rsltad").html(html);
@@ -772,7 +772,7 @@ function actDatos() {
     var gstNumro = document.getElementById('gstNumro').value; // NUMERO DE DOMICILIO
     var gstClnia = document.getElementById('gstClnia').value; // COLONIA
     var gstCpstl = document.getElementById('gstCpstl').value; // CODIGO POSTAL
-    var gstCiuda = document.getElementById('gstCiuda').value; // CUIDAD
+    var gstCiuda = document.getElementById('gstCiuda').value; // CIUDAD
     var gstStado = document.getElementById('gstStado').value; // ESTADO
     var gstCasa = document.getElementById('gstCasa').value; // NUM. DE CASA
     var gstClulr = document.getElementById('gstClulr').value; // NUM. DE CELULAR
@@ -879,11 +879,11 @@ function openEdit() {
     document.getElementById('gstNumro').disabled = false; // NUMERO DE DOMICILIO
     document.getElementById('gstClnia').disabled = false; // COLONIA
     document.getElementById('gstCpstl').disabled = false; // CODIGO POSTAL
-    document.getElementById('gstStado').disabled = false; // CUIDAD
+    document.getElementById('gstStado').disabled = false; // CIUDAD
     document.getElementById('gstCasa').disabled = false; // NUM. DE CASA
     document.getElementById('gstClulr').disabled = false; // NUM. DE CELULAR
     document.getElementById('gstExTel').disabled = false; // NUM. DE EXTENCION
-    document.getElementById('gstCiuda').disabled = false; // CUIDAD
+    document.getElementById('gstCiuda').disabled = false; // CIUDAD
 
     //------ DATOS DEL PUESTO
     document.getElementById('gstNmpld').disabled = false; // NUM. DE EMPLEADO
