@@ -9,7 +9,7 @@ $id_usu = $_SESSION['usuario']['id_usu'];
 
 //ACCESOS ADMINISTRADORES     
 if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" || 
-  $_SESSION['usuario']['privilegios'] == "ADMINISTRADOR"){
+  $_SESSION['usuario']['privilegios'] == "ADMINISTRADOR" || $_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){
    $acceso = 'admin/inicio';
 //COORDINADOR e INSTRUCTOR
 }elseif ($_SESSION['usuario']['privilegios'] == "COORDINADOR" ||
@@ -20,8 +20,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
     $_SESSION['usuario']['privilegios'] == "ADMINISTRATIVO") {
     $acceso = 'inspector/profile';
 //DIRECTOR, DIRECTOR_CIAAC Y EJECUTIVO
-}elseif ($_SESSION['usuario']['privilegios'] == "DIRECTOR" ||
-    $_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC" || $_SESSION['usuario']['privilegios'] == "EJECUTIVO") {
+}elseif ($_SESSION['usuario']['privilegios'] == "DIRECTOR" || $_SESSION['usuario']['privilegios'] == "EJECUTIVO") {
     $acceso = 'director/director';
 //HUMANOS    
 }elseif ($_SESSION['usuario']['privilegios'] == "HUMANOS") {

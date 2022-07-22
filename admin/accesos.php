@@ -1054,7 +1054,7 @@
 
 <?php if($data[4]=='SUPER_ADMIN'){ ?>       
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(1.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-<?php }else if($data[4]=='ADMINISTRADOR'){ ?>
+<?php }else if($data[4]=='ADMINISTRADOR' || $data[4]=='DIRECTOR_CIAAC'){ ?>
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(2.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='EJECUTIVO' || $data[4]=='DIRECTOR'){ ?>
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(3.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
