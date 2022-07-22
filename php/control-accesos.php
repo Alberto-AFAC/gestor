@@ -1,13 +1,6 @@
 <?php
 
-
-
-	// $conexion2 = new mysqli('localhost','root','','control_de_reportes');
-    $conexion2 = new mysqli('localhost','u683645102_afac','Agencia.SCT2021.','u683645102_reportes');
-	if ($conexion2->connect_error):
-	echo "Error de Conexión".$conexion2->connect_error;
-	endif;
-
+	include ("conexion_mesa.php");
 	include("../conexion/conexion.php");
 	session_start();
 	

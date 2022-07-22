@@ -492,7 +492,6 @@ function datos_editar(acceso) {
 //Funcion de acceso
 
 function acceso(){
-
     var frmAcc = $("#EditAcceso").serialize();
     $.ajax({
         url: "../php/accesos-update.php",

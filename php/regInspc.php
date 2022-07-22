@@ -169,29 +169,14 @@ if($opcion === 'registrar'){
 	$gstIDSub = $_POST['gstIDSub'];
 	$gstComnd = $_POST['gstComnd']; //comandacia
 	$gstIDuni = $_POST['gstIDuni']; //unidad adminisgtrativa
-// $gstIDCat = $_POST['gstIDCat']; //categoria
-//  //subcategoria
-// // $gstCorro = $_POST['gstCorro']; // correo personal "QUITAR"
-// // $gstCinst = $_POST['gstCinst']; //correo institicuonal "QUITAR"
-// $gstIDuni = $_POST['gstIDuni']; //unidad adminisgtrativa
-
-// $gstSpcID = $_POST['gstSpcID']; //correo opcion3 "QUITAR"
-	
-// $gstIDCat,
-// $gstIDSub,
-// $gstSpcID,
-// $gstIDuni,
-// $gstAcReg,
-
-
-
-
 
 	if(actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$conexion))
 		{	echo "0";	
 			$realizo = 'ACTUALIZO DAT. DEL PUESTO';
 			$gstIdper = $pstIdper;
 			historialp($id,$gstIdper,$realizo,$conexion);
+			//ACTUALIZA PRIVILEGIOS DE LA TABLA ACCESOS 
+			update_acces($pstIdper,$gstCargo,$conexion);
 		}else{	echo "1";	}
 	}else if($opcion === 'bajaUsu'){
 
@@ -328,8 +313,17 @@ function actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$g
 	cerrar($conexion);
 }
 
-function bajaUsuario($idPer,$conexion){
-	
+function update_acces($pstIdper,$gstCargo,$conexion){
+$query = "UPDATE accesos SET privilegios = '$gstCargo' WHERE id_usu = $pstIdper";
+if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+		return false;
+	}
+cerrar($conexion);
+}
+
+function bajaUsuario($idPer,$conexion){	
 	$query = "UPDATE personal SET estado = 1 WHERE gstIdper = '$idPer'";
 	if(mysqli_query($conexion,$query)){
 
@@ -340,7 +334,6 @@ function bajaUsuario($idPer,$conexion){
 			return false;
 		}
 	cerrar($conexion);
-
 }
 
 function bajaAcceso($idPer,$conexion){
@@ -358,7 +351,7 @@ function bajaAcceso($idPer,$conexion){
 // function selecionar($conexion){
 // 	// INSERT INTO asignacion(id_equi,n_emp,proceso) SELECT id_equipo,$nempleado,'$proceso' FROM equipo ORDER BY id_equipo DESC LIMIT 1
 // }
-
+	
 function historial($id,$conexion){
 ini_set('date.timezone','America/Mexico_City');
 $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');	

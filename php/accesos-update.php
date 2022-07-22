@@ -1,11 +1,6 @@
 <?php 
 
-$conexion2 = new mysqli('localhost','u683645102_afac','Agencia.SCT2021.','u683645102_reportes');
-// $conexion2 = new mysqli('localhost','root','','control_de_reportes');
-if ($conexion2->connect_error):
-echo "Error de Conexión".$conexion2->connect_error;
-endif;
-
+include ("conexion_mesa.php");
 include ("../conexion/conexion.php");
 session_start();
 
@@ -28,6 +23,10 @@ if($opcion === 'modificar'){
 		if($password != ''){
 		    if(modificar($id_usu,$usuario,$password,$idacceso,$privilegios,$conexion)){
 				echo "0";
+		//1 DE 2: ACTUALIZANDO EL CARGO DE LA TABLE DE PERSONAL
+				 $privi_gestor = $privilegios; 
+				upadate_acces($id_usu,$privi_gestor,$conexion);
+
 				historia($id,$idacceso,$conexion); 
 			}else{
 				echo "2";
@@ -66,7 +65,10 @@ if($opcion === 'modificar'){
 	$privi_acces = $_POST['privi_acces'];
 
 	if(privi_gestor($id_usu,$privi_gestor,$conexion)){
+
 		echo "0";
+		//2 DE 2: ACTUALIZANDO EL CARGO DE LA TABLE DE PERSONAL
+			upadate_acces($id_usu,$privi_gestor,$conexion);
 		}else{
 		echo "1";
 		}		
@@ -314,7 +316,15 @@ if($opcion === 'modificar'){
 		cerrar($conexion2);									 				
 	}
 
-
+	function upadate_acces($id_usu,$privi_gestor,$conexion){
+		$query = "UPDATE personal SET gstCargo = '$privi_gestor' WHERE gstIdper = $id_usu";
+		if (mysqli_query($conexion,$query)) {
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);									 				
+	}
 
 
 
