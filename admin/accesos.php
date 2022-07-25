@@ -228,11 +228,12 @@
 
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
-        <li id="1"><a href="#primera" onclick="uno()" data-toggle="tab">PERSONAL</a></li>
-        <li id="2"><a href="#segunda" onclick="dos()" data-toggle="tab">INSPECTOR</a></li>
-        <li id="3"><a href="#tercera" onclick="tre()" data-toggle="tab">CURSO</a></li>
-        <li id="5"><a href="#cuarto"  onclick="cin()" data-toggle="tab">OJT</a></li>                  
-        <li id="4"><a href="#cuarto"  onclick="cua()" data-toggle="tab">APARTADOS</a></li>
+    <li id="1"><a href="#primera" onclick="uno()" data-toggle="tab">PERSONAL</a></li>
+    
+    <li id="2"><a href="#segunda" onclick="dos()" data-toggle="tab">INSPECTOR</a></li>    
+    <li id="3"><a href="#tercera" onclick="tre()" data-toggle="tab">CURSO</a></li>
+    <li id="5"><a href="#cinco"  onclick="cin()" data-toggle="tab">OJT</a></li>     
+    <li id="4"><a href="#cuarto"  onclick="cua()" data-toggle="tab">APARTADOS</a></li>
 
     </ul>
     <div class="tab-content">
@@ -566,7 +567,6 @@
                                             <span id="sin_ojtalt" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
                                             <span id="con_ojtalt" class="label label-default" style="color:green;" >ACCESO</span>
-
                                         </td>
                                         <td></td>
                                     </tr>
@@ -581,6 +581,20 @@
                                         </p></td></tr>
 
                                     </tr>                      
+
+
+
+<!-- <tr>
+<td colspan="2"><button type="button" onclick="conteiner8()" id="buton"> + </button> <li style="list-style: none;margin-top: 0.2em;"> OJT ADMINISTRADOR</li></td>
+<td>
+</td>
+<td></td>
+</tr> -->
+
+
+
+
+
 
                                 </tbody>
                             </table>
@@ -884,9 +898,9 @@
                                     <tr>
                                         <td colspan="2"><li>OJT Principal </li></td>
                                         <td>
-                                            <span id="aojtprincipal" class="label label-success"><a href="#" onclick="accesosg('bojtprincipal*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                            <span id="aojtprincipal" class="label label-success"><a href="#" onclick="accesosg('bojtprincipal*COORDINADOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
 
-                                            <span id="bojtprincipal" class="label label-warning"><a href="#" onclick="accesosg('aojtprincipal*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+                                            <span id="bojtprincipal" class="label label-warning"><a href="#" onclick="accesosg('aojtprincipal*COORDINADOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
 
                                             <span id="sin_ojtprincipal" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
@@ -895,7 +909,7 @@
                                         </td>
                                         <td></td>
                                     </tr>
-
+<!-- 
                                     <tr>
                                         <td colspan="2"> <button type="button" onclick="conteiner7()" id="buton"> + </button> <li style="list-style: none;margin-top: 0.2em;"> Procesos OJT pricipal</li></td>
                                         <td>
@@ -907,8 +921,8 @@
 
                                         </td>
                                         <td></td>
-                                    </tr>
-                                    <tr><td><p id="conteiner7" style="display: none; margin-left: 1em;">
+                                    </tr> -->
+                                    <!-- <tr><td><p id="conteiner7" style="display: none; margin-left: 1em;">
                                         > Agregar tarea<br>
                                         > Editar tarea<br>
                                         > Eliminar editar<br>
@@ -916,13 +930,13 @@
                                         > Editar sub tarea<br>
                                         > Eliminar sub tarea<br>
                                         > Catalogo
-                                    </p></td></tr>
+                                    </p></td></tr> -->
 
                                     <tr>
                                         <td colspan="2"> <li> Programación OJT </li></td>
                                         <td>
-                                            <span id="aprograojt" class="label label-success"><a href="#" onclick="accesosg('bprograojt*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                                            <span id="bprograojt" class="label label-warning"><a href="#" onclick="accesosg('aprograojt*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+                                            <span id="aprograojt" class="label label-success"><a href="#" onclick="accesosg('bprograojt*COORDINADOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                            <span id="bprograojt" class="label label-warning"><a href="#" onclick="accesosg('aprograojt*COORDINADOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
 
                                             <span id="sin_prograojt" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
@@ -935,8 +949,8 @@
                                     <tr>
                                         <td colspan="2"> <li> OJT Programados</li></td>
                                         <td>
-                                            <span id="aojtprogramds" class="label label-success"><a href="#" onclick="accesosg('bojtprogramds*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                                            <span id="bojtprogramds" class="label label-warning"><a href="#" onclick="accesosg('aojtprogramds*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+                                            <span id="aojtprogramds" class="label label-success"><a href="#" onclick="accesosg('bojtprogramds*COORDINADOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                            <span id="bojtprogramds" class="label label-warning"><a href="#" onclick="accesosg('aojtprogramds*COORDINADOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
 
                                             <span id="sin_ojtprogramds" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
@@ -948,8 +962,8 @@
                                     <tr>
                                         <td colspan="2"> <li> Alta de Coordinadores / Instructores OJT</li></td>
                                         <td>
-                                            <span id="aaltacorinst" class="label label-success"><a href="#" onclick="accesosg('baltacorinst*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                                            <span id="baltacorinst" class="label label-warning"><a href="#" onclick="accesosg('aaltacorinst*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+                                            <span id="aaltacorinst" class="label label-success"><a href="#" onclick="accesosg('baltacorinst*COORDINADOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                            <span id="baltacorinst" class="label label-warning"><a href="#" onclick="accesosg('aaltacorinst*COORDINADOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
 
                                             <span id="sin_altacorinst" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
@@ -962,8 +976,8 @@
                                     <tr>
                                         <td colspan="2"> <li> Lista de Coordinadores / Instructores OJT </li></td>
                                         <td>
-                                            <span id="alistacorinst" class="label label-success"><a href="#" onclick="accesosg('blistacorinst*OTROS')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
-                                            <span id="blistacorinst" class="label label-warning"><a href="#" onclick="accesosg('alistacorinst*OTROS')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
+                                            <span id="alistacorinst" class="label label-success"><a href="#" onclick="accesosg('blistacorinst*COORDINADOR')" style="color: white" title="QUITAR ACCESO">ACCESO</a></span>
+                                            <span id="blistacorinst" class="label label-warning"><a href="#" onclick="accesosg('alistacorinst*COORDINADOR')" style="color: white" title="PROPORCIONAR ACCESO" >SIN ACCESO</a></span>
 
                                             <span id="sin_listacorinst" class="label label-default" style="color:red;" > SIN ACCESO</span>
 
@@ -1036,7 +1050,7 @@
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos
-    INNER JOIN personal ON id_usu = gstIdper";
+    INNER JOIN personal ON id_usu = gstIdper WHERE baja = 0";
     $resultado = mysqli_query($conexion, $query);
     while($data = mysqli_fetch_array($resultado)){ 
         $id = $data['id_usu'];
@@ -1050,8 +1064,16 @@
         // 7 INSPECTOR
         // 8 INSTRUCTOR
         // 9 NUEVO INGRESO
-["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>","<?php echo $data[2]?>","<?php echo $data[41]?>", "<?php echo $data[4]?>",
+["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", 
 
+
+"<?php echo $data[32]?>"
+
+
+
+,"<?php echo $data[2]?>","<?php echo $data[41]?>", "<?php echo $data[4]?>",
+
+<?php if($data[32]!=0){ ?>
 <?php if($data[4]=='SUPER_ADMIN'){ ?>       
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(1.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='ADMINISTRADOR' || $data[4]=='DIRECTOR_CIAAC'){ ?>
@@ -1064,11 +1086,21 @@
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR'){ ?>    
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-<?php } ?>
+<?php 
+
+    } }else{
+?>
+    "<?php echo "<span style='color:silver; cursor: default' title='Editar técnico' data-toggle='modal' class='btn btn-default'><i class='fa fa-list-alt text-default'></i></span>" ?>"        
+
+<?php    }
+
+?>
 ,
 "<?php echo "<a title='Editar técnico' onclick='datos_editar({$acceso})' type='button' data-toggle='modal' data-target='#editarAccesos' class='editar btn btn-default'><i class='fa fa-lock text-success'></i></a>"?>"
 ],
-<?php } ?>
+<?php 
+} 
+?>
 ];
 
 var tableGenerarReporte = $('#data-table-instructores').DataTable({
@@ -1188,6 +1220,8 @@ function conteiner6(){
 function conteiner7(){
     $("#conteiner7").toggle();   
 }
+
+
 function modificar() {
 //alert("pruebas modificacion")
 var frm = $("#Editar").serialize();
@@ -1259,6 +1293,9 @@ function cin(){
     $("#cinco").show();
 }
 function accesosg(v){
+
+    // alert(v);
+
     text = v.toString();
     nemp = document.getElementById('nemp').value;
     accesos = text.split("*")[0];
@@ -1645,6 +1682,7 @@ $("#sin_listacorinst").hide();
 // FUNCTION PARA EMOSTRAR DATOS
 function mostrar_datos(datos) {
 
+// alert(datos);
     num = datos;
     text = num.toString();
     privilegio = text.split(".", 1);
@@ -1759,8 +1797,10 @@ $("#con_nivelsatisf").show();
 $("#con_modifipondersat").show();
 $("#con_historiaconstanc").show();
 //OJT
-$("#con_ojtprincipal").show();
+
 $("#con_procesoojtprin").show();
+
+$("#con_ojtprincipal").show();
 $("#con_prograojt").show();
 $("#con_ojtprogramds").show();
 $("#con_altacorinst").show();
@@ -1972,6 +2012,15 @@ $("#con_gantt").show();
 $("#sin_monitoreo").show();
 $("#con_manual").show();
 
+//OJT
+$("#bojtprincipal").show();
+$("#bprograojt").show();
+$("#bojtprogramds").show();
+$("#baltacorinst").show();
+$("#blistacorinst").show();
+
+////////////
+
 $("#1").addClass('active');
 $("#2").removeClass('active');
 $("#3").removeClass('active');
@@ -1982,7 +2031,7 @@ $("#1").show('active');
 $("#2").show('active');
 $("#3").show('active');
 $("#4").show('active');
-$("#5").hide('active');
+$("#5").show('active');
 
 $("#primera").addClass('active tab-pane');
 $("#primera").show();

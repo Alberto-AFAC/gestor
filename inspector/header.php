@@ -146,11 +146,7 @@
     </section>
     <!-- /.sidebar -->
 </aside>
-<?php
-
-include('../perfil/actualizar.php');
-
-?>
+<?php include('../perfil/actualizar.php'); ?>
 <script type="text/javascript" src="../js/accesos.js"></script>
 <script type="text/javascript">
 inspectorAcceso();

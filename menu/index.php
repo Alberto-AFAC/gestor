@@ -169,7 +169,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
         </ul>
     </div>
 
-    <input type="text" name="id_usua" id="id_usua" value="<?php echo $id_usu ?>">
+    <input type="hidden" name="id_usua" id="id_usua" value="<?php echo $id_usu ?>">
 
     <script src="../js/menu/js/jquery.js"></script>
     <script src="../js/menu/js/main.js"></script>

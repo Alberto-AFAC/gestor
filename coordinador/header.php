@@ -123,9 +123,19 @@ unset($_SESSION['consulta']);
             <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
           </ul>
         </li>
-        <?php 
-            if($datos[1] == 'MIRIAM' || $datos[2] == 'CALDERON VAZQUEZ' || $datos[1] == 'MARCO ANTONIO' || $datos[2] == 'REYES  SOTO'){
-                echo "<li class='treeview'>
+
+
+<!--             <li >
+                <a href="inspecion">
+                    <i class="fa fa-users"></i> <span>Lista de inspectores</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red"></small>
+                        <small class="label pull-right bg-blue"></small>
+                    </span>
+                </a>
+            </li>
+ -->        
+        <li class='treeview' id="activo" style="display: none;">
                 <a href='#'>
                     <i class='fa fa-file-text'></i>
                     <span>OJT</span>
@@ -134,34 +144,21 @@ unset($_SESSION['consulta']);
                     </span>
                 </a>
                 <ul class='treeview-menu'>
-                    <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
-                    <li><a style='pointer-events: none;' onclick='return false;' href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
-                    <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                  <li id="aojtprincipal1" style="display: none;">
+                  <a href='tareas'><i class='fa fa-file-text'>    
+                  </i> OJT Principal</a></li> 
+
+                  <li id="aprograojt1" style="display: none;"><a href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
+                  
+                  <li id="aojtprogramds1" style="display: none;"><a href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
+                  
+                  <li id="aaltacorinst1" style="display: none;"><a href='instojt'><i class='fa fa-plus'></i>Alta coordinador/Instructor OJT</a></li>
+                  
+                  <li id="alistacorinst1" style="display: none;"><a href='coorinsoj'><i class='fa fa-file-text'></i>Lista coordinador/Instructor</a></li>
+
                 </ul>
             </li>
-            ";
-            }else if($datos[1] == 'RODRIGO ULISES' || $datos[2] == 'OROZCO ARGUELLES'){
-                echo "<li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-file-text'></i>
-                    <span>OJT</span>
-                    <span class='pull-right-container'>
-                        <i class='fa fa-angle-left pull-right'></i>
-                    </span>
-                </a>
-                <ul class='treeview-menu'>
-                    <li><a href='tareas'><i class='fa fa-file-text'></i> OJT Principal</a></li>
-                    <li><a href='proOJT'><i class='fa fa-file-text'></i> Programa OJT</a></li>
-                    <li><a style='pointer-events: none;' onclick='return false;' href='catalogoOJT'><i class='fa fa-file-text'></i> OJT Programados</a></li>
-                    <li><a href='instojt'><i class='fa fa-plus'></i>Alta coordinador/Instructor OJT</a></li>
-                    <li><a href='coorinsoj'><i class='fa fa-file-text'></i>Lista coordinador/Instructor</a></li>
-                </ul>
-            </li>
-            ";
-            }else{
-                echo "";
-            }
-            ?>
+
         <li>
           <a href="calendar/calendar">
             <i class="fa fa-calendar"></i> <span>Calendario</span>
@@ -197,8 +194,8 @@ unset($_SESSION['consulta']);
     </section>
     <!-- /.sidebar -->
   </aside>
-  <?php
-
-include('../perfil/actualizar.php');
-
-  ?>
+  <?php include('../perfil/actualizar.php'); ?>
+<script type="text/javascript" src="../js/accesos.js"></script>
+<script type="text/javascript">
+coordinadorAcceso();
+</script>
