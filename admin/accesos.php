@@ -1232,6 +1232,8 @@ $.ajax({
     data: frm + "&opcion=modificar"
 }).done(function(respuesta) {
 
+    // alert(respuesta);
+
         if (respuesta == 0) {
         Swal.fire({
         type: 'success',

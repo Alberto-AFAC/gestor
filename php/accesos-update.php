@@ -24,8 +24,14 @@ if($opcion === 'modificar'){
 		    if(modificar($id_usu,$usuario,$password,$idacceso,$privilegios,$conexion)){
 				echo "0";
 		//1 DE 2: ACTUALIZANDO EL CARGO DE LA TABLE DE PERSONAL
-				 $privi_gestor = $privilegios; 
-				upadate_acces($id_usu,$privi_gestor,$conexion);
+				if($privilegios=='DIRECTOR_CIAAC'){
+					$privilegios = 'DIRECTOR';
+				}
+		if($privilegios == 'COORDINADOR' || $privilegios == 'DIRECTOR' || $privilegios == 'INSTRUCTOR' || $privilegios == 'INSPECTOR' || $privilegios == 'ADMINISTRATIVO' || $privilegios == 'HUMANOS'){
+
+		    $privi_gestor = $privilegios; 	
+			upadate_acces($id_usu,$privi_gestor,$conexion);
+			}
 
 				historia($id,$idacceso,$conexion); 
 			}else{
@@ -64,11 +70,20 @@ if($opcion === 'modificar'){
 	$privi_mesa = $_POST['privi_mesa'];
 	$privi_acces = $_POST['privi_acces'];
 
+
 	if(privi_gestor($id_usu,$privi_gestor,$conexion)){
 
 		echo "0";
 		//2 DE 2: ACTUALIZANDO EL CARGO DE LA TABLE DE PERSONAL
+
+				if($privi_gestor=='DIRECTOR_CIAAC'){
+					$privi_gestor = 'DIRECTOR';
+				}
+		if($privi_gestor == 'COORDINADOR' || $privi_gestor == 'DIRECTOR' || $privi_gestor == 'INSTRUCTOR' || $privi_gestor == 'INSPECTOR' || $privi_gestor == 'ADMINISTRATIVO' || $privi_gestor == 'HUMANOS'){
 			upadate_acces($id_usu,$privi_gestor,$conexion);
+			}
+
+
 		}else{
 		echo "1";
 		}		

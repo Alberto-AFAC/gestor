@@ -185,10 +185,6 @@ session_start();
             </div>
         </div>
     </form>
-
-
-
-
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -219,12 +215,7 @@ session_start();
 <!-- Add the sidebar's background. This div must be placed
     immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
-
-
 </div>
-
-
-
 <form id="EditAcceso" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
 
     <div class="modal fade" id="mostrarPriv" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
@@ -278,13 +269,10 @@ session_start();
             </div>
         </div>
             <!-- /.tab-pane -->
-
             <div id="segunda">
                 <!-- The timeline -->
-
                 <!-- timeline time label LINGÜÍSTICA-->
                 <div class="box box-info">
-
                 <div class="box-body" id="dos">
                 <div class="col-sm-12"><br>
                 <label>SELECCIONE PRIVILEGIOS</label>
@@ -299,12 +287,8 @@ session_start();
                 </div>
                 </div>
                 </div>
-
-
             </div>
-
             <!-- /.tab-pane -->
-
             <div id="tercera">
                 <div class="box box-info">
                     <div class="box-body" id="tres">
@@ -338,13 +322,10 @@ session_start();
                     </div>                
                 </div>            
             </div>
-
-
             <!-- /.tab-pane -->
-
         <div class="modal-footer">
-<button type="button" onclick="vaciar()" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-<button type="button" onclick="acceso()" class="btn btn-primary">ACEPTAR</button>
+        <button type="button" onclick="vaciar()" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+        <button type="button" onclick="acceso()" class="btn btn-primary">ACEPTAR</button>
         </div>
 
 
@@ -365,9 +346,7 @@ session_start();
 </div>
 </div>
 </form>
-
 <!-- ./wrapper -->
-
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -386,9 +365,7 @@ session_start();
 <!-- page script -->
 <script src="../js/global.js"></script>
 <script src="../js/datos.js"></script>
-
 </body>
-
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
@@ -471,9 +448,7 @@ function datos_editar(acceso) {
         obj = JSON.parse(resp);
         var res = obj.data;
         for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_accesos == acceso) {
-                
-
+            if (obj.data[i].id_accesos == acceso) {               
 
                 var
                 id_usu = $("#editarAccesos #idAccesos").val(obj.data[i].id_accesos),
@@ -490,7 +465,6 @@ function datos_editar(acceso) {
 }
 
 //Funcion de acceso
-
 function acceso(){
     var frmAcc = $("#EditAcceso").serialize();
     $.ajax({
@@ -527,10 +501,9 @@ function acceso(){
 function modificar() {
 //alert("pruebas modificacion")
 var frm = $("#Editar").serialize();
-
 // alert(frm);
 $.ajax({
-    url: "../php/accesos-update.php",
+   url: "../php/accesos-update.php",
     type: 'POST',
     data: frm 
 }).done(function(respuesta) {
@@ -559,7 +532,6 @@ $.ajax({
         }
     });
 }
-
 function uno(){
     $("#primera").show();
     $("#segunda").hide();
@@ -617,9 +589,6 @@ $.ajax({
     }
 })
 }
-
-
-
 
 // SHOW PASSWORD
 $('.toggle-password').click(function() {
