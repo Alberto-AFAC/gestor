@@ -47,7 +47,7 @@
 			// $fin = $data['fin'];
 			// $f3 = strtotime($actual.''.$hactual);
 			// $f2 = strtotime($fin.''.$data['hcurso']); 
-		    $fin = date("d-m-Y",strtotime($data['fin']."+ 1 days")); 
+		    $fin = date("d-m-Y",strtotime($data['fin']."+ 5 days")); 
 
 		    $f3 = strtotime($actual);
 		    $f2 = strtotime($fin); 
@@ -85,7 +85,7 @@ $proc = 'EN PROCESO';
 
 }else{
 
-if ($f3>$f2 && $data["proceso"] == "PENDIENTE" && $codigo!="FO295" && $codigo!="FO296" && $codigo!="FO195") {
+if ($f3>$f2 && $data["proceso"] == "PENDIENTE" && $codigo!="FO194" && $codigo!="FO278" && $codigo!="FO195" && $codigo!="FO283" && $codigo!="FO310" && $codigo!="FO314" && $codigo!="FO315" && $codigo!="FO316" && $codigo!="FO319" && $codigo!="FO320" && $codigo!="FO321" && $codigo!="FO322" && $codigo!="FO327" && $codigo!="FO328" && $codigo!="FO335") {
 	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>PROGRAMACIÓN VENCIDA</span>";
 	$proc = 'VENCIDO';
 }
