@@ -117,7 +117,19 @@ onclick="agregarDias();">EDITAR</button>
                 data-widget="remove">
                 <a href="porvencer"><i class='fa fa-times'></i></a>
             </button>
-        </div>  
+        </div> 
+        <div class="box-tools pull-right" style="display:none;" id="porvencer2">
+            <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+                data-widget="remove">
+                <a href="porvencer2"><i class='fa fa-times'></i></a>
+            </button>
+        </div> 
+        <div class="box-tools pull-right" style="display:none;" id="vencidos2">
+            <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
+                data-widget="remove">
+                <a href="vencidos2"><i class='fa fa-times'></i></a>
+            </button>
+        </div>
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">

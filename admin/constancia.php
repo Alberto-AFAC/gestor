@@ -72,12 +72,11 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         <div class='column middle'>
         <br><br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León Garcíass</span><br>
         </div>
         <div class='column right'>
 
@@ -93,9 +92,8 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
 
         <div class='footer-constancia-gold'>
-        <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span>
         </div>
@@ -105,7 +103,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 222px; width: 200px; position: absolute; left: 13%;'>
         <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
-    <   p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+    <   p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguridad: {$llave}</p>
         </div>";
     }else if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr <= 99){
 
@@ -123,7 +121,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <div class='caja'>
 
         <p style='margin-bottom: -20px;' class='p-2'>Directora del CIAAC:</p></div>
-        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 400px; position: absolute; right: 45%;'></center>
         </div>
 
         <div style='padding-top: 9px; text-align: center;'>
@@ -131,10 +129,9 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <div class='column left'>
         </div>
         <div class='column middle'>
-        <br><br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <br><br><br><br><br>
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
         <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
@@ -144,23 +141,25 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         </div>
         </div>
-        <p class='codigo-curso'>Código del curso: {$con['codigo']}</p>
+        <p style='padding-top:-6%;' class='codigo-curso'>Código del curso: {$con['codigo']}</p>
         <p class='p-3'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
         {$con['gstTitlo']}</span>, Grupo: {$con['codigo']}, que a
         continuación se enlistan:</p>
         </div>
         <div class='footer-constancia-gold'>
-        <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <img src='../dist/img/firmas/Viridiana.jpg' style='margin-top:-25%; bottom: 242px; width: 150px; margin-left: 1%; padding-top:-6%;'>
+        
+        <p style='margin-top:-25%; padding-top:-6%; font-size: 7px; font-weight: bold; color: #996633;'
+        class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
-        Aviación Civil / SCT-AFAC-CIAAC</span>
+        Aviación Civil / SCT-AFAC-CIAAC</p>
+        
         </div>
         <div class='footer-constancia'>
-        <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; left: 13%;'>
+        
         <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
-        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguirdad: {$llave}</p>
         </div>
         ";
     }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100){
@@ -188,9 +187,8 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         <div class='column middle'>
         <br><br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
         <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
@@ -209,9 +207,8 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
 
         <div class='footer-constancia-gold'>
-        <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span>
         </div>
@@ -249,12 +246,11 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         <div class='column middle'>
         <br><br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León Garcíasss</span><br>
         </div>
         <div class='column right'>
         </div>
@@ -269,9 +265,8 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
 
         <div class='footer-constancia-gold'>
-        <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span>
         </div>
@@ -308,12 +303,11 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         <div class='column middle'>
         <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León Garcíasss</span><br>
         </div>
         <div class='column right'>
         <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
@@ -322,9 +316,8 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         <div class='page_break'>
         <div class='footer2'>
-        <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span>
         <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
@@ -357,9 +350,8 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         <div class='column middle'>
         <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span><br>
         <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
@@ -371,12 +363,11 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         <div class='page_break'>
         <div class='footer2'>
-        <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-        class='p-2'>Secretaria de
-        Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
         Aviación Civil / SCT-AFAC-CIAAC</span>
-        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguridad: {$llave}</p>
         </div>
         </div>
         </div>";

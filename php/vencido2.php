@@ -41,10 +41,8 @@
 
 		$f3curso = strtotime($actual);
 		$f2curso = strtotime($fin); 
-
-
-$fechav = date("d-m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));     
-$vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
+        $fechav = date("d-m-Y",strtotime($data['fechaf']."+ ".$data['gstVignc']." year"));     
+        $vencer = date("d-m-Y",strtotime($fechav."- 3 month"));
 
 $f1 = strtotime($fechav);
 $f2 = strtotime($vencer);
@@ -55,7 +53,7 @@ $f3 = strtotime($actual);
 if ($f3>=$f1 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101) {
 
 //		if(){ //VENCIDO
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>RECURRENTE VENCIDO</span>";
+		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>CURSO VENCIDO</span>";
 		$proc = 'VENCIDO';		
 //		}
 		// else if($f3 >= $f2){ //POR VENCER?    
@@ -83,80 +81,15 @@ if ($f3>=$f1 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101) {
 		$data['hcurso'],
 		$proc
 		];
-	}else 
-
-
-	if($f3 >= $f2 && $data["proceso"] == "FINALIZADO" && $data['gstVignc'] != 101) {
-
-		// else if($f3 >= $f2){ //POR VENCER?    
-		$proceso = "<span style='font-weight: bold; height: 50px; color:orange;'>RECURRENTE POR VENCER</span>";
-		$proc = 'POR VENCER';		
-		
-		$cursos[] = [ 
-		$data["codigo"], 
-		$data["gstTitlo"],
-		$data["gstTipo"],
-		$data["inicio"],
-		$data["gstDrcin"],
-		$data["finaliza"],
-		$data["prtcpnts"],
-		$proceso,
-		$data["id_curso"],
-		$data["codigo"],
-		$data["gstDrcin"], 
-		$data['idinst'],
-		$data['sede'],
-		$data['link'],
-		$data['modalidad'],
-		$data['gstIdlsc'],
-		$data['idinst'],
-		$data['hcurso'],
-		$proc
-		];
-		}
-
-
-
-
-
-if ($f3curso>$f2curso  && $data["proceso"] == "PENDIENTE") {
-		$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>PROGRAMACIÓN VENCIDA</span>";
-		$proc = 'VENCIDO';		
-		$cursos[] = [ 
-		$data["codigo"], 
-		$data["gstTitlo"],
-		$data["gstTipo"],
-		$data["inicio"],
-		$data["gstDrcin"],
-		$data["finaliza"],
-		$data["prtcpnts"],
-		$proceso,
-		$data["id_curso"],
-		$data["codigo"],
-		$data["gstDrcin"], 
-		$data['idinst'],
-		$data['sede'],
-		$data['link'],
-		$data['modalidad'],
-		$data['gstIdlsc'],
-		$data['idinst'],
-		$data['hcurso'],
-		$proc
-		];
-		}
-}
-		
 	}
-
-			if(isset($cursos)&&!empty($cursos )){
-
+}	
+	}
+	if(isset($cursos)&&!empty($cursos )){
 			$json_string = json_encode(array( 'data' => $cursos ));
 			echo $json_string;
 			}else{
-
 			echo $cursos ='0';
 			}
-
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);
 
