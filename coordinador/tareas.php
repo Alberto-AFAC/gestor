@@ -134,7 +134,7 @@ include('header.php');
                             
                                 
                                 <li class="active"><a href="#activity" data-toggle="tab">ESPECIALIDAD OJT</a></li>
-                                <li><a href="#puesto" data-toggle="tab">CATALOGO OJT</a></li>
+                                <li><a href="#puesto" data-toggle="tab">CATÁLOGO DE ESPECIALIDAD OJT</a></li>
                                 <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
                             </ul>
 
@@ -446,41 +446,19 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                         <div class="form-group">
                                             <div class="col-sm-3">
                                                 <div class="input-group">
-                                                    <!-- <H4><i class="fa   fa-suitcase"></i>
-<label> ------- </label>
-
-</H4> -->
-
-
-
                                                 </div>
-
                                             </div>
-
                                         </div>
                                         <table id="add-task" class="table display table-striped table-bordered"
                                             style="width:100%">
-
                                         </table>
                                         <div class="form-group">
-
-
                                         </div>
-
-
-
                                         <div class="form-group">
                                             <input type="hidden" name="gstIDCat" id="gstIDCat" value="0">
-                                            <!-- 
-<input type="hidden" name="gstIDSub" id="gstIDSub" value="0"> -->
-
-
-
                                         </div>
                                         <div class="form-group">
-
                                         </div>
-
                                         <div class="form-group" id="butons" style="display: none;"><br>
                                             <div class="col-sm-offset-0 col-sm-2">
                                                 <button type="button" id="button"
@@ -513,24 +491,15 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                             <!-------------TODAS LAS TAREAS------------->
                             <div id="todasTareas" style="display: none;" tabindex="-1" role="dialog"
                                 aria-labelledby="todasTareas" aria-hidden="true">
-
-
-
-
-
-
-
-
                                 <div class="modal-body">
 
                                     <!--  -->
-
                                     <div class="dataTables_wrapper form-inline dt-bootstrap">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="box">
                                                     <div class="box-header with-border">
-                                                    <h4 for="">LISTA DE TAREAS PRINCIPALES OJ / <label style="color:#0B007A" id="esptprim" for=""></label>
+                                                    <h4 for="">LISTA DE TAREAS PRINCIPALES OJT / <label style="color:#0B007A" id="esptprim" for=""></label>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-hidden="true" onclick="salir();">&times;</button></h4>
                                                     </div>
@@ -544,32 +513,12 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
 
                                         </div>
                                     </div>
-
                                     <!----------------------------------------------------------------------------->
-
-
-
                                 </div>
 
                             </div>
-
-
-
-
-                            <!-- /.col -->
-
-                            <!-- <form class="form-horizontal"> -->
-                            <!-- <div class="form-group">
-<div class="col-sm-4">
-<label class="label2">RESPONSABLES DE LA TAREA</label>
-</div>                     
-</div> -->
-                            <!-- </form> -->
-
-                            <!-- /.col -->
                         </div>
                         <!-- /.row -->
-
             </section>
             <!-- /.content -->
         </div>
@@ -579,7 +528,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <div id="titulo"></div>
@@ -587,13 +535,11 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                     </div>
                     <input type="hidden" name="idRtarea" id="idRtarea">
                     <div id="rspnsbls"></div>
-
                     <div class="modal-footer">
                         <div class="form-group">
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary" onclick="notificacion()">EVALUAR</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-
                             </div>
                         </div>
                         <b>
@@ -608,11 +554,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                 </div>
             </div>
         </div>
-
-
-
-
-
         <div class="modal fade" id="detalleSub1" tabindex="-1" role="dialog" aria-labelledby="detalleSub1"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -633,8 +574,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                 </div>
             </div>
         </div>
-
-
         <div class="modal fade" id="detalleSub2" tabindex="-1" role="dialog" aria-labelledby="detalleSub2"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -655,7 +594,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                 </div>
             </div>
         </div>
-
         <!---------------------------------------------->
         <div class="modal fade" id="detalleSub3" tabindex="-1" role="dialog" aria-labelledby="detalleSub3"
             aria-hidden="true">
@@ -686,7 +624,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                     </div>
                 </div>
             </div>
-
         </div>
         <!-------------------------------------------MODAL------------------------------------------------------>
         <form class="form-horizontal" action="" method="POST">
@@ -728,7 +665,6 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
             <!-- /.modal-content -->
         </form>
         <!-------------------------------------------MODAL FIN------------------------------------------------------>
-
          <!-------------------------------------------MODAL------------------------------------------------------>
          <form class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-eliminarT1">
@@ -1225,7 +1161,7 @@ $contador++;
 ?>
 //jess01
         ["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>",
-            "<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>OJTS ASIGNADOS</a>"?>","<a href='#' title='Eliminar' onclick='deleojprin(<?php echo  $idspc;?>)' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminarOJ'><i class='fa fa-trash-o text-danger'></i></a>",
+            "<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS ASIGNADAS</a>"?>","<a href='#' title='Eliminar' onclick='deleojprin(<?php echo  $idspc;?>)' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminarOJ'><i class='fa fa-trash-o text-danger'></i></a>",
             "<?php 
 
 
@@ -1270,7 +1206,7 @@ $contador++;
                 title: "ESPECIALIDAD OJT"
             },
             {
-                title: "OJTS PRINCIPALES"
+                title: "TAREAS PRICIALES"
             },
             {
                 title: "ACCIONES"
@@ -1292,7 +1228,7 @@ $categoria= $data['gstCatgr'];
 $contador++;
 ?>
         ["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>",
-            "<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>OJTS ASIGNADOS</a>"?>","<a href='#' title='Eliminar' onclick='' disabled type='button' class='eliminar btn btn-default' data-toggle='modal' data-target=''><i class='fa fa-trash-o text-danger'></i></a>",
+            "<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS ASIGNADAS</a>"?>","<a href='#' title='Eliminar' onclick='' disabled type='button' class='eliminar btn btn-default' data-toggle='modal' data-target=''><i class='fa fa-trash-o text-danger'></i></a>",
             "<?php 
 ?>",
         ],

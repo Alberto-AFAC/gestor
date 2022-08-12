@@ -56,7 +56,7 @@ folder instead of downloading all of them to reduce the load. -->
 href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
 integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" /> -->
 
-<script src="../dist/js/sweetalert2.all.min.js"></script>
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
     <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
 
     <style>
@@ -109,11 +109,9 @@ integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="ano
         <?php
 include('header.php');
 ?>
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-
             <section class="content-header">
                 <h1>
                     <!-- ESPECIALIDAD OJT -->
@@ -122,15 +120,13 @@ include('header.php');
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" style="font-size: 14px;">
                                 <li class="active"><a href="#activity" data-toggle="tab">ESPECIALIDAD OJT</a></li>
-                                <li><a href="#puesto" data-toggle="tab">CATALOGO OJT</a></li>
+                                <li><a href="#puesto" data-toggle="tab">CATÁLOGO DE ESPECIALIDAD OJT</a></li>
                                 <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
                             </ul>
-
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activity">
                                     <!-- Post -->
@@ -141,9 +137,8 @@ include('header.php');
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <!-- <H4><i class=""></i>
-<label> TAREA PRINCIPAL </label>
-
-</H4> -->
+                                                        <label> TAREA PRINCIPAL </label>
+                                                    </H4> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,8 +168,6 @@ include('header.php');
                                                 </div>
 
                                             </div>
-
-
                                             <!-- <div class="form-group">
                                                 <div class="col-sm-6">
                                                     
@@ -191,13 +184,9 @@ include('header.php');
                                                     </select>
                                                 </div>  
                                             </div> -->
-
-
                                             <div class="form-group" id="agregarTarea" style="display: none;">
                                                 <div id="ojt-principal" class="col-sm-12">
                                                     <div id="tareas"></div>
-
-
                                                     <div class="form-group" id="otra"><br>
                                                         <div class="col-sm-offset-0 col-sm-2">
                                                             <button type="button"
@@ -224,9 +213,11 @@ include('header.php');
                                                     <input type="hidden" name="idsubt" id="idsubt">
                                                     <!-- <label><a id="agrega-ojt-principal">OJT PRINCIPAL N° 1</a></label> -->
                                                     <label>TAREAS</label>
-                                                    <input type="text" onkeyup="mayus(this);" style="text-transform:uppercase;" class="form-control" id="titulo1" placeholder="Escribe OJT..." name="ojt_principal[]" disabled=""><br>
+                                                    <input type="text" onkeyup="mayus(this);"
+                                                        style="text-transform:uppercase;" class="form-control"
+                                                        id="titulo1" placeholder="Escribe OJT..." name="ojt_principal[]"
+                                                        disabled=""><br>
                                                 </div>
-
                                                 <div id="sub1" class="col-sm-3">
                                                     <label>SUBTAREA 1</label>
                                                     <div>
@@ -238,8 +229,6 @@ include('header.php');
                                                             class="fa fa-plus-circle" aria-hidden="true"></i>
                                                         AÑADIR</span>
                                                 </div>
-
-
                                                 <div id="sub2" class="col-sm-3">
                                                     <label>SUBTAREA 2</label>
                                                     <div>
@@ -264,11 +253,6 @@ include('header.php');
                                                         AÑADIR</span>
                                                 </div>
                                             </div>
-
-
-
-
-
                                             <div class="form-group" id="butons1"><br>
                                                 <div class="col-sm-offset-0 col-sm-2">
 
@@ -297,8 +281,6 @@ include('header.php');
                                                 </b>
                                             </div>
                                         </form>
-
-
                                         <form style="display: none;" class="form-horizontal" action="" method="POST">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
@@ -325,9 +307,7 @@ include('header.php');
                                                         disabled=""></textarea><br>
 
                                                 </div>
-
                                             </div>
-
                                             <div class="form-group" id="butons2"><br>
                                                 <div class="col-sm-offset-0 col-sm-2">
 
@@ -353,11 +333,6 @@ include('header.php');
                                                 </b>
                                             </div>
                                         </form>
-
-
-
-
-
                                         <form id="form3" style="display: none;" class="form-horizontal" action=""
                                             method="POST">
                                             <!--               <input type="hidden" name="gstIdper" id="gstIdper"> -->
@@ -394,13 +369,8 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                                     <textarea type="text" style="text-transform:uppercase;"
                                                         class="form-control" id="descrip3" name="descrip3" rows="4"
                                                         disabled=""></textarea><br>
-
-
-
                                                 </div>
-
                                             </div>
-
                                             <div class="form-group" id="butons3"><br>
                                                 <div class="col-sm-offset-0 col-sm-2">
 
@@ -426,54 +396,28 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                                 </b>
                                             </div>
                                         </form>
-
-
                                     </div>
                                 </div>
                                 <!--------------------ASIGNAR TAREA------------------------------->
-
                                 <div class="tab-pane" id="puesto">
-
                                     <form id="Pusto" class="form-horizontal" action="" method="POST">
                                         <input type="hidden" name="pstIdper" id="pstIdper">
                                         <div class="form-group">
                                             <div class="col-sm-3">
                                                 <div class="input-group">
-                                                    <!-- <H4><i class="fa   fa-suitcase"></i>
-<label> ------- </label>
-
-</H4> -->
-
-
-
                                                 </div>
-
                                             </div>
-
                                         </div>
                                         <table id="add-task" class="table display table-striped table-bordered"
                                             style="width:100%">
-
                                         </table>
                                         <div class="form-group">
-
-
                                         </div>
-
-
-
                                         <div class="form-group">
                                             <input type="hidden" name="gstIDCat" id="gstIDCat" value="0">
-                                            <!-- 
-<input type="hidden" name="gstIDSub" id="gstIDSub" value="0"> -->
-
-
-
                                         </div>
                                         <div class="form-group">
-
                                         </div>
-
                                         <div class="form-group" id="butons" style="display: none;"><br>
                                             <div class="col-sm-offset-0 col-sm-2">
                                                 <button type="button" id="button"
@@ -523,9 +467,11 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                             <div class="col-md-12">
                                                 <div class="box">
                                                     <div class="box-header with-border">
-                                                    <h4 for="">LISTA DE TAREAS PRINCIPALES OJ / <label style="color:#0B007A" id="esptprim" for=""></label>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true" onclick="salir();">&times;</button></h4>
+                                                        <h4 for="">LISTA DE TAREAS PRINCIPALES OJT / <label
+                                                                style="color:#0B007A" id="esptprim" for=""></label>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true" onclick="salir();">&times;</button>
+                                                        </h4>
                                                     </div>
                                                     <div class="box-body">
                                                         <div id="add_ojts1"></div>
@@ -688,32 +634,38 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
+                                <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">CONFIRMAR!</h4>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" name="id_cat" id="id_cat">
-                                <div class="form-group">
-                                    <div style="text-align:center" class="col-sm-12" >
-                                        <p style="font-size:16px;"> ¿ESTÁ SEGURO DE ELIMINAR TODAS LAS TAREAS, SUB-TAREAS  Y SUB-SUB-TAREAS DE LA CATEGORIA: <br> <br> <label name="ctaeg" id="ctaeg" style="font-size:18px" for=""></label>
+                            <div class="form-group">
+                                <div style="text-align:center" class="col-sm-12">
+                                    <p style="font-size:16px;"> ¿ESTÁ SEGURO DE ELIMINAR TODAS LAS TAREAS, SUB-TAREAS Y
+                                        SUB-SUB-TAREAS DE LA CATEGORIA: <br> <br> <label name="ctaeg" id="ctaeg"
+                                            style="font-size:18px" for=""></label>
                                         <br>
                                         <br>
                                         <span id="cgstTitlo"></span>
-                                        </p>
-                                        <div>
+                                    </p>
+                                    <div>
                                         <!-- <p><i style="color:#FAAB00; font-size:18px" class="icon fa fa-warning"></i> </p> -->
-                                        <h4><i class="fa fa-warning text-red"></i><u> Advertencia! al eliminar se borrará todas las tareas, sub-tareas y sub-sub-tareas ligadas a esta especialidad.</u></h4>
-                                        </div>
-                                        <br>
+                                        <h4><i class="fa fa-warning text-red"></i><u> Advertencia! al eliminar se
+                                                borrará todas las tareas, sub-tareas y sub-sub-tareas ligadas a esta
+                                                especialidad.</u></h4>
                                     </div>
                                     <br>
-                                    <div class="col-sm-3">
-                                        <button id="deoj" title="Dar clic para eliminar" type="button" class="btn btn-block btn-warning" onclick="confdeleojf()">ACEPTAR</button>
-                                    </div>
-                                    <b>
-                                    <p class="alert alert-warning text-center padding error" name="dangeactp" id="dangeactp">Error al actualizar</p>
-                                    </b>
                                 </div>
+                                <br>
+                                <div class="col-sm-3">
+                                    <button id="deoj" title="Dar clic para eliminar" type="button"
+                                        class="btn btn-block btn-warning" onclick="confdeleojf()">ACEPTAR</button>
+                                </div>
+                                <b>
+                                    <p class="alert alert-warning text-center padding error" name="dangeactp"
+                                        id="dangeactp">Error al actualizar</p>
+                                </b>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -722,39 +674,44 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
         </form>
         <!-------------------------------------------MODAL FIN------------------------------------------------------>
 
-         <!-------------------------------------------MODAL------------------------------------------------------>
-         <form class="form-horizontal" action="" method="POST">
+        <!-------------------------------------------MODAL------------------------------------------------------>
+        <form class="form-horizontal" action="" method="POST">
             <div class="modal fade" id="modal-eliminarT1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
+                                <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">CONFIRMAR!</h4>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" name="id_tar" id="id_tar">
-                                <div class="form-group">
-                                    <div style="text-align:center" class="col-sm-12" >
-                                        <p style="font-size:16px;"> ¿ESTÁ SEGURO DE ELIMINAR LA TAREA: <br> <br> <label name="tareaelim" id="tareaelim" style="font-size:18px" for=""></label>
+                            <div class="form-group">
+                                <div style="text-align:center" class="col-sm-12">
+                                    <p style="font-size:16px;"> ¿ESTÁ SEGURO DE ELIMINAR LA TAREA: <br> <br> <label
+                                            name="tareaelim" id="tareaelim" style="font-size:18px" for=""></label>
                                         <br>
                                         <br>
                                         <span id="cgstTarea"></span>
-                                        </p>
-                                        <div>
+                                    </p>
+                                    <div>
                                         <!-- <p><i style="color:#FAAB00; font-size:18px" class="icon fa fa-warning"></i> </p> -->
-                                        <h4><i class="fa fa-warning text-red"></i><u> Advertencia! Al eliminar la tarea, se borraran las sub-tareas y sub-sub-tareas ligadas con esta tarea principal.</u></h4>
-                                        </div>
-                                        <br>
+                                        <h4><i class="fa fa-warning text-red"></i><u> Advertencia! Al eliminar la tarea,
+                                                se borraran las sub-tareas y sub-sub-tareas ligadas con esta tarea
+                                                principal.</u></h4>
                                     </div>
                                     <br>
-                                    <div class="col-sm-3">
-                                        <button id="detare" title="Dar clic para eliminar" type="button" class="btn btn-block btn-warning" onclick="confdeltarp()">ACEPTAR</button>
-                                    </div>
-                                    <b>
-                                    <p class="alert alert-warning text-center padding error" name="dangedetp" id="dangedetp">Error al eliminar la tarea contacta a soporte tecnico</p>
-                                    </b>
                                 </div>
+                                <br>
+                                <div class="col-sm-3">
+                                    <button id="detare" title="Dar clic para eliminar" type="button"
+                                        class="btn btn-block btn-warning" onclick="confdeltarp()">ACEPTAR</button>
+                                </div>
+                                <b>
+                                    <p class="alert alert-warning text-center padding error" name="dangedetp"
+                                        id="dangedetp">Error al eliminar la tarea contacta a soporte tecnico</p>
+                                </b>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -771,7 +728,8 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">ACTUALIZAR TAREA PRINCIPAL</h5>
+                            <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">ACTUALIZAR TAREA
+                                PRINCIPAL</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -781,10 +739,12 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                 <input type="hidden" id="idtarpre" name="idtarpre">
                                 <div class="col-sm-12">
                                     <label>DESCRIPCIÓN DE TAREA PRINCIPAL OJT</label>
-                                    <textarea type="text" onkeyup="mayus(this);" class="form-control" id="ojtarea" name="ojtarea"></textarea>
+                                    <textarea type="text" onkeyup="mayus(this);" class="form-control" id="ojtarea"
+                                        name="ojtarea"></textarea>
                                 </div>
                             </div>
-                            <h5><i class="fa fa-warning text-blue"></i><u> Aceptar! cuando ya esta seguro de los cambios.</u></h5>
+                            <h5><i class="fa fa-warning text-blue"></i><u> Aceptar! cuando ya esta seguro de los
+                                    cambios.</u></h5>
                         </div>
                         <div class="modal-footer">
                             <button type="button" onclick="gurdeditp()" class="btn btn-primary">ACEPTAR</button>
@@ -926,7 +886,8 @@ function agrTarea() {
 
     // alert(array3);
 
-    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&dateR=' + dateR + '&idsubt=' + idsubt + '&array=' + array + '&array2=' + array2 + '&array3=' + array3 + '&idarea=' + idarea + '&opcion=tareAgr';
+    datos = 'idcur=' + idcur + '&titulo1=' + titulo1 + '&dateR=' + dateR + '&idsubt=' + idsubt + '&array=' + array +
+        '&array2=' + array2 + '&array3=' + array3 + '&idarea=' + idarea + '&opcion=tareAgr';
     //var gstFslda = document.getElementById('AgstFslda').value;
 
 
@@ -1220,7 +1181,8 @@ $contador++;
 ?>
 
         ["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>",
-            "<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>OJTS ASIGNADOS</a>"?>","<a href='#' title='Eliminar' onclick='deleojprin(<?php echo  $idspc;?>)' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminarOJ'><i class='fa fa-trash-o text-danger'></i></a>",
+            "<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS ASIGNADAS</a>"?>",
+            "<a href='#' title='Eliminar' onclick='deleojprin(<?php echo  $idspc;?>)' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modal-eliminarOJ'><i class='fa fa-trash-o text-danger'></i></a>",
             "<?php 
 
 
@@ -1266,7 +1228,7 @@ $contador++;
                 title: "ESPECIALIDAD OJT"
             },
             {
-                title: "OJTS PRINCIPALES"
+                title: "TAREAS PRICIALES"
             },
             {
                 title: "ACCIONES"
@@ -1565,12 +1527,12 @@ $('#sub3').on("click", ".remover_campo", function(e) {
 //TODAS LAS TAREAS
 
 function todasT(t) {
-     $("#add-task tr").on('click', function() {
-      var categoria = "";
-      categoria += $(this).find('td:eq(1)').html(); //Toma el id de la especialidad
-      document.getElementById('esptprim').innerHTML=categoria;
-      //alert(categoria);
-    }) 
+    $("#add-task tr").on('click', function() {
+        var categoria = "";
+        categoria += $(this).find('td:eq(1)').html(); //Toma el id de la especialidad
+        document.getElementById('esptprim').innerHTML = categoria;
+        //alert(categoria);
+    })
 
     $("#todasTareas").show();
     $("#puesto").hide();
@@ -1600,15 +1562,18 @@ function todasT(t) {
 
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
                     html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal +
-                        '</td><td>' + obj.data[H].idarea + '</td><td>' + obj.data[H].ojt  + '</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>'+
-                        '</td><td style="display:none">' + obj.data[H].id_ojt; +'</td></tr>'
+                        '</td><td>' + obj.data[H].idarea + '</td><td>' + obj.data[H].ojt +
+                        '</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>' +
+                        '</td><td style="display:none">' + obj.data[H].id_ojt; + '</td></tr>'
 
                 } else {
                     datos = obj.data[H].id_ojt + "*" + n;
-                    html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal + '</td><td>' + obj.data[H].idarea +
+                    html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal +
+                        '</td><td>' + obj.data[H].idarea +
                         '</td><td> <a href="#" data-toggle="modal" data-target="#detalleSub3" onclick="idsubTa(' +
-                        "'" + datos + "'" + ')">' + obj.data[H].ojt +'</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>'+
-                        '</td><td style="display:none">' + obj.data[H].id_ojt; +'</td></tr>'
+                        "'" + datos + "'" + ')">' + obj.data[H].ojt +
+                        '</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>' +
+                        '</td><td style="display:none">' + obj.data[H].id_ojt; + '</td></tr>'
                 }
 
             }
@@ -1884,23 +1849,23 @@ function ojtborrar(dato) {
     });
 }
 
-function deleojprin(ojtpr){
+function deleojprin(ojtpr) {
     //alert(ojtpr)
     $("#add-task tr").on('click', function() {
-      var categoria = "";
-      var id_ojprin = "";
-      categoria += $(this).find('td:eq(1)').html(); //Toma el id de la especialidad
-      document.getElementById('ctaeg').innerHTML=categoria;
-      document.getElementById('id_cat').value=ojtpr;
-      //alert(id_ojprin);
-    }) 
+        var categoria = "";
+        var id_ojprin = "";
+        categoria += $(this).find('td:eq(1)').html(); //Toma el id de la especialidad
+        document.getElementById('ctaeg').innerHTML = categoria;
+        document.getElementById('id_cat').value = ojtpr;
+        //alert(id_ojprin);
+    })
 }
 
-function confdeleojf(){
+function confdeleojf() {
     //alert("entro eliminar")
     var id_spc = document.getElementById('id_cat').value;
-   //alert(id_spc);
- //   var datos= 'id_spc=' + id_spc + '&opcion=deleteojt';
+    //alert(id_spc);
+    //   var datos= 'id_spc=' + id_spc + '&opcion=deleteojt';
     $.ajax({
         data: 'id_spc=' + id_spc + '&opcion=deleojprincipal',
         url: '../php/regTarea.php',
@@ -1910,15 +1875,15 @@ function confdeleojf(){
         },
         success: function(response) {
             if (response == 0) {
-              Swal.fire({
-                type: 'success',
-                text: 'SE ELIMINO DE FORMA CORRECTA',
-                showConfirmButton: false,
-                timer: 3200,
-                customClass: 'swal-wide',
-                showConfirmButton: false,
-            });
-            setTimeout("location.href = 'tareas.php';", 1500);
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE ELIMINO DE FORMA CORRECTA',
+                    showConfirmButton: false,
+                    timer: 3200,
+                    customClass: 'swal-wide',
+                    showConfirmButton: false,
+                });
+                setTimeout("location.href = 'tareas.php';", 1500);
 
             } else {
                 $('#dangeroj').toggle('toggle');
@@ -1930,24 +1895,24 @@ function confdeleojf(){
     });
 }
 
-function labeespc(ojtpr){
+function labeespc(ojtpr) {
     //alert("eliminar")
     $("#add_ojts1 tr").on('click', function() {
-      var tarea = "";
-      var id_tarprin = "";
-      tarea += $(this).find('td:eq(0)').html(); //Toma el id de la especialidad
-      id_tarprin += $(this).find('td:eq(4)').html(); //Toma el id de la especialidad
-      document.getElementById('tareaelim').innerHTML=tarea;
-      document.getElementById('id_tar').value=id_tarprin;
-      //alert(id_tarprin);
-    }) 
+        var tarea = "";
+        var id_tarprin = "";
+        tarea += $(this).find('td:eq(0)').html(); //Toma el id de la especialidad
+        id_tarprin += $(this).find('td:eq(4)').html(); //Toma el id de la especialidad
+        document.getElementById('tareaelim').innerHTML = tarea;
+        document.getElementById('id_tar').value = id_tarprin;
+        //alert(id_tarprin);
+    })
 }
 
-function confdeltarp(){
-   // alert("entro eliminar")
+function confdeltarp() {
+    // alert("entro eliminar")
     var id_ojt = document.getElementById('id_tar').value;
-   //alert(id_spc);
- //   var datos= 'id_spc=' + id_spc + '&opcion=deleteojt';
+    //alert(id_spc);
+    //   var datos= 'id_spc=' + id_spc + '&opcion=deleteojt';
     $.ajax({
         data: 'id_ojt=' + id_ojt + '&opcion=deletarprin',
         url: '../php/regTarea.php',
@@ -1957,15 +1922,15 @@ function confdeltarp(){
         },
         success: function(response) {
             if (response == 0) {
-              Swal.fire({
-                type: 'success',
-                text: 'SE ELIMINO LA TAREA DE FORMA CORRECTA',
-                showConfirmButton: false,
-                timer: 3200,
-                customClass: 'swal-wide',
-                showConfirmButton: false,
-            });
-            setTimeout("location.href = 'tareas.php';", 1500);
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE ELIMINO LA TAREA DE FORMA CORRECTA',
+                    showConfirmButton: false,
+                    timer: 3200,
+                    customClass: 'swal-wide',
+                    showConfirmButton: false,
+                });
+                setTimeout("location.href = 'tareas.php';", 1500);
 
             } else {
                 $('#dangedetp').toggle('toggle');
@@ -1974,27 +1939,27 @@ function confdeltarp(){
                 }, 2000);
             }
         }
-    }); 
+    });
 }
 
-function destarea(ojtpr){
+function destarea(ojtpr) {
     //alert("entra datos editar")
     $("#add_ojts1 tr").on('click', function() {
-      var destarea = "";
-      var id_tarprin = "";
-      destarea += $(this).find('td:eq(0)').html(); //Toma la descripcion de la tarea
-      id_tarprin += $(this).find('td:eq(4)').html(); //Toma el id de la tarea
-      document.getElementById('ojtarea').value=destarea;
-      document.getElementById('idtarpre').value=id_tarprin;
-     // alert(id_tarprin);
-    }) 
+        var destarea = "";
+        var id_tarprin = "";
+        destarea += $(this).find('td:eq(0)').html(); //Toma la descripcion de la tarea
+        id_tarprin += $(this).find('td:eq(4)').html(); //Toma el id de la tarea
+        document.getElementById('ojtarea').value = destarea;
+        document.getElementById('idtarpre').value = id_tarprin;
+        // alert(id_tarprin);
+    })
 }
 
-function gurdeditp(ojtpr){
+function gurdeditp(ojtpr) {
     //alert("entro guardar actualización")
     var id_ojt = document.getElementById('idtarpre').value;
     var ojt_principal = document.getElementById('ojtarea').value;
-   //alert(ojtpr);
+    //alert(ojtpr);
     $.ajax({
         data: 'id_ojt=' + id_ojt + '&ojt_principal=' + ojt_principal + '&opcion=actarpri',
         url: '../php/regTarea.php',
@@ -2004,15 +1969,15 @@ function gurdeditp(ojtpr){
         },
         success: function(response) {
             if (response == 0) {
-              Swal.fire({
-                type: 'success',
-                text: 'SE ACTUALIZO DE FORMA CORRECTA',
-                showConfirmButton: false,
-                timer: 3200,
-                customClass: 'swal-wide',
-                showConfirmButton: false,
-            });
-            setTimeout("location.href = 'tareas.php';", 1500);
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE ACTUALIZO DE FORMA CORRECTA',
+                    showConfirmButton: false,
+                    timer: 3200,
+                    customClass: 'swal-wide',
+                    showConfirmButton: false,
+                });
+                setTimeout("location.href = 'tareas.php';", 1500);
 
             } else {
                 $('#dangeactp').toggle('toggle');
@@ -2021,7 +1986,6 @@ function gurdeditp(ojtpr){
                 }, 2000);
             }
         }
-    }); 
+    });
 }
-
 </script>
