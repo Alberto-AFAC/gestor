@@ -464,10 +464,12 @@ $(document).ready(function() {
 });
 
 function filubi() {
-    var especialidas = document.getElementById('isSpc').value;
+    var especialidas = document.getElementById('isSpc2').value;
+    //alert(especialidas);
     var ubicacion = document.getElementById('uboj').value;
-    var persona = document.getElementById('idInspct').value;
-    //alert(persona)06042022
+    //alert(ubicacion);
+    var persona = document.getElementById('idInspct1').value;
+    //alert(persona);
     $.ajax({
         url: '../php/ojt_tareas.php',
         type: 'POST'
@@ -481,6 +483,7 @@ function filubi() {
             if (obj.data[H].id_spc == especialidas && obj.data[H].idarea == ubicacion) {
                 var idojt = obj.data[H].id_ojt;
                 n++;
+                
                 datos = obj.data[H].id_ojt + "*" + n;
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
                     subtareas =
@@ -631,7 +634,7 @@ function ageg(dato) {
     id_subojt = a[1];
     id_tarea = a[0];
     //alert(id_tarea);
-    var isSpc = document.getElementById('isSpc').value;
+    var isSpc = document.getElementById('isSpc2').value;
     var idInspct = document.getElementById('idInspct').value;
     var fechaInicio = document.getElementById('fechaInicio').value;
     var fechaTermino = document.getElementById('fechaTermino').value;

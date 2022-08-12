@@ -5,7 +5,7 @@
       $cat = mysqli_query($conexion,$sql);
     ?>
 
-			<select  id="isSpc" class="form-control" class="selectpicker" name="isSpc" type="text" data-live-search="true" style="width: 100%" >
+			<select  id="isSpc2" class="form-control" class="selectpicker" name="isSpc2" type="text" data-live-search="true" style="width: 100%" >
 			<option value="0">SELECIONE ESPECIALIDAD</option> 
 			<?php while($idcat = mysqli_fetch_row($cat)):?>                      
 			<option value="<?php echo $idcat[0]?>"><?php echo $idcat[1].' &#10143; '.$idcat[2]?></option>
@@ -15,11 +15,11 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#isSpc').select2();
+			$('#isSpc2').select2();
 
-			$('#isSpc').change(function(){
+			$('#isSpc2').change(function(){
 				
-				var especialidas=document.getElementById('isSpc').value;
+				var especialidas=document.getElementById('isSpc2').value;
 				var ubic=document.getElementById('uboj').value;
 				var ubicacion=document.getElementById('ubiojt');
 				ubicacion.style.display="";
@@ -54,7 +54,7 @@
                     });
 				    $.ajax({
 					    type:"post",
-					    data:'valor=' + $('#isSpc').val(),
+					    data:'valor=' + $('#isSpc2').val(),
 					    url:'session/',
 					    success:function(r){
 						    $('#tabSpcl').load('select/tablaSpcOJT.php');
