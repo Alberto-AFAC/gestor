@@ -101,7 +101,7 @@ $especialidad = mysqli_query($conexion,$sqlEspecialidad);
 
                         <div class="box">
                             <div class="box-header">
-                                <h3 class="box-title">LISTA DE PROGRMACION DE OJT</h3>
+                                <h3 class="box-title">LISTA DE PROGRAMACION DE OJT</h3>
                                 <div class="pull-right">
 
                                     <div class="btn-group">
