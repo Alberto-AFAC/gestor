@@ -458,8 +458,8 @@ $(document).ready(function() {
     $('#coordinador').select2();
     $('#instructor').select2();
     $('#instojt').select2();
-    $('#idSpecialidad').load('select/buspecialidad.php');
-    $('#tabSpcl').load('select/tablaSpc.php');
+    $('#idSpecialidad').load('select/buspecialidadojt.php');
+    $('#tabSpcl').load('select/tablaSpcOJT.php');
     $('#tablaPro').load('select/tablaProgOJT.php');
 });
 
