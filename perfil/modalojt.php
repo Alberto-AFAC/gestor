@@ -129,6 +129,94 @@
 </div>
 <!--fin modal de instructor y coordinador cursos coordinados y inpartidos -->
 
+<!-- inio modal agrupados por comisión -->
+<div class="modal fade" id='modal-proojtcomi'>
+    <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document" style="width: 70%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h3><label>DETALLE DE LA COMISIÓN</label></h3>
+                </div>
+                <div class="modal-body">
+                    <form id="Dtall" class="form-horizontal" action="" method="POST">
+                        <input type="hidden" id="idcomiregris" name="idcomiregris">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="label2" for="">INSPECTOR:</label>
+                                <input type="" class="form-control disabled inputalta" name="infojnombre1"
+                                    id="infojnombre1" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label class="label2" for="">COMISIÓN:</label>
+                                <input type="" class="form-control disabled inputalta" name="infcomis1"
+                                    id="infcomis1" disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label2" for="">INICIO:</label>
+                                <input type="date" class="form-control disabled inputalta" name="fecinicom1"
+                                    id="fecinicom1" disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label2" for="">FIN:</label>
+                                <input type="" class="form-control disabled inputalta" name="fecfincomi" id="fecfincomi"
+                                    disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="label2" for="">COORDINADOR:</label>
+                                <input type="" class="form-control disabled inputalta" name="coordojtcomi"
+                                    id="coordojtcomi" disabled="">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2" for="">INSTRUCTOR:</label>
+                                <input type="" class="form-control disabled inputalta" name="instrojtcomi"
+                                    id="instrojtcomi" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="label2" for="">ESPECIALIDAD:</label>
+                                <!-- <input class="form-control disabled inputalta" name="infespeojt" id="infespeojt" disabled=""> -->
+                                <select id="infespeojt5" name="infespeojt5" class="form-control"
+                                    placeholder="Seleccione..." disabled="">
+                                    <option value="0">Seleccione...</option>
+                                    <?php while($data = mysqli_fetch_row($especialidad2)):?>
+                                    <option value="<?php echo $data[0]?>">
+                                        <?php echo $data[1]?> -
+                                        <?php echo $data[2]?></option>
+                                    <?php endwhile; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label class="label2" for="">TIPO:</label>
+                                <input type="" class="form-control disabled inputalta" name="inftipojt1" id="inftipojt1"
+                                    disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label2" for="">LUGAR:</label>
+                                <input type="" class="form-control disabled inputalta" name="influgarojt1"
+                                    id="influgarojt1" disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label2" for="">SEDE:</label>
+                                <input type="" class="form-control disabled inputalta" name="infsedeoj1t" id="infsedeoj1t"
+                                    disabled="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- fin modal agrupados por comisión -->
 <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A OJT-->
 <form id="enviarOjt" action="" method="POST">
     <div class="modal fade" id='notificarConv' tabindex="-1" role="dialog" aria-labelledby="notificarConv"
@@ -462,9 +550,9 @@
                                     onclick="">ACTUALIZAR</a>
                             </div>
                             <div style="float:right;" class="col-sm-2">
-                                <a id="descargapdfI" name="descargapdfI"
-                                    style="display:none;" onclick="nivel1()" title="Descargar el PDF" type="button"
-                                    class="btn btn-block btn-primary">Imprimir PDF</a>
+                                <a id="descargapdfI" name="descargapdfI" style="display:none;" onclick="nivel1()"
+                                    title="Descargar el PDF" type="button" class="btn btn-block btn-primary">Imprimir
+                                    PDF</a>
                             </div>
                         </div>
                     </div>
@@ -671,7 +759,7 @@
 
                                     </tbody>
                                 </table>
-                                
+
                                 <div name="resultadonII" id="resultadonII" class="form-group" style="display:none;">
                                     <div class="col-sm-6">
                                         <label>RESUlTADOS DE LA EVALUACIÓN:</label>
@@ -700,9 +788,9 @@
                                             onclick="nivel1()" title="Descargar el PDF" type="button"
                                             class="btn btn-block btn-primary">Imprimir PDF</a> -->
 
-                                            <a id="descargapdfII" name="descargapdfII"
-                                    style="display:none;" onclick="nivel2()" title="Descargar el PDF" type="button"
-                                    class="btn btn-block btn-primary">Imprimir PDF</a>
+                                        <a id="descargapdfII" name="descargapdfII" style="display:none;"
+                                            onclick="nivel2()" title="Descargar el PDF" type="button"
+                                            class="btn btn-block btn-primary">Imprimir PDF</a>
                                     </div>
                                 </div>
                             </div>
@@ -930,7 +1018,7 @@
                                         <a id="evalucIII" name="evalucIII" type="button" onclick="evalnivelIII()"
                                             title="Agregar Evaluación" class="btn btn-block btn-primary"
                                             onclick="">EVALUAR</a>
-                                            <a id="atuevalIII" name="atuevalIII" type="button" onclick="udateevalIII()"
+                                        <a id="atuevalIII" name="atuevalIII" type="button" onclick="udateevalIII()"
                                             title="Agregar Evaluación" style="display:none;"
                                             class="btn btn-block btn-primary" onclick="">ACTUALIZAR</a>
                                     </div>
@@ -940,9 +1028,9 @@
                                             name="descargapdfIII" style="display:none;"
                                             class="btn btn-block btn-primary">Imprimir PDF</a> -->
 
-                                            <a id="descargapdfIII" name="descargapdfIII"
-                                    style="display:none;" onclick="nivel3()" title="Descargar el PDF" type="button"
-                                    class="btn btn-block btn-primary">Imprimir PDF</a>
+                                        <a id="descargapdfIII" name="descargapdfIII" style="display:none;"
+                                            onclick="nivel3()" title="Descargar el PDF" type="button"
+                                            class="btn btn-block btn-primary">Imprimir PDF</a>
                                     </div>
                                 </div>
                             </div>

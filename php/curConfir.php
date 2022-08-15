@@ -2,11 +2,11 @@
 	include("../conexion/conexion.php");
 	session_start();
 	
-	$query = "
-		SELECT * FROM cursos 
-		INNER JOIN listacursos ON idmstr = gstIdlsc 
-		INNER JOIN personal ON gstIdper = idinsp 
-		ORDER BY id_curso DESC ";
+	//$query = "SELECT * FROM cursos INNER JOIN listacursos ON idmstr = gstIdlsc INNER JOIN personal ON gstIdper = idinsp ORDER BY id_curso DESC ";
+	$query="SELECT *,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inico,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as fin FROM cursos 
+	INNER JOIN listacursos ON idmstr = gstIdlsc 
+	INNER JOIN personal ON gstIdper = idinsp 
+	ORDER BY id_curso DESC ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

@@ -288,7 +288,8 @@ function infor(perona){
                 obj.data[U].gstNombr  + '*' +
                 obj.data[U].gstApell;    
                 var d = datos.split("*");   
-                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);                
+                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);   
+                $("#nominsp1").html('INSPECTOR / ' + d[0] + ' ' +d[1]);             
             }
         }
     });
@@ -316,7 +317,8 @@ function openOJT(perona) {
                 obj.data[U].gstNombr  + '*' +
                 obj.data[U].gstApell;    
                 var d = datos.split("*");   
-                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);                
+                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);
+                $("#nominsp1").html('INSPECTOR / ' + d[0] + ' ' +d[1]);                
             }
         }
     });

@@ -3,8 +3,9 @@
     header('Content-Type: application/json');
 	    session_start();
     $id = $_GET["id"];
+	$comision = $_GET["comi"];
 
-	$query = "SELECT * FROM prog_ojt  WHERE estado = 0 and id_pers=$id ORDER BY id_proojt ASC";
+	$query = "SELECT * FROM prog_ojt  WHERE estado = 0 and id_pers=$id and comision='$comision' ORDER BY id_proojt ASC";
 	$resultado = mysqli_query($conexion, $query);
     $item = 0;
 
