@@ -85,7 +85,7 @@ $proc = 'EN PROCESO';
 
 }else{
 
-if ($f3>$f2 && $data["proceso"] == "PENDIENTE" && $codigo!="FO194" && $codigo!="FO278" && $codigo!="FO195" && $codigo!="FO283" && $codigo!="FO310" && $codigo!="FO314" && $codigo!="FO315" && $codigo!="FO316" && $codigo!="FO319" && $codigo!="FO320" && $codigo!="FO321" && $codigo!="FO322" && $codigo!="FO327" && $codigo!="FO328" && $codigo!="FO335" && $codigo!="FO341" && $codigo!="FO339" && $codigo!="FO337") {
+if ($f3>$f2 && $data["proceso"] == "PENDIENTE" && $codigo!="FO194" && $codigo!="FO278" && $codigo!="FO195" && $codigo!="FO283" && $codigo!="FO310" && $codigo!="FO314" && $codigo!="FO315" && $codigo!="FO316" && $codigo!="FO319" && $codigo!="FO320" && $codigo!="FO321" && $codigo!="FO322" && $codigo!="FO327" && $codigo!="FO328" && $codigo!="FO335" && $codigo!="FO341" && $codigo!="FO339" && $codigo!="FO337" && $codigo!="FO330" && $codigo!="FO331" ) {
 	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>PROGRAMACIÓN VENCIDA</span>";
 	$proc = 'VENCIDO';
 }
