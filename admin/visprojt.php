@@ -16,7 +16,9 @@
             </form>
             <div class="tab-content">
                 <h4><label id="nominsp" name="nominsp" for="" style="color:#0B007A"></label></h4>
-                <h3><p id="namecomis" name="namecomis" for="" style="color:#A2A2A2;"></p></h3>
+                <h3>
+                    <p id="namecomis" name="namecomis" for="" style="color:#A2A2A2;"></p>
+                </h3>
                 <div class="active tab-pane" id="activity">
                     <!-- Post -->
                     <div class="post">
@@ -96,5 +98,6 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
