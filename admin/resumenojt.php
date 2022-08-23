@@ -304,6 +304,7 @@ $cat = mysqli_query($conexion,$sql);
 
 
 <?php include('../perfil/ojtreaction.php');?>
+<?php include('../perfil/ojtreport.php');?>
 
 <!-- /.tab-pane -->
 </div>

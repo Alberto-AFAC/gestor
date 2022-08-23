@@ -76,6 +76,46 @@ function evaojt(ideval) {
     });
     //LLENADO DE TABLA DE INSTRUCTOR Y COORDINADOR
 }
+//reporte de cumplimiento
+function cumplimientoojt(ideval) {
+    alert("entra");
+    $.ajax({
+        url: '../php/conproojt.php',
+        type: 'POST'
+    }).done(function(respuesta) {
+        obj = JSON.parse(respuesta);
+        var res = obj.data;
+        var a = 0;
+        for (A = 0; A < res.length; A++) {
+            if (obj.data[A].id_proojt == ideval) {
+                //alert(ideval);
+                datos =
+                    obj.data[A].gstCatgr + '*' +
+                    obj.data[A].comision + '*' +
+                    obj.data[A].ojt_principal + '*' +
+                    obj.data[A].feini_comision + '*' +
+                    obj.data[A].lugar + '*' +
+                    obj.data[A].id_proojt + '*' +
+                    obj.data[A].ojt_subtarea;
+                var d = datos.split("*");
+                $("#modal-genreportOJT #especOJTgen").val(d[0]);
+                $("#modal-genreportOJT #comisionOJTgen").val(d[1]);
+                $("#modal-genreportOJT #tareprinOJTgen").val(d[2]);
+                $("#modal-genreportOJT #fecOJTgen").val(d[3]);
+                $("#modal-genreportOJT #lugOJTgen").val(d[4]);
+                $("#modal-genreportOJT #idregevalOJT").val(d[5]);
+                $("#modal-genreportOJT #subtareOJtgen").val(d[6]);
+
+                // html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
+
+
+                //html += '</table>';
+                //$("#id_instructOJ").html(html);
+            }
+        }
+    });
+    //LLENADO DE TABLA DE INSTRUCTOR Y COORDINADOR
+}
 
 //TODO EVALUACIÓN OJT 
 function evaluarOJT1(idojt) {

@@ -253,7 +253,7 @@ WHERE id_pers =$datos[0] AND prog_ojt.estatus = 'FINALIZADO' AND prog_ojt.confir
                 if($res = mysqli_fetch_array($resul)){
                     $detalles = $detalles="<center><b style='color:silver;' title='Dar clic para descargar' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
                 }else{
-                    $detalles="<a type='button' onclick='evaojt($id_proojt)' style='background-color:' title='Evaluación de OJT' data-toggle='modal' data-target='#modal-evaluOJT'  class='btn btn-primary'>EVALUAR</a>";
+                    $detalles="<a type='button' onclick='evaojt($id_proojt)' style='background-color:' title='Evaluación de OJT' data-toggle='modal' data-target='#modal-evaluOJT'  class='btn btn-primary'>EVALUAR</a> <a type='button' onclick='cumplimientoojt($id_proojt)' style='background-color:' title='Genera tu reporte de Cumplimiento OJT' data-toggle='modal' data-target='#modal-genreportOJT' class='btn btn-primary'>GENERA REPORTE</a> ";
                 }
             if($data['evalu_ojt']=='0'){
                 $valor="<span  onclick='inforenojt($id_proojt)'  style='background-color:green; font-size: 13px; cursor:pointer;' data-toggle='modal' data-target='#modal-detalleojt' class='badge' title='Ver detalles del entrenamiento OJT'>FINALIZADO</span> <span title='Pendiente por confirmar' style='background-color: grey; font-size: 13px;' class='badge'>EVALUACIÓN PENDIENTE</span>"; //23112021
