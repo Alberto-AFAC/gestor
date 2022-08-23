@@ -469,7 +469,7 @@ function filubi() {
     var ubicacion = document.getElementById('uboj').value;
     //alert(ubicacion);
     var persona = document.getElementById('idInspct1').value;
-    //alert(persona);
+    //alert("filubi");
     $.ajax({
         url: '../php/ojt_tareas.php',
         type: 'POST'

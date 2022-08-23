@@ -606,6 +606,9 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                         <h4 class="modal-title" id="myModalLabel">SUB TAREAS</h4>
                     </div>
                     <div class="modal-body">
+                    <div>
+                    <a href="#" title="Agregar Subtarea" onclick="addsuptareapri()" type="button" class="btn btn-primary" data-toggle="modal" data-target=""> <i class="fa fa-plus"></i> AGREGAR SUBTAREA</a>
+                    </div>
 
                         <div class='modal-body'>
                             <div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU
@@ -1562,7 +1565,7 @@ function todasT(t) {
 
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
                     html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal +
-                        '</td><td>' + obj.data[H].idarea + '</td><td>' + obj.data[H].ojt +
+                        '</td><td>' + obj.data[H].idarea + '</td><td>' + obj.data[H].ojt + ' ' +'<a href="#" title="Agregar Subtarea" onclick="addsuptareapri()" type="button" class="asiste btn btn-default" data-toggle="modal" data-target=""><i class="fa fa-plus text-success"></i></a>' +
                         '</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>' +
                         '</td><td style="display:none">' + obj.data[H].id_ojt; + '</td></tr>'
 
