@@ -78,7 +78,7 @@ function evaojt(ideval) {
 }
 //reporte de cumplimiento
 function cumplimientoojt(ideval) {
-    alert("entra");
+    //alert("entra");
     $.ajax({
         url: '../php/conproojt.php',
         type: 'POST'

@@ -21,6 +21,9 @@
                             CONTINUA HACIA LA CAPACITACIÓN.</label1>
                     </b>
                     <br>
+                    <div align="center">
+                        <img src="../dist/img/CIAACandAFAC.jpg" alt="">
+                    </div>
                     <section class="content">
                         <!----------INICIO-------->
                         <div class="row">

@@ -14,6 +14,10 @@
                     <h4>
                         PROGRAMA DE ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)
                     </h4>
+                    <br>
+                    <div align="center">
+                        <img src="../dist/img/CIAACandAFAC.jpg" alt="">
+                    </div>
                     <b>
                         <label1 style="font-size: 14px"></label1>
                     </b>
@@ -109,14 +113,14 @@
                                             <div class="box-body">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg1" value="SI" id="ro5">
-                                                        <label for="ro5">SI</label>
+                                                        <input type="radio" name="pregen1" value="SI" id="gensi1">
+                                                        <label for="gensi1">SI</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg1" value="NO" id="ro4">
-                                                        <label for="ro4">NO</label>
+                                                        <input type="radio" name="pregen1" value="NO" id="geno1">
+                                                        <label for="geno1">NO</label>
                                                     </div>
 
                                                 </div>
@@ -139,14 +143,14 @@
                                             <div class="box-body">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg2" value="SI" id="ro6">
-                                                        <label for="ro6">SI</label>
+                                                        <input type="radio" name="pregen2" value="SI" id="gensi2">
+                                                        <label for="gensi2">SI</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg2" value="NO" id="ro7">
-                                                        <label for="ro7">NO</label>
+                                                        <input type="radio" name="pregen2" value="NO" id="geno2">
+                                                        <label for="geno2">NO</label>
                                                     </div>
                                                 </div>  
                                         </form>
@@ -168,15 +172,15 @@
                                             <div class="box-body">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg3" value="SI" id="ro12">
-                                                        <label for="ro12">SI</label>
+                                                        <input type="radio" name="pregen3" value="SI" id="gensi3">
+                                                        <label for="gensi3">SI</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg3" value="NO"
-                                                            id="ro13">
-                                                        <label for="ro13">NO</label>
+                                                        <input type="radio" name="pregen3" value="NO"
+                                                            id="geno3">
+                                                        <label for="geno3">NO</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -199,15 +203,15 @@
                                             <div class="box-body">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg4" value="SI" id="ro18">
-                                                        <label for="ro18">SI</label>
+                                                        <input type="radio" name="pregen4" value="SI" id="gensi4">
+                                                        <label for="gensi4">SI</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg4" value="NO"
-                                                            id="ro19">
-                                                        <label for="ro19">NO</label>
+                                                        <input type="radio" name="pregen4" value="NO"
+                                                            id="geno4">
+                                                        <label for="geno4">NO</label>
                                                     </div>
 
                                                 </div>
@@ -229,15 +233,15 @@
                                             <div class="box-body">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg5" value="SI" id="ro24">
-                                                        <label for="ro24">SI</label>
+                                                        <input type="radio" name="pregen5" value="SI" id="gensi5">
+                                                        <label for="gensi5">SI</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg5" value="NO"
-                                                            id="ro25">
-                                                        <label for="ro25">NO</label>
+                                                        <input type="radio" name="pregen5" value="NO"
+                                                            id="geno5">
+                                                        <label for="geno5">NO</label>
                                                     </div>
 
                                                 </div>
@@ -261,15 +265,15 @@
                                             <div class="box-body">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg6" value="SI" id="ro30">
-                                                        <label for="ro30">SI</label>
+                                                        <input type="radio" name="pregen6" value="SI" id="gensi6">
+                                                        <label for="gensi6">SI</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg6" value="NO"
-                                                            id="ro31">
-                                                        <label for="ro31">NO</label>
+                                                        <input type="radio" name="pregen6" value="NO"
+                                                            id="geno6">
+                                                        <label for="geno6">NO</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -292,15 +296,15 @@
                                             <div class="box-body">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg7" value="SI" id="ro36">
-                                                        <label for="ro36">SI</label>
+                                                        <input type="radio" name="pregen7" value="SI" id="gensi7">
+                                                        <label for="gensi7">SI</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg7" value="NO"
-                                                            id="ro37">
-                                                        <label for="ro37">NO</label>
+                                                        <input type="radio" name="pregen7" value="NO"
+                                                            id="geno7">
+                                                        <label for="geno7">NO</label>
                                                     </div>
 
                                                 </div>
