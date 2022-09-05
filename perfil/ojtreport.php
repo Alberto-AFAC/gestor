@@ -29,7 +29,8 @@
                                 <div class="nav-tabs-custom">
                                     <div class="box-header with-border">
                                         <form action="" class="formulario1">
-                                            <input type="hidden" name="idregevalOJT" id="idregevalOJT">
+                                        <input type="hidden" name="idregevalOJT2" id="idregevalOJT2">
+                                            <!-- <input type="" name="idregevalOJT" id="idregevalOJT"> -->
 
                                             <div class="radio">
                                                 <div class="form-group ">
@@ -537,6 +538,9 @@
                         if (rad.checked) {
                             lab1.style.display = '';
                         }
+
+
+                        
                         </script>
                     </form>
                 </div>

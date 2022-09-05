@@ -81,7 +81,7 @@ include('header.php');
 
             <section class="content" id="detalles" style="display: none;">
                 <div class="row">
-                    <?php include('valores.php'); ?>
+                    <?php include('valores2.php'); ?>
                     <!-- /.col -->
                 </div>
 
@@ -597,10 +597,12 @@ $resultado = mysqli_query($conexion, $query);
 
 if($data['estado'] == 0){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNombr']?>",
         "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>",
-        <?php if($data['gstCargo']=='NUEVO INGRESO'){?> "<a class='label label-warning' style='font-weight: bold; height: 50px; font-size: 13px;'> POR ASIGNAR</a>"
+        <?php 
+        if($data['gstCargo']=='NUEVO INGRESO'){?> 
+        "<a class='label label-warning' style='font-weight: bold; height: 50px; font-size: 13px;'> POR ASIGNAR</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"
         <?php }else{?>
         //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-        "<a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a>"
+        "<a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"
 
         <?php } ?>
 
@@ -643,7 +645,7 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
             title: "PERSONAL"
         },
         {
-            title: "ESTATUS"
+            title: "ACCIONES"
         }
     ],
 });

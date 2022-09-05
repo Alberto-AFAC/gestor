@@ -103,7 +103,7 @@ function cumplimientoojt(ideval) {
                 $("#modal-genreportOJT #tareprinOJTgen").val(d[2]);
                 $("#modal-genreportOJT #fecOJTgen").val(d[3]);
                 $("#modal-genreportOJT #lugOJTgen").val(d[4]);
-                $("#modal-genreportOJT #idregevalOJT").val(d[5]);
+                $("#modal-genreportOJT #idregevalOJT2").val(d[5]);
                 $("#modal-genreportOJT #subtareOJtgen").val(d[6]);
 
                 // html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
@@ -311,6 +311,75 @@ function justificacionojt() {
         $("#obserojt").show();
         $("#archivoojt").hide();
     }
+
+}
+
+//TODO GENERAR REPORTE OJT PERFIL INSPECTOR
+function generareport() {
+    var idojt = document.getElementById('idregevalOJT2').value; //ID OJT PROGRAMADO
+    //alert(idojt);
+    var preg1 = $('input[name=pregen1]:checked').val(); //  -
+    var preg2 = $('input[name=pregen2]:checked').val(); //    -
+    var preg3 = $('input[name=pregen3]:checked').val(); //      -
+    var preg4 = $('input[name=pregen4]:checked').val(); //        -
+    var preg5 = $('input[name=pregen5]:checked').val(); //          -
+    var preg6 = $('input[name=pregen6]:checked').val(); //            -
+    var preg7 = $('input[name=pregen7]:checked').val(); // ------------- PREGUNTAS RADIO
+
+    var obser = document.getElementById('preg17').value; //PREGUNTA ABIERTA 
+
+    datos = 'idojt=' + idojt + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&obser=' + obser + '&opcion=addreporojt';
+    alert(datos);
+    if (idojt == '' || !document.querySelector('input[name=pregen1]:checked') || !document.querySelector('input[name=pregen2]:checked') || !document.querySelector('input[name=pregen3]:checked') || !document.querySelector('input[name=pregen4]:checked') || !document.querySelector('input[name=pregen5]:checked') || !document.querySelector('input[name=pregen6]:checked') || !document.querySelector('input[name=pregen7]:checked') || obser == '') {
+
+        if (!document.querySelector('input[name=pregen1]:checked')) { $('#span1').show('toggle'); } else { $('#span1').hide('toggle'); }
+        if (!document.querySelector('input[name=pregen2]:checked')) { $('#span2').show('toggle'); } else { $('#span2').hide('toggle'); }
+        if (!document.querySelector('input[name=pregen3]:checked')) { $('#span3').show('toggle'); } else { $('#span3').hide('toggle'); }
+        if (!document.querySelector('input[name=pregen4]:checked')) { $('#span4').show('toggle'); } else { $('#span4').hide('toggle'); }
+        if (!document.querySelector('input[name=pregen5]:checked')) { $('#span5').show('toggle'); } else { $('#span5').hide('toggle'); }
+        if (!document.querySelector('input[name=pregen6]:checked')) { $('#span6').show('toggle'); } else { $('#span6').hide('toggle'); }
+        if (!document.querySelector('input[name=pregen7]:checked')) { $('#span7').show('toggle'); } else { $('#span7').hide('toggle'); }
+        if (datos == '') { $('#span13').show('toggle'); } else { $('#span15').hide('toggle'); }
+        $('#pregunta').toggle('toggle');
+        setTimeout(function() { $('#pregunta').toggle('toggle'); }, 2000);
+    } else {
+
+        $.ajax({
+            url: '../php/insertOJT.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                alert(respuesta);
+                Swal.fire({
+                    type: 'success',
+                    text: 'SE RENERO CON EXITO EL REPORTE OJT',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 3000
+                });
+                setTimeout("location.href = 'ojtprogramados';", 3000);
+
+            } else if (respuesta == 2) {
+                $('#aviso').toggle('toggle');
+                setTimeout(function() {
+                    $('#aviso').toggle('toggle');
+                }, 2000);
+                alert("error");
+                alert(respuesta);
+            } else {
+
+                $('#peligro').toggle('toggle');
+                setTimeout(function() {
+                    $('#peligro').toggle('toggle');
+                }, 2000);
+                alert("error");
+            }
+        });
+    }
+
+
 
 }
 
