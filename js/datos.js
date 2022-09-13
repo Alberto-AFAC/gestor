@@ -1606,15 +1606,15 @@ function adjuactual() {
 //ADJUNTAR OJT Y BITACORA
 
 function adjunojt(v) {
-
+    //alert(v);
     $("#ojtbit").html(v);
     $("#modal-doc #ojtdocadjunto").val(v);
 }
 
 function adjuntarOjt() {
-
+    //alert("datos");
     ojtIdper = document.getElementById('ojtIdper').value;
-
+    //alert(ojtIdper);
     var paqueteDeDatos = new FormData();
     paqueteDeDatos.append('OjtAgra', $('#OjtAgra')[0].files[0]);
     paqueteDeDatos.append('ojtIdper', $('#ojtIdper').prop('value'));
@@ -2840,7 +2840,8 @@ function consultardocIns(gstIdper) {
                 document.getElementById('ojt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('ojt-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('ojt-fec').innerHTML = obj.data[D].fecactual;
-                $("#oclOJT").hide();
+                //05092022
+                // $("#oclOJT").hide();
 
 
             }
@@ -2875,7 +2876,8 @@ function consultardocIns(gstIdper) {
                 document.getElementById('btcr').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('btcr-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('btcr-fec').innerHTML = obj.data[D].fecactual;
-                $("#oclBTC").hide();
+                //05092022
+                //$("#oclBTC").hide();
             }
 
         }

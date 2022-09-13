@@ -1803,7 +1803,7 @@ $(function() {
 
 
 function adjuntarOjt() {
-
+    //alert("entrolisctcurso");
     ojtIdper = document.getElementById('ojtIdper').value;
 
     var paqueteDeDatos = new FormData();

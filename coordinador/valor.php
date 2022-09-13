@@ -347,7 +347,7 @@ $psto = mysqli_query($conexion,$sql);
                 <div class="post">
                     <form id="Dtall" class="form-horizontal" action="" method="POST">
                         <input type="hidden" name="gstIdper" id="gstIdper">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <div class="col-sm-4">
                                 <label>NOMBRE(S)</label>
                                 <input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
@@ -426,11 +426,7 @@ $psto = mysqli_query($conexion,$sql);
                                 <label>VISA VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstVignt" name="gstVignt">
                             </div>
-                            <!--                             <div class="col-sm-4">
-                                <label>NÚMERO DE CARTILLA</label>
-                                <input type="text" disabled="" style="text-transform:uppercase" class="form-control"
-                                    id="gstNucrt" name="gstNucrt">
-                            </div> -->
+
                         </div>
 
                         <div class="form-group">
@@ -479,7 +475,7 @@ $psto = mysqli_query($conexion,$sql);
                                 <input type="text" disabled="" style="text-transform:uppercase" class="form-control"
                                     id="gstStado" name="gstStado">
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <div class="col-sm-4">
