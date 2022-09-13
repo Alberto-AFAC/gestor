@@ -610,8 +610,6 @@ function actContr() {
         data: dato
     }).done(function(respuesta) {
 
-        alert(respuesta);
-
         if (respuesta == 7) {
             $('#echo').toggle('toggle');
             setTimeout(function() {
