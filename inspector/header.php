@@ -50,7 +50,7 @@
                 </a>
             </li>
             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
-            <li>
+            <!-- <li>
                 <a href='e-learnning'>
                     <i class='fa fa-internet-explorer'></i> <span>E-learnning</span>
                     <span class='pull-right-container'>
@@ -58,7 +58,7 @@
                         <small class='label pull-right bg-blue'></small>
                     </span>
                 </a>
-            </li>
+            </li> -->
             <?php }?>
 
             <?php 
