@@ -316,6 +316,20 @@
                                 </td>
                             </tr>
                         </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>FOLIO</th>
+                                <th>GRUPO</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="gstfolio"></div>
+                                </td>
+                                <td>
+                                    <div id="fcurgrupo"></div>
+                                </td>
+                            </tr>
+                        </table>
 
                         <table class="table table-bordered">
                             <tr>
@@ -390,14 +404,26 @@
                             </th>
 
                         </table>
-
-
+                        <div>
+                            <label style="font-size:16px;" for="" id="coordininf" name="coordininf"></label>
+                        </div>
+                        <br>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;" for="" id="" name="">INSTRUCTOR(S):</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;color:#888787" for="" id="diapr" name="diapr">DIAS PROGRAMADOS PARA CURSO:</label>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <div id="instruc"></div>
 
                             </div>
+                            <div class="col-sm-6">
+                                <div id="habilDias3"></div>
+                            </div>
                         </div>
+
 
                         <div class="form-group"><br>
                             <div class="col-sm-offset-0 col-sm-5">
@@ -786,7 +812,7 @@
     </div>
 </div>
 
-<!-----MODAL DE DETALLES------------------------------------>
+<!-----MODAL DE DETALLES------------------------------28092022------>
 <div class="modal fade" id='modal-detalle'>
     <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -856,6 +882,30 @@
                                 </td>
                             </tr>
                         </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>FOLIO</th>
+                                <th>GRUPO</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="gstfolio1"></div>
+                                </td>
+                                <td>
+                                    <div id="fcurgrupo1"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <label style="font-size:16px;" for="" id="coordininf1" name="coordininf1"></label>
+                        </div>
+                        <br>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;" for="" id="" name="">INSTRUCTOR(S):</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;color:#888787" for="" id="diapr" name="diapr">DIAS PROGRAMADOS PARA CURSO:</label>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <div id="instruc1"></div>
@@ -877,6 +927,9 @@
                                     lab1.style.display = '';
                                 }
                                 </script>
+                            </div>
+                            <div class="col-sm-6">
+                                <div id="habilDias2"></div>
                             </div>
                         </div>
                     </form>

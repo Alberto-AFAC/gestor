@@ -646,6 +646,7 @@ function insersubt2() {
             url: "../php/insertOJT.php",
             data: datos
         }).done(function(respuesta) {
+            alert(respuesta);
             if (respuesta == 0) {
                 Swal.fire({
                     type: 'success',
@@ -664,7 +665,7 @@ function insersubt2() {
                     showConfirmButton: false,
                 });
             } else {
-                alert("error");
+                //alert("error");
                 Swal.fire({
                     type: 'info',
                     text: 'YA SE ENCUENTRA PROGRAMADA ALGUNA SUBTAREA SI PERCISTE CONTACTAR A SOPORTE TECNICO',

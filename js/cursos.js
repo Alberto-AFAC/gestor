@@ -100,33 +100,33 @@ function declina() {
 //document.getElementById("fecha").innerHTML = ""+'<b>CURSOS AÑO '+fecha_actual+'</b>';
 
 function confirmar(idcurso) {
-
+    //alert(idcurso);
     $.ajax({
         url: '../php/curConfir.php',
-        type: 'POST'
+        type: 'GET',
+        data: 'idcurso=' + idcurso
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-
         for (i = 0; i < res.length; i++) {
-
             if (obj.data[i].id_curso == idcurso) {
-
-
                 lista = obj.data[i].codigo;
                 $("#id_curso").val(idcurso);
                 $("#idinsp").val(obj.data[i].idinsp);
                 $("#gstTitlo").html(obj.data[i].gstTitlo);
                 $("#gstTipo").html(obj.data[i].gstTipo);
+                $("#gstfolio").html(obj.data[i].codigo); // folio
+                $("#fcurgrupo").html(obj.data[i].grupo); // Grupo
+                $("#coordininf").html('COORDINADOR: ' + obj.data[i].coordname + ' ' + obj.data[i].coordlastname);
 
                 var fechai = new Date(obj.data[i].fcurso);
                 var fcurso = fechai.getDate() + '-' + (fechai.getMonth() + 1) + '-' + fechai.getFullYear();
 
                 var fechac = new Date(obj.data[i].fechaf);
                 var fechaf = fechac.getDate() + '-' + (fechac.getMonth() + 1) + '-' + fechac.getFullYear();
-                $("#fcurso").html(inicio);
+                $("#fcurso").html(obj.data[i].inico);
                 $("#hcurso").html(obj.data[i].hcurso);
-                $("#fechaf").html(fechaf);
+                $("#fechaf").html(obj.data[i].fin);
                 $("#sede").html(obj.data[i].sede);
 
                 $("#modalidad").html(obj.data[i].modalidad);
@@ -142,6 +142,14 @@ function confirmar(idcurso) {
                     $("#link").html(obj.data[i].link);
                     $("#contracur").html(obj.data[i].contracur);
                     $("#classroom").html(obj.data[i].classroom);
+
+                    $("#ocul1").show();
+                    $("#ocul2").show();
+                    $("#ocul3").show();
+
+                    $("#link").show();
+                    $("#contracur").show();
+                    $("#classroom").show();
                 }
                 $("#nombredeclin").html(obj.data[i].gstTitlo);
                 $("#motivod").html('MOTIVO:' + obj.data[i].confirmar);
@@ -150,36 +158,133 @@ function confirmar(idcurso) {
                 } else {
                     $("#arcpdf").html("<a class='btn btn-block btn-social btn-linkedin' href='" + obj.data[i].justifi + "' style='text-align: center;' target='_blanck'> <i class='fa fa-file-pdf-o'></i> VISUALIZAR EL PDF ADJUNTO</a>");
                 }
+
+                //----------------------TABLA DE INSTRUCTORES Y COORDINADORES 28092022
+                let folio = obj.data[i].codigo;
+                //alert(folio);
+                $.ajax({
+                    url: '../php/coninstcurs.php',
+                    type: 'GET',
+                    data: 'folio=' + folio
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    let res = obj.data;
+                    let x = 0;
+                    html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>NOMBRE</th>';
+                    for (U = 0; U < res.length; U++) {
+                        // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
+                        x++;
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[U].gstNombr + ' ' + obj.data[U].gstApell + "</td></tr>";
+                    }
+                    html += '</table>';
+                    $("#instruc").html(html);
+                });
+                //------------DIAS DEL CURSO
+                let finicial = obj.data[i].fcurso; //fecha inicial
+                let codigo = obj.data[i].codigo; //codigo
+                let ffinal = obj.data[i].fechaf;
+                let hora_ini = obj.data[i].hcurso;
+                let diai = finicial.substring(8, 10);
+                let diaf = ffinal.substring(8, 10);
+                let inici = finicial.substring(5, 7);
+                let finan = ffinal.substring(5, 7);
+                let inicio = inici * 1;
+                let final = finan * 1;
+                let anioi = finicial.substring(0, 4);
+                let aniof = ffinal.substring(0, 4);
+                datos = 'finicial=' + finicial + '&ffinal=' + ffinal + '&codigo=' + codigo;
+                //alert(datos);
+                $.ajax({
+                    url: '../php/mosDias.php',
+                    type: 'POST',
+                    data: datos
+                }).done(function(resp) {
+
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    $("#hora_fin").val(obj.data[0].horaf);
+                    meses = ['0', 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
+                        'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'
+                    ];
+
+                    //document.getElementById("ftitulo").innerHTML = "" + 'DÍAS HÁBILES: ' + diai + '/' + meses[inicio] + '/' + anioi + ' AL ' + diaf + '/' + meses[final] + '/' + aniof;
+                    var x = 0;
+                    var v = 1;
+
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12">';
+                    //CONTEO DEL MES, INICIO A FIN 
+                    for (m = inicio; m <= final; m++) {
+                        x++;
+                        html += '<table disabled class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><td colspan="7" style="text-align:center;"><b>' + meses[m] + '</b></td></tr><tr><th><i></i>L</th><th><i></i>M</th><th><i></i>M</th><th><i></i>J</th><th><i></i>V</th><th><i></i>S</th><th><i></i>D</th></tr></thead><tbody>';
+                        for (i = 0; i < res.length; i++) {
+                            if (obj.data[i].habil == 'SI') {
+                                //diasp = "<input disabled type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' checked='checked'/>";
+                                diasp = "<p class='flex items-center -mx-2 text-gray-700 dark:text-gray-200'><svg xmlns='http://www.w3.org/2000/svg' width='20px' style='color:blue' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path></svg></p>";
+                                // html= "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal'/>"
+                            } else {
+                                diasp = "<p style='display:none' class='flex items-center -mx-2 text-gray-700 dark:text-gray-200'></p>";
+                            }
+                            if (obj.data[i].mes == m) {
+                                if (obj.data[i].dias == 'Lunes' && obj.data[i].inc == 1) {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Lunes') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Martes' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Martes') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Miércoles' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Miércoles') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Jueves' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Jueves') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Viernes' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Viernes') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Sábado' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Sábado') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Domingo' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td><tr>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Domingo') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td><tr>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                            }
+                        }
+                        html += '</tbody></table>';
+                    }
+                    html += '</div></div></div>';
+                    $("#habilDias3").html(html);
+                })
             }
         }
-
-
-        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>NOMBRE</th><th>CARGO</th>';
-        x = 0;
-        for (i = 0; i < res.length; i++) {
-
-
-            // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
-            if (obj.data[i].puesto == 'INSTCOOR' && obj.data[i].codigo == lista) {
-                x++;
-                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + 'INSTRUCTOR/COORDINADOR' + "</td></tr>";
-            } else if (obj.data[i].puesto == 'COORDINADOR' && obj.data[i].codigo == lista) {
-                x++;
-                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].puesto + "</td></tr>";
-            } else if (obj.data[i].puesto == 'INSTRUCTOR' && obj.data[i].codigo == lista) {
-                x++;
-                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].puesto + "</td></tr>";
-            }
-
-
-
-
-        }
-        html += '</table>';
-        $("#instruc").html(html);
 
     })
-
 }
 
 $(document).ready(function() {
@@ -205,21 +310,21 @@ $(document).ready(function() {
 function confirmar1(idcurso) {
     $.ajax({
         url: '../php/curConfir.php',
-        type: 'POST'
+        type: 'GET',
+        data: 'idcurso=' + idcurso
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-
         for (i = 0; i < res.length; i++) {
-
             if (obj.data[i].id_curso == idcurso) {
-
-
                 lista = obj.data[i].codigo;
                 $("#id_curso1").val(idcurso);
                 $("#idinsp1").val(obj.data[i].idinsp);
                 $("#gstTitlo1").html(obj.data[i].gstTitlo);
                 $("#gstTipo1").html(obj.data[i].gstTipo);
+                $("#gstfolio1").html(obj.data[i].codigo); // folio
+                $("#fcurgrupo1").html(obj.data[i].grupo); // Grupo
+                $("#coordininf1").html('COORDINADOR: ' + obj.data[i].coordname + ' ' + obj.data[i].coordlastname);
                 document.getElementById('asisdetalle').style.display = '';
 
                 var fechai = new Date(obj.data[i].fcurso);
@@ -227,9 +332,9 @@ function confirmar1(idcurso) {
 
                 var fechac = new Date(obj.data[i].fechaf);
                 var fechaf = fechac.getDate() + '-' + (fechac.getMonth() + 1) + '-' + fechac.getFullYear();
-                $("#fcurso1").html(inicio);
+                $("#fcurso1").html(obj.data[i].inico);
                 $("#hcurso1").html(obj.data[i].hcurso);
-                $("#fechaf1").html(fechaf);
+                $("#fechaf1").html(obj.data[i].fin);
                 $("#sede1").html(obj.data[i].sede);
 
                 $("#modalidad1").html(obj.data[i].modalidad);
@@ -245,34 +350,141 @@ function confirmar1(idcurso) {
                     $("#link1").html(obj.data[i].link);
                     $("#contracur1").html(obj.data[i].contracur);
                     $("#classroom1").html(obj.data[i].classroom);
+
+                    $("#ocul11").show();
+                    $("#ocul22").show();
+                    $("#ocul33").show();
+
+                    $("#link1").show();
+                    $("#contracur1").show();
+                    $("#classroom1").show();
                 }
+                //----------------------TABLA DE INSTRUCTORES Y COORDINADORES 28092022
+                let folio = obj.data[i].codigo;
+                //alert(folio);
+                $.ajax({
+                    url: '../php/coninstcurs.php',
+                    type: 'GET',
+                    data: 'folio=' + folio
+                }).done(function(resp) {
+                    obj = JSON.parse(resp);
+                    let res = obj.data;
+                    let x = 0;
+                    html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>NOMBRE</th>';
+                    for (U = 0; U < res.length; U++) {
+                        // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
+                        x++;
+                        html += "<tr><td>" + x + "</td><td>" + obj.data[U].gstNombr + ' ' + obj.data[U].gstApell + "</td></tr>";
+                    }
+                    html += '</table>';
+                    $("#instruc1").html(html);
+                });
 
+                //------------DIAS DEL CURSO
+                let finicial = obj.data[i].fcurso; //fecha inicial
+                let codigo = obj.data[i].codigo; //codigo
+                let ffinal = obj.data[i].fechaf;
+                let hora_ini = obj.data[i].hcurso;
+                let diai = finicial.substring(8, 10);
+                let diaf = ffinal.substring(8, 10);
+                let inici = finicial.substring(5, 7);
+                let finan = ffinal.substring(5, 7);
+                let inicio = inici * 1;
+                let final = finan * 1;
+                let anioi = finicial.substring(0, 4);
+                let aniof = ffinal.substring(0, 4);
+                datos = 'finicial=' + finicial + '&ffinal=' + ffinal + '&codigo=' + codigo;
+                //alert(datos);
+                $.ajax({
+                    url: '../php/mosDias.php',
+                    type: 'POST',
+                    data: datos
+                }).done(function(resp) {
+
+                    obj = JSON.parse(resp);
+                    var res = obj.data;
+                    $("#hora_fin").val(obj.data[0].horaf);
+                    meses = ['0', 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
+                        'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'
+                    ];
+
+                    //document.getElementById("ftitulo").innerHTML = "" + 'DÍAS HÁBILES: ' + diai + '/' + meses[inicio] + '/' + anioi + ' AL ' + diaf + '/' + meses[final] + '/' + aniof;
+                    var x = 0;
+                    var v = 1;
+
+                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12">';
+                    //CONTEO DEL MES, INICIO A FIN 
+                    for (m = inicio; m <= final; m++) {
+                        x++;
+                        html += '<table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><td colspan="7" style="text-align:center;"><b>' + meses[m] + '</b></td></tr><tr><th><i></i>L</th><th><i></i>M</th><th><i></i>M</th><th><i></i>J</th><th><i></i>V</th><th><i></i>S</th><th><i></i>D</th></tr></thead><tbody>';
+                        for (i = 0; i < res.length; i++) {
+                            if (obj.data[i].habil == 'SI') {
+                                //diasp = "<input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' checked='checked'/>";
+                                // html= "<input type='checkbox' style='width:17px; height:17px;' checked='true' name='infinal' id='infinal'/>"
+                                diasp = "<p class='flex items-center -mx-2 text-gray-700 dark:text-gray-200'><svg xmlns='http://www.w3.org/2000/svg' width='20px' style='color:blue' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path></svg></p>";
+                            } else {
+                                diasp = "<p style='display:none' class='flex items-center -mx-2 text-gray-700 dark:text-gray-200'></p>";
+                            }
+                            if (obj.data[i].mes == m) {
+                                if (obj.data[i].dias == 'Lunes' && obj.data[i].inc == 1) {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Lunes') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Martes' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Martes') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Miércoles' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Miércoles') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Jueves' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Jueves') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Viernes' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Viernes') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Sábado' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Sábado') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                                if (obj.data[i].dias == 'Domingo' && obj.data[i].inc == 1) {
+                                    html += "<td></td><td></td><td></td><td></td><td></td><td></td><td>" + diasp + " <b>" + obj.data[i].numero + "</b></td><tr>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                } else if (obj.data[i].dias == 'Domingo') {
+                                    html += "<td>" + diasp + " <b>" + obj.data[i].numero + "</b></td><tr>";
+                                    html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                                }
+                            }
+                        }
+                        html += '</tbody></table>';
+                    }
+                    html += '</div></div></div>';
+                    $("#habilDias2").html(html);
+                })
             }
         }
-
-
-        html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th>NOMBRE</th><th>CARGO</th>';
-        x = 0;
-        for (i = 0; i < res.length; i++) {
-            x++;
-
-
-
-            // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
-            if (obj.data[i].gstCargo == 'COORDINADOR' && obj.data[i].codigo == lista && obj.data[i].idinst == obj.data[i].idinsp || obj.data[i].gstCargo == 'INSTRUCTOR' && obj.data[i].codigo == lista) {
-
-                html += "<tr><td>" + x + "</td><td>" + obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + "</td><td>" + obj.data[i].gstCargo + "</td></tr>";
-            }
-
-
-
-
-        }
-        html += '</table>';
-        $("#instruc1").html(html);
-
     })
-
 }
 
 

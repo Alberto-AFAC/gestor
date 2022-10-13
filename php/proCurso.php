@@ -33,6 +33,7 @@ $fcurso = $_POST['fcurso'];
 $fechaf = $_POST['fechaf'];
 
 $perid = $_POST['perid'];
+$grupo = $_POST['grupo'];
 
 $id = $_POST['idinsps'].','.$idcord;
 
@@ -73,7 +74,7 @@ foreach ($valor as $idinsps) {
 		$part = '';	
 	}
 
-if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion))
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$grupo,$conexion))
 		{ 
 				if($n==$ttal){
 				$Instruc = explode(",", $idInstr);
@@ -127,7 +128,7 @@ $contracceso = $_POST['contracur'];
 $classroom = $_POST['classroom'];
 $idInstr = $_POST['idntrc'];
 $part = 'SI';
-
+$grupo = $_POST['grupo'];
 
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
 $fcurso = $yi.'-'.$mi.'-'.$di;
@@ -136,7 +137,7 @@ $yf = substr($fechafs,6,4);	$mf = substr($fechafs,3,2);	$df = substr($fechafs,0,
 $fechaf = $yf.'-'.$mf.'-'.$df;
 
 
-if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion))
+if(proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$grupo,$conexion))
 
 // proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom, $conexion)
 
@@ -195,10 +196,6 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 		}
 	}
 }else if($opcion === 'cursoAct'){
-
-
-
-
 	$codigo = $_POST['codigo'];
 	$fcurso = $_POST['fcurso'];
 	$hcurso = $_POST['hcurso'];
@@ -208,6 +205,7 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 	$linkcur = $_POST['linkcur'];
 	$contracur = $_POST['contracur'];
 	$classromcur = $_POST['classromcur'];
+	$grupo = $_POST['grupo'];
 
 	$reprogramar = $_POST['reprogramar'];
 
@@ -222,7 +220,7 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 	$array3 = json_decode($array3, true);
 
 	$hora_fin = $_POST['hora_fin'];
-
+	actgrupo($grupo,$codigo,$conexion);
 	for($i=0; $i<$valor; $i++){
 
 	$dias = $varray1[$i]["diasr"];
@@ -234,9 +232,9 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 
 	if(semanalAct($codigo,$dias,$valida,$mes,$anio,$fcurso,$fechaf,$hcurso,$hora_fin,$conexion)){	
-
+		
 		if($i==1){
-	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$conexion))
+	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$grupo,$conexion))
 		{	
 		reprogramar($codigo,$reprogramar,$conexion);
 		echo "0";		
@@ -339,12 +337,12 @@ function noasistio($idperson,$conexion){
     }
 }
 
-function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$conexion){
+function proCurso($idinsps,$id_mstr,$idcord,$idInstr,$fcurso,$fechaf,$hcurso,$sede,$modalidad,$link,$codigo,$contracceso,$classroom,$part,$grupo,$conexion){
 	$query="SELECT * FROM cursos WHERE idinsp='$idinsps' AND codigo='$codigo' AND proceso = 'PENDIENTE' AND estado = 0 ";
 			$resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 
-$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom','$part',0);";
+$query="INSERT INTO cursos VALUES(0,'$idinsps','$id_mstr','$idcord','$idInstr','$fcurso','$fechaf','$hcurso','$sede','$modalidad','$link','PENDIENTE',0,'NULL','CONFIRMAR',0,'$codigo',0,'$contracceso','$classroom','$part','$grupo',0);";
 				if(mysqli_query($conexion,$query)){
 					
 					return true;
@@ -430,7 +428,7 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 	}
 
-	function cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$conexion){
+	function cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$grupo,$conexion){
 
 	$query="UPDATE cursos 
 			SET 
@@ -441,7 +439,8 @@ function finalizac($codigo,$conexion){
 			modalidad='$modalidads',
 			link='$linkcur',
 			contracur='$contracur',
-			classroom='$classromcur'
+			classroom='$classromcur',
+			grupo='$grupo'
 			WHERE codigo='$codigo'";
 		if(mysqli_query($conexion,$query)){
 			return true;
@@ -452,8 +451,19 @@ function finalizac($codigo,$conexion){
 
 	}
 
-	function descPDF($pdf,$conexion){
+	//función para actualizar el grupo
+	function actgrupo($grupo,$codigo,$conexion){
+		$query="UPDATE cursos SET grupo='$grupo' WHERE codigo='$codigo'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
 
+	}
+	
+	function descPDF($pdf,$conexion){
 	$query="UPDATE constancias SET copias='1' WHERE id='$pdf'";
 		if(mysqli_query($conexion,$query)){
 			return true;
@@ -540,6 +550,4 @@ function cerrar($conexion){
 	mysqli_close($conexion);
 
 }
-?> 
-
-
+?>

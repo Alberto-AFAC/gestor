@@ -1,5 +1,4 @@
 <form class="form-horizontal" action="" method="POST">
-
     <div class="modal fade" id="modal-evalcurso">
         <div class="modal-dialog width" role="document" style="/*margin-top: 10em;*/">
             <div class="modal-content">
@@ -21,10 +20,8 @@
                     <div align="center">
                         <img src="../dist/img/CIAACandAFAC.jpg" alt="">
                     </div>
-
                     <section class="content">
                         <!----------INICIO-------->
-
                         <div class="row">
                             <!-- <img src="../dist/img/AFAC2.png" alt="Descripción de la imagen"> -->
                             <div class="col-md-12">
@@ -57,7 +54,7 @@
                                                     <!--                                         <div class="col-sm-8">
 <label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label>
                                         </div> -->
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-6">
                                                         <!--                                             <input class="col-sm-12"
                                                 type="text"
                                                 name="id_instruct"
@@ -65,6 +62,7 @@
                                                 style="font-size:18px; background-color: #E5E7EC; border: 0; outline: none"
                                                 disabled="">
  -->
+                                                        <label for="" style="font-size:18px">INSTRUCTOR/A(S)</label>
                                                         <div id="id_instruct"></div>
                                                     </div>
                                                 </div>
@@ -82,7 +80,8 @@
                                 <form name="form1" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">ESPECIFICÓ LOS OBJETIVOS AL INICIO DE LA SESIÓN, EN FORMA CLARA Y COMPRENSIBLE?<span id="span1">*</span></h3>
+                                            <h3 class="box-title">ESPECIFICÓ LOS OBJETIVOS AL INICIO DE LA SESIÓN, EN
+                                                FORMA CLARA Y COMPRENSIBLE?<span id="span1">*</span></h3>
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
@@ -114,14 +113,14 @@
                                                         <label for="r1">DEFICIENTE</label>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg1" value="NO APLICA" id="r3">
                                                         <label for="r3">NO APLICA</label>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </form>
                                     </div>
@@ -133,7 +132,8 @@
                                 <form name="form2" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">DEMOSTRÓ DOMINIO ADECUADO DEL TEMA<span id="span2">*</span></h3>
+                                            <h3 class="box-title">DEMOSTRÓ DOMINIO ADECUADO DEL TEMA<span
+                                                    id="span2">*</span></h3>
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
@@ -310,7 +310,7 @@
                                                         <label for="r21">DEFICIENTE</label>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg5" value="NO APLICA" id="r23">
@@ -465,7 +465,7 @@
                                                         <input type="radio" name="preg8" value="NO APLICA" id="r38">
                                                         <label for="r38">NO APLICA</label>
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -560,13 +560,13 @@
                                                         <label for="r46">DEFICIENTE</label>
                                                     </div>
                                                 </div>
-                                               
+
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg10" value="NO APLICA" id="r48">
                                                         <label for="r48">NO APLICA</label>
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -627,7 +627,8 @@
                                 <form name="form12" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">AL INICIO DEL CURSO, EXPLICÓ LOS CRITERIOS DE EVALUACIÓN DEL CURSO<span id="span12">*</span></h3>
+                                            <h3 class="box-title">AL INICIO DEL CURSO, EXPLICÓ LOS CRITERIOS DE
+                                                EVALUACIÓN DEL CURSO<span id="span12">*</span></h3>
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
@@ -657,7 +658,7 @@
                                                         <input type="radio" name="preg12" value="DEFICIENTE" id="r56">
                                                         <label for="r56">DEFICIENTE</label>
                                                     </div>
-                                                </div>          
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg12" value="NO APLICA" id="r58">
@@ -678,7 +679,9 @@
                                 <form name="form13" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">LOS CONOCIMIENTOS EXPUESTOS EN EL CURSO SON APLICABLES A LAS ACTIVIDADES QUE REALIZA EN SU PUESTO DE TRABAJO<span id="span13">*</span></h3>
+                                            <h3 class="box-title">LOS CONOCIMIENTOS EXPUESTOS EN EL CURSO SON APLICABLES
+                                                A LAS ACTIVIDADES QUE REALIZA EN SU PUESTO DE TRABAJO<span
+                                                    id="span13">*</span></h3>
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body">
@@ -726,7 +729,8 @@
                                 <form name="form14" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">CONSIDERA QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE PARA CUMPLIR CON EL OBJETIVO DE APRENDIZAJE<span id="span14">*</span>
+                                            <h3 class="box-title">CONSIDERA QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE
+                                                PARA CUMPLIR CON EL OBJETIVO DE APRENDIZAJE<span id="span14">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -758,7 +762,7 @@
                                                         <label for="r66">DEFICIENTE</label>
                                                     </div>
                                                 </div>
-                                               
+
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg14" value="NO APLICA" id="r68">
@@ -776,7 +780,8 @@
                                 <form name="form15" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">EL CURSO CUBRIÓ SUS EXPECTATIVAS<span id="span15">*</span>
+                                            <h3 class="box-title">EL CURSO CUBRIÓ SUS EXPECTATIVAS<span
+                                                    id="span15">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -876,7 +881,8 @@
                                 <form name="form17" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">EL CONTENIDO DEL CURSO SE APEGA A LOS PROGRAMAS SELECCIONADOS POR LA AUTORIDAD AERONÁUTICA<span id="span17">*</span>
+                                            <h3 class="box-title">EL CONTENIDO DEL CURSO SE APEGA A LOS PROGRAMAS
+                                                SELECCIONADOS POR LA AUTORIDAD AERONÁUTICA<span id="span17">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -913,7 +919,7 @@
                                                         <input type="radio" name="preg17" value="NO APLICA" id="r83">
                                                         <label for="r83">NO APLICA</label>
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -926,7 +932,8 @@
                                 <form name="form17" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">LA DURACIÓN DE LA O LAS SESIONES FUE SUFICIENTE PARA CUMPLIR EL OBJETIVO DE APRENDIZAJE<span id="spanPN">*</span>
+                                            <h3 class="box-title">LA DURACIÓN DE LA O LAS SESIONES FUE SUFICIENTE PARA
+                                                CUMPLIR EL OBJETIVO DE APRENDIZAJE<span id="spanPN">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -963,8 +970,8 @@
                                                         <input type="radio" name="pregPEN" value="NO APLICA" id="rp5">
                                                         <label for="rp5">NO APLICA</label>
                                                     </div>
-                                                </div> 
-                                                
+                                                </div>
+
                                             </div>
                                         </form>
                                     </div>
@@ -1013,7 +1020,7 @@
                                                         <input type="radio" name="preg18" value="DEFICIENTE" id="r86">
                                                         <label for="r86">DEFICIENTE</label>
                                                     </div>
-                                                </div>                
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg18" value="NO APLICA" id="r88">
@@ -1031,7 +1038,8 @@
                                 <form name="form19" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">LA AUTORIDAD AERONÁUTICA PROPORCIONÓ LOS MEDIOS NECESARIOS PARA LA ASISTENCIA AL CURSO<span id="span19">*</span>
+                                            <h3 class="box-title">LA AUTORIDAD AERONÁUTICA PROPORCIONÓ LOS MEDIOS
+                                                NECESARIOS PARA LA ASISTENCIA AL CURSO<span id="span19">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -1080,7 +1088,8 @@
                                 <form name="form20" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">¿CÓMO FUE EL SERVICIO DE CAFÉ PROPORCIONADO?<span id="span20">*</span>
+                                            <h3 class="box-title">¿CÓMO FUE EL SERVICIO DE CAFÉ PROPORCIONADO?<span
+                                                    id="span20">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -1130,7 +1139,8 @@
                                 <form name="form17" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">LA DURACIÓN DE LA O LAS SESIONES FUE SUFICIENTE PARA CUMPLIR EL OBJETIVO DE APRENDIZAJE<span id="spanPN2">*</span>
+                                            <h3 class="box-title">LA DURACIÓN DE LA O LAS SESIONES FUE SUFICIENTE PARA
+                                                CUMPLIR EL OBJETIVO DE APRENDIZAJE<span id="spanPN2">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -1158,7 +1168,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="pregPEN2" value="DEFICIENTE" id="r2p4">
+                                                        <input type="radio" name="pregPEN2" value="DEFICIENTE"
+                                                            id="r2p4">
                                                         <label for="r2p4">DEFICIENTE</label>
                                                     </div>
                                                 </div>
@@ -1167,8 +1178,8 @@
                                                         <input type="radio" name="pregPEN2" value="NO APLICA" id="r2p5">
                                                         <label for="r2p5">NO APLICA</label>
                                                     </div>
-                                                </div> 
-                                                
+                                                </div>
+
                                             </div>
                                         </form>
                                     </div>
@@ -1339,7 +1350,9 @@
                                 <form name="formPN3" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">LA CONEXIÓN DE INTERNET FUE LA ADECUADA PARA COMPRENDER LA INFORMACIÓN TRANSMITIDA DURANTE LA O LAS SESIONES EN LÍNEA<span id="spanPN3">*</span>
+                                            <h3 class="box-title">LA CONEXIÓN DE INTERNET FUE LA ADECUADA PARA
+                                                COMPRENDER LA INFORMACIÓN TRANSMITIDA DURANTE LA O LAS SESIONES EN
+                                                LÍNEA<span id="spanPN3">*</span>
                                             </h3>
                                         </div>
                                         <form class="form-horizontal">
@@ -1367,7 +1380,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="pregPEN3" value="DEFICIENTE" id="r3p4">
+                                                        <input type="radio" name="pregPEN3" value="DEFICIENTE"
+                                                            id="r3p4">
                                                         <label for="r3p4">DEFICIENTE</label>
                                                     </div>
                                                 </div>
@@ -1376,8 +1390,8 @@
                                                         <input type="radio" name="pregPEN3" value="NO APLICA" id="r3p5">
                                                         <label for="r3p5">NO APLICA</label>
                                                     </div>
-                                                </div> 
-                                                
+                                                </div>
+
                                             </div>
                                         </form>
                                     </div>
@@ -1445,7 +1459,10 @@
                                 <form name="form26" action="" class="formulario1">
                                     <div class="radio">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">SI RECIBIÓ CAPACITACIÓN EN UN CENTRO DE CAPACITACIÓN NACIONAL O INTERNACIONAL, USTED RECOMIENDA DICHO CENTRO PARA CONTINUAR COMO PROVEEDOR DE LA AUTORIDAD AERONÁUTICA MEXICANA.<span id="span14">*</span></h3>
+                                            <h3 class="box-title">SI RECIBIÓ CAPACITACIÓN EN UN CENTRO DE CAPACITACIÓN
+                                                NACIONAL O INTERNACIONAL, USTED RECOMIENDA DICHO CENTRO PARA CONTINUAR
+                                                COMO PROVEEDOR DE LA AUTORIDAD AERONÁUTICA MEXICANA.<span
+                                                    id="span14">*</span></h3>
                                         </div>
                                         <form class="form-horizontal">
                                             <div class="box-body" id=preg26>
@@ -1463,15 +1480,16 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <input type="radio" name="preg26" value="ME RESERVO EL COMENTARIO"
-                                                            id="r118">
+                                                        <input type="radio" name="preg26"
+                                                            value="ME RESERVO EL COMENTARIO" id="r118">
                                                         <label for="r118">ME RESERVO EL COMENTARIO</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <input type="radio" name="preg26" value="NO APLICA" id="r119">
-                                                        <label for="r119">NO APLICA (LA CAPACITACIÓN FUE IMPARTIDA POR EL CIAAC)</label>
+                                                        <label for="r119">NO APLICA (LA CAPACITACIÓN FUE IMPARTIDA POR
+                                                            EL CIAAC)</label>
                                                         <!-- <input type="text" name="otro" id="otro" onkeyup="mayus(this);"
                                                             placeholder="TU RESPUESTA"
                                                             style="background-color: #E5E7EC; border: 0; outline: none"> -->

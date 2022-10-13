@@ -2,17 +2,8 @@
 	include("../conexion/conexion.php");
     header('Content-Type: application/json');
 	session_start();
-	
-	$query = "SELECT *, COUNT(*) AS prtcpnts, DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as cfinal,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as cinicial,cursos.fechaf AS fin,classroom
-			FROM
-			cursos
-			INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
-			WHERE
-			cursos.estado = 0 
-			GROUP BY
-			cursos.codigo
-			ORDER BY
-			id_curso DESC";
+    $id = $_SESSION['usuario']['id_usu'];
+	$query = "SELECT c.*,l.*, COUNT(*) AS prtcpnts, DATE_FORMAT(c.fechaf, '%d/%m/%Y') as cfinal,DATE_FORMAT(c.fcurso, '%d/%m/%Y') as cinicial,c.fechaf AS fin,classroom FROM cursos c, listacursos l, personal p where l.gstIdlsc=c.idmstr and c.estado=0 and p.gstIdper=c.idinsp and p.gstIDara=(select gstIDara from personal where gstIdper=$id ) GROUP BY c.codigo ORDER BY c.id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 	$contador=0;
 	if(!$resultado){
@@ -67,8 +58,8 @@ if($res = mysqli_fetch_array($resul)){
 $codigor = $res['id_curso'];
 
 if ($f3>$f2  && $data["proceso"] == "PENDIENTE" AND $codigor = $codigo) {
-$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>PROGRAMACIÓN VENCIDA</span>";
-$proc = 'VENCIDO';
+$proceso = "<span style='font-weight: bold; height: 50px; color:#F39403;'>PENDIENTE</span>";
+$proc = 'PENDIENTE';
 }
 elseif($data["proceso"] == 'PENDIENTE' AND $codigor = $codigo){ //PENDIENTE
 $proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">REPROGRAMADO</span>';
@@ -85,9 +76,9 @@ $proc = 'EN PROCESO';
 
 }else{
 
-if ($f3>$f2 && $data["proceso"] == "PENDIENTE" && $codigo!="FO194" && $codigo!="FO278" && $codigo!="FO195" && $codigo!="FO283" && $codigo!="FO310" && $codigo!="FO314" && $codigo!="FO315" && $codigo!="FO316" && $codigo!="FO319" && $codigo!="FO320" && $codigo!="FO321" && $codigo!="FO322" && $codigo!="FO327" && $codigo!="FO328" && $codigo!="FO335" && $codigo!="FO341" && $codigo!="FO339" && $codigo!="FO337" && $codigo!="FO330" && $codigo!="FO331" && $codigo!="FO344" ) {
-	$proceso = "<span style='font-weight: bold; height: 50px; color:#D73925;'>PROGRAMACIÓN VENCIDA</span>";
-	$proc = 'VENCIDO';
+if ($f3>$f2 && $data["proceso"] == "PENDIENTE"  ) {
+	$proceso = "<span style='font-weight: bold; height: 50px; color:#F39403;'>PENDIENTE</span>";
+	$proc = 'PENDIENTE';
 }
 elseif($data["proceso"] == 'PENDIENTE'){ //PENDIENTE
 $proceso = '<span style="font-weight: bold; height: 50px; color:#F39403;">PENDIENTE</span>';

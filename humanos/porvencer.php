@@ -832,7 +832,8 @@ $(document).ready(function() {
                         "*" + obj.data[i].proceso +
                         "*" + obj.data[i].idinsp +
                         "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
+                        "*" + obj.data[i].classroom +
+                        "*" + obj.data[i].grupo;
 
                     var d = cursos.split("*");
 
@@ -858,6 +859,8 @@ $(document).ready(function() {
                     $("#Dtall #idinst").val(d[11]);
                     $("#Dtall #sede").val(d[12]);
                     $("#Dtall #modalidads").val(d[14]);
+                    $("#Dtall #grupoci").val(d[20]);
+                    
                     if (d[13] == '0') {
                         $("#Dtall #linkcur").val(d[13]);
                         $("#Dtall #contracur").val(d[18]);

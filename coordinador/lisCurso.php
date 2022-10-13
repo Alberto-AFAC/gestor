@@ -835,7 +835,8 @@ $(document).ready(function() {
                         "*" + obj.data[i].proceso +
                         "*" + obj.data[i].idinsp +
                         "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
+                        "*" + obj.data[i].classroom +
+                        "*" + obj.data[i].grupo;
 
                     var d = cursos.split("*");
 
@@ -876,6 +877,7 @@ $(document).ready(function() {
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
                     $("#Dtall #codigoIDCuro").val(d[15]);
+                    $("#Dtall #grupoci").val(d[20]);
 
                     codigo = d[15];
 

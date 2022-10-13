@@ -49,7 +49,7 @@
                             </div>
                         </div>
 
-                        <div id="habilDias"></div>
+                        <div id="habilDias"></div>dddd
 
                         <!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
                         <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
@@ -267,6 +267,11 @@ onclick="agregarDias();">EDITAR</button>
                                     <label class="label2">SEDE DEL CURSO</label>
                                     <input onkeyup="mayus(this);" type="text" class="form-control inputalta" id="sede"
                                         name="sede" disabled="">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="label2">GRUPO</label>
+                                    <input onkeyup="mayus(this);" type="text" class="form-control inputalta" id="grupoci"
+                                        name="grupoci" disabled="">
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="label2">MODALIDAD</label>

@@ -33,21 +33,22 @@ unset($_SESSION['consulta']);
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-  <script src="../dist/js/sweetalert2.all.min.js"></script>
-  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-  <link rel="stylesheet" href="../dist/css/alertas.css">
+    <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+    <script src="../dist/js/sweetalert2.all.min.js"></script>
+    <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/css/alertas.css">
 
-  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -67,7 +68,6 @@ unset($_SESSION['consulta']);
                     PRONÓSTICO DE CURSOS
                 </h1>
             </section>
-
             <!-- Main content -->
             <section class="content">
                 <div class="row">
@@ -79,8 +79,9 @@ unset($_SESSION['consulta']);
                                     <!-- Post -->
                                     <div class="post"><br><br>
 
-<table style="width: 100%;" id="table-pronosticos" class="table display table-striped table-bordered table-hover table-responsive">
-<!-- 
+                                        <table style="width: 100%;" id="table-pronosticos"
+                                            class="table display table-striped table-bordered table-hover table-responsive">
+                                            <!-- 
                                         <table id="table-pronosticos" class="display" style="width:100%"> -->
                                             <thead>
                                                 <tr>
@@ -150,7 +151,7 @@ exit;
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
 immediately after the control sidebar -->
-<!-- jQuery 3 -->
+        <!-- jQuery 3 -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -171,34 +172,36 @@ immediately after the control sidebar -->
 
 </html>
 <script type="text/javascript">
-     var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
-    //alert(idpersona1);
-    $.ajax({
-            url: '../php/accesos-list.php',
-            type: 'POST'
-        }).done(function(resp) {    
-            obj = JSON.parse(resp);
-            var res = obj.data;
+var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
+//alert(idpersona1);
+$.ajax({
+    url: '../php/accesos-list.php',
+    type: 'POST'
+}).done(function(resp) {
+    obj = JSON.parse(resp);
+    var res = obj.data;
 
-            //AQUI03
-            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
-            var n = 0;
-            for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
-                //alert(obj.data[H].id_usu);
-                if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0' ) {
-                    $('#modal-obligatorio').modal('show'); 
-                    $("#usuarioobl").val(obj.data[H].gstNombr +" "+obj.data[H].gstApell  );
-                }else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1' ) {
-                    $('#modal-obligatorio').modal('hide');  
-                }
-
+    //AQUI03
+    html =
+        '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+    var n = 0;
+    for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
+        //alert(obj.data[H].id_usu);
+        if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0') {
+            $('#modal-obligatorio').modal('show');
+            $("#usuarioobl").val(obj.data[H].gstNombr + " " + obj.data[H].gstApell);
+        } else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1') {
+            $('#modal-obligatorio').modal('hide');
         }
-    })
-    //FIN DE ACTUALIZACION
+
+    }
+})
+//FIN DE ACTUALIZACION
 $(document).ready(function() {
     $('#table-pronosticos').DataTable({
-        columnDefs:[{
-            width: 220, targets: 3,
+        columnDefs: [{
+            width: 220,
+            targets: 3,
             targets: "_all",
             sortable: false
         }],
@@ -206,7 +209,7 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        "ajax": '../php/data-pronostico.php',
+        "ajax": '../php/data-pronosticodisc.php',
         orderCellsTop: true,
         initComplete: function() {
             this.api().columns().every(function() {

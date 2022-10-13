@@ -606,10 +606,49 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                         <h4 class="modal-title" id="myModalLabel">SUB TAREAS</h4>
                     </div>
                     <div class="modal-body">
-                    <div>
-                    <a href="#" title="Agregar Subtarea" onclick="addsuptareapri()" type="button" class="btn btn-primary" data-toggle="modal" data-target=""> <i class="fa fa-plus"></i> AGREGAR SUBTAREA</a>
-                    </div>
+                        <div>
+                            <a href="#" title="Agregar Subtarea" onclick="addmasub()" type="button" id="massubb" name="massubb" class="btn btn-primary"
+                                data-toggle="modal" data-target=""> <i class="fa fa-plus"></i>
+                                AGREGAR SUBTAREA</a>
+                            <form method="POST">
+                                <div style="display:none" class="form-group" id="forriomassu">
+                                    <input type="hidden" name="idsubtpos" id="idsubtpos">
+                                    <div id="sub1addpos" class="col-sm-4">
+                                        <label>SUBTAREA 1</label>
+                                        <div>
+                                            <input class="form-control" placeholder="INGRESAR..." type="text"
+                                                onkeyup="mayus(this);" name="tarea1addpos[]" id="oculsub1addpos">
+                                        </div><span class="badge" id="addsub1opp"
+                                            style="cursor: pointer; background-color: #3C8DBC;"><i
+                                                class="fa fa-plus-circle" aria-hidden="true"></i>
+                                            AÑADIR</span>
+                                    </div>
+                                    <div id="sub2addpos" class="col-sm-4">
+                                        <label>SUBTAREA 2</label>
+                                        <div>
+                                            <input class="form-control" placeholder="INGRESAR..." type="text"
+                                                onkeyup="mayus(this);" name="tarea2addpos[]" id="oculsub2addpos">
+                                        </div><span class="badge" id="addsub2opp"
+                                            style="cursor: pointer; background-color: #3C8DBC;"><i
+                                                class="fa fa-plus-circle" aria-hidden="true"></i>
+                                            AÑADIR</span>
+                                    </div>
 
+                                    <div id="sub3addpos" class="col-sm-4">
+                                        <label>SUBTAREA 3</label>
+                                        <div>
+                                            <input class="form-control" placeholder="INGRESAR..." type="text"
+                                                onkeyup="mayus(this);" name="tarea3addpos[]" id="oculsub3addpos">
+                                        </div><span class="badge" id="addsub3opp"
+                                            style="cursor: pointer;background-color: #3C8DBC;"><i
+                                                class="fa fa-plus-circle" aria-hidden="true"></i>
+                                            AÑADIR</span>
+                                    </div>
+                                    <br><br><br><br><br>
+                                    <button type="button" onclick="agrsubtareaojt2()" class="ml-md-auto btn btn-primary">GUARDAR</button> <button type="button" onclick="cerraraddpos()" class="ml-md-auto btn btn-default">CERRAR</button>
+                                </div>
+                            </form>
+                        </div>
                         <div class='modal-body'>
                             <div id="elimino" style="display: none; text-align: center;font-size: 14px; color: red">SU
                                 REGISTRO FUE ELIMINADO</div>
@@ -757,6 +796,68 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
             </div>
         </form>
         <!-------------------------------------------MODAL EDITAR FIN ------------------------------------------------------>
+        <!-------------------------------------------MODAL AGREGAR SUBTAREA------------------------------------------------------>
+        <form id="addsubtareaojt" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+            <div class="modal fade" id="addsubojt" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">AGREGAR SUBTAREA
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div class="modal-body">
+                            <input style="display:none" id="ojtprinedith" name="ojtprinedith" type="text">
+                            <label style="font-size:16px" id="nameojprin" name="nameojprin" for="">Tarea principal:
+                            </label>
+                            <div id="sub1edith">
+                                <label>AGREGA SUBTAREA1</label>
+                                <div>
+                                    <input class="form-control" placeholder="INGRESAR..." type="text"
+                                        onkeyup="mayus(this);" name="tarea1edith[]" id="oculsub1edith">
+                                </div>
+                                <span class="badge" id="add_sub1edith"
+                                    style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i>
+                                    AÑADIR</span>
+                            </div>
+                            <hr>
+                            <div id="sub2edith">
+                                <label>AGREGA SUBTAREA2</label>
+                                <div>
+                                    <input class="form-control" placeholder="INGRESAR..." type="text"
+                                        onkeyup="mayus(this);" name="tarea2edith[]" id="oculsub2edith">
+                                </div>
+                                <span class="badge" id="add_sub2edith"
+                                    style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i>
+                                    AÑADIR</span>
+                            </div>
+                            <hr>
+                            <div id="sub3edith">
+                                <label>AGREGA SUBTAREA3</label>
+                                <div>
+                                    <input class="form-control" placeholder="INGRESAR..." type="text"
+                                        onkeyup="mayus(this);" name="tarea3edith[]" id="oculsub3edith">
+                                </div>
+                                <span class="badge" id="add_sub3edith"
+                                    style="cursor: pointer; background-color: #3C8DBC;"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i>
+                                    AÑADIR</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="agrsubtareaojt()" class="btn btn-primary">ACEPTAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-------------------------------------------MODAL EDITAR FIN ------------------------------------------------------>
 
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -841,6 +942,142 @@ document.getElementById('idcur').disabled = false;
 
 let contador = 0;
 
+//FUNCION DE GUARDADO COMPLETO AGREGAR SUBTAREAS
+function agrsubtareaojt() {
+    let idsutarea = document.getElementById('ojtprinedith').value;
+    //primer subtarea
+    var addsubojt1 = new Array();
+    $('input[name="tarea1edith[]"]').each(function(element) {
+        var item = {};
+        item.addsubojt1 = this.value;
+        addsubojt1.push(item);
+    });
+    //segunda subtarea
+    var addsubojt2 = new Array();
+    $('input[name="tarea2edith[]"]').each(function(element) {
+        var item = {};
+        item.addsubojt2 = this.value;
+        addsubojt2.push(item);
+    });
+    //segunda subtarea
+    var addsubojt3 = new Array();
+    $('input[name="tarea3edith[]"]').each(function(element) {
+        var item = {};
+        item.addsubojt3 = this.value;
+        addsubojt3.push(item);
+    });
+
+    var array = JSON.stringify(addsubojt1);
+    var array2 = JSON.stringify(addsubojt2);
+    var array3 = JSON.stringify(addsubojt3);
+
+    datos = 'idsutarea=' + idsutarea + '&array=' + array + '&array2=' + array2 + '&array3=' + array3 +
+        '&opcion=tareAgredith';
+    //alert(datos);
+    $.ajax({
+        url: '../php/regTarea.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        if (respuesta == 0) {
+            Swal.fire({
+                type: 'success',
+                // title: 'AFAC INFORMA',
+                html: `<p>SE HA AGREGADO LA SUBTAREA CORRECTAMENTE</p>`,
+                showConfirmButton: false,
+                timer: 3200,
+                customClass: 'swal-wide',
+                showConfirmButton: false,
+            });
+            setTimeout("location.href = 'tareas.php';", 1500);
+            $('#addsubojt').modal('hide');
+            //document.getElementById("add_ojts1").reset();
+        } else if (respuesta == 2) {
+            Swal.fire({
+                type: 'warning',
+                text: 'ya esta duplicado',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            Swal.fire({
+                type: 'error',
+                text: 'Error contactar a soporte tecnico o levantar un ticket',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+    });
+}
+//FUNCION DE GUARDADO COMPLETO AGREGAR SUBTAREAS
+function agrsubtareaojt2() {
+    let idsutarea = document.getElementById('idsubtpos').value;
+    //primer subtarea
+    var addsubojt1 = new Array();
+    $('input[name="tarea1addpos[]"]').each(function(element) {
+        var item = {};
+        item.addsubojt1 = this.value;
+        addsubojt1.push(item);
+    });
+    //segunda subtarea
+    var addsubojt2 = new Array();
+    $('input[name="tarea2addpos[]"]').each(function(element) {
+        var item = {};
+        item.addsubojt2 = this.value;
+        addsubojt2.push(item);
+    });
+    //segunda subtarea
+    var addsubojt3 = new Array();
+    $('input[name="tarea3addpos[]"]').each(function(element) {
+        var item = {};
+        item.addsubojt3 = this.value;
+        addsubojt3.push(item);
+    });
+
+    var array = JSON.stringify(addsubojt1);
+    var array2 = JSON.stringify(addsubojt2);
+    var array3 = JSON.stringify(addsubojt3);
+
+    datos = 'idsutarea=' + idsutarea + '&array=' + array + '&array2=' + array2 + '&array3=' + array3 +
+        '&opcion=tareAgredith';
+    //alert(datos);
+    $.ajax({
+        url: '../php/regTarea.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        if (respuesta == 0) {
+            Swal.fire({
+                type: 'success',
+                // title: 'AFAC INFORMA',
+                html: `<p>SE HA AGREGADO LA SUBTAREA CORRECTAMENTE</p>`,
+                showConfirmButton: false,
+                timer: 3200,
+                customClass: 'swal-wide',
+                showConfirmButton: false,
+            });
+            setTimeout("location.href = 'tareas.php';", 1500);
+            $('#addsubojt').modal('hide');
+            //document.getElementById("add_ojts1").reset();
+        } else if (respuesta == 2) {
+            Swal.fire({
+                type: 'warning',
+                text: 'ya esta duplicado',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            Swal.fire({
+                type: 'error',
+                text: 'Error contactar a soporte tecnico o levantar un ticket',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+    });
+}
 
 function agrTarea() {
     //ID inspector
@@ -860,6 +1097,7 @@ function agrTarea() {
 
     var tareatre = new Array();
     /*Agrupamos todos los input con name=cbxEstudiante*/
+    array
     $('input[name="tarea3[]"]').each(function(element) {
         var item = {};
         item.tareatre = this.value;
@@ -1095,6 +1333,29 @@ function agregarTarea() {
 // }
 
 // }
+function addsuptareapri(id_tareaprin) {
+    //alert(id_tareaprin);
+    document.getElementById('ojtprinedith').value = id_tareaprin; //id del curso
+    let folio = id_tareaprin;
+    $.ajax({
+        url: '../php/consojtprince.php',
+        type: 'GET',
+        data: 'folio=' + folio
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        let res = obj.data;
+        let x = 0;
+        //alert(resp);
+        for (U = 0; U < res.length; U++) {
+            if (obj.data[U].id_ojt == id_tareaprin) {
+                x++;
+                //alert("enra");
+                document.getElementById('nameojprin').innerHTML = "TAREA PRINCIPAL: " + obj.data[U]
+                    .ojt_principal;
+            }
+        }
+    })
+}
 
 function agrIva() {
 
@@ -1231,7 +1492,7 @@ $contador++;
                 title: "ESPECIALIDAD OJT"
             },
             {
-                title: "TAREAS PRICIALES"
+                title: "TAREAS PRINCIPALES"
             },
             {
                 title: "ACCIONES"
@@ -1504,8 +1765,6 @@ $('#sub1').on("click", ".remover_campo", function(e) {
     vojt--;
 });
 
-
-
 var campos_max3 = 10;
 var vojt3 = 0;
 $('#add_sub3').click(function(e) {
@@ -1526,6 +1785,109 @@ $('#sub3').on("click", ".remover_campo", function(e) {
 });
 
 // JQUERY PARA LAS ACTIVIDADES DE LAS SUBTAREAS
+//agregar subtareas edición++++++++++++++++++++++++++++++++++++++++++
+var campos_maxedth = 20;
+var vojtedit = 0;
+$('#add_sub1edith').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojtedit < campos_maxedth) {
+        $('#sub1edith').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+        vojtedit++;
+    }
+});
+// Remover o div anterior
+$('#sub1edith').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojtedit--;
+});
+
+var campos_maxedth2 = 20;
+var vojtedit2 = 0;
+$('#add_sub2edith').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojtedit2 < campos_maxedth2) {
+        $('#sub2edith').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+        vojtedit2++;
+    }
+});
+//03102022
+var campos_maxedthpos = 20;
+var vojteditpos = 0;
+$('#addsub1opp').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojteditpos < campos_maxedthpos) {
+        $('#sub1addpos').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+vojteditpos++;
+    }
+});
+
+var campos_maxedthpos2 = 20;
+var vojteditpos2 = 0;
+$('#addsub2opp').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojteditpos2 < campos_maxedthpos2) {
+        $('#sub2addpos').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+vojteditpos2++;
+    }
+});
+
+var campos_maxedthpos3 = 20;
+var vojteditpos3 = 0;
+$('#addsub3opp').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojteditpos3 < campos_maxedthpos3) {
+        $('#sub3addpos').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+vojteditpos3++;
+    }
+});
+// +++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+// Remover o div anterior
+$('#sub2edith').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojtedit2--;
+});
+
+var campos_maxedth3 = 20;
+var vojtedit3 = 0;
+$('#add_sub3edith').click(function(e) {
+    e.preventDefault(); //chups
+    if (vojtedit2 < campos_maxedth3) {
+        $('#sub3edith').append('<div>\
+<br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
+<a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
+</div>');
+        vojtedit3++;
+    }
+});
+// Remover o div anterior
+$('#sub3edith').on("click", ".remover_campo", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+    vojtedit3--;
+});
+
 
 //TODAS LAS TAREAS
 
@@ -1564,8 +1926,11 @@ function todasT(t) {
                 n++;
 
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
+                    let id_ojtpr = obj.data[H].id_ojt;
                     html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal +
-                        '</td><td>' + obj.data[H].idarea + '</td><td>' + obj.data[H].ojt + ' ' +'<a href="#" title="Agregar Subtarea" onclick="addsuptareapri()" type="button" class="asiste btn btn-default" data-toggle="modal" data-target=""><i class="fa fa-plus text-success"></i></a>' +
+                        '</td><td>' + obj.data[H].idarea + '</td><td>' + obj.data[H].ojt + ' ' +
+                        '<a href="#" title="Agregar Subtarea" onclick="addsuptareapri(' + id_ojtpr +
+                        ')" type="button" class="asiste btn btn-default" data-toggle="modal" data-target="#addsubojt"><i class="fa fa-plus text-success"></i></a>' +
                         '</td><td><a id="" type="button" title="Actualizar" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa ion-compose text-info"></i></a> <a href="#" title="Eliminar" onclick="labeespc()" type="button" class="eliminar btn btn-default" data-toggle="modal" data-target="#modal-eliminarT1"><i class="fa fa-trash-o text-danger"></i></a>' +
                         '</td><td style="display:none">' + obj.data[H].id_ojt; + '</td></tr>'
 
@@ -1606,14 +1971,14 @@ function idsubTa(datos) {
         var res = obj.data;
         // var x = 0;
         //var y = 0;
-        //var w = 0;
+        //var w = 0; 04/10/2022
 
 
         for (ii = 0; ii < res.length; ii++) {
 
             if (obj.data[ii].idtarea == idsub) {
 
-
+                document.getElementById('idsubtpos').value = idsub; 
                 html =
                     '<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUBTAREA ' +
                     num + '</th><th style="width:10%;">ACCIONES</th>';
@@ -1990,5 +2355,14 @@ function gurdeditp(ojtpr) {
             }
         }
     });
+}
+function addmasub(){
+    document.getElementById('massubb').style.display="none";
+    document.getElementById('forriomassu').style.display="";
+}
+
+function cerraraddpos(){
+    document.getElementById('massubb').style.display="";
+    document.getElementById('forriomassu').style.display="none";
 }
 </script>

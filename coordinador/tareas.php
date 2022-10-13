@@ -737,6 +737,37 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
             </div>
         </form>
         <!-------------------------------------------MODAL EDITAR FIN ------------------------------------------------------>
+        <!-------------------------------------------MODAL EDITAR------------------------------------------------------>
+
+        <form id="addsubtareaojt" class="form-horizontal" action="" method="POST" style="text-transform: uppercase;">
+            <div class="modal fade" id="addsubojt" tabindex="-1" role="dialog" aria-labelledby="editarAccesosLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 style="font-size: 20px;" class="modal-title" id="editarAccesosLabel">AGREGAR SUBTAREA</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="hidden" id="idtarpre" name="idtarpre">
+                                <div class="col-sm-12">
+                                    <label>DESCRIPCIÓN DE TAREA PRINCIPAL OJT</label>
+                                    <textarea type="text" onkeyup="mayus(this);" class="form-control" id="ojtarea" name="ojtarea"></textarea>
+                                </div>
+                            </div>
+                            <h5><i class="fa fa-warning text-blue"></i><u> Aceptar! cuando ya esta seguro de los cambios.</u></h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="gurdeditp()" class="btn btn-primary">ACEPTAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-------------------------------------------MODAL EDITAR FIN ------------------------------------------------------>
 
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -1206,7 +1237,7 @@ $contador++;
                 title: "ESPECIALIDAD OJT"
             },
             {
-                title: "TAREAS PRICIALES"
+                title: "TAREAS PRINCIPALES"
             },
             {
                 title: "ACCIONES"

@@ -236,7 +236,6 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function() {
     var table = $('#example').DataTable({
-
         "language": {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -244,22 +243,14 @@ $(document).ready(function() {
         "order": [
             [7, "DESC"]
         ],
-        "ajax": "../php/curvencidos.php",
+        "ajax": "../php/curvencidosdire.php",
         "columnDefs": [{
-          //  "targets": -1,
-           // "data": null,
-            //"defaultContent": ""
-
         }]
     });
-
     detalles("#example tbody", table);
-
     agrinspctor("#example tbody", table);
 
-
     $('#example thead tr').clone(true).appendTo('#example thead');
-
     $('#example thead tr:eq(1) th').each(function(i) {
         var title = $(this).text(); //es el nombre de la columna
         $(this).html('<input type="text"  placeholder="Buscar" />');
@@ -273,7 +264,6 @@ $(document).ready(function() {
             }
         });
     });
-
 
     $('#example tbody').on('click', 'a', function() {
         var data = table.row($(this).parents('tr')).data();
@@ -310,7 +300,8 @@ $(document).ready(function() {
                         "*" + obj.data[i].proceso +
                         "*" + obj.data[i].idinsp +
                         "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
+                        "*" + obj.data[i].classroom +
+                        "*" + obj.data[i].grupo;
 
                     var d = cursos.split("*");
 
@@ -336,6 +327,7 @@ $(document).ready(function() {
                     $("#Dtall #idinst").val(d[11]);
                     $("#Dtall #sede").val(d[12]);
                     $("#Dtall #modalidads").val(d[14]);
+                    $("#Dtall #grupoci").val(d[20]);
                     if (d[13] == '0') {
                         $("#Dtall #linkcur").val(d[13]);
                         $("#Dtall #contracur").val(d[18]);

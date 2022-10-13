@@ -681,7 +681,6 @@ function perfil(gstIdper) {
     opendellcursins(id_perinsp);
     //FUNCION DE PORCENTAJES 27062022
     porcenperso(id_perinsp);
-
     $.ajax({
         url: '../php/conPerson.php',
         type: 'POST'
@@ -692,35 +691,25 @@ function perfil(gstIdper) {
         //03092021
         for (p = 0; p < res.length; p++) {
             if (obj.data[p].gstIdper == gstIdper) {
-
-
                 personal = obj.data[p].gstIdper + '*' + obj.data[p].gstIDCat + '*' + obj.data[p].gstEvalu + '*' + obj.data[p].gstCatgr;
-
                 var d = personal.split("*");
                 gstIdper = d[0];
                 gstIDCat = d[1];
                 gstEvalu = d[2];
                 gstCatgr = d[3];
-
                 consultaCurso(gstIdper + '*' + gstIDCat);
                 $("#ocultar1").show();
                 $("#ocultar2").show();
-
                 $.ajax({
                     url: '../php/conDatosPersonal.php',
                     type: 'POST'
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
                     var res = obj.data;
-
                     // alert(obj.data[gstIdper].gstCorro);
-
                     for (i = 0; i < res.length; i++) {
-
                         if (obj.data[i].gstIdper == gstIdper) {
-
                             // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
-
                             $("#Evalua #gstIDCate").val(obj.data[i].gstIDCat);
                             $("#Evalua #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
                             // $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
@@ -751,18 +740,13 @@ function perfil(gstIdper) {
                             $("#Dtall #gstCasa").val(obj.data[i].gstCasa);
                             $("#Dtall #gstClulr").val(obj.data[i].gstClulr);
                             $("#Dtall #gstExTel").val(obj.data[i].gstExTel);
-
-
                             $("#Pusto #adscripcion").val(obj.data[i].adscripcion);
                             // $("#Pusto #subdir1").val(obj.data[i].gstAcReg); //area de adscripción modificar 
-
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
-
                             $("#Pusto #sgtCrhnt").val(obj.data[i].sgtCrhnt);
                             $("#Pusto #gstRusp").val(obj.data[i].gstRusp);
                             $("#Pusto #gstPlaza").val(obj.data[i].gstPlaza);
-
                             //alert(obj.data[i].gstIdpst);                           
                             $("#Pusto #Codig").val(obj.data[i].gstCodig);
                             $("#Pusto #Nivel").val(obj.data[i].gstNivel);
@@ -788,22 +772,17 @@ function perfil(gstIdper) {
                             $("#Pusto #subdir1").val(obj.data[i].descripsub); //adscripcion29092021
                             $("#Pusto #departam").val(obj.data[i].descripdep);
                             //$("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
                         }
                     }
                 })
-
                 $.ajax({
                     url: '../php/conPerson.php',
                     type: 'POST'
                 }).done(function(resp) {
                     obj = JSON.parse(resp);
                     var res = obj.data;
-
                     for (i = 0; i < res.length; i++) {
-
                         if (obj.data[i].gstIdper == gstIdper) {
-
                             // $("#Dtall #AgstIdper").val(obj.data[i].gstIdper);
                             $("#Evalúa #evalu_categr").val(obj.data[i].gstCatgr);
                             $("#Evalúa #evalu_nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
@@ -819,7 +798,6 @@ function perfil(gstIdper) {
                             $("#Dtall #gstCurp").val(obj.data[i].gstCurp);
                             $("#Dtall #gstRfc").val(obj.data[i].gstRfc);
                             $("#Dtall #gstisst").val(obj.data[i].gstisst);
-
                             $("#Dtall #gstNpspr").val(obj.data[i].gstNpspr);
                             $("#Dtall #gstPsvig").val(obj.data[i].gstPsvig);
                             $("#Dtall #gstVisa").val(obj.data[i].gstVisa);
@@ -837,7 +815,6 @@ function perfil(gstIdper) {
                             $("#Dtall #gstCorro").val(obj.data[i].gstCorro); // correo 1
                             $("#Dtall #gstCinst").val(obj.data[i].gstCinst); // correo 2
                             $("#Dtall #gstSpcID").val(obj.data[i].gstSpcID); // correo 3
-
                             $("#Pusto #gstSigID").val(obj.data[i].gstSigID); // Observaciones
                             $("#Pusto #pstIdper").val(obj.data[i].gstIdper);
                             $("#Pusto #gstNmpld").val(obj.data[i].gstNmpld);
@@ -852,17 +829,13 @@ function perfil(gstIdper) {
                             $("#Pusto #gstCinst").val(obj.data[i].gstCinst);
                             $("#Pusto #gstFeing").val(obj.data[i].gstFeing);
                             $("#Pusto #gstIDara").val(obj.data[i].gstIDara);
-
                             $("#Pusto #gstIDuni").val(obj.data[i].gstIDuni);
                             $("#Pusto #gstAcReg").val(obj.data[i].gstAcReg);
-
                             $("#Pusto #gstAreID").val(obj.data[i].gstAreID); //ID área
-
                             //        alert(obj.data[i].gstAreID);
                             $("#Pusto #gstPstID").val(obj.data[i].gstPstID); //ID puesto
                             $("#Pusto #gstSpcID").val(obj.data[i].gstSpcID); //ID especialidad
                             //  $("#Pusto #gstSigID").val(obj.data[i].gstSigID);//ID siglas
-
                             $("#Pusto #AcReg").val(obj.data[i].gstComnd); //comandancia
                             $("#Pusto #IDuni").val(obj.data[i].gstIDuni);
                             ////////////////////APARTADO PARA ADJUNTAR ARCHIVOS///////////////////////////////
@@ -870,307 +843,282 @@ function perfil(gstIdper) {
                             $("#agregardoc #gstNemple").val(obj.data[i].gstNmpld);
                             $("#actualizardoc #actNemple").val(obj.data[i].gstNmpld);
                             $("#modaldocprofesion #DgstNemp").val(obj.data[i].gstNmpld);
-
                         }
                     }
                 })
-
                 $.ajax({
-                    url: '../php/conSpcialidad.php',
-                    type: 'POST'
-                }).done(function(resp) {
-                    obj = JSON.parse(resp);
-                    var res = obj.data;
-                    var ss = 0;
-
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead></thead><tbody>';
-                    for (s = 0; s < res.length; s++) {
-                        ss++;
-
-                        if (obj.data[s].gstIDper == gstIdper) {
-                            gstID = obj.data[s].gstIDper;
-                            if (obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 25 && obj.data[s].gstIdcat != 26 && obj.data[s].gstIdcat != 29 && obj.data[s].gstIdcat != 31) {
-                                html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td></tr>";
+                        url: '../php/conSpcialidad.php',
+                        type: 'POST'
+                    }).done(function(resp) {
+                        obj = JSON.parse(resp);
+                        var res = obj.data;
+                        var ss = 0;
+                        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead></thead><tbody>';
+                        for (s = 0; s < res.length; s++) {
+                            ss++;
+                            if (obj.data[s].gstIDper == gstIdper) {
+                                gstID = obj.data[s].gstIDper;
+                                if (obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 24 && obj.data[s].gstIdcat != 25 && obj.data[s].gstIdcat != 26 && obj.data[s].gstIdcat != 29 && obj.data[s].gstIdcat != 31) {
+                                    html += "<tr><td>" + ss + "</td><td>" + obj.data[s].gstCatgr + "</td></tr>";
+                                }
+                                // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
                             }
-                            // <td><a class='btn btn-default'  href='" + /*obj.data[H].gstDocmt*/ + "' target='_blanck'><span class='fa fa-file-pdf-o' style='color:#f71505; cursor: pointer;' ></span></a>  <a type='button' onclick='actEstudio(" + '"' + gstID + '"' + ")' class='btn btn-default' data-toggle='modal' data-target='#modalestudio'><i class='fa fa-edit text-info'></i></a></td>
                         }
-                    }
-                    html += '</tbody></table></div></div></div>';
-                    $("#especialidades").html(html);
-                })
+                        html += '</tbody></table></div></div></div>';
+                        $("#especialidades").html(html);
+                    })
+                    /*$.ajax({
+                        url: '../php/gesCurso.php',
+                        type: 'POST'
+                    }).done(function(resp) {
+                        obj = JSON.parse(resp);
+                        var res = obj.data;
+                        var x = 0;
+                        programados = 0;
+                        programados1 = 0;
+                        DECLINADOS = 0;
+                        FINALIZADO = 0;
+                        CANCELADO = 0;
+                        OTROS = 0;
+                        insp = 0;
+                        //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE PERSONAL 11012022
+                        html = '<div class="dataTables_wrapper form-inline dt-bootstrap rounded table-responsive"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
+                        //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CHECK LIST DOCUMENTACIÓN
+                        $(document).ready(function() {
+                            $("#checkrh tr").on('click', function() {
+                                var toma1 = "",
+                                    toma2 = ""; //declaramos las columnas NOMBRE DEL CURSO
+                                toma1 += $(this).find('td:eq(0)').html(); //titulo del doc. 
+                                toma2 += $(this).find('td:eq(0)').html(); //titulo del doc. 
 
+                                $("#docadjunto").text(toma1); // Label del titulo del documento actualizar
+                                $("#titledoc").text(toma2); // Label del titulo del documento eliminar
+                                //alert(toma2)
 
-                /*$.ajax({
-                    url: '../php/gesCurso.php',
-                    type: 'POST'
-                }).done(function(resp) {
-                    obj = JSON.parse(resp);
-                    var res = obj.data;
-                    var x = 0;
-
-                    programados = 0;
-                    programados1 = 0;
-                    DECLINADOS = 0;
-                    FINALIZADO = 0;
-                    CANCELADO = 0;
-                    OTROS = 0;
-                    insp = 0;
-
-
-                    //TODO AQUÍ ES LO QUE LLEVA TABLA DE DETTALLE PERSONAL 11012022
-                    html = '<div class="dataTables_wrapper form-inline dt-bootstrap rounded table-responsive"><div class="row"> <div class="col-sm-12"><table id="curso" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th>FOLIO</th><th><i></i>TÍTULO</th><th><i></i>TIPO</th><th><i></i>INICIO</th><th><i></i>HORA</th><th><i></i>FINAL</th><th><i></i>ASISTENCIA</th><th><i></i>VIGENCIA</th><th><i></i>PROCESO</th><th style="display:none;"><i></i>DOCUMENTO</th><th style="display:none;"><i></i>asitencia</th></tr></thead><tbody>';
-                    //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CHECK LIST DOCUMENTACIÓN
-                    $(document).ready(function() {
-                        $("#checkrh tr").on('click', function() {
-                            var toma1 = "",
-                                toma2 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                            toma1 += $(this).find('td:eq(0)').html(); //titulo del doc. 
-                            toma2 += $(this).find('td:eq(0)').html(); //titulo del doc. 
-
-                            $("#docadjunto").text(toma1); // Label del titulo del documento actualizar
-                            $("#titledoc").text(toma2); // Label del titulo del documento eliminar
-                            //alert(toma2)
-
+                            });
                         });
-                    });
+                        //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CURSOS DETALLE PERSONAS
+                        $(document).ready(function() {
+                            $("#curso tr").on('click', function() {
+                                var toma1 = "",
+                                    toma2 = "",
+                                    toma3 = ""; //declaramos las columnas NOMBRE DEL CURSO
+                                toma1 += $(this).find('td:eq(2)').html(); //NOMBRE DEL CURSO  
+                                toma2 += $(this).find('td:eq(10)').html(); //PDF
+                                toma3 += $(this).find('td:eq(11)').html(); //PDF                    
+                                $("#nombredeclinp").text(toma1); // Label esta en valor.php
+                                $("#declinpdfp").attr('href', toma2); // Label esta en valor.php
+                                $("#motivodp").text('Motivo:' + toma3); // Label esta en valor.php
+                                $("#otrosdp").text(toma2); // Label esta en valor.php
 
-                    //TRAE LOS DATOS DE CADA REGISTRO DE LA TABLA CURSOS DETALLE PERSONAS
-                    $(document).ready(function() {
-                        $("#curso tr").on('click', function() {
-                            var toma1 = "",
-                                toma2 = "",
-                                toma3 = ""; //declaramos las columnas NOMBRE DEL CURSO
-                            toma1 += $(this).find('td:eq(2)').html(); //NOMBRE DEL CURSO  
-                            toma2 += $(this).find('td:eq(10)').html(); //PDF
-                            toma3 += $(this).find('td:eq(11)').html(); //PDF                    
-                            $("#nombredeclinp").text(toma1); // Label esta en valor.php
-                            $("#declinpdfp").attr('href', toma2); // Label esta en valor.php
-                            $("#motivodp").text('Motivo:' + toma3); // Label esta en valor.php
-                            $("#otrosdp").text(toma2); // Label esta en valor.php
-
-                            if (toma3 == 'OTROS') {
-                                document.getElementById('otrosdp').style.display = '';
-                                document.getElementById('declinpdfp').style.display = 'none';
-                            }
-                            if (toma3 == 'TRABAJO') {
-                                document.getElementById('otrosdp').style.display = 'none';
-                                document.getElementById('declinpdfp').style.display = '';
-                            }
-                            if (toma3 == 'ENFERMEDAD') {
-                                document.getElementById('otrosdp').style.display = 'none';
-                                document.getElementById('declinpdfp').style.display = '';
-                            }
+                                if (toma3 == 'OTROS') {
+                                    document.getElementById('otrosdp').style.display = '';
+                                    document.getElementById('declinpdfp').style.display = 'none';
+                                }
+                                if (toma3 == 'TRABAJO') {
+                                    document.getElementById('otrosdp').style.display = 'none';
+                                    document.getElementById('declinpdfp').style.display = '';
+                                }
+                                if (toma3 == 'ENFERMEDAD') {
+                                    document.getElementById('otrosdp').style.display = 'none';
+                                    document.getElementById('declinpdfp').style.display = '';
+                                }
+                            });
                         });
-                    });
-
-                    for (ii = 0; ii < res.length; ii++) {
-                        x++;
-
-                        gstVignc = obj.data[ii].gstVignc * 12;
-                        vence = gstVignc - 6;
-
-                        //oi = '2023/01/28';
-                        //var hoy = new Date(oi);
-
-                        var hoy = new Date();
-                        var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
-
-                        var termino = new Date(obj.data[ii].fechaf);
-                        var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-                        finaliza.setMonth(finaliza.getMonth() + gstVignc);
-                        termino.setMonth(termino.getMonth() + vence);
-                        termino.setDate(termino.getDate() + 1);
-
-                        var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
-
-                        if (factual >= finaliza) {
-                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
-                            //console.log(status);
-                        } else
-                        if (factual <= ftermino) {
-                            status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
-                            //console.log(status);
-                        } else
-                        if (factual >= ftermino) {
-                            status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>POR VENCER</span>";
-                            //console.log(status);
-                        }
-                        if (obj.data[ii].gstTipo == "INDUCCIÓN") { //UNICA VEZ EN ESTATUS "INDUCCIÓN"
-                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
-                            //console.log(status);
-                        }
-
-                        if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
-                            status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
-                            //console.log(status);
-                        }
-                        if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
-
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
-                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
-                        } else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
-                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-
-                        } else if (obj.data[ii].confirmar == 'OTROS') { //DECLINADO POR OTROS
-                            confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
-                            status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                            proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
-                        }
-
-                        if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
-                            confirmar = "<span title='Confirma su asistencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
-                        }
-
-                        if (obj.data[ii].confirmar == 'CONFIRMAR') {
-                            status1 = "<span style='font-weight: bold; color: grey;'>PENDIENTE</span>";
-
-                        } else if (obj.data[ii].proceso == 'CANCELADO') {
-                            status1 = "<span style='font-weight: bold; color: red;'>CANCELADO</span>";
-
-                        }
-                        if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
-
-                            if (obj.data[ii].evaluacion == 'NULL') {
-                                valua = 'FALTA EVALUACIÓN';
-                                proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
-                            } else if (obj.data[ii].evaluacion > 79) {
-                                valua = 'APROBO';
-                                proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
-                            } else {
-                                valua = 'NO APROBO';
-                                proc12 = "<span style='background-color: red; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
-
+                        for (ii = 0; ii < res.length; ii++) {
+                            x++;
+                            gstVignc = obj.data[ii].gstVignc * 12;
+                            vence = gstVignc - 6;
+                            //oi = '2023/01/28';
+                            //var hoy = new Date(oi);
+                            var hoy = new Date();
+                            var factual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+                            var termino = new Date(obj.data[ii].fechaf);
+                            var finaliza = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
+                            finaliza.setMonth(finaliza.getMonth() + gstVignc);
+                            termino.setMonth(termino.getMonth() + vence);
+                            termino.setDate(termino.getDate() + 1);
+                            var ftermino = new Date(termino.getFullYear(), termino.getMonth(), termino.getDate());
+                            if (factual >= finaliza) {
+                                status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+                                //console.log(status);
+                            } else
+                            if (factual <= ftermino) {
+                                status = "<span style='background-color: green; font-size: 14px;' class='badge'>VIGENTE</span>";
+                                //console.log(status);
+                            } else
+                            if (factual >= ftermino) {
+                                status = "<span style='background-color: dangerous; font-size: 14px;' class='badge'>POR VENCER</span>";
+                                //console.log(status);
+                            }
+                            if (obj.data[ii].gstTipo == "INDUCCIÓN") { //UNICA VEZ EN ESTATUS "INDUCCIÓN"
+                                status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                                //console.log(status);
                             }
 
-                        } else if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                            proc12 = "<span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span>";
-
-                            //COMPARACION DE FECHAS 
-                            feccomar = document.getElementById('fecomp1').value;
-                            if (obj.data[ii].fcurso == feccomar && obj.data[ii].confirmar == 'CONFIRMADO') {
-                                proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
+                            if (obj.data[ii].gstTipo == "BÁSICOS/INICIAL") { // UNICA VEZ EN ESTATUS "BASICOS/INICIAL"
+                                status = "<span style='background-color:#3C8DBC; font-size: 14px;' class='badge'>UNICA VEZ</span>";
+                                //console.log(status);
                             }
-                            if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                                status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
+                            if (obj.data[ii].confirmar == 'TRABAJO') { //DECLINADO POR TRABAJO
+
+                                confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                                status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                                proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+
+                            } else if (obj.data[ii].confirmar == 'ENFERMEDAD') { //DECLINADO POR ENFERMEDAD
+                                confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                                status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                                proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+
+                            } else if (obj.data[ii].confirmar == 'OTROS') { //DECLINADO POR OTROS
+                                confirmar = "<a type'button' title='Ver detalles' data-toggle='modal' data-target='#modal-declinadop' style='font-weight: bold; color: #BB2303; cursor: pointer;'>DECLINADO</a>";
+                                status = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
+                                proc12 = "<span style='background-color: #BB2303; font-size: 14px;' class='badge'>DECLINADO</span>";
                             }
-                        }
-                        // FIN COMPARACIÓN FECHAS
 
-                        if (obj.data[ii].idinsp == gstIdper) {
-                            if (obj.data[ii].evaluacion >= '0') {
+                            if (obj.data[ii].confirmar == 'CONFIRMADO') { // ACEPTA LA CONVOCATORIA DEL CURSO
+                                confirmar = "<span title='Confirma su asistencia' style='font-weight: bold; color: green;'>CONFIRMADO</span>";
+                            }
 
-                                year = obj.data[ii].fcurso.substring(0, 4);
-                                month = obj.data[ii].fcurso.substring(5, 7);
-                                day = obj.data[ii].fcurso.substring(8, 10);
-                                Finicio = day + '/' + month + '/' + year;
+                            if (obj.data[ii].confirmar == 'CONFIRMAR') {
+                                status1 = "<span style='font-weight: bold; color: grey;'>PENDIENTE</span>";
 
-                                year = obj.data[ii].fechaf.substring(0, 4);
-                                month = obj.data[ii].fechaf.substring(5, 7);
-                                day = obj.data[ii].fechaf.substring(8, 10);
-                                Final = day + '/' + month + '/' + year;
+                            } else if (obj.data[ii].proceso == 'CANCELADO') {
+                                status1 = "<span style='font-weight: bold; color: red;'>CANCELADO</span>";
 
-                                //LISTA DE CURSOS PERSONAS
-                                idlista = obj.data[ii].idmstr;
+                            }
+                            if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
 
-                                if (obj.data[ii].confirmar == 'CONFIRMAR') { //POR CONFIRMAR CURSO
-                                    html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
+                                if (obj.data[ii].evaluacion == 'NULL') {
+                                    valua = 'FALTA EVALUACIÓN';
+                                    proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+                                } else if (obj.data[ii].evaluacion > 79) {
+                                    valua = 'APROBO';
+                                    proc12 = "<span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
                                 } else {
-                                    html += "<tr><td>" + x + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td><td style='display:none;'>" + obj.data[ii].justifi + "</td><td style='display:none;'>" + obj.data[ii].confirmar + "</td></tr>";
+                                    valua = 'NO APROBO';
+                                    proc12 = "<span style='background-color: red; font-size: 14px;' class='badge'>FINALIZADO<br>" + valua + "</span>";
+
                                 }
 
+                            } else if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                proc12 = "<span style='background-color: orange; font-size: 14px;' class='badge'>PENDIENTE</span>";
+
+                                //COMPARACION DE FECHAS 
+                                feccomar = document.getElementById('fecomp1').value;
+                                if (obj.data[ii].fcurso == feccomar && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                    proc12 = "<span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span>";
+                                }
                                 if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                                    programados++;
+                                    status1 = "<span style='font-weight: bold; color: orange;'>PENDIENTE</span>";
                                 }
-                                if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
-                                    programados1++;
-                                }
-
-                                if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
-                                    FINALIZADO++;
-                                }
-                                if (obj.data[ii].confirmar == 'TRABAJO') {
-                                    CANCELADO++;
-                                }
-                                if (obj.data[ii].confirmar == 'ENFERMEDAD') {
-                                    DECLINADOS++;
-                                }
-                                if (obj.data[ii].confirmar == 'OTROS') {
-                                    OTROS++;
-                                }
-                                if (obj.data[ii].estado == '0') {
-                                    insp++;
-                                }
-
-                                document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
-                                document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
-                                document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
-                                //PORCENTAJE DE COMPLETADOS
-
-                                var porcentaje1 = document.getElementById("porcentaje11");
-                                resultado3 = ((FINALIZADO * 100) / insp);
-                                var resFinal3 = resultado3.toFixed(0);
-                                porcentaje1.style.width = (resFinal3 + "%");
-                                porcentaje11.innerHTML = (resFinal3 + "%");
-                                document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
-
-                                // PORCENTAJE DE PROGRAMADOS
-                                var porcentaje12 = document.getElementById("porcentaje12");
-                                resultado = (((programados + programados1) * 100) / insp);
-
-                                var resFinal = resultado.toFixed(0);
-                                porcentaje12.style.width = (resFinal + "%");
-                                porcentaje12.innerHTML = (resFinal + "%"); //VALOR
-                                document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
-
-                                // PORCENTAJE DE CANCELADO
-                                var porcentaje13 = document.getElementById("porcentaje13");
-                                resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
-                                var resFinal1 = resultado1.toFixed(0);
-
-                                porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
-                                porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
-                                document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
-
                             }
+                            // FIN COMPARACIÓN FECHAS
+                            if (obj.data[ii].idinsp == gstIdper) {
+                                if (obj.data[ii].evaluacion >= '0') {
+
+                                    year = obj.data[ii].fcurso.substring(0, 4);
+                                    month = obj.data[ii].fcurso.substring(5, 7);
+                                    day = obj.data[ii].fcurso.substring(8, 10);
+                                    Finicio = day + '/' + month + '/' + year;
+
+                                    year = obj.data[ii].fechaf.substring(0, 4);
+                                    month = obj.data[ii].fechaf.substring(5, 7);
+                                    day = obj.data[ii].fechaf.substring(8, 10);
+                                    Final = day + '/' + month + '/' + year;
+
+                                    //LISTA DE CURSOS PERSONAS
+                                    idlista = obj.data[ii].idmstr;
+
+                                    if (obj.data[ii].confirmar == 'CONFIRMAR') { //POR CONFIRMAR CURSO
+                                        html += "<tr><td>" + obj.data[ii].gstIdlsc + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td><span>" + status1 + "</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>PENDIENTE</span></td><td><span style='background-color: grey; font-size: 14px;' class='badge'>EN ESPERA</span></td></tr>";
+                                    } else {
+                                        html += "<tr><td>" + x + "</td><td>" + obj.data[ii].codigo + "</td><td>" + obj.data[ii].gstTitlo + "</td><td>" + obj.data[ii].gstTipo + "</td><td>" + Finicio + "</td><td>" + obj.data[ii].hcurso + "</td><td>" + Final + "</td><td>" + confirmar + "</td><td>" + status + "</td><td>" + proc12 + "</td><td style='display:none;'>" + obj.data[ii].justifi + "</td><td style='display:none;'>" + obj.data[ii].confirmar + "</td></tr>";
+                                    }
+
+                                    if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                        programados++;
+                                    }
+                                    if (obj.data[ii].proceso == 'PENDIENTE' && obj.data[ii].confirmar == 'CONFIRMAR') {
+                                        programados1++;
+                                    }
+
+                                    if (obj.data[ii].proceso == 'FINALIZADO' && obj.data[ii].confirmar == 'CONFIRMADO') {
+                                        FINALIZADO++;
+                                    }
+                                    if (obj.data[ii].confirmar == 'TRABAJO') {
+                                        CANCELADO++;
+                                    }
+                                    if (obj.data[ii].confirmar == 'ENFERMEDAD') {
+                                        DECLINADOS++;
+                                    }
+                                    if (obj.data[ii].confirmar == 'OTROS') {
+                                        OTROS++;
+                                    }
+                                    if (obj.data[ii].estado == '0') {
+                                        insp++;
+                                    }
+
+                                    document.getElementById("programado").innerHTML = (programados + programados1) + '/' + insp;
+                                    document.getElementById("FINALIZADO").innerHTML = FINALIZADO + '/' + insp;
+                                    document.getElementById("CANCELADO").innerHTML = (CANCELADO + DECLINADOS + OTROS) + '/' + insp;
+                                    //PORCENTAJE DE COMPLETADOS
+
+                                    var porcentaje1 = document.getElementById("porcentaje11");
+                                    resultado3 = ((FINALIZADO * 100) / insp);
+                                    var resFinal3 = resultado3.toFixed(0);
+                                    porcentaje1.style.width = (resFinal3 + "%");
+                                    porcentaje11.innerHTML = (resFinal3 + "%");
+                                    document.getElementById("porcentaje11").title = porcentaje11.innerHTML //title de porcentajes
+
+                                    // PORCENTAJE DE PROGRAMADOS
+                                    var porcentaje12 = document.getElementById("porcentaje12");
+                                    resultado = (((programados + programados1) * 100) / insp);
+
+                                    var resFinal = resultado.toFixed(0);
+                                    porcentaje12.style.width = (resFinal + "%");
+                                    porcentaje12.innerHTML = (resFinal + "%"); //VALOR
+                                    document.getElementById("porcentaje12").title = porcentaje12.innerHTML //title de porcentajes
+
+                                    // PORCENTAJE DE CANCELADO
+                                    var porcentaje13 = document.getElementById("porcentaje13");
+                                    resultado1 = (((CANCELADO + DECLINADOS + OTROS) * 100) / insp);
+                                    var resFinal1 = resultado1.toFixed(0);
+
+                                    porcentaje13.style.width = (resFinal1 + "%"); // DETALLE INSPECTOR
+                                    porcentaje13.innerHTML = (resFinal1 + "%"); //VALOR
+                                    document.getElementById("porcentaje13").title = porcentaje13.innerHTML //title de porcentajes
+
+                                }
+                            }
+                            // TODO AQUI TERMINA
                         }
-                        // TODO AQUI TERMINA
-                    }
-                    html += '</tbody></table></div></div></div>';
-                    $("#cursos").html(html);
-                })
-
-
-                $.ajax({
-                    url: '../php/conEvalu.php',
-                    type: 'POST'
-                }).done(function(resp) {
-                    obj = JSON.parse(resp);
-                    var res = obj.data;
-                    var x = 1;
-
-
-                    // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
-                    html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CUMPLE</th><th style="width:1%;"><i></i>SI</th><th style="width:1%"><i></i>NO</th></tr></thead><tbody>';
-                    for (E = 0; E < res.length; E++) {
-                        x++;
-
-                        //if(obj.data[E].gstCatga == gstIDCat){
-
-                        //if(obj.data[E].gstOrden==1){    
-                        html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
-                        //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
-                        // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
-                        //}<td><input id='comntr' name='comntr[]'> </td>
-                        //}
-                    }
-                    html += '</tbody></table></div>';
-                    $("#evlacns").html(html);
-                })*/
+                        html += '</tbody></table></div></div></div>';
+                        $("#cursos").html(html);
+                    })
+                    $.ajax({
+                        url: '../php/conEvalu.php',
+                        type: 'POST'
+                    }).done(function(resp) {
+                        obj = JSON.parse(resp);
+                        var res = obj.data;
+                        var x = 1;
+                        // html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>PARAMETROS</th><th><i></i>REQUISITOS</th><th style="width:5%"><i></i>CUMPLE</th><th><i></i>COMENTARIOS</th><th><i></i>EVALUADOR</th></tr></thead><tbody>';
+                        html = '<div class="col-sm-12"><table id="evlacn" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>CUMPLE</th><th style="width:1%;"><i></i>SI</th><th style="width:1%"><i></i>NO</th></tr></thead><tbody>';
+                        for (E = 0; E < res.length; E++) {
+                            x++;
+                            //if(obj.data[E].gstCatga == gstIDCat){
+                            //if(obj.data[E].gstOrden==1){    
+                            html += "<input type='hidden' name='gstInspr[]' id='gstInspr' value='" + gstIdper + "'/> <tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='" + obj.data[E].gstIdprm + "'/><td>" + obj.data[E].gstOrden + "</td><td>" + obj.data[E].gstPrmtr + "</td><td style='text-align: center;'> <input type='checkbox' value='SI' name='actual[]' /> </td> <td style='text-align: center;'> <input type='checkbox' value='NO' name='actual[]' /></td></tr>";
+                            //}else{ <span class='label label-warning'>PENDIENTE</span> <span class='label label-success'>CUMPLIO</span> <span class='label label-danger'>NO CUMPLE</span>
+                            // html +="<tr><input type='hidden' name='gstIdprm[]' id='gstIdprm' value='"+obj.data[E].gstIdprm+"'/><td>"+obj.data[E].gstOrden+"</td><td>"+obj.data[E].gstPrmtr+"</td><td>"+obj.data[E].gstObjtv+"</td><td> <select style='width: 100%' id='actual' name='actual[]' onchange='seleccionado()' ><option value='0'></option><option value='SI'>SI</option><option value='NO'>NO</option></select></td><td><span class='label label-warning' id='PE'>PENDIENTE</span> <span class='label label-success' id='SI' style='display:none;'>CUMPLIO</span> <span class='label label-danger' id='NO' style='display:none;'>NO CUMPLE</span></td><td><input id='comntr' name='comntr[]'> </td><td><input id='eval' name='eval[]' value='1'> </td></tr>";     
+                            //}<td><input id='comntr' name='comntr[]'> </td>
+                            //}
+                        }
+                        html += '</tbody></table></div>';
+                        $("#evlacns").html(html);
+                    })*/
             }
         }
     })
@@ -1178,14 +1126,10 @@ function perfil(gstIdper) {
     $("#gstIdperAct").val(gstIdper);
     $("#gstIdperEli").val(gstIdper);
     // $("#arcIdperEli").val(gstIdper); 
-
     consultarDoc(gstIdper);
     consultarDocRes(gstIdper);
     constudios(gstIdper);
     conprofesion(gstIdper);
-
-
-
 }
 ////////////////////CONSULTAR ARCHIVO///////////////////////////
 

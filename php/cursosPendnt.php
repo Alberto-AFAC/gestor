@@ -11,15 +11,12 @@
 	}else{
 		while($data = mysqli_fetch_assoc($resultado)){
 			$contador++;
-
-
 		ini_set('date.timezone','America/Mexico_City');
 		$actual = date("Y-m-d"); 
 		$hactual = date('H:i:s');
-		$fin = date("d-m-Y",strtotime($data["final"]."+ 1 days")); 
-
-		 $factual = strtotime($actual);
-		 $fcurso = strtotime($fin);
+		$fin = date("d-m-Y",strtotime($data["final"]."+ 6 days")); 
+		$factual = strtotime($actual);
+		$fcurso = strtotime($fin);
 
 
 //		 echo '('.$factual.'<'.$fcurso.')'; 

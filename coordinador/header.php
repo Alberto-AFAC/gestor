@@ -120,6 +120,11 @@ unset($_SESSION['consulta']);
             <!-- <li><a href="estadisticas.php"><i class="fa fa-pie-chart"></i> Estadisticas Generales</a></li> -->
             <li><a href="seguimiento"><i class="fa ion-easel"></i> Seguimiento y control</a></li>            
             <li><a href="niveldesatis"><i class="fa fa-line-chart"></i>Nivel de satisfacción</a></li>
+            <?php  if($datos[1] == 'JESSICA BERENICE' && $datos[2] == 'CASTAÑEDA GUTIERREZ'||$datos[1] == 'VICTOR MANUEL' && $datos[2] == 'SANCHEZ DOMINGUEZ'){ ?>
+            <li><a id="exportcurso" style="display: ;" title="Historial de Constancias, Certificados y Diplomas" href="exporcurs"><i class="fa fa-certificate"></i>Exportar/Base Cursos</a></li>
+            <?php }else{ ?>
+
+            <?php } ?>
             <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
           </ul>
         </li>

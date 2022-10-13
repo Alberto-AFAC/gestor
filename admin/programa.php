@@ -183,12 +183,12 @@
                                                           multiple="multiple" data-placeholder="SELECCIONE INSTRUCTOR"
                                                           data-live-search="true">
                                                           <?php while($instructors = mysqli_fetch_row($instructor)):
-               if($instructors[3]==2){
-                $estado = "(EXTERNO)";
-    
-              }else{
-                $estado = "";
-              }?>
+                                                            if($instructors[3]==2){
+                                                                $estado = "(EXTERNO)";
+                                                            }else{
+                                                                $estado = "";
+                                                            }
+                                                        ?>
                                                           <option value="<?php echo $instructors[0]?>">
                                                               <?php echo $instructors[1].' '.$instructors[2].' '.$estado?>
                                                           </option>
@@ -209,45 +209,49 @@
                                                       <select type="text" class="form-control inputalta" id="modalidad"
                                                           name="modalidad" onChange="modalidades()">
                                                           <option value="0">ELEGIR UNA OPCIÓN</option>
-                                                          <option value="A DISTANCIA (E-LEARNNING)">A DISTANCIA (E-LEARNNING)</option>
+                                                          <option value="A DISTANCIA (E-LEARNNING)">A DISTANCIA
+                                                              (E-LEARNNING)</option>
                                                           <option value="AUTOGESTIVO">AUTOGESTIVO</option>
                                                           <option value="HIBRIDO">HIBRIDO</option>
                                                           <option value="PRESENCIAL">PRESENCIAL</option>
                                                       </select>
                                                   </div>
                                                   <!-- <div id="dismod" style="display: none;"> -->
-                                                      <div class="col-sm-4" id="camlink" name="camlink" style="display: none;">
-                                                          <label class="label2">LINK DE ACCESO</label>
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  <i class="fa fa-globe"></i>
-                                                              </div>
-                                                              <input type="url" onkeyup="mayus(this);"
-                                                                  class="form-control inputalta" id="link" name="link"
-                                                                  placeholder="URL ">
+                                                  <div class="col-sm-4" id="camlink" name="camlink"
+                                                      style="display: none;">
+                                                      <label class="label2">LINK DE ACCESO</label>
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon">
+                                                              <i class="fa fa-globe"></i>
                                                           </div>
+                                                          <input type="url" onkeyup="mayus(this);"
+                                                              class="form-control inputalta" id="link" name="link"
+                                                              placeholder="URL ">
                                                       </div>
-                                                      <div class="col-sm-4" id="camcontra" name="camcontra" style="display: none;">
-                                                          <label class="label2">CONTRASEÑA DE ACCESO</label>
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  <i class="fa fa-unlock-alt"></i>
-                                                              </div>
-                                                              <input type="password" class="form-control inputalta"
-                                                                  id="contracceso" name="contracceso">
+                                                  </div>
+                                                  <div class="col-sm-4" id="camcontra" name="camcontra"
+                                                      style="display: none;">
+                                                      <label class="label2">CONTRASEÑA DE ACCESO</label>
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon">
+                                                              <i class="fa fa-unlock-alt"></i>
                                                           </div>
+                                                          <input type="password" class="form-control inputalta"
+                                                              id="contracceso" name="contracceso">
                                                       </div>
-                                                      <div class="col-sm-4" id="camclass" name="camclass" style="display: none;"><br>
-                                                          <label class="label2">CLASS ROOM</label>
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  <i class="fa fa-globe"></i>
-                                                              </div>
-                                                              <input type="url" onkeyup="mayus(this);"
-                                                                  class="form-control inputalta" id="classroom"
-                                                                  name="classroom" placeholder="URL ">
+                                                  </div>
+                                                  <div class="col-sm-4" id="camclass" name="camclass"
+                                                      style="display: none;"><br>
+                                                      <label class="label2">CLASS ROOM</label>
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon">
+                                                              <i class="fa fa-globe"></i>
                                                           </div>
+                                                          <input type="url" onkeyup="mayus(this);"
+                                                              class="form-control inputalta" id="classroom"
+                                                              name="classroom" placeholder="URL ">
                                                       </div>
+                                                  </div>
                                                   <!-- </div> -->
 
                                                   <div id="disocl" style="display: none;" class="form-group">
@@ -255,9 +259,18 @@
                                                       <input type="hidden" name="contracceso" id="contracceso">
                                                       <input type="hidden" name="classroom" id="classroom">
                                                   </div>
-
+                                                  <div class="col-sm-4" id="grupinp" name="grupinp" style="display: ;">
+                                                      <label class="label2">GRUPO</label>
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon">
+                                                              <i class="fa fa-plus-circle"></i>
+                                                          </div>
+                                                          <input type="text" onkeyup="mayus(this);"
+                                                              class="form-control inputalta" id="grupociaac"
+                                                              name="grupociaac" placeholder="INGRESE EL GRUPO">
+                                                      </div>
+                                                  </div>
                                               </div>
-
                                               <div class="form-group">
                                                   <div class="col-sm-4">
                                                       <label class="label2">PARTICIPANTES DEL CURSO</label>
@@ -269,8 +282,6 @@
 
                                               <div class="form-group"><br>
                                                   <div class="col-sm-offset-0 col-sm-5">
-
-
                                                       <button type="button" id="buttonpro" style="font-size:16px"
                                                           class="btn btn-info altaboton"
                                                           onclick="curProgramar();">PROGRAMAR</button>
@@ -305,10 +316,6 @@
                                               </div>
                                           </form>
                                       </div>
-
-
-
-
                                   </div>
                                   <!-- /.tab-pane 2do panel-->
                                   <div class="tab-pane" id="timeline">
@@ -323,11 +330,9 @@
                       <!-- /.col -->
                   </div>
                   <!-- /.row -->
-
               </section>
               <!-- /.content -->
           </div>
-
           <?php include('dias.php'); ?>
           <!-- /.content-wrapper -->
           <footer class="main-footer">
