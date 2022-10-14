@@ -1,0 +1,89 @@
+<!-- <link rel="stylesheet" type="text/css" href="../datas/bootstrap.css"> -->
+<script src="../dist/jspdf/dist/jspdf.debug.js"></script>
+<script src="../dist/js/jspdf.plugin.autotable.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+<script type="text/javascript" async="" src="../datas/ga.js"></script>
+<script type="text/javascript" src="../datas/site.js"></script>
+<script type="text/javascript" src="../datas/dynamic.php" async=""></script>
+<script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
+<script type="text/javascript" language="javascript" src="../datas/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="../datas/dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
+<!-- Datatables -->
+<script type="text/javascript" src="../js/lisCurso.js"></script>
+<script type="text/javascript" class="init">
+    listPendient();
+    $(document).ready(function() {
+
+        var table = $('#lstPend').DataTable({
+
+            "responsive": true,
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior",
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+            },
+            fixedHeader: true
+        });
+
+        //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+        $('#lstPend thead tr').clone(true).appendTo('#lstPend thead');
+
+        $('#lstPend thead tr:eq(1) th').each(function(i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html('<input type="text"  placeholder="Buscar" />');
+
+            $('input', this).on('keyup change', function() {
+                if (table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+
+    });
+
+    // $('#data-table-inspectores thead tr').clone(true).appendTo( '#data-table-inspectores thead' );
+    // $('#data-table-inspectores thead tr:eq(1) th').each( function (i) {
+    //     var title = $(this).text();
+    //     $(this).html( '<input type="text" placeholder="Buscar '+title+'" />' );
+
+    //     $( 'input', this ).on( 'keyup change', function () {
+    //         if ( tableGenerarReporte.column(i).search() !== this.value ) {
+    //           tableGenerarReporte
+    //                 .column(i)
+    //                 .search( this.value )
+    //                 .draw();
+    //         }
+    //     } );
+    // } );
+</script>
+<br>
+<div id="listaPend"></div>
+<style>
+    #listaPend input {
+        width: 75% !important;
+    }
+</style>
