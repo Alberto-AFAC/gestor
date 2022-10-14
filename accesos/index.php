@@ -394,7 +394,7 @@ session_start();
         // 7 INSPECTOR
         // 8 INSTRUCTOR
         // 9 NUEVO INGRESO
-["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>","<?php echo $data[2]?>",
+["<?php echo $data[1]?>", "<?php echo $data[10]." ".$data[11]?>", "<?php echo $data[33]?>","<?php echo $data[2]?>",
 
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos({$data[1]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 

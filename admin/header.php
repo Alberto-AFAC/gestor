@@ -251,4 +251,3 @@ include('../perfil/actualizar.php');
 <script type="text/javascript">
 administrador();
 </script>
-

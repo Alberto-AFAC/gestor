@@ -37,353 +37,372 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
 </head>
 
 <body>
-    <?php
-            $path = '../dist/img/header.jpg';
-            $type = pathinfo($path, PATHINFO_EXTENSION);
-            $data = file_get_contents($path);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-        ?>
+      <?php
+    $path = '../dist/img/header.jpg';
+    $type = pathinfo($path, PATHINFO_EXTENSION);
+    $data = file_get_contents($path);
+    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    ?>
     <div id="watermark">
         <img  src="../dist/img/back-image.jpg" height="95%" width="95%" />
     </div>
-    <img src="<?php echo $base64 ?>" width="95%" height="113%" />
-    <?php
-if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
-    echo "<div style='text-align: center;'>
-    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga la presente</p>
-    <p class='titulo-certificado'>{$con['gstCntnc']}</p>
-    <p class='nombre-persona'>Al C:. <span
-    class='nombre-pConstancia'>{$nombresCompletos}</span></p>
-    <p class='otorga'>Por haber participado en el curso:</p>
-    <p class='nombre-Constancia'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
-        class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
-        {$hoy}</span><br><br>
-        <div class='caja'>
-        <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
-        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
-</div>
+    <img src="<?php echo $base64 ?>" style="margin-top:-3em; margin-left:-2.9em; height:170px; width:109%;" />
+     <?php
+    if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr >= 100){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='otorga'>Otorga la presente</p>
+        <p class='titulo-certificado'>{$con['gstCntnc']}</p>
+        <p class='nombre-persona'>Al C:. <span
+        class='nombre-pConstancia'>{$nombresCompletos}</span></p>
+        <p class='otorga'>Por haber aprobado satisfactoriamente el curso:</p>
+        <p class='nombre-Constancia'>{$con['gstTitlo']}</p> 
+        <p class='nombre-grupo-max'><span style='color:black;'>Grupo:</span>{$con['codigo']}</p>
+        </p><span class='p-2'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br><br>
 
-<div style='padding-top: 9px; text-align: center;'>
-<div class='row'>
-    <div class='column left'>
-    </div>
-    <div class='column middle'>
-        <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-            class='p-2'>Secretaria de
-            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-            Adiestramiento de
-            Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-    </div>
-    <div class='column right'>
-    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
-    </div>
-</div>
-</div>
-
-
-    <p class='p-2'>Esta <span style='font-weight: bold;'><u>constancia</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
-           {$con['gstTitlo']}</span>, que a
-        continuación se enlistan:</p>
-    </div>
-    <div class='footer-constancia-gold'>
-    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-    class='p-2'>Secretaria de
-    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-    Adiestramiento de
-    Aviación Civil / SCT-AFAC-CIAAC</span>
-    </div>
-    <div class='footer-constancia'>
-    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
-    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
-    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-    </div>";
-}else if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr <= 99){
-    echo "<div style='text-align: center;'>
-    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga la presente</p>
-    <p class='titulo-certificado'>{$con['gstCntnc']}</p>
-    <p class='nombre-persona'>Al C:. <span
-    class='nombre-Constancia-Min'>{$nombresCompletos}</span></p>
-    <p class='otorga'>Por haber participado en el curso:</p>
-    <p class='nombre-Curso-Min'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
-        class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
-        {$hoy}</span><br><br>
-        <div class='caja'>
-        <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
-        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
-</div>
-
-<div style='padding-top: 9px; text-align: center;'>
-<div class='row'>
-    <div class='column left'>
-    </div>
-    <div class='column middle'>
-        <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-            class='p-2'>Secretaria de
-            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-            Adiestramiento de
-            Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-    </div>
-    <div class='column right'>
-    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
-    </div>
-</div>
-</div>
-    <p class='p-2'>Esta <span style='font-weight: bold;'><u>constancia</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
-           {$con['gstTitlo']}</span>, que a
-        continuación se enlistan:</p>
-    </div>
-    <div class='footer-constancia-gold'>
-    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-    class='p-2'>Secretaria de
-    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-    Adiestramiento de
-    Aviación Civil / SCT-AFAC-CIAAC</span>
-    </div>
-    <div class='footer-constancia'>
-    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
-    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
-    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-    </div>";
-
-}else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100){
-    echo "<div style='text-align: center;'>
-    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <span class='otorga'>Otorga el presente</span>
-    <p style='padding-bottom: 0px;' class='titulo-certificado'>{$con['gstCntnc']}</p>
-    <p styleclass='nombre-persona'>Al C:. <span
-    class='nombre-persona-c'>{$nombresCompletos}</span></p>
-    <p class='otorga'>Por haber participado en el curso:</p>
-            <p class='nombre-curso'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
-        class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
-        {$hoy}</span>
         <div class='caja'>
         <p style='margin-bottom: -20px;' class='p-2'>Directora del CIAAC:</p></div>
         <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
-</div>
+        </div>
 
-<div style='padding-top: 9px; text-align: center;'>
-<div class='row'>
-    <div class='column left'>
-    </div>
-    <div class='column middle'>
-        <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-            class='p-2'>Secretaria de
-            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-            Adiestramiento de
-            Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-    </div>
-    <div class='column right'>
-    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
-    </div>
-</div>
-</div>
-    <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
-           {$con['gstTitlo']}</span>, que a
+        <div style='padding-top: 9px; text-align: center;'>
+        <div class='row'>
+        <div class='column left'>
+        </div>
+        <div class='column middle'>
+        <br><br><br>
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León Garcíass</span><br>
+        </div>
+        <div class='column right'>
+
+        </div>
+        </div>
+        </div>
+
+        <p class='codigo-curso' style='margin-top:-1.1em;'>Código del curso: {$con['codigo']}</p>
+
+        <p class='p-3'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
+        {$con['gstTitlo']}</span>, Grupo: {$con['codigo']}, que a
         continuación se enlistan:</p>
-    </div>
-    <div class='footer-constancia-gold'>
-    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-    class='p-2'>Secretaria de
-    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-    Adiestramiento de
-    Aviación Civil / SCT-AFAC-CIAAC</span>
-    </div>
-    <div class='footer-constancia'>
-    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
-    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
-    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-    </div>";
-}else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99){
-    echo "<div style='text-align: center;'>
-    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <span class='otorga'>Otorga el presente</span>
-    <p style='padding-bottom: 0px;' class='titulo-certificado'>{$con['gstCntnc']}</p>
-    <p styleclass='nombre-persona'>Al C:. <span
-    class='nombre-Constancia-Min'>{$nombresCompletos}</span></p>
-    <p class='otorga'>Por haber participado en el curso:</p>
-            <p class='nombre-Curso-Min'>{$con['gstTitlo']}</p> 
-    </p><span class='p-2'>Comprendido durante el periódo del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año, en la modalidad <span class='p-2' style='font-weight:bold;'>{$con['modalidad']}</span> impartido por el <span
-        class='p-2' style='font-weight:bold;'>{$con['sede']}</span> con una duración de {$con['gstDrcin']}<br><span style='padding-top: 80px;' class='p-2'>Ciudad de México, a
-        {$hoy}</span>
+        </div>
+
+        <div class='footer-constancia-gold'>
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span>
+        </div>
+
+        <div class='footer-constancia'>
+
+        <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 222px; width: 200px; position: absolute; left: 13%;'>
+        <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
+        Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+    <   p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguridad: {$llave}</p>
+        </div>";
+    }else if($con['gstCntnc'] == 'CONSTANCIA' && $conteoStr <= 99){
+
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='otorga'>Otorga la presente</p>
+        <p class='titulo-certificado'>{$con['gstCntnc']}</p>
+        <p class='nombre-persona'>Al C:. <span
+        class='nombre-Constancia-Min'>{$nombresCompletos}</span></p>
+        <p class='otorga'>Por haber participado satisfactoriamente el curso:</p>
+        <p class='nombre-Curso-Min'>{$con['gstTitlo']}</p> 
+        <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['codigo']}</p>
+        </p><span class='p-2'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br><br>
         <div class='caja'>
+
         <p style='margin-bottom: -20px;' class='p-2'>Directora del CIAAC:</p></div>
-        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
-</div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 400px; position: absolute; right: 45%;'></center>
+        </div>
 
-<div style='padding-top: 9px; text-align: center;'>
-<div class='row'>
-    <div class='column left'>
-    </div>
-    <div class='column middle'>
-        <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-            class='p-2'>Secretaria de
-            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-            Adiestramiento de
-            Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <div style='padding-top: 9px; text-align: center;'>
+        <div class='row'>
+        <div class='column left'>
+        </div>
+        <div class='column middle'>
+        <br><br><br><br><br>
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span><br>
         <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-    </div>
-    <div class='column right'>
-    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
-    </div>
-</div>
-</div>
-    <p class='p-2'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>CURSO:
-           {$con['gstTitlo']}</span>, que a
+        </div>
+        <div class='column right'>
+
+        </div>
+        </div>
+        </div>
+        <p style='padding-top:-6%;' class='codigo-curso'>Código del curso: {$con['codigo']}</p>
+        <p class='p-3'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
+        {$con['gstTitlo']}</span>, Grupo: {$con['codigo']}, que a
         continuación se enlistan:</p>
-    </div>
-    <div class='footer-constancia-gold'>
-    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-    class='p-2'>Secretaria de
-    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-    Adiestramiento de
-    Aviación Civil / SCT-AFAC-CIAAC</span>
-    </div>
-    <div class='footer-constancia'>
-    <center><img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; right: 45%;'></center>
-    <div class='caja'><span class='p-2'><span style='font-weight:bold;'>Lic. Viridiana Monserrat Hernández Piña</span><br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos</span></div>
-    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-    </div>";
-}else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100){
-    echo "<div style='text-align: center;'>
-    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga el presente</p>
-    <p class='titulo-certificador'>RECONOCOMIENTO</p>
-    <p class='nombre-persona'>Al C:. <span
-    class='nombre-pConstancia'>{$nombresCompletos}</span></p>
-    <p class='otorga'>Por haber participado en el curso:</p>
-     <p class='nombre-Constancia'>{$con['gstTitlo']}</p> 
-    </p><span class='p-3'>Impartido del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año</span>
-    <span class='p-3'>por la Escuela Militar de Graduados de Sanidad con lo establecido en el Convenio celebrado entre la Agencia Federal de Aviación Civil (AFAC), Dirección General de Protección y Medicina Preventiva (DGPyMPT) y la Secretaría de la Defensa Nacional (SEDENA).
-    <span style='padding-bottom: 1px;' class='p-2'>Ciudad de México, a
-        {$hoy}</span>
-        <div class='caja'>
-        <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
-        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
-</div>
+        </div>
+        <div class='footer-constancia-gold'>
+        <img src='../dist/img/firmas/Viridiana.jpg' style='margin-top:-25%; bottom: 242px; width: 150px; margin-left: 1%; padding-top:-6%;'>
         
-<div style='padding-top: 9px; text-align: center;'>
-<div class='row'>
-    <div class='column left'>
-    </div>
-    <div class='column middle'>
-        <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-            class='p-2'>Secretaria de
-            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-            Adiestramiento de
-            Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-    </div>
-    <div class='column right'>
-    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
-    </div>
-</div>
-</div>
-    <div class='page_break'>
-    <div class='footer2'>
-    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-    class='p-2'>Secretaria de
-    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-    Adiestramiento de
-    Aviación Civil / SCT-AFAC-CIAAC</span>
-    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-    </div>
-    </div>
-</div>";
+        <p style='margin-top:-25%; padding-top:-6%; font-size: 7px; font-weight: bold; color: #996633;'
+        class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</p>
+        
+        </div>
+        <div class='footer-constancia'>
+        
+        <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
+        Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguirdad: {$llave}</p>
+        </div>
+        ";
+    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='otorga'>Otorga la presente</p>
+        <p class='titulo-certificado'>{$con['gstCntnc']}</p>
+        <p class='nombre-persona'>Al C:. <span
+        class='nombre-pConstancia'>{$nombresCompletos}</span></p>
+        <p class='otorga'>Por haber aprobado satisfactoriamente el curso:</p>
+        <p class='nombre-Constancia'>{$con['gstTitlo']}</p> 
+        <p class='nombre-grupo-max'><span style='color:black;'>Grupo:</span>{$con['codigo']}</p>    
 
-}else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 99){
-    echo "<div style='text-align: center;'>
-    <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-    <p class='otorga'>Otorga el presente</p>
-    <p class='titulo-certificador'>RECONOCOMIENTO</p>
-    <p class='nombre-persona'>Al C:. <span
-    class='nombre-Constancia-Min'>{$nombresCompletos}</span></p>
-    <p class='otorga'>Por haber participado en el curso:</p>
-     <p class='nombre-Curso-Min'>{$con['gstTitlo']}</p> 
-    </p><span class='p-3'>Impartido del {$con['dia']} de {$con['mesnombre']}
-    al {$con['diafinal']} de {$con['mesfinales']} del presente año</span>
-    <span class='p-3'>por la Escuela Militar de Graduados de Sanidad con lo establecido en el Convenio celebrado entre la Agencia Federal de Aviación Civil (AFAC), Dirección General de Protección y Medicina Preventiva (DGPyMPT) y la Secretaría de la Defensa Nacional (SEDENA).
-    <span style='padding-bottom: 1px;' class='p-2'>Ciudad de México, a
+        </p><span class='p-2'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br><br>
+
+        <div class='caja'>
+        <p style='margin-bottom: -20px;' class='p-2'>Directora del CIAAC:</p></div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
+        </div>
+
+        <div style='padding-top: 9px; text-align: center;'>
+        <div class='row'>
+        <div class='column left'>
+        </div>
+        <div class='column middle'>
+        <br><br><br>
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
+        </div>
+        <div class='column right'>
+
+        </div>
+        </div>
+        </div>
+
+        <p class='codigo-curso' style='margin-top:-1.1em;'>Código del curso: {$con['codigo']}</p>
+
+        <p class='p-3'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
+        {$con['gstTitlo']}</span>, Grupo: {$con['codigo']}, que a
+        continuación se enlistan:</p>
+        </div>
+
+        <div class='footer-constancia-gold'>
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span>
+        </div>
+
+        <div class='footer-constancia'>
+
+        <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; left: 13%;'>
+        <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
+        Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+        </div>";
+    }else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <span class='otorga'>Otorga el presente</span>
+        <p style='padding-bottom: 0px;' class='titulo-certificado'><b>{$con['gstCntnc']}</b></p>
+        <p styleclass='nombre-persona'>Al C:. <span
+        class='nombre-Constancia-Min'>{$nombresCompletos}</span></p>
+        <p class='otorga'>Por haber participado satisfactoriamente en el curso:</p>
+        <p class='nombre-Curso-Min'>{$con['gstTitlo']}</p>
+        <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['codigo']}</p>
+        </p><span class='p-2'>
+        Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.
+
+        <div class='caja'>
+        <p style='margin-bottom: -20px;' class='p-2'>Directora del CIAAC:</p></div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
+        </div>
+
+        <div style='padding-top: 9px; text-align: center;'>
+        <div class='row'>
+        <div class='column left'>
+
+        </div>
+        <div class='column middle'>
+        <br><br><br>
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León Garcíasss</span><br>
+        </div>
+        <div class='column right'>
+        </div>
+        </div>
+        </div>
+
+        <p class='codigo-curso'>Código del curso: {$con['codigo']}</p>
+
+        <p class='p-3'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
+        {$con['gstTitlo']}</span>, Grupo: {$con['codigo']}, que a
+        continuación se enlistan:</p>
+        </div>
+
+        <div class='footer-constancia-gold'>
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span>
+        </div>
+
+        <div class='footer-constancia'>
+
+        <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 242px; width: 200px; position: absolute; left: 13%;'>
+        <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
+        Centro Internacional de Adiestramiento de Aviación Civil</span></div>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+        </div>";
+    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC'>55El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='otorga'>Otorga el presente</p>
+        <p class='titulo-certificador'>RECONOCOMIENTO</p>
+        <p class='nombre-persona'>Al C:. <span
+        class='nombre-pConstancia'>{$nombresCompletos}</span></p>
+        <p class='otorga'>Por haber participado satisfactoriamente en el curso:</p>
+        <p class='nombre-Constancia'>{$con['gstTitlo']}</p> 
+        </p><span class='p-3'>Impartido del {$con['dia']} de {$con['mesnombre']}
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año</span>
+        <span class='p-3'>por la Escuela Militar de Graduados de Sanidad con lo establecido en el Convenio celebrado entre la Agencia Federal de Aviación Civil (AFAC), Dirección General de Protección y Medicina Preventiva (DGPyMPT) y la Secretaría de la Defensa Nacional (SEDENA).
+        <span style='padding-bottom: 1px;' class='p-2'>Ciudad de México, a
         {$hoy}</span>
         <div class='caja'>
         <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
         <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
-</div>
-      
-<div style='padding-top: 9px; text-align: center;'>
-<div class='row'>
-    <div class='column left'>
-    </div>
-    <div class='column middle'>
-        <br><br>
-        <span style='font-size: 8px; font-weight: bold; color: #996633;'
-            class='p-2'>Secretaria de
-            Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-            Adiestramiento de
-            Aviación Civil / SCT-AFAC-CIAAC</span><br>
-        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
-    </div>
-    <div class='column right'>
-    <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
-    </div>
-</div>
-</div>
-    <div class='page_break'>
-    <div class='footer2'>
-    <span style='padding-top: 120px; font-size: 8px; font-weight: bold; color: #996633;'
-    class='p-2'>Secretaria de
-    Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
-    Adiestramiento de
-    Aviación Civil / SCT-AFAC-CIAAC</span>
-    <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
-    </div>
-    </div>
-</div>";
-}
+        </div>
 
-?>
+        <div style='padding-top: 9px; text-align: center;'>
+        <div class='row'>
+        <div class='column left'>
+        </div>
+        <div class='column middle'>
+        <br><br>
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León Garcíasss</span><br>
+        </div>
+        <div class='column right'>
+        <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
+        </div>
+        </div>
+        </div>
+        <div class='page_break'>
+        <div class='footer2'>
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>{$llave}</p>
+        </div>
+        </div>
+        </div>";
+
+    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 99){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC'>66El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='otorga'>Otorga el presente</p>
+        <p class='titulo-certificador'>RECONOCOMIENTO</p>
+        <p class='nombre-persona'>Al C:. <span
+        class='nombre-Constancia-Min'>{$nombresCompletos}</span></p>
+        <p class='otorga'>Por haber aprobado satisfactoriamente el curso:</p>
+        <p class='nombre-Curso-Min'>{$con['gstTitlo']}</p> 
+        </p><span class='p-3'>Impartido del {$con['dia']} de {$con['mesnombre']}
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año</span>
+        <span class='p-3'>por la Escuela Militar de Graduados de Sanidad con lo establecido en el Convenio celebrado entre la Agencia Federal de Aviación Civil (AFAC), Dirección General de Protección y Medicina Preventiva (DGPyMPT) y la Secretaría de la Defensa Nacional (SEDENA).
+        <span style='padding-bottom: 1px;' class='p-2'>Ciudad de México, a
+        {$hoy}</span>
+        <div class='caja'>
+        <p style='margin-bottom: -2px;' class='p-2'>Directora del CIAAC:</p></div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 320px; position: absolute; right: 45%;'></center>
+        </div>
+
+        <div style='padding-top: 9px; text-align: center;'>
+        <div class='row'>
+        <div class='column left'>
+        </div>
+        <div class='column middle'>
+        <br><br>
+        <span style='font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        <span style='font-weight: bold;' class='p-2'>Lic. Martha León García</span><br>
+        </div>
+        <div class='column right'>
+        <img style='margin-top: 40px; float: right; width: 35%;' src='{$filename}'/>
+        </div>
+        </div>
+        </div>
+        <div class='page_break'>
+        <div class='footer2'>
+        <span style='padding-top: 120px; font-size: 11px; font-weight: bold; color: #996633;'
+        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+        Adiestramiento de
+        Aviación Civil / SCT-AFAC-CIAAC</span>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguridad: {$llave}</p>
+        </div>
+        </div>
+        </div>";
+    }
+
+    ?>
     <div>
         <?php 
-       $datos = $_GET['data'];
-       $queryTemario = "SELECT idtem, titulo,idcurso FROM temario WHERE idcurso = $idc";
-                          $const = mysqli_query($conexion, $queryTemario);
-                          $contador = 0;
-                          while($consulta2 = mysqli_fetch_array($const)){
-                          $contador ++;
-                          $temario = $contador."-. ".$consulta2['titulo'];
-       ?>
-        <?php
-       if($con['gstCntnc'] == 'CONSTANCIA'){
-        echo "<p class='p-2'>{$temario}</p>";
-       }else if($con['gstCntnc'] == 'CERTIFICADO'){
-        echo "<p class='p-2'>{$temario}</p>";
-       }else {
-           echo "";
-       }
-       ?>
+        $datos = $_GET['data'];
+        $queryTemario = "SELECT idtem, titulo,idcurso FROM temario WHERE idcurso = $idc";
+        $const = mysqli_query($conexion, $queryTemario);
+        $contador = 0;
+        while($consulta2 = mysqli_fetch_array($const)){
+            $contador ++;
+            $temario = $contador."-. ".$consulta2['titulo'];
+            ?>
+            <?php
+            if($con['gstCntnc'] == 'CONSTANCIA'){
+                echo "<p class='p-2'>{$temario}</p>";
+            }else if($con['gstCntnc'] == 'CERTIFICADO'){
+                echo "<p class='p-2'>{$temario}</p>";
+            }else {
+                echo "";
+            }
+            ?>
         <?php } ?>
-       <p class="p-2">PROMEDIO DE APROVECHAMIENTO <strong><?php echo $EvaluacionF ?> %</strong></p>
+        <p class="p-3">Promedio de aprovechamiento: <strong><?php echo $EvaluacionF ?> %</strong></p>
     </div>
-    <div class="afojas1">
-        <span>Registrado bajo el No.<?php echo $con['id'];?></span>
+    <br><br>
+    <div class="p-3">
+        <span>Registrado bajo el No.<?php echo $con['id'];?> a fojas #  del Libro de <br>Control de Constancias, Certificados,<br> Reconocimientos y Diplomas de Capacitación<br> No. 1</span>
+        <br><br>
+        <span class="fecha-emision">Fecha de emisión: <?php echo $hoy ?> </span>
     </div>
+
 
     <?php
         // require_once 'dompdf/autoload.inc.php';

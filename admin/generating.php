@@ -52,7 +52,7 @@ ini_set('date.timezone','America/Mexico_City');
 		'noviembre' 
 		WHEN MONTH ( fechaf ) = 12 THEN
 		'diciembre' ELSE 'MES NO VALIDO' 
-	END AS mesfinales FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc 
+	END AS mesfinales,cursos.grupo FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc 
     WHERE id_persona = $datos AND  gstIdlsc = $datos1 GROUP BY id_codigocurso";
     $const = mysqli_query($conexion, $query);
     $con = mysqli_fetch_array($const);
