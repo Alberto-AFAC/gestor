@@ -47,6 +47,7 @@
         <input type="hidden" name="modalidad" id="modalidad">
         <input type="hidden" name="contracceso" id="contracceso">
         <input type="hidden" name="classroom" id="classroom">
+        <input type="hidden" name="grupociaac2" id="grupociaac2">
         <div class="form-group">
             <div class="col-sm-5">
                 <button type="button" id="buttons" class="btn btn-info" onclick="agrPartc();">ACEPTAR</button>
@@ -86,6 +87,7 @@ function agrinspctor(tbody, table) {
         $("#Prtcpnt #modalidad").val(data[14]);
         $("#Prtcpnt #contracceso").val(data[19]);
         $("#Prtcpnt #classroom").val(data[20]);
+        $("#Prtcpnt #grupociaac2").val(data[22]);
 
         if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
             $("#buttons").hide();

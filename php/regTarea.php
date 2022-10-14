@@ -182,6 +182,56 @@ if ($opcion === 'tareAgr') {
     } else {
         echo '1';
     }
+}else if ($opcion === 'tareAgredith') {
+    $idsutarea = $_POST['idsutarea'];
+    $valors = $_POST['array'];
+    $varray1 = json_decode($valors, true);
+    $valor = count($varray1);
+    for ($i = 0; $i < $valor; $i++) {
+        $idsutarea = $_POST['idsutarea'];
+        $titulo = $varray1[$i]['addsubojt1'];
+        $numsubt = 1;
+        if ($titulo == '' && $numsubt == 1) {
+        } else {
+            if (tarea1edith($idsutarea,$titulo, $numsubt, $conexion)) {
+                echo "0";
+            } else {
+                echo "1";
+            }
+        }
+    }
+    $valors2 = $_POST['array2'];
+    $varray2 = json_decode($valors2, true);
+    $valor2 = count($varray2);
+    for ($i = 0; $i < $valor2; $i++) {
+        $idsutarea = $_POST['idsutarea'];
+        $titulo = $varray2[$i]['addsubojt2'];
+        $numsubt = 2;
+        if ($titulo == '' && $numsubt == 2) {
+        } else {
+            if (tarea1edith($idsutarea,$titulo, $numsubt, $conexion)) {
+                echo "0";
+            } else {
+                echo "1";
+            }
+        }
+    }
+    $valors3 = $_POST['array3'];
+    $varray3 = json_decode($valors3, true);
+    $valor3 = count($varray3);
+    for ($i = 0; $i < $valor3; $i++) {
+        $idsutarea = $_POST['idsutarea'];
+        $titulo = $varray3[$i]['addsubojt3'];
+        $numsubt = 3;
+        if ($titulo == '' && $numsubt == 3) {
+        } else {
+            if (tarea1edith($idsutarea,$titulo, $numsubt, $conexion)) {
+                echo "0";
+            } else {
+                echo "1";
+            }
+        }
+    }
 }
 
 
@@ -251,6 +301,16 @@ function tarea1($titulo, $numsubt, $conexion)
 
     $query = "INSERT INTO ojts_subs(idtarea,ojt_subtarea,numsubt,estado) 
             SELECT id_ojt,'$titulo',$numsubt,0 FROM ojts ORDER BY id_ojt DESC LIMIT 1";
+    if (mysqli_query($conexion, $query)) {
+        return true;
+    } else {
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+
+function tarea1edith($idsutarea,$titulo,$numsubt,$conexion){
+    $query = "INSERT INTO ojts_subs VALUES(0,'$idsutarea','$titulo','$numsubt',0)";
     if (mysqli_query($conexion, $query)) {
         return true;
     } else {

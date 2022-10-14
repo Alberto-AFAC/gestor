@@ -398,4 +398,3 @@ function cerrar($conexion){
 
 }
 ?>
-

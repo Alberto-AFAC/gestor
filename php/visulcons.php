@@ -29,4 +29,5 @@ function historial($id,$curso_id,$conexion){
     }else{
         return false;
 }
+}
 ?>  

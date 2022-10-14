@@ -17,9 +17,9 @@ WHERE c.idinsp = p.gstIdper AND c.estado = 0 AND c.idinsp!=c.idcoor and c.idinsp
 	}else{
 		
 		while($data = mysqli_fetch_assoc($resultado)){
+			$n++;
 
-
-	 $caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"].' '.$data["gstApell"],$data["NOMBRE_CURSO"],$data["codigo"],$data["fcurso"], $data["fechaf"],$data["hcurso"],$data["sede"],$data["modalidad"],$data["link"],$data["contracur"],$data["proceso"],$data["evaluacion"],$data["fnotif"],$data["classroom"],$data["COORDINADOR_NOMBRE"].' '.$data["COORDINADOR_APELLIDO"],$data["INSTRUCTOR_NOMBRE"].' '.$data["INSTRUCTOR_APELLIDO"],$data["confirmar"],$data["justifi"],$data["PERFIL"]];
+	 $caledario[] = [ $n,$data["gstNmpld"],$data["gstNombr"].' '.$data["gstApell"],$data["NOMBRE_CURSO"],$data["grupo"],$data["codigo"],$data["fcurso"], $data["fechaf"],$data["hcurso"],$data["sede"],$data["modalidad"],$data["link"],$data["contracur"],$data["proceso"],$data["evaluacion"],$data["fnotif"],$data["classroom"],$data["COORDINADOR_NOMBRE"].' '.$data["COORDINADOR_APELLIDO"],$data["INSTRUCTOR_NOMBRE"].' '.$data["INSTRUCTOR_APELLIDO"],$data["confirmar"],$data["justifi"],$data["PERFIL"]];
 
 		}
 	}

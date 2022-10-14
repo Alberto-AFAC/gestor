@@ -141,7 +141,7 @@
             if ($data["evaluacion"] >= 80 && $data["evaluacion"] != 0 && $data["evaluacion"] != "NULL" && $data["confirmar"] == 'CONFIRMADO'){
                 $valua = "<p style='color: green; font-size: 14px;'>APROBO</p>";
             }
-            if ($data["evaluacion"] <= 79 && $data["evaluacion"] != "NULL" && $data["confirmar"] == 'CONFIRMADO' || $data["evaluacion"] <= 79 && $data["evaluacion"] != "0" && $data["confirmar"] == 'CONFIRMADO'){
+            if ($data["evaluacion"] <= 79 && $data["evaluacion"] != "NULL" && $data["confirmar"] == 'CONFIRMADO' || $data["evaluacion"] <= 79 && $data["evaluacion"] != "NULL" && $data["evaluacion"] != "0" && $data["confirmar"] == 'CONFIRMADO'){
                 $valua = "<p style='color: red; font-size: 14px;'>NO APROBO</p>";
             }
             if ($data["evaluacion"] == "NULL" && $data["confirmar"] == 'CONFIRMAR' || $data["evaluacion"] <= 79 && $data["evaluacion"] == "0" && $data["confirmar"] == 'CONFIRMAR'){
