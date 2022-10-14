@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Bootstrap jQuery Calendar component</title>
+
+    <meta name="description" content="Full view calendar component for twitter bootstrap with year, month, week, day views.">
+    <meta name="keywords" content="jQuery,Bootstrap,Calendar,HTML,CSS,JavaScript,responsive,month,week,year,day">
+    <meta name="author" content="Serhioromano">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="components/bootstrap2/css/bootstrap.css">
+    <link rel="stylesheet" href="components/bootstrap2/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <script type="text/javascript" src="js/language/es-MX.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/css/card.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/css/skins/card.css">
+
+    
+</head>
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="page-header">
+
+
+            <div class="row">
+            <!-- <div class="col-md-12">
+    
+            <div class="btn-group">
+                <button class="btn btn-primary" data-calendar-nav="prev"><< Anterior</button>
+                <button class="btn" data-calendar-nav="today">Hoy</button>
+                <button class="btn btn-primary" data-calendar-nav="next">Siguiente  >></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-warning" data-calendar-view="year">Año</button>
+                <button class="btn btn-warning active" data-calendar-view="month">Mes</button>
+                <button class="btn btn-warning" data-calendar-view="week">Semana</button>
+                <button class="btn btn-warning" data-calendar-view="day">Día</button>
+            </div>
+        </div> -->
+    </div>
+
+
+<h3></h3>
+<small>Cursos programados</small>   
+
+    </div>
+
+    <div class="row">
+
+
+<!-- MODAL CON EL LISTADO DE CADA PARTICIPANTE -->
+        <div class="span10">
+                <div id='ganttPartici' tabindex="-1" role="dialog" aria-labelledby="basicModal"
+                    aria-hidden="true">
+
+    <button type="button" onclick="cerrar();" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true" style="font-size: 30px" >&times;</span></button>
+                    <div style="width: 100%;">
+                        <!-- <div id="success-icon">
+
+                        </div> -->
+                        <p style="font-size: 15px; color:#000"><span id="tituloCurso" name="tituloCurso"></span></p>
+                        <div class="table-wrap">
+                            <div class="table-responsive">
+                                <div id="ganttTable"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        <div class="span10" id="calender">
+            <div id="calendar"></div>
+        </div>
+
+
+        <div class="span2">
+            <div class="row-fluid">
+                <!-- <select id="first_day" class="span12">
+                    <option value="" selected="selected">Orden de día</option>  
+                    <option value="2">El primer día de la semana es el domingo</option>
+                    <option value="1">El primer día de la semana es el lunes</option>
+                </select>
+ -->
+            </div>
+
+        
+    <script type="text/javascript" src="components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="components/bootstrap2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="components/jstimezonedetect/jstz.min.js"></script>
+    <script type="text/javascript" src="js/calendar.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <script type="text/javascript" src="../../js/lisCurso.js"></script>
+
+
+<script type="text/javascript">
+
+            $("#ganttPartici").hide();
+
+        function listview(id) {
+
+            $("#calender").hide();
+
+        folio = 'FO' + id;
+
+        $.ajax({
+            url: '../../php/ganttParticipantes.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+            var x = 0;
+            html =
+                '<table class="table table-striped"><tr><th>#</th><th>NOMBRE DEL PARTICIPANTE</th>';
+            for (i = 0; i < res.length; i++) {
+
+                if (obj.data[i].codigo == folio) {
+                x++;
+                    var idMast = obj.data[i].idinsp;
+                    $("#ganttPartici #tituloCurso").html(obj.data[i].gstTitlo);
+                        html += "<tr><td>"+ x +"</td><td style='text-align: left;'><a href='../persona?data=" + idMast +
+                            "'| data-target='#modal-estudio'>" +
+                            obj.data[i].gstNombr + ' ' + obj.data[i].gstApell + '</a>' +
+                            "</td></tr>";
+                }
+            }
+            html += '</table>';
+            $("#ganttTable").html(html);
+        });
+
+                    $("#ganttPartici").show();
+    }
+
+function cerrar(){
+    $("#ganttPartici").hide();
+    $("#calender").show();    
+}
+
+</script>
+    
+</div>
+</body>
+</html>
