@@ -116,6 +116,7 @@ include('header.php');
                                                 <th>N° EMP</th>
                                                 <th>NOMBRE ALUMNO</th>
                                                 <th>NOMBRE DEL CURSO</th>
+                                                <th>GRUPO</th>
                                                 <th>CODIGO</th>
                                                 <th>FECHA DE INICIO</th>
                                                 <th>FECHA TERMINO</th>
@@ -248,7 +249,7 @@ $(document).ready(function() {
         buttons: [{
                 extend: 'copy',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
                 }
             },
             {
@@ -256,7 +257,7 @@ $(document).ready(function() {
                 text: 'Generar PDF',
                 messageTop: 'BASE DE DATOS INSPECTORES',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: [0, 1, 2, 3, 4, 5, 6,7]
                 },
                 download: 'open',
                 header: true,
@@ -293,7 +294,7 @@ $(document).ready(function() {
                 extend: 'excel',
                 text: 'Generar Excel',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
                 }
             }
 

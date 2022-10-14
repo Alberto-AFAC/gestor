@@ -255,9 +255,18 @@
                                                       <input type="hidden" name="contracceso" id="contracceso">
                                                       <input type="hidden" name="classroom" id="classroom">
                                                   </div>
-
+                                                  <div class="col-sm-4" id="grupinp" name="grupinp" style="display: ;">
+                                                      <label class="label2">GRUPO</label>
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon">
+                                                              <i class="fa fa-plus-circle"></i>
+                                                          </div>
+                                                          <input type="text" onkeyup="mayus(this);"
+                                                              class="form-control inputalta" id="grupociaac"
+                                                              name="grupociaac" placeholder="INGRESE EL GRUPO">
+                                                      </div>
+                                                  </div>
                                               </div>
-
                                               <div class="form-group">
                                                   <div class="col-sm-4">
                                                       <label class="label2">PARTICIPANTES DEL CURSO</label>

@@ -257,6 +257,11 @@ onclick="agregarDias();">EDITAR</button>
                                         name="sede" disabled="">
                                 </div>
                                 <div class="col-sm-3">
+                                    <label class="label2">GRUPO</label>
+                                    <input onkeyup="mayus(this);" type="text" class="form-control inputalta" id="grupoci"
+                                        name="grupoci" disabled="">
+                                </div>
+                                <div class="col-sm-3">
                                     <label class="label2">MODALIDAD</label>
                                     <select type="text" class="form-control inputalta" id="modalidads" name="modalidads"
                                         onChange="modalidades()" disabled="">
