@@ -61,6 +61,32 @@
       .a-alert:visited {
           color: white;
       }
+
+    .loader {
+      margin: 0 auto;
+    /*  display: none;*/
+      border: 1px solid red;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
       </style>
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -247,12 +273,11 @@
                                                           <div class="input-group-addon">
                                                               <i class="fa fa-globe"></i>
                                                           </div>
-                                                          <input type="url" onkeyup="mayus(this);"
-                                                              class="form-control inputalta" id="classroom"
-                                                              name="classroom" placeholder="URL ">
+                                                              <textarea type="url" onkeyup="mayus(this);"
+                                                                  class="form-control inputalta" id="classroom"
+                                                                  name="classroom" placeholder="URL "></textarea>
                                                       </div>
                                                   </div>
-
 
                                                   <div id="disocl" style="display: none;" class="form-group">
                                                       <input type="hidden" name="link" id="link">
@@ -319,10 +344,20 @@
 
                                               </div>
                                           </form>
+
+                                        <div id="myModal" class="modal fade" role="dialog" style="padding-top: 10em;">
+                                        <div class="modal-dialog">
+                                        <div class="loader"></div>    
+                                        </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                        $( document ).ready(function() {
+                                        $('#myModal').modal('hidden')
+                                        });
+                                        </script>
+
+
                                       </div>
-
-
-
 
                                   </div>
                                   <!-- /.tab-pane 2do panel-->

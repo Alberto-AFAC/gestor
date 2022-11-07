@@ -860,7 +860,6 @@ $(document).ready(function() {
                     $("#Dtall #sede").val(d[12]);
                     $("#Dtall #modalidads").val(d[14]);
                     $("#Dtall #grupoci").val(d[20]);
-                    
                     if (d[13] == '0') {
                         $("#Dtall #linkcur").val(d[13]);
                         $("#Dtall #contracur").val(d[18]);

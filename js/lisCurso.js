@@ -1179,8 +1179,9 @@ function cerrarEditeva() {
 }
 
 function cursoeval(idcurso) {
+
     //COPEAR
-    alert(idcurso);
+    //alert(idcurso);
     $.ajax({
         url: '../php/curConfir.php',
         type: 'GET',
@@ -1189,14 +1190,19 @@ function cursoeval(idcurso) {
         obj = JSON.parse(resp);
         var res = obj.data;
         //cod = obj.data[i].codigo;
+
         for (i = 0; i < res.length; i++) {
+
             if (obj.data[i].id_curso == idcurso) {
                 $("#idcursoen").val(obj.data[i].id_curso); //ID DEL CURSO id_instruct
+
                 $("#nomcursoen").val(obj.data[i].gstTitlo); //NOMBRE DEL CURSO
                 $("#codigo").val(obj.data[i].codigo);
+
                 codcur = obj.data[i].codigo;
             }
-            //----------------------TABLA DE INSTRUCTORES Y COORDINADORES 28092022
+            
+//----------------------TABLA DE INSTRUCTORES Y COORDINADORES 28092022
             let folio = obj.data[i].codigo;
             //alert(folio);
             $.ajax({
@@ -1479,21 +1485,27 @@ function finalizar() {
 
 // EDITAR DIAS
 function diasEditar() {
+
     codigo = document.getElementById('codigo').value;
     //FECHA INICIO Y FECHA CONCLUSIÓN 
     finicial = document.getElementById('fcurso').value;
     ffinal = document.getElementById('fechaf').value;
     hora_ini = document.getElementById('hcurso').value;
+
+
     diai = finicial.substring(8, 10);
     diaf = ffinal.substring(8, 10);
+
     inici = finicial.substring(5, 7);
     finan = ffinal.substring(5, 7);
     inicio = inici * 1;
     final = finan * 1;
+
     anioi = finicial.substring(0, 4);
     aniof = ffinal.substring(0, 4);
+
     datos = 'finicial=' + finicial + '&ffinal=' + ffinal + '&codigo=' + codigo;
-    alert(datos);
+
     $.ajax({
         url: '../php/mosDias.php',
         type: 'POST',
@@ -1693,7 +1705,6 @@ function cursoAct() {
     var validar = document.getElementById('validar').value;
     var grupo = document.getElementById('grupoci').value;
 
-
     if (modalidads == 'PRESENCIAL') {
         var linkcur = '0';
         var contracur = '0';
@@ -1702,9 +1713,10 @@ function cursoAct() {
         var linkcur = document.getElementById('linkcur').value;
         var contracur = document.getElementById('contracur').value;
         var classromcur = document.getElementById('classromcur').value;
+
     }
-    datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&classromcur=' + classromcur + '&reprogramar=' + reprogramar + '&array1=' + array1 + '&array2=' + array2 + '&array3=' + array3 + '&hora_fin=' + hora_fin + '&grupo=' + grupo + '&opcion=cursoAct';
-    alert(datos);
+   datos = 'codigo=' + codigo + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&fechaf=' + fechaf + '&sede=' + sede + '&modalidads=' + modalidads + '&linkcur=' + linkcur + '&contracur=' + contracur + '&classromcur=' + classromcur + '&reprogramar=' + reprogramar + '&array1=' + array1 + '&array2=' + array2 + '&array3=' + array3 + '&hora_fin=' + hora_fin + '&grupo=' + grupo + '&opcion=cursoAct';
+    //alert(datos);    
     if (validar == 1) {
         Swal.fire({
             type: 'warning',
@@ -1746,9 +1758,9 @@ function cursoAct() {
                         customClass: 'swal-wide',
                         timer: 2000
                     });
-                    $('#basicModal').modal('hide'); //cierra el modal
+                     $('#basicModal').modal('hide'); //cierra el modal
                     cereditcurso() //cierra la reprogramación
-                        // setTimeout("location.href = 'lisCurso';", 2000);
+                    // setTimeout("location.href = 'lisCurso';", 2000);
                 }
 
             });
@@ -1794,7 +1806,7 @@ $(function() {
 
 
 function adjuntarOjt() {
-    //alert("entrolisctcurso");
+
     ojtIdper = document.getElementById('ojtIdper').value;
 
     var paqueteDeDatos = new FormData();

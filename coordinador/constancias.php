@@ -441,7 +441,8 @@ $resultado = mysqli_query($conexion, $query);
        $encrypidpersona = base64_encode($id_persona);
        $encryidlist = base64_encode($idlist); 
        $encrycodigo = base64_encode($codigo);
-      ?>
+       ?>
+      <?php if($data['gstCntnc']=='CONSTANCIA'){ ?>
 
 
             ["<?php echo $id_reac ?>", 
@@ -454,7 +455,19 @@ $resultado = mysqli_query($conexion, $query);
                 "<?php echo $codigo?>"
             ],
 
-            <?php  } ?>
+            <?php }else{?>
+
+                ["<?php echo $id_reac ?>", 
+                "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
+                "<?php echo $titulo ?>",//TODO AQUI VA
+                "<?php echo "<a href='constancia7.php?data={$encrypidpersona}&cod={$encryidlist}&fol={$encrycodigo} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
+
+
+                "<?php echo $fec_reac ?>",
+                "<?php echo $codigo?>"
+            ],
+    <?php }?>
+<?php } ?>
 
         ];
 

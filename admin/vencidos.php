@@ -310,6 +310,7 @@ $(document).ready(function() {
                         "*" + obj.data[i].classroom +
                         "*" + obj.data[i].grupo; //documentar
 
+
                     var d = cursos.split("*");
 
                     gstIdlsc = d[0];

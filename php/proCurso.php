@@ -34,7 +34,6 @@ $fechaf = $_POST['fechaf'];
 
 $perid = $_POST['perid'];
 $grupo = $_POST['grupo'];
-
 $id = $_POST['idinsps'].','.$idcord;
 
 $valor = explode(",", $id);
@@ -129,7 +128,6 @@ $classroom = $_POST['classroom'];
 $idInstr = $_POST['idntrc'];
 $part = 'SI';
 $grupo = $_POST['grupo'];
-
 
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
 $fcurso = $yi.'-'.$mi.'-'.$di;
@@ -255,12 +253,13 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 
 }else if($opcion === 'PDF'){
-	$pdf = $_POST['v'];
+    $pdf = $_POST['v'];
  	if(descPDF($pdf,$conexion)){
  	    echo "0";
  	    histdescr($idp,$pdf,$conexion);
  	}else{
  	    echo "1";
+ 	    
  	}
 }else if($opcion === 'confasiten'){
 
@@ -449,7 +448,7 @@ function finalizac($codigo,$conexion){
 			modalidad='$modalidads',
 			link='$linkcur',
 			contracur='$contracur',
-	     	classroom='$classromcur',
+			classroom='$classromcur',
 			grupo='$grupo'
 			WHERE codigo='$codigo'";
 		if(mysqli_query($conexion,$query)){
@@ -471,8 +470,6 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
-
-	
 	//función para actualizar el grupo
 	function cursoActualizar2($sede,$modalidads,$linkcur,$contracur,$classromcur,$codigo,$conexion){
 		$query="UPDATE cursos SET sede='$sede', modalidad='$modalidads', link='$linkcur', contracur='$contracur',classroom='$classromcur' WHERE codigo='$codigo'";
@@ -483,7 +480,6 @@ function finalizac($codigo,$conexion){
 		}
 		cerrar($conexion);
 	}
-
 	function descPDF($pdf,$conexion){
 
 	$query="UPDATE constancias SET copias='1' WHERE id='$pdf'";
@@ -495,7 +491,6 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
-	
 // fin actualia evaluación el curso
 	function historiCur($idp,$realizo,$id_mstr,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
@@ -576,6 +571,7 @@ function histdescr($idp,$pdf,$conexion){
 	return true;
 	}else{
 	return false;
+	}
 }
 	
 function cerrar($conexion){

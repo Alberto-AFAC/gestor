@@ -404,7 +404,6 @@ c.idinsp = p.gstIdper
 AND c.id_curso = r.id_curso 
 AND c.idmstr = l.gstIdlsc	
 AND c.idinsp != c.idinst
-AND c.idcoor != c.idinst
 AND c.proceso = 'FINALIZADO' 
 AND c.confirmar = 'CONFIRMADO' 
 AND c.evaluacion >= 80 
@@ -425,8 +424,6 @@ $resultado = mysqli_query($conexion, $query);
        $titulo = $data['gstTitlo'];
        $constancia = $data['codigo'];
        $id_persona = $data['gstIdper'];
-       $documento = $data['gstCntnc'];
-       
         
 
 
@@ -444,15 +441,14 @@ $resultado = mysqli_query($conexion, $query);
        $encrypidpersona = base64_encode($id_persona);
        $encryidlist = base64_encode($idlist); 
        $encrycodigo = base64_encode($codigo);
-
-      ?>
+       ?>
       <?php if($data['gstCntnc']=='CONSTANCIA'){ ?>
 
 
             ["<?php echo $id_reac ?>", 
                 "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $titulo ?>",//TODO AQUI VA
-                "<?php echo "<a href='constancia1.php?data={$encrypidpersona}&cod={$encryidlist}&fol={$encrycodigo} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
+                "<?php echo "<a href='constancia.php?data={$encrypidpersona}&cod={$encryidlist}&fol={$encrycodigo} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
 
 
                 "<?php echo $fec_reac ?>",
@@ -464,7 +460,7 @@ $resultado = mysqli_query($conexion, $query);
                 ["<?php echo $id_reac ?>", 
                 "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $titulo ?>",//TODO AQUI VA
-                "<?php echo "<a href='constancia.php?data={$encrypidpersona}&cod={$encryidlist}&fol={$encrycodigo} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
+                "<?php echo "<a href='constancia7.php?data={$encrypidpersona}&cod={$encryidlist}&fol={$encrycodigo} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
 
 
                 "<?php echo $fec_reac ?>",
@@ -474,7 +470,6 @@ $resultado = mysqli_query($conexion, $query);
 <?php } ?>
 
         ];
-        
 
         var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
             "language": {

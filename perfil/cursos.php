@@ -417,23 +417,36 @@ if($res = mysqli_fetch_array($resul)){
 $query = "SELECT * FROM constancias WHERE id_persona = $datos[0] AND id_codigocurso = '".$data['codigo']."' AND estado_cer = 0";
 $const = mysqli_query($conexion, $query);
 if($con = mysqli_fetch_array($const)){
+
+
     if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
         $id = base64_encode($con[0]);
         if($con[10]==0){
-            if ($data['fcurso'] >= '2022/11/01'){
+            if ($data['fcurso'] >= '2022-11-01'||$data['codigo'] == 'FO358'||$data['codigo'] == 'FO366'||$data['codigo'] == 'FO404'){
                 if ($data['gstCntnc']=='CONSTANCIA'){
-                    $accion = "<center><a style='display:' title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual1.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+                    $accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual1.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;display:none'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
                 }else{
-                    $accion = "<center><a style='display:' title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+                    $accion = "<center><a style='display:none' title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
                 }
             }else {
                 $accion = "<center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
             }
         }else{
-            $accion = "<center><a style='display:'  type='button' id='myCertificate' target='_blank' class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+            if ($data['fcurso'] >= '2022-11-01'||$data['codigo'] == 'FO358'||$data['codigo'] == 'FO366'||$data['codigo'] == 'FO404'){
+                $accion = "<center><a style='display:none'  type='button' id='myCertificate' target='_blank' class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+            }else{
+               $accion = "<center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>"; 
+            }
+            
         }
     }else{
-        $accion = "<center><b style='color:silver;display:' title='Dar clic para descargar' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+        
+        if ($data['fcurso'] >= '2022-11-01'||$data['codigo'] == 'FO358'||$data['codigo'] == 'FO366'||$data['codigo'] == 'FO404'){
+                $accion = "<center><b style='color:silver;display:' title='Dar clic para descargar' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+        }else{
+               $accion = "<center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>"; 
+        }
+        
     }
 ?>
 
@@ -449,7 +462,7 @@ if($con = mysqli_fetch_array($const)){
 
         <?php if($data['evaluacion'] < 80){?>
 
-        "<center><b style='color:red;' title='Pendiente' onclick='pdf()' ><span class='badge' style='background-color: #BB2303; font-size: 14px;'>NO ACREDITADO</span></b></center>"
+        "<center><b style='color:red;' title='No acredito' onclick='pdf()' ><span class='badge' style='background-color: #BB2303; font-size: 14px;'>NO ACREDITADO</span></b></center>"
         <?php }else{
             "<center><b style='color:red;' title='Pendiente' onclick='pdf()' ><span class='badge' style='background-color: ; font-size: 14px;'>ACREDITADO</span></b></center>"
             ?>
@@ -755,7 +768,7 @@ function desactivar() {
 }
 
 function descaraPDF(v) {
-//alert(v);
+
     $.ajax({
         url: '../php/proCurso.php',
         type: 'POST',

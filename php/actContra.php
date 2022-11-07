@@ -4,7 +4,7 @@ ini_set('date.timezone','America/Mexico_City');
 if(isset($_SESSION['usuario']['id_usu'])&&!empty($_SESSION['usuario']['id_usu'])){
 $id = $_SESSION['usuario']['id_usu'];
 }else{
-$id = '929';
+$id = $_POST["idper"];
 }
 
 $opcion = $_POST["opcion"];

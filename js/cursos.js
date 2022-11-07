@@ -19,7 +19,7 @@ $.ajax({
         venci = obj.data[i].vencido;
         cancelados = obj.data[i].declina;
         completo = obj.data[i].finalizado;
-        suma = obj.data[i].finalizado + obj.data[i].confirmar + obj.data[i].proceso + obj.data[i].vencido + obj.data[i].declina;
+        suma = obj.data[i].finalizado + obj.data[i].confirmar +obj.data[i].proceso +obj.data[i].vencido+ obj.data[i].declina;
     }
 
     $("#confirma").html(confirma);
@@ -55,7 +55,7 @@ $.ajax({
         venciOJT = obj.data[O].vencido;
         canceladosOJT = obj.data[O].declina;
         completoOJT = obj.data[O].finalizado;
-        sumaOJT = obj.data[O].finalizado + obj.data[O].confirmar + obj.data[O].proceso + obj.data[O].vencido + obj.data[O].declina;
+        sumaOJT = obj.data[O].finalizado + obj.data[O].confirmar +obj.data[O].proceso +obj.data[O].vencido+ obj.data[O].declina;
     }
 
     $("#confirma").html(confirmaOJT);
@@ -99,7 +99,7 @@ function declina() {
 //var fecha_actual = years.getFullYear();
 //document.getElementById("fecha").innerHTML = ""+'<b>CURSOS AÑO '+fecha_actual+'</b>';
 
-function confirmar(idcurso) { //01112022
+function confirmar(idcurso) {
     //alert(idcurso);
     $.ajax({
         url: '../php/curConfir.php',
@@ -315,8 +315,12 @@ function confirmar1(idcurso) {
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
+
         for (i = 0; i < res.length; i++) {
+
             if (obj.data[i].id_curso == idcurso) {
+
+
                 lista = obj.data[i].codigo;
                 $("#id_curso1").val(idcurso);
                 $("#idinsp1").val(obj.data[i].idinsp);
@@ -325,7 +329,7 @@ function confirmar1(idcurso) {
                 $("#gstfolio1").html(obj.data[i].codigo); // folio
                 $("#fcurgrupo1").html(obj.data[i].grupo); // Grupo
                 $("#coordininf1").html('COORDINADOR: ' + obj.data[i].coordname + ' ' + obj.data[i].coordlastname);
-                document.getElementById('asisdetalle').style.display = '';
+                document.getElementById('asisdetalle').style.display ='';
 
                 var fechai = new Date(obj.data[i].fcurso);
                 var fcurso = fechai.getDate() + '-' + (fechai.getMonth() + 1) + '-' + fechai.getFullYear();
@@ -346,20 +350,21 @@ function confirmar1(idcurso) {
                     $("#link1").hide();
                     $("#contracur1").hide();
                     $("#classroom1").hide();
+                    
                 } else {
                     $("#link1").html(obj.data[i].link);
                     $("#contracur1").html(obj.data[i].contracur);
                     $("#classroom1").html(obj.data[i].classroom);
-
+                    
                     $("#ocul11").show();
                     $("#ocul22").show();
                     $("#ocul33").show();
-
                     $("#link1").show();
                     $("#contracur1").show();
                     $("#classroom1").show();
                 }
-                //----------------------TABLA DE INSTRUCTORES Y COORDINADORES 28092022
+                
+            //----------------------TABLA DE INSTRUCTORES Y COORDINADORES 28092022
                 let folio = obj.data[i].codigo;
                 //alert(folio);
                 $.ajax({
@@ -487,7 +492,7 @@ function confirmar1(idcurso) {
     })
 }
 
-
+    
 function confirasict() {
 
     var id_curso = document.getElementById('id_curso').value;
@@ -650,89 +655,89 @@ function perinsp(gstIdper) {
     var idpersona1 = document.getElementById('f1t1').value; // SE RASTREA EL NUMERO DE EMPLEADO
     // alert(idpersona1);
     $.ajax({
-        url: '../php/conPerson.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        //alert(idpersona1)
+            url: '../php/conPerson.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+//alert(idpersona1)
+     
+            var n = 0;
+            for (R = 0; R < res.length; R++) { //RASTREAR EL ID DE LA PERSONA
+                if (obj.data[R].gstIdper == idpersona1) {
+               
+                    $("#insnombre").val(obj.data[R].gstNombr);
+                    $("#insapellido").val(obj.data[R].gstApell);
+                    $("#insfecnac").val(obj.data[R].gstFenac);
+                    $("#insiss").val(obj.data[R].gstisst);
+                    $("#insexo").val(obj.data[R].gstSexo);
+                    $("#insrfc").val(obj.data[R].gstRfc);
+                    $("#inscurp").val(obj.data[R].gstCurp);
 
-        var n = 0;
-        for (R = 0; R < res.length; R++) { //RASTREAR EL ID DE LA PERSONA
-            if (obj.data[R].gstIdper == idpersona1) {
-
-                $("#insnombre").val(obj.data[R].gstNombr);
-                $("#insapellido").val(obj.data[R].gstApell);
-                $("#insfecnac").val(obj.data[R].gstFenac);
-                $("#insiss").val(obj.data[R].gstisst);
-                $("#insexo").val(obj.data[R].gstSexo);
-                $("#insrfc").val(obj.data[R].gstRfc);
-                $("#inscurp").val(obj.data[R].gstCurp);
-
-                $("#inscalle").val(obj.data[R].gstCalle);
-                $("#insnum").val(obj.data[R].gstNumro);
-                $("#inscol").val(obj.data[R].gstClnia);
-                $("#inscp").val(obj.data[R].gstCpstl);
-                $("#insciud").val(obj.data[R].gstCiuda);
-                $("#insest").val(obj.data[R].gstStado);
-
-                $("#inscasa").val(obj.data[R].gstCasa);
-                $("#inscel").val(obj.data[R].gstClulr);
-                $("#insext").val(obj.data[R].gstExTel);
-                $("#inscorreper").val(obj.data[R].gstCorro);
-                $("#inscorreins").val(obj.data[R].gstCinst);
-                $("#inscorrealt").val(obj.data[R].gstSpcID);
-
-                $("#insnemple").val(obj.data[R].gstNmpld);
-                $("#insfecini").val(obj.data[R].gstFeing);
+                    $("#inscalle").val(obj.data[R].gstCalle);
+                    $("#insnum").val(obj.data[R].gstNumro);
+                    $("#inscol").val(obj.data[R].gstClnia);
+                    $("#inscp").val(obj.data[R].gstCpstl);
+                    $("#insciud").val(obj.data[R].gstCiuda);
+                    $("#insest").val(obj.data[R].gstStado);
+                    
+                    $("#inscasa").val(obj.data[R].gstCasa);
+                    $("#inscel").val(obj.data[R].gstClulr);
+                    $("#insext").val(obj.data[R].gstExTel);
+                    $("#inscorreper").val(obj.data[R].gstCorro);
+                    $("#inscorreins").val(obj.data[R].gstCinst);
+                    $("#inscorrealt").val(obj.data[R].gstSpcID);
+                    
+                    $("#insnemple").val(obj.data[R].gstNmpld);
+                    $("#insfecini").val(obj.data[R].gstFeing);
+                }
             }
-        }
 
-    })
+        })
 
-    $.ajax({
-        url: '../php/adscripcion.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        //alert("ADSCRIPCIÓN")
+        $.ajax({
+            url: '../php/adscripcion.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+//alert("ADSCRIPCIÓN")
+           
+            var n = 0;
+            for (K = 0; K < res.length; K++) { //RASTREAR EL ID DE LA PERSONA
+                if (obj.data[K].gstIdper == idpersona1) {
+               
+                    $("#insdirec").val(obj.data[K].gstAreje);
+                    $("#insdireca").val(obj.data[K].adscripcion);
+                    $("#inssub").val(obj.data[K].descripsub);
+                    $("#insdep").val(obj.data[K].descripdep);
 
-        var n = 0;
-        for (K = 0; K < res.length; K++) { //RASTREAR EL ID DE LA PERSONA
-            if (obj.data[K].gstIdper == idpersona1) {
-
-                $("#insdirec").val(obj.data[K].gstAreje);
-                $("#insdireca").val(obj.data[K].adscripcion);
-                $("#inssub").val(obj.data[K].descripsub);
-                $("#insdep").val(obj.data[K].descripdep);
-
+                }
             }
-        }
 
-    })
-    $.ajax({
-        url: '../php/conDatos.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        //alert("PUESTO")
+        })
+        $.ajax({
+            url: '../php/conDatos.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
+//alert("PUESTO")
+          
+            var n = 0;
+            for (J = 0; J < res.length; J++) { //RASTREAR EL ID DE LA PERSONA
+                if (obj.data[J].gstIdper == idpersona1) {
+               
+                    $("#inscodpre").val(obj.data[J].gstCodig);
+                    $("#inspues").val(obj.data[J].gstGnric);
 
-        var n = 0;
-        for (J = 0; J < res.length; J++) { //RASTREAR EL ID DE LA PERSONA
-            if (obj.data[J].gstIdper == idpersona1) {
-
-                $("#inscodpre").val(obj.data[J].gstCodig);
-                $("#inspues").val(obj.data[J].gstGnric);
-
-                $("#insnomp").val(obj.data[J].gstNpsto);
+                    $("#insnomp").val(obj.data[J].gstNpsto);
+                }
             }
-        }
 
-    })
+        })
 
-    $.ajax({
+        $.ajax({
             url: '../php/inspespecial.php',
             type: 'POST'
         }).done(function(resp) {
@@ -742,14 +747,14 @@ function perinsp(gstIdper) {
 
             html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="profesion" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>ESPECIALIDAD</th></tr></thead><tbody>';
             for (V = 0; V < res.length; V++) {
-
-
+    
+    
                 datos = obj.data[V].gstCatgr;
-
-                if (obj.data[V].gstIDper == idpersona1) {
+    
+                if (obj.data[V].gstIDper == idpersona1  ) {
                     x++;
                     html += "<tr><td>" + x + "</td><td>" + obj.data[V].gstCatgr + "</td></tr>";
-
+    
                 } else {}
             }
             html += '</tbody></table></div></div></div>';
@@ -808,19 +813,23 @@ $('.toggle-password').click(function() {
 
 
 function actContr() {
+    
+    // idper = document.getElementById('idper').value;
+    // usu = document.getElementById('usu').value;
+    // password = document.getElementById('password').value;
+    // pass = document.getElementById('pass').value;
+    // pass2 = document.getElementById('pass2').value;
+    // dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
 
-    idper = document.getElementById('idper').value;
-    usu = document.getElementById('usu').value;
-    password = document.getElementById('password').value;
-    pass = document.getElementById('pass').value;
-    pass2 = document.getElementById('pass2').value;
-    dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
+    var frm=$("#frmActuliar").serialize();
+            //alert(frm);
+            $.ajax({
+            url: '../php/actContra.php',
+            type:'POST',
+            data:frm+"&opcion=actCont"
+            }).done(function(respuesta){
 
-    $.ajax({
-        url: '../php/actContra.php',
-        type: 'POST',
-        data: dato
-    }).done(function(respuesta) {
+            //alert(respuesta);
 
         if (respuesta == 7) {
             $('#echo').toggle('toggle');
@@ -852,7 +861,7 @@ function actContr() {
 }
 
 function actContrMeay() {
-
+    
     idper = document.getElementById('idper').value;
     usu = document.getElementById('usu').value;
     password = document.getElementById('password').value;
@@ -895,66 +904,63 @@ function actContrMeay() {
     });
 }
 
-function contraseña() {
-    var nMay = 0,
-        nMin = 0,
-        nNum = 0
-    var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    var t2 = "abcdefghijklmnopqrstuvwxyz"
-    var t3 = "0123456789"
-    var password1 = document.getElementById('password1').value;
-    if (password1.length < 8) {
-        $('#validcarac').toggle('toggle');
-        setTimeout(function() {
-            $('#validcarac').toggle('toggle');
-        }, 2500);
-        document.getElementById('password1').focus();
-        document.getElementById('password2').disabled = true;
-        //alert("Su password, debe tener almenos 8 letras");
-    } else {
-        //Aqui continua si la variable ya tiene mas de 8 letra
-
-        for (i = 0; i < password1.length; i++) {
-            if (t1.indexOf(password1.charAt(i)) != -1) { nMay++ }
-            if (t2.indexOf(password1.charAt(i)) != -1) { nMin++ }
-            if (t3.indexOf(password1.charAt(i)) != -1) { nNum++ }
+function contraseña(){ 
+    var nMay = 0, nMin = 0, nNum = 0 
+	var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+	var t2 = "abcdefghijklmnopqrstuvwxyz" 
+	var t3 = "0123456789"
+    var password1 =  document.getElementById('password1').value;
+                   if (password1.length < 8) {
+                    $('#validcarac').toggle('toggle');
+                        setTimeout(function() {
+                    $('#validcarac').toggle('toggle');
+                    }, 2500);
+                    document.getElementById('password1').focus();
+                    document.getElementById('password2').disabled =true;
+                            //alert("Su password, debe tener almenos 8 letras");
+                   } else {
+                          //Aqui continua si la variable ya tiene mas de 8 letra
+                          
+               	for (i=0;i<password1.length;i++) { 
+			if ( t1.indexOf(password1.charAt(i)) != -1 ) {nMay++} 
+			if ( t2.indexOf(password1.charAt(i)) != -1 ) {nMin++} 
+			if ( t3.indexOf(password1.charAt(i)) != -1 ) {nNum++} 
 
 
-        }
-        if (nMay > 0 && nMin > 0 && nNum > 0) {
+		} 
+		if ( nMay>0 && nMin>0 && nNum>0 ){
             //alert("correcto")
-            $('#contraexit').toggle('toggle');
-            setTimeout(function() {
-                $('#contraexit').toggle('toggle');
-            }, 2500);
-            document.getElementById('password2').disabled = false;
-            document.getElementById('password2').focus();
-            form.submit()
-        } else {
+        $('#contraexit').toggle('toggle');
+                        setTimeout(function() {
+                    $('#contraexit').toggle('toggle');
+                    }, 2500);
+                document.getElementById('password2').disabled =false;
+                document.getElementById('password2').focus();
+                form.submit()
+        }else{ 
             $('#caratesp').toggle('toggle');
-            setTimeout(function() {
-                $('#caratesp').toggle('toggle');
-            }, 2500);
+                        setTimeout(function() {
+                    $('#caratesp').toggle('toggle');
+                    }, 2500);
 
             document.getElementById('password1').focus();
-            document.getElementById('password2').disabled = true;
-
-
-            return;
-        }
-    }
+            document.getElementById('password2').disabled =true;
+            
+        
+        return; }
 }
+} 
 
 
 function actControbli() {
-    //alert(document.getElementById("test1").checked)
+   //alert(document.getElementById("test1").checked)
     idper = document.getElementById('idact').value;
     usu = document.getElementById('usuarioobl').value;
     password = document.getElementById('usuarcontraseio').value;
     pass = document.getElementById('password1').value;
     pass2 = document.getElementById('password2').value;
 
-
+    
     /*if (document.getElementById('test1').checked==false) {
         Swal.fire({
             type: 'warning',
@@ -966,7 +972,7 @@ function actControbli() {
                 rgba(100, 100, 100, 0.4)`
         });
     }else{*/
-    dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
+        dato = 'idper=' + idper + '&usu=' + usu + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&opcion=actCont';
     $.ajax({
         url: '../php/actContra.php',
         type: 'POST',
@@ -983,7 +989,7 @@ function actControbli() {
                 backdrop: `
                     rgba(100, 100, 100, 0.4)`
             });
-            $('#modal-obligatorio').modal('hide');
+        $('#modal-obligatorio').modal('hide'); 
         } else if (respuesta == 2) {
             Swal.fire({
                 type: 'warning',

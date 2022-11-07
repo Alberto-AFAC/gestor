@@ -298,7 +298,6 @@ include('header.php');
 
 
                                 <?php include('../perfil/ojtreaction.php');?>
-                                <?php include('../perfil/ojtreport.php');?>
 
                                 <!-- /.tab-pane -->
                             </div>

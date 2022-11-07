@@ -249,73 +249,12 @@ session_start();
             echo "1";
         }
    
-}else if ($opcion === 'addreporojt'){
-
-    $preg1 = $_POST['preg1'];
-	$preg2 = $_POST['preg2'];
-	$preg3 = $_POST['preg3'];
-	$preg4 = $_POST['preg4'];
-	$preg5 = $_POST['preg5'];
-	$preg6 = $_POST['preg6'];
-	$preg7 = $_POST['preg7'];
-    $idojt = $_POST['idojt'];
-    $obser = $_POST['obser'];
-    if (regisreport($preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$idojt,$obser,$conexion)){
-        echo "0";
-        //hiseval($id,$idpregunta,$idinspector,$conexion);
-    }else{
-        echo "1";
-    }
-    //ADD SUB-ESPECIALIDAD 
-}else if ($opcion === 'registrsuep'){
-    $categoria = $_POST['categoria'];
-    $subdescrip = $_POST['subdescrip'];
-    if (comproespc ($categoria,$subdescrip,$conexion)){
-        if (registrarsubes($categoria,$subdescrip,$conexion)){
-            echo "0";
-           // $usuario='pruebas';
-           historialsub($id,$categoria,$subdescrip,$conexion);
-        }else{
-            echo "1";
-        }
-    }else{
-
-        echo "2";
-    }
-    //updateindsub
-}else if ($opcion === 'updateindsub'){
-    $categoria = $_POST['categoria'];
-    $id_subesp = $_POST['id_subesp'];
-    $subdescrip = $_POST['subdescrip'];
-    if (updateinsubb($categoria,$subdescrip,$id_subesp,$conexion)){
-        echo "0";
-        // $usuario='pruebas';
-        //histupdsub($id,$categoria,$subdescrip,$conexion);
-    }else{
-        echo "1";
-    }
-    
-    //updateindsub
 }
 //FUNCIONES-----------------------------------------------------------------------------------
 
 //FUNCION PARA COMPROBRAR SI EL ISNPECTOR YA SE ENCUENTRA PROGRAMADA EN ESA COMISION
 function comprobacion ($comision,$idsubtarea,$idInspct,$isSpc,$conexion){
     $query="SELECT * FROM prog_ojt WHERE id_pers = '$idInspct' AND id_esp = '$isSpc' AND id_subtarea= '$idsubtarea' AND estado = 0 AND comision='$comision' ";
-    $resultado= mysqli_query($conexion,$query);
-    if($resultado->num_rows==0){
-        return true;
-    }else{
-        return false;
-    }
-    $this->conexion->cerrar();
-}
-
-//FUNCION PARA COMPROBRAR SI EL ISNPECTOR YA SE ENCUENTRA PROGRAMADA EN ESA COMISION
-function regisreport ($preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$idojt,$obser,$conexion){
-    ini_set('date.timezone','America/Mexico_City');
-    $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
-    $query="INSERT INTO repojt_cumpli VALUES(0,$idojt,'$preg1','$preg2','$preg3','$preg4','$preg5','$preg6','$preg7','0', '0','0','0','0','0','0','0','0','0','$obser','$fecha',0)";
     $resultado= mysqli_query($conexion,$query);
     if($resultado->num_rows==0){
         return true;
@@ -350,7 +289,7 @@ function comprobaciontem ($comision,$idinsps,$idInspct,$isSpc,$tareaprin,$conexi
 
 //funcion para guardar PROGRAMACIÓN
 function registrar ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion){
-    $query="INSERT INTO prog_ojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0,0)";
+    $query="INSERT INTO prog_ojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0)";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{
@@ -361,7 +300,7 @@ function registrar ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubta
 
 //funcion para guardar PROGRAMACIÓN
 function registrarsub ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$idtarea,$conexion){
-    $query="INSERT INTO tem_progojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0,0)";
+    $query="INSERT INTO tem_progojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0',$idtarea,'$idsubtarea','PENDIENTE',0,'PENDIENTE',0)";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{
@@ -408,7 +347,7 @@ function borrorojt ($comision,$conexion){
 
 //funcion para guardar PROGRAMACIÓN TEMPORAL
 function registrarpru ($isSpc,$fecfincomi,$fecincicomi,$comision,$idInspct,$tareaprin,$idinsps,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion){
-    $query="INSERT INTO tem_progojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0','$tareaprin','$idinsps','PENDIENTE',0,'PENDIENTE',0,0)";
+    $query="INSERT INTO tem_progojt VALUES(0,'$idInspct','$isSpc','$comision','$fecincicomi','$fecfincomi','$ubicacion','$fechaInicio','$fechaTermino', '$coordinador','$instructor','$nivel','$lugar','$sede','0','$tareaprin','$idinsps','PENDIENTE',0,'PENDIENTE',0)";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{
@@ -470,41 +409,6 @@ function updateevalu($idpregunta,$idinspector,$conexion){
     $this->conexion->cerrar();
 }
 
-//FUNCION PARA COMPROBRAR SI LA SUB-ESPECIALIDAD YA ESTA DADA DE ALTA
-function comproespc ($categoria,$subdescrip,$conexion){
-    $query="SELECT * FROM subespecojt WHERE subdescrip = '$subdescrip' AND id_especialidad = '$categoria' AND estado = 0";
-    $resultado= mysqli_query($conexion,$query);
-    if($resultado->num_rows==0){
-        return true;
-    }else{
-        return false;
-    }
-    $this->conexion->cerrar();
-}
-//FUNCION PARA REGISTRAR LA SUB-ESPECIALIDAD ($categoria,$subdescrip,$conexion)
-function registrarsubes ($categoria,$subdescrip,$conexion){
-    ini_set('date.timezone','America/Mexico_City');
-    $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
-    $query="INSERT INTO subespecojt VALUES(0,$categoria,'$subdescrip',0)";
-    $resultado= mysqli_query($conexion,$query);
-    if($resultado->num_rows==0){
-        return true;
-    }else{
-        return false;
-    }
-    $this->conexion->cerrar();
-}
-//FUNCION PARA FINALIZAR LA PROGRAMACIÓN 18102022  updateinsubb($categoria,$subdescrip,$conexion)
-function updateinsubb($categoria,$subdescrip,$id_subesp,$conexion){
-    $query="UPDATE subespecojt SET subdescrip='$subdescrip' WHERE id_subesp ='$id_subesp' AND id_especialidad='$categoria' ";
-    if(mysqli_query($conexion,$query)){
-        return true;
-    }else{
-        return false;
-    }
-    $this->conexion->cerrar();
-}
-
 //funcion para registra cambios
 function historial($id,$isSpc,$idInspct,$idsubtarea,$fechaInicio,$fechaTermino,$coordinador,$instructor,$nivel,$ubicacion,$lugar,$sede,$conexion){
     ini_set('date.timezone','America/Mexico_City');
@@ -534,19 +438,6 @@ function historialOJT($id,$id_proojt,$conexion){
         return false;
     }
 }
-//funcion para registra REGISTRO DE SUB-ESPECIALIDAD
-function historialsub($id,$categoria,$subdescrip,$conexion){
-    ini_set('date.timezone','America/Mexico_City');
-    $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
-    $query = "INSERT INTO historial VALUES (0,'$id',CONCAT('REGISTRA UNA SUB-ESPECIALIDAD EN ',(SELECT gstCsigl from categorias where gstIdcat = $categoria)) , ' SUB-ESPECIALIDAD:' '$subdescrip' ,'$fecha')";
-    if(mysqli_query($conexion,$query)){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-
 
 //funcion para registra EL HISTORIAL DE LA EVALUACION 
 

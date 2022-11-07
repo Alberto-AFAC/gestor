@@ -2,7 +2,8 @@
 ini_set('date.timezone','America/Mexico_City');
     include('../conexion/conexion.php');
     $datos = base64_decode($_GET['data']);
-    $query = "SELECT id, id_persona, id_codigocurso, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, listacursos.gstCntnc, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
+    $datos1 = base64_decode($_GET['cod']);
+    $query = "SELECT cursos.codigo,id, id_persona, id_codigocurso, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, listacursos.gstCntnc, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
     'enero' 
     WHEN MONTH ( fcurso ) = 2 THEN
     'febrero' 
@@ -51,8 +52,8 @@ ini_set('date.timezone','America/Mexico_City');
 		'noviembre' 
 		WHEN MONTH ( fechaf ) = 12 THEN
 		'diciembre' ELSE 'MES NO VALIDO' 
-	END AS mesfinales FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc 
-    WHERE id = $datos";
+	END AS mesfinales,cursos.grupo FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc 
+    WHERE id_persona = $datos AND  gstIdlsc = $datos1 GROUP BY id_codigocurso";
     $const = mysqli_query($conexion, $query);
     $con = mysqli_fetch_array($const);
     $dia = array("cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez","once","doce","trece","catorce","quince", "dieciseis","diecisiete","dieciocho","diecinueve", "veinte","veintiuno","veintidós","veintitres","veinticuatro","veinticinco","veintiseis","veintisiete","veintiocho","veintinueve","treinta","treinta y uno");
@@ -61,11 +62,14 @@ ini_set('date.timezone','America/Mexico_City');
     $mesactual = strftime("%B");
     $nombre = $con['gstNombr'];
     $apellido = $con['gstApell'];
+    $documento = $con['gstCntnc'];
     $curso = $con['gstTitlo'];
     $dateF = $con['fcurso'];
     $dateFinal = $con['fechaf'];
     $registro = $con['id_codigocurso'];
     $EvaluacionF = $con['evaluacion'];
+    $tituloPrueba = "INDUCCIÓN A LA SCT";
+    $conteoStr = strlen($con['gstTitlo']);
     // $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
     $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['id_codigocurso']);

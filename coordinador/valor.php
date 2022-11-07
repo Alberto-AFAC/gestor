@@ -426,7 +426,6 @@ $psto = mysqli_query($conexion,$sql);
                                 <label>VISA VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstVignt" name="gstVignt">
                             </div>
-
                         </div>
 
                         <div class="form-group">

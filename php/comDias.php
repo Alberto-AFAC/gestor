@@ -5,12 +5,21 @@ $idpro = $_SESSION['usuario']['id_usu'];
 
 $id = $_POST['idpart'];
 
+$modalidad = $_POST['modalidad'];
+
+if($modalidad == 'AUTOGESTIVO'){
+
+  echo $arreglo = '0';
+
+}else{
+    
 $valor = explode(",", $id);
 $val = count($valor);
 
 foreach ($valor as $idinsps) {
   $prtcpnt = $idinsps;
   mostrarDias($prtcpnt, $idpro,$conexion);
+}
 }
 function mostrarDias($prtcpnt, $idpro,$conexion){
   $query = "SELECT dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin  FROM semanal WHERE id_per = $idpro AND id_curso = '0' AND habil = 'SI'";
@@ -35,7 +44,7 @@ function mostrarDias($prtcpnt, $idpro,$conexion){
 }
 
 function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
-  $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell,anio,codigo
+  $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell,anio 
   FROM semanal 
   INNER JOIN cursos ON codigo = semanal.id_curso
   INNER JOIN personal ON gstIdper = $prtcpn
@@ -44,6 +53,7 @@ function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
   dia_semana = $dia AND 
   num_mes = $mes AND
   habil = 'SI' AND
+  cursos.estado=0 AND
   prtcpnt = 'SI'  ";
 
   $resultado = mysqli_query($conexion, $query);
@@ -61,7 +71,7 @@ $hrfincom = strtotime( $hfin );
 
  if($hrinicom<=$hrinipro && $hrinipro<=$hrfincom || $hrinicom<=$hrfinpro && $hrfinpro<=$hrfincom){
         
-     $datos = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].'=>'.$data['dia_semana'].'-'.$data['num_mes'].'-'.$data['anio'].' DE '.$data['hora_ini'].' A '.$data['hora_fin'].' FOLIO: '.$data['codigo'].'<br>';
+     $datos = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].'=>'.$data['dia_semana'].'-'.$data['num_mes'].'-'.$data['anio'].' DE '.$data['hora_ini'].' A '.$data['hora_fin'].'<br>';
        $arreglo[] = $datos; 
  }else{
      

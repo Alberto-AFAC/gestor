@@ -212,14 +212,14 @@ function regCurso() {
     let exteno = document.getElementById("gstProvd").value;
 
     //funcíón que se genera al agregara el externo  
-    if (exteno == "EXTERNO") {
-        document.getElementById("codigoCrso").value = "NO APLICA";
+    if (exteno=="EXTERNO"){
+        document.getElementById("codigoCrso").value="NO APLICA";
     }
 
     var tPrfil = ''
 
     var selectObject = document.getElementById("gstPrfil");
-
+    
 
     for (var i = 0; i < selectObject.options.length; i++) {
         if (selectObject.options[i].selected == true) {
@@ -264,6 +264,7 @@ function regCurso() {
             showConfirmButton: false,
             customClass: 'swal-wide',
             timer: 3000
+
         });
     } else {
         $.ajax({

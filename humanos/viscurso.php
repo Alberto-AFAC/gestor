@@ -228,8 +228,7 @@
                                     </div>
                                     <div class="col-sm-3"><br>
                                         <label class="label2">CLASSROOM</label>
-                                        <input type="url" class="form-control inputalta" id="classromcur"
-                                            name="classromcur" placeholder="CLASSROM" disabled="">
+                                         <textarea type="url" class="form-control inputalta" id="classromcur" name="classromcur" placeholder="CLASSROM" disabled=""></textarea>
                                     </div>
                                 </div>
                             </div>

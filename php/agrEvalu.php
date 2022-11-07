@@ -128,8 +128,24 @@ $valor = count($gstIDprm);
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 function proEvalue($gstInspr,$gstIDprm,$gstActul,$idspc,$comntr,$conexion){
 
+
+	// $query="SELECT * FROM evaluacion WHERE 	gstIDins='$gstInspr' AND gstIDprm='$gstIDprm' AND estado = 0 ";
+	// 		$resultado= mysqli_query($conexion,$query);
+	// 	if($resultado->num_rows==0){
 			$query="INSERT INTO evaluacion VALUES(0,'$gstInspr','$gstIDprm','$gstActul','$gstActul',$idspc,0);";
 				if(mysqli_query($conexion,$query)){
 

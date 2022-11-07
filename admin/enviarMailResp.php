@@ -1,0 +1,69 @@
+<?php
+include("../conexion/conexion.php");
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../php-mailer2/Exception.php';
+require '../php-mailer2/PHPMailer.php';
+require '../php-mailer2/SMTP.php';
+
+$idcurso = $_POST['codigoCurso'];
+$correoRs = $_POST['correoResponsable'];
+$query = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstApell, gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
+			  INNER JOIN cursos ON idmstr = gstIdlsc
+			  INNER JOIN personal ON gstIdper = idinsp
+			  WHERE codigo = '$idcurso'";
+$resultado = mysqli_query($conexion, $query);
+// $curso = mysqli_fetch_assoc($resultado);
+$x = 0;
+
+$query2 = "SELECT codigo, gstTitlo,gstIdlsc,gstNombr,gstApell, gstTipo, gstCorro, gstCinst, gstProvd,DATE_FORMAT(fcurso,'%d/%m/%Y') AS inicia,hcurso,gstCargo,sede,modalidad, gstCorro FROM listacursos 
+INNER JOIN cursos ON idmstr = gstIdlsc
+INNER JOIN personal ON gstIdper = idinsp
+WHERE codigo = '$idcurso'";
+$resultado2 = mysqli_query($conexion, $query2);
+$curso2 = mysqli_fetch_assoc($resultado2);
+
+
+$gstTitlo = $curso2['gstTitlo'];
+$inicia = $curso2['inicia'];
+$modalidad = $curso2['modalidad'];
+
+$mail = new PHPMailer;
+$mail->isSMTP();
+$mail->SMTPDebug = 2;
+$mail->Host = 'smtp.hostinger.com';
+$mail->Port = 587;
+$mail->SMTPAuth = true;
+$mail->Username = 'notificaciones@afac-avciv.com';
+$mail->Password = 'Aeronavegabilidad.2021.$';
+$mail->setFrom('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
+$mail->addReplyTo('notificaciones@afac-avciv.com', 'NOTIFICACIONES AFAC');
+$mail->Subject = 'NUEVO CURSO PROGRAMADO';
+// $mail->msgHTML(file_get_contents('message.html'), __DIR__);
+$mail->isHTML(true);                                  //Set email format to HTML
+$mail->CharSet = 'UTF-8';
+$body .= '<p>NOMBRE DEL CURSO: <span style="font-weight: bold;">' . $gstTitlo . '</span></p>
+<p>FECHA DE IMPARTICIÓN: <span style="font-weight: bold;">' . $inicia . '</span></p>
+<p>MODALIDAD: <span style="font-weight: bold;">' . $modalidad . '</span></p>
+EL CURSO ESTÁ DIRIGIDO AL PERSONAL QUE A CONTINUACIÓN SE ENLISTA:<br><br>
+<table style="border-collapse: collapse; width: 100%; border: 1px solid black";><tr><th style="border-collapse: collapse; border: 1px solid black";>No.</th><th style="border-collapse: collapse; border: 1px solid black";>PARTICIPANTES DEL CURSO</th><th style="border-collapse: collapse; border: 1px solid black";>CARGO</th></tr>';
+while ($curso = mysqli_fetch_assoc($resultado)) {
+
+    $x++;
+    $to_array = explode(',', $correoRs);
+    foreach ($to_array as $address) {
+        $mail->addAddress($address);
+    }
+    $body .= "<tr><td style='border-collapse: collapse; border: 1px solid black';>" . $x . ".-</td><td style='border-collapse: collapse; border: 1px solid black';>" . $curso['gstNombr'] . " " . $curso['gstApell'] . "</td><td style='border-collapse: collapse; border: 1px solid black';>".$curso['gstCargo'] ."</td></tr>";
+
+    // $msg .= "MENSAJE DE PRUEBA PARA CORREOS AL RESPONSABLE";
+}
+$mail->Body = $body . '</table>';
+$mail->MsgHTML($body);
+if (!$mail->send()) {
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'The email message was sent.';
+}

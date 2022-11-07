@@ -140,11 +140,9 @@ function humanosAcceso(){
                 }
          }
     });
-
 }
 
 function coordinadorAcceso(){
-
         $.ajax({
         url: '../php/accesos.php',
         type: 'POST',
@@ -161,7 +159,6 @@ function coordinadorAcceso(){
                 $("#activo").show();
                 }
                 
-
                 if(activo=='a'){
                 $("#"+activo+acces+"1").show();
                     acceso = 'b'+acces;

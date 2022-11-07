@@ -842,7 +842,7 @@ $(document).ready(function() {
                         "*" + obj.data[i].idinsp +
                         "*" + obj.data[i].contracur +
                         "*" + obj.data[i].classroom +
-                        "*" + obj.data[i].grupo; //documentar
+                        "*" + obj.data[i].grupo;
 
                     var d = cursos.split("*");
 

@@ -303,7 +303,7 @@ function opencomiOJT(perona) {
     $("#listaOJT").toggle("fast"); //Oculta lista
 
 
-    //alert(perona);
+    alert(perona);
     document.getElementById('inspercooj_1').value = perona;
     $.ajax({
         url: '../php/conPerson.php',

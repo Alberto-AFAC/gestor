@@ -16,11 +16,11 @@ if($valor = conCorreo($correo,$conexion)){
 $fechaEncryp = base64_encode(date('Y-m-d H:i:00'));
 $valores = explode('.',$valor);
 $nombre = strval($valores[0]);
-$nmple = $valores[1];
-$idusu = base64_encode($valores[2]);
+// $nmple = $valores[1];
+$idusu = base64_encode($valores[1]);
 $enlace = 'https://afac-avciv.com/restablecer.php?data='.$idusu.'&token='.$fechaEncryp.'';
 //$enlace = 'https://testergestor.afac-avciv.com/';
-$id = $valores[2];
+$id = $valores[1];
 $fechaActual = date('Y-m-d H:i');  
 
 if(agrFecha($fechaActual,$id,$conexion)){	
@@ -176,14 +176,15 @@ if($resultado->num_rows==0){
 return '0';
 }else{
 $res = mysqli_fetch_row($resultado);
-return $res[1].' '.$res[2].'.'.$res[50].'.'.$res[48];
+return $res[1].' '.$res[2].'.'.$res[0];
+// return $res[1].' '.$res[2].'.'.$res[50].'.'.$res[48];
 }
 $this->conexion->cerrar();
 } 
 
 function agrFecha($fechaActual,$id,$conexion){
 //$nemple = base64_encode($valor);
-$nemple = $valor;
+// $nemple = $valor;
 $query = "UPDATE accesos INNER JOIN personal ON id_usu = gstIdper SET token = '$fechaActual' WHERE id_usu = '$id' AND estado = 0";
 if(mysqli_query($conexion,$query)){
 return true;

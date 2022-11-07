@@ -458,18 +458,16 @@ $(document).ready(function() {
     $('#coordinador').select2();
     $('#instructor').select2();
     $('#instojt').select2();
-    $('#idSpecialidad').load('select/buspecialidadojt.php');
-    $('#tabSpcl').load('select/tablaSpcOJT.php');
+    $('#idSpecialidad').load('select/buspecialidad.php');
+    $('#tabSpcl').load('select/tablaSpc.php');
     $('#tablaPro').load('select/tablaProgOJT.php');
 });
 
 function filubi() {
-    var especialidas = document.getElementById('isSpc2').value;
-    //alert(especialidas);
+    var especialidas = document.getElementById('isSpc').value;
     var ubicacion = document.getElementById('uboj').value;
-    //alert(ubicacion);
-    var persona = document.getElementById('idInspct1').value;
-    //alert("filubi");
+    var persona = document.getElementById('idInspct').value;
+    //alert(persona)06042022
     $.ajax({
         url: '../php/ojt_tareas.php',
         type: 'POST'
@@ -478,12 +476,11 @@ function filubi() {
         var res = obj.data;
         var n = 0;
         html =
-            '<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsubtareas" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;"><input type="checkbox" name="tarojt" id="tarojt">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">ACCIONES</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
+            '<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsubtareas" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">ACCIONES</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
         for (H = 0; H < res.length; H++) {
             if (obj.data[H].id_spc == especialidas && obj.data[H].idarea == ubicacion) {
                 var idojt = obj.data[H].id_ojt;
                 n++;
-                
                 datos = obj.data[H].id_ojt + "*" + n;
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
                     subtareas =
@@ -492,7 +489,7 @@ function filubi() {
                     subtareas =
                         '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>';
                 }
-                html += '<tr><th scope="row">' + n + ')<input type="checkbox" name="tarojt" id="tarojt"></th><td>' + obj.data[H].ojt_principal + '</td><td>' +
+                html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal + '</td><td>' +
                     obj.data[H].idarea + '</td><td>' + subtareas + '</td><td style="display:none">' + obj.data[
                         H].id_ojt; + '</td></tr>';
             }
@@ -634,7 +631,7 @@ function ageg(dato) {
     id_subojt = a[1];
     id_tarea = a[0];
     //alert(id_tarea);
-    var isSpc = document.getElementById('isSpc2').value;
+    var isSpc = document.getElementById('isSpc').value;
     var idInspct = document.getElementById('idInspct').value;
     var fechaInicio = document.getElementById('fechaInicio').value;
     var fechaTermino = document.getElementById('fechaTermino').value;

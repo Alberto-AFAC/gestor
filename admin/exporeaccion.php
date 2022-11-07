@@ -96,7 +96,6 @@ include('header.php');
                                             <tr>
                                                 <th>#</th>
                                                 <th>CODIGO</th>
-                                                <th>NOMBRE DEL PARTICIPANTE</th>
                                                 <th>NOMBRE DEL CURSO</th>
                                                 <th>COORDINADOR</th>
                                                 <th>INSTRUCTOR</th>

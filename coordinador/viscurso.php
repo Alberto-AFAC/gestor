@@ -90,7 +90,7 @@ onclick="agregarDias();">EDITAR</button>
 
     <!-- /.col -->
     <div class="col-md-12">
-
+        
         <div class="box-tools pull-right" style="display:none;" id="lisCurso">
             <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
                 data-widget="remove">
@@ -110,14 +110,14 @@ onclick="agregarDias();">EDITAR</button>
                 data-widget="remove">
                 <a href="pendientes"><i class='fa fa-times'></i></a>
             </button>
-        </div>
+        </div>        
 
         <div class="box-tools pull-right" style="display:none;" id="porvencer">
             <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
                 data-widget="remove">
                 <a href="porvencer"><i class='fa fa-times'></i></a>
             </button>
-        </div>
+        </div>  
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
@@ -228,20 +228,17 @@ onclick="agregarDias();">EDITAR</button>
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label class="label2">FECHA INICIO</label>
-                                    <input type="date" class="form-control disabled inputalta" id="fcurso" name="fcurso"
-                                        disabled="">
+                                    <input type="date" class="form-control disabled inputalta" id="fcurso" name="fcurso" disabled="">
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="label2">HORA DE INCIO</label>
-                                    <input type="time" class="form-control disabled inputalta" id="hcurso" name="hcurso"
-                                        disabled="">
+                                    <input type="time" class="form-control disabled inputalta" id="hcurso" name="hcurso" disabled="">
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="label2">FECHA CONCLUSIÓN</label>
-                                    <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf"
-                                        disabled="">
-
+                                    <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf" disabled="">
+                                    
                                 </div>
                                 <!-- <div class="col-sm-3">
                                     <label class="label2">HORA DE FINALIZACIÓN</label>
@@ -250,9 +247,7 @@ onclick="agregarDias();">EDITAR</button>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <button type='button' title='Días Hábiles' onclick='diasEditar()'
-                                        class='btn btn-info' data-toggle='modal' data-target='#diahabil-modal'
-                                        id="modalMost" disabled='disabled'>DÍAS HÁBILES </button>
+                                    <button type='button' title='Días Hábiles' onclick='diasEditar()' class='btn btn-info' data-toggle='modal' data-target='#diahabil-modal' id="modalMost" disabled='disabled'>DÍAS HÁBILES </button>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -278,31 +273,34 @@ onclick="agregarDias();">EDITAR</button>
                                         <option value="PRESENCIAL">PRESENCIAL</option>
                                     </select>
                                 </div>
-                                <div id="dismod">
+
+                               <!-- <div id="dismod" style="display: none;"> -->
                                     <div class="col-sm-3">
-                                        <label class="label2">LINK DE ACCESO</label>
-                                        <input type="url" class="form-control inputalta" id="linkcur" name="linkcur"
+                                        <label class="label2" style="display: none;" id="labellinkcur" name="labellinkcur">LINK DE ACCESO</label>
+                                        <input type="url" style="display: none;" class="form-control inputalta" id="linkcur" name="linkcur"
                                             placeholder="URL" disabled="">
                                     </div>
                                     <div class="col-sm-3">
-                                        <label class="label2">CONTRASEÑA DE ACCESO</label>
-                                        <input type="url" class="form-control inputalta" id="contracur" name="contracur"
+                                        <label class="label2" style="display: none;" id="labelcontracur" name="labelcontracur">CONTRASEÑA DE ACCESO</label>
+                                        <input type="url" style="display: none;" class="form-control inputalta" id="contracur" name="contracur"
                                             placeholder="Contraseña de acceso" disabled="">
                                     </div>
-                                    <div class="col-sm-3"><br>
-                                        <label class="label2">CLASSROOM</label>
-                                        <input type="url" class="form-control inputalta" id="classromcur"
-                                            name="classromcur" placeholder="CLASSROM" disabled="">
+                                    <div class="col-sm-5"><br>
+                                        <label class="label2" style="display: none;" id="labelclassromcur" name="labelclassromcur">CLASSROOM</label>
+                                        <textarea type="url" style="display: none;" class="form-control inputalta" id="classromcur"
+                                            name="classromcur" placeholder="CLASSROM" disabled=""></textarea>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
 
-                            <div id="disocl" style="display: none;" class="form-group">
+                            <!-- <div id="disocl" style="display: none;" class="form-group">
                                 <input type="hidden" name="linkcur" id="linkcur">
                                 <input type="hidden" name="contracur" id="contracur">
                                 <input type="hidden" name="classromcur" id="classromcur">
+                                
 
-                            </div>
+                            </div> -->
+
 
                             <input type="hidden" name="codigo" id="codigo">
                             <input type="hidden" name="proceso" id="proceso">

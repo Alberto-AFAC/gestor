@@ -49,7 +49,7 @@
                             </div>
                         </div>
 
-                        <div id="habilDias"></div>dddd
+                        <div id="habilDias"></div>
 
                         <!------------------------------------------------------ fucion del empleado-------------------------------------------------------------- -->
                         <!-- ----------------------------------------------------fin funcion del empleado-------------------- -->
@@ -117,19 +117,7 @@ onclick="agregarDias();">EDITAR</button>
                 data-widget="remove">
                 <a href="porvencer"><i class='fa fa-times'></i></a>
             </button>
-        </div> 
-        <div class="box-tools pull-right" style="display:none;" id="porvencer2">
-            <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
-                data-widget="remove">
-                <a href="porvencer2"><i class='fa fa-times'></i></a>
-            </button>
-        </div> 
-        <div class="box-tools pull-right" style="display:none;" id="vencidos2">
-            <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
-                data-widget="remove">
-                <a href="vencidos2"><i class='fa fa-times'></i></a>
-            </button>
-        </div>
+        </div>  
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
@@ -279,38 +267,36 @@ onclick="agregarDias();">EDITAR</button>
                                         onChange="modalidades()" disabled="">
                                         <option value="0">ELEGIR UNA OPCIÓN</option>
                                         <option value="A DISTANCIA (E-LEARNNING)">A DISTANCIA (E-LEARNNING)</option>
+                                        <option value="AUTOAPRENDIZAJE">AUTOAPRENDIZAJE</option>
                                         <option value="AUTOGESTIVO">AUTOGESTIVO</option>
                                         <option value="HIBRIDO">HIBRIDO</option>
                                         <option value="PRESENCIAL">PRESENCIAL</option>
                                     </select>
                                 </div>
 
-                                <!-- <div id="dismod" style="display: none;"> -->
-                                    <div class="col-sm-3">
-                                        <label class="label2" style="display: none;" id="labellinkcur" name="labellinkcur">LINK DE ACCESO</label>
-                                        <input type="url" style="display: none;" class="form-control inputalta" id="linkcur" name="linkcur"
-                                            placeholder="URL" disabled="">
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label class="label2" style="display: none;" id="labelcontracur" name="labelcontracur">CONTRASEÑA DE ACCESO</label>
-                                        <input type="url" style="display: none;" class="form-control inputalta" id="contracur" name="contracur"
-                                            placeholder="Contraseña de acceso" disabled="">
-                                    </div>
-                                    <div class="col-sm-5"><br>
-                                        <label class="label2" style="display: none;" id="labelclassromcur" name="labelclassromcur">CLASSROOM</label>
-                                        <textarea type="url" style="display: none;" class="form-control inputalta" id="classromcur"
-                                            name="classromcur" placeholder="CLASSROM" disabled=""></textarea>
-                                    </div>
-                                <!-- </div> -->
-                            </div>
+                                  <!--<div id="dismod">-->
+        <div class="col-sm-3">
+            <label class="label2" style="display: none;" id="labellinkcur" name="labellinkcur">LINK DE ACCESO</label>
+            <input type="url" style="display: none;" class="form-control inputalta" id="linkcur" name="linkcur" placeholder="URL" disabled="">
+        </div>
+        <div class="col-sm-3">
+            <label class="label2" style="display: none;" id="labelcontracur" name="labelcontracur">CONTRASEÑA DE ACCESO</label>
+            <input type="url" style="display: none;" class="form-control inputalta" id="contracur" name="contracur" placeholder="Contraseña de acceso" disabled="">
+        </div>
+        <div class="col-sm-5"><br>
+            <label class="label2" style="display: none;" id="labelclassromcur" name="labelclassromcur">CLASSROOM</label>
+            <textarea type="url" style="display: none;" class="form-control inputalta" id="classromcur" name="classromcur" placeholder="CLASSROM" disabled=""></textarea>
+        </div>
+    <!--</div>-->
+</div>
 
-                            <!-- <div id="disocl" style="display: none;" class="form-group">
-                                <input type="hidden" name="linkcur" id="linkcur">
-                                <input type="hidden" name="contracur" id="contracur">
-                                <input type="hidden" name="classromcur" id="classromcur">
-                                
+<!--<div id="disocl" style="display: none;" class="form-group">
+    <input type="hidden" name="linkcur" id="linkcur">
+    <input type="hidden" name="contracur" id="contracur">
+    <input type="hidden" name="classromcur" id="classromcur">
+    
 
-                            </div> -->
+</div>-->
 
                             <input type="hidden" name="codigo" id="codigo">
                             <input type="hidden" name="proceso" id="proceso">

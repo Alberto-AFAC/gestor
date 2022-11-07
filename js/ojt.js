@@ -21,7 +21,7 @@ $.ajax({
         venciOJT = obj.data[O].vencido;
         canceladosOJT = obj.data[O].declina;
         completoOJT = obj.data[O].finalizado;
-        sumaOJT = obj.data[O].finalizado + obj.data[O].confirmar + obj.data[O].proceso + obj.data[O].vencido + obj.data[O].declina;
+        sumaOJT = obj.data[O].finalizado + obj.data[O].confirmar +obj.data[O].proceso +obj.data[O].vencido+ obj.data[O].declina;
     }
 
     $("#confirmaOJT").html(confirmaOJT);
@@ -37,29 +37,29 @@ $.ajax({
 
 });
 
-function evaojt(ideval) {
-
+function evaojt(ideval){
+    
     $.ajax({
-        url: '../php/conproojt.php',
-        type: 'POST'
+        url:'../php/conproojt.php',
+        type:'POST'
     }).done(function(respuesta) {
         obj = JSON.parse(respuesta);
         var res = obj.data;
         var a = 0;
-        for (A = 0; A < res.length; A++) {
-            if (obj.data[A].id_proojt == ideval) {
+        for (A = 0; A < res.length; A++) { 
+            if (obj.data[A].id_proojt == ideval){
                 //alert(ideval);
-                datos =
-                    obj.data[A].gstCatgr + '*' +
-                    obj.data[A].comision + '*' +
-                    obj.data[A].ojt_principal + '*' +
-                    obj.data[A].feini_comision + '*' +
-                    obj.data[A].lugar + '*' +
-                    obj.data[A].id_proojt + '*' +
-                    obj.data[A].ojt_subtarea;
-                var d = datos.split("*");
-                $("#modal-evaluOJT #especOJTreac").val(d[0]);
-                $("#modal-evaluOJT #comisionOJTrec").val(d[1]);
+                datos = 
+                obj.data[A].gstCatgr + '*' +
+                obj.data[A].comision + '*' +
+                obj.data[A].ojt_principal    + '*' +
+                obj.data[A].feini_comision    + '*' +
+                obj.data[A].lugar  + '*' +
+                obj.data[A].id_proojt  + '*' +
+                obj.data[A].ojt_subtarea;    
+                var d = datos.split("*");   
+                $("#modal-evaluOJT #especOJTreac").val(d[0]);   
+                $("#modal-evaluOJT #comisionOJTrec").val(d[1]);            
                 $("#modal-evaluOJT #tareprinOJTrec").val(d[2]);
                 $("#modal-evaluOJT #fecOJTreac").val(d[3]);
                 $("#modal-evaluOJT #lugOJTreac").val(d[4]);
@@ -67,50 +67,10 @@ function evaojt(ideval) {
                 $("#modal-evaluOJT #subtareOJtreac").val(d[6]);
 
                 html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
-
-
+                
+                   
                 html += '</table>';
                 $("#id_instructOJ").html(html);
-            }
-        }
-    });
-    //LLENADO DE TABLA DE INSTRUCTOR Y COORDINADOR
-}
-//reporte de cumplimiento
-function cumplimientoojt(ideval) {
-    //alert("entra");
-    $.ajax({
-        url: '../php/conproojt.php',
-        type: 'POST'
-    }).done(function(respuesta) {
-        obj = JSON.parse(respuesta);
-        var res = obj.data;
-        var a = 0;
-        for (A = 0; A < res.length; A++) {
-            if (obj.data[A].id_proojt == ideval) {
-                //alert(ideval);
-                datos =
-                    obj.data[A].gstCatgr + '*' +
-                    obj.data[A].comision + '*' +
-                    obj.data[A].ojt_principal + '*' +
-                    obj.data[A].feini_comision + '*' +
-                    obj.data[A].lugar + '*' +
-                    obj.data[A].id_proojt + '*' +
-                    obj.data[A].ojt_subtarea;
-                var d = datos.split("*");
-                $("#modal-genreportOJT #especOJTgen").val(d[0]);
-                $("#modal-genreportOJT #comisionOJTgen").val(d[1]);
-                $("#modal-genreportOJT #tareprinOJTgen").val(d[2]);
-                $("#modal-genreportOJT #fecOJTgen").val(d[3]);
-                $("#modal-genreportOJT #lugOJTgen").val(d[4]);
-                $("#modal-genreportOJT #idregevalOJT2").val(d[5]);
-                $("#modal-genreportOJT #subtareOJtgen").val(d[6]);
-
-                // html = '<table class="table table-bordered"><tr><th style="width: 10px">#</th><th><label style="font-size:16px">NOMBRE DE LAS/LOS INSTRUCTORAS/ES:</label></th>';
-
-
-                //html += '</table>';
-                //$("#id_instructOJ").html(html);
             }
         }
     });
@@ -135,7 +95,7 @@ function evaluarOJT1(idojt) {
     var preg12 = $('input[name=preg12]:checked').val(); //   -   
     var preg13 = $('input[name=preg13]:checked').val(); //  -
     var preg14 = $('input[name=preg14]:checked').val(); //-
-
+    
     var preg15 = document.getElementById('preg15').value; //PREGUNTA ABIERTA 
     var preg16 = document.getElementById('preg16').value; //PREGUNTA ABIERTA 
     var preg17 = document.getElementById('preg17').value; //PREGUNTA ABIERTA 
@@ -165,7 +125,7 @@ function evaluarOJT1(idojt) {
 
         $('#pregunta').toggle('toggle');
         setTimeout(function() { $('#pregunta').toggle('toggle'); }, 2000);
-    } else {
+    }else{
 
         $.ajax({
             url: '../php/reaccion.php',
@@ -200,15 +160,15 @@ function evaluarOJT1(idojt) {
 }
 
 function confirmarojt(idprogram) {
-    //alert(idprogram)
+//alert(idprogram)
     $("#data-table-confirmarojt tr").on('click', function() {
         var id_tare = "";
         var id_subtarea = "";
         id_tare += $(this).find('td:eq(0)').html(); //Toma el id de la persona 
         id_subtarea += $(this).find('td:eq(1)').html(); //Toma el id de la persona 
-        document.getElementById('ojtarea').innerHTML = id_tare
-        document.getElementById('ojtsubtarea').innerHTML = id_subtarea
-    })
+        document.getElementById('ojtarea').innerHTML=id_tare
+        document.getElementById('ojtsubtarea').innerHTML=id_subtarea
+    }) 
     $.ajax({
         url: '../php/conproojt.php',
         type: 'POST'
@@ -217,20 +177,20 @@ function confirmarojt(idprogram) {
         var res = obj.data;
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_proojt == idprogram) {
-                var id_coordojtdd = obj.data[i].id_coorojt;
-                var id_insojt1 = obj.data[i].id_insojt;
+                var id_coordojtdd=obj.data[i].id_coorojt;
+                var id_insojt1=obj.data[i].id_insojt;
                 $("#ojnivel").html(obj.data[i].nivel);
                 $("#ojfecinic").html(obj.data[i].fec_inioj);
                 $("#ojfecfin").html(obj.data[i].fec_finoj);
                 $("#id_registrooj1").val(obj.data[i].id_proojt);
                 $("#id_personaoj1").val(obj.data[i].id_pers);
-                // $("#nombredeclin").html(obj.data[i].gstTitlo);
-                // $("#motivod").html('MOTIVO:' + obj.data[i].confirmar);
-                // if (obj.data[i].confirmar == 'OTROS') {
-                //   $("#arcpdf").html("<p style='text-align: center;font-size:20px;'>" + obj.data[i].justifi + "</p>");
+               // $("#nombredeclin").html(obj.data[i].gstTitlo);
+               // $("#motivod").html('MOTIVO:' + obj.data[i].confirmar);
+               // if (obj.data[i].confirmar == 'OTROS') {
+                 //   $("#arcpdf").html("<p style='text-align: center;font-size:20px;'>" + obj.data[i].justifi + "</p>");
                 //} else {
-                //  $("#arcpdf").html("<a class='btn btn-block btn-social btn-linkedin' href='" + obj.data[i].justifi + "' style='text-align: center;' target='_blanck'> <i class='fa fa-file-pdf-o'></i> VISUALIZAR EL PDF ADJUNTO</a>");
-                // }
+                  //  $("#arcpdf").html("<a class='btn btn-block btn-social btn-linkedin' href='" + obj.data[i].justifi + "' style='text-align: center;' target='_blanck'> <i class='fa fa-file-pdf-o'></i> VISUALIZAR EL PDF ADJUNTO</a>");
+               // }
             }
         }
         html = '<table class="table table-bordered"><tr>';
@@ -242,20 +202,20 @@ function confirmarojt(idprogram) {
             obj = JSON.parse(respuesta);
             var res = obj.data;
             var y = 0;
-            for (D = 0; D < res.length; D++) {
-                if (obj.data[D].gstIdper == id_coordojtdd) {
+            for (D = 0; D < res.length; D++) { 
+                if (obj.data[D].gstIdper == id_coordojtdd){
                     // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
                     y++;
-                    var nombrecoord = obj.data[D].gstNombr;
-                    var apellido = obj.data[D].gstApell;
+                    var nombrecoord=obj.data[D].gstNombr;
+                    var apellido=obj.data[D].gstApell;
                     html += "<tr><td>" + y + "</td><td>" + nombrecoord + ' ' + apellido + "</td><td>" + 'COORDINADOR' + "</td></tr>";
                 }
             }
-            html += '</table>';
-            $("#coorojt").html(html);
+        html += '</table>';
+        $("#coorojt").html(html);
         });
         html1 = '<table class="table table-bordered"><tr>';
-        x = 0;
+        x = 0;   
         $.ajax({
             url: '../php/conDatosPersonal.php',
             type: 'POST'
@@ -263,19 +223,19 @@ function confirmarojt(idprogram) {
             obj = JSON.parse(respuesta);
             var res = obj.data;
             var a = 0;
-            for (A = 0; A < res.length; A++) {
-                if (obj.data[A].gstIdper == id_insojt1) {
+            for (A = 0; A < res.length; A++) { 
+                if (obj.data[A].gstIdper == id_insojt1){
                     // TRAE EL CORDINADOR PRINCIPAL DEL CURSO
                     a++;
-                    var nombreinsoj = obj.data[A].gstNombr;
-                    var apellidoins = obj.data[A].gstApell;
-
+                    var nombreinsoj=obj.data[A].gstNombr;
+                    var apellidoins=obj.data[A].gstApell;
+                    
                     html1 += "<tr><td>" + a + "</td><td>" + nombreinsoj + ' ' + apellidoins + "</td><td>" + 'INSTRUCTOR' + "</td></tr>";
                 }
-
+            
             }
-            html1 += '</table>';
-            $("#instrucojt").html(html1);
+        html1 += '</table>';
+        $("#instrucojt").html(html1);
         });
     })
 }
@@ -313,76 +273,6 @@ function justificacionojt() {
     }
 
 }
-
-//TODO GENERAR REPORTE OJT PERFIL INSPECTOR
-function generareport() {
-    var idojt = document.getElementById('idregevalOJT2').value; //ID OJT PROGRAMADO
-    //alert(idojt);
-    var preg1 = $('input[name=pregen1]:checked').val(); //  -
-    var preg2 = $('input[name=pregen2]:checked').val(); //    -
-    var preg3 = $('input[name=pregen3]:checked').val(); //      -
-    var preg4 = $('input[name=pregen4]:checked').val(); //        -
-    var preg5 = $('input[name=pregen5]:checked').val(); //          -
-    var preg6 = $('input[name=pregen6]:checked').val(); //            -
-    var preg7 = $('input[name=pregen7]:checked').val(); // ------------- PREGUNTAS RADIO
-
-    var obser = document.getElementById('preg17').value; //PREGUNTA ABIERTA 
-
-    datos = 'idojt=' + idojt + '&preg1=' + preg1 + '&preg2=' + preg2 + '&preg3=' + preg3 + '&preg4=' + preg4 + '&preg5=' + preg5 + '&preg6=' + preg6 + '&preg7=' + preg7 + '&obser=' + obser + '&opcion=addreporojt';
-    alert(datos);
-    if (idojt == '' || !document.querySelector('input[name=pregen1]:checked') || !document.querySelector('input[name=pregen2]:checked') || !document.querySelector('input[name=pregen3]:checked') || !document.querySelector('input[name=pregen4]:checked') || !document.querySelector('input[name=pregen5]:checked') || !document.querySelector('input[name=pregen6]:checked') || !document.querySelector('input[name=pregen7]:checked') || obser == '') {
-
-        if (!document.querySelector('input[name=pregen1]:checked')) { $('#span1').show('toggle'); } else { $('#span1').hide('toggle'); }
-        if (!document.querySelector('input[name=pregen2]:checked')) { $('#span2').show('toggle'); } else { $('#span2').hide('toggle'); }
-        if (!document.querySelector('input[name=pregen3]:checked')) { $('#span3').show('toggle'); } else { $('#span3').hide('toggle'); }
-        if (!document.querySelector('input[name=pregen4]:checked')) { $('#span4').show('toggle'); } else { $('#span4').hide('toggle'); }
-        if (!document.querySelector('input[name=pregen5]:checked')) { $('#span5').show('toggle'); } else { $('#span5').hide('toggle'); }
-        if (!document.querySelector('input[name=pregen6]:checked')) { $('#span6').show('toggle'); } else { $('#span6').hide('toggle'); }
-        if (!document.querySelector('input[name=pregen7]:checked')) { $('#span7').show('toggle'); } else { $('#span7').hide('toggle'); }
-        if (datos == '') { $('#span13').show('toggle'); } else { $('#span15').hide('toggle'); }
-        $('#pregunta').toggle('toggle');
-        setTimeout(function() { $('#pregunta').toggle('toggle'); }, 2000);
-    } else {
-
-        $.ajax({
-            url: '../php/insertOJT.php',
-            type: 'POST',
-            data: datos
-        }).done(function(respuesta) {
-            console.log(respuesta);
-            if (respuesta == 0) {
-                alert(respuesta);
-                Swal.fire({
-                    type: 'success',
-                    text: 'SE RENERO CON EXITO EL REPORTE OJT',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 3000
-                });
-                setTimeout("location.href = 'ojtprogramados';", 3000);
-
-            } else if (respuesta == 2) {
-                $('#aviso').toggle('toggle');
-                setTimeout(function() {
-                    $('#aviso').toggle('toggle');
-                }, 2000);
-                alert("error");
-                alert(respuesta);
-            } else {
-
-                $('#peligro').toggle('toggle');
-                setTimeout(function() {
-                    $('#peligro').toggle('toggle');
-                }, 2000);
-                alert("error");
-            }
-        });
-    }
-
-
-
-}
-
 function limCampos() {
     $("#obser").val('');
     $("#archivo").val('');
@@ -390,7 +280,7 @@ function limCampos() {
 }
 //FUNCION PARA GUARDAR
 function confirasictojt() {
-    //alert(id_curso);
+  //alert(id_curso);
     var id_curso = document.getElementById('id_registrooj1').value
     var idinsp = document.getElementById('id_personaoj1').value;
     var conf = document.getElementById('confojt').value;
@@ -437,7 +327,7 @@ function confirasictojt() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-                setTimeout("location.href = 'ojtprogramados';", 2000);
+                setTimeout("location.href = 'ojtprogramados';", 2000);        
 
                 $('#vacia').show('slow');
                 $('#agrega').hide();
@@ -477,34 +367,34 @@ function confirasictojt() {
     });
 }
 //FUNCIÓN PARA TRAER EL DETALLE DEL ENTRENAMOENTO OJT
-function inforenojt(idresgistro) {
+function inforenojt(idresgistro){
 
     var asistencia = document.getElementById('asisdetalleojt');
     //alert(idresgistro);
     $.ajax({
-        url: '../php/conproojt.php',
-        type: 'POST'
+        url:'../php/conproojt.php',
+        type:'POST'
     }).done(function(respuesta) {
         obj = JSON.parse(respuesta);
         var res = obj.data;
         var a = 0;
-        for (A = 0; A < res.length; A++) {
-            if (obj.data[A].id_proojt == idresgistro) {
+        for (A = 0; A < res.length; A++) { 
+            if (obj.data[A].id_proojt == idresgistro){
                 //alert(ideval);
-                datos =
-                    obj.data[A].comision + '*' +
-                    obj.data[A].feini_comision + '*' +
-                    obj.data[A].ojt_principal + '*' +
-                    obj.data[A].ojt_subtarea + '*' +
-                    obj.data[A].lugar + '*' +
-                    obj.data[A].id_proojt + '*' +
-                    obj.data[A].ojt_subtarea + '*' +
-                    obj.data[A].fec_inioj + '*' +
-                    obj.data[A].fec_finoj + '*' +
-                    obj.data[A].fecfin_comision;
-                var d = datos.split("*");
-                $("#modal-detalleojt #gstcomision").html(d[0]);
-                $("#modal-detalleojt #fcurso1ojt").html(d[1]);
+                datos = 
+                obj.data[A].comision + '*' +
+                obj.data[A].feini_comision + '*' +
+                obj.data[A].ojt_principal + '*' +
+                obj.data[A].ojt_subtarea + '*' +
+                obj.data[A].lugar + '*' +
+                obj.data[A].id_proojt + '*' +
+                obj.data[A].ojt_subtarea + '*' +
+                obj.data[A].fec_inioj + '*' +
+                obj.data[A].fec_finoj + '*' +
+                obj.data[A].fecfin_comision;    
+                var d = datos.split("*");   
+                $("#modal-detalleojt #gstcomision").html(d[0]);   
+                $("#modal-detalleojt #fcurso1ojt").html(d[1]);               
                 $("#modal-detalleojt #tareprinOJTinf").val(d[2]);
                 $("#modal-detalleojt #subtareOJtreacinf").val(d[3]);
                 $("#modal-detalleojt #lugOJTreac").val(d[4]);
@@ -514,9 +404,9 @@ function inforenojt(idresgistro) {
                 $("#modal-detalleojt #fifinojttar").html(d[8]);
                 $("#modal-detalleojt #fin1ojt").html(d[9]);
 
-                if (obj.data[A].confirojt == 'CONFIRMADO') {
-                    asistencia.style.display = '';
-                }
+                if (obj.data[A].confirojt == 'CONFIRMADO'){
+                    asistencia.style.display='';
+                }             
             }
         }
     });
@@ -524,9 +414,9 @@ function inforenojt(idresgistro) {
 //FUNCION DE MARCAR TODOS LOS INPUTS DE SUBTAREAS
 function marcarojt(source) {
     checkboxes = document.getElementsByName('ojtname[]');
-    for (var i = 0, n = checkboxes.length; i < n; i++) {
-        checkboxes[i].checked = source.checked;
-    }
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = source.checked;
+    }  
 }
 //FUNCION PARA GUARDAR TEMPORALMENTE LAS SUBTAREAS
 function insersubt() {
@@ -535,7 +425,7 @@ function insersubt() {
     $("input[name='ojtname[]']:checked").each(function() {
         arr.push($(this).val());
     });
-    // alert(arr);
+   // alert(arr);
     var isSpc = document.getElementById('isSpc').value;
     var idInspct = document.getElementById('idInspct').value;
     var fechaInicio = document.getElementById('fechaInicio').value;
@@ -553,65 +443,65 @@ function insersubt() {
     //var idsubtarea = id_subojt;
     var idtarea = '1';
     var datos = 'isSpc=' + isSpc + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio +
-        '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
-        nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
-        '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&tareaprin=' + tareaprin + '&arr=' + arr +
-        '&opcion=regisojtemp';
-
-    if (nivel == '' || fecincicomi == '' || fecfincomi == '' || isSpc == '' || ubicacion == '' || comision == '') {
+    '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
+    nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
+    '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&tareaprin=' + tareaprin + '&arr=' + arr +
+    '&opcion=regisojtemp';
+    
+    if (nivel == ''||fecincicomi == ''||fecfincomi == ''||isSpc==''||ubicacion==''||comision =='') {
         Swal.fire({
-            type: 'info',
-            text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
-            timer: 2000,
-            customClass: 'swal-wide',
+        type: 'info',
+        text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+    return;
+}else{
+    //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
+    $.ajax({
+        type: "POST",
+        url: "../php/insertOJT.php",
+        data: datos
+    }).done(function(respuesta) {
+    if (respuesta == 0) {
+        //SE MUESTRA EL BOTON DE VALIDACIÓN  
+        Swal.fire({
+            type: 'success',
+            text: 'SE GUARDO CON EXITO LA PROGRAMACIÓN',
             showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
         });
-        return;
-    } else {
-        //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
-        $.ajax({
-            type: "POST",
-            url: "../php/insertOJT.php",
-            data: datos
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-                //SE MUESTRA EL BOTON DE VALIDACIÓN  
-                Swal.fire({
-                    type: 'success',
-                    text: 'SE GUARDO CON EXITO LA PROGRAMACIÓN',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 3000
-                });
-                $('#detalleSub3').modal('hide');
-            } else if (respuesta == 2) {
-                Swal.fire({
-                    type: 'info',
-                    text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-            } else {
-                alert("error");
-                Swal.fire({
-                    type: 'info',
-                    text: 'YA SE ENCUENTRA PROGRAMADA ALGUNA SUBTAREA SI PERCISTE CONTACTAR A SOPORTE TECNICO',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-
-            }
-        }); //FIN DE AJAX
-    }
+        $('#detalleSub3').modal('hide');
+    }else if (respuesta == 2) {
+        Swal.fire({
+        type: 'info',
+        text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+}else{
+    alert("error");
+    Swal.fire({
+        type: 'info',
+        text: 'YA SE ENCUENTRA PROGRAMADA ALGUNA SUBTAREA SI PERCISTE CONTACTAR A SOPORTE TECNICO',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+    
+}
+}); //FIN DE AJAX
+}
 
 }
 
-function insersubt2() {
+function insersubt2(){
     //alert("pruebsass");
-    var isSpc = document.getElementById('isSpc2').value;
-    var idInspct = document.getElementById('idInspct1').value;
+    var isSpc = document.getElementById('isSpc').value;
+    var idInspct = document.getElementById('idInspct').value;
     var fecincicomi = document.getElementById('comfecini').value;
     var fecfincomi = document.getElementById('comfecfin').value;
     var fechaInicio = document.getElementById('fechaInicio').value;
@@ -626,59 +516,58 @@ function insersubt2() {
     var idtarea = document.getElementById('tareaprinhora').value;
     var idsubtarea = document.getElementById('subtarehora').value;
     var datos = 'isSpc=' + isSpc + '&idtarea=' + idtarea + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio +
-        '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
-        nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
-        '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
-        '&opcion=registraroj1';
-    if (fecincicomi == '' || fecfincomi == '' || comision == '' || nivel == '') {
-        Swal.fire({
-            type: 'info',
-            text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
-            timer: 2000,
-            customClass: 'swal-wide',
-            showConfirmButton: false,
-        });
-        return;
-    } else {
-        //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
-        $.ajax({
-            type: "POST",
-            url: "../php/insertOJT.php",
-            data: datos
-        }).done(function(respuesta) {
-            alert(respuesta);
-            if (respuesta == 0) {
-                Swal.fire({
-                    type: 'success',
-                    text: 'SE GUARDO CON EXITO LA PROGRAMACIÓN',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 3000
-                });
-                // $('#detalleSub3').modal('hide');
-            } else if (respuesta == 2) {
-                Swal.fire({
-                    type: 'info',
-                    text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-            } else {
-                //alert("error");
-                Swal.fire({
-                    type: 'info',
-                    text: 'YA SE ENCUENTRA PROGRAMADA ALGUNA SUBTAREA SI PERCISTE CONTACTAR A SOPORTE TECNICO',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-            }
-        }); //FIN DE AJAX
-    }
+    '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
+    nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
+    '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
+    '&opcion=registraroj1';
+        if (fecincicomi == ''||fecfincomi == ''||comision == ''||nivel == '') {
+            Swal.fire({
+                type: 'info',
+                text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
+                timer: 2000,
+                customClass: 'swal-wide',
+                showConfirmButton: false,
+            });
+            return;
+        }else{
+            //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
+            $.ajax({
+                type: "POST",
+                url: "../php/insertOJT.php",
+                data: datos
+            }).done(function(respuesta) {
+                if (respuesta == 0) {
+                    Swal.fire({
+                        type: 'success',
+                        text: 'SE GUARDO CON EXITO LA PROGRAMACIÓN',
+                        showConfirmButton: false,
+                        customClass: 'swal-wide',
+                        timer: 3000
+                    });
+                   // $('#detalleSub3').modal('hide');
+                }else if (respuesta == 2) {
+                    Swal.fire({
+                        type: 'info',
+                        text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
+                        timer: 2000,
+                        customClass: 'swal-wide',
+                        showConfirmButton: false,
+                    });
+                }else{
+                    alert("error");
+                    Swal.fire({
+                        type: 'info',
+                        text: 'YA SE ENCUENTRA PROGRAMADA ALGUNA SUBTAREA SI PERCISTE CONTACTAR A SOPORTE TECNICO',
+                        timer: 2000,
+                        customClass: 'swal-wide',
+                        showConfirmButton: false,
+                    });
+                }
+            }); //FIN DE AJAX
+        }
 }
 //FUNCION BOTÓN FINALIZAR
-function regOjtfin() {
+function regOjtfin(){ 
     //alert("pruebsass");
     var tinst = ''
 
@@ -704,10 +593,10 @@ function regOjtfin() {
     gstinstruojt = tinst.substr(1);
 
     var instructor = gstinstruojt;
-    alert(instructor);
+alert(instructor);
 
-    var isSpc = document.getElementById('isSpc2').value;
-    var idInspct = document.getElementById('idInspct1').value;
+    var isSpc = document.getElementById('isSpc').value;
+    var idInspct = document.getElementById('idInspct').value;
     var fecincicomi = document.getElementById('comfecini').value;
     var fecfincomi = document.getElementById('comfecfin').value;
     var fechaInicio = document.getElementById('fechaInicio').value;
@@ -722,70 +611,70 @@ function regOjtfin() {
     var idtarea = document.getElementById('tareaprinhora').value;
     var idsubtarea = document.getElementById('subtarehora').value;
     var datos = 'isSpc=' + isSpc + '&idtarea=' + idtarea + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio +
-        '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
-        nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
-        '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
-        '&opcion=finojtpro1';
+    '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
+    nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
+    '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
+    '&opcion=finojtpro1';
     //alert(datos);
-    if (fecincicomi == '' || fecfincomi == '' || comision == '' || nivel == '' || coordinador == '' || instructor == '' || idInspct == '') {
+    if (fecincicomi == ''||fecfincomi == ''||comision == ''||nivel == ''||coordinador == ''||instructor == ''||idInspct == '') {
         Swal.fire({
-            type: 'info',
-            text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
-            timer: 2000,
-            customClass: 'swal-wide',
+        type: 'info',
+        text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+    return;
+}else{
+    //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
+    $.ajax({
+        type: "POST",
+        url: "../php/insertOJT.php",
+        data: datos
+    }).done(function(respuesta) {
+    if (respuesta == 0) {
+        //SE MUESTRA EL BOTON DE VALIDACIÓN  
+        Swal.fire({
+            type: 'success',
+            text: 'SE GUARDO CON EXITO LA PROGRAMACIÓN',
             showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 3000
         });
-        return;
-    } else {
-        //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
-        $.ajax({
-            type: "POST",
-            url: "../php/insertOJT.php",
-            data: datos
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-                //SE MUESTRA EL BOTON DE VALIDACIÓN  
-                Swal.fire({
-                    type: 'success',
-                    text: 'SE GUARDO CON EXITO LA PROGRAMACIÓN',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 3000
-                });
-                setTimeout("location.href = 'catalogoOJT';", 2000);
-            } else if (respuesta == 2) {
-                Swal.fire({
-                    type: 'info',
-                    text: 'EL INSPECTOR YA SE ENCUENTRA PROGRAMADO EN UN CURSO CON ESTE PERIODO DE FECHA',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-            } else {
-                //alert("error");
-                Swal.fire({
-                    type: 'info',
-                    text: 'ERROR CONTACTAR A SOPORTE TECNICO',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-            }
-        }); //FIN DE AJAX
-    }
-
+        setTimeout("location.href = 'catalogoOJT';", 2000);
+    }else if (respuesta == 2) {
+        Swal.fire({
+        type: 'info',
+        text: 'EL INSPECTOR YA SE ENCUENTRA PROGRAMADO EN UN CURSO CON ESTE PERIODO DE FECHA',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+}else{
+    //alert("error");
+    Swal.fire({
+        type: 'info',
+        text: 'ERROR CONTACTAR A SOPORTE TECNICO',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+}
+}); //FIN DE AJAX
+}
+    
 }
 
 //NUEVA FUNCION PARA 
-function prohorario(datos) {
+function prohorario(datos){
     //alert(datos);
     var a = datos.split("*");
     id_tarea = a[0];
     id_subojt = a[1];
     id_namesub = a[2];
-    document.getElementById('tareaprinhora').value = id_tarea;
-    document.getElementById('subtarehora').value = id_subojt;
-    document.getElementById('namesubtare').value = id_namesub;
+    document.getElementById('tareaprinhora').value=id_tarea;
+    document.getElementById('subtarehora').value=id_subojt;
+    document.getElementById('namesubtare').value=id_namesub;
 }
 
 
@@ -812,88 +701,88 @@ function ageg2(dato) {
     var idsubtarea = id_subojt;
     var idtarea = id_tarea;
     var datos = 'isSpc=' + isSpc + '&idtarea=' + idtarea + '&idInspct=' + idInspct + '&fechaInicio=' + fechaInicio +
-        '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
-        nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
-        '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
-        '&opcion=registraroj';
+    '&fechaTermino=' + fechaTermino + '&coordinador=' + coordinador + '&instructor=' + instructor + '&nivel=' +
+    nivel + '&ubicacion=' + ubicacion + '&lugar=' + lugar + '&sede=' + sede + '&comision=' + comision +
+    '&fecincicomi=' + fecincicomi + '&fecfincomi=' + fecfincomi + '&idsubtarea=' + idsubtarea +
+    '&opcion=registraroj';
     //alert(datos)
     //VALIDA QUE LOS CAMPOS D   EBEN DE ESTAR LLENOS PARA AGREGAR LA TAREA
     if (isSpc == '' || idInspct == '' || fechaInicio == '' || fechaTermino == '' || coordinador == '' || instructor ==
-        '' || nivel == '') {
+    '' || nivel == '') {
         Swal.fire({
-            type: 'info',
-            text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
-            timer: 2000,
-            customClass: 'swal-wide',
-            showConfirmButton: false,
-        });
-        return;
-    } else {
-        //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
-        $.ajax({
-            type: "POST",
-            url: "../php/insertOJT.php",
-            data: datos
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-                //SE MUESTRA EL BOTON DE VALIDACIÓN  
-                $("#" + id_subojt + "ocultar").hide();
-                $("#" + id_subojt + "mostrar").show();
-                document.getElementById(id_subojt).disabled = false;
-            } else if (respuesta == 2) {
-                Swal.fire({
-                    type: 'info',
-                    text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
-                    timer: 2000,
-                    customClass: 'swal-wide',
-                    showConfirmButton: false,
-                });
-            } else {}
-        }); //FIN DE AJAX
-    }
+        type: 'info',
+        text: 'LLENE LOS CAMPOS OBLIGATORIOS(*)',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+    return;
+}else{
+    //INICIO DE LA FUNCIÓN PARA GUARDAR SUBTAREAS
+    $.ajax({
+        type: "POST",
+        url: "../php/insertOJT.php",
+        data: datos
+    }).done(function(respuesta) {
+    if (respuesta == 0) {
+        //SE MUESTRA EL BOTON DE VALIDACIÓN  
+        $("#" + id_subojt + "ocultar").hide();
+        $("#" + id_subojt + "mostrar").show();
+        document.getElementById(id_subojt).disabled = false;
+    }else if (respuesta == 2) {
+        Swal.fire({
+        type: 'info',
+        text: 'YA SE ENCUENTRA PROGRAMADA ESTA SUBTAREA A ESTE INSPECTOR',
+        timer: 2000,
+        customClass: 'swal-wide',
+        showConfirmButton: false,
+    });
+}else{}
+}); //FIN DE AJAX
+}
 }
 //FUNCION PARA BLOQUEAR FECHA DE FIN DE COMISION
-function bloqueoojt() {
-    var fechamin = document.getElementById('comfecini').value;
-    let mindate = document.getElementById('comfecfin');
+function bloqueoojt(){
+    var fechamin=document.getElementById('comfecini').value;
+    let mindate= document.getElementById('comfecfin');
     mindate.min = fechamin;
 }
 
-function closeojtmod() {
+function closeojtmod(){
     $('#detalleSub3').modal('hide');
 
 }
 //FUNCION PARA BLOQUEAR PERIODO DE TIEMPO DE A TAREA EN BASE A LA COMISION
-function blodatetarea() {
+function blodatetarea(){
     //alert("kmdkc");
-    var fecmintarea = document.getElementById('comfecini').value;
-    var fecmaxtarea = document.getElementById('comfecfin').value;
+    var fecmintarea=document.getElementById('comfecini').value;
+    var fecmaxtarea=document.getElementById('comfecfin').value;
     //FECHA INICIO TAREA
-    let mindatetarea = document.getElementById('fechaInicio');
+    let mindatetarea= document.getElementById('fechaInicio');
     mindatetarea.min = fecmintarea + 'T08:30';
     mindatetarea.max = fecmaxtarea + 'T08:30';
     //FECHA FIN TAREA
-    let findaetarea = document.getElementById('fechaTermino');
+    let findaetarea= document.getElementById('fechaTermino');
     findaetarea.min = fecmintarea + 'T08:30';
     findaetarea.max = fecmaxtarea + 'T08:30';
 }
 //FUNCION QUE BLOQUEA EL PEDIO DE TIEMPO DE LAS TAREAS CON BASE A LA COMISION
-function traerdatos() {
+function traerdatos(){
     //alert("kmdkc");
-    var fecmintarea = document.getElementById('comfecini').value;
-    var fecmaxtarea = document.getElementById('comfecfin').value;
+    var fecmintarea=document.getElementById('comfecini').value;
+    var fecmaxtarea=document.getElementById('comfecfin').value;
     //FECHA INICIO TAREA
-    let mindatetarea = document.getElementById('fechaInicio');
+    let mindatetarea= document.getElementById('fechaInicio');
     mindatetarea.min = fecmintarea + 'T08:30';
     mindatetarea.max = fecmaxtarea + 'T08:30';
     //FECHA FIN TAREA
-    let findaetarea = document.getElementById('fechaTermino');
+    let findaetarea= document.getElementById('fechaTermino');
     findaetarea.min = fecmintarea + 'T08:30';
     findaetarea.max = fecmaxtarea + 'T08:30';
 }
 //FUNCION QUE TRAE EL DETALLE DE UN ENTRENAMIENTO OJT DECLINADO
-function infdecOJT(iddelinaojt) {
-    // alert(iddelinaojt);
+function infdecOJT(iddelinaojt){
+   // alert(iddelinaojt);
     $.ajax({
         url: '../php/conproojt.php',
         type: 'POST'
@@ -901,16 +790,16 @@ function infdecOJT(iddelinaojt) {
         obj = JSON.parse(respuesta);
         var res = obj.data;
         var x = 0;
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].id_proojt == iddelinaojt) {
-                datos =
-                    obj.data[U].ojt_principal + '*' +
-                    obj.data[U].ojt_subtarea + '*' +
-                    obj.data[U].confirojt;
-                var d = datos.split("*");
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == iddelinaojt){
+                datos = 
+                obj.data[U].ojt_principal + '*' +
+                obj.data[U].ojt_subtarea + '*' +
+                obj.data[U].confirojt;    
+                var d = datos.split("*");   
                 //$("#modal-nosurtido #arsurvof").val(d[0]);   
-                $("#nombredeclinOJT").html('TAREA: ' + d[0]);
-                $("#subtars1OJT").html('SUBTAREA: ' + d[1]);
+                $("#nombredeclinOJT").html('TAREA: ' + d[0]);        
+                $("#subtars1OJT").html('SUBTAREA: ' + d[1]);    
                 $("#modal-declinadoOJT #motivodOJT").html('MOTIVO: ' + d[2]);
 
                 if (obj.data[U].confirojt == 'OTROS') {
@@ -926,28 +815,28 @@ function infdecOJT(iddelinaojt) {
 
 
 
-function nivel1() {
+function nivel1(){
 
-    var Idevalua = document.getElementById('idtarpre').value;
+    var Idevalua=document.getElementById('idtarpre').value;
     //alert("entro");
-    url = '../evaluacion/PDF_evaluacion_nivel_I.php'
-    window.open(url + "?data=" + Idevalua, '_black');
+        url = '../evaluacion/PDF_evaluacion_nivel_I.php'
+        window.open(url + "?data=" + Idevalua, '_black');
 
-
+   
 }
 
-function nivel2() {
-    var Idevalua = document.getElementById('idtarpreII').value;
+function nivel2(){
+    var Idevalua=document.getElementById('idtarpreII').value;
     //alert("entro");
-    url = '../evaluacion/PDF_evaluacion_nivel_II.php'
-    window.open(url + "?data=" + Idevalua, '_black');
+        url = '../evaluacion/PDF_evaluacion_nivel_II.php'
+        window.open(url + "?data=" + Idevalua, '_black');
 }
 
-function nivel3() {
-    var Idevalua = document.getElementById('idtarpreII3').value;
+function nivel3(){
+    var Idevalua=document.getElementById('idtarpreII3').value;
     //alert("entro");
-    url = '../evaluacion/PDF_evaluacion_nivel_III.php'
-    window.open(url + "?data=" + Idevalua, '_black');
+        url = '../evaluacion/PDF_evaluacion_nivel_III.php'
+        window.open(url + "?data=" + Idevalua, '_black');
 }
 
 //TODO FORMATO DE EVALUACIÓN NIVEL 1 OJT--------------------------------------------------------NIVEL1 
@@ -960,7 +849,7 @@ function evalnivelI() {
     var preg3ojtI = $('input[name=preg3]:checked').val(); //   -PREGUNTAS RADIO
     var preg4ojtI = $('input[name=preg4]:checked').val(); //  -
     var preg5ojtI = $('input[name=preg5]:checked').val(); // -
-    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI + '&opcion=evaluOJTI';
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTI';
     //alert(datos);
     if (idpregunta == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked')) {
         Swal.fire({
@@ -970,7 +859,7 @@ function evalnivelI() {
             customClass: 'swal-wide',
             timer: 3000
         });
-    } else {
+    }else{
         $.ajax({
             url: '../php/insertOJT.php',
             type: 'POST',
@@ -1007,38 +896,38 @@ function evalnivelI() {
     }
 }
 //FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
-function infoeval1(registroev) {
+function infoeval1(registroev){
     //alert(registroev);
     //alert("entroevaluacion1");
-    document.getElementById('descargapdfI').style.display = ""; //boton para descargar formato OJT
-    document.getElementById('resultadonI').style.display = ""; //input que muestra el resultado
-    document.getElementById('evalucI').style.display = "none";
-    document.getElementById('idtarpre').value = registroev;
-    document.getElementById('editarevalojt').style.display = "";
-    document.getElementById('editarevalojtclose').style.display = "none";
+    document.getElementById('descargapdfI').style.display=""; //boton para descargar formato OJT
+    document.getElementById('resultadonI').style.display="";  //input que muestra el resultado
+    document.getElementById('evalucI').style.display="none";
+    document.getElementById('idtarpre').value =registroev;
+    document.getElementById('editarevalojt').style.display=""; 
+    document.getElementById('editarevalojtclose').style.display="none";
     //bloqueo de radiobutton
-    document.getElementById('test1').disabled = "true";
-    document.getElementById('test2').disabled = "true";
-    document.getElementById('test3').disabled = "true";
-    document.getElementById('test4').disabled = "true";
-    document.getElementById('test5').disabled = "true";
-    document.getElementById('test6').disabled = "true";
-    document.getElementById('test7').disabled = "true";
-    document.getElementById('test8').disabled = "true";
-    document.getElementById('test9').disabled = "true";
-    document.getElementById('test10').disabled = "true";
-    document.getElementById('test11').disabled = "true";
-    document.getElementById('test12').disabled = "true";
-    document.getElementById('test13').disabled = "true";
-    document.getElementById('test14').disabled = "true";
-    document.getElementById('test15').disabled = "true";
-    document.getElementById('test16').disabled = "true";
-    document.getElementById('test18').disabled = "true";
-    document.getElementById('test19').disabled = "true";
-    document.getElementById('test20').disabled = "true";
-    document.getElementById('test21').disabled = "true";
+    document.getElementById('test1').disabled ="true";
+    document.getElementById('test2').disabled ="true";
+    document.getElementById('test3').disabled ="true";
+    document.getElementById('test4').disabled ="true";
+    document.getElementById('test5').disabled ="true";
+    document.getElementById('test6').disabled ="true";
+    document.getElementById('test7').disabled ="true";
+    document.getElementById('test8').disabled ="true";
+    document.getElementById('test9').disabled ="true";
+    document.getElementById('test10').disabled ="true";
+    document.getElementById('test11').disabled ="true";
+    document.getElementById('test12').disabled ="true";
+    document.getElementById('test13').disabled ="true";
+    document.getElementById('test14').disabled ="true";
+    document.getElementById('test15').disabled ="true";
+    document.getElementById('test16').disabled ="true";
+    document.getElementById('test18').disabled ="true";
+    document.getElementById('test19').disabled ="true";
+    document.getElementById('test20').disabled ="true";
+    document.getElementById('test21').disabled ="true";
 
-
+    
     //bloquear todo los CHECHK BOX DE EVALUACIÖN
 
     $("#data-table-OJTProgramados tr").on('click', function() {
@@ -1046,8 +935,8 @@ function infoeval1(registroev) {
         var subtarea = "";
         tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
         subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
-        document.getElementById('taroj').value = tareas
-        document.getElementById('suboj').value = subtarea
+        document.getElementById('taroj').value=tareas
+        document.getElementById('suboj').value=subtarea
     })
     $.ajax({
         url: '../php/conproojt.php',
@@ -1056,24 +945,24 @@ function infoeval1(registroev) {
         obj = JSON.parse(respuesta);
         var res = obj.data;
         var x = 0;
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].id_proojt == registroev) {
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == registroev){
                 idpersonaOJTE1 = obj.data[U].id_pers; //id persona
-                idinstruOJTE2 = obj.data[U].id_insojt; // id instructor
-                datos =
-                    obj.data[U].id_pers + '*' +
-                    obj.data[U].id_insojt + '*' +
-                    obj.data[U].comision + '*' +
-                    obj.data[U].gstCatgr;
-                var d = datos.split("*");
-                $("#modal-evaluarojt #idinspo").val(d[0]);
-                $("#modal-evaluarojt #idintucco").val(d[1]);
-                $("#modal-evaluarojt #evcomision").val(d[2]);
-                $("#modal-evaluarojt #espoj1").val(d[3]);
-
-            }
+                idinstruOJTE2= obj.data[U].id_insojt; // id instructor
+                datos = 
+                obj.data[U].id_pers + '*' +
+                obj.data[U].id_insojt  + '*' +
+                obj.data[U].comision  + '*' +
+                obj.data[U].gstCatgr;    
+                var d = datos.split("*");   
+                $("#modal-evaluarojt #idinspo").val(d[0]); 
+                $("#modal-evaluarojt #idintucco").val(d[1]);  
+                $("#modal-evaluarojt #evcomision").val(d[2]); 
+                $("#modal-evaluarojt #espoj1").val(d[3]);    
+                          
+            }    
         }
-        //TRAE A LA PERSONA
+    //TRAE A LA PERSONA
         $.ajax({
             url: '../php/conPerson.php',
             type: 'POST'
@@ -1081,16 +970,16 @@ function infoeval1(registroev) {
             obj1 = JSON.parse(respuesta);
             var perss = obj1.data;
             var x = 0;
-            for (A = 0; A < perss.length; A++) {
-                if (obj1.data[A].gstIdper == idpersonaOJTE1) {
-                    datos2 =
-                        obj1.data[A].gstNombr + '*' +
-                        obj1.data[A].gstApell;
-                    var s = datos2.split("*");
-                    $("#modal-evaluarojt #nompoj1").val(s[0] + ' ' + s[1]);
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idpersonaOJTE1){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojt #nompoj1").val(s[0]+' '+ s[1] );         
                 }
             }
-        });
+        }); 
         //TRAE A INSTRUCTOR
         $.ajax({
             url: '../php/conPerson.php',
@@ -1099,16 +988,16 @@ function infoeval1(registroev) {
             obj1 = JSON.parse(respuesta);
             var perss = obj1.data;
             var x = 0;
-            for (A = 0; A < perss.length; A++) {
-                if (obj1.data[A].gstIdper == idinstruOJTE2) {
-                    datos2 =
-                        obj1.data[A].gstNombr + '*' +
-                        obj1.data[A].gstApell;
-                    var s = datos2.split("*");
-                    $("#modal-evaluarojt #tipooj1").val(s[0] + ' ' + s[1]);
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idinstruOJTE2){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojt #tipooj1").val(s[0]+' '+ s[1] );         
                 }
             }
-        });
+        }); 
 
         //TRAE LA EVALUACIÓN
         $.ajax({
@@ -1118,136 +1007,135 @@ function infoeval1(registroev) {
             obj1 = JSON.parse(respuesta);
             var perss = obj1.data;
             var x = 0;
-            for (A = 0; A < perss.length; A++) {
-                if (obj1.data[A].id_ojt == registroev) {
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].id_ojt == registroev){
 
-                    pregunta1 = Number(obj1.data[A].pregunta1);
-                    pregunta2 = Number(obj1.data[A].pregunta2);
-                    pregunta3 = Number(obj1.data[A].pregunta3);
-                    pregunta4 = Number(obj1.data[A].pregunta4);
-                    pregunta5 = Number(obj1.data[A].pregunta5);
-                    resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4 + pregunta5;
-                    document.getElementById('resulnI').value = resultado + "%";
+                    pregunta1=Number(obj1.data[A].pregunta1);
+                    pregunta2=Number(obj1.data[A].pregunta2);
+                    pregunta3=Number(obj1.data[A].pregunta3);
+                    pregunta4=Number(obj1.data[A].pregunta4);
+                    pregunta5=Number(obj1.data[A].pregunta5);
+                    resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4 +pregunta5;
+                    document.getElementById('resulnI').value=resultado + "%";       
 
-                    if (resultado > 80) {
-                        document.getElementById('estatusnI').value = "APROBADO";
-                        document.getElementById('estatusnI').style.color = "green";
-                    } else if (resultado < 80) {
-                        document.getElementById('estatusnI').value = "NO APROBO";
-                        document.getElementById('estatusnI').style.color = "red";
+                    if (resultado > 80){
+                        document.getElementById('estatusnI').value="APROBADO";   
+                        document.getElementById('estatusnI').style.color="green"; 
+                    }else if (resultado < 80) {
+                        document.getElementById('estatusnI').value="NO APROBO";   
+                        document.getElementById('estatusnI').style.color="red"; 
                     }
-                    //pregunta 1
-                    if (obj1.data[A].pregunta1 == 20) {
-                        document.getElementById('test4').checked = "true";
-                    } else if (obj1.data[A].pregunta1 == 15) {
-                        document.getElementById('test3').checked = "true";
-                    } else if (obj1.data[A].pregunta1 == 10) {
-                        document.getElementById('test2').checked = "true";
-                    } else {
-                        document.getElementById('test1').checked = "true";
+                     //pregunta 1
+                    if (obj1.data[A].pregunta1 == 20){
+                        document.getElementById('test4').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 15){
+                        document.getElementById('test3').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 10){
+                        document.getElementById('test2').checked ="true"; 
+                    }else{
+                        document.getElementById('test1').checked ="true"; 
                     }
-                    //pregunta 2
-                    if (obj1.data[A].pregunta2 == 20) {
-                        document.getElementById('test8').checked = "true";
-                    } else if (obj1.data[A].pregunta2 == 15) {
-                        document.getElementById('test7').checked = "true";
-                    } else if (obj1.data[A].pregunta2 == 10) {
-                        document.getElementById('test6').checked = "true";
-                    } else {
-                        document.getElementById('test5').checked = "true";
+                     //pregunta 2
+                     if (obj1.data[A].pregunta2 == 20){
+                        document.getElementById('test8').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 15){
+                        document.getElementById('test7').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 10){
+                        document.getElementById('test6').checked ="true"; 
+                    }else{
+                        document.getElementById('test5').checked ="true"; 
                     }
                     //pregunta 3
-                    if (obj1.data[A].pregunta3 == 20) {
-                        document.getElementById('test12').checked = "true";
-                    } else if (obj1.data[A].pregunta3 == 15) {
-                        document.getElementById('test11').checked = "true";
-                    } else if (obj1.data[A].pregunta3 == 10) {
-                        document.getElementById('test10').checked = "true";
-                    } else {
-                        document.getElementById('test9').checked = "true";
+                    if (obj1.data[A].pregunta3 == 20){
+                        document.getElementById('test12').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 15){
+                        document.getElementById('test11').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 10){
+                        document.getElementById('test10').checked ="true"; 
+                    }else{
+                        document.getElementById('test9').checked ="true"; 
                     }
                     //pregunta 4
-                    if (obj1.data[A].pregunta4 == 20) {
-                        document.getElementById('test16').checked = "true";
-                    } else if (obj1.data[A].pregunta4 == 15) {
-                        document.getElementById('test15').checked = "true";
-                    } else if (obj1.data[A].pregunta4 == 10) {
-                        document.getElementById('test14').checked = "true";
-                    } else {
-                        document.getElementById('test13').checked = "true";
+                    if (obj1.data[A].pregunta4 == 20){
+                        document.getElementById('test16').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 15){
+                        document.getElementById('test15').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 10){
+                        document.getElementById('test14').checked ="true"; 
+                    }else{
+                        document.getElementById('test13').checked ="true"; 
                     }
-                    //pregunta 5
-                    if (obj1.data[A].pregunta5 == 20) {
-                        document.getElementById('test21').checked = "true";
-                    } else if (obj1.data[A].pregunta5 == 15) {
-                        document.getElementById('test20').checked = "true";
-                    } else if (obj1.data[A].pregunta5 == 10) {
-                        document.getElementById('test19').checked = "true";
-                    } else {
-                        document.getElementById('test18').checked = "true";
+                     //pregunta 5
+                     if (obj1.data[A].pregunta5 == 20){
+                        document.getElementById('test21').checked ="true"; 
+                    }else if (obj1.data[A].pregunta5 == 15){
+                        document.getElementById('test20').checked ="true"; 
+                    }else if (obj1.data[A].pregunta5 == 10){
+                        document.getElementById('test19').checked ="true"; 
+                    }else{
+                        document.getElementById('test18').checked ="true"; 
                     }
-
+                    
                 }
             }
         });
-    });
+    }); 
+}
+function openojteth(){
+   // alert("abrir");
+    document.getElementById('editarevalojt').style.display="none"; 
+    document.getElementById('editarevalojtclose').style.display="";
+    document.getElementById('atuevalI').style.display="";
+    document.getElementById('test1').disabled ="";
+    document.getElementById('test2').disabled ="";
+    document.getElementById('test3').disabled ="";
+    document.getElementById('test4').disabled ="";
+    document.getElementById('test5').disabled ="";
+    document.getElementById('test6').disabled ="";
+    document.getElementById('test7').disabled ="";
+    document.getElementById('test8').disabled ="";
+    document.getElementById('test9').disabled ="";
+    document.getElementById('test10').disabled ="";
+    document.getElementById('test11').disabled ="";
+    document.getElementById('test12').disabled ="";
+    document.getElementById('test13').disabled ="";
+    document.getElementById('test14').disabled ="";
+    document.getElementById('test15').disabled ="";
+    document.getElementById('test16').disabled ="";
+    document.getElementById('test18').disabled ="";
+    document.getElementById('test19').disabled ="";
+    document.getElementById('test20').disabled ="";
+    document.getElementById('test21').disabled ="";
 }
 
-function openojteth() {
-    // alert("abrir");
-    document.getElementById('editarevalojt').style.display = "none";
-    document.getElementById('editarevalojtclose').style.display = "";
-    document.getElementById('atuevalI').style.display = "";
-    document.getElementById('test1').disabled = "";
-    document.getElementById('test2').disabled = "";
-    document.getElementById('test3').disabled = "";
-    document.getElementById('test4').disabled = "";
-    document.getElementById('test5').disabled = "";
-    document.getElementById('test6').disabled = "";
-    document.getElementById('test7').disabled = "";
-    document.getElementById('test8').disabled = "";
-    document.getElementById('test9').disabled = "";
-    document.getElementById('test10').disabled = "";
-    document.getElementById('test11').disabled = "";
-    document.getElementById('test12').disabled = "";
-    document.getElementById('test13').disabled = "";
-    document.getElementById('test14').disabled = "";
-    document.getElementById('test15').disabled = "";
-    document.getElementById('test16').disabled = "";
-    document.getElementById('test18').disabled = "";
-    document.getElementById('test19').disabled = "";
-    document.getElementById('test20').disabled = "";
-    document.getElementById('test21').disabled = "";
-}
-
-function cerrarojeva() {
+function cerrarojeva(){
     //alert("cerras");
-    document.getElementById('editarevalojt').style.display = "";
-    document.getElementById('editarevalojtclose').style.display = "none";
-    document.getElementById('atuevalI').style.display = "none";
-    document.getElementById('test1').disabled = "true";
-    document.getElementById('test2').disabled = "true";
-    document.getElementById('test3').disabled = "true";
-    document.getElementById('test4').disabled = "true";
-    document.getElementById('test5').disabled = "true";
-    document.getElementById('test6').disabled = "true";
-    document.getElementById('test7').disabled = "true";
-    document.getElementById('test8').disabled = "true";
-    document.getElementById('test9').disabled = "true";
-    document.getElementById('test10').disabled = "true";
-    document.getElementById('test11').disabled = "true";
-    document.getElementById('test12').disabled = "true";
-    document.getElementById('test13').disabled = "true";
-    document.getElementById('test14').disabled = "true";
-    document.getElementById('test15').disabled = "true";
-    document.getElementById('test16').disabled = "true";
-    document.getElementById('test18').disabled = "true";
-    document.getElementById('test19').disabled = "true";
-    document.getElementById('test20').disabled = "true";
-    document.getElementById('test21').disabled = "true";
+    document.getElementById('editarevalojt').style.display=""; 
+    document.getElementById('editarevalojtclose').style.display="none";
+    document.getElementById('atuevalI').style.display="none";
+    document.getElementById('test1').disabled ="true";
+    document.getElementById('test2').disabled ="true";
+    document.getElementById('test3').disabled ="true";
+    document.getElementById('test4').disabled ="true";
+    document.getElementById('test5').disabled ="true";
+    document.getElementById('test6').disabled ="true";
+    document.getElementById('test7').disabled ="true";
+    document.getElementById('test8').disabled ="true";
+    document.getElementById('test9').disabled ="true";
+    document.getElementById('test10').disabled ="true";
+    document.getElementById('test11').disabled ="true";
+    document.getElementById('test12').disabled ="true";
+    document.getElementById('test13').disabled ="true";
+    document.getElementById('test14').disabled ="true";
+    document.getElementById('test15').disabled ="true";
+    document.getElementById('test16').disabled ="true";
+    document.getElementById('test18').disabled ="true";
+    document.getElementById('test19').disabled ="true";
+    document.getElementById('test20').disabled ="true";
+    document.getElementById('test21').disabled ="true";
 }
 
-function udateevalI() { //16052022
+function udateevalI(){ //16052022
     //alert("ENTRA LA ACTUALIZACION DE EVALUACIÓN");
     var idpregunta = document.getElementById('idtarpre').value; //ID DE LA PREGUNTA
     var idinspector = document.getElementById('idinspo').value; //ID DEL INSPECTOR  
@@ -1256,7 +1144,7 @@ function udateevalI() { //16052022
     var preg3ojtI = $('input[name=preg3]:checked').val(); //   -PREGUNTAS RADIO
     var preg4ojtI = $('input[name=preg4]:checked').val(); //  -
     var preg5ojtI = $('input[name=preg5]:checked').val(); // -
-    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI + '&opcion=evaluOJTIact';
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIact';
     //alert(datos);
     if (idpregunta == '' || !document.querySelector('input[name=preg1]:checked') || !document.querySelector('input[name=preg2]:checked') || !document.querySelector('input[name=preg3]:checked') || !document.querySelector('input[name=preg4]:checked') || !document.querySelector('input[name=preg5]:checked')) {
         Swal.fire({
@@ -1266,7 +1154,7 @@ function udateevalI() { //16052022
             customClass: 'swal-wide',
             timer: 3000
         });
-    } else {
+    }else{
         $.ajax({
             url: '../php/insertOJT.php',
             type: 'POST',
@@ -1281,7 +1169,7 @@ function udateevalI() { //16052022
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-
+                
                 $('#modal-evaluarojt').modal('hide');
                 //actualiza la tabla
             } else if (respuesta == 2) {
@@ -1305,51 +1193,51 @@ function udateevalI() { //16052022
     }
 }
 //
-function openojtethII() {
+function openojtethII(){
     //alert("abrir");
-    document.getElementById('editarevalojtII').style.display = "none";
-    document.getElementById('editarevalojtcloseII').style.display = "";
-    document.getElementById('atuevalII').style.display = "";
-    document.getElementById('test1II').disabled = "";
-    document.getElementById('test2II').disabled = "";
-    document.getElementById('test3II').disabled = "";
-    document.getElementById('test4II').disabled = "";
-    document.getElementById('test5II').disabled = "";
-    document.getElementById('test6II').disabled = "";
-    document.getElementById('test7II').disabled = "";
-    document.getElementById('test8II').disabled = "";
-    document.getElementById('test9II').disabled = "";
-    document.getElementById('test10II').disabled = "";
-    document.getElementById('test11II').disabled = "";
-    document.getElementById('test12II').disabled = "";
-    document.getElementById('test13II').disabled = "";
-    document.getElementById('test14II').disabled = "";
-    document.getElementById('test15II').disabled = "";
-    document.getElementById('test16II').disabled = "";
-}
-
-function cerrarojevaII() {
-    //alert("cerras");
-    document.getElementById('editarevalojtII').style.display = "";
-    document.getElementById('editarevalojtcloseII').style.display = "none";
-    document.getElementById('atuevalII').style.display = "none";
-    document.getElementById('test1II').disabled = "true";
-    document.getElementById('test2II').disabled = "true";
-    document.getElementById('test3II').disabled = "true";
-    document.getElementById('test4II').disabled = "true";
-    document.getElementById('test5II').disabled = "true";
-    document.getElementById('test6II').disabled = "true";
-    document.getElementById('test7II').disabled = "true";
-    document.getElementById('test8II').disabled = "true";
-    document.getElementById('test9II').disabled = "true";
-    document.getElementById('test10II').disabled = "true";
-    document.getElementById('test11II').disabled = "true";
-    document.getElementById('test12II').disabled = "true";
-    document.getElementById('test13II').disabled = "true";
-    document.getElementById('test14II').disabled = "true";
-    document.getElementById('test15II').disabled = "true";
-    document.getElementById('test16II').disabled = "true";
-}
+     document.getElementById('editarevalojtII').style.display="none"; 
+     document.getElementById('editarevalojtcloseII').style.display="";
+     document.getElementById('atuevalII').style.display="";
+     document.getElementById('test1II').disabled ="";
+     document.getElementById('test2II').disabled ="";
+     document.getElementById('test3II').disabled ="";
+     document.getElementById('test4II').disabled ="";
+     document.getElementById('test5II').disabled ="";
+     document.getElementById('test6II').disabled ="";
+     document.getElementById('test7II').disabled ="";
+     document.getElementById('test8II').disabled ="";
+     document.getElementById('test9II').disabled ="";
+     document.getElementById('test10II').disabled ="";
+     document.getElementById('test11II').disabled ="";
+     document.getElementById('test12II').disabled ="";
+     document.getElementById('test13II').disabled ="";
+     document.getElementById('test14II').disabled ="";
+     document.getElementById('test15II').disabled ="";
+     document.getElementById('test16II').disabled ="";
+ }
+ 
+ function cerrarojevaII(){
+     //alert("cerras");
+     document.getElementById('editarevalojtII').style.display=""; 
+     document.getElementById('editarevalojtcloseII').style.display="none";
+     document.getElementById('atuevalII').style.display="none";
+     document.getElementById('test1II').disabled ="true";
+     document.getElementById('test2II').disabled ="true";
+     document.getElementById('test3II').disabled ="true";
+     document.getElementById('test4II').disabled ="true";
+     document.getElementById('test5II').disabled ="true";
+     document.getElementById('test6II').disabled ="true";
+     document.getElementById('test7II').disabled ="true";
+     document.getElementById('test8II').disabled ="true";
+     document.getElementById('test9II').disabled ="true";
+     document.getElementById('test10II').disabled ="true";
+     document.getElementById('test11II').disabled ="true";
+     document.getElementById('test12II').disabled ="true";
+     document.getElementById('test13II').disabled ="true";
+     document.getElementById('test14II').disabled ="true";
+     document.getElementById('test15II').disabled ="true";
+     document.getElementById('test16II').disabled ="true";
+ }
 //TODO FORMATO DE EVALUACIÓN NIVEL 2 OJT----------------------------------------------------------------------------------------
 function evalnivelII() {
     //alert("entra evaluacion");
@@ -1362,7 +1250,7 @@ function evalnivelII() {
     var preg4ojtI = $('input[name=preg4II]:checked').val(); //  -
     var preg5ojtI = "0";
 
-    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI + '&opcion=evaluOJTII';
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTII';
     alert(datos);
     if (idpregunta == '' || !document.querySelector('input[name=preg1II]:checked') || !document.querySelector('input[name=preg2II]:checked') || !document.querySelector('input[name=preg3II]:checked') || !document.querySelector('input[name=preg4II]:checked')) {
 
@@ -1373,7 +1261,7 @@ function evalnivelII() {
             customClass: 'swal-wide',
             timer: 3000
         });
-    } else {
+    }else{
         $.ajax({
             url: '../php/insertOJT.php',
             type: 'POST',
@@ -1410,7 +1298,7 @@ function evalnivelII() {
     }
 }
 //
-function udateevalII() { //16052022
+function udateevalII(){ //16052022
     //alert("ENTRA LA ACTUALIZACION DE EVALUACIÓN");
     var idpregunta = document.getElementById('idtarpreII').value; //ID DE LA PREGUNTA
     var idinspector = document.getElementById('idinspoII').value; //ID DEL INSPECTOR 
@@ -1420,7 +1308,7 @@ function udateevalII() { //16052022
     var preg3ojtI = $('input[name=preg3II]:checked').val(); //   -PREGUNTAS RADIO
     var preg4ojtI = $('input[name=preg4II]:checked').val(); //  -
     var preg5ojtI = "0";
-    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI + '&opcion=evaluOJTIact';
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIact';
     //alert(datos);
     if (idpregunta == '' || !document.querySelector('input[name=preg1II]:checked') || !document.querySelector('input[name=preg2II]:checked') || !document.querySelector('input[name=preg3II]:checked') || !document.querySelector('input[name=preg4II]:checked')) {
         Swal.fire({
@@ -1430,7 +1318,7 @@ function udateevalII() { //16052022
             customClass: 'swal-wide',
             timer: 3000
         });
-    } else {
+    }else{
         $.ajax({
             url: '../php/insertOJT.php',
             type: 'POST',
@@ -1445,7 +1333,7 @@ function udateevalII() { //16052022
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-
+                
                 $('#modal-evaluarojtII').modal('hide');
                 //actualiza la tabla
             } else if (respuesta == 2) {
@@ -1469,41 +1357,41 @@ function udateevalII() { //16052022
     }
 }
 //FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
-function infoeval2(registroev) {
-    //alert(registroev);
+function infoeval2(registroev){
+   //alert(registroev);
     //alert("entroevaluacion1");
-    document.getElementById('descargapdfII').style.display = ""; //boton para descargar formato OJT
-    document.getElementById('resultadonII').style.display = ""; //input que muestra el resultado
-    document.getElementById('evalucII').style.display = "none";
-    document.getElementById('idtarpreII').value = registroev;
-    document.getElementById('editarevalojtII').style.display = "";
-    document.getElementById('editarevalojtcloseII').style.display = "none";
-    document.getElementById('atuevalII').style.display = "none";
+    document.getElementById('descargapdfII').style.display=""; //boton para descargar formato OJT
+    document.getElementById('resultadonII').style.display="";  //input que muestra el resultado
+    document.getElementById('evalucII').style.display="none";
+    document.getElementById('idtarpreII').value =registroev;
+    document.getElementById('editarevalojtII').style.display=""; 
+    document.getElementById('editarevalojtcloseII').style.display="none";
+    document.getElementById('atuevalII').style.display="none";
     //bloqueo de radiobutton
-    document.getElementById('test1II').disabled = "true";
-    document.getElementById('test2II').disabled = "true";
-    document.getElementById('test3II').disabled = "true";
-    document.getElementById('test4II').disabled = "true";
-    document.getElementById('test5II').disabled = "true";
-    document.getElementById('test6II').disabled = "true";
-    document.getElementById('test7II').disabled = "true";
-    document.getElementById('test8II').disabled = "true";
-    document.getElementById('test9II').disabled = "true";
-    document.getElementById('test10II').disabled = "true";
-    document.getElementById('test11II').disabled = "true";
-    document.getElementById('test12II').disabled = "true";
-    document.getElementById('test13II').disabled = "true";
-    document.getElementById('test14II').disabled = "true";
-    document.getElementById('test15II').disabled = "true";
-    document.getElementById('test16II').disabled = "true";
+    document.getElementById('test1II').disabled ="true";
+    document.getElementById('test2II').disabled ="true";
+    document.getElementById('test3II').disabled ="true";
+    document.getElementById('test4II').disabled ="true";
+    document.getElementById('test5II').disabled ="true";
+    document.getElementById('test6II').disabled ="true";
+    document.getElementById('test7II').disabled ="true";
+    document.getElementById('test8II').disabled ="true";
+    document.getElementById('test9II').disabled ="true";
+    document.getElementById('test10II').disabled ="true";
+    document.getElementById('test11II').disabled ="true";
+    document.getElementById('test12II').disabled ="true";
+    document.getElementById('test13II').disabled ="true";
+    document.getElementById('test14II').disabled ="true";
+    document.getElementById('test15II').disabled ="true";
+    document.getElementById('test16II').disabled ="true";
     //bloquear todo los CHECHK BOX DE EVALUACIÖN
     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
         var subtarea = "";
         tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
         subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
-        document.getElementById('tarojII').value = tareas
-        document.getElementById('subojII').value = subtarea
+        document.getElementById('tarojII').value=tareas
+        document.getElementById('subojII').value=subtarea
     })
     $.ajax({
         url: '../php/conproojt.php',
@@ -1512,13 +1400,13 @@ function infoeval2(registroev) {
         obj = JSON.parse(respuesta);
         var res = obj.data;
         var x = 0;
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].id_proojt == registroev) {
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == registroev){
                 idpersonaOJTE1 = obj.data[U].id_pers; //id persona
-                idinstruOJTE2 = obj.data[U].id_insojt; // id instructor
-                document.getElementById('espoj2').value = obj.data[U].gstCatgr;
-                document.getElementById('idinspoII').value = obj.data[U].id_pers;
-            }
+                idinstruOJTE2= obj.data[U].id_insojt; // id instructor
+                document.getElementById('espoj2').value=obj.data[U].gstCatgr;
+                document.getElementById('idinspoII').value=obj.data[U].id_pers;
+            }    
         }
         //TRAE A LA PERSONA
         $.ajax({
@@ -1528,16 +1416,16 @@ function infoeval2(registroev) {
             obj1 = JSON.parse(respuesta);
             var perss = obj1.data;
             var x = 0;
-            for (A = 0; A < perss.length; A++) {
-                if (obj1.data[A].gstIdper == idpersonaOJTE1) {
-                    datos2 =
-                        obj1.data[A].gstNombr + '*' +
-                        obj1.data[A].gstApell;
-                    var s = datos2.split("*");
-                    $("#modal-evaluarojtII #nompoj1II").val(s[0] + ' ' + s[1]);
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idpersonaOJTE1){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtII #nompoj1II").val(s[0]+' '+ s[1] );         
                 }
             }
-        });
+        }); 
         //TRAE A INSTRUCTOR
         $.ajax({
             url: '../php/conPerson.php',
@@ -1546,86 +1434,86 @@ function infoeval2(registroev) {
             obj1 = JSON.parse(respuesta);
             var perss = obj1.data;
             var x = 0;
-            for (A = 0; A < perss.length; A++) {
-                if (obj1.data[A].gstIdper == idinstruOJTE2) {
-                    datos2 =
-                        obj1.data[A].gstNombr + '*' +
-                        obj1.data[A].gstApell;
-                    var s = datos2.split("*");
-                    $("#modal-evaluarojtII #tipooj1II").val(s[0] + ' ' + s[1]);
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idinstruOJTE2){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtII #tipooj1II").val(s[0]+' '+ s[1] );         
+                }
+            }
+        }); 
+    });
+        //TRAE LA EVALUACIÓN
+        $.ajax({
+            url: '../php/conevalojt.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj1 = JSON.parse(respuesta);
+            var perss = obj1.data;
+            var x = 0;
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].id_ojt == registroev){
+
+                    pregunta1=Number(obj1.data[A].pregunta1);
+                    pregunta2=Number(obj1.data[A].pregunta2);
+                    pregunta3=Number(obj1.data[A].pregunta3);
+                    pregunta4=Number(obj1.data[A].pregunta4);
+                    resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4;
+                    resultado2 = Number (resultado) * 100 / 80;
+                    document.getElementById('resulnII').value=resultado2 + "%";   
+                    //alert(resultado2);
+                    if (resultado2 > 80){
+                        document.getElementById('estatusnII').value="APROBADO";   
+                        document.getElementById('estatusnII').style.color="green"; 
+                    }else if (resultado2 < 80) {
+                        document.getElementById('estatusnII').value="NO APROBO";   
+                        document.getElementById('estatusnII').style.color="red"; 
+                    }
+                     //pregunta 1
+                    if (obj1.data[A].pregunta1 == 20){
+                        document.getElementById('test4II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 15){
+                        document.getElementById('test3II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta1 == 10){
+                        document.getElementById('test2II').checked ="true"; 
+                    }else{
+                        document.getElementById('test1II').checked ="true"; 
+                    }
+                     //pregunta 2
+                     if (obj1.data[A].pregunta2 == 20){
+                        document.getElementById('test8II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 15){
+                        document.getElementById('test7II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta2 == 10){
+                        document.getElementById('test6II').checked ="true"; 
+                    }else{
+                        document.getElementById('test5II').checked ="true"; 
+                    }
+                    //pregunta 3
+                    if (obj1.data[A].pregunta3 == 20){
+                        document.getElementById('test12II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 15){
+                        document.getElementById('test11II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta3 == 10){
+                        document.getElementById('test10II').checked ="true"; 
+                    }else{
+                        document.getElementById('test9II').checked ="true"; 
+                    }
+                    //pregunta 4
+                    if (obj1.data[A].pregunta4 == 20){
+                        document.getElementById('test16II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 15){
+                        document.getElementById('test15II').checked ="true"; 
+                    }else if (obj1.data[A].pregunta4 == 10){
+                        document.getElementById('test14II').checked ="true"; 
+                    }else{
+                        document.getElementById('test13II').checked ="true"; 
+                    }                    
                 }
             }
         });
-    });
-    //TRAE LA EVALUACIÓN
-    $.ajax({
-        url: '../php/conevalojt.php',
-        type: 'POST'
-    }).done(function(respuesta) {
-        obj1 = JSON.parse(respuesta);
-        var perss = obj1.data;
-        var x = 0;
-        for (A = 0; A < perss.length; A++) {
-            if (obj1.data[A].id_ojt == registroev) {
-
-                pregunta1 = Number(obj1.data[A].pregunta1);
-                pregunta2 = Number(obj1.data[A].pregunta2);
-                pregunta3 = Number(obj1.data[A].pregunta3);
-                pregunta4 = Number(obj1.data[A].pregunta4);
-                resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4;
-                resultado2 = Number(resultado) * 100 / 80;
-                document.getElementById('resulnII').value = resultado2 + "%";
-                //alert(resultado2);
-                if (resultado2 > 80) {
-                    document.getElementById('estatusnII').value = "APROBADO";
-                    document.getElementById('estatusnII').style.color = "green";
-                } else if (resultado2 < 80) {
-                    document.getElementById('estatusnII').value = "NO APROBO";
-                    document.getElementById('estatusnII').style.color = "red";
-                }
-                //pregunta 1
-                if (obj1.data[A].pregunta1 == 20) {
-                    document.getElementById('test4II').checked = "true";
-                } else if (obj1.data[A].pregunta1 == 15) {
-                    document.getElementById('test3II').checked = "true";
-                } else if (obj1.data[A].pregunta1 == 10) {
-                    document.getElementById('test2II').checked = "true";
-                } else {
-                    document.getElementById('test1II').checked = "true";
-                }
-                //pregunta 2
-                if (obj1.data[A].pregunta2 == 20) {
-                    document.getElementById('test8II').checked = "true";
-                } else if (obj1.data[A].pregunta2 == 15) {
-                    document.getElementById('test7II').checked = "true";
-                } else if (obj1.data[A].pregunta2 == 10) {
-                    document.getElementById('test6II').checked = "true";
-                } else {
-                    document.getElementById('test5II').checked = "true";
-                }
-                //pregunta 3
-                if (obj1.data[A].pregunta3 == 20) {
-                    document.getElementById('test12II').checked = "true";
-                } else if (obj1.data[A].pregunta3 == 15) {
-                    document.getElementById('test11II').checked = "true";
-                } else if (obj1.data[A].pregunta3 == 10) {
-                    document.getElementById('test10II').checked = "true";
-                } else {
-                    document.getElementById('test9II').checked = "true";
-                }
-                //pregunta 4
-                if (obj1.data[A].pregunta4 == 20) {
-                    document.getElementById('test16II').checked = "true";
-                } else if (obj1.data[A].pregunta4 == 15) {
-                    document.getElementById('test15II').checked = "true";
-                } else if (obj1.data[A].pregunta4 == 10) {
-                    document.getElementById('test14II').checked = "true";
-                } else {
-                    document.getElementById('test13II').checked = "true";
-                }
-            }
-        }
-    });
 }
 //TODO FORMATO DE EVALUACIÓN NIVEL 3 OJT----------------------------------------------------------------------------------------
 function evalnivelIII() {
@@ -1639,9 +1527,9 @@ function evalnivelIII() {
     var preg4ojtI = $('input[name=preg4III]:checked').val(); //  -
     var preg5ojtI = $('input[name=preg5III]:checked').val();
 
-    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI + '&opcion=evaluOJTIII';
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIII';
     alert(datos);
-    if (idpregunta == '' || !document.querySelector('input[name=preg1III]:checked') || !document.querySelector('input[name=preg2III]:checked') || !document.querySelector('input[name=preg3III]:checked') || !document.querySelector('input[name=preg4III]:checked') || !document.querySelector('input[name=preg5III]:checked')) {
+    if (idpregunta == '' || !document.querySelector('input[name=preg1III]:checked') || !document.querySelector('input[name=preg2III]:checked') || !document.querySelector('input[name=preg3III]:checked') || !document.querySelector('input[name=preg4III]:checked')|| !document.querySelector('input[name=preg5III]:checked') ) {
 
         Swal.fire({
             type: 'warning',
@@ -1650,7 +1538,7 @@ function evalnivelIII() {
             customClass: 'swal-wide',
             timer: 3000
         });
-    } else {
+    }else{
         $.ajax({
             url: '../php/insertOJT.php',
             type: 'POST',
@@ -1687,7 +1575,7 @@ function evalnivelIII() {
     }
 }
 
-function udateevalIII() { //16052022
+function udateevalIII(){ //16052022
     //alert("ENTRA LA ACTUALIZACION DE EVALUACIÓN");
     var idpregunta = document.getElementById('idtarpreII3').value; //ID DE LA PREGUNTA
     var idinspector = document.getElementById('idinspoII3').value; //ID DEL INSPECTOR 
@@ -1698,9 +1586,9 @@ function udateevalIII() { //16052022
     var preg4ojtI = $('input[name=preg4III]:checked').val(); //  -
     var preg5ojtI = $('input[name=preg5III]:checked').val();
 
-    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI + '&opcion=evaluOJTIact';
+    datos = 'idpregunta=' + idpregunta + '&idinspector=' + idinspector + '&preg1ojtI=' + preg1ojtI + '&preg2ojtI=' + preg2ojtI + '&preg3ojtI=' + preg3ojtI + '&preg4ojtI=' + preg4ojtI + '&preg5ojtI=' + preg5ojtI  + '&opcion=evaluOJTIact';
     //alert(datos);
-    if (idpregunta == '' || !document.querySelector('input[name=preg1III]:checked') || !document.querySelector('input[name=preg2III]:checked') || !document.querySelector('input[name=preg3III]:checked') || !document.querySelector('input[name=preg4III]:checked') || !document.querySelector('input[name=preg5III]:checked')) {
+    if (idpregunta == '' || !document.querySelector('input[name=preg1III]:checked') || !document.querySelector('input[name=preg2III]:checked') || !document.querySelector('input[name=preg3III]:checked') || !document.querySelector('input[name=preg4III]:checked')|| !document.querySelector('input[name=preg5III]:checked') ) {
         Swal.fire({
             type: 'warning',
             text: 'CONTESTAR TODAS LOS REACTIVOS',
@@ -1708,7 +1596,7 @@ function udateevalIII() { //16052022
             customClass: 'swal-wide',
             timer: 3000
         });
-    } else {
+    }else{
         $.ajax({
             url: '../php/insertOJT.php',
             type: 'POST',
@@ -1723,7 +1611,7 @@ function udateevalIII() { //16052022
                     customClass: 'swal-wide',
                     timer: 3000
                 });
-
+                
                 $('#modal-evaluarojtIII').modal('hide');
                 //actualiza la tabla
             } else if (respuesta == 2) {
@@ -1746,72 +1634,71 @@ function udateevalIII() { //16052022
         });
     }
 }
-
-function openojtethIII() {
+function openojtethIII(){
     // alert("abrir");
-    document.getElementById('editarevalojtIII').style.display = "none";
-    document.getElementById('editarevalojtcloseIII').style.display = "";
-    document.getElementById('atuevalIII').style.display = "";
+     document.getElementById('editarevalojtIII').style.display="none"; 
+     document.getElementById('editarevalojtcloseIII').style.display="";
+     document.getElementById('atuevalIII').style.display="";
 
-    document.getElementById('si1III').disabled = "";
-    document.getElementById('no1III').disabled = "";
-    document.getElementById('si2III').disabled = "";
-    document.getElementById('no2III').disabled = "";
-    document.getElementById('si3III').disabled = "";
-    document.getElementById('no3III').disabled = "";
-    document.getElementById('si4III').disabled = "";
-    document.getElementById('no4III').disabled = "";
-    document.getElementById('si5III').disabled = "";
-    document.getElementById('no6III').disabled = "";
-}
+     document.getElementById('si1III').disabled ="";
+     document.getElementById('no1III').disabled ="";
+     document.getElementById('si2III').disabled ="";
+     document.getElementById('no2III').disabled ="";
+     document.getElementById('si3III').disabled ="";
+     document.getElementById('no3III').disabled ="";
+     document.getElementById('si4III').disabled ="";
+     document.getElementById('no4III').disabled ="";
+     document.getElementById('si5III').disabled ="";
+     document.getElementById('no6III').disabled ="";
+ }
+ 
+ function cerrarojevaIII(){
+     //alert("cerras");
+     document.getElementById('editarevalojtIII').style.display=""; 
+     document.getElementById('editarevalojtcloseIII').style.display="none";
+     document.getElementById('atuevalIII').style.display="none";
 
-function cerrarojevaIII() {
-    //alert("cerras");
-    document.getElementById('editarevalojtIII').style.display = "";
-    document.getElementById('editarevalojtcloseIII').style.display = "none";
-    document.getElementById('atuevalIII').style.display = "none";
-
-    document.getElementById('si1III').disabled = "true";
-    document.getElementById('no1III').disabled = "true";
-    document.getElementById('si2III').disabled = "true";
-    document.getElementById('no2III').disabled = "true";
-    document.getElementById('si3III').disabled = "true";
-    document.getElementById('no3III').disabled = "true";
-    document.getElementById('si4III').disabled = "true";
-    document.getElementById('no4III').disabled = "true";
-    document.getElementById('si5III').disabled = "true";
-    document.getElementById('no6III').disabled = "true";
-}
+     document.getElementById('si1III').disabled ="true";
+     document.getElementById('no1III').disabled ="true";
+     document.getElementById('si2III').disabled ="true";
+     document.getElementById('no2III').disabled ="true";
+     document.getElementById('si3III').disabled ="true";
+     document.getElementById('no3III').disabled ="true";
+     document.getElementById('si4III').disabled ="true";
+     document.getElementById('no4III').disabled ="true";
+     document.getElementById('si5III').disabled ="true";
+     document.getElementById('no6III').disabled ="true";
+ }
 //FUNCION PARA TRAER YA EVALUADO NIVEL LOS DATOS DE NIVEL 1 -----------------------------------------------------------------------------------------------
-function infoeval3(registroev) {
+function infoeval3(registroev){
     //alert(registroev);
     //alert("entra la evaluacion3");
-    document.getElementById('descargapdfIII').style.display = ""; //boton para descargar formato OJT
-    document.getElementById('resultadonIII').style.display = ""; //input que muestra el resultado
-    document.getElementById('evalucIII').style.display = "none";
-    document.getElementById('idtarpreII3').value = registroev;
-    document.getElementById('editarevalojtIII').style.display = "";
-    document.getElementById('editarevalojtcloseIII').style.display = "none";
-    document.getElementById('atuevalIII').style.display = "none";
-    //bloqueo de radiobutton
-    document.getElementById('si1III').disabled = "true";
-    document.getElementById('no1III').disabled = "true";
-    document.getElementById('si2III').disabled = "true";
-    document.getElementById('no2III').disabled = "true";
-    document.getElementById('si3III').disabled = "true";
-    document.getElementById('no3III').disabled = "true";
-    document.getElementById('si4III').disabled = "true";
-    document.getElementById('no4III').disabled = "true";
-    document.getElementById('si5III').disabled = "true";
-    document.getElementById('no6III').disabled = "true";
-    //bloquear todo los CHECHK BOX DE EVALUACIÖN
-    $("#data-table-OJTProgramados tr").on('click', function() {
+     document.getElementById('descargapdfIII').style.display=""; //boton para descargar formato OJT
+     document.getElementById('resultadonIII').style.display="";  //input que muestra el resultado
+     document.getElementById('evalucIII').style.display="none";
+     document.getElementById('idtarpreII3').value =registroev;
+     document.getElementById('editarevalojtIII').style.display=""; 
+     document.getElementById('editarevalojtcloseIII').style.display="none";
+     document.getElementById('atuevalIII').style.display="none";
+     //bloqueo de radiobutton
+     document.getElementById('si1III').disabled ="true";
+     document.getElementById('no1III').disabled ="true";
+     document.getElementById('si2III').disabled ="true";
+     document.getElementById('no2III').disabled ="true";
+     document.getElementById('si3III').disabled ="true";
+     document.getElementById('no3III').disabled ="true";
+     document.getElementById('si4III').disabled ="true";
+     document.getElementById('no4III').disabled ="true";
+     document.getElementById('si5III').disabled ="true";
+     document.getElementById('no6III').disabled ="true";
+     //bloquear todo los CHECHK BOX DE EVALUACIÖN
+     $("#data-table-OJTProgramados tr").on('click', function() {
         var tareas = "";
         var subtarea = "";
         tareas += $(this).find('td:eq(2)').html(); //Toma el id de la persona 
         subtarea += $(this).find('td:eq(3)').html(); //Toma el id de la persona 
-        document.getElementById('tarojII3').value = tareas
-        document.getElementById('subojII3').value = subtarea
+        document.getElementById('tarojII3').value=tareas
+        document.getElementById('subojII3').value=subtarea
     })
     $.ajax({
         url: '../php/conproojt.php',
@@ -1820,14 +1707,14 @@ function infoeval3(registroev) {
         obj = JSON.parse(respuesta);
         var res = obj.data;
         var x = 0;
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].id_proojt == registroev) {
+        for (U = 0; U < res.length; U++) { 
+            if (obj.data[U].id_proojt == registroev){
                 idpersonaOJTE3 = obj.data[U].id_pers; //id persona
-                idinstruOJTE3 = obj.data[U].id_insojt; // id instructor
+                idinstruOJTE3= obj.data[U].id_insojt; // id instructor
                 // alert(id_persona);           
-                document.getElementById('espoj3').value = obj.data[U].gstCatgr;
-                document.getElementById('idinspoII3').value = obj.data[U].id_pers;
-            }
+                document.getElementById('espoj3').value=obj.data[U].gstCatgr;
+                document.getElementById('idinspoII3').value=obj.data[U].id_pers;
+            }    
         }
 
         //TRAE A LA PERSONA
@@ -1838,16 +1725,16 @@ function infoeval3(registroev) {
             obj1 = JSON.parse(respuesta);
             var perss = obj1.data;
             var x = 0;
-            for (A = 0; A < perss.length; A++) {
-                if (obj1.data[A].gstIdper == idpersonaOJTE3) {
-                    datos2 =
-                        obj1.data[A].gstNombr + '*' +
-                        obj1.data[A].gstApell;
-                    var s = datos2.split("*");
-                    $("#modal-evaluarojtIII #nompoj1II3").val(s[0] + ' ' + s[1]);
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idpersonaOJTE3){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtIII #nompoj1II3").val(s[0]+' '+ s[1] );         
                 }
             }
-        });
+        }); 
         //TRAE A INSTRUCTOR
         $.ajax({
             url: '../php/conPerson.php',
@@ -1856,455 +1743,74 @@ function infoeval3(registroev) {
             obj1 = JSON.parse(respuesta);
             var perss = obj1.data;
             var x = 0;
-            for (A = 0; A < perss.length; A++) {
-                if (obj1.data[A].gstIdper == idinstruOJTE3) {
-                    datos2 =
-                        obj1.data[A].gstNombr + '*' +
-                        obj1.data[A].gstApell;
-                    var s = datos2.split("*");
-                    $("#modal-evaluarojtIII #tipooj1II3").val(s[0] + ' ' + s[1]);
+            for (A = 0; A < perss.length; A++) { 
+                if (obj1.data[A].gstIdper == idinstruOJTE3){
+                    datos2 = 
+                    obj1.data[A].gstNombr  + '*' +
+                    obj1.data[A].gstApell;    
+                    var s = datos2.split("*");   
+                    $("#modal-evaluarojtIII #tipooj1II3").val(s[0]+' '+ s[1] );         
                 }
             }
-        });
+        }); 
     });
-    //TRAE LA EVALUACIÓN
-    $.ajax({
-        url: '../php/conevalojt.php',
-        type: 'POST'
-    }).done(function(respuesta) {
-        obj1 = JSON.parse(respuesta);
-        var perss = obj1.data;
-        var x = 0;
-        for (A = 0; A < perss.length; A++) {
-            if (obj1.data[A].id_ojt == registroev) {
-
-                pregunta1 = Number(obj1.data[A].pregunta1);
-                pregunta2 = Number(obj1.data[A].pregunta2);
-                pregunta3 = Number(obj1.data[A].pregunta3);
-                pregunta4 = Number(obj1.data[A].pregunta4);
-                pregunta5 = Number(obj1.data[A].pregunta5);
-                resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4 + pregunta5;
-                document.getElementById('resulnIII').value = resultado + "%";
-                //alert(resultado2);
-                if (resultado > 80) {
-                    document.getElementById('estatusnIII').value = "APROBADO";
-                    document.getElementById('estatusnIII').style.color = "green";
-                } else if (resultado < 80) {
-                    document.getElementById('estatusnIII').value = "NO APROBO";
-                    document.getElementById('estatusnIII').style.color = "red";
-                }
-                //pregunta 1
-                if (obj1.data[A].pregunta1 == 20) {
-                    document.getElementById('si1III').checked = "true";
-                } else if (obj1.data[A].pregunta1 == 5) {
-                    document.getElementById('no1III').checked = "true";
-                }
-                //pregunta 2
-                if (obj1.data[A].pregunta2 == 20) {
-                    document.getElementById('si2III').checked = "true";
-                } else if (obj1.data[A].pregunta2 == 5) {
-                    document.getElementById('no2III').checked = "true";
-                }
-                //pregunta 3
-                if (obj1.data[A].pregunta3 == 20) {
-                    document.getElementById('si3III').checked = "true";
-                } else if (obj1.data[A].pregunta3 == 5) {
-                    document.getElementById('no3III').checked = "true";
-                }
-                //pregunta 4
-                if (obj1.data[A].pregunta4 == 20) {
-                    document.getElementById('si4III').checked = "true";
-                } else if (obj1.data[A].pregunta4 == 5) {
-                    document.getElementById('no4III').checked = "true";
-                }
-                //pregunta 5
-                if (obj1.data[A].pregunta5 == 20) {
-                    document.getElementById('si5III').checked = "true";
-                } else if (obj1.data[A].pregunta5 == 5) {
-                    document.getElementById('no6III').checked = "true";
-                }
-            }
-        }
-    });
-}
-
-function opensubesp() {
-    /* let table = $('#example').DataTable({
-
-         "language": {
-             "searchPlaceholder": "Buscar datos...",
-             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-         },
-         "order": [
-             [6, "DESC"]
-         ],
-         "ajax": "../controller/php/infvalprodu.php",
-         "columnDefs": [{
-             //  "targets": -1,
-             // "data": null,
-             //"defaultContent": ""
-
-         }]
-     });*/
-    var currentdate = new Date();
-    var datetime = "Fecha de Impresion: " + currentdate.getDate() + "/" +
-        (currentdate.getMonth() + 1) + "/" +
-        currentdate.getFullYear() + " - " +
-        currentdate.getHours() + ":" +
-        currentdate.getMinutes();
-
-    var table = $('#data-subespecialidad').DataTable({
-
-        dom: 'Bfrtip',
-        buttons: [{
-                extend: 'copy',
-                exportOptions: {
-                    columns: [0, 1, 2]
-                }
-            },
-            {
-                extend: 'pdfHtml5',
-                text: 'Generar PDF',
-                messageTop: 'SUBESPECIALIDAD',
-                exportOptions: {
-                    columns: [0, 1, 2]
-                },
-                download: 'open',
-                header: true,
-                title: '',
-                customize: function(doc) {
-                    doc.defaultStyle.fontSize = 12;
-                    doc.styles.tableHeader.fontSize = 12;
-                    doc['footer'] = (function(page, pages) {
-                        return {
-                            columns: [
-                                datetime,
-                                {
-                                    alignment: 'right',
-                                    text: [{
-                                            text: page.toString(),
-                                            italics: false
-                                        },
-                                        ' de ',
-                                        {
-                                            text: pages.toString(),
-                                            italics: false
-                                        }
-                                    ]
-                                }
-                            ],
-                            margin: [25, 0]
-                        }
-                    });
-                }
-            },
-            {
-                extend: 'excel',
-                text: 'Generar Excel',
-                exportOptions: {
-                    columns: [0, 1, 2]
-                }
-            }
-        ],
-        "language": {
-            buttons: {
-                copyTitle: 'Registros copiados',
-                copySuccess: {
-                    _: '%d registros copiados',
-                    1: '1 registro copiado'
-                }
-            },
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        // "order": [
-        //     [5, "asc"]
-        // ],
-        "ajax": "../php/infsubespec.php",
-    });
-
-    // CON ESTO FUNCIONA EL MULTIFILTRO//
-    /*$('#inventario thead tr').clone(true).appendTo('#inventario thead');
+         //TRAE LA EVALUACIÓN
+         $.ajax({
+             url: '../php/conevalojt.php',
+             type: 'POST'
+         }).done(function(respuesta) {
+             obj1 = JSON.parse(respuesta);
+             var perss = obj1.data;
+             var x = 0;
+             for (A = 0; A < perss.length; A++) { 
+                 if (obj1.data[A].id_ojt == registroev){
  
-     $('#inventario thead tr:eq(1) th').each(function(i) {
-         var title = $(this).text(); //es el nombre de la columna
-         $(this).html('<input type="text"  placeholder="Buscar" />');
- 
-         $('input', this).on('keyup change', function() {
-             if (table.column(i).search() !== this.value) {
-                 table
-                     .column(i)
-                     .search(this.value)
-                     .draw();
+                     pregunta1=Number(obj1.data[A].pregunta1);
+                     pregunta2=Number(obj1.data[A].pregunta2);
+                     pregunta3=Number(obj1.data[A].pregunta3);
+                     pregunta4=Number(obj1.data[A].pregunta4);
+                     pregunta5=Number(obj1.data[A].pregunta5);
+                     resultado = pregunta1 + pregunta2 + pregunta3 + pregunta4 + pregunta5;
+                     document.getElementById('resulnIII').value=resultado + "%";   
+                     //alert(resultado2);
+                     if (resultado > 80){
+                         document.getElementById('estatusnIII').value="APROBADO";   
+                         document.getElementById('estatusnIII').style.color="green"; 
+                     }else if (resultado < 80) {
+                         document.getElementById('estatusnIII').value="NO APROBO";   
+                         document.getElementById('estatusnIII').style.color="red"; 
+                     }
+                      //pregunta 1
+                     if (obj1.data[A].pregunta1 == 20){
+                         document.getElementById('si1III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta1 == 5){
+                         document.getElementById('no1III').checked ="true"; 
+                     }
+                      //pregunta 2
+                      if (obj1.data[A].pregunta2 == 20){
+                         document.getElementById('si2III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta2 == 5){
+                         document.getElementById('no2III').checked ="true"; 
+                     }
+                     //pregunta 3
+                     if (obj1.data[A].pregunta3 == 20){
+                         document.getElementById('si3III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta3 == 5){
+                         document.getElementById('no3III').checked ="true"; 
+                     }
+                     //pregunta 4
+                     if (obj1.data[A].pregunta4 == 20){
+                         document.getElementById('si4III').checked ="true"; 
+                     }else if (obj1.data[A].pregunta4 == 5){
+                         document.getElementById('no4III').checked ="true"; 
+                     }    
+                     //pregunta 5
+                     if (obj1.data[A].pregunta5 == 20){
+                        document.getElementById('si5III').checked ="true"; 
+                    }else if (obj1.data[A].pregunta5 == 5){
+                        document.getElementById('no6III').checked ="true"; 
+                    }               
+                 }
              }
          });
-     });*/
-
-}
-
-function opendettsup(idcatego) {
-    //alert(idcatego);
-    document.getElementById('idinfoojt').value = idcatego;
-    document.getElementById('divaddsup').value = idcatego;
-    //tabla
-    let cat = idcatego;
-    // nombre de la especialidad
-    $.ajax({
-        url: '../php/categorias.php',
-        type: 'GET',
-        data: 'cat=' + cat
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        let res = obj.data;
-        let x = 0;
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].gstIdcat == idcatego) {
-                x++;
-                //alert("entra");
-                document.getElementById('espnameadd').innerHTML = obj.data[U].gstCatgr;
-            }
-        }
-    });
-    $.ajax({
-        url: '../php/subespc.php',
-        type: 'POST',
-        //data: 'cat=' + cat
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        let res = obj.data;
-        let x = 0;
-        html = '<div class="table-wrapper rounded table-responsive"><table style="width:100%" id="subct" name="subct" class="table display dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>DESCRIPCIÓN</th><th><i></i>ACCIONES</th></tr></thead><tbody>';
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].id_especialidad == idcatego) {
-                x++;
-                //document.getElementById('espname').innerhtml = obj.data[U].gstCatgr;
-                let id_subesp = obj.data[U].id_subesp;
-                html += "<tr><td>" + x + "</td><td>" + obj.data[U].subdescrip + "</td><td>" + "<a href='' title='Actualizar subcategoria' onclick='edithsubesp(" + id_subesp + ")' class='btn btn-default text-info' data-toggle='modal' data-target='#edithsub'><i class='fa fa-exchange'></i></a> <a href='' title='Eliminar' onclick='deletesubes(" + id_subesp + ")' class='btn btn-default text-red' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa-times-circle-o'></i></a>" + "</td></tr>";
-            }
-        }
-        html += '</div></tbody></table></div></div>';
-        $("#lissubesp").html(html);
-        'use strict';
-        $('#subct').DataTable({
-            responsive: true,
-            language: {
-                searchPlaceholder: 'Buscar...',
-                sSearch: '',
-                lengthMenu: 'mostrando _MENU_ paginas',
-                sInfo: 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
-                sInfoEmpty: 'Mostrando registros del 0 al 0 de un total de 0 registros',
-                sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
-                oPaginate: {
-                    sFirst: 'Primero',
-                    sLast: 'Último',
-                    sNext: 'Siguiente',
-                    sPrevious: 'Anterior',
-                },
-            }
-
-        });
-    })
-
-}
-//MUESTRA LOS BOTONES DE AGREAGAR SUB-ESPECIALIDAD
-function visualadd() {
-    //alert("entro la base"); subespaddd
-    $('#subespaddd').addClass('hidden');
-    $('#divaddsup').removeClass('hidden');
-}
-//OCULTA LOS BOTONES DE AGREAGAR SUB-ESPECIALIDAD
-function cerraraddsub() {
-    $('#divaddsup').addClass('hidden');
-    $('#subespaddd').removeClass('hidden');
-}
-//GUARDA LA SUBESPECIDALIDAD
-function saveaddsupe() {
-    //alert("entro save subespecialidad");
-    let categoria = document.getElementById('divaddsup').value;
-    //alert(categoria);
-    let subdescrip = document.getElementById('addsupess').value;
-    let datos = 'categoria=' + categoria + '&subdescrip=' + subdescrip + '&opcion=registrsuep';
-    if (subdescrip == '' || categoria == '') {
-        Swal.fire({
-            type: 'warning',
-            text: 'LLENAR EL CAMPO DE SUB-ESPECIALIDAD',
-            showConfirmButton: false,
-            customClass: 'swal-wide',
-            timer: 1500
-        });
-        return;
-    } else {
-        $.ajax({
-            type: "POST",
-            url: "../php/insertOJT.php",
-            data: datos
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-                Swal.fire({
-                    type: 'success',
-                    text: 'Se agrego de forma correcta',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 1500
-                });
-                subdescrip = "";
-                updatesubesp();
-                //$("#modal-addartvpinfo").modal('hide');//ocultamos el modal
-            } else if (respuesta == 2) {
-                Swal.fire({
-                    type: 'info',
-                    text: 'LA SUB-ESPECIAIDAD YA ESTA INGRESADA',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 1500
-                });
-                //alert("datos repetidos");
-            } else {
-                Swal.fire({
-                    type: 'danger',
-                    text: 'CONTACTAR A SOPORTE TECNICO',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 1500
-                });
-            }
-        })
-    }
-}
-
-function updatesubesp() {
-    let cat = document.getElementById('divaddsup').value;
-    document.getElementById('addsupess').value = '';
-    $.ajax({
-        url: '../php/categorias.php',
-        type: 'GET',
-        data: 'cat=' + cat
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        let res = obj.data;
-        let x = 0;
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].gstIdcat == cat) {
-                x++;
-                //alert("entra");
-                document.getElementById('espnameadd').innerHTML = obj.data[U].gstCatgr;
-            }
-        }
-    });
-    $.ajax({
-        url: '../php/subespc.php',
-        type: 'POST',
-        //data: 'cat=' + cat
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        let res = obj.data;
-        let x = 0;
-        html = '<div class="table-wrapper rounded table-responsive"><table style="width:100%" id="subct" name="subct" class="table display dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>DESCRIPCIÓN</th><th><i></i>ACCIONES</th></tr></thead><tbody>';
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].id_especialidad == cat) {
-                x++;
-                //document.getElementById('espname').innerhtml = obj.data[U].gstCatgr;
-                let id_subesp = obj.data[U].id_subesp;
-                html += "<tr><td>" + x + "</td><td>" + obj.data[U].subdescrip + "</td><td>" + "<a href='' title='Actualizar subcategoria' onclick='' class='btn btn-default text-info' data-toggle='modal' data-target='#modal-accesoact'><i class='fa fa-exchange'></i></a> <a href='' title='Eliminar' onclick='' class='btn btn-default text-red' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa-times-circle-o'></i></a>" + "</td></tr>";
-            }
-        }
-        html += '</div></tbody></table></div></div>';
-        $("#lissubesp").html(html);
-        'use strict';
-        $('#subct').DataTable({
-            responsive: true,
-            language: {
-                searchPlaceholder: 'Buscar...',
-                sSearch: '',
-                lengthMenu: 'mostrando _MENU_ paginas',
-                sInfo: 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
-                sInfoEmpty: 'Mostrando registros del 0 al 0 de un total de 0 registros',
-                sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
-                oPaginate: {
-                    sFirst: 'Primero',
-                    sLast: 'Último',
-                    sNext: 'Siguiente',
-                    sPrevious: 'Anterior',
-                },
-            }
-
-        });
-    })
-}
-
-function edithsubesp(id_subespec) {
-    //alert(id_subespec);
-    document.getElementById('subcatedth').value = id_subespec;
-    $.ajax({
-        url: '../php/subespc.php',
-        type: 'POST',
-        //data: 'cat=' + cat
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        let res = obj.data;
-        let x = 0;
-        html = '<div class="table-wrapper rounded table-responsive"><table style="width:100%" id="subct" name="subct" class="table display dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>DESCRIPCIÓN</th><th><i></i>ACCIONES</th></tr></thead><tbody>';
-        for (U = 0; U < res.length; U++) {
-            if (obj.data[U].id_subesp == id_subespec) {
-                x++;
-                //document.getElementById('espname').innerhtml = obj.data[U].gstCatgr;
-                document.getElementById('namesubtare').value = obj.data[U].subdescrip;
-                document.getElementById('categoriaedth').value = obj.data[U].id_especialidad;
-            }
-        }
-    })
-}
-
-function updatesubind() {
-    let categoria = document.getElementById('categoriaedth').value;
-    let id_subesp = document.getElementById('subcatedth').value;
-    let subdescrip = document.getElementById('namesubtare').value;
-    let datos = 'categoria=' + categoria + '&subdescrip=' + subdescrip + '&id_subesp=' + id_subesp + '&opcion=updateindsub';
-    alert(datos);
-    if (subdescrip == '' || categoria == '') {
-        Swal.fire({
-            type: 'warning',
-            text: 'LLENAR EL CAMPO DE SUB-ESPECIALIDAD',
-            showConfirmButton: false,
-            customClass: 'swal-wide',
-            timer: 1500
-        });
-        return;
-    } else {
-        $.ajax({
-            type: "POST",
-            url: "../php/insertOJT.php",
-            data: datos
-        }).done(function(respuesta) {
-            if (respuesta == 0) {
-                Swal.fire({
-                    type: 'success',
-                    text: 'Se actualiza de forma correcta',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 1500
-                });
-                subdescrip = "";
-                updatesubesp();
-                $("edithsub").modal('hide'); //ocultamos el modal
-            } else if (respuesta == 2) {
-                Swal.fire({
-                    type: 'info',
-                    text: 'LA SUB-ESPECIAIDAD YA ESTA INGRESADA',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 1500
-                });
-                //alert("datos repetidos");
-            } else {
-                Swal.fire({
-                    type: 'danger',
-                    text: 'CONTACTAR A SOPORTE TECNICO',
-                    showConfirmButton: false,
-                    customClass: 'swal-wide',
-                    timer: 1500
-                });
-            }
-        })
-    }
-}
+ }

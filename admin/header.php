@@ -144,6 +144,7 @@ ini_set('date.timezone','America/Mexico_City');
             </li>
             <!--  -->
             <!-- -->
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file-text"></i>
@@ -157,10 +158,8 @@ ini_set('date.timezone','America/Mexico_City');
                     <li><a href="proOJT"><i class="fa fa-file-text"></i> Programa OJT</a></li>
                     <!-- <li><a style="pointer-events: none;" onclick="return false;" href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li> -->
                     <li><a href="catalogoOJT"><i class="fa fa-file-text"></i> OJT Programados</a></li>
-                    <li><a href="subespecialidad"><i class="fa fa-file-text"></i>Especialidad</a></li>
                     <li><a href="instojt"><i class="fa fa-plus"></i>Alta Coord/Instr OJT</a></li>
                     <li><a href="coorinsoj"><i class="fa fa-file-text"></i>Lista Coord/Instr</a></li>
-                    
                 </ul>
             </li>
             <li>
@@ -213,7 +212,7 @@ ini_set('date.timezone','America/Mexico_City');
             </li> -->
 
             <?php if( isset($datos2['modalidad']) == "E-LEARNNING"){ ?>
-                          <li>
+            <!--               <li>
               <a href='e-learnning'>
               <i class='fa fa-internet-explorer'></i> <span>e-learnning</span>
                 <span class='pull-right-container'>
@@ -221,7 +220,7 @@ ini_set('date.timezone','America/Mexico_City');
                   <small class='label pull-right bg-blue'></small>
                 </span>
               </a>
-            </li>
+            </li> -->
             <?php }?>
 
             <!-- <li>
@@ -252,4 +251,3 @@ include('../perfil/actualizar.php');
 <script type="text/javascript">
 administrador();
 </script>
-

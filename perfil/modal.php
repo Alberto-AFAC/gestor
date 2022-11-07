@@ -415,16 +415,16 @@
                         <div class="col-sm-6">
                             <label style="font-size:16px;color:#888787" for="" id="diapr" name="diapr">DIAS PROGRAMADOS PARA CURSO:</label>
                         </div>
+
+
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <div id="instruc"></div>
-
                             </div>
                             <div class="col-sm-6">
                                 <div id="habilDias3"></div>
                             </div>
                         </div>
-
 
                         <div class="form-group"><br>
                             <div class="col-sm-offset-0 col-sm-5">
@@ -813,7 +813,7 @@
     </div>
 </div>
 
-<!-----MODAL DE DETALLES------------------------------28092022------>
+<!-----MODAL DE DETALLES------------------------------------>
 <div class="modal fade" id='modal-detalle'>
     <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">

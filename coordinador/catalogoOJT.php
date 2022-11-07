@@ -101,7 +101,7 @@ $especialidad = mysqli_query($conexion,$sqlEspecialidad);
 
                         <div class="box">
                             <div class="box-header">
-                                <h3 class="box-title">LISTA DE PROGRAMACION DE OJT</h3>
+                                <h3 class="box-title">LISTA DE PROGRMACION DE OJT</h3>
                                 <div class="pull-right">
 
                                     <div class="btn-group">
@@ -288,8 +288,7 @@ function infor(perona){
                 obj.data[U].gstNombr  + '*' +
                 obj.data[U].gstApell;    
                 var d = datos.split("*");   
-                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);   
-                $("#nominsp1").html('INSPECTOR / ' + d[0] + ' ' +d[1]);             
+                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);                
             }
         }
     });
@@ -317,8 +316,7 @@ function openOJT(perona) {
                 obj.data[U].gstNombr  + '*' +
                 obj.data[U].gstApell;    
                 var d = datos.split("*");   
-                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);
-                $("#nominsp1").html('INSPECTOR / ' + d[0] + ' ' +d[1]);                
+                $("#nominsp").html('INSPECTOR / ' + d[0] + ' ' +d[1]);                
             }
         }
     });

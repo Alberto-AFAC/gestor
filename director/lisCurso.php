@@ -34,8 +34,10 @@ $inspector = mysqli_query($conexion,$sql);
     <link rel="stylesheet" type="text/css" href="../dist/css/sweetalert2.min.css">
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../dist/css/input-correos.css">
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
     <!-- <link rel="stylesheet" type="text/css" href="../datas/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
     <script type="text/javascript" async="" src="../datas/ga.js"></script>
@@ -46,6 +48,8 @@ $inspector = mysqli_query($conexion,$sql);
     <script type="text/javascript" language="javascript" src="../datas/dataTables.js"></script>
     <script type="text/javascript" language="javascript" src="../datas/demo.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
+
+
     <style>
     #data-table-cursosProgramados input {
         width: 80% !important;
@@ -73,25 +77,32 @@ $inspector = mysqli_query($conexion,$sql);
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+
     <div class="wrapper">
+
         <?php
         include('header.php');
 ?>
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
+
             <!-- Main content -->
             <section class="content">
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
+
                             <!--<ul class="nav nav-tabs">
 <li class="active"><a href="#activity" data-toggle="tab">PROGRAMACIÓN DEL CURSO</a></li>
 <li><a href="#timeline" data-toggle="tab">LISTA DE PROGRAMACIÓN</a></li>
 </ul>-->
                             <div class="tab-content">
+
                                 <div class="box-body" id="listCurso">
+
                                     <!-- Datatables-->
                                     <!--SEGUNDA TABLA OPTIMIZADA-->
                                     <table class="display table table-striped table-bordered dataTable" id="example"
@@ -108,21 +119,31 @@ $inspector = mysqli_query($conexion,$sql);
                                                 <th>PARTICIPANTES</th>
                                                 <th>ESTATUS</th>
                                                 <th style="width:15%;">ACCIÓN</th>
+
                                             </tr>
                                         </thead>
+
                                     </table>
                                 </div>
+
                                 <section class="content" id="viscurso">
                                     <div class="row">
+
                                         <?php include('viscurso.php');?>
+
                                     </div>
                             </div>
                             <div id='lstacurs'></div>
+
+
+
+
                             <div class="modal fade" id="modal-participnt">
                                 <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel">
                                     <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
                                         <div class="modal-content">
+
                                             <div class="modal-header">
                                                 <button type="button" onclick="location.href='lisCurso'" class="close"
                                                     data-dismiss="modal" aria-label="Close"><span
@@ -134,7 +155,14 @@ $inspector = mysqli_query($conexion,$sql);
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <!-- /.tab-content
+</div>
+<!- /.nav-tabs-custom -->
                         </div>
+                        <!-- /.col -->
                     </div>
                     <!-- /.row -->
                     <form class="form-horizontal" action="" method="POST">
@@ -152,8 +180,10 @@ $inspector = mysqli_query($conexion,$sql);
                                         <div class="form-group">
                                             <div class="col-sm-12">
                                                 <p> ¿ESTÁ SEGURO DE CANCELAR EL CURSO: <span id="cgstTitlo"></span>
+                                                   
                                                 </p>
                                             </div>
+                                    
                                         </div>
                                     </div>
                                 </div>
@@ -162,23 +192,24 @@ $inspector = mysqli_query($conexion,$sql);
                         <!-- /.modal-content -->
                     </form>
                     <!---------------------------------------ELIMINAR----------------------------------------->
-                    <form class="form-horizontal" action="" method="POST">
+             <form class="form-horizontal" action="" method="POST">
                         <div class="modal fade" id="eliminar-modal">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">NO CUENTAS CON PRIVILEGIOS PARA ELIMINAR PARTICIPANTE
-                                        </h4>
+                                        <h4 class="modal-title">NO CUENTAS CON PRIVILEGIOS PARA ELIMINAR PARTICIPANTE </h4>
                                     </div>
-
+                
                                 </div>
                             </div>
                         </div>
                     </form>
+                
                     <!------------EVALUACION DE CURSOS-------------------->
                     <!-- FIN EVALUACIÓN CURSO -->
+
                     <!-- inicia la evaluación DEL INSTRUCTOR -->
                     <form class="form-horizontal" action="" method="POST" id="avaluacion">
                         <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog"
@@ -205,13 +236,11 @@ $inspector = mysqli_query($conexion,$sql);
                                         </div>
                                         <div class="modal-body">
                                             <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                                    <!-- <a href='javascript:openEditeva()' id="abrirev"
+                                                 <!-- <a href='javascript:openEditeva()' id="abrirev"
                                                         style="font-size:22px"> <i class="fa fa-edit"></i> </a>
                                                     <a href='javascript:cerrarEditeva()' id="cerrareval"
                                                         style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
                                                     </a> -->
-                                                </button>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">
@@ -266,7 +295,9 @@ $inspector = mysqli_query($conexion,$sql);
                                                             </tr>
                                                         </tbody>
                                                     </table>
+
                                                 </div>
+
                                                 <div class="col-sm-12">
                                                     <textarea class="col-sm-12" name="comentarios" id="comeneva"
                                                         rows="4" cols="10" onkeyup="mayus(this);"
@@ -274,12 +305,16 @@ $inspector = mysqli_query($conexion,$sql);
                                                         placeholder="Comentarios Adicionales" disabled=""></textarea>
                                                 </div>
                                             </div>
+
+                                           
                                         </div>
                                     </div>
                                 </div>
                             </div>
                     </form>
+
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
                     <form class="form-horizontal" action="" method="POST" id="avaluacion">
                         <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                             <div class="modal fade" id="modal-masiva">
@@ -299,11 +334,12 @@ $inspector = mysqli_query($conexion,$sql);
                                             </div>
                                             </p>
                                         </div>
-
+                                       
                                     </div>
                                 </div>
                             </div>
                     </form>
+
                     <form class="form-horizontal" action="" method="POST" id="avaluacion">
                         <div class="col-xs-12 col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                             <div class="modal fade" id="modal-evalua">
@@ -322,15 +358,17 @@ $inspector = mysqli_query($conexion,$sql);
                                             </div>
                                             </p>
                                         </div>
-
+                                        
                                     </div>
                                 </div>
                             </div>
                     </form>
-
+                    <!-- /.content -->
             </section>
-
+            <!-- /.content -->
         </div>
+
+        <!-- inicio de el check list para generar un certificado -->
         <form class="form-horizontal" action="" method="POST" id="acreditacion">
             <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 <div class="modal fade" id="modal-acreditacion">
@@ -365,6 +403,7 @@ $inspector = mysqli_query($conexion,$sql);
                                             style="text-transform:uppercase; font-size: 14pt; display:none;"
                                             class="form-control " id="copnum" name="copnum">
                                     </div>
+
                                 </div>
                             </div>
                             <div class="modal-body">
@@ -383,6 +422,7 @@ $inspector = mysqli_query($conexion,$sql);
                                                         CONVOCATORIA Y CONFIRMACIÓN
                                                     </td>
                                                     <td>
+
                                                         <i class="" id="che1" disabled
                                                             style="color:green; font-size: 16pt"></i></span>
                                                         <!-- <i class="fa fa-exclamation" id="chep1" disabled style="color:#CD8704; font-size: 16pt"></i></span> -->
@@ -422,6 +462,7 @@ $inspector = mysqli_query($conexion,$sql);
                                         </table>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="col-sm-5">
                                         <button type="button" id="guaacredit" onclick="vergenercerf()"
@@ -451,10 +492,14 @@ $inspector = mysqli_query($conexion,$sql);
                 </div>
         </form>
         <!-- /.content -->
+
         </section>
         <!-- /.content -->
     </div>
 
+    <!-- fin del chechk list para copletar iun certificado -->
+
+    <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
             <b>Version</b> <?php 
@@ -474,8 +519,12 @@ exit;
         Todos los derechos Reservados DDE
         .
     </footer>
+
+
     <div class="control-sidebar-bg"></div>
     </div>
+    <!-- ./wrapper -->
+
     <!-- jQuery 3 -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
@@ -509,10 +558,11 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 <!-- // AQUÍ VA LA TABLA MÁS OPTIMIZADA -->
 <script type="text/javascript">
+
 $("#lisCurso").show();
 
 $(document).ready(function() {
-    $.fn.dataTableExt.errMode = 'ignore';
+    $.fn.dataTableExt.errMode = 'ignore';  
     var table = $('#example').DataTable({
 
         "language": {
@@ -532,8 +582,12 @@ $(document).ready(function() {
     });
 
     detalles("#example tbody", table);
+
     //agrinspctor("#example tbody", table);
+
+
     $('#example thead tr').clone(true).appendTo('#example thead');
+
     $('#example thead tr:eq(1) th').each(function(i) {
         var title = $(this).text(); //es el nombre de la columna
         $(this).html('<input type="text"  placeholder="Buscar" />');
@@ -547,6 +601,7 @@ $(document).ready(function() {
             }
         });
     });
+
 
     $('#example tbody').on('click', 'a', function() {
         var data = table.row($(this).parents('tr')).data();
