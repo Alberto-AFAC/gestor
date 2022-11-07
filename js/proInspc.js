@@ -282,12 +282,18 @@ function hrsDiasAct() {}
 //VERIFICAR Y VALIDAR DÍAS PARA QUE SE PROGRAME EL CURSO 
 
 function curProgramar() {
+
+
     var idInsptr = new Array();
+
     $("input[name='idinsp[]']:checked").each(function() {
         idInsptr.push($(this).val());
     });
+
     var idInstr = ''
+
     var selectObject = document.getElementById("idinst");
+
     for (var i = 0; i < selectObject.options.length; i++) {
         if (selectObject.options[i].selected == true) {
 
@@ -295,7 +301,9 @@ function curProgramar() {
 
         }
     }
+
     idInstru = idInstr.substr(1);
+
     var id_mstr = document.getElementById('id_mstr').value;
     var hcurso = document.getElementById('hora_ini').value;
     var fcurso = document.getElementById('fcurso').value;
@@ -305,6 +313,7 @@ function curProgramar() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
     var grupo = document.getElementById('grupociaac').value;
+
     /* if (modalidad == 'PRESENCIAL') {
          var link = '0';
          var contracceso = '0';
@@ -314,6 +323,7 @@ function curProgramar() {
          var contracceso = document.getElementById('contracceso').value;
          var classroom = document.getElementById('classroom').value;
      }*/
+
     if (modalidad == 'PRESENCIAL') {
         var link = '0';
         var contracceso = '0';
@@ -332,23 +342,41 @@ function curProgramar() {
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
     }
+
+
     idinsps = idInsptr + '' + idInstr;
+
     ids = idInsptr + '' + idInstr + ',' + idcord;
+
     var perid = document.getElementById('idper').value;
+
     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&perid=' + perid + '&grupo=' + grupo + '&opcion=procurso';
-    if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+
+    if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '0' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+
+
         $('#empty').toggle('toggle');
         setTimeout(function() {
             $('#empty').toggle('toggle');
         }, 2000);
 
         return;
+
     } else {
+
+
+        $("#buttonpro").hide();
+        $(document).ready(function() {
+            $('#myModal').modal('toggle')
+        });
+
+
         $.ajax({
             url: '../php/comDias.php',
             type: 'POST',
-            data: 'idpart=' + ids
+            data: 'idpart=' + ids + '&modalidad=' + modalidad
         }).done(function(resps) {
+
             //SI NO HAY DÍAS REPETIDO, SE MANDA LOS DATOS PARA PROGRAMAR CURSO 
             if (resps == 0) {
 
@@ -365,6 +393,12 @@ function curProgramar() {
                     customClass: 'swal-wide',
                     timer: 20000
                 });
+
+                $("#buttonpro").show();
+                $(document).ready(function() {
+                    $('#myModal').modal('hidden')
+                });
+
             }
         });
     }
@@ -374,6 +408,7 @@ function curProgramar() {
 //CACHA LOS DATOS PARA PROGRAMAR CURSO
 function programarCurso(datos) {
 
+    $("#buttonpro").hide();
     $.ajax({
         url: '../php/proCurso.php',
         type: 'POST',
@@ -391,8 +426,10 @@ function programarCurso(datos) {
                 cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
 
             });
-            // setTimeout("location.href = 'inspecion.php';", 2000);
             $("#buttonpro").hide();
+            $(document).ready(function() {
+                $('#myModal').modal('toggle')
+            });
         } else
 
         if (respuesta == 0) {
@@ -406,8 +443,11 @@ function programarCurso(datos) {
                 confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
                 cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
             });
-            // setTimeout("location.href = 'inspecion.php';", 2000);
             $("#buttonpro").hide();
+            $(document).ready(function() {
+                $('#myModal').modal('toggle')
+            });
+
         } else {}
     });
 }
