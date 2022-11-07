@@ -130,6 +130,7 @@ $idInstr = $_POST['idntrc'];
 $part = 'SI';
 $grupo = $_POST['grupo'];
 
+
 $yi = substr($fcursos,6,4);	$mi = substr($fcursos,3,2);	$di = substr($fcursos,0,2);
 $fcurso = $yi.'-'.$mi.'-'.$di;
 
@@ -196,6 +197,10 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 		}
 	}
 }else if($opcion === 'cursoAct'){
+
+
+
+
 	$codigo = $_POST['codigo'];
 	$fcurso = $_POST['fcurso'];
 	$hcurso = $_POST['hcurso'];
@@ -221,6 +226,7 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 	$hora_fin = $_POST['hora_fin'];
 	actgrupo($grupo,$codigo,$conexion);
+    cursoActualizar2($sede,$modalidads,$linkcur,$contracur,$classromcur,$codigo,$conexion);
 	for($i=0; $i<$valor; $i++){
 
 	$dias = $varray1[$i]["diasr"];
@@ -232,7 +238,7 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 
 	if(semanalAct($codigo,$dias,$valida,$mes,$anio,$fcurso,$fechaf,$hcurso,$hora_fin,$conexion)){	
-		
+
 		if($i==1){
 	if(cursoActualizar($codigo,$fcurso,$fechaf,$hcurso,$sede,$modalidads,$linkcur,$contracur,$classromcur,$grupo,$conexion))
 		{	
@@ -249,9 +255,13 @@ if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	echo "0";	}else{	e
 
 
 }else if($opcion === 'PDF'){
-
-	 $pdf = $_POST['v'];
- 	if(descPDF($pdf,$conexion)){echo "0";}else{echo "1";}
+	$pdf = $_POST['v'];
+ 	if(descPDF($pdf,$conexion)){
+ 	    echo "0";
+ 	    histdescr($idp,$pdf,$conexion);
+ 	}else{
+ 	    echo "1";
+ 	}
 }else if($opcion === 'confasiten'){
 
 	$idperson = $_POST['idperson'];
@@ -439,7 +449,7 @@ function finalizac($codigo,$conexion){
 			modalidad='$modalidads',
 			link='$linkcur',
 			contracur='$contracur',
-			classroom='$classromcur',
+	     	classroom='$classromcur',
 			grupo='$grupo'
 			WHERE codigo='$codigo'";
 		if(mysqli_query($conexion,$query)){
@@ -450,7 +460,6 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
-
 	//función para actualizar el grupo
 	function actgrupo($grupo,$codigo,$conexion){
 		$query="UPDATE cursos SET grupo='$grupo' WHERE codigo='$codigo'";
@@ -462,8 +471,21 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
+
 	
+	//función para actualizar el grupo
+	function cursoActualizar2($sede,$modalidads,$linkcur,$contracur,$classromcur,$codigo,$conexion){
+		$query="UPDATE cursos SET sede='$sede', modalidad='$modalidads', link='$linkcur', contracur='$contracur',classroom='$classromcur' WHERE codigo='$codigo'";
+		if(mysqli_query($conexion,$query)){
+			return true;
+		}else{
+			return false;
+		}
+		cerrar($conexion);
+	}
+
 	function descPDF($pdf,$conexion){
+
 	$query="UPDATE constancias SET copias='1' WHERE id='$pdf'";
 		if(mysqli_query($conexion,$query)){
 			return true;
@@ -473,6 +495,7 @@ function finalizac($codigo,$conexion){
 		cerrar($conexion);
 
 	}
+	
 // fin actualia evaluación el curso
 	function historiCur($idp,$realizo,$id_mstr,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
@@ -524,7 +547,7 @@ function finalizac($codigo,$conexion){
 
 function semanal($perid,$codigo,$fcurso,$fechaf,$hcurso,$conexion){
 
-	$query="UPDATE semanal SET id_curso='$codigo' WHERE id_per = '$perid' AND fec_inico = '$fcurso' AND fec_fin = '$fechaf' AND hora_ini = '$hcurso'";
+	$query="UPDATE semanal SET id_curso='$codigo' WHERE id_per = '$perid' AND fec_inico = '$fcurso' AND fec_fin = '$fechaf' AND hora_ini = '$hcurso' AND id_curso='0' ";
 		if(mysqli_query($conexion,$query)){
 			return true;
 		}else{
@@ -544,10 +567,22 @@ function semanalAct($codigo,$dias,$valida,$mes,$anio,$fcurso,$fechaf,$hcurso,$ho
 		cerrar($conexion);	
 
 }
+
+function histdescr($idp,$pdf,$conexion){
+	ini_set('date.timezone','America/Mexico_City');
+	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');
+	$query = "INSERT INTO historial VALUES(0,$idp,'DESCARGA EL DOCUMENTO',concat('FOLIO:',(select c.codigo from constancias a, cursos c where a.id= '$pdf' and a.id_codigocurso=c.codigo and a.id_persona=c.idinsp),' CURSO:',(select l.gstTitlo from listacursos l, cursos c, constancias a where a.id= '$pdf' and a.id_codigocurso=c.codigo and a.id_persona=c.idinsp and l.gstIdlsc =c.idmstr)),'$fecha')";			  
+	if(mysqli_query($conexion,$query)){
+	return true;
+	}else{
+	return false;
+}
 	
 function cerrar($conexion){
 
 	mysqli_close($conexion);
 
 }
-?>
+?> 
+
+
