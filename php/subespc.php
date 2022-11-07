@@ -1,8 +1,8 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-    $folio = $_GET["folio"];
-	$query = "SELECT * FROM instructor i, personal p WHERE codigoInst = '$folio' and i.estado=0 and i.id_per=p.gstidper";
+    //$cat = $_GET["cat"];
+	$query = "SELECT * FROM subespecojt s, categorias c where s.estado='0' AND s.id_especialidad=c.gstIdcat  ORDER BY s.id_subesp ASC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

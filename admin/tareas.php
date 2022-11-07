@@ -23,6 +23,7 @@ $cursos = mysqli_query($conexion,$sqlList);
 $sqlEspecialidad = "SELECT * FROM categorias WHERE estado = 0 ";
 $especialidad = mysqli_query($conexion,$sqlEspecialidad);
 
+
 unset($_SESSION['consulta']);
 
 ?>
@@ -148,7 +149,7 @@ include('header.php');
                                                     <input class="form-control" type="hidden" id="dateR" name="dateR"
                                                         value="<?php echo date("Y-m-d");?>">
                                                     <select id="idcur" name="idcur" class="form-control"
-                                                        placeholder="Seleccione..." disabled="">
+                                                        onchange="csubespec()" placeholder="Seleccione..." disabled="">
                                                         <option value="0">SELECCIONE LA ESPECIALIDAD</option>
                                                         <?php while($data = mysqli_fetch_row($especialidad)):?>
                                                         <option value="<?php echo $data[0]?>">
@@ -159,12 +160,11 @@ include('header.php');
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <!-- <label>ESPECIALIDAD OJT</label> -->
-                                                    <select id="idubuojt" name="idubuojt" class="form-control inputalta"
+                                                    <!-- <select id="idubuojt" name="idubuojt" class="form-control inputalta"
                                                         placeholder="Seleccione la ubicación">
-                                                        <option value="">SELECCIONE LA UBICACIÓN</option>
-                                                        <option value="ÁREA CENTRAL">ÁREA CENTRAL</option>
-                                                        <option value="COMANDANCIA">COMANDANCIA</option>
-                                                    </select>
+                                                        <option value="">SELECCIONE LA SUB-ESPECIALIDAD</option>
+                                                    </select> -->
+                                                    <div name="subchang" id="subchang"></div>
                                                 </div>
 
                                             </div>
@@ -607,8 +607,9 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                     </div>
                     <div class="modal-body">
                         <div>
-                            <a href="#" title="Agregar Subtarea" onclick="addmasub()" type="button" id="massubb" name="massubb" class="btn btn-primary"
-                                data-toggle="modal" data-target=""> <i class="fa fa-plus"></i>
+                            <a href="#" title="Agregar Subtarea" onclick="addmasub()" type="button" id="massubb"
+                                name="massubb" class="btn btn-primary" data-toggle="modal" data-target=""> <i
+                                    class="fa fa-plus"></i>
                                 AGREGAR SUBTAREA</a>
                             <form method="POST">
                                 <div style="display:none" class="form-group" id="forriomassu">
@@ -645,7 +646,9 @@ class="form-control" id="fechaT3" name="fechaT3" disabled="">
                                             AÑADIR</span>
                                     </div>
                                     <br><br><br><br><br>
-                                    <button type="button" onclick="agrsubtareaojt2()" class="ml-md-auto btn btn-primary">GUARDAR</button> <button type="button" onclick="cerraraddpos()" class="ml-md-auto btn btn-default">CERRAR</button>
+                                    <button type="button" onclick="agrsubtareaojt2()"
+                                        class="ml-md-auto btn btn-primary">GUARDAR</button> <button type="button"
+                                        onclick="cerraraddpos()" class="ml-md-auto btn btn-default">CERRAR</button>
                                 </div>
                             </form>
                         </div>
@@ -921,6 +924,7 @@ integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="ano
 <script type="text/javascript">
 $(document).ready(function() {
     $('#idcur').select2();
+    
 
 });
 </script>
@@ -928,6 +932,7 @@ $(document).ready(function() {
 <script src="../js/select2.js"></script>
 
 <script type="text/javascript">
+$('#idcur').select2();
 document.getElementById('titulo1').disabled = false;
 document.getElementById('oculsub1').disabled = false;
 document.getElementById('oculsub2').disabled = false;
@@ -1827,7 +1832,7 @@ $('#addsub1opp').click(function(e) {
 <br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
 <a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
 </div>');
-vojteditpos++;
+        vojteditpos++;
     }
 });
 
@@ -1840,7 +1845,7 @@ $('#addsub2opp').click(function(e) {
 <br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
 <a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
 </div>');
-vojteditpos2++;
+        vojteditpos2++;
     }
 });
 
@@ -1853,7 +1858,7 @@ $('#addsub3opp').click(function(e) {
 <br><input style="text-transform: uppercase;" placeholder="INGRESA SUB 1" class="form-control" type="text" name="tarea1[]" id="oculsub1" >\
 <a href="#" style="background-color: gray;" class="badge remover_campo"><i class="fa fa-minus-circle" aria-hidden="true"></i> REMOVER</a>\
 </div>');
-vojteditpos3++;
+        vojteditpos3++;
     }
 });
 // +++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1978,7 +1983,7 @@ function idsubTa(datos) {
 
             if (obj.data[ii].idtarea == idsub) {
 
-                document.getElementById('idsubtpos').value = idsub; 
+                document.getElementById('idsubtpos').value = idsub;
                 html =
                     '<table  class="table table-bordered"><tr><th style="width:10%;">#</th><th style="width:80%;">SUBTAREA ' +
                     num + '</th><th style="width:10%;">ACCIONES</th>';
@@ -2356,13 +2361,30 @@ function gurdeditp(ojtpr) {
         }
     });
 }
-function addmasub(){
-    document.getElementById('massubb').style.display="none";
-    document.getElementById('forriomassu').style.display="";
+
+function addmasub() {
+    document.getElementById('massubb').style.display = "none";
+    document.getElementById('forriomassu').style.display = "";
 }
 
-function cerraraddpos(){
-    document.getElementById('massubb').style.display="";
-    document.getElementById('forriomassu').style.display="none";
+function cerraraddpos() {
+    document.getElementById('massubb').style.display = "";
+    document.getElementById('forriomassu').style.display = "none";
+}
+
+function csubespec() {
+    //alert("subespecialidad");
+    //let especialidad = document.getElementById('idcur').value;
+    //alert(especialidad);
+    $.ajax({
+					type:"post",
+					data:'valor=' + $('#idcur').val(),
+					url:'session/',
+					success:function(r){
+						$('#subchang').load('select/subcateg.php');
+					}
+				});
+   
+
 }
 </script>

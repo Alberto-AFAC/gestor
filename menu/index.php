@@ -62,7 +62,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
     </div>
 
 
-    <div class="wrapper">
+    <div class="container wrapper">
         <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" id="scene">
             <li class="layer" data-depth="0.00">
             </li>
@@ -78,6 +78,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                     <span class="line"></span>
                 </div>
             </li>
+            <br>
 
             <li class="layer" data-depth="0.25">
                 <div class="sphere">

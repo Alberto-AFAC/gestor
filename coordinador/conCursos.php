@@ -308,7 +308,7 @@
                                     <!--<input type="time" class="form-control" id="gstDrcin" name="gstDrcin">-->
                                     <select class="form-control inputalta" id="Ahr" name="Ahr">
                                         <option value="00">00</option>
-                                        <?php for($h=1; $h<=100; $h++){
+                                        <?php for($h=1; $h<=400; $h++){
                          if($h<10){ ?>
                                         <option value="<?php echo '0'.$h?>"><?php echo '0'.$h?></option>
                                         <?php }else{ ?>

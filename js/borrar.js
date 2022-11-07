@@ -17,6 +17,8 @@ $.ajax({
     $("#conslts").html(html);
 })
 
+
+
 //CREACIÓN DE CALENDARIO PARA PROGRAMAR CURSO POR DÍA 
 
 function hrsDias() {
@@ -33,6 +35,7 @@ function hrsDias() {
     fvigm = ffinal.substring(5, 7);
     fvigy = ffinal.substring(0, 4);
     var f2 = new Date(fvigy, fvigm, fvigd);
+
 
     if (f1 > f2) {
         $("#avisof").show();
@@ -268,35 +271,29 @@ function reiFec() {
             $("#mosFec").show();
             $("#visFec").hide();
         }
+
     });
 
 }
 //ESTA FUNCIÓN ES INDISPENSABLE PARA QUE EL BOTÓN DE DÍAS HÁBILES QUEDE CACHADO LOS DATOS QUE SE AGREGARON 
 function hrsDiasAct() {}
 
+
 //VERIFICAR Y VALIDAR DÍAS PARA QUE SE PROGRAME EL CURSO 
+
 function curProgramar() {
-
     var idInsptr = new Array();
-
     $("input[name='idinsp[]']:checked").each(function() {
         idInsptr.push($(this).val());
     });
-
     var idInstr = ''
-
     var selectObject = document.getElementById("idinst");
-
     for (var i = 0; i < selectObject.options.length; i++) {
         if (selectObject.options[i].selected == true) {
-
             idInstr += "," + selectObject.options[i].value;
-
         }
     }
-
     idInstru = idInstr.substr(1);
-
     var id_mstr = document.getElementById('id_mstr').value;
     var hcurso = document.getElementById('hora_ini').value;
     var fcurso = document.getElementById('fcurso').value;
@@ -307,6 +304,16 @@ function curProgramar() {
     var modalidad = document.getElementById('modalidad').value;
     var grupo = document.getElementById('grupociaac').value;
 
+    /* if (modalidad == 'PRESENCIAL') {
+         var link = '0';
+         var contracceso = '0';
+         var classroom = '0';
+     } else {
+         var link = document.getElementById('link').value;
+         var contracceso = document.getElementById('contracceso').value;
+         var classroom = document.getElementById('classroom').value;
+     }*/
+
     if (modalidad == 'PRESENCIAL') {
         var link = '0';
         var contracceso = '0';
@@ -316,7 +323,6 @@ function curProgramar() {
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
         var sede = 'NO APLICA';
-
     } else if (modalidad == 'AUTOGESTIVO') {
         var link = '0';
         var contracceso = '0';
@@ -326,36 +332,26 @@ function curProgramar() {
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
     }
-
     idinsps = idInsptr + '' + idInstr;
-
     ids = idInsptr + '' + idInstr + ',' + idcord;
-
     var perid = document.getElementById('idper').value;
-
     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&perid=' + perid + '&grupo=' + grupo + '&opcion=procurso';
-
     if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '0' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
-
         $('#empty').toggle('toggle');
         setTimeout(function() {
             $('#empty').toggle('toggle');
         }, 2000);
-
         return;
-
-    } else {
-
+    } else if (modalidad == 'PRESENCIAL' || modalidad == 'A DISTANCIA (E-LEARNNING)' || modalidad == 'HIBRIDO') {
         $("#buttonpro").hide();
         $(document).ready(function() {
             $('#myModal').modal('toggle')
         });
 
-
         $.ajax({
             url: '../php/comDias.php',
             type: 'POST',
-            data: 'idpart=' + ids + '&modalidad=' + modalidad
+            data: 'idpart=' + ids
         }).done(function(resps) {
 
             //SI NO HAY DÍAS REPETIDO, SE MANDA LOS DATOS PARA PROGRAMAR CURSO 
@@ -367,18 +363,24 @@ function curProgramar() {
                 //TE MUESTRA LOS DÍAS QUE ESTÁN EN CURSO
 
                 Swal.fire({
+                    //type: 'success',
+                    //title: 'CURSO PROGRAMADO CORRECTAMENTE',
                     html: `<p><code>EL PARTICIPANTE <br> ${resps} <br> ESTA EN CURSO</code></p>`,
                     showConfirmButton: false,
                     customClass: 'swal-wide',
                     timer: 20000
                 });
+
                 $("#buttonpro").show();
-                remove();
+                $(document).ready(function() {
+                    $('#myModal').modal('hidden')
+                });
 
             }
         });
     }
 }
+
 
 //CACHA LOS DATOS PARA PROGRAMAR CURSO
 function programarCurso(datos) {
@@ -426,6 +428,7 @@ function programarCurso(datos) {
         } else {}
     });
 }
+
 
 function proCurso() {
 
@@ -485,6 +488,7 @@ function proCurso() {
     datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&opcion=procurso'
 
     if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -554,33 +558,48 @@ function proCurso() {
                         customClass: 'swal-wide',
                         timer: 10000
                     });
+
                 }
             });
+
         }
+
     }
+
 }
 //COORDINADOR
 function proCursoCord() {
+
     var idInsptr = new Array();
+
     $("input[name='idinsp[]']:checked").each(function() {
         idInsptr.push($(this).val());
     });
 
     var idInstr = ''
+
     var selectObject = document.getElementById("idinst");
+
     for (var i = 0; i < selectObject.options.length; i++) {
         if (selectObject.options[i].selected == true) {
+
             idInstr += "," + selectObject.options[i].value;
+
         }
     }
 
+
     // var idcord = document.getElementById('idcord').value;
+
     var id_mstr = document.getElementById('id_mstr').value;
+
+
     var hcurso = document.getElementById('hcurso').value;
     var fcurso = document.getElementById('fcurso').value;
     //Solo ID coordinadores 
     var idinst = document.getElementById('idcord').value;
     var sede = document.getElementById('sede').value;
+
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
@@ -592,12 +611,14 @@ function proCursoCord() {
         var link = document.getElementById('link').value;
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
+
     }
     idinsps = idInsptr + '' + idInstr;
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf + '*' + contracceso + '*' + classroom;
 
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -623,8 +644,10 @@ function proCursoCord() {
                     customClass: 'swal-wide',
                     confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
                     cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
+
                 });
                 // setTimeout("location.href = 'inspecion.php';", 2000);
+
             } else {
                 Swal.fire({
                     type: 'warning',
@@ -637,25 +660,35 @@ function proCursoCord() {
             }
         });
     }
+
 }
 //HUMANOS
 function proCursoH() {
 
     var idInsptr = new Array();
+
     $("input[name='idinsp[]']:checked").each(function() {
         idInsptr.push($(this).val());
     });
+
     var idInstr = ''
+
     var selectObject = document.getElementById("idinst");
 
     for (var i = 0; i < selectObject.options.length; i++) {
         if (selectObject.options[i].selected == true) {
+
             idInstr += "," + selectObject.options[i].value;
+
         }
     }
 
+
     // var idcord = document.getElementById('idcord').value;
+
     var id_mstr = document.getElementById('id_mstr').value;
+
+
     var hcurso = document.getElementById('hcurso').value;
     var fcurso = document.getElementById('fcurso').value;
     //Solo ID coordinadores 
@@ -665,14 +698,21 @@ function proCursoH() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
+
     idinsps = idInsptr + '' + idInstr;
+
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
+
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
+
+
         $('#empty').toggle('toggle');
         setTimeout(function() {
             $('#empty').toggle('toggle');
         }, 2000);
+
         return;
+
     } else {
         $.ajax({
             url: '../php/proCurso.php',
@@ -700,8 +740,10 @@ function proCursoH() {
                     customClass: 'swal-wide',
                     confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
                     cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
+
                 });
                 // setTimeout("location.href = 'inspecion.php';", 2000);
+
             } else {
                 Swal.fire({
                     type: 'warning',
@@ -714,15 +756,20 @@ function proCursoH() {
             }
         });
     }
+
 }
 
 //COORDINADOR
 function proCursoCoor() {
+
     var idInsptr = new Array();
+
     $("input[name='idinsp[]']:checked").each(function() {
         idInsptr.push($(this).val());
     });
+
     var idInstr = ''
+
     var selectObject = document.getElementById("idinst");
 
     for (var i = 0; i < selectObject.options.length; i++) {
@@ -733,9 +780,11 @@ function proCursoCoor() {
         }
     }
 
+
     // var idcord = document.getElementById('idcord').value;
 
     var id_mstr = document.getElementById('id_mstr').value;
+
 
     var hcurso = document.getElementById('hcurso').value;
     var fcurso = document.getElementById('fcurso').value;
@@ -746,17 +795,21 @@ function proCursoCoor() {
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
 
+
     idinsps = idInsptr + '' + idInstr;
 
     datos = idinsps + '*' + id_mstr + '*' + hcurso + '*' + fcurso + '*' + idinst + '*' + sede + '*' + link + '*' + fechaf;
 
     if (idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idinst == '' || sede == '' || modalidad == '' || link == '' || fechaf == '') {
 
+
         $('#empty').toggle('toggle');
         setTimeout(function() {
             $('#empty').toggle('toggle');
         }, 2000);
+
         return;
+
     } else {
         $.ajax({
             url: '../php/proCurso.php',
@@ -771,6 +824,7 @@ function proCursoCoor() {
                 // setTimeout(function() {
                 //     $('#succe').toggle('toggle');
                 // }, 2000);
+
                 // document.getElementById('button').disabled = 'false';
                 // // document.getElementById('button').style.color = "silver"; 
                 // $('#vaciar').toggle('toggle');
@@ -799,10 +853,13 @@ function proCursoCoor() {
             }
         });
     }
+
 }
+
 var limpiar_datos = function() {
     $("#id_mstr").val("");
 }
+
 
 function actualizar() {
 
@@ -814,15 +871,20 @@ function actualizar() {
     var puesto = document.getElementById('puesto').value;
     var unidad = document.getElementById('unidad').value;
 
+
     datos = nombre + '*' + apellidos + '*' + correo + '*' + id_area + '*' + puesto + '*' + unidad;
 
 
     if (idinsp == '' || nombre == '' || apellidos == '' || correo == '' || id_area == '' || puesto == '' || unidad == '') {
+
+
         $('#empty').toggle('toggle');
         setTimeout(function() {
             $('#empty').toggle('toggle');
         }, 2000);
+
         return;
+
     } else {
         $.ajax({
             url: '../php/regInspc.php',
@@ -842,6 +904,7 @@ function actualizar() {
             }
         });
     }
+
 }
 
 function modalidades() {

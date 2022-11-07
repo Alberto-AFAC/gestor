@@ -99,7 +99,7 @@ function declina() {
 //var fecha_actual = years.getFullYear();
 //document.getElementById("fecha").innerHTML = ""+'<b>CURSOS AÑO '+fecha_actual+'</b>';
 
-function confirmar(idcurso) {
+function confirmar(idcurso) { //01112022
     //alert(idcurso);
     $.ajax({
         url: '../php/curConfir.php',

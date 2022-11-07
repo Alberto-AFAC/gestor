@@ -478,7 +478,7 @@ function filubi() {
         var res = obj.data;
         var n = 0;
         html =
-            '<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsubtareas" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">ACCIONES</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
+            '<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsubtareas" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;"><input type="checkbox" name="tarojt" id="tarojt">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">ACCIONES</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
         for (H = 0; H < res.length; H++) {
             if (obj.data[H].id_spc == especialidas && obj.data[H].idarea == ubicacion) {
                 var idojt = obj.data[H].id_ojt;
@@ -492,7 +492,7 @@ function filubi() {
                     subtareas =
                         '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>';
                 }
-                html += '<tr><th scope="row">' + n + ')</th><td>' + obj.data[H].ojt_principal + '</td><td>' +
+                html += '<tr><th scope="row">' + n + ')<input type="checkbox" name="tarojt" id="tarojt"></th><td>' + obj.data[H].ojt_principal + '</td><td>' +
                     obj.data[H].idarea + '</td><td>' + subtareas + '</td><td style="display:none">' + obj.data[
                         H].id_ojt; + '</td></tr>';
             }

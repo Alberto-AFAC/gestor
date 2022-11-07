@@ -1927,3 +1927,384 @@ function infoeval3(registroev) {
         }
     });
 }
+
+function opensubesp() {
+    /* let table = $('#example').DataTable({
+
+         "language": {
+             "searchPlaceholder": "Buscar datos...",
+             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+         },
+         "order": [
+             [6, "DESC"]
+         ],
+         "ajax": "../controller/php/infvalprodu.php",
+         "columnDefs": [{
+             //  "targets": -1,
+             // "data": null,
+             //"defaultContent": ""
+
+         }]
+     });*/
+    var currentdate = new Date();
+    var datetime = "Fecha de Impresion: " + currentdate.getDate() + "/" +
+        (currentdate.getMonth() + 1) + "/" +
+        currentdate.getFullYear() + " - " +
+        currentdate.getHours() + ":" +
+        currentdate.getMinutes();
+
+    var table = $('#data-subespecialidad').DataTable({
+
+        dom: 'Bfrtip',
+        buttons: [{
+                extend: 'copy',
+                exportOptions: {
+                    columns: [0, 1, 2]
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                text: 'Generar PDF',
+                messageTop: 'SUBESPECIALIDAD',
+                exportOptions: {
+                    columns: [0, 1, 2]
+                },
+                download: 'open',
+                header: true,
+                title: '',
+                customize: function(doc) {
+                    doc.defaultStyle.fontSize = 12;
+                    doc.styles.tableHeader.fontSize = 12;
+                    doc['footer'] = (function(page, pages) {
+                        return {
+                            columns: [
+                                datetime,
+                                {
+                                    alignment: 'right',
+                                    text: [{
+                                            text: page.toString(),
+                                            italics: false
+                                        },
+                                        ' de ',
+                                        {
+                                            text: pages.toString(),
+                                            italics: false
+                                        }
+                                    ]
+                                }
+                            ],
+                            margin: [25, 0]
+                        }
+                    });
+                }
+            },
+            {
+                extend: 'excel',
+                text: 'Generar Excel',
+                exportOptions: {
+                    columns: [0, 1, 2]
+                }
+            }
+        ],
+        "language": {
+            buttons: {
+                copyTitle: 'Registros copiados',
+                copySuccess: {
+                    _: '%d registros copiados',
+                    1: '1 registro copiado'
+                }
+            },
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        // "order": [
+        //     [5, "asc"]
+        // ],
+        "ajax": "../php/infsubespec.php",
+    });
+
+    // CON ESTO FUNCIONA EL MULTIFILTRO//
+    /*$('#inventario thead tr').clone(true).appendTo('#inventario thead');
+ 
+     $('#inventario thead tr:eq(1) th').each(function(i) {
+         var title = $(this).text(); //es el nombre de la columna
+         $(this).html('<input type="text"  placeholder="Buscar" />');
+ 
+         $('input', this).on('keyup change', function() {
+             if (table.column(i).search() !== this.value) {
+                 table
+                     .column(i)
+                     .search(this.value)
+                     .draw();
+             }
+         });
+     });*/
+
+}
+
+function opendettsup(idcatego) {
+    //alert(idcatego);
+    document.getElementById('idinfoojt').value = idcatego;
+    document.getElementById('divaddsup').value = idcatego;
+    //tabla
+    let cat = idcatego;
+    // nombre de la especialidad
+    $.ajax({
+        url: '../php/categorias.php',
+        type: 'GET',
+        data: 'cat=' + cat
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        let res = obj.data;
+        let x = 0;
+        for (U = 0; U < res.length; U++) {
+            if (obj.data[U].gstIdcat == idcatego) {
+                x++;
+                //alert("entra");
+                document.getElementById('espnameadd').innerHTML = obj.data[U].gstCatgr;
+            }
+        }
+    });
+    $.ajax({
+        url: '../php/subespc.php',
+        type: 'POST',
+        //data: 'cat=' + cat
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        let res = obj.data;
+        let x = 0;
+        html = '<div class="table-wrapper rounded table-responsive"><table style="width:100%" id="subct" name="subct" class="table display dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>DESCRIPCIÓN</th><th><i></i>ACCIONES</th></tr></thead><tbody>';
+        for (U = 0; U < res.length; U++) {
+            if (obj.data[U].id_especialidad == idcatego) {
+                x++;
+                //document.getElementById('espname').innerhtml = obj.data[U].gstCatgr;
+                let id_subesp = obj.data[U].id_subesp;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[U].subdescrip + "</td><td>" + "<a href='' title='Actualizar subcategoria' onclick='edithsubesp(" + id_subesp + ")' class='btn btn-default text-info' data-toggle='modal' data-target='#edithsub'><i class='fa fa-exchange'></i></a> <a href='' title='Eliminar' onclick='deletesubes(" + id_subesp + ")' class='btn btn-default text-red' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa-times-circle-o'></i></a>" + "</td></tr>";
+            }
+        }
+        html += '</div></tbody></table></div></div>';
+        $("#lissubesp").html(html);
+        'use strict';
+        $('#subct').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Buscar...',
+                sSearch: '',
+                lengthMenu: 'mostrando _MENU_ paginas',
+                sInfo: 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+                sInfoEmpty: 'Mostrando registros del 0 al 0 de un total de 0 registros',
+                sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
+                oPaginate: {
+                    sFirst: 'Primero',
+                    sLast: 'Último',
+                    sNext: 'Siguiente',
+                    sPrevious: 'Anterior',
+                },
+            }
+
+        });
+    })
+
+}
+//MUESTRA LOS BOTONES DE AGREAGAR SUB-ESPECIALIDAD
+function visualadd() {
+    //alert("entro la base"); subespaddd
+    $('#subespaddd').addClass('hidden');
+    $('#divaddsup').removeClass('hidden');
+}
+//OCULTA LOS BOTONES DE AGREAGAR SUB-ESPECIALIDAD
+function cerraraddsub() {
+    $('#divaddsup').addClass('hidden');
+    $('#subespaddd').removeClass('hidden');
+}
+//GUARDA LA SUBESPECIDALIDAD
+function saveaddsupe() {
+    //alert("entro save subespecialidad");
+    let categoria = document.getElementById('divaddsup').value;
+    //alert(categoria);
+    let subdescrip = document.getElementById('addsupess').value;
+    let datos = 'categoria=' + categoria + '&subdescrip=' + subdescrip + '&opcion=registrsuep';
+    if (subdescrip == '' || categoria == '') {
+        Swal.fire({
+            type: 'warning',
+            text: 'LLENAR EL CAMPO DE SUB-ESPECIALIDAD',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 1500
+        });
+        return;
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../php/insertOJT.php",
+            data: datos
+        }).done(function(respuesta) {
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'Se agrego de forma correcta',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+                subdescrip = "";
+                updatesubesp();
+                //$("#modal-addartvpinfo").modal('hide');//ocultamos el modal
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'info',
+                    text: 'LA SUB-ESPECIAIDAD YA ESTA INGRESADA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+                //alert("datos repetidos");
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'CONTACTAR A SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+            }
+        })
+    }
+}
+
+function updatesubesp() {
+    let cat = document.getElementById('divaddsup').value;
+    document.getElementById('addsupess').value = '';
+    $.ajax({
+        url: '../php/categorias.php',
+        type: 'GET',
+        data: 'cat=' + cat
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        let res = obj.data;
+        let x = 0;
+        for (U = 0; U < res.length; U++) {
+            if (obj.data[U].gstIdcat == cat) {
+                x++;
+                //alert("entra");
+                document.getElementById('espnameadd').innerHTML = obj.data[U].gstCatgr;
+            }
+        }
+    });
+    $.ajax({
+        url: '../php/subespc.php',
+        type: 'POST',
+        //data: 'cat=' + cat
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        let res = obj.data;
+        let x = 0;
+        html = '<div class="table-wrapper rounded table-responsive"><table style="width:100%" id="subct" name="subct" class="table display dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>DESCRIPCIÓN</th><th><i></i>ACCIONES</th></tr></thead><tbody>';
+        for (U = 0; U < res.length; U++) {
+            if (obj.data[U].id_especialidad == cat) {
+                x++;
+                //document.getElementById('espname').innerhtml = obj.data[U].gstCatgr;
+                let id_subesp = obj.data[U].id_subesp;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[U].subdescrip + "</td><td>" + "<a href='' title='Actualizar subcategoria' onclick='' class='btn btn-default text-info' data-toggle='modal' data-target='#modal-accesoact'><i class='fa fa-exchange'></i></a> <a href='' title='Eliminar' onclick='' class='btn btn-default text-red' data-toggle='modal' data-target='#modal-cursinstru'><i class='fa fa-times-circle-o'></i></a>" + "</td></tr>";
+            }
+        }
+        html += '</div></tbody></table></div></div>';
+        $("#lissubesp").html(html);
+        'use strict';
+        $('#subct').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Buscar...',
+                sSearch: '',
+                lengthMenu: 'mostrando _MENU_ paginas',
+                sInfo: 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+                sInfoEmpty: 'Mostrando registros del 0 al 0 de un total de 0 registros',
+                sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
+                oPaginate: {
+                    sFirst: 'Primero',
+                    sLast: 'Último',
+                    sNext: 'Siguiente',
+                    sPrevious: 'Anterior',
+                },
+            }
+
+        });
+    })
+}
+
+function edithsubesp(id_subespec) {
+    //alert(id_subespec);
+    document.getElementById('subcatedth').value = id_subespec;
+    $.ajax({
+        url: '../php/subespc.php',
+        type: 'POST',
+        //data: 'cat=' + cat
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        let res = obj.data;
+        let x = 0;
+        html = '<div class="table-wrapper rounded table-responsive"><table style="width:100%" id="subct" name="subct" class="table display dataTable"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>DESCRIPCIÓN</th><th><i></i>ACCIONES</th></tr></thead><tbody>';
+        for (U = 0; U < res.length; U++) {
+            if (obj.data[U].id_subesp == id_subespec) {
+                x++;
+                //document.getElementById('espname').innerhtml = obj.data[U].gstCatgr;
+                document.getElementById('namesubtare').value = obj.data[U].subdescrip;
+                document.getElementById('categoriaedth').value = obj.data[U].id_especialidad;
+            }
+        }
+    })
+}
+
+function updatesubind() {
+    let categoria = document.getElementById('categoriaedth').value;
+    let id_subesp = document.getElementById('subcatedth').value;
+    let subdescrip = document.getElementById('namesubtare').value;
+    let datos = 'categoria=' + categoria + '&subdescrip=' + subdescrip + '&id_subesp=' + id_subesp + '&opcion=updateindsub';
+    alert(datos);
+    if (subdescrip == '' || categoria == '') {
+        Swal.fire({
+            type: 'warning',
+            text: 'LLENAR EL CAMPO DE SUB-ESPECIALIDAD',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 1500
+        });
+        return;
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../php/insertOJT.php",
+            data: datos
+        }).done(function(respuesta) {
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'Se actualiza de forma correcta',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+                subdescrip = "";
+                updatesubesp();
+                $("edithsub").modal('hide'); //ocultamos el modal
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'info',
+                    text: 'LA SUB-ESPECIAIDAD YA ESTA INGRESADA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+                //alert("datos repetidos");
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'CONTACTAR A SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+            }
+        })
+    }
+}

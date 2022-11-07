@@ -5,7 +5,7 @@
 	$query = "SELECT gstNombr,gstApell,codigo,gstCargo,gstIdper,evaluacion,fnotif,id_curso,confirmar,idinsp,idcoor
 		  FROM cursos 
 		  INNER JOIN personal ON personal.gstIdper = cursos.idinsp 
-		  WHERE cursos.codigo='$codigocur'
+		  WHERE cursos.codigo='$codigocur' AND cursos.estado=0
 		  ORDER BY gstNombr
 		   ";
 

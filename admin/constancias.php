@@ -391,22 +391,26 @@ include('header.php');
         <script>
         var dataSet = [
             <?php 
-$query = "
-SELECT
-*
-,DATE_FORMAT(reaccion.fechareac, '%d/%m/%Y') as reaccion
+$query = "SELECT
+*,
+DATE_FORMAT( r.fechareac, '%d/%m/%Y' ) AS reaccion
 FROM
-cursos
--- INNER JOIN constancias ON id_persona = idinsp
-INNER JOIN personal ON idinsp = gstIdper
-INNER JOIN reaccion ON cursos.id_curso = reaccion.id_curso
--- INNER JOIN listacursos ON idmstr = listacursos.gstIdlsc 
+cursos c,
+personal p,
+reaccion r,
+listacursos l
 WHERE
-proceso = 'Finalizado' 
-AND confirmar = 'CONFIRMADO' 
-AND evaluacion >= 70 
-GROUP BY cursos.id_curso
-";
+c.idinsp = p.gstIdper 
+AND c.id_curso = r.id_curso 
+AND c.idmstr = l.gstIdlsc	
+AND c.idinsp != c.idinst
+AND c.idcoor != c.idinst
+AND c.proceso = 'FINALIZADO' 
+AND c.confirmar = 'CONFIRMADO' 
+AND c.evaluacion >= 80 
+AND c.estado = 0
+GROUP BY
+c.id_curso";
 $resultado = mysqli_query($conexion, $query);
 
       while($data = mysqli_fetch_array($resultado)){ 
@@ -417,35 +421,13 @@ $resultado = mysqli_query($conexion, $query);
        $codigo = $data['codigo'];
        $id_reac = $data['id_reac'];
        $fec_reac = $data['reaccion'];
-
-       $query1 = "SELECT * FROM listacursos WHERE gstIdlsc = '$idmstr'";
-        $resultado1 = mysqli_query($conexion, $query1);
-
-        if($data1 = mysqli_fetch_assoc($resultado1)){
-            $idlist = $data1['gstIdlsc'];
-            $titulo = $data1['gstTitlo'];
-        }
-
-
-        $query2 = "SELECT * FROM constancias 
-        WHERE id_persona = $idperson
-        AND listregis = 'SI' 
-        AND lisasisten = 'SI' 
-        AND listreportein = 'SI' 
-        AND cartdescrip = 'SI' 
-        AND regponde = 'SI' 
-        AND infinal = 'SI' 
-        AND evreaccion = 'SI'
-        ";
-        $resultado2 = mysqli_query($conexion, $query2);
-
-        if($data2 = mysqli_fetch_assoc($resultado2)){
-            $constancia = $data2['id_codigocurso'];
-            $id_persona = $data2['id_persona'];
-        }else{
-            $constancia = 'SIN CONST';
-            $id_persona = 'SIN ID';
-        }
+       $idlist = $data['gstIdlsc'];
+       $titulo = $data['gstTitlo'];
+       $constancia = $data['codigo'];
+       $id_persona = $data['gstIdper'];
+       $documento = $data['gstCntnc'];
+       
+        
 
 
        // $query3 = "SELECT *,DATE_FORMAT(reaccion.fechareac, '%d/%m/%Y') as reaccion FROM reaccion WHERE id_curso = '$idcuro'";
@@ -460,23 +442,39 @@ $resultado = mysqli_query($conexion, $query);
 
         // }        
        $encrypidpersona = base64_encode($id_persona);
-       $encryidlist = base64_encode($idlist);     
+       $encryidlist = base64_encode($idlist); 
+       $encrycodigo = base64_encode($codigo);
+
       ?>
+      <?php if($data['gstCntnc']=='CONSTANCIA'){ ?>
 
 
             ["<?php echo $id_reac ?>", 
                 "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
                 "<?php echo $titulo ?>",//TODO AQUI VA
-                "<?php echo "<a href='constancia.php?data={$encrypidpersona}&cod={$encryidlist} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
+                "<?php echo "<a href='constancia1.php?data={$encrypidpersona}&cod={$encryidlist}&fol={$encrycodigo} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
 
 
                 "<?php echo $fec_reac ?>",
                 "<?php echo $codigo?>"
             ],
 
-            <?php  } ?>
+            <?php }else{?>
+
+                ["<?php echo $id_reac ?>", 
+                "<?php echo $data['gstNombr']." ".$data['gstApell']?>",
+                "<?php echo $titulo ?>",//TODO AQUI VA
+                "<?php echo "<a href='constancia.php?data={$encrypidpersona}&cod={$encryidlist}&fol={$encrycodigo} ' target='_blank' title='Dar clic para consultar' onclick='visualcon({$idcuro})'><center><img src='../dist/img/constancias.svg' width='30px;' alt='pdf'></center></a><span><center><span  data-toggle='modal' data-target='#correcionModal' style='cursor: pointer;' onclick='perfil({$idcuro})' class='btn-info badge'>REALIZAR CORRECIÓN</center></span>" ?>",
+
+
+                "<?php echo $fec_reac ?>",
+                "<?php echo $codigo?>"
+            ],
+    <?php }?>
+<?php } ?>
 
         ];
+        
 
         var tableGenerarReporte = $('#data-table-ponderacion').DataTable({
             "language": {
@@ -619,8 +617,8 @@ function perfil(id) {
 
 
 function visualcon(idcur){
-    // alert(idcur);
-    var curso_id=idcur
+    //alert(idcur);
+    var curso_id=idcur;
     //alert(curso_id);
     
     var datos= 'curso_id=' + curso_id + '&opcion=descarga';

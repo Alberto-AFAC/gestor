@@ -35,7 +35,7 @@ function mostrarDias($prtcpnt, $idpro,$conexion){
 }
 
 function mostrarEncurso($dia,$mes,$prtcpn,$hini,$hfin, $conexion){
-  $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell,anio 
+  $query = "SELECT idinsp,Id_program,id_per,semanal.id_curso AS codigos ,dia_semana,num_mes,habil,fec_inico,fec_fin,hora_ini,hora_fin,prtcpnt,gstNombr,gstApell,anio,codigo
   FROM semanal 
   INNER JOIN cursos ON codigo = semanal.id_curso
   INNER JOIN personal ON gstIdper = $prtcpn
@@ -61,7 +61,7 @@ $hrfincom = strtotime( $hfin );
 
  if($hrinicom<=$hrinipro && $hrinipro<=$hrfincom || $hrinicom<=$hrfinpro && $hrfinpro<=$hrfincom){
         
-     $datos = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].'=>'.$data['dia_semana'].'-'.$data['num_mes'].'-'.$data['anio'].' DE '.$data['hora_ini'].' A '.$data['hora_fin'].'<br>';
+     $datos = $data['nombre'] = $data['gstNombr'].' '.$data['gstApell'].'=>'.$data['dia_semana'].'-'.$data['num_mes'].'-'.$data['anio'].' DE '.$data['hora_ini'].' A '.$data['hora_fin'].' FOLIO: '.$data['codigo'].'<br>';
        $arreglo[] = $datos; 
  }else{
      

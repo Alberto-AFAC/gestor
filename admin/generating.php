@@ -3,31 +3,57 @@ ini_set('date.timezone','America/Mexico_City');
     include('../conexion/conexion.php');
     $datos = base64_decode($_GET['data']);
     $datos1 = base64_decode($_GET['cod']);
-    $query = "SELECT cursos.codigo,id, id_persona, id_codigocurso, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, listacursos.gstCntnc, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
-    'enero' 
-    WHEN MONTH ( fcurso ) = 2 THEN
-    'febrero' 
-    WHEN MONTH ( fcurso ) = 3 THEN
-    'marzo' 
-    WHEN MONTH ( fcurso ) = 4 THEN
-    'abril' 
-    WHEN MONTH ( fcurso ) = 5 THEN
-    'mayo' 
-    WHEN MONTH ( fcurso ) = 6 THEN
-    'junio' 
-    WHEN MONTH ( fcurso ) = 7 THEN
-    'julio' 
-    WHEN MONTH ( fcurso ) = 8 THEN
-    'agosto' 
-    WHEN MONTH ( fcurso ) = 9 THEN
-    'septiembre' 
-    WHEN MONTH ( fcurso ) = 10 THEN
-    'octubre' 
-    WHEN MONTH ( fcurso ) = 11 THEN
-    'noviembre' 
-    WHEN MONTH ( fcurso ) = 12 THEN
-    'diciembre' ELSE 'novalido' END AS mesnombre,
-    CASE
+    $codigo = base64_decode($_GET['fol']);
+    $query = "SELECT
+	cursos.codigo,
+	cursos.id_curso,
+	personal.gstIdper,
+	cursos.codigo,
+	fechaf,
+	personal.gstNombr,
+	personal.gstApell,
+	gstTitlo,
+	gstIdlsc,
+	fcurso,
+	YEAR ( fechaf ) AS ano,
+	gstDrcin,
+	cursos.evaluacion,
+	cursos.sede,
+	listacursos.gstCntnc,
+	DAY ( fcurso ) AS dia,
+	MONTH ( fcurso ) AS MES,
+	DAY ( fechaf ) AS diafinal,
+	MONTH ( fechaf ) AS mesfinal,
+	cursos.modalidad,
+CASE
+		
+		WHEN MONTH ( fcurso ) = 1 THEN
+		'enero' 
+		WHEN MONTH ( fcurso ) = 2 THEN
+		'febrero' 
+		WHEN MONTH ( fcurso ) = 3 THEN
+		'marzo' 
+		WHEN MONTH ( fcurso ) = 4 THEN
+		'abril' 
+		WHEN MONTH ( fcurso ) = 5 THEN
+		'mayo' 
+		WHEN MONTH ( fcurso ) = 6 THEN
+		'junio' 
+		WHEN MONTH ( fcurso ) = 7 THEN
+		'julio' 
+		WHEN MONTH ( fcurso ) = 8 THEN
+		'agosto' 
+		WHEN MONTH ( fcurso ) = 9 THEN
+		'septiembre' 
+		WHEN MONTH ( fcurso ) = 10 THEN
+		'octubre' 
+		WHEN MONTH ( fcurso ) = 11 THEN
+		'noviembre' 
+		WHEN MONTH ( fcurso ) = 12 THEN
+		'diciembre' ELSE 'novalido' 
+	END AS mesnombre,
+CASE
+		
 		WHEN MONTH ( fechaf ) = 1 THEN
 		'enero' 
 		WHEN MONTH ( fechaf ) = 2 THEN
@@ -52,8 +78,18 @@ ini_set('date.timezone','America/Mexico_City');
 		'noviembre' 
 		WHEN MONTH ( fechaf ) = 12 THEN
 		'diciembre' ELSE 'MES NO VALIDO' 
-	END AS mesfinales FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc 
-    WHERE id_persona = $datos AND  gstIdlsc = $datos1 GROUP BY id_codigocurso";
+	END AS mesfinales,
+	cursos.grupo 
+FROM
+  personal
+	INNER JOIN cursos ON cursos.idinsp = personal.gstIdper 
+	INNER JOIN listacursos ON cursos.idmstr = listacursos.gstIdlsc 
+WHERE
+	personal.gstIdper = $datos 
+	AND gstIdlsc = $datos1
+	AND codigo= '$codigo'
+GROUP BY
+	cursos.codigo;";
     $const = mysqli_query($conexion, $query);
     $con = mysqli_fetch_array($const);
     $dia = array("cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez","once","doce","trece","catorce","quince", "dieciseis","diecisiete","dieciocho","diecinueve", "veinte","veintiuno","veintidós","veintitres","veinticuatro","veinticinco","veintiseis","veintisiete","veintiocho","veintinueve","treinta","treinta y uno");
@@ -66,13 +102,13 @@ ini_set('date.timezone','America/Mexico_City');
     $curso = $con['gstTitlo'];
     $dateF = $con['fcurso'];
     $dateFinal = $con['fechaf'];
-    $registro = $con['id_codigocurso'];
+    $registro = $con['codigo'];
     $EvaluacionF = $con['evaluacion'];
     $tituloPrueba = "INDUCCIÓN A LA SCT";
     $conteoStr = strlen($con['gstTitlo']);
     // $temario = $con['titulo'];
     $idc = $con['gstIdlsc'];
-    $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['id_codigocurso']);
+    $llave = base64_encode($con['gstNombr']." ".$con['gstApell']." ".$con['codigo']);
     $nombresCompletos = $con['gstNombr']." ".$con['gstApell'];
     $mes = array("0","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     $hoy= date('d').' de '.$mes[date('n')].' del año '.date('Y');

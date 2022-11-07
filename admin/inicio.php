@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<?php include ("../conexion/conexion.php");?>
+<?php include ("../conexion/conexion.php");
+
+
+$sql = "SELECT year(fcurso) FROM cursos GROUP BY year(fcurso) ORDER BY year(fcurso) DESC";
+$year = mysqli_query($conexion,$sql);
+
+?>
 <html>
 
 <head>
@@ -34,9 +40,9 @@
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <script src="dist/js/sweetalert2.all.min.js"></script>
-  <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-  
+    <script src="dist/js/sweetalert2.all.min.js"></script>
+    <link href="dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -50,7 +56,7 @@
                     Dashboard
                     <small> <?php echo $_SESSION['usuario']['privilegios'] ?></small>
                 </h1>
-<!--                 <ol class="breadcrumb">
+                <!--                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa ion-android-home"></i> Inicio</a></li>
                     <li class="active">Dashboard</li>
                 </ol> -->
@@ -120,15 +126,20 @@
                 <!--Fecha se ubica en apartado de status.js-->
                 <H4>
                     <div id="fecha"></div>
+                    <label for="">CURSOS AÑO</label>
+                    <select name="year" id="year" onchange="añofiltro() " style="background-color:#ECF0F5;border: 0;font-size:22px;font-weight:bold;cursor: pointer; " class="" required="required">
+                    <?php while($yea = mysqli_fetch_row($year)):?>
+                        <option value="<?php echo $yea[0]?>"><?php echo $yea[0]?></option>
+                    <?php endwhile; ?>
+                    <!-- <option value="TODOS">TODOS</option> -->
+                    </select>
                 </H4>
                 <div class="row">
-
-
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box bg-aqua">
                             <span class="info-box-icon"><i class="fa ion-easel"></i></span>
 
-<!--                             <?php 
+                            <!--                             <?php 
                                 $query ="SELECT 
                                   COUNT( id_curso ) AS COMPLETADOS,
                                   COUNT( CASE WHEN proceso = 'PENDIENTE' THEN 1 END ) AS PENDIENTES,
@@ -142,7 +153,9 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">PROGRAMADOS</span>
-                                <span class="info-box-number"><div id="progrmas"></div></span>
+                                <span class="info-box-number">
+                                    <div id="progrmas"></div>
+                                </span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>
@@ -168,7 +181,9 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">Acreditados</span>
-                                <span class="info-box-number"><div id="finalizado"></div> </span>
+                                <span class="info-box-number">
+                                    <div id="finalizado"></div>
+                                </span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>
@@ -191,7 +206,9 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">POR ACREDITAR</span>
-                                <span class="info-box-number"><div id="acreditar"></div> </span>
+                                <span class="info-box-number">
+                                    <div id="acreditar"></div>
+                                </span>
                                 <span class="progress-description">
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
@@ -214,7 +231,9 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">TOTAL DE CURSOS</span>
                                 <span class="info-box-text">Vencidos</span>
-                                <span class="info-box-number"><div id="vencer"></div> </span>
+                                <span class="info-box-number">
+                                    <div id="vencer"></div>
+                                </span>
                                 <span class="progress-description">
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
@@ -229,9 +248,9 @@
             </section>
         </div>
         <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b>
-                                <?php 
+            <div class="pull-right hidden-xs">
+                <b>Version</b>
+                <?php 
                                 $query ="SELECT 
                                         *
                                         FROM
@@ -244,12 +263,13 @@
                                     exit;
                                 }
                                 ?>
-                    <?php echo $row['version']?>
-    </div>
+                <?php echo $row['version']?>
+            </div>
 
-    <strong>AFAC &copy; 2021 <a style="color:#3c8dbc"  href="https://www.gob.mx/afac">Agencia Federal de Aviación Civil</a>.</strong> Todos los derechos Reservados DDE
-.
-  </footer>
+            <strong>AFAC &copy; 2021 <a style="color:#3c8dbc" href="https://www.gob.mx/afac">Agencia Federal de Aviación
+                    Civil</a>.</strong> Todos los derechos Reservados DDE
+            .
+        </footer>
 
         <!-- Control Sidebar -->
         <?php include('panel.html');?>
@@ -261,7 +281,7 @@
     <!-- ./wrapper -->
 
     <!-- jQuery 3 -->
- 
+
     <!-- jQuery UI 1.11.4 -->
     <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -304,7 +324,7 @@
     <script src="js/anychart-gantt.min.js"></script>
     <script src="js/anychart-data-adapter.min.js"></script>
 
-   
+
 </body>
 
 </html>

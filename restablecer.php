@@ -13,14 +13,14 @@ $descid = base64_decode($id);
 $desctoken = base64_decode($token);
 // $desctoken = '2022-09-12 13:10:00';
 $mifecha= date($desctoken); 
-$NuevaFecha = strtotime ( '+10 minute' , strtotime ($mifecha) ) ; 
+$NuevaFecha = strtotime ( '+60 minute' , strtotime ($mifecha) ) ; 
 $NuevaFecha = date ( 'Y-m-d H:i' , $NuevaFecha); 
 
 // echo '1--->'.$fcdb = strtotime($desctoken) * 1000;
 $fcend = strtotime($NuevaFecha) * 1000;
 $FehaActual = date('Y-m-d H:i');
 $fcact = strtotime($FehaActual) * 1000;
-?>
+?> 
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="dist/css/AdminLTE.min.css">

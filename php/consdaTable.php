@@ -38,7 +38,7 @@ $temario = "<center><a href='#' onclick='temario({$data["gstIdlsc"]})' data-togg
 			}
 
  	
-	 $caledario[] = [ $data["gstIdlsc"],$data["codigoCrso"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstCntnc"],$vigencia,$temario];
+	 $caledario[] = [ $data["gstIdlsc"],$data["gstTitlo"],$data["gstTipo"],$data["gstPrfil"],$data["gstDrcin"],$data["gstCntnc"],$vigencia,$temario];
 
 		}
 

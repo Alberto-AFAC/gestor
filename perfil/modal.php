@@ -281,7 +281,7 @@
                                 </td>
                             </tr>
                         </table>
-
+                        <div class="rounded table-responsive">
                         <table class="table table-bordered">
                             <tr>
                                 <th>TIPO</th>
@@ -316,6 +316,7 @@
                                 </td>
                             </tr>
                         </table>
+                        </div>
                         <table class="table table-bordered">
                             <tr>
                                 <th>FOLIO</th>

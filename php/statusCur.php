@@ -3,8 +3,23 @@
 	include("../conexion/conexion.php");
 	session_start();
 		ini_set('date.timezone','America/Mexico_City');
-
-	$query = "SELECT *,COUNT(*) AS prtcpnts,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') AS inicio,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') AS fin,cursos.fechaf AS final FROM cursos INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr WHERE cursos.estado = 0 GROUP BY cursos.codigo ORDER BY id_curso DESC ";
+		$year = $_GET["year"];
+	$query = "SELECT
+	*,
+	COUNT(*) AS prtcpnts,
+	DATE_FORMAT( cursos.fcurso, '%d/%m/%Y' ) AS inicio,
+	DATE_FORMAT( cursos.fechaf, '%d/%m/%Y' ) AS fin,
+	cursos.fechaf AS final 
+FROM
+	cursos
+	INNER JOIN listacursos ON listacursos.gstIdlsc = cursos.idmstr 
+WHERE
+	cursos.estado = 0
+	AND YEAR(cursos.fcurso) = $year
+GROUP BY
+	cursos.codigo 
+ORDER BY
+	id_curso DESC";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

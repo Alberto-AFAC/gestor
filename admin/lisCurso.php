@@ -815,6 +815,9 @@ $(document).ready(function() {
 
             for (i = 0; i < res.length; i++) {
                 if (obj.data[i].id_curso == data[8]) {
+
+                   
+                    //alert(obj.data[i].modalidad);
                     cursos =
                         obj.data[i].gstIdlsc +
                         "*" + obj.data[i].gstTitlo +
@@ -898,24 +901,20 @@ $(document).ready(function() {
                         $("#notiocus").show();
                     }
                     $("#Dtall #classromcur").val(d[19]);
+
+                    if (obj.data[i].modalidad == 'AUTOGESTIVO'){
+                        document.getElementById("classromcur").style.display = '';
+                        document.getElementById("labelclassromcur").style.display = '';
+                        
+                        alert("entro");
+                    }
+                    
                 }
             }
         })
 
 
-        modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
-        dismod = document.getElementById(
-            "dismod"); //variable para el contenedor de el link y la contraseña
-
-        if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
-            dismod.style.display = '';
-        }
-        if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
-            linidismodnpu.style.display = '';
-        }
-        if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
-            dismod.style.display = 'none';
-        }
+       
 
     });
 

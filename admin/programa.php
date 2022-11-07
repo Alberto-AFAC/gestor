@@ -247,9 +247,9 @@
                                                           <div class="input-group-addon">
                                                               <i class="fa fa-globe"></i>
                                                           </div>
-                                                          <input type="url" onkeyup="mayus(this);"
+                                                          <textarea type="url" onkeyup="mayus(this);"
                                                               class="form-control inputalta" id="classroom"
-                                                              name="classroom" placeholder="URL ">
+                                                              name="classroom" placeholder="URL "></textarea>
                                                       </div>
                                                   </div>
                                                   <!-- </div> -->

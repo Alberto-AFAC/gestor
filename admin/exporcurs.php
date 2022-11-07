@@ -51,7 +51,6 @@
     .a-alert:visited {
         color: white;
     }
-    
     </style>
 </head>
 
@@ -109,13 +108,15 @@ include('header.php');
                                 <!-- /FIN DE INDICADORES -->
                                 <div class="box-body">
                                     <table class="display table table-striped table-bordered dataTable"
-                                        id="data-table-inspectores" style="width:100%;width:100%; display:block; overflow-x:auto; white-space:nowrap;">
+                                        id="data-table-inspectores"
+                                        style="width:100%;width:100%; display:block; overflow-x:auto; white-space:nowrap;">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>N° EMP</th>
                                                 <th>NOMBRE ALUMNO</th>
                                                 <th>NOMBRE DEL CURSO</th>
+                                                <th>TIPO</th>
                                                 <th>GRUPO</th>
                                                 <th>CODIGO</th>
                                                 <th>FECHA DE INICIO</th>
@@ -249,15 +250,17 @@ $(document).ready(function() {
         buttons: [{
                 extend: 'copy',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                        20, 21,22
+                    ]
                 }
             },
             {
                 extend: 'pdfHtml5',
                 text: 'Generar PDF',
-                messageTop: 'BASE DE DATOS INSPECTORES',
+                messageTop: 'BASE DE CUROS',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6,7]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
                 },
                 download: 'open',
                 header: true,
@@ -294,7 +297,9 @@ $(document).ready(function() {
                 extend: 'excel',
                 text: 'Generar Excel',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                        20, 21,22
+                    ]
                 }
             }
 
