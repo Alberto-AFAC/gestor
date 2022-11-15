@@ -440,7 +440,7 @@ $resultado = mysqli_query($conexion, $query);
         // }        
        $encrypidpersona = base64_encode($id_persona);
        $encryidlist = base64_encode($idlist); 
-       $encrycodigo = base64_encode($codigo);
+       $encrycodigo = base64_encode($codigo); //08112022
        ?>
       <?php if($data['gstCntnc']=='CONSTANCIA'){ ?>
 

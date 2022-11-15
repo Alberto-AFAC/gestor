@@ -148,9 +148,9 @@ include('header.php');
                                             name="AgstCargo" onchange="asiginspec()">
                                             <option value="">SELECCIONA EL CARGO</option>
                                             <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-                                            <option value="COORDINADOR">COORDINADOR</option>
+                                            <!-- <option id="gstCargo">COORDINADOR</option> -->
                                             <option value="INSPECTOR">INSPECTOR</option>
-                                            <option value="INSTRUCTOR">INSTRUCTOR</option>
+                                            <!-- <option value="INSTRUCTOR">INSTRUCTOR</option> -->
                                         </select>
                                     </div>
                                 </div>

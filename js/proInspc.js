@@ -21,11 +21,11 @@ $.ajax({
 
 //CREACIÓN DE CALENDARIO PARA PROGRAMAR CURSO POR DÍA 
 
-function hrsDias(){
+function hrsDias() {
 
-  //FECHA INICIO Y FECHA CONCLUSIÓN 
-  finicial = document.getElementById('fcurso').value;
-  ffinal = document.getElementById('fechaf').value;
+    //FECHA INICIO Y FECHA CONCLUSIÓN 
+    finicial = document.getElementById('fcurso').value;
+    ffinal = document.getElementById('fechaf').value;
 
     fvigd = finicial.substring(8, 10);
     fvigm = finicial.substring(5, 7);
@@ -42,14 +42,14 @@ function hrsDias(){
         $("#vacio").hide();
         $("#horario").hide();
         $("#ocubotn").hide();
-    }else
-    if(finicial=='' || ffinal==''){
+    } else
+    if (finicial == '' || ffinal == '') {
         $("#avisof").hide();
         $("#vacio").show();
         $("#horario").hide();
         $("#ocubotn").hide();
 
-    }else{
+    } else {
 
         $("#avisof").hide();
         $("#vacio").hide();
@@ -57,117 +57,118 @@ function hrsDias(){
         $("#ocubotn").show();
     }
 
-    datos = 'finicial='+finicial+'&ffinal='+ffinal;
+    datos = 'finicial=' + finicial + '&ffinal=' + ffinal;
 
-    diai = finicial.substring(8,10);
-    diaf = ffinal.substring(8,10);
+    diai = finicial.substring(8, 10);
+    diaf = ffinal.substring(8, 10);
 
-    inici = finicial.substring(5,7);
-    finan = ffinal.substring(5,7);    
+    inici = finicial.substring(5, 7);
+    finan = ffinal.substring(5, 7);
     inicio = inici * 1;
-    final = finan *1;
+    final = finan * 1;
 
-    anioi = finicial.substring(0,4);
-    aniof = ffinal.substring(0,4);
-//MANDA LAS FECHAS PARA CREAR LOS DIAS, MESES Y AÑO
-$.ajax({
-    url: '../php/diasHabiles.php',
-    type: 'POST',
-     data: datos
-}).done(function(resp) {
-    obj = JSON.parse(resp);
-    var res = obj.data;
+    anioi = finicial.substring(0, 4);
+    aniof = ffinal.substring(0, 4);
+    //MANDA LAS FECHAS PARA CREAR LOS DIAS, MESES Y AÑO
+    $.ajax({
+        url: '../php/diasHabiles.php',
+        type: 'POST',
+        data: datos
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
 
-    meses = ['0','ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
-       'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE']
-    //$("#titulos").html('DÍAS HÁBILES: DEL '+ diai+'/'+meses[inicio]+'/'+anioi +' AL '+ diaf+'/'+meses[final]+'/'+aniof);
-    document.getElementById("titulos").innerHTML = "" + 'DÍAS HÁBILES: '+ diai+'/'+meses[inicio]+'/'+anioi +' AL '+ diaf+'/'+meses[final]+'/'+aniof;
-    var x = 0;
-    var v = 1;
+        meses = ['0', 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
+                'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'
+            ]
+            //$("#titulos").html('DÍAS HÁBILES: DEL '+ diai+'/'+meses[inicio]+'/'+anioi +' AL '+ diaf+'/'+meses[final]+'/'+aniof);
+        document.getElementById("titulos").innerHTML = "" + 'DÍAS HÁBILES: ' + diai + '/' + meses[inicio] + '/' + anioi + ' AL ' + diaf + '/' + meses[final] + '/' + aniof;
+        var x = 0;
+        var v = 1;
 
-    html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12">';
+        html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12">';
         //CONTEO DEL MES, INICIO A FIN 
-       for (m = inicio; m <= final; m++) {
-        x++;
+        for (m = inicio; m <= final; m++) {
+            x++;
 
-        html += '<table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><td colspan="7" style="text-align:center;"><b>'+meses[m]+'</b></td></tr><tr><th><i></i>L</th><th><i></i>M</th><th><i></i>M</th><th><i></i>J</th><th><i></i>V</th><th><i></i>S</th><th><i></i>D</th></tr></thead><tbody>';
-         for (i = 0; i < res.length; i++) {
+            html += '<table class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><td colspan="7" style="text-align:center;"><b>' + meses[m] + '</b></td></tr><tr><th><i></i>L</th><th><i></i>M</th><th><i></i>M</th><th><i></i>J</th><th><i></i>V</th><th><i></i>S</th><th><i></i>D</th></tr></thead><tbody>';
+            for (i = 0; i < res.length; i++) {
 
-        if(obj.data[i].mes==m){   
+                if (obj.data[i].mes == m) {
 
-        if(obj.data[i].dias=='Lunes' && obj.data[i].inc==1){
+                    if (obj.data[i].dias == 'Lunes' && obj.data[i].inc == 1) {
 
-             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
 
-         }else if(obj.data[i].dias=='Lunes'){
-             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
+                    } else if (obj.data[i].dias == 'Lunes') {
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    }
+                    if (obj.data[i].dias == 'Martes' && obj.data[i].inc == 1) {
+                        html += "<td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    } else if (obj.data[i].dias == 'Martes') {
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    }
+                    if (obj.data[i].dias == 'Miércoles' && obj.data[i].inc == 1) {
+                        html += "<td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    } else if (obj.data[i].dias == 'Miércoles') {
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    }
+                    if (obj.data[i].dias == 'Jueves' && obj.data[i].inc == 1) {
+                        html += "<td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    } else if (obj.data[i].dias == 'Jueves') {
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    }
+                    if (obj.data[i].dias == 'Viernes' && obj.data[i].inc == 1) {
+                        html += "<td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    } else if (obj.data[i].dias == 'Viernes') {
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    }
+                    if (obj.data[i].dias == 'Sábado' && obj.data[i].inc == 1) {
+                        html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    } else if (obj.data[i].dias == 'Sábado') {
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    }
+                    if (obj.data[i].dias == 'Domingo' && obj.data[i].inc == 1) {
+                        html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b></td><tr>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    } else if (obj.data[i].dias == 'Domingo') {
+                        html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>" + obj.data[i].numero + "</b><tr>";
+                        html += "<input type='hidden' name='mes' value=" + obj.data[i].mes + " /><input type='hidden' name='anio' value=" + obj.data[i].anio + " />";
+                    }
+                }
+
             }
-        if(obj.data[i].dias=='Martes' && obj.data[i].inc==1){
-             html += "<td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-         }else if(obj.data[i].dias=='Martes'){
-             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-            }
-        if(obj.data[i].dias=='Miércoles' && obj.data[i].inc==1){
-             html += "<td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-         }else if(obj.data[i].dias=='Miércoles'){
-             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                    
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-            }
-        if(obj.data[i].dias=='Jueves' && obj.data[i].inc==1){
-             html += "<td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";            
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-        }else if(obj.data[i].dias=='Jueves'){
-             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-            }
-        if(obj.data[i].dias=='Viernes' && obj.data[i].inc==1){
-            html += "<td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                        
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-        }else if(obj.data[i].dias=='Viernes'){
-             html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                   
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-            }
-        if(obj.data[i].dias=='Sábado' && obj.data[i].inc==1){
-            html += "<td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-         }else if(obj.data[i].dias=='Sábado'){
-            html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td>";                                   
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-            }
-        if(obj.data[i].dias=='Domingo' && obj.data[i].inc==1){
-            html += "<td></td><td></td><td></td><td></td><td></td><td></td><td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b></td><tr>";
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";            
-        }else if(obj.data[i].dias=='Domingo'){
-            html += "<td><input type='checkbox' name='idias' id='idias' class='idias' value='" + obj.data[i].numero + "' /> <b>"+ obj.data[i].numero +"</b><tr>";
-            html +="<input type='hidden' name='mes' value="+obj.data[i].mes+" /><input type='hidden' name='anio' value="+obj.data[i].anio+" />";
-            }       
+            html += '</tbody></table>';
+
         }
+        html += '</div></div></div>';
 
-    }
-          html += '</tbody></table>';
+        $("#diaHabil").html(html);
 
-}
-    html += '</div></div></div>';
-
-    $("#diaHabil").html(html);
-
-})
+    })
 
 }
 
 //SE GUARDAN LOS DÍAS DE LA FECHA AGREGADA, TRAE LOS DÍAS EN CURSO (TRUE O FALSE) 
-function agregarDias(){    
-  opcion = document.getElementById('opcion').value;
-  finicial = document.getElementById('fcurso').value;
-  ffinal = document.getElementById('fechaf').value;
-  hora_ini = document.getElementById('hora_ini').value;
-  hora_fin = document.getElementById('hora_fin').value;
-  idPer = document.getElementById('perid').value;
+function agregarDias() {
+    opcion = document.getElementById('opcion').value;
+    finicial = document.getElementById('fcurso').value;
+    ffinal = document.getElementById('fechaf').value;
+    hora_ini = document.getElementById('hora_ini').value;
+    hora_fin = document.getElementById('hora_fin').value;
+    idPer = document.getElementById('perid').value;
 
     var diasr = new Array();
     /*AGRUPAMOS TODOS LOS DIAS INPUTS CON NAME=idias*/
@@ -198,93 +199,92 @@ function agregarDias(){
     var array2 = JSON.stringify(mes);
     var array3 = JSON.stringify(anio);
 
-   datos = 'array1=' + array1 + '&array2=' + array2 + '&array3=' + array3 + '&finicial=' + finicial + '&ffinal=' + ffinal + '&hora_ini='+ hora_ini + '&hora_fin=' + hora_fin + '&idPer=' + idPer +'&opcion=' +  opcion;
+    datos = 'array1=' + array1 + '&array2=' + array2 + '&array3=' + array3 + '&finicial=' + finicial + '&ffinal=' + ffinal + '&hora_ini=' + hora_ini + '&hora_fin=' + hora_fin + '&idPer=' + idPer + '&opcion=' + opcion;
 
-if(hora_ini =='' || hora_fin==''){
+    if (hora_ini == '' || hora_fin == '') {
 
+        $('#avisoh').toggle('toggle');
+        setTimeout(function() {
             $('#avisoh').toggle('toggle');
-            setTimeout(function() {
-            $('#avisoh').toggle('toggle');
-            }, 4000);     
-        }else{
+        }, 4000);
+    } else {
         $.ajax({
+            url: '../php/proDias.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+
+            if (respuesta == 0) {
+
+                $('#succed').toggle('toggle');
+                setTimeout(function() {
+                    $('#succed').toggle('toggle');
+                }, 4000);
+
+                $("#modalMost").hide();
+                $("#modalOcul").show();
+                $("#ocubotn").hide();
+                $("#mosbotn").show();
+                $(".opcion1").remove();
+                $(".opcion2").toggle('toggle');
+                document.getElementById('fcurso').disabled = true; // FECHA INICIO 
+                document.getElementById('fechaf').disabled = true; // FECHA CONCLUCION
+
+            } else {
+
+            }
+        });
+    }
+}
+//VALIDA SI HAY DÍAS DE FECHAS QUE NO SE PROGRAMARON Y QUEDARON A MITAD DE DICHA PROGRAMACIÓN DE CURSO 
+function consulFecha() {
+    $.ajax({
+        url: '../php/conDias.php',
+        type: 'POST'
+            //data: datos
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+        for (i = 0; i < res.length; i++) {
+            if (obj.data[i].folio == 0) {
+                $("#mosFec").hide();
+                $("#visFec").show();
+            } else {}
+        }
+
+    });
+}
+//ELIMINA FECHAS DÍAS DE FECHAS NO PROGRAMADAS, PARA REALIZAR DE MANERA CORRECTA LA PROGRAMACIÓN DE CURSO
+function reiFec() {
+
+    idPer = document.getElementById('idper').value;
+    datos = 'idPer=' + idPer + '&opcion=eliminar';
+
+    $.ajax({
         url: '../php/proDias.php',
         type: 'POST',
         data: datos
     }).done(function(respuesta) {
 
         if (respuesta == 0) {
-
-            $('#succed').toggle('toggle');
-            setTimeout(function() {
-            $('#succed').toggle('toggle');
-            }, 4000);            
-            
-            $("#modalMost").hide();
-            $("#modalOcul").show();
-            $("#ocubotn").hide();
-            $("#mosbotn").show();
-            $(".opcion1").remove();
-            $(".opcion2").toggle('toggle');
-            document.getElementById('fcurso').disabled = true; // FECHA INICIO 
-            document.getElementById('fechaf').disabled = true; // FECHA CONCLUCION
-         
-        } else {
-
+            $("#mosFec").show();
+            $("#visFec").hide();
         }
-    });
-}
-}
-//VALIDA SI HAY DÍAS DE FECHAS QUE NO SE PROGRAMARON Y QUEDARON A MITAD DE DICHA PROGRAMACIÓN DE CURSO 
-function consulFecha(){
-$.ajax({
-    url: '../php/conDias.php',
-    type: 'POST'
-     //data: datos
-}).done(function(resp) {
-    obj = JSON.parse(resp);
-    var res = obj.data;
 
-    for (i = 0; i < res.length; i++){
-     if(obj.data[i].folio==0){
-        $("#mosFec").hide();
-        $("#visFec").show();
-     }else{
-            }
-    }
-
-    });
-}
-//ELIMINA FECHAS DÍAS DE FECHAS NO PROGRAMADAS, PARA REALIZAR DE MANERA CORRECTA LA PROGRAMACIÓN DE CURSO
-function reiFec(){
-
-  idPer = document.getElementById('idper').value;
-  datos = 'idPer=' + idPer +'&opcion=eliminar';
-
-        $.ajax({
-        url: '../php/proDias.php',
-        type: 'POST',
-        data: datos
-    }).done(function(respuesta) {
-
-        if(respuesta==0){
-        $("#mosFec").show();
-        $("#visFec").hide();
-        }
-  
     });
 
 }
 //ESTA FUNCIÓN ES INDISPENSABLE PARA QUE EL BOTÓN DE DÍAS HÁBILES QUEDE CACHADO LOS DATOS QUE SE AGREGARON 
-function hrsDiasAct(){}
+function hrsDiasAct() {}
 
 
 //VERIFICAR Y VALIDAR DÍAS PARA QUE SE PROGRAME EL CURSO 
 
-function curProgramar(){
+function curProgramar() {
 
-
-   var idInsptr = new Array();
+    //alert("entro");
+    var idInsptr = new Array();
 
     $("input[name='idinsp[]']:checked").each(function() {
         idInsptr.push($(this).val());
@@ -314,15 +314,15 @@ function curProgramar(){
     var modalidad = document.getElementById('modalidad').value;
     var grupo = document.getElementById('grupociaac').value;
 
-   /* if (modalidad == 'PRESENCIAL') {
-        var link = '0';
-        var contracceso = '0';
-        var classroom = '0';
-    } else {
-        var link = document.getElementById('link').value;
-        var contracceso = document.getElementById('contracceso').value;
-        var classroom = document.getElementById('classroom').value;
-    }*/
+    /* if (modalidad == 'PRESENCIAL') {
+         var link = '0';
+         var contracceso = '0';
+         var classroom = '0';
+     } else {
+         var link = document.getElementById('link').value;
+         var contracceso = document.getElementById('contracceso').value;
+         var classroom = document.getElementById('classroom').value;
+     }*/
 
     if (modalidad == 'PRESENCIAL') {
         var link = '0';
@@ -332,12 +332,12 @@ function curProgramar(){
         var link = document.getElementById('link').value;
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
-        var sede ='NO APLICA';
+        var sede = 'NO APLICA';
     } else if (modalidad == 'AUTOGESTIVO') {
         var link = '0';
         var contracceso = '0';
         var classroom = document.getElementById('classroom').value;
-    }else if (modalidad == 'HIBRIDO') {
+    } else if (modalidad == 'HIBRIDO') {
         var link = document.getElementById('link').value;
         var contracceso = document.getElementById('contracceso').value;
         var classroom = document.getElementById('classroom').value;
@@ -346,7 +346,7 @@ function curProgramar(){
 
     idinsps = idInsptr + '' + idInstr;
 
-    ids = idInsptr + '' + idInstr+','+idcord;
+    ids = idInsptr + '' + idInstr + ',' + idcord;
 
     var perid = document.getElementById('idper').value;
 
@@ -362,92 +362,92 @@ function curProgramar(){
 
         return;
 
-    }else{
+    } else {
 
 
-                    $("#buttonpro").hide();
-                    $( document ).ready(function() {
-                    $('#myModal').modal('toggle')
-                    });
+        $("#buttonpro").hide();
+        $(document).ready(function() {
+            $('#myModal').modal('toggle')
+        });
 
-        
-            $.ajax({
-                url: '../php/comDias.php',
-                type: 'POST',
-                data: 'idpart=' + ids + '&modalidad=' + modalidad
-            }).done(function(resps) {
-  
-//SI NO HAY DÍAS REPETIDO, SE MANDA LOS DATOS PARA PROGRAMAR CURSO 
-if(resps==0){
 
-programarCurso(datos);
+        $.ajax({
+            url: '../php/comDias.php',
+            type: 'POST',
+            data: 'idpart=' + ids + '&modalidad=' + modalidad
+        }).done(function(resps) {
 
-}else{
-//TE MUESTRA LOS DÍAS QUE ESTÁN EN CURSO
+            //SI NO HAY DÍAS REPETIDO, SE MANDA LOS DATOS PARA PROGRAMAR CURSO 
+            if (resps == 0) {
 
-Swal.fire({
-//type: 'success',
-//title: 'CURSO PROGRAMADO CORRECTAMENTE',
-html: `<p><code>EL PARTICIPANTE <br> ${resps} <br> ESTA EN CURSO</code></p>`,
-showConfirmButton: false,
-customClass: 'swal-wide',
-timer: 20000
-});
+                programarCurso(datos);
 
-    $("#buttonpro").show();
-    remove();
+            } else {
+                //TE MUESTRA LOS DÍAS QUE ESTÁN EN CURSO
 
+                Swal.fire({
+                    //type: 'success',
+                    //title: 'CURSO PROGRAMADO CORRECTAMENTE',
+                    html: `<p><code>EL PARTICIPANTE <br> ${resps} <br> ESTA EN CURSO</code></p>`,
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 20000
+                });
+
+                $("#buttonpro").show();
+                remove();
+
+            }
+        });
     }
-            });
-        }
 }
 
 
 //CACHA LOS DATOS PARA PROGRAMAR CURSO
-function programarCurso(datos){
+function programarCurso(datos) {
 
     $("#buttonpro").hide();
-         $.ajax({
-                url: '../php/proCurso.php',
-                type: 'POST',
-                data: datos
-            }).done(function(respuesta) {
-                if (respuesta == 1) {
-                    Swal.fire({
-                        type: 'success',
-                        // title: 'AFAC INFORMA',
-                        text: 'CURSO PROGRAMADO CORRECTAMENTE',
-                        // showConfirmButton: false,
-                        showCancelButton: true,
-                        customClass: 'swal-wide',
-                        confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                        cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
+    $.ajax({
+        url: '../php/proCurso.php',
+        type: 'POST',
+        data: datos
+    }).done(function(respuesta) {
+        if (respuesta == 1) {
+            Swal.fire({
+                type: 'success',
+                // title: 'AFAC INFORMA',
+                text: 'CURSO PROGRAMADO CORRECTAMENTE',
+                // showConfirmButton: false,
+                showCancelButton: true,
+                customClass: 'swal-wide',
+                confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
 
-                    });
-                    $("#buttonpro").hide();
-                        $( document ).ready(function() {
-                        $('#myModal').modal('toggle')
-                        });
-                } else
-
-                if (respuesta == 0) {
-                    Swal.fire({
-                        type: 'success',
-                        // title: 'AFAC INFORMA',
-                        text: 'CURSO PROGRAMADO CORRECTAMENTE',
-                        // showConfirmButton: false,
-                        showCancelButton: true,
-                        customClass: 'swal-wide',
-                        confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
-                        cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
-                    });
-                    $("#buttonpro").hide();
-                        $( document ).ready(function() {
-                        $('#myModal').modal('toggle')
-                        });
-
-                }else {}
             });
+            $("#buttonpro").hide();
+            $(document).ready(function() {
+                $('#myModal').modal('toggle')
+            });
+        } else
+
+        if (respuesta == 0) {
+            Swal.fire({
+                type: 'success',
+                // title: 'AFAC INFORMA',
+                text: 'CURSO PROGRAMADO CORRECTAMENTE',
+                // showConfirmButton: false,
+                showCancelButton: true,
+                customClass: 'swal-wide',
+                confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
+                cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
+            });
+            $("#buttonpro").hide();
+            $(document).ready(function() {
+                $('#myModal').modal('toggle')
+            });
+
+        } else {}
+    });
 }
 
 
@@ -938,21 +938,20 @@ function modalidades() {
         $("#camcontra").hide();
         $("#camclass").hide();
         $("#camsede").show();
-    }else if (valor === 'AUTOGESTIVO'){
+    } else if (valor === 'AUTOGESTIVO') {
         $("#camlink").hide();
         $("#camcontra").hide();
         $("#camsede").show();
         $("#camclass").show();
-    }else if (valor === 'A DISTANCIA (E-LEARNNING)'){
+    } else if (valor === 'A DISTANCIA (E-LEARNNING)') {
         $("#camlink").show();
         $("#camcontra").show();
         $("#camclass").show();
         $("#camsede").hide();
-    }else if (valor === 'HIBRIDO'){
+    } else if (valor === 'HIBRIDO') {
         $("#camlink").show();
         $("#camcontra").show();
         $("#camclass").show();
         $("#camsede").show();
     }
 }
-

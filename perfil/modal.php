@@ -306,13 +306,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="link">
+                                    <div id=""><a id="link" name="link" target="_blank"></a></div>
                                 </td>
                                 <td>
                                     <div id="contracur"></div>
                                 </td>
                                 <td>
-                                    <div id="classroom"></div>
+                                    <div id=""><a id="classroom" name="classroom" target="_blank"></a></div>
                                 </td>
                             </tr>
                         </table>
@@ -873,13 +873,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="link1">
+                                    <div id=""><a id="link1" name="link1" target="_blank"></a></div>
                                 </td>
                                 <td>
                                     <div id="contracur1"></div>
                                 </td>
                                 <td>
-                                    <div id="classroom1"></div>
+                                    <div id=""><a id="classroom1" name="classroom1" target="_blank"></a></div>
                                 </td>
                             </tr>
                         </table>
