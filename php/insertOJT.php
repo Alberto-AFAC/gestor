@@ -295,7 +295,22 @@ session_start();
         echo "1";
     }
     
-    //updateindsub
+    //updateindsub registresp
+}else if ($opcion === 'registresp'){
+    $categoria = $_POST['categoria'];
+    $siglas = $_POST['siglas'];
+    if (comproespcial ($categoria,$siglas,$conexion)){
+        if (registrarespcl($categoria,$siglas,$conexion)){
+            echo "0";
+           // $usuario='pruebas';
+           historialespcl($id,$categoria,$siglas,$conexion);
+        }else{
+            echo "1";
+        }
+    }else{
+
+        echo "2";
+    }
 }
 //FUNCIONES-----------------------------------------------------------------------------------
 
@@ -481,11 +496,33 @@ function comproespc ($categoria,$subdescrip,$conexion){
     }
     $this->conexion->cerrar();
 }
+//FUNCION PARA COMPROBRAR SI LA SUB-ESPECIALIDAD YA ESTA DADA DE ALTA
+function comproespcial ($categoria,$siglas,$conexion){
+    $query="SELECT * FROM categorias WHERE gstCatgr = '$categoria' AND gstCsigl = '$siglas' AND estado = 0";
+    $resultado= mysqli_query($conexion,$query);
+    if($resultado->num_rows==0){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
 //FUNCION PARA REGISTRAR LA SUB-ESPECIALIDAD ($categoria,$subdescrip,$conexion)
 function registrarsubes ($categoria,$subdescrip,$conexion){
     ini_set('date.timezone','America/Mexico_City');
     $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
     $query="INSERT INTO subespecojt VALUES(0,$categoria,'$subdescrip',0)";
+    $resultado= mysqli_query($conexion,$query);
+    if($resultado->num_rows==0){
+        return true;
+    }else{
+        return false;
+    }
+    $this->conexion->cerrar();
+}
+//FUNCION PARA REGISTRAR LA SUB-ESPECIALIDAD ($categoria,$subdescrip,$conexion)
+function registrarespcl ($categoria,$siglas,$conexion){
+    $query="INSERT INTO categorias VALUES(0,'$categoria','$siglas',0)";
     $resultado= mysqli_query($conexion,$query);
     if($resultado->num_rows==0){
         return true;
@@ -539,6 +576,17 @@ function historialsub($id,$categoria,$subdescrip,$conexion){
     ini_set('date.timezone','America/Mexico_City');
     $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
     $query = "INSERT INTO historial VALUES (0,'$id',CONCAT('REGISTRA UNA SUB-ESPECIALIDAD EN ',(SELECT gstCsigl from categorias where gstIdcat = $categoria)) , ' SUB-ESPECIALIDAD:' '$subdescrip' ,'$fecha')";
+    if(mysqli_query($conexion,$query)){
+        return true;
+    }else{
+        return false;
+    }
+}
+//funcion para registra REGISTRO DE SUB-ESPECIALIDAD
+function historialespcl($id,$categoria,$siglas,$conexion){
+    ini_set('date.timezone','America/Mexico_City');
+    $fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s'); //fecha de realización
+    $query = "INSERT INTO historial VALUES (0,'$id','REGISTRA UNA ESPECIALIDAD','CATEGORIA: ' '$categoria' ' SIGLAS: ' ' $siglas' ,'$fecha')";
     if(mysqli_query($conexion,$query)){
         return true;
     }else{

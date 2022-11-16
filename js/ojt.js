@@ -2117,6 +2117,10 @@ function cerraraddsub() {
     $('#divaddsup').addClass('hidden');
     $('#subespaddd').removeClass('hidden');
 }
+//OCULTA LOS BOTONES DE AGREAGAR SUB-ESPECIALIDAD
+function cerrarespcil() {
+    $("#modal-altaespecial").modal('hide');
+}
 //GUARDA LA SUBESPECIDALIDAD
 function saveaddsupe() {
     //alert("entro save subespecialidad");
@@ -2150,6 +2154,60 @@ function saveaddsupe() {
                 subdescrip = "";
                 updatesubesp();
                 //$("#modal-addartvpinfo").modal('hide');//ocultamos el modal
+            } else if (respuesta == 2) {
+                Swal.fire({
+                    type: 'info',
+                    text: 'LA SUB-ESPECIAIDAD YA ESTA INGRESADA',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+                //alert("datos repetidos");
+            } else {
+                Swal.fire({
+                    type: 'danger',
+                    text: 'CONTACTAR A SOPORTE TECNICO',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+            }
+        })
+    }
+}
+//GUARDA LA ESPECIALIDAD
+function saveaddespec() {
+    //alert("entro save subespecialidad");
+    let categoria = document.getElementById('addespecial').value;
+    let siglas = document.getElementById('siglasespe').value;
+    let datos = 'categoria=' + categoria + '&siglas=' + siglas + '&opcion=registresp';
+    //alert(datos);
+    if (siglas == '' || categoria == '') {
+        Swal.fire({
+            type: 'warning',
+            text: 'LLENAR EL CAMPO DE SUB-ESPECIALIDAD',
+            showConfirmButton: false,
+            customClass: 'swal-wide',
+            timer: 1500
+        });
+        return;
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../php/insertOJT.php",
+            data: datos
+        }).done(function(respuesta) {
+            if (respuesta == 0) {
+                Swal.fire({
+                    type: 'success',
+                    text: 'Se agrego de forma correcta',
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                    timer: 1500
+                });
+                //subdescrip = ""; 15112022
+                setTimeout("location.href = 'subespecialidad.php';", 2000);
+                $("#modal-altaespecial").modal('hide'); //ocultamos el modal
             } else if (respuesta == 2) {
                 Swal.fire({
                     type: 'info',

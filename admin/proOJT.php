@@ -77,6 +77,34 @@ unset($_SESSION['consulta']);
     .a-alert:visited {
         color: white;
     }
+     /* ocultar controles de input date */ 
+     input[type="date"]::-webkit-inner-spin-button,
+                  ::-webkit-calendar-picker-indicator,
+                  ::-webkit-datetime-edit{
+        display: block;
+    }
+    
+   
+    /* mostrar el calendario al hacer click */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: block;
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+   
+    /* mostrar la fecha seleccionada al estar en hover */
+    input[type="date"]:hover::-webkit-datetime-edit {
+        display: block;
+    }
+    
     </style>
 </head>
 
@@ -117,9 +145,9 @@ unset($_SESSION['consulta']);
                                         </div>
                                         <!-- /.form-group -->
                                         <div class="form-group">
-                                            <label>COMISIÓN</label>
-                                            <input type="text" onkeyup="mayus(this);"
-                                                class="form-control disabled inputalta" id="comision">
+                                            <label>COMISIÓN-LUGAR-SEDE</label>
+                                            <textarea cols="30" rows="5" type="text" onkeyup="mayus(this);"
+                                                class="form-control disabled inputalta" id="comision"></textarea>
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
@@ -127,7 +155,7 @@ unset($_SESSION['consulta']);
                                     <div class="col-md-6">
                                         <div id="ubiojt" style="" class="">
                                             <div class="form-group">
-                                                <label>UBICACIÓN<span class="text-red">*</label>
+                                                <label>SUB-CATEGORIA<span class="text-red">*</label>
                                                 <select onchange="filubi()" id="uboj" name="uboj"
                                                     class="form-control inputalta"
                                                     placeholder="Seleccione la ubicación">
@@ -158,10 +186,10 @@ unset($_SESSION['consulta']);
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>NIVEL<span class="text-red">*</label>
-                                            <select id="idnivel" name="idnivel" class="form-control inputalta"
+                                            <select multiple="multiple" id="idnivel" name="idnivel" style="width: 100%;color: #000" class="form-control inputalta"
                                                 placeholder="Seleccione la el nivel">
                                                 <option value="">SELECCIONE EL NIVEL</option>
                                                 <option value="1">NIVEL 1</option>
@@ -170,18 +198,18 @@ unset($_SESSION['consulta']);
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-5 hidden">
                                         <div class="form-group">
                                             <label class="label2">LUGAR</label>
                                             <textarea cols="30" rows="2" type="text" onkeyup="mayus(this);"
-                                                class="form-control disabled inputalta" id="addubic"></textarea>
+                                                class="form-control disabled inputalta" id="addubic">0</textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 hidden">
                                         <div class="form-group">
                                             <label class="label2">SEDE</label>
                                             <textarea cols="30" rows="2" type="text" onkeyup="mayus(this);"
-                                                class="form-control disabled inputalta" id="addsede"></textarea>
+                                                class="hidden form-control disabled inputalta" id="addsede">0</textarea>
                                         </div>
                                     </div>
                                     </form>
@@ -351,9 +379,9 @@ unset($_SESSION['consulta']);
                             <h4 class="modal-title" id="myModalLabel">SELECCIONAR HORARIO DE LA TAREA</h4>
                         </div>
                         <div class="modal-body">
-                           
-                            <textarea type="text" onkeyup="mayus(this);" cols="2" rows="2" class="form-control inputalta" disabled
-                                id="namesubtare" name="namesubtare"></textarea>
+
+                            <textarea type="text" onkeyup="mayus(this);" cols="2" rows="2"
+                                class="form-control inputalta" disabled id="namesubtare" name="namesubtare"></textarea>
                             <br>
                             <div class="form-group">
                                 <input style="display: none;" id="tareaprinhora" type="text">
@@ -458,6 +486,7 @@ $(document).ready(function() {
     $('#coordinador').select2();
     $('#instructor').select2();
     $('#instojt').select2();
+    $('#idnivel').select2();
     $('#idSpecialidad').load('select/buspecialidadojt.php');
     $('#tabSpcl').load('select/tablaSpcOJT.php');
     $('#tablaPro').load('select/tablaProgOJT.php');
@@ -478,21 +507,23 @@ function filubi() {
         var res = obj.data;
         var n = 0;
         html =
-            '<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsubtareas" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;"><input type="checkbox" name="tarojt" id="tarojt">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">ACCIONES</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
+            '<div style="padding-top:5px;" class="col-md-12"><div class="nav-tabs-custom"><form id="Dtall" class="form-horizontal" action="" method="POST"><table width="100%" id="tabsubtareas" class="table table-striped table-hover center" ><thead><tr><th scope="col" style="width: 10%;"><input style="font-size:40px" type="checkbox" name="tarojt" id="tarojt">ID</th><th scope="col" style="width:650px">OJTS</th></th><th scope="col" style="">UBICACION</th><th scope="col" style="width:250px;">ACCIONES</th><th scope="col" style="display:none" >ID_REGISTRO</th></tr></thead><tbody>';
         for (H = 0; H < res.length; H++) {
             if (obj.data[H].id_spc == especialidas && obj.data[H].idarea == ubicacion) {
                 var idojt = obj.data[H].id_ojt;
                 n++;
-                
+
                 datos = obj.data[H].id_ojt + "*" + n;
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
                     subtareas =
-                        '<a id="" type="button" title="Agregar tarea" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px" onclick="destarea()" data-target="#editartraprin"><i class="fa fa-plus"></i></a>';
+                        '<a id="'+idojt+'p" type="button" title="Agregar tarea" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px;display:none" onclick="destarea()" data-target="#editartraprin"><i class="fa fa-plus"></i></a>';
                 } else {
                     subtareas =
-                        '<a title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;"> +   SUB TAREAS</a>';
+                        '<a id="'+idojt+'p" title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;display:none"> +   SUB TAREAS</a>';
                 }
-                html += '<tr><th scope="row">' + n + ')<input type="checkbox" name="tarojt" id="tarojt"></th><td>' + obj.data[H].ojt_principal + '</td><td>' +
+                html += '<tr><th scope="row">' + n +
+                    ')<input onchange="muestra('+idojt+')" style="font-size:25px" type="checkbox" name="'+idojt+'" id="'+idojt+'"></th><td>' + obj.data[H].ojt_principal +
+                    '</td><td>' +
                     obj.data[H].idarea + '</td><td>' + subtareas + '</td><td style="display:none">' + obj.data[
                         H].id_ojt; + '</td></tr>';
             }
@@ -690,7 +721,16 @@ function ageg(dato) {
         }); //FIN DE AJAX
     }
 }
+function muestra(idojt){
+//alert(idojt);
+var checked = document.getElementById(idojt).checked;
+  if(checked){
+    document.getElementById(idojt+'p').style.display='';
+  }else{
+    document.getElementById(idojt+'p').style.display='none';
+  }
 
+}
 
 //$("#allselect").on("click", function() {
 //  $(".idinsp").prop("checked", this.checked);

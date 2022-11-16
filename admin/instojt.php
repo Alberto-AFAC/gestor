@@ -115,9 +115,9 @@ include('header.php');
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                        <div class="col-sm-12">
+                                        <div class="hidden col-sm-12">
                                             <label class="label2">OBJETIVO</label>
-                                            <textarea onkeyup="mayus(this);" rows="3" class="form-control" name="insobjet" id="insobjet" placeholder="Ingresa el objetivo"></textarea>
+                                            <textarea onkeyup="mayus(this);" rows="3" class="form-control" name="insobjet" id="insobjet" placeholder="Ingresa el objetivo">0</textarea>
                                         </div>
                                         <div class="col-sm-4">
                                             <input type="hidden"

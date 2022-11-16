@@ -80,8 +80,9 @@ $aero = mysqli_query($conexion,$sql2);
                             </div>
                             <!-- AQUI VA EL SECTION -->
                             <section class="content">
-                                <a class="btn btn-primary text-white" onclick="foliovp()"
-                                    style="float:left; cursor:pointer"> <i class="fa fa-plus mg-r-10"></i> Agregar
+                                <a class="btn btn-primary text-white" data-toggle="modal"
+                                    data-target="#modal-altaespecial" onclick="" style="float:left; cursor:pointer"> <i
+                                        class="fa fa-plus mg-r-10"></i> Agregar
                                     especialidad</a>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -163,6 +164,38 @@ $aero = mysqli_query($conexion,$sql2);
     <script src="../js/global.js"></script>
     <script src="../js/ojt.js"></script>
     <!--modal de instructor y coordinador informacion -->
+    <div class="modal fade" id='modal-altaespecial'>
+        <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span onclick="cerraraddsub()" aria-hidden="true">&times;</span></button>
+                        <h4><label>ESPECIALIDAD</label></h4>
+                        <div id="divaddsup1" name="divaddsup1" class="col-sm-12">
+                            <label for="addespecial" style="font-size: 16px;">Ingresa la
+                                especialidad</label>
+                            <input name="addespecial" onkeyup="mayus(this);" id="addespecial" class="form-control inputalta"
+                                type="text">
+                            <label for="siglasespe" style="font-size: 16px;">Ingresa las siglas</label>
+                            <input name="siglasespe" style="font-size: 20px;" onkeyup="mayus(this);" id="siglasespe"
+                                class="form-control inputalta" type="text">
+                            <div>
+                                <br>
+                                <a class="ml-md-auto btn btn-primary text-white" onclick="saveaddespec()"
+                                    style="float:right; cursor:pointer">Guardar</a>
+                                    
+                                <a type="button" onclick="cerrarespcil()" style="float:right; cursor:pointer"
+                                    class="ml-md-auto btn btn-default">CERRAR</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal de instructor y coordinador informacion -->
     <div class="modal fade" id='modal-detallespecial'>
         <div class="col-xs-12 .col-md-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
@@ -213,7 +246,8 @@ $aero = mysqli_query($conexion,$sql2);
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-info" style="font-size:16px">
-                            <strong>Información!</strong> Al editar se cambiara de forma automatica las tareas ligadas a esta SUB-CATEGORIA.
+                            <strong>Información!</strong> Al editar se cambiara de forma automatica las tareas ligadas a
+                            esta SUB-CATEGORIA.
                         </div>
                         <textarea type="text" onkeyup="mayus(this);" cols="2" rows="2" class="form-control inputalta"
                             id="namesubtare" name="namesubtare"></textarea>

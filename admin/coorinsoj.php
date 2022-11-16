@@ -315,10 +315,10 @@ include('header.php');
                                         </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="hidden form-group">
                                 <div class="col-sm-12">
                                     <label>OBJETIVO</label>
-                                    <textarea type="text" onkeyup="mayus(this);" class="form-control" id="objeinsojt" name="objeinsojt"></textarea>
+                                    <textarea type="text" onkeyup="mayus(this);" class="form-control" id="objeinsojt" value="0" name="objeinsojt">0</textarea>
                                 </div>
                             </div>
                         </div>
