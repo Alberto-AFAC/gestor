@@ -1050,7 +1050,7 @@
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos
-    INNER JOIN personal ON id_usu = gstIdper WHERE baja = 0";
+    INNER JOIN personal ON id_usu = gstIdper WHERE baja = 0 OR baja = 3 ";
     $resultado = mysqli_query($conexion, $query);
     while($data = mysqli_fetch_array($resultado)){ 
         $id = $data['id_usu'];

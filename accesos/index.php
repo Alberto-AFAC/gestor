@@ -11,7 +11,7 @@ session_start();
         }
 
         $id = $_SESSION['usuario']['id_usu'];
-        $query="SELECT * FROM privilegio WHERE n_empleado = $id AND estado = 0";
+        $query="SELECT * FROM privilegio WHERE n_empleado = $id AND estado = 0 or n_empleado = $id AND estado=3 ";
         $resultado= mysqli_query($conexion,$query);
         if($resultado->num_rows==0){
         // header('Location: ../');
@@ -380,7 +380,7 @@ session_start();
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos
-    INNER JOIN personal ON id_usu = gstIdper WHERE personal.estado = 0";
+    INNER JOIN personal ON id_usu = gstIdper WHERE personal.estado = 0 or personal.estado = 3 ";
     $resultado = mysqli_query($conexion, $query);
     while($data = mysqli_fetch_array($resultado)){ 
         $id = $data['id_usu'];

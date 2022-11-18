@@ -87,6 +87,7 @@ FROM
 	AND l.gstIdlsc=u.idmstr
 	and c.id =$datos 
 	AND u.estado = 0
+	AND u.estado = 3
     AND c.id_codigocurso = '$codigo'
 	AND u.codigo = '$codigo'";
     $const = mysqli_query($conexion, $query);
