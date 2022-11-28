@@ -174,34 +174,52 @@ if(finalizac($codigo,$conexion)){
 }
 
 }else if($opcion === 'evaluaciones'){
-	$valor = $_POST['array1'];
-	$varray1 = json_decode($valor, true);
-	$valor = count($varray1);
-	$array2 = $_POST['array2'];
-	$array2 = json_decode($array2, true);
-	for($i=0; $i<$valor; $i++){
-		$idcurs = $varray1[$i]["idperon"];
-		if($idcurs==''){
-		}else{	$evaluacion = $array2[$i]["evaluacion"];
-			if($evaluacion!=''){	
-				$fechaev = $_POST['array3'];
-			}else{	
-				$evaluacion = 'NULL';	
-				$fechaev = '0000-00-00';	
-			}
-			if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	
-				echo "0";	
-				$realizo = 'EVALUA MASIVAMENTE CURSO';
-				if($evaluacion!='NULL'){
-					histoevalu($idp,$realizo,$idcurs,$conexion);
-				}
-					
-			}else{	
-				echo "1";	
-			}
+
+$valor = $_POST['array1'];
+$varray1 = json_decode($valor, true);
+$valor = count($varray1);
+
+$array2 = $_POST['array2'];
+$array2 = json_decode($array2, true);
+
+for($i=0; $i<$valor; $i++){
+
+$idcurs = $varray1[$i]["idperon"];
+
+if($idcurs==''){
+    
+}else{	
+    $evaluacion = $array2[$i]["evaluacion"];
+
+if($evaluacion!=''){	
+    $fechaev = $_POST['array3']; 	
+    
+}else{	
+    $evaluacion = 'NULL';	
+    $fechaev = '0000-00-00';	
+    
+}
+
+if(evaluarinspector($idcurs,$evaluacion,$fechaev,$conexion)){	
+    echo "0";
+    $realizo = 'EVALUA MASIVAMENTE CURSO';
+    
+	if($evaluacion!='NULL'){
+		histoevalu($idp,$realizo,$idcurs,$conexion);
+	}
+    
+}else{	
+    echo "1";	
+    
+}
+
 		}
 	}
 }else if($opcion === 'cursoAct'){
+
+
+
+
 	$codigo = $_POST['codigo'];
 	$fcurso = $_POST['fcurso'];
 	$hcurso = $_POST['hcurso'];
@@ -576,6 +594,7 @@ function histdescr($idp,$pdf,$conexion){
 	return false;
 	}
 }
+
 function histoevalu($idp,$realizo,$idcurs,$conexion){
 	ini_set('date.timezone','America/Mexico_City');
 	$fecha = date('Y').'/'.date('m').'/'.date('d').' '.date('H:i:s');

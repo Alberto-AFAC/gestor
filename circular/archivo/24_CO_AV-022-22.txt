@@ -1,0 +1,36 @@
+7/SEP/2022 a las 11:34:57 Se comento:
+Persona fisica
+Nombre archivo: 24_CO_AV-022-22
+Nombre usuario: alejandro magallon
+Correo usuario: alejandro.magallÃ³n@afac.gob.mx
+Comentario:Prueba
+_____________________________
+13/SEP/2022 a las 19:10:10 Se comento:
+Persona moral
+Nombre archivo: 24_CO_AV-022-22
+Nombre usuario: Javier Herrera
+Correo usuario: javier.herrera@grupo-herrera.com
+Comentario:No tiene sentido. 
+
+For all turbine-engine powered airplanes with a seating configuration, excluding any required crewmember seat, of 10 to 30 passenger seats, manufactured after August 18, 2000 - 
+
+(1) The parameters listed in paragraphs (h)(1) through (h)(57) of this section must be recorded within the ranges, accuracies, resolutions, and recording intervals specified in Appendix F of this part. 
+
+(2) Commensurate with the capacity of the recording system, all additional parameters for which information sources are installed and which are connected to the recording system must be recorded within the ranges, accuracies, resolutions, and sampling intervals specified in Appendix F of this part. 
+
+(j) For all turbine-engine-powered airplanes with a seating configuration, excluding any required crewmember seat, of 10 to 30 passenger seats, that are manufactured after August 19, 2002 the parameters listed in paragraph (a)(1) through (a)(88) of this section must be recorded within the ranges, accuracies, resolutions, and recording intervals specified in Appendix F of this part.
+_____________________________
+14/SEP/2022 a las 13:23:38 Se comento:
+Persona fisica
+Nombre archivo: 24_CO_AV-022-22
+Nombre usuario: Antonio Rosales
+Correo usuario: jrosales@aeromexico.com
+Comentario:1. En Definiciones y Abreviaturas, falta la definición de los términos ANP, EPE y EPU (Tabla A1, parámetro 78).
+2. El numeral 7.2.3 también debe incluir que la modificación puede ser a través de un paquete de STC.
+3. Pregunta derivada del numeral A.4.2.3: Si algún parámetro identificado con asterisco (*), no se puede grabar o no estás disponible, no se exigirá su registro ¿esto se puede confirmar?
+4.En la tabla A1, parámetro 18 (2) debe eliminarse la nota 3, ya que es de potencia de motores y el parámetro no está relacionado.
+ 5. En la tabla A1, parámetro 25 (2) debe eliminarse la nota 2, ya que parámetro es de frecuencias NAV, no de velocidad.
+6. En la tabla A1, parámetro 78, conviene que se pongan la descripción de los acrónimos en la sección de DEFI NICIONES.
+
+  
+_____________________________

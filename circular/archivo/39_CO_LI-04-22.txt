@@ -1,0 +1,25 @@
+2/NOV/2022 a las 11:21:29 Se comento:
+Persona fisica
+Nombre archivo: 39_CO_LI-04-22
+Nombre usuario: alejandro magallon
+Correo usuario: alejandro.magallon@afac.gob.mx
+Comentario:prueba
+_____________________________
+10/NOV/2022 a las 23:40:21 Se comento:
+Persona moral
+Nombre archivo: 39_CO_LI-04-22
+Nombre usuario: ASTECA ASESORIA TECNICA AERONAUTICA Y CAPACITACION
+Correo usuario: victor.hernandez@asteca.com.mx
+Comentario:5. Abreviaturas.
+Actualizar por SICT: Secretaría de Infraestructura, Comunicaciones y Transportes.
+7.3.1 "Lo" debe ser "lo".
+Después del 19 no debe haber punto.
+7.3.5 Esto limita la posibilidad de que los instructores puedan utilizar sus domicilios para impartir cursos u otras localidades diferentes al domicilio físico de la Institución Educativa como fue demostrado que es posible durante las restricciones provocada por la pandemia de COVID-19, con lo que se ayuda a contar con personal altamente calificado que no vivan necesariamente en la localidad de la instirución Educativa.La propuesta es agreagar a lo ya escrito, "o de ser el caso, las reglas de los lugares donde se pretenda impartir el curso en modalidad de instrucción reconocida de cursos en línea".
+7.4.2 Contemplar que pueden ser más de una plataforma, por lo que se sugiere agregar el plural, "...ofrece la o las plataformas digitales propuestas..."
+7.4.4 Contemplar que puede ser más de un instructor, por lo que se sugiere usar el plural, "...del o de los instructores.."
+10. Bibliografia Falta agregar el documento de la OACI :
+Guidelines for the Development of Online Courses_V1_Feb2019
+
+
+
+_____________________________

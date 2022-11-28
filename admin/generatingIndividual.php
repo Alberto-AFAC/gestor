@@ -77,7 +77,13 @@ CASE
 		WHEN MONTH ( u.fechaf ) = 12 THEN
 		'diciembre' ELSE 'MES NO VALIDO' 
 	END AS mesfinales,
-	u.grupo 
+	u.grupo,
+	LEFT(l.gstDrcin, 3) AS duracion,
+	CASE
+	WHEN u.fcurso=u.fechaf THEN 
+	'IGUAL' ELSE 
+	'DIFERENTE'
+	END AS comparativo 
 FROM
 	constancias c, personal p,cursos u,listacursos l
 	WHERE

@@ -1,0 +1,186 @@
+10/NOV/2022 a las 12:41:09 Se comento:
+Persona fisica
+Nombre archivo: 54_CO_AV-21-3-22
+Nombre usuario: alejandro magallon
+Correo usuario: alejandro.magallon@afac.gob.mx
+Comentario:prueba
+_____________________________
+14/NOV/2022 a las 11:34:32 Se comento:
+Persona fisica
+Nombre archivo: 54_CO_AV-21-3-22
+Nombre usuario: Carlos Fuentes
+Correo usuario: carlosf56m@gmail.com
+Comentario:Su periodo de consulta es violatorio de su propia Carta de Política CA DET-01/22. Se requiere el AIR y su publicación en el DOF.
+_____________________________
+14/NOV/2022 a las 15:33:29 Se comento:
+Persona moral
+Nombre archivo: 54_CO_AV-21-3-22
+Nombre usuario: Carlos HernÃ¡ndez
+Correo usuario: carlos.hernandez@airbus.com
+Comentario:Añadir: La definición MMEL y MEL
+_____________________________
+14/NOV/2022 a las 18:33:45 Se comento:
+Persona fisica
+Nombre archivo: 54_CO_AV-21-3-22
+Nombre usuario: TomÃ¡s Caballero Vidal 
+Correo usuario: tcaballerovidal@yahoo.com.mx
+Comentario:La definición de 4.8 también aplica para reparaciones mayores de acuerdo con el Anexo 8 de OACI.
+
+Los siguientes numerales incluyen mi propuesta de modificación con base en los anexos 6 y 8 de la OACI, y un COMENTARIO que ayuda a aclarar el cambio propuesto.
+
+4.17. Modificación menor: es un cambio de diseño que tiene poco o ningún efecto en la carga, posición del centro de gravedad, la resistencia estructural, la fiabilidad, las características operacionales y otras características que afectan la aeronavegabilidad del producto aeronáutico.
+COMENTARIO: Cambiar ?el centrado? por ?Posición del centro de gravedad?, que es el término usado en México.
+
+En 4.26. Cambiar ?el centrado? por ?Posición del centro de gravedad?, que es el término usado en México. 
+
+En 6.2. Todas las modificaciones y reparaciones ...
+COMENTARIO: Eliminar numeral o indicar dónde se establecen los requerimientos de aeronavegabilidad establecidos por AFAC. Normalmente son los de los estados de diseño de las aeronaves (como el FAR 25 en Estados Unidos, por ejemplo).
+
+6.3. El concesionario, permisionario y operador aéreo que pretenda incorporar una modificación o reparación en una aeronave, motor de aeronave o hélice, podrá realizar la modificación o reparación si la misma está incluida en la información técnica del fabricante, previamente autorizada o convalidada por la Autoridad Aeronáutica.
+COMENTARIO: Aclarar que, si la modificación o reparación está incluida en los manuales autorizados del fabricante, se pueden efectuar sin requerir autorización adicional de la AFAC, porque ya fueron previamente autorizadas para certificados de tipo emitidos por AFAC, o convalidadas con el certificado de tipo para aeronaves importadas.
+
+6.4. La información que debe presentar un concesionario, permisionario u operador aéreo para solicitar una aprobación de una reparación no incluida en los manuales del fabricante a una aeronave, motor de aeronave o hélice es mediante un escrito libre, con las formalidades establecidas en el artículo 15 de la Ley Federal de Procedimiento Administrativo, la información requerida en el numeral 8.2. de la presente circular y la siguiente información:
+COMENTARIO: Aclarar que la solicitud es cuando las reparaciones no están incluidas en los manuales del fabricante, porque ya fueron previamente autorizadas o convalidadas.
+La AFAC puede autorizar modificaciones o reparaciones solo cuando el certificado de tipo fue emitido por la AFAC. Para certificados de tipo convalidados por la AFAC, también convalida (o aprueba) los manuales de los fabricantes que ya incluyen modificaciones o reparaciones autorizadas por el estado de diseño (FAA, EASA).
+
+6.5. La información que debe presentar un concesionario, permisionario u operador aéreo para solicitar una aprobación de una modificación no incluida en los manuales del fabricante de una aeronave, motor de aeronave o hélice es mediante un escrito libre, con las formalidades establecidas en el artículo 15 de la Ley Federal de Procedimiento Administrativo, la información requerida en 8.3. y con la siguiente información:
+COMENTARIO: Aclarar que la solicitud es para modificaciones no incluidas en los manuales del fabricante, porque ya fueron previamente autorizadas o convalidadas.
+6.6.2. Todo concesionario, ... de conformidad con el manual general de mantenimiento y procedimientos de taller aeronáutico aprobado .... .
+COMENTARIO: Sobra ?y procedimientos de taller aeronáutico?.
+
+7.1. Las modificaciones y reparaciones ... ... aprobación por parte de la Autoridad Aeronáutica previo a su incorporación en un producto, si no están incluidas en los manuales de los fabricantes.
+COMENTARIO: Aclarar que la autorización se requiere para modificaciones y reparaciones mayores que no estén incluidas en los manuales del fabricante.
+
+7.4.2.1. Las modificaciones menores ... ...  aeronave con matrícula mexicana, motor de aeronave o hélice, si la modificación no está incluida en los manuales del fabricante.
+COMENTARIO:  Aclarar que requiere aprobación si la modificación no está incluida en los manuales del fabricante.
+
+7.4.4.1. Las reparaciones menores se pueden realizar si están incluidas en los manuales del fabricante, sin embargo, también se requiere de la aprobación por parte de la Autoridad Aeronáutica previo a su incorporación en una aeronave con matrícula mexicana, motor de aeronave o hélice, si la reparación no está incluida en los manuales del fabricante.
+COMENTARIO:  Aclarar que requiere aprobación si la reparación no está incluida en los manuales del fabricante.
+
+8.2.1.3. Demostración de cumplimiento. El concesionario, ... ... presentar el producto aeronáutico reparado a la AFAC.
+COMENTARIO:  Eliminar texto ?para que esta efectúe pruebas o evaluaciones que considere convenientes?, o especificar cuáles son las pruebas o evaluaciones y no dejarlo a criterio del inspector. La AFAC no tiene equivalentes a los FARS del 21, al 35, por lo que se tendrían que desarrollar para hacer referencia a los mismos.
+
+8.3.2.3. Demostración de cumplimiento. La demostración del cumplimiento requiere que el concesionario, permisionario u operador aéreo que solicite una aprobación de una modificación a una aeronave, motor de aeronave o hélice de conformidad con la presente circular obligatoria presente datos justificativos (datos de diseño, informes, análisis, planos, procesos, especificaciones de materiales, limitaciones de las operaciones, manuales de vuelo del avión e ICA para certificados de tipo emitidos por la AFAC). Para certificados de tipo convalidados por la AFAC, además se requiere presentar un STC u otra aprobación del estado de diseño.  Los datos deben estar completos y en un soporte lógico para su examen por la Autoridad Aeronáutica.
+COMENTARIO: Aclarar lo que aplica para certificados de tipo emitidos por la AFAC y lo qué aplica para certificados de tipo convalidados por la AFAC, para cumplir con anexos 6 y 8.
+
+8.3.2.3.1 El solicitante debe dar acceso a esta Autoridad Aeronáutica al producto aeronáutico al que se le realiza la modificación con el fin de que esta efectúe toda inspección, prueba y evaluación técnica o lleve a cabo cualquier prueba en vuelo (Si el STC lo requiere) o en tierra que sea necesaria para determinar el cumplimiento de los elementos de certificación. Sin embargo, el solicitante debe realizar sus propias inspecciones y pruebas para demostrar el cumplimiento, antes de presentar el producto aeronáutico modificado a la Autoridad Aeronáutica para que esta efectúe pruebas o evaluaciones.
+COMENTARIO: Aclarar que el vuelo de prueba es solo si el STC lo requiere explícitamente.
+
+8.3.2.4.1. El concesionario, permisionario u operador aéreo al que se concedió la aprobación de la modificación (cualquiera de las indicadas en el Apéndice B) es responsable del cambio de diseño aprobado. 
+NOTA: La Autoridad Aeronáutica solo podrá emitir aprobaciones para las modificaciones del tipo ?otras aprobaciones?. Solo la Autoridad de Aviación Civil del Estado de Diseño de la aeronave, motor de aeronave o hélice podrá aprobar aquellas modificaciones que la Autoridad Aeronáutica determine que requieren de una Enmienda al Certificado de Tipo o de un Suplemento al Certificado de Tipo (STC).
+COMENTARIO:  Corregir referencia a ?otras aprobaciones?.
+
+8.3.2.6. e) revisiones o recomendaciones aprobadas del programa de mantenimiento o documento equivalente y el manual de mantenimiento de aeronaves con los detalles de las revisiones al plan de mantenimiento programado y las directrices de procedimientos recomendados por el fabricante y aprobados por la Autoridad de Aviación Civil del estado de diseño; y
+COMENTARIO: Indicar qué es CAA ya que solo aquí se menciona.
+
+_____________________________
+14/NOV/2022 a las 18:33:53 Se comento:
+Persona fisica
+Nombre archivo: 54_CO_AV-21-3-22
+Nombre usuario: TomÃ¡s Caballero Vidal 
+Correo usuario: tcaballerovidal@yahoo.com.mx
+Comentario:La definición de 4.8 también aplica para reparaciones mayores de acuerdo con el Anexo 8 de OACI.
+
+Los siguientes numerales incluyen mi propuesta de modificación con base en los anexos 6 y 8 de la OACI, y un COMENTARIO que ayuda a aclarar el cambio propuesto.
+
+4.17. Modificación menor: es un cambio de diseño que tiene poco o ningún efecto en la carga, posición del centro de gravedad, la resistencia estructural, la fiabilidad, las características operacionales y otras características que afectan la aeronavegabilidad del producto aeronáutico.
+COMENTARIO: Cambiar ?el centrado? por ?Posición del centro de gravedad?, que es el término usado en México.
+
+En 4.26. Cambiar ?el centrado? por ?Posición del centro de gravedad?, que es el término usado en México. 
+
+En 6.2. Todas las modificaciones y reparaciones ...
+COMENTARIO: Eliminar numeral o indicar dónde se establecen los requerimientos de aeronavegabilidad establecidos por AFAC. Normalmente son los de los estados de diseño de las aeronaves (como el FAR 25 en Estados Unidos, por ejemplo).
+
+6.3. El concesionario, permisionario y operador aéreo que pretenda incorporar una modificación o reparación en una aeronave, motor de aeronave o hélice, podrá realizar la modificación o reparación si la misma está incluida en la información técnica del fabricante, previamente autorizada o convalidada por la Autoridad Aeronáutica.
+COMENTARIO: Aclarar que, si la modificación o reparación está incluida en los manuales autorizados del fabricante, se pueden efectuar sin requerir autorización adicional de la AFAC, porque ya fueron previamente autorizadas para certificados de tipo emitidos por AFAC, o convalidadas con el certificado de tipo para aeronaves importadas.
+
+6.4. La información que debe presentar un concesionario, permisionario u operador aéreo para solicitar una aprobación de una reparación no incluida en los manuales del fabricante a una aeronave, motor de aeronave o hélice es mediante un escrito libre, con las formalidades establecidas en el artículo 15 de la Ley Federal de Procedimiento Administrativo, la información requerida en el numeral 8.2. de la presente circular y la siguiente información:
+COMENTARIO: Aclarar que la solicitud es cuando las reparaciones no están incluidas en los manuales del fabricante, porque ya fueron previamente autorizadas o convalidadas.
+La AFAC puede autorizar modificaciones o reparaciones solo cuando el certificado de tipo fue emitido por la AFAC. Para certificados de tipo convalidados por la AFAC, también convalida (o aprueba) los manuales de los fabricantes que ya incluyen modificaciones o reparaciones autorizadas por el estado de diseño (FAA, EASA).
+
+6.5. La información que debe presentar un concesionario, permisionario u operador aéreo para solicitar una aprobación de una modificación no incluida en los manuales del fabricante de una aeronave, motor de aeronave o hélice es mediante un escrito libre, con las formalidades establecidas en el artículo 15 de la Ley Federal de Procedimiento Administrativo, la información requerida en 8.3. y con la siguiente información:
+COMENTARIO: Aclarar que la solicitud es para modificaciones no incluidas en los manuales del fabricante, porque ya fueron previamente autorizadas o convalidadas.
+6.6.2. Todo concesionario, ... de conformidad con el manual general de mantenimiento y procedimientos de taller aeronáutico aprobado .... .
+COMENTARIO: Sobra ?y procedimientos de taller aeronáutico?.
+
+7.1. Las modificaciones y reparaciones ... ... aprobación por parte de la Autoridad Aeronáutica previo a su incorporación en un producto, si no están incluidas en los manuales de los fabricantes.
+COMENTARIO: Aclarar que la autorización se requiere para modificaciones y reparaciones mayores que no estén incluidas en los manuales del fabricante.
+
+7.4.2.1. Las modificaciones menores ... ...  aeronave con matrícula mexicana, motor de aeronave o hélice, si la modificación no está incluida en los manuales del fabricante.
+COMENTARIO:  Aclarar que requiere aprobación si la modificación no está incluida en los manuales del fabricante.
+
+7.4.4.1. Las reparaciones menores se pueden realizar si están incluidas en los manuales del fabricante, sin embargo, también se requiere de la aprobación por parte de la Autoridad Aeronáutica previo a su incorporación en una aeronave con matrícula mexicana, motor de aeronave o hélice, si la reparación no está incluida en los manuales del fabricante.
+COMENTARIO:  Aclarar que requiere aprobación si la reparación no está incluida en los manuales del fabricante.
+
+8.2.1.3. Demostración de cumplimiento. El concesionario, ... ... presentar el producto aeronáutico reparado a la AFAC.
+COMENTARIO:  Eliminar texto ?para que esta efectúe pruebas o evaluaciones que considere convenientes?, o especificar cuáles son las pruebas o evaluaciones y no dejarlo a criterio del inspector. La AFAC no tiene equivalentes a los FARS del 21, al 35, por lo que se tendrían que desarrollar para hacer referencia a los mismos.
+
+8.3.2.3. Demostración de cumplimiento. La demostración del cumplimiento requiere que el concesionario, permisionario u operador aéreo que solicite una aprobación de una modificación a una aeronave, motor de aeronave o hélice de conformidad con la presente circular obligatoria presente datos justificativos (datos de diseño, informes, análisis, planos, procesos, especificaciones de materiales, limitaciones de las operaciones, manuales de vuelo del avión e ICA para certificados de tipo emitidos por la AFAC). Para certificados de tipo convalidados por la AFAC, además se requiere presentar un STC u otra aprobación del estado de diseño.  Los datos deben estar completos y en un soporte lógico para su examen por la Autoridad Aeronáutica.
+COMENTARIO: Aclarar lo que aplica para certificados de tipo emitidos por la AFAC y lo qué aplica para certificados de tipo convalidados por la AFAC, para cumplir con anexos 6 y 8.
+
+8.3.2.3.1 El solicitante debe dar acceso a esta Autoridad Aeronáutica al producto aeronáutico al que se le realiza la modificación con el fin de que esta efectúe toda inspección, prueba y evaluación técnica o lleve a cabo cualquier prueba en vuelo (Si el STC lo requiere) o en tierra que sea necesaria para determinar el cumplimiento de los elementos de certificación. Sin embargo, el solicitante debe realizar sus propias inspecciones y pruebas para demostrar el cumplimiento, antes de presentar el producto aeronáutico modificado a la Autoridad Aeronáutica para que esta efectúe pruebas o evaluaciones.
+COMENTARIO: Aclarar que el vuelo de prueba es solo si el STC lo requiere explícitamente.
+
+8.3.2.4.1. El concesionario, permisionario u operador aéreo al que se concedió la aprobación de la modificación (cualquiera de las indicadas en el Apéndice B) es responsable del cambio de diseño aprobado. 
+NOTA: La Autoridad Aeronáutica solo podrá emitir aprobaciones para las modificaciones del tipo ?otras aprobaciones?. Solo la Autoridad de Aviación Civil del Estado de Diseño de la aeronave, motor de aeronave o hélice podrá aprobar aquellas modificaciones que la Autoridad Aeronáutica determine que requieren de una Enmienda al Certificado de Tipo o de un Suplemento al Certificado de Tipo (STC).
+COMENTARIO:  Corregir referencia a ?otras aprobaciones?.
+
+8.3.2.6. e) revisiones o recomendaciones aprobadas del programa de mantenimiento o documento equivalente y el manual de mantenimiento de aeronaves con los detalles de las revisiones al plan de mantenimiento programado y las directrices de procedimientos recomendados por el fabricante y aprobados por la Autoridad de Aviación Civil del estado de diseño; y
+COMENTARIO: Indicar qué es CAA ya que solo aquí se menciona.
+
+_____________________________
+14/NOV/2022 a las 18:34:07 Se comento:
+Persona fisica
+Nombre archivo: 54_CO_AV-21-3-22
+Nombre usuario: TomÃ¡s Caballero Vidal 
+Correo usuario: tcaballerovidal@yahoo.com.mx
+Comentario:La definición de 4.8 también aplica para reparaciones mayores de acuerdo con el Anexo 8 de OACI.
+
+Los siguientes numerales incluyen mi propuesta de modificación con base en los anexos 6 y 8 de la OACI, y un COMENTARIO que ayuda a aclarar el cambio propuesto.
+
+4.17. Modificación menor: es un cambio de diseño que tiene poco o ningún efecto en la carga, posición del centro de gravedad, la resistencia estructural, la fiabilidad, las características operacionales y otras características que afectan la aeronavegabilidad del producto aeronáutico.
+COMENTARIO: Cambiar ?el centrado? por ?Posición del centro de gravedad?, que es el término usado en México.
+
+En 4.26. Cambiar ?el centrado? por ?Posición del centro de gravedad?, que es el término usado en México. 
+
+En 6.2. Todas las modificaciones y reparaciones ...
+COMENTARIO: Eliminar numeral o indicar dónde se establecen los requerimientos de aeronavegabilidad establecidos por AFAC. Normalmente son los de los estados de diseño de las aeronaves (como el FAR 25 en Estados Unidos, por ejemplo).
+
+6.3. El concesionario, permisionario y operador aéreo que pretenda incorporar una modificación o reparación en una aeronave, motor de aeronave o hélice, podrá realizar la modificación o reparación si la misma está incluida en la información técnica del fabricante, previamente autorizada o convalidada por la Autoridad Aeronáutica.
+COMENTARIO: Aclarar que, si la modificación o reparación está incluida en los manuales autorizados del fabricante, se pueden efectuar sin requerir autorización adicional de la AFAC, porque ya fueron previamente autorizadas para certificados de tipo emitidos por AFAC, o convalidadas con el certificado de tipo para aeronaves importadas.
+
+6.4. La información que debe presentar un concesionario, permisionario u operador aéreo para solicitar una aprobación de una reparación no incluida en los manuales del fabricante a una aeronave, motor de aeronave o hélice es mediante un escrito libre, con las formalidades establecidas en el artículo 15 de la Ley Federal de Procedimiento Administrativo, la información requerida en el numeral 8.2. de la presente circular y la siguiente información:
+COMENTARIO: Aclarar que la solicitud es cuando las reparaciones no están incluidas en los manuales del fabricante, porque ya fueron previamente autorizadas o convalidadas.
+La AFAC puede autorizar modificaciones o reparaciones solo cuando el certificado de tipo fue emitido por la AFAC. Para certificados de tipo convalidados por la AFAC, también convalida (o aprueba) los manuales de los fabricantes que ya incluyen modificaciones o reparaciones autorizadas por el estado de diseño (FAA, EASA).
+
+6.5. La información que debe presentar un concesionario, permisionario u operador aéreo para solicitar una aprobación de una modificación no incluida en los manuales del fabricante de una aeronave, motor de aeronave o hélice es mediante un escrito libre, con las formalidades establecidas en el artículo 15 de la Ley Federal de Procedimiento Administrativo, la información requerida en 8.3. y con la siguiente información:
+COMENTARIO: Aclarar que la solicitud es para modificaciones no incluidas en los manuales del fabricante, porque ya fueron previamente autorizadas o convalidadas.
+6.6.2. Todo concesionario, ... de conformidad con el manual general de mantenimiento y procedimientos de taller aeronáutico aprobado .... .
+COMENTARIO: Sobra ?y procedimientos de taller aeronáutico?.
+
+7.1. Las modificaciones y reparaciones ... ... aprobación por parte de la Autoridad Aeronáutica previo a su incorporación en un producto, si no están incluidas en los manuales de los fabricantes.
+COMENTARIO: Aclarar que la autorización se requiere para modificaciones y reparaciones mayores que no estén incluidas en los manuales del fabricante.
+
+7.4.2.1. Las modificaciones menores ... ...  aeronave con matrícula mexicana, motor de aeronave o hélice, si la modificación no está incluida en los manuales del fabricante.
+COMENTARIO:  Aclarar que requiere aprobación si la modificación no está incluida en los manuales del fabricante.
+
+7.4.4.1. Las reparaciones menores se pueden realizar si están incluidas en los manuales del fabricante, sin embargo, también se requiere de la aprobación por parte de la Autoridad Aeronáutica previo a su incorporación en una aeronave con matrícula mexicana, motor de aeronave o hélice, si la reparación no está incluida en los manuales del fabricante.
+COMENTARIO:  Aclarar que requiere aprobación si la reparación no está incluida en los manuales del fabricante.
+
+8.2.1.3. Demostración de cumplimiento. El concesionario, ... ... presentar el producto aeronáutico reparado a la AFAC.
+COMENTARIO:  Eliminar texto ?para que esta efectúe pruebas o evaluaciones que considere convenientes?, o especificar cuáles son las pruebas o evaluaciones y no dejarlo a criterio del inspector. La AFAC no tiene equivalentes a los FARS del 21, al 35, por lo que se tendrían que desarrollar para hacer referencia a los mismos.
+
+8.3.2.3. Demostración de cumplimiento. La demostración del cumplimiento requiere que el concesionario, permisionario u operador aéreo que solicite una aprobación de una modificación a una aeronave, motor de aeronave o hélice de conformidad con la presente circular obligatoria presente datos justificativos (datos de diseño, informes, análisis, planos, procesos, especificaciones de materiales, limitaciones de las operaciones, manuales de vuelo del avión e ICA para certificados de tipo emitidos por la AFAC). Para certificados de tipo convalidados por la AFAC, además se requiere presentar un STC u otra aprobación del estado de diseño.  Los datos deben estar completos y en un soporte lógico para su examen por la Autoridad Aeronáutica.
+COMENTARIO: Aclarar lo que aplica para certificados de tipo emitidos por la AFAC y lo qué aplica para certificados de tipo convalidados por la AFAC, para cumplir con anexos 6 y 8.
+
+8.3.2.3.1 El solicitante debe dar acceso a esta Autoridad Aeronáutica al producto aeronáutico al que se le realiza la modificación con el fin de que esta efectúe toda inspección, prueba y evaluación técnica o lleve a cabo cualquier prueba en vuelo (Si el STC lo requiere) o en tierra que sea necesaria para determinar el cumplimiento de los elementos de certificación. Sin embargo, el solicitante debe realizar sus propias inspecciones y pruebas para demostrar el cumplimiento, antes de presentar el producto aeronáutico modificado a la Autoridad Aeronáutica para que esta efectúe pruebas o evaluaciones.
+COMENTARIO: Aclarar que el vuelo de prueba es solo si el STC lo requiere explícitamente.
+
+8.3.2.4.1. El concesionario, permisionario u operador aéreo al que se concedió la aprobación de la modificación (cualquiera de las indicadas en el Apéndice B) es responsable del cambio de diseño aprobado. 
+NOTA: La Autoridad Aeronáutica solo podrá emitir aprobaciones para las modificaciones del tipo ?otras aprobaciones?. Solo la Autoridad de Aviación Civil del Estado de Diseño de la aeronave, motor de aeronave o hélice podrá aprobar aquellas modificaciones que la Autoridad Aeronáutica determine que requieren de una Enmienda al Certificado de Tipo o de un Suplemento al Certificado de Tipo (STC).
+COMENTARIO:  Corregir referencia a ?otras aprobaciones?.
+
+8.3.2.6. e) revisiones o recomendaciones aprobadas del programa de mantenimiento o documento equivalente y el manual de mantenimiento de aeronaves con los detalles de las revisiones al plan de mantenimiento programado y las directrices de procedimientos recomendados por el fabricante y aprobados por la Autoridad de Aviación Civil del estado de diseño; y
+COMENTARIO: Indicar qué es CAA ya que solo aquí se menciona.
+
+_____________________________

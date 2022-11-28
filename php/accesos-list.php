@@ -2,7 +2,7 @@
 	include ("../conexion/conexion.php");
 	header("Content-Type: text/html;charset=utf-8");
 	$query = "SELECT * FROM accesos
-INNER JOIN personal ON id_usu = gstIdper WHERE estado = 0 and estado = 3";
+INNER JOIN personal ON id_usu = gstIdper WHERE estado = 0 OR estado = 3";
 	$resultado = mysqli_query($conexion, $query);
 
 	if (!$resultado) {

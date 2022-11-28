@@ -8,7 +8,7 @@ $id = $_SESSION['usuario']['id_usu'];
 
       $sql = 
      "SELECT personal.gstIdper,gstNombr,gstApell,gstCargo,gstNmpld,gstIDara FROM personal 
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
+      WHERE personal.gstIdper = '".$id."' && personal.estado in (0,3) ";
     $persona = mysqli_query($conexion,$sql);
     $datos = mysqli_fetch_row($persona);
 
@@ -21,7 +21,7 @@ $id = $_SESSION['usuario']['id_usu'];
      "SELECT gstInstt,gstMpres FROM personal 
        INNER JOIN estudios ON estudios.gstIDper = personal.gstIdper 
       INNER JOIN profesion ON profesion.gstIDper = personal.gstIdper 
-      WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
+      WHERE personal.gstIdper = '".$id."' && personal.estado in (0,3) ORDER BY estudios.gstIdstd,profesion.gstIdpro DESC
       ";
 
       $persona = mysqli_query($conexion,$sql);

@@ -95,40 +95,50 @@ include('header.php');
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>CODIGO</th>
-                                                <th>NOMBRE DEL CURSO</th>
-                                                <th>COORDINADOR</th>
-                                                <th>INSTRUCTOR</th>
-                                                <th>ESPECIFICÓ LOS OBJETIVOS AL INICIO DE LA SESIÓN, EN FORMA CLARA Y COMPRENSIBLE?</th> 
-                                                <th>DEMOSTRÓ DOMINIO ADECUADO DEL TEMA</th>   
-                                                <th>SE APEGÓ AL TEMARIO</th>
-                                                <th>UTILIZÓ UN LENGUAJE SENCILLO Y COMPRENSIBLE DURANTE LA SESIÓN</th>
-                                                <th>ATENDIÓ CLARA Y OPORTUNAMENTE LAS DUDAS Y REACTIVOS DE LOS PARTICIPANTES</th> 
-                                                <th>PLANEÓ Y DIRIGIÓ ADECUADAMENTE LA SESIÓN</th>  
-                                                <th>DESPERTÓ EL INTERÉS DEL GRUPO CON RESPECTO A LOS CONTENIDOS</th>
-                                                <th>FUE PUNTUAL DURANTE LA SESIÓN</th>  
-                                                <th>PROPICIÓ UN CLIMA DE COLABORACIÓN Y RESPETO ENTRE LOS PARTICIPANTES</th>     
-                                                <th>EXPLICÓ CON CLARIDAD LAS INSTRUCCIONES DE LAS ACTIVIDADES REALIZADAS</th>
-                                                <th>TUVO UN CONTROL ADECUADO DEL GRUPO</th>
-                                                <th>AL INICIO DEL CURSO, EXPLICÓ LOS CRITERIOS DE EVALUACIÓN DEL CURSO</th>
-                                                <th>LOS CONOCIMIENTOS EXPUESTOS EN EL CURSO SON APLICABLES A LAS ACTIVIDADES QUE REALIZA EN SU PUESTO DE TRABAJO</th>
-                                                <th>CONSIDERA QUE EL CONTENIDO DEL CURSO FUE SUFICIENTE PARA CUMPLIR CON EL OBJETIVO DE APRENDIZAJE</th>
-                                                <th>EL CURSO CUBRIÓ SUS EXPECTATIVAS</th>
-                                                <th>EL CONTENIDO AUMENTÓ SUS CONOCIMIENTOS Y COMPRENSIÓN DEL TEMA EXPUESTO</th>
-                                                <th>EL CONTENIDO DEL CURSO SE APEGA A LOS PROGRAMAS SELECCIONADOS POR LA AUTORIDAD AERONÁUTICA</th>
-                                                <th>LA DURACIÓN DE LA O LAS SESIONES FUE SUFICIENTE PARA CUMPLIR EL OBJETIVO DE APRENDIZAJE</th>
-                                                <th>EL TIEMPO CON EL QUE RECIBIÓ LA INFORMACIÓN (INVITACIÓN, TEMARIO, ETC.) A LA SESIÓN FUE ADECUADO</th>
-                                                <th>LA AUTORIDAD AERONÁUTICA PROPORCIONÓ LOS MEDIOS NECESARIOS PARA LA ASISTENCIA AL CURSO</th>
-                                                <th>¿CÓMO FUE EL SERVICIO DE CAFÉ PROPORCIONADO?</th>
-                                                <th>LA DURACIÓN DE LA O LAS SESIONES FUE SUFICIENTE PARA CUMPLIR EL OBJETIVO DE APRENDIZAJE</th>
-                                                <th>CÓMO FUE EL MATERIAL DIDÁCTICO (MANUAL, ROTAFOLIOS, AUDIOVISUALES, PRESENTACIÓN) UTILIZADO?</th>
-                                                <th>SÍ EL MATERIAL DE LA SESIÓN SE ENTREGÓ EN TIEMPO?</th>
-                                                <th>CÓMO FUERON LAS CONDICIONES DEL AULA PARA LA IMPARTICIÓN DE LA SESIÓN (LUZ, VENTILACIÓN,LIMPIEZA, COMODIDAD ETC.) ?</th>
-                                                <th>LA CONEXIÓN DE INTERNET FUE LA ADECUADA PARA COMPRENDER LA INFORMACIÓN TRANSMITIDA DURANTE LA O LAS SESIONES EN LÍNEA</th>
-                                                <th>MENCIONA ALGUNOS DE LOS APRENDIZAJES ADQUIRIDOS EN ESTA ACCIÓN DE CAPACITACIÓN Y SUS BENEFICIOS</th>
-                                                <th>MENCIONA ALGUNA MEJORA QUE SE PUDIERA REALIZAR A ESTE PROCESO DE APRENDIZAJE</th>
-                                                <th>SI RECIBIÓ CAPACITACIÓN EN UN CENTRO DE CAPACITACIÓN NACIONAL O INTERNACIONAL, USTED RECOMIENDA DICHO CENTRO PARA CONTINUAR COMO PROVEEDOR DE LA AUTORIDAD AERONÁUTICA MEXICANA.</th>
-                                                <th>COMPARTE TUS COMENTARIOS, QUEJAS, SUGERENCIAS...</th>
+                                                <th>FECHA DE EVALUACIÓN</th>
+                                                <th>El curso fue impartido por  (CIAAC / EXTERNO)</th>
+                                                <th>Nombre de participante</th>
+                                                <th>Apellidos de participante</th>
+                                                <th># EMPLEADO</th>
+                                                <th>ESPECIALIDAD</th>
+                                                <th>AREA DE ADSCRIPCION</th>
+                                                <!-- <th>CODIGO</th>-->
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Especificó los objetivos al inicio de la sesión, en forma clara y comprensible]</th> 
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Demostró dominio adecuado del tema]</th>   
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Se apegó al temario]</th>
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Utilizó un lenguaje sencillo y comprensible durante la sesión]</th>
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Atendió clara y oportunamente las dudas y reactivos de los participantes]</th> 
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Planeó y dirigió adecuadamente la sesión]</th>  
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Despertó el interés del grupo con respecto a los contenidos]</th>
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Fue puntual durante la sesión]</th>  
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Propició un clima de colaboración y respeto entre los participantes]</th>     
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Explicó con claridad las instrucciones de las actividades realizadas]</th>
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Tuvo un control adecuado del grupo]</th>
+                                                <th>Evalúe el desempeño del INSTRUCTOR [Al inicio del curso, explicó los criterios de evaluación del curso]</th>
+                                                <th>Evalúe el CONTENIDO del curso [Los conocimientos expuestos en el curso son aplicables a las actividades que realiza en su puesto de trabajo]</th>
+                                                <th>Evalúe el CONTENIDO del curso [Considera que el contenido del curso fue suficiente para cumplir con el objetivo de aprendizaje]</th>
+                                                <th>Evalúe el CONTENIDO del curso [El curso cubrió sus expectativas]</th>
+                                                <th>Evalúe el CONTENIDO del curso [El contenido aumentó sus conocimientos y comprensión del tema expuesto]</th>
+                                                <th>Evalúe el CONTENIDO del curso [El contenido del curso se apega a los programas seleccionados por la Autoridad Aeronáutica]</th>
+                                                <th>Evalúe el CONTENIDO del curso [La duración de la o las sesiones fue suficiente para cumplir el objetivo de aprendizaje]</th>
+                                                <th>Evalúe el desempeño del COORDINADOR [El  tiempo con el que recibió la información (invitación, temario, etc.) del curso fue adecuado]</th>
+                                                <th>Evalúe el desempeño del COORDINADOR [La Autoridad Aeronáutica proporcionó los medios necesarios para la asistencia al curso]</th>
+                                                <th>Evalúe el desempeño del COORDINADOR [¿Cómo fue el servicio de café proporcionado?]</th>
+                                                <th>Evalúe el desempeño del COORDINADOR [La disponibilidad del coordinador para responder dudas sobre el servicio fue adecuada]</th>
+                                                <th>Evalúe las INSTALACIONES Y MATERIAL [¿Cómo fue el material didáctico (manual, rotafolios, audiovisuales, presentación) utilizado?]</th>
+                                                <th>Evalúe las INSTALACIONES Y MATERIAL [El material de la sesión se entregó en tiempo]</th>
+                                                <th>Evalúe las INSTALACIONES Y MATERIAL [¿Cómo fueron las condiciones del aula para la impartición de la sesión (luz, ventilación, limpieza, comodidad, etc.) ?]</th> 
+                                                <th>Mencione algunos de los aprendizajes adquiridos en esta acción de capacitación y sus beneficios</th>
+                                                <th>Mencione alguna mejora que se pudiera realizar a este proceso de aprendizaje</th>
+                                                <th>Si recibió capacitación en un Centro de Capacitación Nacional o Internacional, usted recomienda dicho centro para continuar como proveedor de la Autoridad Aeronáutica Mexicana.</th>
+                                                <th>Comentarios u observaciones generales del curso</th>
+                                                <th>Nombre del curso:</th>
+                                                <th>Grupo del curso:</th>
+                                                <th>Fecha de inicio del curso</th>
+                                                <th>Fecha de término del curso:</th>
+                                                <th>Nombre de la/el coordinador(a):</th>
+                                                <th>Nombre de el/la instructor(a):</th>
+                                                <th>Evalúe las INSTALACIONES Y MATERIAL [La conexión de internet fue la adecuada para comprender la información transmitida durante la o las sesiones en linea ]</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -232,7 +242,7 @@ $(document).ready(function() {
         buttons: [{
                 extend: 'copy',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
                 }
             },
             {
@@ -240,7 +250,7 @@ $(document).ready(function() {
                 text: 'Generar PDF',
                 messageTop: 'BASE DE DATOS INSPECTORES',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
                 },
                 download: 'open',
                 header: true,
@@ -277,7 +287,7 @@ $(document).ready(function() {
                 extend: 'excel',
                 text: 'Generar Excel',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
                 }
             }
 

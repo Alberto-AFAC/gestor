@@ -11,7 +11,7 @@ session_start();
         }
 
         $id = $_SESSION['usuario']['id_usu'];
-        $query="SELECT * FROM privilegio WHERE n_empleado = $id AND estado = 0 or n_empleado = $id AND estado=3 ";
+        $query="SELECT * FROM privilegio WHERE n_empleado = $id AND estado = 0 or n_empleado = $id AND estado=3";
         $resultado= mysqli_query($conexion,$query);
         if($resultado->num_rows==0){
         // header('Location: ../');
@@ -280,9 +280,10 @@ session_start();
                 name="privi_lingui" id="privi_lingui" type="text" data-live-search="true">
                 <option value="x" selected>SIN ACCESO</option>
                 <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                <option value="ADMINISTRADOR_EVALUADORES">ADMINISTRADOR EVALUADORES</option>
                 <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                 <option value="EVALUADOR">EVALUADOR</option>
-                <option value="LICENCIAS">LICENCIAS</option>
+                <option value="SINODAL">SINODAL</option> 
                 </select>
                 </div>
                 </div>

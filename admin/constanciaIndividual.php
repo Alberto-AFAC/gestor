@@ -51,19 +51,19 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     if($con['gstCntnc'] == 'CONSTANCIA1' && $conteoStr >= 100){
         echo "<div style='text-align: center;'>
         <p class='CIAAC'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
-        <p class='otorga'>Otorga la presente</p>
+        <p class='otorga'>Otorga la presente4</p>
         <p class='titulo-certificado'>{$con['gstCntnc']}</p>
         <p class='nombre-persona'>Al C:. <span
         class='nombre-pConstancia'>{$nombresCompletos}</span></p>
         <p class='otorga'>Por haber aprobado satisfactoriamente el curso:</p>
         <p class='nombre-Constancia'>{$con['gstTitlo']}</p> 
-        <p class='nombre-grupo-max'><span style='color:black;'>Grupo:</span>{$con['codigo']}</p>
+        <p class='nombre-grupo-max'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
         </p><span class='p-2'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
         al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br><br>
 
         <div class='caja'>
-        <p style='margin-bottom: -20px;' class='p-2'>Directora del CIAAC1:</p></div>
-       <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 400px; position: absolute; right: 45%;'></center>
+        <p style='margin-bottom: -20px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 400px; position: absolute; right: 45%;'></center>
         </div>
 
         <div style='padding-top: 9px; text-align: center;'>
@@ -71,7 +71,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <div class='column left'>
         </div>
         <div class='column middle'>
-        <br><br><br>
+        <br><br><br><br>
         <span style='font-size: 11px; font-weight: bold; color: #996633;'
         class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
         Adiestramiento de
@@ -79,13 +79,15 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <span style='font-weight: bold;' class='p-2'>Mtra. Jessica Berenice Castañeda Gutierrez</span><br>
         </div>
         <div class='column right'>
+
         </div>
         </div>
         </div>
+
         <p class='codigo-curso' style='margin-top:-1.1em;'>Código del curso: {$con['codigo']}</p>
 
         <p class='p-3'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
-        {$con['gstTitlo']}</span>, Grupo: {$con['codigo']}, que a
+        {$con['gstTitlo']}</span>, Grupo: {$con['grupo']}, que a
         continuación se enlistan:</p>
         </div>
 
@@ -99,9 +101,9 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <div class='footer-constancia'>
 
         <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 222px; width: 300px; position: absolute; left: 13%;'>
-        <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
+        <div class='caja1'><span>Lic. Viridiana Montserrat Hernández Piña<br>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
-    <   p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguridad: {$llave}</p>
+        <p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguridad: {$llave}</p>
         </div>";
     }else if($con['gstCntnc'] == 'CONSTANCIA1' && $conteoStr <= 99){
 
@@ -113,25 +115,25 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         class='nombre-Constancia-Min'>{$nombresCompletos}</span></p>
         <p class='otorga'>Por haber participado satisfactoriamente el curso:</p>
         <p class='nombre-Curso-Min'>{$con['gstTitlo']}</p> 
-        <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['codigo']}</p>
+        <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
         </p><span class='p-2'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
         al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br><br>
         <div class='caja'>
 
-        <p style='margin-bottom: -20px;' class='p-2'>Directora del CIAAC2:</p></div>
-        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top: 0.4em; width: 400px; position: absolute; right: 45%;'></center>
+        <p style='margin-bottom: -70px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-10px; width: 400px; position: absolute; right: 45%;'></center>
         </div>
 
         <div style='padding-top: 9px; text-align: center;'>
-        <div class='row'>
-        <div class='column left'>
-        </div>
-        <div class='column middle'>
-        <br><br><br><br><br>
-        <span style='font-size: 13px; font-weight: bold; color: #996633;padding-left: -50px;'
-        class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+            <div class='row'>
+                <div class='column left'>
+                </div>
+                <div class='column middle'>
+                <br><br><br><br><br>
+                <span style='font-size: 13px; font-weight: bold; color: #996633;padding-left: -50px;margin-top:-10px '
+                class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil–Centro Internacional de
         Adiestramiento de
-        Aviación Civil / SCT-AFAC-CIAAC</span><br>
+        Aviación Civil / SCT-AFAC-CIAAC</span> <br>
         <span style='font-weight: bold;' class='p-2'>Mtra. Jessica Berenice Castañeda Gutierrez</span><br>
         </div>
         <div class='column right'>
@@ -140,27 +142,26 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>
         </div>
         <p style='padding-top:-6%;' class='codigo-curso'>Código del curso: {$con['codigo']}</p>
-        <p class='p-3'>Este <span style='font-weight: bold;'>certificado</span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
-        {$con['gstTitlo']}</span>, Grupo: {$con['codigo']}, que a
+        <p class='p-3'>Este <span style='font-weight: bold;'><u>certificado</u></span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:
+        {$con['gstTitlo']}</span>, Grupo: {$con['grupo']}, que a
         continuación se enlistan:</p>
         </div>
-        
         <div class='footer-constancia-gold'>
-        <img src='../dist/img/firmas/Viridiana.jpg' style='margin-top:-25%; bottom: 242px; width: 250px; margin-left: 1%; padding-top:-6%;'>
+        <img src='../dist/img/firmas/Viridiana.jpg' style='margin-top:-35%; bottom: 242px; width: 300px; margin-left: 1%;'>
         
-        <p style='margin-top:-25%; padding-top:-6%; font-size: 12px; font-weight: bold; color: #996633;'
+        <p style='margin-top:-25%; padding-top:-25%; font-size: 12px; font-weight: bold; color: #996633;'
         class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro</p>
-        <p style='margin-top:-25%; padding-top:-22%; font-size: 12px; font-weight: bold; color: #996633;'
+        <p style='margin-top:-25%; padding-top:-40%; font-size: 12px; font-weight: bold; color: #996633;'
         class=''>Internacional de Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p>
         </div>
         <div class='footer-constancia'>
         
-        <div class='caja1'><span>Lic. Viridiana Monserrat Hernández Piña<br>Subdirectora de Diseño Pedagógico de Programas Aeronáuticos<br>
+        <div class='caja1'><span>Lic. Viridiana Montserrat Hernández Piña<br>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos<br>
         Centro Internacional de Adiestramiento de Aviación Civil</span></div>
         <p style='font-size: 18px; text-align: right;' class='p-2'>Cadena de Seguirdad: {$llave}</p>
         </div>
         ";
-    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100){
+    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE'){
         echo "<div style='text-align: center;'>
         <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
         <p class='' style='text-align:center;padding-top:-35px;font-size:30px'>Otorga la presente</p>
@@ -170,7 +171,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p style='padding-top:-30px;' class='nombre-Constancia'>{$con['gstTitlo']}</p> 
         <p class='nombre-grupo-Min'style='padding-top:10px;'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
         </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
-        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br><br>
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br><br>
 
         <div class='caja'>
             <p style='margin-bottom: -40px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
@@ -201,7 +202,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             <img src='../dist/img/firmas/Viridiana.jpg' style='padding-top:65%; width: 300px; position: absolute; left: 16%;'>
             
         </div>";
-    }else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99){
+    }else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99 && $con['comparativo']=='DIFERENTE'){
         echo "
         <div style='text-align: center;'>
             <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
@@ -211,7 +212,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             <p class='otorga' style='font-family: Montserrat-Light;padding-top:-40px;'>Por haber aprobado el curso de:</p>
             <p class='nombre-Curso-Min' style='padding-top:-36px;'>{$con['gstTitlo']}</p>
             <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
-            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']} al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.
+            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']} al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).
             <div class='caja'>
             <p style='margin-bottom: -20px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
             <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-10px; width:400px; position: absolute; right: 45%;'></center>
@@ -240,7 +241,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             <p style='font-size:18px;position: absolute;padding-top:86%;left:8%;font-family: Montserrat-Light'>Centro Internacional de Adiestramiento de Aviación Civil</p>
             <img src='../dist/img/firmas/Viridiana.jpg' style='padding-top:65%; width: 300px; position: absolute; left: 16%;'>
         </div>";
-    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100){
+    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE'){
         echo "<div style='text-align: center;'>
         <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
         <p class='' style='text-align:center;padding-top:-35px;font-size:30px'>Otorga la presente</p>
@@ -250,7 +251,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p style='padding-top:-30px;' class='nombre-Constancia'>{$con['gstTitlo']}</p> 
         <p class='nombre-grupo-Min'style='padding-top:10px;'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
         </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
-        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br>
+        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>
 
         <div class='caja'>
             <p style='margin-bottom: -40px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
@@ -282,7 +283,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             
         </div>";
 
-    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 99){
+    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 99 && $con['comparativo']=='DIFERENTE'){
         echo "<div style='text-align: center;'>
         <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
         <p class='' style='text-align:center;padding-top:-33px;font-size:30px'>Otorga el presente</p>
@@ -291,7 +292,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p class='otorga' style='font-family: Montserrat-Light;padding-top:-40px;'>Por haber aprobado el curso de:</p>
         <p class='nombre-Curso-Min' style='padding-top:-36px;'>{$con['gstTitlo']}</p>
             <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
-            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']} al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['gstDrcin']}.</span><br>
+            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']} al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>
         <div class='caja'>
         <p style='margin-bottom: -20px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
             <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-10px; width:400px; position: absolute; right: 45%;'></center>
@@ -311,7 +312,126 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
         <div style='page-break-before:always;'></div>
-      <p class='p-3' style='font-family: Montserrat-Light'>Este <span style='font-weight: bold;'>reconocimiento</span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:{$con['gstTitlo']}</span>, Grupo: {$con['grupo']}, que a continuación se enlistan:</p>
+     
+        <div>
+            <p style='font-size:7px; font-weight: bold; color: #996633;position: absolute;padding-top:83%;font-family: Montserrat'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p>
+            <p style='font-size:18px;position: absolute;padding-top:82%;left:13%;font-family:Montserrat;'>Lic. Viridiana Montserrat Hernández Piña</p>
+            <p style='font-size:18px;position: absolute;padding-top:84%;left:6%;font-family: Montserrat-Light'>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos</p>
+            <p style='font-size:18px;position: absolute;padding-top:86%;left:8%;font-family: Montserrat-Light'>Centro Internacional de Adiestramiento de Aviación Civil</p>
+            <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 335px; width: 300px; position: absolute; left: 16%;'>
+        </div>";
+        
+        //----------------------------------DESDE AQUI--------------------------------
+    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100 && $con['comparativo']=='IGUAL'){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='' style='text-align:center;padding-top:-35px;font-size:30px'>Otorga la presente</p>
+        <p style='padding-bottom: 0px;font-family: Montserrat;font-size:45px;padding-top:-35px;' class='titulo-certificado'><b>C E R T I F I C A D O</b></p>
+        <p style='padding-top:-30px;' class='nombre-persona'>A:<span class='nombre-pConstancia'>{$nombresCompletos}</span></p>
+        <p class='otorga' style='font-family: Montserrat-Light;padding-top:-34px;'>Por haber aprobado satisfactoriamente el curso:</p>
+        <p style='padding-top:-30px;' class='nombre-Constancia'>{$con['gstTitlo']}</p> 
+        <p class='nombre-grupo-Min'style='padding-top:10px;'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
+        </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, el {$con['dia']} de {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br><br>
+
+        <div class='caja'>
+            <p style='margin-bottom: -40px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
+            <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-10px; width:400px; position: absolute; right: 45%;'></center>
+        </div>
+        <div style='padding-top: 9px; text-align: center;'>
+            <div class='row'>
+                <div class='column left'>
+                </div>
+            <div class='column middle'>
+                <br><br><br><br>
+                <span style='font-size: 10px; font-weight: bold; color: #996633;padding-left: -50px;margin-top:-10px' class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+                Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</span><br>
+                <span style='font-family: Montserrat-Light;text-align:center' class='p-2'>Mtra. Jessica Berenice Castañeda Gutierrez</span><br>
+            </div>
+        </div>
+        <p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
+        <p class='codigo-curso' style='margin-top:20px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
+        </div>
+        <div style='page-break-before:always;'></div>
+        <p class='p-3' style='font-family: Montserrat-Light'>Este <span style='font-weight: bold;'>certificado</span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:{$con['gstTitlo']}</span>, Grupo: {$con['grupo']}, que a continuación se enlistan:</p>
+        
+        <div>
+            <p style='font-size:7px; font-weight: bold; color: #996633;position: absolute;padding-top:83%;font-family: Montserrat'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p>
+            <p style='font-size:18px;position: absolute;padding-top:82%;left:13%;font-family:Montserrat;'>Lic. Viridiana Montserrat Hernández Piña</p>
+            <p style='font-size:18px;position: absolute;padding-top:84%;left:6%;font-family: Montserrat-Light'>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos</p>
+            <p style='font-size:18px;position: absolute;padding-top:86%;left:8%;font-family: Montserrat-Light'>Centro Internacional de Adiestramiento de Aviación Civil</p>
+            <img src='../dist/img/firmas/Viridiana.jpg' style='padding-top:65%; width: 300px; position: absolute; left: 16%;'>
+            
+        </div>";
+    }else if($con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99 && $con['comparativo']=='IGUAL'){
+        echo "
+        <div style='text-align: center;'>
+            <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+            <p class='' style='text-align:center;padding-top:-35px;font-size:30px'>Otorga el presente</p>
+            <p style='padding-bottom: 0px;font-family: Montserrat;font-size:45px;padding-top:-35px;' class='titulo-certificado'><b>C E R T I F I C A D O</b></p>
+            <p style='padding-top:-22px;' class='nombre-persona'>A:<span class='nombre-Constancia-Min' >{$nombresCompletos}</span></p>
+            <p class='otorga' style='font-family: Montserrat-Light;padding-top:-40px;'>Por haber aprobado el curso de:</p>
+            <p class='nombre-Curso-Min' style='padding-top:-36px;'>{$con['gstTitlo']}</p>
+            <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
+            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, el {$con['dia']} de {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).
+            <div class='caja'>
+            <p style='margin-bottom: -20px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
+            <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-10px; width:400px; position: absolute; right: 45%;'></center>
+        </div>
+        <div style='padding-top: 9px; text-align: center;'>
+            <div class='row'>
+                <div class='column left'>
+                </div>
+            <div class='column middle'>
+                <br><br><br><br>
+                <span style='font-size: 10px; font-weight: bold; color: #996633;padding-left: -50px;margin-top:-10px' class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+                Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</span><br>
+                <span style='font-family: Montserrat-Light;text-align:center' class='p-2'>Mtra. Jessica Berenice Castañeda Gutierrez</span><br>
+            </div>
+        </div>
+        <p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
+        <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
+        </div>
+        <div style='page-break-before:always;'></div>
+        <p class='p-3' style='font-family: Montserrat-Light'>Este <span style='font-weight: bold;'>certificado</span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:{$con['gstTitlo']}</span>, Grupo: {$con['grupo']}, que a continuación se enlistan:</p>
+        
+        <div>
+            <p style='font-size:7px; font-weight: bold; color: #996633;position: absolute;padding-top:83%;font-family: Montserrat'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p>
+            <p style='font-size:18px;position: absolute;padding-top:82%;left:13%;font-family:Montserrat;'>Lic. Viridiana Montserrat Hernández Piña</p>
+            <p style='font-size:18px;position: absolute;padding-top:84%;left:6%;font-family: Montserrat-Light'>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos</p>
+            <p style='font-size:18px;position: absolute;padding-top:86%;left:8%;font-family: Montserrat-Light'>Centro Internacional de Adiestramiento de Aviación Civil</p>
+            <img src='../dist/img/firmas/Viridiana.jpg' style='padding-top:65%; width: 300px; position: absolute; left: 16%;'>
+        </div>";
+    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100 && $con['comparativo']=='IGUAL'){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='' style='text-align:center;padding-top:-35px;font-size:30px'>Otorga la presente</p>
+        <p style='padding-bottom: 0px;font-family: Montserrat;font-size:45px;padding-top:-35px;' class='titulo-certificado'><b>R E C O N O C I M I E N T O</b></p>
+        <p style='padding-top:-30px;' class='nombre-persona'>A:<span class='nombre-pConstancia'>{$nombresCompletos}</span></p>
+        <p class='otorga' style='font-family: Montserrat-Light;padding-top:-34px;'>Por haber aprobado satisfactoriamente el curso:</p>
+        <p style='padding-top:-30px;' class='nombre-Constancia'>{$con['gstTitlo']}</p> 
+        <p class='nombre-grupo-Min'style='padding-top:10px;'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
+        </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, el {$con['dia']} de {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>
+
+        <div class='caja'>
+            <p style='margin-bottom: -40px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
+            <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-10px; width:400px; position: absolute; right: 45%;'></center>
+        </div>
+        <div style='padding-top: 9px; text-align: center;'>
+            <div class='row'>
+                <div class='column left'>
+                </div>
+            <div class='column middle'>
+                <br><br><br><br><br>
+                <span style='font-size: 10px; font-weight: bold; color: #996633;padding-left: -50px;margin-top:-10px' class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+                Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</span><br>
+                <span style='font-family: Montserrat-Light;text-align:center' class='p-2'>Mtra. Jessica Berenice Castañeda Gutierrez</span><br>
+            </div>
+        </div>
+        <p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
+        <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
+        </div>
+        <div style='page-break-before:always;'></div>
+        <p class='p-3' style='font-family: Montserrat-Light'>Este <span style='font-weight: bold;'>reconocimiento</span> ampara los temas visto en el <span style='font-weight: bold;'>Curso:{$con['gstTitlo']}</span>, Grupo: {$con['grupo']}, que a continuación se enlistan:</p>
         
         <div>
             <p style='font-size:7px; font-weight: bold; color: #996633;position: absolute;padding-top:83%;font-family: Montserrat'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p>
@@ -319,6 +439,45 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             <p style='font-size:18px;position: absolute;padding-top:84%;left:6%;font-family: Montserrat-Light'>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos</p>
             <p style='font-size:18px;position: absolute;padding-top:86%;left:8%;font-family: Montserrat-Light'>Centro Internacional de Adiestramiento de Aviación Civil</p>
             <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 360px; width: 300px; position: absolute; left: 16%;'>
+            
+        </div>";
+
+    }else if($con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 99 && $con['comparativo']=='IGUAL'){
+        echo "<div style='text-align: center;'>
+        <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
+        <p class='' style='text-align:center;padding-top:-33px;font-size:30px'>Otorga el presente</p>
+        <p style='padding-bottom: 0px;font-family: Montserrat;font-size:45px;padding-top:-35px;' class='titulo-certificado'><b>R E C O N O C I M I E N T O</b></p>
+        <p style='padding-top:-20px;' class='nombre-persona'>A:<span class='nombre-Constancia-Min' >{$nombresCompletos}</span></p>
+        <p class='otorga' style='font-family: Montserrat-Light;padding-top:-40px;'>Por haber aprobado el curso de:</p>
+        <p class='nombre-Curso-Min' style='padding-top:-36px;'>{$con['gstTitlo']}</p>
+            <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
+            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, el {$con['dia']} de {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>
+        <div class='caja'>
+        <p style='margin-bottom: -20px;' class='p-2'>Encargada del Despacho del CIAAC:</p></div>
+            <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-10px; width:400px; position: absolute; right: 45%;'></center>
+        </div>
+        <div style='padding-top: 9px; text-align: center;'>
+            <div class='row'>
+                <div class='column left'>
+                </div>
+            <div class='column middle'>
+                <br><br><br><br><br>
+                <span style='font-size: 10px; font-weight: bold; color: #996633;padding-left: -50px;margin-top:-10px' class='p-2'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de
+                Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</span><br>
+                <span style='font-family: Montserrat-Light;text-align:center' class='p-2'>Mtra. Jessica Berenice Castañeda Gutierrez</span><br>
+            </div>
+        </div>
+        <p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
+        <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
+        </div>
+        <div style='page-break-before:always;'></div>
+     
+        <div>
+            <p style='font-size:7px; font-weight: bold; color: #996633;position: absolute;padding-top:83%;font-family: Montserrat'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p>
+            <p style='font-size:18px;position: absolute;padding-top:82%;left:13%;font-family:Montserrat;'>Lic. Viridiana Montserrat Hernández Piña</p>
+            <p style='font-size:18px;position: absolute;padding-top:84%;left:6%;font-family: Montserrat-Light'>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos</p>
+            <p style='font-size:18px;position: absolute;padding-top:86%;left:8%;font-family: Montserrat-Light'>Centro Internacional de Adiestramiento de Aviación Civil</p>
+            <img src='../dist/img/firmas/Viridiana.jpg' style='bottom: 335px; width: 300px; position: absolute; left: 16%;'>
         </div>";
     }
 

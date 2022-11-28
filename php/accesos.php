@@ -7,7 +7,7 @@
 	$n = 0;
 	$sql = 
 	"SELECT gstNmpld FROM personal 
-	 WHERE personal.gstIdper = '".$id."' && personal.estado = 0 ";
+	 WHERE personal.gstIdper = '".$id."' && personal.estado IN (0,3) ";
    $persona = mysqli_query($conexion,$sql);
    $datos = mysqli_fetch_row($persona);
 

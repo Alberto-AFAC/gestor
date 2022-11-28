@@ -26,7 +26,6 @@ ini_set('date.timezone','America/Mexico_City');
 	MONTH ( fechaf ) AS mesfinal,
 	cursos.modalidad,
 CASE
-		
 		WHEN MONTH ( fcurso ) = 1 THEN
 		'enero' 
 		WHEN MONTH ( fcurso ) = 2 THEN
@@ -79,7 +78,13 @@ CASE
 		WHEN MONTH ( fechaf ) = 12 THEN
 		'diciembre' ELSE 'MES NO VALIDO' 
 	END AS mesfinales,
-	cursos.grupo 
+	cursos.grupo,
+	LEFT(gstDrcin, 3) AS duracion,
+	CASE
+	WHEN fcurso=fechaf THEN 
+	'IGUAL' ELSE 
+	'DIFERENTE'
+	END AS comparativo
 FROM
   personal
 	INNER JOIN cursos ON cursos.idinsp = personal.gstIdper 

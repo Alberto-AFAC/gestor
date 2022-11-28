@@ -1,0 +1,442 @@
+15/SEP/2022 a las 12:40:47 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Alejandro Magallon
+Correo usuario: alejandro.magallon@afac.gob.mx
+Comentario:Prueba
+_____________________________
+19/SEP/2022 a las 09:37:35 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Fernando Leal Olivares
+Correo usuario: fernando.leal@aeropuertodetoluca.com.mx
+Comentario:Enterado de la Circular Obligatoria y aceptado por parte del AIT.
+_____________________________
+19/SEP/2022 a las 09:37:40 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Fernando Leal Olivares
+Correo usuario: fernando.leal@aeropuertodetoluca.com.mx
+Comentario:Enterado de la Circular Obligatoria y aceptado por parte del AIT.
+_____________________________
+19/SEP/2022 a las 09:37:45 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Fernando Leal Olivares
+Correo usuario: fernando.leal@aeropuertodetoluca.com.mx
+Comentario:Enterado de la Circular Obligatoria y aceptado por parte del AIT.
+_____________________________
+23/SEP/2022 a las 10:07:44 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Aeropuertos del Sureste
+Correo usuario: fmoreno@asur.com.mx
+Comentario:Estamos de acuerdo con la Circular Obligatoria CO SA-10/22 que establece los lineamientos para la implementación del programa de gestión del peligro que representa la fauna silvestre en los aeródromos de México.
+Pero nos gustaría saber los motivos por los cuales no fueron consideradas algunas de nuestros comentarios.
+Saludos,
+_____________________________
+23/SEP/2022 a las 12:07:32 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Nayeli Flores Guadarrama
+Correo usuario: nflores@aicm.com.mx
+Comentario:Pronunciamiento: Aceptación
+_____________________________
+23/SEP/2022 a las 12:07:35 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Nayeli Flores Guadarrama
+Correo usuario: nflores@aicm.com.mx
+Comentario:Pronunciamiento: Aceptación
+_____________________________
+23/SEP/2022 a las 12:07:41 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Nayeli Flores Guadarrama
+Correo usuario: nflores@aicm.com.mx
+Comentario:Pronunciamiento: Aceptación
+_____________________________
+23/SEP/2022 a las 12:08:55 Se comento:
+Persona fisica
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Nayeli Flores Guadarrama
+Correo usuario: nflores@aicm.com.mx
+Comentario:Pronunciamiento: Aceptación
+_____________________________
+23/SEP/2022 a las 21:25:39 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:************EN DESACUERDO CON COMENTARIOS***********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:25:49 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:************EN DESACUERDO CON COMENTARIOS***********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:25:50 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:************EN DESACUERDO CON COMENTARIOS***********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:25:51 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:************EN DESACUERDO CON COMENTARIOS***********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:25:52 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:************EN DESACUERDO CON COMENTARIOS***********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:25:53 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:************EN DESACUERDO CON COMENTARIOS***********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:26:05 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:************EN DESACUERDO CON COMENTARIOS***********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:26:28 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:***********EN DESACUERDO CON COMENTARIOS**********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:26:29 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:***********EN DESACUERDO CON COMENTARIOS**********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:26:30 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:***********EN DESACUERDO CON COMENTARIOS**********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:26:31 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:***********EN DESACUERDO CON COMENTARIOS**********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:26:32 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:***********EN DESACUERDO CON COMENTARIOS**********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________
+23/SEP/2022 a las 21:26:33 Se comento:
+Persona moral
+Nombre archivo: 25_CO_SA-10-22
+Nombre usuario: Grupo Aeroportuario del PacÃ­fico, S.A.B. de C. V. 
+Correo usuario: cmenendez@aeropuertosgap.com.mx
+Comentario:***********EN DESACUERDO CON COMENTARIOS**********
+
+-	Primer párrafo del numeral 6.4.9:
+
+Se sugiere mantener la redacción original respecto a que se ?podrá?, y no estipular el ?deberá? de considerar dentro del SMS la evaluación de riesgos de SO relativos a la fauna silvestre, ya que los puntos de este numeral buscan especificar el cómo se deberá gestionar este peligro particular a través de agregar criterios y requisitos que no se contemplan dentro de la NOM, los cuáles tendrían un impacto significativo dentro del sistema. Un ejemplo de esto se puede visualizar en la matriz de riesgo, la cual tendría que considerar tener una especifica asociada a la evaluación del peligro por fauna y que podría entrar en conflicto con la matriz de riesgos de seguridad operacional que actualmente se tiene.
+A fin de poder atender todos los puntos señalados respecto a la gestión del peligro de la fauna silvestre y dejarlo al nivel de un documento especializado, se propone que todas las especificaciones requeridas se traten a través de un documento independiente (plan de gestión/PGPRFS) que permita abarcar lo señalado en la circular y que se especifique dentro de dicho plan la forma en que este se comunicará con el SMS, sin que se tenga un impacto en cómo se tiene actualmente estructurada la gestión de riesgos de seguridad operacional del sistema.
+
+-	Quinto párrafo del numeral 6.4.9 y todos sus incisos:
+
+Todos estos puntos representan criterios adicionales para desarrollar la Gestión de Riesgos dentro del SMS, requiriendo que el procedimiento definido contemple particularidades importantes a los temas de fauna. El abordar estos puntos a través de un documento independiente que se comunique con el SMS para la determinación de nuevos controles o medidas de mitigación podría facilitar la gestión específica del peligro de la fauna silvestre, sin representar una alteración en la atención de peligros que no sean generados por la fauna.
+
+-	Primera viñeta del numeral 6.4.9.1:
+
+Este numeral incluye un criterio adicional que debería desarrollarse dentro del SMS (inventario de los atrayentes), sin embargo, consideramos que lo mejor es que esta actividad forme parte solo del PGPRFS y se tome como referencia para la evaluación del riesgo que se realizan en el SMS, sin afectar los criterios ya definidos en el sistema.
+
+-	Segunda viñeta del numeral 6.4.9.1:
+
+Esta viñeta representa un criterio adicional para el SMS, mismo que no se contempla actualmente en la NOM. Se recomienda que este plan de gestión para reducir el atractivo en el interior del aeródromo forme parte del PGPRFS y quede fuera del SMS.
+
+-	Décimo segunda viñeta del numeral 6.4.9.1:
+
+Esto constituye un criterio para el SMS que no se considera dentro de la NOM, por lo que se sugiere que forme parte del PGPRFS y quede fuera del SMS.
+
+_____________________________

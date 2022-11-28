@@ -68,22 +68,53 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
     </div>
     <img src='<?php echo $base64 ?>' style='margin-top:-3em; margin-left:-2.9em; height:185px; width:115%;'/>
     <?php
-    if($con['gstCntnc'] == 'CONSTANCIA'){
+    if($con['gstCntnc'] == 'CONSTANCIA' && $con['comparativo']=='DIFERENTE'){
         echo "<p style='text-align:center;font-size:40px;font-family: Montserrat-Light' class='CIAAC'>El Centro Internacional de Adiestramiento</p>
         <p style='text-align:center;font-size:45px;padding-top:-3%;font-family: Montserrat-Light' class='CIAAC'>de Aviación Civil</p>
         <p style='text-align:center;font-size:26px;font-family: Montserrat-Light' class='CIAAC'>Otorga la presente</p>
-        <p style='text-align:center;font-size:55px;font-family: '>C O N S T A N C I A</p>
+        <p style='text-align:center;font-size:55px;padding-top:-1%;'>C O N S T A N C I A</p>
         <p style='text-align:center;font-size:40px;' class='CIAAC'>A: <span style='color:blue'>{$nombresCompletos}</span></p>
         <p style='text-align:center;font-size:28px;' class='CIAAC'>Por haber aprobado el curso de:</p>
         <p style='text-align:center;font-size:33px;' class='CIAAC'>{$con['gstTitlo']}</p>
-        <p style='text-align:center;font-size:30px;' class='CIAAC'>GRUPO: <span style='color:blue'>{$con['grupo']}</span></p>
-        <p style='text-align:center;font-size:28px;' class='CIAAC'> Impartido el Fecha de Impartición, con una duración horas.</p>
+        <p style='text-align:center;font-size:30px;padding-top:-1%;' class='CIAAC'>GRUPO: <span style='color:blue'>{$con['grupo']}</span></p>
+        <p style='text-align:center;font-size:26px;padding-top:-1%;' class='CIAAC'> Impartido del {$con['dia']} de {$con['mesnombre']}
+        al {$con['diafinal']} de {$con['mesfinales']} del {$con['ano']}, con una duración de {$con['duracion']} hora(s)</p>
         <p style='text-align:center;font-size:22px;' class='CIAAC'>Encargada del Despacho del CIAAC:</p>
         <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
         <br><br><br><br><br>
         <p style='text-align:center;font-size:10px;color: #996633;padding-top:-1%' class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil–Centro Internacional deAdiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p> <br>
         <p style='text-align:center;font-size:22px;padding-top:-8%;'>Mtra. Jessica Berenice Castañeda Gutierrez</p>
-        <p style='font-size:18px;padding-top:3%;position:absolute'>CÓDIGO DEL CURSO:{$con['codigo']}</p>
+        <p style='font-size:18px;padding-top:4%;position:absolute'>FOLIO:{$con['codigo']}</p>
+        <p style='font-size:18px;padding-top:6%;position:absolute;color:gray'>F- CIAAC - CDPPA - 08 – R02</p>
+        <div style='page-break-before:always;'></div>
+        <p style='font-size:20px;margin: 2px 5px 8px 10px;font-weight:bold;'class='CIAAC'>La presente <strong>Constancia<strong> ampara los temas vistos en el curso:<strong style='font-size:20px'> {$con['gstTitlo']}</strong>, Grupo {$con['grupo']} que a continuación se enlistan:</p>
+        <div>
+        <img src='../dist/img/firmas/Viridiana.jpg' style='width: 300px; position: absolute; left: 18%;padding-top:69%'>
+            <p style='font-size:7px; font-weight: bold; color: #996633;position:absolute;padding-top:81%'>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil– Centro Internacional de Adiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p>
+            <p style='font-size:22px; font-weight:bold;position:absolute;padding-top:80%;left:15%;'>Lic. Viridiana Montserrat Hernández Piña</p>
+            <p style='font-size:20px;position:absolute;padding-top:82.5%;left:6%;'>Coordinadora de Diseño Pedagógico de Programas Aeronáuticos</p>
+            <p style='font-size:20px;position:absolute;padding-top:84%;left:8%;'>Centro Internacional de Adiestramiento de Aviación Civil</p>
+            
+            
+        <p style='font-size:18px;position: absolute;padding-top:97%;text-align: left'>Cadena de Seguridad: {$llave}</p>
+        <p style='font-size:18px;padding-top:99%;position:absolute;color:gray'>F- CIAAC - CDPPA - 08 – R02</p>
+        </div>";
+    }else if($con['gstCntnc'] == 'CONSTANCIA' && $con['comparativo']=='IGUAL'){
+        echo "<p style='text-align:center;font-size:40px;font-family: Montserrat-Light' class='CIAAC'>El Centro Internacional de Adiestramiento</p>
+        <p style='text-align:center;font-size:45px;padding-top:-3%;font-family: Montserrat-Light' class='CIAAC'>de Aviación Civil</p>
+        <p style='text-align:center;font-size:26px;font-family: Montserrat-Light' class='CIAAC'>Otorga la presente</p>
+        <p style='text-align:center;font-size:55px;padding-top:-1%;'>C O N S T A N C I A</p>
+        <p style='text-align:center;font-size:40px;' class='CIAAC'>A: <span style='color:blue'>{$nombresCompletos}</span></p>
+        <p style='text-align:center;font-size:28px;' class='CIAAC'>Por haber aprobado el curso de:</p>
+        <p style='text-align:center;font-size:33px;' class='CIAAC'>{$con['gstTitlo']}</p>
+        <p style='text-align:center;font-size:30px;padding-top:-1%;' class='CIAAC'>GRUPO: <span style='color:blue'>{$con['grupo']}</span></p>
+        <p style='text-align:center;font-size:26px;padding-top:-1%;' class='CIAAC'> Impartido el {$con['dia']} de {$con['mesnombre']}
+        del {$con['ano']}, con una duración de {$con['duracion']} hora(s)</p>
+        <p style='text-align:center;font-size:22px;' class='CIAAC'>Encargada del Despacho del CIAAC:</p>
+        <center><img src='../dist/img/firmas/directora.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
+        <br><br><br><br><br>
+        <p style='text-align:center;font-size:10px;color: #996633;padding-top:-1%' class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil–Centro Internacional deAdiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p> <br>
+        <p style='text-align:center;font-size:22px;padding-top:-8%;'>Mtra. Jessica Berenice Castañeda Gutierrez</p>
         <p style='font-size:18px;padding-top:4%;position:absolute'>FOLIO:{$con['codigo']}</p>
         <p style='font-size:18px;padding-top:6%;position:absolute;color:gray'>F- CIAAC - CDPPA - 08 – R02</p>
         <div style='page-break-before:always;'></div>
@@ -122,6 +153,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             ?>
         <?php } ?>
         <p class="p-3">Promedio de aprovechamiento: <strong><?php echo $EvaluacionF ?> %</strong></p>
+        <span class="fecha-emision" style="font-family: Montserrat-Light;font-size:19px">Fecha de emisión: <?php echo $hoy ?> </span>
     </div>
     <!-- <br><br> -->
 

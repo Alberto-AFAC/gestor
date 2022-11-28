@@ -13,7 +13,7 @@
 	
 	$id = $_POST['datos'];
 
-	$query = "SELECT gstIdper,gstNombr,gstApell,gstNmpld FROM personal WHERE gstIdper = $id AND estado = 0 or gstIdper = $id AND estado = 3";
+	$query = "SELECT gstIdper,gstNombr,gstApell,gstNmpld FROM personal WHERE gstIdper = $id AND estado = 0 or gstIdper = $id AND estado = 3 ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -26,7 +26,7 @@
 
 		$quer_gtr = "SELECT privilegios FROM accesos WHERE id_usu = $iduser AND baja = 0";
 		$resl_gtr = mysqli_query($conexion, $quer_gtr);
-		$quer_ltc = "SELECT privilegio FROM formatoacceso WHERE id_acc = $iduser AND estado = 0 ";
+		$quer_ltc = "SELECT privilegio FROM formatoacceso WHERE id_acc = $iduser AND estado = 0";
 		$resl_ltc = mysqli_query($conexion, $quer_ltc);
 		$quer_mda = "SELECT privilegios FROM tecnico WHERE id_usu = $iduser AND baja = 0";
 		$resl_mda = mysqli_query($conexion2, $quer_mda);

@@ -1,0 +1,418 @@
+#conteiner1,#conteiner2,#conteiner3,#conteiner4,#conteiner5,#conteiner6,
+#conteiner7,#conteiner8,#conteiner9,#conteiner10,#conteiner11,#conteiner12,
+#conteiner13,#conteiner14,#conteiner15,#conteiner16,#conteiner17,#conteiner18,
+#conteiner19,#conteiner20,#conteiner21,#conteiner22,#conteiner23,#conteiner24,
+#conteiner25,#conteiner26,#conteiner27,#conteiner28,#conteiner29,#conteiner30,
+#conteiner31,#conteiner32,#conteiner33,#conteiner34,#conteiner35,#conteiner36,
+#conteiner37,#conteiner38,#conteiner39,#conteiner40,#conteiner41,#conteiner42,
+#conteiner43,#conteiner44,#conteiner45,#conteiner46,#conteiner47,#conteiner48,
+#conteiner49,#conteiner50,#conteiner51,#conteiner52,#conteiner53,#conteiner54,
+#conteiner55,#conteiner56,#conteiner57,#conteiner58,#conteiner59,#conteiner60,
+#conteiner61,#conteiner62,#conteiner63,#conteiner64,#conteiner65
+{
+margin: 1em auto;
+width: 1050px;
+text-align: center;
+}
+#navigation_controls{
+margin-top: 0.5em;
+}
+#my_pdf_viewer{
+float:left;
+}
+#canvas_container {
+width: 720px;
+height: 450px;
+overflow: auto;
+margin: 0 auto;
+}
+#canvas_container {
+background: #333;
+text-align: center;
+border: solid 3px;
+}
+#coment,#coment1,#coment2,#coment3,#coment4,#coment5,#coment6,
+#coment7,#coment8,#coment9,#coment10,#coment11,#coment12,#coment13,
+#coment14,#coment15,#coment16,#coment17,#coment18,#coment19,#coment20,
+#coment21,#coment22,#coment23,#coment24,#coment25,#coment26,#coment27,
+#coment28,#coment29,#coment30,#coment31,#coment32,#coment33,#coment34,#coment35,
+#coment36,#coment37,#coment38,#coment39,#coment40,#coment41,#coment42,#coment43,
+#coment44,#coment45,#coment46,#coment47,#coment48,#coment49,#coment50,#coment51,
+#coment52,#coment53,#coment54,#coment55,#coment56,#coment57,#coment58,#coment59,
+#coment60,#coment61,#coment62,#coment63,#coment64,#coment65
+{
+width: 30%;
+height: 450px;
+float: right;
+}
+#go_previous1,#go_next1,#zoom_in1,#zoom_out1,
+#go_previous2,#go_next2,#zoom_in2,#zoom_out2,
+#go_previous3,#go_next3,#zoom_in3,#zoom_out3, 
+#go_previous4,#go_next4,#zoom_in4,#zoom_out4,
+#go_previous5,#go_next5,#zoom_in5,#zoom_out5,
+#go_previous6,#go_next6,#zoom_in6,#zoom_out6,
+#go_previous7,#go_next7,#zoom_in7,#zoom_out7,
+#go_previous8,#go_next8,#zoom_in8,#zoom_out8,
+#go_previous9,#go_next9,#zoom_in9,#zoom_out9,
+#go_previous10,#go_next10,#zoom_in10,#zoom_out10,
+#go_previous11,#go_next11,#zoom_in11,#zoom_out11,
+#go_previous12,#go_next12,#zoom_in12,#zoom_out12,
+#go_previous13,#go_next13,#zoom_in13,#zoom_out13,
+#go_previous14,#go_next14,#zoom_in14,#zoom_out14,
+#go_previous15,#go_next15,#zoom_in15,#zoom_out15,
+#go_previous16,#go_next16,#zoom_in16,#zoom_out16,
+#go_previous17,#go_next17,#zoom_in17,#zoom_out17,
+#go_previous18,#go_next18,#zoom_in18,#zoom_out18,
+#go_previous19,#go_next19,#zoom_in19,#zoom_out19,
+#go_previous20,#go_next20,#zoom_in20,#zoom_out20,
+#go_previous21,#go_next21,#zoom_in21,#zoom_out21,
+#go_previous22,#go_next22,#zoom_in22,#zoom_out22,
+#go_previous23,#go_next23,#zoom_in23,#zoom_out23,
+#go_previous24,#go_next24,#zoom_in24,#zoom_out24,
+#go_previous25,#go_next25,#zoom_in25,#zoom_out25,
+#go_previous26,#go_next26,#zoom_in26,#zoom_out26,
+#go_previous27,#go_next27,#zoom_in27,#zoom_out27,
+#go_previous28,#go_next28,#zoom_in28,#zoom_out28,
+#go_previous29,#go_next29,#zoom_in29,#zoom_out29,
+#go_previous30,#go_next30,#zoom_in30,#zoom_out30,
+#go_previous31,#go_next31,#zoom_in31,#zoom_out31,
+#go_previous32,#go_next32,#zoom_in32,#zoom_out32,
+#go_previous33,#go_next33,#zoom_in33,#zoom_out33,
+#go_previous34,#go_next34,#zoom_in34,#zoom_out34,
+#go_previous35,#go_next35,#zoom_in35,#zoom_out35,
+#go_previous36,#go_next36,#zoom_in36,#zoom_out36,
+#go_previous37,#go_next37,#zoom_in37,#zoom_out37,
+#go_previous38,#go_next38,#zoom_in38,#zoom_out38,
+#go_previous39,#go_next39,#zoom_in39,#zoom_out39,
+#go_previous40,#go_next40,#zoom_in40,#zoom_out40,
+#go_previous41,#go_next41,#zoom_in41,#zoom_out41,
+#go_previous42,#go_next42,#zoom_in42,#zoom_out42,
+#go_previous43,#go_next43,#zoom_in43,#zoom_out43,
+#go_previous44,#go_next44,#zoom_in44,#zoom_out44,
+#go_previous45,#go_next45,#zoom_in45,#zoom_out45,
+#go_previous46,#go_next46,#zoom_in46,#zoom_out46,
+#go_previous47,#go_next47,#zoom_in47,#zoom_out47,
+#go_previous48,#go_next48,#zoom_in48,#zoom_out48,
+#go_previous49,#go_next49,#zoom_in49,#zoom_out49,
+#go_previous50,#go_next50,#zoom_in50,#zoom_out50,
+#go_previous51,#go_next51,#zoom_in51,#zoom_out51,
+#go_previous52,#go_next52,#zoom_in52,#zoom_out52,
+#go_previous53,#go_next53,#zoom_in53,#zoom_out53,
+#go_previous54,#go_next54,#zoom_in54,#zoom_out54,
+#go_previous55,#go_next55,#zoom_in55,#zoom_out55,
+#go_previous56,#go_next56,#zoom_in56,#zoom_out56,
+#go_previous57,#go_next57,#zoom_in57,#zoom_out57,
+#go_previous58,#go_next58,#zoom_in58,#zoom_out58,
+#go_previous59,#go_next59,#zoom_in59,#zoom_out59,
+#go_previous60,#go_next60,#zoom_in60,#zoom_out60,
+#go_previous61,#go_next61,#zoom_in61,#zoom_out61,
+#go_previous62,#go_next62,#zoom_in62,#zoom_out62,
+#go_previous63,#go_next63,#zoom_in63,#zoom_out63,
+#go_previous64,#go_next64,#zoom_in64,#zoom_out64,
+#go_previous65,#go_next65,#zoom_in65,#zoom_out65
+{
+padding: .375rem .75rem;
+border-radius: .25rem;
+background-color: #000;
+color: #fff;
+transition: background-color .15s ease-in-out;
+cursor: pointer;
+}
+
+#go_previous1:hover,#go_next1:hover,#zoom_in1:hover,#zoom_out1:hover,
+#go_previous1:focus,#go_next1:focus,#zoom_in1:focus,#zoom_out1:focus,
+#go_previous2:hover,#go_next2:hover,#zoom_in2:hover,#zoom_out2:hover,
+#go_previous2:focus,#go_next2:focus,#zoom_in2:focus,#zoom_out2:focus,
+#go_previous3:hover,#go_next3:hover,#zoom_in3:hover,#zoom_out3:hover,
+#go_previous3:focus,#go_next3:focus,#zoom_in3:focus,#zoom_out3:focus,
+#go_previous4:hover,#go_next4:hover,#zoom_in4:hover,#zoom_out4:hover,
+#go_previous4:focus,#go_next4:focus,#zoom_in4:focus,#zoom_out4:focus,
+#go_previous5:hover,#go_next5:hover,#zoom_in5:hover,#zoom_out5:hover,
+#go_previous5:focus,#go_next5:focus,#zoom_in5:focus,#zoom_out5:focus,
+#go_previous6:hover,#go_next6:hover,#zoom_in6:hover,#zoom_out6:hover,
+#go_previous6:focus,#go_next6:focus,#zoom_in6:focus,#zoom_out6:focus,
+#go_previous7:hover,#go_next7:hover,#zoom_in7:hover,#zoom_out7:hover,
+#go_previous7:focus,#go_next7:focus,#zoom_in7:focus,#zoom_out7:focus,
+#go_previous8:hover,#go_next8:hover,#zoom_in8:hover,#zoom_out8:hover,
+#go_previous8:focus,#go_next8:focus,#zoom_in8:focus,#zoom_out8:focus,
+#go_previous9:hover,#go_next9:hover,#zoom_in9:hover,#zoom_out9:hover,
+#go_previous9:focus,#go_next9:focus,#zoom_in9:focus,#zoom_out9:focus,
+#go_previous10:hover,#go_next10:hover,#zoom_in10:hover,#zoom_out10:hover,
+#go_previous10:focus,#go_next10:focus,#zoom_in10:focus,#zoom_out10:focus,
+#go_previous11:hover,#go_next11:hover,#zoom_in11:hover,#zoom_out11:hover,
+#go_previous11:focus,#go_next11:focus,#zoom_in11:focus,#zoom_out11:focus,
+#go_previous12:hover,#go_next12:hover,#zoom_in12:hover,#zoom_out12:hover,
+#go_previous12:focus,#go_next12:focus,#zoom_in12:focus,#zoom_out12:focus,
+#go_previous13:hover,#go_next13:hover,#zoom_in13:hover,#zoom_out13:hover,
+#go_previous13:focus,#go_next13:focus,#zoom_in13:focus,#zoom_out13:focus,
+#go_previous14:hover,#go_next14:hover,#zoom_in14:hover,#zoom_out14:hover,
+#go_previous14:focus,#go_next14:focus,#zoom_in14:focus,#zoom_out14:focus,
+#go_previous15:hover,#go_next15:hover,#zoom_in15:hover,#zoom_out15:hover,
+#go_previous15:focus,#go_next15:focus,#zoom_in15:focus,#zoom_out15:focus,
+#go_previous16:hover,#go_next16:hover,#zoom_in16:hover,#zoom_out16:hover,
+#go_previous16:focus,#go_next16:focus,#zoom_in16:focus,#zoom_out16:focus,
+#go_previous17:hover,#go_next17:hover,#zoom_in17:hover,#zoom_out17:hover,
+#go_previous17:focus,#go_next17:focus,#zoom_in17:focus,#zoom_out17:focus,
+#go_previous18:hover,#go_next18:hover,#zoom_in18:hover,#zoom_out18:hover,
+#go_previous18:focus,#go_next18:focus,#zoom_in18:focus,#zoom_out18:focus,
+#go_previous19:hover,#go_next19:hover,#zoom_in19:hover,#zoom_out19:hover,
+#go_previous19:focus,#go_next19:focus,#zoom_in19:focus,#zoom_out19:focus,
+#go_previous20:hover,#go_next20:hover,#zoom_in20:hover,#zoom_out20:hover,
+#go_previous20:focus,#go_next20:focus,#zoom_in20:focus,#zoom_out20:focus,
+#go_previous21:hover,#go_next21:hover,#zoom_in21:hover,#zoom_out21:hover,
+#go_previous21:focus,#go_next21:focus,#zoom_in21:focus,#zoom_out21:focus,
+#go_previous22:hover,#go_next22:hover,#zoom_in22:hover,#zoom_out22:hover,
+#go_previous22:focus,#go_next22:focus,#zoom_in22:focus,#zoom_out22:focus,
+#go_previous23:hover,#go_next23:hover,#zoom_in23:hover,#zoom_out23:hover,
+#go_previous23:focus,#go_next23:focus,#zoom_in23:focus,#zoom_out23:focus,
+#go_previous24:hover,#go_next24:hover,#zoom_in24:hover,#zoom_out24:hover,
+#go_previous24:focus,#go_next24:focus,#zoom_in24:focus,#zoom_out24:focus,
+#go_previous25:hover,#go_next25:hover,#zoom_in25:hover,#zoom_out25:hover,
+#go_previous25:focus,#go_next25:focus,#zoom_in25:focus,#zoom_out25:focus,
+#go_previous26:hover,#go_next26:hover,#zoom_in26:hover,#zoom_out26:hover,
+#go_previous26:focus,#go_next26:focus,#zoom_in26:focus,#zoom_out26:focus,
+#go_previous27:hover,#go_next27:hover,#zoom_in27:hover,#zoom_out27:hover,
+#go_previous27:focus,#go_next27:focus,#zoom_in27:focus,#zoom_out27:focus,
+#go_previous28:hover,#go_next28:hover,#zoom_in28:hover,#zoom_out28:hover,
+#go_previous28:focus,#go_next28:focus,#zoom_in28:focus,#zoom_out28:focus,
+#go_previous29:hover,#go_next29:hover,#zoom_in29:hover,#zoom_out29:hover,
+#go_previous29:focus,#go_next29:focus,#zoom_in29:focus,#zoom_out29:focus,
+#go_previous30:hover,#go_next30:hover,#zoom_in30:hover,#zoom_out30:hover,
+#go_previous30:focus,#go_next30:focus,#zoom_in30:focus,#zoom_out30:focus,
+#go_previous31:hover,#go_next31:hover,#zoom_in31:hover,#zoom_out31:hover,
+#go_previous31:focus,#go_next31:focus,#zoom_in31:focus,#zoom_out31:focus,
+#go_previous32:hover,#go_next32:hover,#zoom_in32:hover,#zoom_out32:hover,
+#go_previous32:focus,#go_next32:focus,#zoom_in32:focus,#zoom_out32:focus,
+#go_previous33:hover,#go_next33:hover,#zoom_in33:hover,#zoom_out33:hover,
+#go_previous33:focus,#go_next33:focus,#zoom_in33:focus,#zoom_out33:focus,
+#go_previous34:hover,#go_next34:hover,#zoom_in34:hover,#zoom_out34:hover,
+#go_previous34:focus,#go_next34:focus,#zoom_in34:focus,#zoom_out34:focus,
+#go_previous35:hover,#go_next35:hover,#zoom_in35:hover,#zoom_out35:hover,
+#go_previous35:focus,#go_next35:focus,#zoom_in35:focus,#zoom_out35:focus,
+#go_previous36:hover,#go_next36:hover,#zoom_in36:hover,#zoom_out36:hover,
+#go_previous36:focus,#go_next36:focus,#zoom_in36:focus,#zoom_out36:focus,
+#go_previous37:hover,#go_next37:hover,#zoom_in37:hover,#zoom_out37:hover,
+#go_previous37:focus,#go_next37:focus,#zoom_in37:focus,#zoom_out37:focus,
+#go_previous38:hover,#go_next38:hover,#zoom_in38:hover,#zoom_out38:hover,
+#go_previous38:focus,#go_next38:focus,#zoom_in38:focus,#zoom_out38:focus,
+#go_previous39:hover,#go_next39:hover,#zoom_in39:hover,#zoom_out39:hover,
+#go_previous39:focus,#go_next39:focus,#zoom_in39:focus,#zoom_out39:focus,
+#go_previous40:hover,#go_next40:hover,#zoom_in40:hover,#zoom_out40:hover,
+#go_previous40:focus,#go_next40:focus,#zoom_in40:focus,#zoom_out40:focus,
+#go_previous41:hover,#go_next41:hover,#zoom_in41:hover,#zoom_out41:hover,
+#go_previous41:focus,#go_next41:focus,#zoom_in41:focus,#zoom_out41:focus,
+#go_previous42:hover,#go_next42:hover,#zoom_in42:hover,#zoom_out42:hover,
+#go_previous42:focus,#go_next42:focus,#zoom_in42:focus,#zoom_out42:focus,
+#go_previous43:hover,#go_next43:hover,#zoom_in43:hover,#zoom_out43:hover,
+#go_previous43:focus,#go_next43:focus,#zoom_in43:focus,#zoom_out43:focus,
+#go_previous44:hover,#go_next44:hover,#zoom_in44:hover,#zoom_out44:hover,
+#go_previous44:focus,#go_next44:focus,#zoom_in44:focus,#zoom_out44:focus,
+#go_previous45:hover,#go_next45:hover,#zoom_in45:hover,#zoom_out45:hover,
+#go_previous45:focus,#go_next45:focus,#zoom_in45:focus,#zoom_out45:focus,
+#go_previous46:hover,#go_next46:hover,#zoom_in46:hover,#zoom_out46:hover,
+#go_previous46:focus,#go_next46:focus,#zoom_in46:focus,#zoom_out46:focus,
+#go_previous47:hover,#go_next47:hover,#zoom_in47:hover,#zoom_out47:hover,
+#go_previous47:focus,#go_next47:focus,#zoom_in47:focus,#zoom_out47:focus,
+#go_previous48:hover,#go_next48:hover,#zoom_in48:hover,#zoom_out48:hover,
+#go_previous48:focus,#go_next48:focus,#zoom_in48:focus,#zoom_out48:focus,
+#go_previous49:hover,#go_next49:hover,#zoom_in49:hover,#zoom_out49:hover,
+#go_previous49:focus,#go_next49:focus,#zoom_in49:focus,#zoom_out49:focus,
+#go_previous50:hover,#go_next50:hover,#zoom_in50:hover,#zoom_out50:hover,
+#go_previous50:focus,#go_next50:focus,#zoom_in50:focus,#zoom_out50:focus,
+#go_previous51:hover,#go_next51:hover,#zoom_in51:hover,#zoom_out51:hover,
+#go_previous51:focus,#go_next51:focus,#zoom_in51:focus,#zoom_out51:focus,
+#go_previous52:hover,#go_next52:hover,#zoom_in52:hover,#zoom_out52:hover,
+#go_previous52:focus,#go_next52:focus,#zoom_in52:focus,#zoom_out52:focus,
+#go_previous53:hover,#go_next53:hover,#zoom_in53:hover,#zoom_out53:hover,
+#go_previous53:focus,#go_next53:focus,#zoom_in53:focus,#zoom_out53:focus,
+#go_previous54:hover,#go_next54:hover,#zoom_in54:hover,#zoom_out54:hover,
+#go_previous54:focus,#go_next54:focus,#zoom_in54:focus,#zoom_out54:focus,
+#go_previous55:hover,#go_next55:hover,#zoom_in55:hover,#zoom_out55:hover,
+#go_previous55:focus,#go_next55:focus,#zoom_in55:focus,#zoom_out55:focus,
+#go_previous56:hover,#go_next56:hover,#zoom_in56:hover,#zoom_out56:hover,
+#go_previous56:focus,#go_next56:focus,#zoom_in56:focus,#zoom_out56:focus,
+#go_previous57:hover,#go_next57:hover,#zoom_in57:hover,#zoom_out57:hover,
+#go_previous57:focus,#go_next57:focus,#zoom_in57:focus,#zoom_out57:focus,
+#go_previous58:hover,#go_next58:hover,#zoom_in58:hover,#zoom_out58:hover,
+#go_previous58:focus,#go_next58:focus,#zoom_in58:focus,#zoom_out58:focus,
+#go_previous59:hover,#go_next59:hover,#zoom_in59:hover,#zoom_out59:hover,
+#go_previous59:focus,#go_next59:focus,#zoom_in59:focus,#zoom_out59:focus,
+#go_previous60:hover,#go_next60:hover,#zoom_in60:hover,#zoom_out60:hover,
+#go_previous60:focus,#go_next60:focus,#zoom_in60:focus,#zoom_out60:focus,
+#go_previous61:hover,#go_next61:hover,#zoom_in61:hover,#zoom_out61:hover,
+#go_previous61:focus,#go_next61:focus,#zoom_in61:focus,#zoom_out61:focus,
+#go_previous62:hover,#go_next62:hover,#zoom_in62:hover,#zoom_out62:hover,
+#go_previous62:focus,#go_next62:focus,#zoom_in62:focus,#zoom_out62:focus,
+#go_previous63:hover,#go_next63:hover,#zoom_in63:hover,#zoom_out63:hover,
+#go_previous63:focus,#go_next63:focus,#zoom_in63:focus,#zoom_out63:focus,
+#go_previous64:hover,#go_next64:hover,#zoom_in64:hover,#zoom_out64:hover,
+#go_previous64:focus,#go_next64:focus,#zoom_in64:focus,#zoom_out64:focus,
+#go_previous65:hover,#go_next65:hover,#zoom_in65:hover,#zoom_out65:hover,
+#go_previous65:focus,#go_next65:focus,#zoom_in65:focus,#zoom_out65:focus
+{
+background-color: #666;
+}
+#go_previous1:active,#go_next1:active,#zoom_in1:active,#zoom_out1:active,
+#go_previous2:active,#go_next2:active,#zoom_in2:active,#zoom_out2:active,
+#go_previous3:active,#go_next3:active,#zoom_in3:active,#zoom_out3:active,
+#go_previous4:active,#go_next4:active,#zoom_in4:active,#zoom_out4:active,
+#go_previous5:active,#go_next5:active,#zoom_in5:active,#zoom_out5:active,
+#go_previous6:active,#go_next6:active,#zoom_in6:active,#zoom_out6:active,
+#go_previous7:active,#go_next7:active,#zoom_in7:active,#zoom_out7:active,
+#go_previous8:active,#go_next8:active,#zoom_in8:active,#zoom_out8:active,
+#go_previous9:active,#go_next9:active,#zoom_in9:active,#zoom_out9:active,
+#go_previous10:active,#go_next10:active,#zoom_in10:active,#zoom_out10:active,
+#go_previous11:active,#go_next11:active,#zoom_in11:active,#zoom_out11:active,
+#go_previous12:active,#go_next12:active,#zoom_in12:active,#zoom_out12:active,
+#go_previous13:active,#go_next13:active,#zoom_in13:active,#zoom_out13:active,
+#go_previous14:active,#go_next14:active,#zoom_in14:active,#zoom_out14:active,
+#go_previous15:active,#go_next15:active,#zoom_in15:active,#zoom_out15:active,
+#go_previous16:active,#go_next16:active,#zoom_in16:active,#zoom_out16:active,
+#go_previous17:active,#go_next17:active,#zoom_in17:active,#zoom_out17:active,
+#go_previous18:active,#go_next18:active,#zoom_in18:active,#zoom_out18:active,
+#go_previous19:active,#go_next19:active,#zoom_in19:active,#zoom_out19:active,
+#go_previous20:active,#go_next20:active,#zoom_in20:active,#zoom_out20:active,
+#go_previous21:active,#go_next21:active,#zoom_in21:active,#zoom_out21:active,
+#go_previous22:active,#go_next22:active,#zoom_in22:active,#zoom_out22:active,
+#go_previous23:active,#go_next23:active,#zoom_in23:active,#zoom_out23:active,
+#go_previous24:active,#go_next24:active,#zoom_in24:active,#zoom_out24:active,
+#go_previous25:active,#go_next25:active,#zoom_in25:active,#zoom_out25:active,
+#go_previous26:active,#go_next26:active,#zoom_in26:active,#zoom_out26:active,
+#go_previous27:active,#go_next27:active,#zoom_in27:active,#zoom_out27:active,
+#go_previous28:active,#go_next28:active,#zoom_in28:active,#zoom_out28:active,
+#go_previous29:active,#go_next29:active,#zoom_in29:active,#zoom_out29:active,
+#go_previous30:active,#go_next30:active,#zoom_in30:active,#zoom_out30:active,
+#go_previous31:active,#go_next31:active,#zoom_in31:active,#zoom_out31:active,
+#go_previous32:active,#go_next32:active,#zoom_in32:active,#zoom_out32:active,
+#go_previous33:active,#go_next33:active,#zoom_in33:active,#zoom_out33:active,
+#go_previous34:active,#go_next34:active,#zoom_in34:active,#zoom_out34:active,
+#go_previous35:active,#go_next35:active,#zoom_in35:active,#zoom_out35:active,
+#go_previous36:active,#go_next36:active,#zoom_in36:active,#zoom_out36:active,
+#go_previous37:active,#go_next37:active,#zoom_in37:active,#zoom_out37:active,
+#go_previous38:active,#go_next38:active,#zoom_in38:active,#zoom_out38:active,
+#go_previous39:active,#go_next39:active,#zoom_in39:active,#zoom_out39:active,
+#go_previous40:active,#go_next40:active,#zoom_in40:active,#zoom_out40:active,
+#go_previous41:active,#go_next41:active,#zoom_in41:active,#zoom_out41:active,
+#go_previous42:active,#go_next42:active,#zoom_in42:active,#zoom_out42:active,
+#go_previous43:active,#go_next43:active,#zoom_in43:active,#zoom_out43:active,
+#go_previous44:active,#go_next44:active,#zoom_in44:active,#zoom_out44:active,
+#go_previous45:active,#go_next45:active,#zoom_in45:active,#zoom_out45:active,
+#go_previous46:active,#go_next46:active,#zoom_in46:active,#zoom_out46:active,
+#go_previous47:active,#go_next47:active,#zoom_in47:active,#zoom_out47:active,
+#go_previous48:active,#go_next48:active,#zoom_in48:active,#zoom_out48:active,
+#go_previous49:active,#go_next49:active,#zoom_in49:active,#zoom_out49:active,
+#go_previous50:active,#go_next50:active,#zoom_in50:active,#zoom_out50:active,
+#go_previous51:active,#go_next51:active,#zoom_in51:active,#zoom_out51:active,
+#go_previous52:active,#go_next52:active,#zoom_in52:active,#zoom_out52:active,
+#go_previous53:active,#go_next53:active,#zoom_in53:active,#zoom_out53:active,
+#go_previous54:active,#go_next54:active,#zoom_in54:active,#zoom_out54:active,
+#go_previous55:active,#go_next55:active,#zoom_in55:active,#zoom_out55:active,
+#go_previous56:active,#go_next56:active,#zoom_in56:active,#zoom_out56:active,
+#go_previous57:active,#go_next57:active,#zoom_in57:active,#zoom_out57:active,
+#go_previous58:active,#go_next58:active,#zoom_in58:active,#zoom_out58:active,
+#go_previous59:active,#go_next59:active,#zoom_in59:active,#zoom_out59:active,
+#go_previous60:active,#go_next60:active,#zoom_in60:active,#zoom_out60:active,
+#go_previous61:active,#go_next61:active,#zoom_in61:active,#zoom_out61:active,
+#go_previous62:active,#go_next62:active,#zoom_in62:active,#zoom_out62:active,
+#go_previous63:active,#go_next63:active,#zoom_in63:active,#zoom_out63:active,
+#go_previous64:active,#go_next64:active,#zoom_in64:active,#zoom_out64:active,
+#go_previous65:active,#go_next65:active,#zoom_in65:active,#zoom_out65:active
+{
+background-color: #333;
+}
+
+form input{
+  background: transparent;
+padding: 0.3em;
+border-radius: 0.2em;
+width: 260px;
+border: 1px solid silver;
+margin-top: 0.5em;
+font-family: Calibri;
+font-size: 18px;
+}
+form{
+font-family: Calibri;
+font-size: 18px;
+}
+form select{
+background: transparent;
+padding: 0.3em;
+font-family: Calibri;
+font-size: 18px;
+border-radius: 0.2em;
+border: 1px solid silver;
+margin-top: 0.5em;  
+width: 300px;
+}
+form textarea{
+font-family: Calibri;
+font-size: 18px;
+width: 300px;
+height: 100px;  
+}
+button{
+  background: #a02142;
+color: white;
+padding: 5px 80px;
+cursor: pointer;
+font-size: 18px;
+border: 1px solid transparent;
+margin-top: 0.5em;
+}
+#actualiza{
+text-align: center;
+width: 100%;
+margin-top: 0.5em;
+float: right;
+height: 20px;
+}
+
+.container, .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.container, .container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+}
+#container{
+    background: #0C231E;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 300;
+    height: 60px;
+}
+img {
+height: 29px;
+margin-top: 1em;
+padding: 0;
+
+}
+
+body{
+    padding:0;
+    margin:0;
+}
+#navbar{
+    max-width: 1187px;
+    margin: 0 auto;
+    height: 60px;
+    padding: 0;
+}
+ strong{
+    width: 100%;
+    padding:0.5em 0;
+    font-size: 21px;
+    font-family: Calibri;
+  margin-left: 7em;  
+}
+p{
+    font-size: 14px;
+    color:red; 
+    text-align: left;
+    font-family: Calibri;     
+}
+#titulo{
+    color: green;
+}

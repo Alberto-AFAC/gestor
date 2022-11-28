@@ -1,0 +1,29 @@
+2/NOV/2022 a las 11:20:21 Se comento:
+Persona fisica
+Nombre archivo: 38_CO_SA-14.2-09_R1
+Nombre usuario: alejandro magallon
+Correo usuario: alejandro.magallon@afac.gob.mx
+Comentario:prueba
+_____________________________
+11/NOV/2022 a las 19:30:46 Se comento:
+Persona moral
+Nombre archivo: 38_CO_SA-14.2-09_R1
+Nombre usuario: Colegio de Pilotos aviadores de MÃ©xico A.C.
+Correo usuario: pilotos@colegiodepilotos.org
+Comentario:COMO DICE LA CIRCULAR
+4.	DEFINICIONES Y ABREVIATURAS 
+
+4.1 Definiciones
+Curso de instrucción reconocido: Conjunto de actividades didácticas destinadas a la formación, capacitación o adiestramiento, en un periodo de tiempo determinado, basado en planes y programas de estudio aprobados a una institución educativa, con el objeto de adquirir o actualizar los conocimientos y habilidades requeridos para obtener, revalidar, convalidar y recuperar las licencias, autorizaciones o certificados de capacidad a que se refiere el presente Reglamento.
+
+ARGUMENTO, COMENTARIO O DUDA
+Están repetidas las definiciones
+
+COMO DICE LA CIRCULAR
+Evaluador Designado: es un piloto aviador con licencia de transporte público ilimitado (TPI) que ostenta la capacidad de piloto al mando (Capitán), Instructor/Asesor de vuelo en un equipo específico y que presta sus servicios a un permisionario u operador de vuelo a quien la Agencia Federal de Aviación Civil (AFAC), ha registrado para que cumpla con las funciones de Evaluador Designado que expresamente le especifica su registro.
+
+PROPUESTA DE CAMBIO
+Evaluador Designado: es un piloto aviador con licencia de transporte público ilimitado (TPI) que ostenta la capacidad de piloto al mando (Capitán), Instructor/Asesor de vuelo en un equipo específico y que presta sus servicios a un permisionario, u operador aéreo, a quien la Agencia Federal de Aviación Civil (AFAC), ha registrado para que cumpla con las funciones de Evaluador Designado que expresamente le especifica su registro.
+
+
+_____________________________

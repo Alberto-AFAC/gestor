@@ -821,9 +821,9 @@ administraodr();
                                 <option value="">SELECCIONA EL CARGO</option>
                                 <option value="NUEVO INGRESO">NUEVO INGRESO</option>
                                 <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-                                <!-- <option value="COORDINADOR">COORDINADOR</option> -->
+                                <option value="COORDINADOR">COORDINADOR</option>
                                 <option value="INSPECTOR">INSPECTOR</option>
-                                <!-- <option value="INSTRUCTOR">INSTRUCTOR</option> -->
+                                <option value="INSTRUCTOR">INSTRUCTOR</option>
                             </select>
                         </div>
                     </div>

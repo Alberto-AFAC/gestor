@@ -7,6 +7,8 @@ if (isset($_SESSION['usuario']))
 
 $id_usu = $_SESSION['usuario']['id_usu'];
 
+//echo $_SESSION['usuario']['privilegios'];
+
 //ACCESOS ADMINISTRADORES     
 if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" || 
   $_SESSION['usuario']['privilegios'] == "ADMINISTRADOR" || $_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){
@@ -62,7 +64,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
     </div>
 
 
-    <div class="container wrapper">
+    <div class="wrapper">
         <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" id="scene">
             <li class="layer" data-depth="0.00">
             </li>
@@ -78,7 +80,6 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                     <span class="line"></span>
                 </div>
             </li>
-            <br>
 
             <li class="layer" data-depth="0.25">
                 <div class="sphere">
@@ -172,6 +173,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 
     <input type="hidden" name="id_usua" id="id_usua" value="<?php echo $id_usu ?>">
 
+
     <script src="../js/menu/js/jquery.js"></script>
     <script src="../js/menu/js/main.js"></script>
 
@@ -191,8 +193,18 @@ $.ajax({
     type: 'POST',
     data: 'datos='+datos
 }).done(function(resp) {
+    
     obj = JSON.parse(resp);
     var res = obj.data;
+    
+    if(resp==0){
+            $("#gestor").hide();
+            $("#mesa").hide();
+            $("#detyca").hide();
+            $("#accesos").hide();      
+            $("#linguistica").show();
+    }
+    
     for (i = 0; i < res.length; i++) {
 
 
