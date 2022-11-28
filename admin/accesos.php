@@ -1086,6 +1086,8 @@
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR'){ ?>    
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
+<?php }else if($data[4]=='COMISIONADO'){ ?>    
+    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php 
 
     } }else{

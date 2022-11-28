@@ -265,6 +265,36 @@ $aero = mysqli_query($conexion,$sql2);
             </div>
         </div>
     </form>
+    <!-- MODAL DE SELECCION DE HORARIO -->
+    <form class="form-horizontal" action="" method="POST">
+        <div class="modal fade" data-backdrop="static" id="edithespecial" tabindex="-1" data-keyboard="false" role="dialog"
+            aria-labelledby="detalleSub3" aria-hidden="true">
+            <div class="modal-dialog" style="width: 60%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">EDICIÓN DE ESPECIALIDAD</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info" style="font-size:16px">
+                            <strong>Información!</strong> Al editar se cambiara de forma automatica las tareas ligadas a
+                            esta SUB-CATEGORIA.
+                        </div>
+                        <textarea type="text" onkeyup="mayus(this);" cols="2" rows="2" class="form-control inputalta"
+                            id="namesubtare" name="namesubtare"></textarea>
+                        <br>
+                        <div class="form-group">
+                            <input style="display: none;" id="categoriaedth" type="text">
+                            <input style="display: none;" id="subcatedth" type="text">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                            <button type="button" onclick="updatesubind();" class="btn btn-primary">GUARDAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <!--fin modal de instructor y coordinador informacion -->
 

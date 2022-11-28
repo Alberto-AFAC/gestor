@@ -27,6 +27,8 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     location.href = 'menu/';
                 } else if (respuesta.tipo == 'HUMANOS') {
                     location.href = 'menu/';
+                } else if (respuesta.tipo == 'COMISIONADO') {
+                    location.href = 'menu/';
                 }
 
                 $.ajax({
@@ -48,9 +50,8 @@ jQuery(document).on('submit', '#formtec', function(event) {
                 $.ajax({
                     url: 'php/regSesion.php',
                     type: 'POST',
-                    data: 'resp='+respuesta.tipo
-                    }).done(function(respuesta) {
-                    })
+                    data: 'resp=' + respuesta.tipo
+                }).done(function(respuesta) {})
 
             }
 

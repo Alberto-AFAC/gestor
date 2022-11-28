@@ -409,6 +409,7 @@ AND c.proceso = 'FINALIZADO'
 AND c.confirmar = 'CONFIRMADO' 
 AND c.evaluacion >= 80 
 AND c.estado = 0
+AND c.fcurso >= '2022-11-01' 
 GROUP BY
 c.id_curso";
 $resultado = mysqli_query($conexion, $query);

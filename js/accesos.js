@@ -1,176 +1,200 @@
+function administrador() {
+    $("#aaltapersonl1").show();
+    $("#aaltapersonlxtrn1").show();
+    $("#aaltainstrucxtrn1").show();
 
+    $("#alistapersonl1").show();
+    $("#alistainspctr1").show();
+    $("#alistainstc1").show();
 
-function administrador(){
-$("#aaltapersonl1").show();
-$("#aaltapersonlxtrn1").show();
-$("#aaltainstrucxtrn1").show();
+    $("#bditarinspctr1").hide();
+    $("#beditausu1").hide();
 
-$("#alistapersonl1").show();
-$("#alistainspctr1").show();
-$("#alistainstc1").show();
-
-$("#bditarinspctr1").hide();
-$("#beditausu1").hide();
-
-        $.ajax({
+    $.ajax({
         url: '../php/accesos.php',
         type: 'POST',
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
 
-         //alert(resp);
-         for (i = 0; i < res.length; i++) {
+        //alert(resp);
+        for (i = 0; i < res.length; i++) {
 
-                str = obj.data[i].acceso;
-                acces = str.slice(1)
-                activo = str.substring(-1,1);
-                if(activo=='a'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'b'+acces;
-                $("#"+acceso+"1").hide();
-                }else if(activo=='b'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'a'+acces;
-                $("#"+acceso+"1").hide();
-                }
+            str = obj.data[i].acceso;
+            acces = str.slice(1)
+            activo = str.substring(-1, 1);
+            if (activo == 'a') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'b' + acces;
+                $("#" + acceso + "1").hide();
+            } else if (activo == 'b') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'a' + acces;
+                $("#" + acceso + "1").hide();
+            }
 
-                if(obj.data[i].acceso=='beditausu'){
+            if (obj.data[i].acceso == 'beditausu') {
 
-                    $("#beditausu1").show();
-                    $("#alistapersonl1").hide();
-                    $("#perosnasciaac").show();
-                    $("#perosnas").hide();
-                    $("#editarperfil").hide();
-                    $("#check").hide();
-                    $("#asignar").hide();
-                }else{
-                    // $("#perosnasciaac").hide();
-                }
+                $("#beditausu1").show();
+                $("#alistapersonl1").hide();
+                $("#perosnasciaac").show();
+                $("#perosnas").hide();
+                $("#editarperfil").hide();
+                $("#check").hide();
+                $("#asignar").hide();
+            } else {
+                // $("#perosnasciaac").hide();
+            }
 
-                if(obj.data[i].acceso=='bditarinspctr'){
-                    $("#editinsp").hide();
-                    $("#bditarinspctr1").show();
-                    $("#alistainspctr1").hide();
-                    $("#inspeciones").hide();
-                    $("#inspecionciaac").show();
+            if (obj.data[i].acceso == 'bditarinspctr') {
+                $("#editinsp").hide();
+                $("#bditarinspctr1").show();
+                $("#alistainspctr1").hide();
+                $("#inspeciones").hide();
+                $("#inspecionciaac").show();
 
-                 }
+            }
 
-         }
+        }
     })
 }
 
-function directorAcceso(){
+function directorAcceso() {
 
-     $.ajax({
+    $.ajax({
         url: '../php/accesos.php',
         type: 'POST',
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-         for (i = 0; i < res.length; i++) {
+        for (i = 0; i < res.length; i++) {
 
-                str = obj.data[i].acceso;
-                acces = str.slice(1)
-                activo = str.substring(-1,1);
-                if(activo=='a'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'b'+acces;
-                $("#"+acceso+"1").hide();
-                }else if(activo=='b'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'a'+acces;
-                $("#"+acceso+"1").hide();
-                }
-         }
+            str = obj.data[i].acceso;
+            acces = str.slice(1)
+            activo = str.substring(-1, 1);
+            if (activo == 'a') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'b' + acces;
+                $("#" + acceso + "1").hide();
+            } else if (activo == 'b') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'a' + acces;
+                $("#" + acceso + "1").hide();
+            }
+        }
     });
 
 
 }
 
 
-function inspectorAcceso(){
+function inspectorAcceso() {
 
-        $.ajax({
+    $.ajax({
         url: '../php/accesos.php',
         type: 'POST',
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-         for (i = 0; i < res.length; i++) {
+        for (i = 0; i < res.length; i++) {
 
-                str = obj.data[i].acceso;
-                acces = str.slice(1)
-                activo = str.substring(-1,1);
-                if(activo=='a'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'b'+acces;
-                $("#"+acceso+"1").hide();
-                }else if(activo=='b'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'a'+acces;
-                $("#"+acceso+"1").hide();
-                }
-         }
+            str = obj.data[i].acceso;
+            acces = str.slice(1)
+            activo = str.substring(-1, 1);
+            if (activo == 'a') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'b' + acces;
+                $("#" + acceso + "1").hide();
+            } else if (activo == 'b') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'a' + acces;
+                $("#" + acceso + "1").hide();
+            }
+        }
     });
 }
 
-function humanosAcceso(){
+function humanosAcceso() {
 
-        $.ajax({
+    $.ajax({
         url: '../php/accesos.php',
         type: 'POST',
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-         for (i = 0; i < res.length; i++) {
+        for (i = 0; i < res.length; i++) {
 
-                str = obj.data[i].acceso;
-                acces = str.slice(1)
-                activo = str.substring(-1,1);
-                if(activo=='a'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'b'+acces;
-                $("#"+acceso+"1").hide();
-                }else if(activo=='b'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'a'+acces;
-                $("#"+acceso+"1").hide();
-                }
-         }
+            str = obj.data[i].acceso;
+            acces = str.slice(1)
+            activo = str.substring(-1, 1);
+            if (activo == 'a') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'b' + acces;
+                $("#" + acceso + "1").hide();
+            } else if (activo == 'b') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'a' + acces;
+                $("#" + acceso + "1").hide();
+            }
+        }
     });
 
 }
 
-function coordinadorAcceso(){
+function coordinadorAcceso() {
 
-        $.ajax({
+    $.ajax({
         url: '../php/accesos.php',
         type: 'POST',
     }).done(function(resp) {
         obj = JSON.parse(resp);
         var res = obj.data;
-         for (i = 0; i < res.length; i++) {
+        for (i = 0; i < res.length; i++) {
 
-                str = obj.data[i].acceso;
-                acces = str.slice(1)
-                activo = str.substring(-1,1);
-                
-                if(activo=='a'){
+            str = obj.data[i].acceso;
+            acces = str.slice(1)
+            activo = str.substring(-1, 1);
+
+            if (activo == 'a') {
                 $("#activo").show();
-                }
-                
+            }
 
-                if(activo=='a'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'b'+acces;
-                $("#"+acceso+"1").hide();
-                }else if(activo=='b'){
-                $("#"+activo+acces+"1").show();
-                    acceso = 'a'+acces;
-                $("#"+acceso+"1").hide();
-                }
-         }
+
+            if (activo == 'a') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'b' + acces;
+                $("#" + acceso + "1").hide();
+            } else if (activo == 'b') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'a' + acces;
+                $("#" + acceso + "1").hide();
+            }
+        }
+    });
+}
+
+function comisionadoAcceso() {
+
+    $.ajax({
+        url: '../php/accesos.php',
+        type: 'POST',
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        for (i = 0; i < res.length; i++) {
+
+            str = obj.data[i].acceso;
+            acces = str.slice(1)
+            activo = str.substring(-1, 1);
+            if (activo == 'a') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'b' + acces;
+                $("#" + acceso + "1").hide();
+            } else if (activo == 'b') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'a' + acces;
+                $("#" + acceso + "1").hide();
+            }
+        }
     });
 }

@@ -40,6 +40,12 @@ if($AgstCargo == 'INSPECTOR'){
 	$gstObli = 24;
 	obligatorio($gstIdper,$gstObli,$conexion);
 
+}else if($AgstCargo == 'COMISIONADO'){
+
+	agrEspcldd($gstIdper,$AgstIDCat,$conexion);
+	$gstObli = 24;
+	obligatorio($gstIdper,$gstObli,$conexion);	
+
 }else{
 	$AgstIDCat = 24;
 	agrEspcldd($gstIdper,$AgstIDCat,$conexion);	  	

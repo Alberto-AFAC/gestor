@@ -25,6 +25,8 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 //HUMANOS    
 }elseif ($_SESSION['usuario']['privilegios'] == "HUMANOS") {
     $acceso = 'humanos/humanos';
+}else if ($_SESSION['usuario']['privilegios'] == "COMISIONADO") {
+    $acceso = 'comision/profile';
 }
 ?>
 
@@ -37,7 +39,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
     <title>
         Dashboard
     </title>
-    
+
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="images/afac.png" rel="shortcut icon" type="image/png">
@@ -63,7 +65,8 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 
 
     <div class="container wrapper">
-        <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" id="scene">
+        <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15"
+            id="scene">
             <li class="layer" data-depth="0.00">
             </li>
             <li class="layer" data-depth="0.10">
@@ -92,7 +95,8 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                             <span></span>
                             <div class="content">
                                 <h3>CAPACITACIÓN AFAC</h3>
-                                <img class="img-servicios" src="../models/menu/images/piloto.svg" width="75%;" alt="piloto"><br><br>
+                                <img class="img-servicios" src="../models/menu/images/piloto.svg" width="75%;"
+                                    alt="piloto"><br><br>
                                 <a href="../<?php echo $acceso ?>">Iniciar</a>
                             </div>
                         </div>
@@ -100,62 +104,66 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                             <span></span>
                             <div class="content">
                                 <h3>MESA DE AYUDA</h3><br>
-                                <img class="img-servicios" src="../models/menu/images/ingenieria.svg" width="75%;" alt="tecnico"><br><br>
+                                <img class="img-servicios" src="../models/menu/images/ingenieria.svg" width="75%;"
+                                    alt="tecnico"><br><br>
                                 <a href="../../mesa-ayuda/php/acceso.php">Iniciar</a>
-                          <!--       <button onclick="acceso(<?php echo $id_usu ?>);">BUTON</button> -->
+                                <!--       <button onclick="acceso(<?php echo $id_usu ?>);">BUTON</button> -->
                             </div>
                         </div>
 
                         <div class="card" id="linguistica">
                             <span></span>
-                  
+
                             <div class="content">
-                                <h3>COMPETENCIA LINGÜÍSTICA</h3> 
-                                <img class="img-servicios" src="../dist/img/linguistica.png" width="75%;" alt="participante"><br><br>
+                                <h3>COMPETENCIA LINGÜÍSTICA</h3>
+                                <img class="img-servicios" src="../dist/img/linguistica.png" width="75%;"
+                                    alt="participante"><br><br>
                                 <a href="../../linguistica">Iniciar</a>
-                     
+
                             </div>
                         </div>
 
                         <div class="card" id="accesos">
                             <span></span>
                             <div class="content">
-                                <h3>ACCESOS</h3> 
-                                <img class="img-servicios" src="../dist/img/accesos.png" width="75%;" alt="ACCESO"><br><br>
-                                <a href="../accesos/">Iniciar</a>                    
+                                <h3>ACCESOS</h3>
+                                <img class="img-servicios" src="../dist/img/accesos.png" width="75%;"
+                                    alt="ACCESO"><br><br>
+                                <a href="../accesos/">Iniciar</a>
                             </div>
-                        </div>     
+                        </div>
 
-                        
+
                         <div class="card" style="background: silver" id="detyca">
                             <span></span>
                             <div class="content">
                                 <h3>DETyCA</h3>
-                                <img class="img-servicios" src="../models/menu/images/cocodi.svg" width="75%;" alt="tecnico"><br><br>
+                                <img class="img-servicios" src="../models/menu/images/cocodi.svg" width="75%;"
+                                    alt="tecnico"><br><br>
                                 <!-- <a href="#">Iniciar</a> -->
                             </div>
-                        </div>                          
+                        </div>
 
                     </div>
                 </div>
             </li>
-          <li  data-depth="0.40">
+            <li data-depth="0.40">
                 <div class="depth-1 flake1">
                     <img style="z-index: -9999;" alt="flake" src="../models/menu/images/flakes/depth1/flakes1.png">
                 </div>
 
-                  <div class="depth-1 flake2">
+                <div class="depth-1 flake2">
                     <img alt="flake" src="../models/menu/images/flakes/depth1/flakes2.png">
                 </div>
 
-             <div class="depth-1 flake3">
+                <div class="depth-1 flake3">
                     <img alt="flake" src="../models/menu/images/flakes/depth1/flakes3.png">
                 </div>
 
-                 <div class="depth-1 flake4">
+                <div class="depth-1 flake4">
                     <img alt="flake" src="../models/menu/images/flakes/depth1/flakes4.png">
                 </div>
-            </li> 
+            </li>
 
             <li class="" data-depth="0.50">
                 <!-- <div class="depth-2 flake1">
@@ -166,7 +174,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
                     <img alt="flake" src="../models/menu/images/flakes/depth2/flakes2.png">
                 </div>
             </li>
- 
+
         </ul>
     </div>
 
@@ -182,45 +190,43 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 </html>
 
 <script type="text/javascript">
-    
-
 var datos = document.getElementById('id_usua').value;
-    
+
 $.ajax({
     url: '../php/control-accesos.php',
     type: 'POST',
-    data: 'datos='+datos
+    data: 'datos=' + datos
 }).done(function(resp) {
     obj = JSON.parse(resp);
     var res = obj.data;
     for (i = 0; i < res.length; i++) {
 
 
-        if(obj.data[i].privi_gestor=='SUPER_ADMIN'){
+        if (obj.data[i].privi_gestor == 'SUPER_ADMIN') {
 
             $("#gestor").show();
             $("#mesa").show();
             $("#detyca").show();
 
-        }else{
-            $("#accesos").hide();            
+        } else if obj.data[i].estado == '0' {
+            $("#accesos").hide();
             $("#detyca").hide();
         }
 
-        if(obj.data[i].privi_lingui=='x'){
+
+        if (obj.data[i].privi_lingui == 'x') {
             $("#linguistica").hide();
-        }else{
+        } else {
             $("#linguistica").show();
         }
 
-        if(obj.data[i].privi_acces == 'x'){
-           $("#accesos").hide();
-        }else if(obj.data[i].privi_acces == 'super_admin'){
-           $("#accesos").show();
+        if (obj.data[i].privi_acces == 'x') {
+            $("#accesos").hide();
+        } else if (obj.data[i].privi_acces == 'super_admin') {
+            $("#accesos").show();
         }
 
 
     }
 })
-
 </script>

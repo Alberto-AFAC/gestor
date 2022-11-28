@@ -77,14 +77,15 @@ unset($_SESSION['consulta']);
     .a-alert:visited {
         color: white;
     }
-     /* ocultar controles de input date */ 
-     input[type="date"]::-webkit-inner-spin-button,
-                  ::-webkit-calendar-picker-indicator,
-                  ::-webkit-datetime-edit{
+
+    /* ocultar controles de input date */
+    input[type="date"]::-webkit-inner-spin-button,
+    ::-webkit-calendar-picker-indicator,
+    ::-webkit-datetime-edit {
         display: block;
     }
-    
-   
+
+
     /* mostrar el calendario al hacer click */
     input[type="date"]::-webkit-calendar-picker-indicator {
         display: block;
@@ -99,12 +100,11 @@ unset($_SESSION['consulta']);
         top: 0;
         width: auto;
     }
-   
+
     /* mostrar la fecha seleccionada al estar en hover */
     input[type="date"]:hover::-webkit-datetime-edit {
         display: block;
     }
-    
     </style>
 </head>
 
@@ -186,18 +186,7 @@ unset($_SESSION['consulta']);
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>NIVEL<span class="text-red">*</label>
-                                            <select multiple="multiple" id="idnivel" name="idnivel" style="width: 100%;color: #000" class="form-control inputalta"
-                                                placeholder="Seleccione la el nivel">
-                                                <option value="">SELECCIONE EL NIVEL</option>
-                                                <option value="1">NIVEL 1</option>
-                                                <option value="2">NIVEL 2</option>
-                                                <option value="3">NIVEL 3</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-5 hidden">
                                         <div class="form-group">
                                             <label class="label2">LUGAR</label>
@@ -229,14 +218,30 @@ unset($_SESSION['consulta']);
                                 </div>
                             </div>
                             <!-- /.box-header -->
+
                             <div class="box-body">
                                 <div class="row">
+
                                     <div class="form-group">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <label class="label2" style="font-size:16px">SELECCIONE LA
                                                 TAREA</label>
                                         </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>NIVEL<span class="text-red">*</label>
+                                                <select multiple="multiple" id="idnivel" name="idnivel"
+                                                    style="width: 70%;color: #000" class="form-control inputalta"
+                                                    placeholder="Seleccione la el nivel">
+                                                    <option value="">SELECCIONE EL NIVEL</option>
+                                                    <option value="1">NIVEL 1</option>
+                                                    <option value="2">NIVEL 2</option>
+                                                    <option value="3">NIVEL 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
+
                                     <!-- <div id="tablaPro"></div> -->
                                     <div id="tabtareas"></div>
                                     <!-- /.col -->
@@ -516,13 +521,16 @@ function filubi() {
                 datos = obj.data[H].id_ojt + "*" + n;
                 if (obj.data[H].ojt == 'SIN SUB TAREAS') {
                     subtareas =
-                        '<a id="'+idojt+'p" type="button" title="Agregar tarea" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px;display:none" onclick="destarea()" data-target="#editartraprin"><i class="fa fa-plus"></i></a>';
+                        '<a id="' + idojt +
+                        'p" type="button" title="Agregar tarea" class="asiste btn btn-default" data-toggle="modal" style="margin-left:2px;display:none" onclick="destarea()" data-target="#editartraprin"><i class="fa fa-plus"></i></a>';
                 } else {
                     subtareas =
-                        '<a id="'+idojt+'p" title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;display:none"> +   SUB TAREAS</a>';
+                        '<a id="' + idojt +
+                        'p" title="Seleccionar las subtareas" class="label label-primary" data-toggle="modal" data-target="#detalleSub3" onclick="tabsub()" style="font-weight: bold; height: 50px; font-size: 13px;display:none"> +   SUB TAREAS</a>';
                 }
                 html += '<tr><th scope="row">' + n +
-                    ')<input onchange="muestra('+idojt+')" style="font-size:25px" type="checkbox" name="'+idojt+'" id="'+idojt+'"></th><td>' + obj.data[H].ojt_principal +
+                    ')<input onchange="muestra(' + idojt + ')" style="font-size:25px" type="checkbox" name="' +
+                    idojt + '" id="' + idojt + '"></th><td>' + obj.data[H].ojt_principal +
                     '</td><td>' +
                     obj.data[H].idarea + '</td><td>' + subtareas + '</td><td style="display:none">' + obj.data[
                         H].id_ojt; + '</td></tr>';
@@ -721,14 +729,15 @@ function ageg(dato) {
         }); //FIN DE AJAX
     }
 }
-function muestra(idojt){
-//alert(idojt);
-var checked = document.getElementById(idojt).checked;
-  if(checked){
-    document.getElementById(idojt+'p').style.display='';
-  }else{
-    document.getElementById(idojt+'p').style.display='none';
-  }
+
+function muestra(idojt) {
+    //alert(idojt);
+    var checked = document.getElementById(idojt).checked;
+    if (checked) {
+        document.getElementById(idojt + 'p').style.display = '';
+    } else {
+        document.getElementById(idojt + 'p').style.display = 'none';
+    }
 
 }
 

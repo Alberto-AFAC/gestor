@@ -14,9 +14,9 @@ require_once "../../conexion/conexion.php";
     
       $result=mysqli_query($conexion,$sql);
 	?>
-<select name="idubuojt" id="idubuojt" class="form-control" class="selectpicker" type="text"
+<select multiple name="idubuojt" id="idubuojt" class="form-control" class="selectpicker" type="text"
     data-live-search="true" style="width: 100%">
-    <option value="0">SELECCIONAR SUB-CATEGORIA </option>
+    <option value="0">SELECCIONAR SUB-ESPECIALIDAD </option>
     <?php while($valor = mysqli_fetch_row($result)):?>
     <option value="<?php echo $valor[0]?>"><?php echo $valor[2]?></option>
     <?php endwhile; ?>
