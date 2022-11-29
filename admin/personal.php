@@ -742,15 +742,33 @@ $.ajax({
 })
 
 function comison() {
-   //alert("entra");
-   var isChecked = document.getElementById('comisionado').checked;
-    if(isChecked) {
-      document.getElementById('gstNmpld').disabled = true;
-      document.getElementById('gstNmpld').value = '99000000' +1 ;
-   }else{
-      document.getElementById('gstNmpld').disabled = false;
-      document.getElementById('gstNmpld').value = '';
-   }
+    //alert("entra");
+    var isChecked = document.getElementById('comisionado').checked;
+    if (isChecked) {
+        //alert("antes");
+        document.getElementById('gstNmpld').disabled = true;
+        $.ajax({
+            url: '../php/comision.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj = JSON.parse(respuesta);
+            var res = obj.data;
+            var x = 0;
+            for (U = 0; U < res.length; U++) {
+                x++;
+                //alert(respuesta);
+                if (x > 0) {
+                     //alert(obj.data[U].gstNmpld);
+                    document.getElementById('gstNmpld').value = parseInt(obj.data[U].gstNmpld) + 1;
+                } else {
+                    document.getElementById('gstNmpld').value = '99000000';
+                }
+            }
+        });
+    } else {
+        document.getElementById('gstNmpld').disabled = false;
+        document.getElementById('gstNmpld').value = '';
+    }
 }
 </script>
 <script src="../js/select2.js"></script>
