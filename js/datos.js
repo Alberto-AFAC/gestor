@@ -3602,6 +3602,30 @@ function actDatos() {
 function actPuesto() {
 
     var pstIdper = document.getElementById('gstIdper').value; //id persona
+    //agreagdo a peticiion de jesus shiraky 06012023
+    var gstNombr = document.getElementById('gstNombr').value; //nombre de empleado
+    var gstApell = document.getElementById('gstApell').value; //apellido
+    var gstLunac = document.getElementById('gstLunac').value; //lugar de nacimiento
+    var gstFenac = document.getElementById('gstFenac').value; //lugar de nacimiento
+    var gstSexo = document.getElementById('gstSexo').value;
+    var gstStcvl = document.getElementById('gstStcvl').value;
+    var gstCurp = document.getElementById('gstCurp').value;
+    var gstRfc = document.getElementById('gstRfc').value;
+    var gstisst = document.getElementById('gstisst').value;
+    var gstNpspr = document.getElementById('gstNpspr').value;
+    var gstPsvig = document.getElementById('gstPsvig').value;
+    var gstVisa = document.getElementById('gstVisa').value;
+    var gstVignt = document.getElementById('gstVignt').value;
+    var gstCalle = document.getElementById('gstCalle').value;
+    var gstNumro = document.getElementById('gstNumro').value;
+    var gstClnia = document.getElementById('gstClnia').value;
+    var gstCpstl = document.getElementById('gstCpstl').value;
+    var gstCiuda = document.getElementById('gstCiuda').value;
+    var gstStado = document.getElementById('gstStado').value;
+    var gstCasa = document.getElementById('gstCasa').value;
+    var gstClulr = document.getElementById('gstClulr').value;
+    var gstExTel = document.getElementById('gstExTel').value;
+    //agreagdo a peticion de jesus shiraky 06012023
     var gstNmpld = document.getElementById('gstNmpld').value; //numero de empledo
 
     var sgtCrhnt = document.getElementById('sgtCrhnt').value;
@@ -3629,7 +3653,7 @@ function actPuesto() {
     var gstComnd = document.getElementById('gstComnd').value;
     //22092021
 
-    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstPlaza=' + gstPlaza + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&gstComnd=' + gstComnd + '&opcion=actPrsnls';
+    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstPlaza=' + gstPlaza + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&gstComnd=' + gstComnd + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstSexo=' + gstSexo + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstisst=' + gstisst + '&opcion=actPrsnls';
 
     if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni == '' || gstNucrt == '') {
 
