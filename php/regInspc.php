@@ -156,7 +156,6 @@ if($opcion === 'registrar'){
 	$sgtCrhnt = $_POST['sgtCrhnt'];
 	$gstRusp = $_POST['gstRusp'];
 	$gstPlaza = $_POST['gstPlaza'];
-
 	$gstFeing = $_POST['gstFeing']; //fecha de ingreso 
 	$gstSigID = $_POST['gstSigID']; //Observaciones	 
 	$gstIdpst = $_POST['gstIdpst']; //codigo presupuestal
@@ -169,8 +168,31 @@ if($opcion === 'registrar'){
 	$gstIDSub = $_POST['gstIDSub'];
 	$gstComnd = $_POST['gstComnd']; //comandacia
 	$gstIDuni = $_POST['gstIDuni']; //unidad adminisgtrativa
+	//06012023
+	$gstNombr = $_POST['gstNombr']; //codigo presupuestal
+	$gstApell = $_POST['gstApell']; //NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span>
+	$gstLunac = $_POST['gstLunac']; //Direccion ejecutiva
+	$gstFenac = $_POST['gstFenac']; //Dirección de adscripción 
+	$gstSexo = $_POST['gstSexo']; //Subdireccion	
+	$gstStcvl = $_POST['gstStcvl']; //Cargo
+	$gstCurp = $_POST['gstCurp']; //ubicacion de la persona 
+	$gstRfc = $_POST['gstRfc'];
+	$gstisst = $_POST['gstisst']; //comandacia
+	$gstNpspr = $_POST['gstNpspr'];
+	$gstPsvig = $_POST['gstPsvig']; //Cargo
+	$gstVisa = $_POST['gstVisa']; //ubicacion de la persona 
+	$gstVignt = $_POST['gstVignt'];
+	$gstCalle = $_POST['gstCalle']; //comandacia
+	$gstNumro = $_POST['gstNumro'];
+	$gstClnia = $_POST['gstClnia']; //Cargo
+	$gstCpstl = $_POST['gstCpstl']; //ubicacion de la persona 
+	$gstCiuda = $_POST['gstCiuda'];
+	$gstStado = $_POST['gstStado']; //comandacia
+	$gstCasa = $_POST['gstCasa'];
+	$gstClulr = $_POST['gstClulr']; //Cargo
+	$gstExTel = $_POST['gstExTel']; //ubicacion de la persona 
 
-	if(actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$conexion))
+	if(actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstisst,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$conexion))
 		{	echo "0";	
 			$realizo = 'ACTUALIZO DAT. DEL PUESTO';
 			$gstIdper = $pstIdper;
@@ -282,7 +304,7 @@ function actPrfsion($gstIdpro,$gstPusto,$gstMpres,$gstIDpai,$gstCidua,$gstActiv,
 	}
 
 
-function actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$conexion){
+function actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstisst,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$conexion){
 
 	$query = "UPDATE personal SET 
 	gstNmpld = '$gstNmpld',
@@ -300,6 +322,28 @@ function actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$g
 	gstNucrt = '$gstNucrt',
 	gstIDSub = '$gstIDSub',
 	gstIDuni = '$gstIDuni',
+	gstNombr = '$gstNombr',
+	gstApell = '$gstApell',
+	gstLunac = '$gstLunac',
+	gstFenac = '$gstFenac',
+	gstSexo = '$gstSexo',
+	gstStcvl = '$gstStcvl',
+	gstCurp = '$gstCurp',
+	gstRfc = '$gstRfc',
+	gstisst = '$gstisst',
+	gstNpspr = '$gstNpspr',
+	gstPsvig = '$gstPsvig',
+	gstVisa = '$gstVisa',
+	gstVignt = '$gstVignt',
+	gstCalle = '$gstCalle',
+	gstNumro = '$gstNumro',
+	gstClnia = '$gstClnia',
+	gstCpstl = '$gstCpstl',
+	gstCiuda = '$gstCiuda',
+	gstStado = '$gstStado',
+	gstCasa = '$gstCasa',
+	gstClulr = '$gstClulr',
+	gstExTel = '$gstExTel',
 	gstComnd = '$gstComnd'
  WHERE gstIdper = '$pstIdper'";
 	if(mysqli_query($conexion,$query)){

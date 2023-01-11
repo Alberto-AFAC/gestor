@@ -11,7 +11,7 @@ $sql = "SELECT p.gstIdper,p.gstNombr,p.gstApell, i.* FROM personal p, instruacce
 $instructor  = mysqli_query($conexion,$sql);
 
 
-$sql = "SELECT p.gstIdper,p.gstNombr,p.gstApell, i.* FROM personal p, instruacceso i WHERE p.gstIdper=i.idper AND i.cargo='COORDINADOR' and p.estado = 0";
+$sql = "SELECT p.gstIdper,p.gstNombr,p.gstApell, i.* FROM personal p, instruacceso i WHERE p.gstIdper=i.idper AND i.cargo in ('COORDINADOR','COORDINADOR_A') and p.estado = 0";
 $cordinador  = mysqli_query($conexion,$sql);
 
 unset($_SESSION['consulta']);

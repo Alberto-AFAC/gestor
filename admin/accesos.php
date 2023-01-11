@@ -143,6 +143,7 @@
                                     <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                                     <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
                                     <option value="COORDINADOR">COORDINADOR</option>
+                                    <option value="COORDINADOR_A">COORDINADOR_A</option>
                                     <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
                                     <option value="DIRECTOR">DIRECTOR</option>
                                     <option value="EJECUTIVO">EJECUTIVO</option>
@@ -1084,7 +1085,7 @@
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(4.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='ADMINISTRATIVO' || $data[4]=='INSPECTOR' || $data[4]=='NUEVO INGRESO'){ ?>
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-<?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR'){ ?>    
+<?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR' || $data[4]=='COORDINADOR_A'){ ?>    
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php 
 

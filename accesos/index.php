@@ -256,6 +256,7 @@ session_start();
                     <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                     <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
                     <option value="COORDINADOR">COORDINADOR</option>
+                    <option value="COORDINADOR_A">COORDINADOR_A</option>
                     <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
                     <option value="DIRECTOR">DIRECTOR</option>
                     <option value="EJECUTIVO">EJECUTIVO</option>
