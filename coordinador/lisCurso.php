@@ -890,6 +890,7 @@ $(document).ready(function() {
                         $("#ocubotn").hide();
                         document.getElementById('modalMost').disabled = false;  
                         document.getElementById('allselect').disabled = true; 
+                        $("#modalMost").hide(); 
 
                     } else {
                         $("#buttonfin").show();

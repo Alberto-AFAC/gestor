@@ -1501,6 +1501,86 @@
                                 </form>
                             </div>
                         </div>
+                        
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <form name="form28" action="" class="formulario1">
+                                    <div class="radio">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">DESEA RECIBIR RETROALIMENTACIÓN DE LOS COMENTARIOS QUE REALIZÓ?<span
+                                                    id="span28">*</span></h3>
+                                        </div>
+                                        <form class="form-horizontal">
+                                            <div class="box-body" id=preg28>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="radio" name="preg28" value="SI" id="r120">
+                                                        <label for="r120">SI</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="radio" name="preg28" value="NO" id="r121">
+                                                        <label for="r121">NO</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <form name="form29" action="" class="formulario1">
+                                    <div class="radio">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">EVALÚE EL DESEMPEÑO DEL COORDINADOR DE CAPACITACIÓN<span
+                                                    id="span29">*</span></h3>
+                                        </div>
+                                        <form class="form-horizontal">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="radio" name="pregPEN31" value="EXCELENTE" id="r31p1">
+                                                        <label for="r31p1">EXCELENTE</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="radio" name="pregPEN31" value="SATISFACTORIO"
+                                                            id="r31p2">
+                                                        <label for="r31p2">SATISFACTORIO</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="radio" name="pregPEN31" value="NO SATISFACTORIO"
+                                                            id="r31p3">
+                                                        <label for="r31p3">NO
+                                                            SATISFACTORIO</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="radio" name="pregPEN31" value="DEFICIENTE"
+                                                            id="r31p4">
+                                                        <label for="r31p4">DEFICIENTE</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="radio" name="pregPEN31" value="NO APLICA" id="r31p5">
+                                                        <label for="r31p5">NO APLICA</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <form name="form27" action="" class="formulario1">

@@ -1,7 +1,7 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-    $query = "SELECT MAX(gstNmpld) as gstNmpld FROM personal WHERE gstCargo = 'COMISIONADO' AND estado=0";
+    $query = "SELECT MAX(gstNmpld) as gstNmpld FROM personal WHERE gstCargo = 'COMISIONADO' OR gstNmpld >99000000 ";
 	$resultado = mysqli_query($conexion, $query);
     if(!$resultado){
 		die("error");

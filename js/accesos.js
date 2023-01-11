@@ -171,3 +171,29 @@ function coordinadorAcceso(){
          }
     });
 }
+
+function comisionAcceso() {
+
+    $.ajax({
+        url: '../php/accesos.php',
+        type: 'POST',
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        for (i = 0; i < res.length; i++) {
+
+            str = obj.data[i].acceso;
+            acces = str.slice(1)
+            activo = str.substring(-1, 1);
+            if (activo == 'a') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'b' + acces;
+                $("#" + acceso + "1").hide();
+            } else if (activo == 'b') {
+                $("#" + activo + acces + "1").show();
+                acceso = 'a' + acces;
+                $("#" + acceso + "1").hide();
+            }
+        }
+    });
+}

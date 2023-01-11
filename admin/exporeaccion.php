@@ -139,6 +139,8 @@ include('header.php');
                                                 <th>Nombre de la/el coordinador(a):</th>
                                                 <th>Nombre de el/la instructor(a):</th>
                                                 <th>Evalúe las INSTALACIONES Y MATERIAL [La conexión de internet fue la adecuada para comprender la información transmitida durante la o las sesiones en linea ]</th>
+                                                <th>Desea recibir retroalimentación de los comentarios que realizó</th>
+                                                <th>Evalúe el desempeño del Coordinador de Capacitación</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -242,7 +244,7 @@ $(document).ready(function() {
         buttons: [{
                 extend: 'copy',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
+                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]
                 }
             },
             {
@@ -250,7 +252,7 @@ $(document).ready(function() {
                 text: 'Generar PDF',
                 messageTop: 'BASE DE DATOS INSPECTORES',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
+                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]
                 },
                 download: 'open',
                 header: true,
@@ -287,7 +289,7 @@ $(document).ready(function() {
                 extend: 'excel',
                 text: 'Generar Excel',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
+                    columns: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]
                 }
             }
 

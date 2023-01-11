@@ -6,7 +6,7 @@
 //si la variable ssesion existe realizara las siguiente evaluacion 
     if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-      if($_SESSION['usuario']['privilegios'] != "COORDINADOR" && $_SESSION['usuario']['privilegios'] != "INSTRUCTOR"){
+      if($_SESSION['usuario']['privilegios'] != "COORDINADOR" && $_SESSION['usuario']['privilegios'] != "INSTRUCTOR" && $_SESSION['usuario']['privilegios'] != "COORDINADOR_A"){
             //y se redirecciona al directorio que le corresponde
             header("Location: ../");
             }
@@ -24,6 +24,7 @@
       $id = $_SESSION['usuario']['id_usu'];
       $usu = $_SESSION['usuario']['usuario'];
       $pass = $_SESSION['usuario']['password'];
+      $privileg = $_SESSION['usuario']['privilegios'];
 
       include("../perfil/index.php");
 
@@ -124,9 +125,13 @@ unset($_SESSION['consulta']);
             <li><a id="exportcurso" style="display: ;" title="Historial de Constancias, Certificados y Diplomas" href="exporcurs"><i class="fa fa-certificate"></i>Exportar/Base Cursos</a></li>
             <li><a id="exportcurso" style="display: ;" title="Historial de Constancias, Certificados y Diplomas" href="exporeaccion"><i class="fa fa-certificate"></i>Exportar/Evaluación</a></li>
             <?php }else{ ?>
-
+            
             <?php } ?>
-            <li><a title="Historial de Constancias, Certificados y Diplomas" href="constancias"><i class="fa fa-certificate"></i>Historial de Constancias...</a></li>
+            <?php  if($privileg='COORDINADOR_A'){ ?>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="contanciasin"><i class="fa fa-certificate"></i>Historial Constancias1...</a></li>
+                    <?php }else{ ?>
+                    <li><a title="Historial de Constancias, Certificados y Diplomas" href="contancias"><i class="fa fa-certificate"></i>Historial Constancias...</a></li>
+                    <?php } ?>
           </ul>
         </li>
 

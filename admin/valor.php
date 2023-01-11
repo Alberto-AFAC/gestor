@@ -824,6 +824,7 @@ administraodr();
                                 <option value="COORDINADOR">COORDINADOR</option>
                                 <option value="INSPECTOR">INSPECTOR</option>
                                 <option value="INSTRUCTOR">INSTRUCTOR</option>
+                                <option value="COMISIONADO">COMISIONADO</option>
                             </select>
                         </div>
                     </div>

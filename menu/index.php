@@ -15,7 +15,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
    $acceso = 'admin/inicio';
 //COORDINADOR e INSTRUCTOR
 }elseif ($_SESSION['usuario']['privilegios'] == "COORDINADOR" ||
-    $_SESSION['usuario']['privilegios'] == "INSTRUCTOR" || $_SESSION['usuario']['privilegios'] == "COORDINADOR_A" ) {
+    $_SESSION['usuario']['privilegios'] == "INSTRUCTOR" || $_SESSION['usuario']['privilegios'] == "COORDINADOR_A") {
     $acceso = 'coordinador/inicio';
 //INSPECTOR Y ADMINISTRADOR    
 }elseif ($_SESSION['usuario']['privilegios'] == "INSPECTOR" ||
@@ -27,6 +27,8 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 //HUMANOS    
 }elseif ($_SESSION['usuario']['privilegios'] == "HUMANOS") {
     $acceso = 'humanos/humanos';
+}elseif ($_SESSION['usuario']['privilegios'] == "COMISIONADO") {
+    $acceso = 'comision/profile';
 }
 ?>
 

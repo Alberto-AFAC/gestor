@@ -117,7 +117,7 @@ if($opcion === 'registrar'){
 
     //funcion de comprobación para ver si la persona ya se encuentra registrada
     function comprobacion ($gstNombr,$gstApell,$conexion){
-        $query="SELECT * FROM personal WHERE gstNombr = '$gstNombr' AND gstApell = '$gstApell' AND estado = 3";
+        $query="SELECT * FROM personal WHERE gstNombr = '$gstNombr' AND gstApell = '$gstApell' AND estado = 3 or gstNombr = '$gstNombr' AND gstApell = '$gstApell' AND estado = 0";
         $resultado= mysqli_query($conexion,$query);
         if($resultado->num_rows==0){
         return true;

@@ -156,6 +156,7 @@ if($opcion === 'registrar'){
 	$sgtCrhnt = $_POST['sgtCrhnt'];
 	$gstRusp = $_POST['gstRusp'];
 	$gstPlaza = $_POST['gstPlaza'];
+
 	$gstFeing = $_POST['gstFeing']; //fecha de ingreso 
 	$gstSigID = $_POST['gstSigID']; //Observaciones	 
 	$gstIdpst = $_POST['gstIdpst']; //codigo presupuestal
@@ -168,7 +169,7 @@ if($opcion === 'registrar'){
 	$gstIDSub = $_POST['gstIDSub'];
 	$gstComnd = $_POST['gstComnd']; //comandacia
 	$gstIDuni = $_POST['gstIDuni']; //unidad adminisgtrativa
-	//06012023
+    //06012023
 	$gstNombr = $_POST['gstNombr']; //codigo presupuestal
 	$gstApell = $_POST['gstApell']; //NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span>
 	$gstLunac = $_POST['gstLunac']; //Direccion ejecutiva
@@ -190,8 +191,7 @@ if($opcion === 'registrar'){
 	$gstStado = $_POST['gstStado']; //comandacia
 	$gstCasa = $_POST['gstCasa'];
 	$gstClulr = $_POST['gstClulr']; //Cargo
-	$gstExTel = $_POST['gstExTel']; //ubicacion de la persona 
-
+	$gstExTel = $_POST['gstExTel']; //ubicacion de la persona
 	if(actPrsonl($pstIdper,$gstNmpld,$sgtCrhnt,$gstRusp,$gstPlaza,$gstFeing,$gstSigID,$gstIdpst,$gstPstID,$gstAreID,$gstIDara,$gstAcReg,$gstCargo,$gstNucrt,$gstIDSub,$gstIDuni,$gstComnd,$gstNombr,$gstApell,$gstLunac,$gstFenac,$gstSexo,$gstStcvl,$gstCurp,$gstRfc,$gstisst,$gstNpspr,$gstPsvig,$gstVisa,$gstVignt,$gstCalle,$gstNumro,$gstClnia,$gstCpstl,$gstCiuda,$gstStado,$gstCasa,$gstClulr,$gstExTel,$conexion))
 		{	echo "0";	
 			$realizo = 'ACTUALIZO DAT. DEL PUESTO';

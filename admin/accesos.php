@@ -151,6 +151,7 @@
                                     <option value="INSTRUCTOR">INSTRUCTOR</option>
                                     <option value="INSPECTOR">INSPECTOR</option>                
                                     <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                                    <option value="COMISIONADO">COMISIONADO</option>
                                 </select>
                             </div>
                         </div>
@@ -1083,7 +1084,7 @@
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(3.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='HUMANOS'){ ?>
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(4.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-<?php }else if($data[4]=='ADMINISTRATIVO' || $data[4]=='INSPECTOR' || $data[4]=='NUEVO INGRESO'){ ?>
+<?php }else if($data[4]=='ADMINISTRATIVO' || $data[4]=='INSPECTOR' || $data[4]=='NUEVO INGRESO'||$data[4]=='COMISIONADO'){ ?>
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR' || $data[4]=='COORDINADOR_A'){ ?>    
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
@@ -1155,7 +1156,7 @@ function datos_editar(acceso) {
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_accesos == acceso) {
                 
-                   if(obj.data[i].privilegios=='COORDINADOR' || obj.data[i].privilegios=='INSTRUCTOR'){
+                   if(obj.data[i].privilegios=='COORDINADOR' || obj.data[i].privilegios=='INSTRUCTOR' || obj.data[i].privilegios=='COORDINADOR_A'){
                     // $('#privilegios').prop('disabled', true);
                     if(obj.data[i].privilegios=='INSTRUCTOR'){
                     $("#inst1").show();

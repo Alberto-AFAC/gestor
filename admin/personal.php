@@ -4,87 +4,83 @@ session_start();
 unset($_SESSION['consulta']);
 ?>
 <html>
-
 <head>
-    <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Capacitación AFAC | Alta de persona</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
+<link rel="shortcut icon" href="../dist/img/iconafac.ico" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Capacitación AFAC | Alta de persona</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
-    <script src="../dist/js/sweetalert2.all.min.js"></script>
-    <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/card.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/contra.css">
+  <script src="../dist/js/sweetalert2.all.min.js"></script>
+  <link href="../dist/css/sweetalert2.min.css" type="text/css" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-    <!-- Google Font -->
-    <link rel="stylesheet"
+  <!-- Google Font -->
+  <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <style>
-    .swal-wide {
-        width: 500px !important;
-        font-size: 16px !important;
-    }
+<style>
+   .swal-wide{
+    width: 500px !important;
+    font-size: 16px !important;
+}
+.a-alert {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
 
-    .a-alert {
-        outline: none;
-        text-decoration: none;
-        padding: 2px 1px 0;
-    }
+.a-alert:link {
+  color: white;
+}
 
-    .a-alert:link {
-        color: white;
-    }
+.a-alert:visited {
+  color: white;
+}
+</style>
+      </head>
+      <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
-    .a-alert:visited {
-        color: white;
-    }
-    </style>
-</head>
+<div class="wrapper">
 
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-
-    <div class="wrapper">
-
-        <?php
+<?php
 include('header.php');
-?>
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+?> 
+  <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" >
+<!-- Content Header (Page header) -->
 
-            <section class="content-header">
-                <h1>
-                    <i class="fa  ion-android-person"></i>
-                    ALTA / PERSONAL
-                    <a href="implaoyut" type="button" title="importación masiva" style="float: right;"
-                        class="btn bg-navy margin">IMPORTAR LAYOUT</a>
-                </h1>
-
-            </section>
-            <?php
+   <section class="content-header">
+      <h1> 
+         <i class="fa  ion-android-person"></i>
+         ALTA / PERSONAL   
+         <a href="implaoyut" type="button"  title="importación masiva" style="float: right;" class="btn bg-navy margin">IMPORTAR LAYOUT</a>
+      </h1>
+      
+    </section>
+<?php
  
 $sql = "SELECT gstIdcat,gstCatgr,gstCsigl FROM categorias WHERE estado = 0";
 $cat = mysqli_query($conexion,$sql);
@@ -103,474 +99,398 @@ $ejec = mysqli_query($conexion,$sql);
 
 $sql = "SELECT gstIdpus,gstNpsto FROM puesto WHERE estado = 0";
 $psto = mysqli_query($conexion,$sql);
-
-$comi = "SELECT MAX(gstNmpld) FROM personal WHERE estado = 0 and gstCargo='COMISIONADO'";
-$cim = mysqli_query($conexion,$comi);
 ?>
 
-            <section class="content">
+    <section class="content">
 
-                <div class="row">
+      <div class="row">
+    
+        <!-- /.col -->
+        <div class="col-md-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active "><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
+              <li><a href="#timeline" data-toggle="tab" id="puestos01">DATOS DEL PUESTO</a></li>
+            </ul>
+           <!-- /.col -->
+           <div class="tab-content">
+              <div class="active tab-pane" id="activity">
+                <!-- Post -->
+                <div class="post">
+        <form id="Dtall" class="form-horizontal" action="" method="POST" >
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">NOMBRE(S)<span class="text-red" style="font-size:20px">*</span></label></label>
+                       <input type="text"onkeyup="mayus(this);"class="form-control inputalta" id="gstNombr" name="gstNombr">
+                    </div>
+                    <div class="col-sm-4">
+                       <label class="label2">APELLIDO(S)<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta " id="gstApell" name="gstApell">
+                    </div>
 
-                    <!-- /.col -->
-                    <div class="col-md-12">
-                        <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
-                                <li class="active "><a href="#activity" data-toggle="tab">DATOS PERSONALES</a></li>
-                                <li><a href="#timeline" data-toggle="tab" id="puestos01">DATOS DEL PUESTO</a></li>
-                            </ul>
-                            <!-- /.col -->
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
-                                    <!-- Post -->
-                                    <div class="post">
-                                        <form id="Dtall" class="form-horizontal" action="" method="POST">
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label class="label2">NOMBRE(S)<span class="text-red"
-                                                            style="font-size:20px">*</span></label></label>
-                                                    <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstNombr" name="gstNombr">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label class="label2">APELLIDO(S)<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta " id="gstApell" name="gstApell">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <label class="label2">LUGAR DE NACIMIENTO</label>
-                                                    <select type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstLunac" name="gstLunac">
-                                                        <option value="">LUGAR DE NACIMIENTO</option>
-                                                        <option value="AGUASCALIENTES">AGUASCALIENTES</option>
-                                                        <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
-                                                        <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
-                                                        <option value="CAMPECHE">CAMPECHE</option>
-                                                        <option value="COAHUILA">COAHUILA</option>
-                                                        <option value="COLIMA">COLIMA</option>
-                                                        <option value="CHIAPAS">CHIAPAS</option>
-                                                        <option value="CHIHUAHUA">CHIHUAHUA</option>
-                                                        <option value="DISTRITO FEDERAL">CIUDAD DE MÉXICO</option>
-                                                        <option value="DURANGO">DURANGO</option>
-                                                        <option value="GUANAJUATO">GUANAJUATO</option>
-                                                        <option value="GUERRERO">GUERRERO</option>
-                                                        <option value="HIDALGO">HIDALGO</option>
-                                                        <option value="JALISCO">JALISCO</option>
-                                                        <option value="MÉXICO">MÉXICO</option>
-                                                        <option value="MICHOACÁN">MICHOACÁN</option>
-                                                        <option value="MORELOS">MORELOS</option>
-                                                        <option value="NAYARIT">NAYARIT</option>
-                                                        <option value="NUEVO LEÓN">NUEVO LEÓN</option>
-                                                        <option value="OAXACA">OAXACA</option>
-                                                        <option value="PUEBLA">PUEBLA</option>
-                                                        <option value="QUERÉTARO">QUERÉTARO</option>
-                                                        <option value="QUINTANA ROO">QUINTANA ROO</option>
-                                                        <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
-                                                        <option value="SINALOA">SINALOA</option>
-                                                        <option value="SONORA">SONORA</option>
-                                                        <option value="TABASCO">TABASCO</option>
-                                                        <option value="TAMAULIPAS">TAMAULIPAS</option>
-                                                        <option value="TLAXCALA">TLAXCALA</option>
-                                                        <option value="VERACRUZ">VERACRUZ</option>
-                                                        <option value="YUCATÁN">YUCATÁN</option>
-                                                        <option value="ZACATECAS">ZACATECAS</option>
-                                                        <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
-                                                        <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label class="label2">FECHA DE NACIMIENTO<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="date" class="form-control inputalta" id="gstFenac"
-                                                        name="gstFenac">
-                                                </div>
+                    <div class="col-sm-4">
+                     <label class="label2">LUGAR DE NACIMIENTO</label>
+                     <select type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstLunac" name="gstLunac">
+                         <option value="">LUGAR DE NACIMIENTO</option>
+                         <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+                         <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+                         <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+                         <option value="CAMPECHE">CAMPECHE</option>
+                         <option value="COAHUILA">COAHUILA</option>
+                         <option value="COLIMA">COLIMA</option>
+                         <option value="CHIAPAS">CHIAPAS</option>
+                         <option value="CHIHUAHUA">CHIHUAHUA</option>
+                         <option value="DISTRITO FEDERAL">CIUDAD DE MÉXICO</option>
+                         <option value="DURANGO">DURANGO</option>
+                         <option value="GUANAJUATO">GUANAJUATO</option>
+                         <option value="GUERRERO">GUERRERO</option>
+                         <option value="HIDALGO">HIDALGO</option>
+                         <option value="JALISCO">JALISCO</option>
+                         <option value="MÉXICO">MÉXICO</option>
+                         <option value="MICHOACÁN">MICHOACÁN</option>
+                         <option value="MORELOS">MORELOS</option>
+                         <option value="NAYARIT">NAYARIT</option>
+                         <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+                         <option value="OAXACA">OAXACA</option>
+                         <option value="PUEBLA">PUEBLA</option>
+                         <option value="QUERÉTARO">QUERÉTARO</option>
+                         <option value="QUINTANA ROO">QUINTANA ROO</option>
+                         <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+                         <option value="SINALOA">SINALOA</option>
+                         <option value="SONORA">SONORA</option>
+                         <option value="TABASCO">TABASCO</option>
+                         <option value="TAMAULIPAS">TAMAULIPAS</option>
+                         <option value="TLAXCALA">TLAXCALA</option>
+                         <option value="VERACRUZ">VERACRUZ</option>
+                         <option value="YUCATÁN">YUCATÁN</option>
+                         <option value="ZACATECAS">ZACATECAS</option>
+                         <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
+                         <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
+                     </select>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">FECHA DE NACIMIENTO<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="date" class="form-control inputalta" id="gstFenac" name="gstFenac" >
+                    </div>
 
 
-                                                <div class="col-sm-4">
-                                                    <label class="label2">SEXO<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <select type="text" class="form-control inputalta" id="gstSexo"
-                                                        name="gstSexo">
-                                                        <option value="">ELEGIR SEXO</option>
-                                                        <option value="MUJER">MUJER</option>
-                                                        <option value="HOMBRE">HOMBRE</option>
-                                                    </select>
-                                                </div>
+                    <div class="col-sm-4">
+                      <label class="label2">SEXO<span class="text-red" style="font-size:20px">*</span></label>
+                      <select type="text" class="form-control inputalta" id="gstSexo" name="gstSexo">
+                          <option value="">ELEGIR SEXO</option>
+                         <option value="MUJER">MUJER</option>
+                         <option value="HOMBRE">HOMBRE</option>
+                      </select>
+                    </div>
 
 
-                                                <div class="col-sm-4">
-                                                    <label class="label2">ESTADO CIVIL</label>
-                                                    <select type="text" class="form-control inputalta" id="gstStcvl"
-                                                        name="gstStcvl">
-                                                        <option value="">ESTADO CIVIL</option>
-                                                        <option value="CASADO">CASADO</option>
-                                                        <option value="SOLTERO">SOLTERO</option>
-                                                        <option value="OTROS">OTROS</option>
-                                                    </select>
-                                                </div>
+                    <div class="col-sm-4">
+                      <label class="label2">ESTADO CIVIL</label>
+                      <select type="text" class="form-control inputalta" id="gstStcvl" name="gstStcvl">
+                          <option value="">ESTADO CIVIL</option>
+                         <option value="CASADO">CASADO</option>
+                         <option value="SOLTERO">SOLTERO</option>
+                         <option value="OTROS">OTROS</option>
+                      </select>
+                    </div>
 
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label class="label2">CURP<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">CURP<span class="text-red" style="font-size:20px">*</span></label>
+      
+                       <input type="tex" oninput="validarInput(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
 
-                                                    <input type="tex" oninput="validarInput(this)"
-                                                        onkeyup="mayus(this);"
-                                                        class="form-control inputalta form-control inputPadding"
-                                                        id="gstCurp" name="gstCurp" minlength="18" maxlength="18">
+                    </div>
 
-                                                </div>
+                    <div class="col-sm-4">
+                       <label class="label2">RFC<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="tex" maxlength="12" oninput="validarInputRF(this)" onkeyup="mayus(this);" class="form-control inputalta form-control inputPadding" id="gstRfc" name="gstRfc" > 
+                       <!-- <label id="resultado1"></label>  -->
+                    </div>
 
-                                                <div class="col-sm-4">
-                                                    <label class="label2">RFC<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="tex" maxlength="12" oninput="validarInputRF(this)"
-                                                        onkeyup="mayus(this);"
-                                                        class="form-control inputalta form-control inputPadding"
-                                                        id="gstRfc" name="gstRfc">
-                                                    <!-- <label id="resultado1"></label>  -->
-                                                </div>
+                    <div class="col-sm-4">
+                       <label class="label2">NÚMERO DE ISSSTE</label>
+                       <input type="type" class="form-control" id="gstisst" name="gstisst" >
+                    </div>
+ 
+                </div>
+                <div class="form-group">
 
-                                                <div class="col-sm-4">
-                                                    <label class="label2">NÚMERO DE ISSSTE</label>
-                                                    <input type="type" class="form-control" id="gstisst" name="gstisst">
-                                                </div>
+                    <div class="col-sm-3">
+                       <label class="label2">PASAPORTE NO.</label>
+                       <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstNpspr" name="gstNpspr">
+                    </div>
 
-                                            </div>
-                                            <div class="form-group">
+                    <div class="col-sm-3">
+                       <label class="label2">PASAPORTE VIGENCIA</label>
+                       <input type="date" class="form-control inputalta" id="gstPsvig" name="gstPsvig">
+                    </div>
+                                      
+                    <div class="col-sm-3">
+                       <label class="label2">VISA PAIS</label>
+                       <input type="text" class="form-control inputalta" id="gstVisa" name="gstVisa">
+                    </div>
 
-                                                <div class="col-sm-3">
-                                                    <label class="label2">PASAPORTE NO.</label>
-                                                    <input type="number" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstNpspr" name="gstNpspr">
-                                                </div>
+                    <div class="col-sm-3">
+                       <label class="label2">VISA VIGENCIA</label>
+                       <input type="date" class="form-control inputalta" id="gstVignt" name="gstVignt">
+                    </div>
 
-                                                <div class="col-sm-3">
-                                                    <label class="label2">PASAPORTE VIGENCIA</label>
-                                                    <input type="date" class="form-control inputalta" id="gstPsvig"
-                                                        name="gstPsvig">
-                                                </div>
+                    <div class="col-sm-4">
+                      <!--  <label>NÚMERO DE CARTILLA</label> -->
+                       <input type="hidden" value="0" class="form-control" id="gstNucrt" name="gstNucrt">
+                    </div> 
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                         <H4><i style=color:#333 class="fa  ion-android-pin"></i>
+                         <label style=color:#333> DOMICILIO</label></H4>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">CALLE<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstCalle" name="gstCalle">
+                    </div>
 
-                                                <div class="col-sm-3">
-                                                    <label class="label2">VISA PAIS</label>
-                                                    <input type="text" class="form-control inputalta" id="gstVisa"
-                                                        name="gstVisa">
-                                                </div>
+                    <div class="col-sm-4">
+                       <label class="label2">NÚMERO<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstNumro" name="gstNumro">
+                    </div>
 
-                                                <div class="col-sm-3">
-                                                    <label class="label2">VISA VIGENCIA</label>
-                                                    <input type="date" class="form-control inputalta" id="gstVignt"
-                                                        name="gstVignt">
-                                                </div>
+                    <div class="col-sm-4">
+                       <label class="label2">COLONIA<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstClnia" name="gstClnia">
+                    </div>
+                </div>
 
-                                                <div class="col-sm-4">
-                                                    <!--  <label>NÚMERO DE CARTILLA</label> -->
-                                                    <input type="hidden" value="0" class="form-control" id="gstNucrt"
-                                                        name="gstNucrt">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <H4><i style=color:#333 class="fa  ion-android-pin"></i>
-                                                            <label style=color:#333> DOMICILIO</label>
-                                                        </H4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label class="label2">CALLE<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstCalle" name="gstCalle">
-                                                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">CÓDIGO POSTAL<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="number" onkeyup="mayus(this);" class="form-control inputalta" id="gstCpstl" name="gstCpstl" maxlength="5" >
+                    </div>
+                     
+                    <div class="col-sm-4">
+                       <label class="label2">CIUDAD<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstCiuda" name="gstCiuda">
+                    </div>
 
-                                                <div class="col-sm-4">
-                                                    <label class="label2">NÚMERO<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstNumro" name="gstNumro">
-                                                </div>
+                    <div class="col-sm-4">
+                       <label class="label2">ESTADO<span class="text-red" style="font-size:20px">*</span></label>
+                       <select type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstStado" name="gstStado">
+                         <option value="">SELECCIONA EL ESTADO</option>
+                         <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+                         <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+                         <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+                         <option value="CAMPECHE">CAMPECHE</option>
+                         <option value="COAHUILA">COAHUILA</option>
+                         <option value="COLIMA">COLIMA</option>
+                         <option value="CHIAPAS">CHIAPAS</option>
+                         <option value="CHIHUAHUA">CHIHUAHUA</option>
+                         <option value="DISTRITO FEDERAL">CIUDAD DE MÉXICO</option>
+                         <option value="DURANGO">DURANGO</option>
+                         <option value="GUANAJUATO">GUANAJUATO</option>
+                         <option value="GUERRERO">GUERRERO</option>
+                         <option value="HIDALGO">HIDALGO</option>
+                         <option value="JALISCO">JALISCO</option>
+                         <option value="MÉXICO">MÉXICO</option>
+                         <option value="MICHOACÁN">MICHOACÁN</option>
+                         <option value="MORELOS">MORELOS</option>
+                         <option value="NAYARIT">NAYARIT</option>
+                         <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+                         <option value="OAXACA">OAXACA</option>
+                         <option value="PUEBLA">PUEBLA</option>
+                         <option value="QUERÉTARO">QUERÉTARO</option>
+                         <option value="QUINTANA ROO">QUINTANA ROO</option>
+                         <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+                         <option value="SINALOA">SINALOA</option>
+                         <option value="SONORA">SONORA</option>
+                         <option value="TABASCO">TABASCO</option>
+                         <option value="TAMAULIPAS">TAMAULIPAS</option>
+                         <option value="TLAXCALA">TLAXCALA</option>
+                         <option value="VERACRUZ">VERACRUZ</option>
+                         <option value="YUCATÁN">YUCATÁN</option>
+                         <option value="ZACATECAS">ZACATECAS</option>
+                         <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
+                         <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
+                     </select>
+                    </div>
+                </div>
 
-                                                <div class="col-sm-4">
-                                                    <label class="label2">COLONIA<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstClnia" name="gstClnia">
-                                                </div>
-                                            </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i style=color:#333 class="fa   fa-dot-circle-o"></i>
+                          <label style=color:#333> CONTACTO</label></H4>
+                        </div>
+                    </div>
+                </div>
 
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label class="label2">CÓDIGO POSTAL<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="number" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstCpstl" name="gstCpstl"
-                                                        maxlength="5">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <label class="label2">CIUDAD<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <input type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstCiuda" name="gstCiuda">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <label class="label2">ESTADO<span class="text-red"
-                                                            style="font-size:20px">*</span></label>
-                                                    <select type="text" onkeyup="mayus(this);"
-                                                        class="form-control inputalta" id="gstStado" name="gstStado">
-                                                        <option value="">SELECCIONA EL ESTADO</option>
-                                                        <option value="AGUASCALIENTES">AGUASCALIENTES</option>
-                                                        <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
-                                                        <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
-                                                        <option value="CAMPECHE">CAMPECHE</option>
-                                                        <option value="COAHUILA">COAHUILA</option>
-                                                        <option value="COLIMA">COLIMA</option>
-                                                        <option value="CHIAPAS">CHIAPAS</option>
-                                                        <option value="CHIHUAHUA">CHIHUAHUA</option>
-                                                        <option value="DISTRITO FEDERAL">CIUDAD DE MÉXICO</option>
-                                                        <option value="DURANGO">DURANGO</option>
-                                                        <option value="GUANAJUATO">GUANAJUATO</option>
-                                                        <option value="GUERRERO">GUERRERO</option>
-                                                        <option value="HIDALGO">HIDALGO</option>
-                                                        <option value="JALISCO">JALISCO</option>
-                                                        <option value="MÉXICO">MÉXICO</option>
-                                                        <option value="MICHOACÁN">MICHOACÁN</option>
-                                                        <option value="MORELOS">MORELOS</option>
-                                                        <option value="NAYARIT">NAYARIT</option>
-                                                        <option value="NUEVO LEÓN">NUEVO LEÓN</option>
-                                                        <option value="OAXACA">OAXACA</option>
-                                                        <option value="PUEBLA">PUEBLA</option>
-                                                        <option value="QUERÉTARO">QUERÉTARO</option>
-                                                        <option value="QUINTANA ROO">QUINTANA ROO</option>
-                                                        <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
-                                                        <option value="SINALOA">SINALOA</option>
-                                                        <option value="SONORA">SONORA</option>
-                                                        <option value="TABASCO">TABASCO</option>
-                                                        <option value="TAMAULIPAS">TAMAULIPAS</option>
-                                                        <option value="TLAXCALA">TLAXCALA</option>
-                                                        <option value="VERACRUZ">VERACRUZ</option>
-                                                        <option value="YUCATÁN">YUCATÁN</option>
-                                                        <option value="ZACATECAS">ZACATECAS</option>
-                                                        <option value="EN OTRO PAÍS">EN OTRO PAÍS</option>
-                                                        <option value="NO ESPECIFICADO">NO ESPECIFICADO</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <H4><i style=color:#333 class="fa   fa-dot-circle-o"></i>
-                                                            <label style=color:#333> CONTACTO</label>
-                                                        </H4>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label class="label2">CASA</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-phone"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control inputalta" id="gstCasa"
-                                                            name="gstCasa" placeholder="(55) 5555-5555"
-                                                            autocomplete="off">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label class="label2">CELULAR</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-phone"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control inputalta" id="gstClulr"
-                                                            name="gstClulr" placeholder="(52) 55-5555-5555"
-                                                            autocomplete="off">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label class="label2">EXTENSION Ó NÚMERO TELEFONICO</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-phone"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control inputalta" id="gstExTel"
-                                                            name="gstExTel" placeholder="(55)-5555-5555 x55555"
-                                                            autocomplete="off">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-sm-4 text-container">
-                                                    <label class="label2">CORREO PERSONAL </label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i
-                                                                class="fa fa-envelope"></i></span>
-                                                        <i class="ion-ios-checkmark iconoInput" id="labelvalidcor"
-                                                            style="display:none;"></i>
-                                                        <i class="ion-ios-close iconoInput" id="labelinvarfcor"
-                                                            style=" color: #F10C25; display:none;"></i>
-                                                        <input type="text" class="form-control inputalta"
-                                                            placeholder="correo@correo.com" id="gstCorro"
-                                                            name="gstCorro">
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 ">
-                                                    <label class="label2">CORREO INSTITUCIONAL</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i
-                                                                class="fa fa-envelope"></i></span>
-                                                        <input type="email" class="form-control inputalta"
-                                                            placeholder="correo@sct.gob.mx" id="gstCinst"
-                                                            name="gstCinst">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 ">
-                                                    <label class="label2">CORREO ALTERNATIVO</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i
-                                                                class="fa fa-envelope"></i></span>
-                                                        <input type="email" class="form-control inputalta"
-                                                            placeholder="correo@correo.com" id="gstSpcID"
-                                                            name="gstSpcID">
-                                                    </div>
-                                                </div>
-                                                <br> <br> <br> <br>
-                                                <div class="form-group">
-                                                    <div class="col-sm-10">
-                                                        <div class="col-sm-offset-0 col-sm-2">
-                                                            <button type="button" title="ir a la siguiente pestaña"
-                                                                class="btn btn-block btn-primary botonnet"
-                                                                onclick="focusScrollMethod()"><span
-                                                                    class="fa fa-share"></span> <a style="color: #fff;"
-                                                                    href="#timeline"
-                                                                    data-toggle="tab">SIGUIENTE</a></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </form>
-                                        <br>
-                                        </script>
-                                    </div>
-                                    <div class="post">
-
-                                        <!-- /.user-block -->
-
-                                        <!-- /.row -->
-
-                                        <ul class="list-inline">
-
-                                        </ul>
-
-
-                                    </div>
-                                    <!-- /.post -->
-                                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">CASA</label>
+                       <div class="input-group">
+                          <div class="input-group-addon">
+                             <i class="fa fa-phone"></i>
+                          </div>
+                          <input type="text" class="form-control inputalta" id="gstCasa" name="gstCasa" placeholder="(55) 5555-5555" autocomplete="off">
+                       </div>     
+                    </div> 
+                    <div class="col-sm-4">
+                       <label class="label2">CELULAR</label>
+                       <div class="input-group">
+                          <div class="input-group-addon">
+                             <i class="fa fa-phone"></i>
+                          </div>
+                          <input type="text" class="form-control inputalta" id="gstClulr" name="gstClulr" placeholder="(52) 55-5555-5555" autocomplete="off">
+                       </div>     
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="label2">EXTENSION Ó NÚMERO TELEFONICO</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                               <i class="fa fa-phone"></i>
                             </div>
+                            <input type="text" class="form-control inputalta" id="gstExTel" name="gstExTel" placeholder="(55)-5555-5555 x55555" autocomplete="off">
+                        </div>
+                    </div>
+                    </div>
+                   
+                    <div class="form-group">
+                    <div class="col-sm-4 text-container">
+                         <label class="label2">CORREO PERSONAL </label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <i class="ion-ios-checkmark iconoInput" id="labelvalidcor"  style="display:none;"></i>
+                            <i class="ion-ios-close iconoInput" id="labelinvarfcor"  style=" color: #F10C25; display:none;"></i>
+                            <input type="text" class="form-control inputalta" placeholder="correo@correo.com" id="gstCorro" name="gstCorro">
+                            
+                           </div>
+                    </div>
+                    <div class="col-sm-4 ">
+                         <label class="label2">CORREO INSTITUCIONAL</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control inputalta" placeholder="correo@sct.gob.mx" id="gstCinst" name="gstCinst">
+                          </div>
+                    </div>
+                    <div class="col-sm-4 ">
+                         <label class="label2">CORREO ALTERNATIVO</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control inputalta" placeholder="correo@correo.com" id="gstSpcID" name="gstSpcID">
+                          </div>
+                    </div>
+                   <br> <br> <br> <br> 
+                   <div class="form-group">
+                    <div class="col-sm-10">
+                        <div class="col-sm-offset-0 col-sm-2">
+                                 <button type="button" title="ir a la siguiente pestaña" class="btn btn-block btn-primary botonnet" onclick="focusScrollMethod()"><span class="fa fa-share"></span> <a style="color: #fff;" href="#timeline" data-toggle="tab">SIGUIENTE</a></button>
+                        </div>
+                        </div>
+                        </div>
+                </form>
+                <br> 
+              </script>
+            </div>
+            <div class="post">
+   
+              <!-- /.user-block -->
+             
+              <!-- /.row -->
 
-                            <div class="tab-pane" id="timeline">
-                                <!-- The timeline -->
-                                <form id="puesto" class="form-horizontal" action="" method="POST">
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <div class="input-group">
-                                                <H4><i class="fa fa-briefcase"></i>
-                                                    <label>DATOS DEL PUESTO</label>
-                                                </H4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div style="margin-left:20%;font-size:16px">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label class="label2">NÚMERO DE EMPLEADO<span class="text-red"
+              <ul class="list-inline">
+
+              </ul>
+
+         
+            </div>
+            <!-- /.post -->
+          </div>
+          </div>
+          
+      <div class="tab-pane" id="timeline">
+                <!-- The timeline -->
+                <form id="puesto" class="form-horizontal" action="" method="POST" >             
+                <div class="form-group">
+                      <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i class="fa fa-briefcase"></i>
+                          <label>DATOS DEL PUESTO</label></H4>
+                        </div>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label class="label2">NÚMERO DE EMPLEADO<span class="text-red"
                                                     style="font-size:20px">*</span><input onchange="comison()"
                                                     style="margin-left:8%;font-size:18px" type="checkbox"
                                                     id="comisionado" name="comisionado">ES COMISIONADO?</label>
-                                            <input type="number" class="form-control inputalta" id="gstNmpld"
+                        <input type="number" class="form-control inputalta" id="gstNmpld"
                                                 name="gstNmpld">
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label class="label2">FECHA INGRESO A LA SCT<span class="text-red"
-                                                    style="font-size:20px">*</span></label>
-                                            <input type="date" class="form-control inputalta" id="gstFeing"
-                                                name="gstFeing">
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <label class="label2">OBSERVACIONES</label>
-                                            <input type="text" onkeyup="mayus(this);" class="form-control inputalta"
-                                                id="gstSigID" name="gstSigID">
-                                        </div>
-                                    </div>
+                    </div>
+                    <div class="col-sm-3">
+                       <label class="label2">FECHA INGRESO A LA SCT<span class="text-red" style="font-size:20px">*</span></label>
+                       <input type="date" class="form-control inputalta" id="gstFeing" name="gstFeing">
+                    </div>  
+                    <div class="col-sm-5">
+                    <label class="label2">OBSERVACIONES</label>
+                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstSigID" name="gstSigID">
+                    </div>  
+                    </div>
 
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label class="label2">CODIGO RHnet</label>
-                                            <input type="text" class="form-control inputalta" id="sgtCrhnt"
-                                                name="sgtCrhnt" onkeyup="mayus(this);">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label class="label2">ID RUSP</label>
-                                            <input type="text" class="form-control inputalta" id="gstRusp"
-                                                name="gstRusp" onkeyup="mayus(this);">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label class="label2">ID DE PLAZA<span class="text-red"
-                                                    style="font-size:20px">*</span></label>
-                                            <input type="text" onkeyup="mayus(this);" class="form-control inputalta"
-                                                id="gstPlaza" name="gstPlaza">
-                                        </div>
-                                    </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                       <label class="label2">CODIGO RHnet</label>
+                       <input type="text" class="form-control inputalta" id="sgtCrhnt" name="sgtCrhnt" onkeyup="mayus(this);">
+                    </div>
+                    <div class="col-sm-4">
+                       <label class="label2">ID RUSP</label>
+                       <input type="text" class="form-control inputalta" id="gstRusp" name="gstRusp" onkeyup="mayus(this);">
+                    </div>  
+                    <div class="col-sm-4">
+                    <label class="label2">ID DE PLAZA<span class="text-red" style="font-size:20px">*</span></label>
+                    <input type="text" onkeyup="mayus(this);" class="form-control inputalta" id="gstPlaza" name="gstPlaza">
+                    </div>  
+                    </div>
 
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label class="label2">CÓDIGO PRESUPUESTAL</label>
-                                            <div id="buscador"></div>
-                                        </div>
-                                        <div id="select1"></div>
-                                    </div>
+                    <div class="form-group">
+          <div class="col-sm-4">
+          <label class="label2">CÓDIGO PRESUPUESTAL</label>
+          <div id="buscador"></div>                            
+          </div>
+          <div id="select1"></div> 
+          </div>
 
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label class="label2">NOMBRE DEL PUESTO<span class="text-red"
-                                                    style="font-size:20px">*</span></label>
-                                            <select style="width: 100%" class="form-control inputalta selectpicker"
-                                                name="gstPstID" id="gstPstID" type="text" data-live-search="true">
-                                                <option value="0">SELECCIONA EL PUESTO</option>
-                                                <?php while($pust = mysqli_fetch_row($psto)):?>
-                                                <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
-                                                <?php endwhile; ?>
-                                            </select>
-                                        </div>
-                                        <input type="hidden" name="gstSpcID" id="gstSpcID" value="0">
-                                        <!--             <div id="oaci"></div>
-            <div id="siglas"></div> -->
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <div class="input-group">
-                                                <H4><i class="fa fa-dot-circle-o"></i>
-                                                    <label>INFORMACIÓN DE ADSCRIPCIÓN</label>
-                                                </H4>
-                                            </div>
-                                        </div>
-                                    </div>
+         <div class="form-group">
+            <div class="col-sm-12">
+               <label class="label2">NOMBRE DEL PUESTO<span class="text-red" style="font-size:20px">*</span></label>
+               <select style="width: 100%" class="form-control inputalta selectpicker" name="gstPstID" id="gstPstID" type="text" data-live-search="true">
+               <option value="0">SELECCIONA EL PUESTO</option>
+               <?php while($pust = mysqli_fetch_row($psto)):?>                      
+               <option value="<?php echo $pust[0]?>"><?php echo $pust[1]?></option>
+               <?php endwhile; ?>
+               </select>
+            </div> 
+            <input type="hidden" name="gstSpcID" id="gstSpcID" value="0">
+<!--             <div id="oaci"></div>
+            <div id="siglas"></div> -->                                
+         </div>
+                    <div class="form-group">
+                      <div class="col-sm-4">
+                        <div class="input-group">
+                          <H4><i class="fa fa-dot-circle-o"></i>
+                          <label>INFORMACIÓN DE ADSCRIPCIÓN</label></H4>
+                        </div>
+                      </div>
+                </div>
 
-                                    <!-- <div class="form-group">
+                    <!-- <div class="form-group">
                     <div class="col-sm-6">
                    <label class="label2">DIRECCIÓN EJECUTIVA </label>         
                       <select style="width: 100%"  class="selectpicker inputalta" name="gstAreID" id="gstAreID" type="text" data-live-search="true">
@@ -581,68 +501,51 @@ $cim = mysqli_query($conexion,$comi);
                       </select>
                     </div> -->
 
-                                    <div class="form-group">
-                                        <div class="col-sm-6">
-                                            <label class="label2">DIRECCIÓN EJECUTIVA<span class="text-red"
-                                                    style="font-size:20px">*</span></label>
-                                            <div id="gstAreID1"></div>
-                                        </div>
+                    <div class="form-group">
+                          <div class="col-sm-6">
+                            <label class="label2">DIRECCIÓN EJECUTIVA<span class="text-red" style="font-size:20px">*</span></label>
+                             <div id="gstAreID1"></div>                            
+                          </div>
+                    
 
+                  <div class="col-sm-6">
 
-                                        <div class="col-sm-6">
+                      <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
 
-                                            <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
+                      <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN<span class="text-red" style="font-size:20px">*</span></label>                    
 
-                                            <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN<span class="text-red"
-                                                    style="font-size:20px">*</span></label>
+                      <div id="gstIDara1"></div> 
+                    
+                      </div>  
+                  </div>    
 
-                                            <div id="gstIDara1"></div>
+           <input type="hidden" class="form-control inputalta" id="gstIDCat" name="gstIDCat" value="0">
+           <input type="hidden" class="form-control inputalta" id="gstIDSub" name="gstIDSub" value="0">                   
+           <input type="hidden" class="form-control inputalta" id="gstAcReg" name="gstAcReg" value="0">
+           <input type="hidden" class="form-control inputalta" id="gstIDuni" name="gstIDuni" value="0">
 
-                                        </div>
-                                    </div>
+   
+                <div class="form-group"><br>
+                    <div class="col-sm-offset-0 col-sm-2">
+                    <button type="button" id="button" title="AGREGAR REGISTRO" style="font-size:18px" class="btn btn-block btn-primary altaboton"  onclick="registrar();">ACEPTAR</button>
+                    </div>
+                    
+                    <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos</p></b>
+                    
+                    <b><p class="alert alert-info text-center padding error" id="succe">Los datos ya están agregados </p></b>
 
-                                    <input type="hidden" class="form-control inputalta" id="gstIDCat" name="gstIDCat"
-                                        value="0">
-                                    <input type="hidden" class="form-control inputalta" id="gstIDSub" name="gstIDSub"
-                                        value="0">
-                                    <input type="hidden" class="form-control inputalta" id="gstAcReg" name="gstAcReg"
-                                        value="0">
-                                    <input type="hidden" class="form-control inputalta" id="gstIDuni" name="gstIDuni"
-                                        value="0">
+                   <!--  <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b> -->
 
+                    <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
+                    </div>
 
-                                    <div class="form-group"><br>
-                                        <div class="col-sm-offset-0 col-sm-2">
-                                            <button type="button" id="button" title="AGREGAR REGISTRO"
-                                                style="font-size:18px" class="btn btn-block btn-primary altaboton"
-                                                onclick="registrar();">ACEPTAR</button>
-                                        </div>
+                </form>            
+</section>  
+  </div>
 
-                                        <b>
-                                            <p class="alert alert-danger text-center padding error" id="danger">Error al
-                                                agregar datos</p>
-                                        </b>
-
-                                        <b>
-                                            <p class="alert alert-info text-center padding error" id="succe">Los datos
-                                                ya están agregados </p>
-                                        </b>
-
-                                        <!--  <b><p class="alert alert-success text-center padding exito" id="succe">¡Se agregaron los datos con éxito!</p></b> -->
-
-                                        <b>
-                                            <p class="alert alert-warning text-center padding aviso" id="empty">Es
-                                                necesario agregar los datos que se solicitan </p>
-                                        </b>
-                                    </div>
-
-                                </form>
-            </section>
-        </div>
-
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> <?php 
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b>    <?php 
                                 $query ="SELECT 
                                         *
                                         FROM
@@ -655,98 +558,113 @@ $cim = mysqli_query($conexion,$comi);
                                     exit;
                                 }
                                 ?>
-                <?php echo $row['version']?>
-            </div>
-
-            <strong>AFAC &copy; 2021 <a style="color:#3c8dbc" href="https://www.gob.mx/afac">Agencia Federal de Aviación
-                    Cilvil</a>.</strong> Todos los derechos Reservados DDE
-            .
-        </footer>
-
-        <?php include('panel.html');?>
-
-        <div class="control-sidebar-bg"></div>
-
+                    <?php echo $row['version']?>
     </div>
-    <!-- ./wrapper -->
-    <script type="text/javascript" src="../js/datos.js"></script>
-    <script type="text/javascript" src="../js/validaciones.js"></script>
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
-    <script src="../js/global.js"></script>
-    <!-- InputMask -->
-    <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
-    <script src="../../js/valida.js"></script>
+    <strong>AFAC &copy; 2021 <a style="color:#3c8dbc"  href="https://www.gob.mx/afac">Agencia Federal de Aviación Cilvil</a>.</strong> Todos los derechos Reservados DDE
+.
+  </footer>
 
+<?php include('panel.html');?>
+
+<div class="control-sidebar-bg"></div>
+
+</div>
+<!-- ./wrapper -->
+<script type="text/javascript" src="../js/datos.js"></script>
+<script type="text/javascript" src="../js/validaciones.js"></script>
+<!-- jQuery 3 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+<!-- page script -->
+<script src="../js/global.js"></script>
+<!-- InputMask -->
+<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+<script src="../../js/valida.js"></script>
+ 
 </body>
-
 </html>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#gstAreID').select2();
-    $('#gstIDara').select2();
-    $('#gstPstID').select2();
-    $('#buscador').load('select/buscar.php');
-    $('#select1').load('select/tabla.php');
-    $('#gstAreID1').load('select/buscardirec.php');
-    $('#gstIDara1').load('select/tabladirec.php');
-    // $('#oaci').load('select/oaci.php');
-    // $('#siglas').load('select/siglas.php');
+$(document).ready(function(){
+$('#gstAreID').select2();
+$('#gstIDara').select2();
+$('#gstPstID').select2();
+$('#buscador').load('select/buscar.php');
+$('#select1').load('select/tabla.php');
+$('#gstAreID1').load('select/buscardirec.php');
+$('#gstIDara1').load('select/tabladirec.php');
+// $('#oaci').load('select/oaci.php');
+// $('#siglas').load('select/siglas.php');
 });
-
-//let comisionado= document.getElementById('comisionado').value;//SI ES COMISIONADO
 
 
 var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO DE EMPLEADO
-//alert(idpersona1);
-$.ajax({
-    url: '../php/accesos-list.php',
-    type: 'POST'
-}).done(function(resp) {
-    obj = JSON.parse(resp);
-    var res = obj.data;
+    //alert(idpersona1);
+    $.ajax({
+            url: '../php/accesos-list.php',
+            type: 'POST'
+        }).done(function(resp) {
+            obj = JSON.parse(resp);
+            var res = obj.data;
 
-    //AQUI03
-    html =
-        '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
-    var n = 0;
-    for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
-        //alert(obj.data[H].id_usu);
-        if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0') {
-            $('#modal-obligatorio').modal('show');
-            $("#usuarioobl").val(obj.data[H].gstNombr + " " + obj.data[H].gstApell);
-        } else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1') {
-            $('#modal-obligatorio').modal('hide');
+            //AQUI03
+            html = '<div class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="estudio" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i>NOMBRE INSTITUCIÓN</th><th><i></i>GRADO</th><th><i></i>PERIODO</th><th><i></i>DOCUMENTACIÓN</th><th><i></i>FECHA</th></tr></thead><tbody>';
+            var n = 0;
+            for (H = 0; H < res.length; H++) { //RASTREAR EL ID DE LA PERSONA
+                //alert(obj.data[H].id_usu);
+                if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '0' ) {
+                    $('#modal-obligatorio').modal('show'); 
+                    $("#usuarioobl").val(obj.data[H].gstNombr +" "+obj.data[H].gstApell  );
+                }else if (obj.data[H].id_usu == accesopers && obj.data[H].cambio == '1' ) {
+                    $('#modal-obligatorio').modal('hide');  
+                }
+
         }
-
-    }
-})
-
-function comison() {
+    })
+    
+    function comison() {
     //alert("entra");
     var isChecked = document.getElementById('comisionado').checked;
     if (isChecked) {
         //alert("antes");
         document.getElementById('gstNmpld').disabled = true;
+        document.getElementById('sgtCrhnt').disabled = true;
+        document.getElementById('gstRusp').disabled = true;
+        document.getElementById('gstPlaza').disabled = true;
+        document.getElementById('gstIdpst').disabled = true;
+        document.getElementById('gstPstID').disabled = true;
+
+
+        document.getElementById('sgtCrhnt').value = 0;
+        document.getElementById('gstRusp').value = 0;
+        document.getElementById('gstPlaza').value = 0;
+        document.getElementById('gstIdpst').value = "NO APLICA";
+        document.getElementById('select2-gstPstID-container').innerHTML = "NO APLICA";
+        document.getElementById('select2-gstIdpst-container').innerHTML = "NO APLICA";
+        document.getElementById('gstIDara').value = 118;
+						$('#gstIDara').load('select/tabladirec.php');
+				
+        
+        
+        
+        
         $.ajax({
             url: '../php/comision.php',
             type: 'POST'
@@ -758,8 +676,10 @@ function comison() {
                 x++;
                 //alert(respuesta);
                 if (x > 0) {
-                     //alert(obj.data[U].gstNmpld);
+                    //alert(obj.data[U].gstNmpld);
                     document.getElementById('gstNmpld').value = parseInt(obj.data[U].gstNmpld) + 1;
+
+
                 } else {
                     document.getElementById('gstNmpld').value = '99000000';
                 }
@@ -768,6 +688,23 @@ function comison() {
     } else {
         document.getElementById('gstNmpld').disabled = false;
         document.getElementById('gstNmpld').value = '';
+
+        document.getElementById('sgtCrhnt').disabled = false;
+        document.getElementById('gstRusp').disabled = false;
+        document.getElementById('gstPlaza').disabled = false;
+        document.getElementById('gstIdpst').disabled = false;
+        document.getElementById('gstIdpst').disabled = false;
+        document.getElementById('gstPstID').disabled = false;
+
+        document.getElementById('sgtCrhnt').value = '';
+        document.getElementById('gstRusp').value = '';
+        document.getElementById('gstPlaza').value = '';
+        document.getElementById('gstIdpst').value = '';
+        document.getElementById('select2-gstPstID-container').innerHTML = "";
+        document.getElementById('select2-gstIdpst-container').innerHTML = "";
+        document.getElementById('select2-gstAreID-container').innerHTML = "";
+        document.getElementById('gstIDara').value = "";
+        
     }
 }
 </script>

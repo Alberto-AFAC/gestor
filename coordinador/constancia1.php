@@ -1,5 +1,5 @@
 <?php ob_start();
-include('generatingIndividual.php');
+include('generating.php');
 require '../dist/phpqrcode/qrlib.php';
 $dir = 'temp/';
 
@@ -94,10 +94,10 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p style='text-align:center;font-size:22px;padding-top:-8%;'>Mtra. Jessica Berenice Castañeda Gutierrez</p>";
         }
         if($con['fcurso'] >= '2022-12-01'){ // Lic. Martha León Garcia
-         echo"<p style='text-align:center;font-size:22px;' class='CIAAC'>Director del CIAAC:</p><center><img src='../dist/img/firmas/firma_victor_islas1.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
+         echo"<p style='text-align:center;font-size:22px;' class='CIAAC'>Directora de Administración y Encargada del Despacho del CIAAC:</p><center><img src='../dist/img/firmas/directoramarta1.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
         <br><br><br><br><br>
         <p style='text-align:center;font-size:10px;color: #996633;padding-top:-1%' class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil–Centro Internacional deAdiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p> <br>
-        <p style='text-align:center;font-size:22px;padding-top:-8%;'>Gral. Gpo. P.A. D.E.M.A. Ret. Víctor Islas Díaz</p>";
+        <p style='text-align:center;font-size:22px;padding-top:-8%;'>Lic. Martha León Garcia</p>";
         }
         echo"<p style='font-size:18px;padding-top:4%;position:absolute'>FOLIO:{$con['codigo']}</p>
         <p style='font-size:18px;padding-top:6%;position:absolute;color:gray'>F- CIAAC - CDPPA - 08 – R02</p>
@@ -142,10 +142,10 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p style='text-align:center;font-size:22px;padding-top:-8%;'>Mtra. Jessica Berenice Castañeda Gutierrez</p>";
         }
         if($con['fcurso'] >= '2022-12-01'){ //Lic. Martha León Garcia
-         echo"<p style='text-align:center;font-size:22px;' class='CIAAC'>Director del CIAAC:</p><center><img src='../dist/img/firmas/firma_victor_islas1.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
+         echo"<p style='text-align:center;font-size:22px;' class='CIAAC'>Directora de Administración y Encargada del Despacho del CIAAC:</p><center><img src='../dist/img/firmas/directoramarta1.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
         <br><br><br><br><br>
         <p style='text-align:center;font-size:10px;color: #996633;padding-top:-1%' class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil–Centro Internacional deAdiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p> <br>
-        <p style='text-align:center;font-size:22px;padding-top:-8%;'>Gral. Gpo. P.A. D.E.M.A. Ret. Víctor Islas Díaz</p>";
+        <p style='text-align:center;font-size:22px;padding-top:-8%;'>Lic. Martha León Garcia</p>";
         }
         
         echo"<p style='font-size:18px;padding-top:4%;position:absolute'>FOLIO:{$con['codigo']}</p>
@@ -190,10 +190,10 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p style='text-align:center;font-size:22px;padding-top:-8%;'>Mtra. Jessica Berenice Castañeda Gutierrez</p>";
         }
         if($con['fcurso'] >= '2022-12-01'){//Lic. Martha León Garcia
-         echo"<p style='text-align:center;font-size:22px;' class='CIAAC'>Director del CIAAC:</p><center><img src='../dist/img/firmas/firma_victor_islas1.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
+         echo"<p style='text-align:center;font-size:22px;' class='CIAAC'>Directora de Administración y Encargada del Despacho del CIAAC:</p><center><img src='../dist/img/firmas/directoramarta1.jpg' style='margin-top:-40px; width: 400px; position: absolute; right: 38%;'></center>
         <br><br><br><br><br>
         <p style='text-align:center;font-size:10px;color: #996633;padding-top:-1%' class=''>Secretaría de Infraestructura, Comunicaciones y Transportes - Agencia Federal de Aviación Civil–Centro Internacional deAdiestramiento de Aviación Civil / SCT-AFAC-CIAAC</p> <br>
-        <p style='text-align:center;font-size:22px;padding-top:-8%;'>Gral. Gpo. P.A. D.E.M.A. Ret. Víctor Islas Díaz</p>";
+        <p style='text-align:center;font-size:22px;padding-top:-8%;'>Lic. Martha León Garcia</p>";
         }
         echo"<p style='font-size:18px;padding-top:4%;position:absolute'>FOLIO:{$con['codigo']}</p>
         <p style='font-size:18px;padding-top:6%;position:absolute;color:gray'>F- CIAAC - CDPPA - 08 – R02</p>

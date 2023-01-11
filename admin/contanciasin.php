@@ -144,7 +144,7 @@ if(!$resultado) {
 
         <!---------------------RANGO DE CONSTANCIAS--------------------------------->
 
-        <form class="form-horizontal" action="constancia_masiva.php" target='_blank' method="POST" id="constanciasc">
+        <form class="form-horizontal" action="constancia_masiva1.php" target='_blank' method="POST" id="constanciasc">
           <div class="modal fade" id="modal-constancia">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -214,7 +214,7 @@ if(!$resultado) {
             </div>
           </form>
           <!------------------------------RANGO CERTIFICADOS--------------------------------------------------->
-          <form class="form-horizontal" action="certificados_masivos.php" target='_blank' method="POST" id="certificadosc">
+          <form class="form-horizontal" action="certificados_masivos1.php" target='_blank' method="POST" id="certificadosc">
             <div class="modal fade" id="modal-certificado">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -562,15 +562,13 @@ if(!$resultado) {
     <?php 
     $query = "SELECT
     *,
-    DATE_FORMAT( r.fechareac, '%d/%m/%Y' ) AS reaccion
+    DATE_FORMAT( c.fechaf, '%d/%m/%Y' ) AS reaccion
     FROM
     cursos c,
     personal p,
-    reaccion r,
     listacursos l
     WHERE
     c.idinsp = p.gstIdper 
-    AND c.id_curso = r.id_curso 
     AND c.idmstr = l.gstIdlsc 
     AND c.idinsp != c.idinst
     AND c.proceso = 'FINALIZADO' 
@@ -587,7 +585,7 @@ if(!$resultado) {
       $idmstr = $data['idmstr'];
       $idcuro = $data['id_curso'];
       $codigo = $data['codigo'];
-      $id_reac = $data['id_reac'];
+      $id_reac = $data['id_curso'];
       $fec_reac = $data['reaccion'];
       $idlist = $data['gstIdlsc'];
       $titulo = $data['gstTitlo'];
@@ -671,14 +669,12 @@ $query = "SELECT
 *,
 COUNT(c.codigo) as total,
 DATE_FORMAT( c.fcurso, '%d/%m/%Y' ) AS fecha_curso,
-DATE_FORMAT( r.fechareac, '%d/%m/%Y' ) AS reaccion
+DATE_FORMAT( c.fechaf, '%d/%m/%Y' ) AS reaccion
 FROM
 cursos c,
-reaccion r,
 listacursos l
 WHERE
-c.id_curso = r.id_curso 
-AND c.idmstr = l.gstIdlsc   
+c.idmstr = l.gstIdlsc   
 AND c.idinsp != c.idinst
 AND c.proceso = 'FINALIZADO' 
 AND c.confirmar = 'CONFIRMADO' 
@@ -692,7 +688,7 @@ while($data = mysqli_fetch_array($resultado)){
   $idmstr = $data['idmstr'];
   $idcuro = $data['id_curso'];
   $codigo = $data['codigo'];
-  $id_reac = $data['id_reac'];
+  $id_reac = $data['id_curso'];
   $fec_reac = $data['reaccion'];
   $idlist = $data['gstIdlsc'];
   $titulo = $data['gstTitlo'];

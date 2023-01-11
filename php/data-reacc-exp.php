@@ -6,7 +6,95 @@
 
 
 $n=0;
-$query = "SELECT r.*,c.idmstr,c.idcoor,c.idinst,c.grupo,DATE_FORMAT(c.fcurso, '%d/%m/%Y') as fcurso,DATE_FORMAT(c.fechaf, '%d/%m/%Y') as fechaf , concat((select gstTitlo from listacursos where gstIdlsc  =c.idmstr)) as nombre_curso,concat((select gstNombr from personal where gstIdper =c.idcoor)) as COORDINADOR_NOMBRE, concat((select gstApell from personal where gstIdper =c.idcoor)) as COORDINADOR_APELLIDO,concat((select gstNombr from personal where gstIdper =c.idinst)) as INSTRUCTOR_NOMBRE,concat((select gstApell from personal where gstIdper =c.idinst)) as INSTRUCTOR_APELLIDO, (select gstProvd from listacursos where gstIdlsc=c.idmstr )as procedencia,(select gstNombr from personal where gstIdper=c.idinsp)as nombrepers,(select gstApell from personal where gstIdper=c.idinsp)as apellido,(select gstNmpld from personal where gstIdper=c.idinsp)as nuempleado,(select e.adscripcion from personal n, area e where n.gstIdper=c.idinsp and e.id_area=n.gstIDara)as areadscripcion,k.spcialidds from reaccion r, cursos c,especialida k  WHERE k.gstIdper=c.idinsp and c.id_curso =r.id_curso and c.estado=0";
+$query = "SELECT
+	r.*,
+	c.idmstr,
+	c.idcoor,
+	c.idinst,
+	c.grupo,
+	DATE_FORMAT( c.fcurso, '%d/%m/%Y' ) AS fcurso,
+	DATE_FORMAT( c.fechaf, '%d/%m/%Y' ) AS fechaf,
+	concat((
+		SELECT
+			gstTitlo 
+		FROM
+			listacursos 
+		WHERE
+			gstIdlsc = c.idmstr 
+		)) AS nombre_curso,
+	concat((
+		SELECT
+			gstNombr 
+		FROM
+			personal 
+		WHERE
+			gstIdper = c.idcoor 
+		)) AS COORDINADOR_NOMBRE,
+	concat((
+		SELECT
+			gstApell 
+		FROM
+			personal 
+		WHERE
+			gstIdper = c.idcoor 
+		)) AS COORDINADOR_APELLIDO,
+	concat((
+		SELECT
+			gstNombr 
+		FROM
+			personal 
+		WHERE
+			gstIdper = c.idinst 
+		)) AS INSTRUCTOR_NOMBRE,
+	concat((
+		SELECT
+			gstApell 
+		FROM
+			personal 
+		WHERE
+			gstIdper = c.idinst 
+		)) AS INSTRUCTOR_APELLIDO,
+	( SELECT gstProvd FROM listacursos WHERE gstIdlsc = c.idmstr ) AS procedencia,(
+	SELECT
+		gstNombr 
+	FROM
+		personal 
+	WHERE
+		gstIdper = c.idinsp 
+		) AS nombrepers,(
+	SELECT
+		gstApell 
+	FROM
+		personal 
+	WHERE
+		gstIdper = c.idinsp 
+		) AS apellido,(
+	SELECT
+		gstNmpld 
+	FROM
+		personal 
+	WHERE
+		gstIdper = c.idinsp 
+		) AS nuempleado,(
+	SELECT
+		e.adscripcion 
+	FROM
+		personal n,
+		area e 
+	WHERE
+		n.gstIdper = c.idinsp 
+		AND e.id_area = n.gstIDara 
+	) AS areadscripcion,
+	k.spcialidds 
+FROM
+	reaccion r,
+	cursos c,
+	especialida k 
+WHERE
+	k.gstIdper = c.idinsp 
+	AND c.id_curso = r.id_curso 
+	AND c.estado =0
+";
 
 
 	$resultado = mysqli_query($conexion, $query);
@@ -63,7 +151,9 @@ $query = "SELECT r.*,c.idmstr,c.idcoor,c.idinst,c.grupo,DATE_FORMAT(c.fcurso, '%
 		$data["fechaf"],
 		$data["COORDINADOR_NOMBRE"].' '.$data["COORDINADOR_APELLIDO"],
 		$data["INSTRUCTOR_NOMBRE"].' '.$data["INSTRUCTOR_APELLIDO"],
-		$data["pregunta26"]
+		$data["pregunta26"],
+		$data["pregunta31"],
+		$data["pregunta32"]
 	];
 
 		}

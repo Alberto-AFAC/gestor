@@ -32,7 +32,7 @@ if($opcion === 'modificar'){
 				if($privilegios=='DIRECTOR_CIAAC'){
 					$privilegios = 'DIRECTOR';
 				}
-		if($privilegios == 'COORDINADOR' || $privilegios == 'DIRECTOR' || $privilegios == 'INSTRUCTOR' || $privilegios == 'INSPECTOR' || $privilegios == 'ADMINISTRATIVO' || $privilegios == 'HUMANOS'){
+		if($privilegios == 'COORDINADOR' || $privilegios == 'DIRECTOR' || $privilegios == 'INSTRUCTOR' || $privilegios == 'INSPECTOR' || $privilegios == 'ADMINISTRATIVO' || $privilegios == 'HUMANOS'|| $privilegios == 'COMISIONADO'){
 
 		    $privi_gestor = $privilegios; 	
 			upadate_acces($id_usu,$privi_gestor,$conexion);
@@ -84,7 +84,7 @@ if($opcion === 'modificar'){
 				if($privi_gestor=='DIRECTOR_CIAAC'){
 					$privi_gestor = 'DIRECTOR';
 				}
-		if($privi_gestor == 'COORDINADOR' || $privi_gestor == 'DIRECTOR' || $privi_gestor == 'INSTRUCTOR' || $privi_gestor == 'INSPECTOR' || $privi_gestor == 'ADMINISTRATIVO' || $privi_gestor == 'HUMANOS'){
+		if($privi_gestor == 'COORDINADOR' || $privi_gestor == 'DIRECTOR' || $privi_gestor == 'INSTRUCTOR' || $privi_gestor == 'INSPECTOR' || $privi_gestor == 'ADMINISTRATIVO' || $privi_gestor == 'HUMANOS'|| $privilegios == 'COMISIONADO'){
 			upadate_acces($id_usu,$privi_gestor,$conexion);
 			}
 
