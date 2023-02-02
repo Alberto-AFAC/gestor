@@ -29,6 +29,8 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
     $acceso = 'humanos/humanos';
 }elseif ($_SESSION['usuario']['privilegios'] == "COMISIONADO") {
     $acceso = 'comision/profile';
+}elseif ($_SESSION['usuario']['privilegios'] == "EXTERNO") {
+    $acceso = 'externos/profile';
 }
 ?>
 

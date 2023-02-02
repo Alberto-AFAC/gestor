@@ -247,6 +247,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>";
         }
         
+        
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:20px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -305,6 +306,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
                         </div>
                     </div>";
             }
+            
         
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
@@ -366,6 +368,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
         </div>";
          }
+         
         
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
@@ -427,6 +430,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
             </div>";
         }
+        
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -486,6 +490,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
             </div>";
         }
+        
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:20px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -547,6 +552,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>";
         
         }
+        
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -605,6 +611,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
             </div>";
         }
+        
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -665,6 +672,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
             </div>";
         }
+        
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -679,7 +687,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         </div>";
         
         //----------------------------------------AUTOGESTIVO-----------------------------------------------------------------------------
-    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'CONSTANCIA' && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
+    }else if($con['gstCntnc'] == 'DIPLOMA'  && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'DIPLOMA' && $conteoStr >= 100 && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
         echo "<div style='text-align: center;'>
         <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
         <p class='' style='text-align:center;padding-top:-35px;font-size:30px'>Otorga la presente</p>
@@ -688,8 +696,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p class='otorga' style='font-family: Montserrat-Light;padding-top:-34px;'>Por haber aprobado satisfactoriamente el curso:</p>
         <p style='padding-top:-30px;' class='nombre-Constancia'>{$con['gstTitlo']}</p> 
         <p class='nombre-grupo-Min'style='padding-top:10px;'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
-        </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
-        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br><br>";
+        </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, en {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br><br>";
 
        if($con['fcurso'] <= '2022-11-30'){ //Jessica Berenice Castañeda Gutierrez    
         echo"<div class='caja'>
@@ -726,6 +733,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
         </div>";
        }
+       
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:20px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -740,7 +748,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             <img src='../dist/img/firmas/Viridiana.jpg' style='padding-top:65%; width: 300px; position: absolute; left: 16%;'>
             
         </div>";
-    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'CONSTANCIA' && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
+    }else if($con['gstCntnc'] == 'DIPLOMA'  && $conteoStr <= 99 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'DIPLOMA' && $conteoStr <= 99 && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
         echo "
         <div style='text-align: center;'>
             <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
@@ -750,7 +758,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             <p class='otorga' style='font-family: Montserrat-Light;padding-top:-40px;'>Por haber aprobado el curso de:</p>
             <p class='nombre-Curso-Min' style='padding-top:-36px;'>{$con['gstTitlo']}</p>
             <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
-            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']} al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).";
+            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, en {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).";
         
         if($con['fcurso'] <= '2022-11-30'){ //Jessica Berenice Castañeda Gutierrez    
            echo" <div class='caja'>
@@ -787,6 +795,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
              </div>";
         }
+       
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -800,7 +809,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             <p style='font-size:18px;position: absolute;padding-top:86%;left:8%;font-family: Montserrat-Light'>Centro Internacional de Adiestramiento de Aviación Civil</p>
             <img src='../dist/img/firmas/Viridiana.jpg' style='padding-top:65%; width: 300px; position: absolute; left: 16%;'>
         </div>";
-    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'CONSTANCIA' && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
+    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'CERTIFICADO' && $conteoStr >= 100 && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
         echo "<div style='text-align: center;'>
         <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
         <p class='' style='text-align:center;padding-top:-35px;font-size:30px'>Otorga la presente</p>
@@ -809,8 +818,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p class='otorga' style='font-family: Montserrat-Light;padding-top:-34px;'>Por haber aprobado satisfactoriamente el curso:</p>
         <p style='padding-top:-30px;' class='nombre-Constancia'>{$con['gstTitlo']}</p> 
         <p class='nombre-grupo-Min'style='padding-top:10px;'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
-        </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']}
-        al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>";
+        </p><span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, en {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>";
         
         if($con['fcurso'] <= '2022-11-30'){ //Jessica Berenice Castañeda Gutierrez    
         echo"<div class='caja'>
@@ -846,6 +854,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
         </div>";
         }
+        
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>
         </div>
@@ -861,7 +870,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             
         </div>";
 
-    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr >= 100 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'CONSTANCIA' && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
+    }else if($con['gstCntnc'] == 'CERTIFICADO'  && $conteoStr <= 99 && $con['comparativo']=='DIFERENTE' && $con['modalidad']== 'AUTOGESTIVO'||$con['gstCntnc'] == 'CERTIFICADO' && $conteoStr <= 99 && $con['modalidad']=='AUTOGESTIVO' && $con['comparativo']=='IGUAL'){
         echo "<div style='text-align: center;'>
         <p class='CIAAC' style='font-family: Montserrat-Light'>El Centro Internacional de Adiestramiento de Aviación Civil</p>
         <p class='' style='text-align:center;padding-top:-33px;font-size:30px'>Otorga el presente</p>
@@ -870,7 +879,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
         <p class='otorga' style='font-family: Montserrat-Light;padding-top:-40px;'>Por haber aprobado el curso de:</p>
         <p class='nombre-Curso-Min' style='padding-top:-36px;'>{$con['gstTitlo']}</p>
             <p class='nombre-grupo-Min'><span style='color:black;'>Grupo:</span>{$con['grupo']}</p>
-            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, del {$con['dia']} de {$con['mesnombre']} al {$con['diafinal']} de {$con['mesfinales']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>";
+            <span class='p-2' style='font-family: Montserrat-Light'>Impartido por el Centro Internacional de Adiestramiento de Aviación Civil, en el marco del Programa de Capacitación de la Autoridad Aeronáutica, en {$con['mesnombre']} del presente año, con una duración de {$con['duracion']} hora(s).</span><br>";
        
         if($con['fcurso'] <= '2022-11-30'){ //Jessica Berenice Castañeda Gutierrez 
         echo"<div class='caja'>
@@ -906,6 +915,7 @@ QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
             </div>
         </div>";
         }
+        
         
         echo"<p class='codigo-curso' style='margin-top:20px;position:absolute'>Código del curso: {$con['codigo']}</p>
         <p class='codigo-curso' style='margin-top:24px;position:absolute; color:gray'>F- CIAAC - CDPPA - 07 – R02</p>

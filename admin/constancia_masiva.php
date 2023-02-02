@@ -7,7 +7,7 @@ $datos1 = $_POST['idlistap'];
 $codigo = $_POST['foliop'];
 if($_POST['ini']=='' && $_POST['fin']==''){
     $ini = 0;
-    $fin = 100;
+    $fin = 50;
 }else{
     $ini = $_POST['ini'];
     $fin = $_POST['fin'];

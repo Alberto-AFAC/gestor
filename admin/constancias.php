@@ -182,14 +182,22 @@ if(!$resultado) {
                           <select style='width: 100%' class='form-control inputalta' class='selectpicker' id='ini' name='ini' type='text' data-live-search='true' onchange='constanciafin()'>
                             <option value=''>SELECIONE...</option>
                             <option value='0'>1</option>          
-                            <option value='100' id="ocul1" >100</option>          
-                            <option value='200' id="ocul2" >200</option>          
-                            <option value='300' id="ocul3" >300</option>          
-                            <option value='400' id="ocul4" >400</option>          
-                            <option value='500' id="ocul5" >500</option> 
-                            <option value='600' id="ocul6" >600</option> 
-                            <option value='700' id="ocul7" >700</option>
-                            <option value='800' id="ocul8" >800</option>           
+                            <option value='50' id="ocul1" >50</option>          
+                            <option value='100' id="ocul2" >100</option>          
+                            <option value='150' id="ocul3" >150</option>          
+                            <option value='200' id="ocul4" >200</option>          
+                            <option value='250' id="ocul5" >250</option> 
+                            <option value='300' id="ocul6" >300</option> 
+                            <option value='350' id="ocul7" >350</option>
+                            <option value='400' id="ocul8" >400</option>           
+                            <option value='450' id="ocul9" >450</option>
+                            <option value='500' id="ocul10" >500</option>
+                            <option value='550' id="ocul11" >550</option>           
+                            <option value='600' id="ocul12" >600</option>
+                            <option value='650' id="ocul13" >650</option>
+                            <option value='700' id="ocul14" >700</option>
+                            <option value='750' id="ocul15" >750</option>
+                            <option value='800' id="ocul16" >800</option>        
                           </select>
                         </div>
 
@@ -251,14 +259,22 @@ if(!$resultado) {
                             <select style='width: 100%' class='form-control inputalta' class='selectpicker' id='inic' name='inic' type='text' data-live-search='true' onchange='certificadofin()'>
                               <option value=''>SELECIONE...</option>
                               <option value='0'>1</option>          
-                              <option value='100' id="1ocul1" >100</option>          
-                              <option value='200' id="2ocul2" >200</option>          
-                              <option value='300' id="3ocul3" >300</option>          
-                              <option value='400' id="4ocul4" >400</option>          
-                              <option value='500' id="5ocul5" >500</option> 
-                              <option value='600' id="6ocul6" >600</option> 
-                              <option value='700' id="7ocul7" >700</option>
-                              <option value='800' id="8ocul8" >800</option>           
+                            <option value='50' id="1ocul1" >50</option>          
+                            <option value='100' id="2ocul2" >100</option>          
+                            <option value='150' id="3ocul3" >150</option>          
+                            <option value='200' id="4ocul4" >200</option>          
+                            <option value='250' id="5ocul5" >250</option> 
+                            <option value='300' id="6ocul6" >300</option> 
+                            <option value='350' id="7ocul7" >350</option>
+                            <option value='400' id="8ocul8" >400</option>           
+                            <option value='450' id="9ocul9" >450</option>
+                            <option value='500' id="10ocul10" >500</option>
+                            <option value='550' id="11ocul11" >550</option>           
+                            <option value='600' id="12ocul12" >600</option>
+                            <option value='650' id="13ocul13" >650</option>
+                            <option value='700' id="14ocul14" >700</option>
+                            <option value='750' id="15ocul15" >750</option>
+                            <option value='800' id="16ocul16" >800</option>   
                             </select>
                           </div>
 
@@ -501,11 +517,11 @@ if(!$resultado) {
     let valores = document.getElementById("certificadop").value;
     let inicio = document.getElementById("ini").value;
     ini = parseInt(inicio);           
-    compara = ini + 99;
+    compara = ini + 49;
     if(valores<compara){
       resultado = valores;
     }else{
-      resultado = ini+100;
+      resultado = ini+50;
     }
     $("#fin").val(resultado); 
   }
@@ -515,12 +531,12 @@ if(!$resultado) {
     let valores = document.getElementById("certificadopc").value;
     let inicio = document.getElementById("inic").value;
     ini = parseInt(inicio);           
-    let compara = ini + 99;
+    let compara = ini + 49;
 
     if(valores<compara){
       resultado = valores;
     }else{
-      resultado = ini+100;
+      resultado = ini+50;
     }
     $("#finc").val(resultado);     
   }
@@ -886,7 +902,7 @@ $.ajax({
   $("#constanciasc #participantes").val(obj.data[0].tcurso);
   $("#constanciasc #certificadop").val(certificado);
 
-  if(certificado<100){
+  if(certificado<50){
     $("#mostrarselec1").hide();
   }else{
     $("#mostrarselec1").show();
@@ -894,32 +910,57 @@ $.ajax({
 
 // inicio = 0;
 valor = certificado;
-v = valor.substr(0,1);          
+v = valor.substr(0,2);          
+$("#ocul2").hide(); $("#ocul3").hide();  $("#ocul4").hide();  $("#ocul5").hide(); $("#ocul6").hide(); $("#ocul7").hide(); $("#ocul8").hide();$("#ocul9").hide(); $("#ocul10").hide(); $("#ocul11").hide(); $("#ocul12").hide();$("#ocul13").hide(); $("#ocul14").hide(); $("#ocul15").hide(); $("#ocul16").hide();
 
-if(v==1){
-  $("#ocul2").hide(); $("#ocul3").hide();  $("#ocul4").hide();  $("#ocul5").hide(); $("#ocul6").hide(); $("#ocul7").hide(); $("#ocul8").hide();
-}
-if(v==2){
-  $("#ocul2").show(); $("#ocul3").hide(); $("#ocul4").hide(); $("#ocul5").hide(); $("#ocul6").hide(); $("#ocul7").hide(); $("#ocul8").hide();
-}
-if(v==3){ 
-  $("#ocul2").show(); $("#ocul3").show(); $("#ocul4").hide();  $("#ocul5").hide(); $("#ocul6").hide();  $("#ocul7").hide(); $("#ocul8").hide();            
-}
-if(v==4){
-  $("#ocul2").show(); $("#ocul3").show();  $("#ocul4").show(); $("#ocul5").hide();  $("#ocul6").hide(); $("#ocul7").hide();  $("#ocul8").hide();            
-}
-if(v==5){
-  $("#ocul2").show(); $("#ocul3").show(); $("#ocul4").show(); $("#ocul5").show(); $("#ocul6").hide();  $("#ocul7").hide(); $("#ocul8").hide();
-}
-if(v==6){
-  $("#ocul2").show(); $("#ocul3").show(); $("#ocul4").show(); $("#ocul5").show(); $("#ocul6").show();  $("#ocul7").hide(); $("#ocul8").hide();
-}
-if(v==7){
-  $("#ocul2").show(); $("#ocul3").show();  $("#ocul4").show(); $("#ocul5").show();  $("#ocul6").show(); $("#ocul7").show();  $("#ocul8").hide();
-}
-if(v==8){
-  $("#ocul2").show(); $("#ocul3").show(); $("#ocul4").show(); $("#ocul5").show(); $("#ocul6").show(); $("#ocul7").show(); $("#ocul8").show();
-}
+  if(v == 10 || v == 11 || v == 12 || v == 13 || v == 14){
+    $("#ocul2").show();
+  }
+  if(v == 15 || v == 16 || v == 17 || v == 18 || v == 19){
+    $("#ocul2").show();$("#ocul3").show();
+  }
+  if(v == 20 || v == 21 || v == 22 || v == 23 || v == 24){
+    $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();
+  }
+  if(v == 25 || v == 26 || v == 27 || v == 28 || v == 29){
+    $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();
+  }
+  if(v == 30 || v == 31 || v == 32 || v == 33 || v == 34){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();
+  }
+  if(v == 35 || v == 36 || v == 37 || v == 38 || v == 39){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();
+  }
+  if(v == 40 || v == 41 || v == 42 || v == 43 || v == 44){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();
+  }
+  if(v == 45 || v == 46 || v == 47 || v == 48 || v == 49){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();
+  }
+  if(v == 50 || v == 51 || v == 52 || v == 53 || v == 54){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();    
+  }
+  if(v == 55 || v == 56 || v == 57 || v == 58 || v == 59){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();$("#ocul11").show();        
+  }
+  if(v == 60 || v == 61 || v == 62 || v == 63 || v == 64){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();$("#ocul11").show();$("#ocul12").show();            
+  }
+  if(v == 65 || v == 66 || v == 67 || v == 68 || v == 69){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();$("#ocul11").show();$("#ocul12").show();$("#ocul13").show();
+  }
+  if(v == 70 || v == 71 || v == 72 || v == 73 || v == 74){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();$("#ocul11").show();$("#ocul12").show();$("#ocul13").show();$("#ocul14").show();    
+  }
+  if(v == 75 || v == 76 || v == 77 || v == 78 || v == 79){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();$("#ocul11").show();$("#ocul12").show();$("#ocul13").show();$("#ocul14").show();$("#ocul15").show();        
+  }
+    if(v == 80 || v == 81 || v == 82 || v == 83 || v == 84){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();$("#ocul11").show();$("#ocul12").show();$("#ocul13").show();$("#ocul14").show();$("#ocul15").show();$("#ocul16").show();        
+    }
+    if(v == 85 || v == 86 || v == 87 || v == 88 || v == 89){
+   $("#ocul2").show();$("#ocul3").show();$("#ocul4").show();$("#ocul5").show();$("#ocul6").show();$("#ocul7").show();$("#ocul8").show();$("#ocul9").show();$("#ocul10").show();$("#ocul11").show();$("#ocul12").show();$("#ocul13").show();$("#ocul14").show();$("#ocul15").show();$("#ocul16").show();                  
+    }
 }
 })
 }
@@ -950,38 +991,66 @@ $.ajax({
   $("#certificadosc #certificadopc").val(certificado);
 
 
-  if(certificado<100){
+  if(certificado<50){
     $("#mostrarselec2").hide();
   }else{
     $("#mostrarselec2").show();
 
     valor = certificado;
-    v = valor.substr(0,1);          
+    v = valor.substr(0,2);          
+$("#2ocul2").hide(); $("#3ocul3").hide();  $("#4ocul4").hide();$("#5ocul5").hide(); $("#6ocul6").hide(); $("#7ocul7").hide(); 
+$("#8ocul8").hide();$("#9ocul9").hide(); $("#10ocul10").hide(); $("#11ocul11").hide(); $("#12ocul12").hide();$("#13ocul13").hide(); 
+$("#14ocul14").hide(); $("#15ocul15").hide(); $("#16ocul16").hide();
 
-    if(v==1){
-      $("#2ocul2").hide(); $("#3ocul3").hide();  $("#4ocul4").hide();  $("#5ocul5").hide(); $("#6ocul6").hide(); $("#7ocul7").hide(); $("#8ocul8").hide();
+  if(v == 10 || v == 11 || v == 12 || v == 13 || v == 14){
+    $("#2ocul2").show();
+  }
+  if(v == 15 || v == 16 || v == 17 || v == 18 || v == 19){
+    $("#2ocul2").show();$("#3ocul3").show();
+  }
+  if(v == 20 || v == 21 || v == 22 || v == 23 || v == 24){
+    $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();
+  }
+  if(v == 25 || v == 26 || v == 27 || v == 28 || v == 29){
+    $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();
+  }
+  if(v == 30 || v == 31 || v == 32 || v == 33 || v == 34){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();
+  }
+  if(v == 35 || v == 36 || v == 37 || v == 38 || v == 39){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();
+  }
+  if(v == 40 || v == 41 || v == 42 || v == 43 || v == 44){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();
+  }
+  if(v == 45 || v == 46 || v == 47 || v == 48 || v == 49){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();
+  }
+  if(v == 50 || v == 51 || v == 52 || v == 53 || v == 54){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();    
+  }
+  if(v == 55 || v == 56 || v == 57 || v == 58 || v == 59){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();$("#11ocul11").show();        
+  }
+  if(v == 60 || v == 61 || v == 62 || v == 63 || v == 64){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();$("#11ocul11").show();$("#12ocul12").show();            
+  }
+  if(v == 65 || v == 66 || v == 67 || v == 68 || v == 69){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();$("#11ocul11").show();$("#12ocul12").show();$("#13ocul13").show();
+  }
+  if(v == 70 || v == 71 || v == 72 || v == 73 || v == 74){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();$("#11ocul11").show();$("#12ocul12").show();$("#13ocul13").show();$("#14ocul14").show();    
+  }
+  if(v == 75 || v == 76 || v == 77 || v == 78 || v == 79){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();$("#11ocul11").show();$("#12ocul12").show();$("#13ocul13").show();$("#14ocul14").show();$("#15ocul15").show();        
+  }
+    if(v == 80 || v == 81 || v == 82 || v == 83 || v == 84){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();$("#11ocul11").show();$("#12ocul12").show();$("#13ocul13").show();$("#14ocul14").show();$("#15ocul15").show();$("#16ocul16").show();        
     }
-    if(v==2){
-      $("#2ocul2").show(); $("#3ocul3").hide(); $("#4ocul4").hide(); $("#5ocul5").hide(); $("#6ocul6").hide(); $("#7ocul7").hide(); $("#8ocul8").hide();
-    }
-    if(v==3){ 
-      $("#2ocul2").show(); $("#3ocul3").show(); $("#4ocul4").hide();  $("#5ocul5").hide(); $("#6ocul6").hide();  $("#7ocul7").hide(); $("#8ocul8").hide();            
-    }
-    if(v==4){
-      $("#2ocul2").show(); $("#3ocul3").show();  $("#4ocul4").show(); $("#5ocul5").hide();  $("#6ocul6").hide(); $("#7ocul7").hide();  $("#8ocul8").hide();            
-    }
-    if(v==5){
-      $("#2ocul2").show(); $("#3ocul3").show(); $("#4ocul4").show(); $("#5ocul5").show(); $("#6ocul6").hide();  $("#7ocul7").hide(); $("#8ocul8").hide();
-    }
-    if(v==6){
-      $("#2ocul2").show(); $("#3ocul3").show(); $("#4ocul4").show(); $("#5ocul5").show(); $("#6ocul6").show();  $("#7ocul7").hide(); $("#8ocul8").hide();
-    }
-    if(v==7){
-      $("#2ocul2").show(); $("#3ocul3").show();  $("#4ocul4").show(); $("#5ocul5").show();  $("#6ocul6").show(); $("#7ocul7").show();  $("#8ocul8").hide();
-    }
-    if(v==8){
-      $("#2ocul2").show(); $("#3ocul3").show(); $("#4ocul4").show(); $("#5ocul5").show(); $("#6ocul6").show(); $("#7ocul7").show(); $("#8ocul8").show();
-    }
+    if(v == 85 || v == 86 || v == 87 || v == 88 || v == 89){
+   $("#2ocul2").show();$("#3ocul3").show();$("#4ocul4").show();$("#5ocul5").show();$("#6ocul6").show();$("#7ocul7").show();$("#8ocul8").show();$("#9ocul9").show();$("#10ocul10").show();$("#11ocul11").show();$("#12ocul12").show();$("#13ocul13").show();$("#14ocul14").show();$("#15ocul15").show();$("#16ocul16").show();                  
+        }
+
   }
 })
 }

@@ -26,10 +26,11 @@ if($opcion === 'registrar'){
         $gstStado=$_POST['gstStado'];
         $sgtCrhnt=$_POST['sgtCrhnt'];
         $gstRusp=$_POST['gstRusp'];
+        $gstNmpld=$_POST['gstNmpld'];
         
-        if(registrar($gstNombr,$gstApell,$gstLunac,$gstCurp,$gstRfc,$gstSexo,$gstIDCat,$gstCasa,$gstClulr,$gstCorro,$gstSpcID,$gstStado,$sgtCrhnt,$gstRusp,$conexion)){
+        if(registrar($gstNombr,$gstApell,$gstLunac,$gstCurp,$gstRfc,$gstSexo,$gstIDCat,$gstCasa,$gstClulr,$gstCorro,$gstSpcID,$gstStado,$sgtCrhnt,$gstRusp,$gstNmpld,$conexion)){
             echo "0";
-		    historia($id,$conexion);       
+		    historia($id,$conexion);  
         }else{
 	    	echo "1";
 	    }
@@ -127,10 +128,10 @@ if($opcion === 'registrar'){
         $this->conexion->cerrar();
     }
     //funcion para guardar el registro
-    function registrar($gstNombr,$gstApell,$gstLunac,$gstCurp,$gstRfc,$gstSexo,$gstIDCat,$gstCasa,$gstClulr,$gstCorro,$gstSpcID,$gstStado,$sgtCrhnt,$gstRusp,$conexion){
-        $query="INSERT INTO personal VALUES(0,'$gstNombr','$gstApell','$gstLunac','0','$gstSexo','0','$gstCurp','$gstRfc','0','0','0','0','0','0','0','0','0','0','0','$gstStado','$gstCasa','$gstClulr','0','0','$sgtCrhnt','$gstRusp','0','0','0','0','$gstSpcID','0','INSPECTOR','$gstIDCat','0','$gstCorro','0','0','0','0','0','0','NO',0,'0',3)";
+    function registrar($gstNombr,$gstApell,$gstLunac,$gstCurp,$gstRfc,$gstSexo,$gstIDCat,$gstCasa,$gstClulr,$gstCorro,$gstSpcID,$gstStado,$sgtCrhnt,$gstRusp,$gstNmpld,$conexion){
+        $query="INSERT INTO personal VALUES(0,'$gstNombr','$gstApell','$gstLunac','0','$gstSexo','0','$gstCurp','$gstRfc','0','0','0','0','0','0','0','0','0','0','0','$gstStado','$gstCasa','$gstClulr','0','$gstNmpld','$sgtCrhnt','$gstRusp','0','0','0','0','$gstSpcID','0','INSPECTOR EXTERNO','$gstIDCat','0','$gstCorro','0','0','0','0','0','0','NO',0,'0',3)";
         if(mysqli_query($conexion,$query)){
-        $queri = "INSERT INTO especialidadcat(gstIDper,gstIDcat,gstIDeva) SELECT gstIdper,33,0 FROM personal ORDER BY `gstIdper` DESC LIMIT 1";
+        $queri = "INSERT INTO accesos(id_usu,usuario,password,privilegios,activo,baja,cambio) SELECT gstIdper,'$gstNombr','$gstNmpld','EXTERNO','0','0','0' FROM personal WHERE gstNombr='$gstNombr' AND gstApell='$gstApell' AND gstCargo='INSPECTOR EXTERNO'";
         mysqli_query($conexion,$queri);
             return true;
         }else{
@@ -138,6 +139,7 @@ if($opcion === 'registrar'){
         }
         $this->conexion->cerrar();
     }
+   
     //funcion para editar el registro
     function actualizar ($gstNombr,$gstApell,$gstLunac,$gstCurp,$gstRfc,$gstSexo,$gstIDCat,$gstCasa,$gstClulr,$gstCorro,$gstSpcID,$gstStado,$sgtCrhnt,$gstRusp,$gstIdper,$conexion){
         $query="UPDATE personal SET gstNombr='$gstNombr', gstApell='$gstApell', gstLunac='$gstLunac', gstCurp='$gstCurp', gstRfc='$gstRfc', gstSexo='$gstSexo', gstIDCat='$gstIDCat', gstCasa='$gstCasa', gstClulr='$gstClulr', gstCorro='$gstCorro', gstSpcID='$gstSpcID', gstStado='$gstStado', sgtCrhnt='$sgtCrhnt', gstRusp='$gstRusp' WHERE gstIdper= '$gstIdper'";

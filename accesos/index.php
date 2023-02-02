@@ -264,6 +264,8 @@ session_start();
                     <option value="INSTRUCTOR">INSTRUCTOR</option>
                     <option value="INSPECTOR">INSPECTOR</option>                
                     <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                    <option value="COMISIONADO">COMISIONADO</option>
+                    <option value="EXTERNO">EXTERNO</option>
                     </select>
                     </div>
                 </div>

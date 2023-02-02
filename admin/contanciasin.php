@@ -182,14 +182,22 @@ if(!$resultado) {
                           <select style='width: 100%' class='form-control inputalta' class='selectpicker' id='ini' name='ini' type='text' data-live-search='true' onchange='constanciafin()'>
                             <option value=''>SELECIONE...</option>
                             <option value='0'>1</option>          
-                            <option value='100' id="ocul1" >100</option>          
-                            <option value='200' id="ocul2" >200</option>          
-                            <option value='300' id="ocul3" >300</option>          
-                            <option value='400' id="ocul4" >400</option>          
-                            <option value='500' id="ocul5" >500</option> 
-                            <option value='600' id="ocul6" >600</option> 
-                            <option value='700' id="ocul7" >700</option>
-                            <option value='800' id="ocul8" >800</option>           
+                            <option value='50' id="ocul1" >50</option>          
+                            <option value='100' id="ocul2" >100</option>          
+                            <option value='150' id="ocul3" >150</option>          
+                            <option value='200' id="ocul4" >200</option>          
+                            <option value='250' id="ocul5" >250</option> 
+                            <option value='300' id="ocul6" >300</option> 
+                            <option value='350' id="ocul7" >350</option>
+                            <option value='400' id="ocul8" >400</option>           
+                            <option value='450' id="ocul9" >450</option>
+                            <option value='500' id="ocul10" >500</option>
+                            <option value='550' id="ocul11" >550</option>           
+                            <option value='600' id="ocul12" >600</option>
+                            <option value='650' id="ocul13" >650</option>
+                            <option value='700' id="ocul14" >700</option>
+                            <option value='750' id="ocul15" >750</option>
+                            <option value='800' id="ocul16" >800</option>            
                           </select>
                         </div>
 
