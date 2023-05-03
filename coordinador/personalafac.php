@@ -81,7 +81,7 @@ include('header.php');
 
             <section class="content" id="detalles" style="display: none;">
                 <div class="row">
-                    <?php include('valores.php'); ?>
+                    <?php include('valores2.php'); ?>
                     <!-- /.col -->
                 </div>
 
@@ -166,7 +166,7 @@ include('header.php');
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                                        <label class="label2">DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA</label>
 
                                         <select style="width: 100%" class="form-control"
                                             class="selectpicker disabled inputalta" name="gstAreIDasig"
@@ -180,7 +180,7 @@ include('header.php');
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
+                                        <label class="label2">DIRECCIÓN DE ÁREA</label>
                                         <select style="width: 100%" class="form-control" class="selectpicker inputalta"
                                             id="gstIDara1" name="gstIDara1" type="text" data-live-search="true"
                                             disabled="">
@@ -193,7 +193,7 @@ include('header.php');
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">SUBDIRECCIÓN</label>
+                                        <label class="label2">ÁREA, SUBDIRECCIÓN Y/O AEROPUERTO</label>
                                         <div id="subdirect"></div>
                                     </div>
                                 </div>
@@ -597,10 +597,12 @@ $resultado = mysqli_query($conexion, $query);
 
 if($data['estado'] == 0){ ?>["<?php echo $empleado?>", "<?php echo  $data['gstNombr']?>",
         "<?php echo $data['gstApell']?>", "<?php echo $datosCargo ?>", "<?php echo $estado ?>",
-        <?php if($data['gstCargo']=='NUEVO INGRESO'){?> "<a class='label label-warning' style='font-weight: bold; height: 50px; font-size: 13px;'> POR ASIGNAR</a>"
+        <?php 
+        if($data['gstCargo']=='NUEVO INGRESO'){?> 
+        "<a class='label label-warning' style='font-weight: bold; height: 50px; font-size: 13px;'> POR ASIGNAR</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"
         <?php }else{?>
         //"<a title='Evaluación' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>ASIGNAR</a>"
-        "<a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a>"
+        "<a class='label label-success' style='font-weight: bold; height: 50px; font-size: 13px;'> ASIGNADO</a> <a href='javascript:openDtlls()' title='Perfil' onclick='perfil(<?php echo $gstIdper ?>)' class='datos btn btn-default'><i class='glyphicon glyphicon-user text-success'></i></a>"
 
         <?php } ?>
 
@@ -643,7 +645,7 @@ var tableGenerarReporte = $('#data-table-reportes').DataTable({
             title: "PERSONAL"
         },
         {
-            title: "ESTATUS"
+            title: "ACCIONES"
         }
     ],
 });

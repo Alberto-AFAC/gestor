@@ -11,7 +11,7 @@
   $instructor  = mysqli_query($conexion,$sql);
 
 
-  $sql = "SELECT p.gstIdper,p.gstNombr,p.gstApell, i.* FROM personal p, instruacceso i WHERE p.gstIdper=i.idper AND i.cargo='COORDINADOR' and p.estado = 0";
+  $sql = "SELECT p.gstIdper,p.gstNombr,p.gstApell, i.* FROM personal p, instruacceso i WHERE p.gstIdper=i.idper AND i.cargo in ('COORDINADOR','COORDINADOR_A') and p.estado = 0";
   $cordinador  = mysqli_query($conexion,$sql);
 
   unset($_SESSION['consulta']);
@@ -61,16 +61,32 @@
       .a-alert:visited {
           color: white;
       }
+
+      .loader {
+            margin: 0 auto;
+          /*  display: none;*/
+            border: 1px solid red;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+          }
+
+          /* Safari */
+          @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }      
       </style>
-
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-      <!-- Google Font -->
       <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   </head>
@@ -245,22 +261,29 @@
                                                               <div class="input-group-addon">
                                                                   <i class="fa fa-globe"></i>
                                                               </div>
-                                                              <input type="url" onkeyup="mayus(this);"
+                                                              <textarea type="url" onkeyup="mayus(this);"
                                                                   class="form-control inputalta" id="classroom"
-                                                                  name="classroom" placeholder="URL ">
+                                                                  name="classroom" placeholder="URL "></textarea>
                                                           </div>
                                                       </div>
-
                                                   </div>
-
                                                   <div id="disocl" style="display: none;" class="form-group">
                                                       <input type="hidden" name="link" id="link">
                                                       <input type="hidden" name="contracceso" id="contracceso">
                                                       <input type="hidden" name="classroom" id="classroom">
                                                   </div>
-
+                                                  <div class="col-sm-4" id="grupinp" name="grupinp" style="display: ;">
+                                                      <label class="label2">GRUPO</label>
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon">
+                                                              <i class="fa fa-plus-circle"></i>
+                                                          </div>
+                                                          <input type="text" onkeyup="mayus(this);"
+                                                              class="form-control inputalta" id="grupociaac"
+                                                              name="grupociaac" placeholder="INGRESE EL GRUPO">
+                                                      </div>
+                                                  </div>
                                               </div>
-
                                               <div class="form-group">
                                                   <div class="col-sm-4">
                                                       <label class="label2">PARTICIPANTES DEL CURSO</label>
@@ -269,11 +292,8 @@
                                               </div>
                                               <div id="tabcurso"></div>
                                               <br>
-
                                               <div class="form-group"><br>
                                                   <div class="col-sm-offset-0 col-sm-5">
-
-
                                                       <button type="button" id="buttonpro" style="font-size:16px"
                                                           class="btn btn-info altaboton"
                                                           onclick="curProgramar();">PROGRAMAR</button>
@@ -287,31 +307,35 @@
                                                           onclick="location.href='programa.php'"
                                                           style="display: none;">VACIAR</button>
                                                   </div>
-
                                                   <b>
                                                       <p class="alert alert-danger text-center padding error"
                                                           id="danger">Error al agregar datos </p>
                                                   </b>
-
                                                   <b>
                                                       <p class="alert alert-success text-center padding exito"
                                                           id="succe">¡Se agregaron los datos con éxito!</p>
                                                   </b>
-
                                                   <b>
                                                       <p class="alert alert-warning text-center padding aviso"
                                                           id="empty">Es necesario agregar los datos que se solicitan
                                                       </p>
                                                   </b>
-
-
                                               </div>
                                           </form>
+
+
+                                      <div id="myModal" class="modal fade" role="dialog" style="padding-top: 10em;">
+                                      <div class="modal-dialog">
+                                      <div class="loader"></div>    
                                       </div>
+                                      </div>
+                                      <script type="text/javascript">
+                                      $( document ).ready(function() {
+                                      $('#myModal').modal('hidden')
+                                      });
+                                      </script>
 
-
-
-
+                                      </div>
                                   </div>
                                   <!-- /.tab-pane 2do panel-->
                                   <div class="tab-pane" id="timeline">
@@ -326,11 +350,9 @@
                       <!-- /.col -->
                   </div>
                   <!-- /.row -->
-
               </section>
               <!-- /.content -->
           </div>
-
           <?php include('dias.php'); ?>
           <!-- /.content-wrapper -->
           <footer class="main-footer">
@@ -362,10 +384,6 @@
          immediately after the control sidebar -->
           <div class="control-sidebar-bg"></div>
       </div>
-
-
-      <!-- ./wrapper -->
-
       <!-- jQuery 3 -->
       <script src="../bower_components/jquery/dist/jquery.min.js"></script>
       <!-- Bootstrap 3.3.7 -->
@@ -383,9 +401,7 @@
       <script src="../dist/js/demo.js"></script>
       <script src="../js/proInspc.js"></script>
       <!-- page script -->
-
   </body>
-
   </html>
   <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
   <script type="text/javascript">

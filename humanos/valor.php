@@ -172,7 +172,7 @@ $depart = mysqli_query($conexion,$sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!--<tr>
                             <th scope="row">A)</th>
                             <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
@@ -200,15 +200,30 @@ $depart = mysqli_query($conexion,$sql);
                             <td><div id="estudios"></div></td>
                             <td></td>
 
-                        </tr>
+                        </tr>-->
                         <tr>
-                            <th scope="row">F)</th>
+                            <th scope="row">A)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
                             <td></td>
                         </tr>
+                         <tr>
+                                        <th scope="row">B)</th>
+                                        <td>FORMATO BITÁCORA</td>
+                                        <td>
+                                            <div id="btcr"></div>
+                                        </td>
+                                        <td>
+                                            <div id="btcr-pdf"> </div>
+                                        </td>
+                                        <td>
+                                            <div id="btcr-fec"></div>
+                                        </td>
+                                        <!-- <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
+                            <td></td> -->
+                                    </tr>
                         <tr>
-                            <th scope="row">G)</th>
+                            <th scope="row">C)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
                             <td><div id="ccfecha"></div></td>
@@ -654,17 +669,17 @@ $depart = mysqli_query($conexion,$sql);
         <div class="form-group">
         <div class="col-sm-12">
        
-        <p id="ejecutiva" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR DIRECCIÓN EJECUTIVA <i class="fa fa-edit"></i></a></p>  
+        <p id="ejecutiva" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA <i class="fa fa-edit"></i></a></p>  
 
         <p id="ejecutiva1">
-        <label>DIRECCIÓN EJECUTIVA </label> 
+        <label>DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA </label> 
         <input type="text" name="ejcutiva" id="ejcutiva" class="form-control" disabled="">
         </p>
 
         <p id="ejecutiva2" style="display: none;">
-        <label>DIRECCIÓN EJECUTIVA </label>         
+        <label>DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA </label>         
         <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID" disabled="" id="gstAreID" type="text" data-live-search="true" >
-        <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
+        <option>SELECCIONE DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA</option>
         <?php while($ejct = mysqli_fetch_row($ejec)):?>                      
         <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
         <?php endwhile; ?>
@@ -676,16 +691,16 @@ $depart = mysqli_query($conexion,$sql);
         <div class="form-group">
                     <div class="col-sm-12">
                             <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="adscripcion2();">EDITAR
-                                    DIRECCIÓN DE ADSCRIPCIÓN <i class="fa fa-edit"></i></a></p>
+                                   DIRECCIÓN DE ÁREA <i class="fa fa-edit"></i></a></p>
                             <p id="adscrip1">
-                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
+                                <label>DIRECCIÓN DE ÁREA </label>
                                 <input type="text" name="adscripcion" id="adscripcion" class="form-control" disabled="">
                             </p>
                             <p id="adscrip2" style="display: none;">
-                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
+                                <label>DIRECCIÓN DE ÁREA </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
                                     disabled="" id="gstIDara" type="text" data-live-search="true">
-                                    <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
+                                    <option>SELECCIONE DIRECCIÓN DE ÁREA</option>
                                     <?php while($ccion = mysqli_fetch_row($are)):?>                      
                                     <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
                                    <?php endwhile; ?>
@@ -699,16 +714,16 @@ $depart = mysqli_query($conexion,$sql);
                     <div class="form-group">
                     <div class="col-sm-12">
                             <p id="subdirec1" style="display: none; cursor: pointer;"><a onclick="subdireccion1();">EDITAR
-                            SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
+                            DIRECCIÓN DE ÁREA <i class="fa fa-edit"></i></a></p>
                             <p id="subdirec2">
-                                <label>SUBDIRECCIÓN </label>
+                                <label>DIRECCIÓN DE ÁREA </label>
                                 <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
                             </p>
                             <p id="subdirec3" style="display: none;">
-                                <label>SUBDIRECCIÓN </label>
+                                <label>DIRECCIÓN DE ÁREA </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="AgstAcReg"
                                      id="AgstAcReg" type="text" data-live-search="true">
-                                    <option>SELECCIONE LA SUBDIRECCIÓN</option>
+                                    <option>SELECCIONE LA DIRECCIÓN DE ÁREA</option>
                                     <?php while($subdic = mysqli_fetch_row($subdirec)):?>                      
                     <option value="<?php echo $subdic[0]?>"><?php echo $subdic[1]?></option>
                     <?php endwhile; ?>

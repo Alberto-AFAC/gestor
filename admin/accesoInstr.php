@@ -82,6 +82,7 @@ $instructor = mysqli_query($conexion,$sql);
                                                                 <option value="" selected>ELEGIR UNA OPCIÓN</option>
                                                                 <option value="INSTRUCTOR">INSTRUCTOR</option>
                                                                 <option value="COORDINADOR">COORDINADOR</option>
+                                                                <option value="COORDINADOR_A">COORDINADOR_A</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -226,6 +227,7 @@ $instructor = mysqli_query($conexion,$sql);
                                             <option value="" selected>ELEGIR UNA OPCIÓN</option>
                                             <option value="INSTRUCTOR">INSTRUCTOR</option>
                                             <option value="COORDINADOR">COORDINADOR</option>
+                                            <option value="COORDINADOR_A">COORDINADOR_A</option>
                                         </select>
                                     </div>
                                 </div>

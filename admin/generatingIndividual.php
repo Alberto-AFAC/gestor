@@ -2,57 +2,99 @@
 ini_set('date.timezone','America/Mexico_City');
     include('../conexion/conexion.php');
     $datos = base64_decode($_GET['data']);
-    $query = "SELECT id, id_persona, id_codigocurso, fechaf, personal.gstNombr, personal.gstApell, gstTitlo,gstIdlsc,fcurso, YEAR(fechaf) AS ano, gstDrcin, cursos.evaluacion, cursos.sede, listacursos.gstCntnc, DAY(fcurso) AS dia, 	MONTH(fcurso) AS MES, DAY(fechaf) AS diafinal, MONTH(fechaf) AS mesfinal, cursos.modalidad, CASE WHEN MONTH ( fcurso ) = 1 THEN
-    'enero' 
-    WHEN MONTH ( fcurso ) = 2 THEN
-    'febrero' 
-    WHEN MONTH ( fcurso ) = 3 THEN
-    'marzo' 
-    WHEN MONTH ( fcurso ) = 4 THEN
-    'abril' 
-    WHEN MONTH ( fcurso ) = 5 THEN
-    'mayo' 
-    WHEN MONTH ( fcurso ) = 6 THEN
-    'junio' 
-    WHEN MONTH ( fcurso ) = 7 THEN
-    'julio' 
-    WHEN MONTH ( fcurso ) = 8 THEN
-    'agosto' 
-    WHEN MONTH ( fcurso ) = 9 THEN
-    'septiembre' 
-    WHEN MONTH ( fcurso ) = 10 THEN
-    'octubre' 
-    WHEN MONTH ( fcurso ) = 11 THEN
-    'noviembre' 
-    WHEN MONTH ( fcurso ) = 12 THEN
-    'diciembre' ELSE 'novalido' END AS mesnombre,
-    CASE
-		WHEN MONTH ( fechaf ) = 1 THEN
+    $codigo = base64_decode($_GET['fol']);
+    $query = "SELECT
+	c.id,
+	c.id_persona,
+	u.codigo,
+	c.id_codigocurso,
+	u.fechaf,
+	p.gstNombr,
+	p.gstApell,
+	l.gstTitlo,
+	l.gstIdlsc,
+	u.fcurso,
+	YEAR ( u.fechaf ) AS ano,
+	gstDrcin,
+	u.evaluacion,
+	u.sede,
+	l.gstCntnc,
+	DAY ( u.fcurso ) AS dia,
+	MONTH ( u.fcurso ) AS MES,
+	DAY ( u.fechaf ) AS diafinal,
+	MONTH ( u.fechaf ) AS mesfinal,
+	u.modalidad,
+CASE
+		WHEN MONTH ( u.fcurso ) = 1 THEN
 		'enero' 
-		WHEN MONTH ( fechaf ) = 2 THEN
+		WHEN MONTH ( u.fcurso ) = 2 THEN
 		'febrero' 
-		WHEN MONTH ( fechaf ) = 3 THEN
+		WHEN MONTH ( u.fcurso ) = 3 THEN
 		'marzo' 
-		WHEN MONTH ( fechaf ) = 4 THEN
+		WHEN MONTH ( u.fcurso ) = 4 THEN
 		'abril' 
-		WHEN MONTH ( fechaf ) = 5 THEN
+		WHEN MONTH ( u.fcurso ) = 5 THEN
 		'mayo' 
-		WHEN MONTH ( fechaf ) = 6 THEN
+		WHEN MONTH ( u.fcurso ) = 6 THEN
 		'junio' 
-		WHEN MONTH ( fechaf ) = 7 THEN
+		WHEN MONTH ( u.fcurso ) = 7 THEN
 		'julio' 
-		WHEN MONTH ( fechaf ) = 8 THEN
+		WHEN MONTH ( u.fcurso ) = 8 THEN
 		'agosto' 
-		WHEN MONTH ( fechaf ) = 9 THEN
+		WHEN MONTH ( u.fcurso ) = 9 THEN
 		'septiembre' 
-		WHEN MONTH ( fechaf ) = 10 THEN
+		WHEN MONTH ( u.fcurso ) = 10 THEN
 		'octubre' 
-		WHEN MONTH ( fechaf ) = 11 THEN
+		WHEN MONTH ( u.fcurso ) = 11 THEN
 		'noviembre' 
-		WHEN MONTH ( fechaf ) = 12 THEN
+		WHEN MONTH ( u.fcurso ) = 12 THEN
+		'diciembre' ELSE 'novalido' 
+	END AS mesnombre,
+CASE
+		
+		WHEN MONTH ( u.fechaf ) = 1 THEN
+		'enero' 
+		WHEN MONTH ( u.fechaf ) = 2 THEN
+		'febrero' 
+		WHEN MONTH ( u.fechaf ) = 3 THEN
+		'marzo' 
+		WHEN MONTH ( u.fechaf ) = 4 THEN
+		'abril' 
+		WHEN MONTH ( u.fechaf ) = 5 THEN
+		'mayo' 
+		WHEN MONTH ( u.fechaf ) = 6 THEN
+		'junio' 
+		WHEN MONTH ( u.fechaf ) = 7 THEN
+		'julio' 
+		WHEN MONTH ( u.fechaf ) = 8 THEN
+		'agosto' 
+		WHEN MONTH ( u.fechaf ) = 9 THEN
+		'septiembre' 
+		WHEN MONTH ( u.fechaf ) = 10 THEN
+		'octubre' 
+		WHEN MONTH ( u.fechaf ) = 11 THEN
+		'noviembre' 
+		WHEN MONTH ( u.fechaf ) = 12 THEN
 		'diciembre' ELSE 'MES NO VALIDO' 
-	END AS mesfinales FROM constancias INNER JOIN personal ON personal.gstIdper = constancias.id_persona INNER JOIN cursos ON id_codigocurso = codigo INNER JOIN listacursos ON idmstr = gstIdlsc 
-    WHERE id = $datos";
+	END AS mesfinales,
+	u.grupo,
+	LEFT(l.gstDrcin, 3) AS duracion,
+	CASE
+	WHEN u.fcurso=u.fechaf THEN 
+	'IGUAL' ELSE 
+	'DIFERENTE'
+	END AS comparativo 
+FROM
+	constancias c, personal p,cursos u,listacursos l
+	WHERE
+	p.gstIdper=c.id_persona
+	AND u.codigo=c.id_codigocurso
+    AND u.idinsp=c.id_persona
+	AND l.gstIdlsc=u.idmstr
+	and c.id =$datos 
+	AND u.estado = 0
+    AND c.id_codigocurso = '$codigo'
+	AND u.codigo = '$codigo'";
     $const = mysqli_query($conexion, $query);
     $con = mysqli_fetch_array($const);
     $dia = array("cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez","once","doce","trece","catorce","quince", "dieciseis","diecisiete","dieciocho","diecinueve", "veinte","veintiuno","veintidós","veintitres","veinticuatro","veinticinco","veintiseis","veintisiete","veintiocho","veintinueve","treinta","treinta y uno");

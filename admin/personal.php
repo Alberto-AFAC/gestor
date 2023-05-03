@@ -427,8 +427,12 @@ $psto = mysqli_query($conexion,$sql);
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4">
-                       <label class="label2">NÚMERO DE EMPLEADO<span class="text-red" style="font-size:20px">*</span></label>
-                       <input type="number" class="form-control inputalta" id="gstNmpld" name="gstNmpld">
+                        <label class="label2">NÚMERO DE EMPLEADO<span class="text-red"
+                                                    style="font-size:20px">*</span><input onchange="comison()"
+                                                    style="margin-left:8%;font-size:18px" type="checkbox"
+                                                    id="comisionado" name="comisionado">ES COMISIONADO?</label>
+                        <input type="number" class="form-control inputalta" id="gstNmpld"
+                                                name="gstNmpld">
                     </div>
                     <div class="col-sm-3">
                        <label class="label2">FECHA INGRESO A LA SCT<span class="text-red" style="font-size:20px">*</span></label>
@@ -499,7 +503,7 @@ $psto = mysqli_query($conexion,$sql);
 
                     <div class="form-group">
                           <div class="col-sm-6">
-                            <label class="label2">DIRECCIÓN EJECUTIVA<span class="text-red" style="font-size:20px">*</span></label>
+                            <label class="label2">DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA<span class="text-red" style="font-size:20px">*</span></label>
                              <div id="gstAreID1"></div>                            
                           </div>
                     
@@ -508,7 +512,7 @@ $psto = mysqli_query($conexion,$sql);
 
                       <input type="hidden" id="gstCargo" name="gstCargo" value="NUEVO INGRESO">
 
-                      <label style="color:grey">DIRECCIÓN DE ADSCRIPCIÓN<span class="text-red" style="font-size:20px">*</span></label>                    
+                      <label style="color:grey">DIRECCIÓN DE ÁREA<span class="text-red" style="font-size:20px">*</span></label>                    
 
                       <div id="gstIDara1"></div> 
                     
@@ -634,5 +638,74 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
 
         }
     })
+    
+    function comison() {
+    //alert("entra");
+    var isChecked = document.getElementById('comisionado').checked;
+    if (isChecked) {
+        //alert("antes");
+        document.getElementById('gstNmpld').disabled = true;
+        document.getElementById('sgtCrhnt').disabled = true;
+        document.getElementById('gstRusp').disabled = true;
+        document.getElementById('gstPlaza').disabled = true;
+        document.getElementById('gstIdpst').disabled = true;
+        document.getElementById('gstPstID').disabled = true;
+
+
+        document.getElementById('sgtCrhnt').value = 0;
+        document.getElementById('gstRusp').value = 0;
+        document.getElementById('gstPlaza').value = 0;
+        document.getElementById('gstIdpst').value = "NO APLICA";
+        document.getElementById('select2-gstPstID-container').innerHTML = "NO APLICA";
+        document.getElementById('select2-gstIdpst-container').innerHTML = "NO APLICA";
+        document.getElementById('gstIDara').value = 118;
+						$('#gstIDara').load('select/tabladirec.php');
+				
+        
+        
+        
+        
+        $.ajax({
+            url: '../php/comision.php',
+            type: 'POST'
+        }).done(function(respuesta) {
+            obj = JSON.parse(respuesta);
+            var res = obj.data;
+            var x = 0;
+            for (U = 0; U < res.length; U++) {
+                x++;
+                //alert(respuesta);
+                if (x > 0) {
+                    //alert(obj.data[U].gstNmpld);
+                    document.getElementById('gstNmpld').value = parseInt(obj.data[U].gstNmpld) + 1;
+
+
+                } else {
+                    document.getElementById('gstNmpld').value = '99000000';
+                }
+            }
+        });
+    } else {
+        document.getElementById('gstNmpld').disabled = false;
+        document.getElementById('gstNmpld').value = '';
+
+        document.getElementById('sgtCrhnt').disabled = false;
+        document.getElementById('gstRusp').disabled = false;
+        document.getElementById('gstPlaza').disabled = false;
+        document.getElementById('gstIdpst').disabled = false;
+        document.getElementById('gstIdpst').disabled = false;
+        document.getElementById('gstPstID').disabled = false;
+
+        document.getElementById('sgtCrhnt').value = '';
+        document.getElementById('gstRusp').value = '';
+        document.getElementById('gstPlaza').value = '';
+        document.getElementById('gstIdpst').value = '';
+        document.getElementById('select2-gstPstID-container').innerHTML = "";
+        document.getElementById('select2-gstIdpst-container').innerHTML = "";
+        document.getElementById('select2-gstAreID-container').innerHTML = "";
+        document.getElementById('gstIDara').value = "";
+        
+    }
+}
 </script>
 <script src="../js/select2.js"></script>

@@ -7,13 +7,15 @@ if (isset($_SESSION['usuario']))
 
 $id_usu = $_SESSION['usuario']['id_usu'];
 
+//echo $_SESSION['usuario']['privilegios'];
+
 //ACCESOS ADMINISTRADORES     
 if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" || 
   $_SESSION['usuario']['privilegios'] == "ADMINISTRADOR" || $_SESSION['usuario']['privilegios'] == "DIRECTOR_CIAAC"){
    $acceso = 'admin/inicio';
 //COORDINADOR e INSTRUCTOR
 }elseif ($_SESSION['usuario']['privilegios'] == "COORDINADOR" ||
-    $_SESSION['usuario']['privilegios'] == "INSTRUCTOR") {
+    $_SESSION['usuario']['privilegios'] == "INSTRUCTOR" || $_SESSION['usuario']['privilegios'] == "COORDINADOR_A") {
     $acceso = 'coordinador/inicio';
 //INSPECTOR Y ADMINISTRADOR    
 }elseif ($_SESSION['usuario']['privilegios'] == "INSPECTOR" ||
@@ -25,6 +27,10 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 //HUMANOS    
 }elseif ($_SESSION['usuario']['privilegios'] == "HUMANOS") {
     $acceso = 'humanos/humanos';
+}elseif ($_SESSION['usuario']['privilegios'] == "COMISIONADO") {
+    $acceso = 'comision/profile';
+}elseif ($_SESSION['usuario']['privilegios'] == "EXTERNO") {
+    $acceso = 'externos/inspector';
 }
 ?>
 
@@ -171,6 +177,7 @@ if($_SESSION['usuario']['privilegios'] == "SUPER_ADMIN" ||
 
     <input type="hidden" name="id_usua" id="id_usua" value="<?php echo $id_usu ?>">
 
+
     <script src="../js/menu/js/jquery.js"></script>
     <script src="../js/menu/js/main.js"></script>
 
@@ -190,17 +197,31 @@ $.ajax({
     type: 'POST',
     data: 'datos='+datos
 }).done(function(resp) {
+    
     obj = JSON.parse(resp);
     var res = obj.data;
+    
+    if(resp==0){
+            $("#gestor").hide();
+            $("#mesa").hide();
+            $("#detyca").hide();
+            $("#accesos").hide();      
+            $("#linguistica").show();
+    }
+    
     for (i = 0; i < res.length; i++) {
 
 
         if(obj.data[i].privi_gestor=='SUPER_ADMIN'){
-
             $("#gestor").show();
             $("#mesa").show();
             $("#detyca").show();
-
+        }else if (obj.data[i].privi_gestor=='EXTERNO'){
+            $("#gestor").show();
+            $("#accesos").hide();            
+            $("#detyca").hide();
+            $("#mesa").hide();
+            $("#linguistica").hide();
         }else{
             $("#accesos").hide();            
             $("#detyca").hide();

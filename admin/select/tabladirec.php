@@ -8,7 +8,7 @@ require_once "../../conexion/conexion.php";
           $idejec=$_SESSION['consulta'];
          
 
-          $sql="SELECT id_area,adscripcion,id_sub FROM area WHERE id_sub='$idejec' ORDER BY adscripcion DESC ";
+          $sql="SELECT id_area,adscripcion,id_sub FROM area WHERE id_sub='$idejec' and estado=0 ORDER BY adscripcion DESC ";
         }
 
     

@@ -312,6 +312,7 @@ function curProgramar(){
     var sede = document.getElementById('sede').value;
     var fechaf = document.getElementById('fechaf').value;
     var modalidad = document.getElementById('modalidad').value;
+    var grupo = document.getElementById('grupociaac').value;
 
    /* if (modalidad == 'PRESENCIAL') {
         var link = '0';
@@ -349,9 +350,9 @@ function curProgramar(){
 
     var perid = document.getElementById('idper').value;
 
-    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&perid=' + perid + '&opcion=procurso';
+    datos = 'idinsps=' + idinsps + '&id_mstr=' + id_mstr + '&idcord=' + idcord + '&idInstru=' + idInstru + '&fcurso=' + fcurso + '&hcurso=' + hcurso + '&sede=' + sede + '&modalidad=' + modalidad + '&link=' + link + '&fechaf=' + fechaf + '&contracceso=' + contracceso + '&classroom=' + classroom + '&perid=' + perid + '&grupo=' + grupo + '&opcion=procurso';
 
-    if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
+    if (idInsptr == '' || idinsps == '' || id_mstr == '' || hcurso == '' || fcurso == '' || idcord == '0' || idInstru == '' || sede == '' || modalidad == '' || link == '' || fechaf == '' || contracceso == '') {
 
 
         $('#empty').toggle('toggle');
@@ -362,10 +363,18 @@ function curProgramar(){
         return;
 
     }else{
+
+
+                    $("#buttonpro").hide();
+                    $( document ).ready(function() {
+                    $('#myModal').modal('toggle')
+                    });
+
+        
             $.ajax({
                 url: '../php/comDias.php',
                 type: 'POST',
-                data: 'idpart=' + ids
+                data: 'idpart=' + ids + '&modalidad=' + modalidad
             }).done(function(resps) {
   
 //SI NO HAY DÍAS REPETIDO, SE MANDA LOS DATOS PARA PROGRAMAR CURSO 
@@ -384,6 +393,10 @@ showConfirmButton: false,
 customClass: 'swal-wide',
 timer: 20000
 });
+
+    $("#buttonpro").show();
+    remove();
+
     }
             });
         }
@@ -393,6 +406,7 @@ timer: 20000
 //CACHA LOS DATOS PARA PROGRAMAR CURSO
 function programarCurso(datos){
 
+    $("#buttonpro").hide();
          $.ajax({
                 url: '../php/proCurso.php',
                 type: 'POST',
@@ -410,8 +424,10 @@ function programarCurso(datos){
                         cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
 
                     });
-                    // setTimeout("location.href = 'inspecion.php';", 2000);
                     $("#buttonpro").hide();
+                        $( document ).ready(function() {
+                        $('#myModal').modal('toggle')
+                        });
                 } else
 
                 if (respuesta == 0) {
@@ -425,8 +441,11 @@ function programarCurso(datos){
                         confirmButtonText: '<a class="a-alert" href="programa"><span style="color: white;">¿Deseas agregar otro curso?</span></a>',
                         cancelButtonText: '<a  class="a-alert" href="lisCurso"><span style="color: white;">Cerrar</span></a>',
                     });
-                    // setTimeout("location.href = 'inspecion.php';", 2000);
                     $("#buttonpro").hide();
+                        $( document ).ready(function() {
+                        $('#myModal').modal('toggle')
+                        });
+
                 }else {}
             });
 }

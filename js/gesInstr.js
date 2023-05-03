@@ -286,6 +286,7 @@ function regCurso() {
                     customClass: 'swal-wide',
                     timer: 3000
                 });
+                setTimeout("location.href = 'conCursos';", 2000);
             } else {
                 Swal.fire({
                     type: 'error',

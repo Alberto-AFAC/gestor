@@ -459,6 +459,9 @@ function asignacion(gstIdper) {
                 $("#Dtall #gstAreIDasig").val(obj.data[i].gstAreID); //ID área
                 $("#Dtall #gstIDara1").val(obj.data[i].gstIDara);
                 $("#Dtall #gstANmpld").val(obj.data[i].gstNmpld);
+                var codigo = document.getElementById('gstIDara1').value;
+                //alert(codigo);
+                $('#subdirect').load('select/buscarsudi1.php?codigo=' + codigo); //Subdirección
             }
         }
     })
@@ -2840,7 +2843,7 @@ function consultardocIns(gstIdper) {
                 document.getElementById('ojt').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('ojt-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('ojt-fec').innerHTML = obj.data[D].fecactual;
-                $("#oclOJT").hide();
+                //$("#oclOJT").hide();
 
 
             }
@@ -2875,7 +2878,7 @@ function consultardocIns(gstIdper) {
                 document.getElementById('btcr').innerHTML = '<img src="../dist/img/check.svg" alt="YES" width="25px;">';
                 document.getElementById('btcr-pdf').innerHTML = '<a href="' + obj.data[D].docajunto + '" style="text-align: center; font-size:20px;color:red; " target="_blanck"> <i class="fa fa-file-pdf-o"></i></a>';
                 document.getElementById('btcr-fec').innerHTML = obj.data[D].fecactual;
-                $("#oclBTC").hide();
+                //$("#oclBTC").hide();
             }
 
         }
@@ -3564,7 +3567,7 @@ function actDatos() {
 
     datos = 'gstIdper=' + gstIdper + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstSexo=' + gstSexo + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstisst=' + gstisst + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&gstCorro=' + gstCorro + '&gstCinst=' + gstCinst + '&gstSpcID=' + gstSpcID + '&opcion=actualizar'
 
-    if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstFenac == '' || gstSexo == '' || gstStcvl == '' || gstCurp == '' || gstRfc == '' || gstCalle == '' || gstNumro == '' || gstClnia == '' || gstCpstl == '' || gstCiuda == '' || gstStado == '' || gstCasa == '' || gstClulr == '' || gstExTel == '') {
+    if (gstNombr == '' || gstApell == '' || gstLunac == '' || gstCorro == '') {
 
         $('#empty').toggle('toggle');
         setTimeout(function() {
@@ -3602,6 +3605,30 @@ function actDatos() {
 function actPuesto() {
 
     var pstIdper = document.getElementById('gstIdper').value; //id persona
+    //agreagdo a peticiion de jesus shiraky 06012023
+    var gstNombr = document.getElementById('gstNombr').value; //nombre de empleado
+    var gstApell = document.getElementById('gstApell').value; //apellido
+    var gstLunac = document.getElementById('gstLunac').value; //lugar de nacimiento
+    var gstFenac = document.getElementById('gstFenac').value; //lugar de nacimiento
+    var gstSexo = document.getElementById('gstSexo').value;
+    var gstStcvl = document.getElementById('gstStcvl').value;
+    var gstCurp = document.getElementById('gstCurp').value;
+    var gstRfc = document.getElementById('gstRfc').value;
+    var gstisst = document.getElementById('gstisst').value;
+    var gstNpspr = document.getElementById('gstNpspr').value;
+    var gstPsvig = document.getElementById('gstPsvig').value;
+    var gstVisa = document.getElementById('gstVisa').value;
+    var gstVignt = document.getElementById('gstVignt').value;
+    var gstCalle = document.getElementById('gstCalle').value;
+    var gstNumro = document.getElementById('gstNumro').value;
+    var gstClnia = document.getElementById('gstClnia').value;
+    var gstCpstl = document.getElementById('gstCpstl').value;
+    var gstCiuda = document.getElementById('gstCiuda').value;
+    var gstStado = document.getElementById('gstStado').value;
+    var gstCasa = document.getElementById('gstCasa').value;
+    var gstClulr = document.getElementById('gstClulr').value;
+    var gstExTel = document.getElementById('gstExTel').value;
+    //agreagdo a peticion de jesus shiraky 06012023
     var gstNmpld = document.getElementById('gstNmpld').value; //numero de empledo
 
     var sgtCrhnt = document.getElementById('sgtCrhnt').value;
@@ -3629,7 +3656,7 @@ function actPuesto() {
     var gstComnd = document.getElementById('gstComnd').value;
     //22092021
 
-    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstPlaza=' + gstPlaza + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&gstComnd=' + gstComnd + '&opcion=actPrsnls';
+    datos = 'pstIdper=' + pstIdper + '&gstNmpld=' + gstNmpld + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstPlaza=' + gstPlaza + '&gstIdpst=' + gstIdpst + '&gstCargo=' + gstCargo + '&gstIDCat=' + gstIDCat + '&gstIDSub=' + gstIDSub + '&gstAreID=' + gstAreID + '&gstPstID=' + gstPstID + '&gstSpcID=' + gstSpcID + '&gstIDara=' + gstIDara + '&gstFeing=' + gstFeing + '&gstIDuni=' + gstIDuni + '&gstAcReg=' + gstAcReg + '&gstNucrt=' + gstNucrt + '&gstSigID=' + gstSigID + '&gstComnd=' + gstComnd + '&gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstFenac=' + gstFenac + '&gstSexo=' + gstSexo + '&gstStcvl=' + gstStcvl + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstisst=' + gstisst + '&gstNpspr=' + gstNpspr + '&gstPsvig=' + gstPsvig + '&gstVisa=' + gstVisa + '&gstVignt=' + gstVignt + '&gstCalle=' + gstCalle + '&gstNumro=' + gstNumro + '&gstClnia=' + gstClnia + '&gstCpstl=' + gstCpstl + '&gstCiuda=' + gstCiuda + '&gstStado=' + gstStado + '&gstClulr=' + gstClulr + '&gstExTel=' + gstExTel + '&opcion=actPrsnls';
 
     if (pstIdper == '' || gstNmpld == '' || gstIdpst == '' || gstCargo == '' || gstIDCat == '' || gstFeing == '' || gstIDuni == '' || gstAcReg == '' || gstIDuni == '' || gstNucrt == '') {
 

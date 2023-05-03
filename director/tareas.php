@@ -125,7 +125,7 @@ include('header.php');
 <div class="nav-tabs-custom">
 <ul class="nav nav-tabs" style="font-size: 14px;">
 <li class="active"><a href="#activity" data-toggle="tab">ESPECIALIDAD OJT</a></li>
-<li><a href="#puesto" data-toggle="tab">CATALOGO OJT</a></li>
+<li><a href="#puesto" data-toggle="tab">CATÁLOGO DE ESPECIALIDAD OJT</a></li>
 <!-- <li><a href="#estudios" data-toggle="tab">TAREAS ASIGNADAS</a></li> -->
 </ul>
 
@@ -1072,7 +1072,7 @@ $contador++;
 // 
 ?>
 
-["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>OJTS ASIGNADOS</a>"?>",
+["<?php echo  $contador;?>", "<?php echo  $data['gstCatgr']?>","<?php echo  "<a href='#' data-target='#todasTareas' onclick='todasT($idspc)'>TAREAS ASIGNADAS</a>"?>",
 "<?php 
 
 
@@ -1118,7 +1118,7 @@ title: "#"
 title: "ESPECIALIDAD OJT"
 },
 {
-title: "OJTS PRINCIPALES"
+title: "TAREAS PRINCIPALES"
 }
 ]
 });

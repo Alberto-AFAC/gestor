@@ -62,6 +62,8 @@ include('header.php');
                                 <div class="pull-right">
 
                                     <div class="btn-group">
+                                        <a type="button" href="accesoInstr" class="btn btn-info btn-sm"><i
+                                        ></i> CAMBIO O MODIFICACIÓN DE COORDINADOR E INSTRUCTOR</a>
                                         <a type="button" href="instructor.php" class="btn btn-default btn-sm"><i
                                                 class="fa fa-refresh"></i></a>
                                     </div>

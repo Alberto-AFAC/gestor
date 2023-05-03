@@ -34,7 +34,7 @@
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <!-- <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> -->
-    <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
+    <link href="css/mobiscroll.jquery.min.css" rel="stylesheet" />
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>

@@ -175,7 +175,7 @@ $psto = mysqli_query($conexion,$sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!--<tr>
                             <th scope="row">A)</th>
                             <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA (IFAI)</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
@@ -207,9 +207,9 @@ $psto = mysqli_query($conexion,$sql);
                             <td><div id="std-pdf"> </div></td>
                             <td><div id="std-fec"></div> </td>
 
-                        </tr>
+                        </tr>-->
                         <tr>
-                            <th scope="row">F)</th>
+                            <th scope="row">A)</th>
                             <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
                             <td><div id="ojt"></div></td>
                             <td><div id="ojt-pdf"> </div></td>
@@ -218,7 +218,7 @@ $psto = mysqli_query($conexion,$sql);
                             <td></td> -->
                         </tr>
                         <tr>
-                            <th scope="row">F)</th>
+                            <th scope="row">B)</th>
                             <td>FORMATO BITÁCORA</td>
                             <td><div id="btcr"></div></td>
                             <td><div id="btcr-pdf"> </div></td>
@@ -227,7 +227,7 @@ $psto = mysqli_query($conexion,$sql);
                             <td></td> -->
                         </tr>                        
                         <tr>
-                            <th scope="row">G)</th>
+                            <th scope="row">C)</th>
                             <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC</td>
                             <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
                             <td><div id="ccfecha"></div></td>

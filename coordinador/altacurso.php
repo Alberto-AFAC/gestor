@@ -149,12 +149,11 @@ include ("../conexion/conexion.php");
                                                         <option value="CERTIFICADO">CERTIFICADO</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-3">
-                                                    <label>CÓDIGO
-</label>
+                                                <div style="display:none" class="col-sm-3">
+                                                    <label>CÓDIGO</label>
                                                     <!-- <input type="text" onkeyup="mayus(this);" class="form-control" id="gstCntnc" name="gstCntnc"> -->
                                                     <input type="text" onkeyup="mayus(this);" class="form-control"
-                                                        id="codigoCrso" name="codigoCrso">
+                                                        id="codigoCrso" name="codigoCrso" value=0>
                                                 </div>
 
 

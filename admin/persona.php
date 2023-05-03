@@ -148,9 +148,10 @@ include('header.php');
                                             name="AgstCargo" onchange="asiginspec()">
                                             <option value="">SELECCIONA EL CARGO</option>
                                             <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
-                                            <option value="COORDINADOR">COORDINADOR</option>
+                                            <!-- <option value="COORDINADOR">COORDINADOR</option> -->
                                             <option value="INSPECTOR">INSPECTOR</option>
-                                            <option value="INSTRUCTOR">INSTRUCTOR</option>
+                                            <!-- <option value="INSTRUCTOR">INSTRUCTOR</option> -->
+                                            <option value="COMISIONADO">COMISIONADO</option>
                                         </select>
                                     </div>
                                 </div>
@@ -166,7 +167,7 @@ include('header.php');
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                                        <label class="label2">DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA</label>
 
                                         <select style="width: 100%" class="form-control"
                                             class="selectpicker disabled inputalta" name="gstAreIDasig"
@@ -180,7 +181,7 @@ include('header.php');
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
+                                        <label class="label2">DIRECCIÓN DE ÁREA</label>
                                         <select style="width: 100%" class="form-control" class="selectpicker inputalta"
                                             id="gstIDara1" name="gstIDara1" type="text" data-live-search="true"
                                             disabled="">
@@ -193,7 +194,7 @@ include('header.php');
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">SUBDIRECCIÓN</label>
+                                        <label class="label2">ÁREA, SUBDIRECCIÓN Y/O AEROPUERTO</label>
                                         <div id="subdirect"></div>
                                     </div>
                                 </div>
@@ -557,7 +558,7 @@ $(document).ready(function() {
     $('#select3').load('select/tablacom.php');
     $('#categoria').load('select/buscatego.php');
     $('#subcategoria').load('select/tabsubcat.php');
-    $('#subdirect').load('select/buscardepart.php'); //Subdirección
+   
     $('#departos1').load('select/tabladep.php'); //departamento
 
 

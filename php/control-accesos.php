@@ -1,12 +1,19 @@
 <?php
 
-	include ("conexion_mesa.php");
+
+
+	// $conexion2 = new mysqli('localhost','root','','control_de_reportes');
+    $conexion2 = new mysqli('localhost','u683645102_afac','Agencia.SCT2021.','u683645102_reportes');
+	if ($conexion2->connect_error):
+	echo "Error de Conexión".$conexion2->connect_error;
+	endif;
+
 	include("../conexion/conexion.php");
 	session_start();
 	
 	$id = $_POST['datos'];
 
-	$query = "SELECT gstIdper,gstNombr,gstApell,gstNmpld FROM personal WHERE gstIdper = $id AND estado = 0";
+	$query = "SELECT gstIdper,gstNombr,gstApell,gstNmpld FROM personal WHERE gstIdper = $id AND estado = 0 or gstIdper = $id AND estado = 3 ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

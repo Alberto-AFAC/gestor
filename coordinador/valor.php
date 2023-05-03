@@ -175,7 +175,7 @@ $psto = mysqli_query($conexion,$sql);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <!--<tr>
                                         <th scope="row">A)</th>
                                         <td>HOJA DE REGISTRO DEL INSTITUTO FEDERAL DE ACCESO A LA INFORMACIÓN PUBLICA
                                             (IFAI)</td>
@@ -224,9 +224,9 @@ $psto = mysqli_query($conexion,$sql);
                                             <div id="std-fec"></div>
                                         </td>
 
-                                    </tr>
+                                    </tr>-->
                                     <tr>
-                                        <th scope="row">F)</th>
+                                        <th scope="row">A)</th>
                                         <td>FORMATO DE EVALUACIÓN DEL ENTRENAMIENTO EN EL PUESTO DE TRABAJO (OJT)</td>
                                         <td>
                                             <div id="ojt"></div>
@@ -241,7 +241,7 @@ $psto = mysqli_query($conexion,$sql);
                             <td></td> -->
                                     </tr>
                                     <tr>
-                                        <th scope="row">F)</th>
+                                        <th scope="row">B)</th>
                                         <td>FORMATO BITÁCORA</td>
                                         <td>
                                             <div id="btcr"></div>
@@ -256,7 +256,7 @@ $psto = mysqli_query($conexion,$sql);
                             <td></td> -->
                                     </tr>
                                     <tr>
-                                        <th scope="row">G)</th>
+                                        <th scope="row">C)</th>
                                         <td>COPIA DE LOS CERTIFICADOS DE ENTRENAMIENTO RECIBIDO POR PARTE DE LA AFAC
                                         </td>
                                         <td><img src="../dist/img/check.svg" alt="YES" width="25px;"></td>
@@ -347,7 +347,7 @@ $psto = mysqli_query($conexion,$sql);
                 <div class="post">
                     <form id="Dtall" class="form-horizontal" action="" method="POST">
                         <input type="hidden" name="gstIdper" id="gstIdper">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <div class="col-sm-4">
                                 <label>NOMBRE(S)</label>
                                 <input type="text" disabled="" style="text-transform:uppercase;" class="form-control"
@@ -426,11 +426,6 @@ $psto = mysqli_query($conexion,$sql);
                                 <label>VISA VIGENCIA</label>
                                 <input type="date" disabled="" class="form-control" id="gstVignt" name="gstVignt">
                             </div>
-                            <!--                             <div class="col-sm-4">
-                                <label>NÚMERO DE CARTILLA</label>
-                                <input type="text" disabled="" style="text-transform:uppercase" class="form-control"
-                                    id="gstNucrt" name="gstNucrt">
-                            </div> -->
                         </div>
 
                         <div class="form-group">
@@ -479,7 +474,7 @@ $psto = mysqli_query($conexion,$sql);
                                 <input type="text" disabled="" style="text-transform:uppercase" class="form-control"
                                     id="gstStado" name="gstStado">
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <div class="col-sm-4">
@@ -746,18 +741,18 @@ $psto = mysqli_query($conexion,$sql);
                         <div class="col-sm-12">
 
                             <p id="ejecutiva" style="display: none; cursor: pointer;"><a onclick="ejecutiva();">EDITAR
-                                    DIRECCIÓN EJECUTIVA <i class="fa fa-edit"></i></a></p>
+                                    DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA <i class="fa fa-edit"></i></a></p>
 
                             <p id="ejecutiva1">
-                                <label>DIRECCIÓN EJECUTIVA </label>
+                                <label>DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA </label>
                                 <input type="text" name="ejcutiva" id="ejcutiva" class="form-control" disabled="">
                             </p>
 
                             <p id="ejecutiva2" style="display: none;">
-                                <label>DIRECCIÓN EJECUTIVA </label>
+                                <label>DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstAreID"
                                     id="gstAreID" type="text" data-live-search="true">
-                                    <option>SELECCIONE DIRECCIÓN EJECUTIVA</option>
+                                    <option>SELECCIONE DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA</option>
                                     <?php while($ejct = mysqli_fetch_row($ejec)):?>
                                     <option value="<?php echo $ejct[0]?>"><?php echo $ejct[1]?></option>
                                     <?php endwhile; ?>
@@ -769,16 +764,16 @@ $psto = mysqli_query($conexion,$sql);
                     <div class="form-group">
                         <div class="col-sm-12">
                             <p id="adscrip" style="display: none; cursor: pointer;"><a onclick="adscripcion2();">EDITAR
-                                    DIRECCIÓN DE ADSCRIPCIÓN <i class="fa fa-edit"></i></a></p>
+                                    DIRECCIÓN DE ÁREA <i class="fa fa-edit"></i></a></p>
                             <p id="adscrip1">
-                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
+                                <label>DIRECCIÓN DE ÁREA </label>
                                 <input type="text" name="adscripcion" id="adscripcion" class="form-control" disabled="">
                             </p>
                             <p id="adscrip2" style="display: none;">
-                                <label>DIRECCIÓN DE ADSCRIPCIÓN </label>
+                                <label>DIRECCIÓN DE ÁREA </label>
                                 <select style="width: 100%" class="form-control" class="selectpicker" name="gstIDara"
                                     id="gstIDara" type="text" data-live-search="true">
-                                    <option>SELECCIONE DIRECCIÓN DE ADSCRIPCIÓN</option>
+                                    <option>SELECCIONE DIRECCIÓN DE ÁREA</option>
                                     <?php while($ccion = mysqli_fetch_row($are)):?>
                                     <option value="<?php echo $ccion[0]?>"><?php echo $ccion[1]?></option>
                                     <?php endwhile; ?>
@@ -839,9 +834,9 @@ $psto = mysqli_query($conexion,$sql);
                         <div class="col-sm-12">
                             <p id="subdirec1" style="display: none; cursor: pointer;"><a
                                     onclick="subdireccion();">EDITAR
-                                    SUBDIRECCIÓN <i class="fa fa-edit"></i></a></p>
+                                    ÁREA, SUBDIRECCIÓN Y/O AEROPUERTO <i class="fa fa-edit"></i></a></p>
                             <div id="subdirec2">
-                                <label>SUBDIRECCIÓN </label>
+                                <label>ÁREA, SUBDIRECCIÓN Y/O AEROPUERTO </label>
                                 <input type="text" name="subdir1" id="subdir1" class="form-control" disabled="">
 
                                 <label>DEPARTAMENTO </label>
@@ -853,7 +848,7 @@ $psto = mysqli_query($conexion,$sql);
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">SUBDIRECCIÓN</label>
+                                        <label class="label2">ÁREA, SUBDIRECCIÓN Y/O AEROPUERTO</label>
                                         <div id="subdireact"></div>
                                     </div>
                                 </div>

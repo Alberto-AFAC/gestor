@@ -86,5 +86,24 @@
   'montserrat' => array(
     'normal' => $fontDir . '\3ac4744d39c2d9cd9a8bb8429c8a8d3f',
     'italic' => $fontDir . '\3aa3665d84a6e62cf78f331aa077231d',
+    'bold' => $fontDir . '/2d1f67b06e948658542709372b8035e6',
+  ),
+  'glyphicons halflings' => array(
+    'normal' => $fontDir . '/c47afe5539ba1b2094563d54dce2def7',
+  ),
+  'roboto' => array(
+    'normal' => $fontDir . '/560416baba154a183b2ccc6468b2c118',
+  ),
+  'dejavusans-bold' => array(
+    'normal' => $fontDir . '/734662fd843319ecd2806dbdd2c8a729',
+  ),
+  'dejavuserif-italic' => array(
+    'normal' => $fontDir . '/db396ca5126946abfd894fd7eae697bb',
+  ),
+  'montserrat-light' => array(
+    'normal' => $fontDir . '/7def693aba3ab9d9b2d04b4334e46e6e',
+  ),
+  'elegance' => array(
+    'normal' => $fontDir . '/6f19c9e3a03bf4bfd9187749fb698cbe',
   ),
 ) ?>

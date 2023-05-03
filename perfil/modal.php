@@ -281,7 +281,7 @@
                                 </td>
                             </tr>
                         </table>
-
+                        <div class="rounded table-responsive">
                         <table class="table table-bordered">
                             <tr>
                                 <th>TIPO</th>
@@ -306,13 +306,28 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="link">
+                                    <div id=""><a id="link" name="link" target="_blank"></a></div>
                                 </td>
                                 <td>
                                     <div id="contracur"></div>
                                 </td>
                                 <td>
-                                    <div id="classroom"></div>
+                                    <div id=""><a id="classroom" name="classroom" target="_blank"></a></div>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>FOLIO</th>
+                                <th>GRUPO</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="gstfolio"></div>
+                                </td>
+                                <td>
+                                    <div id="fcurgrupo"></div>
                                 </td>
                             </tr>
                         </table>
@@ -390,12 +405,24 @@
                             </th>
 
                         </table>
+                        <div>
+                            <label style="font-size:16px;" for="" id="coordininf" name="coordininf"></label>
+                        </div>
+                        <br>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;" for="" id="" name="">INSTRUCTOR(S):</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;color:#888787" for="" id="diapr" name="diapr">DIAS PROGRAMADOS PARA CURSO:</label>
+                        </div>
 
 
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <div id="instruc"></div>
-
+                            </div>
+                            <div class="col-sm-6">
+                                <div id="habilDias3"></div>
                             </div>
                         </div>
 
@@ -694,6 +721,19 @@
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta"
                                     id="insnomp" disabled="">
                             </div>
+                            <div class="col-sm-6">
+                                <label class="label2" style="font-size:12px">Registro Único de Servidores Públicos (RUSP)<span class="text-red"
+                                        style="font-size:20px">*</span></label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta"
+                                    id="rusprins" disabled="">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="label2">código de puesto RHNET<span class="text-red"
+                                        style="font-size:20px">*</span></label>
+                                <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta"
+                                    id="rnetprins" disabled="">
+                            </div>
+                            
                             <label style="color:white" for="">-</label>
                             <div class="col-sm-12">
                                 <p><span style="font-size: 14px" class="label label-primary">INFORMACIÓN DE
@@ -846,16 +886,40 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="link1">
+                                    <div id=""><a id="link1" name="link1" target="_blank"></a></div>
                                 </td>
                                 <td>
                                     <div id="contracur1"></div>
                                 </td>
                                 <td>
-                                    <div id="classroom1"></div>
+                                    <div id=""><a id="classroom1" name="classroom1" target="_blank"></a></div>
                                 </td>
                             </tr>
                         </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>FOLIO</th>
+                                <th>GRUPO</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="gstfolio1"></div>
+                                </td>
+                                <td>
+                                    <div id="fcurgrupo1"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <label style="font-size:16px;" for="" id="coordininf1" name="coordininf1"></label>
+                        </div>
+                        <br>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;" for="" id="" name="">INSTRUCTOR(S):</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label style="font-size:16px;color:#888787" for="" id="diapr" name="diapr">DIAS PROGRAMADOS PARA CURSO:</label>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <div id="instruc1"></div>
@@ -877,6 +941,9 @@
                                     lab1.style.display = '';
                                 }
                                 </script>
+                            </div>
+                            <div class="col-sm-6">
+                                <div id="habilDias2"></div>
                             </div>
                         </div>
                     </form>

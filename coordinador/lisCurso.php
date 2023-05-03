@@ -6,7 +6,7 @@ $curso = mysqli_query($conexion,$sql);
 $sql = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstCargo = 'INSTRUCTOR' AND estado = 0";
 $instructor = mysqli_query($conexion,$sql);
 
-$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE	gstCargo = 'INSTRUCTOR' OR 	gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
+$sql = "SELECT gstIdper,gstNombr,gstApell,gstCargo, estado FROM personal WHERE  gstCargo = 'INSTRUCTOR' OR  gstCargo = 'INSPECTOR' OR gstCargo = 'ADMINISTRATIVO' OR gstCargo = 'COORDINADOR' AND estado = 0 || estado = 3 ";
 $inspector = mysqli_query($conexion,$sql);
 
 ?>
@@ -215,56 +215,49 @@ style="background: white;border: 1px solid white;"> -->
                         </div>
                         <!-- /.modal-content -->
                     </form>
-                    <!---------------------------------------ELIMINAR----------------------------------------->
-
-                    <form class="form-horizontal" action="" method="POST">
-                        <div class="modal fade" id="eliminar-modal">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">ELIMINAR INSPECTOR </h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- <input type="hidden" name="codInsp" id="codInsp"> -->
-                                        <input type="hidden" name="idInspt" id="idInspt">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <p> ¿ESTÁ SEGURO DE ELIMINAR INSPECTOR? <span id="nomInsp"></span>
-                                                    <!-- +'?'<input type="text" name="cgstTitlo"
-+'?'                                       id="cgstTitlo" class="form-c+'?'ontrol disabled" disabled=""
-style="background: white;border: 1px solid white;"> -->
-                                                </p>
-                                            </div>
-                                            <br>
-                                            <div class="col-sm-5">
-                                                <button id="elimina" type="button" class="btn btn-primary"
-                                                    onclick="elInspt()">ACEPTAR</button>
-                                            </div>
-                                            <b>
-                                                <p class="alert alert-warning text-center padding error" id="dangerr1">
-                                                    Error
-                                                    al eliminar inspector</p>
-                                            </b>
-                                            <b>
-                                                <p class="alert alert-success text-center padding exito" id="succes1">
-                                                    ¡Se
-                                                    elimino inspector con éxito !</p>
-                                            </b>
-                                            <b>
-                                                <p class="alert alert-warning text-center padding aviso" id="emptyy1">
-                                                    Elija
-                                                    inspector para eliminar </p>
-                                            </b>
-                                        </div>
-                                    </div>
-                                </div>
+<!---------------------------------------ELIMINAR----------------------------------------->
+<form class="form-horizontal" action="" method="POST">
+    <div class="modal fade" id="eliminar-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">ELIMINAR </h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="idInspt" id="idInspt">
+                        <input type="hidden" name="perfil" id="perfil">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <p id="participante"> </p>          
                             </div>
+                            <br>
+                            <div class="col-sm-5">
+                                <button id="elimina" type="button" class="btn btn-primary"
+                                onclick="elInspt()">ACEPTAR</button>
+                            </div>
+                            <b>
+                                <p class="alert alert-warning text-center padding error" id="dangerr1">
+                                    Error
+                                al eliminar registro</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-success text-center padding exito" id="succes1">
+                                    ¡Se
+                                elimino registro con éxito !</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-warning text-center padding aviso" id="emptyy1">
+                                    Elija
+                                registro para eliminar </p>
+                            </b>
                         </div>
-                        <!-- /.modal-content -->
-
-                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
                     <!------------EVALUACION DE CURSOS-------------------->
                     <!-- FIN EVALUACIÓN CURSO -->
 
@@ -835,7 +828,8 @@ $(document).ready(function() {
                         "*" + obj.data[i].proceso +
                         "*" + obj.data[i].idinsp +
                         "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
+                        "*" + obj.data[i].classroom +
+                        "*" + obj.data[i].grupo;
 
                     var d = cursos.split("*");
 
@@ -876,44 +870,80 @@ $(document).ready(function() {
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
                     $("#Dtall #codigoIDCuro").val(d[15]);
+                    $("#Dtall #grupoci").val(d[20]);
 
                     codigo = d[15];
 
                     idcurso(codigo);
+                    notEnvio(codigo);                    
                     if (data[18] == 'FINALIZADO' || data[18] == 'VENCIDO') {
                         $("#buttonfin").hide();
                         $("#editcurs").hide();
                         $("#notiocu").hide();
                         $("#notiocus").hide();
                         $("#ocubotn").hide();
+                        $("#agregarcoordinador").hide();
+                        $("#agregarinstructor").hide();
+
                         document.getElementById('modalMost').disabled = false;  
                         document.getElementById('allselect').disabled = true; 
-
+                        $("#modalMost").hide(); 
                     } else {
                         $("#buttonfin").show();
                         $("#editcurs").show();
                         $("#notiocu").show();
                         $("#notiocus").show();
+                        $("#agregarcoordinador").show();
+                        $("#agregarinstructor").show();
+
                     }
                     $("#Dtall #classromcur").val(d[19]);
+                    if (obj.data[i].modalidad == 'AUTOGESTIVO'){
+                        document.getElementById("classromcur").style.display = '';
+                        document.getElementById("labelclassromcur").style.display = '';
+                        
+                        //alert("entro");
+                    }
+                    if (obj.data[i].modalidad == 'A DISTANCIA'){
+                        document.getElementById("labellinkcur").style.display = '';
+                        document.getElementById("linkcur").style.display = '';
+                        
+                        document.getElementById("labelcontracur").style.display = '';
+                        document.getElementById("contracur").style.display = '';
+                        
+                        document.getElementById("classromcur").style.display = '';
+                        document.getElementById("labelclassromcur").style.display = '';
+                        //alert("entro");
+                    }
+                    if (obj.data[i].modalidad == 'A DISTANCIA (E-LEARNNING)'){
+                        document.getElementById("labellinkcur").style.display = '';
+                        document.getElementById("linkcur").style.display = '';
+                        
+                        document.getElementById("labelcontracur").style.display = '';
+                        document.getElementById("contracur").style.display = '';
+                        
+                        document.getElementById("classromcur").style.display = '';
+                        document.getElementById("labelclassromcur").style.display = '';
+                        //alert("entro");
+                    }
                 }
             }
         })
 
 
-        modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
-        dismod = document.getElementById(
-            "dismod"); //variable para el contenedor de el link y la contraseña
+/*modalidadcur = document.getElementById('modalidads').value; //variable para declara la modalidad
+dismod = document.getElementById(
+"dismod"); //variable para el contenedor de el link y la contraseña
 
-        if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
-            dismod.style.display = '';
-        }
-        if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
-            linidismodnpu.style.display = '';
-        }
-        if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
-            dismod.style.display = 'none';
-        }
+if (modalidadcur == "A DISTANCIA") { //se visualiza el link y contraseña 
+dismod.style.display = '';
+}
+if (modalidadcur == "HIBRIDO") { //se visualiza el link y contraseña 
+linidismodnpu.style.display = '';
+}
+if (modalidadcur == "PRESENCIAL") { //se oculta el link y la contraseña
+dismod.style.display = 'none';
+}*/
 
     });
 
@@ -941,11 +971,28 @@ function idcurso(codigo) {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-
     });
-
 }
 
+function notEnvio(codigo){
+    let codigo1 = codigo.substr(2);
+    $.ajax({
+        url: '../php/conHistorial.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        for (i = 0; i < res.length; i++) {
+            folio = obj.data[i].registro;
+            curso = folio.substr(19);
+            if(codigo1 == curso){
+                $('#agregarcoordinador').hide();
+                $('#agregarinstructor').hide();
+            }else{
+            }
+        }
+    })    
+}
 
 function id_cursos(idp) {
 //alert(idp);

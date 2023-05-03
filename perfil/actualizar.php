@@ -15,12 +15,14 @@
                 <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">ACTUALIZAR CONTRASEÑA</h4>
             </div>
+            <form id="frmActuliar">
             <div class="modal-body">
                 <div class="form-group">
                     <input type="hidden" name="idper" id="idper" value="<?php echo $id?>">
                     <label>Usuario</label>
                     <div class="input-group col-md-12">
-                        <input type="email" name="usu" id="usu" class="form-control" pattern="[0-9]{1,7}" value="<?php echo $usu?>" disabled/>
+                        <input type="hidden" name="usu" id="usu" value="<?php echo $usu?>">
+                        <input type="email" class="form-control"  value="<?php echo $usu?>" disabled/>
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-user"></span>
                         </div>
@@ -79,6 +81,7 @@
                            <p>Datos no actualizados</p>
                         </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

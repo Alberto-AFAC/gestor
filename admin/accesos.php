@@ -143,6 +143,7 @@
                                     <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                                     <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
                                     <option value="COORDINADOR">COORDINADOR</option>
+                                    <option value="COORDINADOR_A">COORDINADOR_A</option>
                                     <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
                                     <option value="DIRECTOR">DIRECTOR</option>
                                     <option value="EJECUTIVO">EJECUTIVO</option>
@@ -150,6 +151,8 @@
                                     <option value="INSTRUCTOR">INSTRUCTOR</option>
                                     <option value="INSPECTOR">INSPECTOR</option>                
                                     <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                                    <option value="COMISIONADO">COMISIONADO</option>
+                                    <option value="EXTERNO">EXTERNO</option>
                                 </select>
                             </div>
                         </div>
@@ -1064,28 +1067,28 @@
         // 7 INSPECTOR
         // 8 INSTRUCTOR
         // 9 NUEVO INGRESO
-["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", 
+["<?php echo $data[1]?>", "<?php echo $data[10]." ".$data[11]?>", 
 
 
-"<?php echo $data[32]?>"
+"<?php echo $data[33]?>"
 
 
 
-,"<?php echo $data[2]?>","<?php echo $data[41]?>", "<?php echo $data[4]?>",
+,"<?php echo $data[2]?>","<?php echo $data[42]?>", "<?php echo $data[4]?>",
 
-<?php if($data[32]!=0){ ?>
+<?php if($data[33]!=0){ ?>
 <?php if($data[4]=='SUPER_ADMIN'){ ?>       
-    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(1.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
+    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(1.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='ADMINISTRADOR' || $data[4]=='DIRECTOR_CIAAC'){ ?>
-    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(2.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
+    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(2.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='EJECUTIVO' || $data[4]=='DIRECTOR'){ ?>
-    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(3.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
+    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(3.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php }else if($data[4]=='HUMANOS'){ ?>
-    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(4.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-<?php }else if($data[4]=='ADMINISTRATIVO' || $data[4]=='INSPECTOR' || $data[4]=='NUEVO INGRESO'){ ?>
-    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
-<?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR'){ ?>    
-    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[32]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
+    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(4.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
+<?php }else if($data[4]=='ADMINISTRATIVO' || $data[4]=='INSPECTOR' || $data[4]=='NUEVO INGRESO'||$data[4]=='COMISIONADO'||$data[4]=='EXTERNO'){ ?>
+    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(5.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
+<?php }else if($data[4]=='INSTRUCTOR' || $data[4]=='COORDINADOR' || $data[4]=='COORDINADOR_A'){ ?>    
+    "<?php echo "<a title='Editar técnico' onclick='mostrar_datos(6.{$data[33]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 <?php 
 
     } }else{
@@ -1154,7 +1157,7 @@ function datos_editar(acceso) {
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_accesos == acceso) {
                 
-                   if(obj.data[i].privilegios=='COORDINADOR' || obj.data[i].privilegios=='INSTRUCTOR'){
+                   if(obj.data[i].privilegios=='COORDINADOR' || obj.data[i].privilegios=='INSTRUCTOR' || obj.data[i].privilegios=='COORDINADOR_A'){
                     // $('#privilegios').prop('disabled', true);
                     if(obj.data[i].privilegios=='INSTRUCTOR'){
                     $("#inst1").show();

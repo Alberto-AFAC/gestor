@@ -465,17 +465,17 @@ include('header.php');
                         </div>
                         <div class="form-group">
                             <div class="col-sm-6">
-                                <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                                <label class="label2">DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA</label>
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojdirejec" disabled="">               
                             </div>
                             <div class="col-sm-6">
-                                <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
+                                <label class="label2">DIRECCIÓN DE ÁREA</label>
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojtdiradisc" disabled="">
                             </div>
                         </div>
                         <div class="form-group" disabled="" type="hidden" name="nacional" id="nacional">
                             <div class="col-sm-6">
-                                <label class="label2">SUBDIRECCIÓN</label>
+                                <label class="label2">ÁREA, SUBDIRECCIÓN Y/O AEROPUERTO</label>
                                 <input type="text" onkeyup="mayus(this);" class="form-control disabled inputalta " id="ojsubdire" disabled="">               
                             </div>
                             <div class="col-sm-6">

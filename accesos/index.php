@@ -11,7 +11,7 @@ session_start();
         }
 
         $id = $_SESSION['usuario']['id_usu'];
-        $query="SELECT * FROM privilegio WHERE n_empleado = $id AND estado = 0";
+        $query="SELECT * FROM privilegio WHERE n_empleado = $id AND estado = 0 or n_empleado = $id AND estado=3";
         $resultado= mysqli_query($conexion,$query);
         if($resultado->num_rows==0){
         // header('Location: ../');
@@ -256,6 +256,7 @@ session_start();
                     <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                     <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
                     <option value="COORDINADOR">COORDINADOR</option>
+                    <option value="COORDINADOR_A">COORDINADOR_A</option>
                     <option value="DIRECTOR_CIAAC">DIRECTOR_CIAAC</option>
                     <option value="DIRECTOR">DIRECTOR</option>
                     <option value="EJECUTIVO">EJECUTIVO</option>
@@ -263,6 +264,8 @@ session_start();
                     <option value="INSTRUCTOR">INSTRUCTOR</option>
                     <option value="INSPECTOR">INSPECTOR</option>                
                     <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                    <option value="COMISIONADO">COMISIONADO</option>
+                    <option value="EXTERNO">EXTERNO</option>
                     </select>
                     </div>
                 </div>
@@ -280,9 +283,10 @@ session_start();
                 name="privi_lingui" id="privi_lingui" type="text" data-live-search="true">
                 <option value="x" selected>SIN ACCESO</option>
                 <option value="SUPER_ADMIN">SUPER ADMINISTRADOR</option>
+                <option value="ADMINISTRADOR_EVALUADORES">ADMINISTRADOR EVALUADORES</option>
                 <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                 <option value="EVALUADOR">EVALUADOR</option>
-                <option value="LICENCIAS">LICENCIAS</option>
+                <option value="SINODAL">SINODAL</option> 
                 </select>
                 </div>
                 </div>
@@ -380,7 +384,7 @@ session_start();
     var dataSet = [
     <?php 
     $query = "SELECT * FROM accesos
-    INNER JOIN personal ON id_usu = gstIdper WHERE personal.estado = 0";
+    INNER JOIN personal ON id_usu = gstIdper WHERE personal.estado = 0 or personal.estado = 3 ";
     $resultado = mysqli_query($conexion, $query);
     while($data = mysqli_fetch_array($resultado)){ 
         $id = $data['id_usu'];
@@ -394,7 +398,7 @@ session_start();
         // 7 INSPECTOR
         // 8 INSTRUCTOR
         // 9 NUEVO INGRESO
-["<?php echo $data[1]?>", "<?php echo $data[9]." ".$data[10]?>", "<?php echo $data[32]?>","<?php echo $data[2]?>",
+["<?php echo $data[1]?>", "<?php echo $data[10]." ".$data[11]?>", "<?php echo $data[33]?>","<?php echo $data[2]?>",
 
     "<?php echo "<a title='Editar técnico' onclick='mostrar_datos({$data[1]})' type='button' data-toggle='modal' data-target='#mostrarPriv' class='editar btn btn-default'><i class='fa fa-list-alt text-info'></i></a>"?>"
 

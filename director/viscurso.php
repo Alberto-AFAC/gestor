@@ -83,47 +83,38 @@ onclick="agregarDias();">EDITAR</button>
 
     </div>
 </div>
-
 <!-- Main content -->
-
 <div class="row" id="detCurso" style="display: none;">
-
     <!-- /.col -->
     <div class="col-md-12">
-        
         <div class="box-tools pull-right" style="display:none;" id="lisCurso">
             <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
                 data-widget="remove">
                 <a href="lisCurso"><i class='fa fa-times'></i></a>
             </button>
         </div>
-
         <div class="box-tools pull-right" style="display:none;" id="acreeditados">
             <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
                 data-widget="remove">
                 <a href="acreeditados"><i class='fa fa-times'></i></a>
             </button>
         </div>
-
         <div class="box-tools pull-right" style="display:none;" id="pendientes">
             <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
                 data-widget="remove">
                 <a href="pendientes"><i class='fa fa-times'></i></a>
             </button>
-        </div>        
+        </div>
 
         <div class="box-tools pull-right" style="display:none;" id="porvencer">
             <button type="button" title="Cerrar" id="cerrarc" class="btn btn-box-tool" style="font-size:18px"
                 data-widget="remove">
                 <a href="porvencer"><i class='fa fa-times'></i></a>
             </button>
-        </div>  
-
+        </div>
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-
                 <li class="active"><a href="#activity" data-toggle="tab">INFORMACION DEL CURSO</a></li>
-
                 <li><a href="#timeline" data-toggle="tab">PARTICIPANTES</a></li>
             </ul>
 
@@ -131,11 +122,8 @@ onclick="agregarDias();">EDITAR</button>
 
                 <div class="active tab-pane" id="activity">
                     <!-- Post -->
-
                     <div class="post">
-
                         <form class="form-horizontal" action="" method="POST" id="Dtall">
-
                             <div class="form-group">
                                 <div class="col-sm-5">
                                     <label class="label2">NOMBRE</label>
@@ -212,7 +200,8 @@ onclick="agregarDias();">EDITAR</button>
 
                             <div class="form-group">
                                 <label for=""></label>
-                                <button type="button" title="Editar Curso" class="btn btn-box-tool"
+                                <!-- SE COMENTA 23/09/2022 YA QUE NO TIENE ESE PRIVILEGIO -->
+                                <!-- <button type="button" title="Editar Curso" class="btn btn-box-tool"
                                     data-widget="collapse">
                                     <a href='javascript:editcurso()' id="editcurs"
                                         style="font-size:20px; padding-left: 0.5em;"> <i class="fa fa-edit"></i>
@@ -220,7 +209,7 @@ onclick="agregarDias();">EDITAR</button>
                                     <a href='javascript:cereditcurso()' title="Cerrar edición" id="cerrareditc"
                                         style="display:none; font-size:20px;padding-left: 0.5em;"> <i
                                             class="fa fa-ban"></i> REPROGRAMAR CURSO</a>
-                                </button>
+                                </button> -->
                             </div>
 
                             <input type="hidden" name="validar" id="validar" value="0">
@@ -228,17 +217,20 @@ onclick="agregarDias();">EDITAR</button>
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label class="label2">FECHA INICIO</label>
-                                    <input type="date" class="form-control disabled inputalta" id="fcurso" name="fcurso" disabled="">
+                                    <input type="date" class="form-control disabled inputalta" id="fcurso" name="fcurso"
+                                        disabled="">
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="label2">HORA DE INCIO</label>
-                                    <input type="time" class="form-control disabled inputalta" id="hcurso" name="hcurso" disabled="">
+                                    <input type="time" class="form-control disabled inputalta" id="hcurso" name="hcurso"
+                                        disabled="">
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="label2">FECHA CONCLUSIÓN</label>
-                                    <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf" disabled="">
-                                    
+                                    <input type="date" class="form-control disabled inputalta" id="fechaf" name="fechaf"
+                                        disabled="">
+
                                 </div>
                                 <!-- <div class="col-sm-3">
                                     <label class="label2">HORA DE FINALIZACIÓN</label>
@@ -247,7 +239,9 @@ onclick="agregarDias();">EDITAR</button>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                    <button type='button' title='Días Hábiles' onclick='diasEditar()' class='btn btn-info' data-toggle='modal' data-target='#diahabil-modal' id="modalMost" disabled='disabled'>DÍAS HÁBILES </button>
+                                    <button type='button' title='Días Hábiles' onclick='diasEditar()'
+                                        class='btn btn-info' data-toggle='modal' data-target='#diahabil-modal'
+                                        id="modalMost" disabled='disabled'>DÍAS HÁBILES </button>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -255,6 +249,11 @@ onclick="agregarDias();">EDITAR</button>
                                     <label class="label2">SEDE DEL CURSO</label>
                                     <input onkeyup="mayus(this);" type="text" class="form-control inputalta" id="sede"
                                         name="sede" disabled="">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="label2">GRUPO</label>
+                                    <input onkeyup="mayus(this);" type="text" class="form-control inputalta"
+                                        id="grupoci" name="grupoci" disabled="">
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="label2">MODALIDAD</label>
@@ -282,8 +281,7 @@ onclick="agregarDias();">EDITAR</button>
                                     </div>
                                     <div class="col-sm-3"><br>
                                         <label class="label2">CLASSROOM</label>
-                                        <input type="url" class="form-control inputalta" id="classromcur"
-                                            name="classromcur" placeholder="CLASSROM" disabled="">
+                                         <textarea type="url" class="form-control inputalta" id="classromcur" name="classromcur" placeholder="CLASSROM" disabled=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -298,9 +296,9 @@ onclick="agregarDias();">EDITAR</button>
                             <input type="hidden" name="codigo" id="codigo">
                             <input type="hidden" name="proceso" id="proceso">
 
-                            <button type="button" id="buttonfin" title="Finalizar Curso"
+                            <!-- <button type="button" id="buttonfin" title="Finalizar Curso"
                                 style="font-size:15px; width:150px; height:35px;" class="btn btn-block btn-success"
-                                onclick="finalizar();">FINALIZAR CURSO</button>
+                                onclick="finalizar();">FINALIZAR CURSO</button> -->
 
                             <div id="buttonfin"></div>
                             <b>
@@ -385,20 +383,20 @@ onclick="agregarDias();">EDITAR</button>
                                 <input type="hidden" name="gstTitulo" id="gstTitulo">
                                 <input type="hidden" name="codigoCurso" id="codigoCurso" />
                                 <!-- notiocu -->
-                                <span id="notiocu" data-toggle="modal" data-target="#notificarConv"
+                                <!-- <span id="notiocu" data-toggle="modal" data-target="#notificarConv"
                                     style="font-size:12px; width:280px; height:30px "
                                     class="btn btn-info btn-sm altaboton"><i class="fa fa-envelope-open"
-                                        aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A PARTICIPANTES</span>
+                                        aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A PARTICIPANTES</span> -->
 
-                                <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
+                                <!-- <span id="notiocus" data-toggle="modal" data-target="#notificarRespon"
                                     style="font-size:12px; width:280px; height:30px "
                                     class="btn btn-info btn-sm  altaboton"><i class="fa fa-graduation-cap"
-                                        aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span>
+                                        aria-hidden="true"></i> NOTIFICAR CONVOCATORIA A RESPONSABLES</span> -->
 
                             </form>
                             <!-- CONFIRMACIÓN ENVIÓ DE INVITACIÓN A PARTICIPANTES-->
                             <form id="correo" action="" method="POST">
-                                <div class="modal fade" id='notificarConv' tabindex="-1" role="dialog"
+                                <!-- <div class="modal fade" id='notificarConv' tabindex="-1" role="dialog"
                                     aria-labelledby="notificarConv" aria-hidden="true">
                                     <div class="modal1">
 
@@ -421,12 +419,12 @@ onclick="agregarDias();">EDITAR</button>
                                             class="btn btn-block btn-default btn-sm"
                                             data-dismiss="modal">CERRAR</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </form>
 
                             <!-- CONFIRMACIÓN ENVIO DE CONVOCATORIA A RESPONSABLES -->
                             <form id="correo" action="" id="googlesecurity" method="POST">
-                                <div class="modal fade" id='notificarRespon' tabindex="-1" role="dialog"
+                                <!-- <div class="modal fade" id='notificarRespon' tabindex="-1" role="dialog"
                                     aria-labelledby="notificarConv" aria-hidden="true">
                                     <div class="modal1">
 
@@ -462,7 +460,7 @@ onclick="agregarDias();">EDITAR</button>
                                             class="btn btn-block btn-default btn-sm"
                                             data-dismiss="modal">CERRAR</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </form>
                             <!--FIN DE CONFIRMACIÓN ENVIÓ -->
 
@@ -495,7 +493,6 @@ onclick="agregarDias();">EDITAR</button>
                                 </div>
                             </div>
                             <!--FIN DE CONFIRMACIÓN DE COONVOCATORIA -->
-
                             <div class="box-body">
                                 <br>
                                 <link rel="stylesheet" type="text/css" href="../dist/css/card.css">

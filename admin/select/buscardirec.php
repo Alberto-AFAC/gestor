@@ -6,7 +6,7 @@
     ?>
 
 			<select id="gstAreID" class="form-control" class="selectpicker" name="gstAreID" type="text" data-live-search="true" style="width: 100%" >
-			<option value="0">SELECCIONAR LA DIRECCIÓN EJECUTIVA</option> 
+			<option value="0">SELECCIONAR LA DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA</option> 
 			<?php while($idejec = mysqli_fetch_row($dicejec)):?>                      
 			<option value="<?php echo $idejec[0]?>"><?php echo $idejec[1]?></option>
 			<?php endwhile; ?>

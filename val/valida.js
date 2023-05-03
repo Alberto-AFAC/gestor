@@ -23,9 +23,13 @@ jQuery(document).on('submit', '#formtec', function(event) {
                     location.href = 'menu/';
                     // } else if (respuesta.tipo == 'INSTRUCTOR') {
                     //location.href = 'instructor/';
-                } else if (respuesta.tipo == 'COORDINADOR' || respuesta.tipo == 'INSTRUCTOR') {
+                } else if (respuesta.tipo == 'COORDINADOR' || respuesta.tipo == 'INSTRUCTOR' || respuesta.tipo == 'COORDINADOR_A') {
                     location.href = 'menu/';
                 } else if (respuesta.tipo == 'HUMANOS') {
+                    location.href = 'menu/';
+                } else if (respuesta.tipo == 'COMISIONADO') {
+                    location.href = 'menu/';
+                }else if (respuesta.tipo == 'EXTERNO') {
                     location.href = 'menu/';
                 }
 

@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
     <title>Capacitación AFAC | Perfil Inspector</title>
     <link rel="shortcut icon" href="../dist/img/iconafac.ico" />
     <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
@@ -139,7 +142,7 @@
                         echo "<div class='col-lg-4 col-xs-6'>
                             <div class='small-box bg-aqua-active' style='background-color: #afd9ee;'>
                                 <div class='inner'>
-                                    <h3>3</h3>
+                                    <h3>1</h3>
                                     <p>CURSOS OBLIGATORIOS </p>
                                 </div>
                             <div class='icon'>

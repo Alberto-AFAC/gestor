@@ -197,7 +197,7 @@ $psto = mysqli_query($conexion,$sql);
                                             </div>
 
                                             <div class="form-group">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label>*PERFIL</label>
                                                     <select data-placeholder="SELECCIONE "
                                                         style="width: 100%;color: #000" class="form-control select2"
@@ -209,7 +209,11 @@ $psto = mysqli_query($conexion,$sql);
                                                             <?php //echo $cat[2]?></option>
                                                         <?php //endwhile; ?> -->
                                                     </select>
-                                                </div>                                                
+                                                </div>         
+                                                 <div class="col-sm-4">
+                                                    <label class="label2">Codigo de idenficación</label>
+                                                    <input type="text" onkeyup="mayus(this);" disabled="" class="form-control inputalta" id="gstcodiext" name="gstcodiext">
+                                                </div>  
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-4">
@@ -406,8 +410,9 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                             var gstStado = $("#gstStado").val(); //ESTADO
                             var sgtCrhnt = $("#sgtCrhnt1").val(); //ORGANIZACIÓN
                             var gstRusp = $("#gstRusp1").val(); //ÁREA DE ADSCRIPCIÓN
+                            var gstNmpld = $("#gstcodiext").val(); //NUMERO DE EMPLEADO
                            // swal.showLoading();
-                            var datos= 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstSexo=' + gstSexo + '&gstIDCat=' + gstIDCat + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstCorro=' + gstCorro + '&gstSpcID=' + gstSpcID + '&gstStado=' + gstStado + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&opcion=registrar';
+                            var datos= 'gstNombr=' + gstNombr + '&gstApell=' + gstApell + '&gstLunac=' + gstLunac + '&gstCurp=' + gstCurp + '&gstRfc=' + gstRfc + '&gstSexo=' + gstSexo + '&gstIDCat=' + gstIDCat + '&gstCasa=' + gstCasa + '&gstClulr=' + gstClulr + '&gstCorro=' + gstCorro + '&gstSpcID=' + gstSpcID + '&gstStado=' + gstStado + '&sgtCrhnt=' + sgtCrhnt + '&gstRusp=' + gstRusp + '&gstNmpld=' + gstNmpld + '&opcion=registrar';
                             //alert(datos);
 
                             if (gstNombr == '' || gstApell == '' || gstSexo == '' || gstIDCat == '' || gstCorro == ''| gstLunac == '0') {
@@ -530,6 +535,28 @@ var accesopers = document.getElementById('idact').value; // SE RASTREA EL NUMERO
                                 }
                             ],
                         });
+                        //function externo() {
+                            //función para agregara el folio de identificacion
+                            $.ajax({
+                                 url: '../php/comision.php',
+                                 type: 'POST'
+                            }).done(function(respuesta) {
+                                obj = JSON.parse(respuesta);
+                                var res = obj.data;
+                                var x = 0;
+                                for (U = 0; U < res.length; U++) {
+                                    x++;
+                                    //alert(respuesta);
+                                    if (x > 0) {
+                                        //alert(obj.data[U].gstNmpld);
+                                        document.getElementById('gstcodiext').value = parseInt(obj.data[U].gstNmpld) + 1;
+                                    } else {
+                                        document.getElementById('gstcodiext').value = '99000000';
+                                        
+                                    }
+                                }
+                            });
+                        //}
 
                         if ($('#gstLunac').val() == 0) {
                             $(".curp").css("display", "none");

@@ -236,13 +236,11 @@ $inspector = mysqli_query($conexion,$sql);
                                         </div>
                                         <div class="modal-body">
                                             <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                                    <a href='javascript:openEditeva()' id="abrirev"
+                                                 <!-- <a href='javascript:openEditeva()' id="abrirev"
                                                         style="font-size:22px"> <i class="fa fa-edit"></i> </a>
                                                     <a href='javascript:cerrarEditeva()' id="cerrareval"
                                                         style="display:none; font-size: 22px"> <i class="fa fa-ban"></i>
-                                                    </a>
-                                                </button>
+                                                    </a> -->
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">
@@ -574,7 +572,7 @@ $(document).ready(function() {
         "order": [
             [7, "DESC"]
         ],
-        "ajax": "../php/cursosProgra.php",
+        "ajax": "../php/liscursdirector.php",
         "columnDefs": [{
             "targets": -1,
             "data": null,
@@ -585,7 +583,7 @@ $(document).ready(function() {
 
     detalles("#example tbody", table);
 
-    agrinspctor("#example tbody", table);
+    //agrinspctor("#example tbody", table);
 
 
     $('#example thead tr').clone(true).appendTo('#example thead');
@@ -608,6 +606,8 @@ $(document).ready(function() {
     $('#example tbody').on('click', 'a', function() {
         var data = table.row($(this).parents('tr')).data();
         // alert( "Es el ID: "+ data );
+        let id_curso = data[0];
+        //alert(data[8]);
         $.ajax({
             url: '../php/lisCurso.php',
             type: 'POST'
@@ -615,11 +615,10 @@ $(document).ready(function() {
             obj = JSON.parse(resp);
             var res = obj.data;
             var x = 0;
-            
-            $("#lisCurso").show();
-
+            //alert(data[8]);
+            //$("#lisCurso").show();
             for (i = 0; i < res.length; i++) {
-                if (obj.data[i].id_curso == data[8]) {
+                if (obj.data[i].codigo === id_curso) {
                     cursos =
                         obj.data[i].gstIdlsc +
                         "*" + obj.data[i].gstTitlo +
@@ -640,19 +639,16 @@ $(document).ready(function() {
                         "*" + obj.data[i].proceso +
                         "*" + obj.data[i].idinsp +
                         "*" + obj.data[i].contracur +
-                        "*" + obj.data[i].classroom;
-
+                        "*" + obj.data[i].classroom +
+                        "*" + obj.data[i].grupo;
                     var d = cursos.split("*");
-
                     gstIdlsc = d[0];
                     $("#impri #codigoCurso").val(d[15]);
                     $("#impri #gstIdlstc").val(d[0]);
                     $("#impri #gstTitulo").val(d[1]);
-
                     $("#idperonc").val(d[1]);
                     $("#id_cursoc").val(d[15]);
                     $("#avaluacion #idperon").val(d[1]);
-
                     $("#Dtall #gstTitlo").val(d[1]);
                     $("#Dtall #gstTipo").val(d[2]);
                     $("#Dtall #gstPrfil").val(d[3]);
@@ -681,6 +677,7 @@ $(document).ready(function() {
                     $("#Dtall #codigo").val(d[15]);
                     $("#Dtall #proceso").val(data[18]);
                     $("#Dtall #codigoIDCuro").val(d[15]);
+                    $("#Dtall #grupoci").val(d[20]);
 
                     codigo = d[15];
 
@@ -691,8 +688,8 @@ $(document).ready(function() {
                         $("#notiocu").hide();
                         $("#notiocus").hide();
                         $("#ocubotn").hide();
-                        document.getElementById('modalMost').disabled = false;  
-                        document.getElementById('allselect').disabled = true; 
+                        document.getElementById('modalMost').disabled = false;
+                        document.getElementById('allselect').disabled = true;
 
                     } else {
                         $("#buttonfin").show();
@@ -733,7 +730,7 @@ function idcurso(codigo) {
             [3, "asc"]
         ],
         "ajax": {
-            "url": "../php/cursosProgramados.php",
+            "url": "../php/cursosProgramdirec.php",
             "type": "GET",
             "data": function(d) {
                 d.id = id;
@@ -753,8 +750,8 @@ function idcurso(codigo) {
 
 
 function id_cursos(idp) {
-//alert(idp);
-$.ajax({
+    //alert(idp);
+    $.ajax({
         url: '../php/conscursospro.php',
         type: 'POST'
     }).done(function(resp) {
@@ -781,10 +778,10 @@ $.ajax({
                 if (toma3 == 'OTROS') {
                     document.getElementById('otrosd1').style.display = '';
                     document.getElementById('declinpdf1').style.display = 'none';
-                }else if(toma3 == 'TRABAJO') {
+                } else if (toma3 == 'TRABAJO') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
-                }else if (toma3 == 'ENFERMEDAD') {
+                } else if (toma3 == 'ENFERMEDAD') {
                     document.getElementById('otrosd1').style.display = 'none';
                     document.getElementById('declinpdf1').style.display = '';
                 }
@@ -811,7 +808,6 @@ function detalles(tbody, table) {
 
     });
 }
-
 </script>
 <script type="text/javascript" src="../js/lisCurso.js"></script>
 <style>

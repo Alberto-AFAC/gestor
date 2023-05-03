@@ -11,6 +11,10 @@
 <a href="inicio" class="logo">  
 <?php }else if($_SESSION['usuario']['privilegios'] == 'HUMANOS'){ ?>      
 <a href="humanos" class="logo">
+<?php }else if($_SESSION['usuario']['privilegios'] == 'COMISIONADO'){ ?>      
+<a href="profile" class="logo">
+<?php }else if($_SESSION['usuario']['privilegios'] == 'EXTERNO'){ ?>      
+<a href="profile" class="logo">
 <?php }else{ ?>
 <a href="inicio" class="logo">
 <?php } ?>

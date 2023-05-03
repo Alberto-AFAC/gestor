@@ -1121,7 +1121,7 @@ title: "#"
 title: "ESPECIALIDAD OJT"
 },
 {
-title: "OJTS PRINCIPALES"
+title: "TAREAS PRINCIPALES"
 }
 ]
 });

@@ -18,7 +18,9 @@ $.ajax({
 var years = new Date();
 //var fecha_actual = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
 var fecha_actual = years.getFullYear();
-document.getElementById("fecha").innerHTML = "" + '<b>CURSOS AÑO ' + fecha_actual + '</b>';
+//document.getElementById("fecha").innerHTML = "" + '<b>CURSOS AÑO ' + fecha_actual + '</b>';
+document.getElementById("fecha").innerHTML = "" + '<b>CURSOS'  + '</b>';
+
 
 
 $.ajax({

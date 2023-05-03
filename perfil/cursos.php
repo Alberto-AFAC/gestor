@@ -11,7 +11,7 @@ $query = "
 SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin  
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado IN (0,3) ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -37,7 +37,7 @@ if($f3<=$f2){
 
     //console.log('<?php echo $id_curso ?>');
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<a type='button' title='Confirmar asistencia' onclick='confirmar(<?php echo $id_curso ?>)' class='btn btn-warning' data-toggle='modal' data-target='#modal-confirma'>CONFIRMAR</a>"
@@ -84,7 +84,7 @@ $query = "
 SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial,cursos.fechaf AS fin 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND proceso = 'PENDIENTE' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 || idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND proceso = 'PENDIENTE' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado IN (0,3) || idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado IN (0,3) ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -111,7 +111,7 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
 
 ?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
@@ -121,7 +121,7 @@ $valor="<span title='Pendiente por ' style='background-color: grey; font-size: 1
     ],
     <?php }else if($data['confirmar']=='CONFIRMADO'){ 
 $valor="<span  onclick='confirmar1($id_curso)'  style='background-color:green; font-size: 13px; cursor:pointer;' data-toggle='modal' data-target='#modal-detalle' class='badge' title='Ver detalles del curso'>CONFIRMADO</span>"; //23112021
-?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
+?>['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<?php echo $valor ?>", "<?php echo $data['confirmar']?>"
@@ -188,6 +188,7 @@ l.gstFalta,
 l.gstProvd,
 l.gstCntro,
 DATE_FORMAT( c.fechaf, '%d/%m/%Y' ) AS fcursof,
+DATE_FORMAT( c.fcurso, '%d/%m/%Y' ) AS fcursoi,
 (
 SELECT
     MAX( cursos.fcurso ) 
@@ -234,7 +235,7 @@ WHERE
 l.gstIdlsc = c.idmstr 
 AND c.idinsp != c.idcoor 
 AND c.idinsp != c.idinst 
-AND c.estado in (0,2)
+AND c.estado in (0,2,3)
 AND c.proceso = 'FINALIZADO'
 AND c.confirmar = 'CONFIRMADO'
 and  c.idinsp=$datos[0]
@@ -261,9 +262,9 @@ $xpencer = strtotime(Date($vence."- 3 month"));
 
 
 $id_curso = $data['id_curso'];
-$fcurso = $data['inicial'];
-$fechaf = $data['final'];
-
+$fcurso = $data['fcursoi'];
+$fechaf = $data['fcursof'];
+$codigo = $data['codigo']; //08/11/2022
 $valor=$data['confirmar'];;  
 
 if($data['evaluacion'] == ''){
@@ -365,10 +366,10 @@ if ($facnow < $vence){
     if ($data["gstTipo"] == 'BÁSICOS/INICIAL'){
 
         if ($data["fcurso"] == $data["recurrente"] && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
-            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+            $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO2</span>";
         }
         if ($data["recurrente"]==NULL && $data["evaluacion"] >= 80 && $data["confirmar"] == 'CONFIRMADO' && $data["proceso"] == "FINALIZADO") {
-            $vigencia= "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO</span>";
+            $vigencia= "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>VENCIDO1</span>";
         }
         if ($data["recurrente"]== NULL && $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == 'NULL' || $data["confirmar"] == 'CONFIRMAR' && $data["proceso"] == "FINALIZADO" && $data["evaluacion"] == '0'){
             $vigencia = "<span style='background-color:#BB2303; font-size: 14px;' class='badge'>NO ACREDITADO</span>";
@@ -406,7 +407,7 @@ $Fechafincur = date("d/m/Y",strtotime($data["fechaf"]));
 
 
 $queri = "
-SELECT * FROM reaccion WHERE id_curso = $id_curso AND estado = 0 ORDER BY id_curso DESC";
+SELECT * FROM reaccion WHERE id_curso = $id_curso AND estado IN (0,3) ORDER BY id_curso DESC";
 $resul = mysqli_query($conexion, $queri);
 
 
@@ -418,21 +419,39 @@ $const = mysqli_query($conexion, $query);
 if($con = mysqli_fetch_array($const)){
 
 
-if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
-    $id = base64_encode($con[0]);
-if($con[10]==0){
-$accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual.php?data={$id}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
-}else{
- 
-$accion = "<center><a  type='button' id='myCertificate' target='_blank'    class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
-}
+    if($con[3]=='SI' && $con[4]=='SI' && $con[5]=='SI' && $con[6]=='SI' && $con[7]=='SI' && $con[8]=='SI' && $con[9]=='SI'){
+        $id = base64_encode($con[0]);
+        $encrycodigo = base64_encode($codigo); //08112022
+        if($con[10]==0){
+            if ($data['fcurso'] >= '2022-11-01'||$data['codigo'] == 'FO358'||$data['codigo'] == 'FO366'||$data['codigo'] == 'FO404'){
+                if ($data['gstCntnc']=='CONSTANCIA'){
+                    $accion = "<center><a title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual1.php?data={$id}&fol={$encrycodigo}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;display:'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+                }else{
+                    $accion = "<center><a style='display:' title='Descarga Constancia' type='button' id='myCertificate' href='../admin/constanciaIndividual.php?data={$id}&fol={$encrycodigo}' target='_blank' onclick='desactivar({$con[0]});' class='datos btn' style='background:white; font-size:18px;'><i class='fa fa-file-pdf-o text-danger'></i></a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+                }
+            }else {
+                $accion = "<center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+            }
+        }else{
+            if ($data['fcurso'] >= '2022-11-01'||$data['codigo'] == 'FO358'||$data['codigo'] == 'FO366'||$data['codigo'] == 'FO404'){
+                $accion = "<center><a style='display:'  type='button' id='myCertificate' target='_blank' class='datos btn btn-default'>archivo descargado</a></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+            }else{
+               $accion = "<center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>"; 
+            }
+            
+        }
     }else{
-
-$accion = "<center><b style='color:silver;' title='Dar clic para descargar' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>EVALUADO</span><center>";
-}
+        
+        if ($data['fcurso'] >= '2022-11-01'||$data['codigo'] == 'FO358'||$data['codigo'] == 'FO366'||$data['codigo'] == 'FO404'){
+                $accion = "<center><b style='color:silver;display:' title='Dar clic para descargar' onclick='pdf()' ><i class='fa fa-file-pdf-o'></i></b></center><center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>";
+        }else{
+               $accion = "<center><span class='badge' style='background-color: green;'>ACREDITADO</span><center>"; 
+        }
+        
+    }
 ?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $Fechainicur?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $Fechainicur?>",
         "<?php echo $data['hcurso']?>", "<?php echo $Fechafincur?>",
         <?php if($data['gstVignc']!=101){ ?> "<span class='badge' style='background-color: green; font-size: 14px;'><?php //echo $valor?></span><?php echo $vigencia?>",
         <?php }else{ ?> "<center><span class='badge' style='background-color: silver;'>REALIZADO/UNICA VEZ</span></center>",
@@ -442,10 +461,12 @@ $accion = "<center><b style='color:silver;' title='Dar clic para descargar' oncl
 
 
 
-        <?php if($data['evaluacion']<80){?>
+        <?php if($data['evaluacion'] < 80){?>
 
-        "<center><b style='color:red;' title='Pendiente' onclick='pdf()' ><span class='badge' style='background-color: #BB2303; font-size: 14px;'>NO ACREDITADO</span></b></center>"
-        <?php }else{?>
+        "<center><b style='color:red;' title='No acredito' onclick='pdf()' ><span class='badge' style='background-color: #BB2303; font-size: 14px;'>NO ACREDITADO</span></b></center>"
+        <?php }else{
+            "<center><b style='color:red;' title='Pendiente' onclick='pdf()' ><span class='badge' style='background-color: ; font-size: 14px;'>ACREDITADO</span></b></center>"
+            ?>
 
         "<?php echo $accion?>"
 
@@ -458,7 +479,7 @@ $accion = "<center><b style='color:silver;' title='Dar clic para descargar' oncl
 
 $accion = "<span class='badge' style='background-color: green;'>EVALUADO</span>";  ?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
         "<span class='badge' style='background-color: green; font-size: 14px;'><?php echo $valor?></span>",
         "<?php echo $accion?>"],
@@ -481,7 +502,7 @@ if($data['codigo']=='X' AND $data['gstVignc']!=101){
 
 if($f3>=$f1){ //VENCIDO?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
         "<span class='badge' style='background-color: silver;'><?php echo 'REALIZADO/UNICA VEZ' ?></span>",
 
@@ -492,7 +513,7 @@ if($f3>=$f1){ //VENCIDO?>
 
     <?php }else if($f3 <= $f2 && $data['evaluacion'] >= 80){ //VIGENTE ?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<span class='badge' style='background-color: green;'><?php echo 'VIGENTE'?></span>",
@@ -501,7 +522,7 @@ if($f3>=$f1){ //VENCIDO?>
 
     ],
 
-    <?php }else if($f3 >= $f2){ //POR VENCER?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+    <?php }else if($f3 >= $f2){ //POR VENCER?>['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
         "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
@@ -515,7 +536,7 @@ if($f3>=$f1){ //VENCIDO?>
 ?>
 
 
-    <?php }else if($data['codigo']=='X'){ ?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+    <?php }else if($data['codigo']=='X'){ ?>['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
         "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
@@ -528,7 +549,7 @@ if($f3>=$f1){ //VENCIDO?>
     <?php }else{ ?>
 
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<span class='badge' style='background-color: green;'><?php echo $valor?></span>",
@@ -547,7 +568,7 @@ if($f3>=$f1){ //VENCIDO?>
 
 var tableGenerarReporte = $('#data-table-completo').DataTable({
     "order": [
-        [5, "desc"]
+        [2, "desc"]
     ],
     "language": {
         "searchPlaceholder": "Buscar datos...",
@@ -585,7 +606,7 @@ $query = "
 SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial 
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND cursos.estado IN (0,3) ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -599,7 +620,7 @@ if($data['confirmar']=='ENFERMEDAD'){
 $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";
 
 
-?>["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+?>['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         // "<a type='button' title='Evaluación' onclick='asignacion(<?php //echo $id_curso ?>)' class='btn btn-danger' data-toggle='modal' data-target='#modal-asignar'>CANCELADO </a>"
@@ -611,7 +632,7 @@ $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer
 
 $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>"; ?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<?php echo $valor ?>"
@@ -620,7 +641,7 @@ $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer
     <?php }else if($data['confirmar']=='OTROS'){
 $valor ="<span style='background-color:#BB2303; font-size: 13px; cursor: pointer;' class='badge' title='Ver detalles' data-toggle='modal' data-target='#modal-declinado' onclick='confirmar($id_curso)'>DECLINADO</span>";?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo  $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<?php echo $valor ?>"
@@ -665,7 +686,7 @@ $query = "
 SELECT *,DATE_FORMAT(cursos.fechaf, '%d/%m/%Y') as final,DATE_FORMAT(cursos.fcurso, '%d/%m/%Y') as inicial, cursos.fechaf AS fin,evaluacion
 FROM cursos 
 INNER JOIN listacursos ON idmstr = gstIdlsc
-WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado = 0 ORDER BY id_curso DESC";
+WHERE idinsp = $datos[0] AND confirmar = 'CONFIRMAR' AND idinsp!=idcoor AND idinsp!=idinst AND cursos.estado IN (0,3) ORDER BY id_curso DESC";
 $resultado = mysqli_query($conexion, $query);
 
 while($data = mysqli_fetch_array($resultado)){ 
@@ -693,7 +714,7 @@ $f2 = strtotime($fin);
 
 if($f3>$f2 && $data['proceso']=='PENDIENTE' || $f3> $f2 && $data['proceso']=='FINALIZADO'&& $data['idinsp']!= $data['idinst'] && $data['idinsp']!= $data['idcoor']){   ?>
 
-    ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
+    ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>", "<?php echo $fcurso?>",
         "<?php echo $data['hcurso']?>", "<?php echo $fechaf?>",
 
         "<span  class='badge' style='background-color: red; font-size: 14px;'>VENCIDO</span><span title='No se envió respuesta de asistencia.' class='badge' style='background-color: orange; font-size: 14px;'>SIN RESPUESTA</span>", //29112021
@@ -980,76 +1001,76 @@ var dataSet = [
                    INNER JOIN categorias ON especialidadcat.gstIDcat = categorias.gstIdcat
                    INNER JOIN listacursos ON listacursos.gstPrfil = categorias.gstCsigl
                    INNER JOIN listacursobliga ON listacursobliga.gstIDlsc = listacursos.gstIdlsc 
-                   WHERE especialidadcat.gstIDper = $datos[0] AND especialidadcat.estado = 0";
+                   WHERE especialidadcat.gstIDper = $datos[0] AND especialidadcat.estado IN (0,3)";
         $resultado = mysqli_query($conexion, $query);
       
     while($data = mysqli_fetch_array($resultado)){ 
          
             $lis = $data['list'];
-		
+        
             $queri = "
-			SELECT * FROM cursos WHERE idinsp = $datos[0] AND idmstr = $lis AND idinsp!=idcoor AND idinsp!=idinst AND estado = 0 ORDER BY id_curso DESC";
-			$resul = mysqli_query($conexion, $queri);
+            SELECT * FROM cursos WHERE idinsp = $datos[0] AND idmstr = $lis AND idinsp!=idcoor AND idinsp!=idinst AND estado IN (0,3) ORDER BY id_curso DESC";
+            $resul = mysqli_query($conexion, $queri);
             
  
         if($res = mysqli_fetch_array($resul)){
             
         if($res['proceso']=='PENDIENTE' && $res['confirmar']=='CONFIRMADO'){
         ?>
-            ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+            ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
             "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: #3C8DBC; font-size: 14px;' class='badge'>EN CURSO</span></td> </tr>"
             ], <?php 
         }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='CONFIRMADO' && $res['evaluacion']>=80 ){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td> <span style='background-color: green; font-size: 14px;' class='badge'>FINALIZADO</span></td> </tr>"
                 ], <?php 
         }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='CONFIRMADO' && $res['evaluacion']<80 ){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td> <span style='background-color:red; font-size: 14px;' class='badge'>REPROBO</span></td> </tr>"
                 ], <?php 
         }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='CONFIRMAR'){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='OTROS'){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='ENFERMEDAD'){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }if($res['proceso']=='PENDIENTE' && $res['confirmar']=='TRABAJO'){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='TRABAJO'){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }if($res['proceso']=='FINALIZADO' && $res['confirmar']=='ENFERMEDAD'){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }
         if($res['proceso']=='FINALIZADO' && $res['confirmar']=='OTROS'){
             ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
         }
     }
     else{
         ?>
-                ["<?php echo $data['gstTitlo']?>", "<?php echo $data['gstTipo']?>",
+                ['<?php echo $data['gstTitlo']?>', "<?php echo $data['gstTipo']?>",
                 "<?php echo $data['gstCsigl']?>", "<?php echo $data['gstDrcin']?>","</td><td><span style='background-color: grey; font-size: 14px;' class='badge'>SIN CURSAR</span></td></tr>"
                 ], <?php 
     }

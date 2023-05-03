@@ -59,7 +59,9 @@ if($data['idcoor']==$data['idinsp'] && $data['idcoor'] == $idper){
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
 	 $participante = 'COORDINADOR/INSTRUCTOR';
-	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Confirmar Asistencia' onclick='asistmasivo({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-asitmasiva' ><i class='fa fa fa-bullseye' style='font-size:15px;'></i></a>";
+	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Confirmar Asistencia' onclick='asistmasivo({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-asitmasiva' ><i class='fa fa fa-bullseye' style='font-size:15px;'></i></a>
+
+		<a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']}.2)' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";
 
 	}else
 //COORDINADOR
@@ -67,14 +69,19 @@ if($data['idcoor']==$data['idinsp'] && $data['idcoor'] == $idper){
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
 	 $participante = 'COORDINADOR';
-	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Confirmar Asistencia' onclick='asistmasivo({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-asitmasiva' ><i class='fa fa fa-bullseye' style='font-size:15px;'></i></a>";
+	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Confirmar Asistencia' onclick='asistmasivo({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-asitmasiva' ><i class='fa fa fa-bullseye' style='font-size:15px;'></i></a>
+
+	 <a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']}.2)' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";
 
 //INSTRUCTOR
 	}else if($respon=='INSTRUCTOR'){
 
 	 $confirmar = "ASISTENCIA OBLIGATORIA";
 	 $participante = 'INSTRUCTOR';
-	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a>";
+	 $evaluacion = "<a type='button' id='ev' title='Evaluación Inspector' onclick='inspeval({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-evalua'><i class='fa ion-clipboard' style='font-size:15px;'></i></a> <a type='button' id='ev' title='Generación de constancias de participantes' onclick='generacion({$codigo})' class='btn btn-primary' data-toggle='modal' data-target='#modal-masiva' ><i class='fa fa fa-file-text' style='font-size:15px;'></i></a>
+
+		<a type='button' title='Eliminar inspector' onclick='eliNsp({$data['id_curso']}.3)' class='asiste btn btn-default' data-toggle='modal' style='margin-left:3px' data-target='#eliminar-modal'><i class='fa fa-trash-o text-danger' style='font-size:15px; margin-left:2px'></i></a>";
+
 	}else{
 
 //PARTICIPANTES

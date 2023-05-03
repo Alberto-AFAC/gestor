@@ -417,7 +417,7 @@ var dataSet = [
 $gstId5 = $data['gstIdper'];
 
 
- if($cargo == 'INSTRUCTOR' || $cargo == 'COORDINADOR'){ ?>
+ if($cargo == 'INSTRUCTOR' || $cargo == 'COORDINADOR' || $cargo == 'COORDINADOR_A'){ ?>
 
     ["<?php echo  $empleado;?>", "<?php echo $data['gstNombr']?>", "<?php echo $data['gstApell']?>",
         "<?php echo $categoria ?>", "<?php echo $cargo ?>","<?php echo $estado?>",

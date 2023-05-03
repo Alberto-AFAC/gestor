@@ -167,7 +167,7 @@ include('header.php');
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">DIRECCIÓN EJECUTIVA</label>
+                                        <label class="label2">DIRECCIÓN EJECUTIVA / DIRECCIÓN DE ÁREA</label>
 
                                         <select style="width: 100%" class="form-control"
                                             class="selectpicker disabled inputalta" name="gstAreIDasig"
@@ -181,7 +181,7 @@ include('header.php');
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">DIRECCIÓN DE ADSCRIPCIÓN</label>
+                                        <label class="label2">DIRECCIÓN DE ÁREA</label>
                                         <select style="width: 100%" class="form-control" class="selectpicker inputalta"
                                             id="gstIDara1" name="gstIDara1" type="text" data-live-search="true"
                                             disabled="">
@@ -194,7 +194,7 @@ include('header.php');
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="label2">SUBDIRECCIÓN</label>
+                                        <label class="label2">ÁREA, SUBDIRECCIÓN Y/O AEROPUERTO</label>
                                         <div id="subdirect"></div>
                                     </div>
                                 </div>
